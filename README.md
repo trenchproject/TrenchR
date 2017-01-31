@@ -1,19 +1,6 @@
 # TrenchR
----
-output:
-  md_document:
-    variant: markdown_github
----
+------------------------------------------------------------------------
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, echo = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "README-"
-)
-```
 An R package encompassing functions for assessing the impact of the environment of organisms.
 
 **Author:** [UW Biology](http://uw.edu)<br>
