@@ -6,6 +6,9 @@
 \usage{
 Thours.mat(Tmat, alpha = 1.86, beta = -0.17, gamma = 2.2)
 }
+\arguments{
+\item{Tmat}{Vector containing Tmin,Tmax, Start Time, and End Time}
+}
 \description{
 This function allows you to calculate temperature across hours.
 }

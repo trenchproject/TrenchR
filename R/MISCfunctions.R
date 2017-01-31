@@ -1,9 +1,18 @@
-
-
-#-----------------------
-#RADIATION WITH CLOUDINESS, returns direct and diffuse radiation
 library(ks)
-
+#' Radiation with cloudiness
+#' 
+#' USE ERBS TO REPARTITION RADIATION (Olyphant 1984)
+#' Separate Total radiation into components
+#' kt is clearness index
+#' Models presented in Wong and Chow. 2001. Applied Energy 69(2001):1991-224
+#' Use Erbs et al model
+#'
+#' This function allows you to calculate direct and diffused radtation.
+#' @param rad angle in radians
+#' @keywords radiation
+#' @export
+#' @examples
+#' Rad.mat()
 Rad.mat=function(rad){
   #PICK TAU, atmospheric transmisivity, from distribution for k_t
   #USES KERNAL ESTIMATE FIT TO HOURLY NREL SRRL DATA (loaded when sourcing solar radiation functions)

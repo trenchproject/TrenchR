@@ -1,12 +1,11 @@
 #' Temperature across hours
 #'
 #' This function allows you to calculate temperature across hours.
-#' @param Tmat
+#' @param Tmat Vector containing Tmin,Tmax, Start Time, and End Time
 #' @keywords Temperature
 #' @export
 #' @examples
 #' Thours.mat()
-### TEMP ACROSS HOURS
 Thours.mat=function(Tmat, alpha=1.86, beta= -0.17, gamma=2.20){
   #Tmx= max temperature
   #Tmn= min temperature
