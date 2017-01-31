@@ -3,5 +3,8 @@
 export(Thours.mat)
 export(V_z)
 export(airpressure_elev)
+export(degree.days)
+export(degree.days.mat)
+export(degree.days.thermoreg)
 export(zenith)
 export(zenith.rad)

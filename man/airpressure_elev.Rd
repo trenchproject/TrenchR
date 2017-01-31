@@ -2,7 +2,7 @@
 % Please edit documentation in R/air_pressure.R
 \name{airpressure_elev}
 \alias{airpressure_elev}
-\title{Estimate air pressure in kPa #' Estimate air pressure in kPa
+\title{Estimate air pressure in kPa 
 Credit - #http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html}
 \usage{
 airpressure_elev(h)
