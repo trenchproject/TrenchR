@@ -51,11 +51,11 @@ See the package vignette or [read it online at CRAN](https://cran.rstudio.com/we
 
 ### Future Direction
 
-Non-inclusive categories we hope to include:
-Diurnal variation;
-Radiation and cloudiness;
-Microclimate models;
-Biophysical and energy balance models
+* Non-inclusive categories we hope to include:
+* Diurnal variation;
+* Radiation and cloudiness;
+* Microclimate models;
+* Biophysical and energy balance models
 
 ### Citation
 
