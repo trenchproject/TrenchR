@@ -1,3 +1,15 @@
+#' Calculate Zenith ...
+#'
+#' This function allows you to calculate zenith
+#' @param J is Julian day.
+#' @param lat is latitude.
+#' @param lon is longitude.
+#' @param Hr is hour of the day.
+#' @keywords zenith
+#' @export
+#' @examples
+#' zenith()
+# 
 zenith=function(J, lat, lon, Hr){
 # J is Julian day
 #lat and lon and latitude and longitude, degrees
@@ -24,6 +36,19 @@ psi= psi*rd
 
 return(psi)
 }
+
+#' Calculate Zenith in radians...
+#'
+#' This function allows you to calculate zenith in radians
+#' @param J is Julian day.
+#' @param lat is latitude.
+#' @param lon is longitude.
+#' @param Hr is hour of the day.
+#' @keywords zenith radian
+#' @export
+#' @examples
+#' zenith.rad()
+# 
 
 zenith.rad=function(J, lat, lon, Hr){
 # J is Julian day
