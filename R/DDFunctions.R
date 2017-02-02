@@ -1,116 +1,87 @@
-#' Calculate degree days(using single sine wave approximation)
+#' Calculate degree days
 #' 
-#' Single sine wave approximation from Baskerville & Emin 1969
+#' Single sine wave approximation from  
 #' Double Sine wave approximation of degree days from Allen 1976 
 #' (see http://www.ipm.ucdavis.edu/WEATHER/ddss_tbl.html)
 #' 
-#' This function allows you to calculate degree days using single sine wave approximation.
+#' This function allows you to calculate degree days using single or double sine wave approximation.
 #' @param Tmin Minimum temperature of the day.
 #' @param Tmax Maximum temperature of the day.
 #' @param LDT lower developmental threshold.
+#' @param UDT upper developmental threshold.
 #' @keywords degree days
 #' @export
 #' @examples
 #' degree.days()
 #' 
-degree.days=function(Tmin,Tmax,LDT){
 
-# entirely above LDT
-if(Tmin>=LDT) {dd=(Tmax+Tmin)/2-LDT}
+#NEEDS CHECKING, PARTICULARLY degrees / radians
 
-# intercepted by LDT
-## for single sine wave approximation
-if(Tmin<LDT && Tmax>LDT){
-alpha=(Tmax-Tmin)/2
-theta1=asin(((LDT-(Tmax+Tmin))/alpha)*pi/180)
-dd=1/pi*(((Tmax+Tmin)/2-LDT)*(pi/2-theta1)+alpha*cos(theta1))
-if(!is.na(dd))if(dd<0){dd=0}
-} #matches online calculation
+degree.days=function(Tmin,Tmax,LDT=NA,UDT=NA, method="single.sine"){
 
-# entirely below LDT
-if(Tmax<=LDT){ dd=0}
+  alpha=(Tmax-Tmin)/2 
+  theta1=asin(((LDT-(Tmax+Tmin)/2)/alpha)*pi/180)
+  theta2=asin(((UDT-(Tmax+Tmin)/2)/alpha)*pi/180)
+  
+#Single sine calculation
+if(method=="single.sine"){
+  
+# entirely above both thresholds
+if(Tmin>=LDT) {dd=(UDT-LDT)/2}
 
-return(dd)
+#Intercepted by upper threshold
+if(Tmax>UDT && Tmin>LDT){
+  dd=1/pi*(((Tmax+Tmin)/2-LDT)*(theta2+ pi/2)+(UDT-LDT)*(pi/2-theta2)-alpha*cos(theta2))
 }
-
-#' Calculate degree days(using single sine wave approximation)
-#' 
-#' Single sine wave approximation from Baskerville & Emin 1969
-#' Double Sine wave approximation of degree days from Allen 1976 
-#' (see http://www.ipm.ucdavis.edu/WEATHER/ddss_tbl.html)
-#' 
-#' This function allows you to calculate degree days using single sine wave approximation.
-#' @param Tdat - Vector containing Tmin and Tmax.
-#' @param LDT lower developmental threshold.
-#' @keywords degree days alternate
-#' @export
-#' @examples
-#' degree.days.mat()
-#' 
-degree.days.mat=function(Tdat,LDT){
-  Tmin=Tdat[1]
-  Tmax=Tdat[2]
+    
+#Intercepted by both thresholds
+  if(Tmax>UDT && Tmin<LDT){
+    dd=1/pi*(((Tmax+Tmin)/2-LDT)*(theta2+ theta1)+alpha*(cos(theta1)-cos(theta2))+ (UDT-LDT)*(pi/2-theta2))
+  }
   
-  # entirely above LDT
-  if(Tmin>=LDT) {dd=(Tmax+Tmin)/2-LDT}
+#Entirely between both thresholds
+  if(Tmax<UDT && Tmin>LDT) {dd=(Tmax-Tmin)/2-LDT}
   
-  # intercepted by LDT
-  ## for single sine wave approximation
-  if(Tmin<LDT && Tmax>LDT){
-    alpha=(Tmax-Tmin)/2
-    theta1=asin(((LDT-(Tmax+Tmin))/alpha)*pi/180)
-    dd=1/pi*(((Tmax+Tmin)/2-LDT)*(pi/2-theta1)+alpha*cos(theta1))
-    if(!is.na(dd))if(dd<0){dd=0}
-  } #matches online calculation
-  
-  # entirely below LDT
-  if(Tmax<=LDT){ dd=0}
-  
-  return(dd)
-}
-
-#' Calculate degree days using single sine wave approximation with thermoregulation
-#'  
-#' This function allows you to calculate degree days using single sine wave approximation assuming thermoregulation to Topt.
-#' @param Tmin Minimum temperature of the day.
-#' @param Tmax Maximum temperature of the day.
-#' @param LDT lower developmental threshold.
-#' @param Topt .
-#' @param Trep .
-#' @keywords degree days thermoregulation
-#' @export
-#' @examples
-#' degree.days.thermoreg()
-#' 
-degree.days.thermoreg=function(Tmin,Tmax,LDT, Topt, Trep){
-
-# entirely above LDT
-if(Tmin>=LDT) {dd=(Tmax+Tmin)/2-LDT}
-
 # intercepted by LDT
-## for single sine wave approximation
+  ## CHECK 1/pi to 1/2pi?
 if(Tmin<LDT && Tmax>LDT){
-alpha=(Tmax-Tmin)/2
-theta1=asin(((LDT-(Tmax+Tmin))/alpha)*pi/180)
 dd=1/pi*(((Tmax+Tmin)/2-LDT)*(pi/2-theta1)+alpha*cos(theta1))
 if(!is.na(dd))if(dd<0){dd=0}
 }
 
-# entirely below LDT
+# entirely below both thresholds
 if(Tmax<=LDT){ dd=0}
+} #end single sine method
 
-dd.topt=NA
-dd.s=NA
-#area of topt box
-dd.topt=sunh/24*(Topt-Trep)
-
-#substract off duplicated area
-alpha=(Tmax-Tmin)/2
-theta1=asin(((Trep-(Tmax+Tmin))/alpha)*pi/180)
-if(!is.na(theta1)) dd.s=1/pi*(((Tmax+Tmin)/2-Trep)*(pi/2-theta1)+alpha*cos(theta1))
-if(!is.na(dd.s))  if(dd.s<0)dd.s=0
-
-dd=dd+dd.topt-dd.s
-
+#---------------------------  
+#double sine calculation
+  if(method=="double.sine"){
+    
+    # entirely above both thresholds
+    if(Tmin>=LDT) {dd=(UDT-LDT)/2}
+    
+    #Intercepted by upper threshold
+    if(Tmax>UDT && Tmin>LDT){
+      dd=1/(2*pi)*(((Tmax+Tmin)/2-LDT)*(theta2+ pi/2)+(UDT-LDT)*(pi/2-theta2)-alpha*cos(theta2))
+    }
+    
+    #Intercepted by both thresholds
+    if(Tmax>UDT && Tmin<LDT){
+      dd=1/(2*pi)*(((Tmax+Tmin)/2-LDT)*(theta2+ theta1)+alpha*(cos(theta1)-cos(theta2))+ (UDT-LDT)*(pi/2-theta2))
+    }
+    
+    #Entirely between both thresholds
+    if(Tmax<UDT && Tmin>LDT) {dd=0.5*((Tmax-Tmin)/2-LDT)}
+    
+    # intercepted by LDT
+    if(Tmin<LDT && Tmax>LDT){
+      dd=1/(2*pi)*(((Tmax+Tmin)/2-LDT)*(pi/2-theta1)+alpha*cos(theta1))
+      if(!is.na(dd))if(dd<0){dd=0}
+    }
+    
+    # entirely below both thresholds
+    if(Tmax<=LDT){ dd=0}
+  } #end double sine method
+  
 return(dd)
 }
