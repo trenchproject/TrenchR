@@ -1,7 +1,7 @@
 #' Estimate air pressure in kPa 
 #' Credit - #http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html
 #'
-#' This function allows you to calculate estimated air pressure
+#' This function allows you to calculate estimated air pressure (kPa) as afunction of elevation
 #' @param h height in meters.
 #' @keywords air pressure
 #' @export
