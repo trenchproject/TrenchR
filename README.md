@@ -65,7 +65,7 @@ If you use this package, We would appreciate a citation. You can see an up to da
 > 
   Data. R package version 0.5.2. <https://github.com/trenchproject/TrenchR>
 
-> : <http://www..html>
+> : <http://trenchproject.github.io>
 
 ------------------------------------------------------------------------
 
