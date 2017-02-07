@@ -3,12 +3,13 @@
 
 An R package encompassing functions for assessing the impact of the environment of organisms.
 
-**Author:** [UW Biology](http://uw.edu)<br>
+**Author:** [UW Biology- Huckley Lab](https://trenchproject.github.io)<br>
 **License:** [MIT](http://opensource.org/licenses/MIT)<br>
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/TrenchR)](http://cran.r-project.org/package=TrenchR)
 [![CRAN_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/TrenchR)](http://cran.r-project.org/package=TrenchR)
-[![Build Status]()]() 
+[![Build Status](https://travis-ci.org/trenchproject/TrenchR.svg)](https://travis-ci.org/trenchproject/TrenchR)
+
 
 
 ### Description
@@ -64,7 +65,7 @@ If you use this package, We would appreciate a citation. You can see an up to da
 > 
   Data. R package version 0.5.2. <https://github.com/trenchproject/TrenchR>
 
-> : <http://www..html>
+> : <http://trenchproject.github.io>
 
 ------------------------------------------------------------------------
 

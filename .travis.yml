@@ -1,0 +1,18 @@
+language: r
+sudo: true
+cache: packages
+
+
+after_success:
+- Rscript -e 'covr::codecov()'
+
+notifications:
+  email:
+    on_success: never
+    on_failure: never
+  slack: huckley:XufS5mf1g1GF3MjqPMVVcyAB
+
+env:
+  global:
+    - R_CHECK_ARGS="--no-build-vignettes --no-manual --timings --as-cran --run-donttest"
+    - _R_CHECK_TIMINGS_="0"    
