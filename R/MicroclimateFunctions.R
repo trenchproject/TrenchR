@@ -1,47 +1,120 @@
-#' FIX HEADERS
+#TEMPLATE FOR FUNCTIONS
+#' Partition radiation into direct, diffuse, and reflected components using models from Campbell & Norman 1988 
 #'
-#' This function allows you to calculate zenith
-#' @param J is Julian day.
-#' @param lat is latitude.
-#' @param lon is longitude.
-#' @param Hr is hour of the day.
-#' @keywords zenith
+#' This function allows you to Partition radiation into direct, diffuse, and reflected components
+#' @param psi zenith angle in radians
+#' @param elev Elevation (m)
+#' @param J Julian Day
+#' @param rho albedo (%)
+#' @param tau transmissivity (%)
+#' 
+#' @keywords radiation
 #' @export
 #' @examples
-#' zenith()
-# 
+#' radiation()
 
-#Microclimate functions from Kearney supplement
+#=============================================================
+#FUNCTIONS TO ADD
+#t_sn is local standard time of true solar noon
 
-#FUNCTIONS TO WRITE:
-#FUN: solar hour angle
-#FUN: solar declination
-#FUN: time of solar noon
-
-#2.1 Extra-terrestrial Radiation
-
-#wavelength-specific irradiance reaching plane perpendicular to the sun’s rays at the outer edge of the atmosphere
- 
-
-#J is Calendar day
+#EXTRATERRESTRIAL RADIATION
+#J is Julian day
+#lat is latitude
 #t_d is local standard time of day
 
+w= 2*pi/365
+E= 0.01675 #eccentricity of earth's orbit
 
+#ecliptic longitude of the earth in its orbit
+e.long= w*(d-80)+2*E*(sin(w*J)-sin(w*80) )
 
+#sd is solar declination #latitude on earth where sun is directly overhead on a given day
+sd=arcsin(0.39784993*sin(e.long))
 
-Rad.Extraterrestrial= function(J, t_d  ){
-  E=0.01675 #eccentricity of the earth’s orbit
-  w= 2*pi/365
-  a.r= 1+2*E*cos(w*J)
-  t_sn #local standard time of true solar noon, is calculated by adding/subtracting 4 min for each degree of longitude west/east of the reference longitude for the local time zone
-  sol.dec #solar declination
-  h= 15*(t_d - t_sn)
+#h is solar hour angle
+h=15*(t_d-t_sn)
+#P3: solar angle at sunset and sunrise?
+
+et.radiation=function(J,lat ){
   
-  cosZ= cos(lat)*cos(sol.dec*h)+sin(lat)*sin(sol.dec)
+  a_r2= 1+2*E*cos(w*d)
+  cosZ= cos(lat)*cos(sd*h)+ sin(lat)*sin(sd)
   
-  I.lambda=S.lambda*a.r*cosZ
+  #Wavelength-specific irradience reaching plane perpendicular to sun's rays at outer edge of atosphere
+  I_wavelength= S_wavelength*a_r2*cosZ
 }
 
-#where S_λ is solar spectral irradiance reaching a plane perpendicular to the incoming radiation at one astronomical unit from the sun (Fig. 2, data stored internally in SOLRAD), a is the length of the long (semi-major) axis of the earth’s elliptical orbit around the sun, r is the distance between the earth and the sun and Z is the angle between the sun’s rays and a line extending perpendicular to the imaginary plane (so no direct radiation is received by this plane if Z > 90°, but see below for twilight conditions).
+#TERRESTRIAL RADIATION
 
-The factor 〖(a/r)〗^2 is approximated in the model as 1+2ε cos(ωd) where ω=2π/365,  ε is the eccentricity of the earth’s orbit (default value of 0.01675) and d is the day of the year (1-365). From the astronomical triangle, the term cosa〖Z=cos φ cosa〖δ cosa〖h+sina〖φ sinaδ 〗 〗 〗 〗, where φ is the latitude, δ is the solar declination and h is the solar hour angle. The solar declination δ=asina(0.39784993 sin ζ) where the ecliptic longitude of the earth in its orbit ζ = ω(d-80)+2ε[sina(ωd)-sina(ω80) ]. The hour angle h = 15(t¬d – t¬sn) degrees, with t¬d the local standard time of day and tsn the local standard time of true solar noon. The value of tsn is calculated by adding/subtracting 4 min for each degree of longitude west/east of the reference longitude for the local time zone. The hour angle at sunset H_+=arccosa[-tana〖δ tana〖φ]〗 〗 while the hour angle at sunrise H_-=-H_+. In the polar zones, where the (absolute) latitude φ>66°30', there may be no sunrise/sunset but rather a long day (H+ = π) or a long night (H+ = 0).
+#Z_a is apparent zenith angle, angle between beams of direct radiation and local zenith direction (i.e., vertical) at the surface of the earth
+#elev is elevation above sea level
+
+#m(Za) is relative optical air mass
+m_Za=sec(Z_a) #for Z_a<80 degrees
+m_Za= (cos(Z_a)+0.025*exp(-11*cos(Z_a)) )^{-1} #for 80<Z_a<90 
+
+#wavelength_Th is total monochromatic extinction coefficient
+wavelength_Th= #! FIX
+  
+  #direct, horizontal plane component of terrestrial solar radiation
+  I_wavelength= S_wavelength*a_r2*cos(Z_a)*exp(-m_Za*wavelength_Th )
+
+#2.2.2 scattered component of terrestrial radiation
+F_d #From Dave and Furakawa (1967) p7 from SOLRAD
+F_d_Q
+
+D_wavelength #wavelengths >360 nanometers #! FIX
+D_wavelength #wavelengths <= nanometers #! FIX
+
+#Global terestrial radiation
+G_wavelength= (I_wavelength + D_wavelength) *wavelength 
+
+#2.3 Slope, aspect and hill-shade effects
+
+#Azimuth of the sun
+#Southern hemisphere
+if(lat>=0) AZ_sun= arccos((sin(lat)*sin(90*pi/180-Z)-sin(sd))/(cos(lat)*cos(90*pi/180-Z) ) )
+#Northern hemisphere
+if(lat<0) AZ_sun= arccos(sin(sd)-(sin(lat)*sin(90*pi/180-Z))/(cos(lat)*cos(90*pi/180-Z) ) )
+#value ranges from 0-180, subtract from 360 to obtain afternoon angles
+if(h>12) AZ_sun= 360 - AZ_sun
+
+#Zenith angle based angle of the slope SL
+Z_SL= arccos( cos(Z)*cos(S*L)+sin(Z)*sin(S*L)*cos(AZ_sun-AZ_SL)  )
+
+#P8. Adjustments for cloud cover
+#Pcloud is percentage cloud cover
+Qsolar_cloud= Q_solar*(0.36+0.64*(1-Pcloud)/100 )
+
+#3. LONGWAVE RADIATION
+omega= #Stefan-Boltzmann constant, Wm^{-2}K^{-4}
+  emissivity
+#T is object's temperature in Kelvin
+
+#Longwave radiation from clear skies
+#T_A is shaded air temperture at reference height (i.e., 1.2m) 
+#e_A is vapour pressure of air in kPA (see section 5)
+#Pcloud is percentage cloud cover
+emissivity_sky= 1.72*(e_A/T_A)^(1/7)
+
+#Longwave radiation from clear skies
+A_rad= omega*emissivity_sky*(T_A+273)^4*(1-Pcloud/100)
+#Cloud longwave radiation
+emissivity_cloud=1
+C_rad= omega*emissivity_cloud*(T_A-2+273)^4*(CLD/100)
+#Total radiation from sky 
+Shd=0 percentage shade from vegetation or other objects
+Q_IR.sky= (A_rad+C_rad)*(1-Shd/100)
+#Total infra-red radiation from shading
+Q_IR.veg= C_rad*Shd/100
+#Radiation from hill-shade
+Q_IR.hill
+#Radiation from ground
+Q_IR.ground
+#Net longwave radiation gain for substrate heat budget
+Q_IR=(Q_IR.sky+Q_IR.veg)
+
+
+Q_IR= omega * emissivity * T^4
+
+
