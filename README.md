@@ -16,7 +16,7 @@ An R package encompassing functions for assessing the impact of the environment 
 
 Code contributions for TrenchR initiative
 
-We aim to create an R package (TrenchR) encompassing resources for assessing the impact of the environment of organisms.  The package will build off and integrate with existing packages (e.g., NicheMapR).  Code (scripts and functions) will be accepting in any programming language and thorough commenting will be appreciated.  We would also appreciate your including a header that describes the intent, input, and output of your scripts and functions. 
+We aim to create an R package (TrenchR) encompassing resources for assessing the impact of the environment of organisms.  The package will build off and integrate with existing packages (e.g., NicheMapR).  Code (scripts and functions) will be accepted in any programming language and thorough commenting will be appreciated.  We would also appreciate your including a header that describes the intent, input, and output of your scripts and functions. 
 
 ### Installation
 
@@ -43,8 +43,9 @@ The `zenith()` function takes a ...
 library(TrenchR)
 
 ```
+### Package Vignette
 
-See the package vignette or [read it online at CRAN](https://cran.rstudio.com/web/packages/) for a fuller introduction and suggestions on how to .
+See the package vignette at
 
 ```{r eval=FALSE}
 
@@ -52,21 +53,13 @@ See the package vignette or [read it online at CRAN](https://cran.rstudio.com/we
 
 ### Future Direction
 
-* Non-inclusive categories we hope to include:
-* Diurnal variation;
-* Radiation and cloudiness;
-* Microclimate models;
-* Biophysical and energy balance models
+Non-inclusive categories we hope to include:
+** Diurnal variation
+** Radiation and cloudiness
+** Microclimate models
+** Biophysical and energy balance models
 
 ### Citation
 
 If you use this package, We would appreciate a citation. You can see an up to date citation information with `citation("TrenchR")`. You can cite either the package or the accompanying journal article.
-
-> 
-  Data. R package version 0.5.2. <https://github.com/trenchproject/TrenchR>
-
-> : <http://trenchproject.github.io>
-
-------------------------------------------------------------------------
-
 
