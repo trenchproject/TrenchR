@@ -54,10 +54,10 @@ See the package vignette at
 ### Future Direction
 
 Non-inclusive categories we hope to include:
-** Diurnal variation
-** Radiation and cloudiness
-** Microclimate models
-** Biophysical and energy balance models
+* Diurnal variation
+* Radiation and cloudiness
+* Microclimate models
+* Biophysical and energy balance models
 
 ### Citation
 
