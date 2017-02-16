@@ -2,9 +2,9 @@
 % Please edit documentation in R/DDFunctions.R
 \name{degree.days}
 \alias{degree.days}
-\title{Calculate degree days(using single sine wave approximation)}
+\title{Calculate degree days}
 \usage{
-degree.days(Tmin, Tmax, LDT)
+degree.days(Tmin, Tmax, LDT = NA, UDT = NA, method = "single.sine")
 }
 \arguments{
 \item{Tmin}{Minimum temperature of the day.}
@@ -12,14 +12,16 @@ degree.days(Tmin, Tmax, LDT)
 \item{Tmax}{Maximum temperature of the day.}
 
 \item{LDT}{lower developmental threshold.}
+
+\item{UDT}{upper developmental threshold.}
 }
 \description{
-Single sine wave approximation from Baskerville & Emin 1969
+Single sine wave approximation from  
 Double Sine wave approximation of degree days from Allen 1976 
 (see http://www.ipm.ucdavis.edu/WEATHER/ddss_tbl.html)
 }
 \details{
-This function allows you to calculate degree days using single sine wave approximation.
+This function allows you to calculate degree days using single or double sine wave approximation.
 }
 \examples{
 degree.days()
