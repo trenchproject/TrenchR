@@ -12,6 +12,7 @@ Authors@R: c(
     person("Aji", "John", role = c("aut","ctb"))
   )
 License: MIT + file LICENSE
+Date: 2017-01-01
 URL: https://github.com/trenchproject/TrenchR
 BugReports: https://github.com/trenchproject/TrenchR/issues
 VignetteBuilder: knitr
