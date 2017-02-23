@@ -13,6 +13,9 @@ airpressure_elev(h)
 \description{
 This function allows you to calculate estimated air pressure (kPa) as afunction of elevation
 }
+\details{
+Estimate air pressure (kPa) as a function of elevation
+}
 \examples{
 airpressure_elev()
 }

@@ -14,11 +14,20 @@ Thour.sineexp(Tmx, Tmn, Hr, tr, ts, alpha = 2.59, beta = 1.55,
 
 \item{Hr}{hour for temperature estimate}
 
-\item{Ts}{time of sunrise (hour)}
+\item{tr}{time of sunset (hour)}
 
-\item{Tr}{time of sunset (hour)}
+\item{ts}{time of sunrise (hour)}
+
+\item{alpha}{time difference between tx(time of maximum temperature) and noon}
+
+\item{beta}{time difference between tx and sunrise}
+
+\item{gamma}{decay parameter for rate of t change from sunset to tn(time of minimum temp)}
 }
 \description{
+Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components
+}
+\details{
 This function allows you to calculate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components.
 }
 \examples{

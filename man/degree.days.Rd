@@ -14,6 +14,8 @@ degree.days(Tmin, Tmax, LDT = NA, UDT = NA, method = "single.sine")
 \item{LDT}{lower developmental threshold.}
 
 \item{UDT}{upper developmental threshold.}
+
+\item{method}{type of method being used}
 }
 \description{
 Single sine wave approximation from  

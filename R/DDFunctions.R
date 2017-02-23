@@ -9,6 +9,7 @@
 #' @param Tmax Maximum temperature of the day.
 #' @param LDT lower developmental threshold.
 #' @param UDT upper developmental threshold.
+#' @param method type of method being used
 #' @keywords degree days
 #' @export
 #' @examples

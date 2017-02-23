@@ -17,6 +17,6 @@ Thour.sine(Tmx, Tmn, Hr)
 This function allows you to calculate temperature across hours.
 }
 \examples{
-Thours.sine()
+Thour.sine()
 }
 \keyword{Temperature}

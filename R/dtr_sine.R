@@ -7,7 +7,7 @@
 #' @keywords Temperature
 #' @export
 #' @examples
-#' Thours.sine()
+#' Thour.sine()
 
 #From Campbell and Norman 1998 uses sine interpolation
 

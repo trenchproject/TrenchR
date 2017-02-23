@@ -18,6 +18,9 @@ radiation(J, psi, tau, elev, rho = 0.7)
 \item{rho}{albedo (%)}
 }
 \description{
+Partition radiation into direct, diffuse, and reflected components using models from Campbell & Norman 1988
+}
+\details{
 This function allows you to Partition radiation into direct, diffuse, and reflected components
 }
 \examples{
