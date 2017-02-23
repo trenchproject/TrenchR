@@ -1,14 +1,15 @@
 #' Temperature across hours
 #'
-#' This function allows you to calculate temperature across hours.
-#' @param Tmx maximum daily temperature (C)
-#' @param Tmn minimum daily temperature (C)
+#' @details This function allows you to calculate temperature across hours.
+#' @param Tmx maximum daily temperature in degree celsius 
+#' @param Tmn minimum daily temperature in degree celsius
 #' @param Hr hour for temperature estimate
 #' @keywords Temperature
 #' @export
 #' @examples
+#' \dontrun{
 #' Thour.sine()
-
+#' }
 #From Campbell and Norman 1998 uses sine interpolation
 
 Thour.sine=function(Tmx, Tmn, Hr){

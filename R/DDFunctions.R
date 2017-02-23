@@ -13,7 +13,9 @@
 #' @keywords degree days
 #' @export
 #' @examples
+#' \dontrun{
 #' degree.days()
+#' }
 #' 
 
 #NEEDS CHECKING, PARTICULARLY degrees / radians

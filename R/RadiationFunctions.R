@@ -3,13 +3,15 @@
 #' @details This function allows you to Partition radiation into direct, diffuse, and reflected components
 #' @param J Julian Day
 #' @param psi zenith angle in radians
-#' @param tau transmissivity (%)
+#' @param tau transmissivity in percentage
 #' @param elev Elevation (m)
-#' @param rho albedo (%)
+#' @param rho albedo in percentage
 #' @keywords radiation
 #' @export
 #' @examples
+#' \dontrun{
 #' radiation()
+#' }
 
 #=============================================================
 #USE CAMPBELL AND NORMAL MODEL TO ESTIMATE RADIATION

@@ -22,6 +22,8 @@ Use Erbs et al model
 This function allows you to calculate direct and diffused radtation.
 }
 \examples{
+\dontrun{
 radiation.erbs()
+}
 }
 \keyword{radiation}

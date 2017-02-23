@@ -23,6 +23,8 @@ V_z(V_r, z_0 = 0.02, z_r = 1.54, z = 0.2)
 This function allows you to calculate
 }
 \examples{
+\dontrun{
 V_z()
+}
 }
 \keyword{Wind}

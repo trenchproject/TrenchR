@@ -12,7 +12,9 @@
 #' @keywords Temperature
 #' @export
 #' @examples
+#' \dontrun{
 #' Thour.sineexp()
+#' }
 
 #Function to calculate Parton and Logan 1981 diurnal variation
 #Parameters for Colorado

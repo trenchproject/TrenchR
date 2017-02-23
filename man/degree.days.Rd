@@ -26,7 +26,9 @@ Double Sine wave approximation of degree days from Allen 1976
 This function allows you to calculate degree days using single or double sine wave approximation.
 }
 \examples{
+\dontrun{
 degree.days()
+}
 
 }
 \keyword{days}

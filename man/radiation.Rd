@@ -11,11 +11,11 @@ radiation(J, psi, tau, elev, rho = 0.7)
 
 \item{psi}{zenith angle in radians}
 
-\item{tau}{transmissivity (%)}
+\item{tau}{transmissivity in percentage}
 
 \item{elev}{Elevation (m)}
 
-\item{rho}{albedo (%)}
+\item{rho}{albedo in percentage}
 }
 \description{
 Partition radiation into direct, diffuse, and reflected components using models from Campbell & Norman 1988
@@ -24,6 +24,8 @@ Partition radiation into direct, diffuse, and reflected components using models 
 This function allows you to Partition radiation into direct, diffuse, and reflected components
 }
 \examples{
+\dontrun{
 radiation()
+}
 }
 \keyword{radiation}

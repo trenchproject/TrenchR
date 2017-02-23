@@ -19,7 +19,9 @@ zenith.rad(J, lat, lon, Hr)
 This function allows you to calculate zenith in radians
 }
 \examples{
+\dontrun{
 zenith.rad()
+}
 }
 \keyword{radian}
 \keyword{zenith}

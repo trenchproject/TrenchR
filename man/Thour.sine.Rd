@@ -7,16 +7,21 @@
 Thour.sine(Tmx, Tmn, Hr)
 }
 \arguments{
-\item{Tmx}{maximum daily temperature (C)}
+\item{Tmx}{maximum daily temperature in degree celsius}
 
-\item{Tmn}{minimum daily temperature (C)}
+\item{Tmn}{minimum daily temperature in degree celsius}
 
 \item{Hr}{hour for temperature estimate}
 }
 \description{
+Temperature across hours
+}
+\details{
 This function allows you to calculate temperature across hours.
 }
 \examples{
+\dontrun{
 Thour.sine()
+}
 }
 \keyword{Temperature}

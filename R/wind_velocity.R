@@ -12,7 +12,9 @@
 #' @keywords Wind
 #' @export
 #' @examples
+#' \dontrun{
 #' V_z()
+#' }
 # 
 V_z <-
   function(V_r,

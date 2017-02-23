@@ -17,7 +17,9 @@ This function allows you to calculate estimated air pressure (kPa) as afunction 
 Estimate air pressure (kPa) as a function of elevation
 }
 \examples{
+\dontrun{
 airpressure_elev()
+}
 }
 \keyword{air}
 \keyword{pressure}

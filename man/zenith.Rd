@@ -2,7 +2,7 @@
 % Please edit documentation in R/ZenithAngle.R
 \name{zenith}
 \alias{zenith}
-\title{Calculate Zenith ...}
+\title{Calculate Zenith angle}
 \usage{
 zenith(J, lat, lon, Hr)
 }
@@ -16,9 +16,14 @@ zenith(J, lat, lon, Hr)
 \item{Hr}{is hour of the day.}
 }
 \description{
+Calculate Zenith angle
+}
+\details{
 This function allows you to calculate zenith
 }
 \examples{
+\dontrun{
 zenith()
+}
 }
 \keyword{zenith}
