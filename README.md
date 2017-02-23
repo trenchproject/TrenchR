@@ -8,7 +8,7 @@ An R package encompassing functions for assessing the impact of the environment 
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/TrenchR)](http://cran.r-project.org/package=TrenchR)
 [![CRAN_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/TrenchR)](http://cran.r-project.org/package=TrenchR)
-[![Build Status](https://travis-ci.org/trenchproject/TrenchR.svg)](https://travis-ci.org/trenchproject/TrenchR)
+[![Build Status](https://travis-ci.org/trenchproject/TrenchR.svg?branch=master)](https://travis-ci.org/trenchproject/TrenchR)
 
 
 
