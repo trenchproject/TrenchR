@@ -1,2 +1,15 @@
+.Rhistory
+vignettes/figure
+appveyor.yml
+.travis.yml
+.gitignore
+TrenchR.Rproj
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.travis\.yml$
+^\.Rproj\.gitignore
+^\.Rproj\.RData
+^\.Rproj\dataRetrieval.Rproj
+^\.Rproj\.Rhistory
+^\.Rproj\.travis.yml
+^\.Rproj\appveyor.yml

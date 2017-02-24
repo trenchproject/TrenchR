@@ -24,7 +24,6 @@ Imports:
 Suggests:
     testthat,
     knitr,
-    vegan,
     covr     ,
     rmarkdown
 Encoding: UTF-8
