@@ -14,60 +14,48 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' degree.days()
+#' degree.days(7,14,12,33,"single.sine")
 #' }
 #' 
 
-#NEEDS CHECKING, PARTICULARLY degrees / radians
-
 degree.days=function(Tmin,Tmax,LDT=NA,UDT=NA, method="single.sine"){
-
-  alpha=(Tmax-Tmin)/2 
-  theta1=asin(((LDT-(Tmax+Tmin)/2)/alpha)*pi/180)
-  theta2=asin(((UDT-(Tmax+Tmin)/2)/alpha)*pi/180)
   
+  alpha=(Tmax-Tmin)/2 
+  dd = 0
   #Single sine calculation
   if (method == "single.sine") {
     
     # entirely above both thresholds
-    if (Tmin >= LDT) {
-      dd = (UDT - LDT) / 2
-    }
-    
-    #Intercepted by upper threshold
-    else if (Tmax > UDT && Tmin > LDT) {
+    if (Tmin >= UDT && Tmax > UDT) {
+      dd = (Tmax - Tmin)
+     } else  if ( Tmin > LDT  && Tmax > UDT) { #Intercepted by upper threshold 
+      theta2=asin((UDT-(Tmax+Tmin)/2)/alpha)
       dd = 1 / pi * (((Tmax + Tmin) / 2 - LDT) * (theta2 + pi / 2) + (UDT - LDT) *
                        (pi / 2 - theta2) - alpha * cos(theta2))
-    }
-    
-    #Intercepted by both thresholds
-    else if (Tmax > UDT && Tmin < LDT) {
-      dd = 1 / pi * (((Tmax + Tmin) / 2 - LDT) * (theta2 + theta1) + alpha * (cos(theta1) -
-                                                                                cos(theta2)) + (UDT - LDT) * (pi / 2 - theta2))
-    }
-    
-    #Entirely between both thresholds
-    else if (Tmax < UDT && Tmin > LDT) {
-      dd = (Tmax - Tmin) / 2 - LDT
-    }
-    
-    # intercepted by LDT
-    ## CHECK 1/pi to 1/2pi?
-    else if (Tmin < LDT && Tmax > LDT) {
-      dd = 1 / pi * (((Tmax + Tmin) / 2 - LDT) * (pi / 2 - theta1) + alpha * cos(theta1))
-      if (!is.na(dd))
-        if(dd < 0) {
-          dd = 0
-        }
-    }
-    
-    # entirely below both thresholds
-    else if (Tmax <= LDT) {
+      } else  if (Tmin < LDT &&  Tmax > UDT ) {  #Intercepted by both thresholds
+      theta2=asin((UDT-(Tmax+Tmin)/2)/alpha)
+      theta1=asin((LDT-(Tmax+Tmin)/2)/alpha)
+      dd = 1 / pi * ((  ((Tmax + Tmin) / 2) - LDT) * (theta2 - theta1) + alpha * (cos(theta1) -
+             cos(theta2)) + (UDT - LDT) * (pi / 2 - theta2))
+    } else if (Tmin > LDT &&  Tmax < UDT ) { #Entirely between both thresholds
+      dd = ((Tmax + Tmin) / 2) - LDT
+     } else if (Tmin < LDT && Tmax > LDT) {  # intercepted by LDT  
+      #theta1=asin((LDT-(Tmax+Tmin)/2)/alpha)
+      # credit - http://stackoverflow.com/questions/20998460/unexpected-behavior-in-asin
+      #It's a floating point issue. The way floating point numbers work is that all 
+      #numbers need to be mapped to the nearest one which can be expressed as a finite 
+      #sum of powers of two and this may lead to small inaccuracies in the expected output 
+      #and can be dependent upon how the numbers are calculated
+      theta1= asin(pmax(-1,pmin(1,(LDT-(Tmax+Tmin)/2)/alpha)))
+      dd = 1 / pi * (( ((Tmax + Tmin) / 2) - LDT) * ( (pi / 2) - theta1) + alpha * cos(theta1))
+    } else if (Tmin < LDT && Tmax <= LDT) {
       dd = 0
-    }
-  } #end single sine method
+       }
 
-#---------------------------  
+      
+  } #end single sine method
+  
+  #---------------------------  
   #double sine calculation
   if (method == "double.sine") {
     # entirely above both thresholds
@@ -108,5 +96,5 @@ degree.days=function(Tmin,Tmax,LDT=NA,UDT=NA, method="single.sine"){
     }
   } #end double sine method
   
-return(dd)
+  return(round(dd,2))
 }

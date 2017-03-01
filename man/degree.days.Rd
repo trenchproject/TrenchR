@@ -27,7 +27,7 @@ This function allows you to calculate degree days using single or double sine wa
 }
 \examples{
 \dontrun{
-degree.days()
+degree.days(7,14,12,33,"single.sine")
 }
 
 }
