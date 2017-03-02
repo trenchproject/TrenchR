@@ -25,8 +25,8 @@ degree.days=function(Tmin,Tmax,LDT=NA,UDT=NA, method="single.sine"){
   #Single sine calculation
   if (method == "single.sine") {
     
-    # entirely above both thresholds
-    if (Tmin >= UDT && Tmax > UDT) {
+    
+    if (Tmin >= UDT && Tmax > UDT) { # entirely above both thresholds
       dd = (Tmax - Tmin)
      } else  if ( Tmin > LDT  && Tmax > UDT) { #Intercepted by upper threshold 
       theta2=asin((UDT-(Tmax+Tmin)/2)/alpha)
@@ -55,65 +55,47 @@ degree.days=function(Tmin,Tmax,LDT=NA,UDT=NA, method="single.sine"){
       
   } #end single sine method
   
-  #---------------------------  
   #double sine calculation
   if (method == "double.sine") {
-    # entirely above both thresholds
-    if (Tmin >= LDT && Tmax > UDT) {
-      dd = (UDT - LDT) / 2
-    }
     
-    #Intercepted by upper threshold
-    if (Tmin > LDT  && Tmax > UDT) {
+    if (Tmin >= LDT && Tmax > UDT) { # entirely above both thresholds
+      dd = (UDT - LDT) / 2
+    } else if (Tmin > LDT  && Tmax > UDT) { #Intercepted by upper threshold
       theta2=asin((UDT-(Tmax+Tmin)/2)/alpha)
       dd = 1 / (2 * pi) * (((Tmax + Tmin) / 2 - LDT) * (theta2 + pi / 2) + (UDT -
           LDT) * (pi / 2 - theta2) - alpha * cos(theta2))
-    }
-    
-    #Intercepted by both thresholds
-    if (Tmin < LDT &&  Tmax > UDT) {
+    } else if (Tmin < LDT &&  Tmax > UDT) { #Intercepted by both thresholds
       theta2=asin((UDT-(Tmax+Tmin)/2)/alpha)
       theta1=asin((LDT-(Tmax+Tmin)/2)/alpha)
-      
       dd = 1 / (2 * pi) * (((Tmax + Tmin) / 2 - LDT) * (theta2 - theta1) + alpha *
                              (cos(theta1) - cos(theta2)) + (UDT - LDT) * (pi / 2 - theta2))
-    }
-    
-    #Entirely between both thresholds
-    if (Tmin > LDT &&  Tmax < UDT) {
+    } else if (Tmin > LDT &&  Tmax < UDT) { #Entirely between both thresholds
       dd = 0.5 * ((Tmax + Tmin) / 2 - LDT)
-    }
-    
-    # intercepted by LDT
-    if (Tmin < LDT && Tmax > LDT) {
+    } else if (Tmin < LDT && Tmax > LDT) { # intercepted by LDT
       theta1= asin(pmax(-1,pmin(1,(LDT-(Tmax+Tmin)/2)/alpha)))
       dd = 1 / (2 * pi) * (((Tmax + Tmin) / 2 - LDT) * (pi / 2 - theta1) + alpha *
                              cos(theta1))
-
-    }
-    
-    # entirely below both thresholds
-    if (Tmin < LDT && Tmax <= LDT) {
+    } else if (Tmin < LDT && Tmax <= LDT) { # entirely below both thresholds
       dd = 0
     }
   } #end double sine method
   
   
-  #Single triangulation calculation
+
+  #Single triangulation - with simplified formula
   if (method == "single.triangulation") {
     
-    # entirely above both thresholds
-    if (Tmin >= UDT && Tmax > UDT) {
+    MT = (Tmax+Tmin)/2
+    if (Tmin >= UDT && Tmax > UDT) { # entirely above both thresholds
       dd = (UDT - LDT)
     } else  if ( Tmin > LDT  && Tmax > UDT) { #Intercepted by upper threshold 
-      dd = 6*(Tmax+Tmin-2*LDT)/12 - ((6*(Tmax-UDT)^2/(Tmax-Tmin))/12)
+      dd = (MT-LDT)-((Tmax-UDT)^2/((Tmax-Tmin)*2))
     } else  if (Tmin < LDT &&  Tmax > UDT ) {  #Intercepted by both thresholds
-      dd = ((6*(Tmax-LDT)^2/(Tmax-Tmin))-(6*(Tmax-UDT)^2/(Tmax-Tmin)))/12
+      dd = ((Tmax-LDT)^2-(Tmax-UDT)^2)/((Tmax-Tmin)*2)
     } else if (Tmin > LDT &&  Tmax < UDT ) { #Entirely between both thresholds
-      dd = 6*(Tmax+Tmin-2*LDT)/12 
+      dd = MT-LDT
     } else if (Tmin < LDT && Tmax > LDT) {  # intercepted by LDT  
-
-      dd = (6*(Tmax-UDT)^2/(Tmax-Tmin))/12
+      dd = (Tmax-LDT)^2/((Tmax-Tmin)*2)
     } else if (Tmin < LDT && Tmax <= LDT) { # entirely below both thresholds
       dd = 0
     }
@@ -121,26 +103,28 @@ degree.days=function(Tmin,Tmax,LDT=NA,UDT=NA, method="single.sine"){
     
   } #end single triangulation method
   
-  #double triangulation calculation
+  #Double triangulation - with simplified formula
   if (method == "double.triangulation") {
     
-    
+    MT = (Tmax+Tmin)/2
     if (Tmin >= UDT && Tmax > UDT) { # entirely above both thresholds
       dd = (UDT - LDT)/2
     } else  if ( Tmin > LDT  && Tmax > UDT) { #Intercepted by upper threshold 
-      dd = 6*(Tmax+Tmin-2*LDT)/24 - ((6*(Tmax-UDT)^2/(Tmax-Tmin))/24)
+      dd = (MT-LDT)-((Tmax-UDT)^2/((Tmax-Tmin)*4))
     } else  if (Tmin < LDT &&  Tmax > UDT ) {  #Intercepted by both thresholds
-      dd = ((6*(Tmax-LDT)^2/(Tmax-Tmin))-(6*(Tmax-UDT)^2/(Tmax-Tmin)))/24
+      dd = ((Tmax-LDT)^2-(Tmax-UDT)^2)/((Tmax-Tmin)*4)
     } else if (Tmin > LDT &&  Tmax < UDT ) { #Entirely between both thresholds
-      dd = 6*(Tmax+Tmin-2*LDT)/24
+      dd = (MT/4)-(LDT/2)
     } else if (Tmin < LDT && Tmax > LDT) {  # intercepted by LDT  
-      dd = (6*(Tmax-UDT)^2/(Tmax-Tmin))/24
+      dd = (Tmax-LDT)^2/((Tmax-Tmin)*4)
     } else if (Tmin < LDT && Tmax <= LDT) { # entirely below both thresholds
       dd = 0
     }
     
     
-  } #end double.triangulation method
+  } #end double triangulation method
+  
+
   
   return(round(dd,2))
 }
