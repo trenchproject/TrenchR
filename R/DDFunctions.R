@@ -121,6 +121,26 @@ degree.days=function(Tmin,Tmax,LDT=NA,UDT=NA, method="single.sine"){
     
   } #end single triangulation method
   
+  #double triangulation calculation
+  if (method == "double.triangulation") {
+    
+    
+    if (Tmin >= UDT && Tmax > UDT) { # entirely above both thresholds
+      dd = (UDT - LDT)/2
+    } else  if ( Tmin > LDT  && Tmax > UDT) { #Intercepted by upper threshold 
+      dd = 6*(Tmax+Tmin-2*LDT)/24 - ((6*(Tmax-UDT)^2/(Tmax-Tmin))/24)
+    } else  if (Tmin < LDT &&  Tmax > UDT ) {  #Intercepted by both thresholds
+      dd = ((6*(Tmax-LDT)^2/(Tmax-Tmin))-(6*(Tmax-UDT)^2/(Tmax-Tmin)))/24
+    } else if (Tmin > LDT &&  Tmax < UDT ) { #Entirely between both thresholds
+      dd = 6*(Tmax+Tmin-2*LDT)/24
+    } else if (Tmin < LDT && Tmax > LDT) {  # intercepted by LDT  
+      dd = (6*(Tmax-UDT)^2/(Tmax-Tmin))/24
+    } else if (Tmin < LDT && Tmax <= LDT) { # entirely below both thresholds
+      dd = 0
+    }
+    
+    
+  } #end double.triangulation method
   
   return(round(dd,2))
 }
