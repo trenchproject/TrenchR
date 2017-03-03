@@ -23,11 +23,12 @@ Double Sine wave approximation of degree days from Allen 1976
 (see http://www.ipm.ucdavis.edu/WEATHER/ddss_tbl.html)
 }
 \details{
-This function allows you to calculate degree days using single or double sine wave approximation.
+This function allows you to calculate degree days using single/double sine wave and single/double triangulation approximation.
 }
 \examples{
 \dontrun{
 degree.days(7,14,12,33,"single.sine")
+degree.days(7,14,12,33,"single.triangulation")
 }
 
 }
