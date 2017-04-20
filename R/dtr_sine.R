@@ -1,4 +1,5 @@
-#' Temperature across hours
+#' Diurnal temperature across hours
+#' From Campbell and Norman 1998 - Uses sine interpolation
 #'
 #' @details This function allows you to calculate temperature across hours.
 #' @param Tmx maximum daily temperature in degree celsius 
@@ -10,7 +11,7 @@
 #' \dontrun{
 #' Thour.sine()
 #' }
-#From Campbell and Norman 1998 uses sine interpolation
+
 
 Thour.sine=function(Tmx, Tmn, Hr){
   #Tmx= max temperature

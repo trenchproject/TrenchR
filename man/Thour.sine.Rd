@@ -2,7 +2,8 @@
 % Please edit documentation in R/dtr_sine.R
 \name{Thour.sine}
 \alias{Thour.sine}
-\title{Temperature across hours}
+\title{Diurnal temperature across hours
+From Campbell and Norman 1998 - Uses sine interpolation}
 \usage{
 Thour.sine(Tmx, Tmn, Hr)
 }
@@ -14,7 +15,8 @@ Thour.sine(Tmx, Tmn, Hr)
 \item{Hr}{hour for temperature estimate}
 }
 \description{
-Temperature across hours
+Diurnal temperature across hours
+From Campbell and Norman 1998 - Uses sine interpolation
 }
 \details{
 This function allows you to calculate temperature across hours.
