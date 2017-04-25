@@ -20,25 +20,28 @@
 #' calculate_To(254, 265, 267, 15, 307,  0)
 #' }
 #' 
-alpha_L = 0.965 # thermal absoptivity, Bartlett & Gates 1967
-h_L=10.45 #convective heat transfetr ceofficient (W m-2 K-1) (Fei et al. 2012, J Ther Biol, 37: 56-64, Porter et al. 1973?)
-epsilon_lizard=0.95 # emissivity of lizard's skin
-K_lizard = 0.5 #thermal conductivity (W K-1 m-1)
-lambda = 0.02 # lizard mean thikness in meters (diameter)
-c_lizard = 3762 #specific heat capacity (J kg-1)
-dt =  120 #in seconds
-		
-####load data
-mass = 10.5# lizard mass (grams) 
-mass_kg=mass/1000. #in kg
-A_L= 0.0314*3.14159*mass_kg^(2./3.) #surface area m2
-sigma=5.67*10.^(-8)
-
-#solar radiation
-A_p = 0.4*A_L #projected lizard area for direct and scattered solar radiation
-
 
 calculate_To <- function(TAH, Tsurface, Tair, SWDOWN, GLW, shade){
+  
+  # ---- Start Constants
+  alpha_L = 0.965 # thermal absoptivity, Bartlett & Gates 1967
+  h_L=10.45 #convective heat transfetr ceofficient (W m-2 K-1) (Fei et al. 2012, J Ther Biol, 37: 56-64, Porter et al. 1973?)
+  epsilon_lizard=0.95 # emissivity of lizard's skin
+  K_lizard = 0.5 #thermal conductivity (W K-1 m-1)
+  lambda = 0.02 # lizard mean thikness in meters (diameter)
+  c_lizard = 3762 #specific heat capacity (J kg-1)
+  dt =  120 #in seconds
+  
+  ####load data
+  mass = 10.5# lizard mass (grams) 
+  mass_kg=mass/1000. #in kg
+  A_L= 0.0314*3.14159*mass_kg^(2./3.) #surface area m2
+  sigma=5.67*10.^(-8)
+  
+  #solar radiation
+  A_p = 0.4*A_L #projected lizard area for direct and scattered solar radiation
+  # ---- End Constants
+  
   dt =  120 #in seconds
   shade_level = min(round(shade/0.2),5)
   TaV = TAH
