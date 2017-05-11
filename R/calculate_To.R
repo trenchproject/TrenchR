@@ -13,7 +13,7 @@
 #' @param GLW Downward flux of near-infrared radiation
 #' @param shade type of method being used
 #' @keywords Operative Temperature Fei
-#' @author ofir
+#' @author Ofir Levy
 #' @export 
 #' @examples
 #' \dontrun{
@@ -40,6 +40,7 @@ calculate_To <- function(TAH, Tsurface, Tair, SWDOWN, GLW, shade){
   
   #solar radiation
   A_p = 0.4*A_L #projected lizard area for direct and scattered solar radiation
+  
   # ---- End Constants
   
   dt =  120 #in seconds
@@ -52,7 +53,8 @@ calculate_To <- function(TAH, Tsurface, Tair, SWDOWN, GLW, shade){
   To = Ta  #initial body temperature in kelvin, assume Ta
   ####end of load data			
   
-  dQ_solar = shade*alpha_L*A_p*Solar
+  #fix - for solar not calcuated right
+  dQ_solar = (1-shade)*alpha_L*A_p*Solar
   
   
   #set projcted lizard area for radiation from the ground
