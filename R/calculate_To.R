@@ -53,7 +53,7 @@ calculate_To <- function(TAH, Tsurface, Tair, SWDOWN, GLW, shade){
   To = Ta  #initial body temperature in kelvin, assume Ta
   ####end of load data			
   
-  #fix - for solar not calcuated right
+  #fix - for solar not calculated right
   dQ_solar = (1-shade)*alpha_L*A_p*Solar
   
   
