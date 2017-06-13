@@ -1,6 +1,6 @@
 #' Calculate Zenith angle
 #'
-#' @details This function allows you to calculate zenith
+#' @details This function allows you to calculate zenith angle in degrees
 #' @param J is Julian day.
 #' @param lat is latitude.
 #' @param lon is longitude.
@@ -14,7 +14,7 @@
 zenith=function(J, lat, lon, Hr){
 # J is Julian day
 #lat and lon and latitude and longitude, degrees
-#retuns zeniht angle in degrees
+#retuns zenith angle in degrees
 
 rd=180/pi;  # factor to convert radians into degrees
 

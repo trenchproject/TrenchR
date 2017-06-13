@@ -16,6 +16,15 @@
 #=============================================================
 #FUNCTIONS TO ADD
 #t_sn is local standard time of true solar noon
+#2.1 temperature profile
+#3.8 vapor pressure?
+#3.11 relative humidity
+#3.12 vapor pressure defecit 
+#5.3 wind profiles
+#Section 12.6 operative environmental temperature
+
+#=============================================================
+## From KEarney NicheMapR microclimate
 
 #EXTRATERRESTRIAL RADIATION
 #J is Julian day
@@ -116,6 +125,120 @@ Q_IR=(Q_IR.sky+Q_IR.veg)
 
 
 Q_IR= omega * emissivity * T^4
+
+#------------------------------
+#Section 5. Vertical air temperature and wind speed profiles, p11
+
+#z_0 roughness height
+#z reference height
+
+#Friction velocity
+#u: wind speed at reference height z
+#0.4 is von Karman constant
+u_star= function(u, z, z_0)
+  0.4*u/log(z/z_0 +1)
+
+#windspeed at new local height, local?
+u_loc= function(u_star, z_loc, z_0)
+  2.5*u_star*log(z_loc/z_0+1)
+
+#Temperature at 
+
+#=============================================================
+#Buckley 2008
+
+#solar declination in radians
+#angular distance of the sun north or south of the earth’s equator
+#J is ordinal date
+
+dec.angle <- function(J){
+  #declination angle of the sun based on the Julian calendar day
+  RevAng = 0.21631 + 2 * atan (0.967 * tan (0.0086 * (-186 + J))) # Revolution angle in radians, calculated per day
+  DecAng = asin (0.39795 * cos (RevAng))                         # Declination angle in radians  
+  return(DecAng)
+}
+
+#daylength 
+#from CMB model (Forsythe et al. 1995)
+#latr in is latitude in radians
+#DecAng is declination angle in radians
+daylength <- function(latr, DecAng){
+  Daylength = 24 - (24 / pi) * acos ((sin (6 * pi / 180) + sin (latr) * sin (DecAng)) / (cos (latr) * cos (DecAng))) #hours of daylight
+  return(Daylength)
+}
+
+#lon is longitude in degrees #!CHECK
+solar.noon <- function(J, cellk){
+  # Calculate the time of solar noon for each day using longitude correction (LC), equation of time (ET), and a conversion (f)
+  f=(279.575+0.9856*J)/rd  # f in radians for each Julian day, p.169 Campbell & Norman 2000
+  ET= (-104.7*sin (f)+596.2*sin (2*f)+4.3*sin (3*f)-12.7*sin (4*f)-429.3*cos (f)-2.0*cos (2*f)+19.3*cos (3*f))/3600   # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
+  LC= 1/15* (15 - lon%%15) # longitude correction, 1/15h for each degree e of standard meridian
+  t_0 = 12-LC-ET # solar noon
+  return(t_0)
+}
+
+#zenith angle  
+zenith <- function(DecAng, latr, hour, t_0){
+  cpsi_rad = sin (DecAng)*sin (latr) + cos (DecAng)*cos (latr)*cos (pi/12*(hour-t_0)) # zenith angle in radians, per hour for each lat
+  psi=acos (cpsi_rad) # (11.1) zenith angle in radians
+  if (psi>pi/2) 
+    psi=pi/2 # if measured from the vertical psi can't be greater than pi/2 (90 degrees)
+  return(psi)
+}    
+
+## RADIATION AND ENVI TEMP
+#Total radiant energy
+
+#Emitted energy of gray body
+
+#Clear sky emissivity (Swinbank)
+epsilon_ac= 9.2*10^-6*(Ta+273)^2 # (10.11) clear sky emissivity
+
+#Convective heat transport
+
+#Radiative conductance
+
+#atmospheric pressure
+p_a=101.3* exp (-Elev[cellk]/8200)  # atmospheric pressure
+
+#optical air mass number
+m_a=p_a/(101.3*cos (psi))  # (11.12) optical air mass
+if(psi>80*pi/180) m_a=5.66 # optical air mass bounded??
+
+#Radiation
+S_p=S_p0*tau^m_a # (11.11) direct irradience 
+S_d=0.3*(1-tau^m_a)* S_p0*cos (psi)   # (11.13) diffuse radiation
+S_t=S_p*cos (psi)+S_d # solar irradience 
+S_r= rho_S*S_t # (11.10) reflected radiation
+
+
+#ALDEDO estimates? source?
+
+#Longave flux density
+L_a=epsilon_ac*sigma*(Ta+273)^4  # (10.7) long wave flux densities from atmosphere 
+L_g=epsilon_s*sigma*(Ts)^4  # (10.7) long wave flux densities from ground
+
+#Absorbed radiation
+#Thermal and solar absorptivity. sources?
+R_abs= alpha_S*(F_p*S_p+ F_d*S_d + F_r*S_r)+alpha_L*(F_a*L_a+F_g*L_g) # (11.14) Absorbed radiation
+
+#Areas
+
+
+ 
+ 
+  
+ 
+  
+
+
+
+
+
+
+
+
+
 
 
 
