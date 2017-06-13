@@ -1,16 +1,17 @@
 #' Partition radiation into direct, diffuse, and reflected components using models from Campbell & Norman 1988 
 #'
-#' This function allows you to Partition radiation into direct, diffuse, and reflected components
-#' @param psi zenith angle in radians
-#' @param elev Elevation (m)
+#' @details This function allows you to Partition radiation into direct, diffuse, and reflected components
 #' @param J Julian Day
-#' @param rho albedo (%)
-#' @param tau transmissivity (%)
-#' 
+#' @param psi zenith angle in radians
+#' @param tau transmissivity in percentage
+#' @param elev Elevation (m)
+#' @param rho albedo in percentage
 #' @keywords radiation
 #' @export
 #' @examples
+#' \dontrun{
 #' radiation()
+#' }
 
 #=============================================================
 #USE CAMPBELL AND NORMAL MODEL TO ESTIMATE RADIATION

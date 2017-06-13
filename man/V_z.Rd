@@ -12,11 +12,19 @@ V_z(V_r, z_0 = 0.02, z_r = 1.54, z = 0.2)
 }
 \arguments{
 \item{V_r}{is wind velocity at reference height.}
+
+\item{z_0}{is surface roughness.}
+
+\item{z_r}{is initial reference height.}
+
+\item{z}{is height to scale to.}
 }
 \description{
 This function allows you to calculate
 }
 \examples{
+\dontrun{
 V_z()
+}
 }
 \keyword{Wind}

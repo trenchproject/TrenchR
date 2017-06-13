@@ -10,11 +10,12 @@ library(ks)
 #' This function allows you to calculate direct and diffused radtation.
 #' @param rad angle in radians
 #' @param tau clearnex index #!specify
-#' 
 #' @keywords radiation
 #' @export
 #' @examples
+#' \dontrun{
 #' radiation.erbs()
+#' }
 radiation.erbs=function(rad, tau){
 
   #USE ERBS TO REPARTITION RADIATION (Olyphant 1984)
@@ -26,7 +27,7 @@ radiation.erbs=function(rad, tau){
   #kd- diffuse fraction
   if(tau<=0.22) kd= 1-0.09*tau
   if(tau>0.22 & tau<0.8) kd= 0.9511 -0.1604*tau +4.388*tau^2 -16.638*tau^3 +12.336*tau^4
-  if(tau>=0.8) kd[inds]= 0.125 #Correction from 16.5 for Niwot from Olyphant 1984
+  if(tau>=0.8) kd = 0.125 #Correction from 16.5 for Niwot from Olyphant 1984
   
   #return direct and diffuse
  return (c(rad*(1-kd),rad*(kd)) )

@@ -1,15 +1,20 @@
 #' Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components 
 #'
-#' This function allows you to calculate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components.
+#' @details This function allows you to calculate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components.
 #' @param Tmx maximum daily temperature (C)
 #' @param Tmn minimum daily temperature (C)
-#' @param Ts time of sunrise (hour)
-#' @param Tr time of sunset (hour)
+#' @param ts time of sunrise (hour)
+#' @param tr time of sunset (hour)
 #' @param Hr hour for temperature estimate
+#' @param alpha  time difference between tx(time of maximum temperature) and noon
+#' @param gamma decay parameter for rate of t change from sunset to tn(time of minimum temp)
+#' @param beta time difference between tx and sunrise
 #' @keywords Temperature
 #' @export
 #' @examples
+#' \dontrun{
 #' Thour.sineexp()
+#' }
 
 #Function to calculate Parton and Logan 1981 diurnal variation
 #Parameters for Colorado
@@ -34,16 +39,21 @@ tx= 0.5*(tr+ts)+alpha #time of maximum temperature
 tn= tr+ beta #time of minimum temperature
 
 #calculate temperature for nighttime hour
-if( !(Hr>(tr+beta) & Hr<ts) ){
-Tsn= Tmn+(Tmx-Tmn)*sin((pi*(ts-tr-beta))/(l+2*(alpha-beta)))
-if(Hr<=(tr+beta)) Tas=Hr+24-ts
-if(Hr>=ts) Tas=Hr-ts  #time after sunset
-T=Tmn+(Tsn-Tmn)*exp(-(gamma*Tas)/(24-l+beta))
+if(!(Hr > (tr + beta) & Hr < ts)) {
+  Tsn = Tmn + (Tmx - Tmn) * sin((pi * (ts - tr - beta)) / (l + 2 * (alpha -
+                                                                      beta)))
+  if (Hr <= (tr + beta))
+    Tas = Hr + 24 - ts
+  if (Hr >= ts)
+    Tas = Hr - ts  #time after sunset
+  T = Tmn + (Tsn - Tmn) * exp(-(gamma * Tas) / (24 - l + beta))
 }
 
 #calculate temperature for daytime hour
-if(Hr>(tr+beta) & Hr<ts){
-T= Tmn+(Tmx-Tmn)*sin((pi*(Hr-tr-beta))/(l+2*(alpha-beta)))
+if(Hr>(tr + beta) &
+   Hr<ts) {
+  T = Tmn + (Tmx - Tmn) * sin((pi * (Hr - tr - beta)) / (l + 2 * (alpha -
+                                                                    beta)))
 }
 return(T)
 }

@@ -1,6 +1,6 @@
-#' Calculate Zenith ...
+#' Calculate Zenith angle
 #'
-#' This function allows you to calculate zenith
+#' @details This function allows you to calculate zenith
 #' @param J is Julian day.
 #' @param lat is latitude.
 #' @param lon is longitude.
@@ -8,8 +8,9 @@
 #' @keywords zenith
 #' @export
 #' @examples
+#' \dontrun{
 #' zenith()
-# 
+#' }
 zenith=function(J, lat, lon, Hr){
 # J is Julian day
 #lat and lon and latitude and longitude, degrees
@@ -47,8 +48,9 @@ return(psi)
 #' @keywords zenith radian
 #' @export
 #' @examples
+#' \dontrun{
 #' zenith.rad()
-# 
+#' }
 
 zenith.rad=function(J, lat, lon, Hr){
 # J is Julian day
