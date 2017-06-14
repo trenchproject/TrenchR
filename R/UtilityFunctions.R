@@ -76,3 +76,75 @@ psi=acos(cpsi_rad); #(11.1) zenith angle in radians
 
 return(psi)
 }
+
+#------------------------------------
+#' Estimate air pressure in kPa (Kilo Pascal)
+#' Credit - #http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html
+#'
+#' @details Estimate air pressure (kPa) as a function of elevation
+#' @description  This function allows you to calculate estimated air pressure (kPa) as afunction of elevation
+#' @param h height in meters.
+#' @keywords air pressure
+#' @export
+#' @examples
+#' \dontrun{
+#' airpressure_elev()
+#' }
+airpressure_elev<- function(h){  #H is height in meters 
+  p= 101325* (1 - 2.25577*10^(-5)*h)^5.25588       
+  p= p/1000 #convert to kPa
+  return(p)
+}
+
+#--------------------------------------
+#TEMPERATURE UTILITY FUNCTIONS
+
+#' Converts Fahrenheit to Kelvin
+#' 
+#' (credit  https://swcarpentry.github.io)
+#' 
+#' @details This function allows you to convert temperature from Fahrenheit to Kelvin.
+#' @param temp Temperature in Fahrenheit.
+#' @keywords Fahrenheit Kelvin
+#' @export
+#' @examples
+#' fahrenheit_to_kelvin(85)
+#' 
+
+fahrenheit_to_kelvin <- function(temp) {
+  kelvin <- ((temp - 32) * (5/9)) + 273.15
+  kelvin
+}
+#' Converts Kelvin to Celsius
+#' 
+#' (credit  https://swcarpentry.github.io)
+#' 
+#' @details This function allows you to convert temperature from Kelvin to Celsius.
+#' @param temp Temperature in Fahrenheit.
+#' @keywords Celsius Kelvin
+#' @export
+#' @examples
+#' kelvin_to_celsius(270)
+#' 
+
+kelvin_to_celsius <- function(temp) {
+  Celsius <- temp - 273.15
+  Celsius
+}
+#' Converts Fahrenheit to Celsius
+#' 
+#' (credit  https://swcarpentry.github.io)
+#' 
+#' @details This function allows you to convert temperature from Fahrenheit to Celsius
+#' @param temp Temperature in Fahrenheit.
+#' @keywords Fahrenheit Celsius
+#' @export
+#' @examples
+#' fahrenheit_to_celsius(85)
+#' 
+
+fahrenheit_to_celsius <- function(temp) {
+  temp_k <- fahrenheit_to_kelvin(temp)
+  result <- kelvin_to_celsius(temp_k)
+  result
+}

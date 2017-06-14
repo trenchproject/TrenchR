@@ -126,24 +126,6 @@ Q_IR=(Q_IR.sky+Q_IR.veg)
 
 Q_IR= omega * emissivity * T^4
 
-#------------------------------
-#Section 5. Vertical air temperature and wind speed profiles, p11
-
-#z_0 roughness height
-#z reference height
-
-#Friction velocity
-#u: wind speed at reference height z
-#0.4 is von Karman constant
-u_star= function(u, z, z_0)
-  0.4*u/log(z/z_0 +1)
-
-#windspeed at new local height, local?
-u_loc= function(u_star, z_loc, z_0)
-  2.5*u_star*log(z_loc/z_0+1)
-
-#Temperature at 
-
 #=============================================================
 #Buckley 2008
 
