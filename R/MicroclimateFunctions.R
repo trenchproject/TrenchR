@@ -129,44 +129,6 @@ Q_IR= omega * emissivity * T^4
 #=============================================================
 #Buckley 2008
 
-#solar declination in radians
-#angular distance of the sun north or south of the earth’s equator
-#J is ordinal date
-
-dec.angle <- function(J){
-  #declination angle of the sun based on the Julian calendar day
-  RevAng = 0.21631 + 2 * atan (0.967 * tan (0.0086 * (-186 + J))) # Revolution angle in radians, calculated per day
-  DecAng = asin (0.39795 * cos (RevAng))                         # Declination angle in radians  
-  return(DecAng)
-}
-
-#daylength 
-#from CMB model (Forsythe et al. 1995)
-#latr in is latitude in radians
-#DecAng is declination angle in radians
-daylength <- function(latr, DecAng){
-  Daylength = 24 - (24 / pi) * acos ((sin (6 * pi / 180) + sin (latr) * sin (DecAng)) / (cos (latr) * cos (DecAng))) #hours of daylight
-  return(Daylength)
-}
-
-#lon is longitude in degrees #!CHECK
-solar.noon <- function(J, cellk){
-  # Calculate the time of solar noon for each day using longitude correction (LC), equation of time (ET), and a conversion (f)
-  f=(279.575+0.9856*J)/rd  # f in radians for each Julian day, p.169 Campbell & Norman 2000
-  ET= (-104.7*sin (f)+596.2*sin (2*f)+4.3*sin (3*f)-12.7*sin (4*f)-429.3*cos (f)-2.0*cos (2*f)+19.3*cos (3*f))/3600   # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
-  LC= 1/15* (15 - lon%%15) # longitude correction, 1/15h for each degree e of standard meridian
-  t_0 = 12-LC-ET # solar noon
-  return(t_0)
-}
-
-#zenith angle  
-zenith <- function(DecAng, latr, hour, t_0){
-  cpsi_rad = sin (DecAng)*sin (latr) + cos (DecAng)*cos (latr)*cos (pi/12*(hour-t_0)) # zenith angle in radians, per hour for each lat
-  psi=acos (cpsi_rad) # (11.1) zenith angle in radians
-  if (psi>pi/2) 
-    psi=pi/2 # if measured from the vertical psi can't be greater than pi/2 (90 degrees)
-  return(psi)
-}    
 
 ## RADIATION AND ENVI TEMP
 #Total radiant energy
@@ -179,9 +141,6 @@ epsilon_ac= 9.2*10^-6*(Ta+273)^2 # (10.11) clear sky emissivity
 #Convective heat transport
 
 #Radiative conductance
-
-#atmospheric pressure
-p_a=101.3* exp (-Elev[cellk]/8200)  # atmospheric pressure
 
 #optical air mass number
 m_a=p_a/(101.3*cos (psi))  # (11.12) optical air mass
