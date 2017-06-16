@@ -1,4 +1,8 @@
-#library(zoo)
+library(zoo)
+#ODE 
+library(deSolve)
+#Task view: http://cran.r-project.org/web/views/DifferentialEquations.html
+#Article: http://journal.r-project.org/archive/2010-2/RJournal_2010-2_Soetaert~et~al.pdf
 
 #' @details Estimate soil thermal conductivity in W m^-1 K^-1
 #' @description This function allows you to estimate soil thermal conductivity in W m^-1 K^-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).
@@ -84,97 +88,64 @@ soil_temp_overall_function<- function(L, rho_a, c_a, k, V_inst, z, z0, T_inst, T
   rho_a*c_a*k*(V_inst*k/log((exp((z+z0)/L)-1)/(exp(z0/L)-1)))*(T_inst-T_s)/integrate(integrand, lower=0, upper=z/L, L, z0)$value - (V_inst*k/log((exp((z+z0)/L)-1)/(exp(z0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}
   
 #-------------------------------------
-#calculate soil temp
 
-# INPUT DATA
-# air_temp: air temp (C)
-# V_z: wind speed (m/s)
-# TimeIn: time vector
-# solrad: solar radiation 
+#' @details Function to calculate soil temperature.
+#' @description Function called to calculate soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Parameters are passed as a list to facilitating solving the equations.
+#' 
+#' @param j is the numer of the iteration of running the model #!CHECK
+#' @param Tsoil_init is the initial soil temperature profile in K 
+#' @param params is a list containing the following parameters, which are described below: list(SSA, epsilon_s, sigma, k_so, c_so, dz, k, z, z0, solrad, Tair, u_z, rho_a, rho_so, c_a, TimeIn,dt,shade).   
+#' @param SSA is the solar absorbtivity of soil surface as a fraction
+#' @param epsilon_s is the thermal absorbtivity of soil surface as a fraction
+#' @param k_so is soil thermal conductivity in W m^-1 K^-1
+#' @param c_so is the soil specific heat capacity in in J kg^-1 K-1.
+#' @param dz is the vertical interval in m for the soil temperature profile
+#' @param z is reference height in m
+#' @param z0 is surface roughness in m 
+#' @param solrad is solar radiation in W m^-2
+#' @param Tair is air temperature in degrees C
+#' @param u_z is wind speed (m/s)
+#' @param rho_a is the density of air (kg/m^3)
+#' @param rho_so= 1620 particle density of soil
+#' @param c_a is the specific heat of air (J/(kg*K))
+#' @param TimeIn is a vector of time periods for the model
+#' @param dt= 60*60 is the time interval for running the model
+#' @param shade is whether or not soil temperature should be calculated in the shade, TRUE or FALSE
+#' @export
+#' @examples
+#' \dontrun{
+#' params=list(SSA=0.7, epsilon_s=0.98, k_so=2.16, c_so=800, dz=0.05, z=1.5, z0=0.02, solrad=, Tair=, u_z=, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=, dt=60*60, shade=FALSE)
+#' # check c_so value
+#' soil_temperature(j=1,Tsoil_init= rep(20,12), params=params)
+#'}
 
-# DEFINE PARAMETERS
-# z.intervals=12 number depth intervals for soil t measurements 
-# t.intervals: number time intervals
-# dt: time step
-# z: reference height (m)
-# T_so: initial soil temp
-# z_0: surface roughness length
-# SSA=0.7 solar absorbtivity of soil surface
-# k_so: soil conductivity
-# water_content= 0.2 percetn water content
-# air_pressure= 101 kPa at sea level
-# rho_so= 1620 particle density of soil
-# z_new= new height (m)
+soil_temperature<- function(j,Tsoil_init, params){
 
-#=====================================================
-#ODE 
-library(deSolve)
-#Task view: http://cran.r-project.org/web/views/DifferentialEquations.html
-#Article: http://journal.r-project.org/archive/2010-2/RJournal_2010-2_Soetaert~et~al.pdf
-
-#+++++++++++++++++++++++++++++++++++++++++++++
-parms=list(a, h_inst1, SSA, epsilon_s, sigma, k_so, dz, k, z, z_0, alpha2, solrad, air_temp, V_z, rho_a, c_a, TimeIn)
-
-
-parms=list(a=0.1, h_inst1=10.6, SSA=0.7, epsilon_s=0.98, sigma=5.670373*10^(-8), k_so=2.16, dz=0.05, k=0.41, z=1.5, z_0=0.02, alpha2=1.523328*10^(-06), solrad=, air_temp=, V_z=, rho_a=1.177, c_a=1006, TimeIn=)
-
-a<-2*dt/(rho_so*c_so*dz)  ##eqn (12) in notes
-h_inst1<-k^2*c_a*rho_a/log(z/z_0+1)^2 ##eqn (1) in notes #calculate h at time t based on V_inst
-alpha2<-k_so/(c_so*rho_so)
-
-#rho_so= 1620 particle density of soil
-
-#a
-#h_inst1
-#SSA is the solar absorbtivity of soil surface as a fraction
-#epsilon_s is the thermal absorbtivity of soil surface as a fraction
-#sigma is the stefan-boltzmann constant (W/(m^2*K^4))
-#k_so is soil thermal conductivity in W m^-1 K^-1
-#dz is the vertical interval in m for the soil temperature profile
-#k is von Karman's constant
-z is reference height in m
-z0 is surface roughness in m 
-alpha2
-solrad is solar radiation in W m^-2
-air_temp is air temperature in degrees C
-V_z is wind speed (m/s)
-rho_a is the density of air (kg/m^3)
-c_a is the specific heat of air (J/(kg*K))
-TimeIn
-
-
-
-
-
-#------------------------------------------------
-
-Tsoil_prof <- c(Tsoil_init1= 293.15, Tsoil_init2= 293.15,Tsoil_init3= 293.15,Tsoil_init4= 293.15,Tsoil_init5= 293.15,Tsoil_init6= 293.15,Tsoil_init7= 293.15,Tsoil_init8= 293.15,Tsoil_init9= 293.15,Tsoil_init10= 293.15,Tsoil_init11= 293.15,Tsoil_init12= 293.15, Tsoil_init13= 293.15)
-
-Tsoil <- ode(y = Tsoil_prof, func = Tsoil, times = 1:length(solrad), parms)
-
-soil_temperature(12,Tsoil_prof, parms, shade=TRUE)
-Tsoil_sh(12,Tsoil_prof, parms)
-
-#----------------------
-soil_temperature<- function(j,Tsoil_init, parms, shade=FALSE){ #j is time
+  sigma=5.670373*10^(-8) # is the stefan-boltzmann constant (W/(m^2*K^4))
+  k=0.41 #is von Karman's constant
   
-  a=parms[[1]]
-  h_inst1=parms[[2]]
-  SSA=parms[[3]]
-  epsilon_s=parms[[4]]
-  sigma=parms[[5]]
-  k_so=parms[[6]]
-  dz=parms[[7]]
-  k=parms[[8]]
-  z=parms[[9]]
-  z_0=parms[[10]]
-  alpha2=parms[[11]]
-  solrad=parms[[12]]
-  air_temp=parms[[13]]
-  V_z=parms[[14]]
-  rho_a=parms[[15]]
-  c_a=parms[[16]]
-  TimeIn=parms[[17]]
+  SSA=params[[1]]
+  epsilon_s=params[[2]]
+  k_so=params[[3]]
+  c_so= params[[4]]
+  dz=params[[5]]
+  z=params[[6]]
+  z0=params[[7]]
+  solrad=params[[8]]
+  Tair=params[[9]]
+  u_z=params[[10]]
+  rho_a=params[[11]]
+  rho_so=params[[12]]
+  c_a=params[[13]]
+  TimeIn=params[[14]]
+  dt= params[[15]]
+  shade= params[[16]]
+    
+  a<-2*dt/(rho_so*c_so*dz)  ##eqn (12) in notes
+  h_inst1<-k^2*c_a*rho_a/log(z/z_0+1)^2 ##eqn (1) in notes #calculate h at time t based on V_inst
+  alpha2<-k_so/(c_so*rho_so)
+  #a=0.1, h_inst1=10.6 
+  #alpha2=1.523328*10^(-06)
   
   Tsoil_deep= 20+273.15
   
