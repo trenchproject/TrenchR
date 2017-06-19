@@ -1,3 +1,5 @@
+##CHECK AGAINST PREVIOUS VALIDATION
+
 library(zoo)
 #ODE 
 library(deSolve)
@@ -92,8 +94,8 @@ soil_temp_overall_function<- function(L, rho_a, c_a, k, V_inst, z, z0, T_inst, T
 #' @details Function to calculate soil temperature.
 #' @description Function called to calculate soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Parameters are passed as a list to facilitating solving the equations.
 #' 
-#' @param j is the numer of the iteration of running the model #!CHECK
-#' @param Tsoil_init is the initial soil temperature profile in K 
+#' @param j is the numer of the iteration of running the model
+#' @param Tsoil_init is the initial soil temperature profile in degrees C 
 #' @param params is a list containing the following parameters, which are described below: list(SSA, epsilon_s, sigma, k_so, c_so, dz, k, z, z0, solrad, Tair, u_z, rho_a, rho_so, c_a, TimeIn,dt,shade).   
 #' @param SSA is the solar absorbtivity of soil surface as a fraction
 #' @param epsilon_s is the thermal absorbtivity of soil surface as a fraction
@@ -114,15 +116,26 @@ soil_temp_overall_function<- function(L, rho_a, c_a, k, V_inst, z, z0, T_inst, T
 #' @export
 #' @examples
 #' \dontrun{
-#' params=list(SSA=0.7, epsilon_s=0.98, k_so=2.16, c_so=800, dz=0.05, z=1.5, z0=0.02, solrad=, Tair=, u_z=, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=, dt=60*60, shade=FALSE)
-#' # check c_so value
-#' soil_temperature(j=1,Tsoil_init= rep(20,12), params=params)
+#' temp_vector= runif(96, min=-10, max=10)
+#' wind_speed_vector= runif(96, min=0, max=0.4)
+#' time_vector= rep(1:24,4)
+#' solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
+#'
+#' params=list(SSA=0.7, epsilon_s=0.98, k_so=0.293, c_so=800, dz=0.05, z=1.5, z0=0.02, solrad=solrad_vector, Tair=temp_vector, u_z=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=FALSE)
+#' 
+#' soil_temperature(j=1,Tsoil_init= rep(20,13), params=params)
+#' 
+#' #RUN USING ODE SOLVER
+#' Tsoil_out<- ode(y = rep(20,13), func = soil_temperature, times = 1:length(solrad), parms=params)
 #'}
+#' #CHECK k_so=2.16
+#' #ALSO CHECK SHADE
 
 soil_temperature<- function(j,Tsoil_init, params){
 
   sigma=5.670373*10^(-8) # is the stefan-boltzmann constant (W/(m^2*K^4))
   k=0.41 #is von Karman's constant
+  Tsoil_deep= 20+273.15
   
   SSA=params[[1]]
   epsilon_s=params[[2]]
@@ -141,20 +154,18 @@ soil_temperature<- function(j,Tsoil_init, params){
   dt= params[[15]]
   shade= params[[16]]
     
-  a<-2*dt/(rho_so*c_so*dz)  ##eqn (12) in notes
-  h_inst1<-k^2*c_a*rho_a/log(z/z_0+1)^2 ##eqn (1) in notes #calculate h at time t based on V_inst
-  alpha2<-k_so/(c_so*rho_so)
-  #a=0.1, h_inst1=10.6 
-  #alpha2=1.523328*10^(-06)
+  Tsoil_init= Tsoil_init +273.15 #convert Tsoil to K
   
-  Tsoil_deep= 20+273.15
+  a<-2*dt/(rho_so*c_so*dz)  ##eqn (12) in notes
+  h_inst1<-k^2*c_a*rho_a/log(z/z0+1)^2 ##eqn (1) in notes #calculate h at time t based on V_inst
+  alpha2<-k_so/(c_so*rho_so)
   
   #heat budget elements
   q_sun<- solrad[j]
   if(shade==TRUE) q_sun= q_sun*0.5 #ASSUME 50% reduction in incoming solar radiation in shade
   
-  T_inst<- air_temp[j]+273.15 #convert to K	
-  V_inst<- V_z[1] #WINDSPEED CURRENTLY CONSTANT 
+  T_inst<- Tair[j]+273.15 #convert to K	
+  V_inst<- u_z[1] #WINDSPEED CURRENTLY CONSTANT 
   
   
   h_inst<- h_inst1*V_inst #take V_inst out for easier passing to function
@@ -167,14 +178,14 @@ soil_temperature<- function(j,Tsoil_init, params){
   q_therm<-a*epsilon_s*sigma*((T_sky)^4-(Tsoil_init[1])^4) ##a*eqn(6) in notes #surface temperature change as a result of thermal radiation during the time step.
   
   #Beckman's method of calculating the convective heat transfer coefficient
-  V_shear <- V_inst*k/log(z/z_0+1) #shear velocity
+  V_shear <- V_inst*k/log(z/z0+1) #shear velocity
   
   if(j==1){q_conv<-a*h_inst*(T_inst-Tsoil_init[1])} #Cannot use Beckman's method for the first time step. Assumed neutral conditions instead. #q_conv<-a*h_inst*(T_inst-T_vector[1]) is a*eqn(7) in notes
   if(j!=1){
     if(T_inst < Tsoil_init[1]){
       #When soil temp is near air temp, an error occurs because L approaches infinity as soil temp approaches air temp. tryCatch executes alternate command if an error occurs.
-      tryCatch({L<-uniroot(soil_temp_overall_function,interval=c(-50,-.03),rho_a=1.177, c_a=1006, k=.41, V_inst=V_inst, z=z, z_0=z_0, T_inst=T_inst, T_s=Tsoil_init)$root; #the function goes to infinity near zero. The upper bound on this interval was selected to avoid errors that result from numbers approaching infinity. The lower bound can be any large number.
-      q_conv<-a*(V_inst*k/log((exp((z+z_0)/L)-1)/(exp(z_0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}, 
+      tryCatch({L<-uniroot(soil_temp_overall_function,interval=c(-50,-.03),rho_a=1.177, c_a=1006, k=.41, V_inst=V_inst, z=z, z0=z0, T_inst=T_inst, T_s=Tsoil_init)$root; #the function goes to infinity near zero. The upper bound on this interval was selected to avoid errors that result from numbers approaching infinity. The lower bound can be any large number.
+      q_conv<-a*(V_inst*k/log((exp((z+z0)/L)-1)/(exp(z0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}, 
       error=function(e){ q_conv<<- a*h_inst*(T_inst-Tsoil_init[1])} #Assume neutral conditions if error occurs.
       )
     }
@@ -208,228 +219,46 @@ soil_temperature<- function(j,Tsoil_init, params){
   )) #end list
 } #END soil temperature function
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++
+#' @details Function to calculate soil temperature in C using ODEs.
+#' @description Function called to calculate soil temperature in C from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Wrapper for soil_temperature function that uses ODE to calculate soil profile.
+#' 
+#' @param z.intervals is the number of intervals in the soil profile to calculate 
+#' @param z is reference height in m
+#' @param Tair is a vector of air temperature in degrees C, Note: missing values will be linearly interpolated
+#' @param u_z is a vector of wind speed (m/s)
+#' @param Tsoil0 is the initial soil temperature in degrees C 
+#' @param z0 is surface roughness in m 
+#' @param SSA is the solar absorbtivity of soil surface as a fraction
+#' @param TimeIn is a vector of time periods for the model
+#' @param solrad is solar radiation in W m^-2
+#' @param water_content is percent water content (%)
+#' @param air_pressure is air pressure in kPa
+#' @param rho_so= 1620 particle density of soil
+#' @param shade is whether or not soil temperature should be calculated in the shade, TRUE or FALSE
+#' @export
+#' @examples
+#' \dontrun{
+#' temp_vector= runif(96, min=-10, max=10)
+#' wind_speed_vector= runif(96, min=0, max=0.4)
+#' time_vector= rep(1:24,4)
+#' solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
+#'
+#' soil_temperature_noint(z.intervals=12,z=1.5, Tair=temp_vector, u_z=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, solrad= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
+#'}
 
-Tsoil<- function(j,Tsoil_init, parms){ #j is time
-  
-  a=parms[[1]]
-  h_inst1=parms[[2]]
-  SSA=parms[[3]]
-  epsilon_s=parms[[4]]
-  sigma=parms[[5]]
-  k_so=parms[[6]]
-  dz=parms[[7]]
-  k=parms[[8]]
-  z=parms[[9]]
-  z_0=parms[[10]]
-  alpha2=parms[[11]]
-  solrad=parms[[12]]
-  air_temp=parms[[13]]
-  V_z=parms[[14]]
-  rho_a=parms[[15]]
-  c_a=parms[[16]]
-  TimeIn=parms[[17]]
-  
-  Tsoil_deep= 20+273.15
-  
-  #heat budget elements
-  q_sun<- solrad[j]
-  T_inst<- air_temp[j]+273.15 #convert to K	
-  V_inst<- V_z[1] #WINDSPEED CURRENTLY CONSTANT 
-  
-  
-  h_inst<- h_inst1*V_inst #take V_inst out for easier passing to function
-  T_sky<-.0552*T_inst^1.5 ##eqn (4) in notes
-  
-  #energy balance for the surface temperature node #energy balance equation given in Porter 1973 and Kingsolver 1979
-  #multiplying by 'a' gives the change in temperature related to that particular energy source
-  
-  q_sol<-a*SSA*q_sun ##a*eqn(5) in notes #surface temperature change as a result of solar radiation during the time step.
-  q_therm<-a*epsilon_s*sigma*((T_sky)^4-(Tsoil_init[1])^4) ##a*eqn(6) in notes #surface temperature change as a result of thermal radiation during the time step.
-  
-  #Beckman's method of calculating the convective heat transfer coefficient
-  V_shear <- V_inst*k/log(z/z_0+1) #shear velocity
-  
-  if(j==1){q_conv<-a*h_inst*(T_inst-Tsoil_init[1])} #Cannot use Beckman's method for the first time step. Assumed neutral conditions instead. #q_conv<-a*h_inst*(T_inst-T_vector[1]) is a*eqn(7) in notes
-  if(j!=1){
-    if(T_inst < Tsoil_init[1]){
-      #When soil temp is near air temp, an error occurs because L approaches infinity as soil temp approaches air temp. tryCatch executes alternate command if an error occurs.
-      tryCatch({L<-uniroot(soil_temp_overall_function,interval=c(-50,-.03),rho_a=1.177, c_a=1006, k=.41, V_inst=V_inst, z=z, z_0=z_0, T_inst=T_inst, T_s=Tsoil_init)$root; #the function goes to infinity near zero. The upper bound on this interval was selected to avoid errors that result from numbers approaching infinity. The lower bound can be any large number.
-      q_conv<-a*(V_inst*k/log((exp((z+z_0)/L)-1)/(exp(z_0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}, 
-      error=function(e){ q_conv<<- a*h_inst*(T_inst-Tsoil_init[1])} #Assume neutral conditions if error occurs.
-      )
-    }
-    else{
-      q_conv<-a*h_inst*(T_inst-Tsoil_init[1])
-    }
-  } #check j!=1
-  
-  q_cond<-a*k_so/dz*(Tsoil_init[2]-Tsoil_init[1]) ##a*eqn(8) in notes #surface temperature change as a result of conduction during the time step.
-  
-  #SOIL TEMP PROFILE
-  list(c(
-    
-    #surface temp
-    q_sol+q_therm+q_conv+q_cond, ##this is exactly eqn(13) in the notes ###
-    #rescaled to hours as dt is in a
-    
-    #intermediate temps
-    (alpha2*dt/dz^2)*(Tsoil_init[3]+Tsoil_init[1]-2*Tsoil_init[2]),
-    (alpha2*dt/dz^2)*(Tsoil_init[4]+Tsoil_init[2]-2*Tsoil_init[3]),
-    (alpha2*dt/dz^2)*(Tsoil_init[5]+Tsoil_init[3]-2*Tsoil_init[4]),
-    (alpha2*dt/dz^2)*(Tsoil_init[6]+Tsoil_init[4]-2*Tsoil_init[5]),
-    (alpha2*dt/dz^2)*(Tsoil_init[7]+Tsoil_init[5]-2*Tsoil_init[6]),
-    (alpha2*dt/dz^2)*(Tsoil_init[8]+Tsoil_init[6]-2*Tsoil_init[7]),
-    (alpha2*dt/dz^2)*(Tsoil_init[9]+Tsoil_init[7]-2*Tsoil_init[8]),
-    (alpha2*dt/dz^2)*(Tsoil_init[10]+Tsoil_init[8]-2*Tsoil_init[9]),
-    (alpha2*dt/dz^2)*(Tsoil_init[11]+Tsoil_init[9]-2*Tsoil_init[10]),
-    (alpha2*dt/dz^2)*(Tsoil_init[12]+Tsoil_init[10]-2*Tsoil_init[11]),
-    (alpha2*dt/dz^2)*(Tsoil_deep+Tsoil_init[11]-2*Tsoil_init[12]),
-    0
-  )) #end list
-} #END Tsoil function
-#+++++++++++++++++++++++++++++++++++++++++++++
-Tsoil_sh<- function(j,Tsoil_init, parms){ #j is time
-  
-  a=parms[[1]]
-  h_inst1=parms[[2]]
-  SSA=parms[[3]]
-  epsilon_s=parms[[4]]
-  sigma=parms[[5]]
-  k_so=parms[[6]]
-  dz=parms[[7]]
-  k=parms[[8]]
-  z=parms[[9]]
-  z_0=parms[[10]]
-  alpha2=parms[[11]]
-  solrad=parms[[12]]
-  air_temp=parms[[13]]
-  V_z=parms[[14]]
-  rho_a=parms[[15]]
-  c_a=parms[[16]]
-  TimeIn=parms[[17]]
-  
-  Tsoil_deep= 20+273.15
-  
-  #heat budget elements
-  q_sun<- solrad[j]*0.5 ############ASSUME 50% reduction in incoming solar
-  T_inst<- air_temp[j]+273.15 #convert to K	
-  V_inst<- V_z[1] #WINDSPEED CURRENTLY CONSTANT 
-  
-  
-  h_inst<- h_inst1*V_inst #take V_inst out for easier passing to function
-  T_sky<-.0552*T_inst^1.5 ##eqn (4) in notes
-  
-  #energy balance for the surface temperature node #energy balance equation given in Porter 1973 and Kingsolver 1979
-  #multiplying by 'a' gives the change in temperature related to that particular energy source
-  
-  q_sol<-a*SSA*q_sun ##a*eqn(5) in notes #surface temperature change as a result of solar radiation during the time step.
-  q_therm<-a*epsilon_s*sigma*((T_sky)^4-(Tsoil_init[1])^4) ##a*eqn(6) in notes #surface temperature change as a result of thermal radiation during the time step.
-  
-  #Beckman's method of calculating the convective heat transfer coefficient
-  V_shear <- V_inst*k/log(z/z_0+1) #shear velocity
-  
-  if(j==1){q_conv<-a*h_inst*(T_inst-Tsoil_init[1])} #Cannot use Beckman's method for the first time step. Assumed neutral conditions instead. #q_conv<-a*h_inst*(T_inst-T_vector[1]) is a*eqn(7) in notes
-  if(j!=1){
-    if(T_inst < Tsoil_init[1]){
-      #When soil temp is near air temp, an error occurs because L approaches infinity as soil temp approaches air temp. tryCatch executes alternate command if an error occurs.
-      tryCatch({L<-uniroot(soil_temp_overall_function,interval=c(-50,-.03),rho_a=1.177, c_a=1006, k=.41, V_inst=V_inst, z=z, z_0=z_0, T_inst=T_inst, T_s=Tsoil_init)$root; #the function goes to infinity near zero. The upper bound on this interval was selected to avoid errors that result from numbers approaching infinity. The lower bound can be any large number.
-      q_conv<-a*(V_inst*k/log((exp((z+z_0)/L)-1)/(exp(z_0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}, 
-      error=function(e){ q_conv<<- a*h_inst*(T_inst-Tsoil_init[1])} #Assume neutral conditions if error occurs.
-      )
-    }
-    else{
-      q_conv<-a*h_inst*(T_inst-Tsoil_init[1])
-    }
-  } #check j!=1
-  
-  q_cond<-a*k_so/dz*(Tsoil_init[2]-Tsoil_init[1]) ##a*eqn(8) in notes #surface temperature change as a result of conduction during the time step.
-  
-  #SOIL TEMP PROFILE
-  list(c(
-    
-    #surface temp
-    q_sol+q_therm+q_conv+q_cond, ##this is exactly eqn(13) in the notes ###
-    #rescaled to hours as dt is in a
-    
-    #intermediate temps
-    (alpha2*dt/dz^2)*(Tsoil_init[3]+Tsoil_init[1]-2*Tsoil_init[2]),
-    (alpha2*dt/dz^2)*(Tsoil_init[4]+Tsoil_init[2]-2*Tsoil_init[3]),
-    (alpha2*dt/dz^2)*(Tsoil_init[5]+Tsoil_init[3]-2*Tsoil_init[4]),
-    (alpha2*dt/dz^2)*(Tsoil_init[6]+Tsoil_init[4]-2*Tsoil_init[5]),
-    (alpha2*dt/dz^2)*(Tsoil_init[7]+Tsoil_init[5]-2*Tsoil_init[6]),
-    (alpha2*dt/dz^2)*(Tsoil_init[8]+Tsoil_init[6]-2*Tsoil_init[7]),
-    (alpha2*dt/dz^2)*(Tsoil_init[9]+Tsoil_init[7]-2*Tsoil_init[8]),
-    (alpha2*dt/dz^2)*(Tsoil_init[10]+Tsoil_init[8]-2*Tsoil_init[9]),
-    (alpha2*dt/dz^2)*(Tsoil_init[11]+Tsoil_init[9]-2*Tsoil_init[10]),
-    (alpha2*dt/dz^2)*(Tsoil_init[12]+Tsoil_init[10]-2*Tsoil_init[11]),
-    (alpha2*dt/dz^2)*(Tsoil_deep+Tsoil_init[11]-2*Tsoil_init[12]),
-    0
-  )) #end list
-} #END Tsoil_sh function
-
-#+++++++++++++++++++++++++++++++++++++++++++++
-#calculate soil temp
-
-# INPUT DATA
-# air_temp: air temp (C)
-# V_z: wind speed (m/s)
-# TimeIn: time vector
-# solrad: solar radiation 
-
-# DEFINE PARAMETERS
-# z.intervals=12 number depth intervals for soil t measurements 
-# t.intervals: number time intervals
-# dt: time step
-# z: reference height (m)
-# T_so: initial soil temp
-# z_0: surface roughness length
-# SSA=0.7 solar absorbtivity of soil surface
-# k_so: soil conductivity
-# water_content= 0.2 percetn water content (%)
-# air_pressure= 101 kPa at sea level (kPa)
-# rho_so= 1620 particle density of soil (kg/m3) bulk density= 1.62 g/cm^3
-# z_new= new height (m)
-#solrad_vector in W/m2
-
-
-#Example
-Tsoil.mat= soil_temp_function_noint(z.intervals=12, z=1.524, air_temp=temperature_vector, V_z=wind_speed_vector, T_so=20, z_0=z_0_1, SSA=.7, k_so=0.293, TimeIn=time_vector, solrad=solrad_vector, water_content=.2, air_pressure=airpressures[stat.k], rho_so=1620, z_new=z_new)
-Tsoil= Tsoil.mat[,1]
-Tsoil_sh= Tsoil.mat[,2]
-
-#-----------
-#simulate 4 days of data
-temp_vector= runif(96, min=-10, max=10)
-wind_speed_vector= runif(96, min=0, max=0.4)
-time_vector= rep(1:24,4)
-solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
-
-Tsoil.mat= soil_temp_function_noint(z.intervals=12, z=1.5, air_temp=temp_vector, V_z=wind_speed_vector, T_so=20, z_0=0.02, SSA=0.7, k_so=0.293, TimeIn=time_vector, solrad=solrad_vector, water_content=0.2, air_pressure=80, rho_so=1620, z_new=0.2)
-Tsoil= Tsoil.mat[,1]
-Tsoil_sh= Tsoil.mat[,2]
- 
-##TEST
-z.intervals=12; z=1.5; air_temp=temp_vector; V_z=wind_speed_vector; T_so=20; z_0=0.02; SSA=0.7; k_so=0.293; TimeIn=time_vector; solrad=solrad_vector; water_content=0.2; air_pressure=80; rho_so=1620; z_new=0.2
-
-##NOTES:
-# Air temp will be linearly interpolated
-
-
-#soil_temp_function
-soil_temp_noint<-function(z.intervals=12,z, air_temp, V_z, T_so, z_0, SSA, k_so=0.293, TimeIn, solrad, water_content=0.2, air_pressure, rho_so=1620, z_new){
+soil_temperature_noint<-function(z.intervals=12,z, Tair, u_z, Tsoil0, z0, SSA, TimeIn, solrad, water_content=0.2, air_pressure, rho_so=1620, shade=FALSE){
   
   #account for NAs at beginning of data
-  first.dat= min(which( !is.na(air_temp)))
+  first.dat= min(which( !is.na(Tair)))
   #find last data
-  last.dat= max(which( !is.na(air_temp)))
+  last.dat= max(which( !is.na(Tair)))
   
   #fill temperature data
-  air_temp=na.approx(air_temp, na.rm = FALSE) #Interpolate
+  Tair=na.approx(Tair, na.rm = FALSE) #Interpolate
   
   #parameters/constants:
   #SI units were used
-  M_w<-.018 #kg/mol #molecular weight of water
+  M_w<-0.018 #kg/mol #molecular weight of water
   rho_w<-1*10^3 #kg/m^3 #water density
   R<- 8.3143 #J/mol  #universal gas constant
   h<-1 #relative humidity of air in the soil pores.
@@ -439,20 +268,19 @@ soil_temp_noint<-function(z.intervals=12,z, air_temp, V_z, T_so, z_0, SSA, k_so=
   rho_o<- 1300 #average density of organic matter in soil #kg/m^3
   #rho_other?
   #**# mineral fractions used here are from SCAN data at Nunn, CO
-  f_clay<- .17277 #.1
+  f_clay<- 0.17277 #.1
   f_sandsilt<- 1-f_clay
-  fraction_quartz<- .78 #percentage of solid sand/silt that is quartz
+  fraction_quartz<- 0.78 #percentage of solid sand/silt that is quartz
   fraction_other<- 1-fraction_quartz #percentage of solid sand/silt that is minerals other than quartz
   #OrgC and the VanBemmelen factor are mainly useful when looking at data from SCAN (Soil Climate Analysis Network).
-  OrgC<- .0056 #organic carbon. this is a value available through SCAN or pedon soil reports. #.0117 corresponds to 2% organic matter.
+  OrgC<- 0.0056 #organic carbon. this is a value available through SCAN or pedon soil reports. #.0117 corresponds to 2% organic matter.
   VanBemmelen<- 1.724 #VanBemmelen*OrgC is approximately the volume fraction of organic matter in soil. #The VanBemmelen factor is  based on the assumption that organic matter contains 58% organic C. Found information about this from the "Soil Survey Investigations Report No. 42".
   
-  #T_so<-T_so+273.15 #convert to Kelvin ###DONE BELOW
-  dz<-.6/z.intervals #60cm/number of intervals #60cm= depth for which deep soil temp is measured
-  k<-.41 #von Karman's constant
+  dz<-0.6/z.intervals #60cm/number of intervals #60cm= depth for which deep soil temp is measured
+  k<-0.41 #von Karman's constant
   c_a<- 1.006*1000 #specific heat of air (J/(kg*K))
   rho_a<- 1.177 #density of air (kg/m^3)
-  epsilon_s<-.98
+  epsilon_s<-0.98
   sigma<-5.670373*10^(-8)#stefan-boltzmann constant (W/(m^2*K^4))
   
   #thermal conductivity values along with functions for finding the conductivity based on temperature.
@@ -460,14 +288,14 @@ soil_temp_noint<-function(z.intervals=12,z, air_temp, V_z, T_so, z_0, SSA, k_so=
   lambda_clay<-2.92 #DeVries (1963)
   lambda_quartz<- 8.8 #Table 8.2 in Intro to Environmental Biophysics #9.103 - .028*Temp 
   lambda_other<- 2.93 #DeVries (1963)
-  lambda_o<- .251 #DeVries (1963)
-  lambda_w<- .56+.0018*20#.56+.0018*Temp(celsius) is an equation from Table 8.2 in Intro to Environmental Biophysics
-  lambda_a<- .0237+.000064*20 #.0237+.000064*Temp equation from paper by Boguslaw and Lukasz
+  lambda_o<- 0.251 #DeVries (1963)
+  lambda_w<- 0.56+0.0018*20#.56+.0018*Temp(celsius) is an equation from Table 8.2 in Intro to Environmental Biophysics
+  lambda_a<- 0.0237+0.000064*20 #.0237+.000064*Temp equation from paper by Boguslaw and Lukasz
   
   #finding the apparent conductivity of air in soil. These are the methods in DeVries (1963) and summarized in the paper by Boguslaw and Lukasz. variable names were based on those in the Boguslaw and Lukasz paper.
-  P<- air_pressure  #####ALREADY IN kPa?##### *3.386#kPa #3.386 is to convert units to kPa
+  P<- air_pressure 
   L1<-2490317-2259.4*20 #J/kg#2490317-2259.4*T #J/kg
-  rho_svd<-.001*exp(19.819-4975.9/(20+273.15)) #.001*exp(19.819-4975.9/(T+273.15))
+  rho_svd<-0.001*exp(19.819-4975.9/(20+273.15)) #.001*exp(19.819-4975.9/(T+273.15))
   v<- P/(P-(h*rho_svd*R*(20+273.15)/(1000*M_w)))#P/(P-(h*rho_svd*R*(T+273.15)/1000*M_w))
   D_a<-21.7*10^-6*(101.325/P)*((20+273.15)/273.15)^1.88 #21.7*10^-6*(101.325/P)*((T+273.15)/273.15)^1.88 #m^2/s
   drhoo_dT<-4975.9*rho_svd/(20+273.15)^2 #4975.9*rho_svd/(T+273.15)^2 #kg/m^3
@@ -496,24 +324,14 @@ soil_temp_noint<-function(z.intervals=12,z, air_temp, V_z, T_so, z_0, SSA, k_so=
   
   #parameters for ODE
   dt= 60*60
-  a<-2*dt/(rho_so*c_so*dz)  ##eqn (12) in notes
-  h_inst1<-k^2*c_a*rho_a/log(z/z_0+1)^2 ##eqn (1) in notes #calculate h at time t based on V_inst
   
   #------------------
   
-  parms=list(a, h_inst1, SSA, epsilon_s, sigma, k_so, dz, k, z, z_0, alpha2, solrad, air_temp, V_z, rho_a, c_a, TimeIn)
-  
   #SOLVE ODE
-  ###FIX TO initialize
-  Tsoil_prof <- c(Tsoil_init1= 293.15, Tsoil_init2= 293.15,Tsoil_init3= 293.15,Tsoil_init4= 293.15,Tsoil_init5= 293.15,Tsoil_init6= 293.15,Tsoil_init7= 293.15,Tsoil_init8= 293.15,Tsoil_init9= 293.15,Tsoil_init10= 293.15,Tsoil_init11= 293.15,Tsoil_init12= 293.15, Tsoil_init13= 293.15)
+  params=list(SSA, epsilon_s, k_so, c_so, dz, z, z0, solrad, Tair, u_z, rho_a, rho_so, c_a, TimeIn, dt, shade)
   
-  Tsoil <- ode(y = Tsoil_prof, func = Tsoil, times = 1:length(solrad), parms)
-  Tsoil_sh<- ode(y = Tsoil_prof, func = Tsoil_sh, times = 1:length(solrad), parms)
+  Tsoil <- ode(y = rep(Tsoil0,13), func = soil_temperature, times = 1:length(solrad), params)
+ 
+  return( Tsoil[,2])
   
-  #WHY coLUMN 2
-  return( cbind(Tsoil[,2], Tsoil_sh[,2]))
-  
-} #end soil_temp_function_noint
-
-
-
+} #end soil_temperature_noint

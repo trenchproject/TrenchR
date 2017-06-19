@@ -129,32 +129,6 @@ Q_IR= omega * emissivity * T^4
 #=============================================================
 #Buckley 2008
 
-
-## RADIATION AND ENVI TEMP
-#Total radiant energy
-
-#Emitted energy of gray body
-
-#Clear sky emissivity (Swinbank)
-epsilon_ac= 9.2*10^-6*(Ta+273)^2 # (10.11) clear sky emissivity
-
-#Convective heat transport
-
-#Radiative conductance
-
-#optical air mass number
-m_a=p_a/(101.3*cos (psi))  # (11.12) optical air mass
-if(psi>80*pi/180) m_a=5.66 # optical air mass bounded??
-
-#Radiation
-S_p=S_p0*tau^m_a # (11.11) direct irradience 
-S_d=0.3*(1-tau^m_a)* S_p0*cos (psi)   # (11.13) diffuse radiation
-S_t=S_p*cos (psi)+S_d # solar irradience 
-S_r= rho_S*S_t # (11.10) reflected radiation
-
-
-#ALDEDO estimates? source?
-
 #Longave flux density
 L_a=epsilon_ac*sigma*(Ta+273)^4  # (10.7) long wave flux densities from atmosphere 
 L_g=epsilon_s*sigma*(Ts)^4  # (10.7) long wave flux densities from ground
