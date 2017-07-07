@@ -4,7 +4,7 @@
 #' @param day day
 #' @param format date format following "POSIXlt" conventions 
 #' 
-#' @keywords 
+#' @keywords day
 #' @export
 #' @examples
 #' \dontrun{

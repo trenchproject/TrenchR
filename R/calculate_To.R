@@ -30,7 +30,7 @@ calculate_To <- function(TAH, Tsurface, Tair, SWDOWN, GLW, shade){
   K_lizard = 0.5 #thermal conductivity (W K-1 m-1)
   lambda = 0.02 # lizard mean thikness in meters (diameter)
   c_lizard = 3762 #specific heat capacity (J kg-1)
-  dt =  120 #in seconds
+  dt =  180 #in seconds
   
   ####load data
   mass = 10.5# lizard mass (grams) 
