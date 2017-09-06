@@ -1,9 +1,12 @@
-#' @details Calculate day of year
+#' Calculate day of the passed date
+#' 
+#'  
+#' @details Calculate day of the year
 #'
 #' @description This function allows you to calculate day of year from text specifying a date
 #' @param day day
-#' @param format date format following "POSIXlt" conventions 
-#' 
+#' @param format date format("%Y-%m-%d") following "POSIXlt" conventions 
+#' @return day number, for eg. 1 for January 1st
 #' @keywords day
 #' @export
 #' @examples
@@ -16,12 +19,15 @@ day_of_year<- function(day, format="%Y-%m-%d"){
   return(as.numeric(strftime(day, format = "%j")))
 }
 
+#' Calculate solar declination in radians
+#' 
+#'  
 #' @details Calculate solar declination in radians
 #'
 #' @description This function allows you to calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year
 #' @param doy day of year
-#' 
-#' @keywords radiation
+#' @return declination angle in radians
+#' @keywords Declination angle
 #' @export
 #' @examples
 #' \dontrun{
@@ -30,17 +36,21 @@ day_of_year<- function(day, format="%Y-%m-%d"){
 
 dec_angle <- function(doy){
   RevAng = 0.21631 + 2 * atan (0.967 * tan (0.0086 * (-186 + doy))) # Revolution angle in radians, calculated per day
-  DecAng = asin (0.39795 * cos (RevAng))                         # Declination angle in radians  
+  DecAng = asin (0.39795 * cos (RevAng))                            # Declination angle in radians  
   return(DecAng)
 }
 
-#' @details Calculate daylength
+#' Calculate day length
+#' 
+#' 
+#' @details Calculate day length
 #'
 #' @description This function allows you to calculate daylength in hours as a function of latitude and day of year. Uses the CMB model (Forsythe et al. 1995).
 #' @param lat latitude in degrees
 #' @param doy day of year
+#' @return hours 
 #' 
-#' @keywords radiation
+#' @keywords Day length
 #' @export
 #' @examples
 #' \dontrun{
@@ -50,18 +60,21 @@ dec_angle <- function(doy){
 daylength <- function(lat, doy){
   lat=lat*pi/180 #convert degrees to radians
   RevAng = 0.21631 + 2 * atan (0.967 * tan (0.0086 * (-186 + doy))) # Revolution angle in radians, calculated per day
-  DecAng = asin (0.39795 * cos (RevAng))                         # Declination angle in radians  
+  DecAng = asin (0.39795 * cos (RevAng))                            # Declination angle in radians  
   Daylength = 24 - (24 / pi) * acos ((sin (6 * pi / 180) + sin (lat) * sin (DecAng)) / (cos (lat) * cos (DecAng))) #hours of daylight
   return(Daylength)
 }
 
+#' Calculate time of solar noon
+#' 
+#' 
 #' @description Calculate time of solar noon
 #'
 #' @details This function allows you to calculate the time of solar noon in hours as a function of the day of year and longitude
 #' @param lon longitude in degrees 
 #' @param doy day of year
-#' 
-#' @keywords radiation
+#' @return time at solar noon
+#' @keywords Solar noon time
 #' @export
 #' @examples
 #' \dontrun{
@@ -73,11 +86,14 @@ solar_noon <- function(lon, doy){
   f=(279.575+0.9856*doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
   f=f*pi/180 #convert f in degrees to radians
   ET= (-104.7*sin (f)+596.2*sin (2*f)+4.3*sin (3*f)-12.7*sin (4*f)-429.3*cos (f)-2.0*cos (2*f)+19.3*cos (3*f))/3600   # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
-  LC= 1/15* (15 - lon%%15) # longitude correction, 1/15h for each degree e of standard meridian
+  LC= 1/15* (15 - lon%%15) # longitude correction, 1/15h for each degree of standard meridian
   t_0 = 12-LC-ET # solar noon
   return(t_0)
 }
 
+#' Calculate Zenith Angle
+#' 
+#' 
 #' @details Calculate Zenith angle
 #'
 #' @description This function allows you to calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical
@@ -85,7 +101,8 @@ solar_noon <- function(lon, doy){
 #' @param lat is latitude in degrees.
 #' @param lon is longitude in degrees.
 #' @param hour is hour of the day.
-#' @keywords radiation
+#' @return Zenith angle in degrees
+#' @keywords Zenith angle
 #' @export
 #' @examples
 #' \dontrun{
@@ -98,7 +115,7 @@ lat=lat*pi/180 #to radians
 lon=lon*pi/180 #to radians
   
 RevAng = 0.21631 + 2 * atan(0.967 * tan(0.0086 * (-186 + doy))); # Revolution angle in radians
-DecAng = asin(0.39795 * cos(RevAng));                          # Declination angle in radians           
+DecAng = asin(0.39795 * cos(RevAng));                            # Declination angle in radians           
   
 f=(279.575+0.9856*doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
 f=f*pi/180 #convert f in degrees to radians
@@ -114,6 +131,9 @@ if (zenith>90) zenith=90 # if measured from the vertical psi can't be greater th
 return(zenith)
 }
 
+#' Calculate Azimuth angle
+#' 
+#' 
 #' @details Calculate azimuth angle
 #'
 #' @description This function allows you to calculate the azimuth angle, the angle (in degrees) measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east.
@@ -121,7 +141,8 @@ return(zenith)
 #' @param lat is latitude in degrees.
 #' @param lon is longitude in degrees.
 #' @param hour is hour of the day.
-#' @keywords radiation
+#' @return Azimuth angle in degrees
+#' @keywords Azimuth angle
 #' @export
 #' @examples
 #' \dontrun{
@@ -159,7 +180,8 @@ azimuth_angle=function(doy, lat, lon, hour){
 #' @details Estimate air pressure (kPa) as a function of elevation
 #' @description  This function allows you to calculate estimated air pressure (kPa) as a function of elevation
 #' @param elev elevation in meters.
-#' @keywords radiation
+#' @keywords Air Pressure
+#' @return Air pressure in kPaå
 #' @export
 #' @examples
 #' \dontrun{
