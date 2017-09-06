@@ -10,6 +10,9 @@ airpressure_elev(elev)
 \arguments{
 \item{elev}{elevation in meters.}
 }
+\value{
+Air pressure in kPaå
+}
 \description{
 This function allows you to calculate estimated air pressure (kPa) as a function of elevation
 }
@@ -21,4 +24,5 @@ Estimate air pressure (kPa) as a function of elevation
 airpressure_elev(1500)
 }
 }
-\keyword{radiation}
+\keyword{Air}
+\keyword{Pressure}
