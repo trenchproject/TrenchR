@@ -104,7 +104,7 @@ convection<-function(Ts,Ta, mass, species="lizard"){
 
 #' Calculate metabolic expenditure
 #' 
-#' 
+#' Caters to heat generated because of metabolism.
 #' 
 #' 
 #' 
@@ -169,16 +169,22 @@ solar_radiation_absorbed<-function( mass, solar, species="lizard"){
   
 
   # Absorbance of Lizard skin - thermal absoptivity, Bartlett & Gates 1967
+  # Ranges between .95 and 1.0, Gates 1980
+  # 
   alpha_L = case_when(
     species == "lizard" ~ 0.965,
     TRUE ~ 1
   )
   
-  #solar radiation
-  A_p = 0.4*A_L #projected lizard area for direct and scattered solar radiation
   
+  #projected lizard area for direct and scattered solar radiation
+  A_p = 0.4*A_L 
+  
+  #solar radiation
   eb_solar_radiation = alpha_L*A_p*solar
   
   
   return(eb_solar_radiation)
 }
+
+# Heat loss because of evaporation ?
