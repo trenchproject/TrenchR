@@ -5,7 +5,7 @@
 #'
 #' @description This function allows you to calculate day of year from text specifying a date
 #' @param day day
-#' @param format date format("%Y-%m-%d") following "POSIXlt" conventions 
+#' @param format date format following "POSIXlt" conventions 
 #' @return day number, for eg. 1 for January 1st
 #' @keywords day
 #' @export
@@ -175,13 +175,14 @@ azimuth_angle=function(doy, lat, lon, hour){
 }
 
 #' Estimate air pressure in kPa (Kilo Pascal)
+#' 
 #' Credit - #http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html
 #'
 #' @details Estimate air pressure (kPa) as a function of elevation
 #' @description  This function allows you to calculate estimated air pressure (kPa) as a function of elevation
 #' @param elev elevation in meters.
 #' @keywords Air Pressure
-#' @return Air pressure in kPaå
+#' @return Air pressure in kPa
 #' @export
 #' @examples
 #' \dontrun{
@@ -202,6 +203,7 @@ airpressure_elev<- function(elev){
 #' @details This function allows you to convert temperature from Fahrenheit to Kelvin.
 #' @param temp Temperature in Fahrenheit.
 #' @keywords Fahrenheit Kelvin
+#' @return Temperature in Kelvin
 #' @export
 #' @examples
 #' \dontrun{
@@ -219,6 +221,7 @@ fahrenheit_to_kelvin <- function(temp) {
 #' @details This function allows you to convert temperature from Kelvin to Celsius.
 #' @param temp Temperature in Fahrenheit.
 #' @keywords Celsius Kelvin
+#' @return Temperature in Celsius
 #' @export
 #' @examples
 #' \dontrun{
@@ -236,6 +239,7 @@ kelvin_to_celsius <- function(temp) {
 #' @details This function allows you to convert temperature from Fahrenheit to Celsius
 #' @param temp Temperature in Fahrenheit.
 #' @keywords Fahrenheit Celsius
+#' @return Temperature in Celsius
 #' @export
 #' @examples
 #' \dontrun{
@@ -248,11 +252,14 @@ fahrenheit_to_celsius <- function(temp) {
   result
 }
 
+#' Converts angle in radians to degrees
+#'
 #' @details Converts angles in radians to degrees
 #' 
-#' @description This function allows you to convert angles in radians to degrees
+#' @description This function allows you to convert angle in radians to degrees
 #' @param rad angle in radians
-#' @keywords radians degrees
+#' @keywords radians to degrees
+#' @return angle in degrees
 #' @export
 #' @examples
 #' \dontrun{
@@ -260,11 +267,14 @@ fahrenheit_to_celsius <- function(temp) {
 #' }
 radians_to_degrees <- function(rad) {(rad * 180) / (pi)}
 
-#' @details Converts angles in radians to degrees
+#' Converts angle in degrees to radians
+#'
+#' @details Converts angle in degrees to radians
 #' 
-#' @description This function allows you to convert angles in degrees to radians
+#' @description This function allows you to convert angle in degrees to radians
 #' @param deg angle in degrees
-#' @keywords radians degrees
+#' @keywords degrees to radians
+#' @return angle in radians
 #' @export
 #' @examples
 #' \dontrun{
