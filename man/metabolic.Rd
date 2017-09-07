@@ -17,7 +17,7 @@ metabolic(Ta, mass, species = "lizard")
 metabolic expense
 }
 \description{
-Calculate metabolic expenditure
+Caters to heat generated because of metabolism.
 }
 \details{
 This function allows you to calculate metabolic expense of an ectotherm(Reptiles)
