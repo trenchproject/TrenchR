@@ -75,9 +75,9 @@ convection<-function(Ts,Ta, mass, species="lizard"){
   # Assume Initial body temperature to 0
   To = 0
   
-  #convective heat transfetr ceofficient (W m-2 K-1) 
-  #(Fei et al. 2012, J Ther Biol, 37: 56-64, Porter et al. 1973)
-  # TODO Case statement for the heat transfer cooefficient 
+  # Convective heat transfetr ceofficient (W m-2 K-1) 
+  # (Porter et al. 1973)
+  # TODO Case statement for the heat transfer coefficient 
   h_L=10.45 
   
   # Set the conductivity
@@ -139,3 +139,46 @@ metabolic<-function(Ta, mass, species="lizard"){
   return(eb_meta)
 }
 
+#' Calculate absorbed solar radiation
+#' 
+#' 
+#' 
+#' 
+#' 
+#' @details This function allows you to calculate absorbed solar radiation of an ectotherm(Reptiles)
+
+#' @param mass Mass in grams.
+#' @param solar Downward solar radiation(W/m^2).
+#' @param species Which species.
+#' @return solar radiation absorbed
+#' @keywords Solar radiation absorbed
+#' @export
+#' @examples
+#' \dontrun{
+#' solar_radiation_absorbed(10.5,1000,"lizard")
+#' }
+#' 
+
+solar_radiation_absorbed<-function( mass, solar, species="lizard"){
+  
+  # Mass in kg
+  mass_kg=mass/1000. #in kg
+  
+  # Calculate surface area
+  A_L= 0.0314*3.14159*mass_kg^(2./3.) #surface area m2
+  
+
+  # Absorbance of Lizard skin - thermal absoptivity, Bartlett & Gates 1967
+  alpha_L = case_when(
+    species == "lizard" ~ 0.965,
+    TRUE ~ 1
+  )
+  
+  #solar radiation
+  A_p = 0.4*A_L #projected lizard area for direct and scattered solar radiation
+  
+  eb_solar_radiation = alpha_L*A_p*solar
+  
+  
+  return(eb_solar_radiation)
+}
