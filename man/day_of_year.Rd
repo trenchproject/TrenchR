@@ -9,7 +9,7 @@ day_of_year(day, format = "\%Y-\%m-\%d")
 \arguments{
 \item{day}{day}
 
-\item{format}{date format("%Y-%m-%d") following "POSIXlt" conventions}
+\item{format}{date format following "POSIXlt" conventions}
 }
 \value{
 day number, for eg. 1 for January 1st

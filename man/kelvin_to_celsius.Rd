@@ -9,6 +9,9 @@ kelvin_to_celsius(temp)
 \arguments{
 \item{temp}{Temperature in Fahrenheit.}
 }
+\value{
+Temperature in Celsius
+}
 \description{
 (credit  https://swcarpentry.github.io)
 }
