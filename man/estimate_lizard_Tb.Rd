@@ -46,7 +46,10 @@ estimate_lizard_Tb(Ta, Tg, u, svl, mass, psi, rho_S, elevation, doy,
 \item{F_g}{is the view factor between the surface of the lizard and ground thermal radation}
 }
 \description{
-Predicts body temperature (operative environmental temperature) of a lizard in degrees C. Based on Campbell and Norman (1998, An introduction to environmental biophysics). Designed for Sceloporus lizards and described in Buckley (2008, Linking traits to energetics and population dynamics to predict lizard ranges in changing environments. American Naturalist 171: E1-E19).
+Predicts body temperature (operative environmental temperature) of a lizard in degrees C. 
+Based on Campbell and Norman (1998, An introduction to environmental biophysics). 
+Designed for Sceloporus lizards and described in Buckley (2008, 
+Linking traits to energetics and population dynamics to predict lizard ranges in changing environments. American Naturalist 171: E1-E19).
 }
 \details{
 Predicts body temperatures (operative environmental temperature) of a lizard in degrees C.
