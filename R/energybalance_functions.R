@@ -10,7 +10,7 @@
 #' @param mass Mass in grams.
 #' @param lambda Mean thickness.
 #' @param position Whether the organism is lying flat or standing.
-#' @param K thermal conductivity #CHECK
+#' @param K thermal conductivity
 #' @param sa surface area in m^2
 #' @return conductance
 #' @keywords conductance
@@ -23,15 +23,19 @@
 
 conductance<-function(Ts,Ta, sa,lambda,K=0.5, position="flat"){
  
+  ##TODO Make To / Tb a parameter with default Ta
   # Assume Initial body temperature to air temperature
   To = Ta
   
+  ##TODO add units fal all paramters above
+  ##TODO specify K units and look for options / values to generalize to ther species 
   ## Set the conductivity
   #K = case_when(
   #  taxa == "lizard" ~ 0.5,
   #  TRUE ~ 0.1
   #)
   
+  ##TODO Might be beter as a parameter with default value
   # Calculate the area of contact
   A_contact = case_when(
     position == "flat" ~ 0.35*sa,
@@ -45,7 +49,7 @@ conductance<-function(Ts,Ta, sa,lambda,K=0.5, position="flat"){
   return(eb_conductance)
 }
 
-#' Calculate surface area from mass ##GENERALIZE TO MORE SPECIES
+#' Calculate surface area from mass 
 #' 
 #' @details This function allows you to calculate surface area (m^2) from mass (g) for a variety of taxa
 #' @param mass Mass in grams.
@@ -58,7 +62,8 @@ conductance<-function(Ts,Ta, sa,lambda,K=0.5, position="flat"){
 
 calculate_surface_area<-function(mass, taxa="lizard"){
 
-  #MAKE FUNCTION TO CALCULATE SURFACE AREA FROM BODY LENGTH
+  ##TODO GENERALIZE TO MORE SPECIES BY FINDING DATA
+  ##TODO MAKE FUNCTION TO CALCULATE SURFACE AREA FROM BODY LENGTH, BOTH FIND DATA FOR TAXA AND MAKE GENERAL FUNCTIONS FOR CYLINDERS, ETC.
   
   # Mass in kg
   mass_kg=mass/1000. #in kg
@@ -80,7 +85,7 @@ calculate_surface_area<-function(mass, taxa="lizard"){
 #' @param Ts Surface Temperature.
 #' @param Ta Air Temperature.
 #' @param sa surface area in m^2
-#' @param K thermal conductivity #CHECK
+#' @param K thermal conductivity
 #' @return convection
 #' @keywords convection
 #' @export
@@ -92,17 +97,24 @@ calculate_surface_area<-function(mass, taxa="lizard"){
 
 convection<-function(Ts,Ta, sa,K=0.5){
   
+  ##TODO Add units to all parameters above
+  
+  ## TODO seems strange to set body temperature to zero, better to make To or Tb parameter
   # Assume Initial body temperature to 0
   To = 0
   
+  ##TODO MAKE PARAMETER AND LOOK INTO GENERALIZING
   # Convective heat transfetr ceofficient (W m-2 K-1) 
   # (Porter et al. 1973)
-  # TODO Case statement for the heat transfer coefficient, CHECK
+  # TODO Case statement for the heat transfer coefficient
   h_L=10.45 
   
+  ## TODO make parameter with default value
   #Calculate skin area exposed to air
   Aair = 0.9*sa # skin area that is exposed to air
   
+  ##TODO Will eventually want to expand to other forms of convection
+  ##TODO see Mitchell. 1976. Heat transfer from spheres and other animal forms, http://www.sciencedirect.com/science/article/pii/S0006349576857116
   #convection, assuming no wind
   eb_convection =   h_L*Aair*(Ta-To)
   
@@ -141,7 +153,8 @@ metabolic_rate<-function(Tb=NA, mass, taxa="lizard"){
   
   #Nagy 2005, JEB
   #FMR in j/s, M is mass in grams
-  #Convert 1 kJ/day=0.0115741, check
+  #Convert 1 kJ/day=0.0115741
+  ##TODO check conversion
   
   #reptiles
   ew = case_when(
@@ -161,8 +174,9 @@ metabolic_rate<-function(Tb=NA, mass, taxa="lizard"){
     TRUE ~ 1
   )
   
-  #Can further divide using Nagy et al. 1999 ENERGETICS OF FREE-RANGING MAMMALS, REPTILES, AND BIRDS
-  #See whether can find coefficients to include temperature from Gillooly, Savage, etc.
+  ##TODO Peferable to use Gilloolly et al. 2001 equation including temperature, http://science.sciencemag.org/content/293/5538/2248
+  ##TODO See whether can find coefficients to include temperature from Gillooly, Savage, etc.
+  ##TODO ?? Can further divide equations above using Nagy et al. 1999 ENERGETICS OF FREE-RANGING MAMMALS, REPTILES, AND BIRDS. Needed?
   
   return(eb_meta)
 }
@@ -191,8 +205,10 @@ solar_radiation_absorbed<-function( sa, solar,thermal_abs=0.965){
   
   # Absorbance of Lizard skin - thermal absoptivity, Bartlett & Gates 1967
   # Ranges between .95 and 1.0, Gates 1980
-  # 
- 
+  ## TODO: See whether we should include values for other taxa 
+  ## TODO: Look in Porter and Gates 1967 for these and other parameter values. Can't remember what's there. (http://onlinelibrary.wiley.com/doi/10.2307/1948545/full)
+  
+  ##TODO Look into generalizing
   #projected lizard area for direct and scattered solar radiation
   A_p = 0.4*A_L 
   
