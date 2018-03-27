@@ -4,20 +4,22 @@
 \alias{conductance}
 \title{Calculate conductance}
 \usage{
-conductance(Ts, Ta, mass, lambda, position = "flat", species = "lizard")
+conductance(Ts, Ta, sa, lambda, K = 0.5, position = "flat")
 }
 \arguments{
 \item{Ts}{Surface Temperature.}
 
 \item{Ta}{Air Temperature.}
 
-\item{mass}{Mass in grams.}
+\item{sa}{surface area in m^2}
 
 \item{lambda}{Mean thickness.}
 
+\item{K}{thermal conductivity}
+
 \item{position}{Whether the organism is lying flat or standing.}
 
-\item{species}{Which species.}
+\item{mass}{Mass in grams.}
 }
 \value{
 conductance

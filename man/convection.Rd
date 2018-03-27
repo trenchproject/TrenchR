@@ -4,16 +4,16 @@
 \alias{convection}
 \title{Calculate convection}
 \usage{
-convection(Ts, Ta, mass, species = "lizard")
+convection(Ts, Ta, sa, K = 0.5)
 }
 \arguments{
 \item{Ts}{Surface Temperature.}
 
 \item{Ta}{Air Temperature.}
 
-\item{mass}{Mass in grams.}
+\item{sa}{surface area in m^2}
 
-\item{species}{Which species.}
+\item{K}{thermal conductivity}
 }
 \value{
 convection

@@ -4,14 +4,14 @@
 \alias{solar_radiation_absorbed}
 \title{Calculate absorbed solar radiation}
 \usage{
-solar_radiation_absorbed(mass, solar, species = "lizard")
+solar_radiation_absorbed(sa, solar, thermal_abs = 0.965)
 }
 \arguments{
-\item{mass}{Mass in grams.}
+\item{sa}{surface area in m^2}
 
 \item{solar}{Downward solar radiation(W/m^2).}
 
-\item{species}{Which species.}
+\item{thermal_abs}{thermal absorptivity as a percent, default value is for lizards, Bartlett & Gates 1967.}
 }
 \value{
 solar radiation absorbed

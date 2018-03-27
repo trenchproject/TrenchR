@@ -137,7 +137,7 @@ convection<-function(Ts,Ta, sa,K=0.5){
 #' @export
 #' @examples
 #' \dontrun{
-#' metabolic(24,10.5,"lizard")
+#' metabolic_rate(24,10.5,"lizard")
 #' }
 #' 
 
