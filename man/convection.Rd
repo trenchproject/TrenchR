@@ -7,13 +7,13 @@
 convection(Ts, Ta, sa, K = 0.5)
 }
 \arguments{
-\item{Ts}{Surface Temperature.}
+\item{Ts}{Surface Temperature in Kelvin.}
 
-\item{Ta}{Air Temperature.}
+\item{Ta}{Air Temperature in Kelvin.}
 
 \item{sa}{surface area in m^2}
 
-\item{K}{thermal conductivity}
+\item{K}{thermal conductivity (W K-1 m-1)}
 }
 \value{
 convection
@@ -26,7 +26,7 @@ This function allows you to calculate convection of an ectotherm(Reptiles)
 }
 \examples{
 \dontrun{
-convection(24,22,10.5,"lizard")
+convection(224,222,10.5,"lizard")
 }
 
 }

@@ -5,28 +5,29 @@
 #' 
 #' 
 #' @details This function allows you to calculate conductance of an ectotherm(Reptiles)
-#' @param Ts Surface Temperature.
-#' @param Ta Air Temperature.
+#' @param Ts Surface Temperature in Kelvin.
+#' @param Ta Air Temperature in Kelvin.
+#' @param Tb Body Temperature in Kelvin.
 #' @param mass Mass in grams.
-#' @param lambda Mean thickness.
+#' @param lambda Mean thickness in meters.
 #' @param position Whether the organism is lying flat or standing.
-#' @param K thermal conductivity
+#' @param K thermal conductivity (W K-1 m-1)
 #' @param sa surface area in m^2
-#' @return conductance
+#' @return conductance (cal. g-1 hr-S°K-1)
 #' @keywords conductance
 #' @export
 #' @examples
 #' \dontrun{
-#' conductance(24,22,10.5,0.02,"flat","lizard")
+#' conductance(246,227,10.5,0.02,"flat","lizard")
 #' }
 #' 
 
-conductance<-function(Ts,Ta, sa,lambda,K=0.5, position="flat"){
+conductance<-function(Ts,Ta,Tb,sa,lambda,K=0.5, position="flat"){
  
   ##TODO Make To / Tb a parameter with default Ta
   # Assume Initial body temperature to air temperature
   To = Ta
-  
+  Tb = Ta
   ##TODO add units fal all paramters above
   ##TODO specify K units and look for options / values to generalize to ther species 
   ## Set the conductivity
@@ -43,6 +44,7 @@ conductance<-function(Ts,Ta, sa,lambda,K=0.5, position="flat"){
   )
   
   #conduction
+  # Calculating the heat loss (Difference between animal temperature and its environment)
   eb_conductance = A_contact*K*(Ts - To)/(lambda/2)
 
   
@@ -68,6 +70,8 @@ calculate_surface_area<-function(mass, taxa="lizard"){
   # Mass in kg
   mass_kg=mass/1000. #in kg
   
+  # If Mass is not given, approximate it by l/d = 10 relation.
+  # and further, SA can it be approximated by  pi * l^2/10 ? 
   # Calculate surface area
   sa= 0.0314*3.14159*mass_kg^(2./3.) #surface area m2
   
@@ -82,16 +86,16 @@ calculate_surface_area<-function(mass, taxa="lizard"){
 #' 
 #' 
 #' @details This function allows you to calculate convection of an ectotherm(Reptiles)
-#' @param Ts Surface Temperature.
-#' @param Ta Air Temperature.
+#' @param Ts Surface Temperature in Kelvin.
+#' @param Ta Air Temperature in Kelvin.
 #' @param sa surface area in m^2
-#' @param K thermal conductivity
+#' @param K thermal conductivity (W K-1 m-1)
 #' @return convection
 #' @keywords convection
 #' @export
 #' @examples
 #' \dontrun{
-#' convection(24,22,10.5,"lizard")
+#' convection(224,222,10.5,"lizard")
 #' }
 #' 
 
@@ -110,7 +114,7 @@ convection<-function(Ts,Ta, sa,K=0.5){
   h_L=10.45 
   
   ## TODO make parameter with default value
-  #Calculate skin area exposed to air
+  # Calculate skin area exposed to air
   Aair = 0.9*sa # skin area that is exposed to air
   
   ##TODO Will eventually want to expand to other forms of convection
