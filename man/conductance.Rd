@@ -4,7 +4,7 @@
 \alias{conductance}
 \title{Calculate conductance}
 \usage{
-conductance(Ts, Ta, Tb, sa, lambda, K = 0.5, position = "flat")
+conductance(Ts, Ta, Tb = Ta, lambda, K = 0.5, A_contact)
 }
 \arguments{
 \item{Ts}{Surface Temperature in Kelvin.}
@@ -13,18 +13,14 @@ conductance(Ts, Ta, Tb, sa, lambda, K = 0.5, position = "flat")
 
 \item{Tb}{Body Temperature in Kelvin.}
 
-\item{sa}{surface area in m^2}
+\item{lambda}{Mean thickness(or diameter of the body) in meters.}
 
-\item{lambda}{Mean thickness in meters.}
+\item{K}{Thermal conductivity (W K^-1 m^-1 )}
 
-\item{K}{thermal conductivity (W K-1 m-1)}
-
-\item{position}{Whether the organism is lying flat or standing.}
-
-\item{mass}{Mass in grams.}
+\item{A_contact}{Area of contact in m^2}
 }
 \value{
-conductance (cal. g-1 hr-S°K-1)
+conductance (W m^2)
 }
 \description{
 Calculate conductance
@@ -34,7 +30,7 @@ This function allows you to calculate conductance of an ectotherm(Reptiles)
 }
 \examples{
 \dontrun{
-conductance(246,227,10.5,0.02,"flat","lizard")
+conductance(246,227,227,0.05,0.5,0.02)
 }
 
 }

@@ -4,19 +4,19 @@
 \alias{convection}
 \title{Calculate convection}
 \usage{
-convection(Ts, Ta, sa, K = 0.5)
+convection(Ta, To, h_L = 10.45, A_air)
 }
 \arguments{
-\item{Ts}{Surface Temperature in Kelvin.}
-
 \item{Ta}{Air Temperature in Kelvin.}
 
-\item{sa}{surface area in m^2}
+\item{To}{Initial Body Temperature in Kelvin.}
 
-\item{K}{thermal conductivity (W K-1 m-1)}
+\item{h_L}{Convective heat transfer ceofficient (W m^-2 K^-1)}
+
+\item{A_air}{Area exposed to air m^2}
 }
 \value{
-convection
+convection (W)
 }
 \description{
 Calculate convection
@@ -26,7 +26,7 @@ This function allows you to calculate convection of an ectotherm(Reptiles)
 }
 \examples{
 \dontrun{
-convection(224,222,10.5,"lizard")
+convection(224,222,10.45,.05)
 }
 
 }
