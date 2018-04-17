@@ -8,26 +8,24 @@
 #' @param Ts Surface Temperature in Kelvin.
 #' @param Ta Air Temperature in Kelvin.
 #' @param Tb Body Temperature in Kelvin.
-#' @param mass Mass in grams.
-#' @param lambda Mean thickness in meters.
-#' @param position Whether the organism is lying flat or standing.
-#' @param K thermal conductivity (W K-1 m-1)
-#' @param sa surface area in m^2
-#' @return conductance (cal. g-1 hr-S°K-1)
+#' @param lambda Mean thickness(or diameter of the body) in meters.
+#' @param K Thermal conductivity (W K^-1 m^-1 )
+#' @param A_contact Area of contact in m^2
+#' @return conductance (W m^2)
 #' @keywords conductance
 #' @export
 #' @examples
 #' \dontrun{
-#' conductance(246,227,10.5,0.02,"flat","lizard")
+#' conductance(246,227,227,0.05,0.5,0.02)
 #' }
 #' 
 
-conductance<-function(Ts,Ta,Tb,sa,lambda,K=0.5, position="flat"){
+conductance<-function(Ts,Ta,Tb=Ta,lambda,K=0.5, A_contact){
  
   ##TODO Make To / Tb a parameter with default Ta
   # Assume Initial body temperature to air temperature
-  To = Ta
-  Tb = Ta
+  #To = Ta
+  #Tb = Ta
   ##TODO add units fal all paramters above
   ##TODO specify K units and look for options / values to generalize to ther species 
   ## Set the conductivity
@@ -38,14 +36,16 @@ conductance<-function(Ts,Ta,Tb,sa,lambda,K=0.5, position="flat"){
   
   ##TODO Might be beter as a parameter with default value
   # Calculate the area of contact
-  A_contact = case_when(
-    position == "flat" ~ 0.35*sa,
-    position == "standing" ~ 0.05*sa
-  )
+  #A_contact = case_when(
+  #  position == "flat" ~ 0.35*sa,
+  #  position == "standing" ~ 0.05*sa
+  #)
   
-  #conduction
+  # Default K(0.5) being used is for Lizard(Porter et al. (1973).)
+  # Conduction
   # Calculating the heat loss (Difference between animal temperature and its environment)
-  eb_conductance = A_contact*K*(Ts - To)/(lambda/2)
+  # m^2 * W K^-1 m^-1 * K / m
+  eb_conductance = A_contact*K*(Ts - Tb)/(lambda/2)
 
   
   return(eb_conductance)
@@ -86,41 +86,43 @@ calculate_surface_area<-function(mass, taxa="lizard"){
 #' 
 #' 
 #' @details This function allows you to calculate convection of an ectotherm(Reptiles)
-#' @param Ts Surface Temperature in Kelvin.
 #' @param Ta Air Temperature in Kelvin.
-#' @param sa surface area in m^2
-#' @param K thermal conductivity (W K-1 m-1)
-#' @return convection
+#' @param To Initial Body Temperature in Kelvin.
+#' @param h_L Convective heat transfer ceofficient (W m^-2 K^-1)
+#' @param A_air Area exposed to air m^2
+#' @return convection (W)
 #' @keywords convection
 #' @export
 #' @examples
 #' \dontrun{
-#' convection(224,222,10.5,"lizard")
+#' convection(224,222,10.45,.05)
 #' }
 #' 
 
-convection<-function(Ts,Ta, sa,K=0.5){
+convection<-function(Ta,To,h_L=10.45,A_air ){
   
   ##TODO Add units to all parameters above
   
   ## TODO seems strange to set body temperature to zero, better to make To or Tb parameter
   # Assume Initial body temperature to 0
-  To = 0
+  #To = 0
   
   ##TODO MAKE PARAMETER AND LOOK INTO GENERALIZING
-  # Convective heat transfetr ceofficient (W m-2 K-1) 
+  # Convective heat transfer ceofficient (W m^-2 K^-1) 
   # (Porter et al. 1973)
   # TODO Case statement for the heat transfer coefficient
-  h_L=10.45 
+  # h_L=10.45 
   
   ## TODO make parameter with default value
   # Calculate skin area exposed to air
-  Aair = 0.9*sa # skin area that is exposed to air
+  # Aair = 0.9*sa # skin area that is exposed to air
   
   ##TODO Will eventually want to expand to other forms of convection
-  ##TODO see Mitchell. 1976. Heat transfer from spheres and other animal forms, http://www.sciencedirect.com/science/article/pii/S0006349576857116
+  ##TODO see Mitchell. 1976. Heat transfer from spheres and other animal forms, 
+  ## http://www.sciencedirect.com/science/article/pii/S0006349576857116
   #convection, assuming no wind
-  eb_convection =   h_L*Aair*(Ta-To)
+  # W m^-2 K^-1 * m^2 * K
+  eb_convection =   h_L*A_air*(Ta-To)
   
   
   return(eb_convection)
