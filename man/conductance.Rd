@@ -4,7 +4,7 @@
 \alias{conductance}
 \title{Calculate conductance}
 \usage{
-conductance(Ts, Ta, Tb = Ta, lambda, K = 0.5, A_contact)
+conductance(Ts, Ta, Tb = Ta, lambda, K = 0.5, sa, proportion)
 }
 \arguments{
 \item{Ts}{Surface Temperature in Kelvin.}
@@ -17,7 +17,9 @@ conductance(Ts, Ta, Tb = Ta, lambda, K = 0.5, A_contact)
 
 \item{K}{Thermal conductivity (W K^-1 m^-1 )}
 
-\item{A_contact}{Area of contact in m^2}
+\item{sa}{Surface area  in m^2}
+
+\item{proportion}{In contact to the surface}
 }
 \value{
 conductance (W m^2)
@@ -30,7 +32,7 @@ This function allows you to calculate conductance of an ectotherm(Reptiles)
 }
 \examples{
 \dontrun{
-conductance(246,227,227,0.05,0.5,0.02)
+conductance(246,227,227,0.05,0.5,.0025, 0.45)
 }
 
 }

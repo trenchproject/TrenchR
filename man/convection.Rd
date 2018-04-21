@@ -4,7 +4,7 @@
 \alias{convection}
 \title{Calculate convection}
 \usage{
-convection(Ta, To, h_L = 10.45, A_air)
+convection(Ta, To, h_L = 10.45, sa, proportion)
 }
 \arguments{
 \item{Ta}{Air Temperature in Kelvin.}
@@ -13,7 +13,9 @@ convection(Ta, To, h_L = 10.45, A_air)
 
 \item{h_L}{Convective heat transfer ceofficient (W m^-2 K^-1)}
 
-\item{A_air}{Area exposed to air m^2}
+\item{sa}{Surface area  in m^2}
+
+\item{proportion}{exposed to air}
 }
 \value{
 convection (W)
@@ -26,7 +28,7 @@ This function allows you to calculate convection of an ectotherm(Reptiles)
 }
 \examples{
 \dontrun{
-convection(224,222,10.45,.05)
+convection(224,222,10.45,.0025, 0.85)
 }
 
 }

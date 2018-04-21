@@ -10,17 +10,18 @@
 #' @param Tb Body Temperature in Kelvin.
 #' @param lambda Mean thickness(or diameter of the body) in meters.
 #' @param K Thermal conductivity (W K^-1 m^-1 )
-#' @param A_contact Area of contact in m^2
+#' @param sa Surface area  in m^2
+#' @param proportion In contact to the surface
 #' @return conductance (W m^2)
 #' @keywords conductance
 #' @export
 #' @examples
 #' \dontrun{
-#' conductance(246,227,227,0.05,0.5,0.02)
+#' conductance(246,227,227,0.05,0.5,.0025, 0.45)
 #' }
 #' 
 
-conductance<-function(Ts,Ta,Tb=Ta,lambda,K=0.5, A_contact){
+conductance<-function(Ts,Ta,Tb=Ta,lambda,K=0.5, sa,proportion){
  
   ##TODO Make To / Tb a parameter with default Ta
   # Assume Initial body temperature to air temperature
@@ -40,6 +41,9 @@ conductance<-function(Ts,Ta,Tb=Ta,lambda,K=0.5, A_contact){
   #  position == "flat" ~ 0.35*sa,
   #  position == "standing" ~ 0.05*sa
   #)
+  
+  # Calculate the area of contact
+  A_contact  = sa * proportion
   
   # Default K(0.5) being used is for Lizard(Porter et al. (1973).)
   # Conduction
@@ -89,17 +93,18 @@ calculate_surface_area<-function(mass, taxa="lizard"){
 #' @param Ta Air Temperature in Kelvin.
 #' @param To Initial Body Temperature in Kelvin.
 #' @param h_L Convective heat transfer ceofficient (W m^-2 K^-1)
-#' @param A_air Area exposed to air m^2
+#' @param sa Surface area  in m^2
+#' @param proportion exposed to air
 #' @return convection (W)
 #' @keywords convection
 #' @export
 #' @examples
 #' \dontrun{
-#' convection(224,222,10.45,.05)
+#' convection(224,222,10.45,.0025, 0.85)
 #' }
 #' 
 
-convection<-function(Ta,To,h_L=10.45,A_air ){
+convection<-function(Ta,To,h_L=10.45,sa,proportion ){
   
   ##TODO Add units to all parameters above
   
@@ -116,6 +121,10 @@ convection<-function(Ta,To,h_L=10.45,A_air ){
   ## TODO make parameter with default value
   # Calculate skin area exposed to air
   # Aair = 0.9*sa # skin area that is exposed to air
+  
+  # Calculate skin area exposed to air
+  A_air = sa*proportion
+  
   
   ##TODO Will eventually want to expand to other forms of convection
   ##TODO see Mitchell. 1976. Heat transfer from spheres and other animal forms, 
