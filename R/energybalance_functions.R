@@ -128,6 +128,46 @@ convection<-function(Ta,To,h_L=10.45,A_air ){
   return(eb_convection)
 }
 
+#' Calculate heat transfer coefficient for lizard
+#' 
+#' @details This function allows you get heat transfer coefficient for Lizard(Based on Porter et al. 1973)
+#' @param A_v Air velocity m/s.
+#' @param orientation Orientation with respect to air flow
+#' @return heat transfer coefficient(W m^-2 K^-1)
+#' @keywords heat transfer coefficient lizard
+#' @export
+#' @examples
+#' \dontrun{
+#' heat_transfer_coefficient_lizard(3,"parallel")
+#' }
+#' 
+
+heat_transfer_coefficient_lizard<-function(A_v,orientation="parallel"){
+  
+  ##Convert air velocity from m/s to cm/sec
+  A_v_cm = A_v/100
+  
+  # Case when orientation is parallel
+  eb_hl_lizard = dplyr::case_when(
+    orientation == "parallel" ~ 0.0038927 + (0.0001169 *A_v_cm ),
+    TRUE ~ 1
+  )
+  
+  # Case when orientation is transverse
+  eb_hl_lizard = dplyr::case_when(
+    orientation == "transverse" ~ 0.012132 + (0.000116 *A_v_cm ),
+    TRUE ~ 1
+  )
+  
+  # Convert from cal/minute / cm^2 /Celsius to W m^-2 K^-1
+  # Used 1 calorie per minute ( cal/min ) = 0.070 watts ( W )
+  eb_hl_lizard_SI <- (eb_hl_lizard * 0.070 * 100 ) +  273.15
+    
+  return(eb_hl_lizard_SI)
+}
+
+
+
 #' Calculate metabolic expenditure
 #' 
 #' Caters to heat generated because of metabolism.
@@ -143,19 +183,19 @@ convection<-function(Ta,To,h_L=10.45,A_air ){
 #' @export
 #' @examples
 #' \dontrun{
-#' metabolic_rate(24,10.5,"lizard")
+#' metabolic_rate(24,10.5,"reptile")
 #' }
 #' 
 
-metabolic_rate<-function(Tb=NA, mass, taxa="lizard"){
+metabolic_rate<-function(Tb=NA, mass, taxa="reptile"){
   
 
   # Metabolism - Buckley 2008, based on data for Sceloporus undulatus from Mike Angilletta
   #Check x3 is for activity
-  ew = case_when(
-    species == "lizard" ~ exp(-10.0+0.51*log(mass)+0.115*Tb ) *3/3600,
-    TRUE ~ 1
-  )
+  #eb_meta = case_when(
+  #  species == "lizard" ~ exp(-10.0+0.51*log(mass)+0.115*Tb ) *3/3600,
+  #  TRUE ~ 1
+  #)
   
   #Nagy 2005, JEB
   #FMR in j/s, M is mass in grams
@@ -163,19 +203,19 @@ metabolic_rate<-function(Tb=NA, mass, taxa="lizard"){
   ##TODO check conversion
   
   #reptiles
-  ew = case_when(
+  eb_meta = case_when(
     taxa == "reptile" ~ 0.196*mass^0.889 * 0.0115741,
     TRUE ~ 1
   )
   
   #mammals
-  ew = case_when(
+  eb_meta = case_when(
     taxa == "mammal" ~ 4.82*mass^0.734 * 0.0115741,
     TRUE ~ 1
   )
   
   #birds
-  ew = case_when(
+  eb_meta = case_when(
     taxa == "bird" ~ 10.5 * mass^0.681 * 0.0115741,
     TRUE ~ 1
   )
