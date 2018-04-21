@@ -4,7 +4,7 @@
 \alias{metabolic_rate}
 \title{Calculate metabolic expenditure}
 \usage{
-metabolic_rate(Tb = NA, mass, taxa = "lizard")
+metabolic_rate(Tb = NA, mass, taxa = "reptile")
 }
 \arguments{
 \item{Tb}{body temperature in degrees C, currently only used for lizard.}
@@ -24,7 +24,7 @@ This function allows you to calculate basal or field metabolic rate (j/s) of var
 }
 \examples{
 \dontrun{
-metabolic_rate(24,10.5,"lizard")
+metabolic_rate(24,10.5,"reptile")
 }
 
 }
