@@ -248,7 +248,7 @@ convection<-function(Ta,To,h_L=10.45,sa,proportion ){
 #' 
 #' @details This function allows you get heat transfer coefficient for Lizard(Based on Porter et al. 1973)
 #' @param A_v Air velocity m/s.
-#' @param taxa Which class of organism, current choice: lizard
+#' @param orientation Which class of organism, current choice: lizard
 #' @return heat transfer coefficient(W m^-2 K^-1)
 #' @keywords heat transfer coefficient 
 #' @export
@@ -258,7 +258,7 @@ convection<-function(Ta,To,h_L=10.45,sa,proportion ){
 #' }
 #' 
 
-heat_transfer_coefficient_lizard<-function(A_v,taxa="lizard"){
+heat_transfer_coefficient_lizard<-function(A_v,orientation="parallel"){
   
   #Convert air velocity from m/s to cm/sec
   A_v_cm = A_v/100

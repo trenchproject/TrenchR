@@ -4,12 +4,12 @@
 \alias{heat_transfer_coefficient_lizard}
 \title{Calculate heat transfer coefficient for lizard}
 \usage{
-heat_transfer_coefficient_lizard(A_v, taxa = "lizard")
+heat_transfer_coefficient_lizard(A_v, orientation = "parallel")
 }
 \arguments{
 \item{A_v}{Air velocity m/s.}
 
-\item{taxa}{Which class of organism, current choice: lizard}
+\item{orientation}{Which class of organism, current choice: lizard}
 }
 \value{
 heat transfer coefficient(W m^-2 K^-1)
