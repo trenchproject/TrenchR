@@ -7,9 +7,9 @@
 calculate_sa_length(length, taxa = "lizard")
 }
 \arguments{
-\item{length}{Characteristic dimension (trunk diameter or SVL) in m.}
+\item{length}{Characteristic dimension (trunk diameter or SVL) in meter.}
 
-\item{taxa}{Which class of organism, current choice: lizard.}
+\item{taxa}{Which class of organism, current choice: lizard,frog or general 'sphere'.}
 }
 \value{
 sa (m^2)

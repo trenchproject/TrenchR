@@ -4,12 +4,12 @@
 \alias{heat_transfer_coefficient_lizard}
 \title{Calculate heat transfer coefficient for lizard}
 \usage{
-heat_transfer_coefficient_lizard(A_v, orientation = "parallel")
+heat_transfer_coefficient_lizard(A_v, taxa = "lizard")
 }
 \arguments{
 \item{A_v}{Air velocity m/s.}
 
-\item{orientation}{Orientation with respect to air flow}
+\item{taxa}{Which class of organism, current choice: lizard}
 }
 \value{
 heat transfer coefficient(W m^-2 K^-1)
@@ -22,11 +22,10 @@ This function allows you get heat transfer coefficient for Lizard(Based on Porte
 }
 \examples{
 \dontrun{
-heat_transfer_coefficient_lizard(3,"parallel")
+heat_transfer_coefficient_lizard(3,"lizard")
 }
 
 }
 \keyword{coefficient}
 \keyword{heat}
-\keyword{lizard}
 \keyword{transfer}

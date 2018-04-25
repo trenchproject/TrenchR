@@ -130,8 +130,8 @@ calculate_sa<-function(mass, density, taxa="lizard"){
 #' Calculate surface area from length (Based on Mitchell 1976) 
 #' 
 #' @details This function allows you to calculate surface area (m^2) from length(m) for a variety of taxa
-#' @param length Characteristic dimension (trunk diameter or SVL) in m.
-#' @param taxa Which class of organism, current choice: lizard.
+#' @param length Characteristic dimension (trunk diameter or SVL) in meter.
+#' @param taxa Which class of organism, current choice: lizard,frog or general 'sphere'.
 #' @return sa (m^2)
 #' @keywords surface area length
 #' @export
@@ -248,19 +248,19 @@ convection<-function(Ta,To,h_L=10.45,sa,proportion ){
 #' 
 #' @details This function allows you get heat transfer coefficient for Lizard(Based on Porter et al. 1973)
 #' @param A_v Air velocity m/s.
-#' @param orientation Orientation with respect to air flow
+#' @param taxa Which class of organism, current choice: lizard
 #' @return heat transfer coefficient(W m^-2 K^-1)
-#' @keywords heat transfer coefficient lizard
+#' @keywords heat transfer coefficient 
 #' @export
 #' @examples
 #' \dontrun{
-#' heat_transfer_coefficient_lizard(3,"parallel")
+#' heat_transfer_coefficient_lizard(3,"lizard")
 #' }
 #' 
 
-heat_transfer_coefficient_lizard<-function(A_v,orientation="parallel"){
+heat_transfer_coefficient_lizard<-function(A_v,taxa="lizard"){
   
-  ##Convert air velocity from m/s to cm/sec
+  #Convert air velocity from m/s to cm/sec
   A_v_cm = A_v/100
   
   # Case when orientation is parallel
@@ -275,11 +275,69 @@ heat_transfer_coefficient_lizard<-function(A_v,orientation="parallel"){
     TRUE ~ 1
   )
   
+  #TODO - Need to verify the conversion
   # Convert from cal/minute / cm^2 /Celsius to W m^-2 K^-1
   # Used 1 calorie per minute ( cal/min ) = 0.070 watts ( W )
-  eb_hl_lizard_SI <- (eb_hl_lizard * 0.070 * 100 ) +  273.15
+  eb_hl_lizard_SI <- (eb_hl_lizard * 0.070 * 100 ) 
     
   return(eb_hl_lizard_SI)
+}
+
+
+#' Calculate heat transfer coefficient (based on Mitchell 1976)
+#' (Uses Table 1 which is Convective Heat Trasfer Relations to Animal Shapes)
+#' 
+#' @details This function allows you get heat transfer coefficient for various taxa(based Mitchell 1976)
+#' @param A_v Air velocity m/s.
+#' @param length Characteristic dimension (trunk diameter or SVL) in meter.
+#' @param taxa Which class of organism, current choice: lizard,frog or general 'sphere'
+#' @return heat transfer coefficient(W m^-2 K^-1)
+#' @keywords heat transfer coefficient lizard
+#' @export
+#' @examples
+#' \dontrun{
+#' heat_transfer_coefficient(3,.05, "lizard")
+#' }
+#' 
+
+heat_transfer_coefficient<-function(A_v,length, taxa="lizard"){
+  
+  # k(Thermal conductivity) and nu(Kinematic Viscocity) is 
+  # based on air temperature at 20 deg C(293K) (Biophysical Ecology Gates)
+  k= 25.7 * 10^(-3) # W m^-1 C^-1
+  nu= 15.3 * 10^(-6) # m^2 s^-1
+  
+  #Dimensionless constant (Cl)
+ 
+  # Case when taxa(animal shape) is sphere
+  Cl= dplyr::case_when(
+    taxa == "sphere" ~ 0.37,
+    TRUE ~ 1
+  )
+  
+  # Case when taxa(animal shape) is sphere
+  Cl = dplyr::case_when(
+    taxa == "lizard" ~ 0.35,
+    TRUE ~ 1
+  )
+  
+  #n
+  # Case when taxa(animal shape) is sphere
+  n= dplyr::case_when(
+    taxa == "sphere" ~ 0.6,
+    TRUE ~ 1
+  )
+  
+  # Case when taxa(animal shape) is sphere
+  n = dplyr::case_when(
+    taxa == "lizard" ~ 0.6,
+    TRUE ~ 1
+  )
+  
+  #
+  eb_hl_SI <- Cl *k * ((A_v * length/ nu )^n) /length
+  
+  return(eb_hl_SI)
 }
 
 
