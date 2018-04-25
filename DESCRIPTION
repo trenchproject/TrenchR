@@ -19,7 +19,6 @@ BugReports: https://github.com/trenchproject/TrenchR/issues
 VignetteBuilder: knitr
 Depends: R (>= 3.3.1)
 Imports:
-     devtools,
      ks,
      dplyr,
      zoo,
