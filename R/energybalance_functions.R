@@ -82,6 +82,113 @@ calculate_surface_area<-function(mass, taxa="lizard"){
   return(sa)
 }
 
+#' Calculate surface area from mass/density (Based on Mitchell 1976) 
+#' 
+#' @details This function allows you to calculate surface area (m^2) from mass (g) and density(g/cm^3) for a variety of taxa
+#' @param mass Mass in grams.
+#' @param density Density in grams/cm^3.
+#' @param taxa Which class of organism, current choice: lizard.
+#' @return sa (m^2)
+#' @keywords surface area
+#' @export
+#' @examples
+#'  \dontrun{
+#'  calculate_sa(100,0.45,"lizard")
+#' }
+#'
+
+calculate_sa<-function(mass, density, taxa="lizard"){
+  
+  #Kl and Ka are Empirical Constants(Mitchell 1976)
+  
+  # Case when taxa is Lizard (Norris 1965)
+  Ka = dplyr::case_when(
+    taxa == "lizard" ~ 11.0,
+    TRUE ~ 1
+  )
+
+  # Case when taxa is Frog (Tracy 1972)
+  Ka = dplyr::case_when(
+    taxa == "frog" ~ 11.0,
+    TRUE ~ 1
+  )
+  
+  # Case when taxa is approximated as Sphere(Mitchell 1976)
+  Ka = dplyr::case_when(
+    taxa == "sphere" ~ 4.83,
+    TRUE ~ 1
+  )
+  
+  
+  # Mitchell 1976
+  # Calculate surface area
+  sa= Ka * mass/(density^(2/3)) * .01 #surface area m2
+  
+  return(sa)
+}
+
+#' Calculate surface area from length (Based on Mitchell 1976) 
+#' 
+#' @details This function allows you to calculate surface area (m^2) from length(m) for a variety of taxa
+#' @param length Characteristic dimension (trunk diameter or SVL) in m.
+#' @param taxa Which class of organism, current choice: lizard.
+#' @return sa (m^2)
+#' @keywords surface area length
+#' @export
+#' @examples
+#'  \dontrun{
+#'  calculate_sa_length(.05,"lizard")
+#' }
+#'
+
+calculate_sa_length<-function(length, taxa="lizard"){
+  
+  #Kl and Ka are Empirical Constants(Mitchell 1976)
+  # Case when taxa is Lizard (Norris 1965)
+  Kl = dplyr::case_when(
+    taxa == "lizard" ~ 3.3,
+    TRUE ~ 1
+  )
+  
+  # Case when taxa is Frog (Tracy 1972)
+  Kl = dplyr::case_when(
+    taxa == "frog" ~ 2.27,
+    TRUE ~ 1
+  )
+  
+  # Case when taxa is approximated as Sphere(Mitchell 1976)
+  Kl = dplyr::case_when(
+    taxa == "sphere" ~ 1.24,
+    TRUE ~ 1
+  )
+  
+  # Case when taxa is Lizard (Norris 1965)
+  Ka = dplyr::case_when(
+    taxa == "lizard" ~ 11.0,
+    TRUE ~ 1
+  )
+  
+  # Case when taxa is Frog (Tracy 1972)
+  Ka = dplyr::case_when(
+    taxa == "frog" ~ 11.0,
+    TRUE ~ 1
+  )
+  
+  # Case when taxa is approximated as Sphere(Mitchell 1976)
+  Ka = dplyr::case_when(
+    taxa == "sphere" ~ 4.83,
+    TRUE ~ 1
+  )
+  
+  
+  # Mitchell 1976
+  # Calculate volume first
+  V= (length/Kl)^(1/3)
+  sa= Ka * (V^(2/3)) #surface area m2
+  
+  return(sa)
+}
+
 
 #' Calculate convection
 #' 
