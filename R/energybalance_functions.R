@@ -79,7 +79,7 @@ conductance_substrate<-function(Ts,Tb,D,K_g=0.5, sa,proportion){
 #' 
 #' @details This function allows you to calculate convection of an ectotherm
 #' @param Ta Air Temperature in Kelvin.
-#' @param To Initial Body Temperature in Kelvin.
+#' @param Tb Initial Body Temperature in Kelvin.
 #' @param h_L Convective heat transfer coefficient (W m^-2 K^-1)
 #' @param sa Surface area  in m^2
 #' @param proportion of surface area exposed to air
@@ -92,7 +92,7 @@ conductance_substrate<-function(Ts,Tb,D,K_g=0.5, sa,proportion){
 #' }
 #' 
 
-convection<-function(Ta,To,h_L=10.45,sa,proportion ){
+convection<-function(Ta,Tb,h_L=10.45,sa,proportion ){
   
   # Calculate skin area exposed to air
   A_air = sa*proportion
@@ -103,7 +103,7 @@ convection<-function(Ta,To,h_L=10.45,sa,proportion ){
   ## http://www.sciencedirect.com/science/article/pii/S0006349576857116
   #convection, assuming no wind
   # W m^-2 K^-1 * m^2 * K
-  eb_convection =   h_L*A_air*(Ta-To)
+  eb_convection =   h_L*A_air*(Ta-Tb)
   
   return(eb_convection)
 }
@@ -186,47 +186,13 @@ heat_transfer_coefficient<-function(A_v,D,k,nu, taxa="lizard"){
   return(eb_hl_SI)
 }
 
-#' Calculate silhouette area
-#' 
-#' 
-#' @details This function allows you to estiamte projected (silhouette) area as a function of zenith angle
-#' @param taxa Which class of organism, current choices: frog, lizard, grasshopper
-#' @param psi zenith angle in degrees
-#' @param raz if lizard, relative solar azimuth angle in degrees, the horizontal angle of the sun (0-180 degrees) relative to the head and frontal plane of the lizard 
-#' @param posture if lizard, indicate posture as "prostrate" or "elevated"
-#' @return silhouette area as a proportion
-#' @keywords silhouette area
-#' @export
-#' @examples
-#' \dontrun{
-#' prop_silho_area(60, taxa= "frog")
-#' }
-#' 
-
-prop_silho_area<-function(psi, taxa, raz=0, posture="prostrate"){
- 
-  #frog, Tracy 1976
- if(taxa=="frog") psa=(1.38171*10^(-6)*psi^4-1.93335*10^(-4)*psi^3+4.75761*10^(-3)*psi^2-0.167912*psi+45.8228)/100 
-
-  #lizards, Muth 1977
- if(taxa=="lizard"){
-if(posture=="prostrate" && raz==0){A=-2.3148*10^(-5); B=-2.1024*10^(-3); C=-4.6162*10^(-2); D=30.7316}
-##TODO OTHER OPTIONS
-  
-   psa= A*psi^3+B*psi^2+C*psi+D                                       }                                                                                                                                
-  #Grasshopper, Anderson et al. 1979
- if(taxa=="grasshopper") psa<-0.19-0.00173*psi 
-    
-  return(psa)
-}
-
 #' Calculate absorbed solar and thermal radiation
 #' 
 #' 
 #' 
 #' 
 #' 
-#' @details This function allows you to calculate absorbed solar and thermal radiation (W) absorbed by the surface of an animal. Follows Gates Biophysical Ecology and Spotila et al. 1992.
+#' @details This function allows you to calculate solar and thermal radiation (W) absorbed by the surface of an animal. Follows Gates Biophysical Ecology and Spotila et al. 1992.
 #' @param abs solar absorptivity of animal surface (proportion), default value is for reptiles
 #' @param As surface area  in m^2
 #' @param psa_dir proportion surface area exposed to solar radiation
@@ -379,7 +345,7 @@ evaporative_heat_loss<-function(As, Tb, taxa, rho_s=NA, rho_a=NA, RH=NA, h_c=NA,
 #' 
 #' 
 #' 
-#' @details This function allows you to calculate basal or field metabolic rate (W) of various taxa as a function of mass(g). (BMR or FMR depends on taxa.) Does not account for temperature
+#' @details This function allows you to estiamte field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from Nagy et al. 1999.
 #' @param mass Mass in grams.
 #' @param taxa Which taxa. options: reptile, bird, mammal
 #' @return metabolim (W)
@@ -426,10 +392,10 @@ mr_mass<-function(mass, taxa="reptile"){
 #' 
 #' 
 #' 
-#' @details This function allows you to calculate basal (or resting) metabolic rate (W) as a function of mass and temperature.
+#' @details This function allows you to estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). From Gilooly et al. 2001.
 #' @param mass Mass in grams.
 #' @param Tb body temperature in K
-#' @param taxa Which taxa. options: endotherm, ectotherm
+#' @param taxa Which taxa. options: bird, mammal, reptile, amphibian, invertebrate.
 #' @return metabolim (W)
 #' @keywords metabolism
 #' @export
@@ -468,21 +434,3 @@ solar_radiation_absorbed<-function(sa,psa, solar,thermal_abs=0.95){
 # Heat loss because of evaporation ?
 
 
-#' Calculate metabolic expenditure
-#' 
-#' Caters to heat generated because of metabolism.
-#' 
-#' 
-#' 
-#' @details This function allows you to calculate basal or field metabolic rate (j/s) of various taxa (BMR or FMR depends on taxa)
-#' @param Tb body temperature in degrees C, currently only used for lizard.
-#' @param mass Mass in grams.
-#' @param taxa Which taxa. options: lizard, reptile, bird, mammal
-#' @return metabolic expense
-#' @keywords metabolism
-#' @export
-#' @examples
-#' \dontrun{
-#' metabolic_rate(24,10.5,"reptile")
-#' }
-#' 

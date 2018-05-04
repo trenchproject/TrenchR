@@ -126,9 +126,9 @@ calculate_sa_volume<-function(volume, taxa){
   return(sa)
 }
 
-#' Calculate surface area from length (Based on Mitchell 1976) 
+#' Calculate volume from length (Based on Mitchell 1976) 
 #' 
-#' @details This function allows you to calculate surface area (m^2) from length(m) for a variety of taxa
+#' @details This function allows you to calculate volume (m^3) from length(m) for a variety of taxa. Approximates volume for use in a model of convection.
 #' @param length in meters.
 #' @param taxa Which class of organism, current choices: lizard,frog, or sphere
 #' @return sa (m^2)
@@ -136,11 +136,11 @@ calculate_sa_volume<-function(volume, taxa){
 #' @export
 #' @examples
 #'  \dontrun{
-#'  calculate_sa_length(.05,"lizard")
+#'  calculate_volume_length(.05,"lizard")
 #' }
 #'
 
-calculate_sa_length<-function(length, taxa){
+calculate_volume_length<-function(length, taxa){
   
   #Kl and Ka are Empirical Constants(Mitchell 1976)
   # Case when taxa is Lizard (Norris 1965)
@@ -167,25 +167,11 @@ calculate_sa_length<-function(length, taxa){
     TRUE ~ 1
   )
   
-  # Case when taxa is Frog (Tracy 1972)
-  Ka = dplyr::case_when(
-    taxa == "frog" ~ 11.0,
-    TRUE ~ 1
-  )
-  
-  # Case when taxa is approximated as Sphere(Mitchell 1976)
-  Ka = dplyr::case_when(
-    taxa == "sphere" ~ 4.83,
-    TRUE ~ 1
-  )
-  
-  
   # Mitchell 1976
-  # Calculate volume first
-  V= (length/Kl)^(1/3)
-  sa= Ka * (V^(2/3)) #surface area m2
+  # Calculate volume 
+  V= (length/Kl)^(1/3) #surface area m2
   
-  return(sa)
+  return(V)
 }
 
 #' Calculate surface area from length approximating the animal's body as a rotational ellipsoid 
@@ -218,5 +204,39 @@ calculate_surface_area_length_ellipsoid<-function(length){
   sa= sa/(1000^2)
   
   return(sa)
+}
+
+#' Calculate silhouette area
+#' 
+#' 
+#' @details This function allows you to estiamte projected (silhouette) area as a function of zenith angle
+#' @param taxa Which class of organism, current choices: frog, lizard, grasshopper
+#' @param psi zenith angle in degrees
+#' @param raz if lizard, relative solar azimuth angle in degrees, the horizontal angle of the sun (0-180 degrees) relative to the head and frontal plane of the lizard 
+#' @param posture if lizard, indicate posture as "prostrate" or "elevated"
+#' @return silhouette area as a proportion
+#' @keywords silhouette area
+#' @export
+#' @examples
+#' \dontrun{
+#' prop_silho_area(60, taxa= "frog")
+#' }
+#' 
+
+prop_silho_area<-function(psi, taxa, raz=0, posture="prostrate"){
+  
+  #frog, Tracy 1976
+  if(taxa=="frog") psa=(1.38171*10^(-6)*psi^4-1.93335*10^(-4)*psi^3+4.75761*10^(-3)*psi^2-0.167912*psi+45.8228)/100 
+  
+  #lizards, Muth 1977
+  if(taxa=="lizard"){
+    if(posture=="prostrate" && raz==0){A=-2.3148*10^(-5); B=-2.1024*10^(-3); C=-4.6162*10^(-2); D=30.7316}
+    ##TODO OTHER OPTIONS
+    
+    psa= A*psi^3+B*psi^2+C*psi+D                                       }                                                                                                                                
+  #Grasshopper, Anderson et al. 1979
+  if(taxa=="grasshopper") psa<-0.19-0.00173*psi 
+  
+  return(psa)
 }
 
