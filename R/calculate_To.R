@@ -50,7 +50,7 @@ calculate_To <- function(TAH, Tsurface, Tair, SWDOWN, GLW, shade){
   Ta = Tair #air temperature at lizards height 
   Solar = SWDOWN # solar radiation 
   lw = GLW # solar radiation
-  To = Ta  #initial body temperature in kelvin, assume Ta
+  To = Ta  #initial body temperature in kelvin, assume Ta 
   ####end of load data			
   
   #fix - for solar not calculated right

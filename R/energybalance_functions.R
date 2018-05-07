@@ -77,12 +77,13 @@ conductance_substrate<-function(Ts,Tb,D,K_g=0.5, sa,proportion){
 #' 
 #' 
 #' 
-#' @details This function allows you to calculate convection of an ectotherm
+#' @details This function allows you to calculate convection. Includes enhncement factor associated for outdoor environments in Mitchell (1976).
 #' @param Ta Air Temperature in Kelvin.
 #' @param Tb Initial Body Temperature in Kelvin.
 #' @param h_L Convective heat transfer coefficient (W m^-2 K^-1)
 #' @param sa Surface area  in m^2
 #' @param proportion of surface area exposed to air
+#' @param ef is the enhancement factor, used to adjuct h_L to field condictions (using h_L approximation from Mitchell 1976).  Approximated as 1.3 by default, but see Mitchell 1976 for more relationship.
 #' @return convection (W)
 #' @keywords convection
 #' @export
@@ -92,7 +93,7 @@ conductance_substrate<-function(Ts,Tb,D,K_g=0.5, sa,proportion){
 #' }
 #' 
 
-convection<-function(Ta,Tb,h_L=10.45,sa,proportion ){
+convection<-function(Ta,Tb,h_L=10.45,sa,proportion, ef=1.3 ){
   
   # Calculate skin area exposed to air
   A_air = sa*proportion
@@ -103,7 +104,7 @@ convection<-function(Ta,Tb,h_L=10.45,sa,proportion ){
   ## http://www.sciencedirect.com/science/article/pii/S0006349576857116
   #convection, assuming no wind
   # W m^-2 K^-1 * m^2 * K
-  eb_convection =   h_L*A_air*(Ta-Tb)
+  eb_convection =   ef*h_L*A_air*(Ta-Tb)
   
   return(eb_convection)
 }
@@ -151,7 +152,7 @@ heat_transfer_coefficient_lizard<-function(A_v,orientation="parallel"){
 #' Calculate heat transfer coefficient (based on Mitchell 1976)
 #' (Uses Table 1 which is Convective Heat Trasfer Relations to Animal Shapes)
 #' 
-#' @details This function allows you get heat transfer coefficient for various taxa(based Mitchell 1976)
+#' @details This function allows you estiamte the heat transfer coefficient for various taxa (based Mitchell 1976).  Approximates forces convective heat transfer for animal shapes using convective relationship for a sphere.
 #' @param A_v Air velocity m/s.
 #' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
 #' @param k= Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR
