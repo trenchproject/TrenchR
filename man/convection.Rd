@@ -4,18 +4,20 @@
 \alias{convection}
 \title{Calculate convection}
 \usage{
-convection(Ta, To, h_L = 10.45, sa, proportion)
+convection(Ta, Tb, h_L = 10.45, sa, proportion, ef = 1.3)
 }
 \arguments{
 \item{Ta}{Air Temperature in Kelvin.}
 
-\item{To}{Initial Body Temperature in Kelvin.}
+\item{Tb}{Initial Body Temperature in Kelvin.}
 
-\item{h_L}{Convective heat transfer ceofficient (W m^-2 K^-1)}
+\item{h_L}{Convective heat transfer coefficient (W m^-2 K^-1)}
 
 \item{sa}{Surface area  in m^2}
 
-\item{proportion}{exposed to air}
+\item{proportion}{of surface area exposed to air}
+
+\item{ef}{is the enhancement factor, used to adjuct h_L to field condictions (using h_L approximation from Mitchell 1976).  Approximated as 1.3 by default, but see Mitchell 1976 for more relationship.}
 }
 \value{
 convection (W)
@@ -24,7 +26,7 @@ convection (W)
 Calculate convection
 }
 \details{
-This function allows you to calculate convection of an ectotherm(Reptiles)
+This function allows you to calculate convection. Includes enhncement factor associated for outdoor environments in Mitchell (1976).
 }
 \examples{
 \dontrun{
