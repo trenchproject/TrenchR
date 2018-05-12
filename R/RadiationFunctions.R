@@ -15,8 +15,8 @@
 
 estimate_radiation=function(doy, psi, tau, elev, rho=0.7){
   
-  sigma=5.67*10^-8 # stefan-boltzman constant, W m^-2 K^-4
-  c_p=29.3 # specific heat of air, J/mol degrees K or C
+  sigma=5.67*10^-8 # Stefan-Boltzman constant, W m^-2 K^-4
+  c_p=29.3 # Specific heat of air, J/mol degrees K or C
   S_p0=1360 # extraterrestrial flux density, W/m^2 (p159)
   
   # Radiation

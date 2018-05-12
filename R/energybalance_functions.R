@@ -155,19 +155,19 @@ heat_transfer_coefficient_lizard<-function(A_v,orientation="parallel"){
 #' @details This function allows you estiamte the heat transfer coefficient for various taxa (based Mitchell 1976).  Approximates forces convective heat transfer for animal shapes using convective relationship for a sphere.
 #' @param A_v Air velocity m/s.
 #' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
-#' @param k= Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR
-#' @param nu= Kinematic Viscocity of air, m^2 s^-1, can calculate using DRYAIR or WETAIR in NicheMapR
+#' @param k Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR
+#' @param nu Kinematic Viscocity of air, m^2 s^-1, can calculate using DRYAIR or WETAIR in NicheMapR
 #' @param taxa Which class of organism, current choices: sphere,cylinder,frog,lizard_surface,lizard_elevated,flyinginsect,spider
 #' @return heat transfer coefficient(W m^-2 K^-1)
 #' @keywords heat transfer coefficient
 #' @export
 #' @examples
 #' \dontrun{
-#' heat_transfer_coefficient(3,.05,k= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "lizard")
+#' heat_transfer_coefficient(3,.05,k= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
 #' }
 #' 
 
-heat_transfer_coefficient<-function(A_v,D,k,nu, taxa="lizard"){
+heat_transfer_coefficient<-function(A_v,D,k,nu, taxa="cylinder"){
   
   ##TODO Check unit: K or C
   
@@ -175,7 +175,7 @@ heat_transfer_coefficient<-function(A_v,D,k,nu, taxa="lizard"){
   #cylinder assumes 40<Re<4000
   #lizard assumes prostrate on or elevated above surface, average for parallel and perpendicular to air flow
   
-  #Dimensionless constant (Cl)
+  # Dimensionless constant (Cl)
   Cls= c(0.37,0.615,0.258,1.36,1.91,0.0749,0.47)
   ns= c(0.6,0.466,0.667,0.39,0.45,0.78,0.5) 
   
@@ -193,7 +193,8 @@ heat_transfer_coefficient<-function(A_v,D,k,nu, taxa="lizard"){
 #' 
 #' 
 #' 
-#' @details This function allows you to calculate solar and thermal radiation (W) absorbed by the surface of an animal. Follows Gates Biophysical Ecology and Spotila et al. 1992.
+#' @details This function allows you to calculate solar and thermal radiation (W) absorbed by the surface of an animal. 
+#'          Follows Gates Biophysical Ecology and Spotila et al. 1992.
 #' @param abs solar absorptivity of animal surface (proportion), default value is for reptiles
 #' @param As surface area  in m^2
 #' @param psa_dir proportion surface area exposed to solar radiation
@@ -232,9 +233,6 @@ radiation_absorbed<-function(abs=0.9, As, psa_dir, psa_ref, R_dir, R_dif, R_ref=
 #' Calculate emitted thermal radiation
 #' 
 #' 
-#' 
-#' 
-#' 
 #' @details This function allows you to estimate thermal radiation (W) emitted by the surface of an animal. Follows Gates Biophysical Ecology and Spotila et al. 1992.
 #' @param emissivity longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
 #' @param As surface area  in m^2
@@ -267,10 +265,11 @@ thermal_radiation_emitted<-function(emissivity=0.96, As, psa_dir, psa_ref, Tb, T
   Tsky= (1.22*(Ta-273.15) -20.4)+273.15 #K, Gates 1980 Biophysical ecology based on Swnback 1960, Kingsolver (1983) estimates using Brunt equation
   
   
-  if(enclosed==TRUE) R= A_r*emissivity*sigma*(Tb^4 - Ta^4)
-  
-  if(enclosed==FALSE) R= emissivity*sigma*(A_s*(Tb^4 - Tsky^4)+A_r*(Tb^4 - Ts^4))
-  
+  if(enclosed) 
+         R= A_r*emissivity*sigma*(Tb^4 - Ta^4)
+  else 
+          R= emissivity*sigma*(A_s*(Tb^4 - Tsky^4)+A_r*(Tb^4 - Ts^4))
+
   return(R)
 }
 

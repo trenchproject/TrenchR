@@ -31,7 +31,8 @@ solar radiation absorbed (W)
 Calculate absorbed solar and thermal radiation
 }
 \details{
-This function allows you to calculate solar and thermal radiation (W) absorbed by the surface of an animal. Follows Gates Biophysical Ecology and Spotila et al. 1992.
+This function allows you to calculate solar and thermal radiation (W) absorbed by the surface of an animal. 
+         Follows Gates Biophysical Ecology and Spotila et al. 1992.
 }
 \examples{
 \dontrun{
