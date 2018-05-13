@@ -107,7 +107,7 @@ diurnal_radiation_range=function(doy, solrad, hour, lon, lat){
 #' 
 #' @param lat latitude in degrees 
 #' @param lon longitude in degrees
-#' @param doy is the day of year
+#' @param doy is the day of year(Julian day)
 #' @param elev is elevation in m
 #' @param Temp is mean monthly temp in degree Celcius
 #' @param Hr is mean month relative humidity (in percentage)
@@ -122,6 +122,8 @@ diurnal_radiation_range=function(doy, solrad, hour, lon, lat){
 
 monthly_solar_radiation= function(lat,lon,doy,elev,Temp,Hr,P){
 
+  rd=180/pi;  # factor to convert radians into degrees
+  
   #functions to calculate sin and cos for angles in degrees
   cos.deg= function(deg){ 
     rad= deg *pi/180
@@ -143,8 +145,8 @@ monthly_solar_radiation= function(lat,lon,doy,elev,Temp,Hr,P){
   D_s = asin(0.39785*sin(4.868961 + 0.017203*doy+0.033446*sin(6.224111 + 0.017202*doy)))      
   
   #hs the sunrise/sunset hour angle (degree)
-  #Keith and Kreider 1978
-  h_s = acos(-tan(lat/rad)*tan(D_s))*180/pi
+  #Keith and Kreider 1978  
+  h_s = acos(-tan(lat*rd)*tan(D_s))*180/pi
   
   #convert solar declination to degrees
   D_s= D_s*180/pi
@@ -179,7 +181,10 @@ monthly_solar_radiation= function(lat,lon,doy,elev,Temp,Hr,P){
   
   #E_sm: mean monthly solar altitude angle
   #calculated by dividing the monthly integral of hourly estimates of solar elevation by the number of hours in a month when the sun is above the horizon
-  Trise.set= suncalc(doy, Lat = lat, Long = lon, UTC = FALSE)
+  #TODO Validate UTC
+  #Trise.set= suncalc(doy, Lat = lat, Long = lon, UTC = FALSE)
+  # Fix issue Unused argument UTC
+  Trise.set= suncalc(doy, Lat = lat, Long = lon)
   daylength= Trise.set$sunset - Trise.set$sunrise
   #E_s: solar elevation (in degrees)
   E_s = asin( sin.deg(lat)*sin.deg(D_s) + cos.deg(lat)*cos.deg(D_s)*cos.deg(h) )*rd
