@@ -108,7 +108,9 @@ diurnal_radiation_range=function(doy, solrad, hour, lon, lat){
 #' 
 #' 
 #' @details Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information for input.
-#' @description Function to estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information for input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
+#' @description Function to estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information
+#' for input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
+#'  
 #' 
 #' @param lat latitude in degrees 
 #' @param lon longitude in degrees
@@ -151,7 +153,7 @@ monthly_solar_radiation= function(lat,lon,doy,elev,Temp,Hr,P){
   
   #hs the sunrise/sunset hour angle (degree)
   #Keith and Kreider 1978  
-  h_s = acos(-tan(lat*rd)*tan(D_s))*180/pi
+  h_s = acos(-tan(lat/rd)*tan(D_s))*180/pi
   
   #convert solar declination to degrees
   D_s= D_s*180/pi
@@ -185,8 +187,9 @@ monthly_solar_radiation= function(lat,lon,doy,elev,Temp,Hr,P){
   h = (t- 12)*15 
   
   #E_sm: mean monthly solar altitude angle
-  #calculated by dividing the monthly integral of hourly estimates of solar elevation by the number of hours in a month when the sun is above the horizon
-  #TODO Validate UTC
+  #calculated by dividing the monthly integral of hourly estimates of solar elevation by the
+  #number of hours in a month when the sun is above the horizon
+  #TODO Validate UTC  requirement
   #Trise.set= suncalc(doy, Lat = lat, Long = lon, UTC = FALSE)
   # Fix issue Unused argument UTC
   Trise.set= suncalc(doy, Lat = lat, Long = lon)
