@@ -9,6 +9,7 @@
 #' @param tau atmospheric transmissivity (proportion), which is ratio of global solar radiation at ground level to extra-terrestrial solar radiation
 #' @param elev is elevation (m)
 #' @param rho is the albedo as a proportion
+#' @return radiation components - direct, diffused and reflected (W/m^2)
 #' @keywords radiation
 #' @export
 #' @examples
@@ -54,14 +55,18 @@ estimate_radiation=function(doy, psi, tau, elev, rho=0.7){
 #' 
 #' 
 #' @details Estimate hourly solar radiation (W m^-2 per hour ) as a function of daily global solar radiation (in W m^-2 per day).
-#' @description Function to estimate hourly solar radiation (W m^-2 per hour ) as a function of daily global solar radiation (in W m^-2 per day). Based on Tham et al. (2010, Estimation of hourly averaged solar irradiation: evaluation of models. Building Serv. Eng. Res. Technol. 31: 9-25) and Al-Rawahi et al. (2011, Prediction of Hourly Solar Radiation on Horizontal and Inclined Surfaces for Muscat/Oman. The Journal of Engineering Research 8:19-31). ##CHECK UNITS
+#' @description Function to estimate hourly solar radiation (W m^-2 per hour ) as a function of daily global solar radiation (in W m^-2 per day).
+#' Based on Tham et al. (2010, Estimation of hourly averaged solar irradiation: evaluation of models. Building Serv. Eng. Res. Technol. 31: 9-25) 
+#' and Al-Rawahi et al. (2011, Prediction of Hourly Solar Radiation on Horizontal and Inclined Surfaces for Muscat/Oman. 
+#' The Journal of Engineering Research 8:19-31). 
 #' 
-#' @param doy is the day of year
+#' @param doy is the day of year(Julian ?)
 #' @param solrad is solar radiation in W m^-2 per day
 #' @param hour is hour (0-24) 
 #' @param lon longitude in degrees
 #' @param lat latitude in degrees  
-#' @keywords radiation
+#' @return hourly solar radiation (W/m^2)
+#' @keywords diurnal radiation
 #' @export
 #' @examples
 #' \dontrun{
@@ -99,7 +104,7 @@ diurnal_radiation_range=function(doy, solrad, hour, lon, lat){
 
 
 
-#' Estimate monthly solar radiation
+#' Estimate average monthly solar radiation
 #' 
 #' 
 #' @details Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information for input.
@@ -107,13 +112,13 @@ diurnal_radiation_range=function(doy, solrad, hour, lon, lat){
 #' 
 #' @param lat latitude in degrees 
 #' @param lon longitude in degrees
-#' @param doy is the day of year(Julian day)
+#' @param doy is the day of year(Julian day ?)
 #' @param elev is elevation in m
-#' @param Temp is mean monthly temp in degree Celcius
+#' @param Temp is mean monthly temp in degree Celsius
 #' @param Hr is mean month relative humidity (in percentage)
 #' @param P is total monthly precipitation (mm)
-#' 
-#' @keywords monthly solar radiation
+#' @return average monthly solar radiation ( W/m^2)
+#' @keywords average monthly solar radiation
 #' @export
 #' @examples
 #' \dontrun{

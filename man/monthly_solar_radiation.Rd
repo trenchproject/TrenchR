@@ -2,7 +2,7 @@
 % Please edit documentation in R/RadiationFunctions.R
 \name{monthly_solar_radiation}
 \alias{monthly_solar_radiation}
-\title{Estimate monthly solar radiation}
+\title{Estimate average monthly solar radiation}
 \usage{
 monthly_solar_radiation(lat, lon, doy, elev, Temp, Hr, P)
 }
@@ -11,15 +11,18 @@ monthly_solar_radiation(lat, lon, doy, elev, Temp, Hr, P)
 
 \item{lon}{longitude in degrees}
 
-\item{doy}{is the day of year}
+\item{doy}{is the day of year(Julian day ?)}
 
 \item{elev}{is elevation in m}
 
-\item{Temp}{is mean monthly temp in degree Celcius}
+\item{Temp}{is mean monthly temp in degree Celsius}
 
-\item{Hr}{is mean month relative humidity}
+\item{Hr}{is mean month relative humidity (in percentage)}
 
 \item{P}{is total monthly precipitation (mm)}
+}
+\value{
+average monthly solar radiation ( W/m^2)
 }
 \description{
 Function to estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information for input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
@@ -32,6 +35,7 @@ Estimate average monthly solar radiation (W m^-2 per day) using basic topographi
 monthly_solar_radiation(lat=47.61,lon=-122.33,doy=112,elev=1500,Temp=15,Hr=50,P=50)
 }
 }
+\keyword{average}
 \keyword{monthly}
 \keyword{radiation}
 \keyword{solar}

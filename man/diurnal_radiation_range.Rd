@@ -7,7 +7,7 @@
 diurnal_radiation_range(doy, solrad, hour, lon, lat)
 }
 \arguments{
-\item{doy}{is the day of year}
+\item{doy}{is the day of year(Julian ?)}
 
 \item{solrad}{is solar radiation in W m^-2 per day}
 
@@ -17,8 +17,14 @@ diurnal_radiation_range(doy, solrad, hour, lon, lat)
 
 \item{lat}{latitude in degrees}
 }
+\value{
+hourly solar radiation (W/m^2)
+}
 \description{
-Function to estimate hourly solar radiation (W m^-2 per hour ) as a function of daily global solar radiation (in W m^-2 per day). Based on Tham et al. (2010, Estimation of hourly averaged solar irradiation: evaluation of models. Building Serv. Eng. Res. Technol. 31: 9-25) and Al-Rawahi et al. (2011, Prediction of Hourly Solar Radiation on Horizontal and Inclined Surfaces for Muscat/Oman. The Journal of Engineering Research 8:19-31). ##CHECK UNITS
+Function to estimate hourly solar radiation (W m^-2 per hour ) as a function of daily global solar radiation (in W m^-2 per day).
+Based on Tham et al. (2010, Estimation of hourly averaged solar irradiation: evaluation of models. Building Serv. Eng. Res. Technol. 31: 9-25) 
+and Al-Rawahi et al. (2011, Prediction of Hourly Solar Radiation on Horizontal and Inclined Surfaces for Muscat/Oman. 
+The Journal of Engineering Research 8:19-31).
 }
 \details{
 Estimate hourly solar radiation (W m^-2 per hour ) as a function of daily global solar radiation (in W m^-2 per day).
@@ -28,4 +34,5 @@ Estimate hourly solar radiation (W m^-2 per hour ) as a function of daily global
 diurnal_radiation_range(doy=112, solrad=500, hour=12, lon=-122.33, lat=47.61)
 }
 }
+\keyword{diurnal}
 \keyword{radiation}

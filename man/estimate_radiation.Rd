@@ -17,6 +17,9 @@ estimate_radiation(doy, psi, tau, elev, rho = 0.7)
 
 \item{rho}{is the albedo as a proportion}
 }
+\value{
+radiation components - direct, diffused and reflected (W/m^2)
+}
 \description{
 Function to estimate direct, diffuse, and reflected components of solar radiation in W m^-2 using the model in Campbell & Norman (1998).
 }
