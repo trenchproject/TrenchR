@@ -11,7 +11,7 @@ monthly_solar_radiation(lat, lon, doy, elev, Temp, Hr, P)
 
 \item{lon}{longitude in degrees}
 
-\item{doy}{is the day of year(Julian day ?)}
+\item{doy}{is the day of year}
 
 \item{elev}{is elevation in m}
 
@@ -25,7 +25,9 @@ monthly_solar_radiation(lat, lon, doy, elev, Temp, Hr, P)
 average monthly solar radiation ( W/m^2)
 }
 \description{
-Function to estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information for input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
+Function to estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information
+for input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
+# @source
 }
 \details{
 Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information for input.

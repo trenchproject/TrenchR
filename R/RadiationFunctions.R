@@ -110,11 +110,11 @@ diurnal_radiation_range=function(doy, solrad, hour, lon, lat){
 #' @details Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information for input.
 #' @description Function to estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information
 #' for input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
-#'  
+#' # @source 
 #' 
 #' @param lat latitude in degrees 
 #' @param lon longitude in degrees
-#' @param doy is the day of year(Julian day ?)
+#' @param doy is the day of year
 #' @param elev is elevation in m
 #' @param Temp is mean monthly temp in degree Celsius
 #' @param Hr is mean month relative humidity (in percentage)
