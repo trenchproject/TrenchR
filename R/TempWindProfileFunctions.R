@@ -1,8 +1,9 @@
- 
-#ESTIMATE SURFACE ROUGHNESS FROM EMPIRICAL MEASUREMENTS
-
+#' Estimate surface roughness from empirical measurements.
+#' 
+#' 
 #' @details Estimate surface roughness in m
-#' @description This function allows you to estimate surface roughness in m from empirical wind speed (m/s) data collected at a vector of heights (m)
+#' @description This function allows you to estimate surface roughness in m from empirical wind speed (m/s) 
+#' data collected at a vector of heights (m). Estimates surface roughness from empirical measurements.
 #' 
 #' @param u_r is wind velocity at a vector of reference heights in m/s.
 #' @param zr is the vector of reference heights in m.
@@ -16,7 +17,7 @@
 estimate_surface_roughness<- function(u_r, zr){
  mod1= lm(u_r~log(zr))
  d= as.numeric(mod1$coefficients[1]) #Zero Plane displacement:height at which the wind speed is zero
-      # can also assume d=0.63h (Monteith 1975)
+ # can also assume d=0.63h (Monteith 1975)
  inds= which(zr-d>0)   #indices of measurements where zr-d>0
  mod1= lm(u_r[inds]~log(zr[inds]-d))
  b= as.numeric(mod1$coefficients[1])
@@ -26,10 +27,15 @@ estimate_surface_roughness<- function(u_r, zr){
  return(z0)
  }
 
-#PROFILES IN NEUTRAL CONDITIONS
 
+#' Get wind speed at a specific height under neutral conditions.
+#' 
 #' @details Calculates wind speed at a specified height under neutral conditions
-#' @description This function allows you to calculate wind speed (m/s) at a specified height (m) within a boundary layer near the surface.  The velocity profile is the neutral profile described by Sellers (1965). Function in equations (2) and (3) of Porter et al. (1973)
+#' @description This function allows you to calculate wind speed (m/s) at a 
+#' specified height (m) within a boundary layer near the surface.  
+#' The velocity profile is the neutral profile described by Sellers (1965). 
+#' Function in equations (2) and (3) of Porter et al. (1973)
+#' Profiles in neutral conditions.
 #' 
 #' @param u_r is wind velocity at reference height in m/s.
 #' @param zr is initial reference height in m.
@@ -48,8 +54,12 @@ wind_speed_profile_neutral <- function(u_r, zr, z0, z) {
   }
 
 
+#' 
+#' 
 #' @details Calculates temperature at a specified height under neutral conditions
-#' @description This function allows you to calculate temperature (C) at a specified height (m) within a boundary layer near the surface.  The velocity profile is the neutral profile described by Sellers (1965). Function in equations (2) and (3) of Porter et al. (1973)
+#' @description This function allows you to calculate temperature (C) at a specified height (m) within a 
+#' boundary layer near the surface.  The velocity profile is the neutral profile described by Sellers (1965). 
+#' Function in equations (2) and (3) of Porter et al. (1973)
 #' 
 #' @param T_r is temperature at reference height in degrees C.
 #' @param zr is initial reference height in m.
@@ -68,13 +78,15 @@ air_temp_profile_neutral<-function(T_r, zr, z0, z, T_s){
   return(T_z)
 }
 
-#------------------------------
-#From Kearney and Porter 2016. NicheMapR – an R package for biophysical modelling: the microclimate model
-#Section 5. Vertical air temperature and wind speed profiles, p11
 
-#' @details Calculates wind speed at a specified height
-#' @description This function allows you to calculate wind speed (m/s) at a specified height (m).  Estimates a single, unsegmented wind velocity using the MICRO routine from NicheMapR as described in Kearney and Porter 2016.
+#' Get wind speed profile (NicheMapR)
 #' 
+#' @details Calculates wind speed at a specified height
+#' @description This function allows you to calculate wind speed (m/s) at a specified height (m).  
+#' Estimates a single, unsegmented wind velocity using the MICRO routine from NicheMapR as described in Kearney and Porter 2016.
+#' Adapted from Kearney and Porter 2016. NicheMapR – an R package for biophysical modelling: the microclimate model
+#' Section 5. Vertical air temperature and wind speed profiles, p11
+
 #' @param u_r is wind velocity at reference height in m/s.
 #' @param zr is initial reference height in m.
 #' @param z0 is surface roughness in m.
@@ -93,8 +105,12 @@ wind_speed_profile<- function(u_r,zr,z0,z){
   return(u_z)
   }
 
+#' Get air temperature profile 
+#' 
 #' @details Calculates temperature at a specified height
-#' @description This function allows you to calculate temperature (C) at a specified height (m).  Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR as described in Kearney and Porter 2016.
+#' @description This function allows you to calculate temperature (C) at a specified height (m).  
+#' Estimates a single, unsegmented temperature profile using the MICRO routine from 
+#' NicheMapR as described in Kearney and Porter 2016.
 #' 
 #' @param T_r is temperature at reference height in degrees C.
 #' @param u_r is windspeed at reference height in m/s.
@@ -121,9 +137,12 @@ air_temp_profile= function(T_r, u_r, zr, z0,z,T_s){
   T_z0= (T_r * S_tb +T_s * S_ts)/(S_tb+S_ts)
   #Temperature at local height
   T_z= T_z0 + (T_r - T_z0)*log(z/z0+1)
-return(T_z)
+  return(T_z)
   }
 
+#' Get windspeed at a certain height 
+#' 
+#' 
 #' @details Calculates wind speed at a specified height
 #' @description This function allows you to calculate wind speed (m/s) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights.  Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Porter 2016. NEED TO CHECK NOTATION AND EQUATIONS.
 #' 
@@ -151,7 +170,8 @@ wind_speed_profile_segment= function(u_r,zr,z0,z){
   S_ts= 0.62/(z0[3]*u_star[2]/12)^0.45
   #bulk Stanton number
   S_tb= 0.64/log(zr[2]/z0[3]+1)
-  #estimate u_Zloc  #! CHECK ORDER
+  #estimate u_Zloc  
+  #! CHECK ORDER
   if(zr[1]<=z) {us_star=u_star[3]; z0s= z0[1]}
   if(zr[1]>z & zr[2]<=z) {us_star=u_star[1]; z0s= z0[2]}
   if(zr[1]>z & zr[2]>z) {us_star=u_star[2]; z0s= z0[3]}
@@ -159,9 +179,18 @@ wind_speed_profile_segment= function(u_r,zr,z0,z){
   u_z= 2.5*us_star*log(z/z0s+1)
   return(u_z)
 }
-  
+ 
+#' Get temperature at a certain height 
+#' 
+#'   
 #' @details Calculates temperature at a specified height
-#' @description This function allows you to calculate temperature (C) at a specified height (m).  Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights.  Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Porter 2016. NEED TO CHECK EQUATIONS.
+#' @description This function allows you to calculate temperature (C) at a specified height (m).  
+#' Estimates a three segment velocity and temperature profile based on user-specified, 
+#' experimentally determined values for 3 roughness heights and reference heights.  
+#' Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks.
+#' Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Porter 2016. 
+#' 
+#' NEED TO CHECK EQUATIONS.
 #' 
 #' @param T_r is a vector of temperature at the 3 reference heights in degrees C.
 #' @param u_r is a vector of wind speeds at the 3 reference heights in m/s.
@@ -178,7 +207,9 @@ wind_speed_profile_segment= function(u_r,zr,z0,z){
 #'
 
 air_temp_profile_segment= function(T_r, u_r, zr, z0,z,T_s){
-  #order roughness and segment heights so that z1>z2>z0 #!CHECK
+  
+  #order roughness and segment heights so that z1>z2>z0 
+  #!CHECK
   zr.ord= order(zr, decreasing = TRUE)
   zr= zr[zr.ord]
   z0= z0[zr.ord]
@@ -191,7 +222,9 @@ air_temp_profile_segment= function(T_r, u_r, zr, z0,z,T_s){
   S_ts= 0.62/(z0[3]*u_star[2]/12)^0.45
   #bulk Stanton number
   S_tb= 0.64/log(zr[2]/z0[3]+1)
-  #estimate u_Zloc  #! CHECK ORDER
+  
+  #estimate u_Zloc  
+  #! CHECK ORDER
   if(zr[1]<=z) {us_star=u_star[3]; z0s= z0[1]; T_rs= T_r[1]}
   if(zr[1]>z & zr[2]<=z) {us_star=u_star[1]; z0s= z0[2]; T_rs= T_r[2]}
   if(zr[1]>z & zr[2]>z) {us_star=u_star[2]; z0s= z0[3]; T_rs= T_r[3]}
@@ -204,18 +237,3 @@ air_temp_profile_segment= function(T_r, u_r, zr, z0,z,T_s){
   T_z= T_z0 + (T_rs - T_z0)*log(z/z0s+1)
   return(T_z)
 }
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
