@@ -39,7 +39,10 @@ conductance_animal<-function(Ts,Tb,lambda,K=0.5, sa,proportion){
 #' 
 #' 
 #' 
-#' @details This function allows you to calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: Spotila et al. 1992. Biophysicas of Heat and Mass Transfer.
+#' @details This function allows you to calculate conductance (W) of an ectothermic animal to its substate.
+#'          Method assumes the major resistance to conduction is the substrate and that the interior of the 
+#'          animal is equal in temperature to its surface (thermally well mixed). 
+#'          Reference: Spotila et al. 1992. Biophysicas of Heat and Mass Transfer.
 #' @param Ts Surface Temperature in Kelvin.
 #' @param Tb Body Temperature in Kelvin.
 #' @param D Characteristic dimension of the animal in meters
