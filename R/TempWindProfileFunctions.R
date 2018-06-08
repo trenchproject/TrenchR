@@ -11,10 +11,10 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' estimate_surface_roughness(u_r=c(0.01,0.025,0.05,0.1,0.2), zr=c(0.05,0.25,0.5,0.75,1))
+#' surface_roughness(u_r=c(0.01,0.025,0.05,0.1,0.2), zr=c(0.05,0.25,0.5,0.75,1))
 #'}
 
-estimate_surface_roughness<- function(u_r, zr){
+surface_roughness<- function(u_r, zr){
  mod1= lm(u_r~log(zr))
  d= as.numeric(mod1$coefficients[1]) #Zero Plane displacement:height at which the wind speed is zero
  # can also assume d=0.63h (Monteith 1975)
@@ -54,7 +54,7 @@ wind_speed_profile_neutral <- function(u_r, zr, z0, z) {
   }
 
 
-#' 
+#' Get temperature at a specified height under neutral conditions
 #' 
 #' @details Calculates temperature at a specified height under neutral conditions
 #' @description This function allows you to calculate temperature (C) at a specified height (m) within a 

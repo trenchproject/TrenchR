@@ -70,9 +70,9 @@ estimate_radiation=function(doy, psi, tau, elev, rho=0.7){
 #' @export
 #' @examples
 #' \dontrun{
-#' diurnal_radiation_range(doy=112, solrad=500, hour=12, lon=-122.33, lat=47.61)
+#' diurnal_radiation_variation(doy=112, solrad=500, hour=12, lon=-122.33, lat=47.61)
 #'}
-diurnal_radiation_range=function(doy, solrad, hour, lon, lat){ 
+diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){ 
 
   #Calculate solar time
   rd=180/pi;  # factor to convert radians into degrees

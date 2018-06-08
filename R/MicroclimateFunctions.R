@@ -144,6 +144,7 @@ suncalc<-function(d,Lat=48.1442,Long=-122.7551){
   ##Radians between the xy-plane and the ecliptic plane
   epsilon=rad(23.45)
   
+  
   ##Convert observer's latitude to radians
   L=rad(Lat)
   

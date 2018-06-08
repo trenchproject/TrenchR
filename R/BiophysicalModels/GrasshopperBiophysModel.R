@@ -17,10 +17,10 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' estimate_grasshopper_Tb(Ta=25, Tg=25, u=0.4, rad=400, kt=0.7, psi=30, L=0.02, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3)
+#' Tb_grasshopper(Ta=25, Tg=25, u=0.4, rad=400, kt=0.7, psi=30, L=0.02, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3)
 #'}
 
-estimate_grasshopper_Tb=function(Ta, Tg, u, rad, kt, psi, L, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3){
+Tb_grasshopper=function(Ta, Tg, u, rad, kt, psi, L, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3){
   
 TaK<- Ta+273.15 #Ambient temperature in K
 Tg<- Tg+273.15 #Ambient temperature in K

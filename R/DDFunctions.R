@@ -14,12 +14,12 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' degree.days(7,14,12,33,"single.sine")
-#' degree.days(7,14,12,33,"single.triangulation")
+#' degree_days(7,14,12,33,"single.sine")
+#' degree_days(7,14,12,33,"single.triangulation")
 #' }
 #' 
 
-degree.days=function(Tmin,Tmax,LDT=NA,UDT=NA, method="single.sine"){
+degree_days=function(Tmin,Tmax,LDT=NA,UDT=NA, method="single.sine"){
   #amplitude
   alpha=(Tmax-Tmin)/2 
   dd = 0

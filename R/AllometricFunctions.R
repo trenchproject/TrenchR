@@ -10,11 +10,11 @@
 #' @export
 #' @examples
 #'  \dontrun{
-#'  calculate_surface_area(2,"insect")
+#'  sa_from_mass(2,"insect")
 #' }
 #'
 
-calculate_surface_area<-function(mass, taxa="lizard"){
+sa_from_mass<-function(mass, taxa="lizard"){
 
   
   #lizard, O'Connor 1999 in Fei et al 2011
@@ -50,7 +50,7 @@ calculate_surface_area<-function(mass, taxa="lizard"){
 #' }
 #'
 
-calculate_mass<-function(length, taxa){
+mass_from_length<-function(length, taxa){
   
   #convert m to mm
   lengthmm= length*1000
@@ -92,14 +92,13 @@ calculate_mass<-function(length, taxa){
 #' @export
 #' @examples
 #'  \dontrun{
-#'  calculate_sa_volume(volume=0.001,"lizard")
+#'  sa_from_volume(volume=0.001,"lizard")
 #' }
 #'
 
-calculate_sa_volume<-function(volume, taxa){
-  ##TODO CHECK, FIX UNITS
-  
-  #Kl and Ka are Empirical Constants(Mitchell 1976)
+sa_from_volume<-function(volume, taxa){
+
+    #Kl and Ka are Empirical Constants(Mitchell 1976)
   
   # Case when taxa is Lizard (Norris 1965)
   Ka = dplyr::case_when(
@@ -136,11 +135,11 @@ calculate_sa_volume<-function(volume, taxa){
 #' @export
 #' @examples
 #'  \dontrun{
-#'  calculate_volume_length(.05,"lizard")
+#'   volume_from_length(.05,"lizard")
 #' }
 #'
 
-calculate_volume_length<-function(length, taxa){
+volume_from_length<-function(length, taxa){
   
   #Kl and Ka are Empirical Constants(Mitchell 1976)
   # Case when taxa is Lizard (Norris 1965)
@@ -183,11 +182,11 @@ calculate_volume_length<-function(length, taxa){
 #' @export
 #' @examples
 #'  \dontrun{
-#'  calculate_surface_area_length_ellipsoid(length=0.04)
+#'   sa_from_length(length=0.04)
 #' }
 #'
 
-calculate_surface_area_length_ellipsoid<-function(length){
+sa_from_length<-function(length){
   
   #to mm
   length=length*1000
@@ -219,11 +218,11 @@ calculate_surface_area_length_ellipsoid<-function(length){
 #' @export
 #' @examples
 #' \dontrun{
-#' prop_silho_area(60, taxa= "frog")
+#' prop_silhouette_area(60, taxa= "frog")
 #' }
 #' 
 
-prop_silho_area<-function(psi, taxa, raz=0, posture="prostrate"){
+prop_silhouette_area<-function(psi, taxa, raz=0, posture="prostrate"){
   
   #frog, Tracy 1976
   if(taxa=="frog") psa=(1.38171*10^(-6)*psi^4-1.93335*10^(-4)*psi^3+4.75761*10^(-3)*psi^2-0.167912*psi+45.8228)/100 
@@ -231,7 +230,8 @@ prop_silho_area<-function(psi, taxa, raz=0, posture="prostrate"){
   #lizards, Muth 1977
   if(taxa=="lizard"){
     if(posture=="prostrate" && raz==0){A=-2.3148*10^(-5); B=-2.1024*10^(-3); C=-4.6162*10^(-2); D=30.7316}
-    ##TODO OTHER OPTIONS
+  
+  ##TODO OTHER OPTIONS
     
     psa= A*psi^3+B*psi^2+C*psi+D                                       }                                                                                                                                
   #Grasshopper, Anderson et al. 1979

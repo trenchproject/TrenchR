@@ -356,11 +356,11 @@ evaporative_heat_loss<-function(As, Tb, taxa, rho_s=NA, rho_a=NA, RH=NA, h_c=NA,
 #' @export
 #' @examples
 #' \dontrun{
-#' mr_mass(10.5,"reptile")
+#' mr_from_mass(10.5,"reptile")
 #' }
 #' 
 
-mr_mass<-function(mass, taxa="reptile"){
+mr_from_mass<-function(mass, taxa="reptile"){
   
   #Nagy 2005, JEB
   #FMR in W, M is mass in grams
@@ -404,11 +404,11 @@ mr_mass<-function(mass, taxa="reptile"){
 #' @export
 #' @examples
 #' \dontrun{
-#' mr_mass_temperature(mass=100, Tb=303,"reptile")
+#' mr_from_mass_temp(mass=100, Tb=303,"reptile")
 #' }
 #' 
 
-mr_mass_temperature<-function(mass,Tb, taxa){
+mr_from_mass_temp<-function(mass,Tb, taxa){
   
   #From  Gilloolly et al. 2001 
   if(taxa=="bird" | taxa=="mammal") mr= exp(-9100/Tb+29.49)*mass^0.75/60

@@ -186,15 +186,13 @@ azimuth_angle=function(doy, lat, lon, hour){
 #' @export
 #' @examples
 #' \dontrun{
-#' airpressure_elev(1500)
+#' airpressure_from_elev(1500)
 #' }
-airpressure_elev<- function(elev){  
+airpressure_from_elev<- function(elev){  
   p= 101325* (1 - 2.25577*10^(-5)*elev)^5.25588       
   p= p/1000 #convert to kPa
   return(p)
 }
-
-#UNIT CONVERSIONS
 
 #' Converts Fahrenheit to Kelvin
 #' 
@@ -263,9 +261,9 @@ fahrenheit_to_celsius <- function(temp) {
 #' @export
 #' @examples
 #' \dontrun{
-#' radians_to_degrees(0.831)
+#' radian_to_degree(0.831)
 #' }
-radians_to_degrees <- function(rad) {(rad * 180) / (pi)}
+radian_to_degree <- function(rad) {(rad * 180) / (pi)}
 
 #' Converts angle in degrees to radians
 #'
@@ -278,6 +276,6 @@ radians_to_degrees <- function(rad) {(rad * 180) / (pi)}
 #' @export
 #' @examples
 #' \dontrun{
-#' degrees_to_radians(47.608)
+#' degree_to_radian(47.608)
 #' }
-degrees_to_radians <- function(deg) {(deg * pi) / (180)}
+degree_to_radian <- function(deg) {(deg * pi) / (180)}
