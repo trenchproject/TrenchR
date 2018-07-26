@@ -80,7 +80,7 @@ conductance_substrate<-function(Ts,Tb,D,K_g=0.5, sa,proportion){
 #' 
 #' 
 #' 
-#' @details This function allows you to calculate convection. Includes enhncement factor associated for outdoor environments in Mitchell (1976).
+#' @details This function allows you to calculate convection as in Mitchell (1976). Includes an enhancement factor associated with outdoor environments.
 #' @param Ta Air Temperature in Kelvin.
 #' @param Tb Initial Body Temperature in Kelvin.
 #' @param h_L Convective heat transfer coefficient (W m^-2 K^-1)
@@ -114,7 +114,7 @@ convection<-function(Ta,Tb,h_L=10.45,sa,proportion, ef=1.3 ){
 
 #' Calculate heat transfer coefficient for lizard
 #' 
-#' @details This function allows you estimate the heat transfer coefficient for a lizard(Based on Porter et al. 1973)
+#' @details This function allows you estimate the heat transfer coefficient for a lizard (Based on Porter et al. 1973)
 #' @param A_v Air velocity m/s.
 #' @param orientation parallel or transverse
 #' @return heat transfer coefficient(W m^-2 K^-1)
@@ -155,7 +155,7 @@ heat_transfer_coefficient_lizard<-function(A_v,orientation="parallel"){
 #' Calculate heat transfer coefficient (based on Mitchell 1976)
 #' (Uses Table 1 which is Convective Heat Trasfer Relations to Animal Shapes)
 #' 
-#' @details This function allows you estiamte the heat transfer coefficient for various taxa (based Mitchell 1976).  Approximates forces convective heat transfer for animal shapes using convective relationship for a sphere.
+#' @details This function allows you estimate the heat transfer coefficient for various taxa (based on Mitchell 1976).  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere.
 #' @param A_v Air velocity m/s.
 #' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
 #' @param k Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR
@@ -196,8 +196,8 @@ heat_transfer_coefficient<-function(A_v,D,k,nu, taxa="cylinder"){
 #' 
 #' 
 #' 
-#' @details This function allows you to calculate solar and thermal radiation (W) absorbed by the surface of an animal. 
-#'          Follows Gates Biophysical Ecology and Spotila et al. 1992.
+#' @details This function allows you to estimate solar and thermal radiation (W) absorbed by the surface of an animal. 
+#'          Follows Gates' Biophysical Ecology and Spotila et al. 1992.
 #' @param abs solar absorptivity of animal surface (proportion), default value is for reptiles
 #' @param As surface area  in m^2
 #' @param psa_dir proportion surface area exposed to solar radiation
@@ -236,7 +236,7 @@ radiation_absorbed<-function(abs=0.9, As, psa_dir, psa_ref, R_dir, R_dif, R_ref=
 #' Calculate emitted thermal radiation
 #' 
 #' 
-#' @details This function allows you to estimate thermal radiation (W) emitted by the surface of an animal. Follows Gates Biophysical Ecology and Spotila et al. 1992.
+#' @details This function allows you to estimate thermal radiation (W) emitted by the surface of an animal. Follows Gates' Biophysical Ecology and Spotila et al. 1992.
 #' @param emissivity longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
 #' @param As surface area  in m^2
 #' @param psa_dir proportion surface area exposed to sky (or enclosure)
@@ -283,7 +283,7 @@ thermal_radiation_emitted<-function(emissivity=0.96, As, psa_dir, psa_ref, Tb, T
 #' 
 #' 
 #' 
-#' @details This function allows you to estimate heat loss associated with evaporative water loss by an ampbian (Spotila et al. 1992) or lizard (Empirical measurements in Porter et a. 1973).
+#' @details This function allows you to estimate heat loss associated with evaporative water loss by an amphibian (Spotila et al. 1992) or lizard (based on empirical measurements in Porter et a. 1973).
 #' @param emissivity longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
 #' @param As surface area  in m^2
 #' @param Tb body temperatue in K
@@ -348,9 +348,9 @@ evaporative_heat_loss<-function(As, Tb, taxa, rho_s=NA, rho_a=NA, RH=NA, h_c=NA,
 #' 
 #' 
 #' 
-#' @details This function allows you to estiamte field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from Nagy et al. 1999.
+#' @details This function allows you to estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from Nagy et al. 1999.
 #' @param mass Mass in grams.
-#' @param taxa Which taxa. options: reptile, bird, mammal
+#' @param taxa Which taxa. Current options: reptile, bird, mammal
 #' @return metabolim (W)
 #' @keywords metabolism
 #' @export

@@ -4,12 +4,12 @@
 #' Double Sine wave approximation of degree days from Allen 1976 
 #' (see http://www.ipm.ucdavis.edu/WEATHER/ddss_tbl.html)
 #' 
-#' @details This function allows you to calculate degree days using single/double sine wave and single/double triangulation approximation.
+#' @details This function allows you to calculate degree days using single or double sine wave and single or double triangulation approximation.
 #' @param Tmin Minimum temperature of the day.
 #' @param Tmax Maximum temperature of the day.
 #' @param LDT lower developmental threshold.
 #' @param UDT upper developmental threshold.
-#' @param method type of method being used
+#' @param method type of method being used. Current choices: "single.sine","double.sine", "single.triangulation" or "double.triangulation".
 #' @keywords degree days
 #' @export
 #' @examples

@@ -1,4 +1,4 @@
-#' Get temperature at a certain height 
+#' Estimate temperature at a specified height 
 #' 
 #'   
 #' @details Calculates temperature at a specified height

@@ -1,6 +1,6 @@
 #' Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components 
 #'
-#' @details This function allows you to calculate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components.
+#' @details This function allows you to estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components as in Parton and Logan (1981).
 #' @param Tmx maximum daily temperature (C)
 #' @param Tmn minimum daily temperature (C)
 #' @param ts time of sunrise (hour)
@@ -63,7 +63,7 @@ return(T)
 #' Diurnal temperature across hours
 #' From Campbell and Norman 1998 - Uses sine interpolation
 #'
-#' @details This function allows you to calculate temperature across hours.
+#' @details This function allows you to estimate temperature for a specified hour using the sine interpolation in Campbell and Norman (1998).
 #' @param Tmx maximum daily temperature in degree celsius 
 #' @param Tmn minimum daily temperature in degree celsius
 #' @param Hr hour for temperature estimate

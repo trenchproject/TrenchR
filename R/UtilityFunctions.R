@@ -1,9 +1,9 @@
-#' Calculate day of the passed date
+#' Calculate day of the year from a passed date
 #' 
 #'  
 #' @details Calculate day of the year
 #'
-#' @description This function allows you to calculate day of year from text specifying a date
+#' @description This function allows you to calculate day of year from text specifying a date.
 #' @param day day
 #' @param format date format following "POSIXlt" conventions 
 #' @return day number, for eg. 1 for January 1st

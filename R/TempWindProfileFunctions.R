@@ -28,7 +28,7 @@ surface_roughness<- function(u_r, zr){
  }
 
 
-#' Get wind speed at a specific height under neutral conditions.
+#' Estimate wind speed at a specific height under neutral conditions.
 #' 
 #' @details Calculates wind speed at a specified height under neutral conditions
 #' @description This function allows you to calculate wind speed (m/s) at a 
@@ -54,7 +54,7 @@ wind_speed_profile_neutral <- function(u_r, zr, z0, z) {
   }
 
 
-#' Get temperature at a specified height under neutral conditions
+#' Estimate temperature at a specified height under neutral conditions
 #' 
 #' @details Calculates temperature at a specified height under neutral conditions
 #' @description This function allows you to calculate temperature (C) at a specified height (m) within a 
@@ -79,10 +79,10 @@ air_temp_profile_neutral<-function(T_r, zr, z0, z, T_s){
 }
 
 
-#' Get wind speed profile (NicheMapR)
+#' Estimate wind speed profile as in NicheMapR.
 #' 
 #' @details Calculates wind speed at a specified height
-#' @description This function allows you to calculate wind speed (m/s) at a specified height (m).  
+#' @description This function allows you to estimate wind speed (m/s) at a specified height (m).  
 #' Estimates a single, unsegmented wind velocity using the MICRO routine from NicheMapR as described in Kearney and Porter 2016.
 #' Adapted from Kearney and Porter 2016. NicheMapR – an R package for biophysical modelling: the microclimate model
 #' Section 5. Vertical air temperature and wind speed profiles, p11
@@ -105,10 +105,10 @@ wind_speed_profile<- function(u_r,zr,z0,z){
   return(u_z)
   }
 
-#' Get air temperature profile 
+#' Estimate air temperature profile as in NicheMapR
 #' 
-#' @details Calculates temperature at a specified height
-#' @description This function allows you to calculate temperature (C) at a specified height (m).  
+#' @details Estimate temperature at a specified height
+#' @description This function allows you to estimate temperature (C) at a specified height (m).  
 #' Estimates a single, unsegmented temperature profile using the MICRO routine from 
 #' NicheMapR as described in Kearney and Porter 2016.
 #' 

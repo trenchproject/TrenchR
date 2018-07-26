@@ -54,13 +54,13 @@ estimate_radiation=function(doy, psi, tau, elev, rho=0.7){
 #' Estimate diurnal radiation 
 #' 
 #' 
-#' @details Estimate hourly solar radiation (W m^-2 per hour ) as a function of daily global solar radiation (in W m^-2 per day).
-#' @description Function to estimate hourly solar radiation (W m^-2 per hour ) as a function of daily global solar radiation (in W m^-2 per day).
+#' @details Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day).
+#' @description Function to estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day).
 #' Based on Tham et al. (2010, Estimation of hourly averaged solar irradiation: evaluation of models. Building Serv. Eng. Res. Technol. 31: 9-25) 
 #' and Al-Rawahi et al. (2011, Prediction of Hourly Solar Radiation on Horizontal and Inclined Surfaces for Muscat/Oman. 
 #' The Journal of Engineering Research 8:19-31). 
 #' 
-#' @param doy is the day of year(Julian ?)
+#' @param doy is the day of year
 #' @param solrad is solar radiation in W m^-2 per day
 #' @param hour is hour (0-24) 
 #' @param lon longitude in degrees
@@ -107,9 +107,9 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
 #' Estimate average monthly solar radiation
 #' 
 #' 
-#' @details Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information for input.
+#' @details Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information as input.
 #' @description Function to estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information
-#' for input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
+#' as input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
 #' # @source 
 #' 
 #' @param lat latitude in degrees 
