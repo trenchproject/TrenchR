@@ -9,8 +9,8 @@ Description: We aim to create an R package (TrenchR) encompassing resources
 Version: 0.0.0.9000
 Authors@R: c(
     person("Lauren", "Buckley", role = c("aut", "cre"), email = "lbuckley@uw.edu"),
-    person("Ofir", "Levy", role = c("aut","ctb")),
-    person("Aji", "John", role = c("aut","ctb"))
+    person("Aji", "John", role = c("aut","ctb")),
+    person("Ofir", "Levy", role = c("ctb"))
   )
 License: MIT + file LICENSE
 Date: 2017-01-01

@@ -1,3 +1,6 @@
+#' Estimate radiation(three parts - Direct, Diffused and Reflected)
+#' 
+#' 
 #' @details Function to estimate direct, diffuse, and reflected components of solar radiation in W m^-2.
 #' @description Function to estimate direct, diffuse, and reflected components of solar radiation in W m^-2 using the model in Campbell & Norman (1998). 
 #' 
@@ -6,6 +9,7 @@
 #' @param tau atmospheric transmissivity (proportion), which is ratio of global solar radiation at ground level to extra-terrestrial solar radiation
 #' @param elev is elevation (m)
 #' @param rho is the albedo as a proportion
+#' @return radiation components - direct, diffused and reflected (W/m^2)
 #' @keywords radiation
 #' @export
 #' @examples
@@ -15,8 +19,8 @@
 
 estimate_radiation=function(doy, psi, tau, elev, rho=0.7){
   
-  sigma=5.67*10^-8 # stefan-boltzman constant, W m^-2 K^-4
-  c_p=29.3 # specific heat of air, J/mol degrees K or C
+  sigma=5.67*10^-8 # Stefan-Boltzman constant, W m^-2 K^-4
+  c_p=29.3 # Specific heat of air, J/mol degrees K or C
   S_p0=1360 # extraterrestrial flux density, W/m^2 (p159)
   
   # Radiation
@@ -26,7 +30,6 @@ estimate_radiation=function(doy, psi, tau, elev, rho=0.7){
   m_a[which(psi>(80*pi/180))]=5.66
   
   # Flux densities
-  
   #S_p is direct radiation reaching earth's surface
   S_p=S_p0*tau^m_a *cos(psi)
   
@@ -48,24 +51,28 @@ estimate_radiation=function(doy, psi, tau, elev, rho=0.7){
   return( c(S_p, S_d, S_r))
 }
 
-#----------------------
-
-#' @details Estimate hourly solar radiation (W m^-2 per hour ) as a function of daily global solar radiation (in W m^-2 per day).
-#' @description Function to estimate hourly solar radiation (W m^-2 per hour ) as a function of daily global solar radiation (in W m^-2 per day). Based on Tham et al. (2010, Estimation of hourly averaged solar irradiation: evaluation of models. Building Serv. Eng. Res. Technol. 31: 9-25) and Al-Rawahi et al. (2011, Prediction of Hourly Solar Radiation on Horizontal and Inclined Surfaces for Muscat/Oman. The Journal of Engineering Research 8:19-31). ##CHECK UNITS
+#' Estimate diurnal radiation 
 #' 
-#' @param doy is the day of year
+#' 
+#' @details Estimate hourly solar radiation (W m^-2 per hour ) as a function of daily global solar radiation (in W m^-2 per day).
+#' @description Function to estimate hourly solar radiation (W m^-2 per hour ) as a function of daily global solar radiation (in W m^-2 per day).
+#' Based on Tham et al. (2010, Estimation of hourly averaged solar irradiation: evaluation of models. Building Serv. Eng. Res. Technol. 31: 9-25) 
+#' and Al-Rawahi et al. (2011, Prediction of Hourly Solar Radiation on Horizontal and Inclined Surfaces for Muscat/Oman. 
+#' The Journal of Engineering Research 8:19-31). 
+#' 
+#' @param doy is the day of year(Julian ?)
 #' @param solrad is solar radiation in W m^-2 per day
 #' @param hour is hour (0-24) 
 #' @param lon longitude in degrees
 #' @param lat latitude in degrees  
-#' @keywords radiation
+#' @return hourly solar radiation (W/m^2)
+#' @keywords diurnal radiation
 #' @export
 #' @examples
 #' \dontrun{
-#' diurnal_radiation_range(doy=112, solrad=500, hour=12, lon=-122.33, lat=47.61)
+#' diurnal_radiation_variation(doy=112, solrad=500, hour=12, lon=-122.33, lat=47.61)
 #'}
-
-diurnal_radiation_range=function(doy, solrad, hour, lon, lat){ 
+diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){ 
 
   #Calculate solar time
   rd=180/pi;  # factor to convert radians into degrees
@@ -95,22 +102,25 @@ diurnal_radiation_range=function(doy, solrad, hour, lon, lat){
   return(solrad_hour)
 }
 
-#----------------------
-library(RAtmosphere) #for sunrise and sunset function
-library(msm) #for rtnorm
 
+
+#' Estimate average monthly solar radiation
+#' 
+#' 
 #' @details Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information for input.
-#' @description Function to estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information for input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
+#' @description Function to estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information
+#' for input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
+#' # @source 
 #' 
 #' @param lat latitude in degrees 
 #' @param lon longitude in degrees
 #' @param doy is the day of year
 #' @param elev is elevation in m
-#' @param Temp is mean monthly temp in degree Celcius
-#' @param Hr is mean month relative humidity (%)
+#' @param Temp is mean monthly temp in degree Celsius
+#' @param Hr is mean month relative humidity (in percentage)
 #' @param P is total monthly precipitation (mm)
-#' 
-#' @keywords radiation
+#' @return average monthly solar radiation ( W/m^2)
+#' @keywords average monthly solar radiation
 #' @export
 #' @examples
 #' \dontrun{
@@ -119,6 +129,8 @@ library(msm) #for rtnorm
 
 monthly_solar_radiation= function(lat,lon,doy,elev,Temp,Hr,P){
 
+  rd=180/pi;  # factor to convert radians into degrees
+  
   #functions to calculate sin and cos for angles in degrees
   cos.deg= function(deg){ 
     rad= deg *pi/180
@@ -140,7 +152,7 @@ monthly_solar_radiation= function(lat,lon,doy,elev,Temp,Hr,P){
   D_s = asin(0.39785*sin(4.868961 + 0.017203*doy+0.033446*sin(6.224111 + 0.017202*doy)))      
   
   #hs the sunrise/sunset hour angle (degree)
-  #Keith and Kreider 1978
+  #Keith and Kreider 1978  
   h_s = acos(-tan(lat/rd)*tan(D_s))*180/pi
   
   #convert solar declination to degrees
@@ -175,8 +187,12 @@ monthly_solar_radiation= function(lat,lon,doy,elev,Temp,Hr,P){
   h = (t- 12)*15 
   
   #E_sm: mean monthly solar altitude angle
-  #calculated by dividing the monthly integral of hourly estimates of solar elevation by the number of hours in a month when the sun is above the horizon
-  Trise.set= suncalc(doy, Lat = lat, Long = lon, UTC = FALSE)
+  #calculated by dividing the monthly integral of hourly estimates of solar elevation by the
+  #number of hours in a month when the sun is above the horizon
+  #TODO Validate UTC  requirement
+  #Trise.set= suncalc(doy, Lat = lat, Long = lon, UTC = FALSE)
+  # Fix issue Unused argument UTC
+  Trise.set= suncalc(doy, Lat = lat, Long = lon)
   daylength= Trise.set$sunset - Trise.set$sunrise
   #E_s: solar elevation (in degrees)
   E_s = asin( sin.deg(lat)*sin.deg(D_s) + cos.deg(lat)*cos.deg(D_s)*cos.deg(h) )*rd
@@ -189,7 +205,7 @@ monthly_solar_radiation= function(lat,lon,doy,elev,Temp,Hr,P){
   #Solar radiation as a function of site elevation
   Ra=R + ((R_0 + 1)-R)*(1-exp(-k/sin.deg(E_sm)*(elev-274)/274))
   
-  return(Ra*0.4845) #convert to W/m2
+  return(Ra*0.4845) #convert to W/m^2
 }
 
 

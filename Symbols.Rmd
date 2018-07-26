@@ -1,0 +1,25 @@
+---
+title: "Symbols"
+author: "Aji John"
+date: "5/29/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Table below lists all the sysmbols which are used by TrenchR functions
+
+
+| Symbol        | Description           | Comments  |
+| ------------- |:----------------------------------------------------:| ---------------------:|
+| A      | surface or coss-sectional area(m<sup>2</sup>); subscripts *i*, 1,2, I, 4. 5 for surface area receiving porticular streams of radiaition)  a constant in the respiration-temperature equation(dimensionless); activation energy of reacting molecules in chemical reactions. |  |
+| A<sub>i</sub>     |  increment of surface area exposed to a particular radiation source (m<sup>2</sup>) (subscripts: a. atmospheric radiation; g. ground radiation; S, solar; s, skylight; rS, rreflected solar;rs, reilectcd skylight) |
+| A<sub>s</sub> | animal surface area in contact with the ground (m<sup>2</sup>)     |   |
+| A<sub>p</sub> | projected area (m<sup>2</sup>) (subscripts: c, cylinder-. s. sphere)   |     |
+| A<sub>e</sub> | effective emitting area for thermal radiation from an animal surface (m<sup>2</sup>)    |     |
+| A<sub>i</sub> | coefficients in Fourier series expression of environmental temperature &deg;C)   |    |
+| a | radius of the earth (m): acceleration in (ms<sup>-2</sup>); absorptance (decimal fraction); altitude angle of the sun (degrees)(subscripts: s, for normal to a slope; c ,for the axis of a cylinder).  |    |
+| a<sub>i</sub> | absorptance of a surface to a partirular source i of incident radiation(decimal fraction)(subscript 1,2,3,4,5 for direct solar, skylight, reflected sunlight , atmospheric , and ground radiation respectively)|    |
+

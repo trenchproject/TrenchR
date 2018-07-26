@@ -1,4 +1,4 @@
-#' Calculate Operative Temperature of Lizard using model by Fei et al.
+#' Calculate body temperature(Operative Temperature) of Lizard using model by Fei et al.
 #' 
 #' [1] T. Fei, A. K. Skidmore, V. Venus, T. Wang, M. Schlerf, B. Toxopeus, 
 #' S. van Overjijk, M. Bian, and Y. Liu, “A body temperature model for 
@@ -17,11 +17,11 @@
 #' @export 
 #' @examples
 #' \dontrun{
-#' calculate_To(254, 265, 267, 15, 307,  0)
+#' Tb_Fei(254, 265, 267, 15, 307,  0)
 #' }
 #' 
 
-calculate_To <- function(TAH, Tsurface, Tair, SWDOWN, GLW, shade){
+Tb_Fei <- function(TAH, Tsurface, Tair, SWDOWN, GLW, shade){
   
   # ---- Start Constants
   alpha_L = 0.965 # thermal absoptivity, Bartlett & Gates 1967

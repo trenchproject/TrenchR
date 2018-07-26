@@ -14,10 +14,10 @@
 #' @export
 #' @examples 
 #' \dontrun{
-#' estimate_Te_CampbellNorman(Ta=303, Rabs=823, emissivity=0.96, c_p=29.3, d=0.17, u=1)
+#' Tb_CN(Ta=303, Rabs=823, emissivity=0.96, c_p=29.3, d=0.17, u=1)
 #'}
 #' 
-estimate_Te_CampbellNorman=function(Ta, Rabs, emissivity=0.96, c_p=29.3, d, u){
+Tb_CN=function(Ta, Rabs, emissivity=0.96, c_p=29.3, d, u){
     
   #Stefan-Boltzmann constant
   sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
@@ -51,10 +51,10 @@ estimate_Te_CampbellNorman=function(Ta, Rabs, emissivity=0.96, c_p=29.3, d, u){
 #' @export
 #' @examples 
 #' \dontrun{
-#' estimate_Qnet_Gates(Qabs=500, Qconv=100, Qcond=100, Qmet=10, Qevap=5)
+#' Qnet_Gates(Qabs=500, Qconv=100, Qcond=100, Qmet=10, Qevap=5)
 #'}
 #' 
-estimate_Qnet_Gates=function(Qabs, Qconv, Qcond, Qmet, Qevap){
+Qnet_Gates=function(Qabs, Qconv, Qcond, Qmet, Qevap){
   
   Qnet= Qabs -Qemit +Qconv +Qcond +Qmet -Qevap
  
@@ -84,10 +84,10 @@ estimate_Qnet_Gates=function(Qabs, Qconv, Qcond, Qmet, Qevap){
 #' @export
 #' @examples 
 #' \dontrun{
-#' estimate_Te_Gates(As=1, d=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, Ts=303, Ta=310, Rabs=800, emissivity=0.95, h_L=10, ef=1.3, K=0.5)
+#' Tb_Gates(As=1, d=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, Ts=303, Ta=310, Rabs=800, emissivity=0.95, h_L=10, ef=1.3, K=0.5)
 #'}
 #' 
-estimate_Te_Gates=function(As, d, psa_dir, psa_ref, psa_air, psa_g, Ts, Ta, Rabs, emissivity, h_L,ef=1.3, K){
+Tb_Gates=function(As, d, psa_dir, psa_ref, psa_air, psa_g, Ts, Ta, Rabs, emissivity, h_L,ef=1.3, K){
   
     #Stefan-Boltzmann constant
     sigma= 5.673*10^(-8) #W m^(-2) K^(-4)

@@ -28,7 +28,7 @@
 #gamma= 2.2 #decay parameter for rate of t change from sunset to tn
 
 #PAtterson 1981 function from Wann 1985
-Thour.sineexp=function(Tmx, Tmn, Hr, tr, ts, alpha=2.59, beta= 1.55, gamma=2.2){
+diurnal_temp_variation_sineexp=function(Tmx, Tmn, Hr, tr, ts, alpha=2.59, beta= 1.55, gamma=2.2){
 #Tmx= max temperature
 #Tmn= min temperature
 #Hr= hour of measurement (0-24)
@@ -71,11 +71,11 @@ return(T)
 #' @export
 #' @examples
 #' \dontrun{
-#' Thour.sine()
+#' diurnal_temp_variation_sine()
 #' }
 
 
-Thour.sine=function(Tmx, Tmn, Hr){
+diurnal_temp_variation_sine=function(Tmx, Tmn, Hr){
   #Tmx= max temperature
   #Tmn= min temperature
   

@@ -9,7 +9,7 @@ heat_transfer_coefficient_lizard(A_v, orientation = "parallel")
 \arguments{
 \item{A_v}{Air velocity m/s.}
 
-\item{orientation}{Which class of organism, current choice: lizard}
+\item{orientation}{parallel or transverse}
 }
 \value{
 heat transfer coefficient(W m^-2 K^-1)
@@ -18,7 +18,7 @@ heat transfer coefficient(W m^-2 K^-1)
 Calculate heat transfer coefficient for lizard
 }
 \details{
-This function allows you get heat transfer coefficient for Lizard(Based on Porter et al. 1973)
+This function allows you estimate the heat transfer coefficient for a lizard(Based on Porter et al. 1973)
 }
 \examples{
 \dontrun{
