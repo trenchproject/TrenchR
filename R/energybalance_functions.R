@@ -291,7 +291,7 @@ thermal_radiation_emitted<-function(emissivity=0.96, As, psa_dir, psa_ref, Tb, T
 #' @param rho_s saturation water vapor density at skin surface (kg/m^3) (needed if amphibian)
 #' @param rho_a saturation water vapor density in ambient air (kg/m^3) (needed if amphibian)
 #' @param RH relative humidity (0-1) (needed if amphibian)
-#' @param h_C Convective heat transfer coefficient (W m^-2 C^-1) (needed if amphibian)
+#' @param h_C convective heat transfer coefficient (W m^-2 C^-1) (needed if amphibian)
 #' @param r_i internal (cutaneous) resistance to vapor transport (s/m) (needed if amphibian)
 #' @return evaporative heat loss (W)
 #' @keywords evaporative heat loss
@@ -304,7 +304,7 @@ thermal_radiation_emitted<-function(emissivity=0.96, As, psa_dir, psa_ref, Tb, T
 #' 
 
 evaporative_heat_loss<-function(As, Tb, taxa, rho_s=NA, rho_a=NA, RH=NA, h_c=NA, r_i=NA){
-  #TODO LOOK INTO PARAMETERIZATIONS? FIX UNITS.
+  #TODO FIX UNITS.
   
   #Porter et al. 1973 in Gates Biophysical ecology
   if(taxa=="lizard"){ 
@@ -342,6 +342,47 @@ evaporative_heat_loss<-function(As, Tb, taxa, rho_s=NA, rho_a=NA, RH=NA, h_c=NA,
   return(E)
 }
 
+#' Approximate saturation water vapor pressure
+#'
+#' 
+#' @details Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C (Rosenberg 1974 in Spotila et al. 1992, see also NichMapR WETAIR and DRYAIR functions from Tracy et al. 1980).
+#' @param Ta air temperature (C)
+#' @return Saturation water vapor pressure (Pa)
+#' @keywords Saturation water vapor pressure
+#' @export
+#' @examples
+#' \dontrun{
+#' saturation_water_vapor_pressure(Ta=20)
+#' }
+#' 
+
+saturation_water_vapor_pressure<-function(Ta){
+  e_s= 10^(0.02604*Ta+2.82488)
+  
+  return(e_s)
+}
+
+#' Calculate external resistance to water vapor transfer
+#'
+#' 
+#' @details This function allows you to estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport (Spotila et al. 1992).
+#' @param h_c heat transfer (convection) coefficient (W m^-2 C^-1)
+#' @param rhocp aggregate parameter (J m^-3 C^-1) that is the product of the density of air (kg m^-3)and the specific heat of air at constant pressure (J kg^-1 C^-1). Default of 12000 J m^-3 C^-1 is commonly assumed.
+#' @return external resistance to water vapor transfer (s m^-1)
+#' @keywords external resistance to water vapor transfer
+#' @export
+#' @examples
+#' \dontrun{
+#' external_resistance_to_water_vapor_transfer(h_c=20)
+#' }
+#' 
+
+external_resistance_to_water_vapor_transfer<-function(h_c, rhocp=12000){
+ 
+  r_e= rhocp / h_c
+
+    return(r_e)
+}
 
 #' Calculate metabolism as a function of mass
 #' 
@@ -418,22 +459,221 @@ mr_from_mass_temp<-function(mass,Tb, taxa){
   return(mr)
 }
 
-#==================================
-#REPLACE WITH ABOVE?
+#' Calculate actual vapor pressure from dewpoint temperature
+#'
+#' 
+#' @details Calculate actual vapor pressure from dewpoint temperature based on Stull 2000
+#' @param Tdewpoint dewpoint temperature (C)
+#' @return actual vapor pressure (kPa)
+#' @keywords actual vapor pressure
+#' @export
+#' @author Eric Riddell
+#' @examples
+#' \dontrun{
+#' calculate_actual_vapor_pressure(Tdewpoint=20)
+#' }
+#' 
 
-solar_radiation_absorbed<-function(sa,psa, solar,thermal_abs=0.95){
+calculate_actual_vapor_pressure<-function(Tdewpoint){
   
-  ## TODO: Add function with absorbances for other taxa, Many values in Gates Biophysical ecology
+  ea = ((2.71828182845904^(((1.0/273.0)-(1.0/(Tdewpoint + 273.15)))*5422.9939))*0.611)
   
-  #projected area for direct and scattered solar radiation
-  A_p = psa*sa 
-  
-  #solar radiation
-  eb_solar_radiation = thermal_abs*A_p*solar
-  
-  return(eb_solar_radiation)
+  return(ea)
 }
 
-# Heat loss because of evaporation ?
+#' Calculate saturation vapor pressure
+#'
+#' 
+#' @details Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation (Stull 2000)
+#' @param Ta air temperature (K)
+#' @return saturation vapor pressure (kPa)
+#' @keywords saturation vapor pressure
+#' @export
+#' @author Eric Riddell
+#' @examples
+#' \dontrun{
+#' calculate_saturation_vapor_pressure(Ta=293)
+#' }
+#' 
 
+calculate_saturation_vapor_pressure<-function(Ta){
+  
+  #constants
+  Rv = 461.5 #J*K^-1*kg^-1, ideal gas constant for water vapor
+  L = 2.5*10^6 #J per kg, latent heat of vaporization
+  e_o= 0.611 #kPa
+  
+  es = e_o*exp((L/Rv)*((1./273.15)-(1./Ta))) 
+  
+  return(es)
+}
+
+#' Estimate the boundary layer resistance
+#' 
+#' @details This function allows you to estimate boundary layer resistance under free convection. Based on the function in Riddell et al. 2017 
+#' @param Ta air temperature (K)
+#' @param e_s saturation vapor pressure (kPa)
+#' @param e_a actual vapor pressure (kPa)
+#' @param elev elevation (m)
+#' @param D characteristic dimension (e.g., body diameter) (m), ##diameter = 0.0016*log(mass) + 0.0061 for mass(g) #empirical formula for salamander diameter, Riddell et al. 2017
+#' @param u is wind speed in m/s, if not provided assume free convection; if provided, use forced convection if appropriate 
+#' @return boundary layer resistance (s cm^-1) 
+#' @keywords boundary layer resistance
+#' @export
+#' @author Eric Riddell
+#' @examples
+#' \dontrun{
+#' calculate_boundary_layer_resistance(Ta=293, e_s=2.4, e_a=2.5, elev=500, D=0.007, u=2)
+#' }
+#' 
+
+calculate_boundary_layer_resistance<-function(Ta, e_s, e_a, elev, D, u=NA){
+  
+  #constant
+  gravity = 9.8 #meters per second
+  
+  air_pressure = (101325.*(1.-(2.2569*10^-5)*elev)^5.2553)
+  air_density = air_pressure/(287.04*Ta)
+  dynamic_viscosity = (1.8325*10^-5)*((296.16+120.)/(Ta+120.))*((Ta/296.16)^1.5) #Tracy et al. 2010
+  kinematic_viscosity = dynamic_viscosity/air_density
+  T_surface = (Ta)*(1.+0.38*((e_s*1000.)/air_pressure)) #organism soil temperature in steady state heat balance
+  T_air = (Ta)*(1.+0.38*((e_a*1000.)/air_pressure)) #air temperature in steady state heat balance
+  coef_thermal_expansion = 1.0/Ta
+  
+  #Grashof and Nusselt numbers
+  Grashof = (coef_thermal_expansion*gravity*(D^3)*(abs(T_surface-T_air)))/(kinematic_viscosity^2)
+  Nusselt = 0.48*((Grashof)^0.25)
+  
+  thermal_conductivity = (2.4525*10^-2)+((7.038*10^-5)*(Ta-273.15))
+  mixing_ratio = (0.6257*(e_a*1000))/(air_pressure-(1.006*(e_a*1000)))
+ 
+  #free convection
+  hc = (Nusselt*thermal_conductivity)/D #free convective heat transfer coefficient
+  
+  if(!is.na(u)){ #check if wind speed is provided
+  #estimate Reynolds number- ratio of interval viscous forces
+  Re= u*D / kinematic_viscosity
+  
+  #forced convection
+  #use if Gr< 16 * Re^2
+  if( Grashof <= 16*Re^2){
+  hc= 0.923 * (u^0.333 * D^(-0.666))
+  }
+  } #end check if windspeed is provided
+    
+  #calculate boundary layer resistance 
+  specific_heat = (1004.84+(1846.4*mixing_ratio))/(1+mixing_ratio)
+  rb = 0.93*((specific_heat*air_density)/hc)/100
+  
+  return(rb)
+}
+
+#' Calculate humid operative temperature
+#'
+#' 
+#' @details This function allows you to calculate humid operative temperature (adaptation of Campbell and Norman 1998).
+#' @param r_i internal (skin) resistance (s cm^-1)
+#' @param r_b boundary layer resistance (s cm^-1)
+#' @param diameter body diameter (m), ##diameter = 0.0016*log(mass) + 0.0061 for mass(g) #empirical formula for diameter, Riddell et al. 2017
+#' @param Ta ambient temperature (C)
+#' @param elev elevation (m)
+#' @param e_s saturation vapor pressure (kPa)
+#' @param e_a actual vapor pressure (kPa)
+#' @param Rabs Solar and thermal radiation absorbed (W)
+#' @param emissivity of salamander skin, default emissivity=0.96 
+#' @param radiative_conductance
+#' 
+#' @return humid operative temperature (C)
+#' @keywords humid operative temperature
+#' @export
+#' @author Eric Riddell
+#' @examples
+#' \dontrun{
+#' Tb_salamander_humid(r_i=4,r_b=1,diameter=0.007,T=20,elev=500,e_a=2.5,e_s=2.3,Rabs=400, emissivity=0.96)
+#' }
+#' 
+
+Tb_salamander_humid<-function(r_i,r_b,diameter,Ta,elev,e_a, e_s,Rabs, emissivity=0.96){
+  
+  #Stefan-Boltzmann constant
+  sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
+  
+  vpd= e_a - e_s #vapor pressure deficit
+  
+  #radiative conductance function, Campbell and Norman 1998
+  radiative_conductance= (4*(5.670373*10^-8)*(Ta+273.15)^3)/29.3
+ 
+  gamma_naut = 0.000666
+  a = (r_i*100.0)/41.4
+  gva = (r_b*100)/41.4
+  rad = (4*5670373*10^(-8)*(Ta+273.15)*3.)/29.3
+  gamma = gamma_naut*((a+(1./gva))/((1./rad)+(1./gva)))
+  s = ((((17.502*240.97))*0.611*exp((17.502*Ta)/(Ta+240.97)))/(240.97+Ta)^2)/(101.3*exp(-elev/8200))
+  Tbh = Ta+(gamma/(gamma+s))*(((Rabs - (emissivity*sigma*((Ta+273.15)^4)))/(29.3*(radiative_conductance+gva)))-(vpd/(gamma*(101.3*exp(-elev/8200)))))
+  
+  return(Tbh)
+}
+
+### TODO check temperatures. Ta, Tg?
+#' Estimate absorbed longwave (thermal) radiation
+#'
+#' 
+#' @details This function allows you to estimate longwave (thermal) radiation (W) absorbed from the sky and the ground (adaptation of Campbell and Norman 1998).
+#' @param Ta air temperature (C)
+#' @param emissivity_ground emmisitivity (proportion) for more soil types (Campbell and Norman 1998), default value of 0.97
+#' @param abs_longwave absorptance (proportion) of organism to longwave radiation (Bartlett and Gates 1967, Buckley 2008), default value of 0.965
+#' 
+#' @return thermal radiation absorbed
+#' @keywords longwave (thermal) radiation absorbed
+#' @export
+#' @author Eric Riddell
+#' @examples
+#' \dontrun{
+#' thermal_radiation_absorbed(Ta=20, emissivity_ground=0.97, abs_longwave=0.965)
+#' }
+#' 
+
+thermal_radiation_absorbed<-function(Ta, emissivity_ground=0.97, abs_longwave=0.965){
+  
+  #Stefan-Boltzmann constant
+  sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
+  
+  'longwave radiation from sky function, Campbell and Norman 1998'
+  Rlongwave_sky= 53.1*10^-14*(Ta+273.15)^6.
+  
+  'longwave radiation from ground function, Campbell and Norman 1998'
+  Rlongwave_ground= emissivity_ground*sigma*(Ta+273.15)^4.
+  
+  'radiation absorbed function, adapted from Campbell and Norman 1998'
+  Rlongwave= 0.5*abs_longwave*(Rlongwave_sky+Rlongwave_ground)
+  
+  return(Rlongwave)
+}
+
+
+#' Statistical approximation of soil temperature
+#'
+#' 
+#' @details This function allows you to estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from Campbell and Norman 1998).
+#' @param Ts_max daily maximum soil surface temperature (C)
+#' @param Ts_min daily minimum soil surface temperature (C)
+#' @param depth depth (cm) ???
+#' 
+#' @return soil temperature (C)
+#' @keywords soil temperature
+#' @export
+#' @author Eric Riddell
+#' @examples
+#' \dontrun{
+#' Tsoil(Ts_max=30, Ts_min=15, hour=12, depth=5)
+#' }
+#' 
+
+Tsoil<-function(Ts_max, Ts_min, hour, depth){
+ 
+  offset= ifelse(hour %in% c(0,1,2,3), -13, 11)
+  Tsoil= ((Ts_max+Ts_min)/2.0)+((Ts_max-Ts_min)/2.0)*(2.71**(-depth/5.238))*sin((3.14/12.)*(hour-offset)-depth/5.238)
+  
+  return(Tsoil)
+}
 
