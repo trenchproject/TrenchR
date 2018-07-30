@@ -9,17 +9,37 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Table below lists all the sysmbols which are used by TrenchR functions
+Table below lists all the symbols which are used by TrenchR functions
 
 
 | Symbol        | Description           | Comments  |
 | ------------- |:----------------------------------------------------:| ---------------------:|
 | A      | surface or coss-sectional area(m<sup>2</sup>); subscripts *i*, 1,2, I, 4. 5 for surface area receiving porticular streams of radiaition)  a constant in the respiration-temperature equation(dimensionless); activation energy of reacting molecules in chemical reactions. |  |
-| A<sub>i</sub>     |  increment of surface area exposed to a particular radiation source (m<sup>2</sup>) (subscripts: a. atmospheric radiation; g. ground radiation; S, solar; s, skylight; rS, rreflected solar;rs, reilectcd skylight) |
-| A<sub>s</sub> | animal surface area in contact with the ground (m<sup>2</sup>)     |   |
+| A<sub>i</sub>     |  increment of surface area exposed to a particular radiation source (m<sup>2</sup>) (subscripts: a. atmospheric radiation; g. ground radiation; S, solar; s, skylight; rS, reflected solar;rs, reilectcd skylight) |
+| A<sub>g</sub> | animal surface area in contact with the ground (m<sup>2</sup>)     |   |
 | A<sub>p</sub> | projected area (m<sup>2</sup>) (subscripts: c, cylinder-. s. sphere)   |     |
-| A<sub>e</sub> | effective emitting area for thermal radiation from an animal surface (m<sup>2</sup>)    |     |
-| A<sub>i</sub> | coefficients in Fourier series expression of environmental temperature &deg;C)   |    |
+| A<sub>r</sub> | effective emitting area for thermal radiation from an animal surface (m<sup>2</sup>)    |     |
+| A<sub>o</sub>,A<sub>j</sub> | coefficients in Fourier series expression of environmental temperature &deg;C)   |    |
 | a | radius of the earth (m): acceleration in (ms<sup>-2</sup>); absorptance (decimal fraction); altitude angle of the sun (degrees)(subscripts: s, for normal to a slope; c ,for the axis of a cylinder).  |    |
-| a<sub>i</sub> | absorptance of a surface to a partirular source i of incident radiation(decimal fraction)(subscript 1,2,3,4,5 for direct solar, skylight, reflected sunlight , atmospheric , and ground radiation respectively)|    |
-
+| a<sub>i</sub> | absorptance of a surface to a particular source i of incident radiation(decimal fraction)(subscript 1,2,3,4,5 for direct solar, skylight, reflected sunlight , atmospheric , and ground radiation respectively)|    |
+| d a<sub>1</sub>,d a<sub>1</sub> |absorptance of a downward- or upward-facing surface to direct sunlight (decimal fraction).|    |
+| lambda a<sub>i</sub>,a<sub>lambda</sub> |monochromatic absorption, coefficient decimal fraction.|    |
+| <i>B</i> |radiance (W m^2 sr^-1) (subscript o. in direction of u normal).|    | 
+| B |proportionality constant in chemical rate equation,|    |
+| B<sub>j</sub> |coefficients in Fourier series expression of environmental temperature (&deg;C).|    |
+| BR |breathing rate (breaths min ' or breaths s ').|    |
+| C |quantity of heat exchange by convection IW m s); heal capacity, ( J m-s 'C '): carbon dioxide concentration (mmolc m s) (subscripts: a, in the air; c, chloroplasts; i, inter-cellular air space; w, sites of respiration).|    |
+| C |monthly average amount of sky covered by clouds (decimal fraction).|    |
+| a<sub>i</sub> |velocity of light tm s ').|    |
+| a<sub>i</sub> |specific heat of blood (J kg ' 'C ').|    |
+| a<sub>i</sub> |specific heal at constant pressure (J kg i C v h|    |
+| a<sub>i</sub> |a constant in the light response of photosynthesis.|    |
+| a<sub>i</sub> |a constant in the temperature function for photosynthesis,|    |
+| a<sub>i</sub> |characteristic dimension (mk diffusion coefficient Inp s ').|    |
+| a<sub>i</sub> |average daily diffuse radiation incident on a horizontal sur- face(.l m * day ').|    |
+| a<sub>i</sub> |fraction of total active time spent in Ihe hnt nr cold micro- climate parts, res pcctively, of a duty cycle when shuttling (s).|    |
+| a<sub>i</sub> |instantaneous and average distance between earth und sun (m).|    |
+| a<sub>i</sub> |thickness of material (m) (subscript f for fat); diameter of ii cylinder (m).|    |
+| a<sub>i</sub> |instantaneous and average hourly di(Tuse radiation incident on a horizontal surface at Ihc ground (W m '*) (subscript monochromatic intensity W m-i nm-').|    |
+| a<sub>i</sub> |evaporation rate (kg m~ s ') (subscripts b,by respiration; r, fmm skin or pelage): energy (J) elastic modulus(kg m '): ap- parent activation energy (J mole-'); internal energy of i< molecule (J mole-') (subscripts: e, electronic; v, vibrational: r, rotational); g.|    |
+| a<sub>i</sub> |flux density per unit nf wavelength (W m * nm ').|    |
