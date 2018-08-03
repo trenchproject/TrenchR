@@ -4,7 +4,7 @@ warnings_are_errors: false
 cache: packages
 
 r_packages:
-  - devtools
+  - devtools,RAtmosphere
   
 before_install:
   - Rscript -e 'install.packages("RAtmosphere")'
