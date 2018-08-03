@@ -2,7 +2,7 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{day_of_year}
 \alias{day_of_year}
-\title{Calculate day of the passed date}
+\title{Calculate day of the year from a passed date}
 \usage{
 day_of_year(day, format = "\%Y-\%m-\%d")
 }
@@ -15,7 +15,7 @@ day_of_year(day, format = "\%Y-\%m-\%d")
 day number, for eg. 1 for January 1st
 }
 \description{
-This function allows you to calculate day of year from text specifying a date
+This function allows you to calculate day of year from text specifying a date.
 }
 \details{
 Calculate day of the year

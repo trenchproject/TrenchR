@@ -31,7 +31,7 @@ emitted thermal radiation (W)
 Calculate emitted thermal radiation
 }
 \details{
-This function allows you to estimate thermal radiation (W) emitted by the surface of an animal. Follows Gates Biophysical Ecology and Spotila et al. 1992.
+This function allows you to estimate thermal radiation (W) emitted by the surface of an animal. Follows Gates' Biophysical Ecology and Spotila et al. 1992.
 }
 \examples{
 \dontrun{

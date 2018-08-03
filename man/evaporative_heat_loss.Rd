@@ -24,7 +24,7 @@ evaporative_heat_loss(As, Tb, taxa, rho_s = NA, rho_a = NA, RH = NA,
 
 \item{emissivity}{longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)}
 
-\item{h_C}{Convective heat transfer coefficient (W m^-2 C^-1) (needed if amphibian)}
+\item{h_C}{convective heat transfer coefficient (W m^-2 C^-1) (needed if amphibian)}
 }
 \value{
 evaporative heat loss (W)
@@ -33,7 +33,7 @@ evaporative heat loss (W)
 Calculate heat loss associated with evaporative water loss
 }
 \details{
-This function allows you to estimate heat loss associated with evaporative water loss by an ampbian (Spotila et al. 1992) or lizard (Empirical measurements in Porter et a. 1973).
+This function allows you to estimate heat loss associated with evaporative water loss by an amphibian (Spotila et al. 1992) or lizard (based on empirical measurements in Porter et a. 1973).
 }
 \examples{
 \dontrun{

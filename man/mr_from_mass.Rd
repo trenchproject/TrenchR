@@ -9,7 +9,7 @@ mr_from_mass(mass, taxa = "reptile")
 \arguments{
 \item{mass}{Mass in grams.}
 
-\item{taxa}{Which taxa. options: reptile, bird, mammal}
+\item{taxa}{Which taxa. Current options: reptile, bird, mammal}
 }
 \value{
 metabolim (W)
@@ -18,7 +18,7 @@ metabolim (W)
 Calculate metabolism as a function of mass
 }
 \details{
-This function allows you to estiamte field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from Nagy et al. 1999.
+This function allows you to estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from Nagy et al. 1999.
 }
 \examples{
 \dontrun{

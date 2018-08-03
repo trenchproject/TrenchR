@@ -2,7 +2,7 @@
 % Please edit documentation in R/TempWindProfileFunctions.R
 \name{air_temp_profile_neutral}
 \alias{air_temp_profile_neutral}
-\title{Get temperature at a specified height under neutral conditions}
+\title{Estimate temperature at a specified height under neutral conditions}
 \usage{
 air_temp_profile_neutral(T_r, zr, z0, z, T_s)
 }

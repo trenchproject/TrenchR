@@ -22,7 +22,7 @@ silhouette area as a proportion
 Calculate silhouette area
 }
 \details{
-This function allows you to estiamte projected (silhouette) area as a function of zenith angle
+This function allows you to estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of zenith angle.
 }
 \examples{
 \dontrun{

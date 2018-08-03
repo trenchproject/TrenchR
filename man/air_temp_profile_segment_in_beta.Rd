@@ -2,7 +2,7 @@
 % Please edit documentation in R/BetaFunctions.R
 \name{air_temp_profile_segment_in_beta}
 \alias{air_temp_profile_segment_in_beta}
-\title{Get temperature at a certain height}
+\title{Estimate temperature at a specified height}
 \usage{
 air_temp_profile_segment_in_beta(T_r, u_r, zr, z0, z, T_s)
 }

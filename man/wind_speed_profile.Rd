@@ -2,7 +2,7 @@
 % Please edit documentation in R/TempWindProfileFunctions.R
 \name{wind_speed_profile}
 \alias{wind_speed_profile}
-\title{Get wind speed profile (NicheMapR)}
+\title{Estimate wind speed profile as in NicheMapR.}
 \usage{
 wind_speed_profile(u_r, zr, z0, z)
 }
@@ -16,7 +16,7 @@ wind_speed_profile(u_r, zr, z0, z)
 \item{z}{is height to scale to in m.}
 }
 \description{
-This function allows you to calculate wind speed (m/s) at a specified height (m).  
+This function allows you to estimate wind speed (m/s) at a specified height (m).  
 Estimates a single, unsegmented wind velocity using the MICRO routine from NicheMapR as described in Kearney and Porter 2016.
 Adapted from Kearney and Porter 2016. NicheMapR – an R package for biophysical modelling: the microclimate model
 Section 5. Vertical air temperature and wind speed profiles, p11
