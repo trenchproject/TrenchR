@@ -5,10 +5,6 @@ cache: packages
 
 r_packages:
   - devtools
-  - RAtmosphere
-  
-before_install:
-  - Rscript -e 'install.packages("RAtmosphere")'
   
 after_success:
 - Rscript -e 'covr::codecov()'
