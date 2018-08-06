@@ -14,32 +14,37 @@ Table below lists all the symbols which are used by TrenchR functions
 
 | Symbol        | Description           | Comments  |
 | ------------- |:----------------------------------------------------:| ---------------------:|
-| A      | surface or coss-sectional area(m<sup>2</sup>); subscripts *i*, 1,2, I, 4. 5 for surface area receiving porticular streams of radiaition)  a constant in the respiration-temperature equation(dimensionless); activation energy of reacting molecules in chemical reactions. |  |
-| A<sub>i</sub>     |  increment of surface area exposed to a particular radiation source (m<sup>2</sup>) (subscripts: a. atmospheric radiation; g. ground radiation; S, solar; s, skylight; rS, reflected solar;rs, reilectcd skylight) |
-| A<sub>g</sub> | animal surface area in contact with the ground (m<sup>2</sup>)     |   |
-| A<sub>p</sub> | projected area (m<sup>2</sup>) (subscripts: c, cylinder-. s. sphere)   |     |
-| A<sub>r</sub> | effective emitting area for thermal radiation from an animal surface (m<sup>2</sup>)    |     |
-| A<sub>o</sub>,A<sub>j</sub> | coefficients in Fourier series expression of environmental temperature &deg;C)   |    |
-| a | radius of the earth (m): acceleration in (ms<sup>-2</sup>); absorptance (decimal fraction); altitude angle of the sun (degrees)(subscripts: s, for normal to a slope; c ,for the axis of a cylinder).  |    |
-| a<sub>i</sub> | absorptance of a surface to a particular source i of incident radiation(decimal fraction)(subscript 1,2,3,4,5 for direct solar, skylight, reflected sunlight , atmospheric , and ground radiation respectively)|    |
-| d a<sub>1</sub>,d a<sub>1</sub> |absorptance of a downward- or upward-facing surface to direct sunlight (decimal fraction).|    |
-| lambda a<sub>i</sub>,a<sub>lambda</sub> |monochromatic absorption, coefficient decimal fraction.|    |
-| <i>B</i> |radiance (W m^2 sr^-1) (subscript o. in direction of u normal).|    | 
-| B |proportionality constant in chemical rate equation,|    |
-| B<sub>j</sub> |coefficients in Fourier series expression of environmental temperature (&deg;C).|    |
-| BR |breathing rate (breaths min ' or breaths s ').|    |
-| C |quantity of heat exchange by convection IW m s); heal capacity, ( J m-s 'C '): carbon dioxide concentration (mmolc m s) (subscripts: a, in the air; c, chloroplasts; i, inter-cellular air space; w, sites of respiration).|    |
-| C |monthly average amount of sky covered by clouds (decimal fraction).|    |
-| a<sub>i</sub> |velocity of light tm s ').|    |
-| a<sub>i</sub> |specific heat of blood (J kg ' 'C ').|    |
-| a<sub>i</sub> |specific heal at constant pressure (J kg i C v h|    |
-| a<sub>i</sub> |a constant in the light response of photosynthesis.|    |
-| a<sub>i</sub> |a constant in the temperature function for photosynthesis,|    |
-| a<sub>i</sub> |characteristic dimension (mk diffusion coefficient Inp s ').|    |
-| a<sub>i</sub> |average daily diffuse radiation incident on a horizontal sur- face(.l m * day ').|    |
-| a<sub>i</sub> |fraction of total active time spent in Ihe hnt nr cold micro- climate parts, res pcctively, of a duty cycle when shuttling (s).|    |
-| a<sub>i</sub> |instantaneous and average distance between earth und sun (m).|    |
-| a<sub>i</sub> |thickness of material (m) (subscript f for fat); diameter of ii cylinder (m).|    |
-| a<sub>i</sub> |instantaneous and average hourly di(Tuse radiation incident on a horizontal surface at Ihc ground (W m '*) (subscript monochromatic intensity W m-i nm-').|    |
-| a<sub>i</sub> |evaporation rate (kg m~ s ') (subscripts b,by respiration; r, fmm skin or pelage): energy (J) elastic modulus(kg m '): ap- parent activation energy (J mole-'); internal energy of i< molecule (J mole-') (subscripts: e, electronic; v, vibrational: r, rotational); g.|    |
-| a<sub>i</sub> |flux density per unit nf wavelength (W m * nm ').|    |
+| $A$      | surface or cross-sectional area ($m^2$); subscripts 1,2,3,4,5 for surface area receiving particular streams of radiaition)  a constant in the respiration-temperature equation (dimensionless); activation energy of reacting molecules in chemical reactions. |  |
+| $A_i$     |  increment of surface area exposed to a particular radiation source ($m^2$) (subscripts: a, atmospheric radiation; g, ground radiation; S, solar; s, skylight; rS, reflected solar; rs, reflected skylight) |
+| $A_g$ | animal surface area in contact with the ground ($m^2$)     |   |
+| $A_p$ | projected area ($m^2$) (subscripts: c, cylinder; s, sphere)   |     |
+| $A_r$ | effective emitting area for thermal radiation from an animal surface ($m^2$)    |     |
+| $A_o,A_j$ | coefficients in Fourier series expression of environmental temperature &deg;C)   |    |
+| $a$ | radius of the earth (m): acceleration in ($ms^{-2}$); absorptance (decimal fraction); altitude angle of the sun (degrees)(subscripts: s, for normal to a slope; c ,for the axis of a cylinder).  |    |
+| $a_i$ | absorptance of a surface to a particular source $i$ of incident radiation (decimal fraction) (subscript 1,2,3,4,5 for direct solar, skylight, reflected sunlight , atmospheric , and ground radiation respectively)|    |
+| $_ia_j$ |absorptance of the $i$th incremental element of animal surface to the $j$th source of radiation (j = S, s, rS, rs, and t for direct solar, skylight, reflected direct solar, reflected skylight, and thermal radiation).|    |
+|$_dA_1, _ua_1$ | absorptance of a downward- or upward-facing surface to direct sunlight (decimal fraction).| |
+| $_\lambda a, a_\lambda$ |monochromatic absorption, coefficient decimal fraction.|    |
+| $\beta$ |radiance ($W m^2 sr^{-1}$) (subscript o. in direction of a normal).|    | 
+| $B$ |proportionality constant in chemical rate equation.|    |
+| $B_j$ |coefficients in Fourier series expression of environmental temperature (&deg;C).|    |
+| BR |breathing rate (breaths $min^{-1}$ or breaths $s^{-1}$).|    |
+| C |quantity of heat exchange by convection $Wm^{-2}$); heat capacity, ($J m^{-2}$ &deg;$C^{-1}$): carbon dioxide concentration (mmolc $m^{-3}$) (subscripts: a, in the air; c, chloroplasts; i, inter-cellular air space; w, sites of respiration).|    |
+| $\overline{C}$ |monthly average amount of sky covered by clouds (decimal fraction).|    |
+| $c$ |velocity of light ($m s^{-1}$).|    |
+| $c_b$ |specific heat of blood ($J kg^{-1}$ &deg;$C^{-1}$).|    |
+| $c_p$ |	specific heat at constant pressure ($J kg^{-1}$ &deg;$C^{-1}$). | |
+| $c_1$ |	a constant in the light response of photosynthesis.| |
+| $c_2$ |	a constant in the temperature function for photosynthesis.||
+| D |	characteristic dimension (m). ||
+| $D_i$ | diffusion coefficient ($m^2 s^{-1}$).| |
+| $_hD, _h\overline{D}$|	average daily diffuse radiation incident on a horizontal surface ($J m^{-2} day^{-1}$).||
+|$D_h, D_c$ |	fraction of total active time spent in the hot or cold microclimate parts, respectively, of a duty cycle when shuttling (s).||
+|$d, \overline{d}$|	instantaneous and average distance between earth and sun (m).||
+|$d$|	thickness of material (m) (subscript f for fat); diameter of a cylinder (m).||
+|$h_d, _h\overline{d}$|	instantaneous and average hourly diffuse radiation incident on a horizontal surface at the ground ($W m^{-2}$) (subscript $\lambda$ monochromatic intensity $Wm^{-2}nm^{-1}$).||
+|$E$|	evaporation rate ($kg m^{-2}s^{-1}$) (subscripts b, by respiration; r, from skin or pelage); energy (J) elastic modulus ($kg m^{-2}$); apparent activation energy ($J mole^{-1}$); internal energy of a molecule ($J mole^{-1}$) (subscripts: e, electronic; v, vibrational; r, rotational); $\xi??$.||
+|$_{\lambda}E$|	flux density per unit of wavelength ($W m^{-2} nm^{-1}$).||
+
+
+
