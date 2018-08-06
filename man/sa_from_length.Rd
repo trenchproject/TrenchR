@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{sa_from_length}
 \alias{sa_from_length}
-\title{Calculate surface area from length approximating the animal's body as a rotational ellipsoid}
+\title{Calculate surface area from length by approximating the animal's body as a rotational ellipsoid}
 \usage{
 sa_from_length(length)
 }
@@ -13,10 +13,10 @@ sa_from_length(length)
 sa (m^2)
 }
 \description{
-Calculate surface area from length approximating the animal's body as a rotational ellipsoid
+Calculate surface area from length by approximating the animal's body as a rotational ellipsoid
 }
 \details{
-Calculate surface area (m^2) from length (m) approximating the animal's body as a rotational ellipsoid with half the body length as the semi-major axis q.
+Estimate surface area (m^2) from length (m) by approximating the animal's body as a rotational ellipsoid with half the body length as the semi-major axis.
 }
 \examples{
  \dontrun{

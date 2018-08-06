@@ -19,7 +19,7 @@ Diurnal temperature across hours
 From Campbell and Norman 1998 - Uses sine interpolation
 }
 \details{
-This function allows you to calculate temperature across hours.
+This function allows you to estimate temperature for a specified hour using the sine interpolation in Campbell and Norman (1998).
 }
 \examples{
 \dontrun{

@@ -26,7 +26,7 @@ Calculate heat transfer coefficient (based on Mitchell 1976)
 (Uses Table 1 which is Convective Heat Trasfer Relations to Animal Shapes)
 }
 \details{
-This function allows you estiamte the heat transfer coefficient for various taxa (based Mitchell 1976).  Approximates forces convective heat transfer for animal shapes using convective relationship for a sphere.
+This function allows you estimate the heat transfer coefficient for various taxa (based on Mitchell 1976).  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere.
 }
 \examples{
 \dontrun{

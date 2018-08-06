@@ -2,7 +2,7 @@
 % Please edit documentation in R/TempWindProfileFunctions.R
 \name{air_temp_profile}
 \alias{air_temp_profile}
-\title{Get air temperature profile}
+\title{Estimate air temperature profile as in NicheMapR}
 \usage{
 air_temp_profile(T_r, u_r, zr, z0, z, T_s)
 }
@@ -20,12 +20,12 @@ air_temp_profile(T_r, u_r, zr, z0, z, T_s)
 \item{T_s}{is surface temperatures in degrees C.}
 }
 \description{
-This function allows you to calculate temperature (C) at a specified height (m).  
+This function allows you to estimate temperature (C) at a specified height (m).  
 Estimates a single, unsegmented temperature profile using the MICRO routine from 
 NicheMapR as described in Kearney and Porter 2016.
 }
 \details{
-Calculates temperature at a specified height
+Estimate temperature at a specified height
 }
 \examples{
 \dontrun{

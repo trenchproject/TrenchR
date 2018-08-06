@@ -2,7 +2,7 @@
 % Please edit documentation in R/TempWindProfileFunctions.R
 \name{wind_speed_profile_neutral}
 \alias{wind_speed_profile_neutral}
-\title{Get wind speed at a specific height under neutral conditions.}
+\title{Estimate wind speed at a specific height under neutral conditions.}
 \usage{
 wind_speed_profile_neutral(u_r, zr, z0, z)
 }

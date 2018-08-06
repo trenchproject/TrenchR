@@ -18,7 +18,7 @@ heat transfer coefficient(W m^-2 K^-1)
 Calculate heat transfer coefficient for lizard
 }
 \details{
-This function allows you estimate the heat transfer coefficient for a lizard(Based on Porter et al. 1973)
+This function allows you estimate the heat transfer coefficient for a lizard (Based on Porter et al. 1973)
 }
 \examples{
 \dontrun{

@@ -15,7 +15,7 @@ degree_days(Tmin, Tmax, LDT = NA, UDT = NA, method = "single.sine")
 
 \item{UDT}{upper developmental threshold.}
 
-\item{method}{type of method being used}
+\item{method}{type of method being used. Current choices: "single.sine","double.sine", "single.triangulation" or "double.triangulation".}
 }
 \description{
 Single sine wave approximation from  
@@ -23,7 +23,7 @@ Double Sine wave approximation of degree days from Allen 1976
 (see http://www.ipm.ucdavis.edu/WEATHER/ddss_tbl.html)
 }
 \details{
-This function allows you to calculate degree days using single/double sine wave and single/double triangulation approximation.
+This function allows you to calculate degree days using single or double sine wave and single or double triangulation approximation.
 }
 \examples{
 \dontrun{

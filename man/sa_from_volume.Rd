@@ -18,7 +18,7 @@ sa (m^2)
 Calculate surface area from volume (Based on Mitchell 1976)
 }
 \details{
-This function allows you to calculate surface area (m^2) from volume (m^3) for a variety of taxa. For use in estimating convection by approximating animal shape as a sphere.
+This function allows you to estimate surface area (m^2) from volume (m^3) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976).
 }
 \examples{
  \dontrun{

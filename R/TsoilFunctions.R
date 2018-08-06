@@ -1,11 +1,10 @@
 ##CHECK AGAINST PREVIOUS VALIDATION
 
-library(zoo)
-#ODE 
-library(deSolve)
 #Task view: http://cran.r-project.org/web/views/DifferentialEquations.html
 #Article: http://journal.r-project.org/archive/2010-2/RJournal_2010-2_Soetaert~et~al.pdf
 
+#' Estimate soil thermal conductivity
+#' 
 #' @details Estimate soil thermal conductivity in W m^-1 K^-1
 #' @description This function allows you to estimate soil thermal conductivity in W m^-1 K^-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).
 #' 
@@ -32,6 +31,8 @@ soil_conductivity<-function(x, lambda, g_a){
   return(lambda_tot)
 }
 
+#' Estimate soil specific heat
+#' 
 #' @details Estimate soil specific heat in J kg^-1 K-1.
 #' @description This function allows you to estimate soil specific heat in J kg^-1 K-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).  Uses the volume fraction of organic material, minerals, and water in soil.  CHECK Campbell and Norman (2000) section 8.2.
 #' 
@@ -54,6 +55,8 @@ soil_specific_heat<-function(x_o, x_m, x_w, rho_so){
 #-----------------------------
 #! NEED BETTER DOCUMENTATION
 
+#' solve equation for soil temperature
+#' 
 #' @details Function called by soil_temp_noint to solve equation for soil temperature.
 #' @description Function called by soil_temp_noint to solve equation for soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior).
 #' 
@@ -91,6 +94,8 @@ soil_temp_overall_function<- function(L, rho_a, c_a, k, V_inst, z, z0, T_inst, T
   
 #-------------------------------------
 
+#' Function to calculate soil temperature.
+#' 
 #' @details Function to calculate soil temperature.
 #' @description Function called to calculate soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Parameters are passed as a list to facilitating solving the equations.
 #' 
@@ -219,6 +224,8 @@ soil_temperature<- function(j,Tsoil_init, params){
   )) #end list
 } #END soil temperature function
 
+#' Function to calculate soil temperature in C using ODEs.
+#' 
 #' @details Function to calculate soil temperature in C using ODEs.
 #' @description Function called to calculate soil temperature in C from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Wrapper for soil_temperature function that uses ODE to calculate soil profile.
 #' 

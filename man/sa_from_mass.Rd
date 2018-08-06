@@ -18,7 +18,7 @@ sa (m^2)
 Calculate surface area from mass
 }
 \details{
-This function allows you to calculate surface area (m^2) from mass (g) for a variety of taxa
+This function allows you to estimate surface area (m^2) from mass (g) for a variety of taxa
 }
 \examples{
  \dontrun{

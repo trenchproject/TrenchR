@@ -28,7 +28,7 @@ diurnal_temp_variation_sineexp(Tmx, Tmn, Hr, tr, ts, alpha = 2.59,
 Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components
 }
 \details{
-This function allows you to calculate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components.
+This function allows you to estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components as in Parton and Logan (1981).
 }
 \examples{
 \dontrun{

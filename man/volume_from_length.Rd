@@ -18,7 +18,7 @@ sa (m^2)
 Calculate volume from length (Based on Mitchell 1976)
 }
 \details{
-This function allows you to calculate volume (m^3) from length(m) for a variety of taxa. Approximates volume for use in a model of convection, which approximates animal shape as a sphere.
+This function allows you to estimate volume (m^3) from length(m) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976).
 }
 \examples{
  \dontrun{

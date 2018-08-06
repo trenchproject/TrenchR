@@ -26,7 +26,7 @@ convection (W)
 Calculate convection
 }
 \details{
-This function allows you to calculate convection. Includes enhncement factor associated for outdoor environments in Mitchell (1976).
+This function allows you to calculate convection as in Mitchell (1976). Includes an enhancement factor associated with outdoor environments.
 }
 \examples{
 \dontrun{

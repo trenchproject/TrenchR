@@ -22,7 +22,6 @@ Imports:
      ks,
      dplyr,
      zoo,
-     RAtmosphere,
      msm,
      deSolve
 Suggests:
