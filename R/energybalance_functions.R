@@ -470,11 +470,11 @@ mr_from_mass_temp<-function(mass,Tb, taxa){
 #' @author Eric Riddell
 #' @examples
 #' \dontrun{
-#' calculate_actual_vapor_pressure(Tdewpoint=20)
+#' actual_vapor_pressure(Tdewpoint=20)
 #' }
 #' 
 
-calculate_actual_vapor_pressure<-function(Tdewpoint){
+actual_vapor_pressure<-function(Tdewpoint){
   
   ea = ((2.71828182845904^(((1.0/273.0)-(1.0/(Tdewpoint + 273.15)))*5422.9939))*0.611)
   
@@ -492,11 +492,11 @@ calculate_actual_vapor_pressure<-function(Tdewpoint){
 #' @author Eric Riddell
 #' @examples
 #' \dontrun{
-#' calculate_saturation_vapor_pressure(Ta=293)
+#' saturation_vapor_pressure(Ta=293)
 #' }
 #' 
 
-calculate_saturation_vapor_pressure<-function(Ta){
+saturation_vapor_pressure<-function(Ta){
   
   #constants
   Rv = 461.5 #J*K^-1*kg^-1, ideal gas constant for water vapor
@@ -523,11 +523,11 @@ calculate_saturation_vapor_pressure<-function(Ta){
 #' @author Eric Riddell
 #' @examples
 #' \dontrun{
-#' calculate_boundary_layer_resistance(Ta=293, e_s=2.4, e_a=2.5, elev=500, D=0.007, u=2)
+#' boundary_layer_resistance(Ta=293, e_s=2.4, e_a=2.5, elev=500, D=0.007, u=2)
 #' }
 #' 
 
-calculate_boundary_layer_resistance<-function(Ta, e_s, e_a, elev, D, u=NA){
+boundary_layer_resistance<-function(Ta, e_s, e_a, elev, D, u=NA){
   
   #constant
   gravity = 9.8 #meters per second

@@ -1,0 +1,61 @@
+---
+title: "Te Tutorial"
+author: "Lauren Buckley"
+date: "8/05/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+energy balance
+
+<!-- Gates example -->
+
+```{r}
+##Load TrenchR package
+library(TrenchR)
+```
+
+##Operative environmental temperatures
+
+##Energy balance and components
+Calculations of operative environmental temperatures are based in balancing energy input and output to organisms.  The basic equation [Gates 1980] is
+$$Qnet = Qabs - Qemit + Qconv + Qcond + Qmet - Qevap$$
+where $Qnet$ is the net energy exhange with the environment (W), $Qabs$ is the solar and thermal radiation absorbed (W), $Qemit$ is the thermal radiation emitted (W), $Qconv$ is energy exchange due to convection (W), $Qcond$ is energy exchange due to conduction (W),
+$Qmet$ is the energy emitted due to metabolism (W), and $Qevap$ is the energy emitted due to evaporative water loss (W).
+
+The energy balance is available in TrenchR as follows:
+```{r}
+##Qnet_Gates(Qabs, Qconv, Qcond, Qmet, Qevap)
+##Qnet_Gates(Qabs=500, Qemit=10, Qconv=100, Qcond=100, Qmet=10, Qevap=5)
+```
+
+#Qabs
+
+#Qemit
+
+#Qconv
+
+#Qcond
+
+#Qmet
+
+#Qevap
+
+#Function Tb_Gates
+The following function can be used to estimate Te,
+```{r}
+Tb_Gates(As=1, d=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, Ts=303, Ta=310, Rabs=800, emissivity=0.95, h_L=10, ef=1.3, K=0.5)
+```
+
+##Alternative energy balance models and functions
+Tb_CN
+Tb_Fei
+
+##Specialized energy balance models and functions
+Tb_lizard
+Tb_butterfly
+Tb_grasshopper
+Tb_salamander humid

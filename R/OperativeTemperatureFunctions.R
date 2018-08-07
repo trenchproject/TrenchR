@@ -42,8 +42,8 @@ Tb_CN=function(Ta, Rabs, emissivity=0.96, c_p=29.3, d, u){
 #' 
 #' @param Qabs Solar and thermal radiation absorbed (W)
 #' @param Qemit Thermal radiation emitted (W)
-#' @param Qconv Energy exchange between an animal and the air (W)
-#' @param Qcond Energy exchange between an animal and the surface (W)
+#' @param Qconv Energy exchange due to convection; Energy exchange between an animal and the air (W)
+#' @param Qcond Energy exchange due to conduction; Energy exchange between an animal and the surface (W)
 #' @param Qmet Energy emitted due to metabolism (W)
 #' @param Qevap Energy emitted due to evaporative water loss (W)
 #' @return net energy exchange (W)
@@ -51,10 +51,10 @@ Tb_CN=function(Ta, Rabs, emissivity=0.96, c_p=29.3, d, u){
 #' @export
 #' @examples 
 #' \dontrun{
-#' Qnet_Gates(Qabs=500, Qconv=100, Qcond=100, Qmet=10, Qevap=5)
+#' Qnet_Gates(Qabs=500, Qemit=10, Qconv=100, Qcond=100, Qmet=10, Qevap=5)
 #'}
 #' 
-Qnet_Gates=function(Qabs, Qconv, Qcond, Qmet, Qevap){
+Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
   
   Qnet= Qabs -Qemit +Qconv +Qcond +Qmet -Qevap
  
