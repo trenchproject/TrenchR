@@ -29,10 +29,10 @@
 #' @keywords body temperature, biophysical model
 #' @export 
 #' \dontrun{
-#' estimate_lizard_Tb(Ta=25, Tg=30, u=0.1, svl=60, mass=10, psi=34, rho_S=0.7, elevation=500, doy=200, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
+#' Tb_lizard(Ta=25, Tg=30, u=0.1, svl=60, mass=10, psi=34, rho_S=0.7, elevation=500, doy=200, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
 #'}
 #' 
-estimate_lizard_Tb=function(Ta, Tg, u, svl, mass, psi, rho_S, elevation, doy, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5){
+Tb_lizard=function(Ta, Tg, u, svl, mass, psi, rho_S, elevation, doy, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5){
   
   psi= psi*pi/180 #convert zenith angle to radians
   

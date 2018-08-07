@@ -1,5 +1,5 @@
 ---
-title: "Te Tutorial"
+title: "Using energy balances to estimate body temperatures"
 author: "Lauren Buckley"
 date: "8/05/2018"
 output: html_document
@@ -19,10 +19,10 @@ library(TrenchR)
 ```
 
 ##Operative environmental temperatures
+The body temperatures, $T_b$, of organisms can depart dramatically from the air temperatures due to energy exchange with the environment.  Heat is gained from absorbing solar and thermal radiation and from metabolic reactions. Heat is lost through the organism's emission of radiation and the evaporation of water. The organism exchanges heat with the surrounding air or water via convection and with the ground via conduction. The balance of these heat exchanges can be estimated and is referred to as operatire environmental temperature, $T_e$. $T_e$ indicates the steady-state temperature of an organism with given physical properties in a particular environment [Bakken 1992].
 
-##Energy balance and components
-Calculations of operative environmental temperatures are based in balancing energy input and output to organisms.  The basic equation [Gates 1980] is
-$$Qnet = Qabs - Qemit + Qconv + Qcond + Qmet - Qevap$$
+Calculations of operative environmental temperatures are based in balancing energy input and output to organisms.  The following accounting of heat gains and losses at the surface of the organism can be used to estimate $T_e$ [Gates 1980]:
+$$Qnet = Qabs - Qemit + Qconv + Qcond + Qmet - Qevap,$$
 where $Qnet$ is the net energy exhange with the environment (W), $Qabs$ is the solar and thermal radiation absorbed (W), $Qemit$ is the thermal radiation emitted (W), $Qconv$ is energy exchange due to convection (W), $Qcond$ is energy exchange due to conduction (W),
 $Qmet$ is the energy emitted due to metabolism (W), and $Qevap$ is the energy emitted due to evaporative water loss (W).
 
@@ -31,18 +31,67 @@ The energy balance is available in TrenchR as follows:
 ##Qnet_Gates(Qabs, Qconv, Qcond, Qmet, Qevap)
 ##Qnet_Gates(Qabs=500, Qemit=10, Qconv=100, Qcond=100, Qmet=10, Qevap=5)
 ```
+We briefly review each component of the energy balance below.  Details are available in biophysical ecology texts including [Gates 1980, Cambell and Norman,...].
 
 #Qabs
+```{r}
+radiation_absorbed(abs=0.9, As=1, psa_dir=0.4, psa_ref=0.4, R_dir=1000, R_dif=200, rho_s=0.5)
+```
 
 #Qemit
+```{r}
+thermal_radiation_emitted(emissivity=0.96, As=1, psa_dir=0.4, psa_ref=0.6, Tb=303, Ts=293, Ta=298, enclosed=FALSE)
+```
 
 #Qconv
+```{r}
+convection(224,222,10.45,.0025, 0.85)
+```
+
+```{r}
+heat_transfer_coefficient(3,.05,k= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
+```
+
+```{r}
+heat_transfer_coefficient_lizard(3)
+```
 
 #Qcond
+Animals exchange heat with the substrate and other surfaces via contact proportional to the difference between the surface temperature of the animal, $T_b$ (K), and the substrate temperature, $T_s$ (K). This conduction occurs via diffusion of heat. The extent of energy exchange is additionally determined by the area of contact and the thickness of the skin or other animal suface (assumes a well mixed interior, see XXXX for approaches without this assumption). Finally, the rate of diffusion depends on the thermal conductivity of the materials in contact. Our two basic functions for estimating conduction differ in whether the rate limiting step is the thermal conductivity of the animal (`conductance_animal()`) or the substrate (`conductance_substrate()`). The thermal conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step and most applications should use `conductance_animal`.
+
+Both variables take as parameters the animal's surface area, $sa (M)$ and the proportion of the surface area in contact with the substrate. 
+
+When animal conductance is the rate limiting step, $Qcond$ can be estimated as follows:
+$$ $$
+
+
+```{r}
+conductance_animal(Ts= 293,Tb=303,lambda=10^-6,K=0.5,sa=10^-3, proportion=0.2)
+```
+
+```{r}
+conductance_substrate(Ts= 293,Tb=303,D=0.01,K=0.3,sa=10^-2, proportion=0.2)
+```
 
 #Qmet
+```{r}
+#mr_from_mass(10.5,"reptile")
+```
+
+```{r}
+mr_from_mass_temp(mass=100, Tb=303,"reptile")
+```
 
 #Qevap
+```{r}
+evaporative_heat_loss(As=0.1, Tb=293, taxa="amphibian", rho_s=1.2, rho_a=1.2, RH=0.5, h_c=20, r_i=5000)
+evaporative_heat_loss(As=0.1, Tb=293, taxa="lizard")
+```
+
+```{r}
+saturation_water_vapor_pressure(Ta=20)
+external_resistance_to_water_vapor_transfer(h_c=20)
+```
 
 #Function Tb_Gates
 The following function can be used to estimate Te,
@@ -51,11 +100,60 @@ Tb_Gates(As=1, d=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, Ts=303
 ```
 
 ##Alternative energy balance models and functions
-Tb_CN
-Tb_Fei
+#Campbell & Norman
+```{r}
+Tb_CN(Ta=303, Rabs=823, emissivity=0.96, c_p=29.3, d=0.17, u=1)
+```
+
+#Fei
+```{r}
+Tb_Fei(254, 265, 267, 15, 307,  0)
+```
 
 ##Specialized energy balance models and functions
-Tb_lizard
-Tb_butterfly
-Tb_grasshopper
-Tb_salamander humid
+#Lizard
+```{r}
+#Tb_lizard(Ta=25, Tg=30, u=0.1, svl=60, mass=10, psi=34, rho_S=0.7, elevation=500, doy=200, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
+```
+
+#Butterfly
+```{r}
+#Tb_butterfly(Ta=25, Tg=25, Tg_sh=20, u=0.4, H_sdir=300, H_sdif=100, psi=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
+```
+
+#Grasshopper
+```{r}
+#Tb_grasshopper(Ta=25, Tg=25, u=0.4, rad=400, kt=0.7, psi=30, L=0.02, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3)
+```
+
+#Salamander
+```{r}
+Tb_salamander_humid(r_i=4,r_b=1,diameter=0.007,T=20,elev=500,e_a=2.5,e_s=2.3,Rabs=400, emissivity=0.96)
+```
+
+```{r}
+#actual_vapor_pressure(Tdewpoint=20)
+```
+
+```{r}
+#saturation_vapor_pressure(Ta=293)
+```
+
+```{r}
+#boundary_layer_resistance(Ta=293, e_s=2.4, e_a=2.5, elev=500, D=0.007, u=2)
+```
+
+```{r}
+#thermal_radiation_absorbed(Ta=20, emissivity_ground=0.97, abs_longwave=0.965)
+```
+
+#Frog
+Spotila?
+
+
+#OTHER FUNCTIONS
+#Tsoil
+```{r}
+Tsoil(Ts_max=30, Ts_min=15, hour=12, depth=5)
+```
+

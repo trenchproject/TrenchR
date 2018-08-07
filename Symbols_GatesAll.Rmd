@@ -11,26 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Table below lists all the symbols which are used by TrenchR functions
 
-#Used Symbols
-##Roman Symbols
-| Symbol        | Description           | Comments  |
-| ------------- |:----------------------------------------------------:| ---------------------:|
-
-##Dimensionless Groups
-| Symbol        | Description           | Comments  |
-| ------------- |:----------------------------------------------------:| ---------------------:|
-
-##Greek Symbols
-| Symbol        | Description           | Comments  |
-| ------------- |:----------------------------------------------------:| ---------------------:|
-
-
-##Chemical Reaction Symbols
-| Symbol        | Description           | Comments  |
-| ------------- |:----------------------------------------------------:| ---------------------:|
-
-#Unused Symbols
-##Roman Symbols
+#Roman Symbols
 | Symbol        | Description           | Comments  |
 | ------------- |:----------------------------------------------------:| ---------------------:|
 | $A$      | surface or cross-sectional area ($m^2$); subscripts 1,2,3,4,5 for surface area receiving particular streams of radiaition)  a constant in the respiration-temperature equation (dimensionless); activation energy of reacting molecules in chemical reactions. |  |
@@ -151,7 +132,7 @@ Table below lists all the symbols which are used by TrenchR functions
 |$y$| distance (m).||
 |$z$| distance, or height above a surface (m); zenith angle (degrees)||
 
-##Dimensionless Groups
+#Dimensionless Groups
 | Symbol        | Description           | Comments  |
 | ------------- |:----------------------------------------------------:| ---------------------:|
 |$Sc$|	Schmidt number||
@@ -162,7 +143,7 @@ Table below lists all the symbols which are used by TrenchR functions
 |$Gr$|	Grashof number||
 |$Le$|	Lewis number||
 
-##Greek Symbols
+#Greek Symbols
 | Symbol        | Description           | Comments  |
 | ------------- |:----------------------------------------------------:| ---------------------:|
 |$\alpha$|	initial slope of photosynthesis versus light intensity curve (mmoles E-1); angle (rad or degrees); azimuth angle of the sun (degrees).||
@@ -195,7 +176,7 @@ Table below lists all the symbols which are used by TrenchR functions
 |$\Psi$| water potential (bars or N m-2).||
 |$\omega$| angular velocity of the earth (rad day-1); solid angle (sr).||
 
-##Chemical Reaction Symbols
+#Chemical Reaction Symbols
 | Symbol        | Description           | Comments  |
 | ------------- |:----------------------------------------------------:| ---------------------:|
 |$[A]$|	concentration of acception molecule for photosynthesis.||

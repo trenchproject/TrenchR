@@ -21,10 +21,10 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' estimate_butterfly_Tb(Ta=25, Tg=25, Tg_sh=20, u=0.4, H_sdir=300, H_sdif=100, psi=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
+#' Tb_butterfly(Ta=25, Tg=25, Tg_sh=20, u=0.4, H_sdir=300, H_sdif=100, psi=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
 #'}
 
-estimate_butterfly_Tb=function(Ta, Tg, Tg_sh, u, H_sdir, H_sdif, psi, D, delta, alpha, r_g=0.3, shade=FALSE){
+Tb_butterfly=function(Ta, Tg, Tg_sh, u, H_sdir, H_sdif, psi, D, delta, alpha, r_g=0.3, shade=FALSE){
 
 TaK= Ta+273.15 #ambient temperature in K
 TaK_sh=TaK
