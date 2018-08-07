@@ -9,8 +9,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-energy balance
-
 <!-- Gates example -->
 
 ```{r}
@@ -28,32 +26,31 @@ $Qmet$ is the energy emitted due to metabolism (W), and $Qevap$ is the energy em
 
 The energy balance is available in TrenchR as follows:
 ```{r}
-##Qnet_Gates(Qabs, Qconv, Qcond, Qmet, Qevap)
 ##Qnet_Gates(Qabs=500, Qemit=10, Qconv=100, Qcond=100, Qmet=10, Qevap=5)
 ```
 We briefly review each component of the energy balance below.  Details are available in biophysical ecology texts including [Gates 1980, Cambell and Norman,...].
 
 #Qabs
 ```{r}
-radiation_absorbed(abs=0.9, As=1, psa_dir=0.4, psa_ref=0.4, R_dir=1000, R_dif=200, rho_s=0.5)
+Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=1000, S_dif=200, a_s=0.5)
 ```
 
 #Qemit
 ```{r}
-thermal_radiation_emitted(emissivity=0.96, As=1, psa_dir=0.4, psa_ref=0.6, Tb=303, Ts=293, Ta=298, enclosed=FALSE)
+Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, Tb=303, Tg=293, Ta=298, enclosed=FALSE)
 ```
 
 #Qconv
 ```{r}
-convection(224,222,10.45,.0025, 0.85)
+Qconvection(Ta= 293,Tb= 303,H_L=10.45,A=0.0025, proportion=0.85)
 ```
 
 ```{r}
-heat_transfer_coefficient(3,.05,k= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
+heat_transfer_coefficient(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
 ```
 
 ```{r}
-heat_transfer_coefficient_lizard(3)
+heat_transfer_coefficient_lizard(V=3, orientation="parallel")
 ```
 
 #Qcond
@@ -66,45 +63,56 @@ $$ $$
 
 
 ```{r}
-conductance_animal(Ts= 293,Tb=303,lambda=10^-6,K=0.5,sa=10^-3, proportion=0.2)
+Qconduction_animal(Tg= 293,Tb=303,d=10^-6,K=0.5,A=10^-3, proportion=0.2)
 ```
 
 ```{r}
-conductance_substrate(Ts= 293,Tb=303,D=0.01,K=0.3,sa=10^-2, proportion=0.2)
+Qconduction_substrate(Tg= 293,Tb=303,D=0.01,K_g=0.3,A=10^-2, proportion=0.2)
 ```
 
 #Qmet
 ```{r}
-#mr_from_mass(10.5,"reptile")
+Qmetabolism_from_mass(m=12,"reptile")
 ```
 
 ```{r}
-mr_from_mass_temp(mass=100, Tb=303,"reptile")
+Qmetabolism_from_mass_temp(m=100, Tb=303,"reptile")
 ```
 
 #Qevap
 ```{r}
-evaporative_heat_loss(As=0.1, Tb=293, taxa="amphibian", rho_s=1.2, rho_a=1.2, RH=0.5, h_c=20, r_i=5000)
-evaporative_heat_loss(As=0.1, Tb=293, taxa="lizard")
+Qevaporation(A=0.1, Tb=293, taxa="amphibian", rho_s=1.2, rho_a=1.2, h=0.5, H_L=20, r_i=5000)
+Qevaporation(A=0.1, Tb=293, taxa="lizard")
 ```
 
 ```{r}
 saturation_water_vapor_pressure(Ta=20)
-external_resistance_to_water_vapor_transfer(h_c=20)
+external_resistance_to_water_vapor_transfer(H_L=20)
 ```
 
-#Function Tb_Gates
-The following function can be used to estimate Te,
+#Solving for Te
+The following function uses the relationships above to solve the energy balance for $Te$.
 ```{r}
-Tb_Gates(As=1, d=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, Ts=303, Ta=310, Rabs=800, emissivity=0.95, h_L=10, ef=1.3, K=0.5)
+Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, Tg=303, Ta=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
+
+```
+
+Campbell and Norman (XXXX) use a somewhat simplified energy balance to express $Te$ as a function of $Ta$ plus or minus a temperature increment determined by absorbed radiation, wind speed, and animal morphology: 
+$$ Te=Ta+(Sabs-Qemit)/(c_p(g_r+g_Ha)),$$
+where $Ta$ is air temperature (K), $Sabs$ is the solar and thermal radiation absorbed ($W m^{-2}$), c_p specific heat of air (J mol^-1 K^-1)
+
+#' @param epsilon longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
+#' @param c_p specific heat of air (J mol^-1 K^-1)
+#' @param D characteristic dimension of the animal (m)
+#' @param V is wind speed in m/s
+
+
+#Campbell & Norman
+```{r}
+Tb_CampbellNorman(Ta=303, Sabs=823, epsilon=0.96, c_p=29.3, D=0.17, V=1)
 ```
 
 ##Alternative energy balance models and functions
-#Campbell & Norman
-```{r}
-Tb_CN(Ta=303, Rabs=823, emissivity=0.96, c_p=29.3, d=0.17, u=1)
-```
-
 #Fei
 ```{r}
 Tb_Fei(254, 265, 267, 15, 307,  0)
@@ -128,7 +136,7 @@ Tb_Fei(254, 265, 267, 15, 307,  0)
 
 #Salamander
 ```{r}
-Tb_salamander_humid(r_i=4,r_b=1,diameter=0.007,T=20,elev=500,e_a=2.5,e_s=2.3,Rabs=400, emissivity=0.96)
+ Tb_salamander_humid(r_i=4,r_b=1,D=0.007,Ta=20,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
 ```
 
 ```{r}
@@ -140,11 +148,11 @@ Tb_salamander_humid(r_i=4,r_b=1,diameter=0.007,T=20,elev=500,e_a=2.5,e_s=2.3,Rab
 ```
 
 ```{r}
-#boundary_layer_resistance(Ta=293, e_s=2.4, e_a=2.5, elev=500, D=0.007, u=2)
+#boundary_layer_resistance(Ta=293, e_s=2.4, e_a=2.5, elev=500, D=0.007, V=2)
 ```
 
 ```{r}
-#thermal_radiation_absorbed(Ta=20, emissivity_ground=0.97, abs_longwave=0.965)
+#Qthermal_radiation_absorbed(Ta=20, epsilon_ground=0.97, a_longwave=0.965)
 ```
 
 #Frog
@@ -154,6 +162,6 @@ Spotila?
 #OTHER FUNCTIONS
 #Tsoil
 ```{r}
-Tsoil(Ts_max=30, Ts_min=15, hour=12, depth=5)
+Tsoil(Tg_max=30, Tg_min=15, hour=12, depth=5)
 ```
 
