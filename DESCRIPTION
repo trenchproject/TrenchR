@@ -20,7 +20,7 @@ VignetteBuilder: knitr
 Depends: R (>= 3.3.1)
 Imports:
      ks,
-     dplyr,
+     tidyverse,
      zoo,
      msm,
      deSolve
