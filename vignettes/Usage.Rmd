@@ -38,7 +38,7 @@ SampleMicroclimate <- read_delim("./SampleMicroclimate.csv",
     trim_ws = TRUE)
 ```
 
-## Runing a biophysical model
+## Runing a biophysical model [Fei et al]
 
 The figure sizes have been customised so that you can easily put two images side-by-side. 
 
