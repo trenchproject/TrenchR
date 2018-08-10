@@ -43,6 +43,8 @@ See the package vignette at
 
 ```{r eval=FALSE}
 
+vignette("Usage", package="TrenchR")
+
 ```
 
 ### Future Direction
