@@ -23,7 +23,7 @@ You can install the package from the [github repository](https://github.com/tren
 ```{r eval=FALSE}
 install.packages("devtools")
 library("devtools")
-install_github('TrenchR','trenchproject')
+devtools::install_github(build_vignettes = TRUE,repo = "trenchproject/TrenchR")
                  
 ```
 
@@ -46,6 +46,15 @@ See the package vignette at
 vignette("Usage", package="TrenchR")
 
 ```
+
+Estimating body temperature vignette
+
+```{r eval=FALSE}
+
+vignette("TeTutorial", package="TrenchR")
+
+```
+
 
 ### Future Direction
 
