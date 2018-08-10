@@ -10,7 +10,7 @@ saturation_water_vapor_pressure(Ta)
 \item{Ta}{air temperature (C)}
 }
 \value{
-Saturation water vapor pressure (Pa)
+Saturation water vapor pressure, e_s (Pa)
 }
 \description{
 Approximate saturation water vapor pressure

@@ -4,13 +4,13 @@
 \alias{Tb_Gates}
 \title{Predicts body temperatures (operative environmental temperature) of an ectotherm in K.}
 \usage{
-Tb_Gates(As, d, psa_dir, psa_ref, psa_air, psa_g, Ts, Ta, Rabs, emissivity, h_L,
+Tb_Gates(A, D, psa_dir, psa_ref, psa_air, psa_g, Tg, Ta, Qabs, epsilon, H_L,
   ef = 1.3, K)
 }
 \arguments{
-\item{As}{surface area  in m^2}
+\item{A}{surface area  in m^2}
 
-\item{d}{characteristic dimension for conduction (m)}
+\item{D}{characteristic dimension for conduction (m)}
 
 \item{psa_dir}{proportion surface area exposed to sky (or enclosure)}
 
@@ -20,15 +20,15 @@ Tb_Gates(As, d, psa_dir, psa_ref, psa_air, psa_g, Ts, Ta, Rabs, emissivity, h_L,
 
 \item{psa_g}{of surface in contact with substrate}
 
-\item{Ts}{ground surface temperatue in K}
+\item{Tg}{ground surface temperatue in K}
 
 \item{Ta}{ambient air temperature in K}
 
-\item{Rabs}{Solar and thermal radiation absorbed (W)}
+\item{Qabs}{Solar and thermal radiation absorbed (W)}
 
-\item{emissivity}{longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)}
+\item{epsilon}{longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)}
 
-\item{h_L}{Convective heat transfer coefficient (W m^-2 K^-1)}
+\item{H_L}{Convective heat transfer coefficient (W m^-2 K^-1)}
 
 \item{ef}{is the enhancement factor, used to adjuct h_L to field condictions (using h_L approximation from Mitchell 1976).  Approximated as 1.3 by default, but see Mitchell 1976 for relationship.}
 
@@ -45,7 +45,7 @@ Predicts body temperatures (operative environmental temperature) of an ectotherm
 }
 \examples{
 \dontrun{
-Tb_Gates(As=1, d=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, Ts=303, Ta=310, Rabs=800, emissivity=0.95, h_L=10, ef=1.3, K=0.5)
+Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, Tg=303, Ta=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
 }
 
 }

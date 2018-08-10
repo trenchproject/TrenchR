@@ -4,12 +4,12 @@
 \alias{Tsoil}
 \title{Statistical approximation of soil temperature}
 \usage{
-Tsoil(Ts_max, Ts_min, hour, depth)
+Tsoil(Tg_max, Tg_min, hour, depth)
 }
 \arguments{
-\item{Ts_max}{daily maximum soil surface temperature (C)}
+\item{Tg_max}{daily maximum soil surface temperature (C)}
 
-\item{Ts_min}{daily minimum soil surface temperature (C)}
+\item{Tg_min}{daily minimum soil surface temperature (C)}
 
 \item{depth}{depth (cm) ???}
 }
@@ -24,7 +24,7 @@ This function allows you to estimate soil temperature at a given depth and hour 
 }
 \examples{
 \dontrun{
-Tsoil(Ts_max=30, Ts_min=15, hour=12, depth=5)
+Tsoil(Tg_max=30, Tg_min=15, hour=12, depth=5)
 }
 
 }

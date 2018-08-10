@@ -4,15 +4,14 @@
 \alias{Tb_salamander_humid}
 \title{Calculate humid operative temperature}
 \usage{
-Tb_salamander_humid(r_i, r_b, diameter, Ta, elev, e_a, e_s, Rabs,
-  emissivity = 0.96)
+Tb_salamander_humid(r_i, r_b, D, Ta, elev, e_a, e_s, Qabs, epsilon = 0.96)
 }
 \arguments{
 \item{r_i}{internal (skin) resistance (s cm^-1)}
 
 \item{r_b}{boundary layer resistance (s cm^-1)}
 
-\item{diameter}{body diameter (m), ##diameter = 0.0016*log(mass) + 0.0061 for mass(g) #empirical formula for diameter, Riddell et al. 2017}
+\item{D}{body diameter (m), ##diameter = 0.0016*log(mass) + 0.0061 for mass(g) #empirical formula for diameter, Riddell et al. 2017}
 
 \item{Ta}{ambient temperature (C)}
 
@@ -22,11 +21,9 @@ Tb_salamander_humid(r_i, r_b, diameter, Ta, elev, e_a, e_s, Rabs,
 
 \item{e_s}{saturation vapor pressure (kPa)}
 
-\item{Rabs}{Solar and thermal radiation absorbed (W)}
+\item{Qabs}{Solar and thermal radiation absorbed (W)}
 
-\item{emissivity}{of salamander skin, default emissivity=0.96}
-
-\item{radiative_conductance}{}
+\item{epsilon}{emissivity of salamander skin, default epsilon=0.96}
 }
 \value{
 humid operative temperature (C)
@@ -39,7 +36,7 @@ This function allows you to calculate humid operative temperature (adaptation of
 }
 \examples{
 \dontrun{
-Tb_salamander_humid(r_i=4,r_b=1,diameter=0.007,T=20,elev=500,e_a=2.5,e_s=2.3,Rabs=400, emissivity=0.96)
+Tb_salamander_humid(r_i=4,r_b=1,D=0.007,Ta=20,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
 }
 
 }

@@ -5,21 +5,21 @@
 \title{Calculate heat transfer coefficient (based on Mitchell 1976)
 (Uses Table 1 which is Convective Heat Trasfer Relations to Animal Shapes)}
 \usage{
-heat_transfer_coefficient(A_v, D, k, nu, taxa = "cylinder")
+heat_transfer_coefficient(V, D, K, nu, taxa = "cylinder")
 }
 \arguments{
-\item{A_v}{Air velocity m/s.}
+\item{V}{Air velocity m/s.}
 
 \item{D}{Characteristic dimension (e.g., diameter or snout-vent length) in meters.}
 
-\item{k}{Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR}
+\item{K}{Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR}
 
 \item{nu}{Kinematic Viscocity of air, m^2 s^-1, can calculate using DRYAIR or WETAIR in NicheMapR}
 
 \item{taxa}{Which class of organism, current choices: sphere,cylinder,frog,lizard_surface,lizard_elevated,flyinginsect,spider}
 }
 \value{
-heat transfer coefficient(W m^-2 K^-1)
+heat transfer coefficient, H_L (W m^-2 K^-1)
 }
 \description{
 Calculate heat transfer coefficient (based on Mitchell 1976)
@@ -30,7 +30,7 @@ This function allows you estimate the heat transfer coefficient for various taxa
 }
 \examples{
 \dontrun{
-heat_transfer_coefficient(3,.05,k= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
+heat_transfer_coefficient(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
 }
 
 }

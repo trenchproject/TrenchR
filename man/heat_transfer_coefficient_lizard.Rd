@@ -4,15 +4,15 @@
 \alias{heat_transfer_coefficient_lizard}
 \title{Calculate heat transfer coefficient for lizard}
 \usage{
-heat_transfer_coefficient_lizard(A_v, orientation = "parallel")
+heat_transfer_coefficient_lizard(V, orientation = "parallel")
 }
 \arguments{
-\item{A_v}{Air velocity m/s.}
-
 \item{orientation}{parallel or transverse}
+
+\item{A_v}{Air velocity m/s.}
 }
 \value{
-heat transfer coefficient(W m^-2 K^-1)
+heat transfer coefficient, H (W m^-2 K^-1)
 }
 \description{
 Calculate heat transfer coefficient for lizard
@@ -22,7 +22,7 @@ This function allows you estimate the heat transfer coefficient for a lizard (Ba
 }
 \examples{
 \dontrun{
-heat_transfer_coefficient_lizard(3,"lizard")
+heat_transfer_coefficient_lizard(V=3, orientation="parallel")
 }
 
 }

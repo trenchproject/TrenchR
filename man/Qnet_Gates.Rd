@@ -4,20 +4,20 @@
 \alias{Qnet_Gates}
 \title{Estimates net energy exchange between an animal and the environment in W.}
 \usage{
-Qnet_Gates(Qabs, Qconv, Qcond, Qmet, Qevap)
+Qnet_Gates(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap)
 }
 \arguments{
 \item{Qabs}{Solar and thermal radiation absorbed (W)}
 
-\item{Qconv}{Energy exchange between an animal and the air (W)}
+\item{Qemit}{Thermal radiation emitted (W)}
 
-\item{Qcond}{Energy exchange between an animal and the surface (W)}
+\item{Qconv}{Energy exchange due to convection; Energy exchange between an animal and the air (W)}
+
+\item{Qcond}{Energy exchange due to conduction; Energy exchange between an animal and the surface (W)}
 
 \item{Qmet}{Energy emitted due to metabolism (W)}
 
 \item{Qevap}{Energy emitted due to evaporative water loss (W)}
-
-\item{Qemit}{Thermal radiation emitted (W)}
 }
 \value{
 net energy exchange (W)
@@ -30,7 +30,7 @@ Estimates net energy exchange between an animal and the environment in W. Follow
 }
 \examples{
 \dontrun{
-Qnet_Gates(Qabs=500, Qconv=100, Qcond=100, Qmet=10, Qevap=5)
+Qnet_Gates(Qabs=500, Qemit=10, Qconv=100, Qcond=100, Qmet=10, Qevap=5)
 }
 
 }

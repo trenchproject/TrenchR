@@ -18,13 +18,7 @@ We aim to create an R package (TrenchR) encompassing resources for assessing the
 
 ### Installation
 
-You can install [this package from CRAN](http://cran.r-project.org/package=TrenchR):
-
-```{r eval=FALSE}
-install.packages("TrenchR")
-```
-
-If you prefer, you can install the package from the [github repository](https://github.com/trenchproject/TrenchR):
+You can install the package from the [github repository](https://github.com/trenchproject/TrenchR):
 
 ```{r eval=FALSE}
 install.packages("devtools")
@@ -35,10 +29,12 @@ install_github('TrenchR','trenchproject')
 
 ### Using the package
 
-The `zenith()` function takes a ...
+For eg. to fund zenith angle of a location, you can use the `zenith_angle()` function. It takes day of the year, lat/lon and the hour. Below is an example invocation. 
 
 ```{r}
 library(TrenchR)
+zenith_angle(112, 47.61, -122.33, 12)
+[1] 35.7407
 
 ```
 ### Package Vignette
