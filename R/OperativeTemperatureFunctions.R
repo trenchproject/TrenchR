@@ -26,7 +26,7 @@ Tb_CampbellNorman=function(Ta, Sabs, epsilon=0.96, c_p=29.3, D, V){
   Qemit= epsilon*sigma*Ta^4
   
   #conductance
-  g_Ha=1.4*0.135*sqrt(V/D) # boundary conductance, factor of 1.4 to account for increased convection (Mitchell 1976)
+  g_Ha=1.4*0.135*sqrt(V/D) # boundary conductance, factor of 1.4 to account for increased convection (Mitchell 1976), assumes forced conduction
   g_r= 4*sigma*Ta^3/c_p # (12.7) radiative conductance
   
   # operative environmental temperature

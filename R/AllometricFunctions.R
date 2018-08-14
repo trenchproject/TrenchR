@@ -235,3 +235,44 @@ prop_silhouette_area<-function(psi, taxa, raz=0, posture="prostrate"){
   return(psa)
 }
 
+#' Calculate silhouette area using the shape approximations
+#' 
+#' 
+#' @details This function allows you to estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid. From Figure 11.6 in Campbell and Norman (1998).
+#' @param shape Which shape to approximate an organism. Shapes are assumed to be prolate or have the longest axis parallel with the ground. Current choices: spheroid, cylinder flat ends, or cylinder hemisphere ends.
+#' @param theta is the angle between the solar beam and the longitudinal axis in degrees
+#' @param h is the height (long axis in m), cross section length for spheroid 
+#' @param d is the diameter (short axis in m), cross section length for spheroid 
+#' @return silhouette area as a proportion
+#' @keywords silhouette area
+#' @export
+#' @examples
+#' \dontrun{
+#' prop_silhouette_area_shapes(shape="spheroid", theta=60, h=0.01, d=0.001)
+#' prop_silhouette_area_shapes(shape="cylinder flat ends", theta=60, h=0.01, d=0.001)
+#' prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=60, h=0.01, d=0.001)
+#' }
+#' 
+
+prop_silhouette_area_shapes<-function(shape, theta, h, d){
+  
+  #convert degree to radian
+  theta_r= theta*(2*pi)/360
+  
+  #prolate spheroid
+  if(shape=="spheroid") {
+   x= d/h
+   psa= sqrt(1+(x^2-1)*cos(theta_r)^2)/(2*x+ (2*sin(sqrt(1-x^2))^(-1)/sqrt(1-x^2)) ) #sin not converted to radians, check
+  }
+  
+  if(shape=="cylinder flat ends") {
+    psa= (cos(theta_r)+4*h*sin(theta_r)/(pi*d))/(2+4*h/d)
+  }
+  
+  if(shape=="cylinder hemisphere ends") {
+    psa= (1+4*h*sin(theta_r)/(pi*d))/(4+4*h/d)
+  }
+  
+  return(psa)
+}
+

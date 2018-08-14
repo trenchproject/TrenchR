@@ -664,3 +664,173 @@ Tsoil<-function(Tg_max, Tg_min, hour, depth){
   return(Tsoil)
 }
 
+
+#' Calculate Nusselt Number
+#'
+#' @details This function allows you to estimate the Nusselt Number, which describes dimensionless conductance (Gates 1980 Biophysical Ecology).
+#' @param H_L Convective heat transfer coefficient (W m^-2 K^-1)
+#' @param D is characteristic dimension (e.g., body diameter) (m)
+#' @param K Thermal conductivity (W K^-1 m^-1 )
+#' 
+#' @return Nusselt number
+#' @keywords Nusselt number
+#' @export
+#' @author 
+#' @examples
+#' \dontrun{
+#' Nusselt_number(H_L=20, D=0.01, K=0.5)
+#' }
+#' 
+
+Nusselt_number<-function(H_L, D, K){
+  
+  Nu = H_L * D / K
+  
+  return(Nu)
+}
+
+#' Calculate Prandtl Number
+#'
+#' @details This function allows you to estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity (Gates 1980 Biophysical Ecology).
+#' @param c_p is specific heat at constant pressure (J mol^{-1} K^{-1})
+#' @param mu is dynamic viscosity (mol s^{-1}m^{-1})
+#' @param K Thermal conductivity (W K^-1 m^-1 )
+#' @return Prandtl number
+#' @keywords Prandtl number
+#' @export
+#' @author 
+#' @examples
+#' \dontrun{
+#' Prandtl_number(c_p=29.3, mu=0.00001, K=0.5)
+#' }
+#' 
+
+Prandtl_number<-function(c_p, mu, K){
+  
+  Pr= c_p *mu /K
+  return(Pr)
+}
+
+#' Calculate Reynolds Number
+#'
+#' @details This function allows you to estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces (Gates 1980 Biophysical Ecology).
+#' @param D is characteristic dimension (e.g., body diameter) (m)
+#' @param V is wind speed in m/s
+#' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m2 s-1), can calculate from DRYAIR or WETAIR
+#' 
+#' @return Reynolds number
+#' @keywords Reynolds number
+#' @export
+#' @author 
+#' @examples
+#' \dontrun{
+#' Reynolds_number(V=1, D=0.001, nu=1.2)
+#' }
+#' 
+
+Reynolds_number<-function(V, D, nu){
+   Re= V*D / nu
+  return(Re)
+}
+
+#' Calculate Grashof Number
+#'
+#' @details This function allows you to estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity (Gates 1980 Biophysical Ecology). Ratio of a buoyant force times an inertial force to the square of a viscous force.
+#' @param Ta Air temperature (C).
+#' @param Tg Ground (surface) temperature (C).
+#' @param D is characteristic dimension (e.g., body diameter) (m)
+#' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m2 s-1), can calculate from DRYAIR or WETAIR
+#' 
+#' @return Grashof number
+#' @keywords Grashof number
+#' @export
+#' @author 
+#' @examples
+#' \dontrun{
+#' Grashof_number(Ta=30, Tg=35, D=0.001, nu=1.2)
+#' }
+#' 
+
+Grashof_number<-function(Ta, Tg, D, nu){
+  #constant
+  gravity = 9.8 #meters per second
+  
+  Gr = gravity * D^3* abs(Tg-Ta) / (Ta * nu^2)
+    
+  return(Gr)
+}
+
+#' Estimate the Nusselt number from the Reynolds number (based on Mitchell 1976)
+#' (Uses Table 1 which is Convective Heat Trasfer Relations to Animal Shapes)
+#' 
+#' @details This function allows you to estimate the Nusselt number from the Reynolds number for various taxa (based on Mitchell 1976).  
+#' @param Re is the Reynolds Number (dimensionless)
+#' @param taxa Which class of organism, current choices: sphere,cylinder,frog,lizard_traverse_to_air_flow, lizard_parallel_to_air_flow, lizard_surface,lizard_elevated,flyinginsect,spider
+#' @return Nusselt number (dimensionless)
+#' @keywords Nusselt number
+#' @export
+#' @examples
+#' \dontrun{
+#' Nu_from_Re(Re=5, taxa="cylinder")
+#' }
+#' 
+
+Nu_from_Re<-function(Re, taxa="cylinder"){
+  
+  taxas= c("sphere","cylinder","frog","lizard_traverse_to_air_flow", "lizard_parallel_to_air_flow","lizard_surface","lizard_elevated","flyinginsect","spider")
+
+  # Dimensionless constant (Cl)
+  Cls= c(0.37,0.615,0.258,0.35,0.1,1.36,1.91,0.0749,0.47)
+  ns= c(0.6,0.466,0.667,0.6,0.74,0.39,0.45,0.78,0.5) 
+  
+  #find index  
+  ind= match(taxa, taxas)
+  
+  Nu <- Cls[ind] *Re^(ns[ind])
+  
+  return(Nu)
+}
+
+#' Estimate the Nusselt number from the Grashof number (based on Gates 1980)
+#' 
+#' @details This function allows you to estimate the Nusselt number from the Grashof Number.  
+#' @param Gr is the Grashof Number (dimensionless)
+#' @return Nusselt number (dimensionless)
+#' @keywords Nusselt number
+#' @export
+#' @examples
+#' \dontrun{
+#' Nu_from_Gr(Gr=5)
+#' }
+#' 
+
+Nu_from_Gr<-function(Gr){
+  
+  Nu <- 0.48 * Gr^0.25
+  
+  return(Nu)
+}
+
+#' Commpare Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980)
+#' 
+#' @details This function allows you to commpare the Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980).
+#' @param Gr is the Grashof Number (dimensionless)
+#' @param Re is the Reynolds Number (dimensionless)
+#' @return "free" or "forced"
+#' @keywords free or forced convection
+#' @export
+#' @examples
+#' \dontrun{
+#' Free_or_forced_convection(Gr=100, Re=5)
+#' }
+#' 
+
+Free_or_forced_convection<-function(Gr, Re){
+  
+  conv= ifelse(Gr<=(16*Re^2), "forced", "free")
+  
+  return(conv)
+}
+
+
+

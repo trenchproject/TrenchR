@@ -86,3 +86,53 @@ diurnal_temp_variation_sine=function(Tmx, Tmn, Hr){
   return(T)
 }
 
+#----------------------------------------
+
+#' Estimates temperature across hours
+#' From Cesaraccio et al 2001 
+#'
+#' @details This function allows you to estimate temperature for a specified hour using sine and square root functions (Cesaraccio et al 2001).
+#' 
+#' @param Hr hour or hours for temperature estimate
+#' @param Hn sunrise hour (0-23)
+#' @param Ho sunset hour (0-23)
+#' @param Tmx maximum temperature of current day (C) 
+#' @param Tmn minimum temperature of current day (C)
+#' @param Tmn_p minimum temperature of following day (C)
+#' @keywords Temperature
+#' @export
+#' @examples
+#' \dontrun{
+#' diurnal_temp_variation_sinesqrt( Hr=8, Hn=6, Ho=18, Tmx=30, Tmn=20, Tmn_p=22)
+#' }
+
+diurnal_temp_variation_sinesqrt=function(Hr, Hn, Ho, Tmx, Tmn, Tmn_p){
+ 
+  #Time estimates
+  Hp = Hn + 24 #sunrise time following day
+  Hx= Ho - 4 #Assume time of maximum temperature 4h before sunset
+  
+  #Temperature at sunset
+  c=0.39 #empircally fitted parameter
+  To= Tmx - c*(Tmx-Tmn_p)
+  
+  alpha= Tmx -Tmn
+  R = Tmx - To
+  b= (Tmn_p - To)/sqrt(Hp -Ho)
+  
+  T= rep(NA, length(Hr))
+  
+  inds=which(Hr< Hn) 
+  if(length(inds>0))  T[inds]= To+b*sqrt(Hr[inds]-(Ho-24) )
+  
+  inds=which(Hr>Hn & Hr<=Hx) 
+  if(length(inds>0)) T[inds]= Tmn+ alpha*sin(pi/2*(Hr[inds]-Hn)/(Hx-Hn))
+  
+  inds=which(Hr>Hx & Hr<Ho) 
+  if(length(inds>0)) T[inds]= To+ R*sin(pi/2*(1+ (Hr[inds]-Hx)/4) )
+  
+  inds=which(Hr>Ho) 
+  if(length(inds>0))  T[inds]= To+b*sqrt(Hr[inds]-Ho)
+  
+  return(T)
+}
