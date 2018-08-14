@@ -59,7 +59,7 @@ SampleMicroclimate$To_Lizard <- Tb_Fei(SampleMicroclimate$TAH,
 ```
 
 
-## Plot the distribution of Body temperature
+## Plot the distribution of Body temperature using GGPlot
 
 
 
