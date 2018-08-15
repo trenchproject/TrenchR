@@ -4,7 +4,8 @@
 \alias{Qthermal_radiation_absorbed}
 \title{Estimate absorbed longwave (thermal) radiation}
 \usage{
-Qthermal_radiation_absorbed(Ta, epsilon_ground = 0.97, a_longwave = 0.965)
+Qthermal_radiation_absorbed(Ta, epsilon_ground = 0.97,
+  a_longwave = 0.965)
 }
 \arguments{
 \item{Ta}{air temperature (C)}

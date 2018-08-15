@@ -34,11 +34,25 @@ The energy balance is available in TrenchR as follows:
 We briefly review each component of the energy balance below.  Details are available in biophysical ecology texts including [Gates 1980, Cambell and Norman,...].
 
 #Qabs
+The solar and thermal radiation absorbed by animals, $Q_{abs} (W)$, is the sum of direct $S_{dir}$, diffuse $S_{dif}$, and reflected $S_{ref}$ solar radiation ($W/m^2$). The sum is weighted by the organism's surface area $A$ exposed to the radiation sources. Additionally, all forms of incoming radiation are multipled by the solar absorptivity of the animal surface ($a$ proportion) to estimate absorbed radiation. The sumation of incoming solar radiation is thus as follows:
+$$Qabs= a*A_{dir}*S_{dir} + a*A_{dif}*S_{dif} + a*A_{ref}*S_{ref},$$
+where $A_{dir}$,$A_{dif}$,and $A_{ref}$ are the surface areas expsed to direct, diffuse, and reflected solar radiation, respectively.
+
+The summation is available in R as follows
 ```{r}
 #Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=1000, S_dif=200, a_s=0.5)
 ```
+where psa_dir and psa_ref are the proportions of surface area exposed to direct and reflected solar radiation, respectively. We assume psa_dif=psa_dir. See functions `{r}prop_silhouette_area()` and `{r}prop_silhouette_area_shapes()` for assistance calculating the proportional of surface area exposed via estimating silhouette area. Additionally, see the tutorial on [solar radiation] for tools for estimating incoming solar radiation.
 
 #Qemit
+The rate of emission of thermal radiation from the surface of an animal, $Q_{emit} (W)$, is determined by the difference between the surface temperature of the animal $T_b (K)$ and the temperatures of the air $T_a (K)$ and ground $T_g (K)$.  $T_a$ is additionally used to estimate sky temperature $T_{sky} (K)$, the effective radiant temperature of the sky as $T_{sky}=1.22*(Ta-273.15)-20.4+273.15$ [Gates 1980]. The following expressions can be used to estimate $Q_{emit} (W)$ for animals in enclosed and open environments, respectively:
+$$
+enclosed: Q_{emit}= A_r \epsilon \sigma (T_b^4 - T_a^4)\\
+open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
+$$
+where $A_s$ and $A_r$ are the areas ($m^2$) exposed to the sky (or enclosure) and the ground, respectively; $\epsilon$ is the longwave infrared emissivity of skin [proportio, 0.95 to 1 for most animals [Gates 1980]]; and and $\sigma$ is the Stefan-Boltzmann constant ($5.673*10^{-8} W m^{-2} K^{-4)}$). 
+
+The function is available in R as follows:
 ```{r}
 Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, Tb=303, Tg=293, Ta=298, enclosed=FALSE)
 ```
@@ -75,18 +89,19 @@ Nu_from_Gr(Gr=5)
 Free_or_forced_convection(Gr=100, Re=5)
 ```
 
-Windspeed, $V (m/s)$, can be coupled with dimensionless numbers, which are used to compare the scale of heat exchange processes, to determine whether free or forced convection is more appropriate for the application. 
-
-
-The primary method we offer to estimate the convective heat transfer coefficient entails approximating the animal shape as a sphere, which enables simplification while also producing an reasonable approximation [Mitchell 1976].  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere.
+The primary method we offer to estimate the convective heat transfer coefficient entails approximating the animal shape as a sphere, which enables simplification while also producing an reasonable approximation [Mitchell 1976].  The function below approximates forced convective heat transfer as a function of windspeed $V (m/s)$, the characteristic dimension $D (m)$, the thermal conductivity of the air $K (W m^{-1} K^{-1})$, the kinematic viscocity of the air $nu (m^2 s^{-1})$, and the taxa or a generic shape.
 
 ```{r}
 heat_transfer_coefficient(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
 ```
 
+
+We additionally offer an empically-derived function to estimate $H_L$ for lizards as a function of $V$ and the lizard's orientation [Porter et al. 1973]:
 ```{r}
 heat_transfer_coefficient_lizard(V=3, orientation="parallel")
 ```
+
+[NON-FORCED OPTIPON?]
 
 #Qcond
 Animals exchange heat with the substrate and other surfaces via contact proportional to the difference between the surface temperature of the animal, $T_b$ (K), and the substrate temperature, $T_s$ (K). This conduction occurs via diffusion of heat. The extent of energy exchange is additionally determined by the area of contact and the thickness of the skin or other animal suface (assumes a well mixed interior, see XXXX for approaches without this assumption). Finally, the rate of diffusion depends on the thermal conductivity of the materials in contact. Our two basic functions for estimating conduction differ in whether the rate limiting step is the thermal conductivity of the animal (`conductance_animal()`) or the substrate (`conductance_substrate()`). The thermal conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step and most applications should use `conductance_animal`.

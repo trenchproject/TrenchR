@@ -114,7 +114,7 @@ Qconvection<-function(Ta,Tb,H_L=10.45,A,proportion, ef=1.3 ){
 #' Calculate heat transfer coefficient for lizard
 #' 
 #' @details This function allows you estimate the heat transfer coefficient for a lizard (Based on Porter et al. 1973)
-#' @param A_v Air velocity m/s.
+#' @param V Air velocity m/s.
 #' @param orientation parallel or transverse
 #' @return heat transfer coefficient, H (W m^-2 K^-1)
 #' @keywords heat transfer coefficient 
@@ -242,7 +242,7 @@ Qradiation_absorbed<-function(a=0.9, A, psa_dir, psa_ref, S_dir, S_dif, S_ref=NA
 #' @param psa_ref proportion surface area exposed to ground
 #' @param Tb body surface temperatue in K
 #' @param Tg ground surface temperatue in K
-#' @param Ta ambient air temperature in K, only required if animal is in enclosed environment
+#' @param Ta ambient air temperature in K
 #' @param enclosed TRUE or FALSE
 #' @return emitted thermal radiation, Qemit (W)
 #' @keywords emitted thermal radiation
@@ -264,10 +264,10 @@ Qemitted_thermal_radiation<-function(epsilon=0.96, A, psa_dir, psa_ref, Tb, Tg, 
   
   #estimate effective radiant temperature of sky
   #Tsky=0.0552*(TaK)^1.5; #Kelvin, black body sky temperature from Swinbank (1963), 
-  Tsky= (1.22*(Ta-273.15) -20.4)+273.15 #K, Gates 1980 Biophysical ecology based on Swnback 1960, Kingsolver (1983) estimates using Brunt equation
+  Tsky= (1.22*(Ta-273.15) -20.4)+273.15 #K, Gates 1980 Biophysical ecology based on Swinback 1960, Kingsolver (1983) estimates using Brunt equation
   
   if(enclosed) 
-         Qemit= A_r*epsilon*sigma*(Tb^4 - Ta^4)
+         Qemit= A_s*epsilon*sigma*(Tb^4 - Ta^4)
   else 
           Qemit= epsilon*sigma*(A_s*(Tb^4 - Tsky^4)+A_r*(Tb^4 - Tg^4))
 
@@ -675,7 +675,6 @@ Tsoil<-function(Tg_max, Tg_min, hour, depth){
 #' @return Nusselt number
 #' @keywords Nusselt number
 #' @export
-#' @author 
 #' @examples
 #' \dontrun{
 #' Nusselt_number(H_L=20, D=0.01, K=0.5)
@@ -698,7 +697,6 @@ Nusselt_number<-function(H_L, D, K){
 #' @return Prandtl number
 #' @keywords Prandtl number
 #' @export
-#' @author 
 #' @examples
 #' \dontrun{
 #' Prandtl_number(c_p=29.3, mu=0.00001, K=0.5)
@@ -721,7 +719,6 @@ Prandtl_number<-function(c_p, mu, K){
 #' @return Reynolds number
 #' @keywords Reynolds number
 #' @export
-#' @author 
 #' @examples
 #' \dontrun{
 #' Reynolds_number(V=1, D=0.001, nu=1.2)
@@ -744,7 +741,6 @@ Reynolds_number<-function(V, D, nu){
 #' @return Grashof number
 #' @keywords Grashof number
 #' @export
-#' @author 
 #' @examples
 #' \dontrun{
 #' Grashof_number(Ta=30, Tg=35, D=0.001, nu=1.2)

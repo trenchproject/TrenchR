@@ -7,9 +7,9 @@
 heat_transfer_coefficient_lizard(V, orientation = "parallel")
 }
 \arguments{
-\item{orientation}{parallel or transverse}
+\item{V}{Air velocity m/s.}
 
-\item{A_v}{Air velocity m/s.}
+\item{orientation}{parallel or transverse}
 }
 \value{
 heat transfer coefficient, H (W m^-2 K^-1)

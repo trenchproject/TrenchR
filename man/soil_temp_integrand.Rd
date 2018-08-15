@@ -2,7 +2,7 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_temp_integrand}
 \alias{soil_temp_integrand}
-\title{solve equation for soil temperature}
+\title{Solve equation for soil temperature}
 \usage{
 soil_temp_integrand(x, L, z0)
 }

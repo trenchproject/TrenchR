@@ -55,7 +55,7 @@ soil_specific_heat<-function(x_o, x_m, x_w, rho_so){
 #-----------------------------
 #! NEED BETTER DOCUMENTATION
 
-#' solve equation for soil temperature
+#' Solve equation for soil temperature
 #' 
 #' @details Function called by soil_temp_noint to solve equation for soil temperature.
 #' @description Function called by soil_temp_noint to solve equation for soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior).
@@ -71,7 +71,7 @@ soil_specific_heat<-function(x_o, x_m, x_w, rho_so){
 
 soil_temp_integrand<-function(x, L, z0){ (3-1.4*exp(1.5*x))^-1*(exp(x+z0/L)/(exp(x+z0/L)-1))}
 
-#' @details Function called by soil_temp_noint to solve equation for soil temperature.
+#' Function called by soil_temp_noint to solve equation for soil temperature.
 #' @description Function called by soil_temp_noint to solve equation for soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior).
 #' 
 #' @param L is ???????????????????????

@@ -5,8 +5,8 @@
 \title{Predicts body temperatures (operative environmental temperature) of a lizard in degrees C.}
 \usage{
 Tb_lizard(Ta, Tg, u, svl, mass, psi, rho_S, elevation, doy, sun = TRUE,
-  surface = TRUE, alpha_S = 0.9, alpha_L = 0.965, epsilon_s = 0.965,
-  F_d = 0.8, F_r = 0.5, F_a = 0.5, F_g = 0.5)
+  surface = TRUE, alpha_S = 0.9, alpha_L = 0.965,
+  epsilon_s = 0.965, F_d = 0.8, F_r = 0.5, F_a = 0.5, F_g = 0.5)
 }
 \arguments{
 \item{Ta}{is air temperature in C}

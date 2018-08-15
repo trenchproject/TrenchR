@@ -4,8 +4,8 @@
 \alias{Qemitted_thermal_radiation}
 \title{Calculate emitted thermal radiation}
 \usage{
-Qemitted_thermal_radiation(epsilon = 0.96, A, psa_dir, psa_ref, Tb, Tg, Ta,
-  enclosed = FALSE)
+Qemitted_thermal_radiation(epsilon = 0.96, A, psa_dir, psa_ref, Tb, Tg,
+  Ta, enclosed = FALSE)
 }
 \arguments{
 \item{epsilon}{longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)}
@@ -20,7 +20,7 @@ Qemitted_thermal_radiation(epsilon = 0.96, A, psa_dir, psa_ref, Tb, Tg, Ta,
 
 \item{Tg}{ground surface temperatue in K}
 
-\item{Ta}{ambient air temperature in K, only required if animal is in enclosed environment}
+\item{Ta}{ambient air temperature in K}
 
 \item{enclosed}{TRUE or FALSE}
 }
