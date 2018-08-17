@@ -4,8 +4,8 @@
 \alias{Tb_Gates}
 \title{Predicts body temperatures (operative environmental temperature) of an ectotherm in K.}
 \usage{
-Tb_Gates(A, D, psa_dir, psa_ref, psa_air, psa_g, Tg, Ta, Qabs, epsilon,
-  H_L, ef = 1.3, K)
+Tb_Gates(A, D, psa_dir, psa_ref, psa_air, psa_g, Tg, Ta, Qabs, epsilon, H_L,
+  ef = 1.3, K)
 }
 \arguments{
 \item{A}{surface area  in m^2}

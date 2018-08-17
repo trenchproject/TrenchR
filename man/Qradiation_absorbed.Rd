@@ -4,8 +4,8 @@
 \alias{Qradiation_absorbed}
 \title{Calculate absorbed solar and thermal radiation}
 \usage{
-Qradiation_absorbed(a = 0.9, A, psa_dir, psa_ref, S_dir, S_dif,
-  S_ref = NA, a_s = NA)
+Qradiation_absorbed(a = 0.9, A, psa_dir, psa_ref, S_dir, S_dif, S_ref = NA,
+  a_s = NA)
 }
 \arguments{
 \item{a}{solar absorptivity of animal surface (proportion), default value is for reptiles}

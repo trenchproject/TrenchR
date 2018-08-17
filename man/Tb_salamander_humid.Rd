@@ -4,8 +4,7 @@
 \alias{Tb_salamander_humid}
 \title{Calculate humid operative temperature}
 \usage{
-Tb_salamander_humid(r_i, r_b, D, Ta, elev, e_a, e_s, Qabs,
-  epsilon = 0.96)
+Tb_salamander_humid(r_i, r_b, D, Ta, elev, e_a, e_s, Qabs, epsilon = 0.96)
 }
 \arguments{
 \item{r_i}{internal (skin) resistance (s cm^-1)}
