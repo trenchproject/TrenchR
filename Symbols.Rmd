@@ -43,6 +43,7 @@ Table below lists all the symbols which are used by TrenchR functions
 |$T$|	temperature (°C or K) (subscripts: a, air; b, body; c, animal casting or cold side of thermal barrier; e, operative environmental; g, ground surface; h, hot side of thermal barrier; K, leaf; €, leaf; r, animal surface; S, sky; v, wall; v, vegetation; o, initial or of surroundings; co, final); transmitted flux through leaf (W m-2).||
 |$T_b$| body temperature (°C or K) (superscripts: c, lower setpoint; h, upper set point; superscripts: lc, lower equilibrium; lh, upper equilibrium); equivalent blackbody temperature (°C).||
 |$V$|	velocity (m s 1); volume (m3) (subscript w, partial molar); photopic efficiency (decimal fraction).||
+|$z$| distance, or height above a surface (m); zenith angle (degrees)||
 
 ##Dimensionless Groups
 | Symbol        | Description           | Comments  |
@@ -163,7 +164,6 @@ Table below lists all the symbols which are used by TrenchR functions
 |$X$| heat in storage (W m-2).||
 |$x$| distance (m); thickness (m); ratio of length to radius for a cylinder (decimal fraction).||
 |$y$| distance (m).||
-|$z$| distance, or height above a surface (m); zenith angle (degrees)||
 
 ##Dimensionless Groups
 | Symbol        | Description           | Comments  |
