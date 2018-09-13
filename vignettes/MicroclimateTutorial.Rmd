@@ -1,0 +1,84 @@
+---
+title: "Estimating microclimates"
+author: "Lauren Buckley"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+##Load TrenchR package
+library(TrenchR)
+```
+
+```{r}
+airpressure_from_elev(1500)
+
+azimuth_angle(112, 47.61, -122.33, 12)
+dec_angle(112)
+#solar_noon
+#zenith_angle
+
+daylength(47.61, 112)
+day_of_year("2017-04-22", format= "%Y-%m-%d")
+degree_to_radian(47.608)
+radian_to_degree(0.831)
+
+fahrenheit_to_celsius(85)
+fahrenheit_to_kelvin(85)
+kelvin_to_celsius(270)
+
+mass_from_length(length, taxa) #fix
+#sa_from_length
+#sa_from_mass
+#sa_from_volume
+#volume_from_length
+
+degree_days(7,14,12,33,"single.sine")
+
+air_temp_profile(T_r=20, u_r=0.1, zr=0.1, z0=0.2, z=0.15, T_s=25)
+air_temp_profile_neutral(T_r=20, zr=0.1, z0=0.2, z=0.15, T_s=25)
+#surface_roughness
+#wind_speed_profile
+#wind_speed_profile_neutral
+#wind_speed_profile_segment_in_beta
+
+diurnal_temp_variation_sine() #fix parameters
+diurnal_temp_variation_sineexp(Tmx, Tmn, Hr, tr, ts, alpha = 2.59,
+  beta = 1.55, gamma = 2.2) #fix
+diurnal_temp_variation_sinesqrt( Hr=8, Hn=6, Ho=18, Tmx=30, Tmn=20, Tmn_p=22)
+
+estimate_radiation(doy=112, psi=1, tau=0.6, elev=1500, rho=0.7)
+monthly_solar_radiation(lat=47.61,lon=-122.33,doy=112,elev=1500,Temp=15,Hr=50,P=50)
+partition_solar_radiation(500, 0.5)
+
+diurnal_radiation_variation(doy=112, solrad=500, hour=12, lon=-122.33, lat=47.61)
+
+#soil_conductivity
+#soil_specific_heat
+#soil_temperature
+#soil_temperature_noint
+#soil_temp_integrand
+#soil_temp_overall_function
+#Tsoil
+
+#other tutorial?
+Free_or_forced_convection(Gr=100, Re=5)
+#heat_transfer_coefficient
+#heat_transfer_coefficient_lizard
+
+#prop_silhouette_area(60, taxa= "frog")
+#prop_silhouette_area_shapes(shape="spheroid", theta=60, h=0.01, d=0.001)
+
+#Qemitted_thermal_radiation
+#Qthermal_radiation_absorbed
+```
+
