@@ -19,49 +19,77 @@ knitr::opts_chunk$set(echo = TRUE)
 library(TrenchR)
 ```
 
+##Solar angles and daylength
+Estimates of sun position and day length are often estimated based on calendar date. We provide a function `day_of_year()` that facilitates translating a date into a calendar date. We next present functions to calculate sun angles.  We use the calendar date to estimate solar declination, which is the angular distance of the sun north or south of the earth’s equator (`dec_angle()`). The Zenith angle
+
+
+The azimuth angle, the the angle (in degrees) from which the sunlight in coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east.
+
+
+
 ```{r}
-airpressure_from_elev(1500)
-
-azimuth_angle(112, 47.61, -122.33, 12)
-dec_angle(112)
-#solar_noon
-#zenith_angle
-
-daylength(47.61, 112)
 day_of_year("2017-04-22", format= "%Y-%m-%d")
-degree_to_radian(47.608)
-radian_to_degree(0.831)
+dec_angle(112)
+zenith_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
+azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
+solar_noon(lon=-122.335, doy=112)
+daylength(47.61, 112)
+```
 
-fahrenheit_to_celsius(85)
-fahrenheit_to_kelvin(85)
-kelvin_to_celsius(270)
+## Radiation estimates
+```{r}
+estimate_radiation(doy=112, psi=1, tau=0.6, elev=1500, rho=0.7)
+monthly_solar_radiation(lat=47.61,lon=-122.33,doy=112,elev=1500,Temp=15,Hr=50,P=50)
+partition_solar_radiation(500, 0.5)
+```
 
-mass_from_length(length, taxa) #fix
-#sa_from_length
-#sa_from_mass
-#sa_from_volume
-#volume_from_length
+## Temperature and windspeed profiles
+We scale Ta across height by estimating a wind speed profile using the relationship:
+$$u(z)= \frac{u^*}{0.4}ln \frac{z-d}{z_m} $$
+where u(z) is the wind speed (m/s) at height z (m), u* is the friction velocity (m/s), d is the zero plane displacement (m), and the constant 0.4 is the von Karman constant.    We fit this relationship to data collected at heights of 0.05, 0.25, 0.5, 0.75, 1, 1.25, 1.5m at 1 minute intervals for 12 days in July 2013 at the subalpine site (C1).  We estimated d as the y-intercept of the relationship between u and ln(z). We then estimated surface roughness, z0, as exp(-b/n) from fitting the relationship u=b+n ln(z-d), where u is wind velocity (m/s) and z is measurement height. 
 
-degree_days(7,14,12,33,"single.sine")
+We used the following relationship to estimate air temperature and wind speed at height z [2,3]:
+$$\frac{u_z}{u_r}=\frac{ln(z/z_0+1)}{ln(z_r/z_0+1)}=\frac{T_z-T_0}{T_r-T_0} $$
+where uz and ur are the wind speeds (m/s) at height z (m) and reference height r (m), respectively.  Tz, Tr, and T0 are air and soil temperatures at height z and r and soil surface temperature, respectively. 
 
+```{r}
+#surface_roughness
 air_temp_profile(T_r=20, u_r=0.1, zr=0.1, z0=0.2, z=0.15, T_s=25)
 air_temp_profile_neutral(T_r=20, zr=0.1, z0=0.2, z=0.15, T_s=25)
-#surface_roughness
+```
+
+```{r}
 #wind_speed_profile
 #wind_speed_profile_neutral
 #wind_speed_profile_segment_in_beta
+```
 
+## Diurnal variation in temperature and radiation
+
+```{r}
 diurnal_temp_variation_sine() #fix parameters
 diurnal_temp_variation_sineexp(Tmx, Tmn, Hr, tr, ts, alpha = 2.59,
   beta = 1.55, gamma = 2.2) #fix
 diurnal_temp_variation_sinesqrt( Hr=8, Hn=6, Ho=18, Tmx=30, Tmn=20, Tmn_p=22)
+```
 
-estimate_radiation(doy=112, psi=1, tau=0.6, elev=1500, rho=0.7)
-monthly_solar_radiation(lat=47.61,lon=-122.33,doy=112,elev=1500,Temp=15,Hr=50,P=50)
-partition_solar_radiation(500, 0.5)
-
+```{r}
 diurnal_radiation_variation(doy=112, solrad=500, hour=12, lon=-122.33, lat=47.61)
+```
 
+## Degree days
+```{r}
+degree_days(7,14,12,33,"single.sine")
+```
+
+## Soil temperature
+Ta and radiation were used as inputs for a microclimate model [2,6,7], which used finite-difference methods to solve heat balance equations describing soil temperatures at the surface and specified depths [8,9]. 
+
+We implemented a microclimate model [31–33] using finite-difference methods to solve heat balance equations describing soil temperatures at the surface and specified depths [17,34]; predicted surface temperature is then used to compute air temperature profiles above the surface.
+
+
+
+```{r}
 #soil_conductivity
 #soil_specific_heat
 #soil_temperature
@@ -69,16 +97,10 @@ diurnal_radiation_variation(doy=112, solrad=500, hour=12, lon=-122.33, lat=47.61
 #soil_temp_integrand
 #soil_temp_overall_function
 #Tsoil
+```
 
-#other tutorial?
-Free_or_forced_convection(Gr=100, Re=5)
-#heat_transfer_coefficient
-#heat_transfer_coefficient_lizard
-
-#prop_silhouette_area(60, taxa= "frog")
-#prop_silhouette_area_shapes(shape="spheroid", theta=60, h=0.01, d=0.001)
-
-#Qemitted_thermal_radiation
-#Qthermal_radiation_absorbed
+## MISC
+```{r}
+airpressure_from_elev(1500)
 ```
 

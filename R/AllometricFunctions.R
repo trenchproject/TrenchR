@@ -46,7 +46,7 @@ sa_from_mass<-function(mass, taxa="lizard"){
 #' @export
 #' @examples
 #'  \dontrun{
-#'  calculate_mass(0.04,"insect")
+#'  mass_from_length(0.04,"insect")
 #' }
 #'
 
@@ -85,7 +85,7 @@ mass_from_length<-function(length, taxa){
 #' Calculate surface area from volume (Based on Mitchell 1976) 
 #' 
 #' @details This function allows you to estimate surface area (m^2) from volume (m^3) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976).
-#' @param volume Density in m^3.
+#' @param volume in m^3.
 #' @param taxa Which class of organism, current choices: lizard, frog, sphere.
 #' @return sa (m^2)
 #' @keywords surface area
@@ -252,7 +252,6 @@ prop_silhouette_area<-function(psi, taxa, raz=0, posture="prostrate"){
 #' prop_silhouette_area_shapes(shape="cylinder flat ends", theta=60, h=0.01, d=0.001)
 #' prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=60, h=0.01, d=0.001)
 #' }
-#' 
 
 prop_silhouette_area_shapes<-function(shape, theta, h, d){
   

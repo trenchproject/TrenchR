@@ -31,7 +31,7 @@ day_of_year<- function(day, format="%Y-%m-%d"){
 #' @export
 #' @examples
 #' \dontrun{
-#' dec_angle(112)
+#' dec_angle(doy=112)
 #' }
 
 dec_angle <- function(doy){
@@ -78,7 +78,7 @@ daylength <- function(lat, doy){
 #' @export
 #' @examples
 #' \dontrun{
-#' solar_noon(-122.335, 112)
+#' solar_noon(lon=-122.335, doy=112)
 #' }
 
 solar_noon <- function(lon, doy){
@@ -106,7 +106,7 @@ solar_noon <- function(lon, doy){
 #' @export
 #' @examples
 #' \dontrun{
-#' zenith_angle(112, 47.61, -122.33, 12)
+#' zenith_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
 #' }
 
 zenith_angle=function(doy, lat, lon, hour){
@@ -136,7 +136,7 @@ return(zenith)
 #' 
 #' @details Calculate azimuth angle
 #'
-#' @description This function allows you to calculate the azimuth angle, the angle (in degrees) measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east.
+#' @description This function allows you to calculate the azimuth angle, the angle (in degrees) from which the sunlight in coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east.
 #' @param doy is day of year.
 #' @param lat is latitude in degrees.
 #' @param lon is longitude in degrees.
@@ -146,7 +146,7 @@ return(zenith)
 #' @export
 #' @examples
 #' \dontrun{
-#' azimuth_angle(112, 47.61, -122.33, 12)
+#' azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
 #' }
 
 azimuth_angle=function(doy, lat, lon, hour){
