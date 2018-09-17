@@ -4,14 +4,14 @@
 #' @details Predicts body temperature (operative environmental temperature) of a butterfly in degrees C.
 #' @description Predicts body temperatures (operative environmental temperatures) of a butterfly in degrees C. Based on Kingsolver (1983, Thermoregulation and flight in Colias butterflies: elevational patterns and mechanistic limitations. Ecology 64: 534–545). Assumes butterfly basks with closed wings perpendicular to solar beam.
 #' 
-#' @param Ta is air temperature in C
+#' @param T_a is air temperature in C
 #' @param Tg  is surface temperature in C in the sun
 #' @param Tg_sh is surface temperature in C in the shade
 #' @param u is wind speed in m/s
 #' @param H_sdir  is direct solar radiation flux in W/m^2
 #' @param H_sdif  is diffuse solar radiation flux in W/m^2
-#' @param psi is solar zenith angle in degrees
-#' @param D is thoractic diameter in cm
+#' @param z is solar zenith angle in degrees
+#' @param D is thoracic diameter in cm
 #' @param delta is thoracic fur thickness in mm
 #' @param alpha is wing solar absorbtivity as a proportion. Range for Colias is 0.4 to 0.7.
 #' @param r_g is substrate solar reflectivity (proportion), see Kingsolver (1983)
@@ -21,12 +21,12 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' Tb_butterfly(Ta=25, Tg=25, Tg_sh=20, u=0.4, H_sdir=300, H_sdif=100, psi=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
+#' Tb_butterfly(T_a=25, Tg=25, Tg_sh=20, u=0.4, H_sdir=300, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
 #'}
 
-Tb_butterfly=function(Ta, Tg, Tg_sh, u, H_sdir, H_sdif, psi, D, delta, alpha, r_g=0.3, shade=FALSE){
+Tb_butterfly=function(T_a, Tg, Tg_sh, u, H_sdir, H_sdif, z, D, delta, alpha, r_g=0.3, shade=FALSE){
 
-TaK= Ta+273.15 #ambient temperature in K
+TaK= T_a+273.15 #ambient temperature in K
 TaK_sh=TaK
 Tg= Tg+273.15 #ground surface temperature in K
 Tg_sh= Tg_sh+273 #shaded ground surface temperature in K
@@ -62,12 +62,12 @@ A_sdir= A_sttl/2
 A_sref=A_sdir
 
 #RADIATIVE HEAT FLUx, mW
-Q_s= alpha*A_sdir*H_sdir/cos(psi*pi/180)+alpha*A_sref*H_sdif+alpha*r_g*A_sref*H_sttl  
+Q_s= alpha*A_sdir*H_sdir/cos(z*pi/180)+alpha*A_sref*H_sdif+alpha*r_g*A_sref*H_sttl  
 
 #---------------------------------------------		 
 #THERMAL RADIATIVE FLUX
 #Tsky=0.0552*(TaK)^1.5; #Kelvin, black body sky temperature from Swinbank (1963), 
-Tsky= (1.22*Ta -20.4)+273.15 #K, Gates 1980 Biophysical ecology based on Swnback 1960, Kingsolver (1983) estimates using Brunt equation
+Tsky= (1.22*T_a -20.4)+273.15 #K, Gates 1980 Biophysical ecology based on Swnback 1960, Kingsolver (1983) estimates using Brunt equation
 
 #Q_t= 0.5* A_sttl * Ep * sigma * (Tb^4 - Tsky^4) +0.5* A_sttl * Ep * sigma * (Tb^4 - Tg^4)
 
@@ -83,7 +83,7 @@ N_u=0.6*R_e^0.5
 h_c=N_u*k_a/D;
 h_T=(1/h_c+(r_i+delta)*log((r_i+delta)/r_i)/k_e)^-1;  # h_T- total convective heat tranfer coefficient
 #A_c=A_sttl; #A_c- convective heat transfer surface area
-#Q_c= h_T* A_c* (Tb-Ta);     
+#Q_c= h_T* A_c* (Tb-T_a);     
 #---------------------------------------------   	 
 #HEAT BUDGET              
         
@@ -101,7 +101,7 @@ if(shade==TRUE){
   H_sdir_sh= 0; #No direct radiation
   H_sdif_sh= H_sdif
   H_sttl= H_sdif + H_sdif_sh #only diffuse and reflected
-  Q_s= alpha*A_sdir*H_sdir_sh/cos(psi*pi/180)+alpha*A_sref*H_sdif_sh+alpha*r_g*A_sref*H_sttl; 
+  Q_s= alpha*A_sdir*H_sdir_sh/cos(z*pi/180)+alpha*A_sref*H_sdif_sh+alpha*r_g*A_sref*H_sttl; 
 }
                			
 #t solved in wolfram alpha #Solve[a t^4 +b t -d, t]
