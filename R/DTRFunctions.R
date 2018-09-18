@@ -1,38 +1,35 @@
 #' Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components 
 #'
-#' @details This function allows you to estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components as in Parton and Logan (1981).
+#' @details This function allows you to estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components as in Parton and Logan (1981). We provide default values for alpha (2.59), beta (1.55), and gamma (2.2) for North Carolina from Wann 1985. See function for other parameterizations.
 #' @param Tmx maximum daily temperature (C)
 #' @param Tmn minimum daily temperature (C)
 #' @param ts time of sunrise (hour)
 #' @param tr time of sunset (hour)
 #' @param Hr hour for temperature estimate
 #' @param alpha  time difference between tx(time of maximum temperature) and noon
-#' @param gamma decay parameter for rate of t change from sunset to tn(time of minimum temp)
 #' @param beta time difference between tx and sunrise
+#' @param gamma decay parameter for rate of t change from sunset to tn(time of minimum temp)
 #' @keywords Temperature
 #' @export
 #' @examples
 #' \dontrun{
-#' Thour.sineexp()
+#' diurnal_temp_variation_sineexp(Tmx=40, Tmn=10, Hr=11, tr=18, ts=6, alpha=2.59, beta= 1.55, gamma=2.2)
 #' }
 
-#Function to calculate Parton and Logan 1981 diurnal variation
-#Parameters for Colorado
-#alpha=1.86
-#gamma=2.20
-#beta= -0.17
-
-#Wann 1985
-#alpha= 2.59 #time difference between tx and noon
-#beta= 1.55 #time difference between tx and sunrise
-#gamma= 2.2 #decay parameter for rate of t change from sunset to tn
-
-#PAtterson 1981 function from Wann 1985
 diurnal_temp_variation_sineexp=function(Tmx, Tmn, Hr, tr, ts, alpha=2.59, beta= 1.55, gamma=2.2){
 #Tmx= max temperature
 #Tmn= min temperature
 #Hr= hour of measurement (0-24)
 
+#alpha, beta, gamma parameterizations
+#Wann 1985
+# Average of 5 North Carolina sites: alpha=2.59, beta= 1.55, gamma=2.2
+#Parton and Logan 1981, parameterized for Denver, CO  
+# 150cm air temeprature: alpha=1.86, beta= 2.20, gamma=-0.17
+# 10cm air temperature: alpha=1.52, beta= 2.00, gamma=-0.18
+# soil surface temperature: alpha=0.50, beta= 1.81, gamma=0.49
+# 10cm soil temperature: alpha=0.45, beta= 2.28, gamma=1.83
+  
 l= ts-tr #daylength
 
 tx= 0.5*(tr+ts)+alpha #time of maximum temperature
@@ -71,7 +68,7 @@ return(T)
 #' @export
 #' @examples
 #' \dontrun{
-#' diurnal_temp_variation_sine()
+#' diurnal_temp_variation_sine(Tmx=30, Tmn=10, Hr=11)
 #' }
 
 
@@ -94,8 +91,8 @@ diurnal_temp_variation_sine=function(Tmx, Tmn, Hr){
 #' @details This function allows you to estimate temperature for a specified hour using sine and square root functions (Cesaraccio et al 2001).
 #' 
 #' @param Hr hour or hours for temperature estimate
-#' @param Hn sunrise hour (0-23)
-#' @param Ho sunset hour (0-23)
+#' @param tr sunrise hour (0-23)
+#' @param ts sunset hour (0-23)
 #' @param Tmx maximum temperature of current day (C) 
 #' @param Tmn minimum temperature of current day (C)
 #' @param Tmn_p minimum temperature of following day (C)
@@ -103,14 +100,14 @@ diurnal_temp_variation_sine=function(Tmx, Tmn, Hr){
 #' @export
 #' @examples
 #' \dontrun{
-#' diurnal_temp_variation_sinesqrt( Hr=8, Hn=6, Ho=18, Tmx=30, Tmn=20, Tmn_p=22)
+#' diurnal_temp_variation_sinesqrt( Hr=8, tr=6, ts=18, Tmx=30, Tmn=20, Tmn_p=22)
 #' }
 
-diurnal_temp_variation_sinesqrt=function(Hr, Hn, Ho, Tmx, Tmn, Tmn_p){
+diurnal_temp_variation_sinesqrt=function(Hr, tr, ts, Tmx, Tmn, Tmn_p){
  
   #Time estimates
-  Hp = Hn + 24 #sunrise time following day
-  Hx= Ho - 4 #Assume time of maximum temperature 4h before sunset
+  tp = tr + 24 #sunrise time following day
+  tx= ts - 4 #Assume time of maximum temperature 4h before sunset
   
   #Temperature at sunset
   c=0.39 #empircally fitted parameter
@@ -118,21 +115,21 @@ diurnal_temp_variation_sinesqrt=function(Hr, Hn, Ho, Tmx, Tmn, Tmn_p){
   
   alpha= Tmx -Tmn
   R = Tmx - To
-  b= (Tmn_p - To)/sqrt(Hp -Ho)
+  b= (Tmn_p - To)/sqrt(tp -ts)
   
   T= rep(NA, length(Hr))
   
-  inds=which(Hr< Hn) 
-  if(length(inds>0))  T[inds]= To+b*sqrt(Hr[inds]-(Ho-24) )
+  inds=which(Hr<= tr) 
+  if(length(inds>0))  T[inds]= To+b*sqrt(Hr[inds]-(ts-24) )
   
-  inds=which(Hr>Hn & Hr<=Hx) 
-  if(length(inds>0)) T[inds]= Tmn+ alpha*sin(pi/2*(Hr[inds]-Hn)/(Hx-Hn))
+  inds=which(Hr>tr & Hr<=tx) 
+  if(length(inds>0)) T[inds]= Tmn+ alpha*sin(pi/2*(Hr[inds]-tr)/(tx-tr))
   
-  inds=which(Hr>Hx & Hr<Ho) 
-  if(length(inds>0)) T[inds]= To+ R*sin(pi/2*(1+ (Hr[inds]-Hx)/4) )
+  inds=which(Hr>tx & Hr<ts) 
+  if(length(inds>0)) T[inds]= To+ R*sin(pi/2*(1+ (Hr[inds]-tx)/4) )
   
-  inds=which(Hr>Ho) 
-  if(length(inds>0))  T[inds]= To+b*sqrt(Hr[inds]-Ho)
+  inds=which(Hr>=ts) 
+  if(length(inds>0))  T[inds]= To+b*sqrt(Hr[inds]-ts)
   
   return(T)
 }

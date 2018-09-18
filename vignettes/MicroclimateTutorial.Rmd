@@ -65,40 +65,89 @@ partition_solar_radiation(500, 0.5)
 ```
 
 ## Temperature and windspeed profiles
-We scale Ta across height by estimating a wind speed profile using the relationship:
-$$u(z)= \frac{u^*}{0.4}ln \frac{z-d}{z_m} $$
-where u(z) is the wind speed (m/s) at height z (m), u* is the friction velocity (m/s), d is the zero plane displacement (m), and the constant 0.4 is the von Karman constant.    We fit this relationship to data collected at heights of 0.05, 0.25, 0.5, 0.75, 1, 1.25, 1.5m at 1 minute intervals for 12 days in July 2013 at the subalpine site (C1).  We estimated d as the y-intercept of the relationship between u and ln(z). We then estimated surface roughness, z0, as exp(-b/n) from fitting the relationship u=b+n ln(z-d), where u is wind velocity (m/s) and z is measurement height. 
+Temperatures and windspeeds collected at ~2m can differ drametically from conditions near the ground where most organisms live. Turbulent air flow influenced by the ground surface roughness sets up temperature and windspeed profiles.  These profiles can be estimated to scale temperatures and widspeeds to organism height. We scale across height by estimating a wind speed profile using the relationship:
+$$u(z)= \frac{u^*}{0.41}ln \frac{z-d}{z_m} $$
+where u(z) is the wind speed (m/s) at height z (m), u* is the friction velocity (m/s), d is the zero plane displacement (m, the height at which wind speed is zero), and the constant 0.41 is the von Karman constant. 
 
-We used the following relationship to estimate air temperature and wind speed at height z [2,3]:
+We provide a function to use this relationship to estimate surface roughness (`surface_roughness()`) from wind speed measurements at a vector of heights.  First, the zero-plane displacement is estimated as the intercept of the relationship between the wind velocities and the log of measurement height.  Surface roughness $z_0$ can then be estimated by repeating the regression accounting for the zeroplane displacement (by substracting the zero-plane displacement from the measurement heights). $z_0$ is estimated as the exponential of the ration of the intercept and slope of the regression relationship.
+
+We use the following relationship to estimate air temperature and wind speed at height z under neutral conditions:
 $$\frac{u_z}{u_r}=\frac{ln(z/z_0+1)}{ln(z_r/z_0+1)}=\frac{T_z-T_0}{T_r-T_0} $$
-where uz and ur are the wind speeds (m/s) at height z (m) and reference height r (m), respectively.  Tz, Tr, and T0 are air and soil temperatures at height z and r and soil surface temperature, respectively. 
+where uz and ur are the wind speeds (m/s) at height z (m) and reference height r (m), respectively.  Tz, Tr, and T0 are air and soil temperatures at height z and r and soil surface temperature, respectively. We provide this relationship in the `wind_speed_profile_neutral()` function to estimate windspeed at a specified height. We additionally provide this relationship in the `air_temp_profile_neutral()` function to estimate temperature at a specified height.
 
+The functions are available as:
 ```{r}
-#surface_roughness
-air_temp_profile(T_r=20, u_r=0.1, zr=0.1, z0=0.2, z=0.15, T_s=25)
+surface_roughness(u_r=c(0.01,0.025,0.05,0.1,0.2), zr=c(0.05,0.25,0.5,0.75,1))
+wind_speed_profile_neutral(u_r=0.1, zr=0.1, z0=0.2, z=0.15)
 air_temp_profile_neutral(T_r=20, zr=0.1, z0=0.2, z=0.15, T_s=25)
 ```
 
+We additionally provide functions for estimating wind spped and temperature profiles in free convection (lapse) conditions using the relationships in NicheMapR as described by Kearney and Porter [2016].  The function `wind_speed_profile()` estiamtes wind speed at height $z$ as $u_z=2.5u^*\ln(z/z_0+1)$ where the friction velocity $u^*$ is estimated as $u^*=\frac{0.41u_r}{\ln(z/z_0+1)}$ and 0.41 is the von Karman constant.
+
+Temperature at a given height is estimated in the function `air_temp_profile()` by first estimating the temperature at roughness height:
+$$T_{z_0}= \frac{T_r S_{t_b}-T_0 S_{t_s}}{S_{t_b}-S_{t_s}}. $$
+where $S_{t_s}$ is the sublayer Stanton Number $S_{t_s}=0.62/ (\frac{z_0u^*}{12})^{0.45}$ and $S_{t_b}$ is the bulk Stanton Number $S_{t_b}=0.64/ (\frac{z}{z_0}+1)$. The Stanton numerbers are dimensionless numbers that measures the ratio of the heat transfered in and the thermal capacity. The temperature at height $z$ can then be estimated as:
+$$T_z= T_{z_0}+(T_r-T_{z_0})ln(\frac{z}{z_0}+1) .$$
+The functions are available in TrenchR as:
 ```{r}
-#wind_speed_profile
-#wind_speed_profile_neutral
-#wind_speed_profile_segment_in_beta
+wind_speed_profile(u_r=0.1, zr=0.1, z0=0.2, z=0.15)
+air_temp_profile(T_r=20, u_r=0.1, zr=0.1, z0=0.2, z=0.15, T_s=25)
 ```
 
 ## Diurnal variation in temperature and radiation
+We provide three forms of equations to estimate diurnal temperature radiation: a sine model, a sine exponential model, and a sine sqrt model. The models assume that maximum temperature $T_x$ will occur sometime between sunrise $t_r$ and sunset $t_s$ and that the minimum temperature $T_n$ will occur in the early morning. 
 
+The sine model (`diurnal_temp_variation_sine()`) estimates temperature t hour $h$ as a function of minimum and maximum temperature $$T(h)= T_x -T_n(1-\gamma) $$, where $\gamma=0.44-0.46 \sin (0.9+WH_r)+0.11 \sin(0.9+2WH_r)$ and $W=\pi/12$
+
+For the sine exponential model (`diurnal_temp_variation_sineexp()`), hourly temeprature is estimated as a function of three empirically determined parameters: $\alpha$ is the time difference between $h_x$ and midday; $\Beta$ is the time difference between $h_n$ and sunrise; and $\gamma$ is a decay parameter that determines the rate of temperature change from sunset to $h'_n$ of the next day. 
+
+The time of minimum temperature can be calculated as $h_x=1/2(t_r+t_s)+\alpha$. The time of maximum temperature can be calculates as $t_n=t_r+\beta$. The model estimates temperature at time $h$ as follows: $$  T(h)=\left \{
+                \begin{array}{ll}
+                  T_n+(T_x-T_n)\sin \frac{\pi(h-h_r-\beta)}{l +2(\alpha-\beta)}, h_n \leq h \leq h_s\\
+                  T_n'+[T(h_s)-T'_n]\exp \frac{\gamma(h-h_s)}{24-l+\beta}, h_s \leq h \leq h'_n 
+                \end{array}
+              \right. $$
+where $h'_n$ is the time of the minimum temeprature, $T'_n$, for the next day. Daylength $l$ is calculated as $h_s-h_r$. 
+
+The sine square root model (`diurnal_temp_variation_sinesqrt()`) estimates temperature assuming the time of maximum temperature $t_x$ occurs 4 hours before sunset ($t_x=t_s -4$):
+$$  T(h)=\left \{
+                \begin{array}{ll}
+                  T_n+\alpha \pi /2 \left \{ \frac{h-h_r}{h_x-h_r} \right \}, h_r < h \leq h_x\\
+                  T_r+R \sin [\pi/2+(\frac{h-h_x}{4})\pi/2], h_x < h < h_s\\ 
+                  T_r+b \sqrt{h-h_s}, h_s < h \leq h_p
+                \end{array}
+              \right. $$
+where $\alpha=T_x-T_n$,$R=T_x-T_s$, and $b=\frac{T_p-T_s}{\sqrt{h_p - h_s}}$. Sunset temperature is estimated as $T_s=T_x-c(T_x-T_p)$ where $c$ is an empicially estimated parameter ($c=0.39$).
+
+We provide the functions as follows:
 ```{r}
-diurnal_temp_variation_sine() #fix parameters
-diurnal_temp_variation_sineexp(Tmx, Tmn, Hr, tr, ts, alpha = 2.59,
-  beta = 1.55, gamma = 2.2) #fix
-diurnal_temp_variation_sinesqrt( Hr=8, Hn=6, Ho=18, Tmx=30, Tmn=20, Tmn_p=22)
+diurnal_temp_variation_sine(Tmx=30, Tmn=10, Hr=11)
+diurnal_temp_variation_sineexp(Tmx=40, Tmn=10, Hr=11, tr=18, ts=6, alpha=2.59, beta= 1.55, gamma=2.2)
+diurnal_temp_variation_sinesqrt( Hr=8, tr=6, ts=18, Tmx=30, Tmn=20, Tmn_p=22)
 ```
 
+We adapt equations from Tham et al. [2010] to estimate hourly solar radiation ($W m^{-2}$ per hour) as a function of daily global solar radiation (in $W m^{-2}$ per day). The function `diurnal_radiation_variation()` partitions daily solar radiation $S$. The function estimates the ratio of hourly to daily global irradiation,$S_G$, as follows:
+$$S_G= \frac{\pi}{24}(a'+b'\cos \omega)\frac{\cos \omega - \cos \omega_s}{\sin \omega_s - \omega_s \cos \omega_s}, $$
+where $a'= 0.409+0.5016\sin(\omega_s-1.047)$ and $b'=0.6609-0.4767\sin(\omega_s-1.047)$. The function utilizes two angles in radians: $\omega$ is the hour angle of the sun and $\omega_s$ is the hour angle at sunset.  The function calculates these angles as a function of calendar date $J$ and location (latitude and longitude):
 ```{r}
 diurnal_radiation_variation(doy=112, solrad=500, hour=12, lon=-122.33, lat=47.61)
 ```
 
 ## Degree days
+Many organismal processes and rates are temperature dependent. Accounting for temperature dependence allows translating calendar time into a more biologically relevant concept known as degree days. Degree days indicates the accumulated heat available for processes such as development and is estimated as the accumulated product of time and temperature. For the frequent application of estimating development, degree days are calculated within physiological bounds known as the lower and upper developmental temperatures, LDT and UDT, respectively.  We provide four approaches for estimating degree days that differ in the complexity with which the aggregate heat: "single.sine"","double.sine", "single.triangulation" or "double.triangulation". We implement the methods detailed here: http://ipm.ucanr.edu/WEATHER/ddfigindex.html.  The methods account for whether the temeprature time series is intercepted by the LDT and / or the UDT.  Briefly, we present the equations for each method for the case of the temperature time series being intercepted by the lower threshold. For the single-sine method, degree days $D$ can be estimated as
+$$D= \frac{1}{\pi} \left[ \left( \frac{T_x+T_n}{2}-LDT \right) +\alpha\cos(\theta_1) \right] \\
+\theta_1= \sin^{-1}\left[ 1/ \alpha \left( LDT- \frac{T_x+T_n}{2} \right) \right]$$
+
+For the double-sine method, degree days $D$ can be estimated as
+$$D= \frac{1}{2\pi} \left[ \left( \frac{T_x+T_n}{2}-LDT \right)(\pi/2- \theta_1 ) +\alpha\cos(\theta_1) \right] \\
+\theta_1= \sin^{-1}\left[ 1/ \alpha \left( LDT- \frac{T_x+T_n}{2} \right) \right].$$
+
+For the single triangulation method, degree days $D$ can be estimated as
+$$D= \frac{(T_x-LDT)^2}{2(T_x-T_n)} .$$
+For the double triangulation method, degree days $D$ can be estimated as
+$$D= \frac{(T_x-LDT)^2}{4(T_x-T_n)}. $$
+
+The methods are available in the following R function:
 ```{r}
 degree_days(7,14,12,33,"single.sine")
 ```
@@ -111,13 +160,37 @@ We implemented a microclimate model [31–33] using finite-difference methods to
 
 
 ```{r}
-#soil_conductivity
-#soil_specific_heat
-#soil_temperature
-#soil_temperature_noint
-#soil_temp_integrand
-#soil_temp_overall_function
-#Tsoil
+soil_conductivity(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), lambda=c(0.10,0.40,0.11,0.01,0.2, 0.18), g_a=0.125)
+soil_specific_heat(0.01, 0.6, 0.2, 1620)
+soil_temp_integrand(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), L=-10,z0=0.2)
+soil_temp_overall_function(L=-10, rho_a=1.177, c_a=1006, k=.41, V_inst=0.3, z=1.5, z0=0.02, T_inst=265, T_s=20)
+```
+
+```{r}
+#' \dontrun{
+#' temp_vector= runif(96, min=-10, max=10)
+#' wind_speed_vector= runif(96, min=0, max=0.4)
+#' time_vector= rep(1:24,4)
+#' solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
+#'
+#' params=list(SSA=0.7, epsilon_s=0.98, k_so=0.293, c_so=800, dz=0.05, z=1.5, z0=0.02, solrad=solrad_vector, Tair=temp_vector, u_z=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=FALSE)
+#' 
+#' soil_temperature(j=1,Tsoil_init= rep(20,13), params=params)
+#' 
+#' #RUN USING ODE SOLVER
+#' Tsoil_out<- ode(y = rep(20,13), func = soil_temperature, times = 1:length(solrad), parms=params)
+#'}
+```
+
+```{r}
+#' \dontrun{
+#' temp_vector= runif(96, min=-10, max=10)
+#' wind_speed_vector= runif(96, min=0, max=0.4)
+#' time_vector= rep(1:24,4)
+#' solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
+#'
+#' soil_temperature_noint(z.intervals=12,z=1.5, Tair=temp_vector, u_z=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, solrad= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
+#'}
 ```
 
 
