@@ -11,6 +11,7 @@
 #' @param x is a vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.
 #' @param lambda is a vector of the thermal conductivities (W m^-1 K^-1) of the soil constituents.
 #' @param g_a is a shape factor on soil particles.  The soil particles are assumed to be ellipsoids with axes g_a, g_b, and g_c, where g_a +g_b +g_c=1.  de Vries 1952 suggests g_a=g_b=0.125.
+#' @return soil thermal conductivity (W m^-1 K^-1)
 #' @keywords soil temperature
 #' @export
 #' @examples
@@ -90,7 +91,7 @@ soil_temp_integrand<-function(x, L, z0){ (3-1.4*exp(1.5*x))^-1*(exp(x+z0/L)/(exp
 #'}
 
 soil_temp_overall_function<- function(L, rho_a, c_a, k, V_inst, z, z0, T_inst, T_s){ 
-  rho_a*c_a*k*(V_inst*k/log((exp((z+z0)/L)-1)/(exp(z0/L)-1)))*(T_inst-T_s)/integrate(integrand, lower=0, upper=z/L, L, z0)$value - (V_inst*k/log((exp((z+z0)/L)-1)/(exp(z0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}
+  rho_a*c_a*k*(V_inst*k/log((exp((z+z0)/L)-1)/(exp(z0/L)-1)))*(T_inst-T_s)/integrate(soil_temp_integrand, lower=0, upper=z/L, L, z0)$value - (V_inst*k/log((exp((z+z0)/L)-1)/(exp(z0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}
   
 #-------------------------------------
 
@@ -171,7 +172,6 @@ soil_temperature<- function(j,Tsoil_init, params){
   
   T_inst<- Tair[j]+273.15 #convert to K	
   V_inst<- u_z[1] #WINDSPEED CURRENTLY CONSTANT 
-  
   
   h_inst<- h_inst1*V_inst #take V_inst out for easier passing to function
   T_sky<-0.0552*T_inst^1.5 ##eqn (4) in notes
@@ -299,6 +299,7 @@ soil_temperature_noint<-function(z.intervals=12,z, Tair, u_z, Tsoil0, z0, SSA, T
   lambda_w<- 0.56+0.0018*20#.56+.0018*Temp(celsius) is an equation from Table 8.2 in Intro to Environmental Biophysics
   lambda_a<- 0.0237+0.000064*20 #.0237+.000064*Temp equation from paper by Boguslaw and Lukasz
   
+  #-------
   #finding the apparent conductivity of air in soil. These are the methods in DeVries (1963) and summarized in the paper by Boguslaw and Lukasz. variable names were based on those in the Boguslaw and Lukasz paper.
   P<- air_pressure 
   L1<-2490317-2259.4*20 #J/kg#2490317-2259.4*T #J/kg
