@@ -152,39 +152,45 @@ The methods are available in the following R function:
 degree_days(7,14,12,33,"single.sine")
 ```
 
-## Soil temperature
-We implemented a microclimate model with air temperature and radiation as input using finite-difference methods to solve heat balance equations describing soil temperatures at the surface and specified depths. Our approach follows Porter et al. [1973] and is similar to that described for the NicheMapR R package [Kearney and Porter 2017]. The change is soil temperature ($T_s$) through time $t$ and depth $z$ can be approximated with a differential equation
+## Soil temperature at nodes between surface and 60cm deep 
+We implemented a microclimate model with air temperature and radiation as input using finite-difference methods to solve heat balance equations describing soil temperatures at the surface and specified depths. Our approach follows Porter et al. [1973] and is similar to that described for the NicheMapR R package [Kearney and Porter 2017]. The primary function to call to calculate soil temperature is `soil_temperature()`. The function is a wrapper to solve the differential equations below for equilibrium conditions.  The called function `soil_temperature_function()` contains the majority of the soil temperature model and calls two helper functions.  The two functions implement an equation for calculating soil temperature adapted from Beckman et. al. [1973]; `soil_temperature_integrand()` includes the integrand in the equation and is called by `soil_temperature_equation()`, which represents the full equation.  Below we outline the soil temperature model encapsulated by the functions.
+
+The change is soil temperature ($T_s$) through time $t$ and depth $z$ can be approximated with a differential equation
 $$\frac{dT_s}{dt}= \frac{k_s}{\rho_s c_s} \frac{\delta^2T_s}{\delta z^2}$$
 where  $k_s$ is the thermal conductivity of soil (units), $\rho_s$ is the density of soil, and $c_s$ is the specific heat of soil (units). We solve the differential equation by breaking the soil profile into depth nodes, exchanging heat. We estimate the steady state temperature profile, which is independent of initial conditions.  The choice of initial conditions only affects the rate of convergence to the steady state solution. A finite difference approximation of the differential equation yields a transient equation for temperature at depth $i$ and time $p$ where we let $a= \frac{k_s}{\rho_s c_s}$:
 $$\frac{T_i^{p+1}-T_i^p}{dt}= a \frac{T_{i+dz}^p+T_{i-dz}^p-2T_i^p}{dz^2}. $$
-Solving for $T_i^{p+1}$ produces as expression for solving soilt emperature at depth $i$ at any time:
+Solving for $T_i^{p+1}$ produces as expression for solving soil temperature at depth $i$ at any time:
 $$T_i^{p+1} = a \frac{dt}{dz^2}(T_{i+dz}^p+T_{i-dz}^p)+(1-2a \frac{dt}{dz^2})T_i^p$$
 
-Solving the equation requires two boundary conditions: 1) the deep soil temperature, and 2) the soil surface temperature. We assume that the soil temperature at 60cm is constant diurnally. The soil surface temperature is estimated using an energy balance equating the energy conducted to the soil surface the the net heat transfer to the surface by solar radiation, infrared radiation, and conduction:
-$$Qnet_s = Qabs_s + Qemit_s + Qconv_s,$$
+#Boundary conditions
+Solving the equation requires two boundary conditions: 1) the deep soil temperature, and 2) the soil surface temperature. We assume that the soil temperature at 60cm is constant diurnally. The soil surface temperature is estimated using an energy balance equating the energy conducted to the soil surface the the net heat transfer to the surface by solar radiation, infrared radiation, and conduction [Beckman et al. 1973]:
+$$Q_net=Qabs_s= + Qemit_s + Qconv_s + Qcond_s,$$
 where the solar radiation absorbed by the soil surface is the product of incoming radiation $S$ and the proportion radiation absorbed $\alpha_s$, $Qabs_s= \alpha_s S$. The net thermal radiation to the soil surface is determined by balance of radiation emitted by the soil surface $\sigma T_s^4$ and sky radiation absorbed by the soil surface $\sigma T_{sky}^4$: $Qemit_s= \sigma (T_{sky}^4 - T_s^4)$. Convection between the soil surface and air is estimated as a function of the temperature difference $Qconv_s= h_s (T_-T_s)$, where $h_s$ is the surface heat transfer coefficient. Consideration of temperature profiles and surface roughness yields a expression during neutral conditions [Sellers 1965]: 
 $$h_s= \frac{\rho_s c_s k^2 V_r}{ln(z_r/z_o+1)^2},$$
 where $V$ is wind speed at reference height $z_r$ and $z_0$ is roughness length. 
 
-GRIGS: EQ 10 to 13
+##GRIGS SURFACE BOUNDARY CONDITION
+$$Q_{net}= Q_{sol_s} + Q_{emit_s} + Q_{conv_s} +Q_{cond_s}$$
+where
+$$Q_{net}= \frac{\rho_s c_s dz}{2 dt} (T_0^{p+1}-T_0^p)$$
+$Q_{sol_s}= \alpha_s S$
+$Q_{emit_s}= \epsilon_s \sigma [(T^p_{sky})^4-(T^p_0)^4]$
+$Q_{conv_s}= h_s(T^p-T^p_s)$
+$Q_{cond_s}=k_s \frac{\delta T_s}{\delta z}$, at z=0. Approximating $q_cond$ by finite difference yields $Q_{cond_s}=\frac{k_s}{dz}(T^p_{dz}-T^p_s), at z=0$
 
-#soil_temperature_noint CALLS soil_temperature CALLS soil_temp_overall_function CALLS soil_temp_integrand
-soil_temperature_noint: sets up ODE solution 
-soil_temperature: core soil temperature function 
+where h_s as above
+$T_sky=0.552 T^{1.5}$
+
+letting $a=\frac{2dt}{\rho_s \c_s dz}
+solving for $T_0^{p+1}$ yields
+$$T_0^{p+1}= a \alpha_s S + a \epsilon_S \sigma [(T^p_{sky})^4-(T^p_0)^4]+a h_s (T^p-T_0^p) +a \frac{k_s}{dz}(T^p_{dz}-T^p_0)+T_0^p$$
 
 soil_temp_overall_function:
 rho_a*c_a*k*(V_inst*k/log((exp((z+z0)/L)-1)/(exp(z0/L)-1)))*(T_inst-T_s)/integrate(soil_temp_integrand, lower=0, upper=z/L, L, z0)$value - (V_inst*k/log((exp((z+z0)/L)-1)/(exp(z0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}
 
-rho_a*c_a*k*(V_inst*k/log((exp((z+z0)/L)-1)/(exp(z0/L)-1)))*(T_inst-T_s)/integrate(soil_temp_integrand, lower=0, upper=z/L, L, z0)$value - (V_inst*k/log((exp((z+z0)/L)-1)/(exp(z0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}
-
-
 soil_temp_integrand: #Integrand for relationship between air temperature and height [SEE EQ. 12 BECKMAN 1973]
 soil_temp_integrand<-function(x, L, z0){ (3-1.4*exp(1.5*x))^-1*(exp(x+z0/L)/(exp(x+z0/L)-1))}
 
-```{r}
-soil_temp_integrand(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), L=-10,z0=0.2)
-soil_temp_overall_function(L=-10, rho_a=1.177, c_a=1006, k=.41, V_inst=0.3, z=1.5, z0=0.02, T_inst=265, T_s=20)
-```
 
 ```{r}
 #' \dontrun{
@@ -193,11 +199,11 @@ soil_temp_overall_function(L=-10, rho_a=1.177, c_a=1006, k=.41, V_inst=0.3, z=1.
 #' time_vector= rep(1:24,4)
 #' solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
 #'
-#' soil_temperature_noint(z.intervals=12,z=1.5, Tair=temp_vector, u_z=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, solrad= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
+#' soil_temperature(z.intervals=12,z=1.5, Tair=temp_vector, u_z=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, solrad= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
 #'}
 ```
 
-#SOIL TEMPERATURE FUNCTION
+
 
 
 
