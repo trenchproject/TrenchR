@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(TrenchR)
 ```
 
-##Allometries
+#Allometries
 We provide tools for estimating additional dimensions of organisms from measured dimensions. The function `mass_from_length()` encompasses empirically-derived relationships to estimate mass (mostly) as a power law function of mass for six taxonomic classifications. The relationships are derived by relating length to mass for specimens of numerous species and avaialble as the following function: 
 ```{r}
 mass_from_length(0.04,"insect")
@@ -39,7 +39,7 @@ prop_silhouette_area(60, taxa= "frog")
 prop_silhouette_area_shapes(shape="spheroid", theta=60, h=0.01, d=0.001)
 ```
 
-##Conversions
+#Conversions
 We offer convenience functions to convert among units for angles and temperatures:
 ```{r}
 degree_to_radian(47.608)

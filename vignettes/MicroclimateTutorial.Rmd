@@ -19,7 +19,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(TrenchR)
 ```
 
-##Solar angles and daylength
+# Radiation
+## Solar angles and daylength
 Estimates of sun position and day length are often estimated based on calendar date. We provide a function `day_of_year()` that facilitates translating a date into a calendar date. We next present functions to calculate sun angles.  We use the calendar date (J) to estimate solar declination (radian), which is the angular distance of the sun north or south of the earth’s equator, as follows (`dec_angle()`):
 $$ \delta= \arcsin[0.39795 \cos(0.21631+ 2 \arctan (0.967 \tan [0.0086(-186+J)]))].$$
 
@@ -45,7 +46,7 @@ azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
 daylength(47.61, 112)
 ```
 
-## Radiation estimates
+## Radiation components
 We provide functions to estimate solar (shortwave) radiation by discounting incoming solar radiation due to scattering as the radiation travels through the atmosphere. The primary function `estimate_radiation()` returns estimates of the direct, diffuse, and reflected components of solar radiation ($W m^{-2}$). The radiation streams are the direct irradiance on a surface perpendicular to the beam $S_p$, the diffuse sky irradiance on a horizontal plane $S_d$ (W m−2), and the reflected radiation from the ground $S_r$. The sum of these three streams represents the total irradiance of a horizontal surface $S_t$.
 
 Calculation of these flux densities requires the introduction of several additional quantities. The atmospheric transmissivity, $\tau$, ranges between 0.6 and 0.7 for typical clear sky conditions (Gates 1980). The solar constant, $S_{p0}$, indicates extraterrestrial flux density to be 1,360 $W m^{−2}$. Optical air mass number, $m_a$, is the ratio of slant path length through the atmosphere to zenith path length and is a function of atmospheric pressure: $m_a=p_a/(101.3\cos(\psi))$, where $p_a$ is air pressure (kPa) and $\psi$ is zenith angle (see above)$. The function `airpressure_from_elev()` estimates air pressure as $p_a (kPa)= 101.3 \exp \frac{-E}{8200}$, where $E$ is the elevation in meters above sea level. 
@@ -60,11 +61,11 @@ The functions are available in the TrenchR package as follows:
 ```{r}
 airpressure_from_elev(1500)
 estimate_radiation(doy=112, psi=1, tau=0.6, elev=1500, rho=0.7)
-monthly_solar_radiation(lat=47.61,lon=-122.33,doy=112,elev=1500,Temp=15,Hr=50,P=50)
-partition_solar_radiation(500, 0.5)
+#monthly_solar_radiation(lat=47.61,lon=-122.33,doy=112,elev=1500,Temp=15,Hr=50,P=50)
+#partition_solar_radiation(500, 0.5)
 ```
 
-## Temperature and windspeed profiles
+# Temperature and windspeed profiles
 Temperatures and windspeeds collected at ~2m can differ drametically from conditions near the ground where most organisms live. Turbulent air flow influenced by the ground surface roughness sets up temperature and windspeed profiles.  These profiles can be estimated to scale temperatures and widspeeds to organism height. We scale across height by estimating a wind speed profile using the relationship:
 $$u(z)= \frac{u^*}{0.41}ln \frac{z-d}{z_m} $$
 where u(z) is the wind speed (m/s) at height z (m), u* is the friction velocity (m/s), d is the zero plane displacement (m, the height at which wind speed is zero), and the constant 0.41 is the von Karman constant. 
@@ -94,7 +95,7 @@ wind_speed_profile(u_r=0.1, zr=0.1, z0=0.2, z=0.15)
 air_temp_profile(T_r=20, u_r=0.1, zr=0.1, z0=0.2, z=0.15, T_s=25)
 ```
 
-## Diurnal variation in temperature and radiation
+# Diurnal variation in temperature and radiation
 We provide three forms of equations to estimate diurnal temperature radiation: a sine model, a sine exponential model, and a sine sqrt model. The models assume that maximum temperature $T_x$ will occur sometime between sunrise $t_r$ and sunset $t_s$ and that the minimum temperature $T_n$ will occur in the early morning. 
 
 The sine model (`diurnal_temp_variation_sine()`) estimates temperature t hour $h$ as a function of minimum and maximum temperature $$T(h)= T_x -T_n(1-\gamma) $$, where $\gamma=0.44-0.46 \sin (0.9+WH_r)+0.11 \sin(0.9+2WH_r)$ and $W=\pi/12$
@@ -133,7 +134,7 @@ where $a'= 0.409+0.5016\sin(\omega_s-1.047)$ and $b'=0.6609-0.4767\sin(\omega_s-
 diurnal_radiation_variation(doy=112, solrad=500, hour=12, lon=-122.33, lat=47.61)
 ```
 
-## Degree days
+# Degree days
 Many organismal processes and rates are temperature dependent. Accounting for temperature dependence allows translating calendar time into a more biologically relevant concept known as degree days. Degree days indicates the accumulated heat available for processes such as development and is estimated as the accumulated product of time and temperature. For the frequent application of estimating development, degree days are calculated within physiological bounds known as the lower and upper developmental temperatures, LDT and UDT, respectively.  We provide four approaches for estimating degree days that differ in the complexity with which the aggregate heat: "single.sine"","double.sine", "single.triangulation" or "double.triangulation". We implement the methods detailed here: http://ipm.ucanr.edu/WEATHER/ddfigindex.html.  The methods account for whether the temeprature time series is intercepted by the LDT and / or the UDT.  Briefly, we present the equations for each method for the case of the temperature time series being intercepted by the lower threshold. For the single-sine method, degree days $D$ can be estimated as
 $$D= \frac{1}{\pi} \left[ \left( \frac{T_x+T_n}{2}-LDT \right) +\alpha\cos(\theta_1) \right] \\
 \theta_1= \sin^{-1}\left[ 1/ \alpha \left( LDT- \frac{T_x+T_n}{2} \right) \right]$$
@@ -152,7 +153,7 @@ The methods are available in the following R function:
 degree_days(7,14,12,33,"single.sine")
 ```
 
-## Soil temperature at nodes between surface and 60cm deep 
+# Soil temperatures
 We implemented a microclimate model with air temperature and radiation as input using finite-difference methods to solve heat balance equations describing soil temperatures at the surface and specified depths. Our approach follows Porter et al. [1973] and is similar to that described for the NicheMapR R package [Kearney and Porter 2017]. The primary function to call to calculate soil temperature is `soil_temperature()`. The function is a wrapper to solve the differential equations below for equilibrium conditions.  The called function `soil_temperature_function()` contains the majority of the soil temperature model and calls two helper functions.  The two functions implement an equation for calculating soil temperature adapted from Beckman et. al. [1973]; `soil_temperature_integrand()` includes the integrand in the equation and is called by `soil_temperature_equation()`, which represents the full equation.  Below we outline the soil temperature model encapsulated by the functions.
 
 The change is soil temperature ($T_s$) through time $t$ and depth $z$ can be approximated with a differential equation
@@ -162,36 +163,17 @@ $$\frac{T_i^{p+1}-T_i^p}{dt}= a \frac{T_{i+dz}^p+T_{i-dz}^p-2T_i^p}{dz^2}. $$
 Solving for $T_i^{p+1}$ produces as expression for solving soil temperature at depth $i$ at any time:
 $$T_i^{p+1} = a \frac{dt}{dz^2}(T_{i+dz}^p+T_{i-dz}^p)+(1-2a \frac{dt}{dz^2})T_i^p$$
 
-#Boundary conditions
-Solving the equation requires two boundary conditions: 1) the deep soil temperature, and 2) the soil surface temperature. We assume that the soil temperature at 60cm is constant diurnally. The soil surface temperature is estimated using an energy balance equating the energy conducted to the soil surface the the net heat transfer to the surface by solar radiation, infrared radiation, and conduction [Beckman et al. 1973]:
-$$Q_net=Qabs_s= + Qemit_s + Qconv_s + Qcond_s,$$
-where the solar radiation absorbed by the soil surface is the product of incoming radiation $S$ and the proportion radiation absorbed $\alpha_s$, $Qabs_s= \alpha_s S$. The net thermal radiation to the soil surface is determined by balance of radiation emitted by the soil surface $\sigma T_s^4$ and sky radiation absorbed by the soil surface $\sigma T_{sky}^4$: $Qemit_s= \sigma (T_{sky}^4 - T_s^4)$. Convection between the soil surface and air is estimated as a function of the temperature difference $Qconv_s= h_s (T_-T_s)$, where $h_s$ is the surface heat transfer coefficient. Consideration of temperature profiles and surface roughness yields a expression during neutral conditions [Sellers 1965]: 
+##Soil boundary conditions
+Solving the equation requires two boundary conditions: 1) the deep soil temperature, and 2) the soil surface temperature. We assume that the soil temperature at 60cm is constant diurnally. The soil surface temperature at time $p$ is estimated using an energy balance equating the energy conducted to the soil surface the the net heat transfer to the surface by solar radiation, infrared radiation, and conduction [Beckman et al. 1973]:
+$$Q_{net_s}= Q_{sol_s} + Q_{emit_s} + Q_{conv_s} +Q_{cond_s}$$
+where the solar radiation absorbed by the soil surface is the product of incoming radiation $S$ and the proportion radiation absorbed $\alpha_s$, $Q_{sol_s}= \alpha_s S$. The net thermal radiation to the soil surface is determined by balance of radiation emitted by the soil surface $\sigma T_s^4$ and sky radiation absorbed by the soil surface $\sigma T_{sky}^4$: $Q_{emit_s}= \epsilon_s \sigma [(T^p_{sky})^4-(T^p_0)^4]$, where $\epsilon_s$ is the thermal emissivity of the soil surface and $T^p_{sky}=0.552 T^{1.5}$. Convection between the soil surface and air is estimated as a function of the temperature difference $Q_{conv_s}= h_s(T^p-T^p_s)$, where $h_s$ is the surface heat transfer coefficient. Consideration of temperature profiles and surface roughness yields a expression during neutral conditions [Sellers 1965]: 
 $$h_s= \frac{\rho_s c_s k^2 V_r}{ln(z_r/z_o+1)^2},$$
-where $V$ is wind speed at reference height $z_r$ and $z_0$ is roughness length. 
+where $V$ is wind speed at reference height $z_r$ and $z_0$ is roughness length. Conduction within the soil profile is estimated as $Q_{cond_s}=k_s \frac{\delta T_s}{\delta z}$, at $z=0$. Approximating $Q_{cond_s}$ by finite difference yields $Q_{cond_s}=\frac{k_s}{dz}(T^p_{dz}-T^p_s)$, at $z=0$
 
-##GRIGS SURFACE BOUNDARY CONDITION
-$$Q_{net}= Q_{sol_s} + Q_{emit_s} + Q_{conv_s} +Q_{cond_s}$$
-where
-$$Q_{net}= \frac{\rho_s c_s dz}{2 dt} (T_0^{p+1}-T_0^p)$$
-$Q_{sol_s}= \alpha_s S$
-$Q_{emit_s}= \epsilon_s \sigma [(T^p_{sky})^4-(T^p_0)^4]$
-$Q_{conv_s}= h_s(T^p-T^p_s)$
-$Q_{cond_s}=k_s \frac{\delta T_s}{\delta z}$, at z=0. Approximating $q_cond$ by finite difference yields $Q_{cond_s}=\frac{k_s}{dz}(T^p_{dz}-T^p_s), at z=0$
-
-where h_s as above
-$T_sky=0.552 T^{1.5}$
-
-letting $a=\frac{2dt}{\rho_s \c_s dz}
-solving for $T_0^{p+1}$ yields
+The net heat transfer through the profile across time is expressed as $$Q_{net_s}= \frac{\rho_s c_s dz}{2 dt} (T_0^{p+1}-T_0^p)$$. Letting $a=\frac{2dt}{\rho_s \c_s dz}$ and solving for $T_0^{p+1}$ in the soil energy budget yields the following boundary condition for soil surface temperature:
 $$T_0^{p+1}= a \alpha_s S + a \epsilon_S \sigma [(T^p_{sky})^4-(T^p_0)^4]+a h_s (T^p-T_0^p) +a \frac{k_s}{dz}(T^p_{dz}-T^p_0)+T_0^p$$
 
-soil_temp_overall_function:
-rho_a*c_a*k*(V_inst*k/log((exp((z+z0)/L)-1)/(exp(z0/L)-1)))*(T_inst-T_s)/integrate(soil_temp_integrand, lower=0, upper=z/L, L, z0)$value - (V_inst*k/log((exp((z+z0)/L)-1)/(exp(z0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}
-
-soil_temp_integrand: #Integrand for relationship between air temperature and height [SEE EQ. 12 BECKMAN 1973]
-soil_temp_integrand<-function(x, L, z0){ (3-1.4*exp(1.5*x))^-1*(exp(x+z0/L)/(exp(x+z0/L)-1))}
-
-
+Soil temperature can be estimated in R as follows:
 ```{r}
 #' \dontrun{
 #' temp_vector= runif(96, min=-10, max=10)
@@ -203,11 +185,7 @@ soil_temp_integrand<-function(x, L, z0){ (3-1.4*exp(1.5*x))^-1*(exp(x+z0/L)/(exp
 #'}
 ```
 
-
-
-
-
-# Estimating soil specific heat and conductivity
+## Soil specific heat and conductivity
 We can approximate soil specific heat, $c_s$,as the weighted sum of the specific heats of soil constituents [Campbell and Norman 1998]: $\rho_s c_s= rho_m c_m x_m + rho_o c_o x_o + rho_w c_w x_w,$
 where $\rho_s$ is the particle density of soil (bulk density), $x$ is the volume fraction, and the subscripts $m$,$o$,and $w$ stand for minerals, organic matter, and water, respectively. We provide a function to calculate soil specific heat given the volume fractions and $\rho_s$:
 ```{r}
