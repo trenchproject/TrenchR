@@ -313,4 +313,21 @@ We provide the operative temperature model for grasshoppers as follows:
 Spotila?
 
 #Example operative environmental temperature calculations
+Suppose we want to estimate the hourly body temperature (operative environmental temperature, $T_e$) of a Sceloporus lizard on June 1 (doy 152) in Santa Fe, New Mexico, USA (35.69, -105.944, elevation:2121). Let's assume the lizard is in an unshaded location where the daily air temperature varies from a minimum of 10C to a maximum of 25C and the soil surface temperature varies from a minimum of 15C to a maximum of 30C. 
+
+Let us first prepare the environmental data for analysis. We will need to estimate hourly air and soil temperatures and radiation.
+
+We will be solving the following energy balance to estimate: $T_e$.
+
+
+
+
+
+
+
+
+
+
+
+
 
