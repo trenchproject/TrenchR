@@ -212,7 +212,7 @@ sa_from_length<-function(length){
 #' @export
 #' @examples
 #' \dontrun{
-#' prop_silhouette_area(60, taxa= "frog")
+#' prop_silhouette_area(psi=60, taxa= "frog")
 #' }
 #' 
 

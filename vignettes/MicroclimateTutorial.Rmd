@@ -43,7 +43,7 @@ dec_angle(112)
 zenith_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
 solar_noon(lon=-122.335, doy=112)
 azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
-daylength(47.61, 112)
+daylength(lat=47.61, doy=112)
 ```
 
 ## Radiation components

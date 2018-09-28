@@ -13,7 +13,7 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' diurnal_temp_variation_sineexp(Tmx=40, Tmn=10, Hr=11, tr=18, ts=6, alpha=2.59, beta= 1.55, gamma=2.2)
+#' diurnal_temp_variation_sineexp(Tmx=40, Tmn=10, Hr=11, tr=6, ts=18, alpha=2.59, beta= 1.55, gamma=2.2)
 #' }
 
 diurnal_temp_variation_sineexp=function(Tmx, Tmn, Hr, tr, ts, alpha=2.59, beta= 1.55, gamma=2.2){

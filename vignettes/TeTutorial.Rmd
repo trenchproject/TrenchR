@@ -42,7 +42,7 @@ The summation is available in R as follows
 ```{r}
 #Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=1000, S_dif=200, a_s=0.5)
 ```
-where psa_dir and psa_ref are the proportions of surface area exposed to direct and reflected solar radiation, respectively. We assume psa_dif=psa_dir. See functions `{r}prop_silhouette_area()` and `{r}prop_silhouette_area_shapes()` for assistance calculating the proportional of surface area exposed via estimating silhouette area. Additionally, see the tutorial on [solar radiation] for tools for estimating incoming solar radiation.
+where psa_dir and psa_ref are the proportions of surface area exposed to direct and reflected solar radiation, respectively. We assume psa_dif=psa_dir. See functions `prop_silhouette_area()` and `prop_silhouette_area_shapes()` for assistance calculating the proportional of surface area exposed via estimating silhouette area. Additionally, see the tutorial on [solar radiation] for tools for estimating incoming solar radiation.
 
 #Thermal radiation, Qemit
 The rate of emission of thermal radiation from the surface of an animal, $Q_{emit} (W)$, is determined by the difference between the surface temperature of the animal $T_b (K)$ and the temperatures of the air $T_a (K)$ and ground $T_g (K)$.  $T_a$ is additionally used to estimate sky temperature $T_{sky} (K)$, the effective radiant temperature of the sky as $T_{sky}=1.22*(Ta-273.15)-20.4+273.15$ [Gates 1980]. The following expressions can be used to estimate $Q_{emit} (W)$ for animals in enclosed and open environments, respectively:
@@ -313,17 +313,112 @@ We provide the operative temperature model for grasshoppers as follows:
 Spotila?
 
 #Example operative environmental temperature calculations
-Suppose we want to estimate the hourly body temperature (operative environmental temperature, $T_e$) of a Sceloporus lizard on June 1 (doy 152) in Santa Fe, New Mexico, USA (35.69, -105.944, elevation:2121). Let's assume the lizard is in an unshaded location where the daily air temperature varies from a minimum of 10C to a maximum of 25C and the soil surface temperature varies from a minimum of 15C to a maximum of 30C. 
+Suppose we want to estimate the hourly body temperature (operative environmental temperature, $T_e$) of a Sceloporus lizard on June 1, 2018 in Santa Fe, New Mexico, USA (35.69, -105.944, elevation:2121). Let's assume the lizard is in an unshaded location where the daily air temperature varies from a minimum of 10C to a maximum of 25C, the soil surface temperature varies from a minimum of 15C to a maximum of 30C, and the windspeed is 0.5 m/s.
 
-Let us first prepare the environmental data for analysis. We will need to estimate hourly air and soil temperatures and radiation.
+Assume that atmospheric transmissivity $\tau=0.7$, albedo $\rho=0.6$
 
-We will be solving the following energy balance to estimate: $T_e$.
+WE ASSUME Tb=Ta TO ILLUSTRATE CALCULATIONS
 
+##Environmental data
+Let us first prepare the environmental data for analysis. We will need to estimate hourly air and soil temperatures and radiation. We start be estimating day of year and the timing of sunrise and sunset:
+```{r}
+#set up input data as variables
+lat=35.69; lon= -105.944; elev=2121
+Tmin=10; Tmax=25; Tmin_s=15; Tmax_s=30
+V=0.5
+#assumptions
+tau=0.7; rho=0.6
+Tb0=25
 
+doy= day_of_year("2018-06-01", format= "%Y-%m-%d")
+snoon= solar_noon(lon=lon, doy=doy)
+dayl= daylength(lat=lat, doy=doy)
+tr= snoon-dayl/2
+ts= snoon+dayl/2
+```
 
+We can estimate hourly solar radiation as follows:
+```{r}
+psi_deg= sapply(1:24, FUN=zenith_angle, doy=doy, lat=lat, lon=lon)
+psi_rad= degree_to_radian(psi_deg) #convert to radians
+Srad= sapply(psi_rad, FUN=estimate_radiation, doy=doy, tau=tau, elev=elev, rho=rho)
+#Separate into direct, diffuse, and reflected solar radiation
+Sdir= Srad[1,]
+Sdif= Srad[2,]
+Sref= Srad[3,]
+```
 
+We can then calculate hourly air and soil temperatures. We use the sine-exponential model for air temperature and the sine model for surface temperature:
+```{r}
+Ta= sapply(1:24, diurnal_temp_variation_sineexp, Tmx=Tmax, Tmn=Tmin, tr=tr, ts=ts, alpha=2.59, beta= 1.55, gamma=2.2)
+Ts= sapply(1:24, diurnal_temp_variation_sine, Tmx=Tmax_s, Tmn=Tmin_s)
+```
 
+##Energy balance
+We will be solving the following energy balance to estimate $T_e$:
+$$Qnet = Qabs - Qemit + Qconv + Qcond + Qmet - Qevap,$$
+We will estimate each term on the right side of the equation in turn. Estimating $Q_{abs}$requires the surface area exposed to radation and the solar absorptivity of the animal surface ($a$ proportion). We model a 10g Sceloporus lizard with solar aborptivity $a=0.9$ [Gates 1980].
 
+```{r}
+mass=10
+a=0.9 #solar absorptivity
+
+#estimate surface area (m^2) from mass (g)
+A= sa_from_mass(mass, "lizard")
+#estimate projected (silhouette) area as a portion of surface area
+psa= sapply(psi_deg, prop_silhouette_area, taxa= "lizard", posture= "prostrate")
+#change negative values to zero
+psa[psa<0]=0
+```
+
+We calculate the hourly radiation asborbed as follows:
+```{r}
+Qabs= rep(NA, 24)
+for(hr in 1:24) Qabs[hr]= Qradiation_absorbed(a=a, A=A, psa_dir=psa[hr], psa_ref=1-psa[hr], S_dir=Sdir[hr], S_dif=Sdif[hr], a_s=rho)
+```
+
+We estimate thermal radiation $Q_{emit}$ for the lizard outdoors. We assume the surface emisivity of lizards, $epsilon_s=0.965$ [Bartlett & Gates 1967].
+
+```{r}
+epsilon_s=0.965
+
+Qemit= rep(NA, 24)
+for(hr in 1:24) Qemit[hr]=Qemitted_thermal_radiation(epsilon=epsilon_s, A=A, psa_dir=psa[hr], psa_ref=1-psa[hr], Tb=Ta[hr], Tg=Ts[hr], Ta=Ta[hr], enclosed=FALSE)
+```
+
+We next estimate convection $Q_{conv}$:
+```{r}
+Qconvection(Ta= 293,Tb= 303,H_L=10.45,A=0.0025, proportion=0.85)
+```
+
+We will estimate the heat transfer coefficient using an empirical function for lizards, but also illustrate a generic function for estimating $H_L$.  
+
+[the characteristic dimension $D (m)$, the thermal conductivity of the air $K (W m^{-1} K^{-1})$, the kinematic viscocity of the air $nu (m^2 s^{-1})$, and the taxa or a generic shape.]
+```{r}
+H_L=heat_transfer_coefficient_lizard(V=V, orientation="parallel")
+#### FIX: H_L_gen= heat_transfer_coefficient(V=3,D=0.05,K= 25.7 * 10^(-3), nu= 15.3 * 10^(-6), "cylinder")
+```
+
+We estimate conductance assuming conductancer through the animal tissue is the rate limiting step.
+
+[When animal conductance is the rate limiting step, $Qcond$ can be estimated as follows:
+$$Qcond= A*proportion*K*(T_g-T_b)/d, $$
+where] $K$ is thermal conductivity ($W K^{-1} m^{-1}$), $T_g$ is ground (surface) temperature (K), $T_b$ is body temperature (K), and $d$ is the mean thickness of the animal skin (surface, $m$).]
+```{r}
+Qconduction_animal(Tg= 293,Tb=303,d=10^-6,K=0.5,A=10^-3, proportion=0.2)
+```
+
+We assume, as in generally done for lizards, that heat exchange associate with metabolism and evaporation is neglidglible:
+```{r}
+Qmet= 0
+Qevap= 0
+```
+
+##Energy balance 
+
+##Te calculation
+
+##Plot
 
 
 

@@ -54,7 +54,7 @@ dec_angle <- function(doy){
 #' @export
 #' @examples
 #' \dontrun{
-#' daylength(47.61, 112)
+#' daylength(lat=47.61, doy=112)
 #' }
 
 daylength <- function(lat, doy){
