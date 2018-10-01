@@ -123,7 +123,7 @@ where $\alpha=T_x-T_n$,$R=T_x-T_s$, and $b=\frac{T_p-T_s}{\sqrt{h_p - h_s}}$. Su
 We provide the functions as follows:
 ```{r}
 diurnal_temp_variation_sine(Tmx=30, Tmn=10, Hr=11)
-diurnal_temp_variation_sineexp(Tmx=40, Tmn=10, Hr=11, tr=18, ts=6, alpha=2.59, beta= 1.55, gamma=2.2)
+diurnal_temp_variation_sineexp(Tmx=40, Tmn=10, Hr=11, tr=6, ts=18, alpha=2.59, beta= 1.55, gamma=2.2)
 diurnal_temp_variation_sinesqrt( Hr=8, tr=6, ts=18, Tmx=30, Tmn=20, Tmn_p=22)
 ```
 

@@ -111,50 +111,11 @@ Qconvection<-function(Ta,Tb,H_L=10.45,A,proportion, ef=1.3 ){
   return(Qconv)
 }
 
-#' Calculate heat transfer coefficient for lizard
-#' 
-#' @details This function allows you estimate the heat transfer coefficient for a lizard (Based on Porter et al. 1973)
-#' @param V Air velocity m/s.
-#' @param orientation parallel or transverse
-#' @return heat transfer coefficient, H (W m^-2 K^-1)
-#' @keywords heat transfer coefficient 
-#' @export
-#' @examples
-#' \dontrun{
-#' heat_transfer_coefficient_lizard(V=3, orientation="parallel")
-#' }
-#' 
-
-heat_transfer_coefficient_lizard<-function(V,orientation="parallel"){
-  
-  #Convert air velocity from m/s to cm/sec
-  V_cm = V*100
-  
-  # Case when orientation is parallel
-  H_L = dplyr::case_when(
-    orientation == "parallel" ~ 0.0038927 + (0.0001169 *V_cm ),
-    TRUE ~ 1
-  )
-  
-  # Case when orientation is transverse
-  H_L = dplyr::case_when(
-    orientation == "transverse" ~ 0.012132 + (0.000116 *V_cm ),
-    TRUE ~ 1
-  )
-  
-  #TODO - Need to verify the conversion
-  # Convert from cal/minute / cm^2 /Celsius to W m^-2 K^-1
-  # Used 1 calorie per minute ( cal/min ) = 0.070 watts ( W )
-  H_L_SI <- (H_L * 0.070 * 100 ) 
-    
-  return(H_L_SI)
-}
-
 
 #' Calculate heat transfer coefficient (based on Mitchell 1976)
-#' (Uses Table 1 which is Convective Heat Trasfer Relations to Animal Shapes)
+#' (Uses Table I: Convective Heat Transfer Relations for Animal Shapes)
 #' 
-#' @details This function allows you estimate the heat transfer coefficient for various taxa (based on Mitchell 1976).  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere.
+#' @details This function allows you estimate the heat transfer coefficient for various taxa (based on Mitchell 1976).  Based on empirical measurements.
 #' @param V Air velocity m/s.
 #' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
 #' @param K Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR
@@ -165,13 +126,11 @@ heat_transfer_coefficient_lizard<-function(V,orientation="parallel"){
 #' @export
 #' @examples
 #' \dontrun{
-#' heat_transfer_coefficient(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
+#' heat_transfer_coefficient(V=0.5,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
 #' }
 #' 
 
 heat_transfer_coefficient<-function(V,D,K,nu, taxa="cylinder"){
-  
-  ##TODO Check unit: K or C
   
   taxas= c("sphere","cylinder","frog","lizard_surface","lizard_elevated","flyinginsect","spider")
   #cylinder assumes 40<Re<4000
@@ -181,13 +140,76 @@ heat_transfer_coefficient<-function(V,D,K,nu, taxa="cylinder"){
   Cls= c(0.37,0.615,0.258,1.36,1.91,0.0749,0.47)
   ns= c(0.6,0.466,0.667,0.39,0.45,0.78,0.5) 
   
+ 
   #find index  
   ind= match(taxa, taxas)
   
-  H_L_SI <- Cls[ind] *K * ((V * D/ nu )^ns[ind]) /D
-  
-  return(H_L_SI)
+  Re= V*D/nu #Reynolds number 
+  Nu <- Cls[ind] * Re^ns[ind]  #Nusselt number
+  H_L= Nu * K / D
+   
+  return(H_L)
 }
+
+#' Calculate heat transfer coefficient using a sphereical approximation (based on Mitchell 1976)
+#' (Uses Table III: Convective Heat Transfer Relations for Animal Shapes)
+#' 
+#' @details This function allows you estimate the heat transfer coefficient for various taxa (based on Mitchell 1976).  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere.
+#' @param V Air velocity m/s.
+#' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
+#' @param K Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR
+#' @param nu Kinematic Viscocity of air, m^2 s^-1, can calculate using DRYAIR or WETAIR in NicheMapR
+#' @param taxa Which class of organism, current choices: sphere,frog,lizard,flyinginsect,spider
+#' @return heat transfer coefficient, H_L (W m^-2 K^-1)
+#' @keywords heat transfer coefficient
+#' @export
+#' @examples
+#' \dontrun{
+#' heat_transfer_coefficient_approximation(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "sphere")
+#' }
+#' 
+
+heat_transfer_coefficient_approximation<-function(V,D,K,nu, taxa="sphere"){
+  
+  taxas= c("sphere","frog","lizard","flyinginsect","spider")
+  #cylinder assumes 40<Re<4000
+  #lizard assumes prostrate on or elevated above surface, average for parallel and perpendicular to air flow
+  
+  # Dimensionless constant (Cl)
+  Cls= c(0.34,0.196,0.56,0.0714,0.52)
+  ns= c(0.6,0.667,0.6, 0.78,0.5) 
+  
+  #find index  
+  ind= match(taxa, taxas)
+  
+  Re= V*D/nu #Reynolds number 
+  Nu <- Cls[ind] * Re^ns[ind]  #Nusselt number
+  H_L= Nu * K / D
+  
+  return(H_L)
+}
+
+#' Calculate heat transfer coefficient (based on Mitchell 1976 in Spotila 1992)
+#' 
+#' @details This function allows you estimate the heat transfer coefficient for various taxa (based on Mitchell 1976 and using relationship in Spotila et al 1992).
+#' @param V Air velocity m/s.
+#' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
+#' @return heat transfer coefficient, H_L (W m^-2 K^-1)
+#' @keywords heat transfer coefficient
+#' @export
+#' @examples
+#' \dontrun{
+#' heat_transfer_coefficient_simple(V=0.5,D=0.05)
+#' }
+#' 
+
+heat_transfer_coefficient_simple<-function(V,D){
+  
+  H_L= 6.77 * V^0.6 * D^(-0.4)
+  
+  return(H_L)
+}
+
 
 #' Calculate absorbed solar and thermal radiation
 #' 

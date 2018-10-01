@@ -91,16 +91,12 @@ Nu_from_Gr(Gr=5)
 Free_or_forced_convection(Gr=100, Re=5)
 ```
 
-The primary method we offer to estimate the convective heat transfer coefficient entails approximating the animal shape as a sphere, which enables simplification while also producing an reasonable approximation [Mitchell 1976].  The function below approximates forced convective heat transfer as a function of windspeed $V (m/s)$, the characteristic dimension $D (m)$, the thermal conductivity of the air $K (W m^{-1} K^{-1})$, the kinematic viscocity of the air $nu (m^2 s^{-1})$, and the taxa or a generic shape.
+We offer methods to estimate the convective heat transfer coefficient entails based on either empirical measurements (`heat_transfer_coefficient()`) or approximating the animal shape as a sphere (`heat_transfer_coefficient_approximation()`), which enables simplification while also producing an reasonable approximation [Mitchell 1976].  The functions approximate forced convective heat transfer as a function of windspeed $V (m/s)$, the characteristic dimension $D (m)$, the thermal conductivity of the air $K (W m^{-1} K^{-1})$, the kinematic viscocity of the air $nu (m^2 s^{-1})$, and the taxa or a generic shape. An additional, simplified function (`heat_transfer_coefficient_simple()`) provides a reasonable approximation based on $V$ and $D$ for most environmental conditions.
 
 ```{r}
-heat_transfer_coefficient(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
-```
-
-
-We additionally offer an empically-derived function to estimate $H_L$ for lizards as a function of $V$ and the lizard's orientation [Porter et al. 1973]:
-```{r}
-heat_transfer_coefficient_lizard(V=3, orientation="parallel")
+heat_transfer_coefficient(V=0.5,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
+heat_transfer_coefficient_approximation(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "sphere")
+heat_transfer_coefficient_simple(V=0.5,D=0.05)
 ```
 
 #Conduction, Qcond
@@ -386,37 +382,71 @@ Qemit= rep(NA, 24)
 for(hr in 1:24) Qemit[hr]=Qemitted_thermal_radiation(epsilon=epsilon_s, A=A, psa_dir=psa[hr], psa_ref=1-psa[hr], Tb=Ta[hr], Tg=Ts[hr], Ta=Ta[hr], enclosed=FALSE)
 ```
 
-We next estimate convection $Q_{conv}$:
+We next estimate convection $Q_{conv}$ and conduction $Q_{cond}$. We will estimate the lizard's heat transfer coefficient, $H_L$ using an empirical relationship for lizards (`heat_transfer_coefficient()`), but also illustrate a function estimating $H_L$ using a spherical approximation (`heat_transfer_coefficient_approximation()`) and a simplified approximation (`heat_transfer_coefficient_simple()`).  
+
 ```{r}
-Qconvection(Ta= 293,Tb= 303,H_L=10.45,A=0.0025, proportion=0.85)
+#Use DRYAIR in NicheMapR to estimate thermal conductivity of air and kinematic viscocity
+#library(NicheMapR)
+
+#estimate Barometric pressure (pascal)
+ap= airpressure_from_elev(elev)*1000
+  
+DRYAIRout= DRYAIR(db=Ta, bp=ap, alt=elev)
+K= DRYAIRout$thcond
+nu= DRYAIRout$viskin #Kinematic viscosity (m2 s-1)
+
+svl=0.006 #SVL for sceloporus
+
+#We will use the average of K and nu across the day for simplicity and since there's not substantial variation
+K= mean(K)
+nu=mean(nu)
+
+#Estimate using empirical relationship
+H_L=heat_transfer_coefficient(V=V,D=svl,K= 25.7 * 10^(-3), nu= 15.3 * 10^(-6) , taxa="lizard_surface")
+
+#Also illustrate estimations using a spherical approximation and a simplified version of the approximation.
+heat_transfer_coefficient_approximation(V=V,D=svl,K= 25.7 * 10^(-3), nu= 15.3 * 10^(-6), taxa="lizard")
+heat_transfer_coefficient_simple(V=0.5,D=0.05)
+
 ```
 
-We will estimate the heat transfer coefficient using an empirical function for lizards, but also illustrate a generic function for estimating $H_L$.  
+####
+We estimate convective heat exchange between the animal and surrounding air using ithe following relationship:
+$$Qconv= ef*H_L*(A*proportion)*(Ta-Tb),$$
+where an enhancement factor, $ef$, multiplier can be incorported to account for increases in heat exchange resulting from air turbulance in field conditions
 
-[the characteristic dimension $D (m)$, the thermal conductivity of the air $K (W m^{-1} K^{-1})$, the kinematic viscocity of the air $nu (m^2 s^{-1})$, and the taxa or a generic shape.]
+The function is available in R assuming that 2/3 of the lizard's surface area is exchanging heat through convection. We note we currently estimate no convection since we are assuming $Tb=Ta$ for illustration purposes:
 ```{r}
-H_L=heat_transfer_coefficient_lizard(V=V, orientation="parallel")
-#### FIX: H_L_gen= heat_transfer_coefficient(V=3,D=0.05,K= 25.7 * 10^(-3), nu= 15.3 * 10^(-6), "cylinder")
+Qconv= rep(NA, 24)
+for(hr in 1:24) Qconv[hr]= Qconvection(Ta= Ta[hr],Tb= Ta[hr],H_L=H_L,A=A, proportion=0.67, ef=1.3)
 ```
 
-We estimate conductance assuming conductancer through the animal tissue is the rate limiting step.
-
-[When animal conductance is the rate limiting step, $Qcond$ can be estimated as follows:
+We estimate conductance between the lizard and surface assuming conductance through the animal tissue is the rate limiting step as follows:
 $$Qcond= A*proportion*K*(T_g-T_b)/d, $$
-where] $K$ is thermal conductivity ($W K^{-1} m^{-1}$), $T_g$ is ground (surface) temperature (K), $T_b$ is body temperature (K), and $d$ is the mean thickness of the animal skin (surface, $m$).]
+We conduct the estimate in R assuming that 1/3 of the lizard surface is in contact with the ground and a skin thinkness of $10^{-6}$:
 ```{r}
-Qconduction_animal(Tg= 293,Tb=303,d=10^-6,K=0.5,A=10^-3, proportion=0.2)
+Qcond= rep(NA, 24)
+for(hr in 1:24) Qcond[hr]=Qconduction_animal(Tg= Ts[hr],Tb=Ta[hr],d=10^-6,K=K,A=A, proportion=0.33)
 ```
 
-We assume, as in generally done for lizards, that heat exchange associate with metabolism and evaporation is neglidglible:
+We assume, as in generally done for lizards, that heat exchange associated with metabolism and evaporation is negliglible:
 ```{r}
 Qmet= 0
 Qevap= 0
 ```
 
-##Energy balance 
+The full heat budget can be calculated as follows: 
+```{r}
+Qnet_Gates(Qabs=Qabs, Qemit=Qemit, Qconv=Qconv, Qcond=Qcond, Qmet=Qmet, Qevap=Qevap)
+```
+We constructed the energy balance assuming $Tb=Ta$ for illustration. We now use a function based on the energy balance above to estimate body temperature given the environmental conditions: 
 
-##Te calculation
+```{r}
+Te= rep(NA, 24)
+for(hr in 1:24) Te[hr]= Tb_Gates(A=A, D=D, psa_dir=psa[hr], psa_ref=1-psa[hr], psa_air=0.67, psa_g=0.33, Tg=Ts[hr]+273, Ta=Ta[hr]+273, Qabs=Sdir[hr], epsilon=epsilon_s, H_L=H_L, ef=1.3, K=K)
+#check T, Qabs
+
+```
 
 ##Plot
 
