@@ -232,7 +232,7 @@ prop_silhouette_area<-function(psi, taxa, raz=0, posture="prostrate"){
   #Grasshopper, Anderson et al. 1979
   if(taxa=="grasshopper") psa<-0.19-0.00173*psi 
   
-  return(psa)
+  return(psa/100)
 }
 
 #' Calculate silhouette area using the shape approximations
