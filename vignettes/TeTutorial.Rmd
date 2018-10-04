@@ -161,7 +161,7 @@ Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, Tg=303,
 
 ```
 
-Campbell and Norman (XXXX) use a somewhat simplified energy balance to express $Te$ as a function of $Ta$ plus or minus a temperature increment determined by absorbed radiation, wind speed, and animal morphology: 
+Campbell and Norman (1998) use a somewhat simplified energy balance to express $Te$ as a function of $Ta$ plus or minus a temperature increment determined by absorbed radiation, wind speed, and animal morphology: 
 $$ Te=Ta+(Sabs-Qemit)/(c_p(g_r+g_{Ha})),$$
 where $Ta$ is air temperature (K), $Sabs$ is the solar and thermal radiation absorbed ($W m^{-2}$), $Qemit$ is emitted thermal radiation ($W m^{-2}$),$c_p$ is the specific heat of air ($J mol^{-1} K^{-1}$), $g_{r}$ is radiative conductance, and $g_{Ha}$ is the boundary conductance.  The model is based on estimating $T_e$ for a blackbody (perfectly absorbing) cavity with air temperatures equal to surface temperatures ($T_a=T_s$. The model assumes that the cavity provides the same heat load as the nautral environment and thus equates metabolic heat production and evaporative cooling in the two environments.  The formulation assumes a well mixed interior of the animal and also omits conduction with the substrate.  In this scenario, organisms emit thermal radiation from their surface proproportional to the forth power of T_a:
 $$Q_{emit}= \epsilon \sigma T_a^4 ,$$
@@ -445,7 +445,7 @@ Te= rep(NA, 24)
 for(hr in 1:24) Te[hr]= Tb_Gates(A=A, l=svl, psa_dir=psa[hr], psa_ref=1-psa[hr], psa_air=0.67, psa_g=0.33, Tg=Ts[hr]+273, Ta=Ta[hr]+273, Qabs=Qabs[hr], epsilon=epsilon_s, H_L=H_L, ef=1.3, K=K)
 ```
 
-We also implement a similiar but simplied energy balance:
+We also implement a similiar but simplied energy balance. The energy balance omits conduction with the ground and thus underestimates temperatures, but we implement it for comparison purposes:
 ```{r}
 Te2= rep(NA, 24)
 for(hr in 1:24) Te2[hr]= Tb_CampbellNorman(Ta=Ta[hr]+273, Sabs=Qabs[hr]/svl, epsilon=epsilon_s, c_p=29.3, D=svl, V=V)
@@ -463,7 +463,7 @@ We next plot the diurnal trends in environmental data and the operative data.
 
 ```{r}
 plot(1:24, Te-273, type="l", xlab="Hour", ylab="Temperature (C)", col="blue")
-points(1:24, Te2-273, type="l", col="blue", lty="dotted")
+#points(1:24, Te2-273, type="l", col="blue", lty="dotted")
 points(1:24, Te3, type="l", col="blue", lty="dashed")
 points(1:24, Ta, type="l", col="orange")
 points(1:24, Ts, type="l", col="purple")
