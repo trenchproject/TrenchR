@@ -3,7 +3,18 @@
 # Author: ofir
 ###############################################################################
 
-
+#' SFCDIF1
+#'
+#' 
+#' @details 
+#' @param 
+#' 
+#' @return 
+#' @keywords 
+#' @export
+#' @author Ofir Levy
+#' @examples
+#' 
 SFCDIF1 = function (ITER   ,SFCTMP ,RHOAIR ,H      ,QAIR   , # in
 				             ZLVL   ,Z0M    ,Z0H    ,UR     , # in
 				             MPE    ,                 # in
@@ -31,13 +42,13 @@ SFCDIF1 = function (ITER   ,SFCTMP ,RHOAIR ,H      ,QAIR   , # in
 # FM     !momentum stability correction, weighted by prior iters
 # FH     !sen heat stability correction, weighted by prior iters
 
-! outputs
+#! outputs
 
 # CM     !drag coefficient for momentum
 # CH     !drag coefficient for heat
 # FV     !friction velocity (m/s)
 
-! locals
+#! locals
 # MOL                      !Monin-Obukhov length (m)
 # TMPCM                    !temporary calculation for CM
 # TMPCH                    !temporary calculation for CH
@@ -50,7 +61,7 @@ SFCDIF1 = function (ITER   ,SFCTMP ,RHOAIR ,H      ,QAIR   , # in
 # CMFM, CHFH
 # -------------------------------------------------------------------------------------------------
 # Monin-Obukhov stability parameter moz for next iteration
-
+{
 MOZOLD = MOZ
 
 TMPCM = log((2.0 + Z0M) / Z0M)
@@ -116,5 +127,5 @@ if (MOZ < 0.) {
 	
 	FV = UR * sqrt(CM)
 	
-	return (data.frame(MOZSGN=MOZSGN, MOZ=MOZ, FM=FM, FH=FH, CM=CM, CH=CH, FV=FV))
+	return (list(MOZSGN=MOZSGN, MOZ=MOZ, FM=FM, FH=FH, CM=CM, CH=CH, FV=FV))
 }

@@ -3,119 +3,34 @@
 # Author: ofir
 ###############################################################################
 
+source("SFCDIF1.R")
+source("ESAT.R")
 
+#' TDC
+#'
+#' 
+#' @details 
+#' @param 
+#' 
+#' @return 
+#' @keywords 
+#' @export
+#' @author Ofir Levy
+#' @examples
+#' 
 TDC = function(T){ #convert Kelvin to degree Celsius with limit -50 to +50
 	return( min( 50., max(-50.,(T-TFRZ)) ))	
 }   
 
-#derived from Noah-MP model in module_sf_noahmplsm.F from the wrf (v. 3.4) model
-#the calculations for heat balance are described in the metadata
 GROUND_FLUX = function (SHADE, FVEG, ISNOW, DZSNSO, SWDOWN, ALBEDO     ,  #in
 LWDN    ,UR   ,  #in
-QAIR    ,EAIR    ,EAH, RHOAIR  ,SNOWH   , #in
+QAIR    ,EAIR    ,EAH, RHOAIR  , #in
 Z0M     ,dair,  #in
 EMG     ,EMV, EMISS, STC     ,DF      ,RSURF   ,LATHEA  ,  #in
 GAMMA   ,RHSUR, T2M , TAH, TV,  #in
-TG     ,CM      ,CH      ,           #inout
-GH     ,TAIR, UVH, xSAG, xSH, xEV, xIR, xGH  #out
-)
-{
-# --------------------------------------------------------------------------------------------------
-# use newton-raphson iteration to solve ground (tg) temperature
-# that balances the surface energy budgets.
-
-# ----------------------------------------------------------------------
-# ----------------------------------------------------------------------
-# ----------------------------------------------------------------------
-	# input
-#SHADE  #(0<=SHADE<=1)
-#FVEG   #(0<=FVEG<=1)
-#ISNOW  #actual no. of snow layers
-#DZSNSO #thickness of snow/soil layers (m) (constant from wrf output)
-#SWDOWN #Visible (shortwave) downward flux (W m-2) (from wrf output)
-#ALBEDO #ground albedo (dec. %) (from wrf output)
-#LWDN   #atmospheric longwave radiation (w/m2) (calculated)
-#UR     #wind speed at height zlvl (m/s) (calculated using U10 and V10 wrf output)
-#QAIR   #specific humidity at height zlvl (kg/kg) (from wrf output)
-#EAIR   #vapor pressure air at height (pa) (from wrf output)
-#EAH    #canopy air vapor pressure (pa) (from wrf output)
-#RHOAIR #density air (kg/m3) (from wrf output)
-#SNOWH  #actual snow depth [m] (from wrf output)
-#Z0M    #roughness length, momentum, ground (m) (from wrf output)
-#dair   #air layer thickness for output calculations  (m)
-#EMG    #ground emissivity (from wrf output)
-#EMV    #canopy emissivity (from wrf output)
-#EMISS  #net surface emissivity (from wrf output)
-#STC    #soil/snow temperature (k) (calculated)
-#DF     #thermal conductivity of snow/soil (w/m/k) (calculated)
-#RSURF  #ground surface resistance (s/m) (calculated)
-#LATHEA #latent heat of vaporization/subli (j/kg) (calculated)
-#GAMMA  #psychrometric constant (pa/k) (calculated)
-#RHSUR  #relative humidity in surface soil/snow air space (-) (calculated)
-#T2M    #wrfout 2 m height air temperature (k) (from wrf output)
-#TGM    #wrfout ground temperature (k) (from wrf output)
-#TAH    #air temperature in canopy (k) (from wrf output)
-#TV     #canopy temperature (k) (from wrf output)
+TG     ,CM      ,CH )#     ,           #inout
 	
-	# input/output
-#TG    #ground temperature (k)
-#CM     #momentum drag coefficient
-#CH     #sensible heat exchange coefficient
-	
-	# output
-#GH    #ground heat flux (w/m2)  [+ to soil]
-#TAIR   #calculated air temperature at various heights(k)
-#UVH   #calculated wind speed at various heights(k)
-#xSAG, xSH, xEV, xIR, xGH #heat flux variables (w/m2)  [+ to ground]
-	#locals
-#SAG        #solar radiation absorbed
-#L_g, L_c   #longwave radiation components
-#IR         #net longwave rad (w/m2)   [+ to atm]
-#SH         #sensible heat flux (w/m2) [+ to atm]
-#EV         #latent heat flux (w/m2)   [+ to atm]
-#FV         #friction velocity (m/s)
-#Z0H        #roughness length, sensible heat, ground (m)
-#RAMB       #aerodynamic resistance for momentum (s/m)
-#RAHB       #aerodynamic resistance for sensible heat (s/m)
-#RAWB       #aerodynamic resistance for water vapor (s/m)
-#MOL        #Monin-Obukhov length (m)
-#DTG        #change in tg, last iteration (k)
-#T2
-	
-#CIR        #coefficients for ir as function of ts^4
-#CSH        #coefficients for sh as function of ts
-#CEV        #coefficients for ev as function of esat[ts]
-#CGH        #coefficients for st as function of ts
-	
-#ESTG       #saturation vapor pressure at tg (pa)
-#DESTG      #d(es)/dt at tg (pa/K)
-#ESATW      #es for water
-#ESATI      #es for ice
-#DSATW      #d(es)/dt at tg (pa/K) for water
-#DSATI      #d(es)/dt at tg (pa/K) for ice
-	
-#A          #temporary calculation
-#B          #temporary calculation
-#H          #temporary sensible heat flux (w/m2)
-#MOZ        #Monin-Obukhov stability paramet
-	
-#MOZOLD     #Monin-Obukhov stability parameter from prior iteration
-#FM         #momentum stability correction, weighted by prior iters
-#FH         #sen heat stability correction, weighted by prior iters
-#MOZSGN  #number of times MOZ changes sign
-	
-#ITER    #iteration index
-#NITERB  #number of iterations for surface temperature
-#MPE     #prevents overflow error if division by zero
-#EHB    #bare ground heat conductance
-#EHB2       #sensible heat conductance for diagnostics
-	
-#height
-#iheight
-	
-#T     
-
-	NITERB=10
+  NITERB=10
 	
 	# -----------------------------------------------------------------
 			# initialization of variables that do not depend on stability iteration
@@ -123,6 +38,7 @@ GH     ,TAIR, UVH, xSAG, xSH, xEV, xIR, xGH  #out
 	MPE = 1E-6
 	DTG = 0.
 	MOZSGN = 0
+	MOZ=0
 	MOZOLD = 0.
 	H      = 0.
 	FV     = 0.1
@@ -138,7 +54,7 @@ GH     ,TAIR, UVH, xSAG, xSH, xEV, xIR, xGH  #out
 	CIR = EMG*SB
 	
 	#coefficient for ground heat flux (Eq. 10 in metadata)
-	CGH = 2.*((DF[1]+DF[2])/2.)/(DZSNSO[1]*2.)
+	CGH = 2.*((DF[1]+DF[2])/2.)/(DZSNSO*2.)
 	
 	
 	# -----------------------------------------------------------------
@@ -149,10 +65,10 @@ GH     ,TAIR, UVH, xSAG, xSH, xEV, xIR, xGH  #out
 	# Run iteration and calculate TG
 	# -----------------------------------------------------------------
 	
+	Z0M=Z0MVT
+	Z0H=Z0MVT
 	for (ITER in 1:NITERB){  # begin stability iteration
-	
-		Z0H = Z0M
-		
+	  
 		results = SFCDIF1(ITER   ,T2 ,RHOAIR ,H      ,QAIR   , #in
 		ZLVL   ,Z0M    ,Z0H    ,UR     ,  #in
 		MPE   ,                  #in
@@ -202,8 +118,7 @@ GH     ,TAIR, UVH, xSAG, xSH, xEV, xIR, xGH  #out
 		# sensible heat flux (H) (Eq. 6 in metadata)
 		if (FVEG<0.05){
 			SH   = CSH * (TG - T2M )
-		}
-		else {
+		}	else {
 			SH   = CSH * (TG - TAH )
 		}
 				
@@ -218,7 +133,7 @@ GH     ,TAIR, UVH, xSAG, xSH, xEV, xIR, xGH  #out
 		B     = SAG-IR-SH-EV-GH
 		A     = 4.*CIR*TG^3 + CSH + CEV*DESTG + CGH
 		DTG   = B/A
-		
+		#browser()
 		##########################################
 		# update ground surface temperature
 		TG = TG + DTG
@@ -231,6 +146,8 @@ GH     ,TAIR, UVH, xSAG, xSH, xEV, xIR, xGH  #out
 		SH = SH + CSH*DTG
 		EV = EV + CEV*DESTG*DTG
 		GH = GH + CGH*DTG
+		
+		
 		
 		T = TDC(TG)
 		ESAT(T, ESATW, ESATI, DSATW, DSATI)
@@ -264,7 +181,8 @@ GH     ,TAIR, UVH, xSAG, xSH, xEV, xIR, xGH  #out
 	##########################################
 	# if snow on ground and TG > TFRZ: reset TG = TFRZ. reevaluate ground fluxes.
 	##########################################
-	if (SNOWH > 0.05 & TG > TFRZ) {
+	#browser()
+	if (ISNOW>0 & TG > TFRZ) {
 		TG = TFRZ
 		IR = CIR * TG^4 - EMG*LWDN      
 		if (FVEG<0.05) 
@@ -288,12 +206,13 @@ GH     ,TAIR, UVH, xSAG, xSH, xEV, xIR, xGH  #out
 	##########################################
 	#update ground heat flux
 	##########################################
+	#browser()
 	GH   = CGH * (TG - (STC[1]+STC[2])/2.)
-	
+	#browser()
 	xSAG = SAG
 	xSH = SH
 	xIR = IR
 	xEV = EV
 	xGH = GH
-	return(data.frame(TG=TG, CM=CM, CH=CH, GH=GH, TAIR=TAIR, UVH=UVH, xSAG=xSAG, xSH=XSH, xEV=xEV, xIR=xIR, xGH=xGH))		
+	return(list(TG=TG, CM=CM, CH=CH, GH=GH, TAIR=TAIR, UVH=UVH, xSAG=xSAG, xSH=xSH, xEV=xEV, xIR=xIR, xGH=xGH))		
 }

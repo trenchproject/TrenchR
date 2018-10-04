@@ -5,6 +5,19 @@
 
 
 #copied from Noah-MP model in module_sf_noahmplsm.F from wrf_3.4 model
+
+#' ESAT
+#'
+#' 
+#' @details 
+#' @param 
+#' 
+#' @return 
+#' @keywords 
+#' @export
+#' @author Ofir Levy
+#' @examples
+#' 
 ESAT = function(T, ESW, ESI, DESW, DESI) {
 
 #---------------------------------------------------------------------------------------------------
@@ -65,6 +78,6 @@ ESAT = function(T, ESW, ESI, DESW, DESI) {
 	DESW = 100.*(C0+T*(C1+T*(C2+T*(C3+T*(C4+T*(C5+T*C6))))))
 	DESI = 100.*(D0+T*(D1+T*(D2+T*(D3+T*(D4+T*(D5+T*D6))))))
 	
-	return(data.frame(ESW=ESW, ESI = ESI, DESW = DESW, DESI=DESI))
+	return(list(ESW=ESW, ESI = ESI, DESW = DESW, DESI=DESI))
 }
 
