@@ -3,7 +3,7 @@
 \name{heat_transfer_coefficient}
 \alias{heat_transfer_coefficient}
 \title{Calculate heat transfer coefficient (based on Mitchell 1976)
-(Uses Table 1 which is Convective Heat Trasfer Relations to Animal Shapes)}
+(Uses Table I: Convective Heat Transfer Relations for Animal Shapes)}
 \usage{
 heat_transfer_coefficient(V, D, K, nu, taxa = "cylinder")
 }
@@ -23,14 +23,14 @@ heat transfer coefficient, H_L (W m^-2 K^-1)
 }
 \description{
 Calculate heat transfer coefficient (based on Mitchell 1976)
-(Uses Table 1 which is Convective Heat Trasfer Relations to Animal Shapes)
+(Uses Table I: Convective Heat Transfer Relations for Animal Shapes)
 }
 \details{
-This function allows you estimate the heat transfer coefficient for various taxa (based on Mitchell 1976).  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere.
+This function allows you estimate the heat transfer coefficient for various taxa (based on Mitchell 1976).  Based on empirical measurements.
 }
 \examples{
 \dontrun{
-heat_transfer_coefficient(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
+heat_transfer_coefficient(V=0.5,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
 }
 
 }

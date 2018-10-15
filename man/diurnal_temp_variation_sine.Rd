@@ -23,7 +23,7 @@ This function allows you to estimate temperature for a specified hour using the 
 }
 \examples{
 \dontrun{
-diurnal_temp_variation_sine()
+diurnal_temp_variation_sine(Tmx=30, Tmn=10, Hr=11)
 }
 }
 \keyword{Temperature}

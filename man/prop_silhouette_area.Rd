@@ -26,7 +26,7 @@ This function allows you to estimate the projected (silhouette) area as a portio
 }
 \examples{
 \dontrun{
-prop_silhouette_area(60, taxa= "frog")
+prop_silhouette_area(psi=60, taxa= "frog")
 }
 
 }

@@ -30,7 +30,6 @@ prop_silhouette_area_shapes(shape="spheroid", theta=60, h=0.01, d=0.001)
 prop_silhouette_area_shapes(shape="cylinder flat ends", theta=60, h=0.01, d=0.001)
 prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=60, h=0.01, d=0.001)
 }
-
 }
 \keyword{area}
 \keyword{silhouette}

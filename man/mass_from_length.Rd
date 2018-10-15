@@ -22,7 +22,7 @@ This function allows you to estimate mass (g) from length (m) for a variety of t
 }
 \examples{
  \dontrun{
- calculate_mass(0.04,"insect")
+ mass_from_length(0.04,"insect")
 }
 
 }

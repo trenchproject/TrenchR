@@ -26,7 +26,7 @@ Calculate Zenith angle
 }
 \examples{
 \dontrun{
-zenith_angle(112, 47.61, -122.33, 12)
+zenith_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
 }
 }
 \keyword{Zenith}

@@ -15,6 +15,9 @@ wind_speed_profile(u_r, zr, z0, z)
 
 \item{z}{is height to scale to in m.}
 }
+\value{
+wind speed (m/s)
+}
 \description{
 This function allows you to estimate wind speed (m/s) at a specified height (m).  
 Estimates a single, unsegmented wind velocity using the MICRO routine from NicheMapR as described in Kearney and Porter 2016.

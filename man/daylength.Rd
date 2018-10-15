@@ -22,7 +22,7 @@ Calculate day length
 }
 \examples{
 \dontrun{
-daylength(47.61, 112)
+daylength(lat=47.61, doy=112)
 }
 }
 \keyword{Day}

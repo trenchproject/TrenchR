@@ -4,13 +4,13 @@
 \alias{Tb_Gates}
 \title{Predicts body temperatures (operative environmental temperature) of an ectotherm in K.}
 \usage{
-Tb_Gates(A, D, psa_dir, psa_ref, psa_air, psa_g, Tg, Ta, Qabs, epsilon, H_L,
+Tb_Gates(A, l, psa_dir, psa_ref, psa_air, psa_g, Tg, Ta, Qabs, epsilon, H_L,
   ef = 1.3, K)
 }
 \arguments{
 \item{A}{surface area  in m^2}
 
-\item{D}{characteristic dimension for conduction (m)}
+\item{l}{characteristic dimension for conduction (m)}
 
 \item{psa_dir}{proportion surface area exposed to sky (or enclosure)}
 
@@ -20,7 +20,7 @@ Tb_Gates(A, D, psa_dir, psa_ref, psa_air, psa_g, Tg, Ta, Qabs, epsilon, H_L,
 
 \item{psa_g}{of surface in contact with substrate}
 
-\item{Tg}{ground surface temperatue in K}
+\item{Tg}{ground surface temperature in K}
 
 \item{Ta}{ambient air temperature in K}
 
@@ -45,7 +45,7 @@ Predicts body temperatures (operative environmental temperature) of an ectotherm
 }
 \examples{
 \dontrun{
-Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, Tg=303, Ta=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
+Tb_Gates(A=1, l=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, Tg=303, Ta=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
 }
 
 }

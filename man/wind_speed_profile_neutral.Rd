@@ -15,6 +15,9 @@ wind_speed_profile_neutral(u_r, zr, z0, z)
 
 \item{z}{is height to scale to in m.}
 }
+\value{
+windspeed in m/s
+}
 \description{
 This function allows you to calculate wind speed (m/s) at a 
 specified height (m) within a boundary layer near the surface.  

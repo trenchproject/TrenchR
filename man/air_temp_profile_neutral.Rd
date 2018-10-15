@@ -17,6 +17,9 @@ air_temp_profile_neutral(T_r, zr, z0, z, T_s)
 
 \item{T_s}{is surface temperatures in degrees C.}
 }
+\value{
+temperature (degrees C)
+}
 \description{
 This function allows you to calculate temperature (C) at a specified height (m) within a 
 boundary layer near the surface.  The velocity profile is the neutral profile described by Sellers (1965). 
