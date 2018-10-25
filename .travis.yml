@@ -20,3 +20,6 @@ env:
     - R_CHECK_ARGS="--no-vignettes --no-build-vignettes --no-manual --timings --as-cran --run-donttest"
     - R_BUILD_ARGS="--no-vignettes --no-build-vignettes --no-manual"
     - _R_CHECK_TIMINGS_="0"    
+
+r_build_args: "--no-resave-data --no-build-vignettes"
+r_check_args: "--as-cran --no-build-vignettes"       
