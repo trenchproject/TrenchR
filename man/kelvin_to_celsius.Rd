@@ -4,10 +4,10 @@
 \alias{kelvin_to_celsius}
 \title{Converts Kelvin to Celsius}
 \usage{
-kelvin_to_celsius(temp)
+kelvin_to_celsius(T)
 }
 \arguments{
-\item{temp}{Temperature in Fahrenheit.}
+\item{T}{Temperature in Fahrenheit.}
 }
 \value{
 Temperature in Celsius

@@ -2,37 +2,37 @@
 % Please edit documentation in R/DTRFunctions.R
 \name{diurnal_temp_variation_sineexp}
 \alias{diurnal_temp_variation_sineexp}
-\title{Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components}
+\title{Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential componenT_s}
 \usage{
-diurnal_temp_variation_sineexp(Tmx, Tmn, Hr, tr, ts, alpha = 2.59,
+diurnal_temp_variation_sineexp(T_max, T_min, t, t_r, t_s, alpha = 2.59,
   beta = 1.55, gamma = 2.2)
 }
 \arguments{
-\item{Tmx}{maximum daily temperature (C)}
+\item{T_max}{maximum daily temperature (C)}
 
-\item{Tmn}{minimum daily temperature (C)}
+\item{T_min}{minimum daily temperature (C)}
 
-\item{Hr}{hour for temperature estimate}
+\item{t}{hour for temperature estimate}
 
-\item{tr}{time of sunset (hour)}
+\item{t_r}{time of sunset (hour)}
 
-\item{ts}{time of sunrise (hour)}
+\item{t_s}{time of sunrise (hour)}
 
-\item{alpha}{time difference between tx(time of maximum temperature) and noon}
+\item{alpha}{time difference between t_x(time of maximum temperature) and noon}
 
-\item{beta}{time difference between tx and sunrise}
+\item{beta}{time difference between t_x and sunrise}
 
-\item{gamma}{decay parameter for rate of t change from sunset to tn(time of minimum temp)}
+\item{gamma}{decay parameter for rate of t change from sunset to t_n(time of minimum temp)}
 }
 \description{
-Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components
+Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential componenT_s
 }
 \details{
-This function allows you to estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components as in Parton and Logan (1981). We provide default values for alpha (2.59), beta (1.55), and gamma (2.2) for North Carolina from Wann 1985. See function for other parameterizations.
+This function allows you to estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential componenT_s as in Parton and Logan (1981).
 }
 \examples{
-\dontrun{
-diurnal_temp_variation_sineexp(Tmx=40, Tmn=10, Hr=11, tr=6, ts=18, alpha=2.59, beta= 1.55, gamma=2.2)
+\\donT_run{
+Thour.sineexp()
 }
 }
 \keyword{Temperature}

@@ -4,16 +4,16 @@
 \alias{Tb_Fei}
 \title{Calculate body temperature(Operative Temperature) of Lizard using model by Fei et al.}
 \usage{
-Tb_Fei(TAH, Tsurface, Tair, SWDOWN, GLW, shade)
+Tb_Fei(TAH, T_s, T_a, UDT, GLW, shade)
 }
 \arguments{
 \item{TAH}{Temperature in canopy.}
 
-\item{Tsurface}{Surface Temperature.}
+\item{T_s}{Surface Temperature.}
 
-\item{Tair}{Air Temperature.}
+\item{T_a}{Air Temperature.}
 
-\item{SWDOWN}{upper developmental threshold.}
+\item{UDT}{upper developmental threshold.}
 
 \item{GLW}{Downward flux of near-infrared radiation}
 
@@ -24,7 +24,7 @@ Tb_Fei(TAH, Tsurface, Tair, SWDOWN, GLW, shade)
 S. van Overjijk, M. Bian, and Y. Liu, “A body temperature model for 
 lizards as estimated from the thermal environment,” J. Therm. 
 Biol., vol. 37, no. 1, pp. 56–64, 2012.
-TAH, Tsurface, Tair, SWDOWN, GLW, time_step, shade
+TAH, T_s, T_a, UDT, GLW, time_step, shade
 }
 \details{
 Calculate Operative Temperature of Lizard.

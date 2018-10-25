@@ -4,10 +4,10 @@
 \alias{prop_silhouette_area}
 \title{Calculate silhouette area}
 \usage{
-prop_silhouette_area(psi, taxa, raz = 0, posture = "prostrate")
+prop_silhouette_area(z, taxa, raz = 0, posture = "prostrate")
 }
 \arguments{
-\item{psi}{zenith angle in degrees}
+\item{z}{zenith angle in degrees}
 
 \item{taxa}{Which class of organism, current choices: frog, lizard, grasshopper}
 
@@ -26,7 +26,7 @@ This function allows you to estimate the projected (silhouette) area as a portio
 }
 \examples{
 \dontrun{
-prop_silhouette_area(psi=60, taxa= "frog")
+prop_silhouette_area(z=60, taxa= "frog")
 }
 
 }

@@ -4,10 +4,10 @@
 \alias{saturation_vapor_pressure}
 \title{Calculate saturation vapor pressure}
 \usage{
-saturation_vapor_pressure(Ta)
+saturation_vapor_pressure(T_a)
 }
 \arguments{
-\item{Ta}{air temperature (K)}
+\item{T_a}{air temperature (K)}
 }
 \value{
 saturation vapor pressure, e_s (kPa)
@@ -20,7 +20,7 @@ Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equati
 }
 \examples{
 \dontrun{
-saturation_vapor_pressure(Ta=293)
+saturation_vapor_pressure(T_a=293)
 }
 
 }

@@ -4,7 +4,7 @@
 \alias{monthly_solar_radiation}
 \title{Estimate average monthly solar radiation}
 \usage{
-monthly_solar_radiation(lat, lon, doy, elev, Temp, Hr, P)
+monthly_solar_radiation(lat, lon, doy, elev, T, Hr, P)
 }
 \arguments{
 \item{lat}{latitude in degrees}
@@ -15,7 +15,7 @@ monthly_solar_radiation(lat, lon, doy, elev, Temp, Hr, P)
 
 \item{elev}{is elevation in m}
 
-\item{Temp}{is mean monthly temp in degree Celsius}
+\item{T}{is mean monthly temperature (C)}
 
 \item{Hr}{is mean month relative humidity (in percentage)}
 
@@ -34,7 +34,7 @@ Estimate average monthly solar radiation (W m^-2 per day) using basic topographi
 }
 \examples{
 \dontrun{
-monthly_solar_radiation(lat=47.61,lon=-122.33,doy=112,elev=1500,Temp=15,Hr=50,P=50)
+monthly_solar_radiation(lat=47.61,lon=-122.33,doy=112,elev=1500,T=15,Hr=50,P=50)
 }
 }
 \keyword{average}

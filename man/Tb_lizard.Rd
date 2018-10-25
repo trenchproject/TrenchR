@@ -4,28 +4,28 @@
 \alias{Tb_lizard}
 \title{Predicts body temperatures (operative environmental temperature) of a lizard in degrees C.}
 \usage{
-Tb_lizard(Ta, Tg, u, svl, mass, psi, rho_S, elevation, doy, sun = TRUE,
+Tb_lizard(T_a, T_g, u, svl, m, psi, rho_S, elev, doy, sun = TRUE,
   surface = TRUE, alpha_S = 0.9, alpha_L = 0.965, epsilon_s = 0.965,
   F_d = 0.8, F_r = 0.5, F_a = 0.5, F_g = 0.5)
 }
 \arguments{
-\item{Ta}{is air temperature in C}
+\item{T_a}{is air temperature in C}
 
-\item{Tg}{is surface temperature in C}
+\item{T_g}{is surface temperature in C}
 
 \item{u}{is wind speed in m/s}
 
 \item{svl}{is lizard snout vent length in mm}
 
-\item{mass}{is lizard mass in g, note can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 #Tinkle and Ballinger 1972}
+\item{m}{is lizard mass in g, note can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 #Tinkle and Ballinger 1972}
 
 \item{psi}{is solar zenith angle in degrees}
 
 \item{rho_S}{is surface albedo (proportion)}
 
-\item{elevation}{is elevation in m}
+\item{elev}{is elevation in m}
 
-\item{doy}{is doy of year (1-366)}
+\item{doy}{is day of year (1-366)}
 
 \item{sun}{indicates whether lizard is in sun (TRUE) or shade (FALSE)}
 

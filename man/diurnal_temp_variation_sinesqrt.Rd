@@ -5,18 +5,18 @@
 \title{Estimates temperature across hours
 From Cesaraccio et al 2001}
 \usage{
-diurnal_temp_variation_sinesqrt(Hr, tr, ts, Tmx, Tmn, Tmn_p)
+diurnal_temp_variation_sinesqrt(t, tr, ts, T_max, T_min, Tmn_p)
 }
 \arguments{
-\item{Hr}{hour or hours for temperature estimate}
+\item{t}{hour or hours for temperature estimate}
 
 \item{tr}{sunrise hour (0-23)}
 
 \item{ts}{sunset hour (0-23)}
 
-\item{Tmx}{maximum temperature of current day (C)}
+\item{T_max}{maximum temperature of current day (C)}
 
-\item{Tmn}{minimum temperature of current day (C)}
+\item{T_min}{minimum temperature of current day (C)}
 
 \item{Tmn_p}{minimum temperature of following day (C)}
 }
@@ -29,7 +29,7 @@ This function allows you to estimate temperature for a specified hour using sine
 }
 \examples{
 \dontrun{
-diurnal_temp_variation_sinesqrt( Hr=8, tr=6, ts=18, Tmx=30, Tmn=20, Tmn_p=22)
+diurnal_temp_variation_sinesqrt( t=8, tr=6, ts=18, T_max=30, T_min=20, Tmn_p=22)
 }
 }
 \keyword{Temperature}

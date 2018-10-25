@@ -4,10 +4,10 @@
 \alias{mass_from_length}
 \title{Calculate mass from length}
 \usage{
-mass_from_length(length, taxa)
+mass_from_length(l, taxa)
 }
 \arguments{
-\item{length}{length in m, length is snout-vent length for amphibians and reptiles (excepting turtles where length is carapace length).}
+\item{l}{Length in m, length is snout-vent length for amphibians and reptiles (excepting turtles where length is carapace length).}
 
 \item{taxa}{Which class of organism, current choices: insect, lizard, salamander, frog, snake, turtle}
 }

@@ -4,10 +4,10 @@
 \alias{sa_from_mass}
 \title{Calculate surface area from mass}
 \usage{
-sa_from_mass(mass, taxa = "lizard")
+sa_from_mass(m, taxa)
 }
 \arguments{
-\item{mass}{Mass in grams.}
+\item{m}{Mass in g}
 
 \item{taxa}{Which class of organism, current choices: lizard, frog, insect}
 }

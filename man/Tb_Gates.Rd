@@ -4,13 +4,11 @@
 \alias{Tb_Gates}
 \title{Predicts body temperatures (operative environmental temperature) of an ectotherm in K.}
 \usage{
-Tb_Gates(A, l, psa_dir, psa_ref, psa_air, psa_g, Tg, Ta, Qabs, epsilon, H_L,
+Tb_Gates(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilon, H_L,
   ef = 1.3, K)
 }
 \arguments{
 \item{A}{surface area  in m^2}
-
-\item{l}{characteristic dimension for conduction (m)}
 
 \item{psa_dir}{proportion surface area exposed to sky (or enclosure)}
 
@@ -20,9 +18,9 @@ Tb_Gates(A, l, psa_dir, psa_ref, psa_air, psa_g, Tg, Ta, Qabs, epsilon, H_L,
 
 \item{psa_g}{of surface in contact with substrate}
 
-\item{Tg}{ground surface temperature in K}
+\item{T_g}{ground surface temperatue in K}
 
-\item{Ta}{ambient air temperature in K}
+\item{T_a}{ambient air temperature in K}
 
 \item{Qabs}{Solar and thermal radiation absorbed (W)}
 
@@ -33,6 +31,8 @@ Tb_Gates(A, l, psa_dir, psa_ref, psa_air, psa_g, Tg, Ta, Qabs, epsilon, H_L,
 \item{ef}{is the enhancement factor, used to adjuct h_L to field condictions (using h_L approximation from Mitchell 1976).  Approximated as 1.3 by default, but see Mitchell 1976 for relationship.}
 
 \item{K}{Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle ( Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.}
+
+\item{l}{characteristic dimension for conduction (m)}
 }
 \value{
 operative environmental temperature (K)
@@ -45,7 +45,7 @@ Predicts body temperatures (operative environmental temperature) of an ectotherm
 }
 \examples{
 \dontrun{
-Tb_Gates(A=1, l=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, Tg=303, Ta=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
+Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_g=303, T_a=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
 }
 
 }

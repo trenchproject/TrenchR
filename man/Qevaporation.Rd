@@ -4,13 +4,13 @@
 \alias{Qevaporation}
 \title{Calculate heat loss associated with evaporative water loss}
 \usage{
-Qevaporation(A, Tb, taxa, rho_s = NA, rho_a = NA, h = NA, H_L = NA,
+Qevaporation(A, T_b, taxa, rho_s = NA, rho_a = NA, h = NA, H = NA,
   r_i = NA)
 }
 \arguments{
 \item{A}{surface area  in m^2}
 
-\item{Tb}{body temperatue in K}
+\item{T_b}{body temperatue in K}
 
 \item{taxa}{taxa current choices: lizard, amphibian_wetskin (fully wet skin), amphibian (not fully wet skin)}
 
@@ -20,7 +20,7 @@ Qevaporation(A, Tb, taxa, rho_s = NA, rho_a = NA, h = NA, H_L = NA,
 
 \item{h}{relative humidity (0-1) (needed if amphibian)}
 
-\item{H_L}{convective heat transfer coefficient (W m^-2 C^-1) (needed if amphibian)}
+\item{H}{convective heat transfer coefficient (W m^-2 C^-1) (needed if amphibian)}
 
 \item{r_i}{internal (cutaneous) resistance to vapor transport (s/m) (needed if amphibian)}
 
@@ -37,8 +37,8 @@ This function allows you to estimate heat loss associated with evaporative water
 }
 \examples{
 \dontrun{
-Qevaporation(A=0.1, Tb=293, taxa="amphibian", rho_s=1.2, rho_a=1.2, h=0.5, H_L=20, r_i=5000)
-Qevaporation(A=0.1, Tb=293, taxa="lizard")
+Qevaporation(A=0.1, T_b=293, taxa="amphibian", rho_s=1.2, rho_a=1.2, h=0.5, H=20, r_i=5000)
+Qevaporation(A=0.1, T_b=293, taxa="lizard")
 }
 
 }

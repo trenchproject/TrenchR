@@ -4,14 +4,14 @@
 \alias{Qconduction_animal}
 \title{Calculate conductance assuming animal thermal conductivity is rate limiting}
 \usage{
-Qconduction_animal(Tg, Tb, d, K = 0.5, A, proportion)
+Qconduction_animal(T_g, T_b, d, K = 0.5, A, proportion)
 }
 \arguments{
-\item{Tg}{Ground (Surface) Temperature in Kelvin.}
+\item{T_g}{Ground (Surface) Temperature in Kelvin.}
 
-\item{Tb}{Body Temperature in Kelvin.}
+\item{T_b}{Body Temperature in Kelvin.}
 
-\item{d}{Mean thickness of the animal skin (surface) in meters, assumes well mixed interior}
+\item{d}{Mean thickness of the animal skin (surface) in (m), assumes well mixed interior}
 
 \item{K}{Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle ( Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.}
 
@@ -30,7 +30,7 @@ This function allows you to calculate conductance (W) of an ectothermic animal t
 }
 \examples{
 \dontrun{
-Qconduction_animal(Tg= 293,Tb=303,d=10^-6,K=0.5,A=10^-3, proportion=0.2)
+Qconduction_animal(T_g= 293,T_b=303,d=10^-6,K=0.5,A=10^-3, proportion=0.2)
 }
 
 }

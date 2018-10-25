@@ -5,14 +5,14 @@
 \title{Diurnal temperature across hours
 From Campbell and Norman 1998 - Uses sine interpolation}
 \usage{
-diurnal_temp_variation_sine(Tmx, Tmn, Hr)
+diurnal_temp_variation_sine(T_max, T_min, t)
 }
 \arguments{
-\item{Tmx}{maximum daily temperature in degree celsius}
+\item{T_max}{maximum daily temperature in degree celsius}
 
-\item{Tmn}{minimum daily temperature in degree celsius}
+\item{T_min}{minimum daily temperature in degree celsius}
 
-\item{Hr}{hour for temperature estimate}
+\item{t}{hour for temperature estimate}
 }
 \description{
 Diurnal temperature across hours
@@ -23,7 +23,7 @@ This function allows you to estimate temperature for a specified hour using the 
 }
 \examples{
 \dontrun{
-diurnal_temp_variation_sine(Tmx=30, Tmn=10, Hr=11)
+diurnal_temp_variation_sine(T_max=30, T_min=10, t=11)
 }
 }
 \keyword{Temperature}

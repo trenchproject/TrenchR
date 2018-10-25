@@ -4,12 +4,12 @@
 \alias{degree_days}
 \title{Calculate degree days}
 \usage{
-degree_days(Tmin, Tmax, LDT = NA, UDT = NA, method = "single.sine")
+degree_days(T_min, T_max, LDT = NA, UDT = NA, method = "single.sine")
 }
 \arguments{
-\item{Tmin}{Minimum temperature of the day.}
+\item{T_min}{Minimum temperature of the day (C)}
 
-\item{Tmax}{Maximum temperature of the day.}
+\item{T_max}{Maximum temperature of the day (C)}
 
 \item{LDT}{lower developmental threshold.}
 

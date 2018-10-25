@@ -4,12 +4,12 @@
 \alias{Qconduction_substrate}
 \title{Calculate conductance assuming substrate thermal conductivity is rate limiting}
 \usage{
-Qconduction_substrate(Tg, Tb, D, K_g = 0.5, A, proportion)
+Qconduction_substrate(T_g, T_b, D, K_g = 0.5, A, proportion)
 }
 \arguments{
-\item{Tg}{Surface Temperature in Kelvin.}
+\item{T_g}{Surface Temperature in Kelvin.}
 
-\item{Tb}{Body Temperature in Kelvin.}
+\item{T_b}{Body Temperature in Kelvin.}
 
 \item{D}{Characteristic dimension of the animal in meters}
 
@@ -33,7 +33,7 @@ This function allows you to calculate conductance (W) of an ectothermic animal t
 }
 \examples{
 \dontrun{
-Qconduction_substrate(Tg= 293,Tb=303,D=0.01,K_g=0.3,A=10^-2, proportion=0.2)
+Qconduction_substrate(T_g= 293,T_b=303,D=0.01,K_g=0.3,A=10^-2, proportion=0.2)
 }
 
 }

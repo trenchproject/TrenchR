@@ -4,7 +4,7 @@
 \alias{Qemitted_thermal_radiation}
 \title{Calculate emitted thermal radiation}
 \usage{
-Qemitted_thermal_radiation(epsilon = 0.96, A, psa_dir, psa_ref, Tb, Tg, Ta,
+Qemitted_thermal_radiation(epsilon = 0.96, A, psa_dir, psa_ref, T_b, T_g, T_a,
   enclosed = FALSE)
 }
 \arguments{
@@ -16,11 +16,11 @@ Qemitted_thermal_radiation(epsilon = 0.96, A, psa_dir, psa_ref, Tb, Tg, Ta,
 
 \item{psa_ref}{proportion surface area exposed to ground}
 
-\item{Tb}{body surface temperatue in K}
+\item{T_b}{body surface temperatue in K}
 
-\item{Tg}{ground surface temperatue in K}
+\item{T_g}{ground surface temperatue in K}
 
-\item{Ta}{ambient air temperature in K}
+\item{T_a}{ambient air temperature in K, only required if animal is in enclosed environment}
 
 \item{enclosed}{TRUE or FALSE}
 }
@@ -35,7 +35,7 @@ This function allows you to estimate thermal radiation (W) emitted by the surfac
 }
 \examples{
 \dontrun{
-Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, Tb=303, Tg=293, Ta=298, enclosed=FALSE)
+Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303, T_g=293, T_a=298, enclosed=FALSE)
 }
 
 }

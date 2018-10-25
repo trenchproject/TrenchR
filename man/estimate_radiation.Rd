@@ -24,7 +24,7 @@ radiation components - direct, diffused and reflected (W/m^2)
 Function to estimate direct, diffuse, and reflected components of solar radiation in W m^-2 using the model in Campbell & Norman (1998).
 }
 \details{
-Function to estimate direct, diffuse, and reflected components of solar radiation in W m^-2.
+Function to estimate direct, diffuse, and reflected components of solar radiation in (W/m^2).
 }
 \examples{
 \dontrun{

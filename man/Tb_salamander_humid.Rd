@@ -4,7 +4,7 @@
 \alias{Tb_salamander_humid}
 \title{Calculate humid operative temperature}
 \usage{
-Tb_salamander_humid(r_i, r_b, D, Ta, elev, e_a, e_s, Qabs, epsilon = 0.96)
+Tb_salamander_humid(r_i, r_b, D, T_a, elev, e_a, e_s, Qabs, epsilon = 0.96)
 }
 \arguments{
 \item{r_i}{internal (skin) resistance (s cm^-1)}
@@ -13,7 +13,7 @@ Tb_salamander_humid(r_i, r_b, D, Ta, elev, e_a, e_s, Qabs, epsilon = 0.96)
 
 \item{D}{body diameter (m), ##diameter = 0.0016*log(mass) + 0.0061 for mass(g) #empirical formula for diameter, Riddell et al. 2017}
 
-\item{Ta}{ambient temperature (C)}
+\item{T_a}{ambient temperature (C)}
 
 \item{elev}{elevation (m)}
 
@@ -36,7 +36,7 @@ This function allows you to calculate humid operative temperature (adaptation of
 }
 \examples{
 \dontrun{
-Tb_salamander_humid(r_i=4,r_b=1,D=0.007,Ta=20,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
+Tb_salamander_humid(r_i=4,r_b=1,D=0.007,T_a=20,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
 }
 
 }

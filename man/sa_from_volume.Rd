@@ -4,15 +4,15 @@
 \alias{sa_from_volume}
 \title{Calculate surface area from volume (Based on Mitchell 1976)}
 \usage{
-sa_from_volume(volume, taxa)
+sa_from_volume(V, taxa)
 }
 \arguments{
-\item{volume}{in m^3.}
+\item{V}{Density (m^3)}
 
 \item{taxa}{Which class of organism, current choices: lizard, frog, sphere.}
 }
 \value{
-sa (m^2)
+V (m^3)
 }
 \description{
 Calculate surface area from volume (Based on Mitchell 1976)
@@ -22,7 +22,7 @@ This function allows you to estimate surface area (m^2) from volume (m^3) for a 
 }
 \examples{
  \dontrun{
- sa_from_volume(volume=0.001,"lizard")
+ sa_from_volume(0.001,"lizard")
 }
 
 }

@@ -4,10 +4,10 @@
 \alias{fahrenheit_to_celsius}
 \title{Converts Fahrenheit to Celsius}
 \usage{
-fahrenheit_to_celsius(temp)
+fahrenheit_to_celsius(T)
 }
 \arguments{
-\item{temp}{Temperature in Fahrenheit.}
+\item{T}{Temperature in Fahrenheit.}
 }
 \value{
 Temperature in Celsius

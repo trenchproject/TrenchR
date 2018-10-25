@@ -4,11 +4,11 @@
 \alias{Tb_butterfly}
 \title{Predicts body temperature (operative environmental temperature) of a butterfly in degrees C.}
 \usage{
-Tb_butterfly(Ta, Tg, Tg_sh, u, H_sdir, H_sdif, psi, D, delta, alpha,
-  r_g = 0.3, shade = FALSE)
+Tb_butterfly(T_a, Tg, Tg_sh, u, H_sdir, H_sdif, z, D, delta, alpha, r_g = 0.3,
+  shade = FALSE)
 }
 \arguments{
-\item{Ta}{is air temperature in C}
+\item{T_a}{is air temperature in C}
 
 \item{Tg}{is surface temperature in C in the sun}
 
@@ -20,9 +20,9 @@ Tb_butterfly(Ta, Tg, Tg_sh, u, H_sdir, H_sdif, psi, D, delta, alpha,
 
 \item{H_sdif}{is diffuse solar radiation flux in W/m^2}
 
-\item{psi}{is solar zenith angle in degrees}
+\item{z}{is solar zenith angle in degrees}
 
-\item{D}{is thoractic diameter in cm}
+\item{D}{is thoracic diameter in cm}
 
 \item{delta}{is thoracic fur thickness in mm}
 
@@ -40,7 +40,7 @@ Predicts body temperature (operative environmental temperature) of a butterfly i
 }
 \examples{
 \dontrun{
-Tb_butterfly(Ta=25, Tg=25, Tg_sh=20, u=0.4, H_sdir=300, H_sdif=100, psi=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
+Tb_butterfly(T_a=25, Tg=25, Tg_sh=20, u=0.4, H_sdir=300, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
 }
 }
 \keyword{biophysical}

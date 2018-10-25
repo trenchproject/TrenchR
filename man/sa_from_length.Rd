@@ -7,7 +7,7 @@
 sa_from_length(length)
 }
 \arguments{
-\item{length}{length in m.}
+\item{l}{Length in m.}
 }
 \value{
 sa (m^2)

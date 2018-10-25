@@ -2,43 +2,54 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_temperature}
 \alias{soil_temperature}
-\title{Function to calculate soil temperature in C using ODEs.}
+\title{Function to calculate soil temperature.}
 \usage{
-soil_temperature(z.intervals = 12, z, Tair, u_z, Tsoil0, z0, SSA, TimeIn,
-  solrad, water_content = 0.2, air_pressure, rho_so = 1620, shade = FALSE)
+soil_temperature(j, T_so, params)
 }
 \arguments{
-\item{z.intervals}{is the number of intervals in the soil profile to calculate}
+\item{j}{is the number of the iteration of running the model}
 
-\item{z}{is reference height in m}
+\item{T_so}{is the initial soil temperature profile in degrees C}
 
-\item{Tair}{is a vector of air temperature in degrees C, Note: missing values will be linearly interpolated}
-
-\item{u_z}{is a vector of wind speed (m/s)}
-
-\item{Tsoil0}{is the initial soil temperature in degrees C}
-
-\item{z0}{is surface roughness in m}
+\item{params}{is a list containing the following parameters, which are described below: list(SSA, epsilon_so, sigma, k_so, c_so, dz, k, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn,dt,shade).}
 
 \item{SSA}{is the solar absorbtivity of soil surface as a fraction}
 
-\item{TimeIn}{is a vector of time periods for the model}
+\item{epsilon_so}{is the thermal absorbtivity of soil surface as a fraction}
 
-\item{solrad}{is solar radiation in W m^-2}
+\item{k_so}{is soil thermal conductivity in W m^-1 K^-1}
 
-\item{water_content}{is percent water content (%)}
+\item{c_so}{is the soil specific heat capacity in in J kg^-1 K-1.}
 
-\item{air_pressure}{is air pressure in kPa}
+\item{dz}{is the vertical interval in m for the soil temperature profile}
 
-\item{shade}{is whether or not soil temperature should be calculated in the shade, TRUE or FALSE}
+\item{z_r}{is reference height in m}
+
+\item{z0}{is surface roughness in m}
+
+\item{H}{is solar radiation in W m^-2}
+
+\item{T_a}{is air temperature in degrees C}
+
+\item{u}{is wind speed (m/s)}
+
+\item{rho_a}{is the density of air (kg/m^3)}
 
 \item{rho_so=}{1620 particle density of soil}
+
+\item{c_a}{is the specific heat of air (J/(kg*K))}
+
+\item{TimeIn}{is a vector of time periods for the model}
+
+\item{dt=}{60*60 is the time interval for running the model}
+
+\item{shade}{is whether or not soil temperature should be calculated in the shade, TRUE or FALSE}
 }
 \description{
-Function called to calculate soil temperature in C from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature.
+Function called to calculate soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly.
 }
 \details{
-Function to calculate soil temperature in C using ODEs.
+Function to calculate soil temperature.
 }
 \examples{
 \dontrun{
@@ -47,7 +58,12 @@ wind_speed_vector= runif(96, min=0, max=0.4)
 time_vector= rep(1:24,4)
 solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
 
-soil_temperature(z.intervals=12,z=1.5, Tair=temp_vector, u_z=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, solrad= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
+params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0=0.02, H=solrad_vector, T_a=temp_vector, u=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=FALSE)
+
+soil_temperature(j=1,Tsoil= rep(20,13), params=params)
+
+#RUN USING ODE SOLVER
+Tsoil_out<- ode(y = rep(20,13), func = soil_temperature, times = 1:length(H), parms=params)
 }
 }
 \author{

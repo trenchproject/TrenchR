@@ -4,12 +4,12 @@
 \alias{Tb_CampbellNorman}
 \title{Predicts body temperatures (operative environmental temperature) of an ectotherm in K.}
 \usage{
-Tb_CampbellNorman(Ta, Sabs, epsilon = 0.96, c_p = 29.3, D, V)
+Tb_CampbellNorman(T_a, S, epsilon = 0.96, c_p = 29.3, D, V)
 }
 \arguments{
-\item{Ta}{is air temperature in K.}
+\item{T_a}{is air temperature in K.}
 
-\item{Sabs}{solar and thermal radiation absorbed (W m^-2)}
+\item{S}{solar and thermal radiation absorbed (W m^-2)}
 
 \item{epsilon}{longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)}
 
@@ -30,7 +30,7 @@ Predicts body temperatures (operative environmental temperature) of an ectotherm
 }
 \examples{
 \dontrun{
-Tb_CampbellNorman(Ta=303, Sabs=823, epsilon=0.96, c_p=29.3, D=0.17, V=1)
+Tb_CampbellNorman(T_a=303, S=823, epsilon=0.96, c_p=29.3, D=0.17, V=1)
 }
 
 }

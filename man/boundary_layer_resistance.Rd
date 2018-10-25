@@ -4,10 +4,10 @@
 \alias{boundary_layer_resistance}
 \title{Estimate the boundary layer resistance}
 \usage{
-boundary_layer_resistance(Ta, e_s, e_a, elev, D, V = NA)
+boundary_layer_resistance(T_a, e_s, e_a, elev, D, u = NA)
 }
 \arguments{
-\item{Ta}{air temperature (K)}
+\item{T_a}{air temperature (K)}
 
 \item{e_s}{saturation vapor pressure (kPa)}
 
@@ -17,7 +17,7 @@ boundary_layer_resistance(Ta, e_s, e_a, elev, D, V = NA)
 
 \item{D}{characteristic dimension (e.g., body diameter) (m), ##diameter = 0.0016*log(mass) + 0.0061 for mass(g) #empirical formula for salamander diameter, Riddell et al. 2017}
 
-\item{V}{is wind speed in m/s, if not provided assume free convection; if provided, use forced convection if appropriate}
+\item{u}{is wind speed in m/s, if not provided assume free convection; if provided, use forced convection if appropriate}
 }
 \value{
 boundary layer resistance (s cm^-1)
@@ -30,7 +30,7 @@ This function allows you to estimate boundary layer resistance under free convec
 }
 \examples{
 \dontrun{
-boundary_layer_resistance(Ta=293, e_s=2.4, e_a=2.5, elev=500, D=0.007, V=2)
+boundary_layer_resistance(T_a=293, e_s=2.4, e_a=2.5, elev=500, D=0.007, u=2)
 }
 
 }

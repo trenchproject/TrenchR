@@ -4,20 +4,20 @@
 \alias{Qconvection}
 \title{Calculate convection}
 \usage{
-Qconvection(Ta, Tb, H_L = 10.45, A, proportion, ef = 1.3)
+Qconvection(T_a, T_b, H = 10.45, A, proportion, ef = 1.3)
 }
 \arguments{
-\item{Ta}{Air Temperature in Kelvin.}
+\item{T_a}{Air Temperature in Kelvin.}
 
-\item{Tb}{Initial Body Temperature in Kelvin.}
+\item{T_b}{Initial Body Temperature in Kelvin.}
 
-\item{H_L}{Convective heat transfer coefficient (W m^-2 K^-1)}
+\item{H}{Convective heat transfer coefficient (W m^-2 K^-1)}
 
 \item{A}{Surface area  in m^2}
 
 \item{proportion}{of surface area exposed to air}
 
-\item{ef}{is the enhancement factor, used to adjust H_L to field condictions (using H_L approximation from Mitchell 1976).  Approximated as 1.3 by default, but see Mitchell 1976 for more relationship.}
+\item{ef}{is the enhancement factor, used to adjust H to field condictions (using H approximation from Mitchell 1976).  Approximated as 1.3 by default, but see Mitchell 1976 for more relationship.}
 }
 \value{
 convection (W)
@@ -30,7 +30,7 @@ This function allows you to calculate convection as in Mitchell (1976). Includes
 }
 \examples{
 \dontrun{
-Qconvection(Ta= 293,Tb= 303,H_L=10.45,A=0.0025, proportion=0.85)
+Qconvection(T_a= 293,T_b= 303,H=10.45,A=0.0025, proportion=0.85)
 }
 
 }

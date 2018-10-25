@@ -4,10 +4,10 @@
 \alias{fahrenheit_to_kelvin}
 \title{Converts Fahrenheit to Kelvin}
 \usage{
-fahrenheit_to_kelvin(temp)
+fahrenheit_to_kelvin(T)
 }
 \arguments{
-\item{temp}{Temperature in Fahrenheit.}
+\item{T}{Temperature in Fahrenheit.}
 }
 \value{
 Temperature in Kelvin

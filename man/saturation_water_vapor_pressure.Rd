@@ -4,10 +4,10 @@
 \alias{saturation_water_vapor_pressure}
 \title{Approximate saturation water vapor pressure}
 \usage{
-saturation_water_vapor_pressure(Ta)
+saturation_water_vapor_pressure(T_a)
 }
 \arguments{
-\item{Ta}{air temperature (C)}
+\item{T_a}{air temperature (C)}
 }
 \value{
 Saturation water vapor pressure, e_s (Pa)
@@ -20,7 +20,7 @@ Approximate saturation water vapor pressure as a function of ambient temperature
 }
 \examples{
 \dontrun{
-saturation_water_vapor_pressure(Ta=20)
+saturation_water_vapor_pressure(T_a=20)
 }
 
 }

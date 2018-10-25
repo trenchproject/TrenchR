@@ -4,10 +4,10 @@
 \alias{external_resistance_to_water_vapor_transfer}
 \title{Calculate external resistance to water vapor transfer}
 \usage{
-external_resistance_to_water_vapor_transfer(H_L, rhocp = 12000)
+external_resistance_to_water_vapor_transfer(H, rhocp = 12000)
 }
 \arguments{
-\item{H_L}{heat transfer (convection) coefficient (W m^-2 C^-1)}
+\item{H}{heat transfer (convection) coefficient (W m^-2 C^-1)}
 
 \item{rhocp}{aggregate parameter (J m^-3 C^-1) that is the product of the density of air (kg m^-3)and the specific heat of air at constant pressure (J kg^-1 C^-1). Default of 12000 J m^-3 C^-1 is commonly assumed.}
 }
@@ -22,7 +22,7 @@ This function allows you to estimate external resistance to water vapor transfer
 }
 \examples{
 \dontrun{
-external_resistance_to_water_vapor_transfer(H_L=20)
+external_resistance_to_water_vapor_transfer(H=20)
 }
 
 }

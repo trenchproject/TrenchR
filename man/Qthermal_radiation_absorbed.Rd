@@ -4,10 +4,10 @@
 \alias{Qthermal_radiation_absorbed}
 \title{Estimate absorbed longwave (thermal) radiation}
 \usage{
-Qthermal_radiation_absorbed(Ta, epsilon_ground = 0.97, a_longwave = 0.965)
+Qthermal_radiation_absorbed(T_a, epsilon_ground = 0.97, a_longwave = 0.965)
 }
 \arguments{
-\item{Ta}{air temperature (C)}
+\item{T_a}{air temperature (C)}
 
 \item{epsilon_ground}{emmisitivity (proportion) for more soil types (Campbell and Norman 1998), default value of 0.97}
 
@@ -24,7 +24,7 @@ This function allows you to estimate longwave (thermal) radiation (W) absorbed f
 }
 \examples{
 \dontrun{
-Qthermal_radiation_absorbed(Ta=20, epsilon_ground=0.97, a_longwave=0.965)
+Qthermal_radiation_absorbed(T_a=20, epsilon_ground=0.97, a_longwave=0.965)
 }
 
 }

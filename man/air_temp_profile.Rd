@@ -32,7 +32,7 @@ Estimate temperature at a specified height
 }
 \examples{
 \dontrun{
-air_temp_profile(T_r=20, u_r=0.1, zr=0.1, z0=0.2, z=0.15, T_s=25)
+air_temp_profile(T_r=20, u_r=0.1, zr=0.1, z0=0.2, z=0.15, Ts=25)
 }
 
 }

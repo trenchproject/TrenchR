@@ -4,19 +4,19 @@
 \alias{Tb_grasshopper}
 \title{Predicts body temperatures (operative environmental temperature) of a grasshopper in degrees C.}
 \usage{
-Tb_grasshopper(Ta, Tg, u, rad, kt, psi, L, Acondfact = 0.25, z = 0.001,
+Tb_grasshopper(T_a, T_g, u, H, K_t, psi, L, Acondfact = 0.25, z = 0.001,
   abs = 0.7, r_g = 0.3)
 }
 \arguments{
-\item{Ta}{is air temperature in C}
+\item{T_a}{is air temperature in C}
 
-\item{Tg}{is surface temperature in C, Kingsolver (1983) assumes Tg-Ta=8.4}
+\item{T_g}{is surface temperature in C, Kingsolver (1983) assumes T_g-T_a=8.4}
 
 \item{u}{is wind speed in m/s}
 
-\item{rad}{is total (direct + diffuse) solar radiation flux in W/m^2}
+\item{H}{is total (direct + diffuse) solar radiation flux in W/m^2}
 
-\item{kt}{is the clearnex index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.}
+\item{K_t}{is the clearnex index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.}
 
 \item{psi}{is solar zenith angle in degrees}
 
@@ -38,7 +38,7 @@ Predicts body temperatures (operative environmental temperature) of a grasshoppe
 }
 \examples{
 \dontrun{
-Tb_grasshopper(Ta=25, Tg=25, u=0.4, rad=400, kt=0.7, psi=30, L=0.02, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3)
+Tb_grasshopper(T_a=25, T_g=25, u=0.4, H=400, K_t=0.7, psi=30, L=0.02, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3)
 }
 }
 \keyword{biophysical}

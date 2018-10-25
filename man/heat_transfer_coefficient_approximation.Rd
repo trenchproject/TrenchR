@@ -8,8 +8,6 @@
 heat_transfer_coefficient_approximation(V, D, K, nu, taxa = "sphere")
 }
 \arguments{
-\item{V}{Air velocity m/s.}
-
 \item{D}{Characteristic dimension (e.g., diameter or snout-vent length) in meters.}
 
 \item{K}{Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR}
@@ -17,6 +15,8 @@ heat_transfer_coefficient_approximation(V, D, K, nu, taxa = "sphere")
 \item{nu}{Kinematic Viscocity of air, m^2 s^-1, can calculate using DRYAIR or WETAIR in NicheMapR}
 
 \item{taxa}{Which class of organism, current choices: sphere,frog,lizard,flyinginsect,spider}
+
+\item{u}{Air velocity m/s.}
 }
 \value{
 heat transfer coefficient, H_L (W m^-2 K^-1)
