@@ -6,6 +6,19 @@
 
 
 #copied from Noah-MP model in module_sf_noahmplsm.F from the wrf (v. 3.4) model
+
+#' TDFCND
+#'
+#' 
+#' @details 
+#' @param 
+#' 
+#' @return 
+#' @keywords 
+#' @export
+#' @author Ofir Levy
+#' @examples
+#' 
 TDFCND  = function ( DF, SMC, SH2O){
 	#! --------------------------------------------------------------------------------------------------
 	#! Calculate thermal diffusivity and conductivity of the soil.
@@ -24,9 +37,10 @@ TDFCND  = function ( DF, SMC, SH2O){
 	# THKW     ! water thermal conductivity
 	
 	
-	SATRATIO = SMC / SMCMAX
+	SATRATIO = SMC / MAXSMC
 	THKW = 0.57
 	THKO = 2.0
+	QUARTZ = QTZ
 	
 	#QUARTZ' CONDUCTIVITY
 	THKQTZ = 7.7
@@ -37,13 +51,13 @@ TDFCND  = function ( DF, SMC, SH2O){
 	# UNFROZEN VOLUME FOR SATURATION (POROSITY*XUNFROZ)
 	XUNFROZ = SH2O / SMC
 	# SATURATED THERMAL CONDUCTIVITY
-	XU = XUNFROZ * SMCMAX
+	XU = XUNFROZ * MAXSMC
 	
 	# DRY DENSITY IN KG/M3
-	THKSAT = THKS ^ (1. - SMCMAX)* TKICE ^ (SMCMAX - XU)* THKW ^ (XU)
+	THKSAT = THKS ^ (1. - MAXSMC)* TKICE ^ (MAXSMC - XU)* THKW ^ (XU)
 	
 	#DRY THERMAL CONDUCTIVITY IN W.M-1.K-1
-	GAMMD = (1. - SMCMAX)*2700.
+	GAMMD = (1. - MAXSMC)*2700.
 	
 	THKDRY = (0.135* GAMMD+ 64.7)/ (2700. - 0.947* GAMMD)
 	
@@ -52,7 +66,7 @@ TDFCND  = function ( DF, SMC, SH2O){
 		AKE = SATRATIO	
 	} else { #UNFROZEN 
 	  if ( SATRATIO >  0.1 )
-			AKE = LOG10 (SATRATIO) + 1.0
+			AKE = log10 (SATRATIO) + 1.0
 	  else
 			AKE = 0.0
 	}

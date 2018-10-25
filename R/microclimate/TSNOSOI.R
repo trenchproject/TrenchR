@@ -3,8 +3,22 @@
 # Author: ofir
 ###############################################################################
 
-
+source("HRT.R")
+source("HSTEP.R")
 # derived from Noah-MP model in module_sf_noahmplsm.F from the wrf (v. 3.4) model
+
+#' TSNOSOI
+#'
+#' 
+#' @details 
+#' @param 
+#' 
+#' @return 
+#' @keywords 
+#' @export
+#' @author Ofir Levy
+#' @examples
+#' 
 TSNOSOI  = function(ISNOW, ZSNSO, DZSNSO, SSOIL, DF, HCPCT, STC) {
 
 	#input
@@ -19,12 +33,9 @@ TSNOSOI  = function(ISNOW, ZSNSO, DZSNSO, SSOIL, DF, HCPCT, STC) {
 	# STC
 	
 	#local
-	# TBEG
-	# ERR_EST, EFLXB2 !heat storage error  (w/m2)
-	# AI, BI, CI, RHSTS
-	# EFLXB !energy influx from soil bottom (w/m2)
+   TBEG = array(0, dim=NSOIL)
 	
-	# snow/soil heat storage for energy balance check
+   # snow/soil heat storage for energy balance check
 	
 	for (IZ in 1:NSOIL) {
 		TBEG[IZ] = STC[IZ]
@@ -33,7 +44,8 @@ TSNOSOI  = function(ISNOW, ZSNSO, DZSNSO, SSOIL, DF, HCPCT, STC) {
 	
 	#compute soil temperatures
 	
-	results = HRT (ISNOW     ,ZSNSO, STC       ,DF        ,HCPCT     ,SSOIL, AI        ,BI        ,CI        ,RHSTS ,	EFLXB     )
+	results = HRT (ISNOW     ,ZSNSO, STC       ,DF        ,HCPCT     ,-SSOIL)#, AI        ,BI        ,CI        ,RHSTS ,	EFLXB     )
+	#browser()
 	AI=results$AI
 	BI=results$BI
 	CI=results$CI
@@ -50,16 +62,15 @@ TSNOSOI  = function(ISNOW, ZSNSO, DZSNSO, SSOIL, DF, HCPCT, STC) {
 	
 	ERR_EST = 0.0
 	for (IZ in 1:NSOIL){
-		ERR_EST = ERR_EST + (STC[IZ]-TBEG[IZ]) * DZSNSO[IZ] * HCPCT[IZ] / DT	
+		ERR_EST = ERR_EST + (STC[IZ]-TBEG[IZ]) * DZSNSO * HCPCT[IZ] / DT	
 	}
 	
-	#if (OPT_STC == 1) {   ! semi-implicit
 	ERR_EST = ERR_EST - (SSOIL +EFLXB)
-	#}
-	
 	if (abs(ERR_EST) > 1.) {    # W/m2
 		print(paste('TSNOSOI is losing(-)/gaining(+) false energy',ERR_EST,' W/m2'))
-		print(paste(ERR_EST,SSOIL,SNOWH,TG,STC[1],EFLXB))
+		print(paste(ERR_EST,SSOIL,STC[1],EFLXB))
+	} else {
+	  print("success ERR_EST")
 	}
 	return(STC)
 }

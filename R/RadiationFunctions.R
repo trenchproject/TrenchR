@@ -129,6 +129,8 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
 
 monthly_solar_radiation= function(lat,lon,doy,elev,T,Hr,P){
 
+  library(msm) #for rtnorm
+  
   rd=180/pi;  # factor to convert radians into degrees
   
   #functions to calculate sin and cos for angles in degrees

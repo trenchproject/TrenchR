@@ -8,16 +8,16 @@
 #' @param epsilon longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
 #' @param c_p specific heat of air (J mol^-1 K^-1)
 #' @param D characteristic dimension of the animal (m)
-#' @param u is wind speed in m/s
+#' @param V is wind speed in m/s
 #' @return operative environmental temperature, T_e (K)
 #' @keywords operative environmental temperature
 #' @export
 #' @examples 
 #' \dontrun{
-#' Tb_CampbellNorman(T_a=303, S=823, epsilon=0.96, c_p=29.3, D=0.17, u=1)
+#' Tb_CampbellNorman(T_a=303, S=823, epsilon=0.96, c_p=29.3, D=0.17, V=1)
 #'}
 #' 
-Tb_CampbellNorman=function(T_a, S, epsilon=0.96, c_p=29.3, D, u){
+Tb_CampbellNorman=function(T_a, S, epsilon=0.96, c_p=29.3, D, V){
     
   #Stefan-Boltzmann constant
   sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
@@ -26,13 +26,14 @@ Tb_CampbellNorman=function(T_a, S, epsilon=0.96, c_p=29.3, D, u){
   Qemit= epsilon*sigma*T_a^4
   
   #conductance
-  g_Ha=1.4*0.135*sqrt(u/D) # boundary conductance, factor of 1.4 to account for increased convection (Mitchell 1976)
-  g_r= 4*sigma*T_a^3/c_p # (12.7) radiative conductance
+
+  g_Ha=1.4*0.135*sqrt(V/D) # boundary conductance, factor of 1.4 to account for increased convection (Mitchell 1976), assumes forced conduction
+  g_r= 4*sigma*Ta^3/c_p # (12.7) radiative conductance
   
   # operative environmental temperature
-  Te=T_a+(S-Qemit)/(c_p*(g_r+g_Ha))                       
+  T_e=T_a+(S-Qemit)/(c_p*(g_r+g_Ha))                       
 
-  return(Te) 
+  return(T_e) 
 }
 
 #' Estimates net energy exchange between an animal and the environment in W.
@@ -67,7 +68,7 @@ Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Gates (1980, Biophysical ecology). Omits evaporative and metabolic heat loss.
 
 #' @param A surface area  in m^2
-#' @param D characteristic dimension for conduction (m)
+#' @param l characteristic dimension for conduction (m)
 #' @param psa_dir proportion surface area exposed to sky (or enclosure)
 #' @param psa_ref proportion surface area exposed to ground
 #' @param psa_air of surface area exposed to air
@@ -88,6 +89,7 @@ Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #'}
 #' 
 Tb_Gates=function(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilon, H_L,ef=1.3, K){
+
   
     #Stefan-Boltzmann constant
     sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
@@ -106,18 +108,23 @@ Tb_Gates=function(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilo
   
   #solve energy balance for steady state conditions
   # 0= Qabs -Qemit +Qconv +Qcond
+
   Qfn = function(Tb, Qabs, epsilon, sigma, A_s, Tsky, A_r, T_g, H_L, A_air, T_a, A_contact, K, D) {
+
     #Thermal radiaton emitted
     Qemit= epsilon*sigma*(A_s*(Tb^4 - Tsky^4)+A_r*(Tb^4 - T_g^4))
     #Convection
     Qconv= ef*H_L*A_air*(T_a-Tb)
     #Conduction
     Qcond= A_contact*K*(T_g-Tb)/D
+
     
     return(Qabs -Qemit +Qconv  +Qcond)
   }
   
+
   Te <- uniroot(Qfn, c(273, 323),Qabs=Qabs, epsilon=epsilon, sigma=sigma, A_s=A_s, Tsky=Tsky, A_r=A_r, T_g=T_g, H_L=H_L, A_air=A_air, T_a=T_a, A_contact=A_contact, K=K, D=D, tol = 0.0001)
+
   
   return(Te$root)
 }

@@ -20,7 +20,7 @@ Calculate solar declination in radians
 }
 \examples{
 \dontrun{
-dec_angle(112)
+dec_angle(doy=112)
 }
 }
 \keyword{Declination}

@@ -7,6 +7,7 @@
 #' 
 #' @param u_r is wind velocity at a vector of reference heights in m/s.
 #' @param zr is the vector of reference heights in m.
+#' @return surface roughness
 #' @keywords wind profile
 #' @export
 #' @examples
@@ -41,6 +42,7 @@ surface_roughness<- function(u_r, zr){
 #' @param zr is initial reference height in m.
 #' @param z0 is surface roughness in m.
 #' @param z is height to scale to in m.
+#' @return windspeed in m/s
 #' @keywords wind profile
 #' @export
 #' @examples
@@ -65,16 +67,17 @@ wind_speed_profile_neutral <- function(u_r, zr, z0, z) {
 #' @param zr is initial reference height in m.
 #' @param z0 is surface roughness in m.
 #' @param z is height to scale to in m.
-#' @param Ts is surface temperatures in degrees C.
+#' @param T_s is surface temperatures in degrees C.
+#' @return temperature (degrees C)
 #' @keywords temperature profile
 #' @export
 #' @examples
 #' \dontrun{
-#' air_temp_profile_neutral(T_r=20, zr=0.1, z0=0.2, z=0.15, Ts=25)
+#' air_temp_profile_neutral(T_r=20, zr=0.1, z0=0.2, z=0.15, T_s=25)
 #'}
 #'
-air_temp_profile_neutral<-function(T_r, zr, z0, z, Ts){
-  T_z= (T_r-Ts)*log(z/z0+1)/log(zr/z0+1)+Ts 
+air_temp_profile_neutral<-function(T_r, zr, z0, z, T_s){
+  T_z= (T_r-T_s)*log(z/z0+1)/log(zr/z0+1)+T_s 
   return(T_z)
 }
 
@@ -91,6 +94,7 @@ air_temp_profile_neutral<-function(T_r, zr, z0, z, Ts){
 #' @param zr is initial reference height in m.
 #' @param z0 is surface roughness in m.
 #' @param z is height to scale to in m.
+#' @return wind speed (m/s) 
 #' @keywords wind profile
 #' @export
 #' @examples
@@ -117,7 +121,8 @@ wind_speed_profile<- function(u_r,zr,z0,z){
 #' @param zr is initial reference height in m.
 #' @param z0 is surface roughness in m.
 #' @param z is height to scale to in m.
-#' @param Ts is surface temperatures in degrees C.
+#' @param T_s is surface temperatures in degrees C.
+#' @return temperature (degrees C)
 #' @keywords temperature profile
 #' @export
 #' @examples
@@ -126,7 +131,7 @@ wind_speed_profile<- function(u_r,zr,z0,z){
 #'}
 #'
 
-air_temp_profile= function(T_r, u_r, zr, z0,z,Ts){
+air_temp_profile= function(T_r, u_r, zr, z0,z,T_s){
   #friction velocity
   u_star=  0.4*u_r/log(zr/z0 +1)  #0.4 is von Karman constant
   #sublayer stanton number
@@ -134,7 +139,7 @@ air_temp_profile= function(T_r, u_r, zr, z0,z,Ts){
   #bulk Stanton number
   S_tb= 0.64/log(zr/z0+1)
   #Temperature at roughness height, z0
-  T_z0= (T_r * S_tb +Ts * S_ts)/(S_tb+S_ts)
+  T_z0= (T_r * S_tb +T_s * S_ts)/(S_tb+S_ts)
   #Temperature at local height
   T_z= T_z0 + (T_r - T_z0)*log(z/z0+1)
   return(T_z)

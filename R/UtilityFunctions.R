@@ -31,7 +31,7 @@ day_of_year<- function(day, format="%Y-%m-%d"){
 #' @export
 #' @examples
 #' \dontrun{
-#' dec_angle(112)
+#' dec_angle(doy=112)
 #' }
 
 dec_angle <- function(doy){
@@ -54,7 +54,7 @@ dec_angle <- function(doy){
 #' @export
 #' @examples
 #' \dontrun{
-#' daylength(47.61, 112)
+#' daylength(lat=47.61, doy=112)
 #' }
 
 daylength <- function(lat, doy){
@@ -78,7 +78,7 @@ daylength <- function(lat, doy){
 #' @export
 #' @examples
 #' \dontrun{
-#' solar_noon(-122.335, 112)
+#' solar_noon(lon=-122.335, doy=112)
 #' }
 
 solar_noon <- function(lon, doy){
@@ -106,7 +106,7 @@ solar_noon <- function(lon, doy){
 #' @export
 #' @examples
 #' \dontrun{
-#' zenith_angle(112, 47.61, -122.33, 12)
+#' zenith_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
 #' }
 
 zenith_angle=function(doy, lat, lon, hour){
@@ -131,12 +131,42 @@ if (zenith>90) zenith=90 # if measured from the vertical psi can't be greater th
 return(zenith)
 }
 
+#' Calculate time of solar noon.
+#' 
+#' 
+#' @details Calculate time of solar noon
+#'
+#' @description This function allows you to calculate the time of solar noon.
+#' @param doy is day of year.
+#' @param lon is longitude in degrees.
+#' @param hour is hour of the day.
+#' @return Zenith angle in degrees
+#' @keywords Zenith angle
+#' @export
+#' @examples
+#' \dontrun{
+#' solar_noon(doy=112, lon=-122.33)
+#' }
+
+solar_noon=function(doy, lon){
+  
+  lon=lon*pi/180 #to radians
+  
+  f=(279.575+0.9856*doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
+  f=f*pi/180 #convert f in degrees to radians
+  ET= (-104.7*sin (f)+596.2*sin (2*f)+4.3*sin (3*f)-12.7*sin (4*f)-429.3*cos (f)-2.0*cos (2*f)+19.3*cos (3*f))/3600   # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
+  LC= 1/15* (15 - lon%%15) # longitude correction, 1/15h for each degree of standard meridian
+  t_0 = 12-LC-ET # solar noon
+  
+  return(t_0)
+}
+
 #' Calculate Azimuth angle
 #' 
 #' 
 #' @details Calculate azimuth angle
 #'
-#' @description This function allows you to calculate the azimuth angle, the angle (in degrees) measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east.
+#' @description This function allows you to calculate the azimuth angle, the angle (in degrees) from which the sunlight in coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east.
 #' @param doy is day of year.
 #' @param lat is latitude in degrees.
 #' @param lon is longitude in degrees.
@@ -146,7 +176,7 @@ return(zenith)
 #' @export
 #' @examples
 #' \dontrun{
-#' azimuth_angle(112, 47.61, -122.33, 12)
+#' azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
 #' }
 
 azimuth_angle=function(doy, lat, lon, hour){
@@ -189,8 +219,12 @@ azimuth_angle=function(doy, lat, lon, hour){
 #' airpressure_from_elev(1500)
 #' }
 airpressure_from_elev<- function(elev){  
-  p= 101325* (1 - 2.25577*10^(-5)*elev)^5.25588       
-  p= p/1000 #convert to kPa
+ 
+  #p= 101325* (1 - 2.25577*10^(-5)*elev)^5.25588       
+  #p= p/1000 #convert to kPa
+  
+  p_a=101.3* exp (-elev/8200)  #Campbell and Norman
+  
   return(p)
 }
 
@@ -279,3 +313,4 @@ radian_to_degree <- function(rad) {(rad * 180) / (pi)}
 #' degree_to_radian(47.608)
 #' }
 degree_to_radian <- function(deg) {(deg * pi) / (180)}
+

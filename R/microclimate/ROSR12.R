@@ -5,7 +5,20 @@
 
 
 #copied from Noah-MP model in module_sf_noahmplsm.F from the wrf (v. 3.4) model
-ROSR12  = function(P,A,B,C,D,DELTA,NTOP,NSOIL,NSNOW) {
+
+#' ROSR12
+#'
+#' 
+#' @details 
+#' @param 
+#' 
+#' @return 
+#' @keywords 
+#' @export
+#' @author Ofir Levy
+#' @examples
+#' 
+ROSR12  = function(P,A,B,C,D,DELTA) {
 # ----------------------------------------------------------------------
 		# SUBROUTINE ROSR12
 # ----------------------------------------------------------------------
@@ -25,7 +38,7 @@ ROSR12  = function(P,A,B,C,D,DELTA,NTOP,NSOIL,NSNOW) {
 # ###                                            ### ###  ###   ###  ###
 # ----------------------------------------------------------------------
 
-# NTOP
+NTOP = 1
 # NSOIL,NSNOW
 # K, KK
 

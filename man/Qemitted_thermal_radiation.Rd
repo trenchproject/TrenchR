@@ -20,7 +20,7 @@ Qemitted_thermal_radiation(epsilon = 0.96, A, psa_dir, psa_ref, Tb, Tg, Ta,
 
 \item{Tg}{ground surface temperatue in K}
 
-\item{Ta}{ambient air temperature in K, only required if animal is in enclosed environment}
+\item{Ta}{ambient air temperature in K}
 
 \item{enclosed}{TRUE or FALSE}
 }

@@ -111,67 +111,27 @@ Qconvection<-function(T_a,T_b,H=10.45,A,proportion, ef=1.3 ){
   return(Qconv)
 }
 
-#' Calculate heat transfer coefficient for lizard
-#' 
-#' @details This function allows you estimate the heat transfer coefficient for a lizard (Based on Porter et al. 1973)
-#' @param u Air velocity m/s.
-#' @param orientation parallel or transverse
-#' @return heat transfer coefficient, H (W m^-2 K^-1)
-#' @keywords heat transfer coefficient 
-#' @export
-#' @examples
-#' \dontrun{
-#' heat_transfer_coefficient_lizard(u=3, orientation="parallel")
-#' }
-#' 
-
-heat_transfer_coefficient_lizard<-function(u,orientation="parallel"){
-  
-  #Convert air velocity from m/s to cm/sec
-  V_cm = u*100
-  
-  # Case when orientation is parallel
-  H = dplyr::case_when(
-    orientation == "parallel" ~ 0.0038927 + (0.0001169 *V_cm ),
-    TRUE ~ 1
-  )
-  
-  # Case when orientation is transverse
-  H = dplyr::case_when(
-    orientation == "transverse" ~ 0.012132 + (0.000116 *V_cm ),
-    TRUE ~ 1
-  )
-  
-  #TODO - Need to verify the conversion
-  # Convert from cal/minute / cm^2 /Celsius to W m^-2 K^-1
-  # Used 1 calorie per minute ( cal/min ) = 0.070 watts ( W )
-  H_L_SI <- (H * 0.070 * 100 ) 
-    
-  return(H_L_SI)
-}
-
 
 #' Calculate heat transfer coefficient (based on Mitchell 1976)
-#' (Uses Table 1 which is Convective Heat Trasfer Relations to Animal Shapes)
+#' (Uses Table I: Convective Heat Transfer Relations for Animal Shapes)
 #' 
-#' @details This function allows you estimate the heat transfer coefficient for various taxa (based on Mitchell 1976).  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere.
-#' @param u Air velocity m/s.
+
+#' @details This function allows you estimate the heat transfer coefficient for various taxa (based on Mitchell 1976).  Based on empirical measurements.
+#' @param V Air velocity m/s.
 #' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
 #' @param K Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR
 #' @param nu Kinematic Viscocity of air, m^2 s^-1, can calculate using DRYAIR or WETAIR in NicheMapR
 #' @param taxa Which class of organism, current choices: sphere,cylinder,frog,lizard_surface,lizard_elevated,flyinginsect,spider
-#' @return heat transfer coefficient, H (W m^-2 K^-1)
+#' @return heat transfer coefficient, H_L (W m^-2 K^-1)
 #' @keywords heat transfer coefficient
 #' @export
 #' @examples
 #' \dontrun{
-#' heat_transfer_coefficient(u=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
+#' heat_transfer_coefficient(V=0.5,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
 #' }
 #' 
 
-heat_transfer_coefficient<-function(u,D,K,nu, taxa="cylinder"){
-  
-  ##TODO Check unit: K or C
+heat_transfer_coefficient<-function(V,D,K,nu, taxa="cylinder"){
   
   taxas= c("sphere","cylinder","frog","lizard_surface","lizard_elevated","flyinginsect","spider")
   #cylinder assumes 40<Re<4000
@@ -181,13 +141,78 @@ heat_transfer_coefficient<-function(u,D,K,nu, taxa="cylinder"){
   Cls= c(0.37,0.615,0.258,1.36,1.91,0.0749,0.47)
   ns= c(0.6,0.466,0.667,0.39,0.45,0.78,0.5) 
   
+ 
   #find index  
   ind= match(taxa, taxas)
   
-  H_L_SI <- Cls[ind] *K * ((u * D/ nu )^ns[ind]) /D
-  
-  return(H_L_SI)
+  Re= V*D/nu #Reynolds number 
+  Nu <- Cls[ind] * Re^ns[ind]  #Nusselt number
+  H_L= Nu * K / D
+   
+  return(H_L)
+
 }
+
+#' Calculate heat transfer coefficient using a sphereical approximation (based on Mitchell 1976)
+#' (Uses Table III: Convective Heat Transfer Relations for Animal Shapes)
+#' 
+#' @details This function allows you estimate the heat transfer coefficient for various taxa (based on Mitchell 1976).  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere.
+#' @param u Air velocity m/s.
+#' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
+#' @param K Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR
+#' @param nu Kinematic Viscocity of air, m^2 s^-1, can calculate using DRYAIR or WETAIR in NicheMapR
+#' @param taxa Which class of organism, current choices: sphere,frog,lizard,flyinginsect,spider
+#' @return heat transfer coefficient, H_L (W m^-2 K^-1)
+#' @keywords heat transfer coefficient
+#' @export
+#' @examples
+#' \dontrun{
+#' heat_transfer_coefficient_approximation(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "sphere")
+#' }
+#' 
+
+heat_transfer_coefficient_approximation<-function(V,D,K,nu, taxa="sphere"){
+  
+  taxas= c("sphere","frog","lizard","flyinginsect","spider")
+  #cylinder assumes 40<Re<4000
+  #lizard assumes prostrate on or elevated above surface, average for parallel and perpendicular to air flow
+  
+  # Dimensionless constant (Cl)
+  Cls= c(0.34,0.196,0.56,0.0714,0.52)
+  ns= c(0.6,0.667,0.6, 0.78,0.5) 
+  
+  #find index  
+  ind= match(taxa, taxas)
+  
+
+  Re= V*D/nu #Reynolds number 
+  Nu <- Cls[ind] * Re^ns[ind]  #Nusselt number
+  H_L= Nu * K / D
+  
+  return(H_L)
+}
+
+#' Calculate heat transfer coefficient (based on Mitchell 1976 in Spotila 1992)
+#' 
+#' @details This function allows you estimate the heat transfer coefficient for various taxa (based on Mitchell 1976 and using relationship in Spotila et al 1992).
+#' @param V Air velocity m/s.
+#' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
+#' @return heat transfer coefficient, H_L (W m^-2 K^-1)
+#' @keywords heat transfer coefficient
+#' @export
+#' @examples
+#' \dontrun{
+#' heat_transfer_coefficient_simple(V=0.5,D=0.05)
+#' }
+#' 
+
+heat_transfer_coefficient_simple<-function(V,D){
+  
+  H_L= 6.77 * V^0.6 * D^(-0.4)
+  
+  return(H_L)
+}
+
 
 #' Calculate absorbed solar and thermal radiation
 #' 
@@ -268,6 +293,7 @@ Qemitted_thermal_radiation<-function(epsilon=0.96, A, psa_dir, psa_ref, T_b, T_g
   
   if(enclosed) 
          Qemit= A_r*epsilon*sigma*(T_b^4 - T_a^4)
+ 
   else 
           Qemit= epsilon*sigma*(A_s*(T_b^4 - Tsky^4)+A_r*(T_b^4 - T_g^4))
 
@@ -663,4 +689,170 @@ Tsoil<-function(Tg_max, Tg_min, hour, depth){
   
   return(Tsoil)
 }
+
+
+#' Calculate Nusselt Number
+#'
+#' @details This function allows you to estimate the Nusselt Number, which describes dimensionless conductance (Gates 1980 Biophysical Ecology).
+#' @param H_L Convective heat transfer coefficient (W m^-2 K^-1)
+#' @param D is characteristic dimension (e.g., body diameter) (m)
+#' @param K Thermal conductivity (W K^-1 m^-1 )
+#' 
+#' @return Nusselt number
+#' @keywords Nusselt number
+#' @export
+#' @examples
+#' \dontrun{
+#' Nusselt_number(H_L=20, D=0.01, K=0.5)
+#' }
+#' 
+
+Nusselt_number<-function(H_L, D, K){
+  
+  Nu = H_L * D / K
+  
+  return(Nu)
+}
+
+#' Calculate Prandtl Number
+#'
+#' @details This function allows you to estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity (Gates 1980 Biophysical Ecology).
+#' @param c_p is specific heat at constant pressure (J mol^{-1} K^{-1})
+#' @param mu is dynamic viscosity (mol s^{-1}m^{-1})
+#' @param K Thermal conductivity (W K^-1 m^-1 )
+#' @return Prandtl number
+#' @keywords Prandtl number
+#' @export
+#' @examples
+#' \dontrun{
+#' Prandtl_number(c_p=29.3, mu=0.00001, K=0.5)
+#' }
+#' 
+
+Prandtl_number<-function(c_p, mu, K){
+  
+  Pr= c_p *mu /K
+  return(Pr)
+}
+
+#' Calculate Reynolds Number
+#'
+#' @details This function allows you to estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces (Gates 1980 Biophysical Ecology).
+#' @param D is characteristic dimension (e.g., body diameter) (m)
+#' @param V is wind speed in m/s
+#' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m2 s-1), can calculate from DRYAIR or WETAIR
+#' 
+#' @return Reynolds number
+#' @keywords Reynolds number
+#' @export
+#' @examples
+#' \dontrun{
+#' Reynolds_number(V=1, D=0.001, nu=1.2)
+#' }
+#' 
+
+Reynolds_number<-function(V, D, nu){
+   Re= V*D / nu
+  return(Re)
+}
+
+#' Calculate Grashof Number
+#'
+#' @details This function allows you to estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity (Gates 1980 Biophysical Ecology). Ratio of a buoyant force times an inertial force to the square of a viscous force.
+#' @param Ta Air temperature (C).
+#' @param Tg Ground (surface) temperature (C).
+#' @param D is characteristic dimension (e.g., body diameter) (m)
+#' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m2 s-1), can calculate from DRYAIR or WETAIR
+#' 
+#' @return Grashof number
+#' @keywords Grashof number
+#' @export
+#' @examples
+#' \dontrun{
+#' Grashof_number(Ta=30, Tg=35, D=0.001, nu=1.2)
+#' }
+#' 
+
+Grashof_number<-function(Ta, Tg, D, nu){
+  #constant
+  gravity = 9.8 #meters per second
+  
+  Gr = gravity * D^3* abs(Tg-Ta) / (Ta * nu^2)
+    
+  return(Gr)
+}
+
+#' Estimate the Nusselt number from the Reynolds number (based on Mitchell 1976)
+#' (Uses Table 1 which is Convective Heat Trasfer Relations to Animal Shapes)
+#' 
+#' @details This function allows you to estimate the Nusselt number from the Reynolds number for various taxa (based on Mitchell 1976).  
+#' @param Re is the Reynolds Number (dimensionless)
+#' @param taxa Which class of organism, current choices: sphere,cylinder,frog,lizard_traverse_to_air_flow, lizard_parallel_to_air_flow, lizard_surface,lizard_elevated,flyinginsect,spider
+#' @return Nusselt number (dimensionless)
+#' @keywords Nusselt number
+#' @export
+#' @examples
+#' \dontrun{
+#' Nu_from_Re(Re=5, taxa="cylinder")
+#' }
+#' 
+
+Nu_from_Re<-function(Re, taxa="cylinder"){
+  
+  taxas= c("sphere","cylinder","frog","lizard_traverse_to_air_flow", "lizard_parallel_to_air_flow","lizard_surface","lizard_elevated","flyinginsect","spider")
+
+  # Dimensionless constant (Cl)
+  Cls= c(0.37,0.615,0.258,0.35,0.1,1.36,1.91,0.0749,0.47)
+  ns= c(0.6,0.466,0.667,0.6,0.74,0.39,0.45,0.78,0.5) 
+  
+  #find index  
+  ind= match(taxa, taxas)
+  
+  Nu <- Cls[ind] *Re^(ns[ind])
+  
+  return(Nu)
+}
+
+#' Estimate the Nusselt number from the Grashof number (based on Gates 1980)
+#' 
+#' @details This function allows you to estimate the Nusselt number from the Grashof Number.  
+#' @param Gr is the Grashof Number (dimensionless)
+#' @return Nusselt number (dimensionless)
+#' @keywords Nusselt number
+#' @export
+#' @examples
+#' \dontrun{
+#' Nu_from_Gr(Gr=5)
+#' }
+#' 
+
+Nu_from_Gr<-function(Gr){
+  
+  Nu <- 0.48 * Gr^0.25
+  
+  return(Nu)
+}
+
+#' Commpare Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980)
+#' 
+#' @details This function allows you to commpare the Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980).
+#' @param Gr is the Grashof Number (dimensionless)
+#' @param Re is the Reynolds Number (dimensionless)
+#' @return "free" or "forced"
+#' @keywords free or forced convection
+#' @export
+#' @examples
+#' \dontrun{
+#' Free_or_forced_convection(Gr=100, Re=5)
+#' }
+#' 
+
+Free_or_forced_convection<-function(Gr, Re){
+  
+  conv= ifelse(Gr<=(16*Re^2), "forced", "free")
+  
+  return(conv)
+}
+
+
 

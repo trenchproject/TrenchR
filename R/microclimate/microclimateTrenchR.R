@@ -1,42 +1,11 @@
+#Illustration of using functions
 # Author: Ofir Levy (levyofi@gmail.com)
 ###############################################################################
 
 #This file includes functions to calculate microclimates at various shade conditions and heights below and above the ground as were calculated by Levy et al. (2016), Ecology.
 
-#The model should get the following variables as a dataframe
 
-#!Variable name   Description                                     Units
-#---------------------------------------------------------------------------
-#!ALBEDO          ground albedo                                   dec. %
-#!EAH             canopy air vapor pressure                       Pa
-#!EAIR            bare ground vapor pressure                      Pa
-#!EMG             ground emissivity                               dec. %
-#!EMISS           surface emissivity                              dec. %
-#!EMV             vegetation emissivity                           dec. %
-#!GLW             Near-IR (longwave)  downward flux               W m-2
-#!ISNOW           Number of soil layers
-#!PSFC            surface pressure                                Pa
-#!QAIR            specific humidity at surface (2m height)        kg kg-1
-#!RHOAIR          air density                                     kg m-3
-#!SMOIS           Soil moisture                                   m3 m-3
-#!SNEQV           snow mass                                       mm
-#!SNICE           layer of frozen water in the snow               mm
-#!SNLIQ           layer of liquid water in the snow               mm
-#!SNOWH           physical snow depth                             m
-#!SWDOWN          Visible (shortwave) downward flux (W m-2)       W m-2
-#!T2              ground surface (2m) temperature                 K
-#!T2B             Bare ground surface (2m) temperature            K
-#!T2V             2 meter temperature over canopy part            K
-#!TAH             canopy air temperature                          K
-#!TG *            bulk ground temperature                         K
-#!TSLB *          soil temperature                                K
-#!TSNO            snow temperature                                K
-#!TV              vegetation leaf temperature                     K
-#!U10             10 m u component of wind speed                  m/s
-#!V10             10 m v component of wind speed                  m/s
-#!ZSNSO           Depth from the bottom of a layer to snow surface m
-
-
+source("~/Dropbox/eclipse_luna/Lauren/ENERGY.R")
 #!------------------------------------------------------------------------------------------!
 #! Physical Constants:                                                                      !
 #!------------------------------------------------------------------------------------------!
@@ -98,7 +67,7 @@ SATPSI = mean(c(0.069,   0.036,   0.141,   0.759,   0.759,   0.355,   0.135,   0
 WLTSMC = mean(c(0.010,   0.028,   0.047,   0.084,   0.084,   0.066,   0.067,   0.120,   0.103,   0.100,   0.126,   0.138,   0.066,   0.0,   0.006,   0.028,   0.030,   0.006,   0.01))
 
 #soil quartz content
-QTZ    = mean(c(0.92,   0.82,   0.60,   0.25,   0.10,   0.40,   0.60,   0.10,   0.35,   0.52,   0.10,   0.25,   0.05,   0.60,   0.07,   0.25,   0.60,   0.52,   0.92/)
+QTZ    = mean(c(0.92,   0.82,   0.60,   0.25,   0.10,   0.40,   0.60,   0.10,   0.35,   0.52,   0.10,   0.25,   0.05,   0.60,   0.07,   0.25,   0.60,   0.52,   0.92))
 
 #momentum roughness length (m)
 Z0MVT = mean(c(1.00,  0.06,  0.06,  0.06,  0.06,  0.15,  0.06,  0.06,  0.06,  
@@ -106,102 +75,110 @@ Z0MVT = mean(c(1.00,  0.06,  0.06,  0.06,  0.06,  0.15,  0.06,  0.06,  0.06,
 		0.001,  0.04,  0.06,  0.06,  0.03,  0.001,  0.01,  0.00,  0.00))
 
 
-#!--------------------------------!
-#! Functions
-#!--------------------------------!
+#load the data
 
+setwd("/home/ofir/Dropbox/Lauren")
+ALBEDO = read.table("ALBEDO_output_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-05-16-2220.csv", header=T, sep=",")$ALBEDO
+FVEG = read.table("FVEG_output_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-05-16-2220.csv", header=T, sep=",")$FVEG
+GLW = read.table("GLW_output_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-05-16-2220.csv", header=T, sep=",")$GLW
+ISNOW = read.table("ISNOW_output_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-05-16-2220.csv", header=T, sep=",")$ISNOW
+SWDOWN = read.table("SWDOWN_output_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-05-16-2220.csv", header=T, sep=",")$SWDOWN
+TAH = read.table("TAH_output_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-05-16-2220.csv", header=T, sep=",")$TAH
+Tair = read.table("Tair_output_shade-0_height-3_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-05-16-2220.csv", header=T, sep=",")$Tair
+T2 = read.table("Tair_output_shade-0_height-198_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-06-05-2053.csv", header=T, sep=",")$Tair
+Tsurface = read.table("Tsurface_output_shade-0_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-05-16-2220.csv", header=T, sep=",")$Tsurface
+WIND = read.table("WIND10_output_height-198_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-06-01-1914.csv", header=T, sep=",")$WIND10
+TV = read.table("TV_output_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-05-16-2220.csv", header=T, sep=",")$TV
+QAIR = read.table("QAIR_output_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-06-05-2045.csv", header=T, sep="," )$QAIR
 
-surfacet = function(dz=0.03, dair=dz, shade=0, use_fveg=F){
-####input parameters
-#dz - soil layer thickness (m)
-#dair - air layer thickness (m)
-#shade - shade at location (0-1)
-#use_fveg - a logical parametes, true if shade should be equal to FVEG 
+SMOIS1 = read.table("SMOIS_output_depth-5_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-06-03-1431.csv", header=T, sep=",")$SMOIS
+SMOIS2 = read.table("SMOIS_output_depth-10_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-06-03-0827.csv", header=T, sep=",")$SMOIS
+SMOIS3 = read.table("SMOIS_output_depth-40_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-06-03-0826.csv", header=T, sep=",")$SMOIS
+SMOIS4 = read.table("SMOIS_output_depth-100_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-06-03-0825.csv", header=T, sep=",")$SMOIS
+
+Tsoil1 = read.table("Tsoil_output_shade-0_depth-6_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-06-05-1856.csv", header=T, sep=",")$Tsoil
+Tsoil2 = read.table("Tsoil_output_shade-0_depth-24_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-06-05-1857.csv", header=T, sep=",")$Tsoil
+Tsoil3 = read.table("Tsoil_output_shade-0_depth-66_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-06-05-1858.csv", header=T, sep=",")$Tsoil
+Tsoil4 = read.table("Tsoil_output_shade-0_depth-156_interval-hourly_aggregation-inst_times-19810101-19810131_created-2017-06-05-1859.csv", header=T, sep=",")$Tsoil
+
+EMG = 0.97
+EMISS = 0.97
+EMV = 0.97 #see Rubio et al. 1997 (http://www.sciencedirect.com/science/article/pii/S003442579600123X)
+n=length(SMOIS4)
 
 ####local variables
+dz=0.03; dair=dz; shade=0; use_fveg=F;
 m =1 ;  IZ=1 			# loop indexes
 tsurf = 0. 				#calculated surface temperature (kelvin) (TODO: consider putting the value of previous time step)
 NSOIL=floor(2/dz)		# number of soil layers
 NAIR = floor(2/dair) 	# number of air layers
 z = dz*(1:NSOIL) 		# soil depths(m)
-TAIR  = array(NAIR)  	#calculated air temperature at various heights (kelvin)
-UVH = array(NAIR) 		# calculated wind speed at various heights (m/sec)
-
-#integer level temporary variable for soil level
-#real CM ,CH   !stability factors
-#real cur_shade
-#real t        ! time step
-#tsoil !matrix of soil temperature (time steps, layer)
-#xDF !matrix of soil thermal conductivity (time steps, layer) (w/m/kelvin)
-#xHCPCT !matrix of soil heat capacity (time steps, layer) (j/m**3/kelvin)
-#xSMOIS !matrix of total soil water (time steps, layer) (m**3/m**3)
-#xZSNSO ! vector of snow/soil layer-bottom depth from snow/ground surface [m]
-#SH2O !vector if soil liquid water (m**3/m**3)
-#DZSNSO !snow/soil layer thickness [m]
-#xSAG, xSH, xEV, xIR, xGH
-
-
-#!create matrixes of soil temperatures, thermal conductivities and heat capacities for every time step in the model and every depth
-#allocate(tsoil(n, -NSNOW+1:NSOIL),tsurf(n), TAIR(n,NAIR), UVH(n,NAIR), xDF(n,-NSNOW+1:NSOIL), xHCPCT(n,-NSNOW+1:NSOIL), xSMOIS(n,NSOIL), SH2O(NSOIL), xZSNSO(-NSNOW+1:NSOIL), DZSNSO(-NSNOW+1:NSOIL))
-#allocate(xSAG(n), xSH(n), xEV(n), xIR(n), xGH(n))
+TAIR  = array(NA, dim=NAIR)  	#calculated air temperature at various heights (kelvin)
+UVH = array(NA, dim=NAIR) 		# calculated wind speed at various heights (m/sec)
 
 #divide moisture for each soil depth
-xSMOIS = array(NSOIL)
+xSMOIS = array(NA, dim=c(n,NSOIL))
+tsoil = array(NA, dim=c(n,NSOIL))
 for (i in 1:NSOIL){
 	depth=i*dz
 	if (depth < 0.1){ 
-		level = 1
+		xSMOIS[,i] = SMOIS1
+		tsoil[1,i] = Tsoil1[1] 
+		print("sdsd")
 	}
 	else if (depth < 0.4){
-		level = 2
+		xSMOIS[,i] = SMOIS2
+		tsoil[1,i] = Tsoil2[1]
 	}
 	else if (depth < 1){
-		level = 3
+		xSMOIS[,i] = SMOIS3
+		tsoil[1,i] = Tsoil3[1]
 	}
 	else {
-		level = 4
+		xSMOIS[,i] = SMOIS4
+		tsoil[1,i] = Tsoil4[1]
 	}
-	xSMOIS[i] = SMOIS[level]
 }
 
 ####set initial conitions for soil temperatures
-#find the closest shade level
-ishade = round(shade*4)+1
-tsoil = Tsoil[,ishade] 
-tair=Tair[1, ishade] #just the first layer of Tair
-tsurf=surface[ishade]
-xHCPCT = 0
-xDF = 0
+
+#initial conditions for the first time step
+SH2O = xSMOIS[1,]
+
+tair=Tair[1] #just the first layer of Tair
+tsurf=Tsurface[1]
 
 #start calculation for each time step
-xZSNSO=dz*1:NSOIL
-for (IZ in 1:NSOIL) {
-	if (xSMOIS[IZ]>prev_xSMOIS[IZ]) {
-		SH2O[IZ] = min(xSMOIS[IZ], SH2O[IZ] + xSMOIS[IZ] - prev_xSMOIS[IZ])
-	}	
+CM=0; CH=0
+setwd("~/Dropbox/eclipse_luna/Lauren/")
+source("ENERGY.R")
+
+
+for (m in 2:5000){
+  xZSNSO=dz*1:NSOIL
+  for (IZ in 1:NSOIL) {
+  	if (xSMOIS[m,IZ]>xSMOIS[m-1,IZ]) {
+  		SH2O[IZ] = min(xSMOIS[m,IZ], SH2O[IZ] + xSMOIS[m,IZ] - xSMOIS[m-1, IZ])
+  	}	
+  }
+  
+  # set shade
+  if (use_fveg){
+  	cur_shade = FVEG	
+  } else {
+  	cur_shade = shade
+  } 
+  
+  # !run heat balance calculation
+  result = ENERGY (cur_shade, dair, ISNOW[m], 1, 68852, QAIR[m], #RHOAIR[m] ,PSFC[m] ,QAIR[m]   , & !in
+  T2[m], GLW[m]  ,WIND[m],SWDOWN[m] , 0.9, xZSNSO, #EAIR(m)   ,xZSNSO, 
+  CSOIL , FVEG[m]  , 0.03 , EMG, EMV, EMISS, TAH[m], TV[m], SH2O, xSMOIS[m,], 
+  ALBEDO[m], CM, CH, tsurf[m-1], tsoil[m-1,])
+  tsurf[m] = result$TG
+  tsoil[m,] = result$STC
+  CM = result$CM
+  CH=result$CH
+  print(paste("TG:", result$TG))
+  print(paste("tsoil:", result$STC))
+  print(paste("CM:", result$CM))
 }
-
-# set shade
-if (use_fveg){
-	cur_shade = FVEG	
-} else {
-	cur_shade = shade
-} 
-
-!run heat balance calculation
-t=0
-do while (t<3600.)
-	CALL ENERGY (cur_shade, dair, ISNOW(m),RHOAIR(m) ,PSFC(m) ,QAIR(m)   , & !in
-T2B(m) ,T2V(m), GLW(m)   ,U10(m),   V10(m), & !in
-SWDOWN(m)  , EAIR(m)   ,xZSNSO  , & !in
-CSOIL , FVEG(m)  , DZSNSO , EMG(m), EMV(m), EMISS(m), & !in
-SNOWH(m)  ,EAH(m)    ,TAH(m),  TV(m), & !in
-SNEQV(m)  ,SH2O   ,xSMOIS(m,:)    ,SNICE(m,:)  ,SNLIQ(m,:)  , & !inout
-ALBEDO(m) ,CM     ,CH , tsurf(m)     ,tsoil(m,:), xHCPCT(m,:), xDF(m,:), &!inout
-tair(m,:), UVH(m,:), xSAG(m), xSH(m), xEV(m), xIR(m), xGH(m) & !out
-)
- return() #return the calculated tsoil, tsurface, tair, and wind
-} #end function surfacet
-
-
-

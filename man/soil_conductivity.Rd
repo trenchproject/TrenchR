@@ -13,6 +13,9 @@ soil_conductivity(x, lambda, g_a)
 
 \item{g_a}{is a shape factor on soil particles.  The soil particles are assumed to be ellipsoids with axes g_a, g_b, and g_c, where g_a +g_b +g_c=1.  de Vries 1952 suggests g_a=g_b=0.125.}
 }
+\value{
+soil thermal conductivity (W m^-1 K^-1)
+}
 \description{
 This function allows you to estimate soil thermal conductivity in W m^-1 K^-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).
 }
@@ -23,6 +26,9 @@ Estimate soil thermal conductivity in W m^-1 K^-1
 \dontrun{
 soil_conductivity(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), lambda=c(0.10,0.40,0.11,0.01,0.2, 0.18), g_a=0.125)
 }
+}
+\author{
+Joseph Grigg
 }
 \keyword{soil}
 \keyword{temperature}

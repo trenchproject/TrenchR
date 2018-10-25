@@ -3,14 +3,27 @@
 # Author: ofir
 ###############################################################################
 
-
+source("TDFCND.R")
 #derived from Noah-MP model in module_sf_noahmplsm.F from the wrf (v. 3.4) model
 # ==================================================================================================
+
+#' THERMOPROP
+#'
+#' 
+#' @details 
+#' @param 
+#' 
+#' @return 
+#' @keywords 
+#' @export
+#' @author Ofir Levy
+#' @examples
+#' 
 THERMOPROP  = function (ISNOW  , DZSNSO,  #in
-						SNOWH   ,SNICE   ,SNLIQ   ,CSOIL   , #in
+						CSOIL   , #in
 						SMC     ,SH2O    ,TG      ,STC     ,UR      , #in
-						Z0M     , #in
-						DF      ,HCPCT   , FACT    )# !out 
+						Z0M)#    , #in
+					#Q	DF      ,HCPCT   , FACT    )# !out 
 				{
 	###inputs
 	#ISNOW   !actual no. of snow layers (from wrf output)
@@ -43,33 +56,18 @@ THERMOPROP  = function (ISNOW  , DZSNSO,  #in
 	# --------------------------------------------------------------------------------------------------
 			
 	#compute snow thermal conductivity and heat capacity
-	
-	#CALL CSNOW (ISNOW   ,DZSNSO, SNICE   ,SNLIQ  , & !in
-	#TKSNO   ,CVSNO   ,SNICEV  ,SNLIQV  ,EPORE   )   !out
-	#
-	#DO IZ = ISNOW+1, 0
-	#DF   (IZ) = TKSNO(IZ)
-	#HCPCT(IZ) = CVSNO(IZ)
-	#END DO
-	
-	# compute soil thermal properties
+  HCPCT = array(0, dim=c(n,NSOIL))
+  DF = array(0, dim=c(n,NSOIL))
+  SICE = array()
 	for (IZ in 1:NSOIL) {
 		SICE[IZ]  = SMC[IZ] - SH2O[IZ]
-		HCPCT[IZ] = SH2O[IZ]*CWAT + (1.0-SMCMAX)*CSOIL + (SMCMAX-SMC[IZ])*CPAIR + SICE[IZ]*CICE
+		HCPCT[IZ] = SH2O[IZ]*CWAT + (1.0-MAXSMC)*CSOIL + (MAXSMC-SMC[IZ])*CPAIR + SICE[IZ]*CICE
 		DF[IZ] = TDFCND (DF[IZ], SMC[IZ], SH2O[IZ])	
 	}
 	
-	#
-	## heat flux reduction effect from the overlying green canopy, adapted from
-	## section 2.1.2 of Peters-Lidard et al. (1997, JGR, VOL 102(D4)).
-	## not in use because of the separation of the canopy layer from the ground.
-	## but this may represent the effects of leaf litter (Niu comments)
-	#       DF1 = DF1 * EXP (SBETA * SHDFAC)
-	#
-	
-	## combine a temporary variable used for melting/freezing of snow and frozen soil
+  FACT = array(0, dim=c(NSOIL))
 	for (IZ in 1:NSOIL) {
-		FACT[IZ] = DT/(HCPCT[IZ]*DZSNSO[IZ])
+		FACT[IZ] = DT/(HCPCT[IZ]*DZSNSO)
 	}
 	return(list(HCPCT=HCPCT, DF=DF, FACT=FACT))
 }

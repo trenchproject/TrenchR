@@ -1,0 +1,52 @@
+---
+title: "Estimating microclimates"
+author: "Lauren Buckley"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+##Load TrenchR package
+library(TrenchR)
+```
+
+#Allometries
+We provide tools for estimating additional dimensions of organisms from measured dimensions. The function `mass_from_length()` encompasses empirically-derived relationships to estimate mass (mostly) as a power law function of mass for six taxonomic classifications. The relationships are derived by relating length to mass for specimens of numerous species and avaialble as the following function: 
+```{r}
+mass_from_length(0.04,"insect")
+```
+
+Surface area is needed for several aspects of biophysical models but is rarely meausured. We provide functions to estimate surface area ($m^3$) from length, mass, or volume for a variety of taxa. The function `sa_from_mass()` encompasses empirically-derived relationship to estimate surface area as a power law function of mass for lizards, frogs, and insects.  We also provide empirical relationships estimating surface area as power law function of volume. The functions were developed by Mitchell [1976] for use in approximating convective heat transfer. For the same study, we additionally provide a function to estimate volume from length for several taxa or approximating the organism as a sphere. Finally, we provide a function for estimating surface area from length by approximating the animal's body as a rotational ellipsoid. The allometric functions are available in R as follows:
+```{r}
+sa_from_mass(2,"insect")
+sa_from_volume(volume=0.001,"lizard")
+volume_from_length(.05,"lizard")
+sa_from_length(length=0.04)
+```
+
+Estimating the amount of solar radiation that an animal absorbs requires knowledge of the silhouette area, the propotion of an animal's surface area that is projected onto a horizontal surface. Silhouette area is a function of the sun's angle. We offer empirically-derived relationships to predict the proportional silhouette area for frogs, lizards, and grasshoppers as a polynomial function of zenith angle (`prop_silhouette_area()`).  We additionally offer a function (`prop_silhouette_area_shapes()`) to estimate silhoutte area by approximating the animal as a sphere or cylinder.  The R functions are parameterized as follows:
+```{r}
+prop_silhouette_area(60, taxa= "frog")
+prop_silhouette_area_shapes(shape="spheroid", theta=60, h=0.01, d=0.001)
+```
+
+#Conversions
+We offer convenience functions to convert among units for angles and temperatures:
+```{r}
+degree_to_radian(47.608)
+radian_to_degree(0.831)
+fahrenheit_to_celsius(85)
+fahrenheit_to_kelvin(85)
+kelvin_to_celsius(270)
+```
+
+

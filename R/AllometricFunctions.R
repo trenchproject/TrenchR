@@ -46,7 +46,7 @@ sa_from_mass<-function(m, taxa){
 #' @export
 #' @examples
 #'  \dontrun{
-#'  calculate_mass(0.04,"insect")
+#'  mass_from_length(0.04,"insect")
 #' }
 #'
 
@@ -87,12 +87,12 @@ mass_from_length<-function(l, taxa){
 #' @details This function allows you to estimate surface area (m^2) from volume (m^3) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976).
 #' @param V Density (m^3)
 #' @param taxa Which class of organism, current choices: lizard, frog, sphere.
-#' @return sa (m^2)
+#' @return V (m^3)
 #' @keywords surface area
 #' @export
 #' @examples
 #'  \dontrun{
-#'  sa_from_volume(volume=0.001,"lizard")
+#'  sa_from_volume(0.001,"lizard")
 #' }
 #'
 
@@ -203,8 +203,8 @@ sa_from_length<-function(length){
 #' 
 #' 
 #' @details This function allows you to estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of zenith angle.
-#' @param taxa Which class of organism, current choices: frog, lizard, grasshopper
 #' @param z zenith angle in degrees
+#' @param taxa Which class of organism, current choices: frog, lizard, grasshopper
 #' @param raz if lizard, relative solar azimuth angle in degrees, the horizontal angle of the sun (0-180 degrees) relative to the head and frontal plane of the lizard 
 #' @param posture if lizard, indicate posture as "prostrate" or "elevated"
 #' @return silhouette area as a proportion
@@ -212,7 +212,7 @@ sa_from_length<-function(length){
 #' @export
 #' @examples
 #' \dontrun{
-#' prop_silhouette_area(60, taxa= "frog")
+#' prop_silhouette_area(z=60, taxa= "frog")
 #' }
 #' 
 
@@ -231,6 +231,46 @@ prop_silhouette_area<-function(z, taxa, raz=0, posture="prostrate"){
     psa= A*z^3+B*z^2+C*z+D                                       }                                                                                                                                
   #Grasshopper, Anderson et al. 1979
   if(taxa=="grasshopper") psa<-0.19-0.00173*z 
+  
+  return(psa/100)
+}
+
+#' Calculate silhouette area using the shape approximations
+#' 
+#' 
+#' @details This function allows you to estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid. From Figure 11.6 in Campbell and Norman (1998).
+#' @param shape Which shape to approximate an organism. Shapes are assumed to be prolate or have the longest axis parallel with the ground. Current choices: spheroid, cylinder flat ends, or cylinder hemisphere ends.
+#' @param theta is the angle between the solar beam and the longitudinal axis in degrees
+#' @param h is the height (long axis in m), cross section length for spheroid 
+#' @param d is the diameter (short axis in m), cross section length for spheroid 
+#' @return silhouette area as a proportion
+#' @keywords silhouette area
+#' @export
+#' @examples
+#' \dontrun{
+#' prop_silhouette_area_shapes(shape="spheroid", theta=60, h=0.01, d=0.001)
+#' prop_silhouette_area_shapes(shape="cylinder flat ends", theta=60, h=0.01, d=0.001)
+#' prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=60, h=0.01, d=0.001)
+#' }
+
+prop_silhouette_area_shapes<-function(shape, theta, h, d){
+  
+  #convert degree to radian
+  theta_r= theta*(2*pi)/360
+  
+  #prolate spheroid
+  if(shape=="spheroid") {
+   x= d/h
+   psa= sqrt(1+(x^2-1)*cos(theta_r)^2)/(2*x+ (2*sin(sqrt(1-x^2))^(-1)/sqrt(1-x^2)) ) #sin not converted to radians, check
+  }
+  
+  if(shape=="cylinder flat ends") {
+    psa= (cos(theta_r)+4*h*sin(theta_r)/(pi*d))/(2+4*h/d)
+  }
+  
+  if(shape=="cylinder hemisphere ends") {
+    psa= (1+4*h*sin(theta_r)/(pi*d))/(4+4*h/d)
+  }
   
   return(psa)
 }

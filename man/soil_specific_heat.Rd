@@ -26,5 +26,8 @@ Estimate soil specific heat in J kg^-1 K-1.
 soil_specific_heat(0.01, 0.6, 0.2, 1620)
 }
 }
+\author{
+Joseph Grigg
+}
 \keyword{soil}
 \keyword{temperature}

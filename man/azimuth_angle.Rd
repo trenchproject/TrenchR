@@ -19,14 +19,14 @@ azimuth_angle(doy, lat, lon, hour)
 Azimuth angle in degrees
 }
 \description{
-This function allows you to calculate the azimuth angle, the angle (in degrees) measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east.
+This function allows you to calculate the azimuth angle, the angle (in degrees) from which the sunlight in coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east.
 }
 \details{
 Calculate azimuth angle
 }
 \examples{
 \dontrun{
-azimuth_angle(112, 47.61, -122.33, 12)
+azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
 }
 }
 \keyword{Azimuth}

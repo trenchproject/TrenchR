@@ -7,7 +7,7 @@
 sa_from_volume(volume, taxa)
 }
 \arguments{
-\item{volume}{Density in m^3.}
+\item{volume}{in m^3.}
 
 \item{taxa}{Which class of organism, current choices: lizard, frog, sphere.}
 }

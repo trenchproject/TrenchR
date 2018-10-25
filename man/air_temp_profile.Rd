@@ -19,6 +19,9 @@ air_temp_profile(T_r, u_r, zr, z0, z, T_s)
 
 \item{T_s}{is surface temperatures in degrees C.}
 }
+\value{
+temperature (degrees C)
+}
 \description{
 This function allows you to estimate temperature (C) at a specified height (m).  
 Estimates a single, unsegmented temperature profile using the MICRO routine from 
