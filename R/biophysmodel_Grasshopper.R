@@ -4,11 +4,11 @@
 #' @details Predicts body temperatures (operative environmental temperature) of a grasshopper in degrees C.
 #' @description Predicts body temperature (operative environmental temperature) of a grasshopper in degrees C. Described in Buckleyet al. (2014, Phenotypic clines, energy balances, and ecological responses to climate change. Journal of Animal Ecology 83:41-50.) See also a related model by Anderson et al. (1979, Habitat selection in two species of short-horned grasshoppers. Oecologia 38:359–74.)
 #' 
-#' @param Ta is air temperature in C
-#' @param Tg  is surface temperature in C, Kingsolver (1983) assumes Tg-Ta=8.4
+#' @param T_a is air temperature in C
+#' @param T_g  is surface temperature in C, Kingsolver (1983) assumes T_g-T_a=8.4
 #' @param u is wind speed in m/s
-#' @param rad  is total (direct + diffuse) solar radiation flux in W/m^2
-#' @param kt is the clearnex index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.
+#' @param H  is total (direct + diffuse) solar radiation flux in W/m^2
+#' @param K_t is the clearnex index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.
 #' @param psi is solar zenith angle in degrees
 #' @param L in grasshopper length in m
 #' @param Acondfact is the proportion of the grasshopper surface area that is in contact with the ground
@@ -20,20 +20,20 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' Tb_grasshopper(Ta=25, Tg=25, u=0.4, rad=400, kt=0.7, psi=30, L=0.02, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3)
+#' Tb_grasshopper(T_a=25, T_g=25, u=0.4, H=400, K_t=0.7, psi=30, L=0.02, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3)
 #'}
 
-Tb_grasshopper=function(Ta, Tg, u, rad, kt, psi, L, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3){
+Tb_grasshopper=function(T_a, T_g, u, H, K_t, psi, L, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3){
   
-TaK<- Ta+273.15 #Ambient temperature in K
-Tg<- Tg+273.15 #Ambient temperature in K
+TaK<- T_a+273.15 #Ambient temperature in K
+T_g<- T_g+273.15 #Ambient temperature in K
 
 #Biophysical parameters
 #IR emissivity
 omega<-5.66 * 10^-8 # stefan-boltzmann constant (W m^-2 K^-4)
 epsilon=1 #Gates 1962 in Kingsolver 1983  #emissivity of surface to longwave IR
 
-Kf=0.025  #Kf=0.024+0.00007*Ta[k] #thermal conductivity of fluid
+Kf=0.025  #Kf=0.024+0.00007*T_a[k] #thermal conductivity of fluid
 
 #kineamatic viscosity of air (m^2/s); http://users.wpi.edu/~ierardi/PDF/air_nu_plot.PDF
 v=15.68*10^-6  #m^2/s, kinematic viscocity of air,  at 300K #http://www.engineeringtoolbox.com/air-absolute-kinematic-viscosity-d_601.html
@@ -52,11 +52,11 @@ A=2*pi*a^2+2*pi*a*c/e*asin(e)
 #Use Erbs et al model from Wong and Chow (2001, Applied Energy 69:1991-224)
 
 #kd- diffuse fraction
-if(kt<=0.22) kd=1-0.09*kt
-if(kt>0.22 & kt<=0.8) kd= 0.9511 -0.1604*kt +4.388*kt^2 -16.638*kt^3 +12.336*kt^4
-if(kt>0.8) kd=0.165 #kd = 0.125 #Correction from 16.5 for CO from Olyphant 1984
+if(K_t<=0.22) kd=1-0.09*K_t
+if(K_t>0.22 & K_t<=0.8) kd= 0.9511 -0.1604*K_t +4.388*K_t^2 -16.638*K_t^3 +12.336*K_t^4
+if(K_t>0.8) kd=0.165 #kd = 0.125 #Correction from 16.5 for CO from Olyphant 1984
 
-Httl=rad
+Httl=H
 Hdir=Httl*(1-kd)
 Hdif=Httl*kd;     
 
@@ -87,7 +87,7 @@ hc_s<- h_c *(-0.007*z/L +1.71) # heat transfer coefficient in turbulent air
 Thick= 6*10^(-5) #cuticle thickness (m)
 hcut= 0.15 #W m^-1 K^-1
 Acond=A * Acondfact 
-#Qcond= hcut *Acond *(Tb- (Ta+273))/Thick
+#Qcond= hcut *Acond *(Tb- (T_a+273))/Thick
 
 #------------------------------
 #Energy balance based on Kingsolver (1983, Thermoregulation and flight in Colias butterflies: elevational patterns and mechanistic limitations. Ecology 64: 534–545).
@@ -105,25 +105,25 @@ Qdif=abs*Aref*Hdif
 Qref= abs* r_g * Aref *Httl
 Qabs= Qdir + Qdif + Qref  #W/m2
 
-Tsky=0.0552*(Ta+273.15)^1.5; #Kelvin, black body sky temperature from Swinbank (1963), Kingsolver 1983 estimates using Brunt equation
+Tsky=0.0552*(T_a+273.15)^1.5; #Kelvin, black body sky temperature from Swinbank (1963), Kingsolver 1983 estimates using Brunt equation
                
-#Qt= 0.5* A * epsilon * omega * (Tb^4 - Tsky^4) +0.5 * A * epsilon * omega * (Tb^4 - Tg^4) 
+#Qt= 0.5* A * epsilon * omega * (Tb^4 - Tsky^4) +0.5 * A * epsilon * omega * (Tb^4 - T_g^4) 
 #Convective heat flux
-#Qc= hc_s * A * (Tb- (Ta+273)) 
+#Qc= hc_s * A * (Tb- (T_a+273)) 
 #Qs= Qt+ Qc
 
 #WITH CONDUCTION
 #t solved in wolfram alpha #Solve[a t^4 +b t -d, t]
 a<- A * epsilon *omega
 b<-hc_s * A + hcut*Acond/Thick
-d<- hc_s*A*TaK +0.5*A*epsilon *omega*(Tsky^4+Tg^4)+ hcut *Acond*Tg/Thick +Qabs
+d<- hc_s*A*TaK +0.5*A*epsilon *omega*(Tsky^4+T_g^4)+ hcut *Acond*T_g/Thick +Qabs
 
 #WITHOUT CONDUCTION
 #a<- A * epsilon *omega
 #b<-hc_s * A
-#d<- hc_s*A*TaK +0.5*A*epsilon *omega*Tsky^4 +0.5*A*epsilon *omega*Tg^4 +Qabs
+#d<- hc_s*A*TaK +0.5*A*epsilon *omega*Tsky^4 +0.5*A*epsilon *omega*T_g^4 +Qabs
 
-#eb<-function(Tb) 0.5* A * epsilon * omega * (Tb^4 - Tsky^4) +0.5 * A * epsilon * omega * (Tb^4 - Tg^4) + hc_s * A * (Tb-TaK)+hcut *Acond *(Tb-Tg)/Thick -Qabs 
+#eb<-function(Tb) 0.5* A * epsilon * omega * (Tb^4 - Tsky^4) +0.5 * A * epsilon * omega * (Tb^4 - T_g^4) + hc_s * A * (Tb-TaK)+hcut *Acond *(Tb-T_g)/Thick -Qabs 
 #r <- uniroot(eb, c(-1,373), tol = 1e-5)
 #r$root-273
 

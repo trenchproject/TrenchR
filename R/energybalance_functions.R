@@ -5,9 +5,9 @@
 #' 
 #' 
 #' @details This function allows you to calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: Spotila et al. 1992. Biophysicas of Heat and Mass Transfer.
-#' @param Tg Ground (Surface) Temperature in Kelvin.
-#' @param Tb Body Temperature in Kelvin.
-#' @param d Mean thickness of the animal skin (surface) in meters, assumes well mixed interior
+#' @param T_g Ground (Surface) Temperature in Kelvin.
+#' @param T_b Body Temperature in Kelvin.
+#' @param d Mean thickness of the animal skin (surface) in (m), assumes well mixed interior
 #' @param K Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle ( Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step. 
 #' @param A Surface area  in m^2
 #' @param proportion In contact to the surface
@@ -16,11 +16,11 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' Qconduction_animal(Tg= 293,Tb=303,d=10^-6,K=0.5,A=10^-3, proportion=0.2)
+#' Qconduction_animal(T_g= 293,T_b=303,d=10^-6,K=0.5,A=10^-3, proportion=0.2)
 #' }
 #' 
 
-Qconduction_animal<-function(Tg,Tb,d,K=0.5, A,proportion){
+Qconduction_animal<-function(T_g,T_b,d,K=0.5, A,proportion){
  
   # Calculate the area of contact
   A_contact  = A * proportion
@@ -28,7 +28,7 @@ Qconduction_animal<-function(Tg,Tb,d,K=0.5, A,proportion){
   # Conduction
   # Calculating the heat loss (Difference between animal temperature and its environment)
   # m^2 * W K^-1 m^-1 * K / m
-  Qcond = A_contact*K*(Tg - Tb)/(d)
+  Qcond = A_contact*K*(T_g - T_b)/(d)
 
   return(Qcond)
 }
@@ -43,8 +43,8 @@ Qconduction_animal<-function(Tg,Tb,d,K=0.5, A,proportion){
 #'          Method assumes the major resistance to conduction is the substrate and that the interior of the 
 #'          animal is equal in temperature to its surface (thermally well mixed). 
 #'          Reference: Spotila et al. 1992. Biophysicas of Heat and Mass Transfer.
-#' @param Tg Surface Temperature in Kelvin.
-#' @param Tb Body Temperature in Kelvin.
+#' @param T_g Surface Temperature in Kelvin.
+#' @param T_b Body Temperature in Kelvin.
 #' @param D Characteristic dimension of the animal in meters
 #' @param K_g Thermal conductivity of substrate (W K^-1 m^-1 )
 #' @param A Surface area  in m^2
@@ -54,11 +54,11 @@ Qconduction_animal<-function(Tg,Tb,d,K=0.5, A,proportion){
 #' @export
 #' @examples
 #' \dontrun{
-#' Qconduction_substrate(Tg= 293,Tb=303,D=0.01,K_g=0.3,A=10^-2, proportion=0.2)
+#' Qconduction_substrate(T_g= 293,T_b=303,D=0.01,K_g=0.3,A=10^-2, proportion=0.2)
 #' }
 #' 
 
-Qconduction_substrate<-function(Tg,Tb,D,K_g=0.5, A,proportion){
+Qconduction_substrate<-function(T_g,T_b,D,K_g=0.5, A,proportion){
   
   # Calculate the area of contact
   A_contact  = A * proportion
@@ -67,7 +67,7 @@ Qconduction_substrate<-function(Tg,Tb,D,K_g=0.5, A,proportion){
   H_g= 2.0*K_g/D
   
   # Conduction,  m^2 * W K^-1 m^-1 * K / m
-  Qcond = A_contact*H_g*(Tb - Tg)
+  Qcond = A_contact*H_g*(T_b - T_g)
   
   return(Qcond)
 }
@@ -81,22 +81,22 @@ Qconduction_substrate<-function(Tg,Tb,D,K_g=0.5, A,proportion){
 #' 
 #' 
 #' @details This function allows you to calculate convection as in Mitchell (1976). Includes an enhancement factor associated with outdoor environments.
-#' @param Ta Air Temperature in Kelvin.
-#' @param Tb Initial Body Temperature in Kelvin.
-#' @param H_L Convective heat transfer coefficient (W m^-2 K^-1)
+#' @param T_a Air Temperature in Kelvin.
+#' @param T_b Initial Body Temperature in Kelvin.
+#' @param H Convective heat transfer coefficient (W m^-2 K^-1)
 #' @param A Surface area  in m^2
 #' @param proportion of surface area exposed to air
-#' @param ef is the enhancement factor, used to adjust H_L to field condictions (using H_L approximation from Mitchell 1976).  Approximated as 1.3 by default, but see Mitchell 1976 for more relationship.
+#' @param ef is the enhancement factor, used to adjust H to field condictions (using H approximation from Mitchell 1976).  Approximated as 1.3 by default, but see Mitchell 1976 for more relationship.
 #' @return convection (W)
 #' @keywords convection
 #' @export
 #' @examples
 #' \dontrun{
-#' Qconvection(Ta= 293,Tb= 303,H_L=10.45,A=0.0025, proportion=0.85)
+#' Qconvection(T_a= 293,T_b= 303,H=10.45,A=0.0025, proportion=0.85)
 #' }
 #' 
 
-Qconvection<-function(Ta,Tb,H_L=10.45,A,proportion, ef=1.3 ){
+Qconvection<-function(T_a,T_b,H=10.45,A,proportion, ef=1.3 ){
   
   # Calculate skin area exposed to air
   A_air = A*proportion
@@ -106,7 +106,7 @@ Qconvection<-function(Ta,Tb,H_L=10.45,A,proportion, ef=1.3 ){
   ## http://www.sciencedirect.com/science/article/pii/S0006349576857116
   #convection, assuming no wind
   # W m^-2 K^-1 * m^2 * K
-  Qconv =   ef*H_L*A_air*(Ta-Tb)
+  Qconv =   ef*H*A_air*(T_a-T_b)
   
   return(Qconv)
 }
@@ -115,6 +115,7 @@ Qconvection<-function(Ta,Tb,H_L=10.45,A,proportion, ef=1.3 ){
 #' Calculate heat transfer coefficient (based on Mitchell 1976)
 #' (Uses Table I: Convective Heat Transfer Relations for Animal Shapes)
 #' 
+
 #' @details This function allows you estimate the heat transfer coefficient for various taxa (based on Mitchell 1976).  Based on empirical measurements.
 #' @param V Air velocity m/s.
 #' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
@@ -149,13 +150,14 @@ heat_transfer_coefficient<-function(V,D,K,nu, taxa="cylinder"){
   H_L= Nu * K / D
    
   return(H_L)
+
 }
 
 #' Calculate heat transfer coefficient using a sphereical approximation (based on Mitchell 1976)
 #' (Uses Table III: Convective Heat Transfer Relations for Animal Shapes)
 #' 
 #' @details This function allows you estimate the heat transfer coefficient for various taxa (based on Mitchell 1976).  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere.
-#' @param V Air velocity m/s.
+#' @param u Air velocity m/s.
 #' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
 #' @param K Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR
 #' @param nu Kinematic Viscocity of air, m^2 s^-1, can calculate using DRYAIR or WETAIR in NicheMapR
@@ -182,6 +184,7 @@ heat_transfer_coefficient_approximation<-function(V,D,K,nu, taxa="sphere"){
   #find index  
   ind= match(taxa, taxas)
   
+
   Re= V*D/nu #Reynolds number 
   Nu <- Cls[ind] * Re^ns[ind]  #Nusselt number
   H_L= Nu * K / D
@@ -262,20 +265,20 @@ Qradiation_absorbed<-function(a=0.9, A, psa_dir, psa_ref, S_dir, S_dif, S_ref=NA
 #' @param A surface area  in m^2
 #' @param psa_dir proportion surface area exposed to sky (or enclosure)
 #' @param psa_ref proportion surface area exposed to ground
-#' @param Tb body surface temperatue in K
-#' @param Tg ground surface temperatue in K
-#' @param Ta ambient air temperature in K
+#' @param T_b body surface temperatue in K
+#' @param T_g ground surface temperatue in K
+#' @param T_a ambient air temperature in K, only required if animal is in enclosed environment
 #' @param enclosed TRUE or FALSE
 #' @return emitted thermal radiation, Qemit (W)
 #' @keywords emitted thermal radiation
 #' @export
 #' @examples
 #' \dontrun{
-#' Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, Tb=303, Tg=293, Ta=298, enclosed=FALSE)
+#' Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303, T_g=293, T_a=298, enclosed=FALSE)
 #' }
 #' 
 
-Qemitted_thermal_radiation<-function(epsilon=0.96, A, psa_dir, psa_ref, Tb, Tg, Ta, enclosed=FALSE){
+Qemitted_thermal_radiation<-function(epsilon=0.96, A, psa_dir, psa_ref, T_b, T_g, T_a, enclosed=FALSE){
   
   #Stefan-Boltzmann constant
   sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
@@ -286,12 +289,13 @@ Qemitted_thermal_radiation<-function(epsilon=0.96, A, psa_dir, psa_ref, Tb, Tg, 
   
   #estimate effective radiant temperature of sky
   #Tsky=0.0552*(TaK)^1.5; #Kelvin, black body sky temperature from Swinbank (1963), 
-  Tsky= (1.22*(Ta-273.15) -20.4)+273.15 #K, Gates 1980 Biophysical ecology based on Swinback 1960, Kingsolver (1983) estimates using Brunt equation
+  Tsky= (1.22*(T_a-273.15) -20.4)+273.15 #K, Gates 1980 Biophysical ecology based on Swnback 1960, Kingsolver (1983) estimates using Brunt equation
   
   if(enclosed) 
-         Qemit= A_s*epsilon*sigma*(Tb^4 - Ta^4)
+         Qemit= A_r*epsilon*sigma*(T_b^4 - T_a^4)
+ 
   else 
-          Qemit= epsilon*sigma*(A_s*(Tb^4 - Tsky^4)+A_r*(Tb^4 - Tg^4))
+          Qemit= epsilon*sigma*(A_s*(T_b^4 - Tsky^4)+A_r*(T_b^4 - T_g^4))
 
   return(Qemit)
 }
@@ -306,31 +310,31 @@ Qemitted_thermal_radiation<-function(epsilon=0.96, A, psa_dir, psa_ref, Tb, Tg, 
 #' @details This function allows you to estimate heat loss associated with evaporative water loss by an amphibian (Spotila et al. 1992) or lizard (based on empirical measurements in Porter et a. 1973).
 #' @param epsilon longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
 #' @param A surface area  in m^2
-#' @param Tb body temperatue in K
+#' @param T_b body temperatue in K
 #' @param taxa taxa current choices: lizard, amphibian_wetskin (fully wet skin), amphibian (not fully wet skin)
 #' @param rho_s saturation water vapor density at skin surface (kg/m^3) (needed if amphibian)
 #' @param rho_a saturation water vapor density in ambient air (kg/m^3) (needed if amphibian)
 #' @param h relative humidity (0-1) (needed if amphibian)
-#' @param H_L convective heat transfer coefficient (W m^-2 C^-1) (needed if amphibian)
+#' @param H convective heat transfer coefficient (W m^-2 C^-1) (needed if amphibian)
 #' @param r_i internal (cutaneous) resistance to vapor transport (s/m) (needed if amphibian)
 #' @return evaporative heat loss (W)
 #' @keywords evaporative heat loss
 #' @export
 #' @examples
 #' \dontrun{
-#' Qevaporation(A=0.1, Tb=293, taxa="amphibian", rho_s=1.2, rho_a=1.2, h=0.5, H_L=20, r_i=5000)
-#' Qevaporation(A=0.1, Tb=293, taxa="lizard")
+#' Qevaporation(A=0.1, T_b=293, taxa="amphibian", rho_s=1.2, rho_a=1.2, h=0.5, H=20, r_i=5000)
+#' Qevaporation(A=0.1, T_b=293, taxa="lizard")
 #' }
 #' 
 
-Qevaporation<-function(A, Tb, taxa, rho_s=NA, rho_a=NA, h=NA, H_L=NA, r_i=NA){
+Qevaporation<-function(A, T_b, taxa, rho_s=NA, rho_a=NA, h=NA, H=NA, r_i=NA){
   #TODO FIX UNITS.
   
   #Porter et al. 1973 in Gates Biophysical ecology
   if(taxa=="lizard"){ 
-    if(Tb<293) E_kg= 0.27
-    if(Tb>=293 & Tb<=309) E_kg= 0.08*exp(0.586)*(Tb-273.5)
-    if(Tb>309) E_kg= 2.97*10^(-3)*exp(0.1516)*(Tb-273.5) 
+    if(T_b<293) E_kg= 0.27
+    if(T_b>=293 & T_b<=309) E_kg= 0.08*exp(0.586)*(T_b-273.5)
+    if(T_b>309) E_kg= 2.97*10^(-3)*exp(0.1516)*(T_b-273.5) 
     
     #convert from W/kg to W/m2
     E= E_kg*0.067/0.018 #for 0.067kg lizard with 0.018m^2 surface area
@@ -344,7 +348,7 @@ Qevaporation<-function(A, Tb, taxa, rho_s=NA, rho_a=NA, h=NA, H_L=NA, r_i=NA){
   
   rhocp= 1200 #J*m^(-3)*C^(-1)  
   #  external (convective) resistance to water vapor transport (s/m)
-  r_e= 0.93*rhocp/H_L
+  r_e= 0.93*rhocp/H
   
   if(taxa=="amphibian_wetskin"){ 
   #Ec= rate of water transport (kg/s)
@@ -366,18 +370,18 @@ Qevaporation<-function(A, Tb, taxa, rho_s=NA, rho_a=NA, h=NA, H_L=NA, r_i=NA){
 #'
 #' 
 #' @details Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C (Rosenberg 1974 in Spotila et al. 1992, see also NichMapR WETAIR and DRYAIR functions from Tracy et al. 1980).
-#' @param Ta air temperature (C)
+#' @param T_a air temperature (C)
 #' @return Saturation water vapor pressure, e_s (Pa)
 #' @keywords Saturation water vapor pressure
 #' @export
 #' @examples
 #' \dontrun{
-#' saturation_water_vapor_pressure(Ta=20)
+#' saturation_water_vapor_pressure(T_a=20)
 #' }
 #' 
 
-saturation_water_vapor_pressure<-function(Ta){
-  e_s= 10^(0.02604*Ta+2.82488)
+saturation_water_vapor_pressure<-function(T_a){
+  e_s= 10^(0.02604*T_a+2.82488)
   
   return(e_s)
 }
@@ -386,20 +390,20 @@ saturation_water_vapor_pressure<-function(Ta){
 #'
 #' 
 #' @details This function allows you to estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport (Spotila et al. 1992).
-#' @param H_L heat transfer (convection) coefficient (W m^-2 C^-1)
+#' @param H heat transfer (convection) coefficient (W m^-2 C^-1)
 #' @param rhocp aggregate parameter (J m^-3 C^-1) that is the product of the density of air (kg m^-3)and the specific heat of air at constant pressure (J kg^-1 C^-1). Default of 12000 J m^-3 C^-1 is commonly assumed.
 #' @return external resistance to water vapor transfer (s m^-1)
 #' @keywords external resistance to water vapor transfer
 #' @export
 #' @examples
 #' \dontrun{
-#' external_resistance_to_water_vapor_transfer(H_L=20)
+#' external_resistance_to_water_vapor_transfer(H=20)
 #' }
 #' 
 
-external_resistance_to_water_vapor_transfer<-function(H_L, rhocp=12000){
+external_resistance_to_water_vapor_transfer<-function(H, rhocp=12000){
  
-  r_e= rhocp / H_L
+  r_e= rhocp / H
 
     return(r_e)
 }
@@ -449,24 +453,24 @@ Qmetabolism_from_mass<-function(m, taxa="reptile"){
 #' 
 #' @details This function allows you to estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). From Gilooly et al. 2001.
 #' @param m Mass in grams.
-#' @param Tb body temperature in K
+#' @param T_b body temperature in K
 #' @param taxa Which taxa. options: bird, mammal, reptile, amphibian, invertebrate.
 #' @return metabolim (W)
 #' @keywords metabolism
 #' @export
 #' @examples
 #' \dontrun{
-#' Qmetabolism_from_mass_temp(m=100, Tb=303,"reptile")
+#' Qmetabolism_from_mass_temp(m=100, T_b=303,"reptile")
 #' }
 #' 
 
-Qmetabolism_from_mass_temp<-function(m,Tb, taxa){
+Qmetabolism_from_mass_temp<-function(m,T_b, taxa){
   
   #From  Gilloolly et al. 2001 
-  if(taxa=="bird" | taxa=="mammal") Qmet= exp(-9100/Tb+29.49)*m^0.75/60
-  if(taxa=="reptile") Qmet= exp(-8700/Tb+26.85)*m^0.75/60
-  if(taxa=="amphibian") Qmet= exp(-5760/Tb+16.68)*m^0.75/60
-  if(taxa=="invertebrate") Qmet= exp(-9150/Tb+27.62)*m^0.75/60
+  if(taxa=="bird" | taxa=="mammal") Qmet= exp(-9100/T_b+29.49)*m^0.75/60
+  if(taxa=="reptile") Qmet= exp(-8700/T_b+26.85)*m^0.75/60
+  if(taxa=="amphibian") Qmet= exp(-5760/T_b+16.68)*m^0.75/60
+  if(taxa=="invertebrate") Qmet= exp(-9150/T_b+27.62)*m^0.75/60
   return(Qmet)
 }
 
@@ -496,25 +500,25 @@ actual_vapor_pressure<-function(Tdewpoint){
 #'
 #' 
 #' @details Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation (Stull 2000)
-#' @param Ta air temperature (K)
+#' @param T_a air temperature (K)
 #' @return saturation vapor pressure, e_s (kPa)
 #' @keywords saturation vapor pressure
 #' @export
 #' @author Eric Riddell
 #' @examples
 #' \dontrun{
-#' saturation_vapor_pressure(Ta=293)
+#' saturation_vapor_pressure(T_a=293)
 #' }
 #' 
 
-saturation_vapor_pressure<-function(Ta){
+saturation_vapor_pressure<-function(T_a){
   
   #constants
   Rv = 461.5 #J*K^-1*kg^-1, ideal gas constant for water vapor
   L = 2.5*10^6 #J per kg, latent heat of vaporization
   e_o= 0.611 #kPa
   
-  e_s = e_o*exp((L/Rv)*((1./273.15)-(1./Ta))) 
+  e_s = e_o*exp((L/Rv)*((1./273.15)-(1./T_a))) 
   
   return(e_s)
 }
@@ -522,53 +526,53 @@ saturation_vapor_pressure<-function(Ta){
 #' Estimate the boundary layer resistance
 #' 
 #' @details This function allows you to estimate boundary layer resistance under free convection. Based on the function in Riddell et al. 2017 
-#' @param Ta air temperature (K)
+#' @param T_a air temperature (K)
 #' @param e_s saturation vapor pressure (kPa)
 #' @param e_a actual vapor pressure (kPa)
 #' @param elev elevation (m)
 #' @param D characteristic dimension (e.g., body diameter) (m), ##diameter = 0.0016*log(mass) + 0.0061 for mass(g) #empirical formula for salamander diameter, Riddell et al. 2017
-#' @param V is wind speed in m/s, if not provided assume free convection; if provided, use forced convection if appropriate 
+#' @param u is wind speed in m/s, if not provided assume free convection; if provided, use forced convection if appropriate 
 #' @return boundary layer resistance (s cm^-1) 
 #' @keywords boundary layer resistance
 #' @export
 #' @author Eric Riddell
 #' @examples
 #' \dontrun{
-#' boundary_layer_resistance(Ta=293, e_s=2.4, e_a=2.5, elev=500, D=0.007, V=2)
+#' boundary_layer_resistance(T_a=293, e_s=2.4, e_a=2.5, elev=500, D=0.007, u=2)
 #' }
 #' 
 
-boundary_layer_resistance<-function(Ta, e_s, e_a, elev, D, V=NA){
+boundary_layer_resistance<-function(T_a, e_s, e_a, elev, D, u=NA){
   
   #constant
   gravity = 9.8 #meters per second
   
   air_pressure = (101325.*(1.-(2.2569*10^-5)*elev)^5.2553)
-  air_density = air_pressure/(287.04*Ta)
-  dynamic_viscosity = (1.8325*10^-5)*((296.16+120.)/(Ta+120.))*((Ta/296.16)^1.5) #Tracy et al. 2010
+  air_density = air_pressure/(287.04*T_a)
+  dynamic_viscosity = (1.8325*10^-5)*((296.16+120.)/(T_a+120.))*((T_a/296.16)^1.5) #Tracy et al. 2010
   kinematic_viscosity = dynamic_viscosity/air_density
-  T_surface = (Ta)*(1.+0.38*((e_s*1000.)/air_pressure)) #organism soil temperature in steady state heat balance
-  T_air = (Ta)*(1.+0.38*((e_a*1000.)/air_pressure)) #air temperature in steady state heat balance
-  coef_thermal_expansion = 1.0/Ta
+  T_surface = (T_a)*(1.+0.38*((e_s*1000.)/air_pressure)) #organism soil temperature in steady state heat balance
+  T_air = (T_a)*(1.+0.38*((e_a*1000.)/air_pressure)) #air temperature in steady state heat balance
+  coef_thermal_expansion = 1.0/T_a
   
   #Grashof and Nusselt numbers
   Grashof = (coef_thermal_expansion*gravity*(D^3)*(abs(T_surface-T_air)))/(kinematic_viscosity^2)
   Nusselt = 0.48*((Grashof)^0.25)
   
-  thermal_conductivity = (2.4525*10^-2)+((7.038*10^-5)*(Ta-273.15))
+  thermal_conductivity = (2.4525*10^-2)+((7.038*10^-5)*(T_a-273.15))
   mixing_ratio = (0.6257*(e_a*1000))/(air_pressure-(1.006*(e_a*1000)))
  
   #free convection
   hc = (Nusselt*thermal_conductivity)/D #free convective heat transfer coefficient
   
-  if(!is.na(V)){ #check if wind speed is provided
+  if(!is.na(u)){ #check if wind speed is provided
   #estimate Reynolds number- ratio of interval viscous forces
-  Re= V*D / kinematic_viscosity
+  Re= u*D / kinematic_viscosity
   
   #forced convection
   #use if Gr< 16 * Re^2
   if( Grashof <= 16*Re^2){
-  hc= 0.923 * (V^0.333 * D^(-0.666))
+  hc= 0.923 * (u^0.333 * D^(-0.666))
   }
   } #end check if windspeed is provided
     
@@ -586,7 +590,7 @@ boundary_layer_resistance<-function(Ta, e_s, e_a, elev, D, V=NA){
 #' @param r_i internal (skin) resistance (s cm^-1)
 #' @param r_b boundary layer resistance (s cm^-1)
 #' @param D body diameter (m), ##diameter = 0.0016*log(mass) + 0.0061 for mass(g) #empirical formula for diameter, Riddell et al. 2017
-#' @param Ta ambient temperature (C)
+#' @param T_a ambient temperature (C)
 #' @param elev elevation (m)
 #' @param e_s saturation vapor pressure (kPa)
 #' @param e_a actual vapor pressure (kPa)
@@ -598,11 +602,11 @@ boundary_layer_resistance<-function(Ta, e_s, e_a, elev, D, V=NA){
 #' @author Eric Riddell
 #' @examples
 #' \dontrun{
-#' Tb_salamander_humid(r_i=4,r_b=1,D=0.007,Ta=20,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
+#' Tb_salamander_humid(r_i=4,r_b=1,D=0.007,T_a=20,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
 #' }
 #' 
 
-Tb_salamander_humid<-function(r_i,r_b,D,Ta,elev,e_a, e_s,Qabs, epsilon=0.96){
+Tb_salamander_humid<-function(r_i,r_b,D,T_a,elev,e_a, e_s,Qabs, epsilon=0.96){
   
   #Stefan-Boltzmann constant
   sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
@@ -610,25 +614,25 @@ Tb_salamander_humid<-function(r_i,r_b,D,Ta,elev,e_a, e_s,Qabs, epsilon=0.96){
   vpd= e_a - e_s #vapor pressure deficit
   
   #radiative conductance function, Campbell and Norman 1998
-  radiative_conductance= (4*(5.670373*10^-8)*(Ta+273.15)^3)/29.3
+  radiative_conductance= (4*(5.670373*10^-8)*(T_a+273.15)^3)/29.3
  
   gamma_naut = 0.000666
   a = (r_i*100.0)/41.4
   gva = (r_b*100)/41.4
-  rad = (4*5670373*10^(-8)*(Ta+273.15)*3.)/29.3
+  rad = (4*5670373*10^(-8)*(T_a+273.15)*3.)/29.3
   gamma = gamma_naut*((a+(1./gva))/((1./rad)+(1./gva)))
-  s = ((((17.502*240.97))*0.611*exp((17.502*Ta)/(Ta+240.97)))/(240.97+Ta)^2)/(101.3*exp(-elev/8200))
-  Tbh = Ta+(gamma/(gamma+s))*(((Qabs - (epsilon*sigma*((Ta+273.15)^4)))/(29.3*(radiative_conductance+gva)))-(vpd/(gamma*(101.3*exp(-elev/8200)))))
+  s = ((((17.502*240.97))*0.611*exp((17.502*T_a)/(T_a+240.97)))/(240.97+T_a)^2)/(101.3*exp(-elev/8200))
+  Tbh = T_a+(gamma/(gamma+s))*(((Qabs - (epsilon*sigma*((T_a+273.15)^4)))/(29.3*(radiative_conductance+gva)))-(vpd/(gamma*(101.3*exp(-elev/8200)))))
   
   return(Tbh)
 }
 
-### TODO check temperatures. Ta, Tg?
+### TODO check temperatures. T_a, T_g?
 #' Estimate absorbed longwave (thermal) radiation
 #'
 #' 
 #' @details This function allows you to estimate longwave (thermal) radiation (W) absorbed from the sky and the ground (adaptation of Campbell and Norman 1998).
-#' @param Ta air temperature (C)
+#' @param T_a air temperature (C)
 #' @param epsilon_ground emmisitivity (proportion) for more soil types (Campbell and Norman 1998), default value of 0.97
 #' @param a_longwave absorptance (proportion) of organism to longwave radiation (Bartlett and Gates 1967, Buckley 2008), default value of 0.965
 #' 
@@ -638,20 +642,20 @@ Tb_salamander_humid<-function(r_i,r_b,D,Ta,elev,e_a, e_s,Qabs, epsilon=0.96){
 #' @author Eric Riddell
 #' @examples
 #' \dontrun{
-#' Qthermal_radiation_absorbed(Ta=20, epsilon_ground=0.97, a_longwave=0.965)
+#' Qthermal_radiation_absorbed(T_a=20, epsilon_ground=0.97, a_longwave=0.965)
 #' }
 #' 
 
-Qthermal_radiation_absorbed<-function(Ta, epsilon_ground=0.97, a_longwave=0.965){
+Qthermal_radiation_absorbed<-function(T_a, epsilon_ground=0.97, a_longwave=0.965){
   
   #Stefan-Boltzmann constant
   sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
   
   'longwave radiation from sky function, Campbell and Norman 1998'
-  Slongwave_sky= 53.1*10^-14*(Ta+273.15)^6.
+  Slongwave_sky= 53.1*10^-14*(T_a+273.15)^6.
   
   'longwave radiation from ground function, Campbell and Norman 1998'
-  Slongwave_ground= epsilon_ground*sigma*(Ta+273.15)^4.
+  Slongwave_ground= epsilon_ground*sigma*(T_a+273.15)^4.
   
   'radiation absorbed function, adapted from Campbell and Norman 1998'
   Slongwave= 0.5*a_longwave*(Slongwave_sky+Slongwave_ground)

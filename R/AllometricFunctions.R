@@ -3,7 +3,7 @@
 #' Calculate surface area from mass 
 #' 
 #' @details This function allows you to estimate surface area (m^2) from mass (g) for a variety of taxa
-#' @param mass Mass in grams.
+#' @param m Mass in g
 #' @param taxa Which class of organism, current choices: lizard, frog, insect
 #' @return sa (m^2)
 #' @keywords surface area
@@ -14,12 +14,12 @@
 #' }
 #'
 
-sa_from_mass<-function(mass, taxa="lizard"){
+sa_from_mass<-function(m, taxa){
 
   
   #lizard, O'Connor 1999 in Fei et al 2011
   #initial mass in kg
-  if(taxa=="lizard") sa= 0.0314*pi*(mass/1000)^(2./3.)
+  if(taxa=="lizard") sa= 0.0314*pi*(m/1000)^(2./3.)
   
   #Lizard,  Roughgarden 1981 from Norris (1965) and Porter and James (1979)
   #initial sa in mm^2
@@ -27,11 +27,11 @@ sa_from_mass<-function(mass, taxa="lizard"){
   
   #Frog, McClanahan and Baldwin 1969
   #initial sa in cm^2
-  if(taxa=="frog") sa=9.9*mass^0.56*(0.01)^2 
+  if(taxa=="frog") sa=9.9*m^0.56*(0.01)^2 
   
   #Insects, mostly grasshoppers
   #Lactin and Johnson 1997
-  if(taxa=="insect") sa=0.0013*mass^0.8 
+  if(taxa=="insect") sa=0.0013*m^0.8 
   
   return(sa)
 }
@@ -39,7 +39,7 @@ sa_from_mass<-function(mass, taxa="lizard"){
 #' Calculate mass from length 
 #' 
 #' @details This function allows you to estimate mass (g) from length (m) for a variety of taxa
-#' @param length length in m, length is snout-vent length for amphibians and reptiles (excepting turtles where length is carapace length).
+#' @param l Length in m, length is snout-vent length for amphibians and reptiles (excepting turtles where length is carapace length).
 #' @param taxa Which class of organism, current choices: insect, lizard, salamander, frog, snake, turtle 
 #' @return mass (g)
 #' @keywords mass length
@@ -50,10 +50,10 @@ sa_from_mass<-function(mass, taxa="lizard"){
 #' }
 #'
 
-mass_from_length<-function(length, taxa){
+mass_from_length<-function(l, taxa){
   
   #convert m to mm
-  lengthmm= length*1000
+  lengthmm= l*1000
   
     #Insect, Sample et al. 1993
     #also by orders and families
@@ -85,18 +85,18 @@ mass_from_length<-function(length, taxa){
 #' Calculate surface area from volume (Based on Mitchell 1976) 
 #' 
 #' @details This function allows you to estimate surface area (m^2) from volume (m^3) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976).
-#' @param volume in m^3.
+#' @param V Density (m^3)
 #' @param taxa Which class of organism, current choices: lizard, frog, sphere.
-#' @return sa (m^2)
+#' @return V (m^3)
 #' @keywords surface area
 #' @export
 #' @examples
 #'  \dontrun{
-#'  sa_from_volume(volume=0.001,"lizard")
+#'  sa_from_volume(0.001,"lizard")
 #' }
 #'
 
-sa_from_volume<-function(volume, taxa){
+sa_from_volume<-function(V, taxa){
 
     #Kl and Ka are Empirical Constants(Mitchell 1976)
   
@@ -120,15 +120,15 @@ sa_from_volume<-function(volume, taxa){
   
   # Mitchell 1976
   # Calculate surface area
-  sa= Ka * volume^(2/3) * .01 #surface area m2
+  sa= Ka * V^(2/3) * .01 #surface area m^2
   
   return(sa)
 }
 
 #' Calculate volume from length (Based on Mitchell 1976) 
 #' 
-#' @details This function allows you to estimate volume (m^3) from length(m) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976).
-#' @param length in meters.
+#' @details This function allows you to estimate volume (m^3) from length (m) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976).
+#' @param l Length in m.
 #' @param taxa Which class of organism, current choices: lizard,frog, or sphere
 #' @return sa (m^2)
 #' @keywords surface area length
@@ -139,7 +139,7 @@ sa_from_volume<-function(volume, taxa){
 #' }
 #'
 
-volume_from_length<-function(length, taxa){
+volume_from_length<-function(l, taxa){
   
   #Kl and Ka are Empirical Constants (Mitchell 1976)
   # Case when taxa is Lizard (Norris 1965)
@@ -162,7 +162,7 @@ volume_from_length<-function(length, taxa){
   
   # Mitchell 1976
   # Calculate volume 
-  V= (length/Kl)^(1/3) 
+  V= (l/Kl)^(1/3) 
   
   return(V)
 }
@@ -170,7 +170,7 @@ volume_from_length<-function(length, taxa){
 #' Calculate surface area from length by approximating the animal's body as a rotational ellipsoid 
 #' 
 #' @details Estimate surface area (m^2) from length (m) by approximating the animal's body as a rotational ellipsoid with half the body length as the semi-major axis. 
-#' @param length length in m.
+#' @param l Length in m.
 #' @return sa (m^2)
 #' @keywords surface area
 #' @export
@@ -183,13 +183,13 @@ volume_from_length<-function(length, taxa){
 sa_from_length<-function(length){
   
   #to mm
-  length=length*1000
+  l=l*1000
   
   #Samietz et al. (2005)
   #inital units: mm
   #Area from Wolfram math world
-  c<- length/2 #c- semi-major axis, a- semi-minor axis
-  a<- (0.365+0.241*length*1000)/1000  #regression in Lactin and Johnson (1988)
+  c<- l/2 #c- semi-major axis, a- semi-minor axis
+  a<- (0.365+0.241*l*1000)/1000  #regression in Lactin and Johnson (1988)
   e=sqrt(1-a^2/c^2)
   sa=2*pi*a^2+2*pi*a*c/e*asin(e)
   
@@ -203,8 +203,8 @@ sa_from_length<-function(length){
 #' 
 #' 
 #' @details This function allows you to estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of zenith angle.
+#' @param z zenith angle in degrees
 #' @param taxa Which class of organism, current choices: frog, lizard, grasshopper
-#' @param psi zenith angle in degrees
 #' @param raz if lizard, relative solar azimuth angle in degrees, the horizontal angle of the sun (0-180 degrees) relative to the head and frontal plane of the lizard 
 #' @param posture if lizard, indicate posture as "prostrate" or "elevated"
 #' @return silhouette area as a proportion
@@ -212,14 +212,14 @@ sa_from_length<-function(length){
 #' @export
 #' @examples
 #' \dontrun{
-#' prop_silhouette_area(psi=60, taxa= "frog")
+#' prop_silhouette_area(z=60, taxa= "frog")
 #' }
 #' 
 
-prop_silhouette_area<-function(psi, taxa, raz=0, posture="prostrate"){
+prop_silhouette_area<-function(z, taxa, raz=0, posture="prostrate"){
   
   #frog, Tracy 1976
-  if(taxa=="frog") psa=(1.38171*10^(-6)*psi^4-1.93335*10^(-4)*psi^3+4.75761*10^(-3)*psi^2-0.167912*psi+45.8228)/100
+  if(taxa=="frog") psa=(1.38171*10^(-6)*z^4-1.93335*10^(-4)*z^3+4.75761*10^(-3)*z^2-0.167912*z+45.8228)/100
   #check area notation
   
   #lizards, Muth 1977
@@ -228,9 +228,9 @@ prop_silhouette_area<-function(psi, taxa, raz=0, posture="prostrate"){
   
   ##TODO OTHER OPTIONS
     
-    psa= A*psi^3+B*psi^2+C*psi+D                                       }                                                                                                                                
+    psa= A*z^3+B*z^2+C*z+D                                       }                                                                                                                                
   #Grasshopper, Anderson et al. 1979
-  if(taxa=="grasshopper") psa<-0.19-0.00173*psi 
+  if(taxa=="grasshopper") psa<-0.19-0.00173*z 
   
   return(psa/100)
 }

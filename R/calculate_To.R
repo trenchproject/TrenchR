@@ -4,12 +4,12 @@
 #' S. van Overjijk, M. Bian, and Y. Liu, “A body temperature model for 
 #' lizards as estimated from the thermal environment,” J. Therm. 
 #' Biol., vol. 37, no. 1, pp. 56–64, 2012.
-#' TAH, Tsurface, Tair, SWDOWN, GLW, time_step, shade
+#' TAH, T_s, T_a, UDT, GLW, time_step, shade
 #' @details Calculate Operative Temperature of Lizard.
 #' @param TAH Temperature in canopy.
-#' @param Tsurface Surface Temperature.
-#' @param Tair Air Temperature.
-#' @param SWDOWN upper developmental threshold.
+#' @param T_s Surface Temperature.
+#' @param T_a Air Temperature.
+#' @param UDT upper developmental threshold.
 #' @param GLW Downward flux of near-infrared radiation
 #' @param shade type of method being used
 #' @keywords Operative Temperature Fei
@@ -21,7 +21,7 @@
 #' }
 #' 
 
-Tb_Fei <- function(TAH, Tsurface, Tair, SWDOWN, GLW, shade){
+Tb_Fei <- function(TAH, T_s, T_a, UDT, GLW, shade){
   
   # ---- Start Constants
   alpha_L = 0.965 # thermal absoptivity, Bartlett & Gates 1967
@@ -46,9 +46,9 @@ Tb_Fei <- function(TAH, Tsurface, Tair, SWDOWN, GLW, shade){
   dt =  120 #in seconds
   shade_level = min(round(shade/0.2),5)
   TaV = TAH
-  Ts = Tsurface #ground temperature TODO: search in lizard file
-  Ta = Tair #air temperature at lizards height 
-  Solar = SWDOWN # solar radiation 
+  Ts = T_s #ground temperature TODO: search in lizard file
+  Ta = T_a #air temperature at lizards height 
+  Solar = UDT # solar radiation 
   lw = GLW # solar radiation
   To = Ta  #initial body temperature in kelvin, assume Ta 
   ####end of load data			
