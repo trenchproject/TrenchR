@@ -172,7 +172,7 @@ All R code style is borrowed from Hadley Wickham R Pkgs book [R packages](http:/
 * Describe the function in detail 
 * Refer to any citations, or give credit if part or whole of the function is adapted
 
-#### R
+#### R Example
 
 ```coffee
 #' Converts angle in radians to degrees
@@ -189,22 +189,6 @@ All R code style is borrowed from Hadley Wickham R Pkgs book [R packages](http:/
 #' radian_to_degree(0.831)
 #' }
 radian_to_degree <- function(rad) {(rad * 180) / (pi)}
-```
-
-
-#### Example
-
-```coffee
-# Public: Disable the package with the given name.
-#
-# * `name`    The {String} name of the package to disable.
-# * `options` (optional) The {Object} with disable options (default: {}):
-#   * `trackTime`     A {Boolean}, `true` to track the amount of time taken.
-#   * `ignoreErrors`  A {Boolean}, `true` to catch and ignore errors thrown.
-# * `callback` The {Function} to call after the package has been disabled.
-#
-# Returns `undefined`.
-disablePackage: (name, options, callback) ->
 ```
 
 ## Additional Notes
