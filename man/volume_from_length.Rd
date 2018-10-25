@@ -4,10 +4,10 @@
 \alias{volume_from_length}
 \title{Calculate volume from length (Based on Mitchell 1976)}
 \usage{
-volume_from_length(length, taxa)
+volume_from_length(l, taxa)
 }
 \arguments{
-\item{length}{in meters.}
+\item{l}{Length in m.}
 
 \item{taxa}{Which class of organism, current choices: lizard,frog, or sphere}
 }
@@ -18,7 +18,7 @@ sa (m^2)
 Calculate volume from length (Based on Mitchell 1976)
 }
 \details{
-This function allows you to estimate volume (m^3) from length(m) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976).
+This function allows you to estimate volume (m^3) from length (m) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976).
 }
 \examples{
  \dontrun{
