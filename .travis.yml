@@ -2,8 +2,6 @@ language: r
 sudo: true
 warnings_are_errors: false
 cache: packages
-r_build_args: --no-build-vignettes --no-manual --no-resave-data
-r_check_args: --no-build-vignettes --no-manual
 
 r_packages:
   - devtools
@@ -20,4 +18,5 @@ notifications:
 env:
   global:
     - R_CHECK_ARGS="--no-vignettes --no-build-vignettes --no-manual --timings --as-cran --run-donttest"
+    - R_BUILD_ARGS="--no-vignettes --no-build-vignettes --no-manual"
     - _R_CHECK_TIMINGS_="0"    
