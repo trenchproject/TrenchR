@@ -4,8 +4,7 @@
 #' @details Predicts body temperatures (operative environmental temperature) of a lizard in degrees C.
 #' @description Predicts body temperature (operative environmental temperature) of a lizard in degrees C. 
 #' Based on Campbell and Norman (1998, An introduction to environmental biophysics). 
-#' Designed for Sceloporus lizards and described in Buckley (2008, 
-#' Linking traits to energetics and population dynamics to predict lizard ranges in changing environments. American Naturalist 171: E1-E19).
+#' Designed for Sceloporus lizards and described in Buckley (2008, Linking traits to energetics and population dynamics to predict lizard ranges in changing environments. American Naturalist 171: E1-E19).
 #' 
 #' @param T_a is air temperature in C
 #' @param T_g  is surface temperature in C
@@ -25,9 +24,10 @@
 #' @param F_r is the view factor between the surface of the lizard and reflected solar radiation
 #' @param F_a is the view factor between the surface of the lizard and atmospheric radiation
 #' @param F_g is the view factor between the surface of the lizard and ground thermal radation
-#' 
+#' @return T_e Operative temperature
 #' @keywords body temperature, biophysical model
 #' @export 
+#' @examples
 #' \dontrun{
 #' Tb_lizard(T_a=25, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.7, elev=500, doy=200, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
 #'}

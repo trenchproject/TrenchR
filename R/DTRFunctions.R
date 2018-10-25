@@ -13,33 +13,35 @@
 #' @keywords Temperature
 #' @export
 #' @examples
-#' \donT_run{
+#' \dontrun{
 #' Thour.sineexp()
 #' }
 
-#Function to calculate Parton and Logan 1981 diurnal variation
-#Parameters for Colorado
-#alpha=1.86
-#gamma=2.20
-#beta= -0.17
-
-#Wann 1985
-#alpha= 2.59 #time difference between T_x and noon
-#beta= 1.55 #time difference between T_x and sunrise
-#gamma= 2.2 #decay parameter for rate of t change from sunset to T_n
-
-#PAtterson 1981 function from Wann 1985
 diurnal_temp_variation_sineexp=function(T_max, T_min, t, t_r, t_s, alpha=2.59, beta= 1.55, gamma=2.2){
 #T_max= max temperature
 #T_min= min temperature
 #t= hour of measurement (0-24)
 
+  
+  #Function to calculate Parton and Logan 1981 diurnal variation
+  #Parameters for Colorado
+  #alpha=1.86
+  #gamma=2.20
+  #beta= -0.17
+  
+  #Wann 1985
+  #alpha= 2.59 #time difference between T_x and noon
+  #beta= 1.55 #time difference between T_x and sunrise
+  #gamma= 2.2 #decay parameter for rate of t change from sunset to T_n
+  
+  #PAtterson 1981 function from Wann 1985
+  
 l= t_s-t_r #daylength
   
-#alpha, beta, gamma parameterizations
-#Wann 1985
+# alpha, beta, gamma parameterizations
+# Wann 1985
 # Average of 5 North Carolina sites: alpha=2.59, beta= 1.55, gamma=2.2
-#Parton and Logan 1981, parameterized for Denver, CO  
+# Parton and Logan 1981, parameterized for Denver, CO  
 # 150cm air temeprature: alpha=1.86, beta= 2.20, gamma=-0.17
 # 10cm air temperature: alpha=1.52, beta= 2.00, gamma=-0.18
 # soil surface temperature: alpha=0.50, beta= 1.81, gamma=0.49
@@ -69,8 +71,6 @@ if(t>(t_r + beta) &
 return(T)
 }
 
-#----------------------------------------
-
 #' Diurnal temperature across hours
 #' From Campbell and Norman 1998 - Uses sine interpolation
 #'
@@ -97,7 +97,6 @@ diurnal_temp_variation_sine=function(T_max, T_min, t){
   return(T)
 }
 
-#----------------------------------------
 
 #' Estimates temperature across hours
 #' From Cesaraccio et al 2001 

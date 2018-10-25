@@ -31,7 +31,7 @@ Estimate temperature across hours using a diurnal temperature variation function
 This function allows you to estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential componenT_s as in Parton and Logan (1981).
 }
 \examples{
-\\donT_run{
+\dontrun{
 Thour.sineexp()
 }
 }
