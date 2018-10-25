@@ -3,8 +3,8 @@
 #' 
 #' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Campbell and Norman (1998).
 #' 
-#' @param Ta is air temperature in K.
-#' @param Sabs solar and thermal radiation absorbed (W m^-2)
+#' @param T_a is air temperature in K.
+#' @param S solar and thermal radiation absorbed (W m^-2)
 #' @param epsilon longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
 #' @param c_p specific heat of air (J mol^-1 K^-1)
 #' @param D characteristic dimension of the animal (m)
@@ -14,25 +14,26 @@
 #' @export
 #' @examples 
 #' \dontrun{
-#' Tb_CampbellNorman(Ta=303, Sabs=823, epsilon=0.96, c_p=29.3, D=0.17, V=1)
+#' Tb_CampbellNorman(T_a=303, S=823, epsilon=0.96, c_p=29.3, D=0.17, V=1)
 #'}
 #' 
-Tb_CampbellNorman=function(Ta, Sabs, epsilon=0.96, c_p=29.3, D, V){
+Tb_CampbellNorman=function(T_a, S, epsilon=0.96, c_p=29.3, D, V){
     
   #Stefan-Boltzmann constant
   sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
   
   #thermal radiation emitted
-  Qemit= epsilon*sigma*Ta^4
+  Qemit= epsilon*sigma*T_a^4
   
   #conductance
+
   g_Ha=1.4*0.135*sqrt(V/D) # boundary conductance, factor of 1.4 to account for increased convection (Mitchell 1976), assumes forced conduction
   g_r= 4*sigma*Ta^3/c_p # (12.7) radiative conductance
   
   # operative environmental temperature
-  Te=Ta+(Sabs-Qemit)/(c_p*(g_r+g_Ha))                       
+  T_e=T_a+(S-Qemit)/(c_p*(g_r+g_Ha))                       
 
-  return(Te) 
+  return(T_e) 
 }
 
 #' Estimates net energy exchange between an animal and the environment in W.
@@ -72,8 +73,8 @@ Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #' @param psa_ref proportion surface area exposed to ground
 #' @param psa_air of surface area exposed to air
 #' @param psa_g of surface in contact with substrate
-#' @param Tg ground surface temperature in K
-#' @param Ta ambient air temperature in K
+#' @param T_g ground surface temperatue in K
+#' @param T_a ambient air temperature in K
 #' @param Qabs Solar and thermal radiation absorbed (W)
 #' @param epsilon longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
 #' @param H_L Convective heat transfer coefficient (W m^-2 K^-1)
@@ -84,10 +85,11 @@ Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #' @export
 #' @examples 
 #' \dontrun{
-#' Tb_Gates(A=1, l=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, Tg=303, Ta=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
+#' Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_g=303, T_a=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
 #'}
 #' 
-Tb_Gates=function(A, l, psa_dir, psa_ref, psa_air, psa_g, Tg, Ta, Qabs, epsilon, H_L,ef=1.3, K){
+Tb_Gates=function(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilon, H_L,ef=1.3, K){
+
   
     #Stefan-Boltzmann constant
     sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
@@ -102,22 +104,27 @@ Tb_Gates=function(A, l, psa_dir, psa_ref, psa_air, psa_g, Tg, Ta, Qabs, epsilon,
   
   #estimate effective radiant temperature of sky
   #Tsky=0.0552*(TaK)^1.5; #Kelvin, black body sky temperature from Swinbank (1963), 
-  Tsky= (1.22*(Ta-273.15) -20.4)+273.15 #K, Gates 1980 Biophysical ecology based on Swnback 1960, Kingsolver (1983) estimates using Brunt equation
+  Tsky= (1.22*(T_a-273.15) -20.4)+273.15 #K, Gates 1980 Biophysical ecology based on Swnback 1960, Kingsolver (1983) estimates using Brunt equation
   
   #solve energy balance for steady state conditions
   # 0= Qabs -Qemit +Qconv +Qcond
-  Qfn = function(Tb, Qabs, epsilon, sigma, A_s, Tsky, A_r, Tg, H_L, A_air, Ta, A_contact, K, l) {
+
+  Qfn = function(Tb, Qabs, epsilon, sigma, A_s, Tsky, A_r, T_g, H_L, A_air, T_a, A_contact, K, D) {
+
     #Thermal radiaton emitted
-    Qemit= epsilon*sigma*(A_s*(Tb^4 - Tsky^4)+A_r*(Tb^4 - Tg^4))
+    Qemit= epsilon*sigma*(A_s*(Tb^4 - Tsky^4)+A_r*(Tb^4 - T_g^4))
     #Convection
-    Qconv= ef*H_L*A_air*(Ta-Tb)
+    Qconv= ef*H_L*A_air*(T_a-Tb)
     #Conduction
-    Qcond= A_contact*K*(Tg-Tb)/l
+    Qcond= A_contact*K*(T_g-Tb)/D
+
     
     return(Qabs -Qemit +Qconv  +Qcond)
   }
   
-  Te <- uniroot(Qfn, c(273, 323),Qabs=Qabs, epsilon=epsilon, sigma=sigma, A_s=A_s, Tsky=Tsky, A_r=A_r, Tg=Tg, H_L=H_L, A_air=A_air, Ta=Ta, A_contact=A_contact, K=K, l=l, tol = 0.0001, extendInt="yes")
+
+  Te <- uniroot(Qfn, c(273, 323),Qabs=Qabs, epsilon=epsilon, sigma=sigma, A_s=A_s, Tsky=Tsky, A_r=A_r, T_g=T_g, H_L=H_L, A_air=A_air, T_a=T_a, A_contact=A_contact, K=K, D=D, tol = 0.0001)
+
   
   return(Te$root)
 }

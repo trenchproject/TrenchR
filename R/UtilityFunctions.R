@@ -233,7 +233,7 @@ airpressure_from_elev<- function(elev){
 #' (credit  https://swcarpentry.github.io)
 #' 
 #' @details This function allows you to convert temperature from Fahrenheit to Kelvin.
-#' @param temp Temperature in Fahrenheit.
+#' @param T Temperature in Fahrenheit.
 #' @keywords Fahrenheit Kelvin
 #' @return Temperature in Kelvin
 #' @export
@@ -242,8 +242,8 @@ airpressure_from_elev<- function(elev){
 #' fahrenheit_to_kelvin(85)
 #' }
 
-fahrenheit_to_kelvin <- function(temp) {
-  kelvin <- ((temp - 32) * (5/9)) + 273.15
+fahrenheit_to_kelvin <- function(T) {
+  kelvin <- ((T - 32) * (5/9)) + 273.15
   kelvin
 }
 #' Converts Kelvin to Celsius
@@ -251,7 +251,7 @@ fahrenheit_to_kelvin <- function(temp) {
 #' (credit  https://swcarpentry.github.io)
 #' 
 #' @details This function allows you to convert temperature from Kelvin to Celsius.
-#' @param temp Temperature in Fahrenheit.
+#' @param T Temperature in Fahrenheit.
 #' @keywords Celsius Kelvin
 #' @return Temperature in Celsius
 #' @export
@@ -260,8 +260,8 @@ fahrenheit_to_kelvin <- function(temp) {
 #' kelvin_to_celsius(270)
 #' }
 
-kelvin_to_celsius <- function(temp) {
-  Celsius <- temp - 273.15
+kelvin_to_celsius <- function(T) {
+  Celsius <- T - 273.15
   Celsius
 }
 #' Converts Fahrenheit to Celsius
@@ -269,7 +269,7 @@ kelvin_to_celsius <- function(temp) {
 #' (credit  https://swcarpentry.github.io)
 #' 
 #' @details This function allows you to convert temperature from Fahrenheit to Celsius
-#' @param temp Temperature in Fahrenheit.
+#' @param T Temperature in Fahrenheit.
 #' @keywords Fahrenheit Celsius
 #' @return Temperature in Celsius
 #' @export
@@ -278,8 +278,8 @@ kelvin_to_celsius <- function(temp) {
 #' fahrenheit_to_celsius(85)
 #' }
 
-fahrenheit_to_celsius <- function(temp) {
-  temp_k <- fahrenheit_to_kelvin(temp)
+fahrenheit_to_celsius <- function(T) {
+  temp_k <- fahrenheit_to_kelvin(T)
   result <- kelvin_to_celsius(temp_k)
   result
 }

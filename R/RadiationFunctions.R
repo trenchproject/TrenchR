@@ -1,7 +1,7 @@
 #' Estimate radiation(three parts - Direct, Diffused and Reflected)
 #' 
 #' 
-#' @details Function to estimate direct, diffuse, and reflected components of solar radiation in W m^-2.
+#' @details Function to estimate direct, diffuse, and reflected components of solar radiation in (W/m^2).
 #' @description Function to estimate direct, diffuse, and reflected components of solar radiation in W m^-2 using the model in Campbell & Norman (1998). 
 #' 
 #' @param doy is the day of year
@@ -116,7 +116,7 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
 #' @param lon longitude in degrees
 #' @param doy is the day of year
 #' @param elev is elevation in m
-#' @param Temp is mean monthly temp in degree Celsius
+#' @param T is mean monthly temperature (C)
 #' @param Hr is mean month relative humidity (in percentage)
 #' @param P is total monthly precipitation (mm)
 #' @return average monthly solar radiation ( W/m^2)
@@ -124,10 +124,10 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
 #' @export
 #' @examples
 #' \dontrun{
-#' monthly_solar_radiation(lat=47.61,lon=-122.33,doy=112,elev=1500,Temp=15,Hr=50,P=50)
+#' monthly_solar_radiation(lat=47.61,lon=-122.33,doy=112,elev=1500,T=15,Hr=50,P=50)
 #'}
 
-monthly_solar_radiation= function(lat,lon,doy,elev,Temp,Hr,P){
+monthly_solar_radiation= function(lat,lon,doy,elev,T,Hr,P){
 
   library(msm) #for rtnorm
   
@@ -165,7 +165,7 @@ monthly_solar_radiation= function(lat,lon,doy,elev,Temp,Hr,P){
   
   #Assume relationships to translate to surface
   #ev: mean monthly water vapor pressure in the atmosphere (Pa)
-  ev = Hr*6.1078*exp(17.269*Temp/(Temp + 237.3))
+  ev = Hr*6.1078*exp(17.269*T/(T + 237.3))
   
   #C is the mean monthly cloudiness (tenths)
   C= 10- 1.155*(ev/P)^0.5

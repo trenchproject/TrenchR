@@ -13,7 +13,6 @@
 #' \dontrun{
 #' partition_solar_radiation(method="Erbs", kt=0.5, lat=40, sol.elev=60)
 #'}
-
 partition_solar_radiation=function(method, kt, lat=NA, sol.elev=NA){  
  
   # Methods from Wong and Chow (2001, Applied Energy 69:1991-224)
