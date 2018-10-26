@@ -225,7 +225,7 @@ airpressure_from_elev<- function(elev){
   
   p_a=101.3* exp (-elev/8200)  #Campbell and Norman
   
-  return(p)
+  return(p_a)
 }
 
 #' Converts Fahrenheit to Kelvin

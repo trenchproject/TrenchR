@@ -36,17 +36,7 @@ The following is a set of guidelines for contributing to TrenchR. These are most
 
 ## Code of Conduct
 
-As contributors and maintainers of this project, we pledge to respect all people who contribute through reporting issues, posting feature requests, updating documentation, submitting pull requests or patches, and other activities.
-
-We are committed to making participation in this project a harassment-free experience for everyone, regardless of level of experience, gender, gender identity and expression, sexual orientation, disability, personal appearance, body size, race, ethnicity, age, or religion.
-
-Examples of unacceptable behavior by participants include the use of sexual language or imagery, derogatory comments or personal attacks, trolling, public or private harassment, insults, or other unprofessional conduct.
-
-Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct. Project maintainers who do not follow the Code of Conduct may be removed from the project team.
-
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by opening an issue or contacting one or more of the project maintainers.
-
-This Code of Conduct is adapted from the Contributor Covenant (http:contributor-covenant.org), version 1.0.0, available at http://contributor-covenant.org/version/1/0/0/
+As contributors and maintainers of this project, we pledge to respect all people who contribute through reporting issues, posting feature requests, updating documentation, submitting pull requests or patches, and other activities. We welcome and appreciate all contributions regardless of contributor identity or level of experience. We adhere to the Contributor Covenant (http:contributor-covenant.org).
 
 
 ## What should I know before I get started?
@@ -55,17 +45,29 @@ This Code of Conduct is adapted from the Contributor Covenant (http:contributor-
 
 TrenchR is an open source project &mdash; it's made up of over [10 modules](https://github.com/trenchproject/TrenchR/tree/master/R). If you are considering contributing to TrenchR, this section should help you with that.
 
-TrenchR is modular. The R scripts cover a particular category(aka modules), and each have multiple function definitions.  
+TrenchR is modular. The R scripts cover a particular category (aka modules), and each have multiple function definitions.  
 
-Here's a list of modules:
+Here's a partial list of modules:
 
 
-* [Utility functions](https://github.com/trenchproject/TrenchR/tree/master/R/UtilityFunctions.R) - Helper functions.
+* [Utility functions](https://github.com/trenchproject/TrenchR/tree/master/R/UtilityFunctions.R) - Miscellaneous utility functions including zenith angle, declination angle, and day of year.
+    * [Degree days](https://github.com/trenchproject/TrenchR/tree/master/R/DDFunctions.R) - Functions to calculate degree days.
+    * [Diurnal temperature variation](https://github.com/trenchproject/TrenchR/tree/master/R/DTRFunctions.R) - Funtions to cestimate diurnal temperature variation.
+
 * [Microclimate functions](https://github.com/trenchproject/TrenchR/tree/master/R) - Separated into multiple files.
-    * [Radaition](https://github.com/trenchproject/TrenchR/tree/master/R) - Radiation functions.
-    * [Wind and Temp Profile](https://github.com/trenchproject/TrenchR/tree/master/R) - Temperature and wind profile functions.
-* [Biophysical nodelling](https://github.com/trenchproject/TrenchR/tree/master/R/energybalance_functions.R) - Energy budget based functions.
-* [Allometric](https://github.com/trenchproject/TrenchR/tree/master/R/UtilityFunctions.R) - Mass, volume and length functions.
+    * [Radiation](https://github.com/trenchproject/TrenchR/tree/master/R/RadiationFunctions.R) - Functions to etimate the amount of incoming solar radiation.
+    * [Partition components of radiation](https://github.com/trenchproject/TrenchR/tree/master/R/RadiationPartitioningFunctions.R) - Functions to partition radiation into components.
+    * [Wind and Temp Profile](https://github.com/trenchproject/TrenchR/tree/master/R/TempWindProfileFunctions.R) - Temperature and wind profile functions.
+    * [Soil temperatures](https://github.com/trenchproject/TrenchR/tree/master/R/TsoilFunctions.R) - Functions to estimate soil temperatures.
+
+* [Energy Budgets](https://github.com/trenchproject/TrenchR/tree/master/R) - Separated into multiple files.
+    * [Energy budget components](https://github.com/trenchproject/TrenchR/tree/master/R/energybalance_functions.R) - General functions to estimate heat exchange including convection and conduction.
+    * [Operative temperatures](https://github.com/trenchproject/TrenchR/tree/master/R/OperativeTemperatureFunctions.R) - General functions to estimate operative environmental temperatures (potential body temperatures).
+    * [Butterfly biophysical model](https://github.com/trenchproject/TrenchR/tree/master/R/biophysmodel_Colias.R) - Energy budget model for predicting butterfly operative temperature.
+    * [Grasshopper biophysical model](https://github.com/trenchproject/TrenchR/tree/master/R/biophysmodel_Grasshopper.R) - Energy budget model for predicting grasshopper operative temperature.
+    * [Lizard biophysical model](https://github.com/trenchproject/TrenchR/tree/master/R/biophysmodel_Sceloporuss.R) - Energy budget model for predicting lizard operative temperature.
+
+* [Allometry](https://github.com/trenchproject/TrenchR/tree/master/R/AllometricFunctions.R) - Functions to convert among mass, volume and length functions.
 
 
 
@@ -80,6 +82,7 @@ Here's a list of modules:
 *  If you alter package functionality at all (e.g., the code itself, not just documentation) please do write some tests to cover the new functionality.
 * Push up to your account
 * Submit a pull request to home base at trenchproject/TrenchR
+* Accessing your Githb account through R Studio may be a good option. Available tutorials include [this](https://www.molecularecologist.com/2013/11/using-github-with-r-and-rstudio/).
 
 ### Reporting Bugs
 
@@ -186,7 +189,7 @@ All R code style is borrowed from Hadley Wickham R Pkgs book [R packages](http:/
 #' @export
 #' @examples
 #' \dontrun{
-#' radian_to_degree(0.831)
+#' radian_to_degree(rad=0.831)
 #' }
 radian_to_degree <- function(rad) {(rad * 180) / (pi)}
 ```
