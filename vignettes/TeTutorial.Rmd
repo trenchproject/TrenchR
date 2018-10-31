@@ -458,7 +458,7 @@ Te3= rep(NA, 24)
 for(hr in 1:24) Te3[hr]= Tb_lizard(Ta=Ta[hr], Tg=Ts[hr], u=V, svl=svl*1000, mass=mass, psi=psi_deg[hr], rho_S=rho, elevation=elev, doy=doy, sun=TRUE, surface=TRUE, alpha_S=a, alpha_L=0.965, epsilon_s=epsilon_s, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
 
 Te4= rep(NA, 24)
-for(hr in 1:24) Te4[hr]= Tb_Fei(TAH=254, Tsurface=265, Tair=267, SWDOWN=15, GLW=307,  shade=0)
+for(hr in 1:24) Te4[hr]= Tb_Fei(TAH=Ta[hr]+273, Tsurface=Ts[hr]+273, Tair=Ts[hr]+273, SWDOWN=Qabs[hr], GLW=Qabs[hr],  shade=0)
 
 
 #' Tb_Fei(TAH=254, Tsurface=265, Tair=267, SWDOWN=15, GLW=307,  shade=0)
@@ -473,6 +473,7 @@ We next plot the diurnal trends in environmental data and the operative data.
 plot(1:24, (Te-273), type="l", xlab="Hour", ylab="Temperature (C)", col="blue") #Gates
 points(1:24, Te2-273, type="l", col="blue", lty="dotted") #Campbell
 points(1:24, Te3, type="l", col="blue", lty="dashed") #Buckley 2008
+#points(1:24, Te4, type="l", col="red", lty="solid") #Fei et al.
 points(1:24, Ta, type="l", col="orange")
 points(1:24, Ts, type="l", col="purple")
 
