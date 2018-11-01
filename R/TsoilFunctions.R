@@ -76,8 +76,7 @@ soil_temperature_integrand<-function(x, L, z0){ (3-1.4*exp(1.5*x))^-1*(exp(x+z0/
 #' @description Function called by soil_temp_noint to solve equation for soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior).
 #' 
 #' @param L is the Monin-Obukhov length, a measure of the instability of heat flow (see Beckman et al. 1973)
-#' @param rho_A is density of air in kg m^-3
-
+#' @param rho_a is density of air in kg m^-3
 #' @param c_a is specific heat of air (J/(kg*K))
 #' @param k is von Karman's constant
 #' @param V_inst is instantaneous wind speed in m/s
@@ -89,11 +88,11 @@ soil_temperature_integrand<-function(x, L, z0){ (3-1.4*exp(1.5*x))^-1*(exp(x+z0/
 #' @author Joseph Grigg
 #' @examples
 #' \dontrun{
-#' soil_temp_overall_function(L=-10, rho_a=1.177, c_a=1006, k=.41, V_inst=0.3, z_r=1.5, z0=0.02, T_inst=265, T_s=20)
+#' soil_temperature_equation(L=-10, rho_a=1.177, c_a=1006, k=.41, V_inst=0.3, z_r=1.5, z0=0.02, T_inst=265, T_s=20)
 #'}
-soil_temp_overall_function<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s){ 
-  rho_a*c_a*k*(V_inst*k/log((exp((z_r+z0)/L)-1)/(exp(z0/L)-1)))*(T_inst-T_s)/integrate(integrand, lower=0, upper=z_r/L, L, z0)$value - (V_inst*k/log((exp((z_r+z0)/L)-1)/(exp(z0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}
 
+soil_temperature_equation<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s){ 
+  rho_a*c_a*k*(V_inst*k/log((exp((z_r+z0)/L)-1)/(exp(z0/L)-1)))*(T_inst-T_s)/integrate(soil_temperature_integrand, lower=0, upper=z_r/L, L, z0)$value - (V_inst*k/log((exp((z_r+z0)/L)-1)/(exp(z0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}
   
 
 #' Function to calculate soil temperature.
@@ -131,13 +130,13 @@ soil_temp_overall_function<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst,
 #'
 #' params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0=0.02, H=solrad_vector, T_a=temp_vector, u=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=FALSE)
 #' 
-#' soil_temperature(j=1,Tsoil= rep(20,13), params=params)
+#' soil_temperature_function(j=1,T_so= rep(20,13), params=params)
 #' 
 #' #RUN USING ODE SOLVER
 #' Tsoil_out<- ode(y = rep(20,13), func = soil_temperature, times = 1:length(H), parms=params)
 #'}
 
-soil_temperature<- function(j,T_so, params){
+soil_temperature_function<- function(j,T_so, params){
 
   sigma=5.670373*10^(-8) # is the stefan-boltzmann constant (W/(m^2*K^4))
   k=0.41 #is von Karman's constant
@@ -189,11 +188,9 @@ soil_temperature<- function(j,T_so, params){
   if(j!=1){
     if(T_inst < T_so[1]){
       #When soil temp is near air temp, an error occurs because L approaches infinity as soil temp approaches air temp. tryCatch executes alternate command if an error occurs.
-
-      tryCatch({L<-uniroot(soil_temp_overall_function,interval=c(-50,-.03),rho_a=1.177, c_a=1006, k=.41, V_inst=V_inst, z_r=z_r, z0=z0, T_inst=T_inst, T_s=T_so)$root; #the function goes to infinity near zero. The upper bound on this interval was selected to avoid errors that result from numbers approaching infinity. The lower bound can be any large number.
+      tryCatch({L<-uniroot(soil_temperature_equation,interval=c(-50,-.03),rho_a=1.177, c_a=1006, k=.41, V_inst=V_inst, z_r=z_r, z0=z0, T_inst=T_inst, T_s=T_so)$root; #the function goes to infinity near zero. The upper bound on this interval was selected to avoid errors that result from numbers approaching infinity. The lower bound can be any large number.
       q_conv<-a*(V_inst*k/log((exp((z_r+z0)/L)-1)/(exp(z0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}, 
       error=function(e){ q_conv<<- a*h_inst*(T_inst-T_so[1])} #Assume neutral conditions if error occurs.
-
       )
     }
     else{
@@ -231,7 +228,7 @@ soil_temperature<- function(j,T_so, params){
 #' @details Function to calculate soil temperature in C using ODEs.
 #' @description Function called to calculate soil temperature in C from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature.
 #' 
-#' @param z_r.intervals is the number of intervals in the soil profile to calculate 
+#' @param z.intervals is the number of intervals in the soil profile to calculate 
 #' @param z_r is reference height in m
 #' @param T_a is a vector of air temperature in degrees C, Note: missing values will be linearly interpolated
 #' @param u is a vector of wind speed (m/s)
@@ -241,7 +238,7 @@ soil_temperature<- function(j,T_so, params){
 #' @param TimeIn is a vector of time periods for the model
 #' @param H is solar radiation in W m^-2
 #' @param water_content is percent water content (%)
-#' @param p is air pressure in kPa
+#' @param air_pressure is air pressure in kPa
 #' @param rho_so= 1620 particle density of soil
 #' @param shade is whether or not soil temperature should be calculated in the shade, TRUE or FALSE
 #' @export
@@ -253,11 +250,10 @@ soil_temperature<- function(j,T_so, params){
 #' time_vector= rep(1:24,4)
 #' solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
 #'
-#' soil_temperature_noint(z_r.intervals=12,z_r=1.5, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, p=85, rho_so=1620, shade=FALSE)
+#' soil_temperature(z_r.intervals=12,z_r=1.5, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
 #'}
 
-soil_temperature_noint<-function(z_r.intervals=12,z_r, T_a, u, Tsoil0, z0, SSA, TimeIn, H, water_content=0.2, p, rho_so=1620, shade=FALSE){
-
+soil_temperature<-function(z_r.intervals=12,z_r, T_a, u, Tsoil0, z0, SSA, TimeIn, H, water_content=0.2, air_pressure, rho_so=1620, shade=FALSE){
   
   #account for NAs at beginning of data
   first.dat= min(which( !is.na(T_a)))
@@ -305,7 +301,7 @@ soil_temperature_noint<-function(z_r.intervals=12,z_r, T_a, u, Tsoil0, z0, SSA, 
   
   #-------
   #finding the apparent conductivity of air in soil. These are the methods in DeVries (1963) and summarized in the paper by Boguslaw and Lukasz. variable names were based on those in the Boguslaw and Lukasz paper.
-  P<- p 
+  P<- air_pressure 
   L1<-2490317-2259.4*20 #J/kg#2490317-2259.4*T #J/kg
   rho_svd<-0.001*exp(19.819-4975.9/(20+273.15)) #.001*exp(19.819-4975.9/(T+273.15))
   v<- P/(P-(h*rho_svd*R*(20+273.15)/(1000*M_w)))#P/(P-(h*rho_svd*R*(T+273.15)/1000*M_w))

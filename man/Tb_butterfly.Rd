@@ -4,8 +4,8 @@
 \alias{Tb_butterfly}
 \title{Predicts body temperature (operative environmental temperature) of a butterfly in degrees C.}
 \usage{
-Tb_butterfly(T_a, Tg, Tg_sh, u, H_sdir, H_sdif, z, D, delta, alpha, r_g = 0.3,
-  shade = FALSE)
+Tb_butterfly(T_a, Tg, Tg_sh, u, H_sdir, H_sdif, z, D, delta, alpha,
+  r_g = 0.3, shade = FALSE)
 }
 \arguments{
 \item{T_a}{is air temperature in C}
