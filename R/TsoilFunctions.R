@@ -330,8 +330,8 @@ soil_temperature_noint<-function(z_r.intervals=12,z_r, T_a, u, Tsoil0, z0, SSA, 
   lambda<- c(lambda_clay, lambda_quartz, lambda_other, lambda_o, lambda_w, lambda_app)
   
   #finding soil thermal conductivity and specific heat
-  k_so<-conductivity(x, lambda, .125) #calculate soil thermal conductivity
-  c_so<-specific_heat(x_o, x_solid-x_o, x_w, rho_so) #calculate soil specific heat
+  k_so<-soil_conductivity(x, lambda, .125) #calculate soil thermal conductivity
+  c_so<-soil_specific_heat(x_o, x_solid-x_o, x_w, rho_so) #calculate soil specific heat
   alpha2<-k_so/(c_so*rho_so)
   
   #parameters for ODE

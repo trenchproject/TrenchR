@@ -131,36 +131,6 @@ if (zenith>90) zenith=90 # if measured from the vertical psi can't be greater th
 return(zenith)
 }
 
-#' Calculate time of solar noon.
-#' 
-#' 
-#' @details Calculate time of solar noon
-#'
-#' @description This function allows you to calculate the time of solar noon.
-#' @param doy is day of year.
-#' @param lon is longitude in degrees.
-#' @param hour is hour of the day.
-#' @return Zenith angle in degrees
-#' @keywords Zenith angle
-#' @export
-#' @examples
-#' \dontrun{
-#' solar_noon(doy=112, lon=-122.33)
-#' }
-
-solar_noon=function(doy, lon){
-  
-  lon=lon*pi/180 #to radians
-  
-  f=(279.575+0.9856*doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
-  f=f*pi/180 #convert f in degrees to radians
-  ET= (-104.7*sin (f)+596.2*sin (2*f)+4.3*sin (3*f)-12.7*sin (4*f)-429.3*cos (f)-2.0*cos (2*f)+19.3*cos (3*f))/3600   # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
-  LC= 1/15* (15 - lon%%15) # longitude correction, 1/15h for each degree of standard meridian
-  t_0 = 12-LC-ET # solar noon
-  
-  return(t_0)
-}
-
 #' Calculate Azimuth angle
 #' 
 #' 

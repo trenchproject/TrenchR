@@ -14,8 +14,8 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' degree_days(7,14,12,33,"single.sine")
-#' degree_days(7,14,12,33,"single.triangulation")
+#' degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.sine")
+#' degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.triangulation")
 #' }
 #' 
 
