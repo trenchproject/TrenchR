@@ -4,8 +4,8 @@
 \alias{Tb_grasshopper}
 \title{Predicts body temperatures (operative environmental temperature) of a grasshopper in degrees C.}
 \usage{
-Tb_grasshopper(T_a, T_g, u, H, K_t, psi, L, Acondfact = 0.25, z = 0.001,
-  abs = 0.7, r_g = 0.3)
+Tb_grasshopper(T_a, T_g, u, H, K_t, psi, L, Acondfact = 0.25,
+  z = 0.001, abs = 0.7, r_g = 0.3)
 }
 \arguments{
 \item{T_a}{is air temperature in C}
