@@ -4,46 +4,27 @@
 \alias{solar_noon}
 \title{Calculate time of solar noon}
 \usage{
-solar_noon(doy, lon)
-
-solar_noon(doy, lon)
+solar_noon(lon, doy)
 }
 \arguments{
-\item{doy}{day of year}
-
 \item{lon}{longitude in degrees}
 
-\item{doy}{is day of year.}
-
-\item{lon}{is longitude in degrees.}
-
-\item{hour}{is hour of the day.}
+\item{doy}{day of year}
 }
 \value{
 time at solar noon
-
-Zenith angle in degrees
 }
 \description{
 Calculate time of solar noon
-
-This function allows you to calculate the time of solar noon.
 }
 \details{
 This function allows you to calculate the time of solar noon in hours as a function of the day of year and longitude
-
-Calculate time of solar noon
 }
 \examples{
 \dontrun{
 solar_noon(lon=-122.335, doy=112)
 }
-\dontrun{
-solar_noon(doy=112, lon=-122.33)
-}
 }
 \keyword{Solar}
-\keyword{Zenith}
-\keyword{angle}
 \keyword{noon}
 \keyword{time}
