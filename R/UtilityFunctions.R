@@ -193,7 +193,7 @@ airpressure_from_elev<- function(elev){
   #p= 101325* (1 - 2.25577*10^(-5)*elev)^5.25588       
   #p= p/1000 #convert to kPa
   
-  p_a=101.3* exp (-elev/8200)  #Campbell and Norman
+  p_a = 101.3* exp (-elev/8200)  #Campbell and Norman
   
   return(p_a)
 }

@@ -82,17 +82,15 @@ return(T)
 #' @export
 #' @examples
 #' \dontrun{
-#' diurnal_temp_variation_sine(T_max=30, T_min=10, t=11)
+#' diurnal_temp_variation_sine(Tmx=30, Tmn=10, Hr=11)
 #' }
-
-
-diurnal_temp_variation_sine=function(T_max, T_min, t){
+diurnal_temp_variation_sine=function(Tmx, Tmn, Hr){
   #T_max= max temperature
   #T_min= min temperature
   
   W=pi/12;
-  gamma= 0.44 - 0.46* sin(0.9 + W * t)+ 0.11 * sin(0.9 + 2 * W * t);   # (2.2) diurnal temperature function
-  T = T_max-T_min * (1-gamma);
+  gamma1 = 0.44 - 0.46 * sin(0.9 + W * Hr) + 0.11 * sin(0.9 + 2 * W * Hr)
+  T = Tmx*gamma1 + Tmn * (1 - gamma1)
   
   return(T)
 }
