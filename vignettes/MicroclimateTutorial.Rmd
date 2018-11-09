@@ -150,8 +150,8 @@ $$D= \frac{(T_x-LDT)^2}{4(T_x-T_n)}. $$
 
 The methods are available in the following R function:
 ```{r}
-degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.sine")
-degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.triangulation")
+degree_days(Tmin=7, Tmax=14, LDT=12, UDT=33, method="single.sine")
+degree_days(Tmin=7, Tmax=14, LDT=12, UDT=33, method="single.triangulation")
 
 ```
 
@@ -233,14 +233,26 @@ DayLength= daylength(doy, lat)
 Ts= SolarNoon+ DayLength/2
 Tr= SolarNoon- DayLength/2
 
+#FIX SINE FUNCTION AS FOLLOWS:
+diurnal_temp_variation_sine=function(Tmx, Tmn, Hr){
+  #T_max= max temperature
+  #T_min= min temperature
+  
+  W = pi/12
+  gamma1 = 0.44 - 0.46 * sin(0.9 + W * Hr) + 0.11 * sin(0.9 + 2 * W * Hr)
+  
+  T = Tmx*gamma1 + Tmn * (1 - gamma1)
+  return(T)
+}
+
 # Calculate the diurnal temperature trends
 hrs=1:24
-Thr= sapply(hrs, FUN=diurnal_temp_variation_sinesqrt, tr=Tr, ts=Ts, Tmx=Tmx, Tmn=Tmn,Tmn_p=Tmn) ##FIX
+Thr= sapply(hrs, FUN=diurnal_temp_variation_sinesqrt, tr=Tr, ts=Ts, Tmx=Tmx, Tmn=Tmn,Tmn_p=Tmn) 
 Thr1= sapply(hrs, FUN=diurnal_temp_variation_sine, Tmx=Tmx, Tmn=Tmn)
 Thr2= sapply(hrs, FUN=diurnal_temp_variation_sineexp, Tmx=Tmx, Tmn=Tmn, tr=Tr, ts=Ts, alpha=2.59, beta= 1.55, gamma=2.2)
 
 #plot
-plot(hrs, Thr, type="l" )
+plot(hrs, Thr, type="l", ylim= range(10,35))
 points(hrs, Thr1, col="blue", type="l")
 points(hrs, Thr2, col="orange", type="l")
 ```
@@ -325,8 +337,10 @@ z0=0.02
 library(zoo)
 library(deSolve)
 
-#soil_temperature(z.intervals=12,z=1.5, Tair=Thr, u_z=Vs, Tsoil0= 20, z0=z0, SSA=0.7, TimeIn=hrs, solrad= Qhr_tot, water_content=0.2, air_pressure=airpressures, rho_so=1620, shade=FALSE)
-Tsoil=soil_temperature_noint(z_r.intervals=12,z_r=1.5, T_a=Thr, u=Vs, Tsoil0= 20, z0=z0, SSA=0.7, TimeIn=hrs, H= Qhr_tot, water_content=0.2, p=airpressures, rho_so=1620, shade=FALSE)
+#need to update conductivity and specific_heat function names
+
+Tsoil=soil_temperature(z.intervals=12,z=1.5, Tair=Thr, u_z=Vs, Tsoil0= 20, z0=z0, SSA=0.7, TimeIn=hrs, solrad= Qhr_tot, water_content=0.2, air_pressure=airpressures, rho_so=1620, shade=FALSE)
+#Tsoil=soil_temperature_noint(z_r.intervals=12,z_r=1.5, T_a=Thr, u=Vs, Tsoil0= 20, z0=z0, SSA=0.7, TimeIn=hrs, H= Qhr_tot, water_content=0.2, p=airpressures, rho_so=1620, shade=FALSE)
 
 #plot
 plot(hrs, Tsoil, type="l")
