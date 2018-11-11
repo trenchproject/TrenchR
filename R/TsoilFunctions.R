@@ -300,7 +300,9 @@ soil_temperature<-function(z_r.intervals=12,z_r, T_a, u, Tsoil0, z0, SSA, TimeIn
   lambda_a<- 0.0237+0.000064*20 #.0237+.000064*Temp equation from paper by Boguslaw and Lukasz
   
   #-------
-  #finding the apparent conductivity of air in soil. These are the methods in DeVries (1963) and summarized in the paper by Boguslaw and Lukasz. variable names were based on those in the Boguslaw and Lukasz paper.
+  #finding the apparent conductivity of air in soil. 
+  #These are the methods in DeVries (1963) and summarized in the paper by Boguslaw and Lukasz. 
+  #variable names were based on those in the Boguslaw and Lukasz paper.
   P<- air_pressure 
   L1<-2490317-2259.4*20 #J/kg#2490317-2259.4*T #J/kg
   rho_svd<-0.001*exp(19.819-4975.9/(20+273.15)) #.001*exp(19.819-4975.9/(T+273.15))
