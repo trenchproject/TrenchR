@@ -108,15 +108,15 @@ diurnal_temp_variation_sine=function(T_max, T_min, t){
 #' @param ts sunset hour (0-23)
 #' @param T_max maximum temperature of current day (C) 
 #' @param T_min minimum temperature of current day (C)
-#' @param Tmn_p minimum temperature of following day (C)
+#' @param T_minp minimum temperature of following day (C)
 #' @keywords Temperature
 #' @export
 #' @examples
 #' \dontrun{
-#' diurnal_temp_variation_sinesqrt( t=8, tr=6, ts=18, T_max=30, T_min=20, Tmn_p=22)
+#' diurnal_temp_variation_sinesqrt( t=8, tr=6, ts=18, T_max=30, T_min=20, T_minp=22)
 #' }
 
-diurnal_temp_variation_sinesqrt=function(t, tr, ts, T_max, T_min, Tmn_p){
+diurnal_temp_variation_sinesqrt=function(t, tr, ts, T_max, T_min, T_minp){
  
   #Time estimates
   tp = tr + 24 #sunrise time following day
@@ -124,19 +124,19 @@ diurnal_temp_variation_sinesqrt=function(t, tr, ts, T_max, T_min, Tmn_p){
   
   #Temperature at sunset
   c=0.39 #empircally fitted parameter
-  To= T_max - c*(T_max-T_min_p)
+  To= T_max - c*(T_max-T_minp)
   
   alpha= T_max -T_min
   R = T_max - To
-  b= (Tmn_p - To)/sqrt(tp -ts)
+  b= (T_minp - To)/sqrt(tp -ts)
   
   T= rep(NA, length(t))
   
   inds=which(t<= tr) 
-  if(length(inds>0))  T[inds]= To+b*sqrt(Hr[inds]-(ts-24) )
+  if(length(inds>0))  T[inds]= To+b*sqrt(t[inds]-(ts-24) )
   
   inds=which(t>tr & t<=tx) 
-  if(length(inds>0)) T[inds]= Tmn+ alpha*sin(pi/2*(t[inds]-tr)/(tx-tr))
+  if(length(inds>0)) T[inds]= T_min+ alpha*sin(pi/2*(t[inds]-tr)/(tx-tr))
   
   inds=which(t>tx & t<ts) 
   if(length(inds>0)) T[inds]= To+ R*sin(pi/2*(1+ (t[inds]-tx)/4) )

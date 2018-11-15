@@ -170,7 +170,7 @@ soil_temperature_function<- function(j,T_so, params){
   if(shade==TRUE) q_sun= q_sun*0.5 #ASSUME 50% reduction in incoming solar radiation in shade
   
   T_inst<- T_a[j]+273.15 #convert to K	
-  V_inst<- u[1] #WINDSPEED CURRENTLY CONSTANT 
+  V_inst<- u[j] 
   
   h_inst<- h_inst1*V_inst #take V_inst out for easier passing to function
   T_sky<-0.0552*T_inst^1.5 ##eqn (4) in notes
@@ -236,7 +236,7 @@ soil_temperature_function<- function(j,T_so, params){
 #' @param z0 is surface roughness in m 
 #' @param SSA is the solar absorbtivity of soil surface as a fraction
 #' @param TimeIn is a vector of time periods for the model
-#' @param H is solar radiation in W m^-2
+#' @param H is a vector of solar radiation in W m^-2
 #' @param water_content is percent water content (%)
 #' @param air_pressure is air pressure in kPa
 #' @param rho_so= 1620 particle density of soil
@@ -338,7 +338,7 @@ soil_temperature<-function(z_r.intervals=12,z_r, T_a, u, Tsoil0, z0, SSA, TimeIn
   #SOLVE ODE
   params=list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade)
   
-  Tsoil <- ode(y = rep(Tsoil0,13), func = soil_temperature, times = 1:length(H), params)
+  Tsoil <- ode(y = rep(Tsoil0,13), func = soil_temperature_function, times = 1:length(H), params)
  
   return( Tsoil[,2])
   
