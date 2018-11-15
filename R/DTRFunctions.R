@@ -92,7 +92,7 @@ diurnal_temp_variation_sine=function(T_max, T_min, t){
   
   W=pi/12;
   gamma= 0.44 - 0.46* sin(0.9 + W * t)+ 0.11 * sin(0.9 + 2 * W * t);   # (2.2) diurnal temperature function
-  T = T_max-T_min * (1-gamma);
+  T = T_max*gamma + T_min * (1 - gamma)
   
   return(T)
 }
