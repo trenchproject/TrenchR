@@ -54,7 +54,7 @@ where $A_s$ and $A_r$ are the areas ($m^2$) exposed to the sky (or enclosure) an
 
 The function is available in R as follows:
 ```{r}
-Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, Tb=303, Tg=293, Ta=298, enclosed=FALSE)
+Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303, T_g=293, T_a=298, enclosed=FALSE)
 ```
 
 #Convection, Qconv
@@ -63,7 +63,7 @@ $$Qconv= ef*H_L*(A*proportion)*(Ta-Tb).$$
 
 The function is available in R:
 ```{r}
-Qconvection(Ta= 293,Tb= 303,H_L=10.45,A=0.0025, proportion=0.85)
+Qconvection(T_a= 293,T_b= 303,H=10.45,A=0.0025, proportion=0.85)
 ```
 
 The convective heat transfer coefficient depends on whether the heat exchange is free or forced (due to fluid flow). The variables involved in heat transfer can be combined into dimensionless groups that are used to compare the scales of heat exchange processes and thus whether modeling free or forced convection is more appropriate. We provide the primary dimesionless numbers.
@@ -114,8 +114,8 @@ where $K_g$ is the thermal conductivity of substrate ($W K^{-1} m^{-1}$) and $D$
 
 The functions are available in R:
 ```{r}
-Qconduction_animal(Tg= 293,Tb=303,d=10^-6,K=0.5,A=10^-3, proportion=0.2)
-Qconduction_substrate(Tg= 293,Tb=303,D=0.01,K_g=0.3,A=10^-2, proportion=0.2)
+Qconduction_animal(T_g= 293,T_b=303,d=10^-6,K=0.5,A=10^-3, proportion=0.2)
+Qconduction_substrate(T_g= 293,T_b=303,D=0.01,K_g=0.3,A=10^-2, proportion=0.2)
 ```
 
 #Metabolism, Qmet
@@ -123,7 +123,7 @@ Rates of heat production associated with metabolism are generally estimated usin
 
 ```{r}
 Qmetabolism_from_mass(m=12,"reptile")
-Qmetabolism_from_mass_temp(m=100, Tb=303,"reptile")
+Qmetabolism_from_mass_temp(m=100, T_b=303,"reptile")
 ```
 
 #Evaporation, Qevap
@@ -140,24 +140,24 @@ where $r_i$ is the internal (cutaneous) resistance to vapor transport ($s/m$).
 
 We provide R functions for heat loss through evaporation as the product of $E_c$ and the latent heat of vaporization of water:
 ```{r}
-Qevaporation(A=0.1, Tb=293, taxa="amphibian", rho_s=1.2, rho_a=1.2, h=0.5, H_L=20, r_i=5000)
-Qevaporation(A=0.1, Tb=293, taxa="lizard")
+Qevaporation(A=0.1, T_b=293, taxa="amphibian", rho_s=1.2, rho_a=1.2, h=0.5, H=20, r_i=5000)
+Qevaporation(A=0.1, T_b=293, taxa="lizard")
 ```
 
 We estimate external resistance to water vapor transport, $r_e$, using the Lewis rule describing the relationships among the coefficients for heat and mass transport: $r_e= 0.93 \rho c_p/H_L$, where $\rho$ is the density of air ($kg m^{-3}$), $c_p$ is the specific heat of air at constant pressure ($J kg^{-1}*^{\circ}C^{-1}$), and $H_L$ is the convective heat transfer coefficient ($W m^{-2} C^{-1}$). We approximate $\rho c_p$as 1,200 $J m^{-3}*^{\circ}C^{-1}$ as commonly done in biological applications [Spotila 1992]. We provide the relationship for $r_e$ as a function:
 ```{r}
-external_resistance_to_water_vapor_transfer(H_L=20)
+external_resistance_to_water_vapor_transfer(H=20)
 ```
 
 At constant temperatures, the relationship between vapor pressure and vapor density is linear and vapor pressure can be approximated at temperatures between $0^{\circ}$ and $40^{\circ}C$ as $e_s= 10^{0.02604 T_a+2.82488}$, where $T_a$ is air temperature ($^{\circ}C$).  We provide the approximation as a function:
 ```{r}
-saturation_water_vapor_pressure(Ta=20)
+saturation_water_vapor_pressure(T_a=20)
 ```
 
 #Solving for operative environmental temperature, Te
 We currently offer models to calculte the operative temperatures of organisms that have reached an equilibrium with their environment ("steady-state", no heat retention). The following function uses the relationships above to solve the energy balance for $Te$.
 ```{r}
-Tb_Gates(A=1, l=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, Tg=303, Ta=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
+Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_g=303, T_a=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
 
 ```
 
@@ -173,7 +173,7 @@ where 1.4 is a factor to account for increased convection in natural environment
 
 The function to calculate $T_e$ (called $T_b$ for simplicity) is available in R follows (including the above calculations of $Qemit$, $g_r$, and $g_{Ha}$):
 ```{r}
-Tb_CampbellNorman(Ta=303, Sabs=823, epsilon=0.96, c_p=29.3, D=0.17, V=1)
+Tb_CampbellNorman(T_a=303, S=823, epsilon=0.96, c_p=29.3, D=0.17, V=1)
 ```
 
 #Alternative energy balance models and functions
@@ -225,7 +225,7 @@ $$Te=Ta+\frac{Rabs-\epsilon_s \sigma (T_a+273)^4}{c_p(g_r+g_{Ha})}$$.
 
 We implement the model in R as follows:
 ```{r}
-Tb_lizard(Ta=25, Tg=30, u=0.1, svl=60, mass=10, psi=34, rho_S=0.7, elevation=500, doy=200, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
+Tb_lizard(T_a=25, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.7, elev=500, doy=200, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
 ```
 
 ##Butterflies
@@ -250,7 +250,7 @@ where $\delta$ is the thoracic fur thickness and $k_e$ is the thermal conductivi
 
 We provide the operative temperature model for butterflies as follows:
 ```{r}
-Tb_butterfly(Ta=25, Tg=25, Tg_sh=20, u=0.4, H_sdir=300, H_sdif=100, psi=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
+Tb_butterfly(T_a=25, Tg=25, Tg_sh=20, u=0.4, H_sdir=300, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
 ```
 
 ##Grasshoppers
@@ -281,7 +281,7 @@ where $h_{cut}$ is the thermal conductivity of the grasshopper cuticle (approxim
 
 We provide the operative temperature model for grasshoppers as follows:
 ```{r}
-Tb_grasshopper(Ta=25, Tg=25, u=0.4, rad=400, kt=0.7, psi=30, L=0.02, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3)
+Tb_grasshopper(T_a=25, T_g=25, u=0.4, H=400, K_t=0.7, psi=30, L=0.02, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3)
 ```
 
 ##Salamander
@@ -346,8 +346,8 @@ Sref= Srad[3,]
 
 We can then calculate hourly air and soil temperatures. We use the sine-exponential model for air temperature and the sine model for surface temperature:
 ```{r}
-Ta= sapply(1:24, diurnal_temp_variation_sineexp, Tmx=Tmax, Tmn=Tmin, tr=tr, ts=ts, alpha=2.59, beta= 1.55, gamma=2.2)
-Ts= sapply(1:24, diurnal_temp_variation_sine, Tmx=Tmax_s, Tmn=Tmin_s)
+Ta= sapply(1:24, diurnal_temp_variation_sineexp, T_max=Tmax, T_min=Tmin, t_r=tr, t_s=ts, alpha=2.59, beta= 1.55, gamma=2.2)
+Ts= sapply(1:24, diurnal_temp_variation_sine, T_max=Tmax_s, T_min=Tmin_s)
 ```
 
 ##Energy balance
@@ -379,7 +379,7 @@ We estimate thermal radiation $Q_{emit}$ for the lizard outdoors. We assume the 
 epsilon_s=0.965
 
 Qemit= rep(NA, 24)
-for(hr in 1:24) Qemit[hr]=Qemitted_thermal_radiation(epsilon=epsilon_s, A=A, psa_dir=psa[hr], psa_ref=1-psa[hr], Tb=Ta[hr], Tg=Ts[hr], Ta=Ta[hr], enclosed=FALSE)
+for(hr in 1:24) Qemit[hr]=Qemitted_thermal_radiation(epsilon=epsilon_s, A=A, psa_dir=psa[hr], psa_ref=1-psa[hr], T_b=Ta[hr], T_g=Ts[hr], T_a=Ta[hr], enclosed=FALSE)
 ```
 
 We next estimate convection $Q_{conv}$ and conduction $Q_{cond}$. We will estimate the lizard's heat transfer coefficient, $H_L$ using an empirical relationship for lizards (`heat_transfer_coefficient()`), but also illustrate a function estimating $H_L$ using a spherical approximation (`heat_transfer_coefficient_approximation()`) and a simplified approximation (`heat_transfer_coefficient_simple()`).  
@@ -417,7 +417,7 @@ where an enhancement factor, $ef$, multiplier can be incorported to account for 
 The function is available in R assuming that 2/3 of the lizard's surface area is exchanging heat through convection. We note we currently estimate no convection since we are assuming $Tb=Ta$ for illustration purposes:
 ```{r}
 Qconv= rep(NA, 24)
-for(hr in 1:24) Qconv[hr]= Qconvection(Ta= Ta[hr],Tb= Ta[hr],H_L=H_L,A=A, proportion=0.67, ef=1.3)
+for(hr in 1:24) Qconv[hr]= Qconvection(T_a= Ta[hr],T_b= Ta[hr],H=H_L,A=A, proportion=0.67, ef=1.3)
 ```
 
 We estimate conductance between the lizard and surface assuming conductance through the animal tissue is the rate limiting step as follows:
@@ -425,7 +425,7 @@ $$Qcond= A*proportion*K*(T_g-T_b)/d, $$
 We conduct the estimate in R assuming that 1/3 of the lizard surface is in contact with the ground and a skin thinkness of $10^{-6}$:
 ```{r}
 Qcond= rep(NA, 24)
-for(hr in 1:24) Qcond[hr]=Qconduction_animal(Tg= Ts[hr],Tb=Ta[hr],d=10^-6,K=K,A=A, proportion=0.33)
+for(hr in 1:24) Qcond[hr]=Qconduction_animal(T_g= Ts[hr],T_b=Ta[hr],d=10^-6,K=K,A=A, proportion=0.33)
 ```
 
 We assume, as in generally done for lizards, that heat exchange associated with metabolism and evaporation is negliglible:
@@ -442,27 +442,24 @@ We constructed the energy balance assuming $Tb=Ta$ for illustration. We now use 
 
 ```{r}
 Te= rep(NA, 24)
-for(hr in 1:24) Te[hr]= Tb_Gates(A=A, l=svl, psa_dir=psa[hr], psa_ref=1-psa[hr], psa_air=0.67, psa_g=0.33, Tg=Ts[hr]+273, Ta=Ta[hr]+273, Qabs=Qabs[hr], epsilon=epsilon_s, H_L=H_L, ef=1.3, K=K)
+for(hr in 1:24) Te[hr]= Tb_Gates(A=A, D=svl, psa_dir=psa[hr], psa_ref=1-psa[hr], psa_air=0.67, psa_g=0.33, T_g=Ts[hr]+273, T_a=Ta[hr]+273, Qabs=Qabs[hr], epsilon=epsilon_s, H_L=H_L, ef=1.3, K=K)
 ```
 
 We also implement a similiar but simplied energy balance. The energy balance omits conduction with the ground and thus underestimates temperatures, but we implement it for comparison purposes:
 ```{r}
 Te2= rep(NA, 24)
-for(hr in 1:24) Te2[hr]= Tb_CampbellNorman(Ta=Ta[hr]+273, Sabs=Qabs[hr]/svl, epsilon=epsilon_s, c_p=29.3, D=svl, V=V)
+for(hr in 1:24) Te2[hr]= Tb_CampbellNorman(T_a=Ta[hr]+273, S=Qabs[hr]/svl, epsilon=epsilon_s, c_p=29.3, D=svl, V=V)
 #CHECK
 ```
 
 We additionally estimate $Te$ using the specialized function for lizards:
 ```{r}
 Te3= rep(NA, 24)
-for(hr in 1:24) Te3[hr]= Tb_lizard(Ta=Ta[hr], Tg=Ts[hr], u=V, svl=svl*1000, mass=mass, psi=psi_deg[hr], rho_S=rho, elevation=elev, doy=doy, sun=TRUE, surface=TRUE, alpha_S=a, alpha_L=0.965, epsilon_s=epsilon_s, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
+for(hr in 1:24) Te3[hr]= Tb_lizard(T_a=Ta[hr], T_g=Ts[hr], u=V, svl=svl*1000, m=mass, psi=psi_deg[hr], rho_S=rho, elev=elev, doy=doy, sun=TRUE, surface=TRUE, alpha_S=a, alpha_L=0.965, epsilon_s=epsilon_s, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
 
 Te4= rep(NA, 24)
-for(hr in 1:24) Te4[hr]= Tb_Fei(TAH=Ta[hr]+273, Tsurface=Ts[hr]+273, Tair=Ts[hr]+273, SWDOWN=Qabs[hr], GLW=Qabs[hr],  shade=0)
-
-
-#' Tb_Fei(TAH=254, Tsurface=265, Tair=267, SWDOWN=15, GLW=307,  shade=0)
-
+for(hr in 1:24) Te4[hr]= Tb_Fei(TAH=Ta[hr]+273, T_s=Ts[hr]+273, T_a=Ts[hr]+273, UDT=Qabs[hr], GLW=Qabs[hr],  shade=0)
+#FIX UDT?
 
 ```
 
