@@ -1,10 +1,10 @@
 ---
 title: "Symbols"
-author: "Aji John"
+author: "TrEnCh Project, Buckley Lab, U Washington"
 date: "5/29/2018"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -13,15 +13,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Table below lists all the symbols which are used by TrenchR functions
 
-#Used Symbols
-
+#USED SYMBOLS
+| Symbol        | Description           | Comments  |
+| ------------- |:----------------------------------------------------:| ---------------------:|
 |$LDT$| Lower developmental threshold ||
 |$UDT$| Upper developmental threshold || 
 |$TAH$| temperature in canopy (UNITS?) || SUBSCRIPT?
 |$Hr$| to calculate temperature (1-24) || SOLVED
 |$ef$| enhancement factor || (energy balance) UNITS
 |$g_a$ | shape factor in soil particles || add where?
-<<<<<<< HEAD
 |$shade$| whether soil temperature is calculated in he shade or not ||
 |$TimeIn$| vector of time periods || (soil temp)
 |$dt$| time interval for running soil temperature model ||
@@ -51,7 +51,6 @@ NOTES
 | $A$      | surface or cross-sectional area ($m^2$); subscripts 1,2,3,4,5 for surface area receiving particular streams of radiaition)  a constant in the respiration-temperature equation (dimensionless); activation energy of reacting molecules in chemical reactions. |  |
 | $a$ | radius of the earth ($m$): acceleration in ($ms^{-2}$); absorptance (decimal fraction); altitude angle of the sun (degrees)(subscripts: s, for normal to a slope; c ,for the axis of a cylinder); albedo (subscript s for surface)|   |
 |$abs$| absorptivity (of grasshopper) to solar radiation (proportion) ||
-<<<<<<< HEAD
 |$c$ |	specific heat ($J kg^{-1}$ &deg;$K^{-1}$)(subscript a, air) | |
 |$c_p$ |	specific heat at constant pressure ($J kg^{-1}$ &deg;$C^{-1}$). | |
 |$D$|	characteristic dimension ($m$); thoractic diameter ($cm$) ||
@@ -66,29 +65,19 @@ NOTES
 |$h$|	height ($m$); length of a cylinder ($m$); relative humidity (decimal fraction); Planck's constant ($J s$); hour angle (rad).||
 |$H$|	solar radiation ($W m^{-2}$) (subscripts: sdir, for direct flux; sdif, for diffuse flux).||
 |$h_c$|	convection coefficient ($W m^{-2}$ &deg;$C^{-1}$) ||
-<<<<<<< HEAD
-|$K$|	thermal conductance ($W m^{-2}$ &deg;$C^{-1}$) (subscripts f, fur; s, skin; sf, skin and fur; o, overall heat conductance for an animal; c, surface boundary layer for convection; so, soil); an affinity coefficient for carboxylation equal to the chloroplast concentra-tion of CO2 at which P = P,1I2 ($mmole m^{-3}$).||
+|$K$|	thermal conductance ($W m^{-2}$ &deg;$C^{-1}$) (subscripts f, fur; s, skin; sf, skin and fur; o, overall heat conductance for an animal; c, surface boundary layer for convection; so, soil); an affinity coefficient for carboxylation equal to the chloroplast concentra-tion of CO2 at which $P = P_M/2$ ($mmole*m^{-3}$).||
 |$k$| Von Karman's constant || FIND OUT UNITS
+|$K_t$| clearness index, the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere (dimensionless) ||
 |$L$| length ($m$) ||
 |$m$|	mass ($kg$); atomic mass ($kg$ or $g$); air mass (dimensionless).||
 |$P$| monthly precipitation ($mm$) ||
 |$p$|	atmospheric pressure ($N m^{-2}$ or $mbar$ or $kPa$) (subscript 0, at sea level).||
-|$r$|	reflectance (decimal fraction) (subscripts: g, of ground or lower leaf surface; S, to direct sunlight; s, to skylight); dif-fusion resistance to water vapor (s m-') (subscripts: a, boundary layer; c, cuticular; i, intercellular; €, leaf internal; m, mesophyll; s, stomatal); resistance to heat flow ($s m^{-1}$) (subscripts: h, ha, boundary layer; j, diffusion resistance to molecular species j; radius ($m$) (subscripts: b, of inside body wall of animal; r, of outer surface of animal).||
-|$S$|	amount of sunlight incident upon the earth's surface ($W m{-2}$) (subscripts: c, on a cylinder; cv, on a vertical cylinder; ch, on a horizontal cylinder; dir, direct solar radiation; dif, diffuse solar radiation; h, on a horizontal surface; ref, reflected solar radiation; X, mono-chromatic); entropy (J mole-1 C-'); equivalent network re-sistances (s m-'); (subscript A, monochromatic).||
+|$r$|	reflectance (decimal fraction) (subscripts: g, of ground or lower leaf surface; S, to direct sunlight; s, to skylight); diffusion resistance to water vapor ($s m^{-1}$) (subscripts: a, boundary layer; c, cuticular; i, intercellular; $l FIX$, leaf internal; m, mesophyll; s, stomatal); resistance to heat flow ($s m^{-1}$) (subscripts: h, ha, boundary layer; j, diffusion resistance to molecular species j; radius ($m$) (subscripts: b, of inside body wall of animal; r, of outer surface of animal).||
+|$S$|	amount of sunlight incident upon the earth's surface ($W m{-2}$) (subscripts: c, on a cylinder; cv, on a vertical cylinder; ch, on a horizontal cylinder; dir, direct solar radiation; dif, diffuse solar radiation; h, on a horizontal surface; ref, reflected solar radiation; $\lambda$, mono-chromatic); entropy ($J mole^{-1} C^{-1}$); equivalent network resistances ($s m^{-1}$); (subscript $\lambda$, monochromatic).||
 |$svl$| lizard snout vent length ($mm$) ||
 |$T$|	temperature ($C^{\circ}$ or $K$ or $F^{\circ}$) (subscripts: a, air; b, body; c, animal casting or cold side of thermal barrier; e, operative environmental; g, ground surface; h, hot side of thermal barrier; inst, instantaneous; K, leaf; €, leaf; max, maximum temperature; min, minimum temperature; r, animal surface; s, surface; S, sky; v, wall; v, vegetation; o, initial or of surroundings; co, final; inst, intantaneous speed; so, initial for soil); transmitted flux through leaf ($W m^{-2}$).||
-|$K$|	thermal conductance ($W m^{-2}$ &deg;$C^{-1}$) (subscripts f, fur; s, skin; sf, skin and fur; o, overall heat conductance for an animal; c, surface boundary layer for convection); an affinity coefficient for carboxylation equal to the chloroplast concentra-tion of CO2 at which P = P,1I2 ($mmole m^{-3}$).||
-|$K_t$| clearness index, the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere (dimensionless) ||
-|$k$| Von Karman's constant || FIND OUT
-|$L$| length ($m$) ||
-|$m$|	mass ($kg$); atomic mass ($kg$ or $g$); air mass (dimensionless).||
-|$P$| monthly precipitation ($mm$) ||
-|$r$|	reflectance (decimal fraction) (subscripts: g, of ground or lower leaf surface; S, to direct sunlight; s, to skylight); dif-fusion resistance to water vapor (s m-') (subscripts: a, boundary layer; c, cuticular; i, intercellular; €, leaf internal; m, mesophyll; s, stomatal); resistance to heat flow ($s m^{-1}$) (subscripts: h, ha, boundary layer; j, diffusion resistance to molecular species j; radius ($m$) (subscripts: b, of inside body wall of animal; r, of outer surface of animal).||
-|$S$|	amount of sunlight incident upon the earth's surface ($W m{-2}$) (subscripts: c, on a cylinder; cv, on a vertical cylinder; ch, on a horizontal cylinder; dir, direct solar radiation; dif, diffuse solar radiation; h, on a horizontal surface; ref, reflected solar radiation; X, mono-chromatic); entropy (J mole-1 C-'); equivalent network re-sistances (s m-'); (subscript A, monochromatic).||
-|$svl$| lizard snout vent length ($mm$) ||
-|$T$|	temperature (&deg;$C$ or $K$) (subscripts: a, air; b, body; c, animal casting or cold side of thermal barrier; e, operative environmental; g, ground surface; h, hot side of thermal barrier; K, leaf; €, leaf; max, maximum temperature; min, minimum temperature; r, animal surface; s, surface; S, sky; v, wall; v, vegetation; o, initial or of surroundings; co, final; inst, intantaneous speed); transmitted flux through leaf ($W m^{-2}$).||
 |$t$| time ($hr$ or $s$) (subscripts: n, time of minimum temprature; s, sunrise; r, sunset; x, time of maximum temperature) ||
-|$Tg$| surface temperature in the sun (&deg;$C$) (sucsbript sh for temperature in the shade) ||
+|$Tg$| surface temperature in the sun (&deg;$C$) (subscript sh for temperature in the shade) ||
 |$T_b$| body temperature (&deg;$C$ or $K$) (superscripts: c, lower setpoint; h, upper set point; superscripts: lc, lower equilibrium; lh, upper equilibrium); equivalent blackbody temperature (&deg;$C$).||
 |$T_r$| temperature at 3 reference heights (&deg;$C$ or $K$) ||
 |$u$| wind speed ($m/s$) (subscript inst, instantaneous speed)||
@@ -105,7 +94,6 @@ NOTES
 ##Dimensionless Groups
 | Symbol        | Description           | Comments  |
 | ------------- |:----------------------------------------------------:| ---------------------:|
-<<<<<<< HEAD
 |$deg$| angle (degrees) ||
 |$doy$| day of year (dimensionless??) || ??
 |$F$| View factor (dimensionless) (subscripts: a, atmospheric radiation; d, between lizard and diffuse solar radiation; g, ground thermal radiation; r, beteen lizard and reflected solar radiation )
@@ -118,15 +106,6 @@ NOTES
 |$rad$| angle (radians) ||
 |$RAZ$| solar azimuth angle (degrees) ||
 |$SSA$| solar absorptivity of soil surface as a fraction ||
-=======
-|$doy$| day of year (dimensionless??) || ??
-|$F$| View factor (dimensionless) (subscripts: a, atmospheric radiation; d, between lizard and diffuse solar radiation; g, ground thermal radiation; r, beteen lizard and reflected solar radiation )
-|$Hr$| mean month relative humidity (percentage) || ??
-|$lon$| longitude (degrees) ||
-|$lat$| latitude (degrees) ||
-|$psa$| proportion surface exposed (dimensionless) (subscripts: air, for exposed to air, ref, for exposed to ground; dir, to sky or enclosure; g, substrate) ||
-|$RAZ$| solar azimuth angle (degrees) ||
->>>>>>> fdafdd74b2229f4c928da7ec3c40d5e2f2d9f5eb
 |$x$| volume fractions of soil constituents (subscripts: o, organic; m, mineral; w, water)||
 
 ##Greek Symbols
@@ -136,23 +115,19 @@ NOTES
 |$\beta$| slope angle, direction of normal from horizontal (degrees); coefficient of volumetric thermal expansion (°C-'); competitive inhibition factor (dimensionless); proportionality coefficient for Mie scattering; Bowen's ratio, C/XE; psychrome¬ter constant (m °C-'); parameter (exponent) for Mie scattering; time difference between time of maximum temperature and sunrise ($hr$)||
 |$\delta$|	thoracic fur thickness ($mm$)||
 |$\nu$| frequency of radiation ($s-9$); kinematic viscosity coefficient ($m2 s^{-1}$).||
-<<<<<<< HEAD
 |$\epsilon$| emissivity (decimal fraction) (subscripts: a, of atmosphere; s, surface emissivity of lizards). angle (rad degree-1); angle between axis of a cylinder and direction of the sun's rays; equivalent temperature (°C).;  thermal absorptivity as a fraction (subscript so, soil) ||
-=======
-|$\epsilon$| emissivity (decimal fraction) (subscripts: a, of atmosphere; s, surface emissivity of lizards). angle (rad degree-1); angle between axis of a cylinder and direction of the sun's rays; equivalent temperature (°C).||
->>>>>>> fdafdd74b2229f4c928da7ec3c40d5e2f2d9f5eb
 |$\gamma$| decay parameter for rate of time change from sunset to time of minimum temperature ||
-|$\lambda$|	latent heat of vaporization (J kg-'); wavelength of radiation ($m$, $cm$, ,$um$, $nm$, $A$); thermal conductivities of the soil constituents ($W m^{-1} K^{-1}$) ||
+|$\lambda$|	latent heat of vaporization ($J kg^{-1}$); wavelength of radiation ($m$, $cm$, ,$um$, $nm$, $A$); thermal conductivities of the soil constituents ($W m^{-1} K^{-1}$) ||
 |$psi$| zenith angles (degrees or radians) ||
-|$\rho$|	density (kg m-3) (subscripts: a, of dry air; j, of molecular species; o, of standard air; w, of water vapor; so, soil); radius of a cylinder (m); reflectivity (decimal fraction) (subscript S for surface albedo).||
-|$_s\rho_a(T_a)$|	water vapor density in the air at saturation as a function of air temperature Ta (kg m-3).
+|$\rho$|	density ($kg m^{-3}$) (subscripts: a, of dry air; j, of molecular species; o, of standard air; w, of water vapor; so, soil); radius of a cylinder (m); reflectivity (decimal fraction) (subscript S for surface albedo).||
+|$_s\rho_a(T_a)$|	water vapor density in the air at saturation as a function of air temperature Ta ($kg m^{-3}$).
 |$\tau$|	transmittance (decimal fraction) (subscripts: d, to diffuse radiation; t, to total radiation); thermal time constant ($s$ or $hr$) (superscript a, apparent).||
 
 ##Chemical Reaction Symbols
 | Symbol        | Description           | Comments  |
 | ------------- |:----------------------------------------------------:| ---------------------:|
 
-#Unused Symbols
+#UNUSED SYMBOLS
 ##Roman Symbols
 | Symbol        | Description           | Comments  |
 | ------------- |:----------------------------------------------------:| ---------------------:|
@@ -182,7 +157,7 @@ NOTES
 |$h_d, _h\overline{d}$|	instantaneous and average hourly diffuse radiation incident on a horizontal surface at the ground ($W m^{-2}$) (subscript $\lambda$ monochromatic intensity $Wm^{-2}nm^{-1}$).||
 |$E$|	evaporation rate ($kg m^{-2}s^{-1}$) (subscripts b, by respiration; r, from skin or pelage); energy (J) elastic modulus ($kg m^{-2}$); apparent activation energy ($J mole^{-1}$); internal energy of a molecule ($J mole^{-1}$) (subscripts: e, electronic; v, vibrational; r, rotational); $\xi??$.||
 |$_{\lambda}E$|	flux density per unit of wavelength ($W m^{-2} nm^{-1}$).||
-|$_{\nu}E$| flux density per unit of wavenumber (W m-2 cm-1).||
+|$_{\nu}E$| flux density per unit of wavenumber ($W m^{-2} cm^{-1}$).||
 |$ETL$|	eating time limit (min).||
 |$F$|	radiant flux (W); Helmholtz free energy (J mole-1); view factor (decimal fraction); duration of oscillating temperature cycle (s).||
 |$f$| force (N); fraction of saturation for air exhaled from the lungs (decimal fraction); a temperature function ,f(T).||
