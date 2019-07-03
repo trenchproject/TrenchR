@@ -72,7 +72,7 @@ mass_from_length<-function(l, taxa){
   #inital length in cm
   
   #convert length 
-  lengthcm=length*100
+  lengthcm=l*100
   
   if(taxa=="salamander") mass= 0.018*lengthcm^2.94
   if(taxa=="frog") mass= 0.06*lengthcm^3.24
@@ -88,6 +88,7 @@ mass_from_length<-function(l, taxa){
 #' @param V Density (m^3)
 #' @param taxa Which class of organism, current choices: lizard, frog, sphere.
 #' @return V (m^3)
+#' should be sa (m^2)
 #' @keywords surface area
 #' @export
 #' @examples
@@ -131,6 +132,7 @@ sa_from_volume<-function(V, taxa){
 #' @param l Length in m.
 #' @param taxa Which class of organism, current choices: lizard,frog, or sphere
 #' @return sa (m^2)
+#' #should be V (m^3)
 #' @keywords surface area length
 #' @export
 #' @examples
@@ -180,7 +182,7 @@ volume_from_length<-function(l, taxa){
 #' }
 #'
 
-sa_from_length<-function(length){
+sa_from_length<-function(l){
   
   #to mm
   l=l*1000
@@ -212,7 +214,7 @@ sa_from_length<-function(length){
 #' @export
 #' @examples
 #' \dontrun{
-#' prop_silhouette_area(z=60, taxa= "frog")
+  #' prop_silhouette_area(z=60, taxa= "frog")
 #' }
 #' 
 
@@ -224,9 +226,19 @@ prop_silhouette_area<-function(z, taxa, raz=0, posture="prostrate"){
   
   #lizards, Muth 1977
   if(taxa=="lizard"){
-    if(posture=="prostrate" && raz==0){A=-2.3148*10^(-5); B=-2.1024*10^(-3); C=-4.6162*10^(-2); D=30.7316}
+    if(posture=="prostrate" && raz==0){A=-2.3148*10^(-6); B=-2.1024*10^(-3); C=-4.6162*10^(-2); D=30.7316}
   
-  ##TODO OTHER OPTIONS
+  ##TODO OTHER OPTIONS  == Done
+    if(posture=="prostrate" && raz==90){A=-1.0185*10^(-5); B=1.3574*10^(-3); C=-9.5589*10^(-3); D=30.87255}
+    
+    if(posture=="prostrate" && raz==180){A=0; B=-2.7105*10^(-3); C=-6.3915*10^(-2); D=29.8534}
+    
+    if(posture=="elevated" && raz==0){A=3.6979*10^(-5); B=-4.7752*10^(-3); C=-6.4026*10^(-2); D=26.2831}
+    
+    if(posture=="elevated" && raz==90){A=0; B=-1.1756*10^(-4); C=-9.2594*10^(-2); D=26.2409}
+    
+    if(posture=="elevated" && raz==180){A=0; B=-1.5662*10^(-3); C=-5.6423*10^(-2); D=26.6833}
+    
     
     psa= A*z^3+B*z^2+C*z+D                                       }                                                                                                                                
   #Grasshopper, Anderson et al. 1979
