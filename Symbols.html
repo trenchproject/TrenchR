@@ -9,7 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Aji John" />
+<meta name="author" content="TrEnCh Project, Buckley Lab, U Washington" />
 
 
 <title>Symbols</title>
@@ -91,6 +91,9 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -119,7 +122,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Symbols</h1>
-<h4 class="author"><em>Aji John</em></h4>
+<h4 class="author"><em>TrEnCh Project, Buckley Lab, U Washington</em></h4>
 <h4 class="date"><em>5/29/2018</em></h4>
 
 </div>
@@ -127,67 +130,139 @@ $(document).ready(function () {
 
 <p>Table below lists all the symbols which are used by TrenchR functions</p>
 <div id="used-symbols" class="section level1">
-<h1>Used Symbols</h1>
+<h1>USED SYMBOLS</h1>
+<table>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th align="center">Description</th>
+<th align="right">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(LDT\)</span></td>
+<td align="center">Lower developmental threshold</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(UDT\)</span></td>
+<td align="center">Upper developmental threshold</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(TAH\)</span></td>
+<td align="center">temperature in canopy (UNITS?)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Hr\)</span></td>
+<td align="center">to calculate temperature (1-24)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(ef\)</span></td>
+<td align="center">enhancement factor</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(g_a\)</span></td>
+<td align="center">shape factor in soil particles</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(shade\)</span></td>
+<td align="center">whether soil temperature is calculated in he shade or not</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(TimeIn\)</span></td>
+<td align="center">vector of time periods</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(dt\)</span></td>
+<td align="center">time interval for running soil temperature model</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(zr.intervals\)</span></td>
+<td align="center">number of intervals in soil profile to calculate</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(water.content\)</span></td>
+<td align="center">percent water content</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(hour\)</span></td>
+<td align="center">hour</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(day\)</span></td>
+<td align="center">day</td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+<p>NOTES 1. Angles standardized fro rad and degrees 2. doy and day are the same?</p>
+<div id="added-deviant-from-gates" class="section level2">
+<h2>Added (deviant from Gates)</h2>
+<table>
+<colgroup>
+<col width="15%"></col>
+<col width="59%"></col>
+<col width="25%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th align="center">Description</th>
+<th align="right">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(Qabs\)</span></td>
+<td align="center">Solar and thermal radiation absorbed (<span class="math inline">\(W\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Qemit\)</span></td>
+<td align="center">Thermal radiation emitted (<span class="math inline">\(W\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Qconv\)</span></td>
+<td align="center">Energy exchange due to convection; Energy exchange between an animal and the air (<span class="math inline">\(W\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Qcond\)</span></td>
+<td align="center">Energy exchange due to conduction; Energy exchange between an animal and the surface (<span class="math inline">\(W\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Qmet\)</span></td>
+<td align="center">Energy emitted due to metabolism (<span class="math inline">\(W\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Qevap\)</span></td>
+<td align="center">Energy emitted due to evaporative water loss (<span class="math inline">\(W\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(elev\)</span></td>
+<td align="center">elevation of a site above mean sea level (<span class="math inline">\(m\)</span>).</td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div id="roman-symbols" class="section level2">
-<h2>Roman Symbols</h2>
-<table>
-<thead>
-<tr class="header">
-<th>Symbol</th>
-<th align="center">Description</th>
-<th align="right">Comments</th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-</div>
-<div id="dimensionless-groups" class="section level2">
-<h2>Dimensionless Groups</h2>
-<table>
-<thead>
-<tr class="header">
-<th>Symbol</th>
-<th align="center">Description</th>
-<th align="right">Comments</th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-</div>
-<div id="greek-symbols" class="section level2">
-<h2>Greek Symbols</h2>
-<table>
-<thead>
-<tr class="header">
-<th>Symbol</th>
-<th align="center">Description</th>
-<th align="right">Comments</th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-</div>
-<div id="chemical-reaction-symbols" class="section level2">
-<h2>Chemical Reaction Symbols</h2>
-<table>
-<thead>
-<tr class="header">
-<th>Symbol</th>
-<th align="center">Description</th>
-<th align="right">Comments</th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-</div>
-</div>
-<div id="unused-symbols" class="section level1">
-<h1>Unused Symbols</h1>
-<div id="roman-symbols-1" class="section level2">
 <h2>Roman Symbols</h2>
 <table>
 <colgroup>
@@ -209,33 +284,424 @@ $(document).ready(function () {
 <td align="right"></td>
 </tr>
 <tr class="even">
+<td><span class="math inline">\(a\)</span></td>
+<td align="center">radius of the earth (<span class="math inline">\(m\)</span>): acceleration in (<span class="math inline">\(ms^{-2}\)</span>); absorptance (decimal fraction); altitude angle of the sun (degrees)(subscripts: s, for normal to a slope; c ,for the axis of a cylinder); albedo (subscript s for surface)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(abs\)</span></td>
+<td align="center">absorptivity (of grasshopper) to solar radiation (proportion)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(c\)</span></td>
+<td align="center">specific heat (<span class="math inline">\(J kg^{-1}\)</span> °<span class="math inline">\(K^{-1}\)</span>)(subscript a, air)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(c_p\)</span></td>
+<td align="center">specific heat at constant pressure (<span class="math inline">\(J kg^{-1}\)</span> °<span class="math inline">\(C^{-1}\)</span>).</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(D\)</span></td>
+<td align="center">characteristic dimension (<span class="math inline">\(m\)</span>); thoractic diameter (<span class="math inline">\(cm\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(d\)</span></td>
+<td align="center">thickness of material (<span class="math inline">\(m\)</span>) (subscript f for fat); diameter of a cylinder (<span class="math inline">\(m\)</span>).</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(dz\)</span></td>
+<td align="center">vertical interval for soil temperature profile (<span class="math inline">\(m\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(c_p\)</span></td>
+<td align="center">specific heat at constant pressure (<span class="math inline">\(J kg^{-1}\)</span> °<span class="math inline">\(C^{-1}\)</span>).</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(D\)</span></td>
+<td align="center">characteristic dimension (<span class="math inline">\(m\)</span>); thoractic diameter (<span class="math inline">\(cm\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(d\)</span></td>
+<td align="center">thickness of material (<span class="math inline">\(m\)</span>) (subscript f for fat); diameter of a cylinder (<span class="math inline">\(m\)</span>).</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(e\)</span></td>
+<td align="center">water vapor pressure (<span class="math inline">\(N m^{-2}, mbar\)</span>) (subscripts: a, of the air,s, at saturation); Napierian logarithm base (dimensionless).</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(elev\)</span></td>
+<td align="center">elevation (<span class="math inline">\(m\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(H\)</span></td>
+<td align="center">convection coefficient (<span class="math inline">\(W m^{-2}\)</span> °<span class="math inline">\(C^{-1}\)</span>); enthalpy (<span class="math inline">\(J mole^{-1}\)</span>); elevation of a site above mean sea level (<span class="math inline">\(m\)</span>).</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(h\)</span></td>
+<td align="center">height (<span class="math inline">\(m\)</span>); length of a cylinder (<span class="math inline">\(m\)</span>); relative humidity (decimal fraction); Planck’s constant (<span class="math inline">\(J s\)</span>); hour angle (rad).</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(H\)</span></td>
+<td align="center">solar radiation (<span class="math inline">\(W m^{-2}\)</span>) (subscripts: sdir, for direct flux; sdif, for diffuse flux).</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(h_c\)</span></td>
+<td align="center">convection coefficient (<span class="math inline">\(W m^{-2}\)</span> °<span class="math inline">\(C^{-1}\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(K\)</span></td>
+<td align="center">thermal conductance (<span class="math inline">\(W m^{-2}\)</span> °<span class="math inline">\(C^{-1}\)</span>) (subscripts f, fur; s, skin; sf, skin and fur; o, overall heat conductance for an animal; c, surface boundary layer for convection; so, soil); an affinity coefficient for carboxylation equal to the chloroplast concentra-tion of CO2 at which <span class="math inline">\(P = P_M/2\)</span> (<span class="math inline">\(mmole*m^{-3}\)</span>).</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(k\)</span></td>
+<td align="center">Von Karman’s constant</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(K_t\)</span></td>
+<td align="center">clearness index, the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere (dimensionless)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(L\)</span></td>
+<td align="center">length (<span class="math inline">\(m\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(m\)</span></td>
+<td align="center">mass (<span class="math inline">\(kg\)</span>); atomic mass (<span class="math inline">\(kg\)</span> or <span class="math inline">\(g\)</span>); air mass (dimensionless).</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(P\)</span></td>
+<td align="center">monthly precipitation (<span class="math inline">\(mm\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(p\)</span></td>
+<td align="center">atmospheric pressure (<span class="math inline">\(N m^{-2}\)</span> or <span class="math inline">\(mbar\)</span> or <span class="math inline">\(kPa\)</span>) (subscript 0, at sea level).</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(r\)</span></td>
+<td align="center">reflectance (decimal fraction) (subscripts: g, of ground or lower leaf surface; S, to direct sunlight; s, to skylight); diffusion resistance to water vapor (<span class="math inline">\(s m^{-1}\)</span>) (subscripts: a, boundary layer; c, cuticular; i, intercellular; <span class="math inline">\(l FIX\)</span>, leaf internal; m, mesophyll; s, stomatal); resistance to heat flow (<span class="math inline">\(s m^{-1}\)</span>) (subscripts: h, ha, boundary layer; j, diffusion resistance to molecular species j; radius (<span class="math inline">\(m\)</span>) (subscripts: b, of inside body wall of animal; r, of outer surface of animal).</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(S\)</span></td>
+<td align="center">amount of sunlight incident upon the earth’s surface (<span class="math inline">\(W m{-2}\)</span>) (subscripts: c, on a cylinder; cv, on a vertical cylinder; ch, on a horizontal cylinder; dir, direct solar radiation; dif, diffuse solar radiation; h, on a horizontal surface; ref, reflected solar radiation; <span class="math inline">\(\lambda\)</span>, mono-chromatic); entropy (<span class="math inline">\(J mole^{-1} C^{-1}\)</span>); equivalent network resistances (<span class="math inline">\(s m^{-1}\)</span>); (subscript <span class="math inline">\(\lambda\)</span>, monochromatic).</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(svl\)</span></td>
+<td align="center">lizard snout vent length (<span class="math inline">\(mm\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T\)</span></td>
+<td align="center">temperature (<span class="math inline">\(C^{\circ}\)</span> or <span class="math inline">\(K\)</span> or <span class="math inline">\(F^{\circ}\)</span>) (subscripts: a, air; b, body; c, animal casting or cold side of thermal barrier; e, operative environmental; g, ground surface; h, hot side of thermal barrier; inst, instantaneous; K, leaf; €, leaf; max, maximum temperature; min, minimum temperature; r, animal surface; s, surface; S, sky; v, wall; v, vegetation; o, initial or of surroundings; co, final; inst, intantaneous speed; so, initial for soil); transmitted flux through leaf (<span class="math inline">\(W m^{-2}\)</span>).</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(t\)</span></td>
+<td align="center">time (<span class="math inline">\(hr\)</span> or <span class="math inline">\(s\)</span>) (subscripts: n, time of minimum temprature; s, sunrise; r, sunset; x, time of maximum temperature)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Tg\)</span></td>
+<td align="center">surface temperature in the sun (°<span class="math inline">\(C\)</span>) (subscript sh for temperature in the shade)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(T_b\)</span></td>
+<td align="center">body temperature (°<span class="math inline">\(C\)</span> or <span class="math inline">\(K\)</span>) (superscripts: c, lower setpoint; h, upper set point; superscripts: lc, lower equilibrium; lh, upper equilibrium); equivalent blackbody temperature (°<span class="math inline">\(C\)</span>).</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T_r\)</span></td>
+<td align="center">temperature at 3 reference heights (°<span class="math inline">\(C\)</span> or <span class="math inline">\(K\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(u\)</span></td>
+<td align="center">wind speed (<span class="math inline">\(m/s\)</span>) (subscript inst, instantaneous speed)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(u_r\)</span></td>
+<td align="center">wind speed at 3 reference heights (<span class="math inline">\(m/s\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(V\)</span></td>
+<td align="center">velocity (<span class="math inline">\(m s^{-1}\)</span>); volume (<span class="math inline">\(m^{3}\)</span>) (subscript w, partial molar); photopic efficiency (decimal fraction).</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(z\)</span></td>
+<td align="center">distance, or height above a surface (<span class="math inline">\(m\)</span>) (subscript r for reference height); zenith angle (degrees)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(u\)</span></td>
+<td align="center">wind speed (<span class="math inline">\(m/s\)</span>) (subscript inst for instantaneous speed)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(u_r\)</span></td>
+<td align="center">wind speed at 3 reference heights (<span class="math inline">\(m/s\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(V\)</span></td>
+<td align="center">velocity (<span class="math inline">\(m s^{-1}\)</span>); volume (<span class="math inline">\(m^{3}\)</span>) (subscript w, partial molar); photopic efficiency (decimal fraction).</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(z\)</span></td>
+<td align="center">distance, or height above a surface (<span class="math inline">\(m\)</span>) (subscript r for reference height); zenith angle (degrees)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(zr\)</span></td>
+<td align="center">reference height (<span class="math inline">\(m\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(z0\)</span></td>
+<td align="center">experimentally determined roughness heights (<span class="math inline">\(m\)</span>)</td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="dimensionless-groups" class="section level2">
+<h2>Dimensionless Groups</h2>
+<table>
+<colgroup>
+<col width="15%"></col>
+<col width="59%"></col>
+<col width="25%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th align="center">Description</th>
+<th align="right">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(deg\)</span></td>
+<td align="center">angle (degrees)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(doy\)</span></td>
+<td align="center">day of year (dimensionless??)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(F\)</span></td>
+<td align="center">View factor (dimensionless) (subscripts: a, atmospheric radiation; d, between lizard and diffuse solar radiation; g, ground thermal radiation; r, beteen lizard and reflected solar radiation )</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Hr\)</span></td>
+<td align="center">mean month relative humidity (percentage)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(j\)</span></td>
+<td align="center">number of iteration of running the model</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(K_t\)</span></td>
+<td align="center">clearness index, the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere (dimensionless)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(lon\)</span></td>
+<td align="center">longitude (degrees)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(lat\)</span></td>
+<td align="center">latitude (degrees)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(psa\)</span></td>
+<td align="center">proportion surface exposed (dimensionless) (subscripts: air, for exposed to air, ref, for exposed to ground; dir, to sky or enclosure; g, substrate)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(rad\)</span></td>
+<td align="center">angle (radians)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(RAZ\)</span></td>
+<td align="center">solar azimuth angle (degrees)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(SSA\)</span></td>
+<td align="center">solar absorptivity of soil surface as a fraction</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(x\)</span></td>
+<td align="center">volume fractions of soil constituents (subscripts: o, organic; m, mineral; w, water)</td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="greek-symbols" class="section level2">
+<h2>Greek Symbols</h2>
+<table>
+<colgroup>
+<col width="15%"></col>
+<col width="59%"></col>
+<col width="25%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th align="center">Description</th>
+<th align="right">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\alpha\)</span></td>
+<td align="center">initial slope of photosynthesis versus light intensity curve (<span class="math inline">\(mmoles E^{-1}\)</span>); angle (rad or degrees); azimuth angle of the sun (degrees); solar absorptivity (proportion) (subscripts: L, lizard thermal absorptivity; S, lizard solar absorptivity ); time difference between time of maximum temperature and noon (<span class="math inline">\(hr\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta\)</span></td>
+<td align="center">slope angle, direction of normal from horizontal (degrees); coefficient of volumetric thermal expansion (°C-‘); competitive inhibition factor (dimensionless); proportionality coefficient for Mie scattering; Bowen’s ratio, C/XE; psychrome¬ter constant (m °C-’); parameter (exponent) for Mie scattering; time difference between time of maximum temperature and sunrise (<span class="math inline">\(hr\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\delta\)</span></td>
+<td align="center">thoracic fur thickness (<span class="math inline">\(mm\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\nu\)</span></td>
+<td align="center">frequency of radiation (<span class="math inline">\(s-9\)</span>); kinematic viscosity coefficient (<span class="math inline">\(m2 s^{-1}\)</span>).</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\epsilon\)</span></td>
+<td align="center">emissivity (decimal fraction) (subscripts: a, of atmosphere; s, surface emissivity of lizards). angle (rad degree-1); angle between axis of a cylinder and direction of the sun’s rays; equivalent temperature (°C).; thermal absorptivity as a fraction (subscript so, soil)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\gamma\)</span></td>
+<td align="center">decay parameter for rate of time change from sunset to time of minimum temperature</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\lambda\)</span></td>
+<td align="center">latent heat of vaporization (<span class="math inline">\(J kg^{-1}\)</span>); wavelength of radiation (<span class="math inline">\(m\)</span>, <span class="math inline">\(cm\)</span>, ,<span class="math inline">\(um\)</span>, <span class="math inline">\(nm\)</span>, <span class="math inline">\(A\)</span>); thermal conductivities of the soil constituents (<span class="math inline">\(W m^{-1} K^{-1}\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(psi\)</span></td>
+<td align="center">zenith angles (degrees or radians)</td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\rho\)</span></td>
+<td align="center">density (<span class="math inline">\(kg m^{-3}\)</span>) (subscripts: a, of dry air; j, of molecular species; o, of standard air; w, of water vapor; so, soil); radius of a cylinder (m); reflectivity (decimal fraction) (subscript S for surface albedo).</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(_s\rho_a(T_a)\)</span></td>
+<td align="center">water vapor density in the air at saturation as a function of air temperature Ta (<span class="math inline">\(kg m^{-3}\)</span>).</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\tau\)</span></td>
+<td align="center">transmittance (decimal fraction) (subscripts: d, to diffuse radiation; t, to total radiation); thermal time constant (<span class="math inline">\(s\)</span> or <span class="math inline">\(hr\)</span>) (superscript a, apparent).</td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="chemical-reaction-symbols" class="section level2">
+<h2>Chemical Reaction Symbols</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th align="center">Description</th>
+<th align="right">Comments</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div>
+</div>
+<div id="unused-symbols" class="section level1">
+<h1>UNUSED SYMBOLS</h1>
+<div id="roman-symbols-1" class="section level2">
+<h2>Roman Symbols</h2>
+<table>
+<colgroup>
+<col width="15%"></col>
+<col width="59%"></col>
+<col width="25%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th align="center">Description</th>
+<th align="right">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
 <td><span class="math inline">\(A_i\)</span></td>
 <td align="center">increment of surface area exposed to a particular radiation source (<span class="math inline">\(m^2\)</span>) (subscripts: a, atmospheric radiation; g, ground radiation; S, solar; s, skylight; rS, reflected solar; rs, reflected skylight)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(A_g\)</span></td>
 <td align="center">animal surface area in contact with the ground (<span class="math inline">\(m^2\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(A_p\)</span></td>
 <td align="center">projected area (<span class="math inline">\(m^2\)</span>) (subscripts: c, cylinder; s, sphere)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(A_r\)</span></td>
 <td align="center">effective emitting area for thermal radiation from an animal surface (<span class="math inline">\(m^2\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(A_o,A_j\)</span></td>
 <td align="center">coefficients in Fourier series expression of environmental temperature °C)</td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(a\)</span></td>
-<td align="center">radius of the earth (m): acceleration in (<span class="math inline">\(ms^{-2}\)</span>); absorptance (decimal fraction); altitude angle of the sun (degrees)(subscripts: s, for normal to a slope; c ,for the axis of a cylinder).</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
@@ -274,12 +740,12 @@ $(document).ready(function () {
 <td align="right"></td>
 </tr>
 <tr class="odd">
-<td>BR</td>
+<td><span class="math inline">\(BR\)</span></td>
 <td align="center">breathing rate (breaths <span class="math inline">\(min^{-1}\)</span> or breaths <span class="math inline">\(s^{-1}\)</span>).</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
-<td>C</td>
+<td><span class="math inline">\(C\)</span></td>
 <td align="center">quantity of heat exchange by convection <span class="math inline">\(Wm^{-2}\)</span>); heat capacity, (<span class="math inline">\(J m^{-2}\)</span> °<span class="math inline">\(C^{-1}\)</span>): carbon dioxide concentration (mmolc <span class="math inline">\(m^{-3}\)</span>) (subscripts: a, in the air; c, chloroplasts; i, inter-cellular air space; w, sites of respiration).</td>
 <td align="right"></td>
 </tr>
@@ -299,23 +765,13 @@ $(document).ready(function () {
 <td align="right"></td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(c_p\)</span></td>
-<td align="center">specific heat at constant pressure (<span class="math inline">\(J kg^{-1}\)</span> °<span class="math inline">\(C^{-1}\)</span>).</td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
 <td><span class="math inline">\(c_1\)</span></td>
 <td align="center">a constant in the light response of photosynthesis.</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(c_2\)</span></td>
 <td align="center">a constant in the temperature function for photosynthesis.</td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
-<td>D</td>
-<td align="center">characteristic dimension (m).</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
@@ -339,38 +795,29 @@ $(document).ready(function () {
 <td align="right"></td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(d\)</span></td>
-<td align="center">thickness of material (m) (subscript f for fat); diameter of a cylinder (m).</td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
 <td><span class="math inline">\(h_d, _h\overline{d}\)</span></td>
 <td align="center">instantaneous and average hourly diffuse radiation incident on a horizontal surface at the ground (<span class="math inline">\(W m^{-2}\)</span>) (subscript <span class="math inline">\(\lambda\)</span> monochromatic intensity <span class="math inline">\(Wm^{-2}nm^{-1}\)</span>).</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(E\)</span></td>
 <td align="center">evaporation rate (<span class="math inline">\(kg m^{-2}s^{-1}\)</span>) (subscripts b, by respiration; r, from skin or pelage); energy (J) elastic modulus (<span class="math inline">\(kg m^{-2}\)</span>); apparent activation energy (<span class="math inline">\(J mole^{-1}\)</span>); internal energy of a molecule (<span class="math inline">\(J mole^{-1}\)</span>) (subscripts: e, electronic; v, vibrational; r, rotational); <span class="math inline">\(\xi??\)</span>.</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(_{\lambda}E\)</span></td>
 <td align="center">flux density per unit of wavelength (<span class="math inline">\(W m^{-2} nm^{-1}\)</span>).</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(_{\nu}E\)</span></td>
-<td align="center">flux density per unit of wavenumber (W m-2 cm-1).</td>
+<td align="center">flux density per unit of wavenumber (<span class="math inline">\(W m^{-2} cm^{-1}\)</span>).</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(ETL\)</span></td>
 <td align="center">eating time limit (min).</td>
 <td align="right"></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(e\)</span></td>
-<td align="center">water vapor pressure (N m-2, mbar) (subscripts: a, of the air,s, at saturation); Napierian logarithm base (dimensionless).</td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(F\)</span></td>
@@ -418,53 +865,33 @@ $(document).ready(function () {
 <td align="right"></td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(H\)</span></td>
-<td align="center">convection coefficient (W m-2 °C-1); enthalpy (J mole-1); elevation of a site above mean sea level (m).</td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
 <td><span class="math inline">\(_h\overline{H}o\)</span></td>
 <td align="center">average hourly extraterrestrial direct solar radiation incident on a horizontal surface (J m-2 hr-1).</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
-<td><span class="math inline">\(h\)</span></td>
-<td align="center">height (m); length of a cylinder (m); relative humidity (decimal fraction); Planck’s constant (J s); hour angle (rad).</td>
-<td align="right"></td>
-</tr>
 <tr class="odd">
-<td><span class="math inline">\(h_c\)</span></td>
-<td align="center">convection coefficient (W M-2 °C-1).</td>
-<td align="right"></td>
-</tr>
-<tr class="even">
 <td><span class="math inline">\(h_s\)</span></td>
 <td align="center">hour angle at sunrise or sunset, or half-day length (rad).</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(I\)</span></td>
 <td align="center">radiant intensity (W m-2) (subscripts: o, along direction of a normal to the source surface; X, monochromatic intensity); thermal insulation (m2 °C W-1) (superscript a, apparent value); moment of inertia of a molecule (kg m2).</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(i\)</span></td>
 <td align="center">angle of incidence (degrees).</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(J\)</span></td>
 <td align="center">upward flux of radiation in a leaf (W m-2); proportionality constant in respiration relationship (mmole rn-2 s-1); rota-tional quantum number of a molecule.</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(J_i\)</span></td>
 <td align="center">flux density of molecular species j (water vapor, oxygen, or carbon dioxide) (kg m¬ 2 s-1).</td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(K\)</span></td>
-<td align="center">thermal conductance (W m-2 °C-1) (subscripts f, fur; s, skin; sf, skin and fur; o, overall heat conductance for an animal; c, surface boundary layer for convection); an affinity coefficient for carboxylation equal to the chloroplast concentra-tion of CO2 at which P = P,1I2 (mmole m-3).</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
@@ -533,53 +960,43 @@ $(document).ready(function () {
 <td align="right"></td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(m\)</span></td>
-<td align="center">mass (kg); atomic mass (kg or g); air mass (dimensionless).</td>
-<td align="right"></td>
-</tr>
-<tr class="even">
 <td><span class="math inline">\(m_w\)</span></td>
 <td align="center">molecular weight (kg mole).</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(N\)</span></td>
 <td align="center">number of stomates; number of elements in a leaf (number m-2).</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(N_0\)</span></td>
 <td align="center">Avogadro’s number (6.023 x 1023).</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(N_r\)</span></td>
 <td align="center">molecular density (molecules m-3).</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(NR\)</span></td>
 <td align="center">net radiation (W m-2).</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(n\)</span></td>
 <td align="center">index of refraction (fractional number) (subscript X, at a given wavelength); number of quanta; number of kilogram-moles of a gas; number of absorbing and scattering elements in a leaf (number m-2).</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\([02]\)</span></td>
 <td align="center">oxygen concentration (vol/vol).</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(P\)</span></td>
 <td align="center">photosynthesis rate (mmole m-2 s-1) (subscripts: M, at saturating CO2; ML, at saturating light and saturating CO2; MLT, at optimum temperature, saturating light, and saturating CO2 1, between external air and intercellular air space; 2, inter-cellular air space and chloroplasts; 3, intercellular air space and respiration sites; 4, respiration and fixation sites; 5, at the chloroplasts); power (W) (subscript max, maximum for muscle contraction); pressure (N m-2); slope of line giving dry metabolic heat production versus temperature (W m-2 °C-1).</td>
-<td align="right"></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(p\)</span></td>
-<td align="center">atmospheric pressure (N m-2 or mbar) (subscript 0, at sea level).</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
@@ -633,18 +1050,8 @@ $(document).ready(function () {
 <td align="right"></td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(r\)</span></td>
-<td align="center">reflectance (decimal fraction) (subscripts: g, of ground or lower leaf surface; S, to direct sunlight; s, to skylight); dif-fusion resistance to water vapor (s m-’) (subscripts: a, boundary layer; c, cuticular; i, intercellular; €, leaf internal; m, mesophyll; s, stomatal); resistance to heat flow (s m-1) (subscripts: h, ha, boundary layer; j, diffusion resistance to molecular species j; radius (m) (subscripts: b, of inside body wall of animal; r, of outer surface of animal).</td>
-<td align="right"></td>
-</tr>
-<tr class="even">
 <td><span class="math inline">\(r_d\)</span></td>
 <td align="center">ratio of average hourly diffuse to the average daily diffuse radiation received on a horizontal surface (decimal fraction).</td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(S\)</span></td>
-<td align="center">amount of sunlight incident upon the earth’s surface (W m-2) (subscripts: c, on a cylinder; cv, on a vertical cylinder; ch, on a horizontal cylinder; h, on a horizontal surface; X, mono-chromatic); entropy (J mole-1 C-‘); equivalent network re-sistances (s m-’); (subscript A, monochromatic).</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
@@ -665,16 +1072,6 @@ $(document).ready(function () {
 <tr class="odd">
 <td><span class="math inline">\(sd\)</span></td>
 <td align="center">saturation deficit (N m-2 or mbar).</td>
-<td align="right"></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(T\)</span></td>
-<td align="center">temperature (°C) (subscripts: a, air; b, body; c, animal casting or cold side of thermal barrier; e, operative environmental; g, ground surface; h, hot side of thermal barrier; K, leaf; €, leaf; r, animal surface; S, sky; v, wall; v, vegetation; o, initial or of surroundings; co, final); transmitted flux through leaf (W m-2).</td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(T_b\)</span></td>
-<td align="center">body temperature (°C) (superscripts: c, lower setpoint; h, upper set point; superscripts: lc, lower equilibrium; lh, upper equilibrium); equivalent blackbody temperature (°C).</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
@@ -738,53 +1135,43 @@ $(document).ready(function () {
 <td align="right"></td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(V\)</span></td>
-<td align="center">velocity (m s 1); volume (m3) (subscript w, partial molar); photopic efficiency (decimal fraction).</td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
 <td><span class="math inline">\(\nu\)</span></td>
 <td align="center">vibrational quantum number of a molecule.</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(W\)</span></td>
 <td align="center">leaf dimension perpendicular to wind (m); weight (kg); work (J); respiration rate (mmole m-2 s—1) (subscripts: m, dark; p, light).</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(W_M\)</span></td>
 <td align="center">maximum rate of photorespiration at saturating oxygen con¬centration (mmole m-2 s-1).</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(W_{ML}\)</span></td>
 <td align="center">value of Wm at zero light intensity and optimum temperature (mmole m-2 s-1).</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(w\)</span></td>
 <td align="center">mixing ratio for air (dimensionless) (subscript s, at satura¬tion).</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(X\)</span></td>
 <td align="center">heat in storage (W m-2).</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(x\)</span></td>
 <td align="center">distance (m); thickness (m); ratio of length to radius for a cylinder (decimal fraction).</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(y\)</span></td>
 <td align="center">distance (m).</td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(z\)</span></td>
-<td align="center">distance, or height above a surface (m); zenith angle (degrees)</td>
 <td align="right"></td>
 </tr>
 </tbody>
@@ -856,28 +1243,18 @@ $(document).ready(function () {
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="math inline">\(\alpha\)</span></td>
-<td align="center">initial slope of photosynthesis versus light intensity curve (mmoles E-1); angle (rad or degrees); azimuth angle of the sun (degrees).</td>
-<td align="right"></td>
-</tr>
-<tr class="even">
 <td><span class="math inline">\(\alpha_c\)</span></td>
 <td align="center">azimuth of the axis of a cylinder (degrees).</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(\alpha_s\)</span></td>
 <td align="center">azimuth angle of a normal to a slope (degrees).</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
-<td><span class="math inline">\(\beta\)</span></td>
-<td align="center">slope angle, direction of normal from horizontal (degrees); coefficient of volumetric thermal expansion (°C-‘); competi-tive inhibition factor (dimensionless); proportionality coefficient for Mie scattering; Bowen’s ratio, C/XE; psychrome¬ter constant (m °C-’); parameter (exponent) for Mie scattering.</td>
-<td align="right"></td>
-</tr>
 <tr class="odd">
 <td><span class="math inline">\(\Delta\)</span></td>
-<td align="center">change of saturation vapor pressure with temperature (N m-2°C-’ or mbar °C 9.</td>
+<td align="center">change of saturation vapor pressure with temperature (N m-2°C-’ or mbar °C 9.)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
@@ -906,16 +1283,6 @@ $(document).ready(function () {
 <td align="right"></td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(\epsilon\)</span></td>
-<td align="center">emissivity (decimal fraction) (subscript a, of atmosphere). angle (rad degree-1); angle between axis of a cylinder and direction of the sun’s rays; equivalent temperature (°C).</td>
-<td align="right"></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\lambda\)</span></td>
-<td align="center">latent heat of vaporization (J kg-’); wavelength of radiation (m, cm, ,um, nm, A).</td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
 <td><span class="math inline">\(\mu\)</span></td>
 <td align="center">viscosity coefficient (N s m-2). chemical potential of water (J</td>
 <td align="right"></td>
@@ -936,15 +1303,6 @@ $(document).ready(function () {
 <td align="right"></td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(\rho\)</span></td>
-<td align="center">density (kg m-3) (subscripts: a, of dry air; j, of molecular species; o, of standard air; w, of water vapor); radius of a cylinder (m); reflectivity (decimal fraction).</td>
-<td align="right"></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(_s\rho_a(T_a)\)</span></td>
-<td align="center">water vapor density in the air at saturation as a function of air temperature Ta (kg m-3).</td>
-</tr>
-<tr class="odd">
 <td><span class="math inline">\(_s\rho_{\ell}(T_{\ell})\)</span></td>
 <td align="center">water vapor density in the leaf at saturation as a function of the leaf temperature Tl (kg m-3).</td>
 </tr>
@@ -959,41 +1317,36 @@ $(document).ready(function () {
 <td align="right"></td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(\tau\)</span></td>
-<td align="center">transmittance (decimal fraction) (subscripts: d, to diffuse radiation; t, to total radiation); thermal time constant (s or hr) (superscript a, apparent).</td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
 <td><span class="math inline">\(_{\lambda}\tau\)</span></td>
 <td align="center">monochromatic transmittance (decimal fraction) (subscripts: a, Mie scattering; m, minor constituents; o, ozone; r, Ray-leigh scattering).</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(\tau_t\)</span></td>
 <td align="center">average hourly transmittance of the atmosphere to shortwave radiation (decimal fraction).</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(\tau_c\)</span></td>
 <td align="center">length of time an animal can spend in a cold microclimate when shuttling (s).</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(\tau_h\)</span></td>
 <td align="center">length of time an animal can spend in a warm microclimate when shuttling (s).</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(\phi\)</span></td>
 <td align="center">latitude (degrees); angle between scattered and incident light directions (degrees); profile function.</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(\Psi\)</span></td>
 <td align="center">water potential (bars or N m-2).</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(\omega\)</span></td>
 <td align="center">angular velocity of the earth (rad day-1); solid angle (sr).</td>
 <td align="right"></td>

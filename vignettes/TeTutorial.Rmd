@@ -50,7 +50,7 @@ $$
 enclosed: Q_{emit}= A_r \epsilon \sigma (T_b^4 - T_a^4)\\
 open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 $$
-where $A_s$ and $A_r$ are the areas ($m^2$) exposed to the sky (or enclosure) and the ground, respectively; $\epsilon$ is the longwave infrared emissivity of skin [proportio, 0.95 to 1 for most animals [Gates 1980]]; and and $\sigma$ is the Stefan-Boltzmann constant ($5.673*10^{-8} W m^{-2} K^{-4)}$). 
+where $A_s$ and $A_r$ are the areas ($m^2$) exposed to the sky (or enclosure) and the ground, respectively; $\epsilon$ is the longwave infrared emissivity of skin [proportio, 0.95 to 1 for most animals [Gates 1980]]; and $\sigma$ is the Stefan-Boltzmann constant ($5.673*10^{-8} W m^{-2} K^{-4)}$). 
 
 The function is available in R as follows:
 ```{r}
@@ -58,7 +58,7 @@ Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303,
 ```
 
 #Convection, Qconv
-Animals exchange heat with the air or water they are emersed in at a rate determined by the temperature difference between the temperature of the animal, $T_b$ (K), and that of the air, $T_a$ (K).  The rate is also determined by the animal's surface area exposed to year, which we estimate from the input parameters of the animal's surface area, $A (m^2)$ and the proportion of the surface area in contact with the substrate, $proportion$. A heat transfer coefficient, $H_L (W m^{-2} K^{-1})$, which can be estimated using the relations below, is used to estimate the rate of heat exchange.  An enhancement factor, $ef$, multiplier can also be incorported to account for increases in heat exchange resulting from air turbulance in field conditions. Conduction can be estimated as follows:
+Animals exchange heat with the air or water they are emersed in at a rate determined by the temperature difference between the temperature of the animal, $T_b$ (K), and that of the air, $T_a$ (K).  The rate is also de termined by the animal's surface area exposed to year, which we estimate from the input parameters of the animal's surface area, $A (m^2)$ and the proportion of the surface area in contact with the substrate, $proportion$. A heat transfer coefficient, $H_L (W m^{-2} K^{-1})$, which can be estimated using the relations below, is used to estimate the rate of heat exchange.  An enhancement factor multiplier, $ef$, can also be incorported to account for increases in heat exchange resulting from air turbulance in field conditions. Conduction can be estimated as follows:
 $$Qconv= ef*H_L*(A*proportion)*(Ta-Tb).$$
 
 The function is available in R:
@@ -163,7 +163,7 @@ Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_g=303
 
 Campbell and Norman (1998) use a somewhat simplified energy balance to express $Te$ as a function of $Ta$ plus or minus a temperature increment determined by absorbed radiation, wind speed, and animal morphology: 
 $$ Te=Ta+(Sabs-Qemit)/(c_p(g_r+g_{Ha})),$$
-where $Ta$ is air temperature (K), $Sabs$ is the solar and thermal radiation absorbed ($W m^{-2}$), $Qemit$ is emitted thermal radiation ($W m^{-2}$),$c_p$ is the specific heat of air ($J mol^{-1} K^{-1}$), $g_{r}$ is radiative conductance, and $g_{Ha}$ is the boundary conductance.  The model is based on estimating $T_e$ for a blackbody (perfectly absorbing) cavity with air temperatures equal to surface temperatures ($T_a=T_s$. The model assumes that the cavity provides the same heat load as the nautral environment and thus equates metabolic heat production and evaporative cooling in the two environments.  The formulation assumes a well mixed interior of the animal and also omits conduction with the substrate.  In this scenario, organisms emit thermal radiation from their surface proproportional to the forth power of T_a:
+where $Ta$ is air temperature (K), $Sabs$ is the solar and thermal radiation absorbed ($W m^{-2}$), $Qemit$ is emitted thermal radiation ($W m^{-2}$),$c_p$ is the specific heat of air ($J mol^{-1} K^{-1}$), $g_{r}$ is radiative conductance, and $g_{Ha}$ is the boundary conductance.  The model is based on estimating $T_e$ for a blackbody (perfectly absorbing) cavity with air temperatures equal to surface temperatures ($T_a=T_s$). The model assumes that the cavity provides the same heat load as the nautral environment and thus equates metabolic heat production and evaporative cooling in the two environments.  The formulation assumes a well mixed interior of the animal and also omits conduction with the substrate.  In this scenario, organisms emit thermal radiation from their surface proproportional to the forth power of $T_a$:
 $$Q_{emit}= \epsilon \sigma T_a^4 ,$$
 where $\epsilon$ is the proprtional longwave infrared emissivity of skin (0.95-1 for most animals, [Gates 1980]) and $\sigma$ is the Stefan-Boltzmann constant ($5.673*10^{-8} W m^{-2} K^{-4)}$). 
 
