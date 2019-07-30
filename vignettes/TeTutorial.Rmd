@@ -286,7 +286,7 @@ Tb_grasshopper(T_a=25, T_g=25, u=0.4, H=400, K_t=0.7, psi=30, L=0.02, Acondfact=
 
 ##Salamander
 ```{r}
- Tb_salamander_humid(r_i=4,r_b=1,D=0.007,Ta=20,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
+ #Tb_salamander_humid(r_i=4,r_b=1,D=0.007,Ta=20,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
 ```
 
 ```{r}
