@@ -85,10 +85,9 @@ mass_from_length<-function(l, taxa){
 #' Calculate surface area from volume (Based on Mitchell 1976) 
 #' 
 #' @details This function allows you to estimate surface area (m^2) from volume (m^3) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976).
-#' @param V Density (m^3)
+#' @param V volume (m^3)
 #' @param taxa Which class of organism, current choices: lizard, frog, sphere.
-#' @return V (m^3)
-#' should be sa (m^2)
+#' @return surface area (m^2)
 #' @keywords surface area
 #' @export
 #' @examples

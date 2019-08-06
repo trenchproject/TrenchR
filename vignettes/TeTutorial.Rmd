@@ -167,7 +167,7 @@ where $Ta$ is air temperature (K), $Sabs$ is the solar and thermal radiation abs
 $$Q_{emit}= \epsilon \sigma T_a^4 ,$$
 where $\epsilon$ is the proprtional longwave infrared emissivity of skin (0.95-1 for most animals, [Gates 1980]) and $\sigma$ is the Stefan-Boltzmann constant ($5.673*10^{-8} W m^{-2} K^{-4)}$). 
 
-The thermal radiation exchanged between the animals and the walls of the cavity is proportional to the temperature differences and the radiative conductance. Cambell and Norman [XXXX] thus use a denominator term that combines thermal radiative exchange with convective heat exchange. The radiative conductance describing the heat exchange between the core of the animal and the environment is estimated as $g_r= 4 \sigma Ta^3/c_p$ $(mol*m^{-2} s^{-1})$. The boundary conductance (heat exchange with the air via convection) is estimated assuming forced convection driven by naturally turbulent wind and an exmpirical approximation of animal shapes [Mitchell et al. 1976]: 
+The thermal radiation exchanged between the animals and the walls of the cavity is proportional to the temperature differences and the radiative conductance. Cambell and Norman [1998] thus use a denominator term that combines thermal radiative exchange with convective heat exchange. The radiative conductance describing the heat exchange between the core of the animal and the environment is estimated as $g_r= 4 \sigma Ta^3/c_p$ $(mol*m^{-2} s^{-1})$. The boundary conductance (heat exchange with the air via convection) is estimated assuming forced convection driven by naturally turbulent wind and an exmpirical approximation of animal shapes [Mitchell et al. 1976]: 
 $$g_{Ha}(mol m^{-2} s^{-1})= 1.4 * 0.135 \sqrt(V/D),$$
 where 1.4 is a factor to account for increased convection in natural environments, $V$ is wind speed ($m/s$), and $D$ is the characteristic dimension of the animal ($m$).
 
@@ -190,7 +190,7 @@ We adapted a biophysical model (`Tb_lizard()`) to calculate operative environmen
 
 ###Day Length and Sun Angles
 The function constrains the lizard’s foraging to hours of daylight and uses the relations below to calculate day length and the time of solar noon. The function calculates the solar declination, $\delta$ (rad), the angular distance of the sun north or south of the earth’s equator: 
-$\delta= arcsin[0.39795 \cos(0.21631+2\arctan (0.967 \tan [0.0086(-186+J)]))] $
+$$\delta= \arcsin[0.39795 \cos(0.21631+2 \arctan (0.967 \tan [0.0086(-186+J)]))] $$
 where $J$ is calendar day, with $J=1$ at January 1. One can then calculate day length, $h_{day}$ (h), using the CBM model (Forsythe et al. 1995): where $\phi$ is latitude (rad).
 
 The time of solar noon ($h$) is calculated as $t_0=12-LC-ET$ where $LC$ is the longitude correction (h) and $ET$ is the equation of time (h). The $LC$ is a +1/15-h correction for each degree that a location is west of a standard meridian, which occurs at 0°, 15°, …, 345°. The ET corrects for the difference between sun time and clock time based on calendar day as follows: 
@@ -200,10 +200,10 @@ The zenith angle, $\psi$ (rad), is the sun angle measured from vertical, $\cos{\
 ###Radiation and Environmental Temperature
 Central to the thermal influence of radiation is the Stefan‐Boltzmann law, which expresses the total radiant energy over all wavelengths admitted per unit surface area of a blackbody radiator. The law yields the emitted flux density, B ($W m^2$), $B= \sigma(T_a+273)^4$, where $\omega$ is the Stefan‐Boltzmann constant ($5.67×10^{−8} W m^{−2} K^{−4}$). Emissivity, $\epsilon(\lambda)$, where $\lambda$ is wavelength, is the fraction of blackbody emittance at a given wavelength emitted by the surface of a material. Gray bodies are those with no wavelength dependence of the emissivity. Thus, emitted energy of a gray body is $\phi (W m^{−2})= \epsilon B$. We assume lizards are a gray body, which is reasonable for most natural surfaces. The emissivity of most natural surfaces ranges from 0.95 to 1.0. The function uses the emissivity value of 0.965 measured by Bartlett and Gates (1967) for a Sceloporus lizard. However, the emissivity of a clear atmosphere is substantially lower. We use the approximation by Swinbank (1963) to estimate clear sky emissivity, $\epsilon_{ac}=9.2 * 10^{-6}(T_a+273)^2.$
 
-We first consider convective heat transport between the lizard’s body and the environment. The boundary conductance of air ($mol m^{−2} s^{−1}$) is expressed as 
+We first consider convective heat transport between the lizard’s body and the environment. The boundary conductance of air ($mol \: m^{−2} s^{−1}$) is expressed as 
 $$g_{Ha}=1.4*0.135 \sqrt{u/d} ,$$
-where $u$ is wind velocity ($m s^{−1}$) and $d$ is the characteristic dimension ($m$). Assuming that wind is blowing parallel to the axis of a cylindrical approximation of a lizard, $d$ is the lizard’s length (snout‐vent length [m]). A factor of 1.4 is introduced to account for the increased convection due to environmental turbulence [Mitchell 1976]. We additionally consider radiative conductance, the exchange of thermal radiation between the lizard and the environment proportional to temperature differences. The radiative conductance ($mol*m^{−2} s^{−1}$) is expressed as $$g_r=\frac{4 \epsilon \sigma (T_a+273)^3}{c_p},$$
-where $c_p$ is the specific heat of air ($29.3 J mol^{−1} K^{−1}$).
+where $u$ is wind velocity ($m s^{−1}$) and $d$ is the characteristic dimension ($m$). Assuming that wind is blowing parallel to the axis of a cylindrical approximation of a lizard, $d$ is the lizard’s length (snout‐vent length [m]). A factor of 1.4 is introduced to account for the increased convection due to environmental turbulence [Mitchell 1976]. We additionally consider radiative conductance, the exchange of thermal radiation between the lizard and the environment proportional to temperature differences. The radiative conductance ($mol \:m^{−2} s^{−1}$) is expressed as $$g_r=\frac{4 \epsilon \sigma (T_a+273)^3}{c_p},$$
+where $c_p$ is the specific heat of air (29.3 $J \: mol^{−1} K^{−1}$).
 
 We then turn to calculating the components of the radiant energy budget of a lizard. We estimate the solar (shortwave) component of this quantity by aggregating flux densities for four radiation streams: the direct irradiance on a surface perpendicular to the beam, $S_p (W m^{−2})$; the diffuse sky irradiance on a horizontal plane, $S_d (W m^{−2})$; the total irradiance of a horizontal surface, $S_t (W m^{−2})$; and the reflected radiation from the ground, $S_r (W m^{−2})$. Calculation of these flux densities requires the introduction of several additional quantities. The atmospheric transmissivity, $\tau$, ranges between 0.6 and 0.7 for typical clear sky conditions (Gates 1980). We thus assume $\tau=0.65$. The solar constant, $S_{p0}$, indicates extraterrestrial flux density to be 1,360 $W m^{−2}$. Optical air mass number, $m_a$, is the ratio of slant path length through the atmosphere to zenith path length and is a function of atmospheric pressure, $p_a (kPa)$: 
 $$p_a=101.3exp(-E/8200),$$
@@ -254,12 +254,12 @@ Tb_butterfly(T_a=25, Tg=25, Tg_sh=20, u=0.4, H_sdir=300, H_sdif=100, z=30, D=0.3
 ```
 
 ##Grasshoppers
-We provide a biophysical model (`Tb_grasshopper()`) to predict grasshopper body temperatures (Buckley et al. 2012 JAE, partialy adapted from Samietz et al. 2005). We use an energy budget to describe the flow of energy between the grasshopper and the environment: $Q_s=Q_t+Q_c+Q_{cond}$.  Here $Q_s$ is the total input of heat due to solar radiation. $Q_t$ describes the flux of thermal radiative heat due to both incoming thermal radiation (ground and sky) and that emitted by the grasshopper.  $Q_c$ is flux of heat between the grasshopper and the surrounding fluid (air) via convection.  $Q_{cond}$ is the flux of heat between the grasshopper’s body and the solid surfaces with which the grasshopper’s body is in contact via conduction.  We omit evaporative heat loss as it should be negligible for the grasshopper (Anderson, Tracy, & Abramsky 1979).   
+We provide a biophysical model (`Tb_grasshopper()`) to predict grasshopper body temperatures (Buckley et al. 2012 JAE, partially adapted from Samietz et al. 2005). We use an energy budget to describe the flow of energy between the grasshopper and the environment: $Q_s=Q_t+Q_c+Q_{cond}$.  Here $Q_s$ is the total input of heat due to solar radiation. $Q_t$ describes the flux of thermal radiative heat due to both incoming thermal radiation (ground and sky) and that emitted by the grasshopper.  $Q_c$ is flux of heat between the grasshopper and the surrounding fluid (air) via convection.  $Q_{cond}$ is the flux of heat between the grasshopper’s body and the solid surfaces with which the grasshopper’s body is in contact via conduction.  We omit evaporative heat loss as it should be negligible for the grasshopper (Anderson, Tracy, & Abramsky 1979).   
 
 The solar radiative heat flux is estimated as the sum of direct ($Q_{s,dir}$), diffuse ($Q_{s,dif}$), and reflected ($Q_{s,ref}$) components (Kingsolver 1983):
 $$ Q_s= Q_{s,dir}+Q_{s,dif}+Q{s,ref},\\ Q_s= \alpha A_{s,dir}H_{s,dir}/cos(z) +\alpha A_{s,ref}H_{s,dif}+\alpha r_g A_{s,ref}H_{s,ttl}. $$
  
-Each component is calculated as the product of the solar absorptivity of the grasshopper (we assume $\alpha=0.7$, (Anderson et al. 1979)), the horizontal flux of solar radiation ($H_{s,dir}$, $H_{s,dif}$, and $H_{s,ttl}$ for the direct, diffuse, and total fluxes, respectively), and the silhouette area of the grasshopper exposed to solar radiation ($A_{s,dir}$, $A_{s,dif}$, and $A_{s,ttl}$ for the direct, diffuse, and total surface areas, respectively).  The direct radiation is adjusted for the zenith angle ($z$, degrees), which is the angle of the sun away from vertical.  
+Each component is calculated as the product of the solar absorptivity of the grasshopper (we assume $\alpha=0.7$, [Anderson et al. 1979]), the horizontal flux of solar radiation ($H_{s,dir}$, $H_{s,dif}$, and $H_{s,ttl}$ for the direct, diffuse, and total fluxes, respectively), and the silhouette area of the grasshopper exposed to solar radiation ($A_{s,dir}$, $A_{s,dif}$, and $A_{s,ttl}$ for the direct, diffuse, and total surface areas, respectively).  The direct radiation is adjusted for the zenith angle ($z$, degrees), which is the angle of the sun away from vertical.  
 
 We calculate the surface area by approximating the body of a female grasshopper as a rotational ellipsoid (Samietz et al. 2005).  The major axis is equal to the grasshopper’s length.  We calculate the semi-minor axis (half of the grasshopper’s width) as $a=(0.365+0.241*1000 L)/1000$ using a regression from Lactin and Johnson (1998). If $e=\sqrt{1-a^2/c^2}$, surface area can be calculated as follows:
 $$A= 2 \pi a^2+\frac{2 \pi a c}{e \arcsin{e}}.$$
@@ -270,8 +270,7 @@ We estimate thermal radiative flux as the sum of radiation from the sky and grou
 
 Convective heat flux is estimated as the product of the convective heat transfer coefficient in turbulent air ($h_{cs}$), the grasshopper’s surface area exposed to convective heat flux ($A_c=A$), and the temperature difference between the grasshopper’s body temperature ($T_b$) and air temperature ($T_a$):
 $$Q_c= h_T A_c (T_b-T_a). $$
-We calculate $h_{cs}$ from the convective heat transfer coefficient as $h_{cs}=h_c(-0.007z/L+1.71)$ where $z$=0.001m is the height above the ground. We use an empirically-derived relationship for grasshoppers to estimate the heat transfer coefficient, $h_c (Wm^{-2}*^{\circ} C^{-1})$ (Lactin and Johnson 1998):
-$h_c= Nu K_f/L $, where the thermal conductivity of fluid, $K_f(W m^{-1}K^{-1})=0.024+0.00007(T_a+273)$.
+We calculate $h_{cs}$ from the convective heat transfer coefficient as $h_{cs}=h_c(-0.007z/L+1.71)$ where $z$=0.001m is the height above the ground. We use an empirically-derived relationship for grasshoppers to estimate the heat transfer coefficient, $h_c (Wm^{-2}*^{\circ} C^{-1})$ (Lactin and Johnson 1998): $h_c = Nu K_f/L$, where the thermal conductivity of fluid, $K_f(W m^{-1}K^{-1})=0.024+0.00007(T_a+273)$.
 
 We use an empirical relationship from Anderson et al. (1979) to estimate the Nusselt number, $Nu$, as $Nu=0.41 Re^{0.5}$ where $Re$ is the Reynolds number.  $Re=u L/v$, where $u$ is windspeed ($m/s$) and $v$ is the kinematic viscosity of air ($m^2/s$) ($v=15.68x10^{-6}$ at 300K).
 
@@ -286,37 +285,37 @@ Tb_grasshopper(T_a=25, T_g=25, u=0.4, H=400, K_t=0.7, psi=30, L=0.02, Acondfact=
 
 ##Salamander
 ```{r}
- #Tb_salamander_humid(r_i=4,r_b=1,D=0.007,Ta=20,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
+ Tb_salamander_humid(r_i=4,r_b=1,D=0.007,T_a=20,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
 ```
 
 ```{r}
-#actual_vapor_pressure(Tdewpoint=20)
+actual_vapor_pressure(Tdewpoint=20)
 ```
 
 ```{r}
-#saturation_vapor_pressure(Ta=293)
+saturation_vapor_pressure(T_a=293)
 ```
 
 ```{r}
-#boundary_layer_resistance(Ta=293, e_s=2.4, e_a=2.5, elev=500, D=0.007, V=2)
+boundary_layer_resistance(T_a=293, e_s=2.4, e_a=2.5, elev=500, D=0.007, u=2)
 ```
 
 ```{r}
-#Qthermal_radiation_absorbed(Ta=20, epsilon_ground=0.97, a_longwave=0.965)
+Qthermal_radiation_absorbed(T_a=20, epsilon_ground=0.97, a_longwave=0.965)
 ```
 
 ##Frog
 Spotila?
 
 #Example operative environmental temperature calculations
-Suppose we want to estimate the hourly body temperature (operative environmental temperature, $T_e$) of a Sceloporus lizard on June 1, 2018 in Santa Fe, New Mexico, USA (35.69, -105.944, elevation:2121). Let's assume the lizard is in an unshaded location where the daily air temperature varies from a minimum of 10C to a maximum of 25C, the soil surface temperature varies from a minimum of 15C to a maximum of 30C, and the windspeed is 0.5 m/s.
+Suppose we want to estimate the hourly body temperature (operative environmental temperature, $T_e$) of a Sceloporus lizard on June 1, 2018 in Santa Fe, New Mexico, USA (35.69, -105.944, elevation: 2121m). Let's assume the lizard is in an unshaded location where the daily air temperature varies from a minimum of 10C to a maximum of 25C, the soil surface temperature varies from a minimum of 15C to a maximum of 30C, and the windspeed is 0.5 m/s.
 
 Assume that atmospheric transmissivity $\tau=0.7$, albedo $\rho=0.6$
 
 WE ASSUME Tb=Ta TO ILLUSTRATE CALCULATIONS
 
 ##Environmental data
-Let us first prepare the environmental data for analysis. We will need to estimate hourly air and soil temperatures and radiation. We start be estimating day of year and the timing of sunrise and sunset:
+Let us first prepare the environmental data for analysis. We will need to estimate hourly air and soil temperatures and radiation. We start by estimating day of year and the timing of sunrise and sunset:
 ```{r}
 #set up input data as variables
 lat=35.69; lon= -105.944; elev=2121
