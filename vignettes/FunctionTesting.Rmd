@@ -1,0 +1,150 @@
+---
+title: "Function testing"
+author: "Lauren Buckley"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Function testing}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+##Load TrenchR package
+library(TrenchR)
+```
+
+#UtilityFunctions
+
+```{r}
+day_of_year("2017-04-22", format= "%Y-%m-%d")
+```
+
+```{r}
+plot(1:365, dec_angle(1:365), type="l")
+```
+
+```{r}
+plot(1:365, daylength(lat=47.61, doy=1:365), type="l", ylim=c(0,24))
+points(1:365, daylength(lat=10, doy=1:365), type="l", lty="dashed")
+points(1:365, daylength(lat=60, doy=1:365), type="l")
+```
+
+```{r}
+plot(1:365, solar_noon(lon=-122, doy=1:365), type="l", ylim=c(10.8, 13))
+points(1:365, solar_noon(lon=-180.335, doy=1:365), type="l")
+points(1:365, solar_noon(lon=-150, doy=1:365), type="l", lty="dashed")
+#points(1:365, solar_noon(lon=-60, doy=1:365), type="l")
+```
+
+```{r}
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=200, lat=47.61, lon=-122.33))
+plot(1:24, zen, type="l")
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=0, lat=47.61, lon=-122.33))
+points(1:24, zen, type="l", lty="dotted")
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=100, lat=47.61, lon=-122.33))
+points(1:24, zen, type="l")
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=300, lat=47.61, lon=-122.33))
+points(1:24, zen, type="l", lty="dashed")
+
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=200, lat=10, lon=-122.33))
+plot(1:24, zen, type="l")
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=0, lat=10, lon=-122.33))
+points(1:24, zen, type="l", lty="dotted")
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=100, lat=10, lon=-122.33))
+points(1:24, zen, type="l")
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=300, lat=10, lon=-122.33))
+points(1:24, zen, type="l", lty="dashed")
+
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=200, lat=70, lon=-122.33))
+plot(1:24, zen, type="l")
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=0, lat=70, lon=-122.33))
+points(1:24, zen, type="l", lty="dotted")
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=100, lat=70, lon=-122.33))
+points(1:24, zen, type="l")
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=300, lat=70, lon=-122.33))
+points(1:24, zen, type="l", lty="dashed")
+```
+
+```{r}
+azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
+```
+
+```{r}
+plot(1:4000, airpressure_from_elev(1:4000), type="l")
+```
+
+```{r}
+fahrenheit_to_kelvin(85)
+kelvin_to_celsius(270)
+fahrenheit_to_celsius(85)
+```
+
+```{r}
+radian_to_degree(0.831)
+degree_to_radian(47.608)
+```
+
+
+#TempWindProfileFunctions
+
+```{r}
+surface_roughness(u_r=c(0.01,0.025,0.05,0.1,0.2), zr=c(0.05,0.25,0.5,0.75,1))
+```
+```{r}
+zs= seq(0,2,0.1) 
+us= wind_speed_profile_neutral(u_r=1, zr=0.1, z0=0.2, z=zs)
+us
+plot(us,zs, type="l")
+points(wind_speed_profile_neutral(u_r=0.5, zr=0.1, z0=0.2, z=zs), zs, type="l", col="red")
+```
+
+```{r}
+z.seq <- seq(0, 2, by = 0.1)
+t.seq <- air_temp_profile_neutral(T_r=20, zr=0.1, z0=0.2, z=z.seq, T_s=25)
+plot(t.seq, z.seq, type = "l", xlab = "Temperature (C)", ylab = "z (height above ground in m)")
+```
+
+```{r}
+zs= seq(0,2,0.1) 
+us= wind_speed_profile(u_r=1, zr=0.1, z0=0.2, z=zs)
+plot(us,zs, type="l")
+points(c(1),c(0.1))
+
+points(wind_speed_profile(u_r=0.5, zr=0.1, z0=0.2, z=zs), zs, type="l", col="red")
+points(c(0.5),c(0.1), col="red")
+```
+
+```{r}
+z.seq <- seq(0, 2, by = 0.1)
+t.seq <- air_temp_profile(T_r = 20, u_r = 0.5, zr = 2, z0 = 0.2, z = z.seq, T_s = 25)
+plot(t.seq, z.seq, type = "l", xlab = "Temperature (C)", ylab = "z (height above ground in m)")
+points(c(25,20),c(0,2) )
+
+#CHANGED FROM NICHE MAPPER VIGNETTE
+```
+```{r}
+z.seq <- seq(0, 2, by = 0.1)
+
+t.seq= lapply(z.seq, FUN=air_temp_profile_segment_in_beta, T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), T_s=27)
+
+#t.seq <- air_temp_profile_segment(T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), z=z.seq[1], T_s=27)
+plot(t.seq, z.seq, type = "l", xlab = "Temperature (C)", ylab = "z (height above ground in m)")
+points(c(27,25,22,20),c(0,0.05,0.25,0.5) )
+
+#CHANGED FROM NICHE MAPPER VIGNETTE
+```
+
+```{r}
+z.seq <- seq(0, 2, by = 0.1)
+
+u.seq= lapply(z.seq, FUN=wind_speed_profile_segment_in_beta, u_r=c(0.1,0.5,1), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2))
+plot(u.seq, z.seq, type = "l", xlab = "Wind speed (m/s)", ylab = "z (height above ground in m)")
+points(c(0.1,0.5,1),c(0.05,0.25,0.5) )
+
+```
