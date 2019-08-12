@@ -4,7 +4,7 @@
 #' @description This function allows you to partition solar radiation (W m^-2) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in Wong and Chow (2001, Applied Energy 69:1991-224).
 #' @param method to use for estimating the diffuse fraction, currently available: "Liu_Jordan", "Orgill_Hollands", "Erbs", "Olyphant", "Spencer", "Reindl-1", "Reindl-2", "Lam_Li"
 #' @param kt is the clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.
-#' @param lat is latitude in degrees, needed if method ism Spencer
+#' @param lat is latitude in degrees, needed if method is Spencer
 #' @param sol.elev is the solar elevation angles in degrees, needed if method is Reindl-2 
 #' @return diffuse fraction
 #' @keywords solar radiation
@@ -24,7 +24,7 @@ partition_solar_radiation=function(method, kt, lat=NA, sol.elev=NA){
   #kd- diffuse fraction
   
   #6.1 Liu and Jordan 
-  if(method=="Liu_Jordon") kd= 0.384 -0.416*kt
+  if(method=="Liu_Jordan") kd= 0.384 -0.416*kt
   
   #6.2 Orgill and Hollands
   if(method=="Orgill_Hollands"){

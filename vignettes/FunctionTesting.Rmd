@@ -22,11 +22,14 @@ library(TrenchR)
 #UtilityFunctions
 
 ```{r}
-day_of_year("2017-04-22", format= "%Y-%m-%d")
+day_of_year("2017-01-01", format= "%Y-%m-%d")
+day_of_year("2014-12-31", format= "%Y-%m-%d")
+day_of_year("2007-04-22", format= "%Y-%m-%d")
 ```
 
 ```{r}
 plot(1:365, dec_angle(1:365), type="l")
+#CHECKED against https://www.pveducation.org/pvcdrom/properties-of-sunlight/declination-angle
 ```
 
 ```{r}
@@ -72,11 +75,20 @@ points(1:24, zen, type="l", lty="dashed")
 ```
 
 ```{r}
-azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
+az= unlist(lapply(1:24, FUN=azimuth_angle, doy=33, lat=52.51, lon=13.41))
+plot(1:24, az, type="l")
+
+az= unlist(lapply(1:24, FUN=azimuth_angle, doy=112, lat=47.61, lon=-122.33))
+plot(1:24, az, type="l")
+
+az= unlist(lapply(1:365, FUN=azimuth_angle, hour=10, lat=47.61, lon=-122.33))
+plot(1:365, az, type="l")
+#CHECK
 ```
 
 ```{r}
 plot(1:4000, airpressure_from_elev(1:4000), type="l")
+#CHECKED: https://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html
 ```
 
 ```{r}
@@ -146,5 +158,114 @@ z.seq <- seq(0, 2, by = 0.1)
 u.seq= lapply(z.seq, FUN=wind_speed_profile_segment_in_beta, u_r=c(0.1,0.5,1), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2))
 plot(u.seq, z.seq, type = "l", xlab = "Wind speed (m/s)", ylab = "z (height above ground in m)")
 points(c(0.1,0.5,1),c(0.05,0.25,0.5) )
+
+```
+
+#DTR Functions
+
+```{r}
+t.seq= lapply(1:23, FUN=diurnal_temp_variation_sineexp, T_max=30, T_min=10, t_r=6, t_s=18)
+plot(1:23, t.seq, type = "l", xlab = "hour", ylab = "temp (C)")
+```
+
+```{r}
+plot(1:23, diurnal_temp_variation_sine(T_max=30, T_min=10, t=1:23), type = "l", xlab = "hour", ylab = "temp (C)")
+```
+
+```{r}
+plot(1:23, diurnal_temp_variation_sinesqrt(t=1:23, tr=6, ts=18, T_max=30, T_min=10, T_minp=12), type = "l", xlab = "hour", ylab = "temp (C)")
+```
+
+#Degree days
+
+```{r}
+degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.sine")
+degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="double.sine")
+degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.triangulation")
+degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="double.triangulation")
+#CHECK
+```
+
+#Radiation functions
+
+```{r}
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=200, lat=47.61, lon=-122.33))
+zen= zen*2*pi/360
+
+rd= lapply(zen, FUN=estimate_radiation, doy=200, tau=0.6, elev=1500, rho=0.7)
+#unlist
+rd=matrix(unlist(rd), nrow=3, byrow=FALSE)
+
+plot(1:24, rd[1,], type="l", xlab = "hour", ylab = "radiation (W/m^2)", ylim=c(0,1600))
+points(1:24, rd[2,], type="l")
+points(1:24, rd[3,], type="l")
+points(1:24, rd[1,]+rd[2,]+rd[3,], type="l", lty="dashed")
+
+```
+
+```{r}
+r.seq= lapply(1:24, FUN=diurnal_radiation_variation, doy=112, solrad=8000, lon=-122.33, lat=47.61)
+plot(1:24, r.seq, type = "l", xlab = "hour", ylab = "radiation (W/m2)")
+```
+
+```{r}
+r.seq= lapply(seq(1,365,31), FUN=monthly_solar_radiation, lat=47.61,lon=-122.33,elev=1500,T=15,Hr=50,P=50)
+plot(seq(1,365,31), r.seq, type = "l", xlab = "doy", ylab = "radiation (W/m2)")
+#NEEDS CHECKING
+```
+
+#Radiation partitioning functions
+
+```{r}
+r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Erbs", lat=40, sol.elev=60)
+plot(seq(0,1,0.1), r.seq, type = "l", xlab = "kt", ylab = "radiation (W/m2)")
+
+#r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Liu_Jordan", lat=40, sol.elev=60)
+#points(seq(0,1,0.1), r.seq, type = "l")
+r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Orgill_Hollands", lat=40, sol.elev=60)
+points(seq(0,1,0.1), r.seq, type = "l")
+r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Olyphant", lat=40, sol.elev=60)
+points(seq(0,1,0.1), r.seq, type = "l")
+r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Reindl-1", lat=40, sol.elev=60)
+points(seq(0,1,0.1), r.seq, type = "l")
+r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Reindl-2", lat=40, sol.elev=60)
+points(seq(0,1,0.1), r.seq, type = "l")
+r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Lam_Li", lat=40, sol.elev=60)
+points(seq(0,1,0.1), r.seq, type = "l")
+
+```
+
+#Allometric functions
+```{r}
+plot(1:50, sa_from_mass(1:50,"lizard"), type="l", xlab = "m (g)", ylab = "surface area (m2)")
+points(1:50, sa_from_mass(1:50,"frog"), type="l", col="blue")
+points(seq(0.1,5,0.2), sa_from_mass(seq(0.1,5,0.2),"insect"), type="l", col="purple")
+```
+
+```{r}
+plot(seq(0.05,0.50,0.1), mass_from_length(seq(0.05,0.50,0.1),"lizard"), type="l", xlab = "length (m)", ylab = "mass (g)", ylim=c(0,50))
+points(seq(0.05,0.50,0.1), mass_from_length(seq(0.05,0.50,0.1),"salamander"), type="l", col="blue")
+points(seq(0.05,0.50,0.1), mass_from_length(seq(0.05,0.50,0.1),"frog"), type="l", col="red")
+points(seq(0.05,0.50,0.1), mass_from_length(seq(0.05,0.50,0.1),"snake"), type="l", col="green")
+points(seq(0.05,0.50,0.1), mass_from_length(seq(0.05,0.50,0.1),"turtle"), type="l", col="orange")
+points(seq(0.01,0.10,0.01), mass_from_length(seq(0.01,0.10,0.01),"insect"), type="l", col="purple")
+#NEEDS CHECKING
+```
+
+```{r}
+plot(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"lizard"), type="l", xlab = "volume (m^3)", ylab = "sa (m^2)")
+points(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"frog"), type="l")
+points(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"sphere"), type="l")
+#NEEDS CHECKING
+```
+
+```{r}
+plot(seq(0.01, 0.05, 0.01), volume_from_length(seq(0.01, 0.05, 0.01),"lizard"), type="l", xlab = "length (m)", ylab = "volume (m^3)")
+points(seq(0.01, 0.05, 0.01), volume_from_length(seq(0.01, 0.05, 0.01),"frog"), type="l")
+points(seq(0.01, 0.05, 0.01), volume_from_length(seq(0.01, 0.05, 0.01),"sphere"), type="l")
+#NEEDS CHECKING
+```
+
+```{r}
 
 ```

@@ -130,9 +130,8 @@ sa_from_volume<-function(V, taxa){
 #' @details This function allows you to estimate volume (m^3) from length (m) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976).
 #' @param l Length in m.
 #' @param taxa Which class of organism, current choices: lizard,frog, or sphere
-#' @return sa (m^2)
-#' #should be V (m^3)
-#' @keywords surface area length
+#' @return volume (m^3)
+#' @keywords volume length
 #' @export
 #' @examples
 #'  \dontrun{
