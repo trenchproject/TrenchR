@@ -42,12 +42,13 @@ soil_conductivity<-function(x, lambda, g_a){
 #' @param x_m is volume fraction of minerals
 #' @param x_w is volume fraction of water
 #' @param rho_so is particle density of soil in kg/m3 (bulk density)
+#' @return soil specific heat (J kg^-1 K-1)
 #' @keywords soil temperature
 #' @export
 #' @author Joseph Grigg
 #' @examples
 #' \dontrun{
-#' soil_specific_heat(0.01, 0.6, 0.2, 1620)
+#' soil_specific_heat(x_o=0.01, x_m=0.6, x_w=0.2, rho_so=1620)
 #'}
 
 soil_specific_heat<-function(x_o, x_m, x_w, rho_so){
@@ -63,6 +64,7 @@ soil_specific_heat<-function(x_o, x_m, x_w, rho_so){
 #' @param x is a vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.
 #' @param L is the Monin-Obukhov length, a measure of the instability of heat flow (see Beckman et al. 1973)
 #' @param z0 is surface rougness in m 
+#' @return integrand for soil temperature function
 #' @export
 #' @author Joseph Grigg
 #' @examples
@@ -84,6 +86,7 @@ soil_temperature_integrand<-function(x, L, z0){ (3-1.4*exp(1.5*x))^-1*(exp(x+z0/
 #' @param z0 is surface roughness in m
 #' @param T_inst instantaneous air temperature in K
 #' @param T_s initial soil suface temperature in degrees C 
+#' @return soil temperature function
 #' @export
 #' @author Joseph Grigg
 #' @examples
@@ -119,6 +122,7 @@ soil_temperature_equation<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, 
 #' @param TimeIn is a vector of time periods for the model
 #' @param dt= 60*60 is the time interval for running the model
 #' @param shade is whether or not soil temperature should be calculated in the shade, TRUE or FALSE
+#' @return soil temperature function
 #' @export
 #' @author Joseph Grigg
 #' @examples
@@ -241,6 +245,7 @@ soil_temperature_function<- function(j,T_so, params){
 #' @param air_pressure is air pressure in kPa
 #' @param rho_so= 1620 particle density of soil
 #' @param shade is whether or not soil temperature should be calculated in the shade, TRUE or FALSE
+#' @return soil temperature (C)
 #' @export
 #' @author Joseph Grigg
 #' @examples

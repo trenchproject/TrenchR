@@ -416,7 +416,7 @@ external_resistance_to_water_vapor_transfer<-function(H, rhocp=12000){
 #' @details This function allows you to estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from Nagy et al. 1999.
 #' @param m Mass in grams.
 #' @param taxa Which taxa. Current options: reptile, bird, mammal
-#' @return metabolim (W)
+#' @return metabolism (W)
 #' @keywords metabolism
 #' @export
 #' @examples
@@ -636,7 +636,7 @@ Tb_salamander_humid<-function(r_i,r_b,D,T_a,elev,e_a, e_s,Qabs, epsilon=0.96){
 #' @param epsilon_ground emmisitivity (proportion) for more soil types (Campbell and Norman 1998), default value of 0.97
 #' @param a_longwave absorptance (proportion) of organism to longwave radiation (Bartlett and Gates 1967, Buckley 2008), default value of 0.965
 #' 
-#' @return thermal radiation absorbed
+#' @return thermal radiation absorbed (W)
 #' @keywords longwave (thermal) radiation absorbed
 #' @export
 #' @author Eric Riddell

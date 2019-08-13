@@ -17,7 +17,7 @@
 #' @export 
 #' @examples
 #' \dontrun{
-#' Tb_Fei(254, 265, 267, 15, 307,  0)
+#' Tb_Fei(TAH=293, T_s=300, T_a=295, UDT=600, GLW=30, shade=0.5)
 #' }
 #' 
 
