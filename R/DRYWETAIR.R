@@ -2,7 +2,7 @@
 
 #' DRYAIR
 #'
-#' Calculates several properties of dry air and related characteristics shownas output variables below. The program
+#' @details Calculates several properties of dry air and related characteristics shownas output variables below. The program
 #' is based on equations from List, R. J. 1971. Smithsonian Meteorological Tables. Smithsonian
 #' Institution Press. Washington, DC. WETAIR must be used in conjunction with function VAPPRS.
 #'
@@ -23,6 +23,11 @@
 #' @return bbemit black body emittance (W m-2)
 #' @return emtmax Wave length of maximum emittance (m)
 #' @export
+#' @examples
+#' \dontrun{
+#' DRYAIR(db=30, bp=100*1000, alt=0)
+#' }
+
 DRYAIR <- function(db=db, bp=0, alt=0){
   tstd=273.15
   pstd=101325.
@@ -44,6 +49,26 @@ DRYAIR <- function(db=db, bp=0, alt=0){
   emtmax=2.897E-3/(db+tstd)
   return(list(patmos=patmos, densty=densty, visdyn=visdyn, viskin=viskin, difvpr=difvpr,
               thcond=thcond, htovpr=htovpr, tcoeff=tcoeff, ggroup=ggroup, bbemit=bbemit, emtmax=emtmax))
+}
+
+#' VAPPRS
+#'
+#' Calculates saturation vapour pressure for a given air temperature.
+#' @param db Dry bulb temperature (degrees C)
+#' @return esat Saturation vapour pressure (Pa)
+#' @export
+#' @examples
+#' \dontrun{
+#' VAPPRS(db=30)
+#' }
+
+VAPPRS <- function(db=db){
+  t=db+273.16
+  loge=t
+  loge[t<=273.16]=-9.09718*(273.16/t[t<=273.16]-1.)-3.56654*log10(273.16/t[t<=273.16])+.876793*(1.-t[t<=273.16]/273.16)+log10(6.1071)
+  loge[t>273.16]=-7.90298*(373.16/t[t>273.16]-1.)+5.02808*log10(373.16/t[t>273.16])-1.3816E-07*(10.^(11.344*(1.-t[t>273.16]/373.16))-1.)+8.1328E-03*(10.^(-3.49149*(373.16/t[t>273.16]-1.))-1.)+log10(1013.246)
+  esat=(10.^loge)*100
+  return(esat)
 }
 
 #' WETAIR
@@ -78,6 +103,11 @@ DRYAIR <- function(db=db, bp=0, alt=0){
 #' @return wtrpot Water potential (Pa)
 #' @return Relative humidity (\%)
 #' @export
+#' @examples
+#' \dontrun{
+#' WETAIR(db=30, wb=28, rh=60, bp=100*1000)
+#' }
+
 WETAIR <- function(db=db, wb=db, rh=0, dp=999, bp=101325){
   
   tk = db + 273.15
@@ -109,3 +139,6 @@ WETAIR <- function(db=db, wb=db, rh=0, dp=999, bp=101325){
   }
   return(list(e=e, esat=esat, vd=vd, rw=rw, tvinc=tvinc, denair=denair, cp=cp, wtrpot=wtrpot, rh=rh))
 }
+
+
+

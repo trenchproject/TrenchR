@@ -267,5 +267,233 @@ points(seq(0.01, 0.05, 0.01), volume_from_length(seq(0.01, 0.05, 0.01),"sphere")
 ```
 
 ```{r}
+plot(seq(0.01, 0.05, 0.001), sa_from_length(l=seq(0.01, 0.05, 0.001)), type="l", xlab = "length (m)", ylab = "surface area (m^2)")
+```
+
+```{r}
+plot(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "frog"), type="l", xlab = "zenith angle (degree)", ylab = "proportion silhouette area", ylim=range(0,0.31))
+points(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "lizard", raz=0, posture="prostrate"), type="l")
+points(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "lizard", raz=0, posture="elevated"), type="l")
+points(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "grasshopper"), type="l")
+```
+
+```{r}
+plot(seq(0, 90, 10), prop_silhouette_area_shapes(shape="spheroid", theta=seq(0, 90, 10), h=0.01, d=0.001), type="l", xlab = "theta (degree)", ylab = "proportion silhouette area")
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder flat ends", theta=seq(0, 90, 10), h=0.01, d=0.001), type="l", lty="dashed")
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=seq(0, 90, 10), h=0.01, d=0.001), type="l", lty="dotted")
 
 ```
+
+#Energy balance functions
+```{r}
+Qconduction_animal(T_g= 293,T_b=303,d=10^-6,K=0.5,A=10^-3, proportion=0.2)
+```
+
+```{r}
+Qconduction_substrate(T_g= 293,T_b=303,D=0.01,K_g=0.3,A=10^-2, proportion=0.2)
+```
+
+```{r}
+Qconvection(T_a= 293,T_b= 303,H=10.45,A=0.0025, proportion=0.85)
+```
+
+```{r}
+heat_transfer_coefficient(V=0.5,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "sphere")
+heat_transfer_coefficient(V=0.5,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
+heat_transfer_coefficient(V=0.5,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "frog")
+heat_transfer_coefficient(V=0.5,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "lizard_surface")
+heat_transfer_coefficient(V=0.5,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "lizard_elevated")
+heat_transfer_coefficient(V=0.5,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "flyinginsect")
+heat_transfer_coefficient(V=0.5,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "spider")
+```
+
+```{r}
+heat_transfer_coefficient_approximation(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "sphere")
+heat_transfer_coefficient_approximation(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "frog")
+heat_transfer_coefficient_approximation(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "lizard")
+heat_transfer_coefficient_approximation(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "flyinginsect")
+heat_transfer_coefficient_approximation(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "spider")
+```
+
+```{r}
+heat_transfer_coefficient_simple(V=0.5,D=0.05)
+```
+
+```{r}
+Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=1000, S_dif=200, a_s=0.5)
+```
+
+```{r}
+Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303, T_g=293, T_a=298, enclosed=FALSE)
+```
+
+```{r}
+Qevaporation(A=0.1, T_b=293, taxa="amphibian", rho_s=1.2, rho_a=1.2, h=0.5, H=20, r_i=5000)
+Qevaporation(A=0.1, T_b=293, taxa="amphibian_wetskin", rho_s=1.2, rho_a=1.2, h=0.5, H=20, r_i=5000)
+Qevaporation(A=0.1, T_b=293, taxa="lizard")
+#NEED TO COMPARE TAXA
+```
+
+```{r}
+plot(10:30, saturation_water_vapor_pressure(T_a=10:30), type="l", xlab = "temperature (C)", ylab = "Saturation water vapor pressure (Pa)")
+```
+
+```{r}
+external_resistance_to_water_vapor_transfer(H=20)
+```
+
+```{r}
+Qmetabolism_from_mass(m=12,"reptile")
+Qmetabolism_from_mass(m=12,"bird")
+Qmetabolism_from_mass(m=12,"mammal")
+```
+
+```{r}
+Qmetabolism_from_mass_temp(m=100, T_b=303,"bird")
+Qmetabolism_from_mass_temp(m=100, T_b=303,"mammal")
+Qmetabolism_from_mass_temp(m=100, T_b=303,"reptile")
+Qmetabolism_from_mass_temp(m=100, T_b=303,"amphibian")
+Qmetabolism_from_mass_temp(m=100, T_b=303,"invertebrate")
+```
+
+```{r}
+actual_vapor_pressure(Tdewpoint=20)
+saturation_vapor_pressure(T_a=293)
+```
+
+```{r}
+boundary_layer_resistance(T_a=293, e_s=2.4, e_a=2.5, elev=500, D=0.007, u=2)
+```
+
+```{r}
+Tb_salamander_humid(r_i=4,r_b=1,D=0.007,T_a=20,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
+```
+
+```{r}
+Qthermal_radiation_absorbed(T_a=20, epsilon_ground=0.97, a_longwave=0.965)
+```
+
+```{r}
+Tsoil(Tg_max=30, Tg_min=15, hour=12, depth=5)
+```
+
+```{r}
+Nusselt_number(H_L=20, D=0.01, K=0.5)
+```
+
+```{r}
+Prandtl_number(c_p=29.3, mu=0.00001, K=0.5)
+```
+
+```{r}
+Reynolds_number(V=1, D=0.001, nu=1.2)
+```
+
+```{r}
+Grashof_number(Ta=30, Tg=35, D=0.001, nu=1.2)
+```
+
+```{r}
+Nu_from_Re(Re=5, taxa="cylinder")
+```
+
+```{r}
+Nu_from_Gr(Gr=5)
+```
+
+```{r}
+Free_or_forced_convection(Gr=100, Re=5)
+```
+
+#OperativeTemperatureFunctions
+```{r}
+Tb_CampbellNorman(T_a=303, S=823, epsilon=0.96, c_p=29.3, D=0.17, V=1)
+```
+
+```{r}
+Qnet_Gates(Qabs=500, Qemit=10, Qconv=100, Qcond=100, Qmet=10, Qevap=5)
+```
+
+```{r}
+Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_g=303, T_a=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
+```
+
+#biophysmodel_Colias
+```{r}
+Tb_butterfly(T_a=25, Tg=25, Tg_sh=20, u=0.4, H_sdir=300, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
+```
+
+#biophysmodel_Grasshopper
+```{r}
+Tb_grasshopper(T_a=25, T_g=25, u=0.4, H=400, K_t=0.7, psi=30, L=0.02, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3)
+```
+
+#biophysmodel_Sceloporus
+```{r}
+ Tb_lizard(T_a=25, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.7, elev=500, doy=200, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
+```
+
+#calculate_To
+```{r}
+Tb_Fei(254, 265, 267, 15, 307,  0)
+#KEEP AND FIX?
+```
+
+#TsoilFunctions
+```{r}
+soil_conductivity(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), lambda=c(0.10,0.40,0.11,0.01,0.2, 0.18), g_a=0.125)
+```
+
+```{r}
+soil_specific_heat(0.01, 0.6, 0.2, 1620)
+```
+
+```{r}
+soil_temperature_integrand(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), L=-10,z0=0.2)
+```
+
+```{r}
+soil_temperature_equation(L=-10, rho_a=1.177, c_a=1006, k=.41, V_inst=0.3, z_r=1.5, z0=0.02, T_inst=265, T_s=20)
+```
+
+```{r}
+require(deSolve)
+require(zoo)
+
+temp_vector= runif(96, min=-10, max=10)
+wind_speed_vector= runif(96, min=0, max=0.4)
+time_vector= rep(1:24,4)
+solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
+
+params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0=0.02, H=solrad_vector, T_a=temp_vector, u=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=FALSE)
+
+soil_temperature_function(j=1,T_so= rep(20,13), params=params)
+ 
+#RUN USING ODE SOLVER
+Tsoil_out<- ode(y = rep(20,13), func = soil_temperature, times = 1:length(solrad_vector), parms=params)
+
+```
+
+```{r}
+temp_vector= runif(96, min=-10, max=10)
+wind_speed_vector= runif(96, min=0, max=0.4)
+time_vector= rep(1:24,4)
+solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
+
+soil_temperature(z_r.intervals=12,z_r=1.5, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
+
+```
+
+#DRYWETAIR
+```{r}
+DRYAIR(db=30, bp=100*1000, alt=0)
+```
+
+```{r}
+VAPPRS(db=30)
+```
+
+```{r}
+WETAIR(db=30, wb=28, rh=60, bp=100*1000)
+```
+

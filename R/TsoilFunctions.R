@@ -133,7 +133,7 @@ soil_temperature_equation<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, 
 #' soil_temperature_function(j=1,T_so= rep(20,13), params=params)
 #' 
 #' #RUN USING ODE SOLVER
-#' Tsoil_out<- ode(y = rep(20,13), func = soil_temperature, times = 1:length(H), parms=params)
+#' Tsoil_out<- ode(y = rep(20,13), func = soil_temperature, times = 1:length(solrad_vector), parms=params)
 #'}
 
 soil_temperature_function<- function(j,T_so, params){

@@ -391,7 +391,7 @@ saturation_water_vapor_pressure<-function(T_a){
 #' 
 #' @details This function allows you to estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport (Spotila et al. 1992).
 #' @param H heat transfer (convection) coefficient (W m^-2 C^-1)
-#' @param rhocp aggregate parameter (J m^-3 C^-1) that is the product of the density of air (kg m^-3)and the specific heat of air at constant pressure (J kg^-1 C^-1). Default of 12000 J m^-3 C^-1 is commonly assumed.
+#' @param rhocp aggregate parameter (J m^-3 C^-1) that is the product of the density of air (kg m^-3) and the specific heat of air at constant pressure (J kg^-1 C^-1). Default of 12000 J m^-3 C^-1 is commonly assumed.
 #' @return external resistance to water vapor transfer (s m^-1)
 #' @keywords external resistance to water vapor transfer
 #' @export
