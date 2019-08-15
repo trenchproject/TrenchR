@@ -159,6 +159,7 @@ u.seq= lapply(z.seq, FUN=wind_speed_profile_segment_in_beta, u_r=c(0.1,0.5,1), z
 plot(u.seq, z.seq, type = "l", xlab = "Wind speed (m/s)", ylab = "z (height above ground in m)")
 points(c(0.1,0.5,1),c(0.05,0.25,0.5) )
 
+#FIX
 ```
 
 #DTR Functions
@@ -243,27 +244,30 @@ points(seq(0.1,5,0.2), sa_from_mass(seq(0.1,5,0.2),"insect"), type="l", col="pur
 ```
 
 ```{r}
-plot(seq(0.05,0.50,0.1), mass_from_length(seq(0.05,0.50,0.1),"lizard"), type="l", xlab = "length (m)", ylab = "mass (g)", ylim=c(0,50))
-points(seq(0.05,0.50,0.1), mass_from_length(seq(0.05,0.50,0.1),"salamander"), type="l", col="blue")
-points(seq(0.05,0.50,0.1), mass_from_length(seq(0.05,0.50,0.1),"frog"), type="l", col="red")
-points(seq(0.05,0.50,0.1), mass_from_length(seq(0.05,0.50,0.1),"snake"), type="l", col="green")
-points(seq(0.05,0.50,0.1), mass_from_length(seq(0.05,0.50,0.1),"turtle"), type="l", col="orange")
+plot(seq(0.05,0.25,0.01), mass_from_length(seq(0.05,0.25,0.01),"lizard"), type="l", xlab = "length (m)", ylab = "mass (g)", ylim=c(0,100))
+points(seq(0.05,0.25,0.01), mass_from_length(seq(0.05,0.25,0.01),"salamander"), type="l", col="blue")
+points(seq(0.05,0.25,0.01), mass_from_length(seq(0.05,0.25,0.01),"frog"), type="l", col="red")
+points(seq(0.05,0.25,0.01), mass_from_length(seq(0.05,0.25,0.01),"snake"), type="l", col="green")
+points(seq(0.05,0.25,0.01), mass_from_length(seq(0.05,0.25,0.01),"turtle"), type="l", col="orange")
 points(seq(0.01,0.10,0.01), mass_from_length(seq(0.01,0.10,0.01),"insect"), type="l", col="purple")
-#NEEDS CHECKING
+
+#plot(log10(seq(0.05,0.25,0.01)*1000), log10(mass_from_length(seq(0.05,0.25,0.01),"lizard")), type="l")
+
+#CHECKED
 ```
 
 ```{r}
 plot(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"lizard"), type="l", xlab = "volume (m^3)", ylab = "sa (m^2)")
 points(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"frog"), type="l")
 points(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"sphere"), type="l")
-#NEEDS CHECKING
+#CHECKED
 ```
 
 ```{r}
-plot(seq(0.01, 0.05, 0.01), volume_from_length(seq(0.01, 0.05, 0.01),"lizard"), type="l", xlab = "length (m)", ylab = "volume (m^3)")
-points(seq(0.01, 0.05, 0.01), volume_from_length(seq(0.01, 0.05, 0.01),"frog"), type="l")
-points(seq(0.01, 0.05, 0.01), volume_from_length(seq(0.01, 0.05, 0.01),"sphere"), type="l")
-#NEEDS CHECKING
+plot(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001),"lizard"), type="l", xlab = "length (m)", ylab = "volume (m^3)")
+points(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001),"frog"), type="l")
+points(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001),"sphere"), type="l")
+#CHECKED
 ```
 
 ```{r}
@@ -271,10 +275,12 @@ plot(seq(0.01, 0.05, 0.001), sa_from_length(l=seq(0.01, 0.05, 0.001)), type="l",
 ```
 
 ```{r}
-plot(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "frog"), type="l", xlab = "zenith angle (degree)", ylab = "proportion silhouette area", ylim=range(0,0.31))
-points(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "lizard", raz=0, posture="prostrate"), type="l")
-points(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "lizard", raz=0, posture="elevated"), type="l")
-points(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "grasshopper"), type="l")
+plot(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "frog"), type="l", xlab = "zenith angle (degree)", ylab = "proportion silhouette area", ylim=range(0,0.5))
+points(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "lizard", raz=0, posture="prostrate"), type="l", col="lightblue")
+points(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "lizard", raz=0, posture="elevated"), type="l", col="blue")
+points(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "grasshopper"), type="l", col="green")
+
+#CHECKED
 ```
 
 ```{r}
@@ -501,20 +507,20 @@ soil_temperature_equation(L=-10, rho_a=1.177, c_a=1006, k=.41, V_inst=0.3, z_r=1
 ```
 
 ```{r}
-require(deSolve)
-require(zoo)
-
-temp_vector= runif(96, min=-10, max=10)
-wind_speed_vector= runif(96, min=0, max=0.4)
-time_vector= rep(1:24,4)
-solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
-
-params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0=0.02, H=solrad_vector, T_a=temp_vector, u=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=FALSE)
-
-soil_temperature_function(j=1,T_so= rep(20,13), params=params)
- 
-#RUN USING ODE SOLVER
-Tsoil_out<- ode(y = rep(20,13), func = soil_temperature, times = 1:length(solrad_vector), parms=params)
+# require(deSolve)
+# require(zoo)
+# 
+# temp_vector= runif(96, min=-10, max=10)
+# wind_speed_vector= runif(96, min=0, max=0.4)
+# time_vector= rep(1:24,4)
+# solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
+# 
+# params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0=0.02, H=solrad_vector, T_a=temp_vector, u=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=FALSE)
+# 
+# soil_temperature_function(j=1,T_so= rep(20,13), params=params)
+#  
+# #RUN USING ODE SOLVER
+# Tsoil_out<- ode(y = rep(20,13), func = soil_temperature, times = 1:length(solrad_vector), parms=params)
 
 ```
 
