@@ -413,7 +413,7 @@ external_resistance_to_water_vapor_transfer<-function(H, rhocp=12000){
 #' 
 #' 
 #' 
-#' @details This function allows you to estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from Nagy et al. 1999.
+#' @details This function allows you to estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from Nagy KA. 2005. Field metabolic rate and body size. Journal of Experimental Biology 208: 1621-1625.
 #' @param m Mass in grams.
 #' @param taxa Which taxa. Current options: reptile, bird, mammal
 #' @return metabolism (W)
@@ -427,10 +427,8 @@ external_resistance_to_water_vapor_transfer<-function(H, rhocp=12000){
 
 Qmetabolism_from_mass<-function(m, taxa="reptile"){
   
-  #Nagy 2005, JEB
   #FMR in W, M is mass in grams
-  #Convert 1 kJ/day=0.0115741
-  ##TODO check conversion
+  #Convert 1 kJ/day=0.0115741 W
   
   #reptiles
   if(taxa == "reptile") Qmet = 0.196*m^0.889 * 0.0115741
@@ -441,7 +439,7 @@ Qmetabolism_from_mass<-function(m, taxa="reptile"){
   #birds
   if(taxa == "bird") Qmet = 10.5 * m^0.681 * 0.0115741
   
- ##TODO ?? Can further divide equations above using Nagy et al. 1999 ENERGETICS OF FREE-RANGING MAMMALS, REPTILES, AND BIRDS. Needed?
+ #Can further divide equations above using Nagy et al. 1999 ENERGETICS OF FREE-RANGING MAMMALS, REPTILES, AND BIRDS. 
   
   return(Qmet)
 }
@@ -451,7 +449,7 @@ Qmetabolism_from_mass<-function(m, taxa="reptile"){
 #' 
 #' 
 #' 
-#' @details This function allows you to estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). From Gilooly et al. 2001.
+#' @details This function allows you to estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). Source:  Gillooly JF et al. 2001. Effects of size and temperature on metabolic rate. Science 293: 2248-2251. 
 #' @param m Mass in grams.
 #' @param T_b body temperature in K
 #' @param taxa Which taxa. options: bird, mammal, reptile, amphibian, invertebrate.
@@ -466,9 +464,9 @@ Qmetabolism_from_mass<-function(m, taxa="reptile"){
 
 Qmetabolism_from_mass_temp<-function(m,T_b, taxa){
   
-  #From  Gilloolly et al. 2001 
+  #Source:  Gillooly JF et al. 2001. Effects of size and temperature on metabolic rate. Science 293: 2248-2251. 
   if(taxa=="bird" | taxa=="mammal") Qmet= exp(-9100/T_b+29.49)*m^0.75/60
-  if(taxa=="reptile") Qmet= exp(-8700/T_b+26.85)*m^0.75/60
+  if(taxa=="reptile") Qmet= exp(-8780/T_b+26.85)*m^0.75/60
   if(taxa=="amphibian") Qmet= exp(-5760/T_b+16.68)*m^0.75/60
   if(taxa=="invertebrate") Qmet= exp(-9150/T_b+27.62)*m^0.75/60
   return(Qmet)
@@ -499,7 +497,7 @@ actual_vapor_pressure<-function(Tdewpoint){
 #' Calculate saturation vapor pressure
 #'
 #' 
-#' @details Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation (Stull 2000)
+#' @details Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation (Stull 2000). Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
 #' @param T_a air temperature (K)
 #' @return saturation vapor pressure, e_s (kPa)
 #' @keywords saturation vapor pressure
@@ -525,7 +523,7 @@ saturation_vapor_pressure<-function(T_a){
 
 #' Estimate the boundary layer resistance
 #' 
-#' @details This function allows you to estimate boundary layer resistance under free convection. Based on the function in Riddell et al. 2017 
+#' @details This function allows you to estimate boundary layer resistance under free convection. Based on the function in Riddell et al. 2017. Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23. 
 #' @param T_a air temperature (K)
 #' @param e_s saturation vapor pressure (kPa)
 #' @param e_a actual vapor pressure (kPa)
@@ -586,7 +584,7 @@ boundary_layer_resistance<-function(T_a, e_s, e_a, elev, D, u=NA){
 #' Calculate humid operative temperature
 #'
 #' 
-#' @details This function allows you to calculate humid operative temperature (adaptation of Campbell and Norman 1998).
+#' @details This function allows you to calculate humid operative temperature (adaptation of Campbell and Norman 1998). Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
 #' @param r_i internal (skin) resistance (s cm^-1)
 #' @param r_b boundary layer resistance (s cm^-1)
 #' @param D body diameter (m), ##diameter = 0.0016*log(mass) + 0.0061 for mass(g) #empirical formula for diameter, Riddell et al. 2017
@@ -667,7 +665,7 @@ Qthermal_radiation_absorbed<-function(T_a, epsilon_ground=0.97, a_longwave=0.965
 #' Statistical approximation of soil temperature
 #'
 #' 
-#' @details This function allows you to estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from Campbell and Norman 1998).
+#' @details This function allows you to estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from Campbell and Norman 1998). Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
 #' @param Tg_max daily maximum soil surface temperature (C)
 #' @param Tg_min daily minimum soil surface temperature (C)
 #' @param depth depth (cm) ???
@@ -709,7 +707,7 @@ Tsoil<-function(Tg_max, Tg_min, hour, depth){
 
 Nusselt_number<-function(H_L, D, K){
   
-  Nu = H_L * D / K
+  Nu = H_L * D / K #eq 9.24
   
   return(Nu)
 }
@@ -731,7 +729,7 @@ Nusselt_number<-function(H_L, D, K){
 
 Prandtl_number<-function(c_p, mu, K){
   
-  Pr= c_p *mu /K
+  Pr= c_p *mu /K #eq 9.26
   return(Pr)
 }
 
@@ -740,7 +738,7 @@ Prandtl_number<-function(c_p, mu, K){
 #' @details This function allows you to estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces (Gates 1980 Biophysical Ecology).
 #' @param D is characteristic dimension (e.g., body diameter) (m)
 #' @param V is wind speed in m/s
-#' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m2 s-1), can calculate from DRYAIR or WETAIR
+#' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m2 s^(-1)), can calculate from DRYAIR or WETAIR
 #' 
 #' @return Reynolds number
 #' @keywords Reynolds number
@@ -752,7 +750,7 @@ Prandtl_number<-function(c_p, mu, K){
 #' 
 
 Reynolds_number<-function(V, D, nu){
-   Re= V*D / nu
+   Re= V*D / nu #eq 9.25
   return(Re)
 }
 
@@ -783,11 +781,10 @@ Grashof_number<-function(Ta, Tg, D, nu){
 }
 
 #' Estimate the Nusselt number from the Reynolds number (based on Mitchell 1976)
-#' (Uses Table 1 which is Convective Heat Trasfer Relations to Animal Shapes)
 #' 
-#' @details This function allows you to estimate the Nusselt number from the Reynolds number for various taxa (based on Mitchell 1976).  
+#' @details This function allows you to estimate the Nusselt number from the Reynolds number for various taxa.  Source: Mitchell JW. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16: 561-569. See Table 1. Convective Heat Trasfer Relations for Animal Shapes.  
 #' @param Re is the Reynolds Number (dimensionless)
-#' @param taxa Which class of organism, current choices: sphere,cylinder,frog,lizard_traverse_to_air_flow, lizard_parallel_to_air_flow, lizard_surface,lizard_elevated,flyinginsect,spider
+#' @param taxa Which class of organism, current choices: sphere, cylinder, frog, lizard_traverse_to_air_flow, lizard_parallel_to_air_flow, lizard_surface, lizard_elevated, flyinginsect, spider
 #' @return Nusselt number (dimensionless)
 #' @keywords Nusselt number
 #' @export
@@ -849,7 +846,7 @@ Nu_from_Gr<-function(Gr){
 
 Free_or_forced_convection<-function(Gr, Re){
   
-  conv= ifelse(Gr<=(16*Re^2), "forced", "free")
+  conv= ifelse(Gr<=(16*Re^2), "forced", "free") #P284
   
   return(conv)
 }

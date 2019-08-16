@@ -87,7 +87,7 @@ mass_from_length<-function(l, taxa){
 
 #' Calculate surface area from volume. 
 #' 
-#' @details This function allows you to estimate surface area (m^2) from volume (m^3) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976). Source: Mitchell JW. 1976. Heat transfer from spheres and other animal forms. Biophysical Jounral 16: 561-569.
+#' @details This function allows you to estimate surface area (m^2) from volume (m^3) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976). Source: Mitchell JW. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16: 561-569.
 #' @param V volume (m^3)
 #' @param taxa Which class of organism, current choices: lizard, frog, sphere.
 #' @return surface area (m^2)
@@ -119,7 +119,7 @@ sa_from_volume<-function(V, taxa){
 
 #' Calculate volume from length (Based on Mitchell 1976) 
 #' 
-#' @details This function allows you to estimate volume (m^3) from length (m) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976). Source: Mitchell JW. 1976. Heat transfer from spheres and other animal forms. Biophysical Jounral 16: 561-569.
+#' @details This function allows you to estimate volume (m^3) from length (m) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976). Source: Mitchell JW. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16: 561-569.
 #' @param l Length in m.
 #' @param taxa Which class of organism, current choices: lizard,frog, or sphere
 #' @return volume (m^3)
@@ -138,7 +138,7 @@ volume_from_length<-function(l, taxa){
   if(taxa == "lizard") Kl = 3.3
   # Case when taxa is Frog (Tracy 1972)
   if(taxa == "frog") Kl = 2.27
-  # Case when taxa is approximated as Sphere(Mitchell 1976)
+  # Case when taxa is approximated as Sphere (Mitchell 1976)
   if(taxa == "sphere") Kl = 1.24
   
   # Mitchell 1976
@@ -203,7 +203,6 @@ prop_silhouette_area<-function(z, taxa, raz=0, posture="prostrate"){
   #Source: Tracy CR. 1976. A model of the dynamic exchanges of water and energy between a terrestrial amphibian and its environment. Ecological Monographs 46: 293-326.
   if(taxa=="frog") psa=(1.38171*10^(-6)*z^4-1.93335*10^(-4)*z^3+4.75761*10^(-3)*z^2-0.167912*z+45.8228)/100
   
-  
   #lizards
   #Source: Muth A. 1977. 
   if(taxa=="lizard"){
@@ -256,7 +255,7 @@ prop_silhouette_area_shapes<-function(shape, theta, h, d){
   #prolate spheroid
   if(shape=="spheroid") {
    x= d/h
-   psa= sqrt(1+(x^2-1)*cos(theta_r)^2)/(2*x+ (2*sin(sqrt(1-x^2))^(-1)/sqrt(1-x^2)) ) #sin not converted to radians, check
+   psa= sqrt(1+(x^2-1)*cos(theta_r)^2)/(2*x+ (2*asin(sqrt(1-x^2))/sqrt(1-x^2)) ) #sin not converted to radians, check
   }
   
   if(shape=="cylinder flat ends") {
