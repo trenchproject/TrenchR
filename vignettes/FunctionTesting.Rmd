@@ -143,7 +143,7 @@ points(c(25,20),c(0,2) )
 ```{r}
 z.seq <- seq(0, 2, by = 0.1)
 
-t.seq= lapply(z.seq, FUN=air_temp_profile_segment_in_beta, T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), T_s=27)
+t.seq= lapply(z.seq, FUN=air_temp_profile_segment, T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), T_s=27)
 
 #t.seq <- air_temp_profile_segment(T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), z=z.seq[1], T_s=27)
 plot(t.seq, z.seq, type = "l", xlab = "Temperature (C)", ylab = "z (height above ground in m)")
@@ -184,7 +184,7 @@ degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.sine")
 degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="double.sine")
 degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.triangulation")
 degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="double.triangulation")
-#CHECK
+#CHECKED, Change to add next day temperatures for double methods
 ```
 
 #Radiation functions
@@ -219,10 +219,10 @@ plot(seq(1,365,31), r.seq, type = "l", xlab = "doy", ylab = "radiation (W/m2)")
 
 ```{r}
 r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Erbs", lat=40, sol.elev=60)
-plot(seq(0,1,0.1), r.seq, type = "l", xlab = "kt", ylab = "radiation (W/m2)")
+plot(seq(0,1,0.1), r.seq, type = "l", xlab = "kt", ylab = "radiation (W/m2)", ylim=c(0,1))
 
-#r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Liu_Jordan", lat=40, sol.elev=60)
-#points(seq(0,1,0.1), r.seq, type = "l")
+r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Liu_Jordan", lat=40, sol.elev=60)
+points(seq(0,1,0.1), r.seq, type = "l")
 r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Orgill_Hollands", lat=40, sol.elev=60)
 points(seq(0,1,0.1), r.seq, type = "l")
 r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Olyphant", lat=40, sol.elev=60)
@@ -234,6 +234,7 @@ points(seq(0,1,0.1), r.seq, type = "l")
 r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Lam_Li", lat=40, sol.elev=60)
 points(seq(0,1,0.1), r.seq, type = "l")
 
+#CHECKED
 ```
 
 #Allometric functions
@@ -258,8 +259,8 @@ points(seq(0.01,0.10,0.01), mass_from_length(seq(0.01,0.10,0.01),"insect"), type
 
 ```{r}
 plot(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"lizard"), type="l", xlab = "volume (m^3)", ylab = "sa (m^2)")
-points(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"frog"), type="l")
-points(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"sphere"), type="l")
+points(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"frog"), type="l", col="red")
+points(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"sphere"), type="l", col="green")
 #CHECKED
 ```
 
@@ -284,10 +285,22 @@ points(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "grasshopper
 ```
 
 ```{r}
-plot(seq(0, 90, 10), prop_silhouette_area_shapes(shape="spheroid", theta=seq(0, 90, 10), h=0.01, d=0.001), type="l", xlab = "theta (degree)", ylab = "proportion silhouette area")
-points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder flat ends", theta=seq(0, 90, 10), h=0.01, d=0.001), type="l", lty="dashed")
-points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=seq(0, 90, 10), h=0.01, d=0.001), type="l", lty="dotted")
+plot(seq(0, 90, 10), prop_silhouette_area_shapes(shape="spheroid", theta=seq(0, 90, 10), h=0.4, d=0.39), type="l", xlab = "theta (degree)", ylab = "proportion silhouette area", ylim=c(0,0.35), lty="dashed")
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="spheroid", theta=seq(0, 90, 10), h=0.4, d=0.3), type="l")
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="spheroid", theta=seq(0, 90, 10), h=0.4, d=0.2), type="l")
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="spheroid", theta=seq(0, 90, 10), h=0.4, d=0.1), type="l")
 
+plot(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder flat ends", theta=seq(0, 90, 10), h=0.4, d=0.4), type="l", lty="dashed", xlab = "theta (degree)", ylab = "proportion silhouette area", ylim=c(0,0.35))
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder flat ends", theta=seq(0, 90, 10), h=0.4, d=0.2), type="l")
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder flat ends", theta=seq(0, 90, 10), h=0.4, d=0.1), type="l")
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder flat ends", theta=seq(0, 90, 10), h=0.4, d=0.05), type="l")
+
+plot(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=seq(0, 90, 10), h=0.4, d=0.4), type="l", lty="dotted", xlab = "theta (degree)", ylab = "proportion silhouette area", ylim=c(0,0.35))
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=seq(0, 90, 10), h=0.4, d=0.2), type="l")
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=seq(0, 90, 10), h=0.4, d=0.1), type="l")
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=seq(0, 90, 10), h=0.4, d=0.05), type="l")
+
+#CHECKED AGAINST CAMPBELL AND NORMAN Fig 11.6
 ```
 
 #Energy balance functions
@@ -298,10 +311,12 @@ plot(293:313, Qconduction_animal(T_g= 293:313,T_b=303,d=10^-6,K=0.5,A=10^-3, pro
 ```{r}
 plot(293:313, Qconduction_substrate(T_g= 293:313,T_b=303,D=0.01,K_g=0.3,A=10^-2, proportion=0.2), type="l", xlab = "ground temperature (C)", ylab = "conductance (W)")
 #NEEDS CHECKING
+
 ```
 
 ```{r}
 plot(293:313, Qconvection(T_a= 303,T_b= 293:313,H=10.45,A=0.0025, proportion=0.85), type="l", xlab = "ground temperature (C)", ylab = "convection (W)")
+
 ```
 
 ```{r}
@@ -312,6 +327,7 @@ points(seq(0,3,0.25), heat_transfer_coefficient(V=seq(0,3,0.25),D=0.05,K= 25.7 *
 points(seq(0,3,0.25), heat_transfer_coefficient(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "lizard_elevated"), type="l")
 points(seq(0,3,0.25), heat_transfer_coefficient(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "flyinginsect"), type="l")
 points(seq(0,3,0.25), heat_transfer_coefficient(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "spider"), type="l")
+
 ```
 
 ```{r}
@@ -320,10 +336,12 @@ points(seq(0,3,0.25), heat_transfer_coefficient_approximation(V=seq(0,3,0.25),D=
 points(seq(0,3,0.25), heat_transfer_coefficient_approximation(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "lizard"), type="l")
 points(seq(0,3,0.25), heat_transfer_coefficient_approximation(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "flyinginsect"), type="l")
 points(seq(0,3,0.25), heat_transfer_coefficient_approximation(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "spider"), type="l")
+
 ```
 
 ```{r}
 plot(seq(0,3,0.25), heat_transfer_coefficient_simple(V=seq(0,3,0.25),D=0.05), type="l", xlab = "Air velocity (m/s)", ylab = "heat transfer coefficient, H_L (W m^-2 K^-1)")
+
 ```
 
 ```{r}
@@ -331,6 +349,7 @@ plot(seq(100,1000,100), Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4
 points(seq(100,1000,100), Qradiation_absorbed(a=0.9, A=1, psa_dir=0.2, psa_ref=0.4, S_dir=seq(100,1000,100), S_dif=200, a_s=0.5), type="l")
 points(seq(100,1000,100), Qradiation_absorbed(a=0.45, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=seq(100,1000,100), S_dif=200, a_s=0.5), type="l")
 points(seq(100,1000,100), Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=seq(100,1000,100), S_dif=200, a_s=0.2), type="l")
+
 ```
 
 ```{r}
@@ -339,6 +358,7 @@ points(293:313, Qemitted_thermal_radiation(epsilon=0.96, A=0.5, psa_dir=0.4, psa
 points(293:313, Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.2, psa_ref=0.8, T_b=293:313, T_g=293, T_a=298, enclosed=FALSE), type="l")
 points(293:313, Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=293:313, T_g=283, T_a=298, enclosed=FALSE), type="l")
 points(293:313, Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=293:313, T_g=283, T_a=298, enclosed=TRUE), type="l", lty="dotted")
+
 ```
 
 ```{r}
@@ -350,10 +370,12 @@ Qevap= unlist(lapply(293:313, FUN=Qevaporation, A=0.1, taxa="lizard"))
 points(293:313, Qevap, type="l")
 
 #NEEDS CHECKING
+
 ```
 
 ```{r}
 plot(10:30, saturation_water_vapor_pressure(T_a=10:30), type="l", xlab = "temperature (C)", ylab = "Saturation water vapor pressure (Pa)")
+
 ```
 
 ```{r}
@@ -361,35 +383,44 @@ plot(10:30, external_resistance_to_water_vapor_transfer(H=10:30), type="l", xlab
 
 ```
 
+
 ```{r}
-plot(1:20, Qmetabolism_from_mass(m=1:20,"bird"), type="l", xlab = "mass(g)", ylab = "metabolism (W)", ylim=c(0,1))
-points(1:20, Qmetabolism_from_mass(m=1:20,"mammal"), type="l", lty="dashed")
-points(1:20, Qmetabolism_from_mass(m=1:20,"reptile"), type="l", lty="dotted")
+plot(1:100, Qmetabolism_from_mass(m=1:100,"bird"), type="l", xlab = "mass(g)", ylab = "metabolism (W)", log='xy')
+points(1:100, Qmetabolism_from_mass(m=1:100,"mammal"), type="l", lty="dashed")
+points(1:100, Qmetabolism_from_mass(m=1:100,"reptile"), type="l", lty="dotted")
+
+#Plot in Kj/day as in paper
+plot(1:100, Qmetabolism_from_mass(m=1:100,"bird")*86.4, type="l", xlab = "mass(g)", ylab = "metabolism (kJ/day)", log='xy')
+points(1:100, Qmetabolism_from_mass(m=1:100,"mammal")*86.4, type="l", lty="dashed")
+points(1:100, Qmetabolism_from_mass(m=1:100,"reptile")*86.4, type="l", lty="dotted")
+
+#CHECKED
 ```
 
 ```{r}
-plot(1:20, Qmetabolism_from_mass_temp(m=1:20, T_b=303,"bird"), type="l", xlab = "mass (g)", ylab = "metabolism (W)", ylim=c(0,0.1))
-points(1:20, Qmetabolism_from_mass_temp(m=1:20, T_b=303,"mammal"), type="l")
-points(1:20, Qmetabolism_from_mass_temp(m=1:20, T_b=303,"reptile"), type="l")
-points(1:20, Qmetabolism_from_mass_temp(m=1:20, T_b=303,"amphibian"), type="l")
-points(1:20, Qmetabolism_from_mass_temp(m=1:20, T_b=303,"invertebrate"), type="l")
+plot(1:100, Qmetabolism_from_mass_temp(m=1:100, T_b=303,"bird"), type="l", xlab = "mass (g)", ylab = "metabolism (W)", ylim=c(0,0.1))
+points(1:100, Qmetabolism_from_mass_temp(m=1:100, T_b=303,"mammal"), type="l")
+points(1:100, Qmetabolism_from_mass_temp(m=1:100, T_b=303,"reptile"), type="l")
+points(1:100, Qmetabolism_from_mass_temp(m=1:100, T_b=303,"amphibian"), type="l")
+points(1:100, Qmetabolism_from_mass_temp(m=1:100, T_b=303,"invertebrate"), type="l")
 
-plot(293:313, Qmetabolism_from_mass_temp(m=5, T_b=293:313,"bird"), type="l", xlab = "mass (g)", ylab = "metabolism (W)", ylim=c(0,0.1))
+plot(293:313, Qmetabolism_from_mass_temp(m=5, T_b=293:313,"bird"), type="l", xlab = "temperature (K)", ylab = "metabolism (W)", ylim=c(0,0.1))
 points(293:313, Qmetabolism_from_mass_temp(m=5, T_b=293:313,"mammal"), type="l")
 points(293:313, Qmetabolism_from_mass_temp(m=5, T_b=293:313,"reptile"), type="l")
 points(293:313, Qmetabolism_from_mass_temp(m=5, T_b=293:313,"amphibian"), type="l")
 points(293:313, Qmetabolism_from_mass_temp(m=5, T_b=293:313,"invertebrate"), type="l")
 
-#CHECK SCALE
+#Plot as in Gillooly et al. Fig 1. 
+B= Qmetabolism_from_mass_temp(m=5, T_b=263:333,"bird")
+plot(1000/(263:333), log(B/5^0.75*60), type="l", xlab = "temperature (K)", ylab = "metabolism (W)")
+
+#CHECKED
 
 ```
 
 ```{r}
-plot(20:40, actual_vapor_pressure(Tdewpoint=20:40), type="l", xlab = "dewpoint temperature (C)", ylab = "actual vapor pressure (kPa)")
-```
-
-```{r}
-plot(293:313, saturation_vapor_pressure(T_a=293:313), type="l", xlab = "air temperature (K)", ylab = "saturation vapor pressure (kPa)")
+plot(0:40, actual_vapor_pressure(Tdewpoint=0:40), type="l", xlab = "dewpoint temperature (C)", ylab = "vapor pressure (kPa)")
+points(0:40, saturation_vapor_pressure(T_a=273:(40+273)), type="l", lty="dashed")
 ```
 
 ```{r}
@@ -397,6 +428,7 @@ blr.seq= lapply(293:313, FUN=boundary_layer_resistance, e_s=2.4, e_a=2.5, elev=5
 plot(293:313, blr.seq, type = "l", xlab = "air temperature (K)", ylab = "boundary layer resistance (s cm^-1)")
 
 ```
+
 
 ```{r}
 t.seq= lapply(20:40, FUN=Tb_salamander_humid, r_i=4,r_b=1,D=0.007,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
@@ -411,38 +443,60 @@ plot(20:40, Qthermal_radiation_absorbed(T_a=20:40, epsilon_ground=0.97, a_longwa
 ```
 
 ```{r}
-plot(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=0), type="l", xlab = "hour", ylab = "soil temperature (C)")
+plot(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=0), type="l", xlab = "hour", ylab = "soil temperature (C)", lty="dashed")
 points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=5), type="l")
 points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=10), type="l")
-points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=20), type="l")
+points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=20), type="l", lty="dotted")
+#CHECKED
+
 ```
 
 ```{r}
-Nusselt_number(H_L=20, D=0.01, K=0.5)
+plot(1:30, Nusselt_number(H_L=1:30, D=0.01, K=0.5), type="l", xlab = "heat transfer coefficient (W m^-2 K^-1)", ylab = "Nusselt number")
+
+#CHECKED
 ```
 
 ```{r}
-Prandtl_number(c_p=29.3, mu=0.00001, K=0.5)
+plot(1:30, Prandtl_number(c_p=1:30, mu=0.00001, K=0.5), type="l", xlab = "specific heat at constant pressure (J mol^{-1} K^{-1})", ylab = "Prandtl number")
+
+#CHECKED
 ```
 
 ```{r}
-Reynolds_number(V=1, D=0.001, nu=1.2)
+plot(seq(0,5,0.2), Reynolds_number(V=seq(0,5,0.2), D=0.001, nu=1.2), type="l", xlab = "wind speed (m/s)", ylab = "Reynolds number")
+
+#CHECKED
 ```
 
 ```{r}
-Grashof_number(Ta=30, Tg=35, D=0.001, nu=1.2)
+plot(seq(0,0.01,0.001), Grashof_number(Ta=30, Tg=35, D=seq(0,0.01,0.001), nu=1.2), type="l", xlab = "characteristic dimension (m)", ylab = "Grashof number")
+
 ```
 
 ```{r}
-Nu_from_Re(Re=5, taxa="cylinder")
+plot(1:10, Nu_from_Re(Re=1:10, taxa="sphere"), type="l", xlab = "Re", ylab = "Nu", ylim=c(0,4))
+points(1:10, Nu_from_Re(Re=1:10, taxa="cylinder"), type="l")
+points(1:10, Nu_from_Re(Re=1:10, taxa="frog"), type="l")
+points(1:10, Nu_from_Re(Re=1:10, taxa="lizard_traverse_to_air_flow"), type="l")
+points(1:10, Nu_from_Re(Re=1:10, taxa="lizard_parallel_to_air_flow"), type="l")
+points(1:10, Nu_from_Re(Re=1:10, taxa="lizard_surface"), type="l")
+points(1:10, Nu_from_Re(Re=1:10, taxa="lizard_elevated"), type="l")
+points(1:10, Nu_from_Re(Re=1:10, taxa="flyinginsect"), type="l")
+points(1:10, Nu_from_Re(Re=1:10, taxa="spider"), type="l")
+
+#CHECKED
 ```
 
 ```{r}
 Nu_from_Gr(Gr=5)
+
 ```
 
 ```{r}
 Free_or_forced_convection(Gr=100, Re=5)
+
+#CHECKED
 ```
 
 #OperativeTemperatureFunctions

@@ -79,7 +79,8 @@ degree_days=function(T_min,T_max,LDT=NA,UDT=NA, method="single.sine"){
     } else if (T_min < LDT && T_max <= LDT) { # entirely below both thresholds
       dd = 0
     }
-  } #end double sine method
+  dd= dd*2
+    } #end double sine method
   
   
 
@@ -121,11 +122,9 @@ degree_days=function(T_min,T_max,LDT=NA,UDT=NA, method="single.sine"){
     } else if (T_min < LDT && T_max <= LDT) { # entirely below both thresholds
       dd = 0
     }
-    
+   dd= dd*2 
     
   } #end double triangulation method
-  
-
   
   return(round(dd,2))
 }

@@ -1,14 +1,10 @@
 #' Calculate conductance assuming animal thermal conductivity is rate limiting
 #' 
-#' 
-#' 
-#' 
-#' 
-#' @details This function allows you to calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: Spotila et al. 1992. Biophysicas of Heat and Mass Transfer.
+#' @details This function allows you to calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer.
 #' @param T_g Ground (Surface) Temperature in Kelvin.
 #' @param T_b Body Temperature in Kelvin.
 #' @param d Mean thickness of the animal skin (surface) in (m), assumes well mixed interior
-#' @param K Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle ( Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step. 
+#' @param K Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step. 
 #' @param A Surface area  in m^2
 #' @param proportion In contact to the surface
 #' @return conductance (W)
@@ -28,21 +24,17 @@ Qconduction_animal<-function(T_g,T_b,d,K=0.5, A,proportion){
   # Conduction
   # Calculating the heat loss (Difference between animal temperature and its environment)
   # m^2 * W K^-1 m^-1 * K / m
-  Qcond = A_contact*K*(T_g - T_b)/(d)
+  Qcond = A_contact*K*(T_b - T_g)/(d)
 
   return(Qcond)
 }
 
 #' Calculate conductance assuming substrate thermal conductivity is rate limiting
 #' 
-#' 
-#' 
-#' 
-#' 
 #' @details This function allows you to calculate conductance (W) of an ectothermic animal to its substate.
 #'          Method assumes the major resistance to conduction is the substrate and that the interior of the 
 #'          animal is equal in temperature to its surface (thermally well mixed). 
-#'          Reference: Spotila et al. 1992. Biophysicas of Heat and Mass Transfer.
+#'          Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer.
 #' @param T_g Surface Temperature in Kelvin.
 #' @param T_b Body Temperature in Kelvin.
 #' @param D Characteristic dimension of the animal in meters
@@ -75,10 +67,6 @@ Qconduction_substrate<-function(T_g,T_b,D,K_g=0.5, A,proportion){
 
 
 #' Calculate convection
-#' 
-#' 
-#' 
-#' 
 #' 
 #' @details This function allows you to calculate convection as in Mitchell (1976). Includes an enhancement factor associated with outdoor environments.
 #' @param T_a Air Temperature in Kelvin.
