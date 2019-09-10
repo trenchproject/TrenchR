@@ -1,6 +1,4 @@
 #' Predicts body temperature (operative environmental temperature) of a butterfly in degrees C.
-#' 
-#'  
 #' @details Predicts body temperature (operative environmental temperature) of a butterfly in degrees C.
 #' @description Predicts body temperatures (operative environmental temperatures) of a butterfly in degrees C. Based on Kingsolver (1983, Thermoregulation and flight in Colias butterflies: elevational patterns and mechanistic limitations. Ecology 64: 534–545). Assumes butterfly basks with closed wings perpendicular to solar beam.
 #' 

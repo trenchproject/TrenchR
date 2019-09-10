@@ -4,7 +4,7 @@
 #' 
 #' @details This function allows you to estimate surface area (m^2) from mass (g) for a variety of taxa
 #' @param m Mass in g
-#' @param taxa Which class of organism, current choices: lizard, frog, insect
+#' @param taxa Which class of organism, current choices: lizard, salamander, frog, insect
 #' @return sa (m^2)
 #' @keywords surface area
 #' @export
@@ -19,11 +19,14 @@ sa_from_mass<-function(m, taxa){
   
   #lizard, O'Connor 1999 in Fei et al 2011
   #initial mass in kg
-  if(taxa=="lizard") sa= 0.0314*pi*(m/1000)^(2./3.)
+  if(taxa=="lizard") sa= 0.0314*pi*(m/1000)^(2/3)
   
   #Lizard,  Roughgarden 1981 from Norris (1965) and Porter and James (1979)
   #initial sa in mm^2
   #if(taxa=="lizard") sa=0.121*mass^0.688*(0.001)^2   
+  
+  #salamander, 
+  if(taxa=="salamander") sa= 8.42*m^0.694/(100*100) #convert cm^2 to m^2, Whitford and Hutchinson 1967 in Riddell et al 2017
   
   #Frog, McClanahan and Baldwin 1969
   #initial sa in cm^2
