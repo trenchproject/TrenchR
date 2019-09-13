@@ -1,6 +1,5 @@
 #' Predicts body temperatures (operative environmental temperature) of a lizard in degrees C.
 #' 
-#' 
 #' @details Predicts body temperatures (operative environmental temperature) of a lizard in degrees C.
 #' @description Predicts body temperature (operative environmental temperature) of a lizard in degrees C. 
 #' Based on Campbell and Norman (1998, An introduction to environmental biophysics). 

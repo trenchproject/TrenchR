@@ -38,13 +38,12 @@ Tb_CampbellNorman=function(T_a, S, epsilon=0.96, c_p=29.3, D, V){
 
 #' Estimates net energy exchange between an animal and the environment in W.
 #' 
-#' 
 #' @details Estimates net energy exchange between an animal and the environment in W. Follows Gates (1980, Biophysical ecology) and others.
 #' 
 #' @param Qabs Solar and thermal radiation absorbed (W)
 #' @param Qemit Thermal radiation emitted (W)
-#' @param Qconv Energy exchange due to convection; Energy exchange between an animal and the air (W)
-#' @param Qcond Energy exchange due to conduction; Energy exchange between an animal and the surface (W)
+#' @param Qconv Energy exchange due to convection; Energy exchange from an animal to its surrounding environment (air or water) (W)
+#' @param Qcond Energy exchange due to conduction; Energy exchange from animal to a surface if its in contact  (W)
 #' @param Qmet Energy emitted due to metabolism (W)
 #' @param Qevap Energy emitted due to evaporative water loss (W)
 #' @return net energy exchange (W)
@@ -57,7 +56,7 @@ Tb_CampbellNorman=function(T_a, S, epsilon=0.96, c_p=29.3, D, V){
 #' 
 Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
   
-  Qnet= Qabs -Qemit +Qconv +Qcond +Qmet -Qevap
+  Qnet= Qabs -Qemit -Qconv -Qcond -Qmet -Qevap
  
   return(Qnet) 
 }
@@ -71,21 +70,21 @@ Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #' @param l characteristic dimension for conduction (m)
 #' @param psa_dir proportion surface area exposed to sky (or enclosure)
 #' @param psa_ref proportion surface area exposed to ground
-#' @param psa_air of surface area exposed to air
-#' @param psa_g of surface in contact with substrate
-#' @param T_g ground surface temperatue in K
+#' @param psa_air proportion surface area exposed to air
+#' @param psa_g proportion surface area in contact with substrate
+#' @param T_g ground surface temperature in K
 #' @param T_a ambient air temperature in K
 #' @param Qabs Solar and thermal radiation absorbed (W)
 #' @param epsilon longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
 #' @param H_L Convective heat transfer coefficient (W m^-2 K^-1)
-#' @param ef is the enhancement factor, used to adjuct h_L to field condictions (using h_L approximation from Mitchell 1976).  Approximated as 1.3 by default, but see Mitchell 1976 for relationship.
+#' @param ef is the enhancement factor, used to adjust H_L to field condictions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.
 #' @param K Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle ( Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step. 
 #' @return operative environmental temperature (K)
 #' @keywords operative environmental temperature
 #' @export
 #' @examples 
 #' \dontrun{
-#' Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_g=303, T_a=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
+#' Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_g=303, T_a=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.23, K=0.5)
 #'}
 #' 
 Tb_Gates=function(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilon, H_L,ef=1.3, K){
@@ -114,12 +113,11 @@ Tb_Gates=function(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilo
     #Thermal radiaton emitted
     Qemit= epsilon*sigma*(A_s*(Tb^4 - Tsky^4)+A_r*(Tb^4 - T_g^4))
     #Convection
-    Qconv= ef*H_L*A_air*(T_a-Tb)
+    Qconv= ef*H_L*A_air*(Tb-T_a)
     #Conduction
-    Qcond= A_contact*K*(T_g-Tb)/D
+    Qcond= A_contact*K*(Tb-T_g)/D
 
-    
-    return(Qabs -Qemit +Qconv  +Qcond)
+    return(Qabs -Qemit -Qconv -Qcond)
   }
   
 

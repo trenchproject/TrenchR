@@ -5,10 +5,10 @@
 #' lizards as estimated from the thermal environment,” J. Therm. 
 #' Biol., vol. 37, no. 1, pp. 56–64, 2012.
 #' TAH, T_s, T_a, UDT, GLW, time_step, shade
-#' @details Calculate Operative Temperature of Lizard.
-#' @param TAH Temperature in canopy.
-#' @param T_s Surface Temperature.
-#' @param T_a Air Temperature.
+#' @details Predicts body temperature (operative environmental temperature) of a lizard in K.
+#' @param TAH Temperature in canopy (K).
+#' @param T_s Surface Temperature (K).
+#' @param T_a Air Temperature (K).
 #' @param UDT upper developmental threshold.
 #' @param GLW Downward flux of near-infrared radiation
 #' @param shade type of method being used
@@ -56,7 +56,6 @@ Tb_Fei <- function(TAH, T_s, T_a, UDT, GLW, shade){
   #fix - for solar not calculated right
   dQ_solar = (1-shade)*alpha_L*A_p*Solar
   
-  
   #set projcted lizard area for radiation from the ground
   A_down=0.0*A_L # zero becuase the lizard in lying on the ground, would be 0.4*A_L if standing
   
@@ -87,6 +86,5 @@ Tb_Fei <- function(TAH, T_s, T_a, UDT, GLW, shade){
     
   }
   
-  To = To - 273
   To
 }

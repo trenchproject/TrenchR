@@ -24,8 +24,11 @@ partition_solar_radiation=function(method, kt, lat=NA, sol.elev=NA){
   #kd- diffuse fraction
   
   #6.1 Liu and Jordan 
-  if(method=="Liu_Jordan") kd= 0.384 -0.416*kt
-  
+  if(method=="Liu_Jordan") {
+    kd= (0.271 -0.294*kt)/kt #kd= (0.384 -0.416*kt)/kt
+    if(kd>1)kd=1
+    }
+    
   #6.2 Orgill and Hollands
   if(method=="Orgill_Hollands"){
     if(kt<0.35) kd= 1-0.249*kt
