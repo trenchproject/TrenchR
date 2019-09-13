@@ -133,16 +133,17 @@ diurnal_temp_variation_sinesqrt=function(t, tr, ts, T_max, T_min, T_minp){
   T= rep(NA, length(t))
   
   inds=which(t<= tr) 
+  ##t > ts & t <= tp ?
   if(length(inds>0))  T[inds]= To+b*sqrt(t[inds]-(ts-24) )
-  
+  ##t-ts? instead of t-(ts-24)?
   inds=which(t>tr & t<=tx) 
   if(length(inds>0)) T[inds]= T_min+ alpha*sin(pi/2*(t[inds]-tr)/(tx-tr))
-  
+  ##delete sin
   inds=which(t>tx & t<ts) 
   if(length(inds>0)) T[inds]= To+ R*sin(pi/2*(1+ (t[inds]-tx)/4) )
   
   inds=which(t>=ts) 
   if(length(inds>0))  T[inds]= To+b*sqrt(t[inds]-ts)
-  
+  ##delete
   return(T)
 }

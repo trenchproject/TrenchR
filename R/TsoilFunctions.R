@@ -35,14 +35,14 @@ soil_conductivity<-function(x, lambda, g_a){
 
 #' Estimate soil specific heat
 #' 
-#' @details Estimate soil specific heat in J kg^-1 K-1.
-#' @description This function allows you to estimate soil specific heat in J kg^-1 K-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).  Uses the volume fraction of organic material, minerals, and water in soil.  CHECK Campbell and Norman (2000) section 8.2.
+#' @details Estimate soil specific heat in J kg^-1 K^-1.
+#' @description This function allows you to estimate soil specific heat in J kg^-1 K^-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).  Uses the volume fraction of organic material, minerals, and water in soil.  CHECK Campbell and Norman (2000) section 8.2.
 #' 
 #' @param x_o is volume fraction of organic material
 #' @param x_m is volume fraction of minerals
 #' @param x_w is volume fraction of water
-#' @param rho_so is particle density of soil in kg/m3 (bulk density)
-#' @return soil specific heat (J kg^-1 K-1)
+#' @param rho_so is particle density of soil in kg/m^3 (bulk density)
+#' @return soil specific heat (J kg^-1 K^-1)
 #' @keywords soil temperature
 #' @export
 #' @author Joseph Grigg
