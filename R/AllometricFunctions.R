@@ -16,24 +16,24 @@
 
 sa_from_mass<-function(m, taxa){
 
+  #lizard, O'Connor 1999 in Fei T et al. 2011. A body temperature model for lizards as estimated from the thermal environment. Journal of Thermal Biology 37:56-64.
   
-  #lizard, O'Connor 1999 in Fei et al 2011
   #initial mass in kg
   if(taxa=="lizard") sa= 0.0314*pi*(m/1000)^(2/3)
   
-  #Lizard,  Roughgarden 1981 from Norris (1965) and Porter and James (1979)
+  #Lizard,  Norris (1965) and Porter and James (1979) in Roughgarden J. 1981. Resource partitioning of space and its relationship to body temperature in Anolis lizard populations. Oecologia 50: 256–264. 
   #initial sa in mm^2
   #if(taxa=="lizard") sa=0.121*mass^0.688*(0.001)^2   
   
-  #salamander, 
-  if(taxa=="salamander") sa= 8.42*m^0.694/(100*100) #convert cm^2 to m^2, Whitford and Hutchinson 1967 in Riddell et al 2017
+  #salamander, Whitford and Hutchinson 1967 in Riddell et al 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87:21-33.
+  if(taxa=="salamander") sa= 8.42*m^0.694/(100*100) #convert cm^2 to m^2
   
-  #Frog, McClanahan and Baldwin 1969
+  #Frog, McClanahan L and Baldwin R. 1969. Rate of water uptake through the integument of the desert toad, Bufo punctatus. Comparative Biochemistry and Physiology 28:381-389.
   #initial sa in cm^2
   if(taxa=="frog") sa=9.9*m^0.56*(0.01)^2 
   
   #Insects, mostly grasshoppers
-  #Lactin and Johnson 1997
+  #Lactin DJ and Johnson DL. 1997. Response of body temperature to solar radiation in restrained nymphal migratory grasshoppers (Orthoptera: Acrididae): influences of orientation and body size 
   if(taxa=="insect") sa=0.0013*m^0.8 
   
   return(sa)
@@ -64,9 +64,7 @@ mass_from_length<-function(l, taxa){
     #also has allometry with length * width
     #length in mm?
   if(taxa=="insect") mass= exp(-3.628)*lengthmm^2.494/1000
-  
-  #predicts mass in mg so divide by 1000
-  ### TODO CHECK, INCLUDING UNITS
+   #predicts mass in mg so divide by 1000
   
   #Lizards
   #Meiri S. 2010. Length-weight allometries in lizards. Journal of Zoology 281: 218-226. 
@@ -110,7 +108,7 @@ sa_from_volume<-function(V, taxa){
   if(taxa == "lizard") Ka = 11.0
   # Case when taxa is Frog (Tracy 1972)
   if(taxa == "frog") Ka = 11.0
-  # Case when taxa is approximated as Sphere(Mitchell 1976)
+  # Case when taxa is approximated as Sphere (Mitchell 1976)
   if(taxa == "sphere") Ka = 4.83
   
   # Mitchell 1976
@@ -207,7 +205,7 @@ prop_silhouette_area<-function(z, taxa, raz=0, posture="prostrate"){
   if(taxa=="frog") psa=(1.38171*10^(-6)*z^4-1.93335*10^(-4)*z^3+4.75761*10^(-3)*z^2-0.167912*z+45.8228)/100
   
   #lizards
-  #Source: Muth A. 1977. 
+  #Source: Muth A. 1977. Thermoregulatory Postures and Orientation to the Sun: A Mechanistic Evaluation for the Zebra-Tailed Lizard, Callisaurus draconoides. Copeia 4:710-720.
   if(taxa=="lizard"){
     if(!raz %in% c(0,90,180)) stop("raz should be 0,90,or 180")  
     
@@ -225,6 +223,7 @@ prop_silhouette_area<-function(z, taxa, raz=0, posture="prostrate"){
     
     
     psa= (A*z^3+B*z^2+C*z+D)/100}                                                                                                                                
+  
   #Grasshopper
   #Source: Anderson, R.V., Tracy, C.R. & Abramsky, Z. (1979) Habitat selection in two species of short‐horned grasshoppers. Oecologia, 38, 359–374.
   if(taxa=="grasshopper") psa<-0.19-0.00173*z 
@@ -235,7 +234,7 @@ prop_silhouette_area<-function(z, taxa, raz=0, posture="prostrate"){
 #' Calculate silhouette area using the shape approximations
 #' 
 #' 
-#' @details This function allows you to estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid. From Figure 11.6 in Campbell and Norman (1998).
+#' @details This function allows you to estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid. From Figure 11.6 in Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 #' @param shape Which shape to approximate an organism. Shapes are assumed to be prolate or have the longest axis parallel with the ground. Current choices: spheroid, cylinder flat ends, or cylinder hemisphere ends.
 #' @param theta is the angle between the solar beam and the longitudinal axis in degrees
 #' @param h is the height (long axis in m), cross section length for spheroid 
