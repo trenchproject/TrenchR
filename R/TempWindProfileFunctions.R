@@ -3,11 +3,11 @@
 #' 
 #' @details Estimate surface roughness in m
 #' @description This function allows you to estimate surface roughness in m from empirical wind speed (m/s) 
-#' data collected at a vector of heights (m). Estimates surface roughness from empirical measurements.
+#' data collected at a vector of heights (m). Estimates surface roughness from empirical measurements. 
 #' 
 #' @param u_r is wind velocity at a vector of reference heights in m/s.
 #' @param zr is the vector of reference heights in m.
-#' @return surface roughness
+#' @return surface roughness (m)
 #' @keywords wind profile
 #' @export
 #' @examples
@@ -35,7 +35,7 @@ surface_roughness<- function(u_r, zr){
 #' @description This function allows you to calculate wind speed (m/s) at a 
 #' specified height (m) within a boundary layer near the surface.  
 #' The velocity profile is the neutral profile described by Sellers (1965). 
-#' Function in equations (2) and (3) of Porter et al. (1973)
+#' Function is equations (2) and (3) of Porter et al. (1973). Source: Porter WP et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
 #' Profiles in neutral conditions.
 #' 
 #' @param u_r is wind velocity at reference height in m/s.
@@ -55,13 +55,12 @@ wind_speed_profile_neutral <- function(u_r, zr, z0, z) {
   return(u_z)
   }
 
-
 #' Estimate temperature at a specified height under neutral conditions
 #' 
 #' @details Calculates temperature at a specified height under neutral conditions
 #' @description This function allows you to calculate temperature (C) at a specified height (m) within a 
 #' boundary layer near the surface.  The velocity profile is the neutral profile described by Sellers (1965). 
-#' Function in equations (2) and (3) of Porter et al. (1973)
+#' Function in equations (2) and (3) of Porter et al. (1973). Source: Porter WP et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
 #' 
 #' @param T_r is temperature at reference height in degrees C.
 #' @param zr is initial reference height in m.
@@ -87,7 +86,7 @@ air_temp_profile_neutral<-function(T_r, zr, z0, z, T_s){
 #' @details Calculates wind speed at a specified height
 #' @description This function allows you to estimate wind speed (m/s) at a specified height (m).  
 #' Estimates a single, unsegmented wind velocity using the MICRO routine from NicheMapR as described in Kearney and Porter 2016.
-#' Adapted from Kearney and Porter 2016. NicheMapR – an R package for biophysical modelling: the microclimate model
+#' Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.
 #' Section 5. Vertical air temperature and wind speed profiles, p11
 
 #' @param u_r is wind velocity at reference height in m/s.
@@ -113,8 +112,7 @@ wind_speed_profile<- function(u_r,zr,z0,z){
 #' 
 #' @details Estimate temperature at a specified height
 #' @description This function allows you to estimate temperature (C) at a specified height (m).  
-#' Estimates a single, unsegmented temperature profile using the MICRO routine from 
-#' NicheMapR as described in Kearney and Porter 2016.
+#' Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.
 #' 
 #' @param T_r is temperature at reference height in degrees C.
 #' @param u_r is windspeed at reference height in m/s.
@@ -154,7 +152,7 @@ air_temp_profile= function(T_r, u_r, zr, z0,z,T_s){
 #' Estimates a three segment velocity and temperature profile based on user-specified, 
 #' experimentally determined values for 3 roughness heights and reference heights.  
 #' Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks.
-#' Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Porter 2016. 
+#' Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Porter 2016. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.
 #' 
 #' NEED TO CHECK EQUATIONS.
 #' 
