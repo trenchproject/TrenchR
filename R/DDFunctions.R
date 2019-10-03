@@ -119,7 +119,7 @@ degree_days=function(T_min,T_max,LDT=NA,UDT=NA, method="single.sine"){
       dd = ((T_max-LDT)^2-(T_max-UDT)^2)/((T_max-T_min)*4)
     } else if (T_min > LDT &&  T_max < UDT ) { #Entirely between both thresholds
       dd = (MT/4)-(LDT/2)
-##should be MT/2 and not MT/4
+##should be dd = (MT/2) - (LDT/2) since MT is defined as (T_max+T_min)/2
       
     } else if (T_min < LDT && T_max > LDT) {  # intercepted by LDT  
       dd = (T_max-LDT)^2/((T_max-T_min)*4)

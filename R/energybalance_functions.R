@@ -213,7 +213,7 @@ heat_transfer_coefficient_simple<-function(V,D){
 
 Qradiation_absorbed<-function(a=0.9, A, psa_dir, psa_ref, S_dir, S_dif, S_ref=NA, a_s=NA){
   
-#Calculate A_ref if not provided
+#Calculate S_ref if not provided
   if( is.na(S_ref)) S_ref= a_s*S_dir
   
  #Areas
@@ -223,7 +223,8 @@ Qradiation_absorbed<-function(a=0.9, A, psa_dir, psa_ref, S_dir, S_dif, S_ref=NA
   
   #solar radiation
   Qabs= a*A_dir*S_dir + a*A_dif*S_dif + a*A_ref*S_ref
-  
+  ##this should be AQabs = ... (p.61)
+  ##should divide this by A to get Qabs
   return(Qabs)
 }
 
@@ -263,7 +264,9 @@ Qemitted_thermal_radiation<-function(epsilon=0.96, A, psa_dir, psa_ref, T_b, T_g
   
   if(enclosed) 
          Qemit= A_r*epsilon*sigma*(T_b^4 - T_a^4)
- 
+ ##wrong equation
+ ##needs to be (T_b+273.15)^4-(T_a+273.15)^4 (p.62)
+  
   else 
           Qemit= epsilon*sigma*(A_s*(T_b^4 - Tsky^4)+A_r*(T_b^4 - T_g^4))
 
@@ -420,7 +423,7 @@ Qmetabolism_from_mass<-function(m, taxa="reptile"){
 #' @return metabolim (W)
 #' @keywords metabolism
 #' @export
-#' @examples
+#' @examples 
 #' \dontrun{
 #' Qmetabolism_from_mass_temp(m=100, T_b=303,"reptile")
 #' }
@@ -701,7 +704,7 @@ Prandtl_number<-function(c_p, mu, K){
 #' @details This function allows you to estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces (Gates 1980 Biophysical Ecology).
 #' @param D is characteristic dimension (e.g., body diameter) (m)
 #' @param V is wind speed in m/s
-#' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m2 s^(-1)), can calculate from DRYAIR or WETAIR
+#' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^(-1)), can calculate from DRYAIR or WETAIR
 #' 
 #' @return Reynolds number
 #' @keywords Reynolds number
@@ -723,7 +726,7 @@ Reynolds_number<-function(V, D, nu){
 #' @param Ta Air temperature (C).
 #' @param Tg Ground (surface) temperature (C).
 #' @param D is characteristic dimension (e.g., body diameter) (m)
-#' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m2 s-1), can calculate from DRYAIR or WETAIR
+#' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^-1), can calculate from DRYAIR or WETAIR
 #' 
 #' @return Grashof number
 #' @keywords Grashof number
@@ -742,6 +745,8 @@ Grashof_number<-function(Ta, Tg, D, nu){
     
   return(Gr)
 }
+##this equation is not what it says on literature (p.283).
+##Gr = gravity * D^3 * abs(Tg-Ta) * beta / nu^2 where beta = 41.9 x 10^-4
 
 #------
 #' Calculate Grashof Number in Gates
@@ -822,6 +827,7 @@ Nu_from_Gr<-function(Gr){
   return(Nu)
 }
 
+
 #' Commpare Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980)
 #' 
 #' @details This function allows you to commpare the Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980).
@@ -843,5 +849,8 @@ Free_or_forced_convection<-function(Gr, Re){
   return(conv)
 }
 
+##This is not what the text says.
+##if(Gr<=(16*Re^2) conv = free, if (Gr < 0.1*Re^2) conv = forced (p.284)
+##for intermediate values, use a larger Nu.
 
 

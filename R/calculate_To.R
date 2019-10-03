@@ -46,6 +46,9 @@ Tb_Fei <- function(TAH, T_s, T_a, UDT, GLW, shade){
   dt =  120 #in seconds
   shade_level = min(round(shade/0.2),5)
   TaV = TAH
+  
+  ##TaV not used afterwards
+  
   Ts = T_s #ground temperature TODO: search in lizard file
   Ta = T_a #air temperature at lizards height 
   Solar = UDT # solar radiation 
@@ -86,5 +89,5 @@ Tb_Fei <- function(TAH, T_s, T_a, UDT, GLW, shade){
     
   }
   
-  To
+  return (To)
 }
