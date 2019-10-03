@@ -24,7 +24,7 @@ day_of_year<- function(day, format="%Y-%m-%d"){
 #'  
 #' @details Calculate solar declination in radians
 #'
-#' @description This function allows you to calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year
+#' @description This function allows you to calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 #' @param doy day of year
 #' @return declination angle in radians
 #' @keywords Declination angle
@@ -45,7 +45,7 @@ dec_angle <- function(doy){
 #' 
 #' @details Calculate day length
 #'
-#' @description This function allows you to calculate daylength in hours as a function of latitude and day of year. Uses the CMB model (Forsythe et al. 1995).
+#' @description This function allows you to calculate daylength in hours as a function of latitude and day of year. Uses the CMB model (Forsythe et al. 1995). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 #' @param lat latitude in degrees
 #' @param doy day of year
 #' @return hours 
@@ -68,9 +68,9 @@ daylength <- function(lat, doy){
 #' Calculate time of solar noon
 #' 
 #' 
-#' @description Calculate time of solar noon
+#' @details Calculate time of solar noon
 #'
-#' @details This function allows you to calculate the time of solar noon in hours as a function of the day of year and longitude
+#' @description This function allows you to calculate the time of solar noon in hours as a function of the day of year and longitude. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 #' @param lon longitude in degrees 
 #' @param doy day of year
 #' @return time at solar noon
@@ -96,7 +96,7 @@ solar_noon <- function(lon, doy){
 #' 
 #' @details Calculate Zenith angle
 #'
-#' @description This function allows you to calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical
+#' @description This function allows you to calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 #' @param doy is day of year.
 #' @param lat is latitude in degrees.
 #' @param lon is longitude in degrees.
@@ -136,7 +136,7 @@ return(zenith)
 #' 
 #' @details Calculate azimuth angle
 #'
-#' @description This function allows you to calculate the azimuth angle, the angle (in degrees) from which the sunlight in coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east.
+#' @description This function allows you to calculate the azimuth angle, the angle (in degrees) from which the sunlight in coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 #' @param doy is day of year.
 #' @param lat is latitude in degrees.
 #' @param lon is longitude in degrees.
@@ -176,10 +176,9 @@ azimuth_angle=function(doy, lat, lon, hour){
 
 #' Estimate air pressure in kPa (Kilo Pascal)
 #' 
-#' Credit - #http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html
-#'
-#' @details Estimate air pressure (kPa) as a function of elevation
-#' @description  This function allows you to calculate estimated air pressure (kPa) as a function of elevation
+#' 
+#' @details Estimate air pressure (kPa) as a function of elevation. 
+#' @description  This function allows you to calculate estimated air pressure (kPa) as a function of elevation. Source: http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html.
 #' @param elev elevation in meters.
 #' @keywords Air Pressure
 #' @return Air pressure in kPa
@@ -200,9 +199,9 @@ airpressure_from_elev<- function(elev){
 
 #' Converts Fahrenheit to Kelvin
 #' 
-#' (credit  https://swcarpentry.github.io)
 #' 
-#' @details This function allows you to convert temperature from Fahrenheit to Kelvin.
+#' @details Converts Fahrenheit to Kelvin.
+#' @description  This function allows you to convert temperature from Fahrenheit to Kelvin. Source: https://swcarpentry.github.io.
 #' @param T Temperature in Fahrenheit.
 #' @keywords Fahrenheit Kelvin
 #' @return Temperature in Kelvin
@@ -214,13 +213,14 @@ airpressure_from_elev<- function(elev){
 
 fahrenheit_to_kelvin <- function(T) {
   kelvin <- ((T - 32) * (5/9)) + 273.15
-  kelvin
+  return(kelvin)
 }
+
 #' Converts Kelvin to Celsius
 #' 
-#' (credit  https://swcarpentry.github.io)
 #' 
-#' @details This function allows you to convert temperature from Kelvin to Celsius.
+#' @details Converts Kelvin to Celsius.
+#' @description This function allows you to convert temperature from Kelvin to Celsius. Source: https://swcarpentry.github.io.
 #' @param T Temperature in Fahrenheit.
 #' @keywords Celsius Kelvin
 #' @return Temperature in Celsius
@@ -232,13 +232,14 @@ fahrenheit_to_kelvin <- function(T) {
 
 kelvin_to_celsius <- function(T) {
   Celsius <- T - 273.15
-  Celsius
+  return(Celsius)
 }
+
 #' Converts Fahrenheit to Celsius
 #' 
-#' (credit  https://swcarpentry.github.io)
 #' 
-#' @details This function allows you to convert temperature from Fahrenheit to Celsius
+#' @details Converts Fahrenheit to Celsius.
+#' @description This function allows you to convert temperature from Fahrenheit to Celsius. Source: https://swcarpentry.github.io.
 #' @param T Temperature in Fahrenheit.
 #' @keywords Fahrenheit Celsius
 #' @return Temperature in Celsius
@@ -251,14 +252,14 @@ kelvin_to_celsius <- function(T) {
 fahrenheit_to_celsius <- function(T) {
   temp_k <- fahrenheit_to_kelvin(T)
   result <- kelvin_to_celsius(temp_k)
-  result
+  return(result)
 }
 
 #' Converts angle in radians to degrees
 #'
-#' @details Converts angles in radians to degrees
+#' @details Converts angles in radians to degrees.
 #' 
-#' @description This function allows you to convert angle in radians to degrees
+#' @description This function allows you to convert angle in radians to degrees.
 #' @param rad angle in radians
 #' @keywords radians to degrees
 #' @return angle in degrees
@@ -271,9 +272,9 @@ radian_to_degree <- function(rad) {(rad * 180) / (pi)}
 
 #' Converts angle in degrees to radians
 #'
-#' @details Converts angle in degrees to radians
-#' 
-#' @description This function allows you to convert angle in degrees to radians
+#'
+#' @details Converts angle in degrees to radians.
+#' @description This function allows you to convert angle in degrees to radians.
 #' @param deg angle in degrees
 #' @keywords degrees to radians
 #' @return angle in radians

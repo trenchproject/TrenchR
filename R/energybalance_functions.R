@@ -599,7 +599,6 @@ Tb_salamander_humid<-function(r_i,r_b,D,T_a,elev,e_a, e_s,Qabs, epsilon=0.96){
 #' @param T_g ground temperature (C)
 #' @param epsilon_ground emmisitivity (proportion) for more soil types (Campbell and Norman 1998), default value of 0.97
 #' @param a_longwave absorptance (proportion) of organism to longwave radiation (Bartlett and Gates 1967, Buckley 2008), default value of 0.965
-#' 
 #' @return thermal radiation absorbed (W)
 #' @keywords longwave (thermal) radiation absorbed
 #' @export

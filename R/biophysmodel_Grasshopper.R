@@ -15,7 +15,7 @@
 #' @param z is grasshopper's distance from the ground in m
 #' @param abs is absorptivity of grasshopper to solar radiation (proportion), See Anderson et al. (1979).
 #' @param r_g is substrate solar reflectivity (proportion), see Kingsolver (1983)
-#' 
+#' @return predicted body (operative environmental) temperature (C)
 #' @keywords body temperature, biophysical model
 #' @export
 #' @examples
