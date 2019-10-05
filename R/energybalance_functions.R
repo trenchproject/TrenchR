@@ -223,8 +223,6 @@ Qradiation_absorbed<-function(a=0.9, A, psa_dir, psa_ref, S_dir, S_dif, S_ref=NA
   
   #solar radiation
   Qabs= a*A_dir*S_dir + a*A_dif*S_dif + a*A_ref*S_ref
-  ##this should be AQabs = ... (p.61)
-  ##should divide this by A to get Qabs
   return(Qabs)
 }
 
@@ -263,9 +261,7 @@ Qemitted_thermal_radiation<-function(epsilon=0.96, A, psa_dir, psa_ref, T_b, T_g
   Tsky= (1.22*(T_a-273.15) -20.4)+273.15 #K, Gates 1980 Biophysical ecology based on Swnback 1960, Kingsolver (1983) estimates using Brunt equation
   
   if(enclosed) 
-         Qemit= A_r*epsilon*sigma*(T_b^4 - T_a^4)
- ##wrong equation
- ##needs to be (T_b+273.15)^4-(T_a+273.15)^4 (p.62)
+         Qemit= A_r*epsilon*sigma*((T_b+273.15)^4 - (T_a+273.15)^4)
   
   else 
           Qemit= epsilon*sigma*(A_s*(T_b^4 - Tsky^4)+A_r*(T_b^4 - T_g^4))
