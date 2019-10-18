@@ -17,13 +17,14 @@ degree_days(T_min, T_max, LDT = NA, UDT = NA, method = "single.sine")
 
 \item{method}{type of method being used. Current choices: "single.sine","double.sine", "single.triangulation" or "double.triangulation".}
 }
+\value{
+degree days (C)
+}
 \description{
-Single sine wave approximation from  
-Double Sine wave approximation of degree days from Allen 1976 
-(see http://www.ipm.ucdavis.edu/WEATHER/ddss_tbl.html)
+This function allows you to calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://www.ipm.ucdavis.edu/WEATHER/ddss_tbl.html. Double Sine wave approximation of degree days from Allen JC. 1976.  A Modified Sine Wave Method for Calculating Degree Days. Environmental Entomology 5:388–396.
 }
 \details{
-This function allows you to calculate degree days using single or double sine wave and single or double triangulation approximation.
+Calculate degree days
 }
 \examples{
 \dontrun{

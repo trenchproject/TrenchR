@@ -24,8 +24,7 @@ temperature (degrees C)
 }
 \description{
 This function allows you to estimate temperature (C) at a specified height (m).  
-Estimates a single, unsegmented temperature profile using the MICRO routine from 
-NicheMapR as described in Kearney and Porter 2016.
+Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.
 }
 \details{
 Estimate temperature at a specified height

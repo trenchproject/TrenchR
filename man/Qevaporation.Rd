@@ -20,7 +20,7 @@ Qevaporation(A, T_b, taxa, rho_s = NA, rho_a = NA, h = NA, H = NA,
 
 \item{h}{relative humidity (0-1) (needed if amphibian)}
 
-\item{H}{convective heat transfer coefficient (W m^-2 C^-1) (needed if amphibian)}
+\item{H}{convective heat transfer coefficient (W m^-2 K^-1) (needed if amphibian)}
 
 \item{r_i}{internal (cutaneous) resistance to vapor transport (s/m) (needed if amphibian)}
 
@@ -33,11 +33,11 @@ evaporative heat loss (W)
 Calculate heat loss associated with evaporative water loss
 }
 \details{
-This function allows you to estimate heat loss associated with evaporative water loss by an amphibian (Spotila et al. 1992) or lizard (based on empirical measurements in Porter et a. 1973).
+This function allows you to estimate heat loss associated with evaporative water loss by an amphibian (Spotila et al. 1992) or lizard (based on empirical measurements in Porter et al. 1973). Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
 }
 \examples{
 \dontrun{
-Qevaporation(A=0.1, T_b=293, taxa="amphibian", rho_s=1.2, rho_a=1.2, h=0.5, H=20, r_i=5000)
+Qevaporation(A=0.1, T_b=293, taxa="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50)
 Qevaporation(A=0.1, T_b=293, taxa="lizard")
 }
 

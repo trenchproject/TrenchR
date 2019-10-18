@@ -33,11 +33,11 @@ humid operative temperature (C)
 Calculate humid operative temperature
 }
 \details{
-This function allows you to calculate humid operative temperature (adaptation of Campbell and Norman 1998).
+This function allows you to calculate humid operative temperature (adaptation of Campbell and Norman 1998). Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
 }
 \examples{
 \dontrun{
-Tb_salamander_humid(r_i=4,r_b=1,D=0.007,T_a=20,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
+Tb_salamander_humid(r_i=4,r_b=1,D=0.01,T_a=20,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
 }
 
 }

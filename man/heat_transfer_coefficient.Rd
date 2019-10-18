@@ -2,8 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{heat_transfer_coefficient}
 \alias{heat_transfer_coefficient}
-\title{Calculate heat transfer coefficient (based on Mitchell 1976)
-(Uses Table I: Convective Heat Transfer Relations for Animal Shapes)}
+\title{Calculate heat transfer coefficient.}
 \usage{
 heat_transfer_coefficient(V, D, K, nu, taxa = "cylinder")
 }
@@ -22,15 +21,14 @@ heat_transfer_coefficient(V, D, K, nu, taxa = "cylinder")
 heat transfer coefficient, H_L (W m^-2 K^-1)
 }
 \description{
-Calculate heat transfer coefficient (based on Mitchell 1976)
-(Uses Table I: Convective Heat Transfer Relations for Animal Shapes)
+Calculate heat transfer coefficient.
 }
 \details{
-This function allows you estimate the heat transfer coefficient for various taxa (based on Mitchell 1976).  Based on empirical measurements.
+This function allows you estimate the heat transfer coefficient for various taxa based on empirical measurements. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569. (Uses Table I: Convective Heat Transfer Relations for Animal Shapes)
 }
 \examples{
 \dontrun{
-heat_transfer_coefficient(V=0.5,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
+heat_transfer_coefficient(V=0.5,D=0.05,K= 25.7 * 10^(-3), nu= 15.3 * 10^(-6), "cylinder")
 }
 
 }

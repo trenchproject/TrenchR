@@ -11,7 +11,7 @@ Reynolds_number(V, D, nu)
 
 \item{D}{is characteristic dimension (e.g., body diameter) (m)}
 
-\item{nu}{is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m2 s-1), can calculate from DRYAIR or WETAIR}
+\item{nu}{is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^(-1)), can calculate from DRYAIR or WETAIR}
 }
 \value{
 Reynolds number

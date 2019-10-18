@@ -13,10 +13,10 @@ kelvin_to_celsius(T)
 Temperature in Celsius
 }
 \description{
-(credit  https://swcarpentry.github.io)
+This function allows you to convert temperature from Kelvin to Celsius. Source: https://swcarpentry.github.io.
 }
 \details{
-This function allows you to convert temperature from Kelvin to Celsius.
+Converts Kelvin to Celsius.
 }
 \examples{
 \dontrun{

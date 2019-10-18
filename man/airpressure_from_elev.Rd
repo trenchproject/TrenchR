@@ -13,12 +13,10 @@ airpressure_from_elev(elev)
 Air pressure in kPa
 }
 \description{
-This function allows you to calculate estimated air pressure (kPa) as a function of elevation
+This function allows you to calculate estimated air pressure (kPa) as a function of elevation. Source: http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html.
 }
 \details{
-Credit - #http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html
-
-Estimate air pressure (kPa) as a function of elevation
+Estimate air pressure (kPa) as a function of elevation.
 }
 \examples{
 \dontrun{

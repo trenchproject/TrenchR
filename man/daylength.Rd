@@ -15,7 +15,7 @@ daylength(lat, doy)
 hours
 }
 \description{
-This function allows you to calculate daylength in hours as a function of latitude and day of year. Uses the CMB model (Forsythe et al. 1995).
+This function allows you to calculate daylength in hours as a function of latitude and day of year. Uses the CMB model (Forsythe et al. 1995). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 }
 \details{
 Calculate day length

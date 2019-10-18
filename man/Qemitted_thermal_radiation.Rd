@@ -16,9 +16,9 @@ Qemitted_thermal_radiation(epsilon = 0.96, A, psa_dir, psa_ref, T_b, T_g,
 
 \item{psa_ref}{proportion surface area exposed to ground}
 
-\item{T_b}{body surface temperatue in K}
+\item{T_b}{body surface temperature in K}
 
-\item{T_g}{ground surface temperatue in K}
+\item{T_g}{ground surface temperature in K}
 
 \item{T_a}{ambient air temperature in K, only required if animal is in enclosed environment}
 
@@ -31,7 +31,7 @@ emitted thermal radiation, Qemit (W)
 Calculate emitted thermal radiation
 }
 \details{
-This function allows you to estimate thermal radiation (W) emitted by the surface of an animal. Follows Gates' Biophysical Ecology and Spotila et al. 1992.
+This function allows you to estimate thermal radiation (W) emitted by the surface of an animal. Follows Gates' Biophysical Ecology and Spotila et al. 1992. Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians; Porter et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
 }
 \examples{
 \dontrun{

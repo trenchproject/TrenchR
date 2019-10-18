@@ -2,8 +2,7 @@
 % Please edit documentation in R/DTRFunctions.R
 \name{diurnal_temp_variation_sine}
 \alias{diurnal_temp_variation_sine}
-\title{Diurnal temperature across hours
-From Campbell and Norman 1998 - Uses sine interpolation}
+\title{Diurnal temperature across hours}
 \usage{
 diurnal_temp_variation_sine(T_max, T_min, t)
 }
@@ -14,12 +13,14 @@ diurnal_temp_variation_sine(T_max, T_min, t)
 
 \item{t}{hour for temperature estimate}
 }
+\value{
+temperature (C) at a specified hour
+}
 \description{
-Diurnal temperature across hours
-From Campbell and Norman 1998 - Uses sine interpolation
+This function allows you to estimate temperature for a specified hour using the sine interpolation in Campbell and Norman (1998). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 }
 \details{
-This function allows you to estimate temperature for a specified hour using the sine interpolation in Campbell and Norman (1998).
+Uses a sine interpolation to estimate temperature across hours.
 }
 \examples{
 \dontrun{

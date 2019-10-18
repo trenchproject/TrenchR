@@ -12,20 +12,19 @@ volume_from_length(l, taxa)
 \item{taxa}{Which class of organism, current choices: lizard,frog, or sphere}
 }
 \value{
-sa (m^2)
+volume (m^3)
 }
 \description{
 Calculate volume from length (Based on Mitchell 1976)
 }
 \details{
-This function allows you to estimate volume (m^3) from length (m) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976).
+This function allows you to estimate volume (m^3) from length (m) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976). Source: Mitchell JW. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16: 561-569.
 }
 \examples{
  \dontrun{
-  volume_from_length(.05,"lizard")
+  volume_from_length(l=0.05,"lizard")
 }
 
 }
-\keyword{area}
 \keyword{length}
-\keyword{surface}
+\keyword{volume}

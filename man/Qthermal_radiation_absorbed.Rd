@@ -4,28 +4,30 @@
 \alias{Qthermal_radiation_absorbed}
 \title{Estimate absorbed longwave (thermal) radiation}
 \usage{
-Qthermal_radiation_absorbed(T_a, epsilon_ground = 0.97,
+Qthermal_radiation_absorbed(T_a, T_g, epsilon_ground = 0.97,
   a_longwave = 0.965)
 }
 \arguments{
 \item{T_a}{air temperature (C)}
+
+\item{T_g}{ground temperature (C)}
 
 \item{epsilon_ground}{emmisitivity (proportion) for more soil types (Campbell and Norman 1998), default value of 0.97}
 
 \item{a_longwave}{absorptance (proportion) of organism to longwave radiation (Bartlett and Gates 1967, Buckley 2008), default value of 0.965}
 }
 \value{
-thermal radiation absorbed
+thermal radiation absorbed (W)
 }
 \description{
 Estimate absorbed longwave (thermal) radiation
 }
 \details{
-This function allows you to estimate longwave (thermal) radiation (W) absorbed from the sky and the ground (adaptation of Campbell and Norman 1998).
+This function allows you to estimate longwave (thermal) radiation (W) absorbed from the sky and the ground (adaptation of Campbell and Norman 1998). Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
 }
 \examples{
 \dontrun{
-Qthermal_radiation_absorbed(T_a=20, epsilon_ground=0.97, a_longwave=0.965)
+Qthermal_radiation_absorbed(T_a=20, T_g=25, epsilon_ground=0.97, a_longwave=0.965)
 }
 
 }

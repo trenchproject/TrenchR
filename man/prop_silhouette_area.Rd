@@ -11,7 +11,7 @@ prop_silhouette_area(z, taxa, raz = 0, posture = "prostrate")
 
 \item{taxa}{Which class of organism, current choices: frog, lizard, grasshopper}
 
-\item{raz}{if lizard, relative solar azimuth angle in degrees, the horizontal angle of the sun (0-180 degrees) relative to the head and frontal plane of the lizard}
+\item{raz}{if lizard, relative solar azimuth angle (degrees), the horizontal angle of the sun relative to the head and frontal plane of the lizard. Options are 0 (in front), 90 (to side), and 180 (behind) degrees.}
 
 \item{posture}{if lizard, indicate posture as "prostrate" or "elevated"}
 }

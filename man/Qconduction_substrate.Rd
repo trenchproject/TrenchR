@@ -29,7 +29,7 @@ Calculate conductance assuming substrate thermal conductivity is rate limiting
 This function allows you to calculate conductance (W) of an ectothermic animal to its substate.
          Method assumes the major resistance to conduction is the substrate and that the interior of the 
          animal is equal in temperature to its surface (thermally well mixed). 
-         Reference: Spotila et al. 1992. Biophysicas of Heat and Mass Transfer.
+         Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
 }
 \examples{
 \dontrun{

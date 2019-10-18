@@ -14,11 +14,11 @@ Tb_Gates(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilon,
 
 \item{psa_ref}{proportion surface area exposed to ground}
 
-\item{psa_air}{of surface area exposed to air}
+\item{psa_air}{proportion surface area exposed to air}
 
-\item{psa_g}{of surface in contact with substrate}
+\item{psa_g}{proportion surface area in contact with substrate}
 
-\item{T_g}{ground surface temperatue in K}
+\item{T_g}{ground surface temperature in K}
 
 \item{T_a}{ambient air temperature in K}
 
@@ -28,7 +28,7 @@ Tb_Gates(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilon,
 
 \item{H_L}{Convective heat transfer coefficient (W m^-2 K^-1)}
 
-\item{ef}{is the enhancement factor, used to adjuct h_L to field condictions (using h_L approximation from Mitchell 1976).  Approximated as 1.3 by default, but see Mitchell 1976 for relationship.}
+\item{ef}{is the enhancement factor, used to adjust H_L to field condictions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.}
 
 \item{K}{Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle ( Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.}
 
@@ -45,7 +45,7 @@ Predicts body temperatures (operative environmental temperature) of an ectotherm
 }
 \examples{
 \dontrun{
-Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_g=303, T_a=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
+Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_g=303, T_a=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.23, K=0.5)
 }
 
 }

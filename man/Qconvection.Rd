@@ -4,7 +4,7 @@
 \alias{Qconvection}
 \title{Calculate convection}
 \usage{
-Qconvection(T_a, T_b, H = 10.45, A, proportion, ef = 1.3)
+Qconvection(T_a, T_b, H = 10.45, A, proportion, ef = 1.23)
 }
 \arguments{
 \item{T_a}{Air Temperature in Kelvin.}
@@ -17,7 +17,7 @@ Qconvection(T_a, T_b, H = 10.45, A, proportion, ef = 1.3)
 
 \item{proportion}{of surface area exposed to air}
 
-\item{ef}{is the enhancement factor, used to adjust H to field condictions (using H approximation from Mitchell 1976).  Approximated as 1.3 by default, but see Mitchell 1976 for more relationship.}
+\item{ef}{is the enhancement factor, used to adjust H to field condictions.  Approximated as mean value of 1.23 by default, but see Mitchell 1976 for further information.}
 }
 \value{
 convection (W)
@@ -26,7 +26,7 @@ convection (W)
 Calculate convection
 }
 \details{
-This function allows you to calculate convection as in Mitchell (1976). Includes an enhancement factor associated with outdoor environments.
+This function allows you to calculate convection from an organism to its environment as in Mitchell (1976). Includes an enhancement factor associated with outdoor environments. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569.
 }
 \examples{
 \dontrun{

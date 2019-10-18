@@ -15,10 +15,10 @@ solar_noon(lon, doy)
 time at solar noon
 }
 \description{
-Calculate time of solar noon
+This function allows you to calculate the time of solar noon in hours as a function of the day of year and longitude. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 }
 \details{
-This function allows you to calculate the time of solar noon in hours as a function of the day of year and longitude
+Calculate time of solar noon
 }
 \examples{
 \dontrun{

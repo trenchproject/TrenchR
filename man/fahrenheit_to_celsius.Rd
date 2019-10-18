@@ -13,10 +13,10 @@ fahrenheit_to_celsius(T)
 Temperature in Celsius
 }
 \description{
-(credit  https://swcarpentry.github.io)
+This function allows you to convert temperature from Fahrenheit to Celsius. Source: https://swcarpentry.github.io.
 }
 \details{
-This function allows you to convert temperature from Fahrenheit to Celsius
+Converts Fahrenheit to Celsius.
 }
 \examples{
 \dontrun{

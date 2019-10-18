@@ -7,11 +7,11 @@
 Tb_Fei(TAH, T_s, T_a, UDT, GLW, shade)
 }
 \arguments{
-\item{TAH}{Temperature in canopy.}
+\item{TAH}{Temperature in canopy (K).}
 
-\item{T_s}{Surface Temperature.}
+\item{T_s}{Surface Temperature (K).}
 
-\item{T_a}{Air Temperature.}
+\item{T_a}{Air Temperature (K).}
 
 \item{UDT}{upper developmental threshold.}
 
@@ -27,11 +27,11 @@ Biol., vol. 37, no. 1, pp. 56–64, 2012.
 TAH, T_s, T_a, UDT, GLW, time_step, shade
 }
 \details{
-Calculate Operative Temperature of Lizard.
+Predicts body temperature (operative environmental temperature) of a lizard in K.
 }
 \examples{
 \dontrun{
-Tb_Fei(254, 265, 267, 15, 307,  0)
+Tb_Fei(TAH=293, T_s=300, T_a=295, UDT=600, GLW=30, shade=0.5)
 }
 
 }

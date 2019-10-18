@@ -32,8 +32,11 @@ Tb_butterfly(T_a, Tg, Tg_sh, u, H_sdir, H_sdif, z, D, delta, alpha,
 
 \item{shade}{is whether body temperature should be calculate in sun (FALSE) or shade (TRUE)}
 }
+\value{
+predicted body (operative environmental) temperature (C)
+}
 \description{
-Predicts body temperatures (operative environmental temperatures) of a butterfly in degrees C. Based on Kingsolver (1983, Thermoregulation and flight in Colias butterflies: elevational patterns and mechanistic limitations. Ecology 64: 534–545). Assumes butterfly basks with closed wings perpendicular to solar beam.
+Predicts body temperatures (operative environmental temperatures) of a butterfly in degrees C. Based on Kingsolver (1983, Thermoregulation and flight in Colias butterflies: elevational patterns and mechanistic limitations. Ecology 64: 534–545). Assumes butterfly basks with closed wings perpendicular to solar beam. Source: Buckley LB and Kingsolver JK. 2012. The demographic impacts of shifts in climate means and extremes on alpine butterflies. Functional Ecology https://doi.org/10.1111/j.1365-2435.2012.01969.x and subsequent publications.
 }
 \details{
 Predicts body temperature (operative environmental temperature) of a butterfly in degrees C.

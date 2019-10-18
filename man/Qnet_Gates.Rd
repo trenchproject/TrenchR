@@ -11,9 +11,9 @@ Qnet_Gates(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap)
 
 \item{Qemit}{Thermal radiation emitted (W)}
 
-\item{Qconv}{Energy exchange due to convection; Energy exchange between an animal and the air (W)}
+\item{Qconv}{Energy exchange due to convection; Energy exchange from an animal to its surrounding environment (air or water) (W)}
 
-\item{Qcond}{Energy exchange due to conduction; Energy exchange between an animal and the surface (W)}
+\item{Qcond}{Energy exchange due to conduction; Energy exchange from animal to a surface if its in contact  (W)}
 
 \item{Qmet}{Energy emitted due to metabolism (W)}
 

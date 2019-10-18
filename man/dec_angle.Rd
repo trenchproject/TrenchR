@@ -13,7 +13,7 @@ dec_angle(doy)
 declination angle in radians
 }
 \description{
-This function allows you to calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year
+This function allows you to calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 }
 \details{
 Calculate solar declination in radians

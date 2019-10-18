@@ -4,7 +4,7 @@
 \alias{sa_from_length}
 \title{Calculate surface area from length by approximating the animal's body as a rotational ellipsoid}
 \usage{
-sa_from_length(length)
+sa_from_length(l)
 }
 \arguments{
 \item{l}{Length in m.}
@@ -20,7 +20,7 @@ Estimate surface area (m^2) from length (m) by approximating the animal's body a
 }
 \examples{
  \dontrun{
-  sa_from_length(length=0.04)
+  sa_from_length(l=0.04)
 }
 
 }

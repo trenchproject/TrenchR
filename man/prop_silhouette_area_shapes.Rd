@@ -22,7 +22,7 @@ silhouette area as a proportion
 Calculate silhouette area using the shape approximations
 }
 \details{
-This function allows you to estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid. From Figure 11.6 in Campbell and Norman (1998).
+This function allows you to estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid. From Figure 11.6 in Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 }
 \examples{
 \dontrun{

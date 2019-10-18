@@ -45,6 +45,9 @@ soil_temperature_function(j, T_so, params)
 
 \item{shade}{is whether or not soil temperature should be calculated in the shade, TRUE or FALSE}
 }
+\value{
+soil temperature function
+}
 \description{
 Function called to calculate soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly.
 }
@@ -63,9 +66,11 @@ params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0
 soil_temperature_function(j=1,T_so= rep(20,13), params=params)
 
 #RUN USING ODE SOLVER
-Tsoil_out<- ode(y = rep(20,13), func = soil_temperature, times = 1:length(H), parms=params)
+Tsoil_out<- ode(y = rep(20,13), func = soil_temperature, times = 1:length(solrad_vector), parms=params)
 }
 }
 \author{
 Joseph Grigg
 }
+\keyword{soil}
+\keyword{temperature}

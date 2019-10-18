@@ -2,10 +2,9 @@
 % Please edit documentation in R/DTRFunctions.R
 \name{diurnal_temp_variation_sinesqrt}
 \alias{diurnal_temp_variation_sinesqrt}
-\title{Estimates temperature across hours
-From Cesaraccio et al 2001}
+\title{Estimates temperature across hours using sine and square root functions}
 \usage{
-diurnal_temp_variation_sinesqrt(t, tr, ts, T_max, T_min, Tmn_p)
+diurnal_temp_variation_sinesqrt(t, tr, ts, T_max, T_min, T_minp)
 }
 \arguments{
 \item{t}{hour or hours for temperature estimate}
@@ -18,18 +17,20 @@ diurnal_temp_variation_sinesqrt(t, tr, ts, T_max, T_min, Tmn_p)
 
 \item{T_min}{minimum temperature of current day (C)}
 
-\item{Tmn_p}{minimum temperature of following day (C)}
+\item{T_minp}{minimum temperature of following day (C)}
+}
+\value{
+temperature (C) at a specified hour
 }
 \description{
-Estimates temperature across hours
-From Cesaraccio et al 2001
+This function allows you to estimate temperature for a specified hour using sine and square root functions. Source: Cesaraccio C et al. 2001. An improved model for determining degree-day values from daily temperature data. International Journal of Biometeorology 45:161-169.
 }
 \details{
-This function allows you to estimate temperature for a specified hour using sine and square root functions (Cesaraccio et al 2001).
+Estimates temperature across hours using sine and square root functions
 }
 \examples{
 \dontrun{
-diurnal_temp_variation_sinesqrt( t=8, tr=6, ts=18, T_max=30, T_min=20, Tmn_p=22)
+diurnal_temp_variation_sinesqrt(t=8, tr=6, ts=18, T_max=30, T_min=10, T_minp=12)
 }
 }
 \keyword{Temperature}

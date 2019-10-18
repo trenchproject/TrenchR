@@ -13,10 +13,10 @@ degree_to_radian(deg)
 angle in radians
 }
 \description{
-This function allows you to convert angle in degrees to radians
+This function allows you to convert angle in degrees to radians.
 }
 \details{
-Converts angle in degrees to radians
+Converts angle in degrees to radians.
 }
 \examples{
 \dontrun{

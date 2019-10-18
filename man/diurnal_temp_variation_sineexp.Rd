@@ -2,7 +2,7 @@
 % Please edit documentation in R/DTRFunctions.R
 \name{diurnal_temp_variation_sineexp}
 \alias{diurnal_temp_variation_sineexp}
-\title{Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential componenT_s}
+\title{Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components}
 \usage{
 diurnal_temp_variation_sineexp(T_max, T_min, t, t_r, t_s, alpha = 2.59,
   beta = 1.55, gamma = 2.2)
@@ -24,15 +24,18 @@ diurnal_temp_variation_sineexp(T_max, T_min, t, t_r, t_s, alpha = 2.59,
 
 \item{gamma}{decay parameter for rate of t change from sunset to t_n(time of minimum temp)}
 }
+\value{
+temperature (C) at a specified hour
+}
 \description{
-Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential componenT_s
+This function allows you to estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: Parton WJ and Logan JA. 1981. A model for diurnal variation in soil and air temperature. Agricultural Meteorology 23: 205-216.
 }
 \details{
-This function allows you to estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential componenT_s as in Parton and Logan (1981).
+Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components.
 }
 \examples{
 \dontrun{
-Thour.sineexp()
+diurnal_temp_variation_sineexp(T_max=30, T_min=10, t=11, t_r=6, t_s=18, alpha=2.59, beta= 1.55, gamma=2.2)
 }
 }
 \keyword{Temperature}

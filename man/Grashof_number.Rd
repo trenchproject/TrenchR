@@ -13,7 +13,7 @@ Grashof_number(Ta, Tg, D, nu)
 
 \item{D}{is characteristic dimension (e.g., body diameter) (m)}
 
-\item{nu}{is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m2 s-1), can calculate from DRYAIR or WETAIR}
+\item{nu}{is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^-1), can calculate from DRYAIR or WETAIR}
 }
 \value{
 Grashof number
@@ -22,7 +22,7 @@ Grashof number
 Calculate Grashof Number
 }
 \details{
-This function allows you to estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity (Gates 1980 Biophysical Ecology). Ratio of a buoyant force times an inertial force to the square of a viscous force.
+This function allows you to estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force. Reference: Campell and Norman. 1998. An Introduction to Environmental Biophysics
 }
 \examples{
 \dontrun{

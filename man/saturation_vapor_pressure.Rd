@@ -16,7 +16,7 @@ saturation vapor pressure, e_s (kPa)
 Calculate saturation vapor pressure
 }
 \details{
-Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation (Stull 2000)
+Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation (Stull 2000). Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
 }
 \examples{
 \dontrun{

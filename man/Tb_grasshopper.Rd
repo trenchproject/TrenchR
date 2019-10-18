@@ -30,6 +30,9 @@ Tb_grasshopper(T_a, T_g, u, H, K_t, psi, L, Acondfact = 0.25,
 
 \item{r_g}{is substrate solar reflectivity (proportion), see Kingsolver (1983)}
 }
+\value{
+predicted body (operative environmental) temperature (C)
+}
 \description{
 Predicts body temperature (operative environmental temperature) of a grasshopper in degrees C. Described in Buckleyet al. (2014, Phenotypic clines, energy balances, and ecological responses to climate change. Journal of Animal Ecology 83:41-50.) See also a related model by Anderson et al. (1979, Habitat selection in two species of short-horned grasshoppers. Oecologia 38:359–74.)
 }

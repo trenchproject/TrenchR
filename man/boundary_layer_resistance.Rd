@@ -26,7 +26,7 @@ boundary layer resistance (s cm^-1)
 Estimate the boundary layer resistance
 }
 \details{
-This function allows you to estimate boundary layer resistance under free convection. Based on the function in Riddell et al. 2017
+This function allows you to estimate boundary layer resistance under free convection. Based on the function in Riddell et al. 2017. Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
 }
 \examples{
 \dontrun{

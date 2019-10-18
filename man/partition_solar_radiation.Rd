@@ -11,7 +11,7 @@ partition_solar_radiation(method, kt, lat = NA, sol.elev = NA)
 
 \item{kt}{is the clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.}
 
-\item{lat}{is latitude in degrees, needed if method ism Spencer}
+\item{lat}{is latitude in degrees, needed if method is Spencer}
 
 \item{sol.elev}{is the solar elevation angles in degrees, needed if method is Reindl-2}
 }

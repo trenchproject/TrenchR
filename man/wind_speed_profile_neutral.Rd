@@ -22,7 +22,7 @@ windspeed in m/s
 This function allows you to calculate wind speed (m/s) at a 
 specified height (m) within a boundary layer near the surface.  
 The velocity profile is the neutral profile described by Sellers (1965). 
-Function in equations (2) and (3) of Porter et al. (1973)
+Function is equations (2) and (3) of Porter et al. (1973). Source: Porter WP et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
 Profiles in neutral conditions.
 }
 \details{

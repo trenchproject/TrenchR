@@ -13,10 +13,10 @@ fahrenheit_to_kelvin(T)
 Temperature in Kelvin
 }
 \description{
-(credit  https://swcarpentry.github.io)
+This function allows you to convert temperature from Fahrenheit to Kelvin. Source: https://swcarpentry.github.io.
 }
 \details{
-This function allows you to convert temperature from Fahrenheit to Kelvin.
+Converts Fahrenheit to Kelvin.
 }
 \examples{
 \dontrun{

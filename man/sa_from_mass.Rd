@@ -9,7 +9,7 @@ sa_from_mass(m, taxa)
 \arguments{
 \item{m}{Mass in g}
 
-\item{taxa}{Which class of organism, current choices: lizard, frog, insect}
+\item{taxa}{Which class of organism, current choices: lizard, salamander, frog, insect}
 }
 \value{
 sa (m^2)

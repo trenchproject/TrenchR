@@ -12,7 +12,7 @@ surface_roughness(u_r, zr)
 \item{zr}{is the vector of reference heights in m.}
 }
 \value{
-surface roughness
+surface roughness (m)
 }
 \description{
 This function allows you to estimate surface roughness in m from empirical wind speed (m/s) 

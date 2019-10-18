@@ -2,27 +2,27 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{sa_from_volume}
 \alias{sa_from_volume}
-\title{Calculate surface area from volume (Based on Mitchell 1976)}
+\title{Calculate surface area from volume.}
 \usage{
 sa_from_volume(V, taxa)
 }
 \arguments{
-\item{V}{Density (m^3)}
+\item{V}{volume (m^3)}
 
 \item{taxa}{Which class of organism, current choices: lizard, frog, sphere.}
 }
 \value{
-V (m^3)
+surface area (m^2)
 }
 \description{
-Calculate surface area from volume (Based on Mitchell 1976)
+Calculate surface area from volume.
 }
 \details{
-This function allows you to estimate surface area (m^2) from volume (m^3) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976).
+This function allows you to estimate surface area (m^2) from volume (m^3) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976). Source: Mitchell JW. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16: 561-569.
 }
 \examples{
  \dontrun{
- sa_from_volume(0.001,"lizard")
+ sa_from_volume(V=0.001,"lizard")
 }
 
 }

@@ -22,7 +22,7 @@ Qradiation_absorbed(a = 0.9, A, psa_dir, psa_ref, S_dir, S_dif,
 
 \item{S_ref}{reflected solar radiation (W/m^2), either provided or estimated if surface albedo is provided instead}
 
-\item{a_s}{is surface albedo (proportion), optional (not used) if reflected radiation is provided}
+\item{a_s}{is surface albedo (proportion), optional (not used) if reflected radiation is provided, Values available in Gates Biophysical ecology Table 8.2.}
 }
 \value{
 solar radiation absorbed (W)
@@ -32,7 +32,7 @@ Calculate absorbed solar and thermal radiation
 }
 \details{
 This function allows you to estimate solar and thermal radiation (W) absorbed by the surface of an animal. 
-         Follows Gates' Biophysical Ecology and Spotila et al. 1992.
+         Follows Gates' Biophysical Ecology and Spotila et al. 1992. Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
 }
 \examples{
 \dontrun{

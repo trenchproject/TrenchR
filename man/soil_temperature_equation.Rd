@@ -25,8 +25,14 @@ soil_temperature_equation(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s)
 
 \item{T_s}{initial soil suface temperature in degrees C}
 }
+\value{
+soil temperature function
+}
 \description{
 Function called by soil_temp_noint to solve equation for soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior).
+}
+\details{
+Function called by soil_temperature_function() to solve equation for soil temperature.
 }
 \examples{
 \dontrun{
@@ -36,3 +42,5 @@ soil_temperature_equation(L=-10, rho_a=1.177, c_a=1006, k=.41, V_inst=0.3, z_r=1
 \author{
 Joseph Grigg
 }
+\keyword{soil}
+\keyword{temperature}

@@ -20,7 +20,7 @@ metabolim (W)
 Calculate basal (or resting) metabolism as a function of mass and body temperature.
 }
 \details{
-This function allows you to estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). From Gilooly et al. 2001.
+This function allows you to estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). Reference:  Gillooly JF et al. 2001. Effects of size and temperature on metabolic rate. Science 293: 2248-2251.
 }
 \examples{
 \dontrun{

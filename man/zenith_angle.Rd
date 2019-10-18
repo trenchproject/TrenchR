@@ -19,7 +19,7 @@ zenith_angle(doy, lat, lon, hour)
 Zenith angle in degrees
 }
 \description{
-This function allows you to calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical
+This function allows you to calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 }
 \details{
 Calculate Zenith angle

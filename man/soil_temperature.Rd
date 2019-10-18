@@ -9,6 +9,8 @@ soil_temperature(z_r.intervals = 12, z_r, T_a, u, Tsoil0, z0, SSA,
   shade = FALSE)
 }
 \arguments{
+\item{z_r.intervals}{is the number of intervals in the soil profile to calculate}
+
 \item{z_r}{is reference height in m}
 
 \item{T_a}{is a vector of air temperature in degrees C, Note: missing values will be linearly interpolated}
@@ -23,7 +25,7 @@ soil_temperature(z_r.intervals = 12, z_r, T_a, u, Tsoil0, z0, SSA,
 
 \item{TimeIn}{is a vector of time periods for the model}
 
-\item{H}{is solar radiation in W m^-2}
+\item{H}{is a vector of solar radiation in W m^-2}
 
 \item{water_content}{is percent water content (%)}
 
@@ -31,9 +33,10 @@ soil_temperature(z_r.intervals = 12, z_r, T_a, u, Tsoil0, z0, SSA,
 
 \item{shade}{is whether or not soil temperature should be calculated in the shade, TRUE or FALSE}
 
-\item{z.intervals}{is the number of intervals in the soil profile to calculate}
-
 \item{rho_so=}{1620 particle density of soil}
+}
+\value{
+soil temperature (C)
 }
 \description{
 Function called to calculate soil temperature in C from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature.
@@ -54,3 +57,5 @@ soil_temperature(z_r.intervals=12,z_r=1.5, T_a=temp_vector, u=wind_speed_vector,
 \author{
 Joseph Grigg
 }
+\keyword{soil}
+\keyword{temperature}
