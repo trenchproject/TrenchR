@@ -31,9 +31,9 @@ soil_temperature(z_r.intervals = 12, z_r, T_a, u, Tsoil0, z0, SSA,
 
 \item{air_pressure}{is air pressure in kPa}
 
-\item{shade}{is whether or not soil temperature should be calculated in the shade, TRUE or FALSE}
+\item{rho_so}{particle density of soil}
 
-\item{rho_so=}{1620 particle density of soil}
+\item{shade}{is whether or not soil temperature should be calculated in the shade, TRUE or FALSE}
 }
 \value{
 soil temperature (C)

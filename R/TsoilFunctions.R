@@ -243,7 +243,7 @@ soil_temperature_function<- function(j,T_so, params){
 #' @param H is a vector of solar radiation in W m^-2
 #' @param water_content is percent water content (%)
 #' @param air_pressure is air pressure in kPa
-#' @param rho_so= 1620 particle density of soil
+#' @param rho_so particle density of soil
 #' @param shade is whether or not soil temperature should be calculated in the shade, TRUE or FALSE
 #' @return soil temperature (C)
 #' @keywords soil temperature
