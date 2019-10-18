@@ -1,3 +1,19 @@
+#' For build 
+#' 
+#' 
+#' @details For build 
+#' @description For build 
+#' 
+#' @param x build 
+#' @keywords For build 
+#' @export
+#' @examples
+#' \dontrun{
+#' For build 
+#'}
+
+air_temp__profile_segment_in_beta= function(){
+}
 
 #' Get windspeed at a certain height 
 #' 
