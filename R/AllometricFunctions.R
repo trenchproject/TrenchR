@@ -254,8 +254,6 @@ prop_silhouette_area_shapes<-function(shape, theta, h, d){
   #convert degree to radian
   theta_r= theta*(2*pi)/360
   
-  ##Are conversions to radian necessary? default of the trigonometric functions on R is radians
-  
   #prolate spheroid
   if(shape=="spheroid") {
    x= d/h

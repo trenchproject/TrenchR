@@ -111,11 +111,15 @@ degree_days=function(T_min,T_max,LDT=NA,UDT=NA, method="single.sine"){
     if (T_min >= UDT && T_max > UDT) { # entirely above both thresholds
       dd = (UDT - LDT)/2
     } else  if ( T_min > LDT  && T_max > UDT) { #Intercepted by upper threshold 
-      dd = (MT/2-LDT/2)-((T_max-UDT)^2/((T_max-T_min)*4))
+      dd = (MT-LDT)-((T_max-UDT)^2/((T_max-T_min)*4))
+##should be dd = (MT/2-LDT/2) - ...
+      
     } else  if (T_min < LDT &&  T_max > UDT ) {  #Intercepted by both thresholds
       dd = ((T_max-LDT)^2-(T_max-UDT)^2)/((T_max-T_min)*4)
     } else if (T_min > LDT &&  T_max < UDT ) { #Entirely between both thresholds
-      dd = (MT/2)-(LDT/2)
+      dd = (MT/4)-(LDT/2)
+##should be dd = (MT/2) - (LDT/2) since MT is defined as (T_max+T_min)/2
+      
     } else if (T_min < LDT && T_max > LDT) {  # intercepted by LDT  
       dd = (T_max-LDT)^2/((T_max-T_min)*4)
     } else if (T_min < LDT && T_max <= LDT) { # entirely below both thresholds

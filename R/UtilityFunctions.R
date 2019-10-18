@@ -136,7 +136,7 @@ return(zenith)
 #' 
 #' @details Calculate azimuth angle
 #'
-#' @description This function allows you to calculate the azimuth angle, the angle (in degrees) from which the sunlight is coming in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
+#' @description This function allows you to calculate the azimuth angle, the angle (in degrees) from which the sunlight in coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 #' @param doy is day of year.
 #' @param lat is latitude in degrees.
 #' @param lon is longitude in degrees.
