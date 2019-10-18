@@ -261,6 +261,8 @@ soil_temperature_function<- function(j,T_so, params){
 
 soil_temperature<-function(z_r.intervals=12,z_r, T_a, u, Tsoil0, z0, SSA, TimeIn, H, water_content=0.2, air_pressure, rho_so=1620, shade=FALSE){
   
+  library(zoo)
+  
   #account for NAs at beginning of data
   first.dat= min(which( !is.na(T_a)))
   #find last data
