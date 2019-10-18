@@ -550,8 +550,8 @@ soil_temperature_equation(L=-10, rho_a=1.177, c_a=1006, k=.41, V_inst=0.3, z_r=1
 ```
 
 ```{r}
-# require(deSolve)
-# require(zoo)
+require(deSolve) #fix dependencies
+require(zoo)
 # 
 # temp_vector= runif(96, min=-10, max=10)
 # wind_speed_vector= runif(96, min=0, max=0.4)
