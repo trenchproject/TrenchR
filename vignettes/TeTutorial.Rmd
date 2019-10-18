@@ -301,7 +301,7 @@ boundary_layer_resistance(T_a=293, e_s=2.4, e_a=2.5, elev=500, D=0.007, u=2)
 ```
 
 ```{r}
-Qthermal_radiation_absorbed(T_a=20, epsilon_ground=0.97, a_longwave=0.965)
+Qthermal_radiation_absorbed(T_a=20, T_g=25, epsilon_ground=0.97, a_longwave=0.965)
 ```
 
 ##Frog
