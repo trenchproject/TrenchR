@@ -27,7 +27,7 @@ soil_temperature(z_r.intervals = 12, z_r, T_a, u, Tsoil0, z0, SSA,
 
 \item{H}{is a vector of solar radiation in W m^-2}
 
-\item{water_content}{is percent water content (%)}
+\item{water_content}{is percent water content (percent)}
 
 \item{air_pressure}{is air pressure in kPa}
 

@@ -35,7 +35,7 @@ soil_temperature_function(j, T_so, params)
 
 \item{rho_a}{is the density of air (kg/m^3)}
 
-\item{rho_so=}{1620 particle density of soil}
+\item{rho_so}{particle density of soil}
 
 \item{c_a}{is the specific heat of air (J/(kg*K))}
 
