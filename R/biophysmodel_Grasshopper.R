@@ -8,7 +8,7 @@
 #' @param T_g  is surface temperature in C, Kingsolver (1983) assumes T_g-T_a=8.4
 #' @param u is wind speed in m/s
 #' @param H  is total (direct + diffuse) solar radiation flux in W/m^2
-#' @param K_t is the clearnex index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.
+#' @param K_t is the clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.
 #' @param psi is solar zenith angle in degrees
 #' @param L in grasshopper length in m
 #' @param Acondfact is the proportion of the grasshopper surface area that is in contact with the ground
@@ -61,7 +61,7 @@ Hdir=Httl*(1-kd)
 Hdif=Httl*kd;     
 
 #------------------------------
-#Anderson 1979 - calculates Radiation as W without area dependence 
+#Anderson 1979 - calculates radiation as W without area dependence 
 psi_r=psi*pi/180 #psi in radians
 
 #Calculate Qabs as W

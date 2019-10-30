@@ -20,7 +20,7 @@ library(TrenchR)
 ```
 
 #Operative environmental temperatures
-The body temperatures, $T_b$, of organisms can depart dramatically from the air temperatures due to energy exchange with the environment.  Heat is gained from absorbing solar and thermal radiation and from metabolic reactions. Heat is lost through the organism's emission of radiation and the evaporation of water. The organism exchanges heat with the surrounding air or water via convection and with the ground via conduction. The balance of these heat exchanges can be estimated and is referred to as operatire environmental temperature, $T_e$. $T_e$ indicates the steady-state temperature of an organism with given physical properties in a particular environment [Bakken 1992].
+The body temperatures, $T_b$, of organisms can depart dramatically from the air temperatures due to energy exchange with the environment.  Heat is gained from absorbing solar and thermal radiation and from metabolic reactions. Heat is lost through the organism's emission of radiation and the evaporation of water. The organism exchanges heat with the surrounding air or water via convection and with the ground via conduction. The balance of these heat exchanges can be estimated and is referred to as operative environmental temperature, $T_e$. $T_e$ indicates the steady-state temperature of an organism with given physical properties in a particular environment [Bakken 1992].
 
 Calculations of operative environmental temperatures are based in balancing energy input and output to organisms.  The following accounting of heat gains and losses at the surface of the organism can be used to estimate $T_e$ [Gates 1980]:
 $$Qnet = Qabs - Qemit + Qconv + Qcond + Qmet - Qevap,$$
@@ -480,7 +480,7 @@ axis(side = 4)
 mtext(side = 4, line = 3, 'Radiation')
 legend("topleft",
        legend=c("Ta", "Ts", "Te", "Radiation"),
-       lty=c(1,0), pch=NA, col=c("orange", "purple", "blue","green"))
+       lty=1, pch=NA, col=c("orange", "purple", "blue","green"))
 
 ```
 

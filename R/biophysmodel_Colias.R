@@ -94,7 +94,7 @@ h_T=(1/h_c+(r_i+delta)*log((r_i+delta)/r_i)/k_e)^-1;  # h_T- total convective he
 
 #ADJUST PARAMETERS IF SHADE
 if(shade==TRUE){
-  #Caclulate without basking by dividing areas by two
+  #Calculate without basking by dividing areas by two
   A_sttl=A_sttl/2
   #RADIATIVE HEAT FLUX IN SHADE, mW
   A_sdir= A_sttl/2

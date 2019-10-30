@@ -25,6 +25,8 @@ library(TrenchR)
 day_of_year("2017-01-01", format= "%Y-%m-%d")
 day_of_year("2014-12-31", format= "%Y-%m-%d")
 day_of_year("2007-04-22", format= "%Y-%m-%d")
+
+#CHECKED
 ```
 
 ```{r}
@@ -36,6 +38,8 @@ plot(1:365, dec_angle(1:365), type="l")
 plot(1:365, daylength(lat=47.61, doy=1:365), type="l", ylim=c(0,24))
 points(1:365, daylength(lat=10, doy=1:365), type="l", lty="dashed")
 points(1:365, daylength(lat=60, doy=1:365), type="l")
+
+#CHECKED
 ```
 
 ```{r}
@@ -43,9 +47,12 @@ plot(1:365, solar_noon(lon=-122, doy=1:365), type="l", ylim=c(10.8, 13))
 points(1:365, solar_noon(lon=-180.335, doy=1:365), type="l")
 points(1:365, solar_noon(lon=-150, doy=1:365), type="l", lty="dashed")
 #points(1:365, solar_noon(lon=-60, doy=1:365), type="l")
+
+#CHECKED
 ```
 
 ```{r}
+#across hours
 zen= unlist(lapply(1:24, FUN=zenith_angle, doy=200, lat=47.61, lon=-122.33))
 plot(1:24, zen, type="l")
 zen= unlist(lapply(1:24, FUN=zenith_angle, doy=0, lat=47.61, lon=-122.33))
@@ -54,6 +61,7 @@ zen= unlist(lapply(1:24, FUN=zenith_angle, doy=100, lat=47.61, lon=-122.33))
 points(1:24, zen, type="l")
 zen= unlist(lapply(1:24, FUN=zenith_angle, doy=300, lat=47.61, lon=-122.33))
 points(1:24, zen, type="l", lty="dashed")
+
 zen= unlist(lapply(1:24, FUN=zenith_angle, doy=200, lat=10, lon=-122.33))
 plot(1:24, zen, type="l")
 zen= unlist(lapply(1:24, FUN=zenith_angle, doy=0, lat=10, lon=-122.33))
@@ -62,6 +70,7 @@ zen= unlist(lapply(1:24, FUN=zenith_angle, doy=100, lat=10, lon=-122.33))
 points(1:24, zen, type="l")
 zen= unlist(lapply(1:24, FUN=zenith_angle, doy=300, lat=10, lon=-122.33))
 points(1:24, zen, type="l", lty="dashed")
+
 zen= unlist(lapply(1:24, FUN=zenith_angle, doy=200, lat=70, lon=-122.33))
 plot(1:24, zen, type="l")
 zen= unlist(lapply(1:24, FUN=zenith_angle, doy=0, lat=70, lon=-122.33))
@@ -70,6 +79,18 @@ zen= unlist(lapply(1:24, FUN=zenith_angle, doy=100, lat=70, lon=-122.33))
 points(1:24, zen, type="l")
 zen= unlist(lapply(1:24, FUN=zenith_angle, doy=300, lat=70, lon=-122.33))
 points(1:24, zen, type="l", lty="dashed")
+
+#solar angle at noon across doy
+zen= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=60, lon=-122.33))
+plot(1:365, zen, type="l", ylim=range(0,90))
+zen= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=40, lon=-122.33))
+points(1:365, zen, type="l", lty="dotted")
+zen= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=20, lon=-122.33))
+points(1:365, zen, type="l")
+zen= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=0, lon=-122.33))
+points(1:365, zen, type="l", lty="dashed")
+
+#CHECKED
 ```
 
 ```{r}
@@ -109,7 +130,6 @@ surface_roughness(u_r=c(0.01,0.025,0.05,0.1,0.2), zr=c(0.05,0.25,0.5,0.75,1))
 ```{r}
 zs= seq(0,2,0.1) 
 us= wind_speed_profile_neutral(u_r=1, zr=0.1, z0=0.2, z=zs)
-us
 plot(us,zs, type="l")
 points(wind_speed_profile_neutral(u_r=0.5, zr=0.1, z0=0.2, z=zs), zs, type="l", col="red")
 ```
@@ -154,22 +174,23 @@ points(c(0.1,0.5,1),c(0.05,0.25,0.5) )
 ```
 
 #DTR Functions
-
 ```{r}
 t.seq= lapply(1:23, FUN=diurnal_temp_variation_sineexp, T_max=30, T_min=10, t_r=6, t_s=18)
 plot(1:23, t.seq, type = "l", xlab = "hour", ylab = "temp (C)")
+#CHECKED
 ```
 
 ```{r}
 plot(1:23, diurnal_temp_variation_sine(T_max=30, T_min=10, t=1:23), type = "l", xlab = "hour", ylab = "temp (C)")
+#CHECKED
 ```
 
 ```{r}
 plot(1:23, diurnal_temp_variation_sinesqrt(t=1:23, tr=6, ts=18, T_max=30, T_min=10, T_minp=12), type = "l", xlab = "hour", ylab = "temp (C)")
+#CHECKED
 ```
 
 #Degree days
-
 ```{r}
 degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.sine")
 degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="double.sine")
@@ -179,7 +200,6 @@ degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="double.triangulation")
 ```
 
 #Radiation functions
-
 ```{r}
 zen= unlist(lapply(1:24, FUN=zenith_angle, doy=200, lat=47.61, lon=-122.33))
 zen= zen*2*pi/360
@@ -229,6 +249,8 @@ plot(1:50, sa_from_mass(1:50,"lizard"), type="l", xlab = "m (g)", ylab = "surfac
 points(1:50, sa_from_mass(1:50,"frog"), type="l", col="blue")
 points(1:50, sa_from_mass(1:50,"salamander"), type="l", col="green")
 points(seq(0.1,5,0.2), sa_from_mass(seq(0.1,5,0.2),"insect"), type="l", col="purple")
+
+#CHECKED
 ```
 
 ```{r}
@@ -239,6 +261,7 @@ points(seq(0.05,0.25,0.01), mass_from_length(seq(0.05,0.25,0.01),"snake"), type=
 points(seq(0.05,0.25,0.01), mass_from_length(seq(0.05,0.25,0.01),"turtle"), type="l", col="orange")
 points(seq(0.01,0.10,0.01), mass_from_length(seq(0.01,0.10,0.01),"insect"), type="l", col="purple")
 #plot(log10(seq(0.05,0.25,0.01)*1000), log10(mass_from_length(seq(0.05,0.25,0.01),"lizard")), type="l")
+
 #CHECKED
 ```
 
@@ -258,6 +281,8 @@ points(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001),"sphere
 
 ```{r}
 plot(seq(0.01, 0.05, 0.001), sa_from_length(l=seq(0.01, 0.05, 0.001)), type="l", xlab = "length (m)", ylab = "surface area (m^2)")
+
+#ROUGHLY CHECKED
 ```
 
 ```{r}
@@ -461,6 +486,7 @@ points(1:10, Nu_from_Re(Re=1:10, taxa="spider"), type="l")
 
 ```{r}
 Nu_from_Gr(Gr=5)
+#CHECKED
 ```
 
 ```{r}
@@ -474,22 +500,25 @@ plot(293:313, Tb_CampbellNorman(T_a=293:313, S=823, epsilon=0.96, c_p=29.3, D=0.
 abline(a=0, b=1, lty="dotted")
 plot(seq(0,800,200), Tb_CampbellNorman(T_a=293, S=seq(0,800,200), epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", xlab = "solar and thermal radiation absorbed (W m^-2)", ylab = "body temperature (C)")
 abline(a=293, b=0, lty="dotted")
-#CHECK AGAINST EXAMPLE IN BOOK FOR PERSON
+#CHECKED AGAINST EXAMPLE IN BOOK FOR PERSON
 ```
 
 ```{r}
 Qnet_Gates(Qabs=500, Qemit=10, Qconv=100, Qcond=100, Qmet=10, Qevap=5)
+
 #CHECKED
 ```
 
 ```{r}
-t.seq= lapply(293:313, FUN=Tb_Gates, A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_g=303, Qabs=400, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
+t.seq= lapply(293:313, FUN=Tb_Gates, A=0.1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.0, T_g=303, Qabs=10, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
 plot(293:313, t.seq, type = "l", xlab = "ambient temperature (C)", ylab = "body temperature (C)", xlim=c(295,315), ylim=c(295,315))
 abline(a=0,b=1, lty="dotted")
 #vary radiation
-t.seq= lapply(seq(0,800,100), FUN=Tb_Gates, A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_a=303, T_g=303, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
-plot(seq(0,800,100), t.seq, type = "l", xlab = "radiation absorbed (W)", ylab = "body temperature (C)")
+t.seq= lapply(seq(0,100,10), FUN=Tb_Gates, A=0.1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_a=303, T_g=303, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
+plot(seq(0,100,10), t.seq, type = "l", xlab = "radiation absorbed (W)", ylab = "body temperature (C)")
 abline(a=303,b=0, lty="dotted")
+
+#CHECKED
 ```
 
 #biophysmodel_Colias
@@ -500,36 +529,54 @@ abline(a=0,b=1, lty="dotted")
 t.seq= lapply(seq(0,800,20), FUN=Tb_butterfly, T_a=25, Tg=25, Tg_sh=25, u=0.4, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
 plot(seq(0,800,20), t.seq, type = "l", xlab = "Direct radiation (W)", ylab = "body temperature (C)")
 abline(a=25,b=0, lty="dotted")
+
+#CHECKED
 ```
 
 #biophysmodel_Grasshopper
 ```{r}
-t.seq= lapply(20:40, FUN=Tb_grasshopper, T_g=25, u=0.4, H=400, K_t=0.7, psi=30, L=0.02, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3)
+t.seq= lapply(20:40, FUN=Tb_grasshopper, T_g=25, u=0.4, H=800, K_t=0.7, psi=30, L=0.05, Acondfact=0.00, z=0.001, abs=0.7, r_g=0.3)
 plot(20:40, t.seq, type = "l", xlab = "ambient temperature (C)", ylab = "body temperature (C)", xlim=c(20,40), ylim=c(20,40))
 abline(a=0,b=1, lty="dotted")
-t.seq= lapply(seq(0,800,20), FUN=Tb_grasshopper, T_a=25, T_g=25, u=0.4, K_t=0.7, psi=30, L=0.02, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3)
+t.seq= lapply(seq(0,800,20), FUN=Tb_grasshopper, T_a=25, T_g=25, u=0.4, K_t=0.7, psi=30, L=0.05, Acondfact=0.0, z=0.001, abs=0.7, r_g=0.3)
 plot(seq(0,800,20), t.seq, type = "l", xlab = "Direct radiation (W)", ylab = "body temperature (C)")
 abline(a=25,b=0, lty="dotted")
+
+#CHECKED, clean up code?
 ```
 
 #biophysmodel_Sceloporus
 ```{r}
+#sun, surface
 t.seq= lapply(20:40, FUN=Tb_lizard, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.7, elev=500, doy=200, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
 plot(20:40, t.seq, type = "l", xlab = "ambient temperature (C)", ylab = "body temperature (C)", xlim=c(20,51), ylim=c(20,51))
 abline(a=0,b=1, lty="dotted")
+#shade, surface
 t.seq= lapply(20:40, FUN=Tb_lizard, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.7, elev=500, doy=200, sun=FALSE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
 points(20:40, t.seq, type = "l", col="green")
+#sun, above surface
+t.seq= lapply(20:40, FUN=Tb_lizard, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.7, elev=500, doy=200, sun=TRUE, surface=FALSE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
+points(20:40, t.seq, type = "l", col="purple")
+#shade, above surface
+t.seq= lapply(20:40, FUN=Tb_lizard, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.7, elev=500, doy=200, sun=FALSE, surface=FALSE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
+points(20:40, t.seq, type = "l", col="blue")
+
+#vary zenith angle
 t.seq= lapply(0:90, FUN=Tb_lizard, T_a=30, T_g=30, u=0.1, svl=60, m=10, rho_S=0.7, elev=500, doy=200, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
 plot(0:90, t.seq, type = "l", xlab = "zenith angle (degree)", ylab = "body temperature (C)")
 abline(a=30,b=0, lty="dotted")
+
+#CHECKED
+#Include transient heat model in package?: https://github.com/JRubalcaba/BodyTemp.
 ```
 
 #calculate_To
 ```{r}
-t.seq= lapply(293:313, FUN=Tb_Fei, T_s=300, TAH=300, UDT=600, GLW=30, shade=0.5)
+t.seq= lapply(293:313, FUN=Tb_Fei, T_g=300, H=800, lw=30, shade=0.5, m=10.5, Acondfact=0.05, Agradfact=0.4)
 plot(293:313, t.seq, type = "l", xlab = "ambient temperature (C)", ylab = "body temperature (C)")
 abline(a=0,b=1, lty="dotted")
-#KEEP AND FIX?
+
+#STARTED TO FIX
 ```
 
 #TsoilFunctions
