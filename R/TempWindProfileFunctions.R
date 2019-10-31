@@ -4,6 +4,9 @@
 #' @details Estimate surface roughness in m
 #' @description This function allows you to estimate surface roughness in m from empirical wind speed (m/s) 
 #' data collected at a vector of heights (m). Estimates surface roughness from empirical measurements. 
+#' References: Kingsolver and Buckley. 2015. Climate variability slows evolutionary responses of Colias butterflies to recent climate change. PRSb;
+#' G. S. Campbell, J. M. Norman, An introduction to environmental biophysics. (Springer Science, New York, 1998); W. P. Porter, J. W. Mitchell, W. A. Beckman, C. B. DeWitt, Behavioral implications of mechanistic
+#' ecology. Thermal and behavioral modeling of desert ecotherms and their microenvironment. Oecologia 13, 1-54 (1973)
 #' 
 #' @param u_r is wind velocity at a vector of reference heights in m/s.
 #' @param zr is the vector of reference heights in m.
@@ -33,10 +36,9 @@ surface_roughness<- function(u_r, zr){
 #' 
 #' @details Calculates wind speed at a specified height under neutral conditions
 #' @description This function allows you to calculate wind speed (m/s) at a 
-#' specified height (m) within a boundary layer near the surface.  
+#' specified height (m) within a boundary layer near the surface.  The profile assumes neutral conditions.
 #' The velocity profile is the neutral profile described by Sellers (1965). 
 #' Function is equations (2) and (3) of Porter et al. (1973). Source: Porter WP et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
-#' Profiles in neutral conditions.
 #' 
 #' @param u_r is wind velocity at reference height in m/s.
 #' @param zr is initial reference height in m.
@@ -154,8 +156,6 @@ air_temp_profile= function(T_r, u_r, zr, z0,z,T_s){
 #' Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks.
 #' Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Porter 2016. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.
 #' 
-#' NEED TO CHECK EQUATIONS.
-#' 
 #' @param T_r is a vector of temperature at the 3 reference heights in degrees C.
 #' @param u_r is a vector of wind speeds at the 3 reference heights in m/s.
 #' @param zr is a vector of 3 reference heights in m.
@@ -173,7 +173,6 @@ air_temp_profile= function(T_r, u_r, zr, z0,z,T_s){
 air_temp_profile_segment= function(T_r, u_r, zr, z0,z,T_s){
   
   #order roughness and segment heights so that z1>z2>z0 
-  #!CHECK
   zr.ord= order(zr, decreasing = TRUE)
   zr= zr[zr.ord]
   z0= z0[zr.ord]
@@ -188,10 +187,9 @@ air_temp_profile_segment= function(T_r, u_r, zr, z0,z,T_s){
   S_tb= 0.64/log(zr[2]/z0[3]+1)
   
   #estimate u_Zloc  
-  #! CHECK ORDER
-  if(zr[1]<=z) {us_star=u_star[3]; z0s= z0[1]; T_rs= T_r[1]; zrs= zr[1]}
-  if(zr[1]>z & zr[2]<=z) {us_star=u_star[1]; z0s= z0[2]; T_rs= T_r[2]; zrs= zr[2]}
-  if(zr[1]>z & zr[2]>z) {us_star=u_star[2]; z0s= z0[3]; T_rs= T_r[3]; zrs= zr[3]}
+  if(zr[1]<=z) {us_star=u_star[1]; z0s= z0[1]; T_rs= T_r[1]; zrs= zr[1]}
+  if(zr[1]>z & zr[2]<=z) {us_star=u_star[2]; z0s= z0[2]; T_rs= T_r[2]; zrs= zr[2]}
+  if(zr[1]>z & zr[2]>z) {us_star=u_star[3]; z0s= z0[3]; T_rs= T_r[3]; zrs= zr[3]}
   #estimate windspeed
   u_z= 2.5*us_star*log(z/z0s+1)
   
@@ -202,3 +200,45 @@ air_temp_profile_segment= function(T_r, u_r, zr, z0,z,T_s){
   return(T_z)
 }
 
+#' Estimate windspeed at a specified height 
+#' 
+#'   
+#' @details Calculates temperature at a specified height
+#' @description This function allows you to calculate wind speed (m/s) at a specified height (m).   
+#' Estimates a three segment velocity and temperature profile based on user-specified, 
+#' experimentally determined values for 3 roughness heights and reference heights.  
+#' Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks.
+#' Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Porter 2016. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.
+#' 
+#' @param u_r is a vector of wind speeds at the 3 reference heights in m/s.
+#' @param zr is a vector of 3 reference heights in m.
+#' @param z0 is a vector of 3 experimentally determined roughness heights in m.
+#' @param z is height to scale to in m.
+#' @keywords wind speed profile
+#' @export
+#' @examples
+#' \dontrun{
+#' wind_speed_profile_segment(u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), z=0.3)
+#'}
+#'
+
+wind_speed_profile_segment= function(u_r, zr, z0,z){
+  
+  #order roughness and segment heights so that z1>z2>z0 
+  zr.ord= order(zr, decreasing = TRUE)
+  zr= zr[zr.ord]
+  z0= z0[zr.ord]
+  u_r=u_r[zr.ord]
+  
+  #friction velocity
+  u_star=  0.4*u_r/log(zr/z0 +1) #0.4 is von Karman constant
+  
+  #estimate u_Zloc  
+  if(z<=zr[3]) {us_star=u_star[3]; z0s= z0[3]; zrs= zr[3]}
+  if(z>zr[3] & z<zr[2]) {us_star=u_star[2]; z0s= z0[2]; zrs= zr[2]}
+  if(z>=zr[2]) {us_star=u_star[1]; z0s= z0[1]; zrs= zr[1]}
+  #estimate windspeed
+  u_z= 2.5*us_star*log(z/z0s+1)
+  
+  return(u_z)
+}

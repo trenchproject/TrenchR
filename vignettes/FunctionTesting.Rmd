@@ -100,7 +100,7 @@ az= unlist(lapply(1:24, FUN=azimuth_angle, doy=112, lat=47.61, lon=-122.33))
 plot(1:24, az, type="l")
 az= unlist(lapply(1:365, FUN=azimuth_angle, hour=10, lat=47.61, lon=-122.33))
 plot(1:365, az, type="l")
-#CHECK
+#CHECKED
 ```
 
 ```{r}
@@ -126,27 +126,37 @@ degree_to_radian(47.608)
 
 ```{r}
 surface_roughness(u_r=c(0.01,0.025,0.05,0.1,0.2), zr=c(0.05,0.25,0.5,0.75,1))
+
+#CHECKED
 ```
 ```{r}
 zs= seq(0,2,0.1) 
-us= wind_speed_profile_neutral(u_r=1, zr=0.1, z0=0.2, z=zs)
+us= wind_speed_profile_neutral(u_r=1, zr=2, z0=0.2, z=zs)
 plot(us,zs, type="l")
-points(wind_speed_profile_neutral(u_r=0.5, zr=0.1, z0=0.2, z=zs), zs, type="l", col="red")
+points(wind_speed_profile_neutral(u_r=0.5, zr=2, z0=0.2, z=zs), zs, type="l", col="red")
+points(c(0.5,1),c(2,2) )
+
+#CHECKED
 ```
 
 ```{r}
 z.seq <- seq(0, 2, by = 0.1)
-t.seq <- air_temp_profile_neutral(T_r=20, zr=0.1, z0=0.2, z=z.seq, T_s=25)
+t.seq <- air_temp_profile_neutral(T_r=20, zr=1, z0=0.2, z=z.seq, T_s=25)
 plot(t.seq, z.seq, type = "l", xlab = "Temperature (C)", ylab = "z (height above ground in m)")
+points(c(25,20),c(0,1) )
+
+#CHECKED
 ```
 
 ```{r}
 zs= seq(0,2,0.1) 
-us= wind_speed_profile(u_r=1, zr=0.1, z0=0.2, z=zs)
+us= wind_speed_profile(u_r=1, zr=2, z0=0.2, z=zs)
 plot(us,zs, type="l")
-points(c(1),c(0.1))
-points(wind_speed_profile(u_r=0.5, zr=0.1, z0=0.2, z=zs), zs, type="l", col="red")
-points(c(0.5),c(0.1), col="red")
+points(c(1),c(2))
+points(wind_speed_profile(u_r=0.5, zr=2, z0=0.2, z=zs), zs, type="l", col="red")
+points(c(0.5),c(2), col="red")
+
+#CHECKED
 ```
 
 ```{r}
@@ -154,23 +164,26 @@ z.seq <- seq(0, 2, by = 0.1)
 t.seq <- air_temp_profile(T_r = 20, u_r = 0.5, zr = 2, z0 = 0.2, z = z.seq, T_s = 25)
 plot(t.seq, z.seq, type = "l", xlab = "Temperature (C)", ylab = "z (height above ground in m)")
 points(c(25,20),c(0,2) )
+
+#CHECKED
 #CHANGED FROM NICHE MAPPER VIGNETTE
 ```
 ```{r}
 z.seq <- seq(0, 2, by = 0.1)
 t.seq= lapply(z.seq, FUN=air_temp_profile_segment, T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), T_s=27)
-#t.seq <- air_temp_profile_segment(T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), z=z.seq[1], T_s=27)
 plot(t.seq, z.seq, type = "l", xlab = "Temperature (C)", ylab = "z (height above ground in m)")
 points(c(27,25,22,20),c(0,0.05,0.25,0.5) )
-#CHANGED FROM NICHE MAPPER VIGNETTE
+
+#CHECKED
 ```
 
 ```{r}
 z.seq <- seq(0, 2, by = 0.1)
-u.seq= lapply(z.seq, FUN=wind_speed_profile_segment_in_beta, u_r=c(0.1,0.5,1), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2))
+u.seq= lapply(z.seq, FUN=wind_speed_profile_segment, u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2))
 plot(u.seq, z.seq, type = "l", xlab = "Wind speed (m/s)", ylab = "z (height above ground in m)")
-points(c(0.1,0.5,1),c(0.05,0.25,0.5) )
-#FIX
+points(c(0.01,0.025,0.05),c(0.05,0.25,0.5) )
+
+#CHECKED
 ```
 
 #DTR Functions
@@ -210,17 +223,33 @@ plot(1:24, rd[1,], type="l", xlab = "hour", ylab = "radiation (W/m^2)", ylim=c(0
 points(1:24, rd[2,], type="l")
 points(1:24, rd[3,], type="l")
 points(1:24, rd[1,]+rd[2,]+rd[3,], type="l", lty="dashed")
+
+#Campbell & Norman Figure 11.2 and 11.3
+psi.seq <- seq(0, 90, by = 5)
+rd= lapply(psi.seq*2*pi/360, FUN=estimate_radiation, doy=200, tau=0.75, elev=1500, rho=0.7)
+#unlist
+rd=matrix(unlist(rd), nrow=3, byrow=FALSE)
+plot(psi.seq, rd[1,], type="l", xlab = "zenith angle (degrees)", ylab = "radiation (W/m^2)", ylim=c(0,1200))
+points(psi.seq, rd[2,], type="l")
+points(psi.seq, rd[3,], type="l")
+points(psi.seq, rd[1,]+rd[2,], type="l", lty="dashed")
+
+#CHECKED
 ```
 
 ```{r}
-r.seq= lapply(1:24, FUN=diurnal_radiation_variation, doy=112, solrad=8000, lon=-122.33, lat=47.61)
+r.seq= lapply(1:24, FUN=diurnal_radiation_variation, doy=172, solrad=8000, lon=-112.07, lat=33.45)
 plot(1:24, r.seq, type = "l", xlab = "hour", ylab = "radiation (W/m2)")
+
+#CHECKED
 ```
 
 ```{r}
-r.seq= lapply(seq(1,365,31), FUN=monthly_solar_radiation, lat=47.61,lon=-122.33,elev=1500,T=15,Hr=50,P=50)
+r.seq= lapply(seq(1,365,31), FUN=monthly_solar_radiation, lat=43.57,lon=-116.22,elev=866,T=20,Hr=15,P=15)
+r.seq=unlist(r.seq)
 plot(seq(1,365,31), r.seq, type = "l", xlab = "doy", ylab = "radiation (W/m2)")
-#NEEDS CHECKING
+
+#CHECKED against Nikolov and Zeller (1992) Fig. 3 for Boise, Idaho. Not radiation unit differences.
 ```
 
 #Radiation partitioning functions
@@ -322,6 +351,7 @@ plot(293:313, Qconduction_substrate(T_g= 293:313,T_b=303,D=0.01,K_g=0.3,A=10^-2,
 
 ```{r}
 plot(293:313, Qconvection(T_a= 303,T_b= 293:313,H=10.45,A=0.0025, proportion=0.85), type="l", xlab = "ground temperature (C)", ylab = "convection (W)")
+#CHECKED
 ```
 
 ```{r}
@@ -367,13 +397,31 @@ points(293:313, Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_r
 ```
 
 ```{r}
-Qevap= unlist(lapply(293:313, FUN=Qevaporation, A=0.1, taxa="amphibian_wetskin", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50))
-plot(293:313, Qevap, type="l", xlab = "body temperature (K)", ylab = "evaporative heat loss (W)", lty="dashed", ylim=c(0,10))
-Qevap= unlist(lapply(293:313, FUN=Qevaporation, A=0.1, taxa="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50))
-points(293:313, Qevap, type="l", lty="dotted")
+vp= saturation_vapor_pressure(293:313)#kPa
+#convert to kg/m^3
+rho_s= vp*0.032 #kg/m^3
+
+vp= saturation_vapor_pressure(293:313-10)#kPa
+#convert to kg/m^3
+rho_a= vp*0.032 #kg/m^3
+
+temps= 293:313
+Qevaps= rep(NA,21)
+Qevaps_wet= rep(NA,21)
+
+for(ind in 1:21){
+ Qevaps[ind]=Qevaporation(A=0.1, T_b=temps[ind], taxa="amphibian", rho_s=rho_s[ind], rho_a=rho_a[ind], h=0.5, H=20, r_i=50) 
+Qevaps_wet[ind]=Qevaporation(A=0.1, T_b=temps[ind], taxa="amphibian_wetskin", rho_s=rho_s[ind], rho_a=rho_a[ind], h=0.5, H=20, r_i=50) 
+ }
+
+plot(temps, Qevaps, type="l", xlab = "body temperature (K)", ylab = "evaporative heat loss (W)", lty="dashed", ylim=c(0,400))
+
+points(temps, Qevaps_wet, type="l", lty="dotted")
+
 Qevap= unlist(lapply(293:313, FUN=Qevaporation, A=0.1, taxa="lizard"))
 points(293:313, Qevap, type="l")
-#CHECKED, but needs further checking
+
+#CHECKED
 ```
 
 ```{r}
@@ -434,12 +482,15 @@ plot(sqrt(5:20), blr.seq, type = "l", xlab = "diameter (m)", ylab = "boundary la
 t.seq= lapply(20:40, FUN=Tb_salamander_humid, r_i=4,r_b=1,D=0.01,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
 plot(20:40, t.seq, type = "l", xlab = "ambient temperature (C)", ylab = "humid operative temperature (C)")
 abline(a=0, b=1, lty="dotted")
-#CHECK
+#CHECK WITH ERIC?
 ```
 
 ```{r}
 plot(20:40, Qthermal_radiation_absorbed(T_a=20:40, T_g=30, epsilon_ground=0.97, a_longwave=0.965), type="l", xlab = "air temperature (C)", ylab = "thermal radiation absorbed (W)")
-#CHECK
+
+Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303, T_g=293, T_a=298, enclosed=FALSE)
+
+#CHECK WITH ERIC?
 ```
 
 ```{r}
@@ -447,6 +498,7 @@ plot(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=0), type="l", xlab = "ho
 points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=5), type="l")
 points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=10), type="l")
 points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=20), type="l", lty="dotted")
+
 #CHECKED
 ```
 

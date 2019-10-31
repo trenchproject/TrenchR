@@ -223,8 +223,6 @@ Qradiation_absorbed<-function(a=0.9, A, psa_dir, psa_ref, S_dir, S_dif, S_ref=NA
   
   #solar radiation
   Qabs= a*A_dir*S_dir + a*A_dif*S_dif + a*A_ref*S_ref
-  ##this should be AQabs = ... (p.61)
-  ##should divide this by A to get Qabs
   return(Qabs)
 }
 
@@ -264,9 +262,6 @@ Qemitted_thermal_radiation<-function(epsilon=0.96, A, psa_dir, psa_ref, T_b, T_g
   
   if(enclosed) 
          Qemit= A_r*epsilon*sigma*(T_b^4 - T_a^4)
- ##wrong equation
- ##needs to be (T_b+273.15)^4-(T_a+273.15)^4 (p.62)
-  
   else 
           Qemit= epsilon*sigma*(A_s*(T_b^4 - Tsky^4)+A_r*(T_b^4 - T_g^4))
 
@@ -614,13 +609,13 @@ Qthermal_radiation_absorbed<-function(T_a,T_g, epsilon_ground=0.97, a_longwave=0
   #Stefan-Boltzmann constant
   sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
   
-  'longwave radiation from sky function, Campbell and Norman 1998'
+  #longwave radiation from sky function, Campbell and Norman 1998
   Slongwave_sky= 53.1*10^-14*(T_a+273.15)^6.
   
-  'longwave radiation from ground function, Campbell and Norman 1998'
+  #longwave radiation from ground function, Campbell and Norman 1998
   Slongwave_ground= epsilon_ground*sigma*(T_g+273.15)^4.
   
-  'radiation absorbed function, adapted from Campbell and Norman 1998'
+  #radiation absorbed function, adapted from Campbell and Norman 1998
   Slongwave= 0.5*a_longwave*(Slongwave_sky+Slongwave_ground)
   
   return(Slongwave)
