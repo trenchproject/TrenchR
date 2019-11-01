@@ -2,7 +2,7 @@
 #' 
 #' 
 #' @details Calculate degree days
-#' @description This function allows you to calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://www.ipm.ucdavis.edu/WEATHER/ddss_tbl.html. Double Sine wave approximation of degree days from Allen JC. 1976.  A Modified Sine Wave Method for Calculating Degree Days. Environmental Entomology 5:388–396. 
+#' @description This function allows you to calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minima is equal to previous day. Double Sine wave approximation of degree days from Allen JC. 1976.  A Modified Sine Wave Method for Calculating Degree Days. Environmental Entomology 5:388–396. 
 #' @param T_min Minimum temperature of the day (C)
 #' @param T_max Maximum temperature of the day (C)
 #' @param LDT lower developmental threshold.
@@ -51,8 +51,6 @@ degree_days=function(T_min,T_max,LDT=NA,UDT=NA, method="single.sine"){
     } else if (T_min < LDT && T_max <= LDT) { # entirely below both thresholds
       dd = 0
        }
-
-      
   } #end single sine method
   
   #double sine calculation
@@ -81,8 +79,6 @@ degree_days=function(T_min,T_max,LDT=NA,UDT=NA, method="single.sine"){
   dd= dd*2
     } #end double sine method
   
-  
-
   #Single triangulation - with simplified formula
   if (method == "single.triangulation") {
     
@@ -100,8 +96,6 @@ degree_days=function(T_min,T_max,LDT=NA,UDT=NA, method="single.sine"){
     } else if (T_min < LDT && T_max <= LDT) { # entirely below both thresholds
       dd = 0
     }
-    
-    
   } #end single triangulation method
   
   #Double triangulation - with simplified formula
@@ -112,14 +106,10 @@ degree_days=function(T_min,T_max,LDT=NA,UDT=NA, method="single.sine"){
       dd = (UDT - LDT)/2
     } else  if ( T_min > LDT  && T_max > UDT) { #Intercepted by upper threshold 
       dd = (MT-LDT)-((T_max-UDT)^2/((T_max-T_min)*4))
-##should be dd = (MT/2-LDT/2) - ...
-      
     } else  if (T_min < LDT &&  T_max > UDT ) {  #Intercepted by both thresholds
       dd = ((T_max-LDT)^2-(T_max-UDT)^2)/((T_max-T_min)*4)
     } else if (T_min > LDT &&  T_max < UDT ) { #Entirely between both thresholds
       dd = (MT/4)-(LDT/2)
-##should be dd = (MT/2) - (LDT/2) since MT is defined as (T_max+T_min)/2
-      
     } else if (T_min < LDT && T_max > LDT) {  # intercepted by LDT  
       dd = (T_max-LDT)^2/((T_max-T_min)*4)
     } else if (T_min < LDT && T_max <= LDT) { # entirely below both thresholds

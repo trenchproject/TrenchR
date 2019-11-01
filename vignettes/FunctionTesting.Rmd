@@ -209,7 +209,8 @@ degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.sine")
 degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="double.sine")
 degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.triangulation")
 degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="double.triangulation")
-#CHECKED, Change to add next day temperatures for double methods
+
+#CHECKED
 ```
 
 #Radiation functions
@@ -649,28 +650,24 @@ soil_temperature_equation(L=-10, rho_a=1.177, c_a=1006, k=.41, V_inst=0.3, z_r=1
 ```
 
 ```{r}
-require(deSolve) #fix dependencies
-require(zoo)
-# 
-# temp_vector= runif(96, min=-10, max=10)
-# wind_speed_vector= runif(96, min=0, max=0.4)
-# time_vector= rep(1:24,4)
-# solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
-# 
-# params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0=0.02, H=solrad_vector, T_a=temp_vector, u=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=FALSE)
-# 
-# soil_temperature_function(j=1,T_so= rep(20,13), params=params)
-#  
-# #RUN USING ODE SOLVER
-# Tsoil_out<- ode(y = rep(20,13), func = soil_temperature, times = 1:length(solrad_vector), parms=params)
-```
+library(deSolve)
 
-```{r}
-temp_vector= runif(96, min=-10, max=10)
+temp_vector= diurnal_temp_variation_sine(T_max=20, T_min=-10, t=rep(1:24,4))
 wind_speed_vector= runif(96, min=0, max=0.4)
 time_vector= rep(1:24,4)
-solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
-soil_temperature(z_r.intervals=12,z_r=1.5, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
+solrad_vector= unlist(lapply(1:24, FUN=diurnal_radiation_variation, doy=172, solrad=8000, lon=-112.07, lat=33.45))
+solrad_vector= rep(solrad_vector,4)
+
+params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0=0.02, H=solrad_vector, T_a=temp_vector, u=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=FALSE)
+
+soil_temperature_function(j=1,T_so= rep(20,13), params=params)
+
+Tsoil= soil_temperature(z_r.intervals=12,z_r=1.5, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
+
+plot(1:96, temp_vector, type = "l", xlab = "hour", ylim=c(-10,50))
+points(1:96, wind_speed_vector, lty="dotted", type="l")
+points(1:96, Tsoil, lty="dashed", type="l", col="red")
+
 ```
 
 #DRYWETAIR
@@ -684,4 +681,10 @@ VAPPRS(db=30)
 
 ```{r}
 WETAIR(db=30, wb=28, rh=60, bp=100*1000)
+```
+
+#TPC FUNCTIONS
+```{r}
+plot(0:60, TPC(T=0:60, Topt=30, CTmin=10, CTmax=40), type="l", ylim=c(0,3), ylab="performance", xlab="temperature (C)")
+points(0:60, TPC.beta(T=0:60, shift=-1, breadth=0.1, aran=0, tolerance= 43, skew=0.7), type="l", lty="dashed")
 ```

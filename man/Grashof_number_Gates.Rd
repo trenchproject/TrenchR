@@ -11,7 +11,7 @@ Grashof_number_Gates(Ta, Tg, beta, D, nu)
 
 \item{Tg}{Ground (surface) temperature (C).}
 
-\item{beta}{coefficient of volumetric thermal expansion, beta= 3.67*10^-3 C^-1  in air and 41.9 X 10^-4 C^-1}
+\item{beta}{coefficient of volumetric thermal expansion, beta= 3.67 x 10^-3 C^-1  in air and 41.9 x 10^-4 C^-1 in water.}
 
 \item{D}{is characteristic dimension (e.g., body diameter) (m)}
 

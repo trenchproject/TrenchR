@@ -16,7 +16,7 @@ Tb_grasshopper(T_a, T_g, u, H, K_t, psi, L, Acondfact = 0.25,
 
 \item{H}{is total (direct + diffuse) solar radiation flux in W/m^2}
 
-\item{K_t}{is the clearnex index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.}
+\item{K_t}{is the clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.}
 
 \item{psi}{is solar zenith angle in degrees}
 

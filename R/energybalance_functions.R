@@ -721,7 +721,6 @@ Reynolds_number<-function(V, D, nu){
 #' @param Tg Ground (surface) temperature (C).
 #' @param D is characteristic dimension (e.g., body diameter) (m)
 #' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^-1), can calculate from DRYAIR or WETAIR
-#' 
 #' @return Grashof number
 #' @keywords Grashof number
 #' @export
@@ -739,8 +738,6 @@ Grashof_number<-function(Ta, Tg, D, nu){
     
   return(Gr)
 }
-##this equation is not what it says on literature (p.283).
-##Gr = gravity * D^3 * abs(Tg-Ta) * beta / nu^2 where beta = 41.9 x 10^-4
 
 #------
 #' Calculate Grashof Number in Gates
@@ -748,7 +745,7 @@ Grashof_number<-function(Ta, Tg, D, nu){
 #' @details This function allows you to estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity (Gates 1980 Biophysical Ecology). Ratio of a buoyant force times an inertial force to the square of a viscous force.
 #' @param Ta Air temperature (C).
 #' @param Tg Ground (surface) temperature (C).
-#' @param beta coefficient of volumetric thermal expansion, beta= 3.67*10^-3 C^-1  in air and 41.9 X 10^-4 C^-1
+#' @param beta coefficient of volumetric thermal expansion, beta= 3.67 x 10^-3 C^-1  in air and 41.9 x 10^-4 C^-1 in water.
 #' @param D is characteristic dimension (e.g., body diameter) (m)
 #' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m2 s-1), can calculate from DRYAIR or WETAIR
 #' 
@@ -838,13 +835,11 @@ Nu_from_Gr<-function(Gr){
 
 Free_or_forced_convection<-function(Gr, Re){
   
-  conv= ifelse(Gr<=(16*Re^2), "forced", "free") #P284
+  conv= "intermediate condition, mixed convection based on Nusselt numerbers is appropriate"
+  if(Gr<0.1*Re^2) conv="forced convection" #P284
+  if(Gr>16*Re^2) conv="free convection"
   
   return(conv)
 }
-
-##This is not what the text says.
-##if(Gr<=(16*Re^2) conv = free, if (Gr < 0.1*Re^2) conv = forced (p.284)
-##for intermediate values, use a larger Nu.
 
 

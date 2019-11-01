@@ -1,7 +1,6 @@
 #' Estimate soil thermal conductivity
 #' 
 #' @details Estimate soil thermal conductivity in W m^-1 K^-1
-#'
 #' @description This function allows you to estimate soil thermal conductivity in W m^-1 K^-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).
 #' @param x is a vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.
 #' @param lambda is a vector of the thermal conductivities (W m^-1 K^-1) of the soil constituents.
@@ -31,7 +30,6 @@ soil_conductivity<-function(x, lambda, g_a){
 #' Estimate soil specific heat
 #' 
 #' @details Estimate soil specific heat in J kg^-1 K^-1.
-#'
 #' @description This function allows you to estimate soil specific heat in J kg^-1 K^-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).  Uses the volume fraction of organic material, minerals, and water in soil.  CHECK Campbell and Norman (2000) section 8.2.
 #' @param x_o is volume fraction of organic material
 #' @param x_m is volume fraction of minerals
@@ -53,8 +51,7 @@ soil_specific_heat<-function(x_o, x_m, x_w, rho_so){
 
 #' Solve equation for soil temperature
 #' 
-#' @details Function called by soil_temp_noint to solve equation for soil temperature.
-#'
+#' @details Function called by soil_temp_equation to solve equation for soil temperature.
 #' @description Function called by soil_temp_noint to solve equation for soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). The function represents the integrand in the equation. It is not intended to be called directly.
 #' @param x is a vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.
 #' @param L is the Monin-Obukhov length, a measure of the instability of heat flow (see Beckman et al. 1973)
@@ -73,7 +70,6 @@ soil_temperature_integrand<-function(x, L, z0){ (3-1.4*exp(1.5*x))^-1*(exp(x+z0/
 #' Function called by soil_temperature_function() to solve equation for soil temperature.
 #'
 #' @details Function called by soil_temperature_function() to solve equation for soil temperature.
-#'
 #' @description Function called by soil_temp_noint to solve equation for soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior).
 #' @param L is the Monin-Obukhov length, a measure of the instability of heat flow (see Beckman et al. 1973)
 #' @param rho_a is density of air in kg m^-3
@@ -96,11 +92,9 @@ soil_temperature_integrand<-function(x, L, z0){ (3-1.4*exp(1.5*x))^-1*(exp(x+z0/
 soil_temperature_equation<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s){ 
   rho_a*c_a*k*(V_inst*k/log((exp((z_r+z0)/L)-1)/(exp(z0/L)-1)))*(T_inst-T_s)/integrate(soil_temperature_integrand, lower=0, upper=z_r/L, L, z0)$value - (V_inst*k/log((exp((z_r+z0)/L)-1)/(exp(z0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}
   
-
 #' Function to calculate soil temperature.
 #' 
 #' @details Function to calculate soil temperature.
-#' 
 #' @description Function called to calculate soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly.
 #' @param j is the number of the iteration of running the model
 #' @param T_so is the initial soil temperature profile in degrees C 
@@ -192,10 +186,10 @@ soil_temperature_function<- function(j,T_so, params){
   if(j!=1){
     if(T_inst < T_so[1]){
       #When soil temp is near air temp, an error occurs because L approaches infinity as soil temp approaches air temp. tryCatch executes alternate command if an error occurs.
-      tryCatch({L<-uniroot(soil_temperature_equation,interval=c(-50,-.03),rho_a=1.177, c_a=1006, k=.41, V_inst=V_inst, z_r=z_r, z0=z0, T_inst=T_inst, T_s=T_so)$root; #the function goes to infinity near zero. The upper bound on this interval was selected to avoid errors that result from numbers approaching infinity. The lower bound can be any large number.
+      suppressWarnings(tryCatch({L<-uniroot(soil_temperature_equation,interval=c(-50,-.03),rho_a=1.177, c_a=1006, k=.41, V_inst=V_inst, z_r=z_r, z0=z0, T_inst=T_inst, T_s=T_so)$root; #the function goes to infinity near zero. The upper bound on this interval was selected to avoid errors that result from numbers approaching infinity. The lower bound can be any large number.
       q_conv<-a*(V_inst*k/log((exp((z_r+z0)/L)-1)/(exp(z0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}, 
       error=function(e){ q_conv<<- a*h_inst*(T_inst-T_so[1])} #Assume neutral conditions if error occurs.
-      )
+      ) ) #end tryCatch
     }
     else{
       q_conv<-a*h_inst*(T_inst-T_so[1])
@@ -230,7 +224,6 @@ soil_temperature_function<- function(j,T_so, params){
 #' Function to calculate soil temperature in C using ODEs.
 #' 
 #' @details Function to calculate soil temperature in C using ODEs.
-#' 
 #' @description Function called to calculate soil temperature in C from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature.
 #' @param z_r.intervals is the number of intervals in the soil profile to calculate 
 #' @param z_r is reference height in m
@@ -309,6 +302,7 @@ soil_temperature<-function(z_r.intervals=12,z_r, T_a, u, Tsoil0, z0, SSA, TimeIn
   
   #-------
   #finding the apparent conductivity of air in soil. These are the methods in DeVries (1963) and summarized in the paper by Boguslaw and Lukasz. variable names were based on those in the Boguslaw and Lukasz paper.
+  ## CHANGE FROM 20 TO Tsoil0
   P<- air_pressure 
   L1<-2490317-2259.4*20 #J/kg#2490317-2259.4*T #J/kg
   rho_svd<-0.001*exp(19.819-4975.9/(20+273.15)) #.001*exp(19.819-4975.9/(T+273.15))
@@ -346,7 +340,7 @@ soil_temperature<-function(z_r.intervals=12,z_r, T_a, u, Tsoil0, z0, SSA, TimeIn
   #SOLVE ODE
   params=list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade)
   
-  Tsoil <- ode(y = rep(Tsoil0,13), func = soil_temperature_function, times = 1:length(H), params)
+  Tsoil <- suppressWarnings(ode(y = rep(Tsoil0,13), func = soil_temperature_function, times = 1:length(H), params))
  
   return( Tsoil[,2])
   

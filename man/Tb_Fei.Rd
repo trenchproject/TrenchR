@@ -4,34 +4,37 @@
 \alias{Tb_Fei}
 \title{Calculate body temperature(Operative Temperature) of Lizard using model by Fei et al.}
 \usage{
-Tb_Fei(TAH, T_s, T_a, UDT, GLW, shade)
+Tb_Fei(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact)
 }
 \arguments{
-\item{TAH}{Temperature in canopy (K).}
+\item{T_a}{is air temperature at lizard height in K}
 
-\item{T_s}{Surface Temperature (K).}
+\item{T_g}{is surface temperature in K}
 
-\item{T_a}{Air Temperature (K).}
+\item{H}{is total (direct + diffuse) solar radiation flux in W/m^2}
 
-\item{UDT}{upper developmental threshold.}
+\item{lw}{Downward flux of near-infrared radiation (W/m^2)}
 
-\item{GLW}{Downward flux of near-infrared radiation}
+\item{shade}{proportion of shade}
 
-\item{shade}{type of method being used}
+\item{m}{is lizard mass in g}
+
+\item{Acondfact}{is the proportion of the lizard projected area that is in contact with the ground, Acondfact=0.05 for standing and Acondfact=0.35 for lying on ground}
+
+\item{Agradfact}{is the proportion of the lizard projected area exposed to radiation from the ground, Agradfact=0.4 for standing and Agradfact=0.0 for lying on ground}
 }
 \description{
-[1] T. Fei, A. K. Skidmore, V. Venus, T. Wang, M. Schlerf, B. Toxopeus, 
+Transient model for predicting operative environmental temperature using model in the following publication: T. Fei, A. K. Skidmore, V. Venus, T. Wang, M. Schlerf, B. Toxopeus, 
 S. van Overjijk, M. Bian, and Y. Liu, “A body temperature model for 
 lizards as estimated from the thermal environment,” J. Therm. 
 Biol., vol. 37, no. 1, pp. 56–64, 2012.
-TAH, T_s, T_a, UDT, GLW, time_step, shade
 }
 \details{
 Predicts body temperature (operative environmental temperature) of a lizard in K.
 }
 \examples{
 \dontrun{
-Tb_Fei(TAH=293, T_s=300, T_a=295, UDT=600, GLW=30, shade=0.5)
+Tb_Fei(T_a=293, T_g=300, H=600, lw=30, shade=0.5, m=10.5, Acondfact=0.05, Agradfact=0.4)
 }
 
 }
