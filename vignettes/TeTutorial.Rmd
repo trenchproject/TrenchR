@@ -457,9 +457,8 @@ Te3= rep(NA, 24)
 for(hr in 1:24) Te3[hr]= Tb_lizard(T_a=Ta[hr], T_g=Ts[hr], u=V, svl=svl*1000, m=mass, psi=psi_deg[hr], rho_S=rho, elev=elev, doy=doy, sun=TRUE, surface=TRUE, alpha_S=a, alpha_L=0.965, epsilon_s=epsilon_s, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
 
 Te4= rep(NA, 24)
-for(hr in 1:24) Te4[hr]= Tb_Fei(TAH=Ta[hr]+273, T_s=Ts[hr]+273, T_a=Ts[hr]+273, UDT=Qabs[hr], GLW=Qabs[hr],  shade=0)
-#FIX UDT?
-
+for(hr in 1:24) Te4[hr]= Tb_Fei(T_a=Ta[hr]+273, T_g=Ts[hr]+273, H=Qabs[hr], lw=30, shade=0.5, m=10.5, Acondfact=0.05, Agradfact=0.4)
+#FIX LW
 ```
 
 ##Plot
