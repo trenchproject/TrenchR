@@ -179,7 +179,7 @@ Tb_CampbellNorman(T_a=303, S=823, epsilon=0.96, c_p=29.3, D=0.17, V=1)
 #Alternative energy balance models and functions
 ##Fei
 ```{r}
-Tb_Fei(254, 265, 267, 15, 307,  0)
+Tb_Fei(T_a=293, T_g=300, H=600, lw=30, shade=0.5, m=10.5, Acondfact=0.05, Agradfact=0.4)
 ```
 
 #Specialized energy balance models and functions

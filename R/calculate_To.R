@@ -69,7 +69,7 @@ Tb_Fei <- function(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact){
     dQ_conv=h_L*Aair*(T_a-T_o)
     
     #Metabolism
-    ew = exp(-10.0+0.51*log(mass)+0.115*(T_o-273)) *3 #Buckley 2008
+    ew = exp(-10.0+0.51*log(m)+0.115*(T_o-273)) *3 #Buckley 2008
     dQ_meta = ew/3600. #metabolic rate (j/s)
     
     dQe = (dQ_solar + dQ_IR + dQ_meta + dQ_cond + dQ_conv)

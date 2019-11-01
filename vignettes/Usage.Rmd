@@ -50,12 +50,12 @@ The figure sizes have been customised so that you can easily put two images side
 #TAH(Air Temp in Canopy)
 #Tair - Air Temperature
 #Tsurface - Surface Temperature 
-SampleMicroclimate$To_Lizard <- Tb_Fei(SampleMicroclimate$TAH,
-                                              SampleMicroclimate$Tsurface,
-                                              SampleMicroclimate$Tair,
-                                              SampleMicroclimate$SWDOWN,
-                                              SampleMicroclimate$GLW,
-                                              0)
+SampleMicroclimate$To_Lizard <- Tb_Fei(T_a=SampleMicroclimate$Tair,
+                                              T_g=SampleMicroclimate$Tsurface,
+                                              H=SampleMicroclimate$SWDOWN,
+                                              lw=SampleMicroclimate$GLW,
+                                              shade=0, m=10.5, Acondfact=0.05, Agradfact=0.4)
+
 ```
 
 
