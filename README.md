@@ -1,9 +1,9 @@
 # TrenchR
 --------------------------------------------------------------
 
-An R package encompassing functions for assessing the impact of the environment of organisms.
+an R package for transparent environmental and ecological biophysics
 
-**Author:** [UW Biology- Huckley Lab](https://trenchproject.github.io)<br>
+**Author:** [Buckley Lab, Department of Biology, University of Washington](https://trenchproject.github.io)<br>
 **License:** [MIT](http://opensource.org/licenses/MIT)<br>
 
 [![Build Status](https://travis-ci.org/trenchproject/TrenchR.svg?branch=master)](https://travis-ci.org/trenchproject/TrenchR)
@@ -11,13 +11,9 @@ An R package encompassing functions for assessing the impact of the environment 
 
 
 ### Description
-
-Code contributions for TrenchR initiative
-
-We aim to create an R package (TrenchR) encompassing resources for assessing the impact of the environment of organisms.  The package will build off and integrate with existing packages (e.g., NicheMapR).  Code (scripts and functions) will be accepted in any programming language and thorough commenting will be appreciated.  We would also appreciate your including a header that describes the intent, input, and output of your scripts and functions. 
+The TrenchR package aids in Translating Environmental Change into organismal responses (https://github.com/trenchproject/TrenchR). The package facilitates microclimate modelling to translate weather station data into the environmental conditions experienced by organisms and biophysical modelling to predict organismal body temperatures given the environmental conditions. The package aims to introduce and enable microclimate and biophysical modelling to improve ecological and evolutionary forecasting and includes tutorials and well as a series of educational modules introducing microclimate and biophysical modelling. The package complements and integrates with the NicheMapR package (https://github.com/mrke/NicheMapR). 
 
 ### Installation
-
 You can install the package from the [github repository](https://github.com/trenchproject/TrenchR):
 
 ```{r eval=FALSE}
@@ -29,7 +25,7 @@ devtools::install_github(build_vignettes = TRUE,repo = "trenchproject/TrenchR")
 
 ### Using the package
 
-For eg. to fund zenith angle of a location, you can use the `zenith_angle()` function. It takes day of the year, lat/lon and the hour. Below is an example invocation. 
+For eg. to find the zenith angle of a location, you can use the `zenith_angle()` function. It inputs the day of the year, lat/lon and the hour. Below is an example implementation. 
 
 ```{r}
 library(TrenchR)
@@ -38,31 +34,29 @@ zenith_angle(112, 47.61, -122.33, 12)
 
 ```
 ### Package Vignette
-
-See the package vignette at
-
+We introduce each function in categorically grouped tutorials.  A good place to start is the Allometry and conversions tutorial, which provides tools for preparing data such as estimating additional dimensions of organisms from measured dimensions. 
 ```{r eval=FALSE}
 
-vignette("Usage", package="TrenchR")
+vignette("AllometryAndConversionsTutorial.Rmd", package="TrenchR")
 
 ```
 
-Estimating body temperature vignette
+The Estimating microclimates tutorial provides resources for estimating the environmental conditions experienced by organisms.  This includes estimating solar radiation and its components, diurnal variation in temperature and radiation, temperature and windspeed profiles, and soil temperatures and profiles. 
+```{r eval=FALSE}
 
+vignette("MicroclimateTutorial", package="TrenchR")
+
+```
+
+Finally, the core biophysical modelling functions are described in a tutorial on Using energy balances to estimate body temperatures. Components of an energy budget can be estimated using individual functions and then operative environmental temperatures, Te, can be solved for using either a generic energy balance or taxa specific biophysical models.
 ```{r eval=FALSE}
 
 vignette("TeTutorial", package="TrenchR")
 
 ```
 
-
-### Future Direction
-
-Non-inclusive categories we hope to include:
-* Diurnal variation
-* Radiation and cloudiness
-* Microclimate models
-* Biophysical and energy balance models
+### Future Directions
+We welcome code contributions, fixes, and comments. Code (scripts and functions) will be accepted in any programming language and thorough commenting will be appreciated.  We would also appreciate your including a header that describes the intent, input, and output of your scripts and functions. 
 
 ### Citation
 

@@ -86,7 +86,7 @@ soil_temperature_integrand<-function(x, L, z0){ (3-1.4*exp(1.5*x))^-1*(exp(x+z0/
 #' @author Joseph Grigg
 #' @examples
 #' \dontrun{
-#' soil_temperature_equation(L=-10, rho_a=1.177, c_a=1006, k=.41, V_inst=0.3, z_r=1.5, z0=0.02, T_inst=265, T_s=20)
+#' soil_temperature_equation(L=-10, rho_a=1.177, c_a=1006, k=0.41, V_inst=0.3, z_r=1.5, z0=0.02, T_inst=265, T_s=20)
 #'}
 
 soil_temperature_equation<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s){ 
@@ -227,6 +227,7 @@ soil_temperature_function<- function(j,T_so, params){
 #' @description Function called to calculate soil temperature in C from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature.
 #' @param z_r.intervals is the number of intervals in the soil profile to calculate 
 #' @param z_r is reference height in m
+#' @param z is interval of the soil profile to return (1 to z_r.intervals)
 #' @param T_a is a vector of air temperature in degrees C, Note: missing values will be linearly interpolated
 #' @param u is a vector of wind speed (m/s)
 #' @param Tsoil0 is the initial soil temperature in degrees C 
@@ -249,10 +250,10 @@ soil_temperature_function<- function(j,T_so, params){
 #' time_vector= rep(1:24,4)
 #' solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
 #'
-#' soil_temperature(z_r.intervals=12,z_r=1.5, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
+#' soil_temperature(z_r.intervals=12,z_r=1.5, z=2, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
 #'}
 
-soil_temperature<-function(z_r.intervals=12,z_r, T_a, u, Tsoil0, z0, SSA, TimeIn, H, water_content=0.2, air_pressure, rho_so=1620, shade=FALSE){
+soil_temperature<-function(z_r.intervals=12,z_r, z, T_a, u, Tsoil0, z0, SSA, TimeIn, H, water_content=0.2, air_pressure, rho_so=1620, shade=FALSE){
   
   library(zoo)
   
@@ -302,13 +303,12 @@ soil_temperature<-function(z_r.intervals=12,z_r, T_a, u, Tsoil0, z0, SSA, TimeIn
   
   #-------
   #finding the apparent conductivity of air in soil. These are the methods in DeVries (1963) and summarized in the paper by Boguslaw and Lukasz. variable names were based on those in the Boguslaw and Lukasz paper.
-  ## CHANGE FROM 20 TO Tsoil0
   P<- air_pressure 
-  L1<-2490317-2259.4*20 #J/kg#2490317-2259.4*T #J/kg
-  rho_svd<-0.001*exp(19.819-4975.9/(20+273.15)) #.001*exp(19.819-4975.9/(T+273.15))
-  v<- P/(P-(h*rho_svd*R*(20+273.15)/(1000*M_w)))#P/(P-(h*rho_svd*R*(T+273.15)/1000*M_w))
-  D_a<-21.7*10^-6*(101.325/P)*((20+273.15)/273.15)^1.88 #21.7*10^-6*(101.325/P)*((T+273.15)/273.15)^1.88 #m^2/s
-  drhoo_dT<-4975.9*rho_svd/(20+273.15)^2 #4975.9*rho_svd/(T+273.15)^2 #kg/m^3
+  L1<-2490317-2259.4*Tsoil0 #J/kg
+  rho_svd<-0.001*exp(19.819-4975.9/(Tsoil0+273.15)) 
+  v<- P/(P-(h*rho_svd*R*(Tsoil0+273.15)/(1000*M_w)))
+  D_a<-21.7*10^-6*(101.325/P)*((Tsoil0+273.15)/273.15)^1.88 #m^2/s
+  drhoo_dT<-4975.9*rho_svd/(Tsoil0+273.15)^2 #kg/m^3
   
   lambda_v<- L1*D_a*v*drhoo_dT
   lambda_app<-lambda_a+h*lambda_v
@@ -328,7 +328,7 @@ soil_temperature<-function(z_r.intervals=12,z_r, T_a, u, Tsoil0, z0, SSA, TimeIn
   lambda<- c(lambda_clay, lambda_quartz, lambda_other, lambda_o, lambda_w, lambda_app)
   
   #finding soil thermal conductivity and specific heat
-  k_so<-soil_conductivity(x, lambda, .125) #calculate soil thermal conductivity
+  k_so<-soil_conductivity(x, lambda, 0.125) #calculate soil thermal conductivity
   c_so<-soil_specific_heat(x_o, x_solid-x_o, x_w, rho_so) #calculate soil specific heat
   alpha2<-k_so/(c_so*rho_so)
   
@@ -340,8 +340,8 @@ soil_temperature<-function(z_r.intervals=12,z_r, T_a, u, Tsoil0, z0, SSA, TimeIn
   #SOLVE ODE
   params=list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade)
   
-  Tsoil <- suppressWarnings(ode(y = rep(Tsoil0,13), func = soil_temperature_function, times = 1:length(H), params))
+  Tsoil <- suppressWarnings(ode(y = rep(Tsoil0,z_r.intervals+1), func = soil_temperature_function, times = 1:length(H), params))
  
-  return( Tsoil[,2])
+  return( Tsoil[,z])
   
 } #end soil_temperature

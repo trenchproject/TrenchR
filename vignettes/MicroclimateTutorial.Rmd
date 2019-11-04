@@ -352,7 +352,7 @@ $$Q_{net_s}= \frac{\rho_s c_s dz}{2 dt} (T_0^{p+1}-T_0^p).$$
 Letting $a=\frac{2dt}{\rho_s c_s dz}$ and solving for $T_0^{p+1}$ in the soil energy budget yields the following boundary condition for soil surface temperature:
 $$T_0^{p+1}= a \alpha_s S + a \epsilon_S \sigma [(T^p_{sky})^4-(T^p_0)^4]+a h_s (T^p-T_0^p) +a \frac{k_s}{dz}(T^p_{dz}-T^p_0)+T_0^p$$
 
-Soil temperature can be estimated in TrenchR as follows:
+Soil temperature can be estimated in TrenchR as follows. The solid line depicts air temperature (C).
 ```{r}
 library(deSolve)
 
@@ -364,50 +364,39 @@ solrad_vector= rep(solrad_vector,4)
 
 params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0=0.02, H=solrad_vector, T_a=temp_vector, u=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=FALSE)
 
-T_soil= soil_temperature(z_r.intervals=12,z_r=1.5, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
-
 plot(1:96, temp_vector, type = "l", xlab = "hour", ylab="temperature (C)", ylim=c(-10,50))
+
+T_soil= soil_temperature(z_r.intervals=12,z_r=1.5, z=2, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
 points(1:96, T_soil, lty="dashed", type="l")
 
-#legend("topright", title="day of year", legend=c(172,228,266,356), lty=c("solid","dotdash","dashed","dotted") )
+T_soil= soil_temperature(z_r.intervals=12,z_r=1.5, z=4, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
+points(1:96, T_soil, lty="dotted", type="l")
+
+T_soil= soil_temperature(z_r.intervals=12,z_r=1.5, z=6, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
+points(1:96, T_soil, lty="dotdash", type="l")
+
+legend("topright", title="soil depth interval", legend=c(2,4,6), lty=c("dashed","dotted","dotdash") )
+
+#? CHANGE INTERVAL NOTATION?
 ```
 
 ## Soil specific heat and conductivity
-We can approximate soil specific heat, $c_s$,as the weighted sum of the specific heats of soil constituents [Campbell and Norman 1998]: $\rho_s c_s= rho_m c_m x_m + rho_o c_o x_o + rho_w c_w x_w,$
-where $\rho_s$ is the particle density of soil (bulk density), $x$ is the volume fraction, and the subscripts $m$,$o$,and $w$ stand for minerals, organic matter, and water, respectively. We provide a function to calculate soil specific heat given the volume fractions and $\rho_s$:
-```{r}
-soil_specific_heat(0.01, 0.6, 0.2, 1620)
-```
-
+We can approximate soil specific heat, $c_s$, as the weighted sum of the specific heats of soil constituents [Campbell and Norman 1998]: $\rho_s c_s= rho_m c_m x_m + rho_o c_o x_o + rho_w c_w x_w,$
+where $\rho_s$ is the particle density of soil (bulk density), $x$ is the volume fraction, and the subscripts $m$, $o$,and $w$ stand for minerals, organic matter, and water, respectively. We provide a function to calculate soil specific heat given the volume fractions and $\rho_s$:
 ```{r}
 plot(seq(500,1700,100), soil_specific_heat(x_o=0.01, x_m=0.6, x_w=0.2, rho_so=seq(500,1700,100)), type="l", xlab = "bulk density (kg/m3)", ylab = "soil specific heat (J kg^-1 K-1)")
 ```
 
 Various methods of approximating soil thermal conductivity $k_s$ are reviewed in Boguslaw and Lukasz [XXXX]. We provide a function `soil_conductivity()` to estimate $k_s$ using the methods of de Vries [1963]. The function calculates $k_s$ as the weighted average of the thermal conductivities $k$ of soil components $i$:
 $$k_s= \frac{\sum j_i k_i x_i}{\sum j_i x_i},$$
-where quanity $j_i$ is the ratio of the average temperature gradient in the granules and the corresponding quantity in the medium (water or air):
+where quantity $j_i$ is the ratio of the average temperature gradient in the granules and the corresponding quantity in the medium (water or air):
 $$j_i= \frac{1}{3} \sum_{p=a,b,c}[1+\left( \frac{k_i}{k_0}-1 \right)g_{p,i}]^{-1}, $$
 where $k_0$ is the conductivity of the continuous medium in which soil particles are suspended (water or air) and $g$ is a shape factor for the soil particles. The soil particles are assumed to be ellipsoids with axes $g_a$, $g_b$, and $g_c$, where $g_a +g_b +g_c=1$.  de Vries [1952] suggests $g_a=g_b=0.125$. We provide the function as follows:
 ```{r}
 soil_conductivity(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), lambda=c(0.10,0.40,0.11,0.01,0.2, 0.18), g_a=0.125)
 ```
 
-```{r}
-soil_conductivity(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), lambda=c(0.10,0.40,0.11,0.01,0.2, 0.18), g_a=0.125)
-```
-
-##Tsoil var
-```{r}
-plot(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=0), type="l", xlab = "hour", ylab = "soil temperature (C)", lty="dashed")
-points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=5), type="l")
-points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=10), type="l")
-points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=20), type="l", lty="dotted")
-
-#CHECKED
-```
-
 #Example microclimate calculations
-
 ```{r}
 #LOAD SITE DATA
 #setwd("/Volumes/GoogleDrive/My\ Drive/Buckley/Work/Butterflies/Evolution/ClimateData/Niwot") 
@@ -424,102 +413,6 @@ Tmx=33
 #surface roughness
 z_0_1=0.06
 
-```
-
-
-##Estimate diurnal variation
-
-```{r}
-#estimate daylength
-SolarNoon= solar_noon(doy, lon) 
-DayLength= daylength(doy, lat)
-Ts= SolarNoon+ DayLength/2
-Tr= SolarNoon- DayLength/2
-
-# Calculate the diurnal temperature trends
-hrs=1:24
-Thr= sapply(hrs, FUN=diurnal_temp_variation_sinesqrt, tr=Tr, ts=Ts, T_max=Tmx, T_min=Tmn,T_minp=Tmn) 
-Thr1= sapply(hrs, FUN=diurnal_temp_variation_sine, T_max=Tmx, T_min=Tmn)
-Thr2= sapply(hrs, FUN=diurnal_temp_variation_sineexp, T_max=Tmx, T_min=Tmn, t_r=Tr, t_s=Ts, alpha=2.59, beta= 1.55, gamma=2.2)
-
-#plot
-plot(hrs, Thr, type="l", ylim= range(10,35))
-points(hrs, Thr1, col="blue", type="l")
-points(hrs, Thr2, col="orange", type="l")
-```
-
-##Estimate solar radiation
-```{r}
-#Estimate solar radiation
-taus= rep(0.4,24)        
-      
-#calculate zenith in radians
-psis_deg= sapply(hrs, FUN=zenith_angle, doy=doy, lat=lat, lon=lon)
-#convert to radians
-psis= degree_to_radian(psis_deg)
-
-#radiation, returns direct, diffuse, and reflected radiation
-Qhr= sapply(psis, FUN=estimate_radiation, doy=doy, tau=0.6, elev=1500, rho=0.7)
-
-#Illustrate how to partition radiation by repartitioning
-Qhr_tot= colSums(Qhr)
-kds= sapply(Qhr_tot, FUN=partition_solar_radiation, method="Erbs", kt=0.6, lat = lat)
-
-Qhr_dir= Qhr_tot*(1-kds)
-Qhr_dif= Qhr_tot*(kds)
-
-#plot radiation
-plot(hrs, Qhr[1,], type="l" )
-points(hrs, Qhr[2,], col="blue", type="l")
-points(hrs, Qhr[3,], col="orange", type="l")
-
-points(hrs, Qhr_dir, type="l", lty="dashed")
-points(hrs, Qhr_dif, col="blue", type="l", lty="dashed")
-```
-
-##Temperature profile
-
-```{r}
-      surface_roughness(u_r=c(0.01,0.025,0.05,0.1,0.2), zr=c(0.05,0.25,0.5,0.75,1))
-      wind_speed_profile_neutral(u_r=0.1, zr=0.1, z0=0.2, z=0.15)
-      air_temp_profile_neutral(T_r=20, zr=0.1, z0=0.2, z=0.15, T_s=25)
-    
-      wind_speed_profile(u_r=0.1, zr=0.1, z0=0.2, z=0.15)
-      air_temp_profile(T_r=20, u_r=0.1, zr=0.1, z0=0.2, z=0.15, T_s=25)
-    
-```
-
-##Degree days
-
-```{r}
-DD1= degree_days(T_min=Tmn, T_max=Tmx, LDT=12, UDT=33, method="single.sine")
-DD2= degree_days(T_min=Tmn, T_max=Tmx, LDT=12, UDT=33, method="single.triangulation")
-```
-
-##Soil temperatures
-
-```{r}
-#Calculate soil temperature
-#' temp_vector= runif(96, min=-10, max=10)
-#' wind_speed_vector= runif(24, min=0, max=0.4)
-#' time_vector= rep(1:24,4)
-#' solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
-#'
-
-#Simulate wind speed
-Vs= runif(24, min=0, max=0.4)
-
-#Estimate surface roughness
-z0=0.02
-
-#require in package?
-library(zoo)
-library(deSolve)
-
-#Tsoil=soil_temperature(z_r.intervals=12,z_r=1.5, T_a=Thr, u=Vs, Tsoil0= 20, z0=z0, SSA=0.7, TimeIn=hrs, H= Qhr_tot, water_content=0.2, air_pressure=airpressures, rho_so=1620, shade=FALSE)
-
-#plot
-#plot(hrs, Tsoil, type="l")
 ```
 
 
