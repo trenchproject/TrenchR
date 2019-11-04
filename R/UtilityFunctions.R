@@ -84,12 +84,19 @@ daylength <- function(lat, doy){
 solar_noon <- function(lon, doy){
   # Calculate the time of solar noon for each day using longitude correction (LC), equation of time (ET), and a conversion (f)
   f=(279.575+0.9856*doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
+  f[f>360]=f[f>360]-360 #ensure 0 to 360 degrees
   f=f*pi/180 #convert f in degrees to radians
+  
   ET= (-104.7*sin (f)+596.2*sin (2*f)+4.3*sin (3*f)-12.7*sin (4*f)-429.3*cos (f)-2.0*cos (2*f)+19.3*cos (3*f))/3600   # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
-  LC= 1/15* (15 - lon%%15) # longitude correction, 1/15h for each degree of standard meridian
+  
+  lon[lon<0]=360+lon[lon<0] #convert to 0 to 360
+  LC= 1/15*lon%%15 # longitude correction, 1/15h for each degree of standard meridian
+  LC[LC>0.5]= LC[LC>0.5]-1
   t_0 = 12-LC-ET # solar noon
   return(t_0)
 }
+
+LC= 1/15* (15 - lon%%15)
 
 #' Calculate Zenith Angle
 #' 

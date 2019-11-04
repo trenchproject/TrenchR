@@ -21,78 +21,237 @@ library(TrenchR)
 
 # Radiation
 ## Solar angles and daylength
-Estimates of sun position and day length are often estimated based on calendar date. We provide a function `day_of_year()` that facilitates translating a date into a calendar date. We next present functions to calculate sun angles.  We use the calendar date (J) to estimate solar declination (radian), which is the angular distance of the sun north or south of the earth’s equator, as follows (`dec_angle()`):
+Sun position and day length are often estimated based on calendar date. We provide a function `day_of_year()` that facilitates translating a date into a calendar date. We next present functions to calculate sun angles.  We use the calendar date (J) to estimate solar declination (radian), which is the angular distance of the sun north or south of the earth’s equator, as follows (`dec_angle()`):
 $$ \delta= \arcsin[0.39795 \cos(0.21631+ 2 \arctan (0.967 \tan [0.0086(-186+J)]))].$$
+
+We illustrate the implementation of these calculations in TrenchR. The day of year and solar declination angle can be calculated as follows:
+```{r}
+day_of_year("2017-04-22", format= "%Y-%m-%d")
+
+plot(1:365, dec_angle(1:365), type="l", xlab="day of year", ylab="declination angle (radian)")
+```
 
 Zenith angle ($\psi$, degrees), the location of the sun as an angle measured from vertical, can be estimated as:
 $$\cos \psi = \sin( \delta) \sin( \phi) + \cos(\delta)\cos(\phi)\cos(\pi/12*(h-h_0)),$$
-where J is calendar date, $\phi$ is latitude (radians), h is hour, and $h_0$ is the time of solar noon. The time of solar noon (`solar_noon()`) can be estimated as $h_0= 12 - LC -ET$, where LC in the longitude correction (+4 minutes for each degree east of the standard meridian) and ET is the equation of time.  The ET is estimated as: 
-$$ ET= \frac{-104.7\sin (f)+596.2\sin (2f)+4.3\sin (3f)-12.7\sin (4f)-429.3\cos (f)-2.0\cos (2f)+19.3\cos (3f)}{3600}, $$
-where $f=279.575 + 0.9856 J$, in degrees. 
+where J is calendar date, $\phi$ is latitude (radians), h is hour, and $h_0$ is the time of solar noon. We illustrate how zenith angles (degrees) changes over the day for days throughout the year in Seattle, WA, USA:
+```{r}
+#across hours
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=200, lat=47.61, lon=-122.33))
+plot(1:24, zen, type="l", ylab="zenith angle (degrees)", xlab="hour")
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=0, lat=47.61, lon=-122.33))
+points(1:24, zen, type="l", lty="dotted")
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=100, lat=47.61, lon=-122.33))
+points(1:24, zen, type="l", lty="dotdash")
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=300, lat=47.61, lon=-122.33))
+points(1:24, zen, type="l", lty="dashed")
 
-The azimuth angle, the angle (in degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle ($AZ$ in degrees) is estimated with respect to due south, increasing in the counter clockwise directi such that $90^\circ$ is east. $AZ$ can be calculated as a function of declination angle $\delta$, zenith angle $\psi$ and latitude $\phi$ as follows:
+legend("bottomleft", title="day of year", legend=c(0, 100, 200, 300), lty=c("dotted","dotdash","solid","dashed") )
+```
+We also examine how zenith angles (degrees) at noon change over the course of the year for latitudes along the longitude of Seattle, WA USA:
+```{r}
+#solar angle at noon across doy
+zen= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=60, lon=-122.33))
+plot(1:365, zen, type="l", ylim=range(0,90), ylab="zenith angle (degrees)", xlab="day of year")
+zen= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=40, lon=-122.33))
+points(1:365, zen, type="l", lty="dotted")
+zen= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=20, lon=-122.33))
+points(1:365, zen, type="l", lty="dotdash")
+zen= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=0, lon=-122.33))
+points(1:365, zen, type="l", lty="dashed")
+
+legend("top", title="latitude", legend=c(0, 20, 40, 60), lty=c("dashed","dotdash","dotted","solid") )
+```
+
+The time of solar noon (`solar_noon()`) can be estimated as $h_0= 12 - LC -ET$, where LC in the longitude correction (+4 minutes for each degree east of the standard meridian and -4 minutes for each degree west of the standard meridian) and ET is the equation of time.  The ET is estimated as: 
+$$ ET= \frac{-104.7\sin (f)+596.2\sin (2f)+4.3\sin (3f)-12.7\sin (4f)-429.3\cos (f)-2.0\cos (2f)+19.3\cos (3f)}{3600}, $$
+where $f=279.575 + 0.9856 J$, in degrees. The time of solar noon can be estimated across the year for several longitudes as follows: 
+```{r}
+plot(1:365, solar_noon(lon=150, doy=1:365), type="l", ylim=c(11.3,12.7), ylab="time of solar noon (hour)", xlab="day of year")
+points(1:365, solar_noon(lon=155, doy=1:365), type="l", lty="dotted")
+points(1:365, solar_noon(lon=145, doy=1:365), type="l", lty="dashed")
+abline(a=12,b=0)
+
+legend("topright", title="longitude", legend=c(145, 150, 155), lty=c("dashed", "solid", "dotted") )
+```
+
+The azimuth angle, the angle (in degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle ($AZ$ in degrees) is estimated with respect to due south, increasing in the counter clockwise direction such that $90^\circ$ is east. $AZ$ can be calculated as a function of declination angle $\delta$ (degrees), zenith angle $\psi$ (degrees) and latitude $\phi$ (degrees) as follows:
 $$\cos AZ= \frac{-(\sin \delta - \cos \psi \sin \phi)}{\cos \phi \sin \psi}.$$
+TrenchR includes a function to estimate azimuth angle as follows:
+```{r}
+az= unlist(lapply(5:18, FUN=azimuth_angle, doy=173, lat=47.61, lon=-122.33))
+plot(5:18, az, type="l", xlab="hour", ylab="azimuth angle (degrees)")
+az= unlist(lapply(5:18, FUN=azimuth_angle, doy=356, lat=47.61, lon=-122.33))
+points(5:18, az, type="l",lty="dashed")
+az= unlist(lapply(5:18, FUN=azimuth_angle, doy=266, lat=47.61, lon=-122.33))
+points(5:18, az, type="l",lty="dotted")
+az= unlist(lapply(5:18, FUN=azimuth_angle, doy=228, lat=47.61, lon=-122.33))
+points(5:18, az, type="l",lty="dotdash")
+legend("top", title="day of year", legend=c(173, 228, 266, 356), lty=c("solid","dotdash","dotted","dashed") )
+
+az= unlist(lapply(1:365, FUN=azimuth_angle, hour=12, lat=47.61, lon=-122.33))
+plot(1:365, az, type="l", xlab="day of year", ylab="azimuth angle (degrees)", ylim=c(0,120))
+az= unlist(lapply(1:365, FUN=azimuth_angle, hour=9, lat=47.61, lon=-122.33))
+points(1:365, az, type="l", lty="dashed")
+az= unlist(lapply(1:365, FUN=azimuth_angle, hour=6, lat=47.61, lon=-122.33))
+points(1:365, az, type="l", lty="dotted")
+legend("topright", title="hour", legend=c(6, 9, 12), lty=c("dotted","dashed", "solid") )
+```
 
 These sun angles can be used to solve for daylength. The equation for half daylength $h_s$, which is the time (in degrees) from sunrise to solar noon, is used as the basis for our `daylength()` function:
 $$ h_s= \cos^{-1}\left( \frac{\cos \psi-sin \phi \sin \delta}{\cos \phi \cos \delta} \right).$$
 
-We provide these R functions as follows: 
 ```{r}
-day_of_year("2017-04-22", format= "%Y-%m-%d")
-dec_angle(112)
-zenith_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
-solar_noon(lon=-122.335, doy=112)
-azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
-daylength(lat=47.61, doy=112)
+plot(1:365, daylength(lat=10, doy=1:365), type="l", ylim=c(8,22), xlab="day of year", ylab="daylength (hour)")
+points(1:365, daylength(lat=35, doy=1:365), type="l", lty="dashed")
+points(1:365, daylength(lat=60, doy=1:365), type="l", lty="dotted")
+legend("topright", title="latitude (degrees)", legend=c(10, 35, 60), lty=c("solid","dashed","dotted") )
 ```
 
 ## Radiation components
 We provide functions to estimate solar (shortwave) radiation by discounting incoming solar radiation due to scattering as the radiation travels through the atmosphere. The primary function `estimate_radiation()` returns estimates of the direct, diffuse, and reflected components of solar radiation ($W m^{-2}$). The radiation streams are the direct irradiance on a surface perpendicular to the beam $S_p$, the diffuse sky irradiance on a horizontal plane $S_d$ (W m−2), and the reflected radiation from the ground $S_r$. The sum of these three streams represents the total irradiance of a horizontal surface $S_t$.
 
-Calculation of these flux densities requires the introduction of several additional quantities. The atmospheric transmissivity, $\tau$, ranges between 0.6 and 0.7 for typical clear sky conditions (Gates 1980). The solar constant, $S_{p0}$, indicates extraterrestrial flux density to be 1,360 $W m^{−2}$. Optical air mass number, $m_a$, is the ratio of slant path length through the atmosphere to zenith path length and is a function of atmospheric pressure: $m_a=p_a/(101.3\cos(\psi))$, where $p_a$ is air pressure (kPa) and $\psi$ is zenith angle (see above). The function `airpressure_from_elev()` estimates air pressure as $p_a (kPa)= 101.3 \exp \frac{-E}{8200}$, where $E$ is the elevation in meters above sea level. 
+Calculation of these flux densities requires the introduction of several additional quantities. The atmospheric transmissivity, $\tau$, ranges between 0.6 and 0.7 for typical clear sky conditions (Gates 1980). The solar constant, $S_{p0}$, approximates extraterrestrial flux density as 1,360 $W m^{−2}$. The optical air mass number, $m_a$, is the ratio of slant path length through the atmosphere to zenith path length and is a function of atmospheric pressure: $m_a=p_a/(101.3\cos(\psi))$, where $p_a$ is air pressure (kPa) and $\psi$ is zenith angle (degrees, see above). The function `airpressure_from_elev()` estimates air pressure as $p_a (kPa)= 101.3 \exp \frac{-E}{8200}$, where $E$ is the elevation in meters above sea level. TrenchR providesa function to estimate airpressure from elevation (m).
 
-Direct irradiance is a function of the distance a solar beam travels through the atmosphere; the transmittance of the atmosphere, $\tau$; and the incident flux density, $\S_{p0}$: $S_p=S_{p0}\tau^{m_a}$. We approximate diffuse radiation using an empirical relation [Liu and Jordan 1960], $S_d=0.3(1-\tau^{m_a}) S_{p0}\cos\psi$.Finally, reflected radiation is the product of albedo, $\rho_S$ and the sum of direct and diffuse radiation: $S_r= \rho_S (S_p+S_d)$.
+```{r}
+plot(1:4000, airpressure_from_elev(1:4000), type="l", xlab="elevation (m)", ylab="air pressure (kPa)")
+```
+
+Direct irradiance is a function of the distance a solar beam travels through the atmosphere; the transmittance of the atmosphere, $\tau$; and the incident flux density, $\S_{p0}$: $S_p=S_{p0}\tau^{m_a}$. We approximate diffuse radiation using an empirical relation [Liu and Jordan 1960], $S_d=0.3(1-\tau^{m_a}) S_{p0}\cos\psi$. Finally, reflected radiation is the product of albedo, $\rho_S$ and the sum of direct and diffuse radiation: $S_r= \rho_S (S_p+S_d)$. We estimate the direct, diffuse, and reflected components of solar radiation ($W m^{-2}$) as follows.
+
+
+```{r}
+#Radiation as a function of hour
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=200, lat=47.61, lon=-122.33))
+zen= zen*2*pi/360
+rd= lapply(zen, FUN=estimate_radiation, doy=200, tau=0.6, elev=1500, rho=0.7)
+#unlist
+rd=matrix(unlist(rd), nrow=3, byrow=FALSE)
+plot(1:24, rd[1,], type="l", xlab = "hour", ylab = "radiation (W/m^2)", ylim=c(0,800))
+points(1:24, rd[2,], type="l", lty="dotted")
+points(1:24, rd[3,], type="l", lty="dashed")
+legend("topright", title="radiation flux", legend=c("direct", "diffuse", "reflected"), lty=c("solid","dotted","dashed") )
+
+#Radiation as a function of zenith angle
+psi.seq <- seq(0, 90, by = 5)
+rd= lapply(psi.seq*2*pi/360, FUN=estimate_radiation, doy=200, tau=0.75, elev=1500, rho=0.7)
+#unlist
+rd=matrix(unlist(rd), nrow=3, byrow=FALSE)
+plot(psi.seq, rd[1,], type="l", xlab = "zenith angle (degrees)", ylab = "radiation (W/m^2)", ylim=c(0,1200))
+points(psi.seq, rd[2,], type="l", lty="dotted")
+points(psi.seq, rd[3,], type="l", lty="dashed")
+legend("topright", title="zenith angle (degrees)", legend=c("direct", "diffuse", "reflected"), lty=c("solid","dotted","dashed") )
+
+```
 
 We additionally provide a function (`monthly_solar_radiation()`) implementing an algorithm to estimate average monthly solar radiation ($W m^{-2}$ per day) using basic topographic and climatic information as input.
+```{r}
+r.seq= lapply(seq(1,365,31), FUN=monthly_solar_radiation, lat=43.57,lon=-116.22,elev=866,T=20,Hr=15,P=15)
+r.seq=unlist(r.seq)
+plot(seq(1,365,31), r.seq, type = "l", xlab = "day of year", ylab = "radiation (W/m2)")
+```
 
 We provide a function `partition_solar_radiation()` to estimate the diffuse fraction $k_d$ that can be used to partition measures of solar radiation into direct and diffuse components.  The partitioning is based on empirically-derived relations estimated as a function of the clearness index $k_t$, which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere. The relations are compiled in Wong and Chow [2001, Applied Energy 69:1991-224].
-
-The functions are available in the TrenchR package as follows:
 ```{r}
-airpressure_from_elev(1500)
-estimate_radiation(doy=112, psi=1, tau=0.6, elev=1500, rho=0.7)
-#monthly_solar_radiation(lat=47.61,lon=-122.33,doy=112,elev=1500,Temp=15,Hr=50,P=50)
-#partition_solar_radiation(500, 0.5)
+r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Erbs", lat=40, sol.elev=60)
+plot(seq(0,1,0.1), r.seq, type = "l", xlab = "k_t", ylab = "radiation (W/m2)", ylim=c(0,1))
+r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Liu_Jordan", lat=40, sol.elev=60)
+points(seq(0,1,0.1), r.seq, type = "l", lty="dashed")
+r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Orgill_Hollands", lat=40, sol.elev=60)
+points(seq(0,1,0.1), r.seq, type = "l", lty="dotted")
+r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Olyphant", lat=40, sol.elev=60)
+points(seq(0,1,0.1), r.seq, type = "l", lty="dotdash")
+r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Reindl-1", lat=40, sol.elev=60)
+points(seq(0,1,0.1), r.seq, type = "l", lty="longdash")
+r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Reindl-2", lat=40, sol.elev=60)
+points(seq(0,1,0.1), r.seq, type = "l", lty="longdash")
+r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Lam_Li", lat=40, sol.elev=60)
+points(seq(0,1,0.1), r.seq, type = "l", lty="twodash")
+
+legend("topright", title="Partitioning method", legend=c("Erbs", "Liu_Jordan", "Orgill_Hollands", "Olyphant", "Reindl-1", "Reindl-2", "Lam_Li"), lty=c("solid","dashed","dotted","dotdash","longdash","longdash","twodash"))
+
 ```
 
 # Temperature and windspeed profiles
-Temperatures and windspeeds collected at ~2m can differ drametically from conditions near the ground where most organisms live. Turbulent air flow influenced by the ground surface roughness sets up temperature and windspeed profiles.  These profiles can be estimated to scale temperatures and widspeeds to organism height. We scale across height by estimating a wind speed profile using the relationship:
+Temperatures and windspeeds collected at ~2m can differ dramatically from conditions near the ground where most organisms live. Turbulent air flow influenced by the ground surface roughness sets up temperature and windspeed profiles.  These profiles can be estimated to scale temperatures and widspeeds to organism height. We scale across height by estimating a wind speed profile using the relationship:
 $$u(z)= \frac{u^*}{0.41}ln \frac{z-d}{z_m} $$
 where u(z) is the wind speed (m/s) at height z (m), u* is the friction velocity (m/s), d is the zero plane displacement (m, the height at which wind speed is zero), and the constant 0.41 is the von Karman constant. 
 
-We provide a function to use this relationship to estimate surface roughness (`surface_roughness()`) from wind speed measurements at a vector of heights.  First, the zero-plane displacement is estimated as the intercept of the relationship between the wind velocities and the log of measurement height.  Surface roughness $z_0$ can then be estimated by repeating the regression accounting for the zeroplane displacement (by substracting the zero-plane displacement from the measurement heights). $z_0$ is estimated as the exponential of the ration of the intercept and slope of the regression relationship.
+We provide a function to use this relationship to estimate surface roughness (`surface_roughness()`) from wind speed measurements at a vector of heights.  First, the zero-plane displacement is estimated as the intercept of the relationship between the wind velocities and the log of measurement height.  Surface roughness $z_0$ can then be estimated by repeating the regression accounting for the zeroplane displacement (by substracting the zero-plane displacement from the measurement heights). $z_0$ is estimated as the exponential of the ratio of the intercept and slope of the regression relationship as follows.
+
+```{r}
+surface_roughness(u_r=c(0.01,0.025,0.05,0.1,0.2), zr=c(0.05,0.25,0.5,0.75,1))
+```
 
 We use the following relationship to estimate air temperature and wind speed at height z under neutral conditions (no buoyancy associated with differential density):
 $$\frac{u_z}{u_r}=\frac{ln(z/z_0+1)}{ln(z_r/z_0+1)}=\frac{T_z-T_0}{T_r-T_0} $$
-where uz and ur are the wind speeds (m/s) at height z (m) and reference height r (m), respectively.  Tz, Tr, and T0 are air and soil temperatures at height z and r and soil surface temperature, respectively. We provide this relationship in the `wind_speed_profile_neutral()` function to estimate windspeed at a specified height. We additionally provide this relationship in the `air_temp_profile_neutral()` function to estimate temperature at a specified height.
+where $u_z$ and $u_r$ are the wind speeds (m/s) at height z (m) and reference height r (m), respectively.  $T_z$, $T_r$, and $T_0$ are air and soil temperatures at heights z and r and soil surface temperature, respectively. We provide this relationship in the `wind_speed_profile_neutral()` function, which estimates windspeed at a specified height. We additionally provide this relationship in the `air_temp_profile_neutral()` function, which estimates temperature at a specified height.
 
-The functions are available as:
+We examine how the wind speed profiles varies with windspeed (m/s).
 ```{r}
-surface_roughness(u_r=c(0.01,0.025,0.05,0.1,0.2), zr=c(0.05,0.25,0.5,0.75,1))
-wind_speed_profile_neutral(u_r=0.1, zr=0.1, z0=0.2, z=0.15)
-air_temp_profile_neutral(T_r=20, zr=0.1, z0=0.2, z=0.15, T_s=25)
+zs= seq(0,2,0.1) 
+us= wind_speed_profile_neutral(u_r=1, zr=2, z0=0.2, z=zs)
+plot(us,zs, type="l", xlab = "wind speed, u (m/s)", ylab = "height, z (m)")
+points(wind_speed_profile_neutral(u_r=0.5, zr=2, z0=0.2, z=zs), zs, type="l", lty="dashed")
+points(wind_speed_profile_neutral(u_r=0.25, zr=2, z0=0.2, z=zs), zs, type="l", lty="dotted")
+
+legend("bottomright", title="windspeed at reference height of 2m", legend=c(0.25, 5, 1), lty=c("dotted","dashed","solid") )
 ```
 
-We additionally provide functions for estimating wind speed and temperature profiles for the case of free convection using the relationships in NicheMapR as described by Kearney and Porter [2016].  The function `wind_speed_profile()` estiamtes wind speed at height $z$ as $u_z=2.5u^*\ln(z/z_0+1)$ where the friction velocity $u^*$ is estimated as $u^*=\frac{0.41u_r}{\ln(z/z_0+1)}$ and 0.41 is the von Karman constant.
+We next illustrate the influence of surface roughness on air temperature profiles.
+```{r}
+z.seq <- seq(0, 2, by = 0.1)
+t.seq <- air_temp_profile_neutral(T_r=20, zr=1, z0=0.2, z=z.seq, T_s=25)
+plot(t.seq, z.seq, type = "l", xlab = "Temperature (C)", ylab = "z (height above ground in m)")
+t.seq <- air_temp_profile_neutral(T_r=20, zr=1, z0=0.5, z=z.seq, T_s=25)
+points(t.seq, z.seq, type = "l", lty="dotted")
+t.seq <- air_temp_profile_neutral(T_r=20, zr=1, z0=0.8, z=z.seq, T_s=25)
+points(t.seq, z.seq, type = "l", lty="dashed")
+
+legend("topright", title="surface roughness", legend=c(0.2, 0.5, 0.8), lty=c("solid","dotted","dashed") )
+```
+
+We additionally provide functions for estimating wind speed and temperature profiles for the case of free convection using the relationships in NicheMapR as described by Kearney and Porter [2016].  The function `wind_speed_profile()` estimates wind speed at height $z$ as $u_z=2.5u^*\ln(z/z_0+1)$ where the friction velocity $u^*$ is estimated as $u^*=\frac{0.41u_r}{\ln(z/z_0+1)}$ and 0.41 is the von Karman constant.
+
+```{r}
+zs= seq(0,2,0.1) 
+us= wind_speed_profile(u_r=1, zr=2, z0=0.2, z=zs)
+plot(us,zs, type="l", xlab = "wind speed, u (m/s)", ylab = "height, z (m)")
+points(wind_speed_profile(u_r=0.5, zr=2, z0=0.2, z=zs), zs, type="l", lty="dashed")
+points(wind_speed_profile(u_r=0.25, zr=2, z0=0.2, z=zs), zs, type="l", lty="dotted")
+
+legend("bottomright", title="windspeed at reference height of 2m", legend=c(0.25, 5, 1), lty=c("dotted","dashed","solid") )
+```
 
 Temperature at a given height is estimated in the function `air_temp_profile()` by first estimating the temperature at roughness height:
 $$T_{z_0}= \frac{T_r S_{t_b}-T_0 S_{t_s}}{S_{t_b}-S_{t_s}}. $$
 where $S_{t_s}$ is the sublayer Stanton Number $S_{t_s}=0.62/ (\frac{z_0u^*}{12})^{0.45}$ and $S_{t_b}$ is the bulk Stanton Number $S_{t_b}=0.64/ (\frac{z}{z_0}+1)$. The Stanton numerbers are dimensionless numbers that measures the ratio of the heat transfered in and the thermal capacity. The temperature at height $z$ can then be estimated as:
 $$T_z= T_{z_0}+(T_r-T_{z_0})ln(\frac{z}{z_0}+1) .$$
-The functions are available in TrenchR as:
+We estimate air temperature profiles in TrenchR as:
 ```{r}
-wind_speed_profile(u_r=0.1, zr=0.1, z0=0.2, z=0.15)
-air_temp_profile(T_r=20, u_r=0.1, zr=0.1, z0=0.2, z=0.15, T_s=25)
+z.seq <- seq(0, 2, by = 0.1)
+t.seq <- air_temp_profile(T_r = 20, u_r = 0.5, zr = 2, z0 = 0.2, z = z.seq, T_s = 25)
+plot(t.seq, z.seq, type = "l", xlab = "Temperature (C)", ylab = "z (height above ground in m)")
+t.seq <- air_temp_profile(T_r = 20, u_r = 0.5, zr = 2, z0 = 0.5, z = z.seq, T_s = 25)
+points(t.seq, z.seq, type = "l", lty="dotted")
+t.seq <- air_temp_profile(T_r = 20, u_r = 0.5, zr = 2, z0 = 0.8, z = z.seq, T_s = 25)
+points(t.seq, z.seq, type = "l", lty="dashed")
+
+legend("topright", title="surface roughness", legend=c(0.2, 0.5, 0.8), lty=c("solid","dotted","dashed") )
+```
+
+Trench R also adapts functions from NicheMapR [Kearney and Porter 2016] to refine wind speed and air temperature profiles by using multiple segments:
+```{r}
+z.seq <- seq(0, 2, by = 0.1)
+t.seq= lapply(z.seq, FUN=air_temp_profile_segment, T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), T_s=27)
+plot(t.seq, z.seq, type = "l", xlab = "Temperature (C)", ylab = "z (height above ground in m)")
+points(c(27,25,22,20),c(0,0.05,0.25,0.5) )
+```
+
+```{r}
+z.seq <- seq(0, 2, by = 0.1)
+u.seq= lapply(z.seq, FUN=wind_speed_profile_segment, u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2))
+plot(u.seq, z.seq, type = "l", xlab = "Wind speed (m/s)", ylab = "z (height above ground in m)")
+points(c(0.01,0.025,0.05),c(0.05,0.25,0.5) )
 ```
 
 # Diurnal variation in temperature and radiation
@@ -122,22 +281,35 @@ $$  T(h)=\left \{
               \right. $$
 where $\alpha=T_x-T_n$,$R=T_x-T_s$, and $b=\frac{T_p-T_s}{\sqrt{h_p - h_s}}$. Sunset temperature is estimated as $T_s=T_x-c(T_x-T_p)$ where $c$ is an empicially estimated parameter ($c=0.39$).
 
-We provide the functions as follows:
+TrenchR provides the functions as follows:
 ```{r}
-diurnal_temp_variation_sine(T_max=30, T_min=10, t=11)
-diurnal_temp_variation_sineexp(T_max=40, T_min=10, t=11, t_r=6, t_s=18, alpha=2.59, beta= 1.55, gamma=2.2)
-diurnal_temp_variation_sinesqrt( t=8, tr=6, ts=18, T_max=30, T_min=20, T_minp=22)
+plot(1:23, diurnal_temp_variation_sine(T_max=30, T_min=10, t=1:23), type = "l", xlab = "hour", ylab = "temperature (C)")
+t.seq= lapply(1:23, FUN=diurnal_temp_variation_sineexp, T_max=30, T_min=10, t_r=6, t_s=18)
+points(1:23, t.seq, type = "l", lty="dotted")
+points(1:23, diurnal_temp_variation_sinesqrt(t=1:23, tr=6, ts=18, T_max=30, T_min=10, T_minp=12), type = "l", lty="dashed")
+
+legend("topleft", title="function", legend=c("_sine", "_sineexp", "_sinesqrt"), lty=c("solid","dotted","dashed") )
 ```
 
 We adapt equations from Tham et al. [2010] to estimate hourly solar radiation ($W m^{-2}$ per hour) as a function of daily global solar radiation (in $W m^{-2}$ per day). The function `diurnal_radiation_variation()` partitions daily solar radiation $S$. The function estimates the ratio of hourly to daily global irradiation,$S_G$, as follows:
 $$S_G= \frac{\pi}{24}(a'+b'\cos \omega)\frac{\cos \omega - \cos \omega_s}{\sin \omega_s - \omega_s \cos \omega_s}, $$
-where $a'= 0.409+0.5016\sin(\omega_s-1.047)$ and $b'=0.6609-0.4767\sin(\omega_s-1.047)$. The function utilizes two angles in radians: $\omega$ is the hour angle of the sun and $\omega_s$ is the hour angle at sunset.  The function calculates these angles as a function of calendar date $J$ and location (latitude and longitude):
+where $a'= 0.409+0.5016\sin(\omega_s-1.047)$ and $b'=0.6609-0.4767\sin(\omega_s-1.047)$. The function utilizes two angles in radians: $\omega$ is the hour angle of the sun and $\omega_s$ is the hour angle at sunset.  The function calculates these angles as a function of calendar date $J$ and location (latitude and longitude). We depict how the diurnal trends in radiation vary across the year (also assuming differences in total radiation).
 ```{r}
-diurnal_radiation_variation(doy=112, solrad=500, hour=12, lon=-122.33, lat=47.61)
+r.seq= lapply(1:24, FUN=diurnal_radiation_variation, doy=172, solrad=8000, lon=-112.07, lat=33.45)
+plot(1:24, r.seq, type = "l", xlab = "hour", ylab = "radiation (W/m2)")
+
+r.seq= lapply(1:24, FUN=diurnal_radiation_variation, doy=356, solrad=4000, lon=-112.07, lat=33.45)
+points(1:24, r.seq, type = "l", lty="dotted")
+r.seq= lapply(1:24, FUN=diurnal_radiation_variation, doy=266, solrad=6000, lon=-112.07, lat=33.45)
+points(1:24, r.seq, type = "l", lty="dashed")
+r.seq= lapply(1:24, FUN=diurnal_radiation_variation, doy=228, solrad=6000, lon=-112.07, lat=33.45)
+points(1:24, r.seq, type = "l", lty="dotdash")
+
+legend("topright", title="day of year", legend=c(172,228,266,356), lty=c("solid","dotdash","dashed","dotted") )
 ```
 
 # Degree days
-Many organismal processes and rates are temperature dependent. Accounting for temperature dependence allows translating calendar time into a more biologically relevant concept known as degree days. Degree days indicates the accumulated heat available for processes such as development and is estimated as the accumulated product of time and temperature. For the frequent application of estimating development, degree days are calculated within physiological bounds known as the lower and upper developmental temperatures, LDT and UDT, respectively.  We provide four approaches for estimating degree days that differ in the complexity with which the aggregate heat: "single.sine"","double.sine", "single.triangulation" or "double.triangulation". We implement the methods detailed here: http://ipm.ucanr.edu/WEATHER/ddfigindex.html.  The methods account for whether the temeprature time series is intercepted by the LDT and / or the UDT.  Briefly, we present the equations for each method for the case of the temperature time series being intercepted by the lower threshold. For the single-sine method, degree days $D$ can be estimated as
+Many organismal processes and rates are temperature dependent. Accounting for temperature dependence allows translating calendar time into a more biologically relevant concept known as degree days. Degree days indicate the accumulated heat available for processes such as development and are estimated as the accumulated product of time and temperature. For the frequent application of estimating development, degree days are calculated within physiological bounds known as the lower and upper developmental temperatures, LDT and UDT, respectively.  We provide four approaches for estimating degree days that differ in the complexity with which they aggregate heat: "single.sine"","double.sine", "single.triangulation" or "double.triangulation". We implement the methods detailed here: http://ipm.ucanr.edu/WEATHER/ddfigindex.html.  The methods account for whether the temeprature time series is intercepted by the LDT and / or the UDT.  Briefly, we present the equations for each method for the case of the temperature time series being intercepted by the lower threshold. For the single-sine method, degree days $D$ can be estimated as
 $$D= \frac{1}{\pi} \left[ \left( \frac{T_x+T_n}{2}-LDT \right) +\alpha\cos(\theta_1) \right] \\
 \theta_1= \sin^{-1}\left[ 1/ \alpha \left( LDT- \frac{T_x+T_n}{2} \right) \right]$$
 
@@ -150,19 +322,20 @@ $$D= \frac{(T_x-LDT)^2}{2(T_x-T_n)} .$$
 For the double triangulation method, degree days $D$ can be estimated as
 $$D= \frac{(T_x-LDT)^2}{4(T_x-T_n)}. $$
 
-The methods are available in the following R function:
+The methods are available in the following R function. Note the function calculates degree days for a full day assuming symmetry in minimum temperatures. 
 ```{r}
 degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.sine")
+degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="double.sine")
 degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.triangulation")
-
+degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="double.triangulation")
 ```
 
 # Soil temperatures
-We implemented a microclimate model with air temperature and radiation as input using finite-difference methods to solve heat balance equations describing soil temperatures at the surface and specified depths. Our approach follows Porter et al. [1973] and is similar to that described for the NicheMapR R package [Kearney and Porter 2017]. The primary function to call to calculate soil temperature is `soil_temperature()`. The function is a wrapper to solve the differential equations below for equilibrium conditions.  The called function `soil_temperature_function()` contains the majority of the soil temperature model and calls two helper functions.  The two functions implement an equation for calculating soil temperature adapted from Beckman et. al. [1973]; `soil_temperature_integrand()` includes the integrand in the equation and is called by `soil_temperature_equation()`, which represents the full equation.  Below we outline the soil temperature model encapsulated by the functions.
+TrenchR includes a microclimate model that uses finite-difference methods to solve heat balance equations describing soil temperatures at the surface and specified depths.  The function requires air temperature and radiation data as input. Our approach follows Porter et al. [1973] and is similar to that described for the NicheMapR R package [Kearney and Porter 2017]. The primary function to call to calculate soil temperature is `soil_temperature()`. The function is a wrapper to solve the differential equations below for equilibrium conditions.  The called function `soil_temperature_function()` contains the majority of the soil temperature model and calls two helper functions.  The two functions implement an equation for calculating soil temperature adapted from Beckman et. al. [1973]; `soil_temperature_integrand()` includes the integrand in the equation and is called by `soil_temperature_equation()`, which represents the full equation.  Below we outline the soil temperature model encapsulated by the functions.
 
 The change is soil temperature ($T_s$) through time $t$ and depth $z$ can be approximated with a differential equation
 $$\frac{dT_s}{dt}= \frac{k_s}{\rho_s c_s} \frac{\delta^2T_s}{\delta z^2}$$
-where  $k_s$ is the thermal conductivity of soil (units), $\rho_s$ is the density of soil, and $c_s$ is the specific heat of soil (units). We solve the differential equation by breaking the soil profile into depth nodes, exchanging heat. We estimate the steady state temperature profile, which is independent of initial conditions.  The choice of initial conditions only affects the rate of convergence to the steady state solution. A finite difference approximation of the differential equation yields a transient equation for temperature at depth $i$ and time $p$ where we let $a= \frac{k_s}{\rho_s c_s}$:
+where $k_s$ is the thermal conductivity of soil (units), $\rho_s$ is the density of soil, and $c_s$ is the specific heat of soil (units). We solve the differential equation by breaking the soil profile into depth nodes, exchanging heat. We estimate the steady state temperature profile, which is independent of initial conditions.  The choice of initial conditions only affects the rate of convergence to the steady state solution. A finite difference approximation of the differential equation yields a transient equation for temperature at depth $i$ and time $p$ where we let $a= \frac{k_s}{\rho_s c_s}$:
 $$\frac{T_i^{p+1}-T_i^p}{dt}= a \frac{T_{i+dz}^p+T_{i-dz}^p-2T_i^p}{dz^2}. $$
 Solving for $T_i^{p+1}$ produces as expression for solving soil temperature at depth $i$ at any time:
 $$T_i^{p+1} = a \frac{dt}{dz^2}(T_{i+dz}^p+T_{i-dz}^p)+(1-2a \frac{dt}{dz^2})T_i^p$$
@@ -179,18 +352,24 @@ $$Q_{net_s}= \frac{\rho_s c_s dz}{2 dt} (T_0^{p+1}-T_0^p).$$
 Letting $a=\frac{2dt}{\rho_s c_s dz}$ and solving for $T_0^{p+1}$ in the soil energy budget yields the following boundary condition for soil surface temperature:
 $$T_0^{p+1}= a \alpha_s S + a \epsilon_S \sigma [(T^p_{sky})^4-(T^p_0)^4]+a h_s (T^p-T_0^p) +a \frac{k_s}{dz}(T^p_{dz}-T^p_0)+T_0^p$$
 
-Soil temperature can be estimated in R as follows:
+Soil temperature can be estimated in TrenchR as follows:
 ```{r}
-library(zoo)
 library(deSolve)
 
-temp_vector= runif(96, min=-10, max=10)
+temp_vector= diurnal_temp_variation_sine(T_max=20, T_min=-10, t=rep(1:24,4))
 wind_speed_vector= runif(96, min=0, max=0.4)
 time_vector= rep(1:24,4)
-solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
+solrad_vector= unlist(lapply(1:24, FUN=diurnal_radiation_variation, doy=172, solrad=8000, lon=-112.07, lat=33.45))
+solrad_vector= rep(solrad_vector,4)
 
-#soil_temperature(z_r.intervals=12,z_r=1.5, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
+params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0=0.02, H=solrad_vector, T_a=temp_vector, u=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=FALSE)
 
+T_soil= soil_temperature(z_r.intervals=12,z_r=1.5, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
+
+plot(1:96, temp_vector, type = "l", xlab = "hour", ylab="temperature (C)", ylim=c(-10,50))
+points(1:96, T_soil, lty="dashed", type="l")
+
+#legend("topright", title="day of year", legend=c(172,228,266,356), lty=c("solid","dotdash","dashed","dotted") )
 ```
 
 ## Soil specific heat and conductivity
@@ -200,6 +379,10 @@ where $\rho_s$ is the particle density of soil (bulk density), $x$ is the volume
 soil_specific_heat(0.01, 0.6, 0.2, 1620)
 ```
 
+```{r}
+plot(seq(500,1700,100), soil_specific_heat(x_o=0.01, x_m=0.6, x_w=0.2, rho_so=seq(500,1700,100)), type="l", xlab = "bulk density (kg/m3)", ylab = "soil specific heat (J kg^-1 K-1)")
+```
+
 Various methods of approximating soil thermal conductivity $k_s$ are reviewed in Boguslaw and Lukasz [XXXX]. We provide a function `soil_conductivity()` to estimate $k_s$ using the methods of de Vries [1963]. The function calculates $k_s$ as the weighted average of the thermal conductivities $k$ of soil components $i$:
 $$k_s= \frac{\sum j_i k_i x_i}{\sum j_i x_i},$$
 where quanity $j_i$ is the ratio of the average temperature gradient in the granules and the corresponding quantity in the medium (water or air):
@@ -207,6 +390,20 @@ $$j_i= \frac{1}{3} \sum_{p=a,b,c}[1+\left( \frac{k_i}{k_0}-1 \right)g_{p,i}]^{-1
 where $k_0$ is the conductivity of the continuous medium in which soil particles are suspended (water or air) and $g$ is a shape factor for the soil particles. The soil particles are assumed to be ellipsoids with axes $g_a$, $g_b$, and $g_c$, where $g_a +g_b +g_c=1$.  de Vries [1952] suggests $g_a=g_b=0.125$. We provide the function as follows:
 ```{r}
 soil_conductivity(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), lambda=c(0.10,0.40,0.11,0.01,0.2, 0.18), g_a=0.125)
+```
+
+```{r}
+soil_conductivity(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), lambda=c(0.10,0.40,0.11,0.01,0.2, 0.18), g_a=0.125)
+```
+
+##Tsoil var
+```{r}
+plot(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=0), type="l", xlab = "hour", ylab = "soil temperature (C)", lty="dashed")
+points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=5), type="l")
+points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=10), type="l")
+points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=20), type="l", lty="dotted")
+
+#CHECKED
 ```
 
 #Example microclimate calculations

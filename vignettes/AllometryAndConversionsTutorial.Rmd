@@ -20,23 +20,56 @@ library(TrenchR)
 ```
 
 #Allometries
-We provide tools for estimating additional dimensions of organisms from measured dimensions. The function `mass_from_length()` encompasses empirically-derived relationships to estimate mass (mostly) as a power law function of mass for six taxonomic classifications. The relationships are derived by relating length to mass for specimens of numerous species and avaialble as the following function: 
+We provide tools for estimating additional dimensions of organisms from measured dimensions. The function `mass_from_length()` encompasses empirically-derived relationships to estimate mass (mostly) as a power law function of mass for six taxonomic classifications. The relationships are derived by relating length to mass for specimens of numerous species.  We use the `mass_from_length()` function to illustrate the allometries for different taxa: 
 ```{r}
-mass_from_length(l=0.04,taxa="insect")
+plot(seq(0.05,0.25,0.01), mass_from_length(seq(0.05,0.25,0.01),"lizard"), type="l", xlab = "length (m)", ylab = "mass (g)", ylim=c(0,100))
+points(seq(0.05,0.25,0.01), mass_from_length(seq(0.05,0.25,0.01),"salamander"), type="l", col="blue")
+points(seq(0.05,0.25,0.01), mass_from_length(seq(0.05,0.25,0.01),"frog"), type="l", col="red")
+points(seq(0.05,0.25,0.01), mass_from_length(seq(0.05,0.25,0.01),"snake"), type="l", col="green")
+points(seq(0.05,0.25,0.01), mass_from_length(seq(0.05,0.25,0.01),"turtle"), type="l", col="orange")
+points(seq(0.01,0.10,0.01), mass_from_length(seq(0.01,0.10,0.01),"insect"), type="l", col="purple")
 ```
 
 Surface area is needed for several aspects of biophysical models but is rarely meausured. We provide functions to estimate surface area ($m^3$) from length, mass, or volume for a variety of taxa. The function `sa_from_mass()` encompasses empirically-derived relationship to estimate surface area as a power law function of mass for lizards, frogs, and insects.  We also provide empirical relationships estimating surface area as power law function of volume. The functions were developed by Mitchell [1976] for use in approximating convective heat transfer. For the same study, we additionally provide a function to estimate volume from length for several taxa or approximating the organism as a sphere. Finally, we provide a function for estimating surface area from length by approximating the animal's body as a rotational ellipsoid. The allometric functions are available in R as follows:
 ```{r}
-sa_from_mass(2,"insect")
-sa_from_volume(V=0.001,taxa="lizard")
-volume_from_length(l=0.05,taxa="lizard")
-sa_from_length(l=0.04)
+plot(1:50, sa_from_mass(1:50,"lizard"), type="l", xlab = "m (g)", ylab = "surface area (m2)")
+points(1:50, sa_from_mass(1:50,"frog"), type="l", col="blue")
+points(1:50, sa_from_mass(1:50,"salamander"), type="l", col="green")
+points(seq(0.1,5,0.2), sa_from_mass(seq(0.1,5,0.2),"insect"), type="l", col="purple")
+
+plot(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"lizard"), type="l", xlab = "volume (m^3)", ylab = "sa (m^2)")
+points(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"frog"), type="l", col="red")
+points(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"sphere"), type="l", col="green")
+
+plot(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001),"lizard"), type="l", xlab = "length (m)", ylab = "volume (m^3)")
+points(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001),"frog"), type="l")
+points(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001),"sphere"), type="l")
+
+plot(seq(0.01, 0.05, 0.001), sa_from_length(l=seq(0.01, 0.05, 0.001)), type="l", xlab = "length (m)", ylab = "surface area (m^2)")
 ```
 
 Estimating the amount of solar radiation that an animal absorbs requires knowledge of the silhouette area, the propotion of an animal's surface area that is projected onto a horizontal surface. Silhouette area is a function of the sun's angle. We offer empirically-derived relationships to predict the proportional silhouette area for frogs, lizards, and grasshoppers as a polynomial function of zenith angle (`prop_silhouette_area()`).  We additionally offer a function (`prop_silhouette_area_shapes()`) to estimate silhoutte area by approximating the animal as a sphere or cylinder.  The R functions are parameterized as follows:
 ```{r}
-prop_silhouette_area(60, taxa= "frog")
-prop_silhouette_area_shapes(shape="spheroid", theta=60, h=0.01, d=0.001)
+plot(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "frog"), type="l", xlab = "zenith angle (degree)", ylab = "proportion silhouette area", ylim=range(0,0.5))
+points(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "lizard", raz=0, posture="prostrate"), type="l", col="lightblue")
+points(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "lizard", raz=0, posture="elevated"), type="l", col="blue")
+points(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "grasshopper"), type="l", col="green")
+
+plot(seq(0, 90, 10), prop_silhouette_area_shapes(shape="spheroid", theta=seq(0, 90, 10), h=0.4, d=0.39), type="l", xlab = "theta (degree)", ylab = "proportion silhouette area", ylim=c(0,0.35), lty="dashed")
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="spheroid", theta=seq(0, 90, 10), h=0.4, d=0.3), type="l")
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="spheroid", theta=seq(0, 90, 10), h=0.4, d=0.2), type="l")
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="spheroid", theta=seq(0, 90, 10), h=0.4, d=0.1), type="l")
+
+plot(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder flat ends", theta=seq(0, 90, 10), h=0.4, d=0.4), type="l", lty="dashed", xlab = "theta (degree)", ylab = "proportion silhouette area", ylim=c(0,0.35))
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder flat ends", theta=seq(0, 90, 10), h=0.4, d=0.2), type="l")
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder flat ends", theta=seq(0, 90, 10), h=0.4, d=0.1), type="l")
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder flat ends", theta=seq(0, 90, 10), h=0.4, d=0.05), type="l")
+
+plot(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=seq(0, 90, 10), h=0.4, d=0.4), type="l", lty="dotted", xlab = "theta (degree)", ylab = "proportion silhouette area", ylim=c(0,0.35))
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=seq(0, 90, 10), h=0.4, d=0.2), type="l")
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=seq(0, 90, 10), h=0.4, d=0.1), type="l")
+points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=seq(0, 90, 10), h=0.4, d=0.05), type="l")
+
 ```
 
 #Conversions
