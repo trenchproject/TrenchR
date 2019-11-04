@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-##Load TrenchR package
+#Load TrenchR package
 library(TrenchR)
 ```
 
@@ -40,7 +40,10 @@ where $A_{dir}$,$A_{dif}$,and $A_{ref}$ are the surface areas expsed to direct, 
 
 The summation is available in R as follows
 ```{r}
-Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=1000, S_dif=200, a_s=0.5)
+plot(seq(100,1000,100), Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=seq(100,1000,100), S_dif=200, a_s=0.5), type="l", xlab = "direct solar radiation (W/m^2)", ylab = "solar radiation absorbed (W)", lty="dashed")
+points(seq(100,1000,100), Qradiation_absorbed(a=0.9, A=1, psa_dir=0.2, psa_ref=0.4, S_dir=seq(100,1000,100), S_dif=200, a_s=0.5), type="l")
+points(seq(100,1000,100), Qradiation_absorbed(a=0.45, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=seq(100,1000,100), S_dif=200, a_s=0.5), type="l")
+points(seq(100,1000,100), Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=seq(100,1000,100), S_dif=200, a_s=0.2), type="l")
 ```
 where psa_dir and psa_ref are the proportions of surface area exposed to direct and reflected solar radiation, respectively. We assume psa_dif=psa_dir. See functions `prop_silhouette_area()` and `prop_silhouette_area_shapes()` for assistance calculating the proportional of surface area exposed via estimating silhouette area. Additionally, see the tutorial on [solar radiation] for tools for estimating incoming solar radiation.
 
@@ -54,7 +57,11 @@ where $A_s$ and $A_r$ are the areas ($m^2$) exposed to the sky (or enclosure) an
 
 The function is available in R as follows:
 ```{r}
-Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303, T_g=293, T_a=298, enclosed=FALSE)
+plot(293:313, Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=293:313, T_g=293, T_a=298, enclosed=FALSE), type="l", xlab = "body surface temperature (K)", ylab = "emitted thermal radiation, Qemit (W)", lty="dashed")
+points(293:313, Qemitted_thermal_radiation(epsilon=0.96, A=0.5, psa_dir=0.4, psa_ref=0.6, T_b=293:313, T_g=293, T_a=298, enclosed=FALSE), type="l")
+points(293:313, Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.2, psa_ref=0.8, T_b=293:313, T_g=293, T_a=298, enclosed=FALSE), type="l")
+points(293:313, Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=293:313, T_g=283, T_a=298, enclosed=FALSE), type="l")
+points(293:313, Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=293:313, T_g=283, T_a=298, enclosed=TRUE), type="l", lty="dotted")
 ```
 
 #Convection, Qconv
@@ -63,7 +70,7 @@ $$Qconv= ef*H_L*(A*proportion)*(Ta-Tb).$$
 
 The function is available in R:
 ```{r}
-Qconvection(T_a= 293,T_b= 303,H=10.45,A=0.0025, proportion=0.85)
+plot(293:313, Qconvection(T_a= 303,T_b= 293:313,H=10.45,A=0.0025, proportion=0.85), type="l", xlab = "ground temperature (C)", ylab = "convection (W)")
 ```
 
 The convective heat transfer coefficient depends on whether the heat exchange is free or forced (due to fluid flow). The variables involved in heat transfer can be combined into dimensionless groups that are used to compare the scales of heat exchange processes and thus whether modeling free or forced convection is more appropriate. We provide the primary dimesionless numbers.
@@ -78,25 +85,67 @@ The Grashof number describes the abilty of a parcel of fluid warmer or colder th
 
 The dimensionless groups are available in R as follows:
 ```{r}
-Nusselt_number(H_L=20, D=0.01, K=0.5)
-Prandtl_number(c_p=29.3, mu=0.00001, K=0.5)
-Reynolds_number(V=1, D=0.001, nu=1.2)
-Grashof_number(Ta=30, Tg=35, D=0.001, nu=1.2)
+plot(1:30, Nusselt_number(H_L=1:30, D=0.01, K=0.5), type="l", xlab = "heat transfer coefficient (W m^-2 K^-1)", ylab = "Nusselt number")
+```
+
+```{r}
+plot(1:30, Prandtl_number(c_p=1:30, mu=0.00001, K=0.5), type="l", xlab = "specific heat at constant pressure (J mol^{-1} K^{-1})", ylab = "Prandtl number")
+```
+
+```{r}
+plot(seq(0,5,0.2), Reynolds_number(V=seq(0,5,0.2), D=0.001, nu=1.2), type="l", xlab = "wind speed (m/s)", ylab = "Reynolds number")
+```
+
+```{r}
+plot(seq(0,0.01,0.001), Grashof_number(Ta=30, Tg=35, D=seq(0,0.01,0.001), nu=1.2), type="l", xlab = "characteristic dimension (m)", ylab = "Grashof number")
+points(seq(0,0.01,0.001), Grashof_number_Gates(Ta=30, Tg=35, beta=0.00367, D=seq(0,0.01,0.001), nu=1.2), type="l", col="red")
+#WHY DIFFERENT BETWEEN BOOKS?
 ```
 
 Relations among the dimensionless groups can also be used for estimation. Empirically-derived relationships can be used to estimate the Nusselt number $Nu$ from the Reynolds number $Re$ or the Grashof number $Gr$.  Comparisons of $Gr$ and $Re$ allow determining whether modelling free or forced convection is appropraite.  Forced convection is appropriate when $Gr \leq 16 Re^2$. For convenience, we provide the relationships as R functions:
+
 ```{r}
-Nu_from_Re(Re=5, taxa="cylinder")
+plot(1:10, Nu_from_Re(Re=1:10, taxa="sphere"), type="l", xlab = "Re", ylab = "Nu", ylim=c(0,4))
+points(1:10, Nu_from_Re(Re=1:10, taxa="cylinder"), type="l")
+points(1:10, Nu_from_Re(Re=1:10, taxa="frog"), type="l")
+points(1:10, Nu_from_Re(Re=1:10, taxa="lizard_traverse_to_air_flow"), type="l")
+points(1:10, Nu_from_Re(Re=1:10, taxa="lizard_parallel_to_air_flow"), type="l")
+points(1:10, Nu_from_Re(Re=1:10, taxa="lizard_surface"), type="l")
+points(1:10, Nu_from_Re(Re=1:10, taxa="lizard_elevated"), type="l")
+points(1:10, Nu_from_Re(Re=1:10, taxa="flyinginsect"), type="l")
+points(1:10, Nu_from_Re(Re=1:10, taxa="spider"), type="l")
+```
+
+```{r}
 Nu_from_Gr(Gr=5)
+```
+
+```{r}
 Free_or_forced_convection(Gr=100, Re=5)
 ```
 
 We offer methods to estimate the convective heat transfer coefficient entails based on either empirical measurements (`heat_transfer_coefficient()`) or approximating the animal shape as a sphere (`heat_transfer_coefficient_approximation()`), which enables simplification while also producing an reasonable approximation [Mitchell 1976].  The functions approximate forced convective heat transfer as a function of windspeed $V (m/s)$, the characteristic dimension $D (m)$, the thermal conductivity of the air $K (W m^{-1} K^{-1})$, the kinematic viscocity of the air $nu (m^2 s^{-1})$, and the taxa or a generic shape. An additional, simplified function (`heat_transfer_coefficient_simple()`) provides a reasonable approximation based on $V$ and $D$ for most environmental conditions.
 
 ```{r}
-heat_transfer_coefficient(V=0.5,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder")
-heat_transfer_coefficient_approximation(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "sphere")
-heat_transfer_coefficient_simple(V=0.5,D=0.05)
+plot(seq(0,3,0.25), heat_transfer_coefficient(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "sphere"), type="l", xlab = "Air velocity (m/s)", ylab = "heat transfer coefficient, H_L (W m^-2 K^-1)")
+points(seq(0,3,0.25), heat_transfer_coefficient(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder"), type="l")
+points(seq(0,3,0.25), heat_transfer_coefficient(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "frog"), type="l")
+points(seq(0,3,0.25), heat_transfer_coefficient(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "lizard_surface"), type="l")
+points(seq(0,3,0.25), heat_transfer_coefficient(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "lizard_elevated"), type="l")
+points(seq(0,3,0.25), heat_transfer_coefficient(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "flyinginsect"), type="l")
+points(seq(0,3,0.25), heat_transfer_coefficient(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "spider"), type="l")
+```
+
+```{r}
+plot(seq(0,3,0.25), heat_transfer_coefficient_approximation(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "sphere"), type="l", xlab = "Air velocity (m/s)", ylab = "heat transfer coefficient, H_L (W m^-2 K^-1)")
+points(seq(0,3,0.25), heat_transfer_coefficient_approximation(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "frog"), type="l")
+points(seq(0,3,0.25), heat_transfer_coefficient_approximation(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "lizard"), type="l")
+points(seq(0,3,0.25), heat_transfer_coefficient_approximation(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "flyinginsect"), type="l")
+points(seq(0,3,0.25), heat_transfer_coefficient_approximation(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "spider"), type="l")
+```
+
+```{r}
+plot(seq(0,3,0.25), heat_transfer_coefficient_simple(V=seq(0,3,0.25),D=0.05), type="l", xlab = "Air velocity (m/s)", ylab = "heat transfer coefficient, H_L (W m^-2 K^-1)")
 ```
 
 #Conduction, Qcond
@@ -114,16 +163,42 @@ where $K_g$ is the thermal conductivity of substrate ($W K^{-1} m^{-1}$) and $D$
 
 The functions are available in R:
 ```{r}
-Qconduction_animal(T_g= 293,T_b=303,d=10^-6,K=0.5,A=10^-3, proportion=0.2)
-Qconduction_substrate(T_g= 293,T_b=303,D=0.01,K_g=0.3,A=10^-2, proportion=0.2)
+plot(293:313, Qconduction_animal(T_g= 293:313,T_b=303,d=10^-6,K=0.5,A=10^-3, proportion=0.2), type="l", xlab = "ground temperature (C)", ylab = "conductance (W)")
+```
+
+```{r}
+plot(293:313, Qconduction_substrate(T_g= 293:313,T_b=303,D=0.01,K_g=0.3,A=10^-2, proportion=0.2), type="l", xlab = "ground temperature (C)", ylab = "conductance (W)")
 ```
 
 #Metabolism, Qmet
 Rates of heat production associated with metabolism are generally estimated using scaling relationships based on generalizing empirical data. Metabolic rates scale as a power law function of mass with an exponent less than 1 such that the per-mass metabolic rate declines with increasing mass.  Metabolic rates also increase exponentially with temperature. The generally form of the relationship is $B=M^x \exp(-E_i/{kT})$, where $M$ is mass, $x$ is an exponent approximating 0.75, $E_i$ is the average activation energy for the rate-limiting enzyme-catalyzed biochemical reactions of metabolism, $k$ is the Boltzmann constant, and $T$ is body temperature [Gillooly et al. 2001]. We offer functions that both do not [`Qmetabolism_from_mass()`] and do [`Qmetabolism_from_mass_temp()`] include temperature dependence for a variety of taxa.
 
 ```{r}
-Qmetabolism_from_mass(m=12,"reptile")
-Qmetabolism_from_mass_temp(m=100, T_b=303,"reptile")
+plot(1:100, Qmetabolism_from_mass(m=1:100,"bird"), type="l", xlab = "mass(g)", ylab = "metabolism (W)", log='xy')
+points(1:100, Qmetabolism_from_mass(m=1:100,"mammal"), type="l", lty="dashed")
+points(1:100, Qmetabolism_from_mass(m=1:100,"reptile"), type="l", lty="dotted")
+
+#Plot in Kj/day as in paper
+plot(1:100, Qmetabolism_from_mass(m=1:100,"bird")*86.4, type="l", xlab = "mass(g)", ylab = "metabolism (kJ/day)", log='xy')
+points(1:100, Qmetabolism_from_mass(m=1:100,"mammal")*86.4, type="l", lty="dashed")
+points(1:100, Qmetabolism_from_mass(m=1:100,"reptile")*86.4, type="l", lty="dotted")
+```
+
+```{r}
+plot(1:100, Qmetabolism_from_mass_temp(m=1:100, T_b=303,"bird"), type="l", xlab = "mass (g)", ylab = "metabolism (W)", ylim=c(0,0.1))
+points(1:100, Qmetabolism_from_mass_temp(m=1:100, T_b=303,"mammal"), type="l")
+points(1:100, Qmetabolism_from_mass_temp(m=1:100, T_b=303,"reptile"), type="l")
+points(1:100, Qmetabolism_from_mass_temp(m=1:100, T_b=303,"amphibian"), type="l")
+points(1:100, Qmetabolism_from_mass_temp(m=1:100, T_b=303,"invertebrate"), type="l")
+plot(293:313, Qmetabolism_from_mass_temp(m=5, T_b=293:313,"bird"), type="l", xlab = "temperature (K)", ylab = "metabolism (W)", ylim=c(0,0.1))
+points(293:313, Qmetabolism_from_mass_temp(m=5, T_b=293:313,"mammal"), type="l")
+points(293:313, Qmetabolism_from_mass_temp(m=5, T_b=293:313,"reptile"), type="l")
+points(293:313, Qmetabolism_from_mass_temp(m=5, T_b=293:313,"amphibian"), type="l")
+points(293:313, Qmetabolism_from_mass_temp(m=5, T_b=293:313,"invertebrate"), type="l")
+
+#Plot as in Gillooly et al. Fig 1. 
+B= Qmetabolism_from_mass_temp(m=5, T_b=263:333,"bird")
+plot(1000/(263:333), log(B/5^0.75*60), type="l", xlab = "temperature (K)", ylab = "metabolism (W)")
 ```
 
 #Evaporation, Qevap
@@ -140,25 +215,51 @@ where $r_i$ is the internal (cutaneous) resistance to vapor transport ($s/m$).
 
 We provide R functions for heat loss through evaporation as the product of $E_c$ and the latent heat of vaporization of water:
 ```{r}
-Qevaporation(A=0.1, T_b=293, taxa="amphibian", rho_s=1.2, rho_a=1.2, h=0.5, H=20, r_i=5000)
-Qevaporation(A=0.1, T_b=293, taxa="lizard")
+vp= saturation_vapor_pressure(293:313)#kPa
+#convert to kg/m^3
+rho_s= vp*0.032 #kg/m^3
+
+vp= saturation_vapor_pressure(293:313-10)#kPa
+#convert to kg/m^3
+rho_a= vp*0.032 #kg/m^3
+
+temps= 293:313
+Qevaps= rep(NA,21)
+Qevaps_wet= rep(NA,21)
+
+for(ind in 1:21){
+ Qevaps[ind]=Qevaporation(A=0.1, T_b=temps[ind], taxa="amphibian", rho_s=rho_s[ind], rho_a=rho_a[ind], h=0.5, H=20, r_i=50) 
+Qevaps_wet[ind]=Qevaporation(A=0.1, T_b=temps[ind], taxa="amphibian_wetskin", rho_s=rho_s[ind], rho_a=rho_a[ind], h=0.5, H=20, r_i=50) 
+ }
+
+plot(temps, Qevaps, type="l", xlab = "body temperature (K)", ylab = "evaporative heat loss (W)", lty="dashed", ylim=c(0,400))
+
+points(temps, Qevaps_wet, type="l", lty="dotted")
+
+Qevap= unlist(lapply(293:313, FUN=Qevaporation, A=0.1, taxa="lizard"))
+points(293:313, Qevap, type="l")
 ```
 
 We estimate external resistance to water vapor transport, $r_e$, using the Lewis rule describing the relationships among the coefficients for heat and mass transport: $r_e= 0.93 \rho c_p/H_L$, where $\rho$ is the density of air ($kg m^{-3}$), $c_p$ is the specific heat of air at constant pressure ($J kg^{-1}*^{\circ}C^{-1}$), and $H_L$ is the convective heat transfer coefficient ($W m^{-2} C^{-1}$). We approximate $\rho c_p$as 1,200 $J m^{-3}*^{\circ}C^{-1}$ as commonly done in biological applications [Spotila 1992]. We provide the relationship for $r_e$ as a function:
 ```{r}
-external_resistance_to_water_vapor_transfer(H=20)
+plot(10:30, external_resistance_to_water_vapor_transfer(H=10:30), type="l", xlab = "heat transfer coefficient (W m^-2 C^-1)", ylab = "external resistance to water vapor transfer (s m^-1)")
 ```
 
 At constant temperatures, the relationship between vapor pressure and vapor density is linear and vapor pressure can be approximated at temperatures between $0^{\circ}$ and $40^{\circ}C$ as $e_s= 10^{0.02604 T_a+2.82488}$, where $T_a$ is air temperature ($^{\circ}C$).  We provide the approximation as a function:
 ```{r}
-saturation_water_vapor_pressure(T_a=20)
+plot(10:30, saturation_water_vapor_pressure(T_a=10:30), type="l", xlab = "temperature (C)", ylab = "Saturation water vapor pressure (Pa)")
 ```
 
 #Solving for operative environmental temperature, Te
 We currently offer models to calculte the operative temperatures of organisms that have reached an equilibrium with their environment ("steady-state", no heat retention). The following function uses the relationships above to solve the energy balance for $Te$.
 ```{r}
-Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_g=303, T_a=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
-
+t.seq= lapply(293:313, FUN=Tb_Gates, A=0.1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.0, T_g=303, Qabs=10, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
+plot(293:313, t.seq, type = "l", xlab = "ambient temperature (C)", ylab = "body temperature (C)", xlim=c(295,315), ylim=c(295,315))
+abline(a=0,b=1, lty="dotted")
+#vary radiation
+t.seq= lapply(seq(0,100,10), FUN=Tb_Gates, A=0.1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_a=303, T_g=303, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
+plot(seq(0,100,10), t.seq, type = "l", xlab = "radiation absorbed (W)", ylab = "body temperature (C)")
+abline(a=303,b=0, lty="dotted")
 ```
 
 Campbell and Norman (1998) use a somewhat simplified energy balance to express $Te$ as a function of $Ta$ plus or minus a temperature increment determined by absorbed radiation, wind speed, and animal morphology: 
@@ -173,13 +274,20 @@ where 1.4 is a factor to account for increased convection in natural environment
 
 The function to calculate $T_e$ (called $T_b$ for simplicity) is available in R follows (including the above calculations of $Qemit$, $g_r$, and $g_{Ha}$):
 ```{r}
-Tb_CampbellNorman(T_a=303, S=823, epsilon=0.96, c_p=29.3, D=0.17, V=1)
+plot(293:313, Tb_CampbellNorman(T_a=293:313, S=823, epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", xlab = "air temperature (C)", ylab = "body temperature (C)")
+abline(a=0, b=1, lty="dotted")
+plot(seq(0,800,200), Tb_CampbellNorman(T_a=293, S=seq(0,800,200), epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", xlab = "solar and thermal radiation absorbed (W m^-2)", ylab = "body temperature (C)")
+abline(a=293, b=0, lty="dotted")
 ```
 
 #Alternative energy balance models and functions
 ##Fei
 ```{r}
-Tb_Fei(T_a=293, T_g=300, H=600, lw=30, shade=0.5, m=10.5, Acondfact=0.05, Agradfact=0.4)
+t.seq= lapply(293:313, FUN=Tb_Fei, T_g=300, H=800, lw=30, shade=0.5, m=10.5, Acondfact=0.05, Agradfact=0.4)
+plot(293:313, t.seq, type = "l", xlab = "ambient temperature (C)", ylab = "body temperature (C)")
+abline(a=0,b=1, lty="dotted")
+
+#STARTED TO FIX
 ```
 
 #Specialized energy balance models and functions
@@ -225,7 +333,26 @@ $$Te=Ta+\frac{Rabs-\epsilon_s \sigma (T_a+273)^4}{c_p(g_r+g_{Ha})}$$.
 
 We implement the model in R as follows:
 ```{r}
-Tb_lizard(T_a=25, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.7, elev=500, doy=200, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
+#sun, surface
+t.seq= lapply(20:40, FUN=Tb_lizard, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.7, elev=500, doy=200, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
+plot(20:40, t.seq, type = "l", xlab = "ambient temperature (C)", ylab = "body temperature (C)", xlim=c(20,51), ylim=c(20,51))
+abline(a=0,b=1, lty="dotted")
+#shade, surface
+t.seq= lapply(20:40, FUN=Tb_lizard, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.7, elev=500, doy=200, sun=FALSE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
+points(20:40, t.seq, type = "l", col="green")
+#sun, above surface
+t.seq= lapply(20:40, FUN=Tb_lizard, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.7, elev=500, doy=200, sun=TRUE, surface=FALSE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
+points(20:40, t.seq, type = "l", col="purple")
+#shade, above surface
+t.seq= lapply(20:40, FUN=Tb_lizard, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.7, elev=500, doy=200, sun=FALSE, surface=FALSE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
+points(20:40, t.seq, type = "l", col="blue")
+
+#vary zenith angle
+t.seq= lapply(0:90, FUN=Tb_lizard, T_a=30, T_g=30, u=0.1, svl=60, m=10, rho_S=0.7, elev=500, doy=200, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
+plot(0:90, t.seq, type = "l", xlab = "zenith angle (degree)", ylab = "body temperature (C)")
+abline(a=30,b=0, lty="dotted")
+
+#? Include transient heat model in package?: https://github.com/JRubalcaba/BodyTemp.
 ```
 
 ##Butterflies
@@ -250,7 +377,12 @@ where $\delta$ is the thoracic fur thickness and $k_e$ is the thermal conductivi
 
 We provide the operative temperature model for butterflies as follows:
 ```{r}
-Tb_butterfly(T_a=25, Tg=25, Tg_sh=20, u=0.4, H_sdir=300, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
+t.seq= lapply(20:40, FUN=Tb_butterfly, Tg=25, Tg_sh=20, u=0.4, H_sdir=300, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
+plot(20:40, t.seq, type = "l", xlab = "ambient temperature (C)", ylab = "body temperature (C)")
+abline(a=0,b=1, lty="dotted")
+t.seq= lapply(seq(0,800,20), FUN=Tb_butterfly, T_a=25, Tg=25, Tg_sh=25, u=0.4, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
+plot(seq(0,800,20), t.seq, type = "l", xlab = "Direct radiation (W)", ylab = "body temperature (C)")
+abline(a=25,b=0, lty="dotted")
 ```
 
 ##Grasshoppers
@@ -280,28 +412,53 @@ where $h_{cut}$ is the thermal conductivity of the grasshopper cuticle (approxim
 
 We provide the operative temperature model for grasshoppers as follows:
 ```{r}
-Tb_grasshopper(T_a=25, T_g=25, u=0.4, H=400, K_t=0.7, psi=30, L=0.02, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3)
+t.seq= lapply(20:40, FUN=Tb_grasshopper, T_g=25, u=0.4, H=800, K_t=0.7, psi=30, L=0.05, Acondfact=0.00, z=0.001, abs=0.7, r_g=0.3)
+plot(20:40, t.seq, type = "l", xlab = "ambient temperature (C)", ylab = "body temperature (C)", xlim=c(20,40), ylim=c(20,40))
+abline(a=0,b=1, lty="dotted")
+t.seq= lapply(seq(0,800,20), FUN=Tb_grasshopper, T_a=25, T_g=25, u=0.4, K_t=0.7, psi=30, L=0.05, Acondfact=0.0, z=0.001, abs=0.7, r_g=0.3)
+plot(seq(0,800,20), t.seq, type = "l", xlab = "Direct radiation (W)", ylab = "body temperature (C)")
+abline(a=25,b=0, lty="dotted")
+
+#clean up code?
 ```
 
 ##Salamander
+
 ```{r}
- Tb_salamander_humid(r_i=4,r_b=1,D=0.007,T_a=20,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
+plot(0:40, actual_vapor_pressure(Tdewpoint=0:40), type="l", xlab = "dewpoint temperature (C)", ylab = "vapor pressure (kPa)")
+points(0:40, saturation_vapor_pressure(T_a=273:(40+273)), type="l", lty="dashed")
 ```
 
 ```{r}
-actual_vapor_pressure(Tdewpoint=20)
+blr.seq= lapply(293:313, FUN=boundary_layer_resistance, e_s=2.4, e_a=2.5, elev=500, D=0.007, u=2)
+plot(293:313, blr.seq, type = "l", xlab = "air temperature (K)", ylab = "boundary layer resistance (s cm^-1)")
+blr.seq= lapply(sqrt(5:20), FUN=boundary_layer_resistance, T_a=293, e_s=2.4, e_a=2.5, elev=500, u=2)
+plot(sqrt(5:20), blr.seq, type = "l", xlab = "diameter (m)", ylab = "boundary layer resistance (s cm^-1)")
+#APPROXIMATELY CHECKED
+```
+
+
+```{r}
+t.seq= lapply(20:40, FUN=Tb_salamander_humid, r_i=4,r_b=1,D=0.01,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
+plot(20:40, t.seq, type = "l", xlab = "ambient temperature (C)", ylab = "humid operative temperature (C)")
+abline(a=0, b=1, lty="dotted")
+#CHECK WITH ERIC?
 ```
 
 ```{r}
-saturation_vapor_pressure(T_a=293)
+plot(20:40, Qthermal_radiation_absorbed(T_a=20:40, T_g=30, epsilon_ground=0.97, a_longwave=0.965), type="l", xlab = "air temperature (C)", ylab = "thermal radiation absorbed (W)")
+
+Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303, T_g=293, T_a=298, enclosed=FALSE)
+
+#CHECK WITH ERIC?
 ```
 
+##Tsoil var
 ```{r}
-boundary_layer_resistance(T_a=293, e_s=2.4, e_a=2.5, elev=500, D=0.007, u=2)
-```
-
-```{r}
-Qthermal_radiation_absorbed(T_a=20, T_g=25, epsilon_ground=0.97, a_longwave=0.965)
+plot(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=0), type="l", xlab = "hour", ylab = "soil temperature (C)", lty="dashed")
+points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=5), type="l")
+points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=10), type="l")
+points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=20), type="l", lty="dotted")
 ```
 
 ##Frog
@@ -334,13 +491,13 @@ ts= snoon+dayl/2
 
 We can estimate hourly solar radiation as follows:
 ```{r}
-psi_deg= sapply(1:24, FUN=zenith_angle, doy=doy, lat=lat, lon=lon)
-psi_rad= degree_to_radian(psi_deg) #convert to radians
-Srad= sapply(psi_rad, FUN=estimate_radiation, doy=doy, tau=tau, elev=elev, rho=rho)
-#Separate into direct, diffuse, and reflected solar radiation
-Sdir= Srad[1,]
-Sdif= Srad[2,]
-Sref= Srad[3,]
+# psi_deg= sapply(1:24, FUN=zenith_angle, doy=doy, lat=lat, lon=lon)
+# psi_rad= degree_to_radian(psi_deg) #convert to radians
+# Srad= sapply(psi_rad, FUN=estimate_radiation, doy=doy, tau=tau, elev=elev, rho=rho)
+# #Separate into direct, diffuse, and reflected solar radiation
+# Sdir= Srad[1,]
+# Sdif= Srad[2,]
+# Sref= Srad[3,]
 ```
 
 We can then calculate hourly air and soil temperatures. We use the sine-exponential model for air temperature and the sine model for surface temperature:
@@ -440,15 +597,14 @@ Qnet_Gates(Qabs=Qabs, Qemit=Qemit, Qconv=Qconv, Qcond=Qcond, Qmet=Qmet, Qevap=Qe
 We constructed the energy balance assuming $Tb=Ta$ for illustration. We now use a function based on the energy balance above to estimate body temperature given the environmental conditions: 
 
 ```{r}
-Te= rep(NA, 24)
-for(hr in 1:24) Te[hr]= Tb_Gates(A=A, D=svl, psa_dir=psa[hr], psa_ref=1-psa[hr], psa_air=0.67, psa_g=0.33, T_g=Ts[hr]+273, T_a=Ta[hr]+273, Qabs=Qabs[hr], epsilon=epsilon_s, H_L=H_L, ef=1.3, K=K)
+# Te= rep(NA, 24)
+# for(hr in 1:24) Te[hr]= Tb_Gates(A=A, D=svl, psa_dir=psa[hr], psa_ref=1-psa[hr], psa_air=0.67, psa_g=0.33, T_g=Ts[hr]+273, T_a=Ta[hr]+273, Qabs=Qabs[hr], epsilon=epsilon_s, H_L=H_L, ef=1.3, K=K)
 ```
 
 We also implement a similiar but simplied energy balance. The energy balance omits conduction with the ground and thus underestimates temperatures, but we implement it for comparison purposes:
 ```{r}
 Te2= rep(NA, 24)
 for(hr in 1:24) Te2[hr]= Tb_CampbellNorman(T_a=Ta[hr]+273, S=Qabs[hr]/svl, epsilon=epsilon_s, c_p=29.3, D=svl, V=V)
-#CHECK
 ```
 
 We additionally estimate $Te$ using the specialized function for lizards:
@@ -458,28 +614,27 @@ for(hr in 1:24) Te3[hr]= Tb_lizard(T_a=Ta[hr], T_g=Ts[hr], u=V, svl=svl*1000, m=
 
 Te4= rep(NA, 24)
 for(hr in 1:24) Te4[hr]= Tb_Fei(T_a=Ta[hr]+273, T_g=Ts[hr]+273, H=Qabs[hr], lw=30, shade=0.5, m=10.5, Acondfact=0.05, Agradfact=0.4)
-#FIX LW
 ```
 
 ##Plot
 We next plot the diurnal trends in environmental data and the operative data.
 
 ```{r}
-plot(1:24, (Te-273), type="l", xlab="Hour", ylab="Temperature (C)", col="blue") #Gates
-points(1:24, Te2-273, type="l", col="blue", lty="dotted") #Campbell
-points(1:24, Te3, type="l", col="blue", lty="dashed") #Buckley 2008
-#points(1:24, Te4, type="l", col="red", lty="solid") #Fei et al.
-points(1:24, Ta, type="l", col="orange")
-points(1:24, Ts, type="l", col="purple")
-
-#add additional axis with radiation
-par(new = T)
-plot(1:24, Sdir, pch=16, axes=F, xlab=NA, ylab=NA, type="l", col="green")
-axis(side = 4)
-mtext(side = 4, line = 3, 'Radiation')
-legend("topleft",
-       legend=c("Ta", "Ts", "Te", "Radiation"),
-       lty=1, pch=NA, col=c("orange", "purple", "blue","green"))
+# plot(1:24, (Te-273), type="l", xlab="Hour", ylab="Temperature (C)", col="blue") #Gates
+# points(1:24, Te2-273, type="l", col="blue", lty="dotted") #Campbell
+# points(1:24, Te3, type="l", col="blue", lty="dashed") #Buckley 2008
+# #points(1:24, Te4, type="l", col="red", lty="solid") #Fei et al.
+# points(1:24, Ta, type="l", col="orange")
+# points(1:24, Ts, type="l", col="purple")
+# 
+# #add additional axis with radiation
+# par(new = T)
+# plot(1:24, Sdir, pch=16, axes=F, xlab=NA, ylab=NA, type="l", col="green")
+# axis(side = 4)
+# mtext(side = 4, line = 3, 'Radiation')
+# legend("topleft",
+#        legend=c("Ta", "Ts", "Te", "Radiation"),
+#        lty=1, pch=NA, col=c("orange", "purple", "blue","green"))
 
 ```
 

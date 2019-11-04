@@ -82,4 +82,8 @@ fahrenheit_to_kelvin(85)
 kelvin_to_celsius(270)
 ```
 
-
+#Thermal Performance Curve Functions
+```{r}
+plot(0:60, TPC(T=0:60, Topt=30, CTmin=10, CTmax=40), type="l", ylim=c(0,3), ylab="performance", xlab="temperature (C)")
+points(0:60, TPC.beta(T=0:60, shift=-1, breadth=0.1, aran=0, tolerance= 43, skew=0.7), type="l", lty="dashed")
+```

@@ -412,11 +412,20 @@ Tmx=33
 
 #surface roughness
 z_0_1=0.06
-
 ```
 
+#DRYWETAIR
+```{r}
+DRYAIR(db=30, bp=100*1000, alt=0)
+```
 
-  
+```{r}
+VAPPRS(db=30)
+```
+
+```{r}
+WETAIR(db=30, wb=28, rh=60, bp=100*1000)
+```
 
 
 
