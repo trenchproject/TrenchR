@@ -662,7 +662,7 @@ params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0
 
 soil_temperature_function(j=1,T_so= rep(20,13), params=params)
 
-Tsoil= soil_temperature(z_r.intervals=12,z_r=1.5, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
+Tsoil= soil_temperature(z_r.intervals=12,z_r=1.5, z=2, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
 
 plot(1:96, temp_vector, type = "l", xlab = "hour", ylim=c(-10,50))
 points(1:96, wind_speed_vector, lty="dotted", type="l")

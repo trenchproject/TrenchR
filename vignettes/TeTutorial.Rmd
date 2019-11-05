@@ -491,13 +491,13 @@ ts= snoon+dayl/2
 
 We can estimate hourly solar radiation as follows:
 ```{r}
-# psi_deg= sapply(1:24, FUN=zenith_angle, doy=doy, lat=lat, lon=lon)
-# psi_rad= degree_to_radian(psi_deg) #convert to radians
-# Srad= sapply(psi_rad, FUN=estimate_radiation, doy=doy, tau=tau, elev=elev, rho=rho)
-# #Separate into direct, diffuse, and reflected solar radiation
-# Sdir= Srad[1,]
-# Sdif= Srad[2,]
-# Sref= Srad[3,]
+psi_deg= sapply(1:24, FUN=zenith_angle, doy=doy, lat=lat, lon=lon)
+psi_rad= degree_to_radian(psi_deg) #convert to radians
+Srad= sapply(psi_rad, FUN=estimate_radiation, doy=doy, tau=tau, elev=elev, rho=rho)
+#Separate into direct, diffuse, and reflected solar radiation
+ Sdir= Srad[1,]
+ Sdif= Srad[2,]
+ Sref= Srad[3,]
 ```
 
 We can then calculate hourly air and soil temperatures. We use the sine-exponential model for air temperature and the sine model for surface temperature:
