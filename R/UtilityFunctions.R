@@ -96,8 +96,6 @@ solar_noon <- function(lon, doy){
   return(t_0)
 }
 
-LC= 1/15* (15 - lon%%15)
-
 #' Calculate Zenith Angle
 #' 
 #' 

@@ -89,8 +89,6 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
   #W: hour angle of the sun (in radians)
   W= pi*(hour-hour_sol)/12  #Brock 1981
   
-  ## W = 
-  
   #Ws: sunset hour angle (in radians)
   Ws= acos( -tan(lat/rd) * tan(DecAng))
   
