@@ -395,25 +395,6 @@ where $k_0$ is the conductivity of the continuous medium in which soil particles
 ```{r}
 soil_conductivity(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), lambda=c(0.10,0.40,0.11,0.01,0.2, 0.18), g_a=0.125)
 ```
-
-#Example microclimate calculations
-```{r}
-#LOAD SITE DATA
-#setwd("/Volumes/GoogleDrive/My\ Drive/Buckley/Work/Butterflies/Evolution/ClimateData/Niwot") 
-#a1.clim= read.csv("A1climate_example.csv")
-#site="A1"
-lat=40.01; lon=-105.37; elev=2195
-
-airpressures=airpressure_from_elev(elev)
-
-doy=200
-Tmn=12
-Tmx=33
-
-#surface roughness
-z_0_1=0.06
-```
-
 #DRYWETAIR
 ```{r}
 DRYAIR(db=30, bp=100*1000, alt=0)

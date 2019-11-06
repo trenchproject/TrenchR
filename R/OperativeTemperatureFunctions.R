@@ -67,7 +67,7 @@ Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Gates (1980, Biophysical ecology). Omits evaporative and metabolic heat loss.
 
 #' @param A surface area  in m^2
-#' @param l characteristic dimension for conduction (m)
+#' @param D characteristic dimension for conduction (m)
 #' @param psa_dir proportion surface area exposed to sky (or enclosure)
 #' @param psa_ref proportion surface area exposed to ground
 #' @param psa_air proportion surface area exposed to air
@@ -106,7 +106,7 @@ Tb_Gates=function(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilo
   Tsky= (1.22*(T_a-273.15) -20.4)+273.15 #K, Gates 1980 Biophysical ecology based on Swnback 1960, Kingsolver (1983) estimates using Brunt equation
   
   #solve energy balance for steady state conditions
-  # 0= Qabs -Qemit +Qconv +Qcond
+  # 0= Qabs -Qemit -Qconv -Qcond
 
   Qfn = function(Tb, Qabs, epsilon, sigma, A_s, Tsky, A_r, T_g, H_L, A_air, T_a, A_contact, K, D) {
 
