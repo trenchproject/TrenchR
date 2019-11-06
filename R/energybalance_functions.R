@@ -6,7 +6,7 @@
 #' @param d Mean thickness of the animal skin (surface) in (m), assumes well mixed interior
 #' @param K Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step. 
 #' @param A Surface area  in m^2
-#' @param proportion In contact to the surface
+#' @param proportion in contact with the surface
 #' @return conductance (W)
 #' @keywords conductance
 #' @export
