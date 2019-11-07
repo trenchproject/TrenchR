@@ -52,9 +52,9 @@ A=2*pi*a^2+2*pi*a*c/e*asin(e)
 #Use Erbs et al model from Wong and Chow (2001, Applied Energy 69:1991-224)
 
 #kd- diffuse fraction
-if(K_t<=0.22) kd=1-0.09*K_t
-if(K_t>0.22 & K_t<=0.8) kd= 0.9511 -0.1604*K_t +4.388*K_t^2 -16.638*K_t^3 +12.336*K_t^4
-if(K_t>0.8) kd=0.165 #kd = 0.125 #Correction from 16.5 for CO from Olyphant 1984
+kd=1-0.09*K_t #if(K_t<=0.22) 
+kd[K_t>0.22 & K_t<=0.8]= 0.9511 -0.1604*K_t +4.388*K_t^2 -16.638*K_t^3 +12.336*K_t^4
+kd[K_t>0.8]=0.165 #kd = 0.125 #Correction from 16.5 for CO from Olyphant 1984
 
 Httl=H
 Hdir=Httl*(1-kd)
@@ -102,7 +102,7 @@ Aref=Adir
 #Calculate Qabs as W/m2
 Qdir=abs*Adir*Hdir/cos(psi_r)
 Qdif=abs*Aref*Hdif
-Qref= abs* r_g * Aref *Httl
+Qref= r_g * Aref *Httl
 Qabs= Qdir + Qdif + Qref  #W/m2
 
 Tsky=0.0552*(T_a+273.15)^1.5; #Kelvin, black body sky temperature from Swinbank (1963), Kingsolver 1983 estimates using Brunt equation

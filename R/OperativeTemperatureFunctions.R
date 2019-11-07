@@ -122,6 +122,8 @@ Tb_Gates=function(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilo
   
 
   Te <- tryCatch(uniroot(Qfn, c(273, 323),Qabs=Qabs, epsilon=epsilon, sigma=sigma, A_s=A_s, Tsky=Tsky, A_r=A_r, T_g=T_g, H_L=H_L, A_air=A_air, T_a=T_a, A_contact=A_contact, K=K, D=D, tol = 0.0001), error = function(e) {print("Unable to balance energy budget. One issue to check is whether absorbed solar radiation exceeds energy potentially lost to thermal radiation, convection, and conduction.")})
-                 
-  return(Te$root)
+  Te.return=NA
+  if(length(Te>1)) Te.return=Te$root
+  
+  return(Te.return)
 }

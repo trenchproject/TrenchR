@@ -131,7 +131,7 @@ Daylength = 24 - (24 / pi) * acos ((sin (6 * pi / 180) + sin (lat) * sin (DecAng
              
 cos.zenith= sin(DecAng)*sin(lat) + cos(DecAng)*cos(lat)*cos(pi/12*(hour-t_0)); #cos of zenith angle in radians
 zenith=acos(cos.zenith)*180/pi # zenith angle in degrees
-if (zenith>90) zenith=90 # if measured from the vertical psi can't be greater than pi/2 (90 degrees)
+zenith[zenith>90]=90 # if measured from the vertical psi can't be greater than pi/2 (90 degrees)
 
 return(zenith)
 }
