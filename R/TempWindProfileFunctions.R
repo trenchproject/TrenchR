@@ -19,15 +19,18 @@
 #'}
 
 surface_roughness<- function(u_r, zr){
- mod1= lm(u_r~log(zr))
- d= as.numeric(mod1$coefficients[1]) #Zero Plane displacement:height at which the wind speed is zero
+ mod1= lm(log(zr)~u_r)
+ d= exp(as.numeric(mod1$coefficients[1])) #Zero Plane displacement:height at which the wind speed is zero
  # can also assume d=0.63h (Monteith 1975)
  inds= which(zr-d>0)   #indices of measurements where zr-d>0
+ 
+ z0=NA
+ if(length(inds)>0){
  mod1= lm(u_r[inds]~log(zr[inds]-d))
  b= as.numeric(mod1$coefficients[1])
  n= as.numeric(mod1$coefficients[2])
+ z0=exp(-b/n)}
  
- z0=exp(-b/n)
  return(z0)
  }
 
@@ -127,7 +130,7 @@ wind_speed_profile<- function(u_r,zr,z0,z){
 #' @export
 #' @examples
 #' \dontrun{
-#' air_temp_profile(T_r=20, u_r=0.1, zr=0.1, z0=0.2, z=0.15, Ts=25)
+#' air_temp_profile(T_r=20, u_r=0.1, zr=0.1, z0=0.2, z=0.15, T_s=25)
 #'}
 #'
 
@@ -172,7 +175,7 @@ air_temp_profile= function(T_r, u_r, zr, z0,z,T_s){
 
 air_temp_profile_segment= function(T_r, u_r, zr, z0,z,T_s){
   
-  #order roughness and segment heights so that z1>z2>z0 
+  #order roughness and segment heights 
   zr.ord= order(zr, decreasing = TRUE)
   zr= zr[zr.ord]
   z0= z0[zr.ord]

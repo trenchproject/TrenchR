@@ -38,7 +38,7 @@ $$Qabs= a*A_{dir}*S_{dir} + a*A_{dif}*S_{dif} + a*A_{ref}*S_{ref},$$
 where $A_{dir}$, $A_{dif}$, and $A_{ref}$ are the surface areas expsed to direct, diffuse, and reflected solar radiation, respectively.
 
 The summation is available in R as follows:
-```{r, fig_width = 5, fig_height = 5}
+```{r, fig.height=4, fig.width=8}
 plot(seq(100,1000,100), Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=seq(100,1000,100), S_dif=200, a_s=0.5), type="l", xlab = "direct solar radiation (W/m^2)", ylab = "solar radiation absorbed (W)")
 points(seq(100,1000,100), Qradiation_absorbed(a=0.9, A=1, psa_dir=0.2, psa_ref=0.4, S_dir=seq(100,1000,100), S_dif=200, a_s=0.5), type="l", lty="dashed")
 points(seq(100,1000,100), Qradiation_absorbed(a=0.45, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=seq(100,1000,100), S_dif=200, a_s=0.5), type="l", lty="dotted")
