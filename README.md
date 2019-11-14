@@ -3,7 +3,7 @@
 
 an R package for transparent environmental and ecological biophysics
 
-**Author:** [Buckley Lab, Department of Biology, University of Washington](https://trenchproject.github.io)<br>
+**Author:** [TrEnCh project, Buckley Lab, Department of Biology, University of Washington](https://trenchproject.github.io)<br>
 **License:** [MIT](http://opensource.org/licenses/MIT)<br>
 
 [![Build Status](https://travis-ci.org/trenchproject/TrenchR.svg?branch=master)](https://travis-ci.org/trenchproject/TrenchR)
