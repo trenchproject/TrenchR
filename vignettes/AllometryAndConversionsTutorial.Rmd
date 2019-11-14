@@ -1,6 +1,6 @@
 ---
-title: "Allometries and conversions"
-author: "Lauren Buckley"
+title: "TrenchR: Allometries and conversions"
+author: "Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -18,6 +18,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ##Load TrenchR package
 library(TrenchR)
 ```
+
+This tutorial reviews tools that use allometries to estimate the dimensions of organisms needed for energy balances and other analyses. The tutorial also documents convenience functions for converting units. Finally, we present functions that describe thermal performance curves.
 
 ADD BIBLIOGRAPHY? https://www.r-bloggers.com/bibliography-with-knitr-cite-your-references-and-packages/
 

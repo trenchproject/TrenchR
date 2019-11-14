@@ -1,6 +1,6 @@
 ---
-title: "Estimating microclimates"
-author: "Lauren Buckley"
+title: "TrenchR: Estimating microclimates"
+author: "Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -17,6 +17,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ##Load TrenchR package
 library(TrenchR)
 ```
+
+This tutorial covers approaches and functions for preparing environmental data for analyses such as examining organismal energy balances. The tutorial first covers estimating the intensity and partitioning of solar radation, including estimating solar angles and day length. We then turn to estimating temperature and windspeed profiles that can scale weather station data to the conditions experienced by organisms. We review functions for modelling diurnal variation in temperature and solar radiation as well as heat accumulation (degree days). The tutorial concludes with a microclimate model for estimating soil temperatures.
 
 # Radiation
 ## Solar angles and daylength
@@ -35,7 +37,7 @@ plot(1:365, dec_angle(1:365), type="l", xlab="day of year", ylab="declination an
 
 Zenith angle ($\psi$, degrees), the location of the sun as an angle measured from vertical, can be estimated as:
 $$\cos \psi = \sin( \delta) \sin( \phi) + \cos(\delta)\cos(\phi)\cos(\pi/12*(h-h_0)),$$
-where J is calendar date, $\phi$ is latitude (radians), h is hour, and $h_0$ is the time of solar noon. We illustrate how zenith angles (degrees) changes over the day throughout the year in Seattle, WA, USA:
+where J is calendar date, $\phi$ is latitude (radians), h is hour, and $h_0$ is the time of solar noon. We illustrate how zenith angles (degrees) change over the day throughout the year in Seattle, WA, USA:
 ```{r, fig.height=4, fig.width=6}
 zen= unlist(lapply(1:24, FUN=zenith_angle, doy=200, lat=47.61, lon=-122.33))
 plot(1:24, zen, type="l", ylab="zenith angle (degrees)", xlab="hour")
@@ -157,7 +159,7 @@ plot(seq(1,365,31), r.seq, type = "l", xlab = "day of year", ylab = "radiation (
 We provide a function `partition_solar_radiation()` to estimate the diffuse fraction $k_d$ that can be used to partition measures of solar radiation into direct and diffuse components.  The partitioning is based on empirically-derived relations estimated as a function of the clearness index $k_t$, which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere. The relations are compiled in Wong and Chow [2001, Applied Energy 69:1991-224].
 ```{r, fig.height=4, fig.width=8}
 r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Erbs", lat=40, sol.elev=60)
-plot(seq(0,1,0.1), r.seq, type = "l", xlab = "k_t", ylab = "radiation (W/m2)", ylim=c(0,1))
+plot(seq(0,1,0.1), r.seq, type = "l", xlab = "clearness index, k_t", ylab = "radiation (W/m2)", ylim=c(0,1))
 r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Liu_Jordan", lat=40, sol.elev=60)
 points(seq(0,1,0.1), r.seq, type = "l", lty="dashed")
 r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Orgill_Hollands", lat=40, sol.elev=60)
@@ -186,10 +188,7 @@ We illustrate estimating surface roughness.
 ```{r, fig.height=3, fig.width=5}
 u_r= c(0.01,0.025,0.05,0.1,0.2)
 zr= c(0.1,0.25,0.5,0.75,1)
-z0= surface_roughness(u_r, zr)
-
-plot(u_r, zr, type="l", ylim=c(0,1), xlim=c(0,0.2))
-points(0, z0)
+surface_roughness(u_r, zr)
 ```
 
 We use the following relationship to estimate air temperature and wind speed at height $z$ under neutral conditions (no buoyancy associated with differential density):
@@ -210,14 +209,14 @@ legend("bottomright", title="windspeed at 2m", legend=c(0.25, 5, 1), lty=c("dott
 We next illustrate the influence of surface roughness on air temperature profiles.
 ```{r, fig.height=4, fig.width=6}
 z.seq <- seq(0, 2, by = 0.1)
-t.seq <- air_temp_profile_neutral(T_r=20, zr=1, z0=0.2, z=z.seq, T_s=25)
+t.seq <- air_temp_profile_neutral(T_r=20, zr=1, z0=0.02, z=z.seq, T_s=25)
 plot(t.seq, z.seq, type = "l", xlab = "Temperature (C)", ylab = "z (height above ground in m)")
-t.seq <- air_temp_profile_neutral(T_r=20, zr=1, z0=0.5, z=z.seq, T_s=25)
+t.seq <- air_temp_profile_neutral(T_r=20, zr=1, z0=0.05, z=z.seq, T_s=25)
 points(t.seq, z.seq, type = "l", lty="dotted")
-t.seq <- air_temp_profile_neutral(T_r=20, zr=1, z0=0.8, z=z.seq, T_s=25)
+t.seq <- air_temp_profile_neutral(T_r=20, zr=1, z0=0.08, z=z.seq, T_s=25)
 points(t.seq, z.seq, type = "l", lty="dashed")
 
-legend("topright", title="surface roughness", legend=c(0.2, 0.5, 0.8), lty=c("solid","dotted","dashed") )
+legend("topright", title="surface roughness", legend=c(0.02, 0.05, 0.08), lty=c("solid","dotted","dashed") )
 ```
 
 We additionally provide functions for estimating wind speed and temperature profiles for the case of free convection using the relationships in NicheMapR as described by Kearney and Porter [2016].  The function `wind_speed_profile()` estimates wind speed at height $z$ as $u_z=2.5u^*\ln(z/z_0+1)$ where the friction velocity $u^*$ is estimated as $u^*=\frac{0.41u_r}{\ln(z/z_0+1)}$ and 0.41 is the von Karman constant.
@@ -239,27 +238,27 @@ $$T_z= T_{z_0}+(T_r-T_{z_0})ln(\frac{z}{z_0}+1) .$$
 We estimate air temperature profiles in TrenchR as:
 ```{r, fig.height=4, fig.width=6}
 z.seq <- seq(0, 2, by = 0.1)
-t.seq <- air_temp_profile(T_r = 20, u_r = 0.5, zr = 2, z0 = 0.2, z = z.seq, T_s = 25)
+t.seq <- air_temp_profile(T_r = 20, u_r = 0.5, zr = 2, z0 = 0.02, z = z.seq, T_s = 25)
 plot(t.seq, z.seq, type = "l", xlab = "Temperature (C)", ylab = "z (height above ground in m)")
-t.seq <- air_temp_profile(T_r = 20, u_r = 0.5, zr = 2, z0 = 0.5, z = z.seq, T_s = 25)
+t.seq <- air_temp_profile(T_r = 20, u_r = 0.5, zr = 2, z0 = 0.05, z = z.seq, T_s = 25)
 points(t.seq, z.seq, type = "l", lty="dotted")
-t.seq <- air_temp_profile(T_r = 20, u_r = 0.5, zr = 2, z0 = 0.8, z = z.seq, T_s = 25)
+t.seq <- air_temp_profile(T_r = 20, u_r = 0.5, zr = 2, z0 = 0.08, z = z.seq, T_s = 25)
 points(t.seq, z.seq, type = "l", lty="dashed")
 
-legend("topright", title="surface roughness", legend=c(0.2, 0.5, 0.8), lty=c("solid","dotted","dashed") )
+legend("topright", title="surface roughness", legend=c(0.02, 0.05, 0.08), lty=c("solid","dotted","dashed") )
 ```
 
 Trench R also adapts functions from NicheMapR [Kearney and Porter 2016] to refine wind speed and air temperature profiles by using multiple segments:
 ```{r, fig.height=3, fig.width=5}
 z.seq <- seq(0, 2, by = 0.1)
-t.seq= lapply(z.seq, FUN=air_temp_profile_segment, T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), T_s=27)
+t.seq= lapply(z.seq, FUN=air_temp_profile_segment, T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.05,0.1), T_s=27)
 plot(t.seq, z.seq, type = "l", xlab = "Temperature (C)", ylab = "z (height above ground in m)")
 points(c(27,25,22,20),c(0,0.05,0.25,0.5) )
 ```
 
 ```{r, fig.height=3, fig.width=5}
 z.seq <- seq(0, 2, by = 0.1)
-u.seq= lapply(z.seq, FUN=wind_speed_profile_segment, u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2))
+u.seq= lapply(z.seq, FUN=wind_speed_profile_segment, u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.05,0.1))
 plot(u.seq, z.seq, type = "l", xlab = "Wind speed (m/s)", ylab = "z (height above ground in m)")
 points(c(0.01,0.025,0.05),c(0.05,0.25,0.5) )
 ```
@@ -271,9 +270,9 @@ The sine model (`diurnal_temp_variation_sine()`) estimates temperature t hour $h
 $$T(h)= T_x -T_n(1-\gamma), $$ 
 where $\gamma=0.44-0.46 \sin (0.9+WH_r)+0.11 \sin(0.9+2WH_r)$ and $W=\pi/12$
 
-For the sine exponential model (`diurnal_temp_variation_sineexp()`), hourly temeprature is estimated as a function of three empirically determined parameters: $\alpha$ is the time difference between $h_x$ and midday; $\beta$ is the time difference between $h_n$ and sunrise; and $\gamma$ is a decay parameter that determines the rate of temperature change from sunset to $h'_n$ of the next day. 
+For the sine exponential model (`diurnal_temp_variation_sineexp()`), hourly temperature is estimated as a function of three empirically determined parameters: $\alpha$ is the time difference between $h_x$ and midday; $\beta$ is the time difference between $h_n$ and sunrise; and $\gamma$ is a decay parameter that determines the rate of temperature change from sunset to $h'_n$ of the next day. 
 
-The time of minimum temperature can be calculated as $h_x=1/2(t_r+t_s)+\alpha$. The time of maximum temperature can be calculates as $t_n=t_r+\beta$. The model estimates temperature at time $h$ as follows: $$  T(h)=\left \{
+The time of minimum temperature can be calculated as $h_x=1/2(t_r+t_s)+\alpha$. The time of maximum temperature can be calculated as $t_n=t_r+\beta$. The model estimates temperature at time $h$ as follows: $$  T(h)=\left \{
                 \begin{array}{ll}
                   T_n+(T_x-T_n)\sin \frac{\pi(h-h_r-\beta)}{l +2(\alpha-\beta)}, h_n \leq h \leq h_s\\
                   T_n'+[T(h_s)-T'_n]\exp \frac{\gamma(h-h_s)}{24-l+\beta}, h_s \leq h \leq h'_n 
@@ -386,8 +385,6 @@ T_soil= soil_temperature(z_r.intervals=12,z_r=1.5, z=6, T_a=temp_vector, u=wind_
 points(1:96, T_soil, lty="dotdash", type="l")
 
 legend("topright", title="soil depth interval", legend=c(2,4,6), lty=c("dashed","dotted","dotdash") )
-
-#? CHANGE INTERVAL NOTATION?
 ```
 
 ## Soil specific heat and conductivity
