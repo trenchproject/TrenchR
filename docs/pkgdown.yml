@@ -1,0 +1,10 @@
+pandoc: 1.19.2.1
+pkgdown: 1.4.1
+pkgdown_sha: ~
+articles:
+  AllometryAndConversionsTutorial: AllometryAndConversionsTutorial.html
+  FunctionTesting: FunctionTesting.html
+  MicroclimateTutorial: MicroclimateTutorial.html
+  TeTutorial: TeTutorial.html
+  Usage: Usage.html
+
