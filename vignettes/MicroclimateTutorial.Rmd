@@ -3,6 +3,7 @@ title: "TrenchR: Estimating microclimates"
 author: "Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+bibliography: bibliography.bib
 vignette: >
   %\VignetteIndexEntry{Microclimate}
   %\VignetteEngine{knitr::rmarkdown}
@@ -116,13 +117,13 @@ legend("topright", title="latitude (degrees)", legend=c(10, 35, 60), lty=c("soli
 ## Radiation components
 We provide functions to estimate solar (shortwave) radiation by discounting incoming solar radiation due to scattering as the radiation travels through the atmosphere. The primary function `estimate_radiation()` returns estimates of the direct, diffuse, and reflected components of solar radiation ($W m^{-2}$). The radiation streams are the direct irradiance on a surface perpendicular to the beam $S_p$, the diffuse sky irradiance on a horizontal plane $S_d$ ($W m^{-2}$), and the reflected radiation from the ground $S_r$. The sum of these three streams represents the total irradiance of a horizontal surface $S_t$.
 
-Calculation of these flux densities requires introducing several additional quantities. The atmospheric transmissivity, $\tau$, ranges between 0.6 and 0.7 for typical clear sky conditions (Gates 1980). The solar constant, $S_{p0}$, approximates extraterrestrial flux density as 1,360 $W m^{−2}$. The optical air mass number, $m_a$, is the ratio of slant path length through the atmosphere to zenith path length and is a function of atmospheric pressure: $m_a=p_a/(101.3\cos(\psi))$, where $p_a$ is air pressure (kPa) and $\psi$ is zenith angle (degrees, see above). The function `airpressure_from_elev()` estimates air pressure as $p_a (kPa)= 101.3 \exp \frac{-E}{8200}$, where $E$ is the elevation in meters above sea level. TrenchR provides a function to estimate airpressure from elevation (m).
+Calculation of these flux densities requires introducing several additional quantities. The atmospheric transmissivity, $\tau$, ranges between 0.6 and 0.7 for typical clear sky conditions [@gates2012biophysical]. The solar constant, $S_{p0}$, approximates extraterrestrial flux density as 1,360 $W m^{−2}$. The optical air mass number, $m_a$, is the ratio of slant path length through the atmosphere to zenith path length and is a function of atmospheric pressure: $m_a=p_a/(101.3\cos(\psi))$, where $p_a$ is air pressure (kPa) and $\psi$ is zenith angle (degrees, see above). The function `airpressure_from_elev()` estimates air pressure as $p_a (kPa)= 101.3 \exp \frac{-E}{8200}$, where $E$ is the elevation in meters above sea level. TrenchR provides a function to estimate airpressure from elevation (m).
 
 ```{r, fig.height=3, fig.width=5}
 plot(1:4000, airpressure_from_elev(1:4000), type="l", xlab="elevation (m)", ylab="air pressure (kPa)")
 ```
 
-Direct irradiance is a function of the distance a solar beam travels through the atmosphere; the transmittance of the atmosphere, $\tau$; and the incident flux density, $S_{p0}$: $S_p=S_{p0}\tau^{m_a}$. We approximate diffuse radiation using an empirical relation [Liu and Jordan 1960], $S_d=0.3(1-\tau^{m_a}) S_{p0}\cos\psi$. Finally, reflected radiation is the product of albedo, $\rho_S$ and the sum of direct and diffuse radiation: $S_r= \rho_S (S_p+S_d)$. We estimate the direct, diffuse, and reflected components of solar radiation ($W m^{-2}$) as follows.
+Direct irradiance is a function of the distance a solar beam travels through the atmosphere; the transmittance of the atmosphere, $\tau$; and the incident flux density, $S_{p0}$: $S_p=S_{p0}\tau^{m_a}$. We approximate diffuse radiation using an empirical relation [@liu1960interrelationship], $S_d=0.3(1-\tau^{m_a}) S_{p0}\cos\psi$. Finally, reflected radiation is the product of albedo, $\rho_S$ and the sum of direct and diffuse radiation: $S_r= \rho_S (S_p+S_d)$. We estimate the direct, diffuse, and reflected components of solar radiation ($W m^{-2}$) as follows.
 
 We estimate how solar radiation components vary diurnally.
 ```{r, fig.height=4, fig.width=6}
@@ -156,7 +157,7 @@ r.seq=unlist(r.seq)
 plot(seq(1,365,31), r.seq, type = "l", xlab = "day of year", ylab = "radiation (W/m2)")
 ```
 
-We provide a function `partition_solar_radiation()` to estimate the diffuse fraction $k_d$ that can be used to partition measures of solar radiation into direct and diffuse components.  The partitioning is based on empirically-derived relations estimated as a function of the clearness index $k_t$, which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere. The relations are compiled in Wong and Chow [2001, Applied Energy 69:1991-224].
+We provide a function `partition_solar_radiation()` to estimate the diffuse fraction $k_d$ that can be used to partition measures of solar radiation into direct and diffuse components.  The partitioning is based on empirically-derived relations estimated as a function of the clearness index $k_t$, which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere. The relations are compiled in Wong and Chow [-@wong2001solar].
 ```{r, fig.height=4, fig.width=8}
 r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Erbs", lat=40, sol.elev=60)
 plot(seq(0,1,0.1), r.seq, type = "l", xlab = "clearness index, k_t", ylab = "radiation (W/m2)", ylim=c(0,1))
@@ -219,7 +220,7 @@ points(t.seq, z.seq, type = "l", lty="dashed")
 legend("topright", title="surface roughness", legend=c(0.02, 0.05, 0.08), lty=c("solid","dotted","dashed") )
 ```
 
-We additionally provide functions for estimating wind speed and temperature profiles for the case of free convection using the relationships in NicheMapR as described by Kearney and Porter [2016].  The function `wind_speed_profile()` estimates wind speed at height $z$ as $u_z=2.5u^*\ln(z/z_0+1)$ where the friction velocity $u^*$ is estimated as $u^*=\frac{0.41u_r}{\ln(z/z_0+1)}$ and 0.41 is the von Karman constant.
+We additionally provide functions for estimating wind speed and temperature profiles for the case of free convection using the relationships in NicheMapR as described by Kearney and Porter [-@kearney2017nichemapr].  The function `wind_speed_profile()` estimates wind speed at height $z$ as $u_z=2.5u^*\ln(z/z_0+1)$ where the friction velocity $u^*$ is estimated as $u^*=\frac{0.41u_r}{\ln(z/z_0+1)}$ and 0.41 is the von Karman constant.
 
 ```{r, fig.height=4, fig.width=6}
 zs= seq(0,2,0.1) 
@@ -248,7 +249,7 @@ points(t.seq, z.seq, type = "l", lty="dashed")
 legend("topright", title="surface roughness", legend=c(0.02, 0.05, 0.08), lty=c("solid","dotted","dashed") )
 ```
 
-Trench R also adapts functions from NicheMapR [Kearney and Porter 2016] to refine wind speed and air temperature profiles by using multiple segments:
+Trench R also adapts functions from NicheMapR [@kearney2017nichemapr] to refine wind speed and air temperature profiles by using multiple segments:
 ```{r, fig.height=3, fig.width=5}
 z.seq <- seq(0, 2, by = 0.1)
 t.seq= lapply(z.seq, FUN=air_temp_profile_segment, T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.05,0.1), T_s=27)
@@ -300,7 +301,7 @@ points(1:23, diurnal_temp_variation_sinesqrt(t=1:23, tr=6, ts=18, T_max=30, T_mi
 legend("topleft", title="function", legend=c("_sine", "_sineexp", "_sinesqrt"), lty=c("solid","dotted","dashed") )
 ```
 
-We adapt equations from Tham et al. [2010] to estimate hourly solar radiation ($W m^{-2}$ per hour) as a function of daily global solar radiation (in $W m^{-2}$ per day). The function `diurnal_radiation_variation()` partitions daily solar radiation $S$. The function estimates the ratio of hourly to daily global irradiation,$S_G$, as follows:
+We adapt equations from Tham et al. [-@tham2010estimation] to estimate hourly solar radiation ($W m^{-2}$ per hour) as a function of daily global solar radiation (in $W m^{-2}$ per day). The function `diurnal_radiation_variation()` partitions daily solar radiation $S$. The function estimates the ratio of hourly to daily global irradiation,$S_G$, as follows:
 $$S_G= \frac{\pi}{24}(a'+b'\cos \omega)\frac{\cos \omega - \cos \omega_s}{\sin \omega_s - \omega_s \cos \omega_s}, $$
 where $a'= 0.409+0.5016\sin(\omega_s-1.047)$ and $b'=0.6609-0.4767\sin(\omega_s-1.047)$. The function utilizes two angles in radians: $\omega$ is the hour angle of the sun and $\omega_s$ is the hour angle at sunset.  The function calculates these angles as a function of calendar date $J$ and location (latitude and longitude). We depict how the diurnal trends in radiation vary across the year (also assuming differences in total radiation).
 ```{r, fig.height=4, fig.width=6}
@@ -340,7 +341,7 @@ degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="double.triangulation")
 ```
 
 # Soil temperatures
-TrenchR includes a microclimate model that uses finite-difference methods to solve heat balance equations describing soil temperatures at the surface and specified depths.  The function requires air temperature and radiation data as input. Our approach follows Porter et al. [1973] and is similar to that described for the NicheMapR R package [Kearney and Porter 2017]. The primary function to call to calculate soil temperature is `soil_temperature()`. The function is a wrapper to solve the differential equations below for equilibrium conditions.  The called function `soil_temperature_function()` contains the majority of the soil temperature model and calls two helper functions.  The two functions implement an equation for calculating soil temperature adapted from Beckman et. al. [1973]; `soil_temperature_integrand()` includes the integrand in the equation and is called by `soil_temperature_equation()`, which represents the full equation.  Below we outline the soil temperature model encapsulated by the functions.
+TrenchR includes a microclimate model that uses finite-difference methods to solve heat balance equations describing soil temperatures at the surface and specified depths.  The function requires air temperature and radiation data as input. Our approach follows Porter et al. [-@porter1973behavioral] and is similar to that described for the NicheMapR R package [@kearney2017nichemapr]. The primary function to call to calculate soil temperature is `soil_temperature()`. The function is a wrapper to solve the differential equations below for equilibrium conditions.  The called function `soil_temperature_function()` contains the majority of the soil temperature model and calls two helper functions.  The two functions implement an equation for calculating soil temperature adapted from Beckman et al. [-@beckman1973thermal]; `soil_temperature_integrand()` includes the integrand in the equation and is called by `soil_temperature_equation()`, which represents the full equation.  Below we outline the soil temperature model encapsulated by the functions.
 
 The change is soil temperature ($T_s$) through time $t$ and depth $z$ can be approximated with a differential equation
 $$\frac{dT_s}{dt}= \frac{k_s}{\rho_s c_s} \frac{\delta^2T_s}{\delta z^2}$$
@@ -350,9 +351,9 @@ Solving for $T_i^{p+1}$ produces as expression for solving soil temperature at d
 $$T_i^{p+1} = a \frac{dt}{dz^2}(T_{i+dz}^p+T_{i-dz}^p)+(1-2a \frac{dt}{dz^2})T_i^p$$
 
 ##Soil boundary conditions
-Solving the equation requires two boundary conditions: 1) the deep soil temperature, and 2) the soil surface temperature. We assume that the soil temperature at 60cm is constant diurnally. The soil surface temperature at time $p$ is estimated using an energy balance equating the energy conducted to the soil surface the the net heat transfer to the surface by solar radiation, infrared radiation, and conduction [Beckman et al. 1973]:
+Solving the equation requires two boundary conditions: 1) the deep soil temperature, and 2) the soil surface temperature. We assume that the soil temperature at 60cm is constant diurnally. The soil surface temperature at time $p$ is estimated using an energy balance equating the energy conducted to the soil surface the the net heat transfer to the surface by solar radiation, infrared radiation, and conduction [@beckman1973thermal]:
 $$Q_{net_s}= Q_{sol_s} + Q_{emit_s} + Q_{conv_s} +Q_{cond_s}$$
-where the solar radiation absorbed by the soil surface is the product of incoming radiation $S$ and the proportion radiation absorbed $\alpha_s$, $Q_{sol_s}= \alpha_s S$. The net thermal radiation to the soil surface is determined by balance of radiation emitted by the soil surface $\sigma T_s^4$ and sky radiation absorbed by the soil surface $\sigma T_{sky}^4$: $Q_{emit_s}= \epsilon_s \sigma [(T^p_{sky})^4-(T^p_0)^4]$, where $\epsilon_s$ is the thermal emissivity of the soil surface and $T^p_{sky}=0.552 T^{1.5}$. Convection between the soil surface and air is estimated as a function of the temperature difference $Q_{conv_s}= h_s(T^p-T^p_s)$, where $h_s$ is the surface heat transfer coefficient. Consideration of temperature profiles and surface roughness yields a expression during neutral conditions [Sellers 1965]: 
+where the solar radiation absorbed by the soil surface is the product of incoming radiation $S$ and the proportion radiation absorbed $\alpha_s$, $Q_{sol_s}= \alpha_s S$. The net thermal radiation to the soil surface is determined by balance of radiation emitted by the soil surface $\sigma T_s^4$ and sky radiation absorbed by the soil surface $\sigma T_{sky}^4$: $Q_{emit_s}= \epsilon_s \sigma [(T^p_{sky})^4-(T^p_0)^4]$, where $\epsilon_s$ is the thermal emissivity of the soil surface and $T^p_{sky}=0.552 T^{1.5}$. Convection between the soil surface and air is estimated as a function of the temperature difference $Q_{conv_s}= h_s(T^p-T^p_s)$, where $h_s$ is the surface heat transfer coefficient. Consideration of temperature profiles and surface roughness yields a expression during neutral conditions [@sellers1965physical]: 
 $$h_s= \frac{\rho_s c_s k^2 V_r}{ln(z_r/z_o+1)^2},$$
 where $V$ is wind speed at reference height $z_r$ and $z_0$ is roughness length. Conduction within the soil profile is estimated as $Q_{cond_s}=k_s \frac{\delta T_s}{\delta z}$, at $z=0$. Approximating $Q_{cond_s}$ by finite difference yields $Q_{cond_s}=\frac{k_s}{dz}(T^p_{dz}-T^p_s)$, at $z=0$
 
@@ -388,17 +389,17 @@ legend("topright", title="soil depth interval", legend=c(2,4,6), lty=c("dashed",
 ```
 
 ## Soil specific heat and conductivity
-We can approximate soil specific heat, $c_s$, as the weighted sum of the specific heats of soil constituents [Campbell and Norman 1998]: $\rho_s c_s= rho_m c_m x_m + rho_o c_o x_o + rho_w c_w x_w,$
+We can approximate soil specific heat, $c_s$, as the weighted sum of the specific heats of soil constituents [@campbell2012introduction]: $\rho_s c_s= rho_m c_m x_m + rho_o c_o x_o + rho_w c_w x_w,$
 where $\rho_s$ is the particle density of soil (bulk density), $x$ is the volume fraction, and the subscripts $m$, $o$,and $w$ stand for minerals, organic matter, and water, respectively. We provide a function to calculate soil specific heat given the volume fractions and $\rho_s$:
 ```{r, fig.height=3, fig.width=5}
 plot(seq(500,1700,100), soil_specific_heat(x_o=0.01, x_m=0.6, x_w=0.2, rho_so=seq(500,1700,100)), type="l", xlab = "bulk density (kg/m3)", ylab = "soil specific heat (J kg^-1 K-1)")
 ```
 
-Various methods of approximating soil thermal conductivity $k_s$ are reviewed in Boguslaw and Lukasz [XXXX]. We provide a function `soil_conductivity()` to estimate $k_s$ using the methods of de Vries [1963]. The function calculates $k_s$ as the weighted average of the thermal conductivities $k$ of soil components $i$:
+Various methods of approximating soil thermal conductivity $k_s$ are reviewed in Boguslaw and Lukasz [-@boguslaw2004thermal]. We provide a function `soil_conductivity()` to estimate $k_s$ using the methods of de Vries [-@de1963physics]. The function calculates $k_s$ as the weighted average of the thermal conductivities $k$ of soil components $i$:
 $$k_s= \frac{\sum j_i k_i x_i}{\sum j_i x_i},$$
 where quantity $j_i$ is the ratio of the average temperature gradient in the granules and the corresponding quantity in the medium (water or air):
 $$j_i= \frac{1}{3} \sum_{p=a,b,c}[1+\left( \frac{k_i}{k_0}-1 \right)g_{p,i}]^{-1}, $$
-where $k_0$ is the conductivity of the continuous medium in which soil particles are suspended (water or air) and $g$ is a shape factor for the soil particles. The soil particles are assumed to be ellipsoids with axes $g_a$, $g_b$, and $g_c$, where $g_a +g_b +g_c=1$.  de Vries [1952] suggests $g_a=g_b=0.125$. We provide the function as follows:
+where $k_0$ is the conductivity of the continuous medium in which soil particles are suspended (water or air) and $g$ is a shape factor for the soil particles. The soil particles are assumed to be ellipsoids with axes $g_a$, $g_b$, and $g_c$, where $g_a +g_b +g_c=1$.  de Vries [-@de1952nonstationary] suggests $g_a=g_b=0.125$. We provide the function as follows:
 ```{r}
 soil_conductivity(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), lambda=c(0.10,0.40,0.11,0.01,0.2, 0.18), g_a=0.125)
 ```
@@ -417,6 +418,7 @@ The `VAPPRS()` functions calculates saturation vapour pressure for a given air t
 VAPPRS(db=30)
 ```
 
+#References
 
 
 

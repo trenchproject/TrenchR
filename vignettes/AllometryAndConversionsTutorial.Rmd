@@ -3,7 +3,7 @@ title: "TrenchR: Allometries and conversions"
 author: "Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
-bibliography: AllometryAndConversions.bib
+bibliography: bibliography.bib
 vignette: >
   %\VignetteIndexEntry{Allometry}
   %\VignetteEngine{knitr::rmarkdown}
@@ -21,8 +21,6 @@ library(TrenchR)
 ```
 
 This tutorial reviews tools that use allometries to estimate the dimensions of organisms needed for energy balances and other analyses. The tutorial also documents convenience functions for converting units. Finally, we present functions that describe thermal performance curves.
-
-ADD BIBLIOGRAPHY? https://www.r-bloggers.com/bibliography-with-knitr-cite-your-references-and-packages/
 
 #Allometries
 We provide tools for estimating additional dimensions of organisms from measured dimensions. The function `mass_from_length()` encompasses empirically-derived relationships to estimate mass (mostly) as a power law function of mass for six taxonomic classifications. The relationships are derived by relating length to mass for specimens of numerous species.  We use the `mass_from_length()` function to illustrate the allometries for different taxa: 
@@ -90,6 +88,8 @@ kelvin_to_celsius(270)
 #Thermal Performance Curve Functions
 Thermal performance curves (TPCs) describe the temperature dependence of organismal performance such as locomotion and digestion [@huey1989evolution]. They have become an important tool to understand organimsal responses to environmental conditions, particularly responses to climate change [@sinclair2016can]. TrenchR includes two forms of TPCs.  We include a function `TPC()` to descibe a Gaussian-quadratic TPC as a function of thermal optima and critical thermal minima and maxima [@deutsch2008impacts]. The `TPC.beta()` function uses a beta function to define a TPC based on mode, breadth, and skew. A scale factor enables including a thermodynamic effect on mean performance [@asbury2010thermodynamic].  
 ```{r, fig.height=4, fig.width=6}
-#plot(0:60, TPC(T=0:60, Topt=30, CTmin=10, CTmax=40), type="l", ylim=c(0,3), ylab="performance", xlab="temperature (C)")
-#points(0:60, TPC.beta(T=0:60, shift=-1, breadth=0.1, aran=0, tolerance= 43, skew=0.7), type="l", lty="dashed")
+plot(0:60, TPC(T=0:60, Topt=30, CTmin=10, CTmax=40), type="l", ylim=c(0,3), ylab="performance", xlab="temperature (C)")
+points(0:60, TPC.beta(T=0:60, shift=-1, breadth=0.1, aran=0, tolerance= 43, skew=0.7), type="l", lty="dashed")
 ```
+
+#References
