@@ -71,10 +71,10 @@ Qconduction_substrate<-function(T_g,T_b,D,K_g=0.5, A,proportion){
 #' @details This function allows you to calculate convection from an organism to its environment as in Mitchell (1976). Includes an enhancement factor associated with outdoor environments. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569.
 #' @param T_a Air Temperature in Kelvin.
 #' @param T_b Initial Body Temperature in Kelvin.
-#' @param H Convective heat transfer coefficient (W m^-2 K^-1)
+#' @param H_L Convective heat transfer coefficient (W m^-2 K^-1)
 #' @param A Surface area  in m^2
 #' @param proportion of surface area exposed to air
-#' @param ef is the enhancement factor, used to adjust H to field condictions.  Approximated as mean value of 1.23 by default, but see Mitchell 1976 for further information.
+#' @param ef is the enhancement factor, used to adjust H to field conditions.  Approximated as mean value of 1.23 by default, but see Mitchell 1976 for further information.
 #' @return convection (W)
 #' @keywords convection
 #' @export
@@ -84,12 +84,12 @@ Qconduction_substrate<-function(T_g,T_b,D,K_g=0.5, A,proportion){
 #' }
 #' 
 
-Qconvection<-function(T_a,T_b,H=10.45,A,proportion, ef=1.23 ){
+Qconvection<-function(T_a,T_b,H_L=10.45,A,proportion, ef=1.23 ){
   
   # Calculate skin area exposed to air
   A_air = A*proportion
 
-  Qconv =   ef*H*A_air*(T_b-T_a)
+  Qconv =   ef*H_L*A_air*(T_b-T_a)
   
   return(Qconv)
 }
@@ -697,7 +697,7 @@ Prandtl_number<-function(c_p, mu, K){
 #'
 #' @details This function allows you to estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces (Gates 1980 Biophysical Ecology).
 #' @param D is characteristic dimension (e.g., body diameter) (m)
-#' @param V is wind speed in m/s
+#' @param u is wind speed in m/s
 #' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^(-1)), can calculate from DRYAIR or WETAIR
 #' 
 #' @return Reynolds number
@@ -705,12 +705,12 @@ Prandtl_number<-function(c_p, mu, K){
 #' @export
 #' @examples
 #' \dontrun{
-#' Reynolds_number(V=1, D=0.001, nu=1.2)
+#' Reynolds_number(u=1, D=0.001, nu=1.2)
 #' }
 #' 
 
-Reynolds_number<-function(V, D, nu){
-   Re= V*D / nu #eq 9.25
+Reynolds_number<-function(u, D, nu){
+   Re= u*D / nu #eq 9.25
   return(Re)
 }
 
