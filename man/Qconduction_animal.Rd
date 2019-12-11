@@ -17,7 +17,7 @@ Qconduction_animal(T_g, T_b, d, K = 0.5, A, proportion)
 
 \item{A}{Surface area  in m^2}
 
-\item{proportion}{In contact to the surface}
+\item{proportion}{in contact with the surface}
 }
 \value{
 conductance (W)
@@ -34,4 +34,34 @@ Qconduction_animal(T_g= 293,T_b=303,d=10^-6,K=0.5,A=10^-3, proportion=0.2)
 }
 
 }
+\seealso{
+Other biophysical models: \code{\link{Free_or_forced_convection}},
+  \code{\link{Grashof_number_Gates}},
+  \code{\link{Grashof_number}}, \code{\link{Nu_from_Gr}},
+  \code{\link{Nu_from_Re}}, \code{\link{Nusselt_number}},
+  \code{\link{Prandtl_number}},
+  \code{\link{Qconduction_substrate}},
+  \code{\link{Qconvection}},
+  \code{\link{Qemitted_thermal_radiation}},
+  \code{\link{Qevaporation}},
+  \code{\link{Qmetabolism_from_mass_temp}},
+  \code{\link{Qmetabolism_from_mass}},
+  \code{\link{Qnet_Gates}},
+  \code{\link{Qradiation_absorbed}},
+  \code{\link{Qthermal_radiation_absorbed}},
+  \code{\link{Reynolds_number}},
+  \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
+  \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
+  \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
+  \code{\link{actual_vapor_pressure}},
+  \code{\link{boundary_layer_resistance}},
+  \code{\link{external_resistance_to_water_vapor_transfer}},
+  \code{\link{heat_transfer_coefficient_approximation}},
+  \code{\link{heat_transfer_coefficient_simple}},
+  \code{\link{heat_transfer_coefficient}},
+  \code{\link{saturation_vapor_pressure}},
+  \code{\link{saturation_water_vapor_pressure}}
+}
+\concept{biophysical models}
 \keyword{conductance}

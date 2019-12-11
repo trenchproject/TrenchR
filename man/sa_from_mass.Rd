@@ -26,5 +26,17 @@ This function allows you to estimate surface area (m^2) from mass (g) for a vari
 }
 
 }
+\references{
+O'Connor 1999 in Fei T et al. 2011. A body temperature model for lizards as estimated from the thermal environment. Journal of Thermal Biology 37:56-64.
+}
+\seealso{
+Other allometric functions: \code{\link{mass_from_length}},
+  \code{\link{prop_silhouette_area_shapes}},
+  \code{\link{prop_silhouette_area}},
+  \code{\link{sa_from_length}},
+  \code{\link{sa_from_volume}},
+  \code{\link{volume_from_length}}
+}
+\concept{allometric functions}
 \keyword{area}
 \keyword{surface}

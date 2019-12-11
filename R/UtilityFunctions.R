@@ -8,6 +8,7 @@
 #' @param format date format following "POSIXlt" conventions 
 #' @return day number, for eg. 1 for January 1st
 #' @keywords day
+#' 
 #' @export
 #' @examples
 #' \dontrun{
@@ -28,6 +29,7 @@ day_of_year<- function(day, format="%Y-%m-%d"){
 #' @param doy day of year
 #' @return declination angle in radians
 #' @keywords Declination angle
+#' @family utility functions
 #' @export
 #' @examples
 #' \dontrun{
@@ -50,7 +52,8 @@ dec_angle <- function(doy){
 #' @param doy day of year
 #' @return hours 
 #' 
-#' @keywords Day length
+#' @keywords day length
+#' @family utility functions
 #' @export
 #' @examples
 #' \dontrun{
@@ -75,6 +78,7 @@ daylength <- function(lat, doy){
 #' @param doy day of year
 #' @return time at solar noon
 #' @keywords Solar noon time
+#' @family utility functions
 #' @export
 #' @examples
 #' \dontrun{
@@ -108,6 +112,7 @@ solar_noon <- function(lon, doy){
 #' @param hour is hour of the day.
 #' @return Zenith angle in degrees
 #' @keywords Zenith angle
+#' @family utility functions
 #' @export
 #' @examples
 #' \dontrun{
@@ -148,6 +153,7 @@ return(zenith)
 #' @param hour is hour of the day.
 #' @return Azimuth angle in degrees
 #' @keywords Azimuth angle
+#' @family utility functions
 #' @export
 #' @examples
 #' \dontrun{
@@ -186,6 +192,7 @@ azimuth_angle=function(doy, lat, lon, hour){
 #' @description  This function allows you to calculate estimated air pressure (kPa) as a function of elevation. Source: http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html.
 #' @param elev elevation in meters.
 #' @keywords Air Pressure
+#' @family utility functions
 #' @return Air pressure in kPa
 #' @export
 #' @examples
@@ -209,6 +216,7 @@ airpressure_from_elev<- function(elev){
 #' @description  This function allows you to convert temperature from Fahrenheit to Kelvin. Source: https://swcarpentry.github.io.
 #' @param T Temperature in Fahrenheit.
 #' @keywords Fahrenheit Kelvin
+#' @family utility functions
 #' @return Temperature in Kelvin
 #' @export
 #' @examples
@@ -228,6 +236,7 @@ fahrenheit_to_kelvin <- function(T) {
 #' @description This function allows you to convert temperature from Kelvin to Celsius. Source: https://swcarpentry.github.io.
 #' @param T Temperature in Fahrenheit.
 #' @keywords Celsius Kelvin
+#' @family utility functions
 #' @return Temperature in Celsius
 #' @export
 #' @examples
@@ -247,6 +256,7 @@ kelvin_to_celsius <- function(T) {
 #' @description This function allows you to convert temperature from Fahrenheit to Celsius. Source: https://swcarpentry.github.io.
 #' @param T Temperature in Fahrenheit.
 #' @keywords Fahrenheit Celsius
+#' @family utility functions
 #' @return Temperature in Celsius
 #' @export
 #' @examples
@@ -282,6 +292,7 @@ radian_to_degree <- function(rad) {(rad * 180) / (pi)}
 #' @description This function allows you to convert angle in degrees to radians.
 #' @param deg angle in degrees
 #' @keywords degrees to radians
+#' @family utility functions
 #' @return angle in radians
 #' @export
 #' @examples

@@ -8,6 +8,7 @@
 #' @param sol.elev is the solar elevation angles in degrees, needed if method is Reindl-2 
 #' @return diffuse fraction
 #' @keywords solar radiation
+#' @family microclimate functions
 #' @export
 #' @examples
 #' \dontrun{

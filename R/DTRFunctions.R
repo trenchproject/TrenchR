@@ -13,6 +13,7 @@
 #' @param beta time difference between t_x and sunrise
 #' @return temperature (C) at a specified hour 
 #' @keywords Temperature
+#' @family microclimate functions
 #' @export
 #' @examples
 #' \dontrun{
@@ -63,6 +64,7 @@ return(T)
 #' @param t hour for temperature estimate
 #' @return temperature (C) at a specified hour 
 #' @keywords Temperature
+#' @family microclimate functions
 #' @export
 #' @examples
 #' \dontrun{
@@ -94,6 +96,7 @@ diurnal_temp_variation_sine=function(T_max, T_min, t){
 #' @param T_minp minimum temperature of following day (C)
 #' @return temperature (C) at a specified hour 
 #' @keywords Temperature
+#' @family microclimate functions
 #' @export
 #' @examples
 #' \dontrun{

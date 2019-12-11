@@ -11,6 +11,7 @@
 #' @param rho is the albedo as a proportion
 #' @return radiation components - direct, diffused and reflected (W/m^2)
 #' @keywords radiation
+#' @family microclimate functions
 #' @export
 #' @examples
 #' \dontrun{
@@ -67,6 +68,7 @@ estimate_radiation=function(doy, psi, tau, elev, rho=0.7){
 #' @param lat latitude in degrees  
 #' @return hourly solar radiation (W/m^2)
 #' @keywords diurnal radiation
+#' @family microclimate functions
 #' @export
 #' @examples
 #' \dontrun{
@@ -122,6 +124,7 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
 #' @param P is total monthly precipitation (mm)
 #' @return average monthly solar radiation ( W/m^2)
 #' @keywords average monthly solar radiation
+#' @family microclimate functions
 #' @export
 #' @examples
 #' \dontrun{

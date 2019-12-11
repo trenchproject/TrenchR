@@ -4,10 +4,10 @@
 \alias{Reynolds_number}
 \title{Calculate Reynolds Number}
 \usage{
-Reynolds_number(V, D, nu)
+Reynolds_number(u, D, nu)
 }
 \arguments{
-\item{V}{is wind speed in m/s}
+\item{u}{is wind speed in m/s}
 
 \item{D}{is characteristic dimension (e.g., body diameter) (m)}
 
@@ -24,9 +24,39 @@ This function allows you to estimate the Reynolds Number, which describes the dy
 }
 \examples{
 \dontrun{
-Reynolds_number(V=1, D=0.001, nu=1.2)
+Reynolds_number(u=1, D=0.001, nu=1.2)
 }
 
 }
+\seealso{
+Other biophysical models: \code{\link{Free_or_forced_convection}},
+  \code{\link{Grashof_number_Gates}},
+  \code{\link{Grashof_number}}, \code{\link{Nu_from_Gr}},
+  \code{\link{Nu_from_Re}}, \code{\link{Nusselt_number}},
+  \code{\link{Prandtl_number}},
+  \code{\link{Qconduction_animal}},
+  \code{\link{Qconduction_substrate}},
+  \code{\link{Qconvection}},
+  \code{\link{Qemitted_thermal_radiation}},
+  \code{\link{Qevaporation}},
+  \code{\link{Qmetabolism_from_mass_temp}},
+  \code{\link{Qmetabolism_from_mass}},
+  \code{\link{Qnet_Gates}},
+  \code{\link{Qradiation_absorbed}},
+  \code{\link{Qthermal_radiation_absorbed}},
+  \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
+  \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
+  \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
+  \code{\link{actual_vapor_pressure}},
+  \code{\link{boundary_layer_resistance}},
+  \code{\link{external_resistance_to_water_vapor_transfer}},
+  \code{\link{heat_transfer_coefficient_approximation}},
+  \code{\link{heat_transfer_coefficient_simple}},
+  \code{\link{heat_transfer_coefficient}},
+  \code{\link{saturation_vapor_pressure}},
+  \code{\link{saturation_water_vapor_pressure}}
+}
+\concept{biophysical models}
 \keyword{Reynolds}
 \keyword{number}

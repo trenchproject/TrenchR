@@ -31,5 +31,13 @@ prop_silhouette_area_shapes(shape="cylinder flat ends", theta=60, h=0.01, d=0.00
 prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=60, h=0.01, d=0.001)
 }
 }
+\seealso{
+Other allometric functions: \code{\link{mass_from_length}},
+  \code{\link{prop_silhouette_area}},
+  \code{\link{sa_from_length}}, \code{\link{sa_from_mass}},
+  \code{\link{sa_from_volume}},
+  \code{\link{volume_from_length}}
+}
+\concept{allometric functions}
 \keyword{area}
 \keyword{silhouette}

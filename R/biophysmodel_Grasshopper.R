@@ -17,6 +17,7 @@
 #' @param r_g is substrate solar reflectivity (proportion), see Kingsolver (1983)
 #' @return predicted body (operative environmental) temperature (C)
 #' @keywords body temperature, biophysical model
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{

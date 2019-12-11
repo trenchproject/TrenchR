@@ -7,6 +7,7 @@
 #' @param taxa Which class of organism, current choices: lizard, salamander, frog, insect
 #' @return sa (m^2)
 #' @keywords surface area
+#' @family allometric functions
 #' @export
 #' @examples
 #'  \dontrun{
@@ -46,6 +47,7 @@ sa_from_mass<-function(m, taxa){
 #' @param taxa Which class of organism, current choices: insect, lizard, salamander, frog, snake, turtle 
 #' @return mass (g)
 #' @keywords mass length
+#' @family allometric functions
 #' @export
 #' @examples
 #'  \dontrun{
@@ -93,6 +95,7 @@ mass_from_length<-function(l, taxa){
 #' @param taxa Which class of organism, current choices: lizard, frog, sphere.
 #' @return surface area (m^2)
 #' @keywords surface area
+#' @family allometric functions
 #' @export
 #' @examples
 #'  \dontrun{
@@ -125,6 +128,7 @@ sa_from_volume<-function(V, taxa){
 #' @param taxa Which class of organism, current choices: lizard,frog, or sphere
 #' @return volume (m^3)
 #' @keywords volume length
+#' @family allometric functions
 #' @export
 #' @examples
 #'  \dontrun{
@@ -155,6 +159,7 @@ volume_from_length<-function(l, taxa){
 #' @param l Length in m.
 #' @return sa (m^2)
 #' @keywords surface area
+#' @family allometric functions
 #' @export
 #' @examples
 #'  \dontrun{
@@ -191,6 +196,7 @@ sa_from_length<-function(l){
 #' @param posture if lizard, indicate posture as "prostrate" or "elevated"
 #' @return silhouette area as a proportion
 #' @keywords silhouette area
+#' @family allometric functions
 #' @export
 #' @examples
 #' \dontrun{
@@ -241,6 +247,7 @@ prop_silhouette_area<-function(z, taxa, raz=0, posture="prostrate"){
 #' @param d is the diameter (short axis in m), cross section length for spheroid 
 #' @return silhouette area as a proportion
 #' @keywords silhouette area
+#' @family allometric functions
 #' @export
 #' @examples
 #' \dontrun{

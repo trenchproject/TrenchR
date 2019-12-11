@@ -7,6 +7,7 @@
 #' @param g_a is a shape factor on soil particles.  The soil particles are assumed to be ellipsoids with axes g_a, g_b, and g_c, where g_a +g_b +g_c=1.  de Vries 1952 suggests g_a=g_b=0.125.
 #' @return soil thermal conductivity (W m^-1 K^-1)
 #' @keywords soil temperature
+#' @family soil temperature functions
 #' @export
 #' @author Joseph Grigg
 #' @examples
@@ -37,6 +38,7 @@ soil_conductivity<-function(x, lambda, g_a){
 #' @param rho_so is particle density of soil in kg/m^3 (bulk density)
 #' @return soil specific heat (J kg^-1 K^-1)
 #' @keywords soil temperature
+#' @family soil temperature functions
 #' @export
 #' @author Joseph Grigg
 #' @examples
@@ -58,6 +60,7 @@ soil_specific_heat<-function(x_o, x_m, x_w, rho_so){
 #' @param z0 is surface rougness in m 
 #' @return integrand for soil temperature function
 #' @keywords soil temperature
+#' @family soil temperature functions
 #' @export
 #' @author Joseph Grigg
 #' @examples
@@ -82,6 +85,7 @@ soil_temperature_integrand<-function(x, L, z0){ (3-1.4*exp(1.5*x))^-1*(exp(x+z0/
 #' @param T_s initial soil suface temperature in degrees C 
 #' @return soil temperature function
 #' @keywords soil temperature
+#' @family soil temperature functions
 #' @export
 #' @author Joseph Grigg
 #' @examples
@@ -117,6 +121,7 @@ soil_temperature_equation<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, 
 #' @param shade is whether or not soil temperature should be calculated in the shade, TRUE or FALSE
 #' @return soil temperature function
 #' @keywords soil temperature
+#' @family soil temperature functions
 #' @export
 #' @author Joseph Grigg
 #' @examples
@@ -241,6 +246,7 @@ soil_temperature_function<- function(j,T_so, params){
 #' @param shade is whether or not soil temperature should be calculated in the shade, TRUE or FALSE
 #' @return soil temperature (C)
 #' @keywords soil temperature
+#' @family soil temperature functions
 #' @export
 #' @author Joseph Grigg
 #' @examples

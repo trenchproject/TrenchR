@@ -38,4 +38,21 @@ Estimate temperature across hours using a diurnal temperature variation function
 diurnal_temp_variation_sineexp(T_max=30, T_min=10, t=11, t_r=6, t_s=18, alpha=2.59, beta= 1.55, gamma=2.2)
 }
 }
+\seealso{
+Other microclimate functions: \code{\link{air_temp_profile_neutral}},
+  \code{\link{air_temp_profile_segment}},
+  \code{\link{air_temp_profile}},
+  \code{\link{degree_days}},
+  \code{\link{diurnal_radiation_variation}},
+  \code{\link{diurnal_temp_variation_sinesqrt}},
+  \code{\link{diurnal_temp_variation_sine}},
+  \code{\link{estimate_radiation}},
+  \code{\link{monthly_solar_radiation}},
+  \code{\link{partition_solar_radiation}},
+  \code{\link{surface_roughness}},
+  \code{\link{wind_speed_profile_neutral}},
+  \code{\link{wind_speed_profile_segment}},
+  \code{\link{wind_speed_profile}}
+}
+\concept{microclimate functions}
 \keyword{Temperature}

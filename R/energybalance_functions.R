@@ -9,6 +9,7 @@
 #' @param proportion in contact with the surface
 #' @return conductance (W)
 #' @keywords conductance
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -43,6 +44,7 @@ Qconduction_animal<-function(T_g,T_b,d,K=0.5, A,proportion){
 #' @param proportion In contact to the surface
 #' @return conductance (W)
 #' @keywords conductance
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -77,6 +79,7 @@ Qconduction_substrate<-function(T_g,T_b,D,K_g=0.5, A,proportion){
 #' @param ef is the enhancement factor, used to adjust H to field conditions.  Approximated as mean value of 1.23 by default, but see Mitchell 1976 for further information.
 #' @return convection (W)
 #' @keywords convection
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -105,6 +108,7 @@ Qconvection<-function(T_a,T_b,H_L=10.45,A,proportion, ef=1.23 ){
 #' @param taxa Which class of organism, current choices: sphere,cylinder,frog,lizard_surface,lizard_elevated,flyinginsect,spider
 #' @return heat transfer coefficient, H_L (W m^-2 K^-1)
 #' @keywords heat transfer coefficient
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -143,6 +147,7 @@ heat_transfer_coefficient<-function(V,D,K,nu, taxa="cylinder"){
 #' @param taxa Which class of organism, current choices: sphere,frog,lizard,flyinginsect,spider
 #' @return heat transfer coefficient, H_L (W m^-2 K^-1)
 #' @keywords heat transfer coefficient
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -175,6 +180,7 @@ heat_transfer_coefficient_approximation<-function(V,D,K,nu, taxa="sphere"){
 #' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
 #' @return heat transfer coefficient, H_L (W m^-2 K^-1)
 #' @keywords heat transfer coefficient
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -204,6 +210,7 @@ heat_transfer_coefficient_simple<-function(V,D){
 #' @param a_s is surface albedo (proportion), optional (not used) if reflected radiation is provided, Values available in Gates Biophysical ecology Table 8.2.
 #' @return solar radiation absorbed (W)
 #' @keywords Solar radiation absorbed
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -240,6 +247,7 @@ Qradiation_absorbed<-function(a=0.9, A, psa_dir, psa_ref, S_dir, S_dif, S_ref=NA
 #' @param enclosed TRUE or FALSE
 #' @return emitted thermal radiation, Qemit (W)
 #' @keywords emitted thermal radiation
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -282,6 +290,7 @@ Qemitted_thermal_radiation<-function(epsilon=0.96, A, psa_dir, psa_ref, T_b, T_g
 #' @param r_i internal (cutaneous) resistance to vapor transport (s/m) (needed if amphibian)
 #' @return evaporative heat loss (W)
 #' @keywords evaporative heat loss
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -335,6 +344,7 @@ Qevaporation<-function(A, T_b, taxa, rho_s=NA, rho_a=NA, h=NA, H=NA, r_i=NA){
 #' @param T_a air temperature (C)
 #' @return Saturation water vapor pressure, e_s (Pa)
 #' @keywords Saturation water vapor pressure
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -356,6 +366,7 @@ saturation_water_vapor_pressure<-function(T_a){
 #' @param rhocp aggregate parameter (J m^-3 C^-1) that is the product of the density of air (kg m^-3) and the specific heat of air at constant pressure (J kg^-1 C^-1). Default of 12000 J m^-3 C^-1 is commonly assumed.
 #' @return external resistance to water vapor transfer (s m^-1)
 #' @keywords external resistance to water vapor transfer
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -380,6 +391,7 @@ external_resistance_to_water_vapor_transfer<-function(H, rhocp=12000){
 #' @param taxa Which taxa. Current options: reptile, bird, mammal
 #' @return metabolism (W)
 #' @keywords metabolism
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -417,6 +429,7 @@ Qmetabolism_from_mass<-function(m, taxa="reptile"){
 #' @param taxa Which taxa. options: bird, mammal, reptile, amphibian, invertebrate.
 #' @return metabolim (W)
 #' @keywords metabolism
+#' @family biophysical models
 #' @export
 #' @examples 
 #' \dontrun{
@@ -441,6 +454,7 @@ Qmetabolism_from_mass_temp<-function(m,T_b, taxa){
 #' @param Tdewpoint dewpoint temperature (C)
 #' @return actual vapor pressure, e_a (kPa)
 #' @keywords actual vapor pressure
+#' @family biophysical models
 #' @export
 #' @author Eric Riddell
 #' @examples
@@ -463,6 +477,7 @@ actual_vapor_pressure<-function(Tdewpoint){
 #' @param T_a air temperature (K)
 #' @return saturation vapor pressure, e_s (kPa)
 #' @keywords saturation vapor pressure
+#' @family biophysical models
 #' @export
 #' @author Eric Riddell
 #' @examples
@@ -494,6 +509,7 @@ saturation_vapor_pressure<-function(T_a){
 #' @param u is wind speed in m/s, if not provided assume free convection; if provided, use forced convection if appropriate 
 #' @return boundary layer resistance (s cm^-1) 
 #' @keywords boundary layer resistance
+#' @family biophysical models
 #' @export
 #' @author Eric Riddell
 #' @examples
@@ -558,6 +574,7 @@ boundary_layer_resistance<-function(T_a, e_s, e_a, elev, D, u=NA){
 #' @param epsilon emissivity of salamander skin, default epsilon=0.96 
 #' @return humid operative temperature (C)
 #' @keywords humid operative temperature
+#' @family biophysical models
 #' @export
 #' @author Eric Riddell
 #' @examples
@@ -596,6 +613,7 @@ Tb_salamander_humid<-function(r_i,r_b,D,T_a,elev,e_a, e_s,Qabs, epsilon=0.96){
 #' @param a_longwave absorptance (proportion) of organism to longwave radiation (Bartlett and Gates 1967, Buckley 2008), default value of 0.965
 #' @return thermal radiation absorbed (W)
 #' @keywords longwave (thermal) radiation absorbed
+#' @family biophysical models
 #' @export
 #' @author Eric Riddell
 #' @examples
@@ -629,9 +647,9 @@ Qthermal_radiation_absorbed<-function(T_a,T_g, epsilon_ground=0.97, a_longwave=0
 #' @param Tg_max daily maximum soil surface temperature (C)
 #' @param Tg_min daily minimum soil surface temperature (C)
 #' @param depth depth (cm) ???
-#' 
 #' @return soil temperature (C)
 #' @keywords soil temperature
+#' @family biophysical models
 #' @export
 #' @author Eric Riddell
 #' @examples
@@ -655,9 +673,9 @@ Tsoil<-function(Tg_max, Tg_min, hour, depth){
 #' @param H_L Convective heat transfer coefficient (W m^-2 K^-1)
 #' @param D is characteristic dimension (e.g., body diameter) (m)
 #' @param K Thermal conductivity (W K^-1 m^-1 )
-#' 
 #' @return Nusselt number
 #' @keywords Nusselt number
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -680,6 +698,7 @@ Nusselt_number<-function(H_L, D, K){
 #' @param K Thermal conductivity (W K^-1 m^-1 )
 #' @return Prandtl number
 #' @keywords Prandtl number
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -702,6 +721,7 @@ Prandtl_number<-function(c_p, mu, K){
 #' 
 #' @return Reynolds number
 #' @keywords Reynolds number
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -723,6 +743,7 @@ Reynolds_number<-function(u, D, nu){
 #' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^-1), can calculate from DRYAIR or WETAIR
 #' @return Grashof number
 #' @keywords Grashof number
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -751,6 +772,7 @@ Grashof_number<-function(Ta, Tg, D, nu){
 #' 
 #' @return Grashof number
 #' @keywords Grashof number
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -775,6 +797,7 @@ Grashof_number_Gates<-function(Ta, Tg, beta, D, nu){
 #' @param taxa Which class of organism, current choices: sphere, cylinder, frog, lizard_traverse_to_air_flow, lizard_parallel_to_air_flow, lizard_surface, lizard_elevated, flyinginsect, spider
 #' @return Nusselt number (dimensionless)
 #' @keywords Nusselt number
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -804,6 +827,7 @@ Nu_from_Re<-function(Re, taxa="cylinder"){
 #' @param Gr is the Grashof Number (dimensionless)
 #' @return Nusselt number (dimensionless)
 #' @keywords Nusselt number
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
@@ -826,6 +850,7 @@ Nu_from_Gr<-function(Gr){
 #' @param Re is the Reynolds Number (dimensionless)
 #' @return "free" or "forced"
 #' @keywords free or forced convection
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{

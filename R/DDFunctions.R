@@ -10,6 +10,7 @@
 #' @param method type of method being used. Current choices: "single.sine","double.sine", "single.triangulation" or "double.triangulation".
 #' @return degree days (C)
 #' @keywords degree days
+#' @family microclimate functions
 #' @export
 #' @examples
 #' \dontrun{

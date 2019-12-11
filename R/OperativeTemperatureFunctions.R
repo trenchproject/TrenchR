@@ -11,6 +11,7 @@
 #' @param V is wind speed in m/s
 #' @return operative environmental temperature, T_e (K)
 #' @keywords operative environmental temperature
+#' @family biophysical models
 #' @export
 #' @examples 
 #' \dontrun{
@@ -48,6 +49,7 @@ Tb_CampbellNorman=function(T_a, S, epsilon=0.96, c_p=29.3, D, V){
 #' @param Qevap Energy emitted due to evaporative water loss (W)
 #' @return net energy exchange (W)
 #' @keywords operative environmental temperature
+#' @family biophysical models
 #' @export
 #' @examples 
 #' \dontrun{
@@ -81,6 +83,7 @@ Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #' @param K Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle ( Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step. 
 #' @return operative environmental temperature (K)
 #' @keywords operative environmental temperature
+#' @family biophysical models
 #' @export
 #' @examples 
 #' \dontrun{

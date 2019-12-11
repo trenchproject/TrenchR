@@ -16,6 +16,7 @@
 #' @param shade is whether body temperature should be calculate in sun (FALSE) or shade (TRUE)
 #' @return predicted body (operative environmental) temperature (C)
 #' @keywords body temperature, biophysical model
+#' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{

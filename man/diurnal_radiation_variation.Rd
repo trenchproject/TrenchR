@@ -34,5 +34,22 @@ Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global 
 diurnal_radiation_variation(doy=112, solrad=8000, hour=12, lon=-122.33, lat=47.61)
 }
 }
+\seealso{
+Other microclimate functions: \code{\link{air_temp_profile_neutral}},
+  \code{\link{air_temp_profile_segment}},
+  \code{\link{air_temp_profile}},
+  \code{\link{degree_days}},
+  \code{\link{diurnal_temp_variation_sineexp}},
+  \code{\link{diurnal_temp_variation_sinesqrt}},
+  \code{\link{diurnal_temp_variation_sine}},
+  \code{\link{estimate_radiation}},
+  \code{\link{monthly_solar_radiation}},
+  \code{\link{partition_solar_radiation}},
+  \code{\link{surface_roughness}},
+  \code{\link{wind_speed_profile_neutral}},
+  \code{\link{wind_speed_profile_segment}},
+  \code{\link{wind_speed_profile}}
+}
+\concept{microclimate functions}
 \keyword{diurnal}
 \keyword{radiation}

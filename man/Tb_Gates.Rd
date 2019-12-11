@@ -10,6 +10,8 @@ Tb_Gates(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilon,
 \arguments{
 \item{A}{surface area  in m^2}
 
+\item{D}{characteristic dimension for conduction (m)}
+
 \item{psa_dir}{proportion surface area exposed to sky (or enclosure)}
 
 \item{psa_ref}{proportion surface area exposed to ground}
@@ -31,8 +33,6 @@ Tb_Gates(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilon,
 \item{ef}{is the enhancement factor, used to adjust H_L to field condictions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.}
 
 \item{K}{Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle ( Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.}
-
-\item{l}{characteristic dimension for conduction (m)}
 }
 \value{
 operative environmental temperature (K)
@@ -49,6 +49,37 @@ Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_g=303
 }
 
 }
+\seealso{
+Other biophysical models: \code{\link{Free_or_forced_convection}},
+  \code{\link{Grashof_number_Gates}},
+  \code{\link{Grashof_number}}, \code{\link{Nu_from_Gr}},
+  \code{\link{Nu_from_Re}}, \code{\link{Nusselt_number}},
+  \code{\link{Prandtl_number}},
+  \code{\link{Qconduction_animal}},
+  \code{\link{Qconduction_substrate}},
+  \code{\link{Qconvection}},
+  \code{\link{Qemitted_thermal_radiation}},
+  \code{\link{Qevaporation}},
+  \code{\link{Qmetabolism_from_mass_temp}},
+  \code{\link{Qmetabolism_from_mass}},
+  \code{\link{Qnet_Gates}},
+  \code{\link{Qradiation_absorbed}},
+  \code{\link{Qthermal_radiation_absorbed}},
+  \code{\link{Reynolds_number}},
+  \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
+  \code{\link{Tb_butterfly}}, \code{\link{Tb_grasshopper}},
+  \code{\link{Tb_lizard}},
+  \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
+  \code{\link{actual_vapor_pressure}},
+  \code{\link{boundary_layer_resistance}},
+  \code{\link{external_resistance_to_water_vapor_transfer}},
+  \code{\link{heat_transfer_coefficient_approximation}},
+  \code{\link{heat_transfer_coefficient_simple}},
+  \code{\link{heat_transfer_coefficient}},
+  \code{\link{saturation_vapor_pressure}},
+  \code{\link{saturation_water_vapor_pressure}}
+}
+\concept{biophysical models}
 \keyword{environmental}
 \keyword{operative}
 \keyword{temperature}

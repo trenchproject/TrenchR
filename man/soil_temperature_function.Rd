@@ -69,8 +69,16 @@ soil_temperature_function(j=1,T_so= rep(20,13), params=params)
 Tsoil_out<- ode(y = rep(20,13), func = soil_temperature, times = 1:length(solrad_vector), parms=params)
 }
 }
+\seealso{
+Other soil temperature functions: \code{\link{soil_conductivity}},
+  \code{\link{soil_specific_heat}},
+  \code{\link{soil_temperature_equation}},
+  \code{\link{soil_temperature_integrand}},
+  \code{\link{soil_temperature}}
+}
 \author{
 Joseph Grigg
 }
+\concept{soil temperature functions}
 \keyword{soil}
 \keyword{temperature}

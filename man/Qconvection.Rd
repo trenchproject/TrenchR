@@ -4,20 +4,20 @@
 \alias{Qconvection}
 \title{Calculate convection}
 \usage{
-Qconvection(T_a, T_b, H = 10.45, A, proportion, ef = 1.23)
+Qconvection(T_a, T_b, H_L = 10.45, A, proportion, ef = 1.23)
 }
 \arguments{
 \item{T_a}{Air Temperature in Kelvin.}
 
 \item{T_b}{Initial Body Temperature in Kelvin.}
 
-\item{H}{Convective heat transfer coefficient (W m^-2 K^-1)}
+\item{H_L}{Convective heat transfer coefficient (W m^-2 K^-1)}
 
 \item{A}{Surface area  in m^2}
 
 \item{proportion}{of surface area exposed to air}
 
-\item{ef}{is the enhancement factor, used to adjust H to field condictions.  Approximated as mean value of 1.23 by default, but see Mitchell 1976 for further information.}
+\item{ef}{is the enhancement factor, used to adjust H to field conditions.  Approximated as mean value of 1.23 by default, but see Mitchell 1976 for further information.}
 }
 \value{
 convection (W)
@@ -34,4 +34,34 @@ Qconvection(T_a= 293,T_b= 303,H=10.45,A=0.0025, proportion=0.85)
 }
 
 }
+\seealso{
+Other biophysical models: \code{\link{Free_or_forced_convection}},
+  \code{\link{Grashof_number_Gates}},
+  \code{\link{Grashof_number}}, \code{\link{Nu_from_Gr}},
+  \code{\link{Nu_from_Re}}, \code{\link{Nusselt_number}},
+  \code{\link{Prandtl_number}},
+  \code{\link{Qconduction_animal}},
+  \code{\link{Qconduction_substrate}},
+  \code{\link{Qemitted_thermal_radiation}},
+  \code{\link{Qevaporation}},
+  \code{\link{Qmetabolism_from_mass_temp}},
+  \code{\link{Qmetabolism_from_mass}},
+  \code{\link{Qnet_Gates}},
+  \code{\link{Qradiation_absorbed}},
+  \code{\link{Qthermal_radiation_absorbed}},
+  \code{\link{Reynolds_number}},
+  \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
+  \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
+  \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
+  \code{\link{actual_vapor_pressure}},
+  \code{\link{boundary_layer_resistance}},
+  \code{\link{external_resistance_to_water_vapor_transfer}},
+  \code{\link{heat_transfer_coefficient_approximation}},
+  \code{\link{heat_transfer_coefficient_simple}},
+  \code{\link{heat_transfer_coefficient}},
+  \code{\link{saturation_vapor_pressure}},
+  \code{\link{saturation_water_vapor_pressure}}
+}
+\concept{biophysical models}
 \keyword{convection}

@@ -39,8 +39,16 @@ Function called by soil_temperature_function() to solve equation for soil temper
 soil_temperature_equation(L=-10, rho_a=1.177, c_a=1006, k=0.41, V_inst=0.3, z_r=1.5, z0=0.02, T_inst=265, T_s=20)
 }
 }
+\seealso{
+Other soil temperature functions: \code{\link{soil_conductivity}},
+  \code{\link{soil_specific_heat}},
+  \code{\link{soil_temperature_function}},
+  \code{\link{soil_temperature_integrand}},
+  \code{\link{soil_temperature}}
+}
 \author{
 Joseph Grigg
 }
+\concept{soil temperature functions}
 \keyword{soil}
 \keyword{temperature}

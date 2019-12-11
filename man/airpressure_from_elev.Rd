@@ -23,5 +23,15 @@ Estimate air pressure (kPa) as a function of elevation.
 airpressure_from_elev(1500)
 }
 }
+\seealso{
+Other utility functions: \code{\link{azimuth_angle}},
+  \code{\link{daylength}}, \code{\link{dec_angle}},
+  \code{\link{degree_to_radian}},
+  \code{\link{fahrenheit_to_celsius}},
+  \code{\link{fahrenheit_to_kelvin}},
+  \code{\link{kelvin_to_celsius}},
+  \code{\link{solar_noon}}, \code{\link{zenith_angle}}
+}
+\concept{utility functions}
 \keyword{Air}
 \keyword{Pressure}

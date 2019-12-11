@@ -32,5 +32,22 @@ Calculates wind speed at a specified height under neutral conditions
 wind_speed_profile_neutral(u_r=0.1, zr=0.1, z0=0.2, z=0.15)
 }
 }
+\seealso{
+Other microclimate functions: \code{\link{air_temp_profile_neutral}},
+  \code{\link{air_temp_profile_segment}},
+  \code{\link{air_temp_profile}},
+  \code{\link{degree_days}},
+  \code{\link{diurnal_radiation_variation}},
+  \code{\link{diurnal_temp_variation_sineexp}},
+  \code{\link{diurnal_temp_variation_sinesqrt}},
+  \code{\link{diurnal_temp_variation_sine}},
+  \code{\link{estimate_radiation}},
+  \code{\link{monthly_solar_radiation}},
+  \code{\link{partition_solar_radiation}},
+  \code{\link{surface_roughness}},
+  \code{\link{wind_speed_profile_segment}},
+  \code{\link{wind_speed_profile}}
+}
+\concept{microclimate functions}
 \keyword{profile}
 \keyword{wind}

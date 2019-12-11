@@ -12,6 +12,7 @@
 #' @param zr is the vector of reference heights in m.
 #' @return surface roughness (m)
 #' @keywords wind profile
+#' @family microclimate functions
 #' @export
 #' @examples
 #' \dontrun{
@@ -49,6 +50,7 @@ surface_roughness<- function(u_r, zr){
 #' @param z is height to scale to in m.
 #' @return windspeed in m/s
 #' @keywords wind profile
+#' @family microclimate functions
 #' @export
 #' @examples
 #' \dontrun{
@@ -74,6 +76,7 @@ wind_speed_profile_neutral <- function(u_r, zr, z0, z) {
 #' @param T_s is surface temperatures in degrees C.
 #' @return temperature (degrees C)
 #' @keywords temperature profile
+#' @family microclimate functions
 #' @export
 #' @examples
 #' \dontrun{
@@ -100,6 +103,7 @@ air_temp_profile_neutral<-function(T_r, zr, z0, z, T_s){
 #' @param z is height to scale to in m.
 #' @return wind speed (m/s) 
 #' @keywords wind profile
+#' @family microclimate functions
 #' @export
 #' @examples
 #' \dontrun{
@@ -127,6 +131,7 @@ wind_speed_profile<- function(u_r,zr,z0,z){
 #' @param T_s is surface temperatures in degrees C.
 #' @return temperature (degrees C)
 #' @keywords temperature profile
+#' @family microclimate functions
 #' @export
 #' @examples
 #' \dontrun{
@@ -166,6 +171,7 @@ air_temp_profile= function(T_r, u_r, zr, z0,z,T_s){
 #' @param z is height to scale to in m.
 #' @param T_s is surface temperatures in degrees C.
 #' @keywords temperature profile
+#' @family microclimate functions
 #' @export
 #' @examples
 #' \dontrun{
@@ -218,6 +224,7 @@ air_temp_profile_segment= function(T_r, u_r, zr, z0,z,T_s){
 #' @param z0 is a vector of 3 experimentally determined roughness heights in m.
 #' @param z is height to scale to in m.
 #' @keywords wind speed profile
+#' @family microclimate functions
 #' @export
 #' @examples
 #' \dontrun{

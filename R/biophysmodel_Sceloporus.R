@@ -25,6 +25,7 @@
 #' @param F_g is the view factor between the surface of the lizard and ground thermal radation
 #' @return T_e Operative temperature
 #' @keywords body temperature, biophysical model
+#' @family biophysical models
 #' @export 
 #' @examples
 #' \dontrun{

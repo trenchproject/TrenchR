@@ -15,6 +15,7 @@
 #' @param Acondfact is the proportion of the lizard projected area that is in contact with the ground, Acondfact=0.05 for standing and Acondfact=0.35 for lying on ground
 #' @param Agradfact is the proportion of the lizard projected area exposed to radiation from the ground, Agradfact=0.4 for standing and Agradfact=0.0 for lying on ground
 #' @keywords Operative Temperature Fei
+#' @family biophysical models
 #' @author Ofir Levy
 #' @export 
 #' @examples
