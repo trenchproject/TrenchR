@@ -36,7 +36,7 @@
 
 
 <meta property="og:title" content="Calculate degree days — degree_days" />
-<meta property="og:description" content="This function allows you to calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://www.ipm.ucdavis.edu/WEATHER/ddss_tbl.html. Double Sine wave approximation of degree days from Allen JC. 1976.  A Modified Sine Wave Method for Calculating Degree Days. Environmental Entomology 5:388–396." />
+<meta property="og:description" content="This function allows you to calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minima is equal to previous day. Double Sine wave approximation of degree days from Allen JC. 1976.  A Modified Sine Wave Method for Calculating Degree Days. Environmental Entomology 5:388–396." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -92,19 +92,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/AllometryAndConversionsTutorial.html">Estimating microclimates</a>
+      <a href="../articles/AllometryAndConversionsTutorial.html">TrenchR: Allometries and conversions</a>
     </li>
     <li>
-      <a href="../articles/FunctionTesting.html">Function testing</a>
+      <a href="../articles/MicroclimateTutorial.html">TrenchR: Estimating microclimates</a>
     </li>
     <li>
-      <a href="../articles/MicroclimateTutorial.html">Estimating microclimates</a>
+      <a href="../articles/Symbols.html">List of Symbols</a>
     </li>
     <li>
-      <a href="../articles/TeTutorial.html">Using energy balances to estimate body temperatures</a>
-    </li>
-    <li>
-      <a href="../articles/Usage.html">Biophysical model usecase</a>
+      <a href="../articles/TeTutorial.html">TrenchR: Using energy balances to estimate body temperatures</a>
     </li>
   </ul>
 </li>
@@ -135,7 +132,7 @@
     </div>
 
     <div class="ref-description">
-    <p>This function allows you to calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://www.ipm.ucdavis.edu/WEATHER/ddss_tbl.html. Double Sine wave approximation of degree days from Allen JC. 1976.  A Modified Sine Wave Method for Calculating Degree Days. Environmental Entomology 5:388–396.</p>
+    <p>This function allows you to calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minima is equal to previous day. Double Sine wave approximation of degree days from Allen JC. 1976.  A Modified Sine Wave Method for Calculating Degree Days. Environmental Entomology 5:388–396.</p>
     </div>
 
     <pre class="usage"><span class='fu'>degree_days</span>(<span class='no'>T_min</span>, <span class='no'>T_max</span>, <span class='kw'>LDT</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>UDT</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"single.sine"</span>)</pre>
@@ -171,6 +168,22 @@
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Calculate degree days</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other microclimate functions: <code><a href='air_temp_profile_neutral.html'>air_temp_profile_neutral</a></code>,
+  <code><a href='air_temp_profile_segment.html'>air_temp_profile_segment</a></code>,
+  <code><a href='air_temp_profile.html'>air_temp_profile</a></code>,
+  <code><a href='diurnal_radiation_variation.html'>diurnal_radiation_variation</a></code>,
+  <code><a href='diurnal_temp_variation_sineexp.html'>diurnal_temp_variation_sineexp</a></code>,
+  <code><a href='diurnal_temp_variation_sinesqrt.html'>diurnal_temp_variation_sinesqrt</a></code>,
+  <code><a href='diurnal_temp_variation_sine.html'>diurnal_temp_variation_sine</a></code>,
+  <code><a href='estimate_radiation.html'>estimate_radiation</a></code>,
+  <code><a href='monthly_solar_radiation.html'>monthly_solar_radiation</a></code>,
+  <code><a href='partition_solar_radiation.html'>partition_solar_radiation</a></code>,
+  <code><a href='surface_roughness.html'>surface_roughness</a></code>,
+  <code><a href='wind_speed_profile_neutral.html'>wind_speed_profile_neutral</a></code>,
+  <code><a href='wind_speed_profile_segment.html'>wind_speed_profile_segment</a></code>,
+  <code><a href='wind_speed_profile.html'>wind_speed_profile</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
@@ -184,6 +197,7 @@
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

@@ -10,6 +10,8 @@ Version: 0.0.0.9000
 Authors@R: c(
     person("Lauren", "Buckley", role = c("aut", "cre"), email = "lbuckley@uw.edu"),
     person("Aji", "John", role = c("aut","ctb")),
+    person("Bryan", "Briones Ortiz", role = c("aut","ctb")),
+    person("Yutaro", "Sakairi", role = c("aut","ctb")),
     person("Ofir", "Levy", role = c("ctb"))
   )
 License: MIT + file LICENSE
@@ -19,11 +21,6 @@ BugReports: https://github.com/trenchproject/TrenchR/issues
 VignetteBuilder: knitr
 Depends: R (>= 3.3.1)
 Imports:
-     ks,
-     tidyverse,
-     zoo,
-     msm,
-     deSolve
 Suggests:
     testthat,
     knitr,

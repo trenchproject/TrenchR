@@ -92,19 +92,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/AllometryAndConversionsTutorial.html">Estimating microclimates</a>
+      <a href="../articles/AllometryAndConversionsTutorial.html">TrenchR: Allometries and conversions</a>
     </li>
     <li>
-      <a href="../articles/FunctionTesting.html">Function testing</a>
+      <a href="../articles/MicroclimateTutorial.html">TrenchR: Estimating microclimates</a>
     </li>
     <li>
-      <a href="../articles/MicroclimateTutorial.html">Estimating microclimates</a>
+      <a href="../articles/Symbols.html">List of Symbols</a>
     </li>
     <li>
-      <a href="../articles/TeTutorial.html">Using energy balances to estimate body temperatures</a>
-    </li>
-    <li>
-      <a href="../articles/Usage.html">Biophysical model usecase</a>
+      <a href="../articles/TeTutorial.html">TrenchR: Using energy balances to estimate body temperatures</a>
     </li>
   </ul>
 </li>
@@ -147,6 +144,10 @@
     <tr>
       <th>A</th>
       <td><p>surface area  in m^2</p></td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td><p>characteristic dimension for conduction (m)</p></td>
     </tr>
     <tr>
       <th>psa_dir</th>
@@ -192,10 +193,6 @@
       <th>K</th>
       <td><p>Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle ( Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.</p></td>
     </tr>
-    <tr>
-      <th>l</th>
-      <td><p>characteristic dimension for conduction (m)</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -204,6 +201,36 @@
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Gates (1980, Biophysical ecology). Omits evaporative and metabolic heat loss.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other biophysical models: <code><a href='Free_or_forced_convection.html'>Free_or_forced_convection</a></code>,
+  <code><a href='Grashof_number_Gates.html'>Grashof_number_Gates</a></code>,
+  <code><a href='Grashof_number.html'>Grashof_number</a></code>, <code><a href='Nu_from_Gr.html'>Nu_from_Gr</a></code>,
+  <code><a href='Nu_from_Re.html'>Nu_from_Re</a></code>, <code><a href='Nusselt_number.html'>Nusselt_number</a></code>,
+  <code><a href='Prandtl_number.html'>Prandtl_number</a></code>,
+  <code><a href='Qconduction_animal.html'>Qconduction_animal</a></code>,
+  <code><a href='Qconduction_substrate.html'>Qconduction_substrate</a></code>,
+  <code><a href='Qconvection.html'>Qconvection</a></code>,
+  <code><a href='Qemitted_thermal_radiation.html'>Qemitted_thermal_radiation</a></code>,
+  <code><a href='Qevaporation.html'>Qevaporation</a></code>,
+  <code><a href='Qmetabolism_from_mass_temp.html'>Qmetabolism_from_mass_temp</a></code>,
+  <code><a href='Qmetabolism_from_mass.html'>Qmetabolism_from_mass</a></code>,
+  <code><a href='Qnet_Gates.html'>Qnet_Gates</a></code>,
+  <code><a href='Qradiation_absorbed.html'>Qradiation_absorbed</a></code>,
+  <code><a href='Qthermal_radiation_absorbed.html'>Qthermal_radiation_absorbed</a></code>,
+  <code><a href='Reynolds_number.html'>Reynolds_number</a></code>,
+  <code><a href='Tb_CampbellNorman.html'>Tb_CampbellNorman</a></code>, <code><a href='Tb_Fei.html'>Tb_Fei</a></code>,
+  <code><a href='Tb_butterfly.html'>Tb_butterfly</a></code>, <code><a href='Tb_grasshopper.html'>Tb_grasshopper</a></code>,
+  <code><a href='Tb_lizard.html'>Tb_lizard</a></code>,
+  <code><a href='Tb_salamander_humid.html'>Tb_salamander_humid</a></code>, <code><a href='Tsoil.html'>Tsoil</a></code>,
+  <code><a href='actual_vapor_pressure.html'>actual_vapor_pressure</a></code>,
+  <code><a href='boundary_layer_resistance.html'>boundary_layer_resistance</a></code>,
+  <code><a href='external_resistance_to_water_vapor_transfer.html'>external_resistance_to_water_vapor_transfer</a></code>,
+  <code><a href='heat_transfer_coefficient_approximation.html'>heat_transfer_coefficient_approximation</a></code>,
+  <code><a href='heat_transfer_coefficient_simple.html'>heat_transfer_coefficient_simple</a></code>,
+  <code><a href='heat_transfer_coefficient.html'>heat_transfer_coefficient</a></code>,
+  <code><a href='saturation_vapor_pressure.html'>saturation_vapor_pressure</a></code>,
+  <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
@@ -216,6 +243,7 @@
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

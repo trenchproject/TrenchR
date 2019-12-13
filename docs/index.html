@@ -59,19 +59,16 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/AllometryAndConversionsTutorial.html">Estimating microclimates</a>
+      <a href="articles/AllometryAndConversionsTutorial.html">TrenchR: Allometries and conversions</a>
     </li>
     <li>
-      <a href="articles/FunctionTesting.html">Function testing</a>
+      <a href="articles/MicroclimateTutorial.html">TrenchR: Estimating microclimates</a>
     </li>
     <li>
-      <a href="articles/MicroclimateTutorial.html">Estimating microclimates</a>
+      <a href="articles/Symbols.html">List of Symbols</a>
     </li>
     <li>
-      <a href="articles/TeTutorial.html">Using energy balances to estimate body temperatures</a>
-    </li>
-    <li>
-      <a href="articles/Usage.html">Biophysical model usecase</a>
+      <a href="articles/TeTutorial.html">TrenchR: Using energy balances to estimate body temperatures</a>
     </li>
   </ul>
 </li>
@@ -98,14 +95,13 @@
 <div id="trenchr" class="section level2">
 <h2 class="hasAnchor">
 <a href="#trenchr" class="anchor"></a># TrenchR</h2>
-<p>An R package encompassing functions for assessing the impact of the environment of organisms.</p>
-<p><strong>Author:</strong> <a href="https://trenchproject.github.io">UW Biology- Huckley Lab</a><br><strong>License:</strong> <a href="http://opensource.org/licenses/MIT">MIT</a><br></p>
+<p>an R package for transparent environmental and ecological biophysics</p>
+<p><strong>Author:</strong> <a href="https://trenchproject.github.io">TrEnCh project, Buckley Lab, Department of Biology, University of Washington</a><br><strong>License:</strong> <a href="http://opensource.org/licenses/MIT">MIT</a><br></p>
 <p><a href="https://travis-ci.org/trenchproject/TrenchR"><img src="https://travis-ci.org/trenchproject/TrenchR.svg?branch=master" alt="Build Status"></a></p>
 <div id="description" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description" class="anchor"></a>Description</h3>
-<p>Code contributions for TrenchR initiative</p>
-<p>We aim to create an R package (TrenchR) encompassing resources for assessing the impact of the environment of organisms. The package will build off and integrate with existing packages (e.g., NicheMapR). Code (scripts and functions) will be accepted in any programming language and thorough commenting will be appreciated. We would also appreciate your including a header that describes the intent, input, and output of your scripts and functions.</p>
+<p>The TrenchR package aids in Translating Environmental Change into organismal responses (<a href="https://github.com/trenchproject/TrenchR" class="uri">https://github.com/trenchproject/TrenchR</a>). The package facilitates microclimate modelling to translate weather station data into the environmental conditions experienced by organisms and biophysical modelling to predict organismal body temperatures given the environmental conditions. The package aims to introduce and enable microclimate and biophysical modelling to improve ecological and evolutionary forecasting and includes tutorials and well as a series of educational modules introducing microclimate and biophysical modelling. The package complements and integrates with the NicheMapR package (<a href="https://github.com/mrke/NicheMapR" class="uri">https://github.com/mrke/NicheMapR</a>).</p>
 </div>
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
@@ -117,34 +113,29 @@
 <div id="using-the-package" class="section level3">
 <h3 class="hasAnchor">
 <a href="#using-the-package" class="anchor"></a>Using the package</h3>
-<p>For eg. to fund zenith angle of a location, you can use the <code><a href="reference/zenith_angle.html">zenith_angle()</a></code> function. It takes day of the year, lat/lon and the hour. Below is an example invocation.</p>
-<pre class="{r}"><code>library(TrenchR)
-zenith_angle(112, 47.61, -122.33, 12)
-[1] 35.7407
-</code></pre>
+<p>The package encompasses simple functions that can be combined to estimate environmental conditions and their impacts on organisms. Many of the functions are adapted from biophysical ecology texts including the follows:</p>
+<ul>
+<li>Gates DM. Biophysical Ecology.</li>
+<li>Campbell GS and Norman JM. An introduction to environmental biophysics.</li>
+</ul>
 </div>
 <div id="package-vignette" class="section level3">
 <h3 class="hasAnchor">
 <a href="#package-vignette" class="anchor"></a>Package Vignette</h3>
-<p>See the package vignette at</p>
-<p>```{r eval=FALSE}</p>
-<p>vignette(“Usage”, package=“TrenchR”)</p>
+<p>We introduce each function in categorically grouped tutorials. A good place to start is the Allometry and conversions tutorial, which provides tools for preparing data such as estimating additional dimensions of organisms from measured dimensions. ```{r eval=FALSE}</p>
+<p>vignette(“AllometryAndConversionsTutorial.Rmd”, package=“TrenchR”)</p>
 <p>```</p>
-<p>Estimating body temperature vignette</p>
-<p>```{r eval=FALSE}</p>
+<p>The Estimating microclimates tutorial provides resources for estimating the environmental conditions experienced by organisms. This includes estimating solar radiation and its components, diurnal variation in temperature and radiation, temperature and windspeed profiles, and soil temperatures and profiles. ```{r eval=FALSE}</p>
+<p>vignette(“MicroclimateTutorial”, package=“TrenchR”)</p>
+<p>```</p>
+<p>Finally, the core biophysical modelling functions are described in a tutorial on Using energy balances to estimate body temperatures. Components of an energy budget can be estimated using individual functions and then operative environmental temperatures, Te, can be solved for using either a generic energy balance or taxa specific biophysical models. ```{r eval=FALSE}</p>
 <p>vignette(“TeTutorial”, package=“TrenchR”)</p>
 <p>```</p>
 </div>
-<div id="future-direction" class="section level3">
+<div id="future-directions" class="section level3">
 <h3 class="hasAnchor">
-<a href="#future-direction" class="anchor"></a>Future Direction</h3>
-<p>Non-inclusive categories we hope to include:</p>
-<ul>
-<li>Diurnal variation</li>
-<li>Radiation and cloudiness</li>
-<li>Microclimate models</li>
-<li>Biophysical and energy balance models</li>
-</ul>
+<a href="#future-directions" class="anchor"></a>Future Directions</h3>
+<p>We welcome code contributions, fixes, and comments. Code (scripts and functions) will be accepted in any programming language and thorough commenting will be appreciated. We would also appreciate your including a header that describes the intent, input, and output of your scripts and functions.</p>
 </div>
 <div id="citation" class="section level3">
 <h3 class="hasAnchor">

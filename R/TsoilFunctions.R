@@ -135,8 +135,6 @@ soil_temperature_equation<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, 
 #' 
 #' soil_temperature_function(j=1,T_so= rep(20,13), params=params)
 #' 
-#' #RUN USING ODE SOLVER
-#' Tsoil_out<- ode(y = rep(20,13), func = soil_temperature, times = 1:length(solrad_vector), parms=params)
 #'}
 
 soil_temperature_function<- function(j,T_so, params){
@@ -261,15 +259,13 @@ soil_temperature_function<- function(j,T_so, params){
 
 soil_temperature<-function(z_r.intervals=12,z_r, z, T_a, u, Tsoil0, z0, SSA, TimeIn, H, water_content=0.2, air_pressure, rho_so=1620, shade=FALSE){
   
-  library(zoo)
-  
   #account for NAs at beginning of data
   first.dat= min(which( !is.na(T_a)))
   #find last data
   last.dat= max(which( !is.na(T_a)))
   
   #fill temperature data
-  T_a=na.approx(T_a, na.rm = FALSE) #Interpolate
+  T_a=zoo::na.approx(T_a, na.rm = FALSE) #Interpolate
   
   #parameters/constants:
   #SI units were used
@@ -346,7 +342,7 @@ soil_temperature<-function(z_r.intervals=12,z_r, z, T_a, u, Tsoil0, z0, SSA, Tim
   #SOLVE ODE
   params=list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade)
   
-  Tsoil <- suppressWarnings(ode(y = rep(Tsoil0,z_r.intervals+1), func = soil_temperature_function, times = 1:length(H), params))
+  Tsoil <- suppressWarnings(deSolve::ode(y = rep(Tsoil0,z_r.intervals+1), func = soil_temperature_function, times = 1:length(H), params))
  
   return( Tsoil[,z])
   

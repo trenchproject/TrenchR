@@ -40,8 +40,7 @@
 Estimates a three segment velocity and temperature profile based on user-specified, 
 experimentally determined values for 3 roughness heights and reference heights.  
 Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks.
-Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Porter 2016. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.
-NEED TO CHECK EQUATIONS." />
+Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Porter 2016. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -97,19 +96,16 @@ NEED TO CHECK EQUATIONS." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/AllometryAndConversionsTutorial.html">Estimating microclimates</a>
+      <a href="../articles/AllometryAndConversionsTutorial.html">TrenchR: Allometries and conversions</a>
     </li>
     <li>
-      <a href="../articles/FunctionTesting.html">Function testing</a>
+      <a href="../articles/MicroclimateTutorial.html">TrenchR: Estimating microclimates</a>
     </li>
     <li>
-      <a href="../articles/MicroclimateTutorial.html">Estimating microclimates</a>
+      <a href="../articles/Symbols.html">List of Symbols</a>
     </li>
     <li>
-      <a href="../articles/TeTutorial.html">Using energy balances to estimate body temperatures</a>
-    </li>
-    <li>
-      <a href="../articles/Usage.html">Biophysical model usecase</a>
+      <a href="../articles/TeTutorial.html">TrenchR: Using energy balances to estimate body temperatures</a>
     </li>
   </ul>
 </li>
@@ -145,7 +141,6 @@ Estimates a three segment velocity and temperature profile based on user-specifi
 experimentally determined values for 3 roughness heights and reference heights.  
 Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks.
 Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Porter 2016. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.</p>
-<p>NEED TO CHECK EQUATIONS.</p>
     </div>
 
     <pre class="usage"><span class='fu'>air_temp_profile_segment</span>(<span class='no'>T_r</span>, <span class='no'>u_r</span>, <span class='no'>zr</span>, <span class='no'>z0</span>, <span class='no'>z</span>, <span class='no'>T_s</span>)</pre>
@@ -182,6 +177,22 @@ Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Por
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Calculates temperature at a specified height</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other microclimate functions: <code><a href='air_temp_profile_neutral.html'>air_temp_profile_neutral</a></code>,
+  <code><a href='air_temp_profile.html'>air_temp_profile</a></code>,
+  <code><a href='degree_days.html'>degree_days</a></code>,
+  <code><a href='diurnal_radiation_variation.html'>diurnal_radiation_variation</a></code>,
+  <code><a href='diurnal_temp_variation_sineexp.html'>diurnal_temp_variation_sineexp</a></code>,
+  <code><a href='diurnal_temp_variation_sinesqrt.html'>diurnal_temp_variation_sinesqrt</a></code>,
+  <code><a href='diurnal_temp_variation_sine.html'>diurnal_temp_variation_sine</a></code>,
+  <code><a href='estimate_radiation.html'>estimate_radiation</a></code>,
+  <code><a href='monthly_solar_radiation.html'>monthly_solar_radiation</a></code>,
+  <code><a href='partition_solar_radiation.html'>partition_solar_radiation</a></code>,
+  <code><a href='surface_roughness.html'>surface_roughness</a></code>,
+  <code><a href='wind_speed_profile_neutral.html'>wind_speed_profile_neutral</a></code>,
+  <code><a href='wind_speed_profile_segment.html'>wind_speed_profile_segment</a></code>,
+  <code><a href='wind_speed_profile.html'>wind_speed_profile</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
@@ -193,6 +204,7 @@ Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Por
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

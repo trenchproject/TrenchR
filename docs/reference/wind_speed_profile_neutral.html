@@ -37,10 +37,9 @@
 
 <meta property="og:title" content="Estimate wind speed at a specific height under neutral conditions. — wind_speed_profile_neutral" />
 <meta property="og:description" content="This function allows you to calculate wind speed (m/s) at a 
-specified height (m) within a boundary layer near the surface.  
+specified height (m) within a boundary layer near the surface.  The profile assumes neutral conditions.
 The velocity profile is the neutral profile described by Sellers (1965). 
-Function is equations (2) and (3) of Porter et al. (1973). Source: Porter WP et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
-Profiles in neutral conditions." />
+Function is equations (2) and (3) of Porter et al. (1973). Source: Porter WP et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -96,19 +95,16 @@ Profiles in neutral conditions." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/AllometryAndConversionsTutorial.html">Estimating microclimates</a>
+      <a href="../articles/AllometryAndConversionsTutorial.html">TrenchR: Allometries and conversions</a>
     </li>
     <li>
-      <a href="../articles/FunctionTesting.html">Function testing</a>
+      <a href="../articles/MicroclimateTutorial.html">TrenchR: Estimating microclimates</a>
     </li>
     <li>
-      <a href="../articles/MicroclimateTutorial.html">Estimating microclimates</a>
+      <a href="../articles/Symbols.html">List of Symbols</a>
     </li>
     <li>
-      <a href="../articles/TeTutorial.html">Using energy balances to estimate body temperatures</a>
-    </li>
-    <li>
-      <a href="../articles/Usage.html">Biophysical model usecase</a>
+      <a href="../articles/TeTutorial.html">TrenchR: Using energy balances to estimate body temperatures</a>
     </li>
   </ul>
 </li>
@@ -140,10 +136,9 @@ Profiles in neutral conditions." />
 
     <div class="ref-description">
     <p>This function allows you to calculate wind speed (m/s) at a 
-specified height (m) within a boundary layer near the surface.  
+specified height (m) within a boundary layer near the surface.  The profile assumes neutral conditions.
 The velocity profile is the neutral profile described by Sellers (1965). 
-Function is equations (2) and (3) of Porter et al. (1973). Source: Porter WP et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
-Profiles in neutral conditions.</p>
+Function is equations (2) and (3) of Porter et al. (1973). Source: Porter WP et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.</p>
     </div>
 
     <pre class="usage"><span class='fu'>wind_speed_profile_neutral</span>(<span class='no'>u_r</span>, <span class='no'>zr</span>, <span class='no'>z0</span>, <span class='no'>z</span>)</pre>
@@ -175,6 +170,22 @@ Profiles in neutral conditions.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Calculates wind speed at a specified height under neutral conditions</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other microclimate functions: <code><a href='air_temp_profile_neutral.html'>air_temp_profile_neutral</a></code>,
+  <code><a href='air_temp_profile_segment.html'>air_temp_profile_segment</a></code>,
+  <code><a href='air_temp_profile.html'>air_temp_profile</a></code>,
+  <code><a href='degree_days.html'>degree_days</a></code>,
+  <code><a href='diurnal_radiation_variation.html'>diurnal_radiation_variation</a></code>,
+  <code><a href='diurnal_temp_variation_sineexp.html'>diurnal_temp_variation_sineexp</a></code>,
+  <code><a href='diurnal_temp_variation_sinesqrt.html'>diurnal_temp_variation_sinesqrt</a></code>,
+  <code><a href='diurnal_temp_variation_sine.html'>diurnal_temp_variation_sine</a></code>,
+  <code><a href='estimate_radiation.html'>estimate_radiation</a></code>,
+  <code><a href='monthly_solar_radiation.html'>monthly_solar_radiation</a></code>,
+  <code><a href='partition_solar_radiation.html'>partition_solar_radiation</a></code>,
+  <code><a href='surface_roughness.html'>surface_roughness</a></code>,
+  <code><a href='wind_speed_profile_segment.html'>wind_speed_profile_segment</a></code>,
+  <code><a href='wind_speed_profile.html'>wind_speed_profile</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
@@ -187,6 +198,7 @@ Profiles in neutral conditions.</p>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

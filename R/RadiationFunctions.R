@@ -195,11 +195,7 @@ monthly_solar_radiation= function(lat,lon,doy,elev,T,Hr,P){
   #E_sm: mean monthly solar altitude angle
   #calculated by dividing the monthly integral of hourly estimates of solar elevation by the
   #number of hours in a month when the sun is above the horizon
-  #TODO Validate UTC  requirement
-  #Trise.set= suncalc(doy, Lat = lat, Long = lon, UTC = FALSE)
-  # Fix issue Unused argument UTC
-  Trise.set= suncalc(doy, Lat = lat, Long = lon)
-  daylength= Trise.set$sunset - Trise.set$sunrise
+  daylength= daylength(lat, doy)
   #E_s: solar elevation (in degrees)
   E_s = asin( sin.deg(lat)*sin.deg(D_s) + cos.deg(lat)*cos.deg(D_s)*cos.deg(h) )*rd
   E_s[E_s<0] =0

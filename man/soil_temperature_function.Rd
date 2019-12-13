@@ -65,8 +65,6 @@ params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0
 
 soil_temperature_function(j=1,T_so= rep(20,13), params=params)
 
-#RUN USING ODE SOLVER
-Tsoil_out<- ode(y = rep(20,13), func = soil_temperature, times = 1:length(solrad_vector), parms=params)
 }
 }
 \seealso{

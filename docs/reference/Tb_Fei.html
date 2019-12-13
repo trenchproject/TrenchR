@@ -36,11 +36,10 @@
 
 
 <meta property="og:title" content="Calculate body temperature(Operative Temperature) of Lizard using model by Fei et al. — Tb_Fei" />
-<meta property="og:description" content="[1] T. Fei, A. K. Skidmore, V. Venus, T. Wang, M. Schlerf, B. Toxopeus, 
+<meta property="og:description" content="Transient model for predicting operative environmental temperature using model in the following publication: T. Fei, A. K. Skidmore, V. Venus, T. Wang, M. Schlerf, B. Toxopeus, 
 S. van Overjijk, M. Bian, and Y. Liu, “A body temperature model for 
 lizards as estimated from the thermal environment,” J. Therm. 
-Biol., vol. 37, no. 1, pp. 56–64, 2012.
-TAH, T_s, T_a, UDT, GLW, time_step, shade" />
+Biol., vol. 37, no. 1, pp. 56–64, 2012." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -96,19 +95,16 @@ TAH, T_s, T_a, UDT, GLW, time_step, shade" />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/AllometryAndConversionsTutorial.html">Estimating microclimates</a>
+      <a href="../articles/AllometryAndConversionsTutorial.html">TrenchR: Allometries and conversions</a>
     </li>
     <li>
-      <a href="../articles/FunctionTesting.html">Function testing</a>
+      <a href="../articles/MicroclimateTutorial.html">TrenchR: Estimating microclimates</a>
     </li>
     <li>
-      <a href="../articles/MicroclimateTutorial.html">Estimating microclimates</a>
+      <a href="../articles/Symbols.html">List of Symbols</a>
     </li>
     <li>
-      <a href="../articles/TeTutorial.html">Using energy balances to estimate body temperatures</a>
-    </li>
-    <li>
-      <a href="../articles/Usage.html">Biophysical model usecase</a>
+      <a href="../articles/TeTutorial.html">TrenchR: Using energy balances to estimate body temperatures</a>
     </li>
   </ul>
 </li>
@@ -139,51 +135,88 @@ TAH, T_s, T_a, UDT, GLW, time_step, shade" />
     </div>
 
     <div class="ref-description">
-    <p>[1] T. Fei, A. K. Skidmore, V. Venus, T. Wang, M. Schlerf, B. Toxopeus, 
+    <p>Transient model for predicting operative environmental temperature using model in the following publication: T. Fei, A. K. Skidmore, V. Venus, T. Wang, M. Schlerf, B. Toxopeus, 
 S. van Overjijk, M. Bian, and Y. Liu, “A body temperature model for 
 lizards as estimated from the thermal environment,” J. Therm. 
-Biol., vol. 37, no. 1, pp. 56–64, 2012.
-TAH, T_s, T_a, UDT, GLW, time_step, shade</p>
+Biol., vol. 37, no. 1, pp. 56–64, 2012.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>Tb_Fei</span>(<span class='no'>TAH</span>, <span class='no'>T_s</span>, <span class='no'>T_a</span>, <span class='no'>UDT</span>, <span class='no'>GLW</span>, <span class='no'>shade</span>)</pre>
+    <pre class="usage"><span class='fu'>Tb_Fei</span>(<span class='no'>T_a</span>, <span class='no'>T_g</span>, <span class='no'>H</span>, <span class='no'>lw</span>, <span class='no'>shade</span>, <span class='no'>m</span>, <span class='no'>Acondfact</span>, <span class='no'>Agradfact</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>TAH</th>
-      <td><p>Temperature in canopy (K).</p></td>
-    </tr>
-    <tr>
-      <th>T_s</th>
-      <td><p>Surface Temperature (K).</p></td>
-    </tr>
-    <tr>
       <th>T_a</th>
-      <td><p>Air Temperature (K).</p></td>
+      <td><p>is air temperature at lizard height in K</p></td>
     </tr>
     <tr>
-      <th>UDT</th>
-      <td><p>upper developmental threshold.</p></td>
+      <th>T_g</th>
+      <td><p>is surface temperature in K</p></td>
     </tr>
     <tr>
-      <th>GLW</th>
-      <td><p>Downward flux of near-infrared radiation</p></td>
+      <th>H</th>
+      <td><p>is total (direct + diffuse) solar radiation flux in W/m^2</p></td>
+    </tr>
+    <tr>
+      <th>lw</th>
+      <td><p>Downward flux of near-infrared radiation (W/m^2)</p></td>
     </tr>
     <tr>
       <th>shade</th>
-      <td><p>type of method being used</p></td>
+      <td><p>proportion of shade</p></td>
+    </tr>
+    <tr>
+      <th>m</th>
+      <td><p>is lizard mass in g</p></td>
+    </tr>
+    <tr>
+      <th>Acondfact</th>
+      <td><p>is the proportion of the lizard projected area that is in contact with the ground, Acondfact=0.05 for standing and Acondfact=0.35 for lying on ground</p></td>
+    </tr>
+    <tr>
+      <th>Agradfact</th>
+      <td><p>is the proportion of the lizard projected area exposed to radiation from the ground, Agradfact=0.4 for standing and Agradfact=0.0 for lying on ground</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Predicts body temperature (operative environmental temperature) of a lizard in K.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other biophysical models: <code><a href='Free_or_forced_convection.html'>Free_or_forced_convection</a></code>,
+  <code><a href='Grashof_number_Gates.html'>Grashof_number_Gates</a></code>,
+  <code><a href='Grashof_number.html'>Grashof_number</a></code>, <code><a href='Nu_from_Gr.html'>Nu_from_Gr</a></code>,
+  <code><a href='Nu_from_Re.html'>Nu_from_Re</a></code>, <code><a href='Nusselt_number.html'>Nusselt_number</a></code>,
+  <code><a href='Prandtl_number.html'>Prandtl_number</a></code>,
+  <code><a href='Qconduction_animal.html'>Qconduction_animal</a></code>,
+  <code><a href='Qconduction_substrate.html'>Qconduction_substrate</a></code>,
+  <code><a href='Qconvection.html'>Qconvection</a></code>,
+  <code><a href='Qemitted_thermal_radiation.html'>Qemitted_thermal_radiation</a></code>,
+  <code><a href='Qevaporation.html'>Qevaporation</a></code>,
+  <code><a href='Qmetabolism_from_mass_temp.html'>Qmetabolism_from_mass_temp</a></code>,
+  <code><a href='Qmetabolism_from_mass.html'>Qmetabolism_from_mass</a></code>,
+  <code><a href='Qnet_Gates.html'>Qnet_Gates</a></code>,
+  <code><a href='Qradiation_absorbed.html'>Qradiation_absorbed</a></code>,
+  <code><a href='Qthermal_radiation_absorbed.html'>Qthermal_radiation_absorbed</a></code>,
+  <code><a href='Reynolds_number.html'>Reynolds_number</a></code>,
+  <code><a href='Tb_CampbellNorman.html'>Tb_CampbellNorman</a></code>, <code><a href='Tb_Gates.html'>Tb_Gates</a></code>,
+  <code><a href='Tb_butterfly.html'>Tb_butterfly</a></code>, <code><a href='Tb_grasshopper.html'>Tb_grasshopper</a></code>,
+  <code><a href='Tb_lizard.html'>Tb_lizard</a></code>,
+  <code><a href='Tb_salamander_humid.html'>Tb_salamander_humid</a></code>, <code><a href='Tsoil.html'>Tsoil</a></code>,
+  <code><a href='actual_vapor_pressure.html'>actual_vapor_pressure</a></code>,
+  <code><a href='boundary_layer_resistance.html'>boundary_layer_resistance</a></code>,
+  <code><a href='external_resistance_to_water_vapor_transfer.html'>external_resistance_to_water_vapor_transfer</a></code>,
+  <code><a href='heat_transfer_coefficient_approximation.html'>heat_transfer_coefficient_approximation</a></code>,
+  <code><a href='heat_transfer_coefficient_simple.html'>heat_transfer_coefficient_simple</a></code>,
+  <code><a href='heat_transfer_coefficient.html'>heat_transfer_coefficient</a></code>,
+  <code><a href='saturation_vapor_pressure.html'>saturation_vapor_pressure</a></code>,
+  <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>Tb_Fei</span>(<span class='kw'>TAH</span><span class='kw'>=</span><span class='fl'>293</span>, <span class='kw'>T_s</span><span class='kw'>=</span><span class='fl'>300</span>, <span class='kw'>T_a</span><span class='kw'>=</span><span class='fl'>295</span>, <span class='kw'>UDT</span><span class='kw'>=</span><span class='fl'>600</span>, <span class='kw'>GLW</span><span class='kw'>=</span><span class='fl'>30</span>, <span class='kw'>shade</span><span class='kw'>=</span><span class='fl'>0.5</span>)
+<span class='fu'>Tb_Fei</span>(<span class='kw'>T_a</span><span class='kw'>=</span><span class='fl'>293</span>, <span class='kw'>T_g</span><span class='kw'>=</span><span class='fl'>300</span>, <span class='kw'>H</span><span class='kw'>=</span><span class='fl'>600</span>, <span class='kw'>lw</span><span class='kw'>=</span><span class='fl'>30</span>, <span class='kw'>shade</span><span class='kw'>=</span><span class='fl'>0.5</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>10.5</span>, <span class='kw'>Acondfact</span><span class='kw'>=</span><span class='fl'>0.05</span>, <span class='kw'>Agradfact</span><span class='kw'>=</span><span class='fl'>0.4</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -191,6 +224,7 @@ TAH, T_s, T_a, UDT, GLW, time_step, shade</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
