@@ -13,7 +13,7 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-The table below compiles all the symbols which are used by TrenchR functions.
+The table below compiles the symbols which are used by TrenchR functions.
 
 #Parameters
 | Symbol        | Description           |  |
