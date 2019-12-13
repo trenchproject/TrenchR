@@ -17,6 +17,8 @@
 
 sa_from_mass<-function(m, taxa){
 
+  stopifnot(taxa %in% c("lizard", "salamander", "frog", "insect"), m>0)
+  
   #lizard, O'Connor 1999 in Fei T et al. 2011. A body temperature model for lizards as estimated from the thermal environment. Journal of Thermal Biology 37:56-64.
   
   #initial mass in kg
@@ -56,6 +58,8 @@ sa_from_mass<-function(m, taxa){
 #'
 
 mass_from_length<-function(l, taxa){
+  
+  stopifnot(taxa %in% c("insect", "lizard", "salamander", "frog", "snake", "turtle"), l>0)
   
   #convert m to mm
   lengthmm= l*1000
@@ -105,8 +109,9 @@ mass_from_length<-function(l, taxa){
 
 sa_from_volume<-function(V, taxa){
 
-    #Ka is an empirical Constants (Mitchell 1976)
+  stopifnot(taxa %in% c("lizard", "frog", "sphere"), V>0)
   
+    #Ka is an empirical Constants (Mitchell 1976)
   # Case when taxa is Lizard (Norris 1965)
   if(taxa == "lizard") Ka = 11.0
   # Case when taxa is Frog (Tracy 1972)
@@ -138,6 +143,8 @@ sa_from_volume<-function(V, taxa){
 
 volume_from_length<-function(l, taxa){
   
+  stopifnot(taxa %in% c("lizard", "frog", "sphere"), l>0)
+  
   #Kl is an empirical constant (Mitchell 1976)
   # Case when taxa is Lizard (Norris 1965)
   if(taxa == "lizard") Kl = 3.3
@@ -168,6 +175,8 @@ volume_from_length<-function(l, taxa){
 #'
 
 sa_from_length<-function(l){
+  
+  stopifnot(l>0)
   
   #to mm
   l=l*1000
@@ -206,6 +215,8 @@ sa_from_length<-function(l){
 
 prop_silhouette_area<-function(z, taxa, raz=0, posture="prostrate"){
   
+  stopifnot(taxa %in% c("frog", "lizard", "grasshopper"), z>0,z<360)
+  
   #frog
   #Source: Tracy CR. 1976. A model of the dynamic exchanges of water and energy between a terrestrial amphibian and its environment. Ecological Monographs 46: 293-326.
   if(taxa=="frog") psa=(1.38171*10^(-6)*z^4-1.93335*10^(-4)*z^3+4.75761*10^(-3)*z^2-0.167912*z+45.8228)/100
@@ -213,7 +224,8 @@ prop_silhouette_area<-function(z, taxa, raz=0, posture="prostrate"){
   #lizards
   #Source: Muth A. 1977. Thermoregulatory Postures and Orientation to the Sun: A Mechanistic Evaluation for the Zebra-Tailed Lizard, Callisaurus draconoides. Copeia 4:710-720.
   if(taxa=="lizard"){
-    if(!raz %in% c(0,90,180)) stop("raz should be 0,90,or 180")  
+    if(!raz %in% c(0,90,180)) stop("raz should be 0,90,or 180") 
+    if(!posture %in% c("prostrate","elevated")) stop("posture should be prostrate or elevated")
     
     if(posture=="prostrate" && raz==0){A=-2.3148*10^(-6); B=-2.1024*10^(-3); C=-4.6162*10^(-2); D=30.7316}
   
@@ -257,6 +269,8 @@ prop_silhouette_area<-function(z, taxa, raz=0, posture="prostrate"){
 #' }
 
 prop_silhouette_area_shapes<-function(shape, theta, h, d){
+  
+  stopifnot(shape %in% c("spheroid", "cylinder flat ends", "cylinder hemisphere ends"), theta>0,theta<360, h>0, d>0)
   
   #convert degree to radian
   theta_r= theta*(2*pi)/360
