@@ -20,6 +20,8 @@
 
 estimate_radiation=function(doy, psi, tau, elev, rho=0.7){
   
+  stopifnot(doy>0, doy<367, psi<=2*pi, tau>=0, tau<=1, elev>0, rho>=0, rho<=1)
+  
   sigma=5.67*10^-8 # Stefan-Boltzman constant, W m^-2 K^-4
   c_p=29.3 # Specific heat of air, J/mol degrees K or C
   S_p0=1360 # extraterrestrial flux density, W/m^2 (p159)
@@ -76,6 +78,8 @@ estimate_radiation=function(doy, psi, tau, elev, rho=0.7){
 #'}
 diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){ 
 
+  stopifnot(doy>0, doy<367, solrad>0, hour>=0, hour<=24, lon>-180, lon<=360, lat>=-90, lat<=90)
+  
   #Calculate solar time
   rd=180/pi;  # factor to convert radians into degrees
   RevAng = 0.21631 + 2 * atan(0.967 * tan(0.0086 * (-186 + doy))); # Revolution angle in radians
@@ -133,6 +137,8 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
 
 monthly_solar_radiation= function(lat,lon,doy,elev,T,Hr,P){
 
+  stopifnot(lat>=-90, lat<=90, lon>-180, lon<=360, doy>0, doy<367, elev>0, Hr>=0, Hr<=100, P>0)
+  
   library(msm) #for rtnorm
   
   rd=180/pi;  # factor to convert radians into degrees

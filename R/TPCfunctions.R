@@ -45,6 +45,9 @@ TPC<- function(T,Topt,CTmin, CTmax){
 #' }
 
 TPC.beta<- function(T, shift=-1, breadth=0.1, aran=0, tolerance= 43, skew=0.7){ 
+
+  stopifnot(breadth>0, aran %in% c(0,1), tolerance>0, skew>=0, skew<=1)
+  
   T = T + 273.15 #Convert temperature in degrees Celsius to Kelvin
   shift= shift + 273.15 #Convert temperature in degrees Celsius to Kelvin         
   z=rep(0.01, length(T))

@@ -22,6 +22,8 @@
 
 diurnal_temp_variation_sineexp=function(T_max, T_min, t, t_r, t_s, alpha=2.59, beta= 1.55, gamma=2.2){
 
+  stopifnot(t_s>=0, t_s<=24,t_r>=0, t_r<=24,t>=0, t<=24,alpha>=0, alpha<=24,gamma>=0, gamma<=24,beta>=0, beta<=24)
+  
   #default values are the average of 5 North Carolina sites. Source: Wann M et al. 1985. Evaluation and calibration of three models for daily cycle of air temperature. Agricultural and Forest Meteorology 34: 121-128.
   
   #Other parameterizations include values for Denver, Colorado from Parton and Logan (1981): 
@@ -73,8 +75,8 @@ return(T)
 
 
 diurnal_temp_variation_sine=function(T_max, T_min, t){
-  #T_max= max temperature
-  #T_min= min temperature
+  
+  stopifnot(t>=0, t<=24)
   
   W=pi/12;
   gamma= 0.44 - 0.46* sin(0.9 + W * t)+ 0.11 * sin(0.9 + 2 * W * t);   # (2.2) diurnal temperature function
@@ -105,6 +107,8 @@ diurnal_temp_variation_sine=function(T_max, T_min, t){
 
 diurnal_temp_variation_sinesqrt=function(t, tr, ts, T_max, T_min, T_minp){
  
+  stopifnot(t>=0, t<=24, tr>=0, tr<=24, ts>=0, ts<=24)
+  
   #Time estimates
   tp = tr + 24 #sunrise time following day
   tx= ts - 4 #Assume time of maximum temperature 4h before sunset

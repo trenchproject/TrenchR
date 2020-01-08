@@ -20,6 +20,7 @@
 #'}
 
 surface_roughness<- function(u_r, zr){
+
  mod1= lm(log(zr)~u_r)
  d= exp(as.numeric(mod1$coefficients[1])) #Zero Plane displacement:height at which the wind speed is zero
  # can also assume d=0.63h (Monteith 1975)
@@ -58,7 +59,10 @@ surface_roughness<- function(u_r, zr){
 #'}
  
 wind_speed_profile_neutral <- function(u_r, zr, z0, z) {
-    u_z = u_r* log(z/z0 + 1) / log(zr/z0 + 1)
+
+  stopifnot(u_r>=0, zr>=0, z0>=0, z>=0)
+  
+      u_z = u_r* log(z/z0 + 1) / log(zr/z0 + 1)
   return(u_z)
   }
 
@@ -84,10 +88,12 @@ wind_speed_profile_neutral <- function(u_r, zr, z0, z) {
 #'}
 #'
 air_temp_profile_neutral<-function(T_r, zr, z0, z, T_s){
+
+  stopifnot(zr>=0, z0>=0, z>=0)
+  
   T_z= (T_r-T_s)*log(z/z0+1)/log(zr/z0+1)+T_s 
   return(T_z)
 }
-
 
 #' Estimate wind speed profile as in NicheMapR.
 #' 
@@ -111,6 +117,9 @@ air_temp_profile_neutral<-function(T_r, zr, z0, z, T_s){
 #'}
 
 wind_speed_profile<- function(u_r,zr,z0,z){
+  
+  stopifnot(u_r>=0, zr>=0, z0>=0, z>=0)
+  
   #Friction velocity
   u_star=  0.4*u_r/log(zr/z0 +1)  #0.4 is von Karman constant
   u_z= 2.5*u_star*log(z/z0+1)
@@ -140,6 +149,9 @@ wind_speed_profile<- function(u_r,zr,z0,z){
 #'
 
 air_temp_profile= function(T_r, u_r, zr, z0,z,T_s){
+  
+  stopifnot(u_r>=0, zr>=0, z0>=0, z>=0)
+  
   #friction velocity
   u_star=  0.4*u_r/log(zr/z0 +1)  #0.4 is von Karman constant
   #sublayer stanton number
@@ -180,6 +192,8 @@ air_temp_profile= function(T_r, u_r, zr, z0,z,T_s){
 #'
 
 air_temp_profile_segment= function(T_r, u_r, zr, z0,z,T_s){
+  
+  stopifnot(z>=0)
   
   #order roughness and segment heights 
   zr.ord= order(zr, decreasing = TRUE)
@@ -233,6 +247,8 @@ air_temp_profile_segment= function(T_r, u_r, zr, z0,z,T_s){
 #'
 
 wind_speed_profile_segment= function(u_r, zr, z0,z){
+  
+  stopifnot(z>=0)
   
   #order roughness and segment heights so that z1>z2>z0 
   zr.ord= order(zr, decreasing = TRUE)

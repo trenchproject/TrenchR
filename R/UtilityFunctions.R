@@ -37,6 +37,8 @@ day_of_year<- function(day, format="%Y-%m-%d"){
 #' }
 
 dec_angle <- function(doy){
+  stopifnot(doy>0, doy<367)
+  
   RevAng = 0.21631 + 2 * atan (0.967 * tan (0.0086 * (-186 + doy))) # Revolution angle in radians, calculated per day
   DecAng = asin (0.39795 * cos (RevAng))                            # Declination angle in radians  
   return(DecAng)
@@ -61,6 +63,8 @@ dec_angle <- function(doy){
 #' }
 
 daylength <- function(lat, doy){
+  stopifnot(lat>=-90, lat<=90, doy>0, doy<367)
+  
   lat=lat*pi/180 #convert degrees to radians
   RevAng = 0.21631 + 2 * atan (0.967 * tan (0.0086 * (-186 + doy))) # Revolution angle in radians, calculated per day
   DecAng = asin (0.39795 * cos (RevAng))                            # Declination angle in radians  
@@ -86,6 +90,9 @@ daylength <- function(lat, doy){
 #' }
 
 solar_noon <- function(lon, doy){
+  
+  stopifnot(lon>=-180, lon<=360, doy>0, doy<367)
+  
   # Calculate the time of solar noon for each day using longitude correction (LC), equation of time (ET), and a conversion (f)
   f=(279.575+0.9856*doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
   f[f>360]=f[f>360]-360 #ensure 0 to 360 degrees
@@ -121,6 +128,8 @@ solar_noon <- function(lon, doy){
 
 zenith_angle=function(doy, lat, lon, hour){
 
+  stopifnot(doy>0, doy<367, lat>=-90, lat<=90, lon>=-180, lon<=360, hour>=0, hour<=24)
+  
 lat=lat*pi/180 #to radians
 lon=lon*pi/180 #to radians
   
@@ -162,6 +171,8 @@ return(zenith)
 
 azimuth_angle=function(doy, lat, lon, hour){
   
+  stopifnot(doy>0, doy<367, lat>=-90, lat<=90, lon>=-180, lon<=360, hour>=0, hour<=24)
+  
   lat=lat*pi/180 #to radians
   lon=lon*pi/180 #to radians
   
@@ -201,6 +212,8 @@ azimuth_angle=function(doy, lat, lon, hour){
 #' }
 airpressure_from_elev<- function(elev){  
  
+  stopifnot(elev>0)
+  
   #p= 101325* (1 - 2.25577*10^(-5)*elev)^5.25588       
   #p= p/1000 #convert to kPa
   

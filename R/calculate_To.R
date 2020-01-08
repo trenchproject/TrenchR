@@ -26,6 +26,8 @@
 
 Tb_Fei <- function(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact){
   
+  stopifnot(H>=0, lw>=0, shade>=0, shade<=1, m>=0, Acondfact>=0, Acondfact<=1, Agradfact>=0, Agradfact<=1)
+  
   # ---- Start Constants
   alpha_L = 0.965 # thermal absoptivity (proportion), Bartlett & Gates 1967
   h_L=10.45 #convective heat transfer ceofficient (W m-2 K-1) (Fei et al. 2012, J Ther Biol, 37: 56-64, Porter et al. 1973?)

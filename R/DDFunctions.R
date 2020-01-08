@@ -20,6 +20,9 @@
 #' 
 
 degree_days=function(T_min,T_max,LDT=NA,UDT=NA, method="single.sine"){
+  
+  stopifnot(method %in% c("single.sine","double.sine", "single.triangulation", "double.triangulation"))
+  
   #amplitude
   alpha=(T_max-T_min)/2 
   dd = 0

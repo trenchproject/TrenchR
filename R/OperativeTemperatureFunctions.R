@@ -20,6 +20,8 @@
 #' 
 Tb_CampbellNorman=function(T_a, S, epsilon=0.96, c_p=29.3, D, V){
     
+  stopifnot(T_a>200, T_a<400, epsilon>=0.5, epsilon<=1, c_p>=0, D>0, V>=0)
+  
   #Stefan-Boltzmann constant
   sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
   
@@ -58,6 +60,8 @@ Tb_CampbellNorman=function(T_a, S, epsilon=0.96, c_p=29.3, D, V){
 #' 
 Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
   
+  stopifnot(Qabs>0, Qmet>0, Qevap>0)
+  
   Qnet= Qabs -Qemit -Qconv -Qcond -Qmet -Qevap
  
   return(Qnet) 
@@ -92,6 +96,7 @@ Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #' 
 Tb_Gates=function(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilon, H_L,ef=1.3, K){
 
+  stopifnot(A>0, D>0, psa_dir>=0, psa_dir<=1, psa_ref>=0, psa_ref<=1, psa_air>=0, psa_air<=1, psa_g>=0, psa_g<=1, T_g>200, T_g<400, T_a>200, T_a<400, Qabs>0, epsilon>0.5, epsilon<=1, H_L>0, K>0)
   
     #Stefan-Boltzmann constant
     sigma= 5.673*10^(-8) #W m^(-2) K^(-4)

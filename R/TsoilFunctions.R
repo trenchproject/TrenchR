@@ -4,7 +4,7 @@
 #' @description This function allows you to estimate soil thermal conductivity in W m^-1 K^-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).
 #' @param x is a vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.
 #' @param lambda is a vector of the thermal conductivities (W m^-1 K^-1) of the soil constituents.
-#' @param g_a is a shape factor on soil particles.  The soil particles are assumed to be ellipsoids with axes g_a, g_b, and g_c, where g_a +g_b +g_c=1.  de Vries 1952 suggests g_a=g_b=0.125.
+#' @param g_a is a shape factor on soil particles.  The soil particles are assumed to be ellipsoids with axes g_a, g_b, and g_c, where g_a +g_b +g_c=1 and g_a=g_b.  de Vries 1952 suggests g_a=g_b=0.125.
 #' @return soil thermal conductivity (W m^-1 K^-1)
 #' @keywords soil temperature
 #' @family soil temperature functions
@@ -16,7 +16,10 @@
 #'}
 
 soil_conductivity<-function(x, lambda, g_a){
-  g_c<-1-2*g_a #estimate ellipsoid axias g_c assuming g_a=g_b.
+  
+  stopifnot(g_a>0,g_a<1)
+  
+  g_c<-1-2*g_a #estimate ellipsoid axis g_c assuming g_a=g_b.
   
   #solve for k, where k is the 
   k<-rep(NA,length(x))
@@ -47,6 +50,9 @@ soil_conductivity<-function(x, lambda, g_a){
 #'}
 
 soil_specific_heat<-function(x_o, x_m, x_w, rho_so){
+  
+  stopifnot(x_o>=0, x_o<=1, x_m>=0, x_m<=1, x_w>=0, x_w<=1, rho_so>0)
+  
   c_so<-(1300*1920*x_o + 2650*870*x_m + 1.00*4.18*x_w)/rho_so #4.184 converts from cal/K to J/K, 1000000 converts from cm^-3 to m^-3, /rho_so converts from heat capacity per unit volume to per kg
   return(c_so)
 }
@@ -258,6 +264,8 @@ soil_temperature_function<- function(j,T_so, params){
 #'}
 
 soil_temperature<-function(z_r.intervals=12,z_r, z, T_a, u, Tsoil0, z0, SSA, TimeIn, H, water_content=0.2, air_pressure, rho_so=1620, shade=FALSE){
+  
+  stopifnot(z_r.intervals>0, z_r>=0, z0>0, SSA>=0, SSA<=1, water_content>=0, water_content<=1, air_pressure>0, rho_so>0, shade %in% c(TRUE, FALSE))
   
   #account for NAs at beginning of data
   first.dat= min(which( !is.na(T_a)))

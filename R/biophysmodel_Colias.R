@@ -25,6 +25,8 @@
 
 Tb_butterfly=function(T_a, Tg, Tg_sh, u, H_sdir, H_sdif, z, D, delta, alpha, r_g=0.3, shade=FALSE){
 
+  stopifnot(u>=0, H_sdir>=0, H_sdif>=0, D>0, delta>=0, alpha>=0, r_g>=0, r_g<=1, shade %in% c(FALSE, TRUE) )  
+  
 TaK= T_a+273.15 #ambient temperature in K
 TaK_sh=TaK
 Tg= Tg+273.15 #ground surface temperature in K

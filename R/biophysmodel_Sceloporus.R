@@ -34,6 +34,8 @@
 #' 
 Tb_lizard=function(T_a, T_g, u, svl, m, psi, rho_S, elev, doy, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5){
   
+  stopifnot(u>=0, svl>=0, m>=0, rho_S>=0, rho_S<=1, elev>=0, doy>0, doy<367, sun %in% c(TRUE, FALSE), surface %in% c(TRUE, FALSE), alpha_S>=0, alpha_S<=1, alpha_L>=0, alpha_L<=1, epsilon_s>=0, epsilon_s<=1, F_d>=0, F_d<=1, F_r>=0, F_r<=1, F_a>=0, F_a<=1, F_g>=0, F_g<=1)
+  
   psi= psi*pi/180 #convert zenith angle to radians
   
   # constants

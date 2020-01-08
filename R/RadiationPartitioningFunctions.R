@@ -16,6 +16,8 @@
 #'}
 partition_solar_radiation=function(method, kt, lat=NA, sol.elev=NA){  
  
+  stopifnot(method %in% c("Liu_Jordan", "Orgill_Hollands", "Erbs", "Olyphant", "Spencer", "Reindl-1", "Reindl-2", "Lam_Li"), kt>=0, kt<=1)
+  
   # Methods from Wong and Chow (2001, Applied Energy 69:1991-224)
   
   #based on the correlations between the clearness index kt (dimensionless) and the diffuse fraction kd (dimensionless), diffuse coefficient kD (dimensionless) or the direct transmittance kb (dimensionless) where
