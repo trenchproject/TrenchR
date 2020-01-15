@@ -6,10 +6,4 @@ articles:
   MicroclimateTutorial: MicroclimateTutorial.html
   Symbols: Symbols.html
   TeTutorial: TeTutorial.html
-navbar:
-  components:
-    articles:
-      text: Articles
-      menu:
-      - text: 'Allometries and conversions'
-        href: AllometryAndConversionsTutorial.html
+

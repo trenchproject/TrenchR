@@ -13,3 +13,6 @@ TrenchR.Rproj
 ^\.Rproj\.Rhistory
 ^\.Rproj\.travis.yml
 ^\.Rproj\appveyor.yml
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
