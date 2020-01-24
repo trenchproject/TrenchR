@@ -14,10 +14,11 @@ The TrenchR package aids in Translating Environmental Change into organismal res
 ### Installation
 You can install the package from the [github repository](https://github.com/trenchproject/TrenchR):
 
-```{r eval=FALSE}
-install.packages("devtools")
-library("devtools")
-devtools::install_github(build_vignettes = TRUE,repo = "trenchproject/TrenchR")
+```r
+
+install.packages("devtools")   
+library("devtools")   
+devtools::install_github(build_vignettes = TRUE,repo = "trenchproject/TrenchR")   
                  
 ```
 
