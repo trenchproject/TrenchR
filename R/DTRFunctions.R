@@ -3,15 +3,15 @@
 
 #' @details Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components.
 #' @description This function allows you to estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: Parton WJ and Logan JA. 1981. A model for diurnal variation in soil and air temperature. Agricultural Meteorology 23: 205-216.
-#' @param T_max maximum daily temperature (C)
-#' @param T_min minimum daily temperature (C)
+#' @param T_max maximum daily temperature (°C)
+#' @param T_min minimum daily temperature (°C)
 #' @param t_s time of sunrise (hour)
 #' @param t_r time of sunset (hour)
 #' @param t hour for temperature estimate
 #' @param alpha  time difference between t_x(time of maximum temperature) and noon
 #' @param gamma decay parameter for rate of t change from sunset to t_n(time of minimum temp)
 #' @param beta time difference between t_x and sunrise
-#' @return temperature (C) at a specified hour 
+#' @return temperature (°C) at a specified hour 
 #' @keywords Temperature
 #' @family microclimate functions
 #' @export
@@ -64,7 +64,7 @@ return(T)
 #' @param T_max maximum daily temperature in degree celsius 
 #' @param T_min minimum daily temperature in degree celsius
 #' @param t hour for temperature estimate
-#' @return temperature (C) at a specified hour 
+#' @return temperature (°C) at a specified hour 
 #' @keywords Temperature
 #' @family microclimate functions
 #' @export
@@ -93,10 +93,10 @@ diurnal_temp_variation_sine=function(T_max, T_min, t){
 #' @param t hour or hours for temperature estimate
 #' @param tr sunrise hour (0-23)
 #' @param ts sunset hour (0-23)
-#' @param T_max maximum temperature of current day (C) 
-#' @param T_min minimum temperature of current day (C)
-#' @param T_minp minimum temperature of following day (C)
-#' @return temperature (C) at a specified hour 
+#' @param T_max maximum temperature of current day (°C) 
+#' @param T_min minimum temperature of current day (°C)
+#' @param T_minp minimum temperature of following day (°C)
+#' @return temperature (°C) at a specified hour 
 #' @keywords Temperature
 #' @family microclimate functions
 #' @export

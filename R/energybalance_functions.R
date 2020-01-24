@@ -376,8 +376,8 @@ saturation_water_vapor_pressure<-function(T_a){
 #'
 #' 
 #' @details This function allows you to estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport. Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
-#' @param H heat transfer (convection) coefficient (W m^-2 C^-1)
-#' @param rhocp aggregate parameter (J m^-3 C^-1) that is the product of the density of air (kg m^-3) and the specific heat of air at constant pressure (J kg^-1 C^-1). Default of 12000 J m^-3 C^-1 is commonly assumed.
+#' @param H heat transfer (convection) coefficient (W m^-2 °C^-1)
+#' @param rhocp aggregate parameter (J m^-3 °C^-1) that is the product of the density of air (kg m^-3) and the specific heat of air at constant pressure (J kg^-1 °C^-1). Default of 12000 J m^-3 °C^-1 is commonly assumed.
 #' @return external resistance to water vapor transfer (s m^-1)
 #' @keywords external resistance to water vapor transfer
 #' @family biophysical models
@@ -465,7 +465,7 @@ Qmetabolism_from_mass_temp<-function(m,T_b, taxa){
 #'
 #' 
 #' @details Calculate actual vapor pressure from dewpoint temperature based on Stull 2000. Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
-#' @param Tdewpoint dewpoint temperature (C)
+#' @param Tdewpoint dewpoint temperature (°C)
 #' @return actual vapor pressure, e_a (kPa)
 #' @keywords actual vapor pressure
 #' @family biophysical models
@@ -767,10 +767,10 @@ Reynolds_number<-function(u, D, nu){
 #' Calculate Grashof Number
 #'
 #' @details This function allows you to estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force. Reference: Campell and Norman. 1998. An Introduction to Environmental Biophysics
-#' @param Ta Air temperature (C).
-#' @param Tg Ground (surface) temperature (C).
+#' @param Ta Air temperature (°C).
+#' @param Tg Ground (surface) temperature (°C).
 #' @param D is characteristic dimension (e.g., body diameter) (m)
-#' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^-1), can calculate from DRYAIR or WETAIR
+#' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^-1), can calculate from `DRYAIR()` or `WETAIR()`
 #' @return Grashof number
 #' @keywords Grashof number
 #' @family biophysical models
@@ -797,11 +797,11 @@ Grashof_number<-function(Ta, Tg, D, nu){
 #' Calculate Grashof Number in Gates
 #'
 #' @details This function allows you to estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity (Gates 1980 Biophysical Ecology). Ratio of a buoyant force times an inertial force to the square of a viscous force.
-#' @param Ta Air temperature (C).
-#' @param Tg Ground (surface) temperature (C).
-#' @param beta coefficient of volumetric thermal expansion, beta= 3.67 x 10^-3 C^-1  in air and 41.9 x 10^-4 C^-1 in water.
+#' @param Ta Air temperature (°C).
+#' @param Tg Ground (surface) temperature (°C).
+#' @param beta coefficient of volumetric thermal expansion, beta= 3.67 x 10^-3 °C^-1  in air and 41.9 x 10^-4 °C^-1 in water.
 #' @param D is characteristic dimension (e.g., body diameter) (m)
-#' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m2 s-1), can calculate from DRYAIR or WETAIR
+#' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s-1), can calculate from DRYAIR or WETAIR
 #' 
 #' @return Grashof number
 #' @keywords Grashof number

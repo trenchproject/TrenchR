@@ -69,16 +69,16 @@ wind_speed_profile_neutral <- function(u_r, zr, z0, z) {
 #' Estimate temperature at a specified height under neutral conditions
 #' 
 #' @details Calculates temperature at a specified height under neutral conditions
-#' @description This function allows you to calculate temperature (C) at a specified height (m) within a 
+#' @description This function allows you to calculate temperature (°C) at a specified height (m) within a 
 #' boundary layer near the surface.  The velocity profile is the neutral profile described by Sellers (1965). 
 #' Function in equations (2) and (3) of Porter et al. (1973). Source: Porter WP et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
 #' 
-#' @param T_r is temperature at reference height in degrees C.
+#' @param T_r is temperature at reference height in °C.
 #' @param zr is initial reference height in m.
 #' @param z0 is surface roughness in m.
 #' @param z is height to scale to in m.
-#' @param T_s is surface temperatures in degrees C.
-#' @return temperature (degrees C)
+#' @param T_s is surface temperatures in °C.
+#' @return temperature (°C)
 #' @keywords temperature profile
 #' @family microclimate functions
 #' @export
@@ -129,16 +129,16 @@ wind_speed_profile<- function(u_r,zr,z0,z){
 #' Estimate air temperature profile as in NicheMapR
 #' 
 #' @details Estimate temperature at a specified height
-#' @description This function allows you to estimate temperature (C) at a specified height (m).  
+#' @description This function allows you to estimate temperature (°C) at a specified height (m).  
 #' Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.
 #' 
-#' @param T_r is temperature at reference height in degrees C.
+#' @param T_r is temperature at reference height in °C.
 #' @param u_r is windspeed at reference height in m/s.
 #' @param zr is initial reference height in m.
 #' @param z0 is surface roughness in m.
-#' @param z is height to scale to in m.
-#' @param T_s is surface temperatures in degrees C.
-#' @return temperature (degrees C)
+#' @param z is height to scale in m.
+#' @param T_s is surface temperatures in °C.
+#' @return temperature (°C)
 #' @keywords temperature profile
 #' @family microclimate functions
 #' @export
@@ -170,18 +170,18 @@ air_temp_profile= function(T_r, u_r, zr, z0,z,T_s){
 #' 
 #'   
 #' @details Calculates temperature at a specified height
-#' @description This function allows you to calculate temperature (C) at a specified height (m).  
+#' @description This function allows you to calculate temperature (°C) at a specified height (m).  
 #' Estimates a three segment velocity and temperature profile based on user-specified, 
 #' experimentally determined values for 3 roughness heights and reference heights.  
 #' Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks.
 #' Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Porter 2016. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.
 #' 
-#' @param T_r is a vector of temperature at the 3 reference heights in degrees C.
+#' @param T_r is a vector of temperature at the 3 reference heights in °C.
 #' @param u_r is a vector of wind speeds at the 3 reference heights in m/s.
 #' @param zr is a vector of 3 reference heights in m.
 #' @param z0 is a vector of 3 experimentally determined roughness heights in m.
 #' @param z is height to scale to in m.
-#' @param T_s is surface temperatures in degrees C.
+#' @param T_s is surface temperatures in °C.
 #' @keywords temperature profile
 #' @family microclimate functions
 #' @export

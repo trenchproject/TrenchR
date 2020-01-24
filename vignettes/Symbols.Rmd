@@ -89,8 +89,8 @@ The table below compiles the symbols which are used by TrenchR functions.
 |$water_content$  | water content (percent) ||
 |$x$| vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air). ||
 |$z$| distance, or height above a surface ($m$); zenith angle (°)||
-|$z_r$| reference height ($m$) ||
-|$z_0$| roughness height ($m$) ||
+|$zr$| reference height ($m$) ||
+|$z0$| roughness height ($m$) ||
 
 ##Greek Symbols
 | Symbol        | Description           |   |

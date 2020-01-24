@@ -52,7 +52,7 @@ dec_angle <- function(doy){
 #' @description This function allows you to calculate daylength in hours as a function of latitude and day of year. Uses the CMB model (Forsythe et al. 1995). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 #' @param lat latitude in degrees
 #' @param doy day of year
-#' @return hours 
+#' @return day length in hours 
 #' 
 #' @keywords day length
 #' @family utility functions
@@ -171,7 +171,7 @@ return(zenith)
 
 azimuth_angle=function(doy, lat, lon, hour){
   
-  stopifnot(doy>0, doy<367, lat>=-90, lat<=90, lon>=-180, lon<=360, hour>=0, hour<=24)
+  stopifnot(doy>0, doy<367, lat>=-90, lat<=90, lon>=-180, lon<=180, hour>=0, hour<=24)
   
   lat=lat*pi/180 #to radians
   lon=lon*pi/180 #to radians

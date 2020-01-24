@@ -298,7 +298,7 @@ legend("right", title="taxa", legend=c("amphibian","amphibian_wetskin","lizard")
 We estimate external resistance to water vapor transport, $r_e$, using the Lewis rule describing the relationships among the coefficients for heat and mass transport: $r_e= 0.93 \rho c_p/H_L$, where $\rho$ is the density of air ($kg m^{-3}$), $c_p$ is the specific heat of air at constant pressure ($J kg^{-1}*°C^{-1}$), and $H_L$ is the convective heat transfer coefficient ($W m^{-2} °C^{-1}$). We approximate $\rho c_p$as 1,200 $J m^{-3}*°C^{-1}$ as commonly done in biological applications [@spotila1992biophysics]. We provide the relationship for $r_e$ as a function:
 ```{r, fig.height=4, fig.width=6}
 par(mar=c(5,5,3,2))
-plot(10:30, external_resistance_to_water_vapor_transfer(H=10:30), type="l", xlab = expression("heat transfer coefficient" ~ (W ~ m^{-2} ~ °C^{-1})), ylab = expression("external resistance," ~ r[e] ~ (sm^{-1})))
+plot(10:30, external_resistance_to_water_vapor_transfer(H=10:30), type="l", xlab = expression("heat transfer coefficient" ~ (W ~ m^{-2} ~ "°" ~ C^{-1})), ylab = expression("external resistance," ~ r[e] ~ (sm^{-1})))
 ```
 
 At constant temperatures, the relationship between vapor pressure and vapor density is linear and vapor pressure can be approximated at temperatures between $0°C$ and $40°C$ as $e_s= 10^{0.02604 T_a+2.82488}$, where $T_a$ is air temperature ($°C$).  We provide the approximation as a function:

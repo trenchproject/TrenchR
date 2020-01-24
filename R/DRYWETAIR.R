@@ -8,14 +8,14 @@
 #'
 #' The user must supply values for the input variables (db, bp and alt).
 #' If alt is known (-1000 < alt < 20000) but not BP, then set BP=0
-#' @param db Dry bulb temperature (degrees C)
+#' @param db Dry bulb temperature (°C)
 #' @param bp Barometric pressure (pascal)
 #' @param alt Altitude (m)
 #' @return patmos Standard atmospheric pressure (Pa)
 #' @return densty Density (kg m-3)
 #' @return visdyn Dynamic viscosity (kg m-1 s-1)
 #' @return viskin Kinematic viscosity (m2 s-1)
-#' @return difvpr Diffusivity of water vapour in air (m2 s-1)
+#' @return difvpr Diffusivity of water vapor in air (m2 s-1)
 #' @return thcond Thermal conductivity (W m-1 K-1)
 #' @return htovpr Latent heat of vapourisation of water (J kg-1)
 #' @return tcoeff Temperature coefficient of volume expansion (K-1)
