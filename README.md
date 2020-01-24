@@ -15,11 +15,9 @@ The TrenchR package aids in Translating Environmental Change into organismal res
 You can install the package from the [github repository](https://github.com/trenchproject/TrenchR):
 
 ```r
-
 install.packages("devtools")   
 library("devtools")   
-devtools::install_github(build_vignettes = TRUE,repo = "trenchproject/TrenchR")   
-                 
+devtools::install_github(build_vignettes = TRUE,repo = "trenchproject/TrenchR")
 ```
 
 ### Using the package
@@ -29,22 +27,22 @@ The package encompasses simple functions that can be combined to estimate enviro
 
 ### Package Vignette
 We introduce each function in categorically grouped tutorials.  A good place to start is the Allometry and conversions tutorial, which provides tools for preparing data such as estimating additional dimensions of organisms from measured dimensions. 
-```{r eval=FALSE}
 
+```r
 vignette("AllometryAndConversionsTutorial.Rmd", package="TrenchR")
 
 ```
 
 The Estimating microclimates tutorial provides resources for estimating the environmental conditions experienced by organisms.  This includes estimating solar radiation and its components, diurnal variation in temperature and radiation, temperature and wind speed profiles, and soil temperatures and profiles. 
-```{r eval=FALSE}
 
+```r
 vignette("MicroclimateTutorial", package="TrenchR")
 
 ```
 
 Finally, the core biophysical modelling functions are described in a tutorial on Using energy balances to estimate body temperatures. Components of an energy budget can be estimated using individual functions and then operative environmental temperatures, Te, can be solved for using either a generic energy balance or taxa specific biophysical models.
-```{r eval=FALSE}
 
+```r
 vignette("TeTutorial", package="TrenchR")
 
 ```
