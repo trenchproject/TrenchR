@@ -35,7 +35,7 @@ vignette("AllometryAndConversionsTutorial.Rmd", package="TrenchR")
 
 ```
 
-The Estimating microclimates tutorial provides resources for estimating the environmental conditions experienced by organisms.  This includes estimating solar radiation and its components, diurnal variation in temperature and radiation, temperature and windspeed profiles, and soil temperatures and profiles. 
+The Estimating microclimates tutorial provides resources for estimating the environmental conditions experienced by organisms.  This includes estimating solar radiation and its components, diurnal variation in temperature and radiation, temperature and wind speed profiles, and soil temperatures and profiles. 
 ```{r eval=FALSE}
 
 vignette("MicroclimateTutorial", package="TrenchR")
