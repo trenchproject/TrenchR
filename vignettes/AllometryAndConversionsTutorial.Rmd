@@ -35,40 +35,41 @@ points(seq(0.01,0.10,0.01), mass_from_length(seq(0.01,0.10,0.01),"insect"), type
 
 Surface area is needed for several aspects of biophysical models but is rarely meausured. We provide functions to estimate surface area ($m^3$) from length, mass, or volume for a variety of taxa. The function `sa_from_mass()` encompasses empirically-derived relationship to estimate surface area as a power law function of mass for lizards, frogs, and insects.  We also provide empirical relationships estimating surface area as power law function of volume. The functions were developed by Mitchell [-@mitchell1976heat] for use in approximating convective heat transfer. For the same study, we additionally provide a function to estimate volume from length for several taxa or approximating the organism as a sphere. Finally, we provide a function for estimating surface area from length by approximating the animal's body as a rotational ellipsoid. The allometric functions are available in R as follows:
 ```{r, fig.height=4, fig.width=6}
-plot(1:50, sa_from_mass(1:50,"lizard"), type="l", xlab = "m (g)", ylab = "surface area (m2)")
+par(mar=c(5,5,3,2))
+plot(1:50, sa_from_mass(1:50,"lizard"), type="l", xlab = "m (g)", ylab = expression("surface area" ~ (m^{2})))
 points(1:50, sa_from_mass(1:50,"frog"), type="l", lty="dashed")
 points(1:50, sa_from_mass(1:50,"salamander"), type="l", lty="dotted")
 points(seq(0.1,5,0.2), sa_from_mass(seq(0.1,5,0.2),"insect"), type="l", lty="dotdash")
 
-plot(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"lizard"), type="l", xlab = "volume (m^3)", ylab = "sa (m^2)")
+plot(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"lizard"), type="l", xlab = expression(volume ~ (m^{3})), ylab = expression("surface area" ~ (m^{2})))
 points(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"frog"), type="l", lty="dashed")
 points(seq(0.001, 0.01, 0.001), sa_from_volume(seq(0.001, 0.01, 0.001),"sphere"), type="l", lty="dotted")
 
-plot(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001),"lizard"), type="l", xlab = "length (m)", ylab = "volume (m^3)")
+plot(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001),"lizard"), type="l", xlab = "length (m)", ylab = expression(volume ~ (m^{3})))
 points(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001),"frog"), type="l", lty="dashed")
 points(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001),"sphere"), type="l", lty="dotted")
 
-plot(seq(0.01, 0.05, 0.001), sa_from_length(l=seq(0.01, 0.05, 0.001)), type="l", xlab = "length (m)", ylab = "surface area (m^2)")
+plot(seq(0.01, 0.05, 0.001), sa_from_length(l=seq(0.01, 0.05, 0.001)), type="l", xlab = "length (m)", ylab = expression("surface area" ~ (m^{2})))
 ```
 
 Estimating the amount of solar radiation that an animal absorbs requires knowledge of the silhouette area, the propotion of an animal's surface area that is projected onto a horizontal surface. Silhouette area is a function of the sun's angle. We offer empirically-derived relationships to predict the proportional silhouette area for frogs, lizards, and grasshoppers as a polynomial function of zenith angle (`prop_silhouette_area()`).  We additionally offer a function (`prop_silhouette_area_shapes()`) to estimate silhoutte area by approximating the animal as a sphere or cylinder.  The R functions are parameterized as follows:
 ```{r, fig.height=4, fig.width=6}
-plot(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "frog"), type="l", xlab = "zenith angle (degree)", ylab = "proportion silhouette area", ylim=range(0,0.5))
+plot(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "frog"), type="l", xlab = "zenith angle (°)", ylab = "proportion silhouette area", ylim=range(0,0.5))
 points(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "lizard", raz=0, posture="prostrate"), type="l", lty="dashed")
 points(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "lizard", raz=0, posture="elevated"), type="l", lty="dotted")
 points(seq(0, 90, 10), prop_silhouette_area(z=seq(0, 90, 10), taxa= "grasshopper"), type="l", lty="dotdash")
 
-plot(seq(0, 90, 10), prop_silhouette_area_shapes(shape="spheroid", theta=seq(0, 90, 10), h=0.4, d=0.39), type="l", xlab = "theta (degree)", ylab = "proportion silhouette area", ylim=c(0,0.35), lty="dashed")
+plot(seq(0, 90, 10), prop_silhouette_area_shapes(shape="spheroid", theta=seq(0, 90, 10), h=0.4, d=0.39), type="l", xlab = "theta (°)", ylab = "proportion silhouette area", ylim=c(0,0.35), lty="dashed")
 points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="spheroid", theta=seq(0, 90, 10), h=0.4, d=0.3), type="l", lty="dashed")
 points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="spheroid", theta=seq(0, 90, 10), h=0.4, d=0.2), type="l", lty="dotted")
 points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="spheroid", theta=seq(0, 90, 10), h=0.4, d=0.1), type="l", lty="dotdash")
 
-plot(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder flat ends", theta=seq(0, 90, 10), h=0.4, d=0.4), type="l", lty="dashed", xlab = "theta (degree)", ylab = "proportion silhouette area", ylim=c(0,0.35))
+plot(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder flat ends", theta=seq(0, 90, 10), h=0.4, d=0.4), type="l", lty="dashed", xlab = "theta (°)", ylab = "proportion silhouette area", ylim=c(0,0.35))
 points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder flat ends", theta=seq(0, 90, 10), h=0.4, d=0.2), type="l", lty="dashed")
 points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder flat ends", theta=seq(0, 90, 10), h=0.4, d=0.1), type="l", lty="dotted")
 points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder flat ends", theta=seq(0, 90, 10), h=0.4, d=0.05), type="l", lty="dotdash")
 
-plot(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=seq(0, 90, 10), h=0.4, d=0.4), type="l", xlab = "theta (degree)", ylab = "proportion silhouette area", ylim=c(0,0.35))
+plot(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=seq(0, 90, 10), h=0.4, d=0.4), type="l", xlab = "theta (°)", ylab = "proportion silhouette area", ylim=c(0,0.35))
 points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=seq(0, 90, 10), h=0.4, d=0.2), type="l", lty="dashed")
 points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=seq(0, 90, 10), h=0.4, d=0.1), type="l", lty="dotted")
 points(seq(0, 90, 10), prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=seq(0, 90, 10), h=0.4, d=0.05), type="l", lty="dotdash")
@@ -88,7 +89,7 @@ kelvin_to_celsius(270)
 #Thermal Performance Curve Functions
 Thermal performance curves (TPCs) describe the temperature dependence of organismal performance such as locomotion and digestion [@huey1989evolution]. They have become an important tool to understand organimsal responses to environmental conditions, particularly responses to climate change [@sinclair2016can]. TrenchR includes two forms of TPCs.  We include a function `TPC()` to descibe a Gaussian-quadratic TPC as a function of thermal optima and critical thermal minima and maxima [@deutsch2008impacts]. The `TPC.beta()` function uses a beta function to define a TPC based on mode, breadth, and skew. A scale factor enables including a thermodynamic effect on mean performance [@asbury2010thermodynamic].  
 ```{r, fig.height=4, fig.width=6}
-plot(0:60, TPC(T=0:60, Topt=30, CTmin=10, CTmax=40), type="l", ylim=c(0,3), ylab="performance", xlab="temperature (C)")
+plot(0:60, TPC(T=0:60, Topt=30, CTmin=10, CTmax=40), type="l", ylim=c(0,3), ylab="performance", xlab="temperature (°C)")
 points(0:60, TPC.beta(T=0:60, shift=-1, breadth=0.1, aran=0, tolerance= 43, skew=0.7), type="l", lty="dashed")
 ```
 

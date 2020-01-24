@@ -41,7 +41,7 @@ where $A_{dir}$, $A_{dif}$, and $A_{ref}$ are the surface areas expsed to direct
 
 The summation is available in R as follows:
 ```{r, fig.height=4, fig.width=8}
-plot(seq(100,1000,100), Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=seq(100,1000,100), S_dif=200, a_s=0.5), type="l", xlab = "direct solar radiation (W/m^2)", ylab = "solar radiation absorbed (W)")
+plot(seq(100,1000,100), Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=seq(100,1000,100), S_dif=200, a_s=0.5), type="l", xlab = expression("direct solar radiation" ~ (W/m^{2})), ylab = "solar radiation absorbed (W)")
 points(seq(100,1000,100), Qradiation_absorbed(a=0.9, A=1, psa_dir=0.2, psa_ref=0.4, S_dir=seq(100,1000,100), S_dif=200, a_s=0.5), type="l", lty="dashed")
 points(seq(100,1000,100), Qradiation_absorbed(a=0.45, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=seq(100,1000,100), S_dif=200, a_s=0.5), type="l", lty="dotted")
 points(seq(100,1000,100), Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=seq(100,1000,100), S_dif=200, a_s=0.2), type="l", lty="dotdash")
@@ -49,15 +49,15 @@ points(seq(100,1000,100), Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0
 legend("topleft", title="parameters", legend=c("a=0.9, psa_dir=0.4, a_s=0.5", "a=0.9, psa_dir=0.2, a_s=0.5", "a=0.45, psa_dir=0.4, a_s=0.5", "a=0.9, psa_dir=0.4, a_s=0.2"), lty=c("solid","dashed","dotted","dotdash") )
 ```
 
-In the functions, psa_dir and psa_ref are the proportions of surface area exposed to direct and reflected solar radiation, respectively. We assume psa_dif=psa_dir. The functions `prop_silhouette_area()` and `prop_silhouette_area_shapes()` provide assistance calculating the proportional of surface area exposed via estimating silhouette area. Additionally, see the microclimate tutorial for tools for estimating incoming solar radiation.
+In the functions, psa_dir and psa_ref are the proportions of surface area exposed to direct and reflected solar radiation, respectively. We assume psa_dif = psa_dir. The functions `prop_silhouette_area()` and `prop_silhouette_area_shapes()` provide assistance calculating the proportional of surface area exposed via estimating silhouette area. Additionally, see the microclimate tutorial for tools for estimating incoming solar radiation.
 
 #Thermal radiation, Qemit
-The rate of emission of thermal radiation from the surface of an animal, $Q_{emit} (W)$, is determined by the difference between the surface temperature of the animal $T_b (K)$ and the temperatures of the air $T_a (K)$ and of the ground $T_g (K)$.  $T_a$ is additionally used to estimate sky temperature $T_{sky} (K)$, the effective radiant temperature of the sky as $T_{sky}=1.22*(Ta-273.15)-20.4+273.15$ [@gates2012biophysical]. The following expressions can be used to estimate $Q_{emit} (W)$ for animals in enclosed and open environments, respectively:
+The rate of emission of thermal radiation from the surface of an animal, $Q_{emit} (W)$, is determined by the difference between the surface temperature of the animal $T_b (K)$ and the temperatures of the air $T_a (K)$ and of the ground $T_g (K)$.  $T_a$ is additionally used to estimate sky temperature $T_{sky} (K)$, the effective radiant temperature of the sky as $T_{sky}=1.22*(T_a-273.15)-20.4+273.15$ [@gates2012biophysical]. The following expressions can be used to estimate $Q_{emit} (W)$ for animals in enclosed and open environments, respectively:
 $$
 enclosed: Q_{emit}= A_r \epsilon \sigma (T_b^4 - T_a^4)\\
 open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 $$
-where $A_s$ and $A_r$ are the areas ($m^2$) exposed to the sky (or enclosure) and the ground, respectively; $\epsilon$ is the longwave infrared emissivity of skin [proportion, 0.95 to 1 for most animals [@gates2012biophysical]; and $\sigma$ is the Stefan-Boltzmann constant ($5.673*10^{-8} W m^{-2} K^{-4)}$). 
+where $A_s$ and $A_r$ are the areas ($m^2$) exposed to the sky (or enclosure) and the ground, respectively; $\epsilon$ is the longwave infrared emissivity of skin [proportion, 0.95 to 1 for most animals [@gates2012biophysical]; and $\sigma$ is the Stefan-Boltzmann constant ($5.673*10^{-8} W m^{-2} K^{-4}$). 
 
 The function is available in R as follows:
 ```{r, fig.height=4, fig.width=8}
@@ -70,7 +70,7 @@ legend("topleft", title="parameters", legend=c("psa_dir=0.4, T_g=293","psa_dir=0
 ```
 
 #Convection, Qconv
-Animals exchange heat with the air or water they are immersed in at a rate determined by the temperature difference between the temperature of the animal, $T_b$ (K), and that of the air or water, $T_a$ (K).  The rate is also determined by the animal's surface area exposed to the air or water, which we estimate from the input parameters of the animal's surface area, $A (m^2)$ and the proportion of the surface area in contact with the surrounding fluid, $proportion$. A heat transfer coefficient, $H_L (W m^{-2} K^{-1})$, which can be estimated using the relations below, is used to estimate the rate of heat exchange.  An enhancement factor multiplier, $ef$, can also be incorporated to account for increases in heat exchange resulting from air turbulance in field conditions. Conduction can be estimated as follows:
+Animals exchange heat with the air or water they are immersed in at a rate determined by the temperature difference between the temperature of the animal, $T_b (K)$, and that of the air or water, $T_a (K)$.  The rate is also determined by the animal's surface area exposed to the air or water, which we estimate from the input parameters of the animal's surface area, $A (m^2)$ and the proportion of the surface area in contact with the surrounding fluid, $proportion$. A heat transfer coefficient, $H_L (W m^{-2} K^{-1})$, which can be estimated using the relations below, is used to estimate the rate of heat exchange.  An enhancement factor multiplier, $ef$, can also be incorporated to account for increases in heat exchange resulting from air turbulance in field conditions. Conduction can be estimated as follows:
 $$Qconv= ef*H_L*(A*proportion)*(Ta-Tb).$$
 
 The function is available in R:
@@ -85,17 +85,17 @@ legend("topleft", title="parameters", legend=c("H=5, proportion=0.6","H=15, prop
 
 The convective heat transfer coefficient depends on whether the heat exchange is free or forced (due to fluid flow). The variables involved in heat transfer can be combined into dimensionless groups that are used to compare the scales of heat exchange processes and thus whether modeling free or forced convection is more appropriate. We provide the primary dimesionless numbers.
 
-The Nusselt number provides a dimensionless estimate of conductance as is estimated as $Nu = H_L * D / K$, where $H_L$ is the convective heat transfer coefficient ($W m^{-2} K^{-1}$), D is the characteristic dimension ($m$), and $K$ is thermal conductivity ($W K^{-1}m^{-1}$). 
+The Nusselt number provides a dimensionless estimate of conductance as is estimated as $Nu = H_L * D / K$, where $H_L$ is the convective heat transfer coefficient ($W m^{-2} K^{-1}$), $D$ is the characteristic dimension ($m$), and $K$ is thermal conductivity ($W K^{-1}m^{-1}$). 
 
-The Prandtl number describes the ratio of kinematic viscosity to thermal diffusivity as $Pr= c_p \mu /K$, where $c_p$ is the specific heat at constant pressure ($J mol^{-1} K^{-1}$) and $\mu$ is dynamic viscosity ($mol s^{-1}m^{-1}$). 
+The Prandtl number describes the ratio of kinematic viscosity to thermal diffusivity as $Pr= c_p \mu /K$, where $c_p$ is the specific heat at constant pressure ($J mol^{-1} K^{-1}$) and $\mu$ is dynamic viscosity ($mol \:s^{-1}m^{-1}$). 
 
-The Reynolds Number indicates the amount of turbulence in air or water flows and is estimated as the ratio of internal viscous forces: $Re= VD / \nu$, where V is wind speed (m/s), D is the characteristic dimension ($m$), and $\nu$ is the kinematic viscosity ($m^2 s^{-1}$). Kinematic viscosity is the ratio of dynamic viscosity to the density of the fluid.
+The Reynolds Number indicates the amount of turbulence in air or water flows and is estimated as the ratio of internal viscous forces: $Re= VD / \nu$, where $V$ is wind speed ($m/s$), $D$ is the characteristic dimension ($m$), and $\nu$ is the kinematic viscosity ($m^2 s^{-1}$). Kinematic viscosity is the ratio of dynamic viscosity to the density of the fluid.
 
 The Grashof number describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. It is estimated as the ratio of a buoyant force times an inertial force to the square of a viscous force: $Gr = g D^3 \frac{\mid Tg-Ta \mid}{Ta {\nu}^2}$, where $g$ is gravitational acceleration ($g=9.8 m/s$). 
 
 The dimensionless groups are available in R as follows:
 ```{r, fig.height=4, fig.width=8}
-plot(1:30, Nusselt_number(H_L=1:30, D=0.01, K=0.5), type="l", xlab = "heat transfer coefficient (W m^-2 K^-1)", ylab = "Nusselt number")
+plot(1:30, Nusselt_number(H_L=1:30, D=0.01, K=0.5), type="l", xlab = expression("heat transfer coefficient" ~ (W ~ m^{-2} ~ K^{-1})), ylab = "Nusselt number")
 points(1:30, Nusselt_number(H_L=1:30, D=0.01, K=1.5), type="l", lty="dashed")
 points(1:30, Nusselt_number(H_L=1:30, D=0.05, K=0.5), type="l", lty="dotted")
 points(1:30, Nusselt_number(H_L=1:30, D=0.05, K=1.5), type="l", lty="dotdash")
@@ -104,7 +104,7 @@ legend("topleft", title="parameters", legend=c("D=0.01, K=0.5","D=0.01, K=1.5","
 ```
 
 ```{r, fig.height=4, fig.width=8}
-plot(1:30, Prandtl_number(c_p=1:30, mu=0.00001, K=0.5), type="l", xlab = "specific heat at constant pressure (J mol^-1 K^-1)", ylab = "Prandtl number")
+plot(1:30, Prandtl_number(c_p=1:30, mu=0.00001, K=0.5), type="l", xlab = expression("specific heat at constant pressure" ~ (J ~ mol^{-1} ~ K^{-1})), ylab = "Prandtl number")
 points(1:30, Prandtl_number(c_p=1:30, mu=0.00002, K=0.5), type="l", lty="dashed")
 points(1:30, Prandtl_number(c_p=1:30, mu=0.00001, K=1.5), type="l", lty="dotted")
 points(1:30, Prandtl_number(c_p=1:30, mu=0.00002, K=1.5), type="l", lty="dotdash")
@@ -164,7 +164,8 @@ Free_or_forced_convection(Gr=1000, Re=5)
 We offer methods to estimate the convective heat transfer coefficient based on either empirical measurements (`heat_transfer_coefficient()`) or approximating the animal shape as a sphere (`heat_transfer_coefficient_approximation()`). Approximating the animal shape as a sphere enables simplification while also producing an reasonable approximation [@mitchell1976heat].  The functions approximate forced convective heat transfer as a function of windspeed $V (m/s)$, the characteristic dimension $D (m)$, the thermal conductivity of the air $K (W m^{-1} K^{-1})$, the kinematic viscocity of the air $\nu (m^2 s^{-1})$, and the taxa or a generic shape. An additional, simplified function (`heat_transfer_coefficient_simple()`) provides a reasonable approximation based on $V$ and $D$ for most environmental conditions.
 
 ```{r, fig.height=4, fig.width=8}
-plot(seq(0,3,0.25), heat_transfer_coefficient(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "sphere"), type="l", xlab = "Air velocity (m/s)", ylab = "heat transfer coefficient, H_L (W m^-2 K^-1)")
+par(mar=c(5,5,3,2))
+plot(seq(0,3,0.25), heat_transfer_coefficient(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "sphere"), type="l", xlab = "Air velocity (m/s)", ylab = expression("heat transfer coefficient," ~ H[L] ~ (W ~ m^{-2} ~ K^{-1})))
 points(seq(0,3,0.25), heat_transfer_coefficient(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "cylinder"), type="l", lty="dashed")
 points(seq(0,3,0.25), heat_transfer_coefficient(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "frog"), type="l", lty="dotted")
 points(seq(0,3,0.25), heat_transfer_coefficient(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "lizard_surface"), type="l", lty="dotdash")
@@ -176,7 +177,8 @@ legend("bottomright", title="taxa", legend=c("sphere","cylinder","frog","lizard_
 ```
 
 ```{r, fig.height=4, fig.width=8}
-plot(seq(0,3,0.25), heat_transfer_coefficient_approximation(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "sphere"), type="l", xlab = "Air velocity (m/s)", ylab = "heat transfer coefficient, H_L (W m^-2 K^-1)")
+par(mar=c(5,5,3,2))
+plot(seq(0,3,0.25), heat_transfer_coefficient_approximation(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "sphere"), type="l", xlab = "Air velocity (m/s)", ylab = expression("heat transfer coefficient," ~ H[L] ~ (W ~ m^{-2} ~ K^{-1})))
 points(seq(0,3,0.25), heat_transfer_coefficient_approximation(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "frog"), type="l", lty="dashed")
 points(seq(0,3,0.25), heat_transfer_coefficient_approximation(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "lizard"), type="l", lty="dotted")
 points(seq(0,3,0.25), heat_transfer_coefficient_approximation(V=seq(0,3,0.25),D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "flyinginsect"), type="l", lty="dotdash")
@@ -186,7 +188,7 @@ legend("bottomright", title="taxa", legend=c("sphere","frog","lizard","flyingins
 ```
 
 ```{r, fig.height=4, fig.width=6}
-plot(seq(0,3,0.25), heat_transfer_coefficient_simple(V=seq(0,3,0.25),D=0.05), type="l", xlab = "Air velocity (m/s)", ylab = "heat transfer coefficient, H_L (W m^-2 K^-1)")
+plot(seq(0,3,0.25), heat_transfer_coefficient_simple(V=seq(0,3,0.25),D=0.05), type="l", xlab = "Air velocity (m/s)", ylab = expression("heat transfer coefficient," ~ H[L] ~ (W ~ m^{-2} ~ K^{-1})))
 points(seq(0,3,0.25), heat_transfer_coefficient_simple(V=seq(0,3,0.25),D=0.03), type="l", lty="dashed")
 points(seq(0,3,0.25), heat_transfer_coefficient_simple(V=seq(0,3,0.25),D=0.07), type="l", lty="dotted")
 
@@ -194,13 +196,13 @@ legend("bottomright", title="characteristic dimension (m)", legend=c(0.03,0.05,0
 ```
 
 #Conduction, Qcond
-Animals exchange heat with the substrate and other surfaces via contact proportional to the difference between the surface temperature of the animal, $T_b$ (K), and the substrate temperature, $T_s$ (K). This conduction occurs via diffusion of heat. The extent of energy exchange is additionally determined by the area of contact and the thickness of the skin or other animal suface (assumes a well mixed interior, see NicheMapR for approaches without this assumption). Finally, the rate of diffusion depends on the thermal conductivity of the materials in contact. Our two basic functions for estimating conduction differ in whether the rate limiting step is the thermal conductivity of the animal [`conductance_animal()`] or the substrate [`conductance_substrate()`]. The thermal conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step and most applications should use `conductance_animal()`.
+Animals exchange heat with the substrate and other surfaces via contact proportional to the difference between the surface temperature of the animal, $T_b (K)$, and the substrate temperature, $T_s (K)$. This conduction occurs via diffusion of heat. The extent of energy exchange is additionally determined by the area of contact and the thickness of the skin or other animal suface (assumes a well mixed interior, see NicheMapR for approaches without this assumption). Finally, the rate of diffusion depends on the thermal conductivity of the materials in contact. Our two basic functions for estimating conduction differ in whether the rate limiting step is the thermal conductivity of the animal [`conductance_animal()`] or the substrate [`conductance_substrate()`]. The thermal conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step and most applications should use `conductance_animal()`.
 
 Both variables take as parameters the animal's surface area, $A (m^2)$, and the proportion of the surface area in contact with the substrate, $proportion$. 
 
 When animal conductance is the rate limiting step, $Qcond$ can be estimated as follows:
 $$Qcond= A*proportion*K*(T_b-T_g)/d, $$
-where $K$ is thermal conductivity ($W K^{-1} m^{-1}$), $T_g$ is ground (surface) temperature (K), $T_b$ is body temperature (K), and $d$ is the mean thickness of the animal skin (surface, $m$). This formulation assumes the organism has a well mixed interior rather than an interior temperature gradient.
+where $K$ is thermal conductivity ($W K^{-1} m^{-1}$), $T_g$ is ground (surface) temperature $(K)$, $T_b$ is body temperature $(K)$, and $d$ is the mean thickness of the animal skin (surface, $m$). This formulation assumes the organism has a well mixed interior rather than an interior temperature gradient.
 
 When substrate thermal conductivity is the rate limiting step, $Qcond$ can be estimated as follows:
 $$Qcond= A*proportion*(2K_g/D)*(T_b-T_g),$$
@@ -230,7 +232,7 @@ legend("topright", title="parameters", legend=c("K=0.3, proportion=0.2","K=0.5, 
 Rates of heat production associated with metabolism are generally estimated using scaling relationships based on generalizing empirical data. Metabolic rates scale as a power law function of mass with an exponent less than 1 such that the per-mass metabolic rate declines with increasing mass.  Metabolic rates also increase exponentially with temperature. The generally form of the relationship is $B=M^x \exp(-E_i/{kT})$, where $M$ is mass, $x$ is an exponent approximating 0.75, $E_i$ is the average activation energy for the rate-limiting enzyme-catalyzed biochemical reactions of metabolism, $k$ is the Boltzmann constant, and $T$ is body temperature [@gillooly2001effects]. We offer functions that both do not [`Qmetabolism_from_mass()`] and do [`Qmetabolism_from_mass_temp()`] include temperature dependence for a variety of taxa.
 
 ```{r, fig.height=4, fig.width=6}
-plot(1:100, Qmetabolism_from_mass(m=1:100,"bird"), type="l", xlab = "mass(g)", ylab = "metabolism (W)", log='xy', ylim=c(0.1,2))
+plot(1:100, Qmetabolism_from_mass(m=1:100,"bird"), type="l", xlab = "mass (g)", ylab = "metabolism (W)", log='xy', ylim=c(0.1,2))
 points(1:100, Qmetabolism_from_mass(m=1:100,"mammal"), type="l", lty="dashed")
 points(1:100, Qmetabolism_from_mass(m=1:100,"reptile"), type="l", lty="dotted")
 
@@ -254,12 +256,12 @@ legend("topleft", title="taxa", legend=c("bird,mammal","reptile","amphibian","in
 ```
 
 #Evaporation, Qevap
-We provide functions to estimate heat loss associated with evaporative water loss. We offer an empirically-derived relationship for a lizard [@porter1973behavioral; in @gates2012biophysical] and a function based on resistances for amphibians [@spotila1992biophysics]. The function for amphibians is based on the latent heat of vaporization of water: evaporation of water results in heat loss at a rate of 2.44 x $10^6 J kg^{-1}$ at biological temperatures.
+We provide functions to estimate heat loss associated with evaporative water loss. We offer an empirically-derived relationship for a lizard [@porter1973behavioral; in @gates2012biophysical] and a function based on resistances for amphibians [@spotila1992biophysics]. The function for amphibians is based on the latent heat of vaporization of water: evaporation of water results in heat loss at a rate of $2.44 \times 10^6 J kg^{-1}$ at biological temperatures.
 
 The rate of water loss for an amphibian with fully wetted skin can be expressed as 
 $$ E_c= A (\rho_s-h \rho_a)/r_e,$$
 
-where $A$ is surface area ($m^2$), $r_e$ is the external (convective) resistance to water vapor transport ($s/m$), $\rho_s$ is the saturation water vapor density at skin surface ($kg/m^3$), $h$ is relative humidity (0-1), and $\rho_a$ is the saturation water vapor density in ambient air ($kg/m^3$).
+where $A$ is surface area ($m^2$), $r_e$ is the external (convective) resistance to water vapor transport ($s/m$), $\rho_s$ is the saturation water vapor density at skin surface ($kg/m^3$), $h$ is relative humidity (between 0 ~ 1), and $\rho_a$ is the saturation water vapor density in ambient air ($kg/m^3$).
 
 The rate of water loss for an amphibian without fully wetted skin can be expressed as 
 $$E_c= A (\rho_s-h\rho_a)/(r_i+r_e),$$
@@ -293,14 +295,15 @@ points(293:313, Qevap, type="l")
 legend("right", title="taxa", legend=c("amphibian","amphibian_wetskin","lizard"), lty=c("dashed","dotted","solid") )
 ```
 
-We estimate external resistance to water vapor transport, $r_e$, using the Lewis rule describing the relationships among the coefficients for heat and mass transport: $r_e= 0.93 \rho c_p/H_L$, where $\rho$ is the density of air ($kg m^{-3}$), $c_p$ is the specific heat of air at constant pressure ($J kg^{-1}*^{\circ}C^{-1}$), and $H_L$ is the convective heat transfer coefficient ($W m^{-2} C^{-1}$). We approximate $\rho c_p$as 1,200 $J m^{-3}*^{\circ}C^{-1}$ as commonly done in biological applications [@spotila1992biophysics]. We provide the relationship for $r_e$ as a function:
+We estimate external resistance to water vapor transport, $r_e$, using the Lewis rule describing the relationships among the coefficients for heat and mass transport: $r_e= 0.93 \rho c_p/H_L$, where $\rho$ is the density of air ($kg m^{-3}$), $c_p$ is the specific heat of air at constant pressure ($J kg^{-1}*°C^{-1}$), and $H_L$ is the convective heat transfer coefficient ($W m^{-2} °C^{-1}$). We approximate $\rho c_p$as 1,200 $J m^{-3}*°C^{-1}$ as commonly done in biological applications [@spotila1992biophysics]. We provide the relationship for $r_e$ as a function:
 ```{r, fig.height=4, fig.width=6}
-plot(10:30, external_resistance_to_water_vapor_transfer(H=10:30), type="l", xlab = "heat transfer coefficient (W m^-2 C^-1)", ylab = "external resistance, r_e (s m^-1)")
+par(mar=c(5,5,3,2))
+plot(10:30, external_resistance_to_water_vapor_transfer(H=10:30), type="l", xlab = expression("heat transfer coefficient" ~ (W ~ m^{-2} ~ °C^{-1})), ylab = expression("external resistance," ~ r[e] ~ (sm^{-1})))
 ```
 
-At constant temperatures, the relationship between vapor pressure and vapor density is linear and vapor pressure can be approximated at temperatures between $0^{\circ}$ and $40^{\circ}C$ as $e_s= 10^{0.02604 T_a+2.82488}$, where $T_a$ is air temperature ($^{\circ}C$).  We provide the approximation as a function:
+At constant temperatures, the relationship between vapor pressure and vapor density is linear and vapor pressure can be approximated at temperatures between $0°C$ and $40°C$ as $e_s= 10^{0.02604 T_a+2.82488}$, where $T_a$ is air temperature ($°C$).  We provide the approximation as a function:
 ```{r, fig.height=4, fig.width=6}
-plot(10:30, saturation_water_vapor_pressure(T_a=10:30), type="l", xlab = "temperature (C)", ylab = "Saturation water vapor pressure (Pa)")
+plot(10:30, saturation_water_vapor_pressure(T_a=10:30), type="l", xlab = "temperature (°C)", ylab = "saturation water vapor pressure (Pa)")
 ```
 
 #Solving for operative environmental temperature, Te
@@ -320,12 +323,12 @@ legend("bottomright", title="Radiation, Qabs", legend=c(0,10,20), lty=c("dashed"
 
 Campbell and Norman [-@campbell2012introduction] use a somewhat simplified energy balance to express $Te$ as a function of $Ta$ plus or minus a temperature increment determined by absorbed radiation, wind speed, and animal morphology: 
 $$ Te=Ta+(Sabs-Qemit)/(c_p(g_r+g_{Ha})),$$
-where $Ta$ is air temperature (K), $Sabs$ is the solar and thermal radiation absorbed ($W m^{-2}$), $Qemit$ is emitted thermal radiation ($W m^{-2}$), $c_p$ is the specific heat of air ($J mol^{-1} K^{-1}$), $g_{r}$ is radiative conductance, and $g_{Ha}$ is the boundary conductance.  The model is based on estimating $T_e$ for a blackbody (perfectly absorbing) cavity with air temperatures equal to surface temperatures ($T_a=T_s$). The model assumes that the cavity provides the same heat load as the nautral environment and thus equates metabolic heat production and evaporative cooling in the two environments.  The formulation assumes a well mixed interior of the animal and also omits conduction with the substrate.  In this scenario, organisms emit thermal radiation from their surface proproportional to the fourth power of $T_a$:
+where $Ta$ is air temperature $(K)$, $Sabs$ is the solar and thermal radiation absorbed ($W m^{-2}$), $Qemit$ is emitted thermal radiation ($W m^{-2}$), $c_p$ is the specific heat of air ($J mol^{-1} K^{-1}$), $g_{r}$ is radiative conductance, and $g_{Ha}$ is the boundary conductance.  The model is based on estimating $T_e$ for a blackbody (perfectly absorbing) cavity with air temperatures equal to surface temperatures ($T_a=T_s$). The model assumes that the cavity provides the same heat load as the nautral environment and thus equates metabolic heat production and evaporative cooling in the two environments.  The formulation assumes a well mixed interior of the animal and also omits conduction with the substrate.  In this scenario, organisms emit thermal radiation from their surface proproportional to the fourth power of $T_a$:
 $$Q_{emit}= \epsilon \sigma T_a^4 ,$$
 where $\epsilon$ is the proprtional longwave infrared emissivity of skin (0.95-1 for most animals, [@gates2012biophysical]) and $\sigma$ is the Stefan-Boltzmann constant ($5.673*10^{-8} W m^{-2} K^{-4)}$). 
 
 The thermal radiation exchanged between the animals and the walls of the cavity is proportional to the temperature differences and the radiative conductance. Cambell and Norman [-@campbell2012introduction] thus use a denominator term that combines thermal radiative exchange with convective heat exchange. The radiative conductance describing the heat exchange between the core of the animal and the environment is estimated as $g_r= 4 \sigma Ta^3/c_p$ $(mol*m^{-2} s^{-1})$. The boundary conductance (heat exchange with the air via convection) is estimated assuming forced convection driven by naturally turbulent wind and an empirical approximation of animal shapes [@mitchell1976heat]: 
-$$g_{Ha}(mol m^{-2} s^{-1})= 1.4 * 0.135 \sqrt(V/D),$$
+$$g_{Ha}(mol \:m^{-2} s^{-1})= 1.4 * 0.135 \sqrt{(V/D)},$$
 where 1.4 is a factor to account for increased convection in natural environments, $V$ is wind speed ($m/s$), and $D$ is the characteristic dimension of the animal ($m$).
 
 The function to calculate $T_e$ (called $T_b$ for simplicity) is available in R follows (including the above calculations of $Qemit$, $g_r$, and $g_{Ha}$):
@@ -336,13 +339,13 @@ abline(a=0, b=1, col="gray")
 points(293:313, Tb_CampbellNorman(T_a=293:313, S=400, epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", lty="dashed")
 points(293:313, Tb_CampbellNorman(T_a=293:313, S=600, epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", lty="dotted")
 
-legend("bottomright", title="Radiation, Sabs (W m^-2)", legend=c(400,600,800), lty=c("dashed","dotted","solid") )
+legend("bottomright", title= expression("Radiation, Sabs" ~ (W ~ m^{-2})), legend=c(400,600,800), lty=c("dashed","dotted","solid") )
 ```
 
 ##Fei
 ```{r, fig.height=4, fig.width=6}
 t.seq= lapply(293:313, FUN=Tb_Fei, T_g=300, H=800, lw=30, shade=0.5, m=10.5, Acondfact=0.05, Agradfact=0.4)
-plot(293:313, t.seq, type = "l", xlab = "ambient temperature (C)", ylab = "body temperature (C)")
+plot(293:313, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)")
 abline(a=0,b=1, col="gray")
 
 t.seq= lapply(293:313, FUN=Tb_Fei, T_g=300, H=800, lw=30, shade=0.0, m=10.5, Acondfact=0.05, Agradfact=0.4)
@@ -364,7 +367,7 @@ We adapted a biophysical model (`Tb_lizard()`) to calculate operative environmen
 ###Day Length and Sun Angles
 The function constrains the lizard’s foraging to hours of daylight and uses the relations below to calculate day length and the time of solar noon. The function calculates the solar declination, $\delta$ (rad), the angular distance of the sun north or south of the earth’s equator: 
 $$\delta= \arcsin[0.39795 \cos(0.21631+2 \arctan (0.967 \tan [0.0086(-186+J)]))] $$
-where $J$ is calendar day, with $J=1$ at January 1. One can then calculate day length, $h_{day}$ (h), using the CBM model [@forsythe1995model]: where $\phi$ is latitude (rad).
+where $J$ is calendar day, with $J=1$ at January 1. One can then calculate day length, $h_{day} (h)$, using the CBM model [@forsythe1995model]: where $\phi$ is latitude (rad).
 
 The time of solar noon ($h$) is calculated as $t_0=12-LC-ET$ where $LC$ is the longitude correction (h) and $ET$ is the equation of time (h). The $LC$ is a +1/15-h correction for each degree that a location is west of a standard meridian, which occurs at 0°, 15°, …, 345°. The ET corrects for the difference between sun time and clock time based on calendar day as follows: 
 $$ET=\frac{-104.7\sin f+596.2 \sin{2f} +4.3 \sin{3f} -12.7 \sin{4f} -429.3 \cos{f} -2.0 \cos{2f}+19.3 \cos{3f}}{3600},\\f=\frac{\pi}{180}(279.575+0.9856J)$$
@@ -378,7 +381,7 @@ $$g_{Ha}=1.4*0.135 \sqrt{u/d} ,$$
 where $u$ is wind velocity ($m s^{−1}$) and $d$ is the characteristic dimension ($m$). Assuming that wind is blowing parallel to the axis of a cylindrical approximation of a lizard, $d$ is the lizard’s length (snout‐vent length [m]). A factor of 1.4 is introduced to account for the increased convection due to environmental turbulence [@mitchell1976heat]. We additionally consider radiative conductance, the exchange of thermal radiation between the lizard and the environment proportional to temperature differences. The radiative conductance ($mol \:m^{−2} s^{−1}$) is expressed as $$g_r=\frac{4 \epsilon \sigma (T_a+273)^3}{c_p},$$
 where $c_p$ is the specific heat of air (29.3 $J \: mol^{−1} K^{−1}$).
 
-We then turn to calculating the components of the radiant energy budget of a lizard. We estimate the solar (shortwave) component of this quantity by aggregating flux densities for four radiation streams: the direct irradiance on a surface perpendicular to the beam, $S_p (W m^{−2})$; the diffuse sky irradiance on a horizontal plane, $S_d (W m^{−2})$; the total irradiance of a horizontal surface, $S_t (W m^{−2})$; and the reflected radiation from the ground, $S_r (W m^{−2})$. Calculation of these flux densities requires the introduction of several additional quantities. The atmospheric transmissivity, $\tau$, ranges between 0.6 and 0.7 for typical clear sky conditions (Gates 1980). We thus assume $\tau=0.65$. The solar constant, $S_{p0}$, indicates extraterrestrial flux density to be 1,360 $W m^{−2}$. Optical air mass number, $m_a$, is the ratio of slant path length through the atmosphere to zenith path length and is a function of atmospheric pressure, $p_a (kPa)$: 
+We then turn to calculating the components of the radiant energy budget of a lizard. We estimate the solar (shortwave) component of this quantity by aggregating flux densities for four radiation streams: the direct irradiance on a surface perpendicular to the beam, $S_p (W m^{−2})$; the diffuse sky irradiance on a horizontal plane, $S_d (W m^{−2})$; the total irradiance of a horizontal surface, $S_t (W m^{−2})$; and the reflected radiation from the ground, $S_r (W m^{−2})$. Calculation of these flux densities requires the introduction of several additional quantities. The atmospheric transmissivity, $\tau$, ranges between 0.6 and 0.7 for typical clear sky conditions (Gates 1980). We thus assume $\tau=0.65$. The solar constant, $S_{p0}$, indicates extraterrestrial flux density to be $1,360 W m^{−2}$. Optical air mass number, $m_a$, is the ratio of slant path length through the atmosphere to zenith path length and is a function of atmospheric pressure, $p_a (kPa)$: 
 $$p_a=101.3exp(-E/8200),$$
 where $E$ is the elevation in meters above sea level. We can then calculate $m_a$ as $m_a=\frac{p_a}{101.3 \cos\psi}$.
 
@@ -400,7 +403,7 @@ We implement the model in TrenchR as follows:
 ```{r, fig.height=4, fig.width=8}
 #sun, surface
 t.seq= lapply(20:40, FUN=Tb_lizard, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.7, elev=500, doy=200, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
-plot(20:40, t.seq, type = "l", xlab = "ambient temperature (C)", ylab = "body temperature (C)", xlim=c(20,40), ylim=c(20,51))
+plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", xlim=c(20,40), ylim=c(20,51))
 abline(a=0,b=1, col="gray")
 #shade, surface
 t.seq= lapply(20:40, FUN=Tb_lizard, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.7, elev=500, doy=200, sun=FALSE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
@@ -423,7 +426,7 @@ We adapted a biophysical model for *Colias* that was developed and field validat
 We describe the steady-state energy flux balance of a butterfly at rest on vegetation as
 $$Q_s= Q_t + Q_c,$$
 where $Q_s$ is the total solar radiative heat flux, $Q_t$ is the thermal radiative heat flux, and $Q_c$ is the convective heat flux.  Conduction of heat between the body and vegetation and evaporative heat loss are considered to be negligible.  The solar radiative heat flux is
-$$ Q_s= Q_{s,dir}+Q_{s,dif}+Q{s,ref},\\ Q_s= \alpha A_{s,dir}H_{s,dir}/cos(z) +\alpha A_{s,ref}H_{s,dif}+\alpha r_g A_{s,ref}H_{s,ttl}, $$
+$$ Q_s= Q_{s,dir}+Q_{s,dif}+Q_{s,ref},\\ Q_s= \alpha A_{s,dir}H_{s,dir}/cos(z) +\alpha A_{s,ref}H_{s,dif}+\alpha r_g A_{s,ref}H_{s,ttl}, $$
  
 where $Q_{s,dir}$,$Q_{s,dif}$,$Q_{s,ref}$ are the direct, diffuse, and reflected solar radiative fluxes, respectively; $H_{s,dir}$,$H_{s,dif}$,$H_{s,ttl}$ are the direct, diffuse, and total solar radiative horizontal flux densities, respectively; $A_{s,dir}$,$A_{s,ref}$,$A_{s,ttl}$ are the direct, reflected, and total solar radiative heat transfer surface areas, respectively; $\alpha$ is wing solar absorptivity; $r_g$ is substrate solar reflectivity; and $z$ is the zenith angle.  We assume $A_{s,dir}=A_{s,ref}= A_{s,ttl}$.
 
@@ -440,7 +443,7 @@ where $\delta$ is the thoracic fur thickness and $k_e$ is the thermal conductivi
 We provide the operative temperature model for butterflies as follows:
 ```{r, fig.height=4, fig.width=6}
 t.seq= lapply(20:40, FUN=Tb_butterfly, Tg=25, Tg_sh=20, u=0.4, H_sdir=300, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
-plot(20:40, t.seq, type = "l", xlab = "ambient temperature (C)", ylab = "body temperature (C)")
+plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)")
 abline(a=0,b=1, col="gray")
 
 t.seq= lapply(20:40, FUN=Tb_butterfly, Tg=25, Tg_sh=20, u=0.4, H_sdir=100, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
@@ -448,14 +451,14 @@ points(20:40, t.seq, type = "l", lty="dashed")
 t.seq= lapply(20:40, FUN=Tb_butterfly, Tg=25, Tg_sh=20, u=0.4, H_sdir=500, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
 points(20:40, t.seq, type = "l", lty="dotted")
 
-legend("bottomright",title="direct radiation, H_sdif", legend=c(100,300,500), lty=c("dashed","solid","dotted") )
+legend("bottomright",title= expression("direct radiation," ~ H[sdif]), legend=c(100,300,500), lty=c("dashed","solid","dotted") )
 ```
 
 ##Grasshoppers
 We provide a biophysical model (`Tb_grasshopper()`) to predict grasshopper body temperatures [@buckley2014phenotypic, partially adapted from @samietz2005altitudinal]. We use an energy budget to describe the flow of energy between the grasshopper and the environment: $Q_s=Q_t+Q_c+Q_{cond}$.  Here $Q_s$ is the total input of heat due to solar radiation. $Q_t$ describes the flux of thermal radiative heat due to both incoming thermal radiation (ground and sky) and that emitted by the grasshopper.  $Q_c$ is flux of heat between the grasshopper and the surrounding fluid (air) via convection.  $Q_{cond}$ is the flux of heat between the grasshopper’s body and the solid surfaces with which the grasshopper’s body is in contact via conduction.  We omit evaporative heat loss as it should be negligible for the grasshopper [@anderson1979habitat].   
 
 The solar radiative heat flux is estimated as the sum of direct ($Q_{s,dir}$), diffuse ($Q_{s,dif}$), and reflected ($Q_{s,ref}$) components [@kingsolver1983thermoregulation]:
-$$ Q_s= Q_{s,dir}+Q_{s,dif}+Q{s,ref},\\ Q_s= \alpha A_{s,dir}H_{s,dir}/cos(z) +\alpha A_{s,ref}H_{s,dif}+\alpha r_g A_{s,ref}H_{s,ttl}. $$
+$$ Q_s= Q_{s,dir}+Q_{s,dif}+Q_{s,ref},\\ Q_s= \alpha A_{s,dir}H_{s,dir}/cos(z) +\alpha A_{s,ref}H_{s,dif}+\alpha r_g A_{s,ref}H_{s,ttl}. $$
  
 Each component is calculated as the product of the solar absorptivity of the grasshopper (we assume $\alpha=0.7$, [@anderson1979habitat]), the horizontal flux of solar radiation ($H_{s,dir}$, $H_{s,dif}$, and $H_{s,ttl}$ for the direct, diffuse, and total fluxes, respectively), and the silhouette area of the grasshopper exposed to solar radiation ($A_{s,dir}$, $A_{s,dif}$, and $A_{s,ttl}$ for the direct, diffuse, and total surface areas, respectively).  The direct radiation is adjusted for the zenith angle ($z$, degrees), which is the angle of the sun away from vertical.  
 
@@ -468,18 +471,18 @@ We estimate thermal radiative flux as the sum of radiation from the sky and grou
 
 Convective heat flux is estimated as the product of the convective heat transfer coefficient in turbulent air ($h_{cs}$), the grasshopper’s surface area exposed to convective heat flux ($A_c=A$), and the temperature difference between the grasshopper’s body temperature ($T_b$) and air temperature ($T_a$):
 $$Q_c= h_T A_c (T_b-T_a). $$
-We calculate $h_{cs}$ from the convective heat transfer coefficient as $h_{cs}=h_c(-0.007z/L+1.71)$ where $z$=0.001m is the height above the ground. We use an empirically-derived relationship for grasshoppers to estimate the heat transfer coefficient, $h_c (Wm^{-2}*^{\circ} C^{-1})$ [@lactin1998environmental]: $h_c = Nu K_f/L$, where the thermal conductivity of fluid, $K_f(W m^{-1}K^{-1})=0.024+0.00007(T_a+273)$.
+We calculate $h_{cs}$ from the convective heat transfer coefficient as $h_{cs}=h_c(-0.007z/L+1.71)$ where $z$=0.001m is the height above the ground. We use an empirically-derived relationship for grasshoppers to estimate the heat transfer coefficient, $h_c (Wm^{-2}*°C^{-1})$ [@lactin1998environmental]: $h_c = Nu K_f/L$, where the thermal conductivity of fluid, $K_f(W m^{-1}K^{-1})=0.024+0.00007(T_a+273)$.
 
-We use an empirical relationship from Anderson et al. [-@lactin1998environmental] to estimate the Nusselt number, $Nu$, as $Nu=0.41 Re^{0.5}$ where $Re$ is the Reynolds number.  $Re=u L/v$, where $u$ is windspeed ($m/s$) and $v$ is the kinematic viscosity of air ($m^2/s$) ($v=15.68x10^{-6}$ at 300K).
+We use an empirical relationship from Anderson et al. [-@lactin1998environmental] to estimate the Nusselt number, $Nu$, as $Nu=0.41 Re^{0.5}$ where $Re$ is the Reynolds number.  $Re=u L/v$, where $u$ is windspeed ($m/s$) and $v$ is the kinematic viscosity of air ($m^2/s$) ($v=15.68 \times 10^{-6}$ at $300K$).
 
 The rate of conduction is a function of the body area in contact with the substrate and the temperature differential between the body and the surface:
 $$Q_{cond}= h_{cut} A_{cond} (T_b-T_g)/T, $$
-where $h_{cut}$ is the thermal conductivity of the grasshopper cuticle (approximated as 0.15 $W m^{-1} K^{-1}$; value for hornets; [@galushko2005electrical]); $A_{cond}$ is the surface area of the grasshopper in contact with the substrate; and $T$ is the cuticle thickness (approximated as 6 x$10^{-5}m$; [@galushko2005electrical]).  We only model conductance through the cuticle as we assume that the interior of the grasshopper is well mixed.
+where $h_{cut}$ is the thermal conductivity of the grasshopper cuticle (approximated as $0.15 W m^{-1} K^{-1}$; value for hornets; [@galushko2005electrical]); $A_{cond}$ is the surface area of the grasshopper in contact with the substrate; and $T$ is the cuticle thickness (approximated as $6 \times 10^{-5}m$; [@galushko2005electrical]).  We only model conductance through the cuticle as we assume that the interior of the grasshopper is well mixed.
 
 We provide the operative temperature model for grasshoppers as follows:
 ```{r, fig.height=4, fig.width=6}
 t.seq= lapply(20:40, FUN=Tb_grasshopper, T_g=25, u=0.4, H=800, K_t=0.7, psi=30, L=0.05, Acondfact=0.00, z=0.001, abs=0.7, r_g=0.3)
-plot(20:40, t.seq, type = "l", xlab = "ambient temperature (C)", ylab = "body temperature (C)", xlim=c(20,40), ylim=c(20,40))
+plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", xlim=c(20,40), ylim=c(20,40))
 abline(a=0,b=1, col="gray")
 
 t.seq= lapply(20:40, FUN=Tb_grasshopper, T_g=25, u=0.4, H=400, K_t=0.7, psi=30, L=0.05, Acondfact=0.00, z=0.001, abs=0.7, r_g=0.3)
@@ -487,7 +490,7 @@ points(20:40, t.seq, type = "l", lty="dashed")
 t.seq= lapply(20:40, FUN=Tb_grasshopper, T_g=25, u=0.4, H=600, K_t=0.7, psi=30, L=0.05, Acondfact=0.00, z=0.001, abs=0.7, r_g=0.3)
 points(20:40, t.seq, type = "l", lty="dotted")
 
-legend("bottomright",title="direct radiation, H", legend=c(200,400,600), lty=c("dashed","dotted","solid") )
+legend("bottomright",title= expression("direct radiation, H"), legend=c(200,400,600), lty=c("dashed","dotted","solid") )
 
 #clean up code?
 ```
@@ -495,28 +498,29 @@ legend("bottomright",title="direct radiation, H", legend=c(200,400,600), lty=c("
 ##Salamander
 
 ```{r, fig.height=4, fig.width=6}
-plot(0:40, actual_vapor_pressure(Tdewpoint=0:40), type="l", xlab = "dewpoint temperature (C)", ylab = "vapor pressure (kPa)")
+plot(0:40, actual_vapor_pressure(Tdewpoint=0:40), type="l", xlab = "dewpoint temperature (°C)", ylab = "vapor pressure (kPa)")
 points(0:40, saturation_vapor_pressure(T_a=273:(40+273)), type="l", lty="dashed")
 ```
 
 ```{r, fig.height=4, fig.width=6}
+par(mar=c(5,5,3,2))
 blr.seq= lapply(293:313, FUN=boundary_layer_resistance, e_s=2.4, e_a=2.5, elev=500, D=0.007, u=2)
-plot(293:313, blr.seq, type = "l", xlab = "air temperature (K)", ylab = "boundary layer resistance (s cm^-1)")
+plot(293:313, blr.seq, type = "l", xlab = "air temperature (K)", ylab = expression("boundary layer resistance" ~ (s ~ cm^{-1})))
 blr.seq= lapply(sqrt(5:20), FUN=boundary_layer_resistance, T_a=293, e_s=2.4, e_a=2.5, elev=500, u=2)
-plot(sqrt(5:20), blr.seq, type = "l", xlab = "diameter (m)", ylab = "boundary layer resistance (s cm^-1)")
+plot(sqrt(5:20), blr.seq, type = "l", xlab = "diameter (m)", ylab = expression("boundary layer resistance" ~ (s ~ cm^{-1})))
 #APPROXIMATELY CHECKED
 ```
 
 
 ```{r, fig.height=4, fig.width=6}
 t.seq= lapply(20:40, FUN=Tb_salamander_humid, r_i=4,r_b=1,D=0.01,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
-plot(20:40, t.seq, type = "l", xlab = "ambient temperature (C)", ylab = "humid operative temperature (C)")
+plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "humid operative temperature (°C)")
 abline(a=0, b=1, lty="dotted")
 #CHECK WITH ERIC?
 ```
 
 ```{r, fig.height=4, fig.width=6}
-plot(20:40, Qthermal_radiation_absorbed(T_a=20:40, T_g=30, epsilon_ground=0.97, a_longwave=0.965), type="l", xlab = "air temperature (C)", ylab = "thermal radiation absorbed (W)")
+plot(20:40, Qthermal_radiation_absorbed(T_a=20:40, T_g=30, epsilon_ground=0.97, a_longwave=0.965), type="l", xlab = "air temperature (°C)", ylab = "thermal radiation absorbed (W)")
 
 Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303, T_g=293, T_a=298, enclosed=FALSE)
 
@@ -525,7 +529,7 @@ Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303,
 
 ##Tsoil var
 ```{r, fig.height=4, fig.width=8}
-plot(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=0), type="l", xlab = "hour", ylab = "soil temperature (C)")
+plot(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=0), type="l", xlab = "hour", ylab = "soil temperature (°C)")
 points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=5), type="l", lty="dashed")
 points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=10), type="l", lty="dotted")
 points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=20), type="l", lty="dotdash")
@@ -537,7 +541,7 @@ legend("topleft",title="depth (cm)", legend=c(0,5,10,20), lty=c("solid","dashed"
 Spotila?
 
 #Example operative environmental temperature calculations
-Suppose we want to estimate the hourly body temperature (operative environmental temperature, $T_e$) of a *Sceloporus* lizard on June 1, 2018 in Santa Fe, New Mexico, USA (35.69, -105.944, elevation: 2121m). Let's assume the lizard is in an unshaded location where the daily air temperature varies from a minimum of 10C to a maximum of 25C, the soil surface temperature varies from a minimum of 15C to a maximum of 30C, and the windspeed is 0.5 m/s. We assume that atmospheric transmissivity $\tau=0.7$ and albedo $\rho=0.6$. 
+Suppose we want to estimate the hourly body temperature (operative environmental temperature, $T_e$) of a *Sceloporus* lizard on June 1, 2018 in Santa Fe, New Mexico, USA (35.69, -105.944, elevation: 2121m). Let's assume the lizard is in an unshaded location where the daily air temperature varies from a minimum of 10°C to a maximum of 25°C, the soil surface temperature varies from a minimum of 15C to a maximum of 30°C, and the windspeed is 0.5 m/s. We assume that atmospheric transmissivity $\tau=0.7$ and albedo $\rho=0.6$. 
 
 We will initially estimate $T_b$ by balancing an energy balance for steady state conditions.  We then use the $T_b$ estimates to explore the components of an energy balance.
 
@@ -569,7 +573,7 @@ Srad= sapply(psi_rad, FUN=estimate_radiation, doy=doy, tau=tau, elev=elev, rho=r
  Sref= Srad[3,]
  
 #Plot 
-plot(1:24, Sdir, type="l", xlab = "hour", ylab = "radiation (W/m^2)", ylim=c(0,1200))
+plot(1:24, Sdir, type="l", xlab = "hour", ylab = expression(radiation ~ (W/m^{2})), ylim=c(0,1200))
 points(1:24, Sdif, type="l", lty="dotted")
 points(1:24, Sref, type="l", lty="dashed")
 
@@ -655,7 +659,7 @@ We next plot the diurnal trends in environmental data and the operative data.
 ```{r, fig.height=4, fig.width=8}
 par(mar=c(4, 4, 1, 4), mgp=c(2, 1, 0), las=0)
 
-plot(1:24, TeGates-273, type="l", xlab="Hour", ylab="Temperature (C)", col="blue", ylim=c(0,80)) #Gates
+plot(1:24, TeGates-273, type="l", xlab="Hour", ylab="Temperature (°C)", col="blue", ylim=c(0,80)) #Gates
 points(1:24, TeCN-273, type="l", col="blue", lty="dotted") #Campbell
 points(1:24, TeLiz, type="l", col="blue", lty="dashed") #Buckley 2008
 points(1:24, TeFei-273, type="l", col="blue", lty="dotdash") #Fei et al.
@@ -724,7 +728,7 @@ The full heat budget can be calculated as follows. We plot out the energy balanc
 Qnet= Qnet_Gates(Qabs=Qabs, Qemit=Qemit, Qconv=Qconv, Qcond=Qcond, Qmet=Qmet, Qevap=Qevap)
 
 #Plot 
-plot(1:24, Qnet, type="l", xlab = "hour", ylab = "heat flux (W/m^2)", ylim=c(-1,4))
+plot(1:24, Qnet, type="l", xlab = "hour", ylab = expression("heat flux" ~ (W/m^{2})), ylim=c(-1,4))
 points(1:24, Qabs, type="l", lty="dotted")
 points(1:24, Qemit, type="l", lty="dashed")
 points(1:24, Qconv, type="l", lty="dotdash")
