@@ -3,7 +3,7 @@
 #' Calculate surface area from mass 
 #' 
 #' @details This function allows you to estimate surface area (m^2) from mass (g) for a variety of taxa
-#' @param m Mass in g
+#' @param m mass in g
 #' @param taxa Which class of organism, current choices: lizard, salamander, frog, insect
 #' @return sa (m^2)
 #' @keywords surface area
@@ -130,7 +130,7 @@ sa_from_volume<-function(V, taxa){
 #' 
 #' @details This function allows you to estimate volume (m^3) from length (m) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976). Source: Mitchell JW. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16: 561-569.
 #' @param l Length in m.
-#' @param taxa Which class of organism, current choices: lizard,frog, or sphere
+#' @param taxa Which class of organism, current choices: lizard, frog, or sphere
 #' @return volume (m^3)
 #' @keywords volume length
 #' @family allometric functions
@@ -163,7 +163,7 @@ volume_from_length<-function(l, taxa){
 #' Calculate surface area from length by approximating the animal's body as a rotational ellipsoid 
 #' 
 #' @details Estimate surface area (m^2) from length (m) by approximating the animal's body as a rotational ellipsoid with half the body length as the semi-major axis. 
-#' @param l Length in m.
+#' @param l Length in m
 #' @return sa (m^2)
 #' @keywords surface area
 #' @family allometric functions

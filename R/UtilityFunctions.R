@@ -91,7 +91,7 @@ daylength <- function(lat, doy){
 
 solar_noon <- function(lon, doy){
   
-  stopifnot(lon>=-180, lon<=360, doy>0, doy<367)
+  stopifnot(lon>=-180, lon<=180, doy>0, doy<367)
   
   # Calculate the time of solar noon for each day using longitude correction (LC), equation of time (ET), and a conversion (f)
   f=(279.575+0.9856*doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
@@ -128,7 +128,7 @@ solar_noon <- function(lon, doy){
 
 zenith_angle=function(doy, lat, lon, hour){
 
-  stopifnot(doy>0, doy<367, lat>=-90, lat<=90, lon>=-180, lon<=360, hour>=0, hour<=24)
+  stopifnot(doy>0, doy<367, lat>=-90, lat<=90, lon>=-180, lon<=180, hour>=0, hour<=24)
   
 lat=lat*pi/180 #to radians
 lon=lon*pi/180 #to radians
@@ -247,7 +247,7 @@ fahrenheit_to_kelvin <- function(T) {
 #' 
 #' @details Converts Kelvin to Celsius.
 #' @description This function allows you to convert temperature from Kelvin to Celsius. Source: https://swcarpentry.github.io.
-#' @param T Temperature in Fahrenheit.
+#' @param T Temperature in Kelvin.
 #' @keywords Celsius Kelvin
 #' @family utility functions
 #' @return Temperature in Celsius

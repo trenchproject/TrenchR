@@ -54,7 +54,7 @@ DRYAIR <- function(db=db, bp=0, alt=0){
 #' VAPPRS
 #'
 #' Calculates saturation vapour pressure for a given air temperature.
-#' @param db Dry bulb temperature (degrees C)
+#' @param db Dry bulb temperature (°C)
 #' @return esat Saturation vapour pressure (Pa)
 #' @export
 #' @examples
@@ -78,19 +78,18 @@ VAPPRS <- function(db=db){
 #' Institution Press. Washington, DC. WETAIR must be used in conjunction with function VAPPRS.
 #'
 #' Input variables are shown below. The user must supply known values for DB and BP (BP at one standard
-#' atmosphere is 101 325 pascals). Values for the remaining variables are determined by whether the user has
+#' atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has
 #' either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP)
 #'
 #' (1) Psychrometric data:
-#' If WB is known but not RH, then set RH=-1 and DP=999
-#' If RH is known but not WB then set WB=0 and DP=999
-#'
+#' If WB is known but not RH, then set RH = -1 and DP = 999.
+#' If RH is known but not WB then set WB = 0 and DP = 999.
 #' (2) Hygrometric data:
 #' If DP is known then set WB = 0 and RH = 0.
-#' @param db Dry bulb temperature (degrees C)
-#' @param wb Wet bulb temperature (degrees C)
+#' @param db Dry bulb temperature (°C)
+#' @param wb Wet bulb temperature (°C)
 #' @param rh Relative humidity (\%)
-#' @param dp Dew point temperature (degrees C)
+#' @param dp Dew point temperature (°C)
 #' @param bp Barometric pressure (pascal)
 #' @return e Vapour pressure (Pa)
 #' @return esat Saturation vapour pressure (Pa)
@@ -109,6 +108,8 @@ VAPPRS <- function(db=db){
 #' }
 
 WETAIR <- function(db=db, wb=db, rh=0, dp=999, bp=101325){
+  
+  stopifnot(rh>=0, rh<=100, bp>0)
   
   tk = db + 273.15
   esat = VAPPRS(db)

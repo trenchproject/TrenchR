@@ -26,7 +26,7 @@
 
 Tb_Fei <- function(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact){
   
-  stopifnot(H>=0, lw>=0, shade>=0, shade<=1, m>=0, Acondfact>=0, Acondfact<=1, Agradfact>=0, Agradfact<=1)
+  stopifnot(T_a>200, T_a<400, T_g>200, T_g<400, H>=0, lw>=0, shade>=0, shade<=1, m>=0, Acondfact>=0, Acondfact<=1, Agradfact>=0, Agradfact<=1)
   
   # ---- Start Constants
   alpha_L = 0.965 # thermal absoptivity (proportion), Bartlett & Gates 1967

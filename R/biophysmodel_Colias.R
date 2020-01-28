@@ -1,10 +1,10 @@
-#' Predicts body temperature (operative environmental temperature) of a butterfly in degrees C.
-#' @details Predicts body temperature (operative environmental temperature) of a butterfly in degrees C.
-#' @description Predicts body temperatures (operative environmental temperatures) of a butterfly in degrees C. Based on Kingsolver (1983, Thermoregulation and flight in Colias butterflies: elevational patterns and mechanistic limitations. Ecology 64: 534–545). Assumes butterfly basks with closed wings perpendicular to solar beam. Source: Buckley LB and Kingsolver JK. 2012. The demographic impacts of shifts in climate means and extremes on alpine butterflies. Functional Ecology https://doi.org/10.1111/j.1365-2435.2012.01969.x and subsequent publications.
+#' Predicts body temperature (operative environmental temperature) of a butterfly in °C.
+#' @details Predicts body temperature (operative environmental temperature) of a butterfly in °C.
+#' @description Predicts body temperatures (operative environmental temperatures) of a butterfly in °C. Based on Kingsolver (1983, Thermoregulation and flight in Colias butterflies: elevational patterns and mechanistic limitations. Ecology 64: 534–545). Assumes butterfly basks with closed wings perpendicular to solar beam. Source: Buckley LB and Kingsolver JK. 2012. The demographic impacts of shifts in climate means and extremes on alpine butterflies. Functional Ecology https://doi.org/10.1111/j.1365-2435.2012.01969.x and subsequent publications.
 #' 
-#' @param T_a is air temperature in C
-#' @param Tg  is surface temperature in C in the sun
-#' @param Tg_sh is surface temperature in C in the shade
+#' @param T_a is air temperature in °C
+#' @param Tg  is surface temperature in °C in the sun
+#' @param Tg_sh is surface temperature in °C in the shade
 #' @param u is wind speed in m/s
 #' @param H_sdir  is direct solar radiation flux in W/m^2
 #' @param H_sdif  is diffuse solar radiation flux in W/m^2
@@ -14,7 +14,7 @@
 #' @param alpha is wing solar absorbtivity as a proportion. Range for Colias is 0.4 to 0.7.
 #' @param r_g is substrate solar reflectivity (proportion), see Kingsolver (1983)
 #' @param shade is whether body temperature should be calculate in sun (FALSE) or shade (TRUE)
-#' @return predicted body (operative environmental) temperature (C)
+#' @return predicted body (operative environmental) temperature (°C)
 #' @keywords body temperature, biophysical model
 #' @family biophysical models
 #' @export
@@ -25,7 +25,7 @@
 
 Tb_butterfly=function(T_a, Tg, Tg_sh, u, H_sdir, H_sdif, z, D, delta, alpha, r_g=0.3, shade=FALSE){
 
-  stopifnot(u>=0, H_sdir>=0, H_sdif>=0, D>0, delta>=0, alpha>=0, r_g>=0, r_g<=1, shade %in% c(FALSE, TRUE) )  
+  stopifnot(u>=0, H_sdir>=0, H_sdif>=0, z>=-90, z<=90, D>0, delta>=0, alpha>=0, r_g>=0, r_g<=1, shade %in% c(FALSE, TRUE) )  
   
 TaK= T_a+273.15 #ambient temperature in K
 TaK_sh=TaK

@@ -74,7 +74,12 @@ soil_specific_heat<-function(x_o, x_m, x_w, rho_so){
 #' soil_temperature_integrand(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), L=-10,z0=0.2)
 #'}
 
-soil_temperature_integrand<-function(x, L, z0){ (3-1.4*exp(1.5*x))^-1*(exp(x+z0/L)/(exp(x+z0/L)-1))}
+soil_temperature_integrand<-function(x, L, z0){ 
+  
+  stopifnot(z0>0)
+  
+  (3-1.4*exp(1.5*x))^-1*(exp(x+z0/L)/(exp(x+z0/L)-1))
+}
 
 #' Function called by soil_temperature_function() to solve equation for soil temperature.
 #'
@@ -88,7 +93,7 @@ soil_temperature_integrand<-function(x, L, z0){ (3-1.4*exp(1.5*x))^-1*(exp(x+z0/
 #' @param z_r is reference height in m
 #' @param z0 is surface roughness in m
 #' @param T_inst instantaneous air temperature in K
-#' @param T_s initial soil suface temperature in degrees C 
+#' @param T_s initial soil suface temperature in degrees °C 
 #' @return soil temperature function
 #' @keywords soil temperature
 #' @family soil temperature functions
@@ -100,6 +105,9 @@ soil_temperature_integrand<-function(x, L, z0){ (3-1.4*exp(1.5*x))^-1*(exp(x+z0/
 #'}
 
 soil_temperature_equation<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s){ 
+  
+  stopifnot(rho_a>0, c_a>0, k>0, T_inst>200, T_inst<400, z_r>0, z0>0)
+  
   rho_a*c_a*k*(V_inst*k/log((exp((z_r+z0)/L)-1)/(exp(z0/L)-1)))*(T_inst-T_s)/integrate(soil_temperature_integrand, lower=0, upper=z_r/L, L, z0)$value - (V_inst*k/log((exp((z_r+z0)/L)-1)/(exp(z0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}
   
 #' Function to calculate soil temperature.
@@ -107,8 +115,8 @@ soil_temperature_equation<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, 
 #' @details Function to calculate soil temperature.
 #' @description Function called to calculate soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly.
 #' @param j is the number of the iteration of running the model
-#' @param T_so is the initial soil temperature profile in degrees C 
-#' @param params is a list containing the following parameters, which are described below: list(SSA, epsilon_so, sigma, k_so, c_so, dz, k, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn,dt,shade).   
+#' @param T_so is the initial soil temperature profile in °C 
+#' @param params is a list containing the following parameters, which are described below: list(SSA, epsilon_so, sigma, k_so, c_so, dz, k, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade).   
 #' @param SSA is the solar absorbtivity of soil surface as a fraction
 #' @param epsilon_so is the thermal absorbtivity of soil surface as a fraction
 #' @param k_so is soil thermal conductivity in W m^-1 K^-1
@@ -117,13 +125,13 @@ soil_temperature_equation<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, 
 #' @param z_r is reference height in m
 #' @param z0 is surface roughness in m 
 #' @param H is solar radiation in W m^-2
-#' @param T_a is air temperature in degrees C
+#' @param T_a is air temperature in °C
 #' @param u is wind speed (m/s)
 #' @param rho_a is the density of air (kg/m^3)
 #' @param rho_so particle density of soil
 #' @param c_a is the specific heat of air (J/(kg*K))
 #' @param TimeIn is a vector of time periods for the model
-#' @param dt= 60*60 is the time interval for running the model
+#' @param dt = 60*60 is the time interval for running the model
 #' @param shade is whether or not soil temperature should be calculated in the shade, TRUE or FALSE
 #' @return soil temperature function
 #' @keywords soil temperature
@@ -230,16 +238,16 @@ soil_temperature_function<- function(j,T_so, params){
   )) #end list
 } #END soil temperature function
 
-#' Function to calculate soil temperature in C using ODEs.
+#' Function to calculate soil temperature in °C using ODEs.
 #' 
-#' @details Function to calculate soil temperature in C using ODEs.
-#' @description Function called to calculate soil temperature in C from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature.
+#' @details Function to calculate soil temperature in °C using ODEs.
+#' @description Function called to calculate soil temperature in °C from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature.
 #' @param z_r.intervals is the number of intervals in the soil profile to calculate 
 #' @param z_r is reference height in m
 #' @param z is interval of the soil profile to return (1 to z_r.intervals)
-#' @param T_a is a vector of air temperature in degrees C, Note: missing values will be linearly interpolated
+#' @param T_a is a vector of air temperature in degrees °C, Note: missing values will be linearly interpolated
 #' @param u is a vector of wind speed (m/s)
-#' @param Tsoil0 is the initial soil temperature in degrees C 
+#' @param Tsoil0 is the initial soil temperature in degrees °C 
 #' @param z0 is surface roughness in m 
 #' @param SSA is the solar absorbtivity of soil surface as a fraction
 #' @param TimeIn is a vector of time periods for the model
@@ -248,7 +256,7 @@ soil_temperature_function<- function(j,T_so, params){
 #' @param air_pressure is air pressure in kPa
 #' @param rho_so particle density of soil
 #' @param shade is whether or not soil temperature should be calculated in the shade, TRUE or FALSE
-#' @return soil temperature (C)
+#' @return soil temperature (°C)
 #' @keywords soil temperature
 #' @family soil temperature functions
 #' @export

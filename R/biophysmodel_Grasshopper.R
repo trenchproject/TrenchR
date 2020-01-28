@@ -1,11 +1,11 @@
-#' Predicts body temperatures (operative environmental temperature) of a grasshopper in degrees C.
+#' Predicts body temperatures (operative environmental temperature) of a grasshopper in °C.
 #' 
 #' 
-#' @details Predicts body temperatures (operative environmental temperature) of a grasshopper in degrees C.
-#' @description Predicts body temperature (operative environmental temperature) of a grasshopper in degrees C. Described in Buckleyet al. (2014, Phenotypic clines, energy balances, and ecological responses to climate change. Journal of Animal Ecology 83:41-50.) See also a related model by Anderson et al. (1979, Habitat selection in two species of short-horned grasshoppers. Oecologia 38:359–74.)
+#' @details Predicts body temperatures (operative environmental temperature) of a grasshopper in °C.
+#' @description Predicts body temperature (operative environmental temperature) of a grasshopper in °C. Described in Buckleyet al. (2014, Phenotypic clines, energy balances, and ecological responses to climate change. Journal of Animal Ecology 83:41-50.) See also a related model by Anderson et al. (1979, Habitat selection in two species of short-horned grasshoppers. Oecologia 38:359–74.)
 #' 
-#' @param T_a is air temperature in C
-#' @param T_g  is surface temperature in C, Kingsolver (1983) assumes T_g-T_a=8.4
+#' @param T_a is air temperature in °C
+#' @param T_g  is surface temperature in °C, Kingsolver (1983) assumes T_g-T_a=8.4
 #' @param u is wind speed in m/s
 #' @param H  is total (direct + diffuse) solar radiation flux in W/m^2
 #' @param K_t is the clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.
@@ -15,7 +15,7 @@
 #' @param z is grasshopper's distance from the ground in m
 #' @param abs is absorptivity of grasshopper to solar radiation (proportion), See Anderson et al. (1979).
 #' @param r_g is substrate solar reflectivity (proportion), see Kingsolver (1983)
-#' @return predicted body (operative environmental) temperature (C)
+#' @return predicted body (operative environmental) temperature (°C)
 #' @keywords body temperature, biophysical model
 #' @family biophysical models
 #' @export
@@ -26,7 +26,7 @@
 
 Tb_grasshopper=function(T_a, T_g, u, H, K_t, psi, L, Acondfact=0.25, z=0.001, abs=0.7, r_g=0.3){
 
-  stopifnot(u>=0, H>=0, K_t>=0, K_t<=1, L>=0, Acondfact>=0, Acondfact<=1, z>=0, abs>=0, abs<=1, r_g>=0, r_g<=1)
+  stopifnot(u>=0, H>=0, K_t>=0, K_t<=1, psi>-90, pas<90, L>=0, Acondfact>=0, Acondfact<=1, z>=0, abs>=0, abs<=1, r_g>=0, r_g<=1)
     
 TaK<- T_a+273.15 #Ambient temperature in K
 T_g<- T_g+273.15 #Ambient temperature in K

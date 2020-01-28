@@ -117,16 +117,16 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
 #' @details Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information as input.
 #' @description Function to estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information
 #' as input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
-#' # @source 
+#'  
 #' 
 #' @param lat latitude in degrees 
 #' @param lon longitude in degrees
-#' @param doy is the day of year
-#' @param elev is elevation in m
-#' @param T is mean monthly temperature (C)
-#' @param Hr is mean month relative humidity (in percentage)
-#' @param P is total monthly precipitation (mm)
-#' @return average monthly solar radiation ( W/m^2)
+#' @param doy day of year
+#' @param elev elevation in m
+#' @param T mean monthly temperature (°C)
+#' @param Hr mean month relative humidity (in percentage)
+#' @param P total monthly precipitation (mm)
+#' @return average monthly solar radiation (W/m^2)
 #' @keywords average monthly solar radiation
 #' @family microclimate functions
 #' @export
@@ -137,7 +137,7 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
 
 monthly_solar_radiation= function(lat,lon,doy,elev,T,Hr,P){
 
-  stopifnot(lat>=-90, lat<=90, lon>-180, lon<=360, doy>0, doy<367, elev>0, Hr>=0, Hr<=100, P>0)
+  stopifnot(lat>=-90, lat<=90, lon>-180, lon<=180, doy>0, doy<367, elev>0, Hr>=0, Hr<=100, P>0)
   
   library(msm) #for rtnorm
   

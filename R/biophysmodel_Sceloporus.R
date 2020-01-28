@@ -1,15 +1,15 @@
 #' Predicts body temperatures (operative environmental temperature) of a lizard in degrees C.
 #' 
-#' @details Predicts body temperatures (operative environmental temperature) of a lizard in degrees C.
-#' @description Predicts body temperature (operative environmental temperature) of a lizard in degrees C. 
+#' @details Predicts body temperatures (operative environmental temperature) of a lizard in °C.
+#' @description Predicts body temperature (operative environmental temperature) of a lizard in °C. 
 #' Based on Campbell and Norman (1998, An introduction to environmental biophysics). 
 #' Designed for Sceloporus lizards and described in Buckley (2008, Linking traits to energetics and population dynamics to predict lizard ranges in changing environments. American Naturalist 171: E1-E19).
 #' 
-#' @param T_a is air temperature in C
-#' @param T_g  is surface temperature in C
+#' @param T_a is air temperature in °C
+#' @param T_g  is surface temperature in °C
 #' @param u is wind speed in m/s
 #' @param svl is lizard snout vent length in mm
-#' @param m is lizard mass in g, note can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 #Tinkle and Ballinger 1972 
+#' @param m is lizard mass in g, note that it can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 (Tinkle and Ballinger 1972)
 #' @param psi is solar zenith angle in degrees
 #' @param rho_S is surface albedo (proportion)
 #' @param elev is elevation in m

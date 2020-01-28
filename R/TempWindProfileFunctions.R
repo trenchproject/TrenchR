@@ -20,7 +20,9 @@
 #'}
 
 surface_roughness<- function(u_r, zr){
-
+ 
+ stopifnot(zr>0)
+  
  mod1= lm(log(zr)~u_r)
  d= exp(as.numeric(mod1$coefficients[1])) #Zero Plane displacement:height at which the wind speed is zero
  # can also assume d=0.63h (Monteith 1975)
@@ -48,7 +50,7 @@ surface_roughness<- function(u_r, zr){
 #' @param u_r is wind velocity at reference height in m/s.
 #' @param zr is initial reference height in m.
 #' @param z0 is surface roughness in m.
-#' @param z is height to scale to in m.
+#' @param z is height to scale in m.
 #' @return windspeed in m/s
 #' @keywords wind profile
 #' @family microclimate functions
@@ -124,7 +126,8 @@ wind_speed_profile<- function(u_r,zr,z0,z){
   u_star=  0.4*u_r/log(zr/z0 +1)  #0.4 is von Karman constant
   u_z= 2.5*u_star*log(z/z0+1)
   return(u_z)
-  }
+}
+
 
 #' Estimate air temperature profile as in NicheMapR
 #' 
@@ -236,7 +239,7 @@ air_temp_profile_segment= function(T_r, u_r, zr, z0,z,T_s){
 #' @param u_r is a vector of wind speeds at the 3 reference heights in m/s.
 #' @param zr is a vector of 3 reference heights in m.
 #' @param z0 is a vector of 3 experimentally determined roughness heights in m.
-#' @param z is height to scale to in m.
+#' @param z is height to scale in m.
 #' @keywords wind speed profile
 #' @family microclimate functions
 #' @export
@@ -246,9 +249,9 @@ air_temp_profile_segment= function(T_r, u_r, zr, z0,z,T_s){
 #'}
 #'
 
-wind_speed_profile_segment= function(u_r, zr, z0,z){
+wind_speed_profile_segment= function(u_r, zr, z0, z){
   
-  stopifnot(z>=0)
+  stopifnot(z>=0, length(u_r)==3, length(zr)==3, length(z0)==3)
   
   #order roughness and segment heights so that z1>z2>z0 
   zr.ord= order(zr, decreasing = TRUE)

@@ -83,8 +83,8 @@ Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #' @param Qabs Solar and thermal radiation absorbed (W)
 #' @param epsilon longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
 #' @param H_L Convective heat transfer coefficient (W m^-2 K^-1)
-#' @param ef is the enhancement factor, used to adjust H_L to field condictions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.
-#' @param K Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle ( Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step. 
+#' @param ef enhancement factor used to adjust H_L to field condictions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.
+#' @param K Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle ( Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step. 
 #' @return operative environmental temperature (K)
 #' @keywords operative environmental temperature
 #' @family biophysical models

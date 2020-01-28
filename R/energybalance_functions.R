@@ -41,8 +41,8 @@ Qconduction_animal<-function(T_g,T_b,d,K=0.5, A,proportion){
 #' @param T_g Surface Temperature in Kelvin.
 #' @param T_b Body Temperature in Kelvin.
 #' @param D Characteristic dimension of the animal in meters
-#' @param K_g Thermal conductivity of substrate (W K^-1 m^-1 )
-#' @param A Surface area  in m^2
+#' @param K_g Thermal conductivity of substrate (W K^-1 m^-1)
+#' @param A Surface area in m^2
 #' @param proportion In contact to the surface
 #' @return conductance (W)
 #' @keywords conductance
@@ -50,7 +50,7 @@ Qconduction_animal<-function(T_g,T_b,d,K=0.5, A,proportion){
 #' @export
 #' @examples
 #' \dontrun{
-#' Qconduction_substrate(T_g= 293,T_b=303,D=0.01,K_g=0.3,A=10^-2, proportion=0.2)
+#' Qconduction_substrate(T_g= 293, T_b=303, D=0.01, K_g=0.3, A=10^-2, proportion=0.2)
 #' }
 #' 
 
@@ -76,7 +76,7 @@ Qconduction_substrate<-function(T_g,T_b,D,K_g=0.5, A,proportion){
 #' @param T_a Air Temperature in Kelvin.
 #' @param T_b Initial Body Temperature in Kelvin.
 #' @param H_L Convective heat transfer coefficient (W m^-2 K^-1)
-#' @param A Surface area  in m^2
+#' @param A Surface area in m^2
 #' @param proportion of surface area exposed to air
 #' @param ef is the enhancement factor, used to adjust H to field conditions.  Approximated as mean value of 1.23 by default, but see Mitchell 1976 for further information.
 #' @return convection (W)
@@ -85,30 +85,30 @@ Qconduction_substrate<-function(T_g,T_b,D,K_g=0.5, A,proportion){
 #' @export
 #' @examples
 #' \dontrun{
-#' Qconvection(T_a= 293,T_b= 303,H_L=10.45,A=0.0025, proportion=0.85)
+#' Qconvection(T_a= 293, T_b= 303, H_L=10.45, A=0.0025, proportion=0.85)
 #' }
 #' 
 
-Qconvection<-function(T_a,T_b,H_L=10.45,A,proportion, ef=1.23 ){
+Qconvection<-function(T_a,T_b,H_L=10.45,A,proportion, ef=1.23){
   
   stopifnot(T_a>200, T_a<400, T_b>200, T_b<400, H_L>0, A>0, proportion>=0, proportion<=1, ef>=1)
   
   # Calculate skin area exposed to air
   A_air = A*proportion
 
-  Qconv =   ef*H_L*A_air*(T_b-T_a)
+  Qconv = ef*H_L*A_air*(T_b-T_a)
   
   return(Qconv)
 }
 
 #' Calculate heat transfer coefficient. 
 #' 
-#' @details This function allows you estimate the heat transfer coefficient for various taxa based on empirical measurements. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569. (Uses Table I: Convective Heat Transfer Relations for Animal Shapes)
+#' @details This function allows you to estimate the heat transfer coefficient for various taxa based on empirical measurements. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569. (Uses Table I: Convective Heat Transfer Relations for Animal Shapes)
 #' @param V Air velocity m/s.
 #' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
 #' @param K Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR
 #' @param nu Kinematic Viscocity of air, m^2 s^-1, can calculate using DRYAIR or WETAIR in NicheMapR
-#' @param taxa Which class of organism, current choices: sphere,cylinder,frog,lizard_surface,lizard_elevated,flyinginsect,spider
+#' @param taxa Which class of organism, current choices: sphere, cylinder, frog, lizard_surface, lizard_elevated, flyinginsect, spider
 #' @return heat transfer coefficient, H_L (W m^-2 K^-1)
 #' @keywords heat transfer coefficient
 #' @family biophysical models
@@ -144,7 +144,7 @@ heat_transfer_coefficient<-function(V,D,K,nu, taxa="cylinder"){
 
 #' Calculate heat transfer coefficient using a sphereical approximation (based on Mitchell 1976)
 #' 
-#' @details This function allows you estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569. (Uses Table III: Convective Heat Transfer Relations for Animal Shapes.)
+#' @details This function allows you to estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569. (Uses Table III: Convective Heat Transfer Relations for Animal Shapes.)
 #' @param V Air velocity m/s.
 #' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
 #' @param K Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR
@@ -182,7 +182,7 @@ heat_transfer_coefficient_approximation<-function(V,D,K,nu, taxa="sphere"){
 
 #' Calculate heat transfer coefficient (based on Mitchell 1976 in Spotila 1992)
 #' 
-#' @details This function allows you estimate the heat transfer coefficient for various taxa (based on Mitchell 1976 and using relationship in Spotila et al 1992). References: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians; Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569.
+#' @details This function allows you to estimate the heat transfer coefficient for various taxa (based on Mitchell 1976 and using relationship in Spotila et al 1992). References: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians; Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569.
 #' @param V Air velocity m/s.
 #' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
 #' @return heat transfer coefficient, H_L (W m^-2 K^-1)
@@ -209,7 +209,7 @@ heat_transfer_coefficient_simple<-function(V,D){
 #' @details This function allows you to estimate solar and thermal radiation (W) absorbed by the surface of an animal. 
 #'          Follows Gates' Biophysical Ecology and Spotila et al. 1992. Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
 #' @param a solar absorptivity of animal surface (proportion), default value is for reptiles
-#' @param A surface area  in m^2
+#' @param A surface area in m^2
 #' @param psa_dir proportion surface area exposed to solar radiation
 #' @param psa_ref proportion surface area exposed to reflected solar radiation
 #' @param S_dir direct solar radiation (W/m^2)
@@ -267,7 +267,7 @@ stopifnot(a>=0, a<=1, A>0, psa_dir>=0, psa_dir<=1, psa_ref>=0, psa_ref<=1,S_dir>
 
 Qemitted_thermal_radiation<-function(epsilon=0.96, A, psa_dir, psa_ref, T_b, T_g, T_a, enclosed=FALSE){
   
-  stopifnot(A>0, psa_dir>=0, psa_dir<=1, psa_ref>=0, psa_ref<=1, T_b>200, T_b<400, T_g>200, T_g<400, enclosed %in% c(TRUE, FALSE))
+  stopifnot(epsilon>=0, epsilon<=1, A>0, psa_dir>=0, psa_dir<=1, psa_ref>=0, psa_ref<=1, T_b>200, T_b<400, T_g>200, T_g<400, T_a>200, T_a<400, enclosed %in% c(TRUE, FALSE))
   
   #Stefan-Boltzmann constant
   sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
@@ -312,7 +312,8 @@ Qemitted_thermal_radiation<-function(epsilon=0.96, A, psa_dir, psa_ref, T_b, T_g
 
 Qevaporation<-function(A, T_b, taxa, rho_s=NA, rho_a=NA, h=NA, H=NA, r_i=NA){
   
-  stopifnot(A>0, T_b>200, T_b<400, taxa %in% c("lizard", "amphibian_wetskin", "amphibian") )
+  stopifnot(A>0, T_b>200, T_b<400, taxa %in% c("lizard", "amphibian_wetskin", "amphibian"), rho_s >= 0, 
+            rho_a >= 0, h >= 0, h <= 0, H >= 0, r_i >= 0, epsilon >= 0, epsilon <= 0 )
   if(taxa %in% c("amphibian_wetskin", "amphibian")) stopifnot(rho_s>0, rho_a>0, h>=0, h<=1, H>0, r_i>0)                                                              
                                                               
   #Porter et al. 1973 in Gates Biophysical ecology
@@ -354,8 +355,8 @@ Qevaporation<-function(A, T_b, taxa, rho_s=NA, rho_a=NA, h=NA, H=NA, r_i=NA){
 #' Approximate saturation water vapor pressure
 #'
 #' 
-#' @details Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C (Rosenberg 1974 in Spotila et al. 1992, see also NichMapR WETAIR and DRYAIR functions from Tracy et al. 1980).  Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
-#' @param T_a air temperature (C)
+#' @details Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40°C (Rosenberg 1974 in Spotila et al. 1992, see also NichMapR WETAIR and DRYAIR functions from Tracy et al. 1980).  Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
+#' @param T_a air temperature (°C)
 #' @return Saturation water vapor pressure, e_s (Pa)
 #' @keywords Saturation water vapor pressure
 #' @family biophysical models
@@ -414,7 +415,7 @@ external_resistance_to_water_vapor_transfer<-function(H, rhocp=12000){
 
 Qmetabolism_from_mass<-function(m, taxa="reptile"){
   
-  stopifnot(m>0, taxa %in%c("reptile", "bird", "mammal") )
+  stopifnot(m>0, taxa %in% c("reptile", "bird", "mammal") )
   
   #FMR in W, M is mass in grams
   #Convert 1 kJ/day=0.0115741 W
@@ -439,7 +440,7 @@ Qmetabolism_from_mass<-function(m, taxa="reptile"){
 #' @param m Mass in grams.
 #' @param T_b body temperature in K
 #' @param taxa Which taxa. options: bird, mammal, reptile, amphibian, invertebrate.
-#' @return metabolim (W)
+#' @return basal metabolim (W)
 #' @keywords metabolism
 #' @family biophysical models
 #' @export
@@ -583,14 +584,14 @@ boundary_layer_resistance<-function(T_a, e_s, e_a, elev, D, u=NA){
 #' @details This function allows you to calculate humid operative temperature (adaptation of Campbell and Norman 1998). Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
 #' @param r_i internal (skin) resistance (s cm^-1)
 #' @param r_b boundary layer resistance (s cm^-1)
-#' @param D body diameter (m), ##diameter = 0.0016*log(mass) + 0.0061 for mass(g) #empirical formula for diameter, Riddell et al. 2017
-#' @param T_a ambient temperature (C)
+#' @param D body diameter (m), (diameter = 0.0016*log(mass) + 0.0061 for mass(g)) #empirical formula for diameter, Riddell et al. 2017
+#' @param T_a ambient temperature (°C)
 #' @param elev elevation (m)
 #' @param e_s saturation vapor pressure (kPa)
 #' @param e_a actual vapor pressure (kPa)
 #' @param Qabs Solar and thermal radiation absorbed (W)
 #' @param epsilon emissivity of salamander skin, default epsilon=0.96 
-#' @return humid operative temperature (C)
+#' @return humid operative temperature (°C)
 #' @keywords humid operative temperature
 #' @family biophysical models
 #' @export
@@ -627,8 +628,8 @@ Tb_salamander_humid<-function(r_i,r_b,D,T_a,elev,e_a, e_s,Qabs, epsilon=0.96){
 #' Estimate absorbed longwave (thermal) radiation
 #' 
 #' @details This function allows you to estimate longwave (thermal) radiation (W) absorbed from the sky and the ground (adaptation of Campbell and Norman 1998). Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
-#' @param T_a air temperature (C)
-#' @param T_g ground temperature (C)
+#' @param T_a air temperature (°C)
+#' @param T_g ground temperature (°C)
 #' @param epsilon_ground emmisitivity (proportion) for more soil types (Campbell and Norman 1998), default value of 0.97
 #' @param a_longwave absorptance (proportion) of organism to longwave radiation (Bartlett and Gates 1967, Buckley 2008), default value of 0.965
 #' @return thermal radiation absorbed (W)
@@ -665,10 +666,11 @@ Qthermal_radiation_absorbed<-function(T_a,T_g, epsilon_ground=0.97, a_longwave=0
 #'
 #' 
 #' @details This function allows you to estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from Campbell and Norman 1998). Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
-#' @param Tg_max daily maximum soil surface temperature (C)
-#' @param Tg_min daily minimum soil surface temperature (C)
+#' @param Tg_max daily maximum soil surface temperature (°C)
+#' @param Tg_min daily minimum soil surface temperature (°C)
+#' @param hour 
 #' @param depth depth (cm) ???
-#' @return soil temperature (C)
+#' @return soil temperature (°C)
 #' @keywords soil temperature
 #' @family biophysical models
 #' @export
@@ -681,11 +683,11 @@ Qthermal_radiation_absorbed<-function(T_a,T_g, epsilon_ground=0.97, a_longwave=0
 
 Tsoil<-function(Tg_max, Tg_min, hour, depth){
  
-  stopifnot(depth>0)
+  stopifnot(Tg_max>Tg_min, depth>=0)
   
   offset= ifelse(hour %in% c(0,1,2,3), -13, 11)
   Tsoil= ((Tg_max+Tg_min)/2.0)+((Tg_max-Tg_min)/2.0)*(2.71**(-depth/5.238))*sin((3.14/12.)*(hour-offset)-depth/5.238)
-  
+
   return(Tsoil)
 }
 
@@ -695,7 +697,7 @@ Tsoil<-function(Tg_max, Tg_min, hour, depth){
 #' @details This function allows you to estimate the Nusselt Number, which describes dimensionless conductance (Gates 1980 Biophysical Ecology).
 #' @param H_L Convective heat transfer coefficient (W m^-2 K^-1)
 #' @param D is characteristic dimension (e.g., body diameter) (m)
-#' @param K Thermal conductivity (W K^-1 m^-1 )
+#' @param K Thermal conductivity (W K^-1 m^-1)
 #' @return Nusselt number
 #' @keywords Nusselt number
 #' @family biophysical models
@@ -720,7 +722,7 @@ Nusselt_number<-function(H_L, D, K){
 #' @details This function allows you to estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity (Gates 1980 Biophysical Ecology).
 #' @param c_p is specific heat at constant pressure (J mol^{-1} K^{-1})
 #' @param mu is dynamic viscosity (mol s^{-1}m^{-1})
-#' @param K Thermal conductivity (W K^-1 m^-1 )
+#' @param K Thermal conductivity (W K^-1 m^-1)
 #' @return Prandtl number
 #' @keywords Prandtl number
 #' @family biophysical models
