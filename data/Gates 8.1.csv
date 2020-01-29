@@ -1,0 +1,130 @@
+﻿Species,Condition,Date,RL,RH,AL,AH
+"Acer saccharinum,",Very small,29-Apr,0.256,0.206,0.325,0.458
+silver maple,Medium,29-Apr,0.282,0.231,0.374,0.49
+,Small,7-May,0.232,0.187,0.396,0.511
+,Medium,7-May,0.284,0.225,0.347,0.483
+,Medium,12-May,0.286,0.222,0.431,0.558
+,Large,12-May,0.305,0.238,0.398,0.531
+"Aesculus hippocastanum,",,,0.0295,0.233,0.306,0.453
+buckeye,,,,,,
+"Ailanthus altissima,",,,0.277,0.216,0.363,0.508
+tree of heaven,,,,,,
+"Andromeda glaucophylla,",Upper shade leaf,,0.389,0.368,0.321,0.413
+bog rosemary,Lower shade leaf,,0.345,0.272,0.373,0.514
+,Upper sun leaf,,0.357,0.282,0.372,0.504
+,Lower sun leaf,,0.411,0.4,0.317,0.392
+"Artemisia sp.,",Young,,0.413,0.344,0.454,0.554
+wormwood,Older,,0.461,0.392,0.462,0.547
+"Aristida sp.,",,,0.275,0.22,0.275,0.424
+needle grass,,,,,,
+"Capsicum annuum,",,,0.271,0.211,0.397,0.534
+pepper,,,,,,
+"Carya sp.,",Very small,29-Apr,0.282,0.231,0.374,0.49
+hickory,Small,29-Apr,0.303,0.239,0.341,0.473
+,Medium,7-May,0.284,0.225,0.427,0.543
+,Large,7-May,0.312,0.244,0.414,0.541
+,Very large,29-May,0.311,0.245,0.444,0.565
+Cercis canadensis,(White),25-Apr,0.232,0.189,0.344,0.462
+redbud,,5-May,0.206,0.163,0.358,0.48
+,,28-May,0.254,0.203,0.37,0.501
+,Sun leaf,20-Jun,0.304,0.246,0.332,0.465
+,Shade leaf,20-Jun,0.285,0.224,0.365,0.503
+"Chamaedaphne calyculata,",Upper shade leaf,,0.36,0.283,0.335,0.485
+leather-leaf,Lower shade leaf,,0.325,0.268,0.352,0.487
+,Upper sun leaf,,0.37,0.294,0.385,0.516
+,Lower sun leaf,,0.407,0.335,0.344,0.476
+"Clematis fremontii,",,20-Jun,0.259,0.207,0.488,0.592
+clematis,,,,,,
+"Cococasia sp.,",,,0.314,0.244,0.417,0.553
+elephant ear,,,,,,
+"Erythrina sp.,",,,0.297,0.233,0.342,0.488
+coral bean,,,,,,
+"Euonymus bungeanus,",Very young,26-Mar,0.268,0.221,0.342,0.465
+spindle tree,Young,12-Apr,0.304,0.247,0.326,0.46
+,,11-May,0.304,0.243,0.362,0.498
+,,17-Jun,0.309,0.248,0.391,0.524
+,,29-Jun,0.331,0.263,0.397,0.531
+,,29-Aug,0.331,0.265,0.415,0.541
+,,4-Oct,0.345,0.277,0.419,0.542
+,,29-Nov,0.356,0.286,0.376,0.502
+,,13-Dec,0.347,0.287,0.315,0.441
+"Fagus grandifolia,",,25-Apr,0.262,0.214,0.355,0.474
+american beech,,5-May,0.298,0.238,0.4,0.517
+,,9-Jun,0.311,0.244,0.375,0.513
+"Fagus sylvatica sanguinea,",July,,0.247,0.001,0.286,0.435
+european beech,October,,0.263,0.205,0.384,0.525
+"Ginko biloba,",,23-Apr,0.317,0.252,0.382,0.508
+ginko,,1-May,0.355,0.286,0.366,0.499
+,,29-May,0.326,0.258,0.467,0.585
+"Gossypium hirsutum,",,,0.277,0.221,0.397,0.524
+cotton,,,,,,
+"Hamamelis venalis,",,,0.265,0.207,0.392,0.529
+witch hazel,,,,,,
+"Helianthus annus,",Second leaf,,0.317,0.255,0.398,0.521
+sunflower,Third leaf,,0.269,0.213,0.407,0.53
+,Fourth leaf,,0.28,0.219,0.443,0.565
+,Fifth leaf,,0.282,0.22,0.4,0.532
+"Kalmia polifolia,",Upper surface,,0.361,0.285,0.407,0.537
+swamp laurel,Lower surface,,0.432,0.383,0.322,0.429
+"Liriodendron tulipifera,",Very small,4-Apr,0.171,0.143,0.312,0.43
+tulip tree,Unfolding,16-Apr,0.197,0.165,0.312,0.439
+,,18-May,0.282,0.225,0.358,0.495
+,,8-Jun,0.287,0.225,0.393,0.528
+,,29-Jun,0.307,0.24,0.383,0.521
+,,29-Aug,0.324,0.26,0.388,0.519
+,,27-Sep,0.342,0.267,0.387,0.526
+,Yellow,18-Oct,0.378,0.319,0.282,0.401
+,Brown,1-Nov,0.359,0.288,0.295,0.436
+"Magnolia virginana,",Small,6-May,0.169,0.137,0.393,0.503
+sweet bay,Medium,12-May,0.309,0.245,0.428,0.55
+,Large,12-May,0.284,0.229,0.459,0.564
+"Musa paradisiaca,",,,0.333,0.262,0.415,0.546
+banana,,,,,,
+"Parmelia sp.,",,,0.378,0.313,0.603,0.672
+lichen,,,,,,
+"Parthenium integrifolium,",,,0.288,0.233,0.379,0.501
+quinine,,,,,,
+"Pelargonium sp.,",,,0.276,0.215,0.419,0.548
+geranium,,,,,,
+"Platanus occidentalis,",Very small,17-Apr,0.351,0.302,0.455,0.542
+american sycamore,Small,23-Apr,0.285,0.233,0.358,0.474
+,Small,29-Apr,0.271,0.224,0.307,0.43
+,Small,5-May,0.225,0.187,0.326,0.442
+,Medium,21-May,0.291,0.227,0.373,0.508
+"Populus deltoides,",Very small,27-Apr,0.198,0.169,0.296,0.416
+cottonwood,,7-May,0.237,0.198,0.324,0.448
+,,21-May,0.258,0.211,0.379,0.508
+,,1-Jul,0.268,0.218,0.375,0.508
+,,16-Aug,0.305,0.255,0.36,0.487
+,,13-Sep,0.302,0.246,0.373,0.501
+,,20-Sep,0.316,0.26,0.366,0.493
+,Yellow,25-Oct,0.362,0.31,0.278,0.389
+"Prunus persica,",,,0.306,0.246,0.478,0.586
+peach,,,,,,
+"Prunus serotina,",Small,5-May,0.284,0.229,0.368,0.488
+black cherry,Medium,5-May,0.312,0.246,0.378,0.509
+"Quercus alba,",,24-Apr,0.339,0.27,0.431,0.547
+white oak,,30-Apr,0.26,0.212,0.44,0.546
+,,2-May,0.268,0.221,0.311,0.436
+,,22-May,0.285,0.228,0.389,0.519
+,,16-Jul,0.281,0.217,0.476,0.601
+"Quercus imbricaria,",,25-Apr,0.256,0.21,0.433,0.539
+laurel oak,,29-May,0.304,0.238,0.441,0.565
+"Quercus macrocarpa,",,24-Apr,0.214,0.176,0.395,0.505
+bur oak,,5-May,0.261,0.209,0.283,0.418
+,,9-Jun,0.301,0.24,0.377,0.509
+"Quercus marilandica,",,28-Apr,0.308,0.245,0.331,0.467
+black jack oak,,,,,,
+"Quercus velutina,",,23-Apr,0.264,0.216,0.383,0.5
+black oak,,30-Apr,0.293,0.241,0.388,0.503
+"Reboulia sp.,",,28-May,0.3,0.239,0.439,0.559
+liverwort,,,0.218,0.169,0.753,0.809
+"Sassafras albidum, ",Small,29-Apr,0.246,0.197,0.335,0.463
+sassafras,Medium,21-May,0.297,0.234,0.347,0.487
+,Large,9-Jun,0.315,0.249,0.346,0.488
+"Streliztsia sp., ",,,0.291,0.23,0.507,0.617
+bird of paradise,,,,,,
+"Verbascum sp.,",Young leaf,7/18/1968,0.421,0.363,0.435,0.524
+mullein,,,,,,
+"Xanthuim sp., ",Severed from plant,,0.305,0.244,0.352,0.481
+cocklebur,Attached to plant,,0.274,0.219,0.41,0.528
