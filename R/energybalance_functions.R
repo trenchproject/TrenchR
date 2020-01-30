@@ -4,8 +4,8 @@
 #' @param T_g Ground (Surface) Temperature in Kelvin.
 #' @param T_b Body Temperature in Kelvin.
 #' @param d Mean thickness of the animal skin (surface) in (m), assumes well mixed interior
-#' @param K Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step. 
-#' @param A Surface area  in m^2
+#' @param K Thermal conductivity (W K^-1 m^-1), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step. 
+#' @param A Surface area in m^2
 #' @param proportion in contact with the surface
 #' @return conductance (W)
 #' @keywords conductance
@@ -17,7 +17,7 @@
 #' }
 #' 
 
-Qconduction_animal<-function(T_g,T_b,d,K=0.5, A,proportion){
+Qconduction_animal<-function(T_g, T_b, d ,K=0.5, A, proportion){
  
   stopifnot(T_g>200, T_g<400, T_b>200, T_b<400, d>=0, K>0, A>0, proportion>=0, proportion<=1)
   
@@ -54,7 +54,7 @@ Qconduction_animal<-function(T_g,T_b,d,K=0.5, A,proportion){
 #' }
 #' 
 
-Qconduction_substrate<-function(T_g,T_b,D,K_g=0.5, A,proportion){
+Qconduction_substrate<-function(T_g, T_b, D, K_g=0.5, A, proportion){
   
   stopifnot(T_g>200, T_g<400, T_b>200, T_b<400, D>=0, K_g>0, A>0, proportion>=0, proportion<=1)
   
@@ -89,7 +89,7 @@ Qconduction_substrate<-function(T_g,T_b,D,K_g=0.5, A,proportion){
 #' }
 #' 
 
-Qconvection<-function(T_a,T_b,H_L=10.45,A,proportion, ef=1.23){
+Qconvection<-function(T_a, T_b, H_L=10.45, A, proportion, ef=1.23){
   
   stopifnot(T_a>200, T_a<400, T_b>200, T_b<400, H_L>0, A>0, proportion>=0, proportion<=1, ef>=1)
   
@@ -119,7 +119,7 @@ Qconvection<-function(T_a,T_b,H_L=10.45,A,proportion, ef=1.23){
 #' }
 #' 
 
-heat_transfer_coefficient<-function(V,D,K,nu, taxa="cylinder"){
+heat_transfer_coefficient<-function(V, D, K, nu, taxa="cylinder"){
   
   stopifnot(V>=0, D>=0, K>=0, nu>=0, taxa %in% c("sphere","cylinder","frog","lizard_surface","lizard_elevated","flyinginsect","spider"))
   
@@ -160,7 +160,7 @@ heat_transfer_coefficient<-function(V,D,K,nu, taxa="cylinder"){
 #' }
 #' 
 
-heat_transfer_coefficient_approximation<-function(V,D,K,nu, taxa="sphere"){
+heat_transfer_coefficient_approximation<-function(V, D, K, nu, taxa="sphere"){
   
   stopifnot(V>=0, D>=0, K>=0, nu>=0, taxa %in% c("sphere","frog","lizard","flyinginsect","spider"))
   

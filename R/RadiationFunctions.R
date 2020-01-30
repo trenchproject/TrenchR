@@ -78,7 +78,7 @@ estimate_radiation=function(doy, psi, tau, elev, rho=0.7){
 #'}
 diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){ 
 
-  stopifnot(doy>0, doy<367, solrad>0, hour>=0, hour<=24, lon>-180, lon<=360, lat>=-90, lat<=90)
+  stopifnot(doy>0, doy<367, solrad>0, hour>=0, hour<=24, lon>-180, lon<=180, lat>=-90, lat<=90)
   
   #Calculate solar time
   rd=180/pi;  # factor to convert radians into degrees

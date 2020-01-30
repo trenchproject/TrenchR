@@ -17,5 +17,7 @@ test_that("daylength function works as expected", {
   #  “NaNs produced”
   
   sweden = day_of_year("2017-06-10", format= "%Y-%m-%d")
-  daylength(66.86, sweden)
+  sweden_dl = daylength(66.86, sweden)
+  expect_gte(sweden_dl, 23)
+  
 })
