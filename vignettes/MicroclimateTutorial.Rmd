@@ -42,7 +42,7 @@ where $J$ is calendar date, $\phi$ is latitude (radians), $h$ is hour, and $h_0$
 ```{r, fig.height=4, fig.width=6}
 zen= unlist(lapply(1:24, FUN=zenith_angle, doy=200, lat=47.61, lon=-122.33))
 plot(1:24, zen, type="l", ylab="zenith angle (°)", xlab="hour")
-zen= unlist(lapply(1:24, FUN=zenith_angle, doy=0, lat=47.61, lon=-122.33))
+zen= unlist(lapply(1:24, FUN=zenith_angle, doy=1, lat=47.61, lon=-122.33))
 points(1:24, zen, type="l", lty="dotted")
 zen= unlist(lapply(1:24, FUN=zenith_angle, doy=100, lat=47.61, lon=-122.33))
 points(1:24, zen, type="l", lty="dotdash")

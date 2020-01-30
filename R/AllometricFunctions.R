@@ -215,7 +215,7 @@ sa_from_length<-function(l){
 
 prop_silhouette_area<-function(z, taxa, raz=0, posture="prostrate"){
   
-  stopifnot(taxa %in% c("frog", "lizard", "grasshopper"), z>0,z<360)
+  stopifnot(taxa %in% c("frog", "lizard", "grasshopper"), z>=0,z<360)
   
   #frog
   #Source: Tracy CR. 1976. A model of the dynamic exchanges of water and energy between a terrestrial amphibian and its environment. Ecological Monographs 46: 293-326.
@@ -270,7 +270,7 @@ prop_silhouette_area<-function(z, taxa, raz=0, posture="prostrate"){
 
 prop_silhouette_area_shapes<-function(shape, theta, h, d){
   
-  stopifnot(shape %in% c("spheroid", "cylinder flat ends", "cylinder hemisphere ends"), theta>0,theta<360, h>0, d>0)
+  stopifnot(shape %in% c("spheroid", "cylinder flat ends", "cylinder hemisphere ends"), theta>=0,theta<360, h>=0, d>=0)
   
   #convert degree to radian
   theta_r= theta*(2*pi)/360

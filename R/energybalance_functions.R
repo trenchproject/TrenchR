@@ -312,8 +312,8 @@ Qemitted_thermal_radiation<-function(epsilon=0.96, A, psa_dir, psa_ref, T_b, T_g
 
 Qevaporation<-function(A, T_b, taxa, rho_s=NA, rho_a=NA, h=NA, H=NA, r_i=NA){
   
-  stopifnot(A>0, T_b>200, T_b<400, taxa %in% c("lizard", "amphibian_wetskin", "amphibian"), rho_s >= 0, 
-            rho_a >= 0, h >= 0, h <= 0, H >= 0, r_i >= 0, epsilon >= 0, epsilon <= 0 )
+  stopifnot(A>0, T_b>200, T_b<400, taxa %in% c("lizard", "amphibian_wetskin", "amphibian"))
+
   if(taxa %in% c("amphibian_wetskin", "amphibian")) stopifnot(rho_s>0, rho_a>0, h>=0, h<=1, H>0, r_i>0)                                                              
                                                               
   #Porter et al. 1973 in Gates Biophysical ecology
@@ -760,7 +760,7 @@ Prandtl_number<-function(c_p, mu, K){
 
 Reynolds_number<-function(u, D, nu){
   
-  stopifnot(D>0, u>0, nu>0)
+  stopifnot(D>=0, u>=0, nu>=0)
   
      Re= u*D / nu #eq 9.25
   return(Re)
@@ -772,7 +772,7 @@ Reynolds_number<-function(u, D, nu){
 #' @param Ta Air temperature (°C).
 #' @param Tg Ground (surface) temperature (°C).
 #' @param D is characteristic dimension (e.g., body diameter) (m)
-#' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^-1), can calculate from `DRYAIR()` or `WETAIR()`
+#' @param nu is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^-1), can calculate from DRYAIR() or WETAIR()
 #' @return Grashof number
 #' @keywords Grashof number
 #' @family biophysical models
@@ -785,7 +785,7 @@ Reynolds_number<-function(u, D, nu){
 
 Grashof_number<-function(Ta, Tg, D, nu){
   
-  stopifnot(D>0, nu>0)
+  stopifnot(D>=0, nu>=0)
   
   #constant
   gravity = 9.8 #meters per second
@@ -817,7 +817,7 @@ Grashof_number<-function(Ta, Tg, D, nu){
 
 Grashof_number_Gates<-function(Ta, Tg, beta, D, nu){
 
-  stopifnot(beta>0, D>0, nu>0)
+  stopifnot(beta>0, D>=0, nu>0)
   
   #constant
   gravity = 9.8 #meters per second
