@@ -151,7 +151,7 @@ soil_temperature_equation<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, 
 #' 
 #'}
 
-soil_temperature_function<- function(j,T_so, params){
+soil_temperature_function<- function(j, T_so, params){
 
   sigma=5.670373*10^(-8) # is the stefan-boltzmann constant (W/(m^2*K^4))
   k=0.41 #is von Karman's constant

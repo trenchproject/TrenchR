@@ -23,7 +23,7 @@
 #' @param F_r is the view factor between the surface of the lizard and reflected solar radiation
 #' @param F_a is the view factor between the surface of the lizard and atmospheric radiation
 #' @param F_g is the view factor between the surface of the lizard and ground thermal radation
-#' @return T_e Operative temperature
+#' @return T_e Operative temperature (°C)
 #' @keywords body temperature, biophysical model
 #' @family biophysical models
 #' @export 

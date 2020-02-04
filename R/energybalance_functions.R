@@ -446,13 +446,13 @@ Qmetabolism_from_mass<-function(m, taxa="reptile"){
 #' @export
 #' @examples 
 #' \dontrun{
-#' Qmetabolism_from_mass_temp(m=100, T_b=303,"reptile")
+#' Qmetabolism_from_mass_temp(m=100, T_b=303, "reptile")
 #' }
 #' 
 
-Qmetabolism_from_mass_temp<-function(m,T_b, taxa){
+Qmetabolism_from_mass_temp<-function(m, T_b, taxa){
   
-  stopifnot(m>0,T_b>200, T_b<400,taxa %in%c("bird","mammal","reptile","amphibian","invertebrate") )
+  stopifnot(m>0, T_b>200, T_b<400, taxa %in% c("bird","mammal","reptile","amphibian","invertebrate") )
   
   #Source:  Gillooly JF et al. 2001. Effects of size and temperature on metabolic rate. Science 293: 2248-2251. 
   if(taxa=="bird" | taxa=="mammal") Qmet= exp(-9100/T_b+29.49)*m^0.75/60
@@ -537,7 +537,7 @@ saturation_vapor_pressure<-function(T_a){
 
 boundary_layer_resistance<-function(T_a, e_s, e_a, elev, D, u=NA){
   
-  stopifnot(T_a>200, T_a<400, e_s>0, e_a>0, elev>0, D>0, u>=0)
+  stopifnot(T_a>200, T_a<400, e_s>0, e_a>0, elev>0, D>0)
   
   #constant
   gravity = 9.8 #meters per second

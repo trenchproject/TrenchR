@@ -202,14 +202,14 @@ sa_from_length<-function(l){
 #' @param z zenith angle in degrees
 #' @param taxa Which class of organism, current choices: frog, lizard, grasshopper
 #' @param raz if lizard, relative solar azimuth angle (degrees), the horizontal angle of the sun relative to the head and frontal plane of the lizard. Options are 0 (in front), 90 (to side), and 180 (behind) degrees. 
-#' @param posture if lizard, indicate posture as "prostrate" or "elevated"
+#' @param posture if lizard, indicate posture as "prostrate" or "elevated" (default: prostrate)
 #' @return silhouette area as a proportion
 #' @keywords silhouette area
 #' @family allometric functions
 #' @export
 #' @examples
 #' \dontrun{
-  #' prop_silhouette_area(z=60, taxa= "frog")
+#' prop_silhouette_area(z=60, taxa= "frog")
 #' }
 #' 
 
