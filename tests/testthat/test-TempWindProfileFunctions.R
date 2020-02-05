@@ -4,8 +4,6 @@ expect_similar <- function(input, expected) {
   eval(bquote(expect_lt(abs(input - expected), 0.01)))
 }
 
-expect_similar(1,2)
-
 test_that("surface_roughness function works as expected", {
   expect_similar(surface_roughness(u_r=c(0.01,0.025,0.05,0.1,0.2), zr=c(0.05,0.25,0.5,0.75,1)),0.1100434)
 })

@@ -28,7 +28,7 @@ test_that("heat_transfer_coefficient_approximation function works as expected", 
 })
 
 test_that("heat_transfer_coefficient_simple function works as expected", {
-  heat_transfer_coefficient_simple(V=0.5,D=0.05)
+  expect_similar(heat_transfer_coefficient_simple(V=0.5,D=0.05), 14.80412)
 })
 
 test_that("Qradiation_absorbed function works as expected", {

@@ -35,9 +35,3 @@ test_that("azimuth_angle function works as expected", {
   
   # 226 getting 46
 })
-
-
-june10 = day_of_year("2017-06-10", format= "%Y-%m-%d")
-aa = azimuth_angle(june10, 49.267, -123.117, 12)
-aa_sea
-aa_van
