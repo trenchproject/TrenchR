@@ -2,8 +2,8 @@ pandoc: 1.19.2.1
 pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
-  AllometryAndConversionsTutorial: ../../../../DOCUME~1/BUCKLE~1/TrenchR/vignettes/AllometryAndConversionsTutorial.html
-  MicroclimateTutorial: ../../../../DOCUME~1/BUCKLE~1/TrenchR/vignettes/MicroclimateTutorial.html
-  Symbols: ../../../../DOCUME~1/BUCKLE~1/TrenchR/vignettes/Symbols.html
-  TeTutorial: ../../../../DOCUME~1/BUCKLE~1/TrenchR/vignettes/TeTutorial.html
+  AllometryAndConversionsTutorial: AllometryAndConversionsTutorial.html
+  MicroclimateTutorial: MicroclimateTutorial.html
+  Symbols: Symbols.html
+  TeTutorial: TeTutorial.html
 
