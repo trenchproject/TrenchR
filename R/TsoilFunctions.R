@@ -93,7 +93,7 @@ soil_temperature_integrand<-function(x, L, z0){
 #' @param z_r is reference height in m
 #' @param z0 is surface roughness in m
 #' @param T_inst instantaneous air temperature in K
-#' @param T_s initial soil suface temperature in degrees °C 
+#' @param T_s initial soil suface temperature in °C 
 #' @return soil temperature function
 #' @keywords soil temperature
 #' @family soil temperature functions

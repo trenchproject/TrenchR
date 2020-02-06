@@ -522,7 +522,7 @@ saturation_vapor_pressure<-function(T_a){
 #' @param e_s saturation vapor pressure (kPa)
 #' @param e_a actual vapor pressure (kPa)
 #' @param elev elevation (m)
-#' @param D characteristic dimension (e.g., body diameter) (m), ##diameter = 0.0016*log(mass) + 0.0061 for mass(g) #empirical formula for salamander diameter, Riddell et al. 2017
+#' @param D characteristic dimension (e.g., body diameter) (m)
 #' @param u is wind speed in m/s, if not provided assume free convection; if provided, use forced convection if appropriate 
 #' @return boundary layer resistance (s cm^-1) 
 #' @keywords boundary layer resistance
@@ -668,7 +668,7 @@ Qthermal_radiation_absorbed<-function(T_a,T_g, epsilon_ground=0.97, a_longwave=0
 #' @details This function allows you to estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from Campbell and Norman 1998). Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
 #' @param Tg_max daily maximum soil surface temperature (°C)
 #' @param Tg_min daily minimum soil surface temperature (°C)
-#' @param hour 
+#' @param hour hour of the day
 #' @param depth depth (cm) ???
 #' @return soil temperature (°C)
 #' @keywords soil temperature
@@ -887,7 +887,7 @@ Nu_from_Gr<-function(Gr){
 #' @details This function allows you to commpare the Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980).
 #' @param Gr is the Grashof Number (dimensionless)
 #' @param Re is the Reynolds Number (dimensionless)
-#' @return "free" or "forced"
+#' @return "free", "forced" or "intermediate"
 #' @keywords free or forced convection
 #' @family biophysical models
 #' @export

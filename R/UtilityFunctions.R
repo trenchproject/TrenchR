@@ -86,6 +86,7 @@ daylength <- function(lat, doy){
 #' @description This function allows you to calculate the time of solar noon in hours as a function of the day of year and longitude. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 #' @param lon longitude in degrees 
 #' @param doy day of year
+#' @param offset is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)
 #' @return time at solar noon
 #' @keywords Solar noon time
 #' @family utility functions
@@ -95,7 +96,7 @@ daylength <- function(lat, doy){
 #' solar_noon(lon=-122.335, doy=112)
 #' }
 
-solar_noon <- function(lon, doy){
+solar_noon <- function(lon, doy, offset=NA){
   
   stopifnot(lon>=-180, lon<=180, doy>0, doy<367)
   
@@ -107,9 +108,19 @@ solar_noon <- function(lon, doy){
   ET= (-104.7*sin (f)+596.2*sin (2*f)+4.3*sin (3*f)-12.7*sin (4*f)-429.3*cos (f)-2.0*cos (2*f)+19.3*cos (3*f))/3600   # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
   
   lon[lon<0]=360+lon[lon<0] #convert to 0 to 360
-  LC= 1/15*lon%%15 # longitude correction, 1/15h for each degree of standard meridian
+  LC= 1/15*(lon%%15) # longitude correction, 1/15h for each degree of standard meridian
   LC[LC>0.5]= LC[LC>0.5]-1
   t_0 = 12-LC-ET # solar noon
+  
+  #Check if offset is as expected. (Is the timezone of the location the same as that of the meridian 
+  #that's within 7.5 degrees from that location?)
+  if (!is.na(offset)) {
+    if (lon < offset * 15 - 7.5) {
+      t_0 = t_0 - 1
+    } else if (lon > offset * 15 + 7.5) {
+      t_0 = t_0 + 1
+    }
+  }
   return(t_0)
 }
 
@@ -123,6 +134,7 @@ solar_noon <- function(lon, doy){
 #' @param lat is latitude in degrees.
 #' @param lon is longitude in degrees.
 #' @param hour is hour of the day.
+#' @param offset is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)
 #' @return Zenith angle in degrees
 #' @keywords Zenith angle
 #' @family utility functions
@@ -132,26 +144,36 @@ solar_noon <- function(lon, doy){
 #' zenith_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
 #' }
 
-zenith_angle=function(doy, lat, lon, hour){
+zenith_angle=function(doy, lat, lon, hour, offset=NA){
 
   stopifnot(doy>0, doy<367, lat>=-90, lat<=90, lon>=-180, lon<=180, hour>=0, hour<=24)
   
-lat=lat*pi/180 #to radians
+  lat=lat*pi/180 #to radians
+    
+  RevAng = 0.21631 + 2 * atan(0.967 * tan(0.0086 * (-186 + doy))); # Revolution angle in radians
+  DecAng = asin(0.39795 * cos(RevAng));                            # Declination angle in radians           
+    
+  f=(279.575+0.9856*doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
+  f=f*pi/180 #convert f in degrees to radians
+  ET= (-104.7*sin (f)+596.2*sin (2*f)+4.3*sin (3*f)-12.7*sin (4*f)-429.3*cos (f)-2.0*cos (2*f)+19.3*cos (3*f))/3600   # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
+  lon[lon<0]=360+lon[lon<0] #convert to 0 to 360
+  LC= 1/15*(lon%%15) # longitude correction, 1/15h for each degree of standard meridian
+  LC[LC>0.5]= LC[LC>0.5]-1
+  t_0 = 12-LC-ET # solar noon
   
-RevAng = 0.21631 + 2 * atan(0.967 * tan(0.0086 * (-186 + doy))); # Revolution angle in radians
-DecAng = asin(0.39795 * cos(RevAng));                            # Declination angle in radians           
-  
-f=(279.575+0.9856*doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
-f=f*pi/180 #convert f in degrees to radians
-ET= (-104.7*sin (f)+596.2*sin (2*f)+4.3*sin (3*f)-12.7*sin (4*f)-429.3*cos (f)-2.0*cos (2*f)+19.3*cos (3*f))/3600   # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
-lon[lon<0]=360+lon[lon<0] #convert to 0 to 360
-LC= 1/15*lon%%15 # longitude correction, 1/15h for each degree of standard meridian
-LC[LC>0.5]= LC[LC>0.5]-1
-t_0 = 12-LC-ET # solar noon
-            
-cos.zenith= sin(DecAng)*sin(lat) + cos(DecAng)*cos(lat)*cos(pi/12*(hour-t_0)); #cos of zenith angle in radians
-zenith=acos(cos.zenith)*180/pi # zenith angle in degrees
-zenith[zenith>90]=90 # if measured from the vertical psi can't be greater than pi/2 (90 degrees)
+  #Check if offset is as expected. (Is the timezone of the location the same as that of the meridian 
+  #that's within 7.5 degrees from that location?)
+  if (!is.na(offset)) {
+    if (lon < offset * 15 - 7.5) {
+      t_0 = t_0 - 1
+    } else if (lon > offset * 15 + 7.5) {
+      t_0 = t_0 + 1
+    }
+  }
+              
+  cos.zenith= sin(DecAng)*sin(lat) + cos(DecAng)*cos(lat)*cos(pi/12*(hour-t_0)); #cos of zenith angle in radians
+  zenith=acos(cos.zenith)*180/pi # zenith angle in degrees
+  zenith[zenith>90]=90 # if measured from the vertical psi can't be greater than pi/2 (90 degrees)
 
 return(zenith)
 }
@@ -166,16 +188,17 @@ return(zenith)
 #' @param lat is latitude in degrees.
 #' @param lon is longitude in degrees.
 #' @param hour is hour of the day.
+#' @param offset is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)
 #' @return Azimuth angle in degrees
 #' @keywords Azimuth angle
 #' @family utility functions
 #' @export
 #' @examples
 #' \dontrun{
-#' azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
+#' azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12, offset = -8)
 #' }
 
-azimuth_angle=function(doy, lat, lon, hour){
+azimuth_angle=function(doy, lat, lon, hour, offset=NA){
   
   stopifnot(doy>0, doy<367, lat>=-90, lat<=90, lon>=-180, lon<=180, hour>=0, hour<=24)
   
@@ -183,14 +206,38 @@ azimuth_angle=function(doy, lat, lon, hour){
   
   RevAng = 0.21631 + 2 * atan(0.967 * tan(0.0086 * (-186 + doy))); # Revolution angle in radians
   DecAng = asin(0.39795 * cos(RevAng));                          # Declination angle in radians           
-  #DecAng = asin(0.39785*sin(278.97+0.9856*doy+1.9165*sin(356.6+0.9856*doy)))
+
   f=(279.575+0.9856*doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
   f=f*pi/180 #convert f in degrees to radians
+  
   ET= (-104.7*sin (f)+596.2*sin (2*f)+4.3*sin (3*f)-12.7*sin (4*f)-429.3*cos (f)-2.0*cos (2*f)+19.3*cos (3*f))/3600   # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
   lon[lon<0]=360+lon[lon<0] #convert to 0 to 360
-  LC= 1/15*lon%%15 # longitude correction, 1/15h for each degree of standard meridian
-  LC[LC>0.5]= LC[LC>0.5]-1
+
+  ##Set up two booleans on whether we need to apply a correction on azimuth angle at the end
+  azi_corr1 = FALSE
+  azi_corr2 = TRUE
+  
+  LC= 1/15*(lon%%15) # longitude correction, 1/15h for each degree of standard meridian
+
+  if (LC > 0.5) {
+    LC = LC - 1
+  } else {
+    azi_corr1 = TRUE
+  }
+  
   t_0 = 12-LC-ET # solar noon
+  
+  #Check if offset is as expected. (Is the timezone of the location the same as that of the meridian 
+  #that's within 7.5 degrees from that location?)
+  if (!is.na(offset)) {
+    if (lon < offset * 15 - 7.5) {
+      t_0 = t_0 - 1
+      azi_corr2 = FALSE
+    } else if (lon > offset * 15 + 7.5) {
+      t_0 = t_0 + 1
+      azi_corr2 = FALSE
+    }
+  }
   
   cos.zenith= sin(DecAng)*sin(lat) + cos(DecAng)*cos(lat)*cos(pi/12*(hour-t_0)); #cos of zenith angle in radians
   zenith=acos(cos.zenith) # zenith angle in radians
@@ -198,6 +245,10 @@ azimuth_angle=function(doy, lat, lon, hour){
   
   cos.azimuth= -(sin(DecAng)-cos(zenith)*sin(lat) )/ (cos(lat)*sin(zenith))
   azimuth= acos(cos.azimuth)*180/pi #azimuth angle in degrees
+  
+  if (azi_corr1 && azi_corr2) {
+    azimuth = 360 - azimuth
+  }
   
   return(azimuth)
 }
