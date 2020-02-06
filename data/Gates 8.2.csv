@@ -1,243 +1,184 @@
-﻿Species,Part,RL,RH,AL,AH
-Birds,,,,,
-"Accipiter cooperii,",Dorsal,0.286,0.216,0.714,0.784
-Cooper's Hawk,Ventral,0.203,0.165,0.797,0.835
-"Ajaia ajaja,",,,,,
-American roseate spoonbill,Dorsal,0.51,0.455,0.49,0.545
-"Ammospiza caudacuta,",Dorsal,0.334,0.25,0.666,0.75
-sharp-tailed sparrow,Ventral,0.63,0.639,0.312,0.361
-"Asio otus wilsonianus,",Dorsal,0.451,0.342,0.549,0.658
-long-eared owl,Ventral,0.434,0.351,0.566,0.649
-"Bombycilla cedrorum,",Dorsal,0.252,0.193,0.748,0.807
-cedar waxwing,Ventral,0.289,0.236,0.711,0.764
-"Cairina moschata,",Wing,0.164,0.121,0.836,0.879
-Muscovy duck,,,,,
-"Circus cyaneus hudsonius,",Dorsal,0.189,0.139,0.811,0.861
-marsh hawk,Ventral,0.441,0.35,0.559,0.65
-,Egg,0.861,0.802,0.139,0.198
-"Coccyzus americanus,",Dorsal,0.313,0.233,0.7,0.767
-yellow-billed cuckoo,Ventral,0.707,0.658,0.293,0.342
-"Colaptes auratus,",Dorsal,0.313,0.239,0.687,0.761
-flicker,Ventral,0.516,0.461,0.484,0.539
-"Colinus virginianus,",Dorsal,0.366,0.28,0.634,0.72
-quail,Ventral,0.477,0.405,0.523,0.595
-,Egg,0.869,0.818,0.131,0.182
-"Corvus conix,",Egg,0.626,0.514,0.374,0.486
-hooded crow,,,,,
-"Cyanocitta cistata,",Dorsal,0.268,0.214,0.732,0.786
-blue jay,Ventral,0.403,0.347,0.597,0.653
-,Egg,0.638,0.527,0.362,0.473
-"Cyanocitta stelleri,",Dorsal,0.156,0.12,0.844,0.88
-Stellar's jay,,,,,
-"Cygnus columbianus,",Dorsal,0.686,0.633,0.314,0.367
-white swan (juvenile),,,,,
-"Falco sparverius,",Egg,0.769,0.665,0.231,0.335
-sparrow hawk,,,,,
-"Florida coerulea coerulea,",Egg,0.733,0.647,0.267,0.353
-little blue heron,,,,,
-"Fregata ariel,",Egg,0.891,0.865,0.109,0.135
-lesser frigate bird,,,,,
-"Fregata magnificens,",,,,,
-Magnificent frigate bird,Egg,0.857,0.819,0.143,0.181
-"Geococcyx californianus,",Wing,0.25,0.208,0.75,0.792
-roadrunner,Egg,0.829,0.818,0.171,0.182
-"Geothylpis trichas,",Dorsal,0.352,0.265,0.648,0.735
-yellow throat,Ventral,0.68,0.609,0.32,0.391
-"Grus americana,",Dorsal,0.415,0.331,0.585,0.669
-whooping crane (chick),,,,,
-"Guara rubra,",Wing,0.532,0.427,0.468,0.573
-scarlett ibis,,,,,
-"Haliaetus Ieucocephalus,",Egg,0.792,0.708,0.208,0.292
-bald eagle,,,,,
-"Hylatomus pileatus,",Red Head,0.41,0.321,0.59,0.679
-pileated woodpecker,Dorsal,0.243,0.177,0.757,0.823
-,Middorsal,0.225,0.165,0.775,0.835
-,Middorsal,0.211,0.154,0.789,0.846
-,Egg,0.825,0.812,0.175,0.188
-"Ixobrychus exilis exilis,",Egg,0.783,0.733,0.217,0.267
-least bittern,,,,,
-"Leucophoyx thula thula,",Egg,0.799,0.714,0.201,0.3
-snowy egret,,,,,
-"Meleagris gallopavo,",Egg,0.719,0.651,0.281,0.349
-wild turkey,,,,,
-"Megaceryle alcyon,",Middorsal,0.136,0.108,0.864,0.892
-kingfisher,Dorsal,0.264,0.208,0.736,0.792
-,White neck,0.686,0.662,0.314,0.338
-"Mniotilta varia,",Dorsal,0.321,0.247,0.679,0.753
-black-and-white warbler,Ventral,0.684,0.652,0.316,0.348
-"Nycticora nycticora hoactli,",Dorsal,0.175,0.142,0.825,0.858
-black-crowned night heron,Ventral,0.355,0.299,0.645,0.701
-,Egg,0.795,0.709,0.205,0.291
-"Otus asio,",Middorsal,0.292,0.227,0.703,0.773
-screech owl,Dorsal,0.419,0.33,0.581,0.67
-,Ventral,0.59,0.519,0.41,0.481
-,Egg,0.92,0.892,0.08,0.108
-"Phasianum colchicus torquatus,",Dorsal,0.232,0.18,0.766,0.82
-ring-necked pheasant,Ventral,0.289,0.221,0.711,0.779
-"Prophyrula martinica,",Egg,0.796,0.717,0.204,0.283
-,,,,,
-"Pygoscelis adeliae,",Right front,0.199,0.153,0.801,0.847
-Adelie penguin,White breast,0.735,0.676,0.265,0.324
-"Quisalus versicolor,",Egg,0.619,0.506,0.381,0.494
-bronzed grackle,,,,,
-"Rallus elegans elegans,",Dorsal,0.2,0.147,0.8,0.853
-king rail,Ventral,0.318,0.256,0.682,0.744
-,Egg,0.729,0.655,0.271,0.345
-"Richmondena cardinalis,",Dorsal,0.32,0.246,0.68,0.754
-cardinal,Ventral,0.496,0.408,0.04,0.592
-"Seiurus aurocapillus,",Dorsal,0.33,0.247,0.67,0.753
-ovenbird,Ventral,0.622,0.576,0.378,0.424
-"Setophaga ruticilla,",Dorsal,0.335,0.253,0.665,0.747
-redstart,Ventral,0.635,0.561,0.365,0.439
-"Speotyto cunicularia,",Egg,0.899,0.898,0.101,0.102
-burrowing owl,,,,,
-"Spheniscus demersus,",Egg,0.846,0.812,0.154,0.188
-black-foot penguin,,,,,
-"Sterna albifrons,",Egg,0.724,0.601,0.276,0.399
-least tren,,,,,
-"Sterna fuscata fuscata,",Egg,0.744,0.674,0.256,0.326
-Sooty tern,,,,,
-"Strix varia,",Dorsal,0.412,0.315,0.588,0.685
-barred owl,Ventral,0.499,0.105,0.501,0.595
-,Egg,0.843,0.802,0.157,0.198
-"Sturnella magna,",Egg,0.874,0.824,0.126,0.176
-eastern meadowlard,,,,,
-"Sturnis vulgaris,",Dorsal,0.163,0.127,0.837,0.873
-starling,Ventral,0.149,0.112,0.851,0.888
-,Egg,0.76,0.721,0.24,0.279
-"Struthio camelus,",Middorsal,0.175,0.143,0.825,0.857
-Adelie penguin,,,,,
-"Turdus migratorius,",Dorsal,0.337,0.258,0.663,0.742
-robin,Ventral,0.479,0.409,0.521,0.591
-"Vireo olivaceus,",Dorsal,0.336,0.258,0.664,0.742
-red eyed vireo,Ventral,0.661,0.614,0.339,0.386
-,,,,,
-Mammals,,,,,
-"Ammotragus lervia,",White middorsal,0.349,0.296,0.651,0.704
-"audad, or Barbary sheep",White-tan,0.438,0.358,0.562,0.642
-,Brown dorsal,0.476,0.392,0.524,0.608
-"Bison bison,",Dorsal,0.298,0.223,0.702,0.777
-American bison,,,,,
-"Blarina brevicauda,",Dorsal,0.337,0.264,0.663,0.736
-short-tailed shrew,Ventral,0.342,0.28,0.658,0.72
-,Gray-black middorsal,0.237,0.193,0.763,0.807
-,Brown middorsal,0.266,0.218,0.734,0.782
-"Canis familiaris,",White flank,0.557,0.541,0.443,0.459
-pointer (pup),White dorsal,0.597,0.577,0.403,0.423
-"Canis latrans,",Dorsal,0.393,0.311,0.607,0.689
-coyote,,,,,
-"Canis latrans, ",Yellow-brown flank,0.313,0.26,0.687,0.74
-coyote (female pup),,,,,
-"Canis lupus,",Dorsal,0.38,0.304,0.62,0.696
-gray wolf,,,,,
-"Canis lupus,",Flank,0.243,0.197,0.757,0.103
-wolf (pup),,,,,
-"Conor canadensis,",Dorsal,0.311,0.237,0.689,0.763
-beaver,,,,,
-"Cercocebus torquatus,",Dorsal,0.169,0.131,0.831,0.869
-sooty mangabey,,,,,
-"Citellus beldingi,",Dorsal,0.23,0.169,0.77,0.831
-Belding ground squirrel,Side,0.407,0.342,0.593,0.658
-"Didelphis marsupialis,",Dorsal,0.56,0.458,0.44,0.512
-opossum,Ventral,0.545,0.463,0.455,0.537
-"Eptesicus fuscus,",Dorsal,0.352,0.264,648,0.736
-big brown bat,,,,,
-"Erethizon dorsatum,",Dorsal,0.188,0.147,0.812,0.853
-porcupine,,,,,
-"Felis catus,",Dorsal,0.585,0.555,0.415,0.445
-cat (white),,,,,
-"Felis pardalis,",Light middorsal,0.267,0.223,0.733,0.777
-ocelot,Dark middorsal,0.173,0.135,0.827,0.865
-"Giraffa camelopardalis,",Dorsal,0.321,0.248,0.679,0.752
-,Dark brown cheek,0.21,0.163,0.79,0.837
-,Light gray cheek,0.408,0.367,0.592,0.633
-"Glaucomys volans,",Dorsal,0.387,0.294,0.613,0.706
-souther flying squirrel,Ventral,0.694,0.64,0.306,0.36
-"Hylobates syndactulus,",,0.07,0.054,0.93,0.946
-siamang(gibbon),Dorsal,,,,
-"Lynx rufus,",Dorsal,0.377,0.301,0.623,0.699
-bobcat,,,,,
-"Marmota monas,",Dorsal,0.433,0.346,0.567,0.654
-groundhog,Dorsal,0.335,0.281,0.665,0.719
-"Mephitis mephitis,",black dorsal,0.21,0.156,0.79,0.844
-striped skunk,While dorsal,0.545,0.507,0.455,0.493
-"Microtus pinetorum,",Dorsal,0.343,0.251,0.657,0.749
-pine vole,,,,,
-"Mus musculus,",Dorsal,0.305,0.228,0.695,0.772
-house mouse,,,,,
-"Mustela frenata,",Dorsal,0.331,0.258,0.66,0.742
-weasel,,,,,
-"Myotis grisescens,",Dorsal,0.388,0.293,0.612,0.707
-gray myotis bat,,,,,
-"Neotoma floridana,",Dorsal,0.323,0.246,0.677,0.754
-eastern woodrat,Ventral,0.594,0.541,0.406,0.459
-"Ochotona princeps,",Dorsal,0.247,0.198,0.753,0.802
-pika,,,,,
-"Odocoileus virginianus,",Neck,0.26,0.204,0.74,0.796
-white-tailed deer,Red-tan middorsal,0.349,0.274,0.651,0.726
-"Ondatra zibethica,",Dorsal,0.355,0.27,0.645,0.73
-muskrat,Ventral,0.504,,0.496,
-"Panthera leo,",Tan thigh,0.35,0.272,0.65,0.728
-lion (female),,,,,
-"Siamiri sciureus,",,0.219,0.171,0.781,0.829
-squirrel monkey,,,,,
-"Sciurus niger,",Dorsal,0.267,0.213,0.733,0.787
-fox squirrel,Ventral,0.45,0.379,0.55,0.621
-"Sigmodon hispidus,",Dorsal,0.271,0.201,0.729,0.799
-cotton rat,,,,,
-"Spilogale putorius,",Dorsal,0.338,0.256,0.662,0.744
-spotted skunk,Ventral,0.328,0.248,0.672,0.752
-"Sus scrofa,",Black middorsal,0.2,0.183,0.8,0.817
-pig,White middorsal,0.328,0.322,0.672,0.678
-"Sylvilagus floridanus,",Dorsal,0.351,0.27,0.649,0.73
-eastern cottontail rabbit,Ventral,0.54,0.485,0.46,0.515
-"Talpa europaea,",Middorsal,0.317,0.264,0.683,0.736
-common mole,,,,,
-"Tamias striatus,",Dorsal,0.323,0.242,0.677,0.758
-eastern chipmunk,Ventral,0.591,0.529,0.409,0.471
-"Tragelaphus strepsiceros,",Dorsal,0.338,0.294,0.662,0.706
-greater kudu,,,,,
-"Uncia uncia,",Dark brown,0.156,0.117,0.844,0.883
-Siberian snow leopard,Lightest,0.244,0.212,0.756,0.788
-"Urocyon cinereoargenteus,",Dorsal,0.245,0.195,0.755,0.805
-fox,Black brown,0.218,0.165,0.782,0.835
-,Flank,0.231,0.182,0.769,0.818
-"Urocyon cinereoargenteus,",Dorsal,0.333,0.279,0.667,0.721
-gray fox,,,,,
-"Ursus horribilis,",Dorsal,0.151,0.115,0.849,0.885
-grizzly bear,,,,,
-"Vulpes fulva,",Dorsal,0.408,0.314,0.592,0.686
-red fox,Dorsal,0.4,0.325,0.6,0.675
-,,,,,
-Reptiles,,,,,
-"Alligator mississippiensis,",Living dorsal,0.119,0.1,0.881,0.9
-alligator,Living ventral,0.413,0.426,0.587,0.574
-,Dead dorsal,0.112,0.091,0.888,0.909
-"Cnemidophorus tigris,",Shoulder,0.111,0.111,0.889,0.889
-lizard,Dorsal,0.154,0.15,0.846,0.85
-"Scelloporous malachiticus,",Dorsal,0.068,0.063,0.932,0.937
-fence lizard (female),Dorsal,0.058,0.052,0.942,0.948
-"Scelloporous malachiticus,",Dorsal,0.112,0.107,0.888,0.893
-fence lizard (male),Tail,0.076,0.085,0.924,0.915
-,,,,,
-Amphibians,,,,,
-"Desmognathus fuscus brimleyorum,",Dorsal,0.265,0.293,0.735,0.707
-central dusky salamander,,,,,
-"Rana temporaria, ",White foam nest,0.312,0.297,0.483,0.518
-frog,,,,,
-"Plethodon caddoensis,",Dorsal,0.113,0.094,0.887,0.906
-Caddo Mountain salamander,,,,,
-"Plethodon glotinosus,",Dorsal,0.099,0.081,0.901,0.919
-slimy salamander,,,,,
-"Plethodon ovachitae,",Dorsal,0.101,0.086,0.899,0.914
-Rich Mountain salamander,Dorsal,0.109,0.093,0.891,0.907
-,Dorsal,0.091,0.077,0.909,0.923
-,,,,,
-Humans,,,,,
-"Homo sapiens,",Back of hand,0.345,0.321,0.655,0.679
-Caucasian,,0.311,0.289,0.689,0.711
-,,0.355,0.324,0.645,0.676
-,,0.305,0.272,0.695,0.728
-,,0.316,0.283,0.684,0.717
-"Homo sapiens, ",Back of hand,0.247,0.207,0.753,0.793
-Negro,,0.248,0.209,0.752,0.791
+﻿Taxa,Species,Common name,Part,RL,RH,AL,AH
+Birds,Accipiter cooperii,Cooper's Hawk,Dorsal,0.286,0.216,0.714,0.784
+Birds,Accipiter cooperii,Cooper's Hawk,Ventral,0.203,0.165,0.797,0.835
+Birds,Ajaia ajaja,American roseate spoonbill,Dorsal,0.51,0.455,0.49,0.545
+Birds,Ammospiza caudacuta,sharp-tailed sparrow,Dorsal,0.334,0.25,0.666,0.75
+Birds,Ammospiza caudacuta,sharp-tailed sparrow,Ventral,0.63,0.639,0.312,0.361
+Birds,Asio otus wilsonianus,long-eared owl,Dorsal,0.451,0.342,0.549,0.658
+Birds,Asio otus wilsonianus,long-eared owl,Ventral,0.434,0.351,0.566,0.649
+Birds,Bombycilla cedrorum,cedar waxwing,Dorsal,0.252,0.193,0.748,0.807
+Birds,Bombycilla cedrorum,cedar waxwing,Ventral,0.289,0.236,0.711,0.764
+Birds,Cairina moschata,Muscovy duck,Wing,0.164,0.121,0.836,0.879
+Birds,Circus cyaneus hudsonius,marsh hawk,Dorsal,0.189,0.139,0.811,0.861
+Birds,Circus cyaneus hudsonius,marsh hawk,Ventral,0.441,0.35,0.559,0.65
+Birds,Circus cyaneus hudsonius,marsh hawk,Egg,0.861,0.802,0.139,0.198
+Birds,Coccyzus americanus,yellow-billed cuckoo,Dorsal,0.313,0.233,0.7,0.767
+Birds,Coccyzus americanus,yellow-billed cuckoo,Ventral,0.707,0.658,0.293,0.342
+Birds,Colaptes auratus,flicker,Dorsal,0.313,0.239,0.687,0.761
+Birds,Colaptes auratus,flicker,Ventral,0.516,0.461,0.484,0.539
+Birds,Colinus virginianus,quail,Dorsal,0.366,0.28,0.634,0.72
+Birds,Colinus virginianus,quail,Ventral,0.477,0.405,0.523,0.595
+Birds,Colinus virginianus,quail,Egg,0.869,0.818,0.131,0.182
+Birds,Corvus conix,hooded crow,Egg,0.626,0.514,0.374,0.486
+Birds,Cyanocitta cistata,blue jay,Dorsal,0.268,0.214,0.732,0.786
+Birds,Cyanocitta cistata,blue jay,Ventral,0.403,0.347,0.597,0.653
+Birds,Cyanocitta cistata,blue jay,Egg,0.638,0.527,0.362,0.473
+Birds,Cyanocitta stelleri,Stellar's jay,Dorsal,0.156,0.12,0.844,0.88
+Birds,Cygnus columbianus,white swan (juvenile),Dorsal,0.686,0.633,0.314,0.367
+Birds,Falco sparverius,sparrow hawk,Egg,0.769,0.665,0.231,0.335
+Birds,Florida coerulea coerulea,little blue heron,Egg,0.733,0.647,0.267,0.353
+Birds,Fregata ariel,lesser frigate bird,Egg,0.891,0.865,0.109,0.135
+Birds,Fregata magnificens,Magnificent frigate bird,Egg,0.857,0.819,0.143,0.181
+Birds,Geococcyx californianus,roadrunner,Wing,0.25,0.208,0.75,0.792
+Birds,Geococcyx californianus,roadrunner,Egg,0.829,0.818,0.171,0.182
+Birds,Geothylpis trichas,yellow throat,Dorsal,0.352,0.265,0.648,0.735
+Birds,Geothylpis trichas,yellow throat,Ventral,0.68,0.609,0.32,0.391
+Birds,Grus americana,whooping crane (chick),Dorsal,0.415,0.331,0.585,0.669
+Birds,Guara rubra,scarlett ibis,Wing,0.532,0.427,0.468,0.573
+Birds,Haliaetus Ieucocephalus,bald eagle,Egg,0.792,0.708,0.208,0.292
+Birds,Hylatomus pileatus,pileated woodpecker,Red Head,0.41,0.321,0.59,0.679
+Birds,Hylatomus pileatus,pileated woodpecker,Dorsal,0.243,0.177,0.757,0.823
+Birds,Hylatomus pileatus,pileated woodpecker,Middorsal,0.225,0.165,0.775,0.835
+Birds,Hylatomus pileatus,pileated woodpecker,Middorsal,0.211,0.154,0.789,0.846
+Birds,Hylatomus pileatus,pileated woodpecker,Egg,0.825,0.812,0.175,0.188
+Birds,Ixobrychus exilis exilis,least bittern,Egg,0.783,0.733,0.217,0.267
+Birds,Leucophoyx thula thula,snowy egret,Egg,0.799,0.714,0.201,0.3
+Birds,Meleagris gallopavo,wild turkey,Egg,0.719,0.651,0.281,0.349
+Birds,Megaceryle alcyon,kingfisher,Middorsal,0.136,0.108,0.864,0.892
+Birds,Megaceryle alcyon,kingfisher,Dorsal,0.264,0.208,0.736,0.792
+Birds,Megaceryle alcyon,kingfisher,White neck,0.686,0.662,0.314,0.338
+Birds,Mniotilta varia,black-and-white warbler,Dorsal,0.321,0.247,0.679,0.753
+Birds,Mniotilta varia,black-and-white warbler,Ventral,0.684,0.652,0.316,0.348
+Birds,Nycticora nycticora hoactli,black-crowned night heron,Dorsal,0.175,0.142,0.825,0.858
+Birds,Nycticora nycticora hoactli,black-crowned night heron,Ventral,0.355,0.299,0.645,0.701
+Birds,Nycticora nycticora hoactli,black-crowned night heron,Egg,0.795,0.709,0.205,0.291
+Birds,Otus asio,screech owl,Middorsal,0.292,0.227,0.703,0.773
+Birds,Otus asio,screech owl,Dorsal,0.419,0.33,0.581,0.67
+Birds,Otus asio,screech owl,Ventral,0.59,0.519,0.41,0.481
+Birds,Otus asio,screech owl,Egg,0.92,0.892,0.08,0.108
+Birds,Phasianus colchicus torquatus,ring-necked pheasant,Dorsal,0.232,0.18,0.766,0.82
+Birds,Phasianus colchicus torquatus,ring-necked pheasant,Ventral,0.289,0.221,0.711,0.779
+Birds,Prophyrula martinica,purple gallinule,Egg,0.796,0.717,0.204,0.283
+Birds,Pygoscelis adeliae,Adelie penguin,Right front,0.199,0.153,0.801,0.847
+Birds,Pygoscelis adeliae,Adelie penguin,White breast,0.735,0.676,0.265,0.324
+Birds,Quisalus versicolor,bronzed grackle,Egg,0.619,0.506,0.381,0.494
+Birds,Rallus elegans elegans,king rail,Dorsal,0.2,0.147,0.8,0.853
+Birds,Rallus elegans elegans,king rail,Ventral,0.318,0.256,0.682,0.744
+Birds,Rallus elegans elegans,king rail,Egg,0.729,0.655,0.271,0.345
+Birds,Richmondena cardinalis,cardinal,Dorsal,0.32,0.246,0.68,0.754
+Birds,Richmondena cardinalis,cardinal,Ventral,0.496,0.408,0.04,0.592
+Birds,Seiurus aurocapillus,ovenbird,Dorsal,0.33,0.247,0.67,0.753
+Birds,Seiurus aurocapillus,ovenbird,Ventral,0.622,0.576,0.378,0.424
+Birds,Setophaga ruticilla,redstart,Dorsal,0.335,0.253,0.665,0.747
+Birds,Setophaga ruticilla,redstart,Ventral,0.635,0.561,0.365,0.439
+Birds,Speotyto cunicularia,burrowing owl,Egg,0.899,0.898,0.101,0.102
+Birds,Spheniscus demersus,black-foot penguin,Egg,0.846,0.812,0.154,0.188
+Birds,Sterna albifrons,least tren,Egg,0.724,0.601,0.276,0.399
+Birds,Sterna fuscata fuscata,Sooty tern,Egg,0.744,0.674,0.256,0.326
+Birds,Strix varia,barred owl,Dorsal,0.412,0.315,0.588,0.685
+Birds,Strix varia,barred owl,Ventral,0.499,0.105,0.501,0.595
+Birds,Strix varia,barred owl,Egg,0.843,0.802,0.157,0.198
+Birds,Sturnella magna,eastern meadowlard,Egg,0.874,0.824,0.126,0.176
+Birds,Sturnis vulgaris,starling,Dorsal,0.163,0.127,0.837,0.873
+Birds,Sturnis vulgaris,starling,Ventral,0.149,0.112,0.851,0.888
+Birds,Sturnis vulgaris,starling,Egg,0.76,0.721,0.24,0.279
+Birds,Struthio camelus,ostrich (chick),Middorsal,0.175,0.143,0.825,0.857
+Birds,Turdus migratorius,robin,Dorsal,0.337,0.258,0.663,0.742
+Birds,Turdus migratorius,robin,Ventral,0.479,0.409,0.521,0.591
+Birds,Vireo olivaceus,red eyed vireo,Dorsal,0.336,0.258,0.664,0.742
+Birds,Vireo olivaceus,red eyed vireo,Ventral,0.661,0.614,0.339,0.386
+Birds,Mammals,,,,,,
+Birds,Ammotragus lervia,audad or Barbary sheep,White middorsal,0.349,0.296,0.651,0.704
+Birds,Ammotragus lervia,audad or Barbary sheep,White-tan,0.438,0.358,0.562,0.642
+Birds,Ammotragus lervia,audad or Barbary sheep,Brown dorsal,0.476,0.392,0.524,0.608
+Birds,Bison bison,American bison,Dorsal,0.298,0.223,0.702,0.777
+Birds,Blarina brevicauda,short-tailed shrew,Dorsal,0.337,0.264,0.663,0.736
+Birds,Blarina brevicauda,short-tailed shrew,Ventral,0.342,0.28,0.658,0.72
+Birds,Blarina brevicauda,short-tailed shrew,Gray-black middorsal,0.237,0.193,0.763,0.807
+Birds,Blarina brevicauda,short-tailed shrew,Brown middorsal,0.266,0.218,0.734,0.782
+Birds,Canis familiaris,pointer (pup),White flank,0.557,0.541,0.443,0.459
+Birds,Canis familiaris,pointer (pup),White dorsal,0.597,0.577,0.403,0.423
+Birds,Canis latrans,coyote,Dorsal,0.393,0.311,0.607,0.689
+Birds,Canis latrans ,coyote (female pup),Yellow-brown flank,0.313,0.26,0.687,0.74
+Birds,Canis lupus,gray wolf,Dorsal,0.38,0.304,0.62,0.696
+Birds,Canis lupus,wolf (pup),Flank,0.243,0.197,0.757,0.103
+Birds,Conor canadensis,beaver,Dorsal,0.311,0.237,0.689,0.763
+Birds,Cercocebus torquatus,sooty mangabey,Dorsal,0.169,0.131,0.831,0.869
+Birds,Citellus beldingi,Belding ground squirrel,Dorsal,0.23,0.169,0.77,0.831
+Birds,Citellus beldingi,Belding ground squirrel,Side,0.407,0.342,0.593,0.658
+Birds,Didelphis marsupialis,opossum,Dorsal,0.56,0.458,0.44,0.512
+Birds,Didelphis marsupialis,opossum,Ventral,0.545,0.463,0.455,0.537
+Birds,Eptesicus fuscus,big brown bat,Dorsal,0.352,0.264,648,0.736
+Birds,Erethizon dorsatum,porcupine,Dorsal,0.188,0.147,0.812,0.853
+Birds,Felis catus,cat (white),Dorsal,0.585,0.555,0.415,0.445
+Birds,Felis pardalis,ocelot,Light middorsal,0.267,0.223,0.733,0.777
+Birds,Felis pardalis,ocelot,Dark middorsal,0.173,0.135,0.827,0.865
+Birds,Giraffa camelopardalis,Masai giraffe,Dorsal,0.321,0.248,0.679,0.752
+Birds,Giraffa camelopardalis,Masai giraffe,Dark brown cheek,0.21,0.163,0.79,0.837
+Birds,Giraffa camelopardalis,Masai giraffe,Light gray cheek,0.408,0.367,0.592,0.633
+Birds,Glaucomys volans,souther flying squirrel,Dorsal,0.387,0.294,0.613,0.706
+Birds,Glaucomys volans,souther flying squirrel,Ventral,0.694,0.64,0.306,0.36
+Birds,Hylobates syndactulus,siamang(gibbon),,0.07,0.054,0.93,0.946
+Birds,Lynx rufus,bobcat,Dorsal,0.377,0.301,0.623,0.699
+Birds,Marmota monas,groundhog,Dorsal,0.433,0.346,0.567,0.654
+Birds,Marmota monas,groundhog,Dorsal,0.335,0.281,0.665,0.719
+Birds,Mephitis mephitis,striped skunk,black dorsal,0.21,0.156,0.79,0.844
+Birds,Mephitis mephitis,striped skunk,While dorsal,0.545,0.507,0.455,0.493
+Birds,Microtus pinetorum,pine vole,Dorsal,0.343,0.251,0.657,0.749
+Birds,Mus musculus,house mouse,Dorsal,0.305,0.228,0.695,0.772
+Birds,Mustela frenata,weasel,Dorsal,0.331,0.258,0.66,0.742
+Birds,Myotis grisescens,gray myotis bat,Dorsal,0.388,0.293,0.612,0.707
+Birds,Neotoma floridana,eastern woodrat,Dorsal,0.323,0.246,0.677,0.754
+Birds,Neotoma floridana,eastern woodrat,Ventral,0.594,0.541,0.406,0.459
+Birds,Ochotona princeps,pika,Dorsal,0.247,0.198,0.753,0.802
+Birds,Odocoileus virginianus,white-tailed deer,Neck,0.26,0.204,0.74,0.796
+Birds,Odocoileus virginianus,white-tailed deer,Red-tan middorsal,0.349,0.274,0.651,0.726
+Birds,Ondatra zibethica,muskrat,Dorsal,0.355,0.27,0.645,0.73
+Birds,Ondatra zibethica,muskrat,Ventral,0.504,,0.496,
+Birds,Panthera leo,lion (female),Tan thigh,0.35,0.272,0.65,0.728
+Birds,Siamiri sciureus,squirrel monkey,,0.219,0.171,0.781,0.829
+Birds,Sciurus niger,fox squirrel,Dorsal,0.267,0.213,0.733,0.787
+Birds,Sciurus niger,fox squirrel,Ventral,0.45,0.379,0.55,0.621
+Birds,Sigmodon hispidus,cotton rat,Dorsal,0.271,0.201,0.729,0.799
+Birds,Spilogale putorius,spotted skunk,Dorsal,0.338,0.256,0.662,0.744
+Birds,Spilogale putorius,spotted skunk,Ventral,0.328,0.248,0.672,0.752
+Birds,Sus scrofa,pig,Black middorsal,0.2,0.183,0.8,0.817
+Birds,Sus scrofa,pig,White middorsal,0.328,0.322,0.672,0.678
+Birds,Sylvilagus floridanus,eastern cottontail rabbit,Dorsal,0.351,0.27,0.649,0.73
+Birds,Sylvilagus floridanus,eastern cottontail rabbit,Ventral,0.54,0.485,0.46,0.515
+Birds,Talpa europaea,common mole,Middorsal,0.317,0.264,0.683,0.736
+Birds,Tamias striatus,eastern chipmunk,Dorsal,0.323,0.242,0.677,0.758
+Birds,Tamias striatus,eastern chipmunk,Ventral,0.591,0.529,0.409,0.471
+Birds,Tragelaphus strepsiceros,greater kudu,Dorsal,0.338,0.294,0.662,0.706
+Birds,Uncia uncia,Siberian snow leopard,Dark brown,0.156,0.117,0.844,0.883
+Birds,Uncia uncia,Siberian snow leopard,Lightest,0.244,0.212,0.756,0.788
+Birds,Urocyon cinereoargenteus,fox,Dorsal,0.245,0.195,0.755,0.805
+Birds,Urocyon cinereoargenteus,fox,Black brown,0.218,0.165,0.782,0.835
+Birds,Urocyon cinereoargenteus,fox,Flank,0.231,0.182,0.769,0.818
+Birds,Urocyon cinereoargenteus,gray fox,Dorsal,0.333,0.279,0.667,0.721
+Birds,Ursus horribilis,grizzly bear,Dorsal,0.151,0.115,0.849,0.885
+Birds,Vulpes fulva,red fox,Dorsal,0.408,0.314,0.592,0.686
+Birds,Vulpes fulva,red fox,Dorsal,0.4,0.325,0.6,0.675
+Reptiles,Alligator mississippiensis,alligator,Living dorsal,0.119,0.1,0.881,0.9
+Reptiles,Alligator mississippiensis,alligator,Living ventral,0.413,0.426,0.587,0.574
+Reptiles,Alligator mississippiensis,alligator,Dead dorsal,0.112,0.091,0.888,0.909
+Reptiles,Cnemidophorus tigris,lizard,Shoulder,0.111,0.111,0.889,0.889
+Reptiles,Cnemidophorus tigris,lizard,Dorsal,0.154,0.15,0.846,0.85
+Reptiles,Scelloporous malachiticus,fence lizard (female),Dorsal,0.068,0.063,0.932,0.937
+Reptiles,Scelloporous malachiticus,fence lizard (female),Dorsal,0.058,0.052,0.942,0.948
+Reptiles,Scelloporous malachiticus,fence lizard (male),Dorsal,0.112,0.107,0.888,0.893
+Reptiles,Scelloporous malachiticus,fence lizard (male),Tail,0.076,0.085,0.924,0.915
+Amphibians,Desmognathus fuscus brimleyorum,central dusky salamander,Dorsal,0.265,0.293,0.735,0.707
+Amphibians,Rana temporaria ,frog,White foam nest,0.312,0.297,0.483,0.518
+Amphibians,Plethodon caddoensis,Caddo Mountain salamander,Dorsal,0.113,0.094,0.887,0.906
+Amphibians,Plethodon glotinosus,slimy salamander,Dorsal,0.099,0.081,0.901,0.919
+Amphibians,Plethodon ovachitae,Rich Mountain salamander,Dorsal,0.101,0.086,0.899,0.914
+Amphibians,Plethodon ovachitae,Rich Mountain salamander,Dorsal,0.109,0.093,0.891,0.907
+Amphibians,Plethodon ovachitae,Rich Mountain salamander,Dorsal,0.091,0.077,0.909,0.923
+Humans,Homo sapiens,Caucasian,Back of hand,0.345,0.321,0.655,0.679
+Humans,Homo sapiens,Caucasian,,0.311,0.289,0.689,0.711
+Humans,Homo sapiens,Caucasian,,0.355,0.324,0.645,0.676
+Humans,Homo sapiens,Caucasian,,0.305,0.272,0.695,0.728
+Humans,Homo sapiens,Caucasian,,0.316,0.283,0.684,0.717
+Humans,Homo sapiens ,Negro,Back of hand,0.247,0.207,0.753,0.793
+Humans,Homo sapiens ,Negro,,0.248,0.209,0.752,0.791
