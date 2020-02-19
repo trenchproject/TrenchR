@@ -40,7 +40,7 @@ Tb_lizard=function(T_a, T_g, u, svl, m, psi, rho_S, elev, doy, sun=TRUE, surface
   
   # constants
   sigma=5.67*10^-8 # stefan-boltzman constant, W m^-2 K^-4
-  c_p=29.3 # specific heat of air, J/mol C (p.279) Parentheses all from Campbell & Norman 1998
+  c_p=29.3 # specific heat of air, J/mol °C (p.279) Parentheses all from Campbell & Norman 1998
   
   tau=0.65 # atmospheric transmisivity
   S_p0=1360 # extraterrestrial flux density, W/m^2 (p.159)
@@ -56,7 +56,7 @@ Tb_lizard=function(T_a, T_g, u, svl, m, psi, rho_S, elev, doy, sun=TRUE, surface
   # radiation
   p_a=101.3* exp (-elev/8200)  # atmospheric pressure
   m_a=p_a/(101.3*cos (psi))  # (11.12) optical air mass
-  m_a[which(psi>(80*pi/180))]=5.66
+  m_a[(psi>(80*pi/180))]=5.66
   
   # Flux densities
   epsilon_ac= 9.2*10^-6*(T_a+273)^2 # (10.11) clear sky emissivity
@@ -64,7 +64,9 @@ Tb_lizard=function(T_a, T_g, u, svl, m, psi, rho_S, elev, doy, sun=TRUE, surface
   L_g=sigma*(T_g+273)^4  # (10.7) long wave flux densities from ground
   
   S_d=0.3*(1-tau^m_a)* S_p0 * cos(psi)  # (11.13) diffuse radiation
-  S_p = S_p0 * tau^m_a
+  
+  dd2= 1+2*0.1675*cos(2*pi*doy/365)
+  S_p=S_p0*tau^m_a*dd2 *cos(psi)  #Sears and Angilletta 2012 #dd is correction factor accounting for orbit
   S_b = S_p * cos(psi)
   S_t = S_b + S_d
   S_r= rho_S*S_t # (11.10) reflected radiation

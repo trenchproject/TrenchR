@@ -2,7 +2,7 @@
 #'     
 #' @details Construct a Gaussian-quadratic thermal performance curve.
 #' @description Constructs a thermal performance curve by combining as a gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures. Reference: Deutsch CA, Tewksbury JJ, Huey RB, Sheldon KS, Ghalambor CK, Haak DC, Martin PR (2008) Impacts of climate warming on terrestrial ectotherms across latitude. Proceedings of the National Academy of Science of the United States of America, 105, 6668– 6672.
-#' @param T temperature (°C)
+#' @param T temperature range (°C)
 #' @param Topt thermal optima (°C), the temperature at which peak performance occurs
 #' @param CTmin critical thermal minima (°C), the lower temperature limit for performance
 #' @param CTmax critical thermal maxima (°C), the upper temperature limit for performance
