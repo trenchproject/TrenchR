@@ -18,10 +18,12 @@
 
 Tb_mussel = function(L, H, T_a, T_g, u, psi, S, c, group = TRUE){
   
+  stopifnot(L > 0, H > 0, u >= 0, psi >= 0, psi <= 90, S > 0, c >= 0, c <= 0, group %in% c(TRUE, FALSE))
+  
   T_a = T_a + 273.15   # conversion to kelvin
   T_g = T_g + 273.15   # conversion to kelvin
   A = pi * (L / 2)^2   # total mussel shell surface area (m^2)
-  alpha = 0.75 # solar absorptivity
+  alpha = 0.75         # solar absorptivity
   k1 = alpha * sin((90 - psi)*pi / 180)
   
   sigma = 5.66 * 10^-8   # stefan-boltzmann constant (W m^-2 K^-4)
@@ -44,17 +46,17 @@ Tb_mussel = function(L, H, T_a, T_g, u, psi, S, c, group = TRUE){
     A_sol = 0.25 * A
   }
   
-  A_radSky = A / 2 #surface area subject to long-wave radiation from sky (m^2). Half facing the sky, the other half facing the ground
-  A_radGround = A / 2 #surface area subject to long-wave radiation from ground (m^2)
-  A_cond = 0.05 * A #area of contact between mussel and ground (m^2)
-  A_conv = A #surface area exposed to convective heat loss (m^2)
+  A_radSky = A / 2    # surface area subject to long-wave radiation from sky (m^2). Half facing the sky, the other half facing the ground
+  A_radGround = A / 2 # surface area subject to long-wave radiation from ground (m^2)
+  A_cond = 0.05 * A   # area of contact between mussel and ground (m^2)
+  A_conv = A          # surface area exposed to convective heat loss (m^2)
   
-  lambda = 2.48 #latent heat of vaporization of water (J/kg)
+  lambda = 2.48 # latent heat of vaporization of water (J/kg)
   
   Ka = 0.00501 + 7.2 * 10^-5 * T_a      # Denny and Harly. 2006, Hot limpets: predicting body temperature in a conductance-mediated thermal system 
   v = -1.25 * 10^-5 + 9.2 * 10^-8 * T_a
   
-  if (group) {
+  if (group) {        # derived from the relationship between Nusselt number and Raynolds number
     hc = 0.67 * Ka / L * (u * L / v)^0.42
   } else {
     hc = 0.38 * Ka / L * (u * L / v)^0.51
