@@ -114,15 +114,15 @@ solar_noon <- function(lon, doy, offset=NA){
   
   #Check if offset is as expected. (Is the timezone of the location the same as that of the meridian 
   #that's within 7.5 degrees from that location?)
+  lon[lon>180]=lon[lon>180]-360
   if (!is.na(offset)) {
-    if (lon < offset * 15 - 7.5) {
-      t_0 = t_0 - 1
-    } else if (lon > offset * 15 + 7.5) {
-      t_0 = t_0 + 1
-    }
+    offset_theory <- as.integer(lon / 15) + lon / abs(lon) * as.integer(abs(lon) %% 15 / 7.5)
+    t_0 = t_0 - offset_theory + offset
   }
+  
   return(t_0)
 }
+
 
 #' Calculate Zenith Angle
 #' 
@@ -163,14 +163,12 @@ zenith_angle=function(doy, lat, lon, hour, offset=NA){
   
   #Check if offset is as expected. (Is the timezone of the location the same as that of the meridian 
   #that's within 7.5 degrees from that location?)
+  lon[lon>180]=lon[lon>180]-360
   if (!is.na(offset)) {
-    if (lon < offset * 15 - 7.5) {
-      t_0 = t_0 - 1
-    } else if (lon > offset * 15 + 7.5) {
-      t_0 = t_0 + 1
-    }
+    offset_theory <- as.integer(lon / 15) + lon / abs(lon) * as.integer(abs(lon) %% 15 / 7.5)
+    t_0 = t_0 - offset_theory + offset
   }
-              
+  
   cos.zenith= sin(DecAng)*sin(lat) + cos(DecAng)*cos(lat)*cos(pi/12*(hour-t_0)); #cos of zenith angle in radians
   zenith=acos(cos.zenith)*180/pi # zenith angle in degrees
   zenith[zenith>90]=90 # if measured from the vertical psi can't be greater than pi/2 (90 degrees)
@@ -229,22 +227,21 @@ azimuth_angle=function(doy, lat, lon, hour, offset=NA){
   
   #Check if offset is as expected. (Is the timezone of the location the same as that of the meridian 
   #that's within 7.5 degrees from that location?)
+  lon[lon>180]=lon[lon>180]-360
   if (!is.na(offset)) {
-    if (lon < offset * 15 - 7.5) {
-      t_0 = t_0 - 1
-      azi_corr2 = FALSE
-    } else if (lon > offset * 15 + 7.5) {
-      t_0 = t_0 + 1
+    offset_theory <- as.integer(lon / 15) + lon / abs(lon) * as.integer(abs(lon) %% 15 / 7.5)
+    if (offset_theory != offset) {
+      t_0 = t_0 - offset_theory + offset
       azi_corr2 = FALSE
     }
   }
   
-  cos.zenith= sin(DecAng)*sin(lat) + cos(DecAng)*cos(lat)*cos(pi/12*(hour-t_0)); #cos of zenith angle in radians
-  zenith=acos(cos.zenith) # zenith angle in radians
-  if (zenith>pi/2) zenith=pi/2 # if measured from the vertical psi can't be greater than pi/2 (90 degrees)
+  cos.zenith = sin(DecAng) * sin(lat) + cos(DecAng) * cos(lat) * cos(pi / 12 * (hour - t_0)); #cos of zenith angle in radians
+  zenith = acos(cos.zenith) # zenith angle in radians
+  if (zenith > pi / 2) zenith = pi / 2 # if measured from the vertical psi can't be greater than pi/2 (90 degrees)
   
-  cos.azimuth= -(sin(DecAng)-cos(zenith)*sin(lat) )/ (cos(lat)*sin(zenith))
-  azimuth= acos(cos.azimuth)*180/pi #azimuth angle in degrees
+  cos.azimuth = -(sin(DecAng) - cos(zenith)*sin(lat)) / (cos(lat) * sin(zenith))
+  azimuth = acos(cos.azimuth) * 180 / pi #azimuth angle in degrees
   
   if (azi_corr1 && azi_corr2) {
     azimuth = 360 - azimuth
