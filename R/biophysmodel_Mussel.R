@@ -6,7 +6,7 @@
 #' @param psi solar zenith angle (degrees): can be calculated from zenith_angle function
 #' @param S direct solar flux density acting upon that area (W m^-2)
 #' @param c fraction of the sky covered by cloud 
-#' @param group TRUE if aggragated, FALSE if solitary 
+#' @param group TRUE if aggregated, FALSE if solitary 
 #' @return predicted body temperature (°C)
 #' @keywords body temperature, biophysical model
 #' @family biophysical models
@@ -56,7 +56,7 @@ Tb_mussel = function(L, H, T_a, T_g, u, psi, S, c, group = TRUE){
   Ka = 0.00501 + 7.2 * 10^-5 * T_a      # Denny and Harly. 2006, Hot limpets: predicting body temperature in a conductance-mediated thermal system 
   v = -1.25 * 10^-5 + 9.2 * 10^-8 * T_a
   
-  if (group) {        # derived from the relationship between Nusselt number and Raynolds number
+  if (group) {        # derived from the relationship between Nusselt number and Reynolds number
     hc = 0.67 * Ka / L * (u * L / v)^0.42
   } else {
     hc = 0.38 * Ka / L * (u * L / v)^0.51

@@ -50,8 +50,8 @@ e=sqrt(1-a^2/c^2)
 A=2*pi*a^2+2*pi*a*c/e*asin(e)
 
 #------------------------------
-#SOLAR RADIATIVe HEAT FLUX   
-#Separate Total radiation into components
+#SOLAR RADIATIVE HEAT FLUX   
+#Separate total radiation into components
 #Use Erbs et al model from Wong and Chow (2001, Applied Energy 69:1991-224)
 
 #kd- diffuse fraction

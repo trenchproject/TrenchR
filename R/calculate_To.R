@@ -3,9 +3,7 @@
 #'
 #' @details Predicts body temperature (operative environmental temperature) of a lizard in K.
 #' @description Transient model for predicting operative environmental temperature using model in the following publication: T. Fei, A. K. Skidmore, V. Venus, T. Wang, M. Schlerf, B. Toxopeus, 
-#' S. van Overjijk, M. Bian, and Y. Liu, “A body temperature model for 
-#' lizards as estimated from the thermal environment,” J. Therm. 
-#' Biol., vol. 37, no. 1, pp. 56–64, 2012.
+#' S. van Overjijk, M. Bian, and Y. Liu, “A body temperature model for lizards as estimated from the thermal environment,” J. Therm. Biol., vol. 37, no. 1, pp. 56–64, 2012.
 #' @param T_a is air temperature at lizard height in K
 #' @param T_g  is surface temperature in K
 #' @param H  is total (direct + diffuse) solar radiation flux in W/m^2
