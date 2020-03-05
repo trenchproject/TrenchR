@@ -16,6 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 The table below compiles the symbols which are used by TrenchR functions.
 
 #Parameters
+
 | Symbol        | Description           |  |
 | ------------- |----------------------------------------------------| ---------------------:|
 |$A$ | surface or cross-sectional area ($m^2$) |  |
@@ -93,6 +94,7 @@ The table below compiles the symbols which are used by TrenchR functions.
 |$z0$| roughness height ($m$) ||
 
 ##Greek Symbols
+
 | Symbol        | Description           |   |
 | ------------- |:----------------------------------------------------:| ---------------------:|
 |$\alpha$|	angle (rad or degrees); azimuth angle of the sun (degrees); solar absorptivity (proportion) (subscripts: $L$, lizard thermal absorptivity; $S$, lizard solar absorptivity); time difference between time of maximum temperature and noon ($hr$) ||
@@ -109,6 +111,7 @@ The table below compiles the symbols which are used by TrenchR functions.
 |$\theta$| angle between the solar beam and the longitudinal axis (degrees).||
 
 ##Dimensionless Groups
+
 | Symbol        | Description           |   |
 | ------------- |:----------------------------------------------------:| ---------------------:|
 |$Gr$|	Grashof number||
