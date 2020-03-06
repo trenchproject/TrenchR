@@ -135,8 +135,6 @@ points(seq(0,0.01,0.001), Grashof_number(Ta=30, Tg=35, D=seq(0,0.01,0.001), nu=1
 points(seq(0,0.01,0.001), Grashof_number_Gates(Ta=30, Tg=35, beta=0.00367, D=seq(0,0.01,0.001), nu=1.4), type="l", col="red",lty="dashed")
 
 legend("topleft", title="parameters", legend=c("Grashof_number, nu=1","Grashof_number_Gates, nu=1","Grashof_number, nu=1.4","Grashof_number_Gates, nu=1.4"), lty=c("solid","dashed","dotted","dotdash") )
-
-#WHY DIFFERENT BETWEEN BOOKS?
 ```
 
 Relations among the dimensionless groups can also be used for estimation. Empirically-derived relationships can be used to estimate the Nusselt number $Nu$ from the Reynolds number $Re$ or the Grashof number $Gr$.  Comparisons of $Gr$ and $Re$ allow determining whether modelling free or forced convection is appropraite.  Forced convection is appropriate when $Gr \leq 16 Re^2$. For convenience, we provide the relationships as R functions:
@@ -268,7 +266,7 @@ We provide functions to estimate heat loss associated with evaporative water los
 The rate of water loss for an amphibian with fully wetted skin can be expressed as 
 $$ E_c= A (\rho_s-h \rho_a)/r_e,$$
 
-where $A$ is surface area ($m^2$), $r_e$ is the external (convective) resistance to water vapor transport ($s/m$), $\rho_s$ is the saturation water vapor density at skin surface ($kg/m^3$), $h$ is relative humidity (between 0 ~ 1), and $\rho_a$ is the saturation water vapor density in ambient air ($kg/m^3$).
+where $A$ is surface area ($m^2$), $r_e$ is the external (convective) resistance to water vapor transport ($s/m$), $\rho_s$ is the saturation water vapor density at skin surface ($kg/m^3$), $h$ is relative humidity (between 0 and 1), and $\rho_a$ is the saturation water vapor density in ambient air ($kg/m^3$).
 
 The rate of water loss for an amphibian without fully wetted skin can be expressed as 
 $$E_c= A (\rho_s-h\rho_a)/(r_i+r_e),$$
@@ -383,7 +381,7 @@ where $J$ is calendar day, with $J=1$ at January 1. One can then calculate day l
 
 The time of solar noon ($h$) is calculated as $t_0=12-LC-ET$ where $LC$ is the longitude correction (h) and $ET$ is the equation of time (h). The $LC$ is a +1/15-h correction for each degree that a location is west of a standard meridian, which occurs at 0°, 15°, …, 345°. The ET corrects for the difference between sun time and clock time based on calendar day as follows: 
 $$ET=\frac{-104.7\sin f+596.2 \sin{2f} +4.3 \sin{3f} -12.7 \sin{4f} -429.3 \cos{f} -2.0 \cos{2f}+19.3 \cos{3f}}{3600},\\f=\frac{\pi}{180}(279.575+0.9856J)$$
-In addition, the offset needs to be taken into consideration. Although meridians are set every 15° and the time zones are supposed to equal to the time of the meridian that is closest to them, (thus anywhere between 7.5°E to 22.5°E should equal the time at the meridian at 15°E) the actual time zones does not necessarily follow the pattern. For, example, Madrid is located at 3.7°W but the time zone in Spain is set to that of 15°E (GMT+1). This produces an error in the calculations because noon at 3.7°W would be considered as equal to noon at 0° when in reality, it should be 11am of 0°. To eliminate this error, offset value can be input.
+In addition, the offset needs to be taken into consideration. Although meridians are set every 15° and the time zones are supposed to equal to the time of the meridian that is closest to them, (thus anywhere between 7.5°E to 22.5°E should equal the time at the meridian at 15°E) the actual time zones does not necessarily follow the pattern. For, example, Madrid is located at 3.7°W but the time zone in Spain is set to that of 15°E (GMT+1). This produces an error in the calculations because noon at 3.7°W would be considered as equal to noon at 0° when in reality, it should be 11am of 0°. To eliminate this error, an offset value can be input.
 
 The zenith angle, $\psi$ (rad), is the sun angle measured from vertical, $\cos{\psi}=\sin\delta \sin\phi + \cos\delta \cos\phi\cos\frac{\pi}{12(h-t_0)}$, where $h$ is hour.
 
@@ -404,7 +402,7 @@ We then turn to calculating the components of the radiant energy budget of a liz
 $$p_a=101.3exp(-E/8200),$$
 where $E$ is the elevation in meters above sea level. We can then calculate $m_a$ as $m_a=\frac{p_a}{101.3 \cos\psi}$.
 
-Direct irradiance is a function of the distance a solar beam travels through the atmosphere; the transmittance of the atmosphere, $\tau$; and the incident flux density, $S_{p0}$: $S_p=S_{p0}\tau^{m_a}$. Sky diffuse radiation can be approximated using an empirical relation [Liu and Jordan 1960], $S_d=0.3(1-\tau^{m_a})S_{p0}\cos\psi$. Solar irradiance is the sum of diffuse sky irradiance and the beam irradiance on a surface: $S_t=S_d+S_p \cos\psi$. Finally, reflected radiation is the product of albedo, $\rho_S$, and the total shortwave irradiance: $S_r=\rho_S S_t$. Albedo was empirically derived from satellite images and is the surface reflectance for the solar waveband.
+Direct irradiance is a function of the distance a solar beam travels through the atmosphere; the transmittance of the atmosphere, $\tau$; and the incident flux density, $S_{p0}$: $S_p=S_{p0}\tau^{m_a}$. Sky diffuse radiation can be approximated using an empirical relation [@liu1960interrelationship], $S_d=0.3(1-\tau^{m_a})S_{p0}\cos\psi$. Solar irradiance is the sum of diffuse sky irradiance and the beam irradiance on a surface: $S_t=S_d+S_p \cos\psi$. Finally, reflected radiation is the product of albedo, $\rho_S$, and the total shortwave irradiance: $S_r=\rho_S S_t$. Albedo was empirically derived from satellite images and is the surface reflectance for the solar waveband.
 
 The longwave component of a lizard’s radiant energy budget can be estimated using the Stefan‐Boltzmann law. The longwave flux density from atmosphere, $L_a (W m^{−2})$, is computed as $L_a=\epsilon_{ac}\sigma(T_a+273)^4$, where $\epsilon_{ac}$ is clear sky emissivity. The longwave flux density from the ground is $L_g=\epsilon_s \sigma T_s^4$, where $\epsilon_s$ is surface emissivity.
 
@@ -413,7 +411,7 @@ $$R_{abs}+\alpha_s(F_PS_p+F_dS_d+F_rS_r)+\alpha_L(F_aL_a+F_gL_g) ,$$
 where $\alpha_S$ and $\alpha_L$ are the absorptivities in the solar and thermal wavebands, respectively, and $F_p$, $F_d$, $F_r$, $F_a$, and $F_g$ are view factors between the surface of the lizard and sources of radiation. Solar absorptivity, $\alpha_S$, is approximately 0.9 for lizards [@gates2012biophysical]. Because absorptivity in a given waveband is equal to emissivity in that waveband, we use the thermal absorptivity, $\alpha_L$, of 0.965, as measured by Bartlett and Gates [-@barlett1967energy].
 
 View factors refer to the fraction of radiation that is intercepted by the lizard. The beam view factor, $F_p$, for a lizard is the ratio of the projected area perpendicular to the solar beam, $A_p$, to the total animal area, $A$, 
-$F_p=A_p/A$. We use an empirically derived relationship that was developed for a standing *Callisaurus* [@muth1977thermoregulatory. We assume a relative azimuth angle of 90°, which indicates that the long axis of the lizard is perpendicular to incoming solar radiation: 
+$F_p=A_p/A$. We use an empirically derived relationship that was developed for a standing *Callisaurus* [@muth1977thermoregulatory]. We assume a relative azimuth angle of 90°, which indicates that the long axis of the lizard is perpendicular to incoming solar radiation: 
 $$ A_p= \frac{[(-1.1756*10^{-4})\psi^2+(-9.2594*10^{-2})\psi+26.2409]A}{100}.$$
 Roughgarden et al. [-@roughgarden1981resource] provide an expression for total area based on empirical lizard data from Norris [-@norris1967color] and Porter and James [-@porter1979behavioral]: $A=0.121m^{0.688}$ $(r^2=0.996),$ where $m$ is mass in grams, and the relation holds for a variety of lizards from 2 to 50 g. For diffuse shortwave and longwave radiation, the sky can be approximated as a hemisphere. The diffuse radiation view factor, $F_d$, for a standing lizard was found to be 0.8 by Bartlett and Gates [-@barlett1967energy]. We assume that one‐half of thermal radiation is received from both the ground and the sky. The atmospheric thermal radiation factor, $F_a$, is thus 0.5, and the ground thermal radiation factor, $F_g$, is 0.5. We likewise assume that the reflected solar radiation view factor, $F_r$, is 0.5. The operative environmental temperature is calculated within each grid cell as 
 $$Te=Ta+\frac{Rabs-\epsilon_s \sigma (T_a+273)^4}{c_p(g_r+g_{Ha})}$$.
@@ -512,32 +510,30 @@ t.seq= lapply(20:40, FUN=Tb_grasshopper, T_g=25, u=0.4, H=600, K_t=0.7, psi=30, 
 points(20:40, t.seq, type = "l", lty="dotted")
 
 legend("bottomright",title= expression("direct radiation, H"), legend=c(200,400,600), lty=c("dashed","dotted","solid") )
-
-#clean up code?
 ```
 
-##Mussel
+##Mussels
 
-We adapted a biophysical model for intertidal mussels which was developed by Helmuth (1998) to predict mussel body temperature ($T_b$) based on environmental conditions, body size (height and length) and whether the mussel is solitary or aggregated.
+We adapted a biophysical model for intertidal mussels which was developed by Helmuth [-@helmuth1998intertidal] to predict mussel body temperature ($T_b$) based on environmental conditions, body size (height and length) and whether the mussel is solitary or aggregated.
 In general, amount of heat stored within a mussel body ($Q_{stored}$) can be described as
 $$Q_{stored} = Q_{sol} \pm Q_{rad,sky} \pm Q_{rad, ground} \pm Q_{cond} \pm Q_{conv} - Q_{evap} \tag{1}$$
-where $Q_{sol}$ is the short-wave solar radiation to the mussel, $Q_{rad,sky}$, $Q_{rad,ground}$ are the infrared radiation between the mussel and the sky, and between the mussel and the surroundings, $Q_{conv}$ is the convective heat exchange, $Q_{cond}$ is the condunction to and from the ground, and $Q_{evap}$ is the evaporative cooling from water loss (Helmuth 1998).
+where $Q_{sol}$ is the short-wave solar radiation to the mussel, $Q_{rad,sky}$, $Q_{rad,ground}$ are the infrared radiation between the mussel and the sky, and between the mussel and the surroundings, $Q_{conv}$ is the convective heat exchange, $Q_{cond}$ is the conduction to and from the ground, and $Q_{evap}$ is the evaporative cooling from water loss [@helmuth1998intertidal].
 Since $Q_{stored}$ is a product of mass ($m$), specific heat ($c$), and body temperature ($T_b$), the rate of change of stored heat can be expressed as $Q_{stored} = d(mcT_b)/dt$.
 
-We calculate $Q_{sol}$ from $Q_{sol} = \frac{\alpha}{sin\theta} A_{sol}S$ where $\alpha$ is the solar absorptivity, $\theta$ is the solar elevation angle (radian), $A_{sol}$ is the mussel area in direction of the sun, $S$ is the direct solar flux density on the area (Helmuth 1998). 
+We calculate $Q_{sol}$ from $Q_{sol} = \frac{\alpha}{sin\theta} A_{sol}S$ where $\alpha$ is the solar absorptivity, $\theta$ is the solar elevation angle (radian), $A_{sol}$ is the mussel area in direction of the sun, $S$ is the direct solar flux density on the area [@helmuth1998intertidal]. 
 
-$Q_{rad,sky}$ and $Q_{rad,ground}$ can be calculated as follows (Helmuth 1998).
+$Q_{rad,sky}$ and $Q_{rad,ground}$ can be calculated as follows [@helmuth1998intertidal].
 $$Q_{rad,sky} = \sigma A_{rad,sky}(\varepsilon_{org}T_b^4-\varepsilon_skyT_a^4) \tag{2}$$
 $$Q_{rad,ground} = \sigma A_{rad,ground}(\varepsilon_{org}T_b^4-\varepsilon_{surr}T_g^4) \tag{3}$$
-Here, $\sigma$ is the Stefan-Boltzman constant ($5.66 \times 10^{-8}$), $T_a$ and $T_g$ are air and ground temperatures, respectively, and $A_{rad,sky}$ and $A_{rad,ground}$ are surface area subject to long-wave radiation from sky and ground respectively, both of which are simplfied as half of the total surface area due to the nature of mussels. $\varepsilon_{org}$ and $\varepsilon_{surr}$ are the longwave thermal emissivities of the organism and its surroundings, which are roughly around 0.97. $\varepsilon_{sky}$ represents a functional infrared emissivity of the sky, which varies by air temperature and cloud cover.
-In Environmental Biophysics (Campbell and Normal 1998), $\varepsilon_{sky}$ is given by $\varepsilon_{sky}=(1 - 0.84 \times c)(9.2 \times 10^{-6} \times T_a^2) + 0.84 \times c$ where $c$ represents the fraction of the sky covered by cloud.
+Here, $\sigma$ is the Stefan-Boltzman constant ($5.66 \times 10^{-8}$), $T_a$ and $T_g$ are air and ground temperatures, respectively, and $A_{rad,sky}$ and $A_{rad,ground}$ are surface area subject to long-wave radiation from sky and ground respectively, both of which are simplified as half of the total surface area due to the nature of mussels. $\varepsilon_{org}$ and $\varepsilon_{surr}$ are the longwave thermal emissivities of the organism and its surroundings, which are roughly around 0.97. $\varepsilon_{sky}$ represents a functional infrared emissivity of the sky, which varies by air temperature and cloud cover.
+In Environmental Biophysics [@campbell2012introduction], $\varepsilon_{sky}$ is given by $\varepsilon_{sky}=(1 - 0.84 \times c)(9.2 \times 10^{-6} \times T_a^2) + 0.84 \times c$ where $c$ represents the fraction of the sky covered by cloud.
 Using Taylor series approximation, equations (2) and (3) become
 $$Q_{rad,sky} = 4.0\varepsilon_{org}\varepsilon_{sky}^{3/4}\sigma A_{rad,sky}T_a^3(T_b-\varepsilon_{sky}^{1/4}T_a)$$
 $$Q_{rad,ground} = 4.0\varepsilon_{org}\sigma A_{rad,ground}T_g^3(T_b-T_g)$$
 
 Heat conduction $Q_{cond}$ can be calculated from $Q_{cond} = \frac{k_b}{0.5H}A_{cond}(T_b-T_g)$ where $k_b$ is the thermal conductivity of heat in mussel body. Because most of the body of a mussel is composed of water, we approximated it to be equal to that of water, $0.60 W m^{-2} K^{-1}$ (Denny 1993). $H$ represents the height of the mussel and $A_{cond}$ is the mussel area that is touching the ground.
 
-In terms of convective heat flux ($Q_{conv}$), it can be calculated from $Q_{conv}=h_cA_{conv}(T_b-T_a)$ where $h_c$ is the coefficient for forced convection and $A_{conv}$ is total surface area exposed to convective heat loss (Helmuth 1998). Using the three emperical formala on Nusselt number and Reynolds number $Nu = \frac{h_c L}{K_a}$, $Re = \frac{uL}{v}$ and $Nu = aRe^b$, the value of $h_c$ can be calculated. $L$ is the length of the mussel, $K_a$ is the conductivity of air $K_a = 0.00501 + 7.2 \times10^{–5}T_a (W·m^{–1}·K^{–1})$, $u$ is the wind speed (m/s), $v$ is the kinematic viscosity of air $v = -1.25 \times 10^{-5} + 9.2 \times 10^{-8} T_a$ (Denny and Harly 2006). $A_{conv}$ can be considered to be equal to the total surface area. $a$ and $b$ in the formula to obtain $Nu$ vary depending on the position and the state of the mussels, and they are emperically acquired. For solitray mussels, $a = 0.38$ and $b = 0.51$ if the anterior or posterior end are facing upwind, and $a = 0.63$ and $b = 0.47$ if the valve is facing upwind. The values were measured to be $a = 0.67$, $b = 0.42$ for aggregated mussels (Helmuth 1998).
+In terms of convective heat flux ($Q_{conv}$), it can be calculated from $Q_{conv}=h_cA_{conv}(T_b-T_a)$ where $h_c$ is the coefficient for forced convection and $A_{conv}$ is total surface area exposed to convective heat loss (Helmuth 1998). Using the three empirical formulas on Nusselt number and Reynolds number $Nu = \frac{h_c L}{K_a}$, $Re = \frac{uL}{v}$ and $Nu = aRe^b$, the value of $h_c$ can be calculated. $L$ is the length of the mussel, $K_a$ is the conductivity of air $K_a = 0.00501 + 7.2 \times10^{–5}T_a (W·m^{–1}·K^{–1})$, $u$ is the wind speed (m/s), $v$ is the kinematic viscosity of air $v = -1.25 \times 10^{-5} + 9.2 \times 10^{-8} T_a$ (Denny and Harley 2006). $A_{conv}$ can be considered to be equal to the total surface area. $a$ and $b$ in the formula to obtain $Nu$ vary depending on the position and the state of the mussels, and they are empirically acquired. For solitary mussels, $a = 0.38$ and $b = 0.51$ if the anterior or posterior end are facing upwind, and $a = 0.63$ and $b = 0.47$ if the valve is facing upwind. The values were measured to be $a = 0.67$, $b = 0.42$ for aggregated mussels (Helmuth 1998).
 
 Lastly, $Q_{evap} = \lambda \dot{m}$ where $\lambda$ is the latent heat of vaporization of water (J/kg) and $\dot{m}$ is the rate of water loss (Helmuth 1998). For the purposes of this package, we set the value to zero to illustrate conditions when the mussel does not gape or otherwise cannot evaporatively cool.
 
@@ -547,14 +543,15 @@ $$T_{b,steady} = (k_1 A_{sol} S + k_2 A_{rad,sky} k_3 T_a^4 + k_4 A_{rad,ground}
 Here, $k_1$ to $k_5$ are physical constants and measured coefficients.
 
 We provide the operative temperature model as follows
-```{r}
+```{r, fig.height=4, fig.width=6}
 
 t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.15, H = 0.05, T_g = 30, u = 0.2, psi = 30, S = 800, c = 0, group = TRUE)
-plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature(°C)", ylim = c(25, 40))
+plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(25, 40))
 t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.15, H = 0.05, T_g = 30, u = 1, psi = 30, S = 800, c = 0, group = TRUE)
 points(20:40, t.seq, type = "l", lty = "dashed")
 t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.15, H = 0.05, T_g = 30, u = 5, psi = 30, S = 800, c = 0, group = TRUE)
 points(20:40, t.seq, type = "l", lty = "dotted")
+abline(a=0,b=1, col="gray")
 
 legend("bottomright",title= expression("Wind speed, m/s"), legend=c(0.2,1,5), lty=c("solid", "dashed","dotted") )
 

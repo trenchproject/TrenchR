@@ -54,7 +54,7 @@ Tb_mussel = function(L, H, T_a, T_g, u, psi, S, c, group = TRUE){
   
   lambda = 2.48 # latent heat of vaporization of water (J/kg)
   
-  Ka = 0.00501 + 7.2 * 10^-5 * T_a      # Denny and Harly. 2006, Hot limpets: predicting body temperature in a conductance-mediated thermal system 
+  Ka = 0.00501 + 7.2 * 10^-5 * T_a      # Denny and Harley. 2006, Hot limpets: predicting body temperature in a conductance-mediated thermal system 
   v = -1.25 * 10^-5 + 9.2 * 10^-8 * T_a
   
   if (group) {        # derived from the relationship between Nusselt number and Reynolds number

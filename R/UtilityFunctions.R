@@ -69,11 +69,8 @@ daylength <- function(lat, doy){
   RevAng = 0.21631 + 2 * atan (0.967 * tan (0.0086 * (-186 + doy))) # Revolution angle in radians, calculated per day
   DecAng = asin (0.39795 * cos (RevAng))                            # Declination angle in radians  
   subset <- (sin (6 * pi / 180) + sin (lat) * sin (DecAng)) / (cos (lat) * cos (DecAng))
-  if (subset > 1) {
-    subset = 1
-  } else if (subset < -1) {
-    subset = -1
-  } 
+  subset[which(subset>1)]=1
+  subset[which(subset< -1)]= -1
   Daylength = 24 - (24 / pi) * acos(subset) #hours of daylight
   return(Daylength)
 }
