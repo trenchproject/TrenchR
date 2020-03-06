@@ -224,18 +224,6 @@ points(t.seq, z.seq, type = "l", lty="dashed")
 legend("topright", title="surface roughness", legend=c(0.02, 0.05, 0.08), lty=c("solid","dotted","dashed") )
 ```
 
-We additionally provide functions for estimating wind speed and temperature profiles for the case of free convection using the relationships in NicheMapR as described by Kearney and Porter [-@kearney2017nichemapr].  The function `wind_speed_profile()` estimates wind speed at height $z$ as $u_z=2.5u^*\ln(z/z_0+1)$ where the friction velocity $u^*$ is estimated as $u^*=\frac{0.41u_r}{\ln(z/z_0+1)}$ and 0.41 is the von Karman constant.
-
-```{r, fig.height=4, fig.width=6}
-zs= seq(0,2,0.1) 
-us= wind_speed_profile(u_r=1, zr=2, z0=0.2, z=zs)
-plot(us,zs, type="l", xlab = "wind speed, u (m/s)", ylab = "height, z (m)")
-points(wind_speed_profile(u_r=0.5, zr=2, z0=0.2, z=zs), zs, type="l", lty="dashed")
-points(wind_speed_profile(u_r=0.25, zr=2, z0=0.2, z=zs), zs, type="l", lty="dotted")
-
-legend("bottomright", title="wind speed at 2m", legend=c(0.25, 5, 1), lty=c("dotted","dashed","solid") )
-```
-
 Temperature at a given height is estimated in the function `air_temp_profile()` by first estimating the temperature at roughness height:
 $$T_{z_0}= \frac{T_r S_{t_b}-T_0 S_{t_s}}{S_{t_b}-S_{t_s}}. $$
 where $S_{t_s}$ is the sublayer Stanton Number $S_{t_s}=0.62/ (\frac{z_0u^*}{12})^{0.45}$ and $S_{t_b}$ is the bulk Stanton Number $S_{t_b}=0.64/ (\frac{z}{z_0}+1)$. The Stanton numerbers are dimensionless numbers that measures the ratio of the heat transfered in and the thermal capacity. The temperature at height $z$ can then be estimated as:
