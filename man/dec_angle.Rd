@@ -7,7 +7,7 @@
 dec_angle(doy)
 }
 \arguments{
-\item{doy}{day of year}
+\item{doy}{day of year (1-366)}
 }
 \value{
 declination angle in radians

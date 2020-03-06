@@ -1,16 +1,15 @@
 #' Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components 
 #'
-
 #' @details Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components.
 #' @description This function allows you to estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: Parton WJ and Logan JA. 1981. A model for diurnal variation in soil and air temperature. Agricultural Meteorology 23: 205-216.
 #' @param T_max maximum daily temperature (°C)
 #' @param T_min minimum daily temperature (°C)
 #' @param t_s time of sunrise (hour)
 #' @param t_r time of sunset (hour)
-#' @param t hour for temperature estimate
-#' @param alpha  time difference between t_x(time of maximum temperature) and noon
-#' @param gamma decay parameter for rate of t change from sunset to t_n(time of minimum temp)
-#' @param beta time difference between t_x and sunrise
+#' @param t time for temperature estimate (hour)
+#' @param alpha  time difference between t_x (time of maximum temperature) and noon (hour)
+#' @param gamma decay parameter for rate of t change from sunset to t_n (time of minimum temp)
+#' @param beta time difference between t_x and sunrise (hour)
 #' @return temperature (°C) at a specified hour 
 #' @keywords Temperature
 #' @family microclimate functions
@@ -61,9 +60,9 @@ return(T)
 #'
 #' @details Uses a sine interpolation to estimate temperature across hours.
 #' @description This function allows you to estimate temperature for a specified hour using the sine interpolation in Campbell and Norman (1998). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-#' @param T_max maximum daily temperature in degree celsius 
-#' @param T_min minimum daily temperature in degree celsius
-#' @param t hour for temperature estimate
+#' @param T_max maximum daily temperature (°C) 
+#' @param T_min minimum daily temperature (°C)
+#' @param t time for temperature estimate (hour)
 #' @return temperature (°C) at a specified hour 
 #' @keywords Temperature
 #' @family microclimate functions

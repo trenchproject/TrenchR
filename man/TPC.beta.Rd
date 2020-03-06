@@ -8,7 +8,7 @@ TPC.beta(T, shift = -1, breadth = 0.1, aran = 0, tolerance = 43,
   skew = 0.7)
 }
 \arguments{
-\item{T}{temperature (C)}
+\item{T}{temperature (°C)}
 
 \item{shift}{mode of the thermal performance curve}
 
@@ -16,9 +16,9 @@ TPC.beta(T, shift = -1, breadth = 0.1, aran = 0, tolerance = 43,
 
 \item{aran}{scale performance value? if aran=0, no scaling; if aran=1, include a thermodynamic effect on mean performance.}
 
-\item{tolerance}{maximal breath (C) of the thermal performance curve}
+\item{tolerance}{maximal breath (°C) of the thermal performance curve}
 
-\item{skew}{skewness of the thermal performance curve}
+\item{skew}{skewness of the thermal performance curve (0-1)}
 }
 \value{
 performance

@@ -7,7 +7,7 @@
 saturation_water_vapor_pressure(T_a)
 }
 \arguments{
-\item{T_a}{air temperature (C)}
+\item{T_a}{air temperature (°C)}
 }
 \value{
 Saturation water vapor pressure, e_s (Pa)
@@ -16,7 +16,7 @@ Saturation water vapor pressure, e_s (Pa)
 Approximate saturation water vapor pressure
 }
 \details{
-Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C (Rosenberg 1974 in Spotila et al. 1992, see also NichMapR WETAIR and DRYAIR functions from Tracy et al. 1980).  Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
+Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40°C (Rosenberg 1974 in Spotila et al. 1992, see also NichMapR WETAIR and DRYAIR functions from Tracy et al. 1980).  Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
 }
 \examples{
 \dontrun{
@@ -44,6 +44,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
   \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

@@ -7,12 +7,12 @@
 daylength(lat, doy)
 }
 \arguments{
-\item{lat}{latitude in degrees}
+\item{lat}{latitude in decimal degrees}
 
-\item{doy}{day of year}
+\item{doy}{day of year (1-366)}
 }
 \value{
-hours
+day length in hours
 }
 \description{
 This function allows you to calculate daylength in hours as a function of latitude and day of year. Uses the CMB model (Forsythe et al. 1995). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.

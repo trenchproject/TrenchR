@@ -13,7 +13,7 @@ Qnet_Gates(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap)
 
 \item{Qconv}{Energy exchange due to convection; Energy exchange from an animal to its surrounding environment (air or water) (W)}
 
-\item{Qcond}{Energy exchange due to conduction; Energy exchange from animal to a surface if its in contact  (W)}
+\item{Qcond}{Energy exchange due to conduction; Energy exchange from animal to a surface if they are in contact  (W)}
 
 \item{Qmet}{Energy emitted due to metabolism (W)}
 
@@ -53,6 +53,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
   \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

@@ -32,8 +32,6 @@ TaK_sh=TaK
 Tg= Tg+273.15 #ground surface temperature in K
 Tg_sh= Tg_sh+273 #shaded ground surface temperature in K
 
-##Tg_sh is not used afterwards
-
 u= u *100;  #u- wind speed, convert m/s to cm/s
 H_sdir=H_sdir/10 #divide by ten to convert W/m2 to W/cm2
 H_sdif=H_sdif/10 #divide by ten to convert W/m2 to W/cm2

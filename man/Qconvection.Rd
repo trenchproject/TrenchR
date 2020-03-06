@@ -13,7 +13,7 @@ Qconvection(T_a, T_b, H_L = 10.45, A, proportion, ef = 1.23)
 
 \item{H_L}{Convective heat transfer coefficient (W m^-2 K^-1)}
 
-\item{A}{Surface area  in m^2}
+\item{A}{Surface area in m^2}
 
 \item{proportion}{of surface area exposed to air}
 
@@ -30,7 +30,7 @@ This function allows you to calculate convection from an organism to its environ
 }
 \examples{
 \dontrun{
-Qconvection(T_a= 293,T_b= 303,H=10.45,A=0.0025, proportion=0.85)
+Qconvection(T_a= 293, T_b= 303, H_L=10.45, A=0.0025, proportion=0.85)
 }
 
 }
@@ -53,6 +53,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
   \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

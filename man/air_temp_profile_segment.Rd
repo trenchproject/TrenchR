@@ -7,7 +7,7 @@
 air_temp_profile_segment(T_r, u_r, zr, z0, z, T_s)
 }
 \arguments{
-\item{T_r}{is a vector of temperature at the 3 reference heights in degrees C.}
+\item{T_r}{is a vector of temperature at the 3 reference heights in °C.}
 
 \item{u_r}{is a vector of wind speeds at the 3 reference heights in m/s.}
 
@@ -17,10 +17,10 @@ air_temp_profile_segment(T_r, u_r, zr, z0, z, T_s)
 
 \item{z}{is height to scale to in m.}
 
-\item{T_s}{is surface temperatures in degrees C.}
+\item{T_s}{is surface temperatures in °C.}
 }
 \description{
-This function allows you to calculate temperature (C) at a specified height (m).  
+This function allows you to calculate temperature (°C) at a specified height (m).  
 Estimates a three segment velocity and temperature profile based on user-specified, 
 experimentally determined values for 3 roughness heights and reference heights.  
 Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks.
@@ -48,8 +48,7 @@ Other microclimate functions: \code{\link{air_temp_profile_neutral}},
   \code{\link{partition_solar_radiation}},
   \code{\link{surface_roughness}},
   \code{\link{wind_speed_profile_neutral}},
-  \code{\link{wind_speed_profile_segment}},
-  \code{\link{wind_speed_profile}}
+  \code{\link{wind_speed_profile_segment}}
 }
 \concept{microclimate functions}
 \keyword{profile}

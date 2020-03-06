@@ -1,4 +1,4 @@
-#' Estimate radiation(three parts - Direct, Diffused and Reflected)
+#' Estimate radiation (three parts - Direct, Diffused and Reflected)
 #' 
 #' 
 #' @details Function to estimate direct, diffuse, and reflected components of solar radiation in (W/m^2).
@@ -84,8 +84,6 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
   rd=180/pi;  # factor to convert radians into degrees
   RevAng = 0.21631 + 2 * atan(0.967 * tan(0.0086 * (-186 + doy))); # Revolution angle in radians
   DecAng = asin(0.39795 * cos(RevAng));  # Declination angle in radians      
-  
-  ##DecAng = 23.45 * sin(2 * pi * (284 + n) / 365) / rd   by Cooper 1969 (The Absorption of Radiation in Solar Stills)
   
   f=(279.575+0.9856*doy)/rd;  # f in radians
   ET= (-104.7*sin(f)+596.2*sin(2*f)+4.3*sin(3*f)-12.7*sin(4*f)-429.3*cos(f)-2.0*cos(2*f)+19.3*cos(3*f))/3600;   #(11.4) Equation of time

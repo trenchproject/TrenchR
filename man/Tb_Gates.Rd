@@ -30,9 +30,9 @@ Tb_Gates(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilon,
 
 \item{H_L}{Convective heat transfer coefficient (W m^-2 K^-1)}
 
-\item{ef}{is the enhancement factor, used to adjust H_L to field condictions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.}
+\item{ef}{enhancement factor used to adjust H_L to field condictions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.}
 
-\item{K}{Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle ( Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.}
+\item{K}{Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step.}
 }
 \value{
 operative environmental temperature (K)
@@ -68,7 +68,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Reynolds_number}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_butterfly}}, \code{\link{Tb_grasshopper}},
-  \code{\link{Tb_lizard}},
+  \code{\link{Tb_lizard}}, \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

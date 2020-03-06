@@ -7,14 +7,14 @@
 diurnal_temp_variation_sine(T_max, T_min, t)
 }
 \arguments{
-\item{T_max}{maximum daily temperature in degree celsius}
+\item{T_max}{maximum daily temperature (°C)}
 
-\item{T_min}{minimum daily temperature in degree celsius}
+\item{T_min}{minimum daily temperature (°C)}
 
-\item{t}{hour for temperature estimate}
+\item{t}{time for temperature estimate (hour)}
 }
 \value{
-temperature (C) at a specified hour
+temperature (°C) at a specified hour
 }
 \description{
 This function allows you to estimate temperature for a specified hour using the sine interpolation in Campbell and Norman (1998). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
@@ -40,8 +40,7 @@ Other microclimate functions: \code{\link{air_temp_profile_neutral}},
   \code{\link{partition_solar_radiation}},
   \code{\link{surface_roughness}},
   \code{\link{wind_speed_profile_neutral}},
-  \code{\link{wind_speed_profile_segment}},
-  \code{\link{wind_speed_profile}}
+  \code{\link{wind_speed_profile_segment}}
 }
 \concept{microclimate functions}
 \keyword{Temperature}

@@ -24,7 +24,7 @@ The table below compiles the symbols which are used by TrenchR functions.
 |$Acondfact$| proportion of the animal surface area that is in contact with the ground||
 |$Agradfact$| proportion of the animal projected area exposed to radiation from the ground||
 |$abs$| absorptivity to solar radiation (proportion) ||
-|$air_pressure$| air pressure (kPa) ||
+|air_pressure| air pressure (kPa) ||
 |$aran$| scale performance value for performance curve? if aran = 0, no scaling; if aran = 1, includes a thermodynamic effect on mean performance. ||
 |$breadth$| breadth of the thermal performance curve ||
 |$c$ |	specific heat capacity (subscripts: $a$, air; $p$, air at constant pressure; $so$, soil) ($J kg^{-1}°K^{-1}$ or $J kg^{-1}°C^{-1}$). | |
@@ -87,7 +87,7 @@ The table below compiles the symbols which are used by TrenchR functions.
 |$u$| wind speed ($m/s$) (subscripts: $r$, reference height or heights)||
 |$UDT$| Upper developmental threshold ($°C$)  || 
 |$V$|	velocity ($m s^{-1}$); volume ($m^{3}$).||
-|$water_content$  | water content (percent) ||
+|water_content | water content (percent) ||
 |$x$| vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air). ||
 |$z$| distance, or height above a surface ($m$); zenith angle (°)||
 |$zr$| reference height ($m$) ||

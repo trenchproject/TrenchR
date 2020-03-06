@@ -14,7 +14,7 @@ Qmetabolism_from_mass_temp(m, T_b, taxa)
 \item{taxa}{Which taxa. options: bird, mammal, reptile, amphibian, invertebrate.}
 }
 \value{
-metabolim (W)
+basal metabolim (W)
 }
 \description{
 Calculate basal (or resting) metabolism as a function of mass and body temperature.
@@ -24,7 +24,7 @@ This function allows you to estimate basal (or resting) metabolic rate (W) as a 
 }
 \examples{
 \dontrun{
-Qmetabolism_from_mass_temp(m=100, T_b=303,"reptile")
+Qmetabolism_from_mass_temp(m=100, T_b=303, "reptile")
 }
 
 }
@@ -47,6 +47,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
   \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

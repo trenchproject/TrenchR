@@ -13,9 +13,9 @@ Qconduction_substrate(T_g, T_b, D, K_g = 0.5, A, proportion)
 
 \item{D}{Characteristic dimension of the animal in meters}
 
-\item{K_g}{Thermal conductivity of substrate (W K^-1 m^-1 )}
+\item{K_g}{Thermal conductivity of substrate (W K^-1 m^-1)}
 
-\item{A}{Surface area  in m^2}
+\item{A}{Surface area in m^2}
 
 \item{proportion}{In contact to the surface}
 }
@@ -33,7 +33,7 @@ This function allows you to calculate conductance (W) of an ectothermic animal t
 }
 \examples{
 \dontrun{
-Qconduction_substrate(T_g= 293,T_b=303,D=0.01,K_g=0.3,A=10^-2, proportion=0.2)
+Qconduction_substrate(T_g= 293, T_b=303, D=0.01, K_g=0.3, A=10^-2, proportion=0.2)
 }
 
 }
@@ -56,6 +56,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
   \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

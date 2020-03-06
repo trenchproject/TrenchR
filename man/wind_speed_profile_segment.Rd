@@ -13,7 +13,7 @@ wind_speed_profile_segment(u_r, zr, z0, z)
 
 \item{z0}{is a vector of 3 experimentally determined roughness heights in m.}
 
-\item{z}{is height to scale to in m.}
+\item{z}{is height to scale in m.}
 }
 \description{
 This function allows you to calculate wind speed (m/s) at a specified height (m).   
@@ -44,8 +44,7 @@ Other microclimate functions: \code{\link{air_temp_profile_neutral}},
   \code{\link{monthly_solar_radiation}},
   \code{\link{partition_solar_radiation}},
   \code{\link{surface_roughness}},
-  \code{\link{wind_speed_profile_neutral}},
-  \code{\link{wind_speed_profile}}
+  \code{\link{wind_speed_profile_neutral}}
 }
 \concept{microclimate functions}
 \keyword{profile}

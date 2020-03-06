@@ -29,7 +29,7 @@ partition_solar_radiation=function(method, kt, lat=NA, sol.elev=NA){
   #6.1 Liu and Jordan 
   if(method=="Liu_Jordan") {
     kd= (0.271 -0.294*kt)/kt #kd= (0.384 -0.416*kt)/kt
-    if(kd>1)kd=1
+    if(kd>1) kd=1
     }
     
   #6.2 Orgill and Hollands
@@ -57,8 +57,9 @@ partition_solar_radiation=function(method, kt, lat=NA, sol.elev=NA){
     a3= 0.94+0.0118*abs(lat)
     b3= 1.185+0.0135*abs(lat)
     
+    #method assumes constant kd if kt outside below range
+    kd=NA
     if(kt>=0.35 & kt<=0.75) kd= a3-b3*kt
-    ## CHECK OUTSIDE RANGE
   }
   
   #6.5 Reindl et al.

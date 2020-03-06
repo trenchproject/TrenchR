@@ -13,7 +13,7 @@ wind_speed_profile_neutral(u_r, zr, z0, z)
 
 \item{z0}{is surface roughness in m.}
 
-\item{z}{is height to scale to in m.}
+\item{z}{is height to scale in m.}
 }
 \value{
 windspeed in m/s
@@ -45,8 +45,7 @@ Other microclimate functions: \code{\link{air_temp_profile_neutral}},
   \code{\link{monthly_solar_radiation}},
   \code{\link{partition_solar_radiation}},
   \code{\link{surface_roughness}},
-  \code{\link{wind_speed_profile_segment}},
-  \code{\link{wind_speed_profile}}
+  \code{\link{wind_speed_profile_segment}}
 }
 \concept{microclimate functions}
 \keyword{profile}

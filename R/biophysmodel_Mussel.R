@@ -1,3 +1,4 @@
+#' Predicts body temperature (operative environmental temperature) of a mussel in °C.
 #' @details Predicts body temperature of a mussel in °C.
 #' @description Predicts body temperature of a mussel in °C. Based on Helmuth 1998, INTERTIDAL MUSSEL MICROCLIMATES: PREDICTING THE BODY TEMPERATURE OF A SESSILE INVERTEBRATE
 #' @param L mussel length (anterior/posterior axis) (m)
@@ -8,7 +9,7 @@
 #' @param psi solar zenith angle (degrees): can be calculated from zenith_angle function
 #' @param S direct solar flux density acting upon that area (W m^-2)
 #' @param c fraction of the sky covered by cloud 
-#' @param group TRUE if aggragated, FALSE if solitary 
+#' @param group TRUE if aggregated, FALSE if solitary 
 #' @return predicted body temperature (°C)
 #' @keywords body temperature, biophysical model
 #' @family biophysical models
@@ -55,10 +56,11 @@ Tb_mussel = function(L, H, T_a, T_g, u, psi, S, c, group = TRUE){
   
   lambda = 2.48 # latent heat of vaporization of water (J/kg)
   
-  Ka = 0.00501 + 7.2 * 10^-5 * T_a      # conductivity of air (W m^-1 K^-1) Denny and Harly. 2006, Hot limpets: predicting body temperature in a conductance-mediated thermal system 
-  v = -1.25 * 10^-5 + 9.2 * 10^-8 * T_a  # kinematic viscosity of air (m^2 s^-1)
+  # conductivity of air (W m^-1 K^-1), kinematic viscosity of air (m^2 s^-1)
+  Ka = 0.00501 + 7.2 * 10^-5 * T_a      # Denny and Harley. 2006, Hot limpets: predicting body temperature in a conductance-mediated thermal system 
+  v = -1.25 * 10^-5 + 9.2 * 10^-8 * T_a
   
-  if (group) {        # derived from the relationship between Nusselt number and Raynolds number
+  if (group) {        # derived from the relationship between Nusselt number and Reynolds number
     hc = 0.67 * Ka / L * (u * L / v)^0.42
   } else {
     hc = 0.38 * Ka / L * (u * L / v)^0.51

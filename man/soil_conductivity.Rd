@@ -11,7 +11,7 @@ soil_conductivity(x, lambda, g_a)
 
 \item{lambda}{is a vector of the thermal conductivities (W m^-1 K^-1) of the soil constituents.}
 
-\item{g_a}{is a shape factor on soil particles.  The soil particles are assumed to be ellipsoids with axes g_a, g_b, and g_c, where g_a +g_b +g_c=1.  de Vries 1952 suggests g_a=g_b=0.125.}
+\item{g_a}{is a shape factor on soil particles.  The soil particles are assumed to be ellipsoids with axes g_a, g_b, and g_c, where g_a +g_b +g_c=1 and g_a=g_b.  de Vries 1952 suggests g_a=g_b=0.125.}
 }
 \value{
 soil thermal conductivity (W m^-1 K^-1)

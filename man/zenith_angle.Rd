@@ -4,16 +4,18 @@
 \alias{zenith_angle}
 \title{Calculate Zenith Angle}
 \usage{
-zenith_angle(doy, lat, lon, hour)
+zenith_angle(doy, lat, lon, hour, offset = NA)
 }
 \arguments{
 \item{doy}{is day of year.}
 
-\item{lat}{is latitude in degrees.}
+\item{lat}{is latitude in decimal degrees.}
 
-\item{lon}{is longitude in degrees.}
+\item{lon}{is longitude in decimal degrees.}
 
 \item{hour}{is hour of the day.}
+
+\item{offset}{is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)}
 }
 \value{
 Zenith angle in degrees

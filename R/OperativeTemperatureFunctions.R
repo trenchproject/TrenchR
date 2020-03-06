@@ -29,7 +29,6 @@ Tb_CampbellNorman=function(T_a, S, epsilon=0.96, c_p=29.3, D, V){
   Qemit= epsilon*sigma*T_a^4
   
   #conductance
-
   g_Ha=1.4*0.135*sqrt(V/D) # boundary conductance, factor of 1.4 to account for increased convection (Mitchell 1976), assumes forced conduction
   g_r= 4*sigma*T_a^3/c_p # (12.7) radiative conductance
   
@@ -46,7 +45,7 @@ Tb_CampbellNorman=function(T_a, S, epsilon=0.96, c_p=29.3, D, V){
 #' @param Qabs Solar and thermal radiation absorbed (W)
 #' @param Qemit Thermal radiation emitted (W)
 #' @param Qconv Energy exchange due to convection; Energy exchange from an animal to its surrounding environment (air or water) (W)
-#' @param Qcond Energy exchange due to conduction; Energy exchange from animal to a surface if its in contact  (W)
+#' @param Qcond Energy exchange due to conduction; Energy exchange from animal to a surface if they are in contact  (W)
 #' @param Qmet Energy emitted due to metabolism (W)
 #' @param Qevap Energy emitted due to evaporative water loss (W)
 #' @return net energy exchange (W)
@@ -84,7 +83,7 @@ Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #' @param epsilon longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
 #' @param H_L Convective heat transfer coefficient (W m^-2 K^-1)
 #' @param ef enhancement factor used to adjust H_L to field condictions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.
-#' @param K Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle ( Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step. 
+#' @param K Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step. 
 #' @return operative environmental temperature (K)
 #' @keywords operative environmental temperature
 #' @family biophysical models

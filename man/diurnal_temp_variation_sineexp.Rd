@@ -8,24 +8,24 @@ diurnal_temp_variation_sineexp(T_max, T_min, t, t_r, t_s, alpha = 2.59,
   beta = 1.55, gamma = 2.2)
 }
 \arguments{
-\item{T_max}{maximum daily temperature (C)}
+\item{T_max}{maximum daily temperature (°C)}
 
-\item{T_min}{minimum daily temperature (C)}
+\item{T_min}{minimum daily temperature (°C)}
 
-\item{t}{hour for temperature estimate}
+\item{t}{time for temperature estimate (hour)}
 
 \item{t_r}{time of sunset (hour)}
 
 \item{t_s}{time of sunrise (hour)}
 
-\item{alpha}{time difference between t_x(time of maximum temperature) and noon}
+\item{alpha}{time difference between t_x (time of maximum temperature) and noon (hour)}
 
-\item{beta}{time difference between t_x and sunrise}
+\item{beta}{time difference between t_x and sunrise (hour)}
 
-\item{gamma}{decay parameter for rate of t change from sunset to t_n(time of minimum temp)}
+\item{gamma}{decay parameter for rate of t change from sunset to t_n (time of minimum temp)}
 }
 \value{
-temperature (C) at a specified hour
+temperature (°C) at a specified hour
 }
 \description{
 This function allows you to estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: Parton WJ and Logan JA. 1981. A model for diurnal variation in soil and air temperature. Agricultural Meteorology 23: 205-216.
@@ -51,8 +51,7 @@ Other microclimate functions: \code{\link{air_temp_profile_neutral}},
   \code{\link{partition_solar_radiation}},
   \code{\link{surface_roughness}},
   \code{\link{wind_speed_profile_neutral}},
-  \code{\link{wind_speed_profile_segment}},
-  \code{\link{wind_speed_profile}}
+  \code{\link{wind_speed_profile_segment}}
 }
 \concept{microclimate functions}
 \keyword{Temperature}

@@ -7,14 +7,16 @@
 Tsoil(Tg_max, Tg_min, hour, depth)
 }
 \arguments{
-\item{Tg_max}{daily maximum soil surface temperature (C)}
+\item{Tg_max}{daily maximum soil surface temperature (°C)}
 
-\item{Tg_min}{daily minimum soil surface temperature (C)}
+\item{Tg_min}{daily minimum soil surface temperature (°C)}
+
+\item{hour}{hour of the day}
 
 \item{depth}{depth (cm) ???}
 }
 \value{
-soil temperature (C)
+soil temperature (°C)
 }
 \description{
 Statistical approximation of soil temperature
@@ -48,6 +50,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
   \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

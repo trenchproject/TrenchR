@@ -11,23 +11,22 @@ monthly_solar_radiation(lat, lon, doy, elev, T, Hr, P)
 
 \item{lon}{longitude in degrees}
 
-\item{doy}{is the day of year}
+\item{doy}{day of year}
 
-\item{elev}{is elevation in m}
+\item{elev}{elevation in m}
 
-\item{T}{is mean monthly temperature (C)}
+\item{T}{mean monthly temperature (°C)}
 
-\item{Hr}{is mean month relative humidity (in percentage)}
+\item{Hr}{mean month relative humidity (in percentage)}
 
-\item{P}{is total monthly precipitation (mm)}
+\item{P}{total monthly precipitation (mm)}
 }
 \value{
-average monthly solar radiation ( W/m^2)
+average monthly solar radiation (W/m^2)
 }
 \description{
 Function to estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information
 as input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
-# @source
 }
 \details{
 Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information as input.
@@ -50,8 +49,7 @@ Other microclimate functions: \code{\link{air_temp_profile_neutral}},
   \code{\link{partition_solar_radiation}},
   \code{\link{surface_roughness}},
   \code{\link{wind_speed_profile_neutral}},
-  \code{\link{wind_speed_profile_segment}},
-  \code{\link{wind_speed_profile}}
+  \code{\link{wind_speed_profile_segment}}
 }
 \concept{microclimate functions}
 \keyword{average}
