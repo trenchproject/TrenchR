@@ -1,3 +1,4 @@
+#' Predicts body temperature (operative environmental temperature) of a mussel in °C.
 #' @details Predicts body temperature of a mussel in °C.
 #' @description Predicts body temperature of a mussel in °C. Based on Helmuth 1998, INTERTIDAL MUSSEL MICROCLIMATES: PREDICTING THE BODY TEMPERATURE OF A SESSILE INVERTEBRATE
 #' @param L mussel length (anterior/posterior axis) (m)

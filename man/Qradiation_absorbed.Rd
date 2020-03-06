@@ -10,7 +10,7 @@ Qradiation_absorbed(a = 0.9, A, psa_dir, psa_ref, S_dir, S_dif,
 \arguments{
 \item{a}{solar absorptivity of animal surface (proportion), default value is for reptiles}
 
-\item{A}{surface area  in m^2}
+\item{A}{surface area in m^2}
 
 \item{psa_dir}{proportion surface area exposed to solar radiation}
 
@@ -59,6 +59,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
   \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

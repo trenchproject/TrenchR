@@ -4,12 +4,14 @@
 \alias{solar_noon}
 \title{Calculate time of solar noon}
 \usage{
-solar_noon(lon, doy)
+solar_noon(lon, doy, offset = NA)
 }
 \arguments{
-\item{lon}{longitude in degrees}
+\item{lon}{longitude in decimal degrees}
 
 \item{doy}{day of year}
+
+\item{offset}{is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)}
 }
 \value{
 time at solar noon

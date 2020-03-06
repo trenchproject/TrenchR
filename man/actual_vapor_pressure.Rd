@@ -7,7 +7,7 @@
 actual_vapor_pressure(Tdewpoint)
 }
 \arguments{
-\item{Tdewpoint}{dewpoint temperature (C)}
+\item{Tdewpoint}{dewpoint temperature (°C)}
 }
 \value{
 actual vapor pressure, e_a (kPa)
@@ -44,6 +44,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
   \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{boundary_layer_resistance}},
   \code{\link{external_resistance_to_water_vapor_transfer}},

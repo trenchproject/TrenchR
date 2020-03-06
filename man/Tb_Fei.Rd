@@ -25,9 +25,7 @@ Tb_Fei(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact)
 }
 \description{
 Transient model for predicting operative environmental temperature using model in the following publication: T. Fei, A. K. Skidmore, V. Venus, T. Wang, M. Schlerf, B. Toxopeus, 
-S. van Overjijk, M. Bian, and Y. Liu, “A body temperature model for 
-lizards as estimated from the thermal environment,” J. Therm. 
-Biol., vol. 37, no. 1, pp. 56–64, 2012.
+S. van Overjijk, M. Bian, and Y. Liu, “A body temperature model for lizards as estimated from the thermal environment,” J. Therm. Biol., vol. 37, no. 1, pp. 56–64, 2012.
 }
 \details{
 Predicts body temperature (operative environmental temperature) of a lizard in K.
@@ -57,7 +55,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Reynolds_number}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Gates}},
   \code{\link{Tb_butterfly}}, \code{\link{Tb_grasshopper}},
-  \code{\link{Tb_lizard}},
+  \code{\link{Tb_lizard}}, \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

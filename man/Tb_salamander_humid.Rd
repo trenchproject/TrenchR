@@ -12,9 +12,9 @@ Tb_salamander_humid(r_i, r_b, D, T_a, elev, e_a, e_s, Qabs,
 
 \item{r_b}{boundary layer resistance (s cm^-1)}
 
-\item{D}{body diameter (m), ##diameter = 0.0016*log(mass) + 0.0061 for mass(g) #empirical formula for diameter, Riddell et al. 2017}
+\item{D}{body diameter (m), (diameter = 0.0016*log(mass) + 0.0061 for mass(g)) #empirical formula for diameter, Riddell et al. 2017}
 
-\item{T_a}{ambient temperature (C)}
+\item{T_a}{ambient temperature (°C)}
 
 \item{elev}{elevation (m)}
 
@@ -27,7 +27,7 @@ Tb_salamander_humid(r_i, r_b, D, T_a, elev, e_a, e_s, Qabs,
 \item{epsilon}{emissivity of salamander skin, default epsilon=0.96}
 }
 \value{
-humid operative temperature (C)
+humid operative temperature (°C)
 }
 \description{
 Calculate humid operative temperature
@@ -61,7 +61,8 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
   \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
-  \code{\link{Tsoil}}, \code{\link{actual_vapor_pressure}},
+  \code{\link{Tb_mussel}}, \code{\link{Tsoil}},
+  \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},
   \code{\link{external_resistance_to_water_vapor_transfer}},
   \code{\link{heat_transfer_coefficient_approximation}},

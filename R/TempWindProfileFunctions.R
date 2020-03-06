@@ -97,38 +97,6 @@ air_temp_profile_neutral<-function(T_r, zr, z0, z, T_s){
   return(T_z)
 }
 
-#' Estimate wind speed profile as in NicheMapR.
-#' 
-#' @details Calculates wind speed at a specified height
-#' @description This function allows you to estimate wind speed (m/s) at a specified height (m).  
-#' Estimates a single, unsegmented wind velocity using the MICRO routine from NicheMapR as described in Kearney and Porter 2016.
-#' Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.
-#' Section 5. Vertical air temperature and wind speed profiles, p11
-
-#' @param u_r is wind velocity at reference height in m/s.
-#' @param zr is initial reference height in m.
-#' @param z0 is surface roughness in m.
-#' @param z is height to scale to in m.
-#' @return wind speed (m/s) 
-#' @keywords wind profile
-#' @family microclimate functions
-#' @export
-#' @examples
-#' \dontrun{
-#' wind_speed_profile(u_r=0.1, zr=0.1, z0=0.2, z=0.15)
-#'}
-
-wind_speed_profile<- function(u_r,zr,z0,z){
-  
-  stopifnot(u_r>=0, zr>=0, z0>=0, z>=0)
-  
-  #Friction velocity
-  u_star=  0.4*u_r/log(zr/z0 +1)  #0.4 is von Karman constant
-  u_z= 2.5*u_star*log(z/z0+1)
-  return(u_z)
-}
-
-
 #' Estimate air temperature profile as in NicheMapR
 #' 
 #' @details Estimate temperature at a specified height

@@ -12,7 +12,7 @@ day_of_year(day, format = "\%Y-\%m-\%d")
 \item{format}{date format following "POSIXlt" conventions}
 }
 \value{
-day number, for eg. 1 for January 1st
+day number, 1-366, for eg. 1 for January 1st
 }
 \description{
 This function allows you to calculate day of year from text specifying a date.

@@ -2,15 +2,15 @@
 % Please edit documentation in R/biophysmodel_Grasshopper.R
 \name{Tb_grasshopper}
 \alias{Tb_grasshopper}
-\title{Predicts body temperatures (operative environmental temperature) of a grasshopper in degrees C.}
+\title{Predicts body temperatures (operative environmental temperature) of a grasshopper in °C.}
 \usage{
 Tb_grasshopper(T_a, T_g, u, H, K_t, psi, L, Acondfact = 0.25,
   z = 0.001, abs = 0.7, r_g = 0.3)
 }
 \arguments{
-\item{T_a}{is air temperature in C}
+\item{T_a}{is air temperature in °C}
 
-\item{T_g}{is surface temperature in C, Kingsolver (1983) assumes T_g-T_a=8.4}
+\item{T_g}{is surface temperature in °C, Kingsolver (1983) assumes T_g-T_a=8.4}
 
 \item{u}{is wind speed in m/s}
 
@@ -31,13 +31,13 @@ Tb_grasshopper(T_a, T_g, u, H, K_t, psi, L, Acondfact = 0.25,
 \item{r_g}{is substrate solar reflectivity (proportion), see Kingsolver (1983)}
 }
 \value{
-predicted body (operative environmental) temperature (C)
+predicted body (operative environmental) temperature (°C)
 }
 \description{
-Predicts body temperature (operative environmental temperature) of a grasshopper in degrees C. Described in Buckleyet al. (2014, Phenotypic clines, energy balances, and ecological responses to climate change. Journal of Animal Ecology 83:41-50.) See also a related model by Anderson et al. (1979, Habitat selection in two species of short-horned grasshoppers. Oecologia 38:359–74.)
+Predicts body temperature (operative environmental temperature) of a grasshopper in °C. Described in Buckleyet al. (2014, Phenotypic clines, energy balances, and ecological responses to climate change. Journal of Animal Ecology 83:41-50.) See also a related model by Anderson et al. (1979, Habitat selection in two species of short-horned grasshoppers. Oecologia 38:359–74.)
 }
 \details{
-Predicts body temperatures (operative environmental temperature) of a grasshopper in degrees C.
+Predicts body temperatures (operative environmental temperature) of a grasshopper in °C.
 }
 \examples{
 \dontrun{
@@ -63,7 +63,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Reynolds_number}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
-  \code{\link{Tb_lizard}},
+  \code{\link{Tb_lizard}}, \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

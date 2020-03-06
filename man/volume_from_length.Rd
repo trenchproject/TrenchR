@@ -9,7 +9,7 @@ volume_from_length(l, taxa)
 \arguments{
 \item{l}{Length in m.}
 
-\item{taxa}{Which class of organism, current choices: lizard,frog, or sphere}
+\item{taxa}{Which class of organism, current choices: lizard, frog, or sphere}
 }
 \value{
 volume (m^3)

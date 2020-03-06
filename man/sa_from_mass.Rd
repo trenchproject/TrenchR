@@ -7,7 +7,7 @@
 sa_from_mass(m, taxa)
 }
 \arguments{
-\item{m}{Mass in g}
+\item{m}{mass in g}
 
 \item{taxa}{Which class of organism, current choices: lizard, salamander, frog, insect}
 }

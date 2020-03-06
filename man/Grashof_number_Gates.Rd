@@ -7,15 +7,15 @@
 Grashof_number_Gates(Ta, Tg, beta, D, nu)
 }
 \arguments{
-\item{Ta}{Air temperature (C).}
+\item{Ta}{Air temperature (°C).}
 
-\item{Tg}{Ground (surface) temperature (C).}
+\item{Tg}{Ground (surface) temperature (°C).}
 
-\item{beta}{coefficient of volumetric thermal expansion, beta= 3.67 x 10^-3 C^-1  in air and 41.9 x 10^-4 C^-1 in water.}
+\item{beta}{coefficient of volumetric thermal expansion, beta= 3.67 x 10^-3 °C^-1  in air and 41.9 x 10^-4 °C^-1 in water.}
 
 \item{D}{is characteristic dimension (e.g., body diameter) (m)}
 
-\item{nu}{is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m2 s-1), can calculate from DRYAIR or WETAIR}
+\item{nu}{is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s-1), can calculate from DRYAIR or WETAIR}
 }
 \value{
 Grashof number
@@ -51,6 +51,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
   \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

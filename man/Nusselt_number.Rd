@@ -11,7 +11,7 @@ Nusselt_number(H_L, D, K)
 
 \item{D}{is characteristic dimension (e.g., body diameter) (m)}
 
-\item{K}{Thermal conductivity (W K^-1 m^-1 )}
+\item{K}{Thermal conductivity (W K^-1 m^-1)}
 }
 \value{
 Nusselt number
@@ -47,6 +47,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
   \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

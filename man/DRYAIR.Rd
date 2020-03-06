@@ -7,7 +7,7 @@
 DRYAIR(db = db, bp = 0, alt = 0)
 }
 \arguments{
-\item{db}{Dry bulb temperature (degrees C)}
+\item{db}{Dry bulb temperature (°C)}
 
 \item{bp}{Barometric pressure (pascal)}
 
@@ -22,7 +22,7 @@ visdyn Dynamic viscosity (kg m-1 s-1)
 
 viskin Kinematic viscosity (m2 s-1)
 
-difvpr Diffusivity of water vapour in air (m2 s-1)
+difvpr Diffusivity of water vapor in air (m2 s-1)
 
 thcond Thermal conductivity (W m-1 K-1)
 

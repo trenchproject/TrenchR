@@ -2,7 +2,7 @@
 % Please edit documentation in R/RadiationFunctions.R
 \name{estimate_radiation}
 \alias{estimate_radiation}
-\title{Estimate radiation(three parts - Direct, Diffused and Reflected)}
+\title{Estimate radiation (three parts - Direct, Diffused and Reflected)}
 \usage{
 estimate_radiation(doy, psi, tau, elev, rho = 0.7)
 }
@@ -44,8 +44,7 @@ Other microclimate functions: \code{\link{air_temp_profile_neutral}},
   \code{\link{partition_solar_radiation}},
   \code{\link{surface_roughness}},
   \code{\link{wind_speed_profile_neutral}},
-  \code{\link{wind_speed_profile_segment}},
-  \code{\link{wind_speed_profile}}
+  \code{\link{wind_speed_profile_segment}}
 }
 \concept{microclimate functions}
 \keyword{radiation}

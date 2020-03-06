@@ -295,7 +295,7 @@ soil_temperature<-function(z_r.intervals=12,z_r, z, T_a, u, Tsoil0, z0, SSA, Tim
   rho_o<- 1300 #average density of organic matter in soil #kg/m^3
   #rho_other?
   #**# mineral fractions used here are from SCAN data at Nunn, CO
-  f_clay<- 0.17277 #.1
+  f_clay<- 0.17277 
   f_sandsilt<- 1-f_clay
   fraction_quartz<- 0.78 #percentage of solid sand/silt that is quartz
   fraction_other<- 1-fraction_quartz #percentage of solid sand/silt that is minerals other than quartz

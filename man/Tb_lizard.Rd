@@ -2,26 +2,26 @@
 % Please edit documentation in R/biophysmodel_Sceloporus.R
 \name{Tb_lizard}
 \alias{Tb_lizard}
-\title{Predicts body temperatures (operative environmental temperature) of a lizard in degrees C.}
+\title{Predicts body temperatures (operative environmental temperature) of a lizard in °C.}
 \usage{
 Tb_lizard(T_a, T_g, u, svl, m, psi, rho_S, elev, doy, sun = TRUE,
   surface = TRUE, alpha_S = 0.9, alpha_L = 0.965,
   epsilon_s = 0.965, F_d = 0.8, F_r = 0.5, F_a = 0.5, F_g = 0.5)
 }
 \arguments{
-\item{T_a}{is air temperature in C}
+\item{T_a}{is air temperature in °C}
 
-\item{T_g}{is surface temperature in C}
+\item{T_g}{is surface temperature in °C}
 
 \item{u}{is wind speed in m/s}
 
 \item{svl}{is lizard snout vent length in mm}
 
-\item{m}{is lizard mass in g, note can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 #Tinkle and Ballinger 1972}
+\item{m}{is lizard mass in g, note that it can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 (Tinkle and Ballinger 1972)}
 
 \item{psi}{is solar zenith angle in degrees}
 
-\item{rho_S}{is surface albedo (proportion)}
+\item{rho_S}{is surface albedo (proportion). ~0.25 for grass, ~0.1 for dark soil, >0.75 for fresh snow (Campbell & Norman 1998)}
 
 \item{elev}{is elevation in m}
 
@@ -46,19 +46,19 @@ Tb_lizard(T_a, T_g, u, svl, m, psi, rho_S, elev, doy, sun = TRUE,
 \item{F_g}{is the view factor between the surface of the lizard and ground thermal radation}
 }
 \value{
-T_e Operative temperature
+T_e Operative temperature (°C)
 }
 \description{
-Predicts body temperature (operative environmental temperature) of a lizard in degrees C. 
+Predicts body temperature (operative environmental temperature) of a lizard in °C. 
 Based on Campbell and Norman (1998, An introduction to environmental biophysics). 
 Designed for Sceloporus lizards and described in Buckley (2008, Linking traits to energetics and population dynamics to predict lizard ranges in changing environments. American Naturalist 171: E1-E19).
 }
 \details{
-Predicts body temperatures (operative environmental temperature) of a lizard in degrees C.
+Predicts body temperatures (operative environmental temperature) of a lizard in °C.
 }
 \examples{
 \dontrun{
-Tb_lizard(T_a=25, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.7, elev=500, doy=200, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
+Tb_lizard(T_a=25, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.24, elev=500, doy=200, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
 }
 
 }
@@ -81,7 +81,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Reynolds_number}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
-  \code{\link{Tb_grasshopper}},
+  \code{\link{Tb_grasshopper}}, \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

@@ -7,7 +7,7 @@
 kelvin_to_celsius(T)
 }
 \arguments{
-\item{T}{Temperature in Fahrenheit.}
+\item{T}{Temperature in Kelvin.}
 }
 \value{
 Temperature in Celsius

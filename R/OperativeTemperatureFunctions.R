@@ -45,7 +45,7 @@ Tb_CampbellNorman=function(T_a, S, epsilon=0.96, c_p=29.3, D, V){
 #' @param Qabs Solar and thermal radiation absorbed (W)
 #' @param Qemit Thermal radiation emitted (W)
 #' @param Qconv Energy exchange due to convection; Energy exchange from an animal to its surrounding environment (air or water) (W)
-#' @param Qcond Energy exchange due to conduction; Energy exchange from animal to a surface if its in contact  (W)
+#' @param Qcond Energy exchange due to conduction; Energy exchange from animal to a surface if they are in contact  (W)
 #' @param Qmet Energy emitted due to metabolism (W)
 #' @param Qevap Energy emitted due to evaporative water loss (W)
 #' @return net energy exchange (W)

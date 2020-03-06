@@ -13,14 +13,14 @@ diurnal_temp_variation_sinesqrt(t, tr, ts, T_max, T_min, T_minp)
 
 \item{ts}{sunset hour (0-23)}
 
-\item{T_max}{maximum temperature of current day (C)}
+\item{T_max}{maximum temperature of current day (°C)}
 
-\item{T_min}{minimum temperature of current day (C)}
+\item{T_min}{minimum temperature of current day (°C)}
 
-\item{T_minp}{minimum temperature of following day (C)}
+\item{T_minp}{minimum temperature of following day (°C)}
 }
 \value{
-temperature (C) at a specified hour
+temperature (°C) at a specified hour
 }
 \description{
 This function allows you to estimate temperature for a specified hour using sine and square root functions. Source: Cesaraccio C et al. 2001. An improved model for determining degree-day values from daily temperature data. International Journal of Biometeorology 45:161-169.
@@ -46,8 +46,7 @@ Other microclimate functions: \code{\link{air_temp_profile_neutral}},
   \code{\link{partition_solar_radiation}},
   \code{\link{surface_roughness}},
   \code{\link{wind_speed_profile_neutral}},
-  \code{\link{wind_speed_profile_segment}},
-  \code{\link{wind_speed_profile}}
+  \code{\link{wind_speed_profile_segment}}
 }
 \concept{microclimate functions}
 \keyword{Temperature}

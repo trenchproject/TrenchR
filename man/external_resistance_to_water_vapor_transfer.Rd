@@ -7,9 +7,9 @@
 external_resistance_to_water_vapor_transfer(H, rhocp = 12000)
 }
 \arguments{
-\item{H}{heat transfer (convection) coefficient (W m^-2 C^-1)}
+\item{H}{heat transfer (convection) coefficient (W m^-2 °C^-1)}
 
-\item{rhocp}{aggregate parameter (J m^-3 C^-1) that is the product of the density of air (kg m^-3) and the specific heat of air at constant pressure (J kg^-1 C^-1). Default of 12000 J m^-3 C^-1 is commonly assumed.}
+\item{rhocp}{aggregate parameter (J m^-3 °C^-1) that is the product of the density of air (kg m^-3) and the specific heat of air at constant pressure (J kg^-1 °C^-1). Default of 12000 J m^-3 °C^-1 is commonly assumed.}
 }
 \value{
 external resistance to water vapor transfer (s m^-1)
@@ -46,6 +46,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
   \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

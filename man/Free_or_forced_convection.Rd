@@ -12,7 +12,7 @@ Free_or_forced_convection(Gr, Re)
 \item{Re}{is the Reynolds Number (dimensionless)}
 }
 \value{
-"free" or "forced"
+"free", "forced" or "intermediate"
 }
 \description{
 Commpare Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980)
@@ -45,6 +45,7 @@ Other biophysical models: \code{\link{Grashof_number_Gates}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
   \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

@@ -4,9 +4,9 @@
 #' @details Calculate day of the year
 #'
 #' @description This function allows you to calculate day of year from text specifying a date.
-#' @param day day
+#' @param day day 
 #' @param format date format following "POSIXlt" conventions 
-#' @return day number, for eg. 1 for January 1st
+#' @return day number, 1-366, for eg. 1 for January 1st
 #' @keywords day
 #' 
 #' @export
@@ -26,7 +26,7 @@ day_of_year<- function(day, format="%Y-%m-%d"){
 #' @details Calculate solar declination in radians
 #'
 #' @description This function allows you to calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-#' @param doy day of year
+#' @param doy day of year (1-366)
 #' @return declination angle in radians
 #' @keywords Declination angle
 #' @family utility functions
@@ -50,8 +50,8 @@ dec_angle <- function(doy){
 #' @details Calculate day length
 #'
 #' @description This function allows you to calculate daylength in hours as a function of latitude and day of year. Uses the CMB model (Forsythe et al. 1995). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-#' @param lat latitude in degrees
-#' @param doy day of year
+#' @param lat latitude in decimal degrees
+#' @param doy day of year (1-366)
 #' @return day length in hours 
 #' 
 #' @keywords day length
@@ -84,7 +84,7 @@ daylength <- function(lat, doy){
 #' @details Calculate time of solar noon
 #'
 #' @description This function allows you to calculate the time of solar noon in hours as a function of the day of year and longitude. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-#' @param lon longitude in degrees 
+#' @param lon longitude in decimal degrees 
 #' @param doy day of year
 #' @param offset is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)
 #' @return time at solar noon
@@ -131,8 +131,8 @@ solar_noon <- function(lon, doy, offset=NA){
 #'
 #' @description This function allows you to calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 #' @param doy is day of year.
-#' @param lat is latitude in degrees.
-#' @param lon is longitude in degrees.
+#' @param lat is latitude in decimal degrees.
+#' @param lon is longitude in decimal degrees.
 #' @param hour is hour of the day.
 #' @param offset is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)
 #' @return Zenith angle in degrees
@@ -183,8 +183,8 @@ return(zenith)
 #'
 #' @description This function allows you to calculate the azimuth angle, the angle (in degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 #' @param doy is day of year.
-#' @param lat is latitude in degrees.
-#' @param lon is longitude in degrees.
+#' @param lat is latitude in decimal degrees.
+#' @param lon is longitude in decimal degrees.
 #' @param hour is hour of the day.
 #' @param offset is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)
 #' @return Azimuth angle in degrees

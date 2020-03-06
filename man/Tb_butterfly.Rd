@@ -2,17 +2,17 @@
 % Please edit documentation in R/biophysmodel_Colias.R
 \name{Tb_butterfly}
 \alias{Tb_butterfly}
-\title{Predicts body temperature (operative environmental temperature) of a butterfly in degrees C.}
+\title{Predicts body temperature (operative environmental temperature) of a butterfly in °C.}
 \usage{
 Tb_butterfly(T_a, Tg, Tg_sh, u, H_sdir, H_sdif, z, D, delta, alpha,
   r_g = 0.3, shade = FALSE)
 }
 \arguments{
-\item{T_a}{is air temperature in C}
+\item{T_a}{is air temperature in °C}
 
-\item{Tg}{is surface temperature in C in the sun}
+\item{Tg}{is surface temperature in °C in the sun}
 
-\item{Tg_sh}{is surface temperature in C in the shade}
+\item{Tg_sh}{is surface temperature in °C in the shade}
 
 \item{u}{is wind speed in m/s}
 
@@ -33,13 +33,13 @@ Tb_butterfly(T_a, Tg, Tg_sh, u, H_sdir, H_sdif, z, D, delta, alpha,
 \item{shade}{is whether body temperature should be calculate in sun (FALSE) or shade (TRUE)}
 }
 \value{
-predicted body (operative environmental) temperature (C)
+predicted body (operative environmental) temperature (°C)
 }
 \description{
-Predicts body temperatures (operative environmental temperatures) of a butterfly in degrees C. Based on Kingsolver (1983, Thermoregulation and flight in Colias butterflies: elevational patterns and mechanistic limitations. Ecology 64: 534–545). Assumes butterfly basks with closed wings perpendicular to solar beam. Source: Buckley LB and Kingsolver JK. 2012. The demographic impacts of shifts in climate means and extremes on alpine butterflies. Functional Ecology https://doi.org/10.1111/j.1365-2435.2012.01969.x and subsequent publications.
+Predicts body temperatures (operative environmental temperatures) of a butterfly in °C. Based on Kingsolver (1983, Thermoregulation and flight in Colias butterflies: elevational patterns and mechanistic limitations. Ecology 64: 534–545). Assumes butterfly basks with closed wings perpendicular to solar beam. Source: Buckley LB and Kingsolver JK. 2012. The demographic impacts of shifts in climate means and extremes on alpine butterflies. Functional Ecology https://doi.org/10.1111/j.1365-2435.2012.01969.x and subsequent publications.
 }
 \details{
-Predicts body temperature (operative environmental temperature) of a butterfly in degrees C.
+Predicts body temperature (operative environmental temperature) of a butterfly in °C.
 }
 \examples{
 \dontrun{
@@ -65,7 +65,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Reynolds_number}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_grasshopper}},
-  \code{\link{Tb_lizard}},
+  \code{\link{Tb_lizard}}, \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

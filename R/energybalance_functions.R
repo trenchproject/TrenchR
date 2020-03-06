@@ -899,7 +899,7 @@ Nu_from_Gr<-function(Gr){
 
 Free_or_forced_convection<-function(Gr, Re){
   
-  conv= "intermediate condition, mixed convection based on Nusselt numerbers is appropriate"
+  conv= "intermediate condition, mixed convection based on Nusselt numbers is appropriate"
   if(Gr<0.1*Re^2) conv="forced convection" #P284
   if(Gr>16*Re^2) conv="free convection"
   

@@ -15,7 +15,7 @@ boundary_layer_resistance(T_a, e_s, e_a, elev, D, u = NA)
 
 \item{elev}{elevation (m)}
 
-\item{D}{characteristic dimension (e.g., body diameter) (m), ##diameter = 0.0016*log(mass) + 0.0061 for mass(g) #empirical formula for salamander diameter, Riddell et al. 2017}
+\item{D}{characteristic dimension (e.g., body diameter) (m)}
 
 \item{u}{is wind speed in m/s, if not provided assume free convection; if provided, use forced convection if appropriate}
 }
@@ -54,6 +54,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
   \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{external_resistance_to_water_vapor_transfer}},

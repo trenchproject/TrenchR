@@ -4,29 +4,31 @@
 \alias{azimuth_angle}
 \title{Calculate Azimuth angle}
 \usage{
-azimuth_angle(doy, lat, lon, hour)
+azimuth_angle(doy, lat, lon, hour, offset = NA)
 }
 \arguments{
 \item{doy}{is day of year.}
 
-\item{lat}{is latitude in degrees.}
+\item{lat}{is latitude in decimal degrees.}
 
-\item{lon}{is longitude in degrees.}
+\item{lon}{is longitude in decimal degrees.}
 
 \item{hour}{is hour of the day.}
+
+\item{offset}{is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)}
 }
 \value{
 Azimuth angle in degrees
 }
 \description{
-This function allows you to calculate the azimuth angle, the angle (in degrees) from which the sunlight in coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
+This function allows you to calculate the azimuth angle, the angle (in degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 }
 \details{
 Calculate azimuth angle
 }
 \examples{
 \dontrun{
-azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
+azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12, offset = -8)
 }
 }
 \seealso{

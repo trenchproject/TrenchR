@@ -8,9 +8,9 @@ Qthermal_radiation_absorbed(T_a, T_g, epsilon_ground = 0.97,
   a_longwave = 0.965)
 }
 \arguments{
-\item{T_a}{air temperature (C)}
+\item{T_a}{air temperature (°C)}
 
-\item{T_g}{ground temperature (C)}
+\item{T_g}{ground temperature (°C)}
 
 \item{epsilon_ground}{emmisitivity (proportion) for more soil types (Campbell and Norman 1998), default value of 0.97}
 
@@ -50,6 +50,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
   \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},
