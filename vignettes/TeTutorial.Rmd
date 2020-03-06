@@ -561,6 +561,22 @@ legend("bottomright",title= expression("Wind speed, m/s"), legend=c(0.2,1,5), lt
 ```
 
 
+##Limpet
+
+We built a biophysical model `Tb_limpet()` from the studies done by Denny and Harley (2006) to predict the body temperature of limpets based on body size (length and height), environmental conditions and the position of the limpet. The shape of the limpet is treated as a cone of radius $r$ and height $H$ for simplification.
+
+The rate at which energy is stored within the organisms ($W_{stored}$) are influenced by several heat exchanging processes. The processes include the rate of heat absorbed from short-wave radiation ($W_{sw}$), net heat transferred by long-wave radiation ($W_{lw}$), rate of heat transferred by conduction and convection ($W_{cd}$ and $W_{cv}$). We neglected the heat gain by metabolism due to the nature of the limpets' low metabolic rate, and evaporative heat loss assuming that the limpet has its shell firmly clamped against the substratum, and thereby preventing evaporation.
+
+The rate at which solar radiation provides heat is $W_{sw} = A_p\alpha_{sw}I_{sw}$, where $A_p$ is the area of the limpet’s shell (m^2^) projected in the direction of the sunlight, $\alpha_{sw}$ is the short-wave absorptivity of the shell, and $I_{sw}$ is the solar irradiance (W m^-2^). Under the assumption that limpet has a shape of a cone, when $tan(\psi) > r / h$, 
+$$A_p = \pi r^2  cos(\psi)$$
+and otherwise,
+$$A_p = \pi r^2  cos(\psi) + hrsin(\psi) - \frac{\pi r^2}{2}cos(\psi)$$
+where $\psi$ is the solar zenith angle (Pennell and Deignan 1989). $\alpha_{sw}$ was emperically acquired to be 0.68 for limpets (Denny and Harley 2006).
+
+Net rate of long-wave energy transfer ($W_{lw}$) is the difference between the rate at which long-wave radiation from the sky is absorbed by the shell ($W_{lw,a}$) and the total effective rate at which energy is radiated from limpet to sky ($W_{lw,s}$). 
+
+
+
 ##Salamander
 
 ```{r, fig.height=4, fig.width=6}

@@ -2,6 +2,8 @@
 #' @description Predicts body temperature of a mussel in °C. Based on Helmuth 1998, INTERTIDAL MUSSEL MICROCLIMATES: PREDICTING THE BODY TEMPERATURE OF A SESSILE INVERTEBRATE
 #' @param L mussel length (anterior/posterior axis) (m)
 #' @param H mussel height (dorsal/ventral axis) (m)
+#' @param T_a air temperature (°C)
+#' @param T_g ground temperature (°C)
 #' @param u wind speed (m/s)
 #' @param psi solar zenith angle (degrees): can be calculated from zenith_angle function
 #' @param S direct solar flux density acting upon that area (W m^-2)
@@ -53,8 +55,8 @@ Tb_mussel = function(L, H, T_a, T_g, u, psi, S, c, group = TRUE){
   
   lambda = 2.48 # latent heat of vaporization of water (J/kg)
   
-  Ka = 0.00501 + 7.2 * 10^-5 * T_a      # Denny and Harly. 2006, Hot limpets: predicting body temperature in a conductance-mediated thermal system 
-  v = -1.25 * 10^-5 + 9.2 * 10^-8 * T_a
+  Ka = 0.00501 + 7.2 * 10^-5 * T_a      # conductivity of air (W m^-1 K^-1) Denny and Harly. 2006, Hot limpets: predicting body temperature in a conductance-mediated thermal system 
+  v = -1.25 * 10^-5 + 9.2 * 10^-8 * T_a  # kinematic viscosity of air (m^2 s^-1)
   
   if (group) {        # derived from the relationship between Nusselt number and Raynolds number
     hc = 0.67 * Ka / L * (u * L / v)^0.42
