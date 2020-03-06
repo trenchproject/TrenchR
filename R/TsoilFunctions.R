@@ -128,7 +128,7 @@ soil_temperature_equation<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, 
 #' @param T_a is air temperature in °C
 #' @param u is wind speed (m/s)
 #' @param rho_a is the density of air (kg/m^3)
-#' @param rho_so particle density of soil
+#' @param rho_so particle density of soil (kg/m^3)
 #' @param c_a is the specific heat of air (J/(kg*K))
 #' @param TimeIn is a vector of time periods for the model
 #' @param dt = 60*60 is the time interval for running the model
