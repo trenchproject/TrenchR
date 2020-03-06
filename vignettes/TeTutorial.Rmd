@@ -757,7 +757,7 @@ Qabs= rep(NA, 24)
 for(hr in 1:24) Qabs[hr]= Qradiation_absorbed(a=a, A=A, psa_dir=psa[hr], psa_ref=1-psa[hr], S_dir=Sdir[hr], S_dif=Sdif[hr], a_s=rho)
 ```
 
-We estimate thermal radiation $Q_{emit}$ for the lizard outdoors. We assume the surface emisivity of lizards, $epsilon_s=0.965$ [Bartlett & Gates 1967].
+We estimate thermal radiation $Q_{emit}$ for the lizard outdoors. We assume the surface emisivity of lizards, $epsilon_s=0.965$ [@barlett1967energy].
 
 ```{r}
 #Use Gates model as Te estimate
