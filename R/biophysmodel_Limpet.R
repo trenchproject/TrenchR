@@ -8,7 +8,7 @@
 #' @param u wind speed (m/s)
 #' @param psi solar zenith angle (degrees): can be calculated from zenith_angle function
 #' @param c fraction of the sky covered by cloud 
-#' @param position the direction of the limpet that is facing upwind. options are anterior, posterior and broadside
+#' @param position the direction of the limpet that is facing upwind. Options are "anterior", "posterior" and "broadside".
 #' @return predicted body temperature (°C)
 #' @keywords body temperature, biophysical model
 #' @family biophysical models
@@ -25,6 +25,9 @@ Tb_limpet = function(T_a, T_r, L, H, I, u, psi, c, position = "anterior"){
   T_r = T_r + 273.15   # convert to kelvin
   r = L / 2            # radius
   
+  #______________________________________________________________
+  # Short wave heat transfer
+  
   # Area of the limpet’s shell (m^2) projected in the direction at which sunlight strikes the organism (Pennell and Deignan 1989)
   Ap = pi * r^2 * cos(psi)
   if (tan(psi) < r / h) {
@@ -33,6 +36,10 @@ Tb_limpet = function(T_a, T_r, L, H, I, u, psi, c, position = "anterior"){
   
   alpha_sw = 0.68  # Short-wave absorptivity of the shell
   q1 = Ap * alpha_sw * I
+  
+  
+  #_______________________________________________________________
+  # Long-wave energy transfer
   
   # View factor. (Campbell and Norman 1998) simulating limpets as a cone.
   Vs = cos(psi) * r / sqrt(r^2 + H^2)
@@ -46,6 +53,10 @@ Tb_limpet = function(T_a, T_r, L, H, I, u, psi, c, position = "anterior"){
 
   q2 = Vs * Al * eps_ws * sigma * T_a^4 * (eps_wa - 1)
   q3 = 4 * Vs * Al* eps_ws * sigma * T_a^3
+  
+  
+  #____________________________________________________________
+  # Convective heat transfer
   
   Ka = 0.00501 + 7.2 * 10^-5 * T_a       # conductivity of air (W m^-1 K^-1) Denny and Harly. 2006, Hot limpets: predicting body temperature in a conductance-mediated thermal system 
   v = -1.25 * 10^-5 + 9.2 * 10^-8 * T_a  # kinematic viscosity of air (m^2 s^-1)
@@ -61,11 +72,21 @@ Tb_limpet = function(T_a, T_r, L, H, I, u, psi, c, position = "anterior"){
   A_cv = Al  # area of the shell in convective contact with the air (m^2)
   q4 = hc * A_cv
   
+  #______________________________________________________________
+  # Conductive heat transfer
+  # Original equation uses a finite-difference approach where they divide the rock into series of chunks,
+  # and calculate the temperature at each node to derive the conductive heat.
+  # For simplification, here it takes the rock temperature as a parameter, and conductive heat is calculated by
+  # the product of the area, thermal conductivity of rock and the difference in temperatures of the rock and the body.
+  
   A_cd = pi * r^2  # area of conductive contact between the limpet’s foot and the rock (m^2)
   Kr = 3.06        # thermal conductivity of rock (W m^-1 K^-1)
   q5 = A_cd * Kr
   
+  # Calculating for body temperature using the coefficients q1 ~ q5.
   T_b = (q1 + q2 + (q3 + q4)* T_a + q5 * T_r) / (q3 + q4 + q5)
   
   return (T_b - 273.15)
 }
+
+Tb_limpet(T_a = 25, T_r = 30, L = 0.0176, H = 0.0122, I = 800, u = 1, psi = 30, c = 1, position = "anterior")
