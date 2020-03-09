@@ -543,34 +543,72 @@ $$T_{b,steady} = (k_1 A_{sol} S + k_2 A_{rad,sky} k_3 T_a^4 + k_4 A_{rad,ground}
 Here, $k_1$ to $k_5$ are physical constants and measured coefficients.
 
 We provide the operative temperature model as follows
-```{r, fig.height=4, fig.width=6}
+<!-- {r, fig.height=4, fig.width=6} -->
 
-t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.15, H = 0.05, T_g = 30, u = 0.2, psi = 30, S = 800, c = 0, group = TRUE)
-plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(25, 40))
-t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.15, H = 0.05, T_g = 30, u = 1, psi = 30, S = 800, c = 0, group = TRUE)
-points(20:40, t.seq, type = "l", lty = "dashed")
-t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.15, H = 0.05, T_g = 30, u = 5, psi = 30, S = 800, c = 0, group = TRUE)
-points(20:40, t.seq, type = "l", lty = "dotted")
-abline(a=0,b=1, col="gray")
+<!-- t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.15, H = 0.05, T_g = 30, u = 0.2, psi = 30, S = 800, c = 0, group = TRUE) -->
+<!-- plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(25, 40)) -->
+<!-- t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.15, H = 0.05, T_g = 30, u = 1, psi = 30, S = 800, c = 0, group = TRUE) -->
+<!-- points(20:40, t.seq, type = "l", lty = "dashed") -->
+<!-- t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.15, H = 0.05, T_g = 30, u = 5, psi = 30, S = 800, c = 0, group = TRUE) -->
+<!-- points(20:40, t.seq, type = "l", lty = "dotted") -->
+<!-- abline(a=0,b=1, col="gray") -->
 
-legend("bottomright",title= expression("Wind speed, m/s"), legend=c(0.2,1,5), lty=c("solid", "dashed","dotted") )
+<!-- legend("bottomright",title= expression("Wind speed, m/s"), legend=c(0.2,1,5), lty=c("solid", "dashed","dotted") ) -->
 
-```
+
 
 
 ##Limpet
 
-We built a biophysical model `Tb_limpet()` from the studies done by Denny and Harley (2006) to predict the body temperature of limpets based on body size (length and height), environmental conditions and the position of the limpet. The shape of the limpet is treated as a cone of radius $r$ and height $H$ for simplification.
+We built a biophysical model `Tb_limpet()` from the studies done by Denny and Harley (2006) to predict the body temperature of limpets based on body size (length and height), environmental conditions and the position of the limpet. In this model, the shape of the limpet is approximated to a cone of radius $r$ and height $H$.
 
 The rate at which energy is stored within the organisms ($W_{stored}$) are influenced by several heat exchanging processes. The processes include the rate of heat absorbed from short-wave radiation ($W_{sw}$), net heat transferred by long-wave radiation ($W_{lw}$), rate of heat transferred by conduction and convection ($W_{cd}$ and $W_{cv}$). We neglected the heat gain by metabolism due to the nature of the limpets' low metabolic rate, and evaporative heat loss assuming that the limpet has its shell firmly clamped against the substratum, and thereby preventing evaporation.
 
-The rate at which solar radiation provides heat is $W_{sw} = A_p\alpha_{sw}I_{sw}$, where $A_p$ is the area of the limpet’s shell (m^2^) projected in the direction of the sunlight, $\alpha_{sw}$ is the short-wave absorptivity of the shell, and $I_{sw}$ is the solar irradiance (W m^-2^). Under the assumption that limpet has a shape of a cone, when $tan(\psi) > r / h$, 
+The rate at which solar radiation provides heat is defined as
+$$W_{sw} = A_p\alpha_{sw}I_{sw}$$
+where $A_p$ is the area of the limpet’s shell (m^2^) projected in the direction of the sunlight, $\alpha_{sw}$ is the short-wave absorptivity of the shell, and $I_{sw}$ is the solar irradiance (W m^-2^).  
+Under the assumption that limpet has a shape of a cone, when $tan(\psi) > r / h$, 
 $$A_p = \pi r^2  cos(\psi)$$
 and otherwise,
 $$A_p = \pi r^2  cos(\psi) + hrsin(\psi) - \frac{\pi r^2}{2}cos(\psi)$$
-where $\psi$ is the solar zenith angle (Pennell and Deignan 1989). $\alpha_{sw}$ was emperically acquired to be 0.68 for limpets (Denny and Harley 2006).
+where $\psi$ is the solar zenith angle [@pennell1989computing]. $\alpha_{sw}$ was emperically acquired to be 0.68 for limpets [@denny2006hot].
 
-Net rate of long-wave energy transfer ($W_{lw}$) is the difference between the rate at which long-wave radiation from the sky is absorbed by the shell ($W_{lw,a}$) and the total effective rate at which energy is radiated from limpet to sky ($W_{lw,s}$). 
+Net rate of long-wave energy transfer ($W_{lw}$) is the difference between the rate at which long-wave radiation from the sky is absorbed by the shell ($W_{lw,a}$) and the total effective rate at which energy is radiated from limpet to sky ($W_{lw,s}$). It is expressed as
+$$W_{lw} = V_s A_l \epsilon_{lw,s}\sigma(\epsilon_{lw,a}\sigma T_a^4 - T_b^4)$$
+This can be linearized by Taylor expansion around $T_a$ to be
+$$W_{lw} = V_s A_l\epsilon_{w,s}\sigma T_a^4(\epsilon_{w,a}-1) + 4V_sA_l\epsilon_{w,s}\sigma T_a^3(T_a - T_b)$$
+
+In terms of convective heat flux ($Q_{cv}$), 
+$$W_{cv} = h_cA_{cv}(T_a-T_b)$$
+which is derived from the Newton's law of cooling.
+$A_{cv}$ is the area of the shell in contact with the air, which is approximated to the lateral area of the limpet ($A_l$). $h_c$ is the convective heat transfer coefficient (W m^-2^ K^-1^), and it can be expressed from Nusselt number $Nu = \frac{h_c R}{K_a}$ where $R$ is the diameter and $K_a$ is the conductivity of air.
+$K_a = 0.00501 + 7.2 \times 10^{-5}T_a$ is known from the study done by Denny (1993).
+Additionally, 
+$$Re = \frac{uR}{v}$$
+and
+$$Nu = aRe^b$$
+where $u$ is the wind speed (m/s), $v$ is the kinematic viscosity of air (m^2^/s) that equals $-1.25 \times 10^{-5} + 9.2 \times 10^{-8} T_a$, and $a$ and $b$ are coefficients that need to be emperically obtained. 
+When the anterior side of the limpet is facing upwind, $a=1.955$ and $b=0.371$. When the posterior side is facing upwind, $a=1.881$ and $b=0.376$. Lastly when the broadside is facing upwind, $a=1.304$ and $b=0.404$ [@denny2006hot]. 
+
+Conductive heat exchange is determined by the following equation.
+$$W_{cd} = A_{cd}K_r(\frac{dT_r}{dz})$$
+where $A_{cd}$ is the area of contact between the organism's foot and the rock, and $K_r$ is the conductivity of the rock (W m^-1^ K^-1^). $T_r$ is the temperature of the rock as a function of distance $z$ (m) from the surface.
+
+--Not sure how we would define $W_{cd}$ in the function yet.--
+
+Finally, $T_b$ can be calculated from the above equations and
+$$W_{sw} \pm W_{lw} \pm W_{cd} \pm W_{cv} = 0$$
+
+We provide the operative temperature model as follows
+<!-- {r, fig.height=4, fig.width=6} -->
+<!-- t.seq <- lapply(20:40, FUN = Tb_limpet, L = 0.0176, H = 0.0122, T_r = 30, I = 500, u = 1, psi = 30, c = 0, position = "anterior") -->
+<!-- plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(25, 45)) -->
+<!-- t.seq <- lapply(20:40, FUN = Tb_limpet, L = 0.0176, H = 0.0122, T_r = 30, I = 800, u = 1, psi = 30, c = 0, position = "anterior") -->
+<!-- points(20:40, t.seq, type = "l", lty = "dashed") -->
+<!-- t.seq <- lapply(20:40, FUN = Tb_limpet, L = 0.0176, H = 0.0122, T_r = 30, I = 1200, u = 1, psi = 30, c = 0, position = "anterior") -->
+<!-- points(20:40, t.seq, type = "l", lty = "dotted") -->
+
+<!-- legend("bottomright",title= expression("Solar irradiance, W/m^2"), legend=c(500, 800, 1200), lty=c("solid", "dashed","dotted") ) -->
 
 
 
