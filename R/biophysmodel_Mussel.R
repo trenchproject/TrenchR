@@ -29,7 +29,7 @@ Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, A_evap, rho_body, cl, grou
   
   T_a = T_a + 273.15   # conversion to kelvin
   T_g = T_g + 273.15   # conversion to kelvin
-  A = pi * (L / 2)^2   # total mussel shell surface area (m^2)
+  A = 1.08 * L^2 + 0.0461 * L - 0.0016   # total mussel shell surface area (m^2)
   
   #____________________________________________________________
   # constants
@@ -41,13 +41,13 @@ Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, A_evap, rho_body, cl, grou
   #Short-wave solar flux  
   alpha = 0.75           # solar absorptivity
   k1 = alpha * sin((90 - psi)*pi / 180)
-  rho_s = 0.08  # albedo (p.172, soil, wet dark)
+  rho_s = 0.08  # albedo (Campbell and Norman 1998 p.172, soil, wet dark)
   
   p_a = 101.3 * exp (-elev / 8200)  # atmospheric pressure
-  m_a = p_a / (101.3 * cos(psi))  # (11.12) optical air mass
+  m_a = p_a / (101.3 * cos(psi))  # (same as above 11.12) optical air mass
   m_a[(psi > (80 * pi / 180))] = 5.66
   
-  # atmospheric transmisivity
+  # atmospheric transmisivity  (same as above p.173)
   if (cl > 0.7) {
     tau = 0.4
   } else if (cl < 0.1) {
@@ -56,15 +56,15 @@ Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, A_evap, rho_body, cl, grou
     tau = 0.65
   }
   
-  S_p0 = 1360 # extraterrestrial flux density, W/m^2 (p.159)
+  S_p0 = 1360 # extraterrestrial flux density, W/m^2 (Campbell and Norman 1998 p.159)
   
-  S_d = 0.3 * (1 - tau^m_a) * S_p0 * cos(psi)  # (11.13) diffuse radiation
+  S_d = 0.3 * (1 - tau^m_a) * S_p0 * cos(psi)  # (same as above 11.13) diffuse radiation
   
   S_p = S_p0 * tau^m_a * cos(psi)    
   S_b = S_p * cos(psi)
   S_t = S_b + S_d
   
-  S_r = rho_s * S_t # albedo flux density (11.10)
+  S_r = rho_s * S_t # albedo flux density (same as above 11.10)
 
   
   #____________________________________________________________
@@ -73,7 +73,7 @@ Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, A_evap, rho_body, cl, grou
   # emissivities
   eps_ac = 9.2 * 10^-6 * T_a^2 # clear sky emissivity (Campbell and Norman 1998, 10.11)
   eps_sky = (1 - 0.84 * cl) * eps_ac + 0.84 * cl  # functional infrared emissivity of sky (same as above, 10.12)
-  eps_org = 0.97         # infrared emissivity of organism (Campbell and Norman 1998, p.163)
+  eps_org = 0.97         # infrared emissivity of organism (same as above, p.163)
   
   k2 = 4 * sigma * eps_org * eps_sky^(3/4)
   k3 = eps_sky^(1/4)
