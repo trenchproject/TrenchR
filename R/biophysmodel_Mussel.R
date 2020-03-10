@@ -35,7 +35,7 @@ Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, A_evap, rho_body, cl, grou
   # constants
   sigma = 5.66 * 10^-8   # stefan-boltzmann constant (W m^-2 K^-4)
   lambda = 2.48          # latent heat of vaporization of water (J/kg)
-  c = 4180               # specific heat of mussel body (J kg^-1 K^-1)
+  c = 4180               # specific heat of water (J kg^-1 K^-1)
   
   #___________________________________________________________
   #Short-wave solar flux  
@@ -130,6 +130,8 @@ Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, A_evap, rho_body, cl, grou
     A_sol = 0.25 * A
   }
   
+  # Steady-state heat balance model
+  # No need to separate shell and body if we are thinking in steady state. All it matters is the change in mass (mflux)
   T_b = (k1 * (A_sol * S_p + A_d * (S_r + S_d)) + k2 * A_radSky * k3 * T_a^4 + k4 * A_radGround * T_g^4 + k5 * A_cond * T_g + 
     hc * A_conv * T_a - lambda * mflux) / (k2 * A_radSky * T_a^3 + k4 * A_radGround * T_g^3 + k5 * A_cond + 
                                              hc * A_conv - mflux * c)
