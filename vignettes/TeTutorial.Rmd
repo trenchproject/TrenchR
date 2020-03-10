@@ -531,13 +531,13 @@ Using Taylor series approximation, equations (2) and (3) become
 $$Q_{rad,sky} = 4.0\varepsilon_{org}\varepsilon_{sky}^{3/4}\sigma A_{rad,sky}T_a^3(T_b-\varepsilon_{sky}^{1/4}T_a)$$
 $$Q_{rad,ground} = 4.0\varepsilon_{org}\sigma A_{rad,ground}T_g^3(T_b-T_g)$$
 
-Heat conduction $Q_{cond}$ can be calculated from $Q_{cond} = \frac{k_b}{0.5H}A_{cond}(T_b-T_g)$ where $k_b$ is the thermal conductivity of heat in mussel body. Because most of the body of a mussel is composed of water, we approximated it to be equal to that of water, $0.60 W m^{-2} K^{-1}$ (Denny 1993). $H$ represents the height of the mussel and $A_{cond}$ is the mussel area that is touching the ground.
+Heat conduction $Q_{cond}$ can be calculated from $Q_{cond} = \frac{k_b}{0.5H}A_{cond}(T_b-T_g)$ where $k_b$ is the thermal conductivity of heat in mussel body. Because most of the body of a mussel is composed of water, we approximated it to be equal to that of water, $0.60 W m^{-2} K^{-1}$. $H$ represents the height of the mussel and $A_{cond}$ is the mussel area that is touching the ground.
 
-In terms of convective heat flux ($Q_{conv}$), it can be calculated from $Q_{conv}=h_cA_{conv}(T_b-T_a)$ where $h_c$ is the coefficient for forced convection and $A_{conv}$ is total surface area exposed to convective heat loss (Helmuth 1998). Using the three empirical formulas on Nusselt number and Reynolds number $Nu = \frac{h_c L}{K_a}$, $Re = \frac{uL}{v}$ and $Nu = aRe^b$, the value of $h_c$ can be calculated. $L$ is the length of the mussel, $K_a$ is the conductivity of air $K_a = 0.00501 + 7.2 \times10^{–5}T_a (W·m^{–1}·K^{–1})$, $u$ is the wind speed (m/s), $v$ is the kinematic viscosity of air $v = -1.25 \times 10^{-5} + 9.2 \times 10^{-8} T_a$ (Denny and Harley 2006). $A_{conv}$ can be considered to be equal to the total surface area. $a$ and $b$ in the formula to obtain $Nu$ vary depending on the position and the state of the mussels, and they are empirically acquired. For solitary mussels, $a = 0.38$ and $b = 0.51$ if the anterior or posterior end are facing upwind, and $a = 0.63$ and $b = 0.47$ if the valve is facing upwind. The values were measured to be $a = 0.67$, $b = 0.42$ for aggregated mussels (Helmuth 1998).
+In terms of convective heat flux ($Q_{conv}$), it can be calculated from $Q_{conv}=h_cA_{conv}(T_b-T_a)$ where $h_c$ is the coefficient for forced convection and $A_{conv}$ is total surface area exposed to convective heat loss [@helmuth1998intertidal]. Using the three empirical formulas on Nusselt number and Reynolds number $Nu = \frac{h_c L}{K_a}$, $Re = \frac{uL}{v}$ and $Nu = aRe^b$, the value of $h_c$ can be calculated. $L$ is the length of the mussel, $K_a$ is the conductivity of air $K_a = 0.00501 + 7.2 \times10^{–5}T_a (W·m^{–1}·K^{–1})$, $u$ is the wind speed (m/s), $v$ is the kinematic viscosity of air $v = -1.25 \times 10^{-5} + 9.2 \times 10^{-8} T_a$ [@denny2006hot]. $A_{conv}$ can be considered to be equal to the total surface area. $a$ and $b$ in the formula to obtain $Nu$ vary depending on the position and the state of the mussels, and they are empirically acquired. For solitary mussels, $a = 0.38$ and $b = 0.51$ if the anterior or posterior end are facing upwind, and $a = 0.63$ and $b = 0.47$ if the valve is facing upwind. The values were measured to be $a = 0.67$, $b = 0.42$ for aggregated mussels [@helmuth1998intertidal].
 
 Lastly, $Q_{evap} = \lambda \dot{m}$ where $\lambda$ is the latent heat of vaporization of water (J/kg) and $\dot{m}$ is the rate of water loss (Helmuth 1998). For the purposes of this package, we set the value to zero to illustrate conditions when the mussel does not gape or otherwise cannot evaporatively cool.
 
-For the usability, Tb_mussel function examines the steady-state (equilibrium) body temperature of an organism exposed over long periods of time to constant environmental conditions.
+For the usability, `Tb_mussel` function examines the steady-state (equilibrium) body temperature of an organism exposed over long periods of time to constant environmental conditions.
 Inserting the values in equation (1) and solving for $T_b$ gives us the following equation.
 $$T_{b,steady} = (k_1 A_{sol} S + k_2 A_{rad,sky} k_3 T_a^4 + k_4 A_{rad,ground} T_g^4 + k_5 A_{cond} T_g + h_c A_{conv} T_a) / (k_2 A_{rad,sky} T_a^3 + k_4 A_{rad, ground} T_g^3 + k_5 A_{cond} + h_c A_{conv})$$
 Here, $k_1$ to $k_5$ are physical constants and measured coefficients.
@@ -560,7 +560,7 @@ We provide the operative temperature model as follows
 
 ##Limpet
 
-We built a biophysical model `Tb_limpet()` from the studies done by Denny and Harley (2006) to predict the body temperature of limpets based on body size (length and height), environmental conditions and the position of the limpet. In this model, the shape of the limpet is approximated to a cone of radius $r$ and height $H$.
+We built a biophysical model `Tb_limpet()` from the studies done by Denny and Harley [-@denny2006hot] to predict the body temperature of limpets based on body size (length and height), environmental conditions and the position of the limpet. In this model, the shape of the limpet is approximated to a cone of radius $r$ and height $H$.
 
 The rate at which energy is stored within the organisms ($W_{stored}$) are influenced by several heat exchanging processes. The processes include the rate of heat absorbed from short-wave radiation ($W_{sw}$), net heat transferred by long-wave radiation ($W_{lw}$), rate of heat transferred by conduction and convection ($W_{cd}$ and $W_{cv}$). We neglected the heat gain by metabolism due to the nature of the limpets' low metabolic rate, and evaporative heat loss assuming that the limpet has its shell firmly clamped against the substratum, and thereby preventing evaporation.
 
@@ -601,11 +601,11 @@ $$W_{sw} \pm W_{lw} \pm W_{cd} \pm W_{cv} = 0$$
 
 We provide the operative temperature model as follows
 <!-- {r, fig.height=4, fig.width=6} -->
-<!-- t.seq <- lapply(20:40, FUN = Tb_limpet, L = 0.0176, H = 0.0122, T_r = 30, I = 500, u = 1, psi = 30, c = 0, position = "anterior") -->
+<!-- t.seq <- lapply(20:40, FUN = Tb_limpet, L = 0.0176, H = 0.0122, T_r = 30, I = 900, u = 1, psi = 30, c = 0, position = "anterior") -->
 <!-- plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(25, 45)) -->
-<!-- t.seq <- lapply(20:40, FUN = Tb_limpet, L = 0.0176, H = 0.0122, T_r = 30, I = 800, u = 1, psi = 30, c = 0, position = "anterior") -->
+<!-- t.seq <- lapply(20:40, FUN = Tb_limpet, L = 0.0176, H = 0.0122, T_r = 30, I = 1300, u = 1, psi = 30, c = 0, position = "anterior") -->
 <!-- points(20:40, t.seq, type = "l", lty = "dashed") -->
-<!-- t.seq <- lapply(20:40, FUN = Tb_limpet, L = 0.0176, H = 0.0122, T_r = 30, I = 1200, u = 1, psi = 30, c = 0, position = "anterior") -->
+<!-- t.seq <- lapply(20:40, FUN = Tb_limpet, L = 0.0176, H = 0.0122, T_r = 30, I = 1600, u = 1, psi = 30, c = 0, position = "anterior") -->
 <!-- points(20:40, t.seq, type = "l", lty = "dotted") -->
 
 <!-- legend("bottomright",title= expression("Solar irradiance, W/m^2"), legend=c(500, 800, 1200), lty=c("solid", "dashed","dotted") ) -->
