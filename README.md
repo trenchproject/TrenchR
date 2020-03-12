@@ -21,7 +21,7 @@ devtools::install_github(build_vignettes = TRUE,repo = "trenchproject/TrenchR")
 ```
 
 ### Using the package
-The package encompasses simple functions that can be combined to estimate environmental conditions and their impacts on organisms. Many of the functions are adapted from biophysical ecology texts including the follows:
+The package encompasses simple functions that can be combined to estimate environmental conditions and their impacts on organisms. Many of the functions are adapted from biophysical ecology texts including the following:
 * Gates DM. Biophysical Ecology.
 * Campbell GS and Norman JM. An introduction to environmental biophysics.
 

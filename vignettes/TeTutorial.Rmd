@@ -560,7 +560,7 @@ We provide the operative temperature model as follows
 
 ##Limpet
 
-We built a biophysical model `Tb_limpet()` from the studies done by Denny and Harley [-@denny2006hot] to predict the body temperature of limpets based on body size (length and height), environmental conditions and the position of the limpet. In this model, the shape of the limpet is approximated to a cone of radius $r$ and height $H$.
+We built a biophysical model `Tb_Limpet()` from the studies done by Denny and Harley [-@denny2006hot] to predict the body temperature of limpets based on body size (length and height), environmental conditions and the position of the limpet. In this model, the shape of the limpet is approximated to a cone of radius $r$ and height $H$.
 
 The rate at which energy is stored within the organisms ($W_{stored}$) are influenced by several heat exchanging processes. The processes include the rate of heat absorbed from short-wave radiation ($W_{sw}$), net heat transferred by long-wave radiation ($W_{lw}$), rate of heat transferred by conduction and convection ($W_{cd}$ and $W_{cv}$). We neglected the heat gain by metabolism due to the nature of the limpets' low metabolic rate, and evaporative heat loss assuming that the limpet has its shell firmly clamped against the substratum, and thereby preventing evaporation.
 

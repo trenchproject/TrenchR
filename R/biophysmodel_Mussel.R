@@ -26,8 +26,10 @@
 
 Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, A_evap, rho_body, cl, group = "solitary"){
   
+  #! Update
   #stopifnot(L > 0, H > 0, u >= 0, psi >= 0, psi <= 90, S > 0, c >= 0, c <= 0, group %in% c("aggregated", "solitary"))
   
+  #! Check use of psi, cos etc. functions expect radians
   T_a = T_a + 273.15   # conversion to kelvin
   T_g = T_g + 273.15   # conversion to kelvin
   A = 1.08 * L^2 + 0.0461 * L - 0.0016   # total mussel shell surface area (m^2)
@@ -91,6 +93,7 @@ Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, A_evap, rho_body, cl, grou
   Ka = 0.00501 + 7.2 * 10^-5 * T_a        # Conductivity of air (W m^-1 K^-1)
   v = -1.25 * 10^-5 + 9.2 * 10^-8 * T_a   # Kinematic viscosity of air (m^2 s^-1)
   
+  #! make easier to interpret and match up with papers by estimating Reynold's number first?
   # hc: coefficient for forced convection
   d = L * 2 / 3  # average body dimensions
   if (group == "aggregated") {        # derived from the relationship between Nusselt number and Reynolds number

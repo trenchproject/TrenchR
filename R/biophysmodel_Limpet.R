@@ -21,6 +21,8 @@
 
 Tb_limpet = function(T_a, T_r, L, H, I, u, psi, c, position = "anterior"){
   
+  #! add stop if not
+  
   psi = psi * pi / 180 # covert to radians
   T_a = T_a + 273.15   # convert to kelvin
   T_r = T_r + 273.15   # convert to kelvin
@@ -59,9 +61,10 @@ Tb_limpet = function(T_a, T_r, L, H, I, u, psi, c, position = "anterior"){
   #____________________________________________________________
   # Convective heat transfer
   
-  Ka = 0.00501 + 7.2 * 10^-5 * T_a       # conductivity of air (W m^-1 K^-1) Denny and Harly. 2006, Hot limpets: predicting body temperature in a conductance-mediated thermal system 
+  Ka = 0.00501 + 7.2 * 10^-5 * T_a       # conductivity of air (W m^-1 K^-1) Denny and Harley. 2006, Hot limpets: predicting body temperature in a conductance-mediated thermal system 
   v = -1.25 * 10^-5 + 9.2 * 10^-8 * T_a  # kinematic viscosity of air (m^2 s^-1)
   
+  #! make easier to interpret and match up with papers by estimating Reynold's number first?
   # Heat transfer coefficient (W m^-2 K^-1)
   if (position == "anterior") {
     hc = 1.955 * Ka / L * (u * L / v)^0.371  # anterior upwind
