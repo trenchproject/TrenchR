@@ -62,6 +62,10 @@ Tb_Fei <- function(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact){
   A_up = 0.6*A_L #proportion of surface area facing toward the sky
   epsilon_ac= 9.2*10^-6*(T_a)^2 # (10.11) clear sky emissivity
   
+  #iterate to calculate steady state
+  for (i in 50) {
+  
+  #thermal radiation
   # different from the paper. source?
   dQ_IR = epsilon_lizard*A_down*sigma*(T_g^4. - T_o^4.) + epsilon_lizard*A_up*((1-shade)*lw + shade*sigma*T_a^4.) - epsilon_lizard*A_up*sigma*T_o^4.
   # dQ_IR = epsilon_lizard*A_down*sigma*(T_g^4. - T_o^4.) + epsilon_lizard*A_up*sigma*(T_a^4. - T_o^4.) is the original function
@@ -71,7 +75,6 @@ Tb_Fei <- function(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact){
   dQ_cond = A_contact*K_lizard*(T_g - T_o)/(lambda/2)
 
   #convection, assuming no wind
-  # this is always 0 because we set T_o = T_a
   Aair = 0.9 * A_L # skin area that is exposed to air
   dQ_conv = h_L * Aair * (T_a - T_o)
 
@@ -81,7 +84,6 @@ Tb_Fei <- function(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact){
   
   TinC = T_o - 273.15
   dQ_meta = 0.348 * exp(0.022 * TinC - 0.132) * mass_kg
-  
   
   #Respiratory loss
   if (TinC <20) {
@@ -96,7 +98,8 @@ Tb_Fei <- function(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact){
 
   dTe = dQe/((mass_kg)*c_lizard)
   T_o = T_o + dTe*dt
-    
+  
+  } #end iteration loop
+  
   return (T_o)
 }
-
