@@ -100,4 +100,3 @@ Tb_Fei <- function(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact){
   return (T_o)
 }
 
-solve(5 * x, 1)

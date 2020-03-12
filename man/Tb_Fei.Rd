@@ -19,9 +19,12 @@ Tb_Fei(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact)
 
 \item{m}{is lizard mass in g}
 
-\item{Acondfact}{is the proportion of the lizard projected area that is in contact with the ground, Acondfact=0.05 for standing and Acondfact=0.35 for lying on ground}
+\item{Acondfact}{is the proportion of the lizard projected area that is in contact with the ground, Acondfact=0.1 for standing and Acondfact=0.4 for lying on ground}
 
-\item{Agradfact}{is the proportion of the lizard projected area exposed to radiation from the ground, Agradfact=0.4 for standing and Agradfact=0.0 for lying on ground}
+\item{Agradfact}{is the proportion of the lizard projected area exposed to radiation from the ground, Agradfact=0.3 for standing and Agradfact=0.0 for lying on ground}
+}
+\value{
+Body temperature of a lizard in K
 }
 \description{
 Transient model for predicting operative environmental temperature using model in the following publication: T. Fei, A. K. Skidmore, V. Venus, T. Wang, M. Schlerf, B. Toxopeus, 
@@ -32,7 +35,7 @@ Predicts body temperature (operative environmental temperature) of a lizard in K
 }
 \examples{
 \dontrun{
-Tb_Fei(T_a=293, T_g=300, H=600, lw=30, shade=0.5, m=10.5, Acondfact=0.05, Agradfact=0.4)
+Tb_Fei(T_a=293, T_g=300, H=1300, lw=60, shade=0.5, m=10.5, Acondfact=0.1, Agradfact=0.3)
 }
 
 }
@@ -55,7 +58,8 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Reynolds_number}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Gates}},
   \code{\link{Tb_butterfly}}, \code{\link{Tb_grasshopper}},
-  \code{\link{Tb_lizard}}, \code{\link{Tb_mussel}},
+  \code{\link{Tb_limpet}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_mussel}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

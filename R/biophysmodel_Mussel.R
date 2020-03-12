@@ -1,6 +1,6 @@
 #' Predicts body temperature (operative environmental temperature) of a mussel in °C.
 #' @details Predicts body temperature of a mussel in °C.
-#' @description Predicts body temperature of a mussel in °C. Based on Helmuth 1998, INTERTIDAL MUSSEL MICROCLIMATES: PREDICTING THE BODY TEMPERATURE OF A SESSILE INVERTEBRATE
+#' @description Predicts body temperature of a mussel in °C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Helmuth 1998, INTERTIDAL MUSSEL MICROCLIMATES: PREDICTING THE BODY TEMPERATURE OF A SESSILE INVERTEBRATE
 #' @param L mussel length (anterior/posterior axis) (m)
 #' @param H mussel height (dorsal/ventral axis) (m)
 #' @param T_a air temperature (°C)
@@ -20,12 +20,13 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' Tb_mussel(L = 0.1, H = 0.05, T_a = 25, T_g = 30, u = 2, p = 0.03, psi = 30, elev == 500, A_evap = , rho_body = , cl = 0, group = "solitary)
+#' Tb_mussel(L = 0.1, H = 0.05, T_a = 25, T_g = 30, u = 2, p = 0.03, psi = 30, elev = 500, A_evap = 0, rho_body = 0, cl = 0, group = "solitary")
+#' #! Fix A_evap and rho_body
 #' }
 
 Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, A_evap, rho_body, cl, group = "solitary"){
   
-  #stopifnot(L > 0, H > 0, u >= 0, psi >= 0, psi <= 90, S > 0, c >= 0, c <= 0, group %in% c(TRUE, FALSE))
+  #stopifnot(L > 0, H > 0, u >= 0, psi >= 0, psi <= 90, S > 0, c >= 0, c <= 0, group %in% c("aggregated", "solitary"))
   
   T_a = T_a + 273.15   # conversion to kelvin
   T_g = T_g + 273.15   # conversion to kelvin
@@ -73,12 +74,12 @@ Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, A_evap, rho_body, cl, grou
   # emissivities
   eps_ac = 9.2 * 10^-6 * T_a^2 # clear sky emissivity (Campbell and Norman 1998, 10.11)
   eps_sky = (1 - 0.84 * cl) * eps_ac + 0.84 * cl  # functional infrared emissivity of sky (same as above, 10.12)
-  eps_org = 0.97         # infrared emissivity of organism (same as above, p.163)
+  eps_org = 1.0         # infrared emissivity of organism (same as above, p.163)
   
+  #Estimate lumped coefficients
   k2 = 4 * sigma * eps_org * eps_sky^(3/4)
   k3 = eps_sky^(1/4)
   k4 = 4 * sigma * eps_org
-  
   
   # Conduction (Coefficient)
   kb = 0.6      # thermal conductivity of heat in body (W m^-2 K^-1). Approximated to that of water because mussels are mostly made of water
@@ -132,7 +133,11 @@ Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, A_evap, rho_body, cl, grou
   
   # Steady-state heat balance model
   # No need to separate shell and body if we are thinking in steady state. All it matters is the change in mass (mflux)
-  T_b = (k1 * (A_sol * S_p + A_d * (S_r + S_d)) + k2 * A_radSky * k3 * T_a^4 + k4 * A_radGround * T_g^4 + k5 * A_cond * T_g + 
+ 
+  #Solve steady state energy balance equation:
+  # T_b*mflux*c= Q_rad,sol +- Q_rad,sky +- Q_rad,ground +- Q_conduction +- Qconvection -Qevaporation
+  
+   T_b = (k1 * (A_sol * S_p + A_d * (S_r + S_d)) + k2 * A_radSky * k3 * T_a^4 + k4 * A_radGround * T_g^4 + k5 * A_cond * T_g + 
     hc * A_conv * T_a - lambda * mflux) / (k2 * A_radSky * T_a^3 + k4 * A_radGround * T_g^3 + k5 * A_cond + 
                                              hc * A_conv - mflux * c)
   

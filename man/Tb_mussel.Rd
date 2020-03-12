@@ -4,35 +4,48 @@
 \alias{Tb_mussel}
 \title{Predicts body temperature (operative environmental temperature) of a mussel in °C.}
 \usage{
-Tb_mussel(L, H, T_a, T_g, u, psi, S, c, group = TRUE)
+Tb_mussel(L, H, T_a, T_g, u, p, psi, elev, A_evap, rho_body, cl,
+  group = "solitary")
 }
 \arguments{
 \item{L}{mussel length (anterior/posterior axis) (m)}
 
 \item{H}{mussel height (dorsal/ventral axis) (m)}
 
+\item{T_a}{air temperature (°C)}
+
+\item{T_g}{ground temperature (°C)}
+
 \item{u}{wind speed (m/s)}
+
+\item{p}{atmospheric vapor pressure (atm)}
 
 \item{psi}{solar zenith angle (degrees): can be calculated from zenith_angle function}
 
-\item{S}{direct solar flux density acting upon that area (W m^-2)}
+\item{elev}{elevation (m)}
 
-\item{c}{fraction of the sky covered by cloud}
+\item{A_evap}{area of mass exchange, determined by mussel gape (m^2)}
 
-\item{group}{TRUE if aggregated, FALSE if solitary}
+\item{rho_body}{vapor density of the mussel body (kg m^-3)}
+
+\item{cl}{fraction of the sky covered by cloud}
+
+\item{group}{options are "aggregated": mussels living in beds, "solitary": mussels individuals, anterior or posterior end facing upwind, 
+and "solitary_valve": solitary individuals, valve facing upwind}
 }
 \value{
 predicted body temperature (°C)
 }
 \description{
-Predicts body temperature of a mussel in °C. Based on Helmuth 1998, INTERTIDAL MUSSEL MICROCLIMATES: PREDICTING THE BODY TEMPERATURE OF A SESSILE INVERTEBRATE
+Predicts body temperature of a mussel in °C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Helmuth 1998, INTERTIDAL MUSSEL MICROCLIMATES: PREDICTING THE BODY TEMPERATURE OF A SESSILE INVERTEBRATE
 }
 \details{
 Predicts body temperature of a mussel in °C.
 }
 \examples{
 \dontrun{
-Tb_mussel(L = 0.1, H = 0.05, T_a = 25, T_g = 30, u = 2, psi = 30, S = 500, c = 0, group = FALSE)
+Tb_mussel(L = 0.1, H = 0.05, T_a = 25, T_g = 30, u = 2, p = 0.03, psi = 30, elev = 500, A_evap = 0, rho_body = 0, cl = 0, group = "solitary")
+#! Fix A_evap and rho_body
 }
 }
 \seealso{
@@ -54,7 +67,8 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Reynolds_number}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
-  \code{\link{Tb_grasshopper}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_grasshopper}}, \code{\link{Tb_limpet}},
+  \code{\link{Tb_lizard}},
   \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
   \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},

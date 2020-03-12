@@ -1,3 +1,4 @@
+#' Predicts body temperature (operative environmental temperature) of a limpet in °C.
 #' @details Predicts body temperature of a limpet in °C.
 #' @description Predicts body temperature of a limpet in °C. Based on Denny and Harley 2006. Hot limpets: predicting body temperature in a conductance-mediated thermal system
 #' @param T_a air temperature (°C)
@@ -30,8 +31,8 @@ Tb_limpet = function(T_a, T_r, L, H, I, u, psi, c, position = "anterior"){
   
   # Area of the limpet’s shell (m^2) projected in the direction at which sunlight strikes the organism (Pennell and Deignan 1989)
   Ap = pi * r^2 * cos(psi)
-  if (tan(psi) < r / h) {
-    Ap = Ap + h * r * sin(psi) - pi * r^2 / 2 * cos(psi)
+  if (tan(psi) < r / H) {
+    Ap = Ap + H * r * sin(psi) - pi * r^2 / 2 * cos(psi)
   }
   
   alpha_sw = 0.68  # Short-wave absorptivity of the shell
