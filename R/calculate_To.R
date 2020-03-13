@@ -63,42 +63,41 @@ Tb_Fei <- function(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact){
   epsilon_ac= 9.2*10^-6*(T_a)^2 # (10.11) clear sky emissivity
   
   #iterate to calculate steady state
-  for (i in 50) {
+  for (i in c(1:50)) {
+    
+    #thermal radiation
+    # different from the paper. source?
+    dQ_IR = epsilon_lizard*A_down*sigma*(T_g^4. - T_o^4.) + epsilon_lizard*A_up*((1-shade)*lw + shade*sigma*T_a^4.) - epsilon_lizard*A_up*sigma*T_o^4.
+    # dQ_IR = epsilon_lizard*A_down*sigma*(T_g^4. - T_o^4.) + epsilon_lizard*A_up*sigma*(T_a^4. - T_o^4.) is the original function
+    
+    #conduction
+    dQ_cond = A_contact*K_lizard*(T_g - T_o)/(lambda/2)
   
-  #thermal radiation
-  # different from the paper. source?
-  dQ_IR = epsilon_lizard*A_down*sigma*(T_g^4. - T_o^4.) + epsilon_lizard*A_up*((1-shade)*lw + shade*sigma*T_a^4.) - epsilon_lizard*A_up*sigma*T_o^4.
-  # dQ_IR = epsilon_lizard*A_down*sigma*(T_g^4. - T_o^4.) + epsilon_lizard*A_up*sigma*(T_a^4. - T_o^4.) is the original function
-  # but it's also not accurate because we set T_o = T_a and the second half of the equation is always 0.
+    #convection, assuming no wind
+    Aair = 0.9 * A_L # skin area that is exposed to air
+    dQ_conv = h_L * Aair * (T_a - T_o)
   
-  #conduction
-  dQ_cond = A_contact*K_lizard*(T_g - T_o)/(lambda/2)
-
-  #convection, assuming no wind
-  Aair = 0.9 * A_L # skin area that is exposed to air
-  dQ_conv = h_L * Aair * (T_a - T_o)
-
-  #Metabolism
-  # ew = exp(-10.0+0.51*log(m)+0.115*(T_o-273)) *3 #Buckley 2008
-  # dQ_meta = ew/3600. #metabolic rate (j/s)
+    #Metabolism
+    # ew = exp(-10.0+0.51*log(m)+0.115*(T_o-273)) *3 #Buckley 2008
+    # dQ_meta = ew/3600. #metabolic rate (j/s)
+    
+    TinC = T_o - 273.15
+    dQ_meta = 0.348 * exp(0.022 * TinC - 0.132) * mass_kg
+    
+    #Respiratory loss
+    if (TinC <20) {
+      dQ_resp = 0.272 * mass_kg
+    } else if (TinC > 36) {
+      dQ_resp = 0.003 * mass_kg * exp(0.1516 * TinC)
+    } else {
+      dQ_resp = 0.0836 * mass_kg * exp(0.0586 * TinC)
+    }
+    
+    dQe = (dQ_solar + dQ_IR + dQ_meta + dQ_cond + dQ_conv - dQ_resp)
   
-  TinC = T_o - 273.15
-  dQ_meta = 0.348 * exp(0.022 * TinC - 0.132) * mass_kg
-  
-  #Respiratory loss
-  if (TinC <20) {
-    dQ_resp = 0.272 * mass_kg
-  } else if (TinC > 36) {
-    dQ_resp = 0.003 * mass_kg * exp(0.1516 * TinC)
-  } else {
-    dQ_resp = 0.0836 * mass_kg * exp(0.0586 * TinC)
-  }
-  
-  dQe = (dQ_solar + dQ_IR + dQ_meta + dQ_cond + dQ_conv - dQ_resp)
-
-  dTe = dQe/((mass_kg)*c_lizard)
-  T_o = T_o + dTe*dt
-  
+    dTe = dQe/((mass_kg)*c_lizard)
+    T_o = T_o + dTe*dt
+    
   } #end iteration loop
   
   return (T_o)

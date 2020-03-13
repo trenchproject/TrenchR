@@ -21,7 +21,7 @@
 
 Tb_limpet = function(T_a, T_r, L, H, I, u, psi, c, position = "anterior"){
   
-  #! add stop if not
+  stopifnot(L > 0, H > 0, I > 0, u >= 0, psi >= 0, psi <= 90, c >= 0, c <= 1, position %in% c("anterior", "posterior", "broadside"))
   
   psi = psi * pi / 180 # covert to radians
   T_a = T_a + 273.15   # convert to kelvin
@@ -40,7 +40,6 @@ Tb_limpet = function(T_a, T_r, L, H, I, u, psi, c, position = "anterior"){
   alpha_sw = 0.68  # Short-wave absorptivity of the shell
   q1 = Ap * alpha_sw * I
   
-  
   #_______________________________________________________________
   # Long-wave energy transfer
   
@@ -49,7 +48,7 @@ Tb_limpet = function(T_a, T_r, L, H, I, u, psi, c, position = "anterior"){
     
   Al = pi * r * sqrt(H^2 + r^2) # lateral area of a limpet shell (m^2)
   eps_ws = 0.97  #  long-wave emissivity of the shell
-  sigma = 5.66 * 10^-8   # stefan-boltzmann constant (W m^-2 K^-4)
+  sigma = 5.67 * 10^-8   # stefan-boltzmann constant (W m^-2 K^-4)
 
   eps_ac = 9.2 * 10^-6 * T_a^2 # clear sky emissivity (Campbell and Norman 1998, 10.11)
   eps_wa = (1 - 0.84 * c) * eps_ac + 0.84 * c  # emissivity of air with clouds (same as above, 10.12)
@@ -57,22 +56,28 @@ Tb_limpet = function(T_a, T_r, L, H, I, u, psi, c, position = "anterior"){
   q2 = Vs * Al * eps_ws * sigma * T_a^4 * (eps_wa - 1)
   q3 = 4 * Vs * Al* eps_ws * sigma * T_a^3
   
-  
   #____________________________________________________________
   # Convective heat transfer
   
   Ka = 0.00501 + 7.2 * 10^-5 * T_a       # conductivity of air (W m^-1 K^-1) Denny and Harley. 2006, Hot limpets: predicting body temperature in a conductance-mediated thermal system 
   v = -1.25 * 10^-5 + 9.2 * 10^-8 * T_a  # kinematic viscosity of air (m^2 s^-1)
   
-  #! make easier to interpret and match up with papers by estimating Reynold's number first?
-  # Heat transfer coefficient (W m^-2 K^-1)
+  Re = u * L / v  # Reynolds number
+  
   if (position == "anterior") {
-    hc = 1.955 * Ka / L * (u * L / v)^0.371  # anterior upwind
+    a = 1.955
+    b = 0.371
   } else if (position == "posterior") {
-    hc = 1.881 * Ka / L * (u * L / v)^0.376  # posterior upwind
+    a = 1.881
+    b = 0.376
   } else {
-    hc = 1.304 * Ka / L * (u * L / v)^0.404  # shells broadside to the wind
+    a = 1.304
+    b = 0.404
   }
+  
+  Nu = a * Re^b    # Nusselt number
+  hc = Nu * Ka / L      # Heat transfer coefficient (W m^-2 K^-1)
+  
   A_cv = Al  # area of the shell in convective contact with the air (m^2)
   q4 = hc * A_cv
   
