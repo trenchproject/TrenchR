@@ -20,7 +20,7 @@ library(TrenchR)
 ```
 This tutorial covers how to construct energy balances for applications such as estimating the body temperature of organisms. The tutorial first reviews general functions to estimate forms of heat exchange and balance the exchanges. Finally, we present functions to implement specialized energy balances for particular organisms.
 
-#Operative environmental temperatures
+# Operative environmental temperatures
 
 The body temperatures, $T_b$, of organisms can depart dramatically from air temperatures due to energy exchange with the environment.  Heat is gained by absorbing solar and thermal radiation and from metabolic reactions. Heat is lost through the organism's emission of radiation and the evaporation of water. The organism exchanges heat with the surrounding air or water via convection and with the ground and other solid surfaces in contact via conduction. The balance of these heat exchanges can be estimated and is referred to as operative environmental temperature, $T_e$. The $T_e$ indicates the steady-state temperature of an organism with given physical properties in a particular environment [@bakken1992measurement].
 
@@ -35,7 +35,7 @@ Qnet_Gates(Qabs=500, Qemit=10, Qconv=100, Qcond=100, Qmet=10, Qevap=5)
 ```
 We briefly review each component of the energy balance below.  Details are available in biophysical ecology texts [@gates2012biophysical; @campbell2012introduction].
 
-#Solar radiation, Qabs
+# Solar radiation, Qabs
 
 The solar and thermal radiation absorbed by animals, $Q_{abs} (W)$, is the sum of direct $S_{dir}$, diffuse $S_{dif}$, and reflected $S_{ref}$ solar radiation ($W/m^2$). The sum is weighted by the organism's surface area $A$ exposed to the radiation sources. Additionally, all forms of incoming radiation are multipled by the solar absorptivity of the animal surface ($a$ proportion) to estimate absorbed radiation. The sumation of incoming solar radiation is thus as follows:
 $$Qabs= a*A_{dir}*S_{dir} + a*A_{dif}*S_{dif} + a*A_{ref}*S_{ref},$$
@@ -53,7 +53,7 @@ legend("topleft", title="parameters", legend=c("a=0.9, psa_dir=0.4, a_s=0.5", "a
 
 In the functions, psa_dir and psa_ref are the proportions of surface area exposed to direct and reflected solar radiation, respectively. We assume psa_dif = psa_dir. The functions `prop_silhouette_area()` and `prop_silhouette_area_shapes()` provide assistance calculating the proportional of surface area exposed via estimating silhouette area. Additionally, see the microclimate tutorial for tools for estimating incoming solar radiation.
 
-#Thermal radiation, Qemit
+# Thermal radiation, Qemit
 
 The rate of emission of thermal radiation from the surface of an animal, $Q_{emit} (W)$, is determined by the difference between the surface temperature of the animal $T_b (K)$ and the temperatures of the air $T_a (K)$ and of the ground $T_g (K)$.  $T_a$ is additionally used to estimate sky temperature $T_{sky} (K)$, the effective radiant temperature of the sky as $T_{sky}=1.22*(T_a-273.15)-20.4+273.15$ [@gates2012biophysical]. The following expressions can be used to estimate $Q_{emit} (W)$ for animals in enclosed and open environments, respectively:
 $$
@@ -72,7 +72,7 @@ points(293:313, Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.2, psa_r
 legend("topleft", title="parameters", legend=c("psa_dir=0.4, T_g=293","psa_dir=0.2, T_g=293","psa_dir=0.4, T_g=283","psa_dir=0.2, T_g=283"), lty=c("solid","dashed","dotted","dotdash") )
 ```
 
-#Convection, Qconv
+# Convection, Qconv
 
 Animals exchange heat with the air or water they are immersed in at a rate determined by the temperature difference between the temperature of the animal, $T_b (K)$, and that of the air or water, $T_a (K)$.  The rate is also determined by the animal's surface area exposed to the air or water, which we estimate from the input parameters of the animal's surface area, $A (m^2)$ and the proportion of the surface area in contact with the surrounding fluid, $proportion$. A heat transfer coefficient, $H_L (W m^{-2} K^{-1})$, which can be estimated using the relations below, is used to estimate the rate of heat exchange.  An enhancement factor multiplier, $ef$, can also be incorporated to account for increases in heat exchange resulting from air turbulance in field conditions. Conduction can be estimated as follows:
 $$Qconv= ef*H_L*(A*proportion)*(Ta-Tb).$$
@@ -197,7 +197,7 @@ points(seq(0,3,0.25), heat_transfer_coefficient_simple(V=seq(0,3,0.25),D=0.07), 
 legend("bottomright", title="characteristic dimension (m)", legend=c(0.03,0.05,0.07), lty=c("dashed","solid","dotted") )
 ```
 
-#Conduction, Qcond
+# Conduction, Qcond
 
 Animals exchange heat with the substrate and other surfaces via contact proportional to the difference between the surface temperature of the animal, $T_b (K)$, and the substrate temperature, $T_s (K)$. This conduction occurs via diffusion of heat. The extent of energy exchange is additionally determined by the area of contact and the thickness of the skin or other animal suface (assumes a well mixed interior, see NicheMapR for approaches without this assumption). Finally, the rate of diffusion depends on the thermal conductivity of the materials in contact. Our two basic functions for estimating conduction differ in whether the rate limiting step is the thermal conductivity of the animal [`conductance_animal()`] or the substrate [`conductance_substrate()`]. The thermal conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step and most applications should use `conductance_animal()`.
 
@@ -231,7 +231,7 @@ points(293:313, Qconduction_substrate(T_g= 293:313,T_b=303,D=0.01,K_g=0.5,A=10^-
 legend("topright", title="parameters", legend=c("K=0.3, proportion=0.2","K=0.5, proportion=0.2","K=0.3, proportion=0.4","K=0.5, proportion=0.4"), lty=c("solid","dashed","dotted","dotdash") )
 ```
 
-#Metabolism, Qmet
+# Metabolism, Qmet
 
 Rates of heat production associated with metabolism are generally estimated using scaling relationships based on generalizing empirical data. Metabolic rates scale as a power law function of mass with an exponent less than 1 such that the per-mass metabolic rate declines with increasing mass.  Metabolic rates also increase exponentially with temperature. The generally form of the relationship is $B=M^x \exp(-E_i/{kT})$, where $M$ is mass, $x$ is an exponent approximating 0.75, $E_i$ is the average activation energy for the rate-limiting enzyme-catalyzed biochemical reactions of metabolism, $k$ is the Boltzmann constant, and $T$ is body temperature [@gillooly2001effects]. We offer functions that both do not [`Qmetabolism_from_mass()`] and do [`Qmetabolism_from_mass_temp()`] include temperature dependence for a variety of taxa.
 
@@ -259,7 +259,7 @@ points(293:313, Qmetabolism_from_mass_temp(m=5, T_b=293:313,"invertebrate"), typ
 legend("topleft", title="taxa", legend=c("bird,mammal","reptile","amphibian","invertebrate"), lty=c("solid","dotted","dotdash","twodash") )
 ```
 
-#Evaporation, Qevap
+# Evaporation, Qevap
 
 We provide functions to estimate heat loss associated with evaporative water loss. We offer an empirically-derived relationship for a lizard [@porter1973behavioral; in @gates2012biophysical] and a function based on resistances for amphibians [@spotila1992biophysics]. The function for amphibians is based on the latent heat of vaporization of water: evaporation of water results in heat loss at a rate of $2.44 \times 10^6 J kg^{-1}$ at biological temperatures.
 
@@ -311,7 +311,7 @@ At constant temperatures, the relationship between vapor pressure and vapor dens
 plot(10:30, saturation_water_vapor_pressure(T_a=10:30), type="l", xlab = "temperature (°C)", ylab = "saturation water vapor pressure (Pa)")
 ```
 
-#Solving for operative environmental temperature, Te
+# Solving for operative environmental temperature, Te
 
 TrenchR primarily includes models for calculating the operative temperatures of organisms that have reached an equilibrium with their environment ("steady-state", no heat retention). The following function uses the relationships above to solve the energy balance for $Te$.
 ```{r, fig.height=4, fig.width=6}
@@ -348,7 +348,7 @@ points(293:313, Tb_CampbellNorman(T_a=293:313, S=600, epsilon=0.96, c_p=29.3, D=
 legend("bottomright", title= expression("Radiation, Sabs" ~ (W ~ m^{-2})), legend=c(400,600,800), lty=c("dashed","dotted","solid") )
 ```
 
-##Fei
+## Fei
 
 ```{r, fig.height=4, fig.width=6}
 t.seq= lapply(293:313, FUN=Tb_Fei, T_g=300, H=800, lw=30, shade=0.5, m=10.5, Acondfact=0.05, Agradfact=0.4)
@@ -365,15 +365,15 @@ legend("bottomright", title="proportion shade", legend=c(0.0,0.5,1.0), lty=c("da
 #STARTED TO FIX
 ```
 
-#Specialized energy balance models and functions
+# Specialized energy balance models and functions
 
 In addition to providing general functions that can be used to build heat budget models predicting the body temperatures for a variety of organisms, we implement specialized operative temperature models that have been developed for a variety of organisms.
 
-##Lizards
+## Lizards
 
 We adapted a biophysical model (`Tb_lizard()`) to calculate operative environmental temperature, $T_e$, for lizards from Buckley [-@buckley2007linking]. The function follows the modeling approach contained Campbell and Norman [-@campbell2012introduction]. 
 
-###Day Length and Sun Angles
+### Day Length and Sun Angles
 
 The function constrains the lizard’s foraging to hours of daylight and uses the relations below to calculate day length and the time of solar noon. The function calculates the solar declination, $\delta$ (rad), the angular distance of the sun north or south of the earth’s equator: 
 $$\delta= \arcsin[0.39795 \cos(0.21631+2 \arctan (0.967 \tan [0.0086(-186+J)]))] $$
@@ -389,7 +389,7 @@ Azimuth angle, $AZ$ (rad), is the angle between the south vector and the sun's v
 $$cos(AZ) = \frac{-(sin\delta-cos\psi sin\phi)}{cos\phi sin\psi}$$
 Within the two values that are produced from this formula, the correct angle is determined based on the longtitude of the measured place.
 
-###Radiation and Environmental Temperature
+### Radiation and Environmental Temperature
 
 Central to the thermal influence of radiation is the Stefan‐Boltzmann law, which expresses the total radiant energy over all wavelengths admitted per unit surface area of a blackbody radiator. The law yields the emitted flux density, $B$ ($W m^2$), $B= \sigma(T_a+273)^4$, where $\omega$ is the Stefan‐Boltzmann constant ($5.67×10^{−8} W m^{−2} K^{−4}$). Emissivity, $\epsilon(\lambda)$, where $\lambda$ is wavelength, is the fraction of blackbody emittance at a given wavelength emitted by the surface of a material. Gray bodies are those with no wavelength dependence of the emissivity. Thus, emitted energy of a gray body is $\phi (W m^{−2})= \epsilon B$. We assume lizards are a gray body, which is reasonable for most natural surfaces. The emissivity of most natural surfaces ranges from 0.95 to 1.0. The function uses the emissivity value of 0.965 measured by Bartlett and Gates (1967) for a *Sceloporus* lizard. However, the emissivity of a clear atmosphere is substantially lower. We use the approximation by Swinbank (1963) to estimate clear sky emissivity, $\epsilon_{ac}=9.2 * 10^{-6}(T_a+273)^2.$
 
@@ -437,7 +437,7 @@ legend("bottomright",title="parameters", legend=c("sun, surface","shade, surface
 #? Include transient heat model in package?: https://github.com/JRubalcaba/BodyTemp.
 ```
 
-##Butterflies
+## Butterflies
 
 We adapted a biophysical model for *Colias* that was developed and field validated by Kingsolver [-@kingsolver1983thermoregulation] to predict thoracic body temperature ($T_b$) based on thermoregulatory traits (body size, basal ventral hind wing solar absorptivity, and thoracic fur thickness), behavioral posture (basking and heat-avoidance), and environmental conditions.  We briefly describe the model, which was updated and detailed in Buckley and Kingsolver [-@buckley2012demographic]. Adults behaviorally thermoregulate to achieve the body temperatures needed for flight, and do not use endogenous heat production to elevate body temperatures. We assume that butterflies select the body temperature closest to their thermal optima (35°C) with available body temperatures bracketed by those in full sun (lateral basking posture with wings closed and the ventral hindwing surfaces oriented perpendicular to the sun) and full shade (no direct radiation).  Assuming that butterflies select body temperatures bracketed by full sun and full shade eliminates the need to attempt to model microclimate availability in detail.
 
@@ -472,7 +472,7 @@ points(20:40, t.seq, type = "l", lty="dotted")
 legend("bottomright",title= expression("direct radiation," ~ H[sdif]), legend=c(100,300,500), lty=c("dashed","solid","dotted") )
 ```
 
-##Grasshoppers
+## Grasshoppers
 
 We provide a biophysical model (`Tb_grasshopper()`) to predict grasshopper body temperatures [@buckley2014phenotypic, partially adapted from @samietz2005altitudinal]. We use an energy budget to describe the flow of energy between the grasshopper and the environment: $Q_s=Q_t+Q_c+Q_{cond}$.  Here $Q_s$ is the total input of heat due to solar radiation. $Q_t$ describes the flux of thermal radiative heat due to both incoming thermal radiation (ground and sky) and that emitted by the grasshopper.  $Q_c$ is flux of heat between the grasshopper and the surrounding fluid (air) via convection.  $Q_{cond}$ is the flux of heat between the grasshopper’s body and the solid surfaces with which the grasshopper’s body is in contact via conduction.  We omit evaporative heat loss as it should be negligible for the grasshopper [@anderson1979habitat].   
 
@@ -512,7 +512,7 @@ points(20:40, t.seq, type = "l", lty="dotted")
 legend("bottomright",title= expression("direct radiation, H"), legend=c(200,400,600), lty=c("dashed","dotted","solid") )
 ```
 
-##Mussels
+## Mussels
 
 We adapted a biophysical model for intertidal mussels which was developed by Helmuth [-@helmuth1998intertidal] to predict mussel body temperature ($T_b$) based on environmental conditions, body size (height and length) and whether the mussel is solitary or aggregated.
 In general, amount of heat stored within a mussel body ($Q_{stored}$) can be described as
@@ -543,6 +543,8 @@ $$T_{b,steady} = (k_1 A_{sol} S + k_2 A_{rad,sky} k_3 T_a^4 + k_4 A_{rad,ground}
 Here, $k_1$ to $k_5$ are physical constants and measured coefficients.
 
 We provide the operative temperature model as follows
+
+<!-- Will update after the function is finalized -->
 <!-- {r, fig.height=4, fig.width=6} -->
 
 <!-- t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.15, H = 0.05, T_g = 30, u = 0.2, psi = 30, S = 800, c = 0, group = TRUE) -->
@@ -555,10 +557,7 @@ We provide the operative temperature model as follows
 
 <!-- legend("bottomright",title= expression("Wind speed, m/s"), legend=c(0.2,1,5), lty=c("solid", "dashed","dotted") ) -->
 
-
-
-
-##Limpet
+## Limpet
 
 We built a biophysical model `Tb_Limpet()` from the studies done by Denny and Harley [-@denny2006hot] to predict the body temperature of limpets based on body size (length and height), environmental conditions and the position of the limpet. In this model, the shape of the limpet is approximated to a cone of radius $r$ and height $H$.
 
@@ -600,19 +599,21 @@ Finally, $T_b$ can be calculated from the above equations and
 $$W_{sw} \pm W_{lw} \pm W_{cd} \pm W_{cv} = 0$$
 
 We provide the operative temperature model as follows
-<!-- {r, fig.height=4, fig.width=6} -->
-<!-- t.seq <- lapply(20:40, FUN = Tb_limpet, L = 0.0176, H = 0.0122, T_r = 30, I = 900, u = 1, psi = 30, c = 0, position = "anterior") -->
-<!-- plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(25, 45)) -->
-<!-- t.seq <- lapply(20:40, FUN = Tb_limpet, L = 0.0176, H = 0.0122, T_r = 30, I = 1300, u = 1, psi = 30, c = 0, position = "anterior") -->
-<!-- points(20:40, t.seq, type = "l", lty = "dashed") -->
-<!-- t.seq <- lapply(20:40, FUN = Tb_limpet, L = 0.0176, H = 0.0122, T_r = 30, I = 1600, u = 1, psi = 30, c = 0, position = "anterior") -->
-<!-- points(20:40, t.seq, type = "l", lty = "dotted") -->
-
-<!-- legend("bottomright",title= expression("Solar irradiance, W/m^2"), legend=c(500, 800, 1200), lty=c("solid", "dashed","dotted") ) -->
 
 
+```{r, fig.height=4, fig.width=6}
+t.seq <- lapply(20:40, FUN = Tb_limpet, T_r = 30, L = 0.0176, H = 0.0122, I = 1000, u = 1, psi = 30, c = 1, position = "anterior")
+plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(25, 50))
+t.seq <- lapply(20:40, FUN = Tb_limpet, T_r = 30, L = 0.0176, H = 0.0122, I = 1300, u = 1, psi = 30, c = 1, position = "anterior")
+points(20:40, t.seq, type = "l", lty = "dashed")
+t.seq <- lapply(20:40, FUN = Tb_limpet, T_r = 30, L = 0.0176, H = 0.0122, I = 1600, u = 1, psi = 30, c = 1, position = "anterior")
+points(20:40, t.seq, type = "l", lty = "dotted")
 
-##Salamander
+legend("bottomright",title= expression("Solar irradiance, W/m^2"), legend=c(1000, 1300, 1600), lty=c("solid", "dashed","dotted") )
+```
+
+
+## Salamander
 
 ```{r, fig.height=4, fig.width=6}
 plot(0:40, actual_vapor_pressure(Tdewpoint=0:40), type="l", xlab = "dewpoint temperature (°C)", ylab = "vapor pressure (kPa)")
@@ -644,7 +645,7 @@ Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303,
 #CHECK WITH ERIC?
 ```
 
-##Tsoil var
+## Tsoil var
 ```{r, fig.height=4, fig.width=8}
 plot(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=0), type="l", xlab = "hour", ylab = "soil temperature (°C)")
 points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=5), type="l", lty="dashed")
@@ -654,17 +655,17 @@ points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=20), type="l", lty="do
 legend("topleft",title="depth (cm)", legend=c(0,5,10,20), lty=c("solid","dashed","dotted","dotdash") )
 ```
 
-##Frog
+## Frog
 
 Spotila?
 
-#Example operative environmental temperature calculations
+# Example operative environmental temperature calculations
 
 Suppose we want to estimate the hourly body temperature (operative environmental temperature, $T_e$) of a *Sceloporus* lizard on June 1, 2018 in Santa Fe, New Mexico, USA (35.69, -105.944, elevation: 2121m). Let's assume the lizard is in an unshaded location where the daily air temperature varies from a minimum of 10°C to a maximum of 25°C, the soil surface temperature varies from a minimum of 15C to a maximum of 30°C, and the windspeed is 0.5 m/s. We assume that atmospheric transmissivity $\tau=0.7$ and albedo $\rho=0.6$. 
 
 We will initially estimate $T_b$ by balancing an energy balance for steady state conditions.  We then use the $T_b$ estimates to explore the components of an energy balance.
 
-##Environmental data
+## Environmental data
 
 Let us first prepare the environmental data for analysis. We will need to estimate hourly air and soil temperatures and radiation. We start by estimating day of year and the timing of sunrise and sunset:
 ```{r}
@@ -706,7 +707,7 @@ Ta= sapply(1:24, diurnal_temp_variation_sineexp, T_max=Tmax, T_min=Tmin, t_r=tr,
 Ts= sapply(1:24, diurnal_temp_variation_sine, T_max=Tmax_s, T_min=Tmin_s)
 ```
 
-##Operative temperature estimation
+## Operative temperature estimation
 
 We will first use functions based on energy balances to estimate body temperature given the environmental conditions. We first need to estimate several energy balance parameters. We first estimate the surface area exposed to radation We model a 10g *Sceloporus* lizard with solar aborptivity $a=0.9$ [@gates2012biophysical].
 ```{r}
@@ -799,7 +800,7 @@ legend("topleft",
 
 ```
 
-##Energy balance
+## Energy balance
 
 We will now use the body temperature estimates to examine the components of the energy balance. We will be solving the following energy balance:
 $$Qnet = Qabs - Qemit - Qconv - Qcond + Qmet - Qevap,$$
@@ -859,7 +860,7 @@ points(1:24, Qcond, type="l", lty="twodash")
 legend("topright", title="component", legend=c("net radition, Qnet", "solar radiation, Qabs", "thermal radiation, Qemit","convection, Qconv","conduction, Qcond"), lty=c("solid","dotted","dashed","dotdash","twodash") )
 ```
 
-#References
+# References
 
 
 
