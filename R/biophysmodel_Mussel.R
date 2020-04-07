@@ -10,7 +10,7 @@
 #' @param psi solar zenith angle (degrees): can be calculated from zenith_angle function
 #' @param elev elevation (m)
 #' @param evap proportion of area of mass exchange to total surface area, determined by mussel gape
-#' @param rho_body vapor density of the mussel body (kg m^-3)
+#' @param rho_diff vapor density of mussel body - that of air (kg m^-3)
 #' @param cl fraction of the sky covered by cloud 
 #' @param group options are "aggregated": mussels living in beds, "solitary": mussels individuals, anterior or posterior end facing upwind, 
 #'              and "solitary_valve": solitary individuals, valve facing upwind
@@ -20,13 +20,13 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' Tb_mussel(L = 0.1, H = 0.05, T_a = 25, T_g = 30, u = 2, p = 0.03, psi = 30, elev = 500, evap = 0.3, rho_body = 0.02, cl = 0, group = "solitary")
+#' Tb_mussel(L = 0.1, H = 0.05, T_a = 25, T_g = 30, u = 2, p = 0.03, psi = 30, elev = 500, evap = 0.2, rho_diff = 0.0001, cl = 0, group = "solitary")
 #' }
 
-Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, evap, rho_body, cl, group = "solitary"){
+Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, evap, rho_diff = 0.0001, cl, group = "solitary"){
   
-  stopifnot(L > 0, H > 0, u >= 0, p > 0, psi >= 0, psi <= 90, evap >= 0, evap <= 1, rho_body >= 0, cl >= 0, cl <= 0, group %in% c("aggregated", "solitary", "solitary_valve"))
-
+  stopifnot(L > 0, H > 0, u >= 0, p > 0, psi >= 0, psi <= 90, evap >= 0, evap <= 1, rho_diff >= 0, cl >= 0, cl <= 0, group %in% c("aggregated", "solitary", "solitary_valve"))
+  
   T_a = T_a + 273.15   # conversion to kelvin
   T_g = T_g + 273.15   # conversion to kelvin
   A = 1.08 * L^2 + 0.0461 * L - 0.0016   # total mussel shell surface area (m^2)
@@ -66,10 +66,10 @@ Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, evap, rho_body, cl, group 
   S_t = S_b + S_d
   
   S_r = rho_s * S_t # albedo flux density (same as above 11.10)
-
+  
   #____________________________________________________________
   # Long-wave radiaion
-
+  
   # emissivities
   eps_ac = 9.2 * 10^-6 * T_a^2 # clear sky emissivity (Campbell and Norman 1998, 10.11)
   eps_sky = (1 - 0.84 * cl) * eps_ac + 0.84 * cl  # functional infrared emissivity of sky (same as above, 10.12)
@@ -92,7 +92,7 @@ Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, evap, rho_body, cl, group 
   
   d = L * 2 / 3   # average body dimensions (Helmuth 1998 p.74)
   Re = u * d / v  # Reynolds number
-
+  
   if (group == "aggregated") {
     a = 0.67
     b = 0.42
@@ -106,21 +106,13 @@ Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, evap, rho_body, cl, group 
   Nu = a * Re^b    # Nusselt number
   hc = Nu * Ka / d     # heat transfer coefficient (W m^-2 K^-1)
   
-  #___________________________________________________________
-  # Evaporation
-  # calculating vapor density (kg/m^3)
-  # From pV = nRT, n/V = p/RT (moles/L) where p is vapor pressure (atm), 
-  # R is the ideal gas constant 0.0821 (L atm/K mol), T is the air temperature (K)
-  # moles/L * 1000 m^3/L * 18 g/moles * 0.001 kg/g = kg/m^3
-
-  rho_air = p / 0.0821 / T_a * 1000 * 18 * 0.001
   
   # hm: a coefficient of mass transfer (m/s)
   # "values of hm are generally very similar to those of hc due to similarities in the diffusivities of 
   # heat and water vapor in air"
   hm = hc
   A_evap = A * evap   # area of mass exchange (m^2)
-  mflux = hm * A_evap * (rho_body - rho_air)
+  mflux = hm * A_evap * rho_diff
   
   #____________________________________________________________
   # calculating areas of interest
@@ -138,23 +130,12 @@ Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, evap, rho_body, cl, group 
   
   # Steady-state heat balance model
   # No need to separate shell and body if we are thinking in steady state. All it matters is the change in mass (mflux)
- 
+  
   # Solve steady state energy balance equation:
   # T_b*mflux*c= Q_rad,sol +- Q_rad,sky +- Q_rad,ground +- Q_conduction +- Qconvection -Qevaporation
-
+  
   T_b = (k1 * (A_sol * S_p + A_d * (S_r + S_d)) + k2 * A_radSky * k3 * T_a^4 + k4 * A_radGround * T_g^4 + k5 * A_cond * T_g + 
-    hc * A_conv * T_a - lambda * mflux) / (k2 * A_radSky * T_a^3 + k4 * A_radGround * T_g^3 + k5 * A_cond + 
-                                             hc * A_conv - mflux * c)
-  
-  # The very last part, mflux * c is too big compared to the other parameters, making T_b negative.
-  # otherwise, the function produces reasonable values.
-  # In reality, I would assume mflux to be very small due to the small difference between rho_air and rho_body
-
-  # With the parameters in the example above and changing rho_body just by a tiny bit impacts the outcome by a lot. 
-  # When rho_body is 0.02 as it is now, the output is -165.6. When rho_body is set to 0.022, the output jumps to 11.9, and when it's 0.02206, it goes up to 26.8.
-  # I would suggest setting mflux to 0
-  
+           hc * A_conv * T_a - lambda * mflux) / (k2 * A_radSky * T_a^3 + k4 * A_radGround * T_g^3 + k5 * A_cond + 
+                                                    hc * A_conv - mflux * c)
   return (T_b - 273.15)
 }
-
-Tb_mussel(L = 0.1, H = 0.05, T_a = 25, T_g = 30, u = 2, p = 0.03, psi = 30, elev = 500, evap = 0.3, rho_body = 0.02, cl = 0, group = "solitary")
