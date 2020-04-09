@@ -1,3 +1,13 @@
+# Main issue with this function is that the mflux is not calculated properly.
+# changing rho_diff from 0.0001 to 0.001 to 0.01 produces an outcome of 45, 439, -335 °C respectively.
+
+# The potential reason for this flaw is that hm is set to be equal to hc as the text just says
+# "values of hm are generally very similar to those of hc due to similarities in the diffusivities of 
+# heat and water vapor in air."
+# To begin with, it's hard to imagine that users will be able to get information on "rho_diff" and "evap", 
+# which all matter to the value of mflux.
+# When gaping is ignored, the function behaves reasonably.
+
 #' Predicts body temperature (operative environmental temperature) of a mussel in °C.
 #' @details Predicts body temperature of a mussel in °C.
 #' @description Predicts body temperature of a mussel in °C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Helmuth 1998, INTERTIDAL MUSSEL MICROCLIMATES: PREDICTING THE BODY TEMPERATURE OF A SESSILE INVERTEBRATE
@@ -137,5 +147,8 @@ Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, evap, rho_diff = 0.0001, c
   T_b = (k1 * (A_sol * S_p + A_d * (S_r + S_d)) + k2 * A_radSky * k3 * T_a^4 + k4 * A_radGround * T_g^4 + k5 * A_cond * T_g + 
            hc * A_conv * T_a - lambda * mflux) / (k2 * A_radSky * T_a^3 + k4 * A_radGround * T_g^3 + k5 * A_cond + 
                                                     hc * A_conv - mflux * c)
+  
   return (T_b - 273.15)
 }
+
+Tb_mussel(L = 0.1, H = 0.05, T_a = 25, T_g = 30, u = 2, p = 0.03, psi = 30, elev = 500, evap = 0.2, rho_diff = 0.01, cl = 0, group = "solitary")
