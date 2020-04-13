@@ -12,15 +12,14 @@
 #' @details Predicts body temperature of a mussel in °C.
 #' @description Predicts body temperature of a mussel in °C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Helmuth 1998, INTERTIDAL MUSSEL MICROCLIMATES: PREDICTING THE BODY TEMPERATURE OF A SESSILE INVERTEBRATE
 #' @param L mussel length (anterior/posterior axis) (m)
-#' @param H mussel height (dorsal/ventral axis) (m)
+#' @param H mussel height (dorsal/ventral axis) (m), reasonable to assume 0.5*L
 #' @param T_a air temperature (°C)
 #' @param T_g ground temperature (°C)
+#' @param S direct solar flux density (W/m2)
+#' @param k_d diffuse fraction, proportion of solar radiation that is diffuse
 #' @param u wind speed (m/s)
-#' @param p atmospheric vapor pressure (atm)
 #' @param psi solar zenith angle (degrees): can be calculated from zenith_angle function
-#' @param elev elevation (m)
-#' @param evap proportion of area of mass exchange to total surface area, determined by mussel gape
-#' @param rho_diff vapor density of mussel body - that of air (kg m^-3)
+#' @param evap Are mussels gaping to evaporatively cool? TRUE of FALSE (default), If TRUE, assumes constant mass loss rate of 5% of initial body mass per hour 
 #' @param cl fraction of the sky covered by cloud 
 #' @param group options are "aggregated": mussels living in beds, "solitary": mussels individuals, anterior or posterior end facing upwind, 
 #'              and "solitary_valve": solitary individuals, valve facing upwind
@@ -30,59 +29,40 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' Tb_mussel(L = 0.1, H = 0.05, T_a = 25, T_g = 30, u = 2, p = 0.03, psi = 30, elev = 500, evap = 0.2, rho_diff = 0.0001, cl = 0, group = "solitary")
+#' Tb_mussel(L = 0.1, H = 0.05, T_a = 25, T_g = 30, S=500, k_d=0.2, u = 2, psi = 30, evap = FALSE, cl = 0.5, group = "solitary")
 #' }
 
-Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, evap, rho_diff = 0.0001, cl, group = "solitary"){
+Tb_mussel = function(L, H, T_a, T_g, S, k_d, u, p, psi, evap=FALSE, rho_diff = 0.05, cl, group = "solitary"){
   
-  stopifnot(L > 0, H > 0, u >= 0, p > 0, psi >= 0, psi <= 90, evap >= 0, evap <= 1, rho_diff >= 0, cl >= 0, cl <= 0, group %in% c("aggregated", "solitary", "solitary_valve"))
+  stopifnot(L > 0, H > 0, u >= 0, psi >= 0, psi <= 90, evap %in% c("TRUE","FALSE"), cl >= 0, cl <= 1, group %in% c("aggregated", "solitary", "solitary_valve"))
   
   T_a = T_a + 273.15   # conversion to kelvin
   T_g = T_g + 273.15   # conversion to kelvin
   A = 1.08 * L^2 + 0.0461 * L - 0.0016   # total mussel shell surface area (m^2)
+  m= 191*L^3.53  #mussel body mass, kg
   psi = psi * pi / 180  # conversion to radians
   
   #____________________________________________________________
   # constants
   sigma = 5.67 * 10^-8   # stefan-boltzmann constant (W m^-2 K^-4)
-  lambda = 2.48          # latent heat of vaporization of water (J/kg)
+  lambda = 2.48         # latent heat of vaporization of water (J/kg)
   c = 4180               # specific heat of water (J kg^-1 K^-1)
   
   #___________________________________________________________
   #Short-wave solar flux  
   alpha = 0.75           # solar absorptivity
-  k1 = alpha * sin(pi / 4 - psi)
-  rho_s = 0.08  # albedo (Campbell and Norman 1998 p.172, soil, wet dark)
+  k1 = alpha / sin(psi)
   
-  p_a = 101.3 * exp (-elev / 8200)  # atmospheric pressure
-  m_a = p_a / (101.3 * cos(psi))  # (same as above 11.12) optical air mass
-  m_a[(psi > (80 * pi / 180))] = 5.66
-  
-  # atmospheric transmisivity  (same as above p.173)
-  if (cl > 0.7) {
-    tau = 0.4
-  } else if (cl < 0.1) {
-    tau = 0.75
-  } else {
-    tau = 0.65
-  }
-  
-  S_p0 = 1360 # extraterrestrial flux density, W/m^2 (Campbell and Norman 1998 p.159)
-  
-  S_d = 0.3 * (1 - tau^m_a) * S_p0 * cos(psi)  # (same as above 11.13) diffuse radiation
-  
-  S_p = S_p0 * tau^m_a * cos(psi)    
-  S_b = S_p * cos(psi)
-  S_t = S_b + S_d
-  
-  S_r = rho_s * S_t # albedo flux density (same as above 11.10)
+  S_p= S*(1-k_d) #direct radiation
+  S_d= S*(k_d) #diffuse radiation
+  #omit reflected radiation
   
   #____________________________________________________________
   # Long-wave radiaion
   
   # emissivities
-  eps_ac = 9.2 * 10^-6 * T_a^2 # clear sky emissivity (Campbell and Norman 1998, 10.11)
-  eps_sky = (1 - 0.84 * cl) * eps_ac + 0.84 * cl  # functional infrared emissivity of sky (same as above, 10.12)
+  eps_ac = 0.72 +0.005*(T_a-273) # Helmuth 1999 from Idso and Jackson 1969
+  eps_sky = eps_ac + cl*(1-eps_ac-8/T_a)  # Helmuth 1999
   eps_org = 1.0         # infrared emissivity of organism (same as above, p.163)
   
   #Estimate lumped coefficients
@@ -116,13 +96,10 @@ Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, evap, rho_diff = 0.0001, c
   Nu = a * Re^b    # Nusselt number
   hc = Nu * Ka / d     # heat transfer coefficient (W m^-2 K^-1)
   
-  
-  # hm: a coefficient of mass transfer (m/s)
-  # "values of hm are generally very similar to those of hc due to similarities in the diffusivities of 
-  # heat and water vapor in air"
-  hm = hc
-  A_evap = A * evap   # area of mass exchange (m^2)
-  mflux = hm * A_evap * rho_diff
+  #evaporative mass loss
+  mflux= ifelse(evap==FALSE, 0, m*0.05/(60*60) )
+  # set maximum mflux rate to 5% of body mass over 1 hour, level that results in dessication
+  # see Helmuth 1998 for a more detailed evaporation model based on mussel gaping
   
   #____________________________________________________________
   # calculating areas of interest
@@ -144,11 +121,30 @@ Tb_mussel = function(L, H, T_a, T_g, u, p, psi, elev, evap, rho_diff = 0.0001, c
   # Solve steady state energy balance equation:
   # T_b*mflux*c= Q_rad,sol +- Q_rad,sky +- Q_rad,ground +- Q_conduction +- Qconvection -Qevaporation
   
-  T_b = (k1 * (A_sol * S_p + A_d * (S_r + S_d)) + k2 * A_radSky * k3 * T_a^4 + k4 * A_radGround * T_g^4 + k5 * A_cond * T_g + 
+  T_b = (k1 * (A_sol * S_p + A_d * S_d) + k2 * A_radSky * k3 * T_a^4 + k4 * A_radGround * T_g^4 + k5 * A_cond * T_g + 
            hc * A_conv * T_a - lambda * mflux) / (k2 * A_radSky * T_a^3 + k4 * A_radGround * T_g^3 + k5 * A_cond + 
                                                     hc * A_conv - mflux * c)
   
   return (T_b - 273.15)
-}
+}  
 
-Tb_mussel(L = 0.1, H = 0.05, T_a = 25, T_g = 30, u = 2, p = 0.03, psi = 30, elev = 500, evap = 0.2, rho_diff = 0.01, cl = 0, group = "solitary")
+t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, S=500, k_d=0, u = 1, psi =60, evap = FALSE, cl = 0, group = "solitary")
+plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)")
+
+t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, S=500, k_d=0, u = 1, psi =60, evap = TRUE, cl = 0, group = "solitary")
+points(20:40, t.seq, type = "l", lty="dashed")
+
+abline(a=0,b=1, col="gray")
+
+#----
+t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 1, psi =60, evap = FALSE, cl = 0, group = "solitary")
+plot(seq(0.02,0.14,0.01), t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim=c(25,32))
+
+t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 0.5, psi =60, evap = FALSE, cl = 0, group = "solitary")
+points(seq(0.02,0.14,0.01), t.seq, type = "l", lty="dashed")
+
+t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 3, psi =60, evap = FALSE, cl = 0, group = "solitary")
+points(seq(0.02,0.14,0.01), t.seq, type = "l", lty="dotted")
+
+t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 1, psi =60, evap = TRUE, cl = 0, group = "solitary")
+points(seq(0.02,0.14,0.01), t.seq, type = "l", col="red")

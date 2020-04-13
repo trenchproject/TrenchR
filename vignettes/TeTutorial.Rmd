@@ -137,7 +137,7 @@ points(seq(0,0.01,0.001), Grashof_number_Gates(Ta=30, Tg=35, beta=0.00367, D=seq
 legend("topleft", title="parameters", legend=c("Grashof_number, nu=1","Grashof_number_Gates, nu=1","Grashof_number, nu=1.4","Grashof_number_Gates, nu=1.4"), lty=c("solid","dashed","dotted","dotdash") )
 ```
 
-Relations among the dimensionless groups can also be used for estimation. Empirically-derived relationships can be used to estimate the Nusselt number $Nu$ from the Reynolds number $Re$ or the Grashof number $Gr$.  Comparisons of $Gr$ and $Re$ allow determining whether modelling free or forced convection is appropraite.  Forced convection is appropriate when $Gr \leq 16 Re^2$. For convenience, we provide the relationships as R functions:
+Relations among the dimensionless groups can also be used for estimation. Empirically-derived relationships can be used to estimate the Nusselt number $Nu$ from the Reynolds number $Re$ or the Grashof number $Gr$.  Comparisons of $Gr$ and $Re$ allow determining whether modelling free or forced convection is appropriate.  Forced convection is appropriate when $Gr \leq 16 Re^2$. For convenience, we provide the relationships as R functions:
 
 ```{r, fig.height=4, fig.width=8}
 plot(1:10, Nu_from_Re(Re=1:10, taxa="sphere"), type="l", xlab = "Re", ylab = "Nu", ylim=c(0,4))
@@ -362,7 +362,6 @@ points(293:313, t.seq, type = "l", lty="dotted")
 
 legend("bottomright", title="proportion shade", legend=c(0.0,0.5,1.0), lty=c("dashed","solid","dotted") )
 
-#STARTED TO FIX
 ```
 
 # Specialized energy balance models and functions
@@ -391,7 +390,7 @@ Within the two values that are produced from this formula, the correct angle is 
 
 ### Radiation and Environmental Temperature
 
-Central to the thermal influence of radiation is the Stefan‐Boltzmann law, which expresses the total radiant energy over all wavelengths admitted per unit surface area of a blackbody radiator. The law yields the emitted flux density, $B$ ($W m^2$), $B= \sigma(T_a+273)^4$, where $\omega$ is the Stefan‐Boltzmann constant ($5.67×10^{−8} W m^{−2} K^{−4}$). Emissivity, $\epsilon(\lambda)$, where $\lambda$ is wavelength, is the fraction of blackbody emittance at a given wavelength emitted by the surface of a material. Gray bodies are those with no wavelength dependence of the emissivity. Thus, emitted energy of a gray body is $\phi (W m^{−2})= \epsilon B$. We assume lizards are a gray body, which is reasonable for most natural surfaces. The emissivity of most natural surfaces ranges from 0.95 to 1.0. The function uses the emissivity value of 0.965 measured by Bartlett and Gates (1967) for a *Sceloporus* lizard. However, the emissivity of a clear atmosphere is substantially lower. We use the approximation by Swinbank (1963) to estimate clear sky emissivity, $\epsilon_{ac}=9.2 \times 10^{-6}(T_a+273)^2.$
+Central to the thermal influence of radiation is the Stefan‐Boltzmann law, which expresses the total radiant energy over all wavelengths admitted per unit surface area of a blackbody radiator. The law yields the emitted flux density, $B$ ($W m^2$), $B= \sigma(T_a+273)^4$, where $\omega$ is the Stefan‐Boltzmann constant ($5.67×10^{−8} W m^{−2} K^{−4}$). Emissivity, $\epsilon(\lambda)$, where $\lambda$ is wavelength, is the fraction of blackbody emittance at a given wavelength emitted by the surface of a material. Gray bodies are those with no wavelength dependence of the emissivity. Thus, emitted energy of a gray body is $\phi (W m^{−2})= \epsilon B$. We assume lizards are gray bodies, which is reasonable for most natural surfaces. The emissivity of most natural surfaces ranges from 0.95 to 1.0. The function uses the emissivity value of 0.965 measured by Bartlett and Gates (1967) for a *Sceloporus* lizard. However, the emissivity of a clear atmosphere is substantially lower. We use the approximation by Swinbank (1963) to estimate clear sky emissivity, $\epsilon_{ac}=9.2 \times 10^{-6}(T_a+273)^2.$
 
 We first consider convective heat transport between the lizard’s body and the environment. The boundary conductance of air ($mol \: m^{−2} s^{−1}$) is expressed as 
 $$g_{Ha}=1.4 \times 0.135 \sqrt{u/d} ,$$
@@ -434,8 +433,9 @@ points(20:40, t.seq, type = "l", lty="dotdash")
 
 legend("bottomright",title="parameters", legend=c("sun, surface","shade, surface","sun, above surface","shade, above surface"), lty=c("solid","dashed","dotted","dotdash") )
 
-#? Include transient heat model in package?: https://github.com/JRubalcaba/BodyTemp.
 ```
+
+R code for a transient model of lizard body temperature is available in the following repository: https://github.com/JRubalcaba/BodyTemp.
 
 ## Butterflies
 
@@ -514,7 +514,7 @@ legend("bottomright",title= expression("direct radiation, H"), legend=c(200,400,
 
 ## Mussels
 
-We adapted a biophysical model for intertidal mussels which was developed by Helmuth [-@helmuth1998intertidal] to predict mussel body temperature $T_b (K)$ based on environmental conditions, body size (height and length) and whether the mussel is solitary or aggregated. The amount of heat stored within a mussel body $Q_{stored} (W)$ can be described as
+We adapted a biophysical model for intertidal mussels that was developed by Helmuth [-@helmuth1998intertidal] to predict mussel body temperature $T_b (K)$ based on environmental conditions, body size (height and length) and whether the mussel is solitary or aggregated. The amount of heat stored within a mussel body $Q_{stored} (W)$ can be described as
 $$Q_{stored} = Q_{sol} \pm Q_{rad,sky} \pm Q_{rad, ground} \pm Q_{cond} \pm Q_{conv} - Q_{evap} \tag{1}$$
 where $Q_{sol} (W)$ is the short-wave solar radiation to the mussel, $Q_{rad,sky} (W)$, $Q_{rad,ground} (W)$ are the infrared radiation between the mussel and the sky, and between the mussel and the surroundings, $Q_{conv} (W)$ is the convective heat exchange, $Q_{cond} (W)$ is the conduction to and from the ground, and $Q_{evap} (W)$ is the evaporative cooling from water loss [@helmuth1998intertidal].
 Since $Q_{stored} (W)$ is a product of mass ($m$), specific heat ($c$), and body temperature ($T_b$), the rate of change of stored heat can be expressed as $Q_{stored} = d(mcT_b)/dt$.
@@ -530,9 +530,9 @@ Using Taylor series approximation, equations (2) and (3) become
 $$Q_{rad,sky} = 4.0\varepsilon_{org}\varepsilon_{sky}^{3/4}\sigma A_{rad,sky}T_a^3(T_b-\varepsilon_{sky}^{1/4}T_a)$$
 $$Q_{rad,ground} = 4.0\varepsilon_{org}\sigma A_{rad,ground}T_g^3(T_b-T_g)$$
 
-Heat conduction $Q_{cond}$ can be calculated from $Q_{cond} = \frac{k_b}{0.5H}A_{cond}(T_b-T_g)$ where $k_b$ is the thermal conductivity of heat in mussel body. Because most of the body of a mussel is composed of water, we approximated it to be equal to that of water, $0.60 W m^{-2} K^{-1}$. $H$ represents the height of the mussel and $A_{cond}$ is the mussel area that is touching the ground.
+Heat conduction $Q_{cond}$ can be calculated as $Q_{cond} = \frac{k_b}{0.5H}A_{cond}(T_b-T_g)$ where $k_b$ is the thermal conductivity of heat in mussel body. Because most of the body of a mussel is composed of water, we approximated conductivity as equal to that of water, $0.60 W m^{-2} K^{-1}$. $H$ represents the height of the mussel and $A_{cond}$ is the mussel area that is touching the ground.
 
-In terms of convective heat flux ($Q_{conv}$), it can be calculated from $Q_{conv}=h_cA_{conv}(T_b-T_a)$ where $h_c$ is the coefficient for forced convection and $A_{conv}$ is total surface area exposed to convective heat loss [@helmuth1998intertidal]. We calculate the value of $h_c$ using three empirical formulas relating Nusselt numbers and Reynolds numbers: $Nu = \frac{h_c L}{K_a}$, $Re = \frac{uL}{v}$ and $Nu = aRe^b$, where $L$ is the length of the mussel, $K_a$ is the conductivity of air $K_a = 0.00501 + 7.2 \times10^{–5}T_a (W·m^{–1}·K^{–1})$, $u$ is the wind speed (m/s), and $v$ is the kinematic viscosity of air $v = -1.25 \times 10^{-5} + 9.2 \times 10^{-8} T_a$ [@denny2006hot]. $A_{conv}$ can be assumed equal to the total surface area. The authors empircally acquired $a$ and $b$ in the formula to obtain $Nu$, which vary depending on the position and the state of the mussels. For solitary mussels, $a = 0.38$ and $b = 0.51$ if the anterior or posterior end are facing upwind, and $a = 0.63$ and $b = 0.47$ if the valve is facing upwind. The values were measured to be $a = 0.67$, $b = 0.42$ for aggregated mussels [@helmuth1998intertidal].
+Convective heat flux ($Q_{conv}$) can be calculated from $Q_{conv}=h_cA_{conv}(T_b-T_a)$ where $h_c$ is the coefficient for forced convection and $A_{conv}$ is total surface area exposed to convective heat loss [@helmuth1998intertidal]. We calculate the value of $h_c$ using three empirical formulas relating Nusselt numbers and Reynolds numbers: $Nu = \frac{h_c L}{K_a}$, $Re = \frac{uL}{v}$ and $Nu = aRe^b$, where $L$ is the length of the mussel, $K_a$ is the conductivity of air $K_a = 0.00501 + 7.2 \times10^{–5}T_a (W·m^{–1}·K^{–1})$, $u$ is the wind speed (m/s), and $v$ is the kinematic viscosity of air $v = -1.25 \times 10^{-5} + 9.2 \times 10^{-8} T_a$ [@denny2006hot]. $A_{conv}$ can be assumed equal to the total surface area. The authors empircally acquired $a$ and $b$ in the formula to obtain $Nu$, which vary depending on the position and the state of the mussels. For solitary mussels, $a = 0.38$ and $b = 0.51$ if the anterior or posterior end are facing upwind, and $a = 0.63$ and $b = 0.47$ if the valve is facing upwind. The values were measured to be $a = 0.67$, $b = 0.42$ for aggregated mussels [@helmuth1998intertidal].
 
 Lastly, $Q_{evap} = \lambda \dot{m}$ where $\lambda$ is the latent heat of vaporization of water ($J/kg$) and $\dot{m}$ is the rate of water loss [@helmuth1998intertidal]. $\dot{m} = h_m \cdot A_{evap} \cdot (\rho_{body} - \rho_{air})$ where $h_m$ is a coefficient of mass transfer ($m/s$), $A_{evap}$ is the area of mass exchange ($m^2$) and $\rho$ is the vapor density ($kg m^{-3}$).
 
@@ -557,14 +557,16 @@ t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, u = 10, p =
 
 points(20:40, t.seq, type = "l", lty = "dotted")
 
+abline(a=0,b=1, col="gray")
+
 legend("bottomright",title= expression("Wind speed, m/s"), legend=c(0.2,1,2), lty=c("solid", "dashed","dotted") )
 ```
 
 ## Limpet
 
-We adapted a biophysical model `Tb_Limpet()` from Denny and Harley [-@denny2006hot] to predict the body temperature of limpets based on body size (length and height), environmental conditions and the position of the limpet. In this model, the shape of the limpet is approximated to a cone of radius $r$ and height $H$.
+We adapted a biophysical model `Tb_Limpet()` from Denny and Harley [-@denny2006hot] to predict the body temperature of limpets based on body size (length and height), environmental conditions and the position of the limpet. We note that our implementation is simplified from the original. In this model, the shape of the limpet is approximated to a cone of radius $r$ and height $H$.
 
-The rate at which energy is stored within the organisms ($W_{stored} (W)$) are influenced by several heat exchanging processes. The processes include the rate of heat absorbed from short-wave radiation ($W_{sw} (W)$), net heat transferred by long-wave radiation ($W_{lw} (W)$), rate of heat transferred by conduction and convection ($W_{cd} (W)$ and $W_{cv} (W)$). We neglected the heat gain by metabolism due to the nature of the limpets' low metabolic rate, and evaporative heat loss assuming that the limpet has its shell firmly clamped against the substratum, and thereby preventing evaporation.
+The rate at which energy is stored within the organism ($W_{stored} (W)$) is influenced by several heat exchange processes. The processes include the rate of heat absorbed from short-wave radiation ($W_{sw} (W)$), net heat transferred by long-wave radiation ($W_{lw} (W)$), rate of heat transferred by conduction and convection ($W_{cd} (W)$ and $W_{cv} (W)$). We neglected heat gain by metabolism due to the limpets' low metabolic rate. We likewise omitted evaporative heat loss assuming that the limpet has its shell firmly clamped against the substratum, which limits evaporation.
 
 The rate at which solar radiation provides heat is defined as
 $$W_{sw} = A_p\alpha_{sw}I_{sw}$$
@@ -578,14 +580,13 @@ where $\psi$ is the solar zenith angle [@pennell1989computing]. $\alpha_{sw}$ wa
 Net rate of long-wave energy transfer ($W_{lw}$) is the difference between the rate at which long-wave radiation from the sky is absorbed by the shell ($W_{lw,a}$) and the total effective rate at which energy is radiated from limpet to sky ($W_{lw,s}$). It is expressed as
 $$W_{lw} = V_s A_l \epsilon_{lw,s}\sigma(\epsilon_{lw,a}\sigma T_a^4 - T_b^4)$$
 where $V_s$ is the view factor, $A_l$ is the lateral area of limpet shell ($m^2$), $\epsilon_{lw,s}$ is long-wave emissivity of the shell (=0.97), and $\epsilon_{lw,a}$ is the emissivity of air. $V_s$ equals to $cos(\psi)\cdot r / \sqrt{r^2 + H^2}$ by simulating limpet as a cone [@campbell2012introduction].  
+
 This can be linearized by Taylor expansion around $T_a$ to be
 $$W_{lw} = V_s A_l\epsilon_{w,s}\sigma T_a^4(\epsilon_{w,a}-1) + 4V_sA_l\epsilon_{w,s}\sigma T_a^3(T_a - T_b)$$
 
-In terms of convective heat flux ($Q_{cv}$), 
-$$W_{cv} = h_cA_{cv}(T_a-T_b)$$
-which is derived from the Newton's law of cooling.
-$A_{cv}$ is the area of the shell in contact with the air ($m^2$), which is approximated to the lateral area of the limpet ($A_l$). $h_c$ is the convective heat transfer coefficient ($W m^{-2} K^{-1}$), and it can be expressed from Nusselt number $Nu = \frac{h_c R}{K_a}$ where $R$ is the diameter and $K_a$ is the conductivity of air ($W m^{-1} K^{-1}$).
-$K_a = 0.00501 + 7.2 \times 10^{-5}T_a$ is known from the study done by Denny (1993).
+Convective heat flux ($W_{cv}$) can be estimated as 
+$$W_{cv} = h_cA_{cv}(T_a-T_b),$$
+which is derived from the Newton's law of cooling. $A_{cv}$ is the area of the shell in contact with the air ($m^2$), which is approximated to the lateral area of the limpet ($A_l$). The convective heat transfer coefficient, $h_c$ ($W m^{-2} K^{-1}$), is a component of the Nusselt number, $Nu = \frac{h_c R}{K_a}$ where $R$ is the limpet's diameter and $K_a$ is the conductivity of air ($W m^{-1} K^{-1}$). Denny [-@denny1993air] found that conductivity varies with air temperature as follows: $K_a = 0.00501 + 7.2 \times 10^{-5}T_a$.
 Additionally, 
 $$Re = \frac{uR}{v}$$
 and
@@ -593,16 +594,14 @@ $$Nu = aRe^b$$
 where $u$ is the wind speed ($m/s$), $v$ is the kinematic viscosity of air ($m^2/s$) that equals $-1.25 \times 10^{-5} + 9.2 \times 10^{-8} T_a$, and $a$ and $b$ are coefficients that need to be emperically obtained. 
 When the anterior side of the limpet is facing upwind, $a=1.955$ and $b=0.371$. When the posterior side is facing upwind, $a=1.881$ and $b=0.376$. Lastly when the broadside is facing upwind, $a=1.304$ and $b=0.404$ [@denny2006hot]. 
 
-Conductive heat exchange is determined by the following equation.
-$$W_{cd} = A_{cd}K_r(\frac{dT_r}{dz})$$
+Conductive heat exchange is determined by the following equation:
+$$W_{cd} = A_{cd}K_r\left(\frac{dT_r}{dz}\right),$$
 where $A_{cd}$ is the area of contact between the organism's foot and the rock ($m^2$), and $K_r$ is the conductivity of the rock ($3.06 W m^{-1} K^{-1}$). $T_r (K)$ is the temperature of the rock as a function of distance $z (m)$ from the surface.
 
 Finally, $T_b$ can be calculated from the above equations and
 $$W_{sw} \pm W_{lw} \pm W_{cd} \pm W_{cv} = 0$$
 
-We provide the operative temperature model as follows
-
-
+We provide the operative temperature model as follows:
 ```{r, fig.height=4, fig.width=6}
 t.seq <- lapply(20:40, FUN = Tb_limpet, T_r = 30, L = 0.0176, H = 0.0122, I = 1000, u = 1, psi = 30, c = 1, position = "anterior")
 plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(25, 50))
@@ -658,10 +657,6 @@ points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=20), type="l", lty="do
 
 legend("topleft",title="depth (cm)", legend=c(0,5,10,20), lty=c("solid","dashed","dotted","dotdash") )
 ```
-
-## Frog
-
-Spotila?
 
 # Example operative environmental temperature calculations
 
