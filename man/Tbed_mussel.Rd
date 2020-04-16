@@ -7,6 +7,8 @@
 Tbed_mussel(L, T_a, S, k_d, u, evap = FALSE, cl = NA)
 }
 \arguments{
+\item{L}{mussel length (anterior/posterior axis) (m)}
+
 \item{T_a}{air temperature (°C) at 4m}
 
 \item{S}{direct solar flux density (W/m2)}

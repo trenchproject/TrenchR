@@ -19,7 +19,7 @@
 #' Tbed_mussel(L = 0.1, T_a = 25, S=500, k_d=0.2, u = 1, evap = FALSE)
 #' }
 
-Tbed_mussel = function(L = 0.1, T_a, S, k_d, u, evap=FALSE, cl=NA){
+Tbed_mussel = function(L, T_a, S, k_d, u, evap=FALSE, cl=NA){
   
   stopifnot(L >= 0, S >= 0, k_d>=0, k_d<=1, u>0, evap %in% c("TRUE","FALSE") )
   
