@@ -1,13 +1,3 @@
-# Main issue with this function is that the mflux is not calculated properly.
-# changing rho_diff from 0.0001 to 0.001 to 0.01 produces an outcome of 45, 439, -335 °C respectively.
-
-# The potential reason for this flaw is that hm is set to be equal to hc as the text just says
-# "values of hm are generally very similar to those of hc due to similarities in the diffusivities of 
-# heat and water vapor in air."
-# To begin with, it's hard to imagine that users will be able to get information on "rho_diff" and "evap", 
-# which all matter to the value of mflux.
-# When gaping is ignored, the function behaves reasonably.
-
 #' Predicts body temperature (operative environmental temperature) of a mussel in °C.
 #' @details Predicts body temperature of a mussel in °C.
 #' @description Predicts body temperature of a mussel in °C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Helmuth 1998, INTERTIDAL MUSSEL MICROCLIMATES: PREDICTING THE BODY TEMPERATURE OF A SESSILE INVERTEBRATE
@@ -116,14 +106,13 @@ Tb_mussel = function(L, H, T_a, T_g, S, k_d, u, p, psi, evap=FALSE, rho_diff = 0
   }
   
   # Steady-state heat balance model
-  # No need to separate shell and body if we are thinking in steady state. All it matters is the change in mass (mflux)
-  
+ 
   # Solve steady state energy balance equation:
   # T_b*mflux*c= Q_rad,sol +- Q_rad,sky +- Q_rad,ground +- Q_conduction +- Qconvection -Qevaporation
   
   T_b = (k1 * (A_sol * S_p + A_d * S_d) + k2 * A_radSky * k3 * T_a^4 + k4 * A_radGround * T_g^4 + k5 * A_cond * T_g + 
            hc * A_conv * T_a - lambda * mflux) / (k2 * A_radSky * T_a^3 + k4 * A_radGround * T_g^3 + k5 * A_cond + 
-                                                    hc * A_conv - mflux * c)
+                                                    hc * A_conv + mflux * c)
   
   return (T_b - 273.15)
 }  

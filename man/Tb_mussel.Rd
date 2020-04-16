@@ -4,29 +4,27 @@
 \alias{Tb_mussel}
 \title{Predicts body temperature (operative environmental temperature) of a mussel in °C.}
 \usage{
-Tb_mussel(L, H, T_a, T_g, u, p, psi, elev, A_evap, rho_body, cl,
-  group = "solitary")
+Tb_mussel(L, H, T_a, T_g, S, k_d, u, p, psi, evap = FALSE,
+  rho_diff = 0.05, cl, group = "solitary")
 }
 \arguments{
 \item{L}{mussel length (anterior/posterior axis) (m)}
 
-\item{H}{mussel height (dorsal/ventral axis) (m)}
+\item{H}{mussel height (dorsal/ventral axis) (m), reasonable to assume 0.5*L}
 
 \item{T_a}{air temperature (°C)}
 
 \item{T_g}{ground temperature (°C)}
 
-\item{u}{wind speed (m/s)}
+\item{S}{direct solar flux density (W/m2)}
 
-\item{p}{atmospheric vapor pressure (atm)}
+\item{k_d}{diffuse fraction, proportion of solar radiation that is diffuse}
+
+\item{u}{wind speed (m/s)}
 
 \item{psi}{solar zenith angle (degrees): can be calculated from zenith_angle function}
 
-\item{elev}{elevation (m)}
-
-\item{A_evap}{area of mass exchange, determined by mussel gape (m^2)}
-
-\item{rho_body}{vapor density of the mussel body (kg m^-3)}
+\item{evap}{Are mussels gaping to evaporatively cool? TRUE of FALSE (default), If TRUE, assumes constant mass loss rate of 5% of initial body mass per hour}
 
 \item{cl}{fraction of the sky covered by cloud}
 
@@ -44,8 +42,7 @@ Predicts body temperature of a mussel in °C.
 }
 \examples{
 \dontrun{
-Tb_mussel(L = 0.1, H = 0.05, T_a = 25, T_g = 30, u = 2, p = 0.03, psi = 30, elev = 500, A_evap = 0, rho_body = 0, cl = 0, group = "solitary")
-#! Fix A_evap and rho_body
+Tb_mussel(L = 0.1, H = 0.05, T_a = 25, T_g = 30, S=500, k_d=0.2, u = 2, psi = 30, evap = FALSE, cl = 0.5, group = "solitary")
 }
 }
 \seealso{
@@ -67,10 +64,11 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{Reynolds_number}},
   \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
   \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
-  \code{\link{Tb_grasshopper}}, \code{\link{Tb_limpet}},
-  \code{\link{Tb_lizard}},
-  \code{\link{Tb_salamander_humid}}, \code{\link{Tsoil}},
-  \code{\link{actual_vapor_pressure}},
+  \code{\link{Tb_grasshopper}}, \code{\link{Tb_limpetBH}},
+  \code{\link{Tb_limpet}}, \code{\link{Tb_lizard}},
+  \code{\link{Tb_salamander_humid}},
+  \code{\link{Tb_snail}}, \code{\link{Tbed_mussel}},
+  \code{\link{Tsoil}}, \code{\link{actual_vapor_pressure}},
   \code{\link{boundary_layer_resistance}},
   \code{\link{external_resistance_to_water_vapor_transfer}},
   \code{\link{heat_transfer_coefficient_approximation}},

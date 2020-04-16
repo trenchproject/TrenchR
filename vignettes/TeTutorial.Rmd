@@ -536,31 +536,65 @@ Convective heat flux ($Q_{conv}$) can be calculated from $Q_{conv}=h_cA_{conv}(T
 
 Lastly, $Q_{evap} = \lambda \dot{m}$ where $\lambda$ is the latent heat of vaporization of water ($J/kg$) and $\dot{m}$ is the rate of water loss [@helmuth1998intertidal]. $\dot{m} = h_m \cdot A_{evap} \cdot (\rho_{body} - \rho_{air})$ where $h_m$ is a coefficient of mass transfer ($m/s$), $A_{evap}$ is the area of mass exchange ($m^2$) and $\rho$ is the vapor density ($kg m^{-3}$).
 
-For simplicity, `Tb_mussel` function examines the steady-state (equilibrium) body temperature of an organism exposed over long periods of time to constant environmental conditions.
-Inserting the values in equation (1) and solving for $T_b$ gives us the following equation.
+For simplicity, `Tb_mussel` function examines the steady-state (equilibrium) body temperature of an organism exposed over long periods of time to constant environmental conditions. See Helmuth [-@helmuth1998intertidal] for the transient model. Inserting the values in equation (1) and solving for $T_b$ gives us the following equation.
 $$T_{b,steady} = (k_1 A_{sol} S + k_2 A_{rad,sky} k_3 T_a^4 + k_4 A_{rad,ground} T_g^4 + k_5 A_{cond} T_g + h_c A_{conv} T_a - \lambda\dot{m}) / $$
 $$(k_2 A_{rad,sky} T_a^3 + k_4 A_{rad, ground} T_g^3 + k_5 A_{cond} + h_c A_{conv} - \dot{m}c)$$
 Here, $k_1$ to $k_5$ are physical constants and measured coefficients.
 
-We provide the operative temperature model as follows
-
-
+We provide the operative temperature model as follows.
 ```{r, fig.height=4, fig.width=6}
-
-t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, u = 0.2, p = 0.03, psi = 30, elev = 500, evap = 0, rho_diff = 0.0001, cl = 0, group = "solitary")
-
+t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, S=500, k_d=0, u = 0.2, psi =60, evap = TRUE, cl = 0, group = "solitary")
 plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(20, 40))
-t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, u = 1, p = 0.03, psi = 30, elev = 500, evap = 0, rho_diff = 0.0001, cl = 0, group = "solitary")
+
+t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, S=500, k_d=0, u = 1, psi =60, evap = TRUE, cl = 0, group = "solitary")
 points(20:40, t.seq, type = "l", lty = "dashed")
 
-t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, u = 10, p = 0.03, psi = 30, elev = 500, evap = 0, rho_diff = 0.0001, cl = 0, group = "solitary")
-
+t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, S=500, k_d=0, u = 2, psi =60, evap = TRUE, cl = 0, group = "solitary")
 points(20:40, t.seq, type = "l", lty = "dotted")
 
 abline(a=0,b=1, col="gray")
 
 legend("bottomright",title= expression("Wind speed, m/s"), legend=c(0.2,1,2), lty=c("solid", "dashed","dotted") )
 ```
+
+We also illustrate how the model can be applied to investigate the effect of mussel size and evaporation. The red line indicates the effect of evaporative heat loss.
+```{r, fig.height=4, fig.width=6}
+
+t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 0.5, psi =60, evap = FALSE, cl = 0, group = "solitary")
+plot(seq(0.02,0.14,0.01), t.seq, type = "l", xlab = "mussel length (m)", ylab = "body temperature (°C)", ylim=c(25,32) )
+
+t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 1, psi =60, evap = FALSE, cl = 0, group = "solitary")
+points(seq(0.02,0.14,0.01), t.seq, type = "l", lty="dashed")
+
+t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 3, psi =60, evap = FALSE, cl = 0, group = "solitary")
+points(seq(0.02,0.14,0.01), t.seq, type = "l", lty="dotted")
+
+t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 1, psi =60, evap = TRUE, cl = 0, group = "solitary")
+points(seq(0.02,0.14,0.01), t.seq, type = "l", col="red")
+
+legend("bottomright",title= expression("Wind speed, m/s"), legend=c(0.5,1,3), lty=c("solid", "dashed","dotted") )
+```
+
+TrenchR also provides a version of the model modified for mussel beds [@helmuth1999thermal]. The red line indicates the effect of evaporative heat loss.
+```{r, fig.height=4, fig.width=6}
+
+t.seq <- lapply(20:40, FUN = Tbed_mussel, L = 0.1, S=500, k_d=0.2, u = 0.2, evap = FALSE)
+plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(20, 50))
+
+t.seq <- lapply(20:40, FUN = Tbed_mussel, L = 0.1, S=500, k_d=0.2, u = 1, evap = FALSE)
+points(20:40, t.seq, type = "l", lty = "dashed")
+
+t.seq <- lapply(20:40, FUN = Tbed_mussel, L = 0.1, S=500, k_d=0.2, u = 2, evap = FALSE)
+points(20:40, t.seq, type = "l", lty = "dotted")
+
+t.seq <- lapply(20:40, FUN = Tbed_mussel, L = 0.1, S=500, k_d=0.2, u = 0.2, evap = TRUE)
+points(20:40, t.seq, type = "l", lty = "solid", col="red")
+
+abline(a=0,b=1, col="gray")
+
+legend("bottomright",title= expression("Wind speed, m/s"), legend=c(0.2,1,2), lty=c("solid", "dashed","dotted") )
+```
+Additionally, land surface models have been modified to predict mussel bed temperatures [@mislan2015biophysical]. We do not include these more complex models in TrenchR because they are available elsewhere (Mislan and Wethey 2014: https://zenodo.org/record/13380#.XpidHJNKjm0)
 
 ## Limpet
 
@@ -615,6 +649,7 @@ abline(a=0,b=1, col="gray")
 legend("bottomright",title= expression("Solar irradiance, W/m^2"), legend=c(1000, 1300, 1600), lty=c("solid", "dashed","dotted") )
 ```
 
+TrenchR also provides a version two versions of the limpet model modified by the Helmuth Lab. The first modifies radiation and convection in the function for limpets: `Tb_limpetBH`. The second modifies the function to predict snail body temperatures `Tb_snail`.
 
 ## Salamander
 

@@ -1,32 +1,43 @@
 #' Predicts body temperature (operative environmental temperature) of a limpet in °C.
 #' @details Predicts body temperature of a limpet in °C.
-#' @description Predicts body temperature of a limpet in °C. Based on Denny and Harley 2006. Hot limpets: predicting body temperature in a conductance-mediated thermal system
+#' @description Predicts body temperature of a limpet in °C. Based on Denny and Harley 2006. Hot limpets: predicting body temperature in a conductance-mediated thermal system. Function provided by Helmuth Lab. Radiation and convection is altered from original model.
 #' @param T_a air temperature (°C)
 #' @param T_r rock temperature (°C)
 #' @param L limpet length (anterior/posterior axis) (m)
 #' @param H limpet height (dorsal/ventral axis) (m)
 #' @param I solar irradiance (W m^-2)
 #' @param u wind speed (m/s)
-#' @param psi solar zenith angle (degrees): can be calculated from zenith_angle function
+#' @param s_aspect solar aspect (degree)
+#' @param s_slope solar elevation (degree)
 #' @param c fraction of the sky covered by cloud 
-#' @param position the direction of the limpet that is facing upwind. Options are "anterior", "posterior" and "broadside".
 #' @return predicted body temperature (°C)
 #' @keywords body temperature, biophysical model
 #' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
-#' Tb_limpet(T_a = 25, T_r = 30, L = 0.0176, H = 0.0122, I = 1300, u = 1, psi = 30, c = 1, position = "anterior")
+#' Tb_limpetBH(T_a = 25, T_r = 30, L = 0.0176, H = 0.0122, I = 1300, u = 1, s_aspect = 280, s_slope=60, c = 1)
 #' }
 
-Tb_limpet = function(T_a, T_r, L, H, I, u, psi, c, position = "anterior"){
+Tb_limpetBH = function(T_a, T_r, L, H, I, u, s_aspect, s_slope, c, position = "anterior"){
   
-  stopifnot(L > 0, H > 0, I > 0, u >= 0, psi >= 0, psi <= 90, c >= 0, c <= 1, position %in% c("anterior", "posterior", "broadside"))
+  stopifnot(L > 0, H > 0, I > 0, u >= 0, s_slope >= 0, s_slope <= 90, c >= 0, c <= 1)
   
-  psi = psi * pi / 180 # covert to radians
+  s_aspect = s_aspect * pi / 180 # covert to radians
+  s_slope = s_slope * pi / 180 # covert to radians
   T_a = T_a + 273.15   # convert to kelvin
   T_r = T_r + 273.15   # convert to kelvin
   r = L / 2            # radius
+  
+  #______________________________________________________________
+  ## Adjust solar radiation for sun angles
+  ##slope and solar angle
+  r_aspect <- 257* pi / 180
+  r_slope <- 44.5* pi / 180
+  
+  delta_i <- cos(r_slope)*cos(s_slope)*cos(s_aspect-r_aspect)+sin(r_slope)*sin(s_slope)
+  
+  I <- I*delta_i
   
   #______________________________________________________________
   # Short wave heat transfer
@@ -37,9 +48,12 @@ Tb_limpet = function(T_a, T_r, L, H, I, u, psi, c, position = "anterior"){
     Ap = Ap + H * r * sin(psi) - pi * r^2 / 2 * cos(psi)
   }
   
-  ## short-wave absorptivity of the shell (the fraction of light energy that is absorbed) 
-  alpha_sw <- 0.68
-  
+  ## short-wave absorptivity of the shell (the fraction of light energy that is absorbed) 0.615, 0.68, 0.689
+  if (L >=0.037){  # Absorptivity from Luke Miller 
+    alpha_sw <- 0.615
+  } else {if (L <= 0.02225 ){alpha_sw <-0.689
+  } else alpha_sw <- 0.68 } 
+
   q1 = Ap * alpha_sw * I
   
   #_______________________________________________________________
@@ -66,16 +80,16 @@ Tb_limpet = function(T_a, T_r, L, H, I, u, psi, c, position = "anterior"){
   
   Re = u * L / v  # Reynolds number
   
-  if (position == "anterior") {
-    a = 1.955
-    b = 0.371
-  } else if (position == "posterior") {
-    a = 1.881
-    b = 0.376
-  } else {
-    a = 1.304
-    b = 0.404
-  }
+  if (L >=0.037){  # Absorptivity from Luke Miller 
+    a <- 0.447
+  } else {if (L <= 0.02225 ){a <-0.1515
+  } else a <- 0.1658 } 
+  
+  b <- ##0.516, 0.6206, 0.6184
+    if (L >=0.037){  # Absorptivity from Luke Miller 
+      b <- 0.516
+    } else {if (L <= 0.02225 ){b <-0.6184
+    } else b <- 0.6206 } 
   
   Nu = a * Re^b    # Nusselt number
   hc = a*Ka*((u/v)^b)*(L^(b-1)) # Heat transfer coefficient (W m^-2 K^-1)
