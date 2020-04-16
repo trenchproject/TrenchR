@@ -1,4 +1,6 @@
 #' Predicts body temperature (operative environmental temperature) of a mussel bed in °C.
+#' 
+#' 
 #' @details Predicts body temperature of a mussel in °C.
 #' @description Predicts body temperature of a mussel in °C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Helmuth 1999. Thermal biology of rocky intertidal mussels: quantifying body temperatures using climatological data. Ecology 80:15-34.
 #' @param T_a air temperature (°C) at 4m

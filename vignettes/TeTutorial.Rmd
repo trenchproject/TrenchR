@@ -516,17 +516,16 @@ legend("bottomright",title= expression("direct radiation, H"), legend=c(200,400,
 
 We adapted a biophysical model for intertidal mussels that was developed by Helmuth [-@helmuth1998intertidal] to predict mussel body temperature $T_b (K)$ based on environmental conditions, body size (height and length) and whether the mussel is solitary or aggregated. The amount of heat stored within a mussel body $Q_{stored} (W)$ can be described as
 $$Q_{stored} = Q_{sol} \pm Q_{rad,sky} \pm Q_{rad, ground} \pm Q_{cond} \pm Q_{conv} - Q_{evap} \tag{1}$$
-where $Q_{sol} (W)$ is the short-wave solar radiation to the mussel, $Q_{rad,sky} (W)$, $Q_{rad,ground} (W)$ are the infrared radiation between the mussel and the sky, and between the mussel and the surroundings, $Q_{conv} (W)$ is the convective heat exchange, $Q_{cond} (W)$ is the conduction to and from the ground, and $Q_{evap} (W)$ is the evaporative cooling from water loss [@helmuth1998intertidal].
-Since $Q_{stored} (W)$ is a product of mass ($m$), specific heat ($c$), and body temperature ($T_b$), the rate of change of stored heat can be expressed as $Q_{stored} = d(mcT_b)/dt$.
+where $Q_{sol} (W)$ is the short-wave solar radiation to the mussel, $Q_{rad,sky} (W)$, $Q_{rad,ground} (W)$ are the infrared radiation between the mussel and the sky, and between the mussel and the surroundings, $Q_{conv} (W)$ is the convective heat exchange, $Q_{cond} (W)$ is the conduction to and from the ground, and $Q_{evap} (W)$ is the evaporative cooling from water loss [@helmuth1998intertidal]. Since $Q_{stored} (W)$ is a product of mass ($m$), specific heat ($c$), and body temperature ($T_b$), the rate of change of stored heat can be expressed as $Q_{stored} = d(mcT_b)/dt$.
 
 We calculate $Q_{sol}$ from $Q_{sol} = \frac{\alpha}{sin\theta} A_{sol}S$ where $\alpha$ is the solar absorptivity, $\theta$ is the solar elevation angle (radian), $A_{sol}$ is the mussel area in direction of the sun ($m^2$), $S$ is the direct solar flux density on the area [@helmuth1998intertidal]. 
 
 $Q_{rad,sky}$ and $Q_{rad,ground}$ can be calculated as follows [@helmuth1998intertidal].
 $$Q_{rad,sky} = \sigma A_{rad,sky}(\varepsilon_{org}T_b^4-\varepsilon_skyT_a^4) \tag{2}$$
 $$Q_{rad,ground} = \sigma A_{rad,ground}(\varepsilon_{org}T_b^4-\varepsilon_{surr}T_g^4) \tag{3}$$
-Here, $\sigma$ is the Stefan-Boltzman constant ($5.66 \times 10^{-8}$), $T_a$ and $T_g$ are air and ground temperatures, respectively, and $A_{rad,sky}$ and $A_{rad,ground}$ are surface area subject to long-wave radiation from sky and ground respectively, both of which are simplified as half of the total surface area due to the nature of mussels. $\varepsilon_{org}$ and $\varepsilon_{surr}$ are the longwave thermal emissivities of the organism and its surroundings, which are roughly around 0.97. $\varepsilon_{sky}$ represents a functional infrared emissivity of the sky, which varies by air temperature and cloud cover.
-In Environmental Biophysics [@campbell2012introduction], $\varepsilon_{sky}$ is given by $\varepsilon_{sky}=(1 - 0.84 \times c)(9.2 \times 10^{-6} \times T_a^2) + 0.84 \times c$ where $c$ represents the fraction of the sky covered by cloud.
-Using Taylor series approximation, equations (2) and (3) become
+Here, $\sigma$ is the Stefan-Boltzman constant ($5.66 \times 10^{-8}$), $T_a$ and $T_g$ are air and ground temperatures, respectively, and $A_{rad,sky}$ and $A_{rad,ground}$ are surface area subject to long-wave radiation from sky and ground respectively, both of which are simplified as half of the total surface area due to the nature of mussels. $\varepsilon_{org}$ and $\varepsilon_{surr}$ are the longwave thermal emissivities of the organism and its surroundings, which are roughly 0.97. $\varepsilon_{sky}$ represents a functional infrared emissivity of the sky, which varies by air temperature and cloud cover.
+
+In Environmental Biophysics [@campbell2012introduction], $\varepsilon_{sky}$ is given by $\varepsilon_{sky}=(1 - 0.84 \times c)(9.2 \times 10^{-6} \times T_a^2) + 0.84 \times c$ where $c$ represents the fraction of the sky covered by cloud. Using Taylor series approximation, equations (2) and (3) become
 $$Q_{rad,sky} = 4.0\varepsilon_{org}\varepsilon_{sky}^{3/4}\sigma A_{rad,sky}T_a^3(T_b-\varepsilon_{sky}^{1/4}T_a)$$
 $$Q_{rad,ground} = 4.0\varepsilon_{org}\sigma A_{rad,ground}T_g^3(T_b-T_g)$$
 
@@ -534,11 +533,11 @@ Heat conduction $Q_{cond}$ can be calculated as $Q_{cond} = \frac{k_b}{0.5H}A_{c
 
 Convective heat flux ($Q_{conv}$) can be calculated from $Q_{conv}=h_cA_{conv}(T_b-T_a)$ where $h_c$ is the coefficient for forced convection and $A_{conv}$ is total surface area exposed to convective heat loss [@helmuth1998intertidal]. We calculate the value of $h_c$ using three empirical formulas relating Nusselt numbers and Reynolds numbers: $Nu = \frac{h_c L}{K_a}$, $Re = \frac{uL}{v}$ and $Nu = aRe^b$, where $L$ is the length of the mussel, $K_a$ is the conductivity of air $K_a = 0.00501 + 7.2 \times10^{–5}T_a (W·m^{–1}·K^{–1})$, $u$ is the wind speed (m/s), and $v$ is the kinematic viscosity of air $v = -1.25 \times 10^{-5} + 9.2 \times 10^{-8} T_a$ [@denny2006hot]. $A_{conv}$ can be assumed equal to the total surface area. The authors empircally acquired $a$ and $b$ in the formula to obtain $Nu$, which vary depending on the position and the state of the mussels. For solitary mussels, $a = 0.38$ and $b = 0.51$ if the anterior or posterior end are facing upwind, and $a = 0.63$ and $b = 0.47$ if the valve is facing upwind. The values were measured to be $a = 0.67$, $b = 0.42$ for aggregated mussels [@helmuth1998intertidal].
 
-Lastly, $Q_{evap} = \lambda \dot{m}$ where $\lambda$ is the latent heat of vaporization of water ($J/kg$) and $\dot{m}$ is the rate of water loss [@helmuth1998intertidal]. $\dot{m} = h_m \cdot A_{evap} \cdot (\rho_{body} - \rho_{air})$ where $h_m$ is a coefficient of mass transfer ($m/s$), $A_{evap}$ is the area of mass exchange ($m^2$) and $\rho$ is the vapor density ($kg m^{-3}$).
+Lastly, $Q_{evap} = \lambda \dot{m}$ where $\lambda$ is the latent heat of vaporization of water ($J/kg$) and $\dot{m}$ is the rate of water loss [@helmuth1998intertidal]. We use empirical measurements of maximum rates of water loss before dessication occures to model evaporation.
 
 For simplicity, `Tb_mussel` function examines the steady-state (equilibrium) body temperature of an organism exposed over long periods of time to constant environmental conditions. See Helmuth [-@helmuth1998intertidal] for the transient model. Inserting the values in equation (1) and solving for $T_b$ gives us the following equation.
 $$T_{b,steady} = (k_1 A_{sol} S + k_2 A_{rad,sky} k_3 T_a^4 + k_4 A_{rad,ground} T_g^4 + k_5 A_{cond} T_g + h_c A_{conv} T_a - \lambda\dot{m}) / $$
-$$(k_2 A_{rad,sky} T_a^3 + k_4 A_{rad, ground} T_g^3 + k_5 A_{cond} + h_c A_{conv} - \dot{m}c)$$
+$$(k_2 A_{rad,sky} T_a^3 + k_4 A_{rad, ground} T_g^3 + k_5 A_{cond} + h_c A_{conv} + \dot{m}c)$$
 Here, $k_1$ to $k_5$ are physical constants and measured coefficients.
 
 We provide the operative temperature model as follows.
@@ -557,7 +556,7 @@ abline(a=0,b=1, col="gray")
 legend("bottomright",title= expression("Wind speed, m/s"), legend=c(0.2,1,2), lty=c("solid", "dashed","dotted") )
 ```
 
-We also illustrate how the model can be applied to investigate the effect of mussel size and evaporation. The red line indicates the effect of evaporative heat loss.
+We also illustrate how the model can be applied to investigate the effect of mussel size and evaporation as in Helmuth [-@helmuth1998intertidal]. The red line indicates the effect of evaporative heat loss.
 ```{r, fig.height=4, fig.width=6}
 
 t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 0.5, psi =60, evap = FALSE, cl = 0, group = "solitary")

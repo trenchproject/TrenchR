@@ -1,4 +1,6 @@
 #' Predicts body temperature (operative environmental temperature) of a marine snail in °C.
+#' 
+#' 
 #' @details Predicts body temperature of a snail in °C.
 #' @description Predicts body temperature of a snail in °C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Iacarella and Helmuth 2012. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication. 
 #' @param Len snail length (m)
