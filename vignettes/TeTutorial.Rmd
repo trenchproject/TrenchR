@@ -577,16 +577,16 @@ legend("bottomright",title= expression("Wind speed, m/s"), legend=c(0.5,1,3), lt
 TrenchR also provides a version of the model modified for mussel beds [@helmuth1999thermal]. The red line indicates the effect of evaporative heat loss.
 ```{r, fig.height=4, fig.width=6}
 
-t.seq <- lapply(20:40, FUN = Tbed_mussel, L = 0.1, S=500, k_d=0.2, u = 0.2, evap = FALSE)
+t.seq <- lapply(20:40, FUN = Tbed_mussel, S=500, k_d=0.2, u = 0.2, evap = FALSE)
 plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(20, 50))
 
-t.seq <- lapply(20:40, FUN = Tbed_mussel, L = 0.1, S=500, k_d=0.2, u = 1, evap = FALSE)
+t.seq <- lapply(20:40, FUN = Tbed_mussel, S=500, k_d=0.2, u = 1, evap = FALSE)
 points(20:40, t.seq, type = "l", lty = "dashed")
 
-t.seq <- lapply(20:40, FUN = Tbed_mussel, L = 0.1, S=500, k_d=0.2, u = 2, evap = FALSE)
+t.seq <- lapply(20:40, FUN = Tbed_mussel, S=500, k_d=0.2, u = 2, evap = FALSE)
 points(20:40, t.seq, type = "l", lty = "dotted")
 
-t.seq <- lapply(20:40, FUN = Tbed_mussel, L = 0.1, S=500, k_d=0.2, u = 0.2, evap = TRUE)
+t.seq <- lapply(20:40, FUN = Tbed_mussel, S=500, k_d=0.2, u = 0.2, evap = TRUE)
 points(20:40, t.seq, type = "l", lty = "solid", col="red")
 
 abline(a=0,b=1, col="gray")
