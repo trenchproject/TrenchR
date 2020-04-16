@@ -24,7 +24,6 @@ Tbed_mussel = function(L = 0.1, T_a, S, k_d, u, evap=FALSE, cl=NA){
   stopifnot(L >= 0, S >= 0, k_d>=0, k_d<=1, u>0, evap %in% c("TRUE","FALSE") )
   
   T_a = T_a + 273.15   # conversion to kelvin
-  T_g = T_g + 273.15   # conversion to kelvin
   
   # constants
   sigma = 5.67 * 10^-8   # stefan-boltzmann constant (W m^-2 K^-4)
