@@ -3,6 +3,7 @@
 #' 
 #' @details Predicts body temperature of a mussel in °C.
 #' @description Predicts body temperature of a mussel in °C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Helmuth 1999. Thermal biology of rocky intertidal mussels: quantifying body temperatures using climatological data. Ecology 80:15-34.
+#' @param L mussel length (anterior/posterior axis) (m)
 #' @param T_a air temperature (°C) at 4m
 #' @param S direct solar flux density (W/m2)
 #' @param k_d diffuse fraction, proportion of solar radiation that is diffuse
@@ -15,12 +16,12 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' Tbed_mussel(T_a = 25, S=500, k_d=0.2, u = 1, evap = FALSE)
+#' Tbed_mussel(L = 0.1, T_a = 25, S=500, k_d=0.2, u = 1, evap = FALSE)
 #' }
 
-Tbed_mussel = function(T_a, S, k_d, u, evap=FALSE, cl=NA){
+Tbed_mussel = function(L = 0.1, T_a, S, k_d, u, evap=FALSE, cl=NA){
   
-  stopifnot(L > 0, S >= 0, k_d>=0, k_d<=1, u>0, evap %in% c("TRUE","FALSE") )
+  stopifnot(L >= 0, S >= 0, k_d>=0, k_d<=1, u>0, evap %in% c("TRUE","FALSE") )
   
   T_a = T_a + 273.15   # conversion to kelvin
   T_g = T_g + 273.15   # conversion to kelvin
