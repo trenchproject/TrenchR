@@ -24,7 +24,7 @@
 #' Tb_mussel(L = 0.1, H = 0.05, T_a = 25, T_g = 30, S=500, k_d=0.2, u = 2, psi = 30, evap = FALSE, cl = 0.5, group = "solitary")
 #' }
 
-Tb_mussel = function(L, H, T_a, T_g, S, k_d, u, p, psi, evap=FALSE, rho_diff = 0.05, cl, group = "solitary"){
+Tb_mussel = function(L, H, T_a, T_g, S, k_d, u, psi, evap=FALSE, cl, group = "solitary"){
   
   stopifnot(L > 0, H > 0, u >= 0, psi >= 0, psi <= 90, evap %in% c("TRUE","FALSE"), cl >= 0, cl <= 1, group %in% c("aggregated", "solitary", "solitary_valve"))
   
