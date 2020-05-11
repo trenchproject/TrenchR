@@ -4,8 +4,8 @@
 \alias{Tb_mussel}
 \title{Predicts body temperature (operative environmental temperature) of a mussel in °C.}
 \usage{
-Tb_mussel(L, H, T_a, T_g, S, k_d, u, p, psi, evap = FALSE,
-  rho_diff = 0.05, cl, group = "solitary")
+Tb_mussel(L, H, T_a, T_g, S, k_d, u, psi, evap = FALSE, cl,
+  group = "solitary")
 }
 \arguments{
 \item{L}{mussel length (anterior/posterior axis) (m)}
