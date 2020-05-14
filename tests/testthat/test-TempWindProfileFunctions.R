@@ -16,10 +16,6 @@ test_that("air_temp_profile_neutral function works as expected", {
   expect_similar(air_temp_profile_neutral(T_r=20, zr=0.1, z0=0.2, z=0.15, T_s=25), 18.09909)
 })
 
-test_that("wind_speed_profile function works as expected", {
-  expect_similar(wind_speed_profile(u_r=0.1, zr=0.1, z0=0.2, z=0.15), 0.1380182)
-})
-
 test_that("air_temp_profile function works as expected", {
   expect_similar(air_temp_profile(T_r=20, u_r=0.1, zr=0.1, z0=0.2, z=0.15, T_s=25), 18.3358)
 })

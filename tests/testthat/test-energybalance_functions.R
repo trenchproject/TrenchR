@@ -131,7 +131,7 @@ test_that("Nu_from_Gr function works as expected", {
 })
 
 test_that("Free_or_forced_convection function works as expected", {
-  expect_identical(Free_or_forced_convection(Gr=100, Re=5), "intermediate condition, mixed convection based on Nusselt numerbers is appropriate")
+  expect_identical(Free_or_forced_convection(Gr=100, Re=5), "intermediate condition, mixed convection based on Nusselt numbers is appropriate")
   expect_identical(Free_or_forced_convection(1,10), "forced convection")
   expect_identical(Free_or_forced_convection(1000,1), "free convection")
 })

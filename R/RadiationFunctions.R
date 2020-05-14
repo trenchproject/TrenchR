@@ -137,8 +137,6 @@ monthly_solar_radiation= function(lat,lon,doy,elev,T,Hr,P){
 
   stopifnot(lat>=-90, lat<=90, lon>-180, lon<=180, doy>0, doy<367, elev>0, Hr>=0, Hr<=100, P>0)
   
-  library(msm) #for rtnorm
-  
   rd=180/pi;  # factor to convert radians into degrees
   
   #functions to calculate sin and cos for angles in degrees
@@ -185,7 +183,7 @@ monthly_solar_radiation= function(lat,lon,doy,elev,T,Hr,P){
   alpha= 32.9835 - 64.88411*(1 - 1.3614*cos.deg(lat))
   
   #VARY CLOUDINESS: USE CLOUDINESS DATA TO ESTIMATE MEAN AND SD
-  C1=rtnorm(1, mean = C, sd =1.5, lower=0, upper=10)
+  C1=msm::rtnorm(1, mean = C, sd =1.5, lower=0, upper=10)
   
   #Average portion of the sky covered by clouds (Bonan 1988)
   R = R_0*( beta - omega *C1) -alpha
