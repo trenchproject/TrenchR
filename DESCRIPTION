@@ -22,7 +22,8 @@ VignetteBuilder: knitr
 Depends: R (>= 3.3.1)
 Imports:
   zoo,
-  msm
+  msm,
+  deSolve
 Suggests:
     testthat,
     knitr,
