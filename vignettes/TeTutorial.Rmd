@@ -533,7 +533,7 @@ Heat conduction $Q_{cond}$ can be calculated as $Q_{cond} = \frac{k_b}{0.5H}A_{c
 
 Convective heat flux ($Q_{conv}$) can be calculated from $Q_{conv}=h_cA_{conv}(T_b-T_a)$ where $h_c$ is the coefficient for forced convection and $A_{conv}$ is total surface area exposed to convective heat loss [@helmuth1998intertidal]. We calculate the value of $h_c$ using three empirical formulas relating Nusselt numbers and Reynolds numbers: $Nu = \frac{h_c L}{K_a}$, $Re = \frac{uL}{v}$ and $Nu = aRe^b$, where $L$ is the length of the mussel, $K_a$ is the conductivity of air $K_a = 0.00501 + 7.2 \times10^{–5}T_a (W·m^{–1}·K^{–1})$, $u$ is the wind speed (m/s), and $v$ is the kinematic viscosity of air $v = -1.25 \times 10^{-5} + 9.2 \times 10^{-8} T_a$ [@denny2006hot]. $A_{conv}$ can be assumed equal to the total surface area. The authors empircally acquired $a$ and $b$ in the formula to obtain $Nu$, which vary depending on the position and the state of the mussels. For solitary mussels, $a = 0.38$ and $b = 0.51$ if the anterior or posterior end are facing upwind, and $a = 0.63$ and $b = 0.47$ if the valve is facing upwind. The values were measured to be $a = 0.67$, $b = 0.42$ for aggregated mussels [@helmuth1998intertidal].
 
-Lastly, $Q_{evap} = \lambda \dot{m}$ where $\lambda$ is the latent heat of vaporization of water ($J/kg$) and $\dot{m}$ is the rate of water loss [@helmuth1998intertidal]. We use empirical measurements of maximum rates of water loss before dessication occures to model evaporation.
+Lastly, $Q_{evap} = \lambda \dot{m}$ where $\lambda$ is the latent heat of vaporization of water ($J/kg$) and $\dot{m}$ is the rate of water loss [@helmuth1998intertidal]. In this model, we assume the rate of water loss to be 5% of initial body mass per hour only when the mussels are gaping.
 
 For simplicity, `Tb_mussel` function examines the steady-state (equilibrium) body temperature of an organism exposed over long periods of time to constant environmental conditions. See Helmuth [-@helmuth1998intertidal] for the transient model. Inserting the values in equation (1) and solving for $T_b$ gives us the following equation.
 $$T_{b,steady} = (k_1 A_{sol} S + k_2 A_{rad,sky} k_3 T_a^4 + k_4 A_{rad,ground} T_g^4 + k_5 A_{cond} T_g + h_c A_{conv} T_a - \lambda\dot{m}) / $$
@@ -542,13 +542,13 @@ Here, $k_1$ to $k_5$ are physical constants and measured coefficients.
 
 We provide the operative temperature model as follows.
 ```{r, fig.height=4, fig.width=6}
-t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, S=500, k_d=0, u = 0.2, psi =60, evap = TRUE, cl = 0, group = "solitary")
-plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(20, 40))
+t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, S=500, k_d=0.2, u = 0.2, psi =30, evap = TRUE, cl = 0.5, group = "solitary")
+plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(25, 45))
 
-t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, S=500, k_d=0, u = 1, psi =60, evap = TRUE, cl = 0, group = "solitary")
+t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, S=500, k_d=0.2, u = 1, psi =30, evap = TRUE, cl = 0.5, group = "solitary")
 points(20:40, t.seq, type = "l", lty = "dashed")
 
-t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, S=500, k_d=0, u = 2, psi =60, evap = TRUE, cl = 0, group = "solitary")
+t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, S=500, k_d=0.2, u = 2, psi =30, evap = TRUE, cl = 0.5, group = "solitary")
 points(20:40, t.seq, type = "l", lty = "dotted")
 
 abline(a=0,b=1, col="gray")
@@ -599,7 +599,7 @@ Additionally, land surface models have been modified to predict mussel bed tempe
 
 We adapted a biophysical model `Tb_Limpet()` from Denny and Harley [-@denny2006hot] to predict the body temperature of limpets based on body size (length and height), environmental conditions and the position of the limpet. We note that our implementation is simplified from the original. In this model, the shape of the limpet is approximated to a cone of radius $r$ and height $H$.
 
-The rate at which energy is stored within the organism ($W_{stored} (W)$) is influenced by several heat exchange processes. The processes include the rate of heat absorbed from short-wave radiation ($W_{sw} (W)$), net heat transferred by long-wave radiation ($W_{lw} (W)$), rate of heat transferred by conduction and convection ($W_{cd} (W)$ and $W_{cv} (W)$). We neglected heat gain by metabolism due to the limpets' low metabolic rate. We likewise omitted evaporative heat loss assuming that the limpet has its shell firmly clamped against the substratum, which limits evaporation.
+The rate at which energy is stored within the organism $W_{stored} (W)$ is influenced by several heat exchange processes. The processes include the rate of heat absorbed from short-wave radiation $W_{sw} (W)$, net heat transferred by long-wave radiation $W_{lw} (W)$, rate of heat transferred by conduction and convection $W_{cd} (W)$ and $W_{cv} (W)$. We neglected heat gain by metabolism due to the limpets' low metabolic rate. We likewise omitted evaporative heat loss assuming that the limpet has its shell firmly clamped against the substratum, which limits evaporation.
 
 The rate at which solar radiation provides heat is defined as
 $$W_{sw} = A_p\alpha_{sw}I_{sw}$$
@@ -648,7 +648,7 @@ abline(a=0,b=1, col="gray")
 legend("bottomright",title= expression("Solar irradiance, W/m^2"), legend=c(1000, 1300, 1600), lty=c("solid", "dashed","dotted") )
 ```
 
-TrenchR also provides a version two versions of the limpet model modified by the Helmuth Lab. The first modifies radiation and convection in the function for limpets: `Tb_limpetBH`. The second modifies the function to predict snail body temperatures `Tb_snail`.
+TrenchR also provides two other versions of the limpet model modified by the Helmuth Lab. The first modifies radiation and convection in the function for limpets: `Tb_limpetBH`. The second modifies the function to predict snail body temperatures `Tb_snail`.
 
 ## Salamander
 
