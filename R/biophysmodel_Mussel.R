@@ -117,25 +117,4 @@ Tb_mussel = function(L, H, T_a, T_g, S, k_d, u, psi, evap=FALSE, cl, group = "so
                                                     hc * A_conv + mflux * c)
   
   return (T_b - 273.15)
-}  
-
-t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, S=500, k_d=0, u = 1, psi =60, evap = FALSE, cl = 0, group = "solitary")
-plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)")
-
-t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, S=500, k_d=0, u = 1, psi =60, evap = TRUE, cl = 0, group = "solitary")
-points(20:40, t.seq, type = "l", lty="dashed")
-
-abline(a=0,b=1, col="gray")
-
-#----
-t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 1, psi =60, evap = FALSE, cl = 0, group = "solitary")
-plot(seq(0.02,0.14,0.01), t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim=c(25,32))
-
-t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 0.5, psi =60, evap = FALSE, cl = 0, group = "solitary")
-points(seq(0.02,0.14,0.01), t.seq, type = "l", lty="dashed")
-
-t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 3, psi =60, evap = FALSE, cl = 0, group = "solitary")
-points(seq(0.02,0.14,0.01), t.seq, type = "l", lty="dotted")
-
-t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 1, psi =60, evap = TRUE, cl = 0, group = "solitary")
-points(seq(0.02,0.14,0.01), t.seq, type = "l", col="red")
+}

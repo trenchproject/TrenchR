@@ -4,10 +4,10 @@
 #' @details Predicts body temperature of a mussel in °C.
 #' @description Predicts body temperature of a mussel in °C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Helmuth 1999. Thermal biology of rocky intertidal mussels: quantifying body temperatures using climatological data. Ecology 80:15-34.
 #' @param L mussel length (anterior/posterior axis) (m)
-#' @param T_a air temperature (°C) at 4m
+#' @param T_a air temperature at 4 m above ground (°C)
 #' @param S direct solar flux density (W/m2)
 #' @param k_d diffuse fraction, proportion of solar radiation that is diffuse
-#' @param u wind speed (m/s) at 4m
+#' @param u wind speed at 4 m above ground (m/s)
 #' @param evap Are mussels gaping to evaporatively cool? TRUE of FALSE (default), If TRUE, assumes constant mass loss rate of 5% of initial body mass per hour 
 #' @param cl fraction of the sky covered by cloud, optional
 #' @return predicted body temperature (°C)

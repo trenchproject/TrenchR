@@ -4,13 +4,11 @@
 #' @details Predicts body temperature of a snail in °C.
 #' @description Predicts body temperature of a snail in °C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Iacarella and Helmuth 2012. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication. 
 #' @param Len snail length (m)
-#' @param TH tide height (m)
 #' @param temp air temperature (°C)
 #' @param solar direct solar flux density (W/m2)
 #' @param WS wind speed (m/s)
 #' @param CC fraction of the sky covered by cloud (0-1)
 #' @param WL water loss rate (kg/s), 5% loss of body mass over one hour is a reasonable maximum level (Helmuth 1999)
-#' @param ESL effective shore level (wave) slope
 #' @param WSH wind sensor height (m)
 #' @return predicted body temperature (°C)
 #' @keywords body temperature, biophysical model
@@ -19,12 +17,12 @@
 #' @author Helmuth Lab
 #' @examples
 #' \dontrun{
-#' Tb_snail(Len = 0.012, TH = 1.5, temp = 25, solar=800, WS=1, CC=0.5, WL=0, ESL=0.25, WSH=10)
+#' Tb_snail(Len = 0.012, temp = 25, solar=800, WS=1, CC=0.5, WL=0, WSH=10)
 #' }
 
-Tb_snail = function(Len, TH, temp, solar, WS, CC, WL, ESL, WSH){
+Tb_snail = function(Len, temp, solar, WS, CC, WL, WSH){
   
-  stopifnot(Len>0, TH>=0, solar>=0, WS>= 0, CC>=0, CC<=1, WL>=0, WSH>=0)
+  stopifnot(Len>0, solar>=0, WS>= 0, CC>=0, CC<=1, WL>=0, WSH>=0)
   
   #temperatures
   Ktemp <- temp + 273 #temperature in Kelvin
@@ -59,7 +57,7 @@ Tb_snail = function(Len, TH, temp, solar, WS, CC, WL, ESL, WSH){
   } else Abs <- 0.68 } 
   
   # emissivities
-  eskyclear = 0.72 +0.005*(temp-273) # Helmuth 1999 from Idso and Jackson 1969
+  eskyclear = 0.72 +0.005*temp # Helmuth 1999 from Idso and Jackson 1969
   esky <- eskyclear + CC*(1 - eskyclear - (8 / Ktemp))  # Helmuth 1999
   Emm <- 0.97 # Emmissivity # long-wave emissivity shell
   
