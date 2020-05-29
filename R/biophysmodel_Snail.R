@@ -3,8 +3,8 @@
 #' 
 #' @details Predicts body temperature of a snail in °C.
 #' @description Predicts body temperature of a snail in °C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Iacarella and Helmuth 2012. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication. 
-#' @param Len snail length (m)
 #' @param temp air temperature (°C)
+#' @param Len snail length (m)
 #' @param solar direct solar flux density (W/m2)
 #' @param WS wind speed (m/s)
 #' @param CC fraction of the sky covered by cloud (0-1)
@@ -14,13 +14,13 @@
 #' @keywords body temperature, biophysical model
 #' @family biophysical models
 #' @export
-#' @author Helmuth Lab
+#' @author Brian Helmuth Lab
 #' @examples
 #' \dontrun{
-#' Tb_snail(Len = 0.012, temp = 25, solar=800, WS=1, CC=0.5, WL=0, WSH=10)
+#' Tb_snail(temp = 25, Len = 0.012, solar=800, WS=1, CC=0.5, WL=0, WSH=10)
 #' }
 
-Tb_snail = function(Len, temp, solar, WS, CC, WL, WSH){
+Tb_snail = function(temp, Len, solar, WS, CC, WL, WSH){
   
   stopifnot(Len>0, solar>=0, WS>= 0, CC>=0, CC<=1, WL>=0, WSH>=0)
   

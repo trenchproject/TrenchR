@@ -650,22 +650,21 @@ legend("bottomright",title= expression("Solar irradiance, W/m^2"), legend=c(1000
 
 TrenchR also provides two other versions of the limpet model modified by the Helmuth Lab. The first modifies radiation and convection in the function for limpets: `Tb_limpetBH`. The second modifies the function to predict snail body temperatures `Tb_snail`.
 
+We illustrate the functions below:
 ```{r, fig.height=4, fig.width=6}
 
-#TESTING
-
-t.seq <- lapply(20:40, FUN = Tb_limpet, T_r = 30, L = 0.0176, H = 0.0122, I = 1000, u = 1, psi = 30, c = 1, position = "anterior")
+t.seq <- lapply(20:40, FUN = Tb_limpet, T_r = 30, L = 0.0176, H = 0.0122, I = 800, u = 1, psi = 30, c = 1, position = "anterior")
 plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(25, 50))
 
-#FIX PSI, check Solar angle
-t.seq <- lapply(20:40, FUN = Tb_limpetBH, T_r = 30, L = 0.0176, H = 0.0122, I = 1300, u = 1, s_aspect = 280, s_slope=60, c = 1, position = "anterior")
+t.seq <- lapply(20:40, FUN = Tb_limpetBH, T_r = 30, L = 0.0176, H = 0.0122, I = 800, u = 1, s_aspect = 90, s_slope=60, c = 1)
 points(20:40, t.seq, type = "l", lty = "dashed")
+
+t.seq <- lapply(20:40, FUN = Tb_snail, Len = 0.012, solar=800, WS=1, CC=0.5, WL=0, WSH=10)
+points(20:40, t.seq, type = "l", lty = "dotted")
 
 abline(a=0,b=1, col="gray")
 
-#CHECK ROCK TEMP
-
-legend("bottomright",title= expression("Solar irradiance, W/m^2"), legend=c(1000, 1300, 1600), lty=c("solid", "dashed","dotted") )
+legend("bottomright",title= expression("function"), legend=c("Tb_limpet", "Tb_limpetBH", "Tb_Snail"), lty=c("solid", "dashed","dotted") )
 ```
 
 

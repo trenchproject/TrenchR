@@ -7,21 +7,24 @@
 #' @param H limpet height (dorsal/ventral axis) (m)
 #' @param I solar irradiance (W m^-2)
 #' @param u wind speed (m/s)
-#' @param s_aspect solar aspect (degree)
-#' @param s_slope solar elevation (degree)
+#' @param s_aspect solar aspect angle (degree), the angle between the limpet's length dimension and the vector to the Sun. Between 70 and 110 degrees
+#' @param s_slope solar elevation angle (degree), the altitude of the Sun, which is the angle between the horizon and the sun
 #' @param c fraction of the sky covered by cloud 
 #' @return predicted body temperature (°C)
 #' @keywords body temperature, biophysical model
 #' @family biophysical models
 #' @export
+#' @author Brian Helmuth lab 
 #' @examples
 #' \dontrun{
-#' Tb_limpetBH(T_a = 25, T_r = 30, L = 0.0176, H = 0.0122, I = 1300, u = 1, s_aspect = 280, s_slope=60, c = 1)
+#' Tb_limpetBH(T_a = 25, T_r = 30, L = 0.0176, H = 0.0122, I = 1300, u = 1, s_aspect = 90, s_slope=60, c = 1)
 #' }
 
 Tb_limpetBH = function(T_a, T_r, L, H, I, u, s_aspect, s_slope, c, position = "anterior"){
   
   stopifnot(L > 0, H > 0, I > 0, u >= 0, s_slope >= 0, s_slope <= 90, c >= 0, c <= 1)
+  
+  if(s_aspect<70 | s_aspect>110)stop("Solar aspect angle should be between 70 and 110 degrees")
   
   s_aspect = s_aspect * pi / 180 # covert to radians
   s_slope = s_slope * pi / 180 # covert to radians
@@ -43,10 +46,7 @@ Tb_limpetBH = function(T_a, T_r, L, H, I, u, s_aspect, s_slope, c, position = "a
   # Short wave heat transfer
   
   # Area of the limpet’s shell (m^2) projected in the direction at which sunlight strikes the organism (Pennell and Deignan 1989)
-  Ap = pi * r^2 * cos(psi)
-  if (tan(psi) < r / H) {
-    Ap = Ap + H * r * sin(psi) - pi * r^2 / 2 * cos(psi)
-  }
+  Ap = pi * r^2 
   
   ## short-wave absorptivity of the shell (the fraction of light energy that is absorbed) 0.615, 0.68, 0.689
   if (L >=0.037){  # Absorptivity from Luke Miller 
@@ -60,7 +60,7 @@ Tb_limpetBH = function(T_a, T_r, L, H, I, u, s_aspect, s_slope, c, position = "a
   # Long-wave energy transfer
   
   # View factor. (Campbell and Norman 1998) simulating limpets as a cone.
-  Vs = cos(psi) * r / sqrt(r^2 + H^2)
+  Vs = 0.7
     
   Al = pi * r * sqrt(H^2 + r^2) # lateral area of a limpet shell (m^2)
   eps_ws = 0.97  #  long-wave emissivity of the shell
