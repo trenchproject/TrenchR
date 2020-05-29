@@ -659,18 +659,26 @@ points(0:40, saturation_vapor_pressure(T_a=273:(40+273)), type="l", lty="dashed"
 
 ```{r, fig.height=4, fig.width=6}
 par(mar=c(5,5,3,2))
-blr.seq= lapply(293:313, FUN=boundary_layer_resistance, e_s=2.4, e_a=2.5, elev=500, D=0.007, u=2)
+blr.seq= lapply(293:313, FUN=boundary_layer_resistance, e_s=2.5, e_a=2.3, elev=500, D=0.007, u=2)
 plot(293:313, blr.seq, type = "l", xlab = "air temperature (K)", ylab = expression("boundary layer resistance" ~ (s ~ cm^{-1})))
-blr.seq= lapply(sqrt(5:20), FUN=boundary_layer_resistance, T_a=293, e_s=2.4, e_a=2.5, elev=500, u=2)
+blr.seq= lapply(sqrt(5:20), FUN=boundary_layer_resistance, T_a=293, e_s=2.5, e_a=2.3, elev=500, u=2)
 plot(sqrt(5:20), blr.seq, type = "l", xlab = "diameter (m)", ylab = expression("boundary layer resistance" ~ (s ~ cm^{-1})))
-#APPROXIMATELY CHECKED
 ```
 
 
 ```{r, fig.height=4, fig.width=6}
-t.seq= lapply(20:40, FUN=Tb_salamander_humid, r_i=4,r_b=1,D=0.01,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
+t.seq= lapply(20:40, FUN=Tb_salamander_humid, r_i=4,r_b=1,D=0.01,elev=500,e_a=1.5,e_s=2.5,Qabs=400, epsilon=0.96)
 plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "humid operative temperature (°C)")
 abline(a=0, b=1, lty="dotted")
+
+#check higher skin resistance-> Te closer to air due to reduced cooling
+t.seq= lapply(20:40, FUN=Tb_salamander_humid, r_i=20,r_b=1,D=0.01,elev=500,e_a=1.5,e_s=2.5,Qabs=400, epsilon=0.96)
+points(20:40, t.seq, type = "l", col="red")
+
+#check higher vpd-> lower Te due to greater cooling
+t.seq= lapply(20:40, FUN=Tb_salamander_humid, r_i=4,r_b=1,D=0.01,elev=500,e_a=1.0,e_s=2.5,Qabs=400, epsilon=0.96)
+points(20:40, t.seq, type = "l", col="blue")
+
 #CHECK WITH ERIC?
 ```
 

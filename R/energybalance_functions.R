@@ -539,6 +539,8 @@ boundary_layer_resistance<-function(T_a, e_s, e_a, elev, D, u=NA){
   
   stopifnot(T_a>200, T_a<400, e_s>0, e_a>0, elev>0, D>0)
   
+  if(e_s<e_a) stop("Actual vapor pressure, e_a, must be lower that saturation vapor pressure, e_s.")
+  
   #constant
   gravity = 9.8 #meters per second
   
@@ -606,10 +608,12 @@ Tb_salamander_humid<-function(r_i,r_b,D,T_a,elev,e_a, e_s,Qabs, epsilon=0.96){
   
   stopifnot(r_i>0,r_b>0,D>0,elev>0,e_s>0,e_a>0,epsilon>0.5,epsilon<=1)
   
+  if(e_s<e_a) stop("Actual vapor pressure, e_a, must be lower that saturation vapor pressure, e_s.")
+  
   #Stefan-Boltzmann constant
   sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
   
-  vpd= e_a - e_s #vapor pressure deficit
+  vpd= e_s -e_a #vapor pressure deficit
   
   #radiative conductance function, Campbell and Norman 1998
   radiative_conductance= (4*(5.670373*10^-8)*(T_a+273.15)^3)/29.3
