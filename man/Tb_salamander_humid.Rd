@@ -37,7 +37,7 @@ This function allows you to calculate humid operative temperature (adaptation of
 }
 \examples{
 \dontrun{
-Tb_salamander_humid(r_i=4,r_b=1,D=0.01,T_a=20,elev=500,e_a=2.5,e_s=2.3,Qabs=400, epsilon=0.96)
+Tb_salamander_humid(r_i=4,r_b=1,D=0.01,T_a=20,elev=500,e_a=2.0,e_s=2.5,Qabs=400, epsilon=0.96)
 }
 
 }

@@ -20,9 +20,9 @@ Tb_limpetBH(T_a, T_r, L, H, I, u, s_aspect, s_slope, c,
 
 \item{u}{wind speed (m/s)}
 
-\item{s_aspect}{solar aspect (degree)}
+\item{s_aspect}{solar aspect angle (degree), the angle between the limpet's length dimension and the vector to the Sun. Between 70 and 110 degrees}
 
-\item{s_slope}{solar elevation (degree)}
+\item{s_slope}{solar elevation angle (degree), the altitude of the Sun, which is the angle between the horizon and the sun}
 
 \item{c}{fraction of the sky covered by cloud}
 }
@@ -37,7 +37,7 @@ Predicts body temperature of a limpet in °C.
 }
 \examples{
 \dontrun{
-Tb_limpetBH(T_a = 25, T_r = 30, L = 0.0176, H = 0.0122, I = 1300, u = 1, s_aspect = 280, s_slope=60, c = 1)
+Tb_limpetBH(T_a = 25, T_r = 30, L = 0.0176, H = 0.0122, I = 1300, u = 1, s_aspect = 90, s_slope=60, c = 1)
 }
 }
 \seealso{
@@ -71,6 +71,9 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{heat_transfer_coefficient}},
   \code{\link{saturation_vapor_pressure}},
   \code{\link{saturation_water_vapor_pressure}}
+}
+\author{
+Brian Helmuth lab
 }
 \concept{biophysical models}
 \keyword{biophysical}

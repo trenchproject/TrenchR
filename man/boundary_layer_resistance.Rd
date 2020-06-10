@@ -30,7 +30,7 @@ This function allows you to estimate boundary layer resistance under free convec
 }
 \examples{
 \dontrun{
-boundary_layer_resistance(T_a=293, e_s=2.4, e_a=2.5, elev=500, D=0.007, u=2)
+boundary_layer_resistance(T_a=293, e_s=2.5, e_a=2.0, elev=500, D=0.007, u=2)
 }
 
 }

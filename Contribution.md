@@ -66,10 +66,8 @@ Here's a partial list of modules:
     * [Butterfly biophysical model](https://github.com/trenchproject/TrenchR/tree/master/R/biophysmodel_Colias.R) - Energy budget model for predicting butterfly operative temperature.
     * [Grasshopper biophysical model](https://github.com/trenchproject/TrenchR/tree/master/R/biophysmodel_Grasshopper.R) - Energy budget model for predicting grasshopper operative temperature.
     * [Lizard biophysical model](https://github.com/trenchproject/TrenchR/tree/master/R/biophysmodel_Sceloporuss.R) - Energy budget model for predicting lizard operative temperature.
-
 * [Allometry](https://github.com/trenchproject/TrenchR/tree/master/R/AllometricFunctions.R) - Functions to convert among mass, volume and length functions.
-
-
+* [Intertidal biophysical model](https://github.com/trenchproject/TrenchR/blob/master/R/biophysmodel_Mussel.R) - Energy budget model for predicting operative temperatures of various intertidal organisms (limpets, mussels, snails).
 
 ## How Can I Contribute?
 

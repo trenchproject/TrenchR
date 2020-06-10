@@ -4,14 +4,12 @@
 \alias{Tb_snail}
 \title{Predicts body temperature (operative environmental temperature) of a marine snail in °C.}
 \usage{
-Tb_snail(Len, TH, temp, solar, WS, CC, WL, ESL, WSH)
+Tb_snail(temp, Len, solar, WS, CC, WL, WSH)
 }
 \arguments{
-\item{Len}{snail length (m)}
-
-\item{TH}{tide height (m)}
-
 \item{temp}{air temperature (°C)}
+
+\item{Len}{snail length (m)}
 
 \item{solar}{direct solar flux density (W/m2)}
 
@@ -20,8 +18,6 @@ Tb_snail(Len, TH, temp, solar, WS, CC, WL, ESL, WSH)
 \item{CC}{fraction of the sky covered by cloud (0-1)}
 
 \item{WL}{water loss rate (kg/s), 5% loss of body mass over one hour is a reasonable maximum level (Helmuth 1999)}
-
-\item{ESL}{effective shore level (wave) slope}
 
 \item{WSH}{wind sensor height (m)}
 }
@@ -36,7 +32,7 @@ Predicts body temperature of a snail in °C.
 }
 \examples{
 \dontrun{
-Tb_snail(Len = 0.012, TH = 1.5, temp = 25, solar=800, WS=1, CC=0.5, WL=0, ESL=0.25, WSH=10)
+Tb_snail(temp = 25, Len = 0.012, solar=800, WS=1, CC=0.5, WL=0, WSH=10)
 }
 }
 \seealso{
@@ -73,7 +69,7 @@ Other biophysical models: \code{\link{Free_or_forced_convection}},
   \code{\link{saturation_water_vapor_pressure}}
 }
 \author{
-Helmuth Lab
+Brian Helmuth Lab
 }
 \concept{biophysical models}
 \keyword{biophysical}

@@ -9,13 +9,13 @@ Tbed_mussel(L, T_a, S, k_d, u, evap = FALSE, cl = NA)
 \arguments{
 \item{L}{mussel length (anterior/posterior axis) (m)}
 
-\item{T_a}{air temperature (°C) at 4m}
+\item{T_a}{air temperature at 4 m above ground (°C)}
 
 \item{S}{direct solar flux density (W/m2)}
 
 \item{k_d}{diffuse fraction, proportion of solar radiation that is diffuse}
 
-\item{u}{wind speed (m/s) at 4m}
+\item{u}{wind speed at 4 m above ground (m/s)}
 
 \item{evap}{Are mussels gaping to evaporatively cool? TRUE of FALSE (default), If TRUE, assumes constant mass loss rate of 5% of initial body mass per hour}
 
