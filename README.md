@@ -8,6 +8,8 @@ an R package for transparent environmental and ecological biophysics
 
 [![Build Status](https://travis-ci.org/trenchproject/TrenchR.svg?branch=master)](https://travis-ci.org/trenchproject/TrenchR)
 
+[Package website](https://trenchproject.github.io/TrenchR/)
+
 ### Description
 The TrenchR package aids in Translating Environmental Change into organismal responses (https://github.com/trenchproject/TrenchR). The package facilitates microclimate modelling to translate weather station data into the environmental conditions experienced by organisms and biophysical modelling to predict organismal body temperatures given the environmental conditions. The package aims to introduce and enable microclimate and biophysical modelling to improve ecological and evolutionary forecasting and includes tutorials and well as a series of educational modules introducing microclimate and biophysical modelling. The package complements and integrates with the NicheMapR package (https://github.com/mrke/NicheMapR). 
 
