@@ -9,7 +9,7 @@ an R package for transparent environmental and ecological biophysics
 **License:** [MIT](http://opensource.org/licenses/MIT)<br>
 
 [![Build Status](https://travis-ci.org/trenchproject/TrenchR.svg?branch=master)](https://travis-ci.org/trenchproject/TrenchR)
-[![NSF-1349865](https://img.shields.io/badge/NSF-1929730-blue.svg)](https://nsf.gov/awardsearch/showAward?AWD_ID=1349865)
+[![NSF-1349865](https://img.shields.io/badge/NSF-1349865-blue.svg)](https://nsf.gov/awardsearch/showAward?AWD_ID=1349865)
 
 [Package website](https://trenchproject.github.io/TrenchR/)
 
