@@ -3,13 +3,7 @@
 
 an R package for transparent environmental and ecological biophysics
 
-```{r, echo = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/"
-)
-```
+<img src="TRENCH_Logo_Circle-TrenchR.jpg" width="200px">
 
 **Author:** [TrEnCh project, Buckley Lab, Department of Biology, University of Washington](https://trenchproject.github.io)<br>
 **License:** [MIT](http://opensource.org/licenses/MIT)<br>
