@@ -11,7 +11,7 @@
 #' @param k_d diffuse fraction, proportion of solar radiation that is diffuse
 #' @param u wind speed (m/s)
 #' @param psi solar zenith angle (degrees): can be calculated from zenith_angle function
-#' @param evap Are mussels gaping to evaporatively cool? TRUE of FALSE (default), If TRUE, assumes constant mass loss rate of 5% of initial body mass per hour 
+#' @param evap Are mussels gaping to evaporatively cool? TRUE of FALSE (default), If TRUE, assumes constant mass loss rate of 5 percent of initial body mass per hour 
 #' @param cl fraction of the sky covered by cloud 
 #' @param group options are "aggregated": mussels living in beds, "solitary": mussels individuals, anterior or posterior end facing upwind, 
 #'              and "solitary_valve": solitary individuals, valve facing upwind

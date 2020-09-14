@@ -17,7 +17,7 @@ Tb_snail(temp, Len, solar, WS, CC, WL, WSH)
 
 \item{CC}{fraction of the sky covered by cloud (0-1)}
 
-\item{WL}{water loss rate (kg/s), 5\% loss of body mass over one hour is a reasonable maximum level (Helmuth 1999)}
+\item{WL}{water loss rate (kg/s), 5 percent loss of body mass over one hour is a reasonable maximum level (Helmuth 1999)}
 
 \item{WSH}{wind sensor height (m)}
 }

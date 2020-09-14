@@ -8,7 +8,7 @@
 #' @param solar direct solar flux density (W/m2)
 #' @param WS wind speed (m/s)
 #' @param CC fraction of the sky covered by cloud (0-1)
-#' @param WL water loss rate (kg/s), 5% loss of body mass over one hour is a reasonable maximum level (Helmuth 1999)
+#' @param WL water loss rate (kg/s), 5 percent loss of body mass over one hour is a reasonable maximum level (Helmuth 1999)
 #' @param WSH wind sensor height (m)
 #' @return predicted body temperature (°C)
 #' @keywords body temperature, biophysical model

@@ -24,7 +24,7 @@ Tb_mussel(L, H, T_a, T_g, S, k_d, u, psi, evap = FALSE, cl,
 
 \item{psi}{solar zenith angle (degrees): can be calculated from zenith_angle function}
 
-\item{evap}{Are mussels gaping to evaporatively cool? TRUE of FALSE (default), If TRUE, assumes constant mass loss rate of 5\% of initial body mass per hour}
+\item{evap}{Are mussels gaping to evaporatively cool? TRUE of FALSE (default), If TRUE, assumes constant mass loss rate of 5 percent of initial body mass per hour}
 
 \item{cl}{fraction of the sky covered by cloud}
 
