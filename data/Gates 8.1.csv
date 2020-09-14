@@ -1,4 +1,4 @@
-﻿Species,Common name,Condition,Date,RL,RH,AL,AH
+Species,Common name,Condition,Date,RL,RH,AL,AH
 Acer saccharinum,silver maple,Very small,29-Apr,0.256,0.206,0.325,0.458
 Acer saccharinum,silver maple,Medium,29-Apr,0.282,0.231,0.374,0.49
 Acer saccharinum,silver maple,Small,7-May,0.232,0.187,0.396,0.511
@@ -108,6 +108,6 @@ Sassafras albidum ,sassafras,Small,29-Apr,0.246,0.197,0.335,0.463
 Sassafras albidum ,sassafras,Medium,21-May,0.297,0.234,0.347,0.487
 Sassafras albidum ,sassafras,Large,9-Jun,0.315,0.249,0.346,0.488
 Streliztsia sp. ,bird of paradise,,,0.291,0.23,0.507,0.617
-Verbascum sp.,mullein,Young leaf,7/18/1968,0.421,0.363,0.435,0.524
+Verbascum sp.,mullein,Young leaf,18-Jul,0.421,0.363,0.435,0.524
 Xanthuim sp. ,cocklebur,Severed from plant,,0.305,0.244,0.352,0.481
 Xanthuim sp. ,cocklebur,Attached to plant,,0.274,0.219,0.41,0.528
