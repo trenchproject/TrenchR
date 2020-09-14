@@ -4,9 +4,22 @@
 \alias{soil_temperature}
 \title{Function to calculate soil temperature in °C using ODEs.}
 \usage{
-soil_temperature(z_r.intervals = 12, z_r, z, T_a, u, Tsoil0, z0, SSA,
-  TimeIn, H, water_content = 0.2, air_pressure, rho_so = 1620,
-  shade = FALSE)
+soil_temperature(
+  z_r.intervals = 12,
+  z_r,
+  z,
+  T_a,
+  u,
+  Tsoil0,
+  z0,
+  SSA,
+  TimeIn,
+  H,
+  water_content = 0.2,
+  air_pressure,
+  rho_so = 1620,
+  shade = FALSE
+)
 }
 \arguments{
 \item{z_r.intervals}{is the number of intervals in the soil profile to calculate}
@@ -57,11 +70,12 @@ soil_temperature(z_r.intervals=12,z_r=1.5, z=2, T_a=temp_vector, u=wind_speed_ve
 }
 }
 \seealso{
-Other soil temperature functions: \code{\link{soil_conductivity}},
-  \code{\link{soil_specific_heat}},
-  \code{\link{soil_temperature_equation}},
-  \code{\link{soil_temperature_function}},
-  \code{\link{soil_temperature_integrand}}
+Other soil temperature functions: 
+\code{\link{soil_conductivity}()},
+\code{\link{soil_specific_heat}()},
+\code{\link{soil_temperature_equation}()},
+\code{\link{soil_temperature_function}()},
+\code{\link{soil_temperature_integrand}()}
 }
 \author{
 Joseph Grigg

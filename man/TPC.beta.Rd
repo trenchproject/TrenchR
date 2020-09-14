@@ -4,8 +4,7 @@
 \alias{TPC.beta}
 \title{Construct a thermal performance curve based on a beta function.}
 \usage{
-TPC.beta(T, shift = -1, breadth = 0.1, aran = 0, tolerance = 43,
-  skew = 0.7)
+TPC.beta(T, shift = -1, breadth = 0.1, aran = 0, tolerance = 43, skew = 0.7)
 }
 \arguments{
 \item{T}{temperature (°C)}

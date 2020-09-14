@@ -9,7 +9,6 @@ TrenchR.Rproj
 ^\.travis\.yml$
 ^\.Rproj\.gitignore
 ^\.Rproj\.RData
-^\.Rproj\TrenchR.Rproj
 ^\.Rproj\.Rhistory
 ^\.Rproj\.travis.yml
 ^\.Rproj\appveyor.yml

@@ -28,11 +28,12 @@ soil_temperature_integrand(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), L=-10,z0=0.2)
 }
 }
 \seealso{
-Other soil temperature functions: \code{\link{soil_conductivity}},
-  \code{\link{soil_specific_heat}},
-  \code{\link{soil_temperature_equation}},
-  \code{\link{soil_temperature_function}},
-  \code{\link{soil_temperature}}
+Other soil temperature functions: 
+\code{\link{soil_conductivity}()},
+\code{\link{soil_specific_heat}()},
+\code{\link{soil_temperature_equation}()},
+\code{\link{soil_temperature_function}()},
+\code{\link{soil_temperature}()}
 }
 \author{
 Joseph Grigg

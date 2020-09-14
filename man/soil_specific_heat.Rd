@@ -30,11 +30,12 @@ soil_specific_heat(x_o=0.01, x_m=0.6, x_w=0.2, rho_so=1620)
 }
 }
 \seealso{
-Other soil temperature functions: \code{\link{soil_conductivity}},
-  \code{\link{soil_temperature_equation}},
-  \code{\link{soil_temperature_function}},
-  \code{\link{soil_temperature_integrand}},
-  \code{\link{soil_temperature}}
+Other soil temperature functions: 
+\code{\link{soil_conductivity}()},
+\code{\link{soil_temperature_equation}()},
+\code{\link{soil_temperature_function}()},
+\code{\link{soil_temperature_integrand}()},
+\code{\link{soil_temperature}()}
 }
 \author{
 Joseph Grigg

@@ -28,11 +28,12 @@ soil_conductivity(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), lambda=c(0.10,0.40,0.11,0.
 }
 }
 \seealso{
-Other soil temperature functions: \code{\link{soil_specific_heat}},
-  \code{\link{soil_temperature_equation}},
-  \code{\link{soil_temperature_function}},
-  \code{\link{soil_temperature_integrand}},
-  \code{\link{soil_temperature}}
+Other soil temperature functions: 
+\code{\link{soil_specific_heat}()},
+\code{\link{soil_temperature_equation}()},
+\code{\link{soil_temperature_function}()},
+\code{\link{soil_temperature_integrand}()},
+\code{\link{soil_temperature}()}
 }
 \author{
 Joseph Grigg

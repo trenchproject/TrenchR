@@ -34,19 +34,20 @@ diurnal_temp_variation_sinesqrt(t=8, tr=6, ts=18, T_max=30, T_min=10, T_minp=12)
 }
 }
 \seealso{
-Other microclimate functions: \code{\link{air_temp_profile_neutral}},
-  \code{\link{air_temp_profile_segment}},
-  \code{\link{air_temp_profile}},
-  \code{\link{degree_days}},
-  \code{\link{diurnal_radiation_variation}},
-  \code{\link{diurnal_temp_variation_sineexp}},
-  \code{\link{diurnal_temp_variation_sine}},
-  \code{\link{estimate_radiation}},
-  \code{\link{monthly_solar_radiation}},
-  \code{\link{partition_solar_radiation}},
-  \code{\link{surface_roughness}},
-  \code{\link{wind_speed_profile_neutral}},
-  \code{\link{wind_speed_profile_segment}}
+Other microclimate functions: 
+\code{\link{air_temp_profile_neutral}()},
+\code{\link{air_temp_profile_segment}()},
+\code{\link{air_temp_profile}()},
+\code{\link{degree_days}()},
+\code{\link{diurnal_radiation_variation}()},
+\code{\link{diurnal_temp_variation_sineexp}()},
+\code{\link{diurnal_temp_variation_sine}()},
+\code{\link{estimate_radiation}()},
+\code{\link{monthly_solar_radiation}()},
+\code{\link{partition_solar_radiation}()},
+\code{\link{surface_roughness}()},
+\code{\link{wind_speed_profile_neutral}()},
+\code{\link{wind_speed_profile_segment}()}
 }
 \concept{microclimate functions}
 \keyword{Temperature}

@@ -68,11 +68,12 @@ soil_temperature_function(j=1,T_so= rep(20,13), params=params)
 }
 }
 \seealso{
-Other soil temperature functions: \code{\link{soil_conductivity}},
-  \code{\link{soil_specific_heat}},
-  \code{\link{soil_temperature_equation}},
-  \code{\link{soil_temperature_integrand}},
-  \code{\link{soil_temperature}}
+Other soil temperature functions: 
+\code{\link{soil_conductivity}()},
+\code{\link{soil_specific_heat}()},
+\code{\link{soil_temperature_equation}()},
+\code{\link{soil_temperature_integrand}()},
+\code{\link{soil_temperature}()}
 }
 \author{
 Joseph Grigg

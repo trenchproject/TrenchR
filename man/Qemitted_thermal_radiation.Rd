@@ -4,8 +4,16 @@
 \alias{Qemitted_thermal_radiation}
 \title{Calculate emitted thermal radiation}
 \usage{
-Qemitted_thermal_radiation(epsilon = 0.96, A, psa_dir, psa_ref, T_b, T_g,
-  T_a, enclosed = FALSE)
+Qemitted_thermal_radiation(
+  epsilon = 0.96,
+  A,
+  psa_dir,
+  psa_ref,
+  T_b,
+  T_g,
+  T_a,
+  enclosed = FALSE
+)
 }
 \arguments{
 \item{epsilon}{longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)}
@@ -40,35 +48,45 @@ Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303,
 
 }
 \seealso{
-Other biophysical models: \code{\link{Free_or_forced_convection}},
-  \code{\link{Grashof_number_Gates}},
-  \code{\link{Grashof_number}}, \code{\link{Nu_from_Gr}},
-  \code{\link{Nu_from_Re}}, \code{\link{Nusselt_number}},
-  \code{\link{Prandtl_number}},
-  \code{\link{Qconduction_animal}},
-  \code{\link{Qconduction_substrate}},
-  \code{\link{Qconvection}}, \code{\link{Qevaporation}},
-  \code{\link{Qmetabolism_from_mass_temp}},
-  \code{\link{Qmetabolism_from_mass}},
-  \code{\link{Qnet_Gates}},
-  \code{\link{Qradiation_absorbed}},
-  \code{\link{Qthermal_radiation_absorbed}},
-  \code{\link{Reynolds_number}},
-  \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
-  \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
-  \code{\link{Tb_grasshopper}}, \code{\link{Tb_limpetBH}},
-  \code{\link{Tb_limpet}}, \code{\link{Tb_lizard}},
-  \code{\link{Tb_mussel}},
-  \code{\link{Tb_salamander_humid}},
-  \code{\link{Tb_snail}}, \code{\link{Tbed_mussel}},
-  \code{\link{Tsoil}}, \code{\link{actual_vapor_pressure}},
-  \code{\link{boundary_layer_resistance}},
-  \code{\link{external_resistance_to_water_vapor_transfer}},
-  \code{\link{heat_transfer_coefficient_approximation}},
-  \code{\link{heat_transfer_coefficient_simple}},
-  \code{\link{heat_transfer_coefficient}},
-  \code{\link{saturation_vapor_pressure}},
-  \code{\link{saturation_water_vapor_pressure}}
+Other biophysical models: 
+\code{\link{Free_or_forced_convection}()},
+\code{\link{Grashof_number_Gates}()},
+\code{\link{Grashof_number}()},
+\code{\link{Nu_from_Gr}()},
+\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_number}()},
+\code{\link{Prandtl_number}()},
+\code{\link{Qconduction_animal}()},
+\code{\link{Qconduction_substrate}()},
+\code{\link{Qconvection}()},
+\code{\link{Qevaporation}()},
+\code{\link{Qmetabolism_from_mass_temp}()},
+\code{\link{Qmetabolism_from_mass}()},
+\code{\link{Qnet_Gates}()},
+\code{\link{Qradiation_absorbed}()},
+\code{\link{Qthermal_radiation_absorbed}()},
+\code{\link{Reynolds_number}()},
+\code{\link{Tb_CampbellNorman}()},
+\code{\link{Tb_Fei}()},
+\code{\link{Tb_Gates}()},
+\code{\link{Tb_butterfly}()},
+\code{\link{Tb_grasshopper}()},
+\code{\link{Tb_limpetBH}()},
+\code{\link{Tb_limpet}()},
+\code{\link{Tb_lizard}()},
+\code{\link{Tb_mussel}()},
+\code{\link{Tb_salamander_humid}()},
+\code{\link{Tb_snail}()},
+\code{\link{Tbed_mussel}()},
+\code{\link{Tsoil}()},
+\code{\link{actual_vapor_pressure}()},
+\code{\link{boundary_layer_resistance}()},
+\code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{heat_transfer_coefficient_approximation}()},
+\code{\link{heat_transfer_coefficient_simple}()},
+\code{\link{heat_transfer_coefficient}()},
+\code{\link{saturation_vapor_pressure}()},
+\code{\link{saturation_water_vapor_pressure}()}
 }
 \concept{biophysical models}
 \keyword{emitted}

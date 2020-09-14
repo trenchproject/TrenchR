@@ -25,11 +25,13 @@ Estimate surface area (m^2) from length (m) by approximating the animal's body a
 
 }
 \seealso{
-Other allometric functions: \code{\link{mass_from_length}},
-  \code{\link{prop_silhouette_area_shapes}},
-  \code{\link{prop_silhouette_area}},
-  \code{\link{sa_from_mass}}, \code{\link{sa_from_volume}},
-  \code{\link{volume_from_length}}
+Other allometric functions: 
+\code{\link{mass_from_length}()},
+\code{\link{prop_silhouette_area_shapes}()},
+\code{\link{prop_silhouette_area}()},
+\code{\link{sa_from_mass}()},
+\code{\link{sa_from_volume}()},
+\code{\link{volume_from_length}()}
 }
 \concept{allometric functions}
 \keyword{area}

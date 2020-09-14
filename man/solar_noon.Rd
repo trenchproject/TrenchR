@@ -28,13 +28,16 @@ solar_noon(lon=-122.335, doy=112)
 }
 }
 \seealso{
-Other utility functions: \code{\link{airpressure_from_elev}},
-  \code{\link{azimuth_angle}}, \code{\link{daylength}},
-  \code{\link{dec_angle}}, \code{\link{degree_to_radian}},
-  \code{\link{fahrenheit_to_celsius}},
-  \code{\link{fahrenheit_to_kelvin}},
-  \code{\link{kelvin_to_celsius}},
-  \code{\link{zenith_angle}}
+Other utility functions: 
+\code{\link{airpressure_from_elev}()},
+\code{\link{azimuth_angle}()},
+\code{\link{daylength}()},
+\code{\link{dec_angle}()},
+\code{\link{degree_to_radian}()},
+\code{\link{fahrenheit_to_celsius}()},
+\code{\link{fahrenheit_to_kelvin}()},
+\code{\link{kelvin_to_celsius}()},
+\code{\link{zenith_angle}()}
 }
 \concept{utility functions}
 \keyword{Solar}

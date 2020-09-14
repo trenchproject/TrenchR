@@ -4,8 +4,7 @@
 \alias{Tb_limpetBH}
 \title{Predicts body temperature (operative environmental temperature) of a limpet in °C.}
 \usage{
-Tb_limpetBH(T_a, T_r, L, H, I, u, s_aspect, s_slope, c,
-  position = "anterior")
+Tb_limpetBH(T_a, T_r, L, H, I, u, s_aspect, s_slope, c, position = "anterior")
 }
 \arguments{
 \item{T_a}{air temperature (°C)}
@@ -41,36 +40,45 @@ Tb_limpetBH(T_a = 25, T_r = 30, L = 0.0176, H = 0.0122, I = 1300, u = 1, s_aspec
 }
 }
 \seealso{
-Other biophysical models: \code{\link{Free_or_forced_convection}},
-  \code{\link{Grashof_number_Gates}},
-  \code{\link{Grashof_number}}, \code{\link{Nu_from_Gr}},
-  \code{\link{Nu_from_Re}}, \code{\link{Nusselt_number}},
-  \code{\link{Prandtl_number}},
-  \code{\link{Qconduction_animal}},
-  \code{\link{Qconduction_substrate}},
-  \code{\link{Qconvection}},
-  \code{\link{Qemitted_thermal_radiation}},
-  \code{\link{Qevaporation}},
-  \code{\link{Qmetabolism_from_mass_temp}},
-  \code{\link{Qmetabolism_from_mass}},
-  \code{\link{Qnet_Gates}},
-  \code{\link{Qradiation_absorbed}},
-  \code{\link{Qthermal_radiation_absorbed}},
-  \code{\link{Reynolds_number}},
-  \code{\link{Tb_CampbellNorman}}, \code{\link{Tb_Fei}},
-  \code{\link{Tb_Gates}}, \code{\link{Tb_butterfly}},
-  \code{\link{Tb_grasshopper}}, \code{\link{Tb_limpet}},
-  \code{\link{Tb_lizard}}, \code{\link{Tb_mussel}},
-  \code{\link{Tb_salamander_humid}},
-  \code{\link{Tb_snail}}, \code{\link{Tbed_mussel}},
-  \code{\link{Tsoil}}, \code{\link{actual_vapor_pressure}},
-  \code{\link{boundary_layer_resistance}},
-  \code{\link{external_resistance_to_water_vapor_transfer}},
-  \code{\link{heat_transfer_coefficient_approximation}},
-  \code{\link{heat_transfer_coefficient_simple}},
-  \code{\link{heat_transfer_coefficient}},
-  \code{\link{saturation_vapor_pressure}},
-  \code{\link{saturation_water_vapor_pressure}}
+Other biophysical models: 
+\code{\link{Free_or_forced_convection}()},
+\code{\link{Grashof_number_Gates}()},
+\code{\link{Grashof_number}()},
+\code{\link{Nu_from_Gr}()},
+\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_number}()},
+\code{\link{Prandtl_number}()},
+\code{\link{Qconduction_animal}()},
+\code{\link{Qconduction_substrate}()},
+\code{\link{Qconvection}()},
+\code{\link{Qemitted_thermal_radiation}()},
+\code{\link{Qevaporation}()},
+\code{\link{Qmetabolism_from_mass_temp}()},
+\code{\link{Qmetabolism_from_mass}()},
+\code{\link{Qnet_Gates}()},
+\code{\link{Qradiation_absorbed}()},
+\code{\link{Qthermal_radiation_absorbed}()},
+\code{\link{Reynolds_number}()},
+\code{\link{Tb_CampbellNorman}()},
+\code{\link{Tb_Fei}()},
+\code{\link{Tb_Gates}()},
+\code{\link{Tb_butterfly}()},
+\code{\link{Tb_grasshopper}()},
+\code{\link{Tb_limpet}()},
+\code{\link{Tb_lizard}()},
+\code{\link{Tb_mussel}()},
+\code{\link{Tb_salamander_humid}()},
+\code{\link{Tb_snail}()},
+\code{\link{Tbed_mussel}()},
+\code{\link{Tsoil}()},
+\code{\link{actual_vapor_pressure}()},
+\code{\link{boundary_layer_resistance}()},
+\code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{heat_transfer_coefficient_approximation}()},
+\code{\link{heat_transfer_coefficient_simple}()},
+\code{\link{heat_transfer_coefficient}()},
+\code{\link{saturation_vapor_pressure}()},
+\code{\link{saturation_water_vapor_pressure}()}
 }
 \author{
 Brian Helmuth lab

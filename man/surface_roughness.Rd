@@ -30,19 +30,20 @@ surface_roughness(u_r=c(0.01,0.025,0.05,0.1,0.2), zr=c(0.05,0.25,0.5,0.75,1))
 }
 }
 \seealso{
-Other microclimate functions: \code{\link{air_temp_profile_neutral}},
-  \code{\link{air_temp_profile_segment}},
-  \code{\link{air_temp_profile}},
-  \code{\link{degree_days}},
-  \code{\link{diurnal_radiation_variation}},
-  \code{\link{diurnal_temp_variation_sineexp}},
-  \code{\link{diurnal_temp_variation_sinesqrt}},
-  \code{\link{diurnal_temp_variation_sine}},
-  \code{\link{estimate_radiation}},
-  \code{\link{monthly_solar_radiation}},
-  \code{\link{partition_solar_radiation}},
-  \code{\link{wind_speed_profile_neutral}},
-  \code{\link{wind_speed_profile_segment}}
+Other microclimate functions: 
+\code{\link{air_temp_profile_neutral}()},
+\code{\link{air_temp_profile_segment}()},
+\code{\link{air_temp_profile}()},
+\code{\link{degree_days}()},
+\code{\link{diurnal_radiation_variation}()},
+\code{\link{diurnal_temp_variation_sineexp}()},
+\code{\link{diurnal_temp_variation_sinesqrt}()},
+\code{\link{diurnal_temp_variation_sine}()},
+\code{\link{estimate_radiation}()},
+\code{\link{monthly_solar_radiation}()},
+\code{\link{partition_solar_radiation}()},
+\code{\link{wind_speed_profile_neutral}()},
+\code{\link{wind_speed_profile_segment}()}
 }
 \concept{microclimate functions}
 \keyword{profile}

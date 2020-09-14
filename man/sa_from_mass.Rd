@@ -27,12 +27,13 @@ This function allows you to estimate surface area (m^2) from mass (g) for a vari
 
 }
 \seealso{
-Other allometric functions: \code{\link{mass_from_length}},
-  \code{\link{prop_silhouette_area_shapes}},
-  \code{\link{prop_silhouette_area}},
-  \code{\link{sa_from_length}},
-  \code{\link{sa_from_volume}},
-  \code{\link{volume_from_length}}
+Other allometric functions: 
+\code{\link{mass_from_length}()},
+\code{\link{prop_silhouette_area_shapes}()},
+\code{\link{prop_silhouette_area}()},
+\code{\link{sa_from_length}()},
+\code{\link{sa_from_volume}()},
+\code{\link{volume_from_length}()}
 }
 \concept{allometric functions}
 \keyword{area}
