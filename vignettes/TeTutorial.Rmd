@@ -24,10 +24,10 @@ This tutorial covers how to construct energy balances for applications such as e
 
 The body temperatures, $T_b$, of organisms can depart dramatically from air temperatures due to energy exchange with the environment.  Heat is gained by absorbing solar and thermal radiation and from metabolic reactions. Heat is lost through the organism's emission of radiation and the evaporation of water. The organism exchanges heat with the surrounding air or water via convection and with the ground and other solid surfaces in contact via conduction. The balance of these heat exchanges can be estimated and is referred to as operative environmental temperature, $T_e$. The $T_e$ indicates the steady-state temperature of an organism with given physical properties in a particular environment [@bakken1992measurement].
 
-Calculations of operative environmental temperatures are based in balancing energy input and output to organisms.  The following accounting of heat gains and losses at the surface of the organism can be used to estimate $T_e$ [@gates2012biophysical]:
-$$Qnet = Qabs - Qemit - Qconv - Qcond - Qmet - Qevap,$$
-where $Qnet$ is the net energy exhange with the environment (W), $Qabs$ is the solar and thermal radiation absorbed (W), $Qemit$ is the thermal radiation emitted (W), $Qconv$ is energy exchange due to convection (W), $Qcond$ is energy exchange due to conduction (W),
-$Qmet$ is the energy emitted due to metabolism (W), and $Qevap$ is the energy emitted due to evaporative water loss (W).
+Calculations of operative environmental temperatures are based on balancing energy input and output to organisms.  The following accounting of heat gains and losses at the surface of the organism can be used to estimate $T_e$ [@gates2012biophysical]:
+$$Q_{net} = Q_{abs} - Q_{emit} - Q_{conv} - Q_{cond} - Q_{met} - Q_{evap},$$
+where $Q_{net}$ is the net energy exchange with the environment (W), $Q_{abs}$ is the solar and thermal radiation absorbed (W), $Q_{emit}$ is the thermal radiation emitted (W), $Q_{conv}$ is energy exchange due to convection (W), $Q_{cond}$ is energy exchange due to conduction (W),
+$Q_{met}$ is the energy emitted due to metabolism (W), and $Q_{evap}$ is the energy emitted due to evaporative water loss (W).
 
 The energy balance is available in TrenchR as follows:
 ```{r}
@@ -37,7 +37,7 @@ We briefly review each component of the energy balance below.  Details are avail
 
 # Solar radiation, Qabs
 
-The solar and thermal radiation absorbed by animals, $Q_{abs} (W)$, is the sum of direct $S_{dir}$, diffuse $S_{dif}$, and reflected $S_{ref}$ solar radiation ($W/m^2$). The sum is weighted by the organism's surface area $A (m)$ exposed to the radiation sources. Additionally, all forms of incoming radiation are multipled by the solar absorptivity of the animal surface ($a$ proportion) to estimate absorbed radiation. The sumation of incoming solar radiation is thus as follows:
+The solar and thermal radiation absorbed by animals, $Q_{abs} (W)$, is the sum of direct $S_{dir}$, diffuse $S_{dif}$, and reflected $S_{ref}$ solar radiation ($W/m^2$). The sum is weighted by the organism's surface area $A (m)$ exposed to the radiation sources. Additionally, all forms of incoming radiation are multiplied by the solar absorptivity of the animal surface ($a$ proportion) to estimate absorbed radiation. The summation of incoming solar radiation is thus as follows:
 $$Qabs= a \times A_{dir} \times S_{dir} + a \times A_{dif} \times S_{dif} + a \times A_{ref} \times S_{ref},$$
 where $A_{dir}$, $A_{dif}$, and $A_{ref}$ are the surface areas expsed to direct, diffuse, and reflected solar radiation, respectively.
 
@@ -74,8 +74,8 @@ legend("topleft", title="parameters", legend=c("psa_dir=0.4, T_g=293","psa_dir=0
 
 # Convection, Qconv
 
-Animals exchange heat with the air or water they are immersed in at a rate determined by the temperature difference between the temperature of the animal, $T_b (K)$, and that of the air or water, $T_a (K)$.  The rate is also determined by the animal's surface area exposed to the air or water, which we estimate from the input parameters of the animal's surface area, $A (m^2)$ and the proportion of the surface area in contact with the surrounding fluid, $proportion$. A heat transfer coefficient, $H_L (W m^{-2} K^{-1})$, which can be estimated using the relations below, is used to estimate the rate of heat exchange.  An enhancement factor multiplier, $ef$, can also be incorporated to account for increases in heat exchange resulting from air turbulance in field conditions. Conduction can be estimated as follows:
-$$Qconv= ef\cdot H_L\cdot(A\cdot proportion)(Ta-Tb).$$
+Animals exchange heat with the air or water they are immersed in at a rate determined by the temperature difference between the temperature of the animal, $T_b (K)$, and that of the air or water, $T_a (K)$.  The rate is also determined by the animal's surface area exposed to the air or water, which we estimate from the input parameters of the animal's surface area, $A (m^2)$ and the proportion of the surface area in contact with the surrounding fluid, $\mbox{proportion}$. A heat transfer coefficient, $H_L (W m^{-2} K^{-1})$, which can be estimated using the relations below, is used to estimate the rate of heat exchange.  An enhancement factor multiplier, $ef$, can also be incorporated to account for increases in heat exchange resulting from air turbulence in field conditions. Conduction can be estimated as follows:
+$$Q_{conv}= ef\cdot H_L(A\cdot \mbox{proportion})(T_a-T_b).$$
 
 The function is available in R:
 ```{r, fig.height=4, fig.width=8}
@@ -87,7 +87,7 @@ points(293:313, Qconvection(T_a= 303,T_b= 293:313,H=15,A=0.0025, proportion=0.3)
 legend("topleft", title="parameters", legend=c("H=5, proportion=0.6","H=15, proportion=0.6","H=5, proportion=0.3","H=15, proportion=0.3"), lty=c("solid","dashed","dotted","dotdash") )
 ```
 
-The convective heat transfer coefficient depends on whether the heat exchange is free or forced (due to fluid flow). The variables involved in heat transfer can be combined into dimensionless groups that are used to compare the scales of heat exchange processes and thus whether modeling free or forced convection is more appropriate. We provide the primary dimesionless numbers.
+The convective heat transfer coefficient depends on whether the heat exchange is free or forced (due to fluid flow). The variables involved in heat transfer can be combined into dimensionless groups that are used to compare the scales of heat exchange processes and thus whether modeling free or forced convection is more appropriate. We provide the primary dimensionless numbers.
 
 The Nusselt number provides a dimensionless estimate of conductance as is estimated as $Nu = H_L \cdot D / K$, where $H_L$ is the convective heat transfer coefficient ($W m^{-2} K^{-1}$), $D$ is the characteristic dimension ($m$), and $K$ is thermal conductivity ($W K^{-1}m^{-1}$). 
 
@@ -95,7 +95,7 @@ The Prandtl number describes the ratio of kinematic viscosity to thermal diffusi
 
 The Reynolds Number indicates the amount of turbulence in air or water flows and is estimated as the ratio of internal viscous forces: $Re= VD / \nu$, where $V$ is wind speed ($m/s$), $D$ is the characteristic dimension ($m$), and $\nu$ is the kinematic viscosity ($m^2 s^{-1}$). Kinematic viscosity is the ratio of dynamic viscosity to the density of the fluid.
 
-The Grashof number describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. It is estimated as the ratio of a buoyant force times an inertial force to the square of a viscous force: $Gr = g D^3 \frac{\mid Tg-Ta \mid}{Ta {\nu}^2}$, where $g$ is gravitational acceleration ($g=9.8 m/s$). 
+The Grashof number describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. It is estimated as the ratio of a buoyant force times an inertial force to the square of a viscous force: $Gr = g D^3 \frac{\mid Tg-Ta \mid}{Ta {\nu}^2}$, where $g$ is gravitational acceleration ($g=9.8 m/s$). 
 
 The dimensionless groups are available in R as follows:
 ```{r, fig.height=4, fig.width=8}
@@ -199,16 +199,16 @@ legend("bottomright", title="characteristic dimension (m)", legend=c(0.03,0.05,0
 
 # Conduction, Qcond
 
-Animals exchange heat with the substrate and other surfaces via contact proportional to the difference between the surface temperature of the animal, $T_b (K)$, and the substrate temperature, $T_s (K)$. This conduction occurs via diffusion of heat. The extent of energy exchange is additionally determined by the area of contact and the thickness of the skin or other animal suface (assumes a well mixed interior, see NicheMapR for approaches without this assumption). Finally, the rate of diffusion depends on the thermal conductivity of the materials in contact. Our two basic functions for estimating conduction differ in whether the rate limiting step is the thermal conductivity of the animal [`conductance_animal()`] or the substrate [`conductance_substrate()`]. The thermal conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step and most applications should use `conductance_animal()`.
+Animals exchange heat with the substrate and other surfaces via contact proportional to the difference between the surface temperature of the animal, $T_b (K)$, and the substrate temperature, $T_s (K)$. This conduction occurs via diffusion of heat. The extent of energy exchange is additionally determined by the area of contact and the thickness of the skin or other animal surface (assumes a well-mixed interior, see NicheMapR for approaches without this assumption). Finally, the rate of diffusion depends on the thermal conductivity of the materials in contact. Our two basic functions for estimating conduction differ in whether the rate-limiting step is the thermal conductivity of the animal [`conductance_animal()`] or the substrate [`conductance_substrate()`]. The thermal conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate-limiting step and most applications should use `conductance_animal()`.
 
-Both variables take as parameters the animal's surface area, $A (m^2)$, and the proportion of the surface area in contact with the substrate, $proportion$. 
+Both variables take as parameters the animal's surface area, $A (m^2)$, and the proportion of the surface area in contact with the substrate, $\mbox{proportion}$. 
 
-When animal conductance is the rate limiting step, $Qcond$ can be estimated as follows:
-$$Qcond= A\cdot proportion \cdot K(T_b-T_g)/d, $$
-where $K$ is thermal conductivity ($W K^{-1} m^{-1}$), $T_g$ is ground (surface) temperature $(K)$, $T_b$ is body temperature $(K)$, and $d$ is the mean thickness of the animal skin (surface, $m$). This formulation assumes the organism has a well mixed interior rather than an interior temperature gradient.
+When animal conductance is the rate limiting step, $Q_{cond}$ can be estimated as follows:
+$$Q_{cond}= A\cdot \mbox{proportion} \cdot K(T_b-T_g)/d, $$
+where $K$ is thermal conductivity ($W K^{-1} m^{-1}$), $T_g$ is ground (surface) temperature $(K)$, $T_b$ is body temperature $(K)$, and $d$ is the mean thickness of the animal skin (surface, $m$). This formulation assumes the organism has a well-mixed interior rather than an interior temperature gradient.
 
-When substrate thermal conductivity is the rate limiting step, $Qcond$ can be estimated as follows:
-$$Qcond= A\cdot proportion \cdot (2K_g/D)(T_b-T_g),$$
+When substrate thermal conductivity is the rate-limiting step, $Q_{cond}$ can be estimated as follows:
+$$Q_{cond} = A\cdot \mbox{proportion} \cdot (2K_g/D)(T_b-T_g),$$
 where $K_g$ is the thermal conductivity of substrate ($W K^{-1} m^{-1}$) and $D$ is the characteristic dimension of the animal ($m$).
 
 The functions are available in R:
@@ -233,7 +233,7 @@ legend("topright", title="parameters", legend=c("K=0.3, proportion=0.2","K=0.5, 
 
 # Metabolism, Qmet
 
-Rates of heat production associated with metabolism are generally estimated using scaling relationships based on generalizing empirical data. Metabolic rates scale as a power law function of mass with an exponent less than 1 such that the per-mass metabolic rate declines with increasing mass.  Metabolic rates also increase exponentially with temperature. The generally form of the relationship is $B=M^x \exp(-E_i/{kT})$, where $M$ is mass, $x$ is an exponent approximating 0.75, $E_i$ is the average activation energy for the rate-limiting enzyme-catalyzed biochemical reactions of metabolism, $k$ is the Boltzmann constant, and $T$ is body temperature [@gillooly2001effects]. We offer functions that both do not [`Qmetabolism_from_mass()`] and do [`Qmetabolism_from_mass_temp()`] include temperature dependence for a variety of taxa.
+Rates of heat production associated with metabolism are generally estimated using scaling relationships based on generalizing empirical data. Metabolic rates scale as a power law function of mass with an exponent less than 1 such that the per-mass metabolic rate declines with increasing mass.  Metabolic rates also increase exponentially with temperature. The general form of the relationship is $B=M^x \exp(-E_i/{kT})$, where $M$ is mass, $x$ is an exponent approximating 0.75, $E_i$ is the average activation energy for the rate-limiting enzyme-catalyzed biochemical reactions of metabolism, $k$ is the Boltzmann constant, and $T$ is body temperature [@gillooly2001effects]. We offer functions that both do not [`Qmetabolism_from_mass()`] and do [`Qmetabolism_from_mass_temp()`] include temperature dependence for a variety of taxa.
 
 ```{r, fig.height=4, fig.width=6}
 plot(1:100, Qmetabolism_from_mass(m=1:100,"bird"), type="l", xlab = "mass (g)", ylab = "metabolism (W)", log='xy', ylim=c(0.1,2))
@@ -328,16 +328,16 @@ legend("bottomright", title="Radiation, Qabs", legend=c(0,10,20), lty=c("dashed"
 ```
 
 Campbell and Norman [-@campbell2012introduction] use a somewhat simplified energy balance to express $Te$ as a function of $Ta$ plus or minus a temperature increment determined by absorbed radiation, wind speed, and animal morphology: 
-$$ Te=Ta+(S_{abs}-Q_{emit})/(c_p(g_r+g_{Ha})),$$
-where $Ta$ is air temperature $(K)$, $S_{abs}$ is the solar and thermal radiation absorbed ($W m^{-2}$), $Qemit$ is emitted thermal radiation ($W m^{-2}$), $c_p$ is the specific heat of air ($J mol^{-1} K^{-1}$), $g_{r}$ is radiative conductance $(mol\:m^{-2} s^{-1})$, and $g_{Ha}$ is the boundary conductance $(mol\:m^{-2} s^{-1})$.  The model is based on estimating $T_e$ for a blackbody (perfectly absorbing) cavity with air temperatures equal to surface temperatures ($T_a=T_s$). The model assumes that the cavity provides the same heat load as the nautral environment and thus equates metabolic heat production and evaporative cooling in the two environments.  The formulation assumes a well mixed interior of the animal and also omits conduction with the substrate.  In this scenario, organisms emit thermal radiation from their surface proproportional to the fourth power of $T_a$:
+$$ T_e=T_a+(S_{abs}-Q_{emit})/(c_p(g_r+g_{Ha})),$$
+where $Ta$ is air temperature $(K)$, $S_{abs}$ is the solar and thermal radiation absorbed ($W m^{-2}$), $Qemit$ is emitted thermal radiation ($W m^{-2}$), $c_p$ is the specific heat of air ($J mol^{-1} K^{-1}$), $g_{r}$ is radiative conductance $(mol\:m^{-2} s^{-1})$, and $g_{Ha}$ is the boundary conductance $(mol\:m^{-2} s^{-1})$.  The model is based on estimating $T_e$ for a blackbody (perfectly absorbing) cavity with air temperatures equal to surface temperatures ($T_a=T_s$). The model assumes that the cavity provides the same heat load as the natural environment and thus equates metabolic heat production and evaporative cooling in the two environments.  The formulation assumes a well-mixed interior of the animal and also omits conduction with the substrate.  In this scenario, organisms emit thermal radiation from their surface proportional to the fourth power of $T_a$:
 $$Q_{emit}= \epsilon \sigma T_a^4 ,$$
-where $\epsilon$ is the proprtional longwave infrared emissivity of skin (0.95-1 for most animals, [@gates2012biophysical]) and $\sigma$ is the Stefan-Boltzmann constant ($5.673*10^{-8} W m^{-2} K^{-4}$). 
+where $\epsilon$ is the proportional longwave infrared emissivity of skin (0.95-1 for most animals, [@gates2012biophysical]) and $\sigma$ is the Stefan-Boltzmann constant ($5.673*10^{-8} W m^{-2} K^{-4}$). 
 
 The thermal radiation exchanged between the animals and the walls of the cavity is proportional to the temperature differences and the radiative conductance. Cambell and Norman [-@campbell2012introduction] thus use a denominator term that combines thermal radiative exchange with convective heat exchange. The radiative conductance describing the heat exchange between the core of the animal and the environment is estimated as $g_r= 4 \sigma Ta^3/c_p(mol\:m^{-2} s^{-1})$. The boundary conductance (heat exchange with the air via convection) is estimated assuming forced convection driven by naturally turbulent wind and an empirical approximation of animal shapes [@mitchell1976heat]: 
 $$g_{Ha}(mol \:m^{-2} s^{-1})= 1.4 \times 0.135 \sqrt{(V/D)},$$
 where 1.4 is a factor to account for increased convection in natural environments, $V$ is wind speed ($m/s$), and $D$ is the characteristic dimension of the animal ($m$).
 
-The function to calculate $T_e$ (called $T_b$ for simplicity) is available in R follows (including the above calculations of $Q_{emit}$, $g_r$, and $g_{Ha}$):
+The function to calculate $T_e$ (called $T_b$ for simplicity) is available in R as follows (including the above calculations of $Q_{emit}$, $g_r$, and $g_{Ha}$):
 ```{r, fig.height=4, fig.width=6}
 plot(293:313, Tb_CampbellNorman(T_a=293:313, S=800, epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", xlab = "air temperature (K)", ylab = "body temperature (K)", xlim=c(295,310), ylim=c(290,325))
 abline(a=0, b=1, col="gray")
@@ -376,28 +376,28 @@ We adapted a biophysical model (`Tb_lizard()`) to calculate operative environmen
 
 The function constrains the lizard’s foraging to hours of daylight and uses the relations below to calculate day length and the time of solar noon. The function calculates the solar declination, $\delta$ (rad), the angular distance of the sun north or south of the earth’s equator: 
 $$\delta= \arcsin[0.39795 \cos(0.21631+2 \arctan (0.967 \tan [0.0086(-186+J)]))] $$
-where $J$ is calendar day, with $J=1$ at January 1. One can then calculate day length, $h_{day} (h)$, using the CBM model [@forsythe1995model]: where $\phi$ is latitude (rad).
+where $J$ is the calendar day, with $J=1$ on January 1. One can then calculate day length, $h_{day} (h)$, using the CBM model [@forsythe1995model]: where $\phi$ is latitude (rad).
 
 The time of solar noon ($h$) is calculated as $t_0=12-LC-ET$ where $LC$ is the longitude correction (h) and $ET$ is the equation of time (h). The $LC$ is a +1/15-h correction for each degree that a location is west of a standard meridian, which occurs at 0°, 15°, …, 345°. The ET corrects for the difference between sun time and clock time based on calendar day as follows: 
 $$ET=\frac{-104.7\sin f+596.2 \sin{2f} +4.3 \sin{3f} -12.7 \sin{4f} -429.3 \cos{f} -2.0 \cos{2f}+19.3 \cos{3f}}{3600},\\f=\frac{\pi}{180}(279.575+0.9856J)$$
-In addition, the offset needs to be taken into consideration. Although meridians are set every 15° and the time zones are supposed to equal to the time of the meridian that is closest to them, (thus anywhere between 7.5°E to 22.5°E should equal the time at the meridian at 15°E) the actual time zones does not necessarily follow the pattern. For, example, Madrid is located at 3.7°W but the time zone in Spain is set to that of 15°E (GMT+1). This produces an error in the calculations because noon at 3.7°W would be considered as equal to noon at 0° when in reality, it should be 11am of 0°. To eliminate this error, an offset value can be input.
+In addition, the offset needs to be taken into consideration. Although meridians are set every 15° and the time zones are supposed to equal to the time of the meridian that is closest to them, (thus anywhere between 7.5°E to 22.5°E should equal the time at the meridian at 15°E) the actual time zones do not necessarily follow the pattern. For, example, Madrid is located at 3.7°W but the time zone in Spain is set to that of 15°E (GMT+1). This produces an error in the calculations because noon at 3.7°W would be considered equal to noon at 0° when in reality, it should be 11 am of 0°. To eliminate this error, an offset value can be input.
 
 The zenith angle, $\psi$ (rad), is the sun angle measured from vertical, $\cos{\psi}=\sin\delta \sin\phi + \cos\delta \cos\phi\cos\frac{\pi}{12(h-t_0)}$, where $h$ is hour.
 
 Azimuth angle, $AZ$ (rad), is the angle between the south vector and the sun's vector on the horizontal plane. The azimuth angle of the sun can be calculated from 
 $$cos(AZ) = \frac{-(sin\delta-cos\psi sin\phi)}{cos\phi sin\psi}$$
-Within the two values that are produced from this formula, the correct angle is determined based on the longtitude of the measured place.
+Within the two values that are produced from this formula, the correct angle is determined based on the longitude of the measured place.
 
 ### Radiation and Environmental Temperature
 
-Central to the thermal influence of radiation is the Stefan‐Boltzmann law, which expresses the total radiant energy over all wavelengths admitted per unit surface area of a blackbody radiator. The law yields the emitted flux density, $B$ ($W m^2$), $B= \sigma(T_a+273)^4$, where $\omega$ is the Stefan‐Boltzmann constant ($5.67×10^{−8} W m^{−2} K^{−4}$). Emissivity, $\epsilon(\lambda)$, where $\lambda$ is wavelength, is the fraction of blackbody emittance at a given wavelength emitted by the surface of a material. Gray bodies are those with no wavelength dependence of the emissivity. Thus, emitted energy of a gray body is $\phi (W m^{−2})= \epsilon B$. We assume lizards are gray bodies, which is reasonable for most natural surfaces. The emissivity of most natural surfaces ranges from 0.95 to 1.0. The function uses the emissivity value of 0.965 measured by Bartlett and Gates (1967) for a *Sceloporus* lizard. However, the emissivity of a clear atmosphere is substantially lower. We use the approximation by Swinbank (1963) to estimate clear sky emissivity, $\epsilon_{ac}=9.2 \times 10^{-6}(T_a+273)^2.$
+Central to the thermal influence of radiation is the Stefan‐Boltzmann law, which expresses the total radiant energy over all wavelengths admitted per unit surface area of a blackbody radiator. The law yields the emitted flux density, $B$ ($W m^2$), $B= \sigma(T_a+273)^4$, where $\sigma$ is the Stefan‐Boltzmann constant ($5.67×10^{−8} W m^{−2} K^{−4}$). Emissivity, $\epsilon(\lambda)$, where $\lambda$ is the wavelength, is the fraction of blackbody emittance at a given wavelength emitted by the surface of a material. Gray bodies are those with no wavelength dependence of the emissivity. Thus, emitted energy of a gray body is $\phi (W m^{−2})= \epsilon B$. We assume lizards are gray bodies, which is reasonable for most natural surfaces. The emissivity of most natural surfaces ranges from 0.95 to 1.0. The function uses the emissivity value of 0.965 measured by Bartlett and Gates (1967) for a *Sceloporus* lizard. However, the emissivity of a clear atmosphere is substantially lower. We use the approximation by Swinbank (1963) to estimate clear sky emissivity, $\epsilon_{ac}=9.2 \times 10^{-6}(T_a+273)^2.$
 
 We first consider convective heat transport between the lizard’s body and the environment. The boundary conductance of air ($mol \: m^{−2} s^{−1}$) is expressed as 
 $$g_{Ha}=1.4 \times 0.135 \sqrt{u/d} ,$$
 where $u$ is wind velocity ($m s^{−1}$) and $d$ is the characteristic dimension ($m$). Assuming that wind is blowing parallel to the axis of a cylindrical approximation of a lizard, $d$ is the lizard’s length (snout-vent length ($m$)). A factor of 1.4 is introduced to account for the increased convection due to environmental turbulence [@mitchell1976heat]. We additionally consider radiative conductance, the exchange of thermal radiation between the lizard and the environment proportional to temperature differences. The radiative conductance ($mol \:m^{−2} s^{−1}$) is expressed as $$g_r=\frac{4 \epsilon \sigma (T_a+273)^3}{c_p},$$
 where $c_p$ is the specific heat of air ($29.3 J \: mol^{−1} K^{−1}$).
 
-We then turn to calculating the components of the radiant energy budget of a lizard. We estimate the solar (shortwave) component of this quantity by aggregating flux densities for four radiation streams: the direct irradiance on a surface perpendicular to the beam, $S_p (W m^{−2})$; the diffuse sky irradiance on a horizontal plane, $S_d (W m^{−2})$; the total irradiance of a horizontal surface, $S_t (W m^{−2})$; and the reflected radiation from the ground, $S_r (W m^{−2})$. Calculation of these flux densities requires the introduction of several additional quantities. The atmospheric transmissivity, $\tau$, ranges between 0.6 and 0.7 for typical clear sky conditions (Gates 1980). We thus assume $\tau$ = 0.65. The solar constant, $S_{p0}$, indicates extraterrestrial flux density to be $1,360 W m^{−2}$. Optical air mass number, $m_a$, is the ratio of slant path length through the atmosphere to zenith path length and is a function of atmospheric pressure, $p_a (kPa)$: 
+We then turn to calculate the components of the radiant energy budget of a lizard. We estimate the solar (shortwave) component of this quantity by aggregating flux densities for four radiation streams: the direct irradiance on a surface perpendicular to the beam, $S_p (W m^{−2})$; the diffuse sky irradiance on a horizontal plane, $S_d (W m^{−2})$; the total irradiance of a horizontal surface, $S_t (W m^{−2})$; and the reflected radiation from the ground, $S_r (W m^{−2})$. The calculation of these flux densities requires the introduction of several additional quantities. The atmospheric transmissivity, $\tau$, ranges between 0.6 and 0.7 for typical clear sky conditions (Gates 1980). We thus assume $\tau$ = 0.65. The solar constant, $S_{p0}$, indicates extraterrestrial flux density to be $1,360 W m^{−2}$. Optical air mass number, $m_a$, is the ratio of slant path length through the atmosphere to zenith path length and is a function of atmospheric pressure, $p_a (kPa)$: 
 $$p_a=101.3\exp(-E/8200),$$
 where $E$ is the elevation in meters above sea level. We can then calculate $m_a$ as $m_a=\frac{p_a}{101.3 \cos\psi}$.
 
@@ -439,7 +439,7 @@ R code for a transient model of lizard body temperature is available in the foll
 
 ## Butterflies
 
-We adapted a biophysical model for *Colias* that was developed and field validated by Kingsolver [-@kingsolver1983thermoregulation] to predict thoracic body temperature ($T_b$) based on thermoregulatory traits (body size, basal ventral hind wing solar absorptivity, and thoracic fur thickness), behavioral posture (basking and heat-avoidance), and environmental conditions.  We briefly describe the model, which was updated and detailed in Buckley and Kingsolver [-@buckley2012demographic]. Adults behaviorally thermoregulate to achieve the body temperatures needed for flight, and do not use endogenous heat production to elevate body temperatures. We assume that butterflies select the body temperature closest to their thermal optima (35°C) with available body temperatures bracketed by those in full sun (lateral basking posture with wings closed and the ventral hindwing surfaces oriented perpendicular to the sun) and full shade (no direct radiation).  Assuming that butterflies select body temperatures bracketed by full sun and full shade eliminates the need to attempt to model microclimate availability in detail.
+We adapted a biophysical model for *Colias* that was developed and field validated by Kingsolver [-@kingsolver1983thermoregulation] to predict thoracic body temperature ($T_b$) based on thermoregulatory traits (body size, basal ventral hind wing solar absorptivity, and thoracic fur thickness), behavioral posture (basking and heat-avoidance), and environmental conditions.  We briefly describe the model, which was updated and detailed in Buckley and Kingsolver [-@buckley2012demographic]. Adults behaviorally thermoregulate to achieve the body temperatures needed for flight and do not use endogenous heat production to elevate body temperatures. We assume that butterflies select the body temperature closest to their thermal optima (35°C) with available body temperatures bracketed by those in full sun (lateral basking posture with wings closed and the ventral hindwing surfaces oriented perpendicular to the sun) and full shade (no direct radiation).  Assuming that butterflies select body temperatures bracketed by full sun and full shade eliminates the need to attempt to model microclimate availability in detail.
 
 We describe the steady-state energy flux balance of a butterfly at rest on vegetation as
 $$Q_s= Q_t + Q_c,$$
@@ -456,7 +456,7 @@ The convective heat flux is given by:
 $$Q_c= h_T A_c (T_b-T_a), $$
 where $A_c$ is the convective heat transfer surface area and $T_a$ is the air temperature ($K$).  We assume $A_c=A_t= A_{s,ttl}$. The total convective heat transfer coefficient, $h_T Wm^{-2}K^{-1}$, is calculated as the boundary layer conductance $h_c Wm^{-2}K^{-1}$ and the fur layer conduction in series:
 $$1/h_T=1/h_c+\frac{(r_i+\delta)ln[(r_i+\delta)/r_i]}{k_e} ,$$
-where $\delta$ is the thoracic fur thickness ($m$) and $k_e$ is the thermal conductivity of the fur ($Wm^{-1}K^{-1}$).  The boundary layer conductance, $h_c$, can be estimated using the relationship between two non-dimensional numbers.  The Nusselt number, $Nu=h_c D/ka$, is the ratio of convective to conductive heat transfer, where $k_a$ is the thermal conductivity of air ($Wm^{-1}K^{-1}$). We used the maximum width of the mesothorax as the characteristic dimension of the butterfly, $D (m)$.  The Reynolds number, $Re=uD/v$, is the ratio of inertial forces to viscous forces, where $u$ is wind speed ($m/s$) and $v$ is kinematic viscosity ($m^2/s$).  We used the Nu-Re relation for a cylinder, $Nu=0.6Re^{0.5}$, which is a reasonable approximation for *Colias*. We estimate energy flux balance in order to estimate $T_b$. 
+where $\delta$ is the thoracic fur thickness ($m$) and $k_e$ is the thermal conductivity of the fur ($Wm^{-1}K^{-1}$).  The boundary layer conductance, $h_c$, can be estimated using the relationship between two non-dimensional numbers.  The Nusselt number, $Nu=h_c D/ka$, is the ratio of convective to conductive heat transfer, where $k_a$ is the thermal conductivity of air ($Wm^{-1}K^{-1}$). We used the maximum width of the mesothorax as the characteristic dimension of the butterfly, $D (m)$.  The Reynolds number, $Re=uD/v$, is the ratio of inertial forces to viscous forces, where $u$ is wind speed ($m/s$) and $v$ is kinematic viscosity ($m^2/s$).  We used the Nu-Re relation for a cylinder, $Nu=0.6Re^{0.5}$, which is a reasonable approximation for *Colias*. We estimate the energy flux balance to estimate $T_b$. 
 
 We provide the operative temperature model for butterflies as follows:
 ```{r, fig.height=4, fig.width=6}
@@ -474,18 +474,18 @@ legend("bottomright",title= expression("direct radiation," ~ H[sdif]), legend=c(
 
 ## Grasshoppers
 
-We provide a biophysical model (`Tb_grasshopper()`) to predict grasshopper body temperatures [@buckley2014phenotypic], partially adapted from [@samietz2005altitudinal]. We use an energy budget to describe the flow of energy between the grasshopper and the environment: $Q_s=Q_t+Q_c+Q_{cond}$.  Here $Q_s$ is the total input of heat due to solar radiation ($W$). $Q_t$ describes the flux of thermal radiative heat due to both incoming thermal radiation (ground and sky) and that emitted by the grasshopper ($W$).  $Q_c$ is flux of heat between the grasshopper and the surrounding fluid (air) via convection ($W$). $Q_{cond}$ is the flux of heat between the grasshopper’s body and the solid surfaces with which the grasshopper’s body is in contact via conduction ($W$). We omit evaporative heat loss as it should be negligible for the grasshopper [@anderson1979habitat].   
+We provide a biophysical model (`Tb_grasshopper()`) to predict grasshopper body temperatures [@buckley2014phenotypic], partially adapted from [@samietz2005altitudinal]. We use an energy budget to describe the flow of energy between the grasshopper and the environment: $Q_s=Q_t+Q_c+Q_{cond}$.  Here $Q_s$ is the total input of heat due to solar radiation ($W$). $Q_t$ describes the flux of thermal radiative heat due to both incoming thermal radiation (ground and sky) and that emitted by the grasshopper ($W$).  $Q_c$ is the flux of heat between the grasshopper and the surrounding fluid (air) via convection ($W$). $Q_{cond}$ is the flux of heat between the grasshopper’s body and the solid surfaces with which the grasshopper’s body is in contact via conduction ($W$). We omit evaporative heat loss as it should be negligible for the grasshopper [@anderson1979habitat].   
 
 The solar radiative heat flux is estimated as the sum of direct ($Q_{s,dir}$), diffuse ($Q_{s,dif}$), and reflected ($Q_{s,ref}$) components [@kingsolver1983thermoregulation]:
 $$ Q_s= Q_{s,dir}+Q_{s,dif}+Q_{s,ref},\\ Q_s= \alpha A_{s,dir}H_{s,dir}/cos(z) +\alpha A_{s,ref}H_{s,dif}+\alpha r_g A_{s,ref}H_{s,ttl}. $$
  
-Each component is calculated as the product of the solar absorptivity of the grasshopper (we assume $\alpha=0.7$, [@anderson1979habitat]), the horizontal flux of solar radiation ($H_{s,dir}$, $H_{s,dif}$, and $H_{s,ttl}$ for the direct, diffuse, and total fluxes, respectively), and the silhouette area of the grasshopper exposed to solar radiation ($A_{s,dir}$, $A_{s,dif}$, and $A_{s,ttl}$ for the direct, diffuse, and total surface areas, respectively).  The direct radiation is adjusted for the zenith angle ($z$, degrees), which is the angle of the sun away from vertical.  
+Each component is calculated as the product of the solar absorptivity of the grasshopper (we assume $\alpha=0.7$, [@anderson1979habitat]), the horizontal flux of solar radiation ($H_{s,dir}$, $H_{s,dif}$, and $H_{s,ttl}$ for the direct, diffuse, and total fluxes, respectively), and the silhouette area of the grasshopper exposed to solar radiation ($A_{s,dir}$, $A_{s,dif}$, and $A_{s,ttl}$ for the direct, diffuse, and total surface areas, respectively).  The direct radiation is adjusted for the zenith angle ($z$, degrees), which is the angle of the sun away from the vertical.  
 
-We calculate the surface area by approximating the body of a female grasshopper as a rotational ellipsoid [@samietz2005altitudinal].  The major axis is equal to the grasshopper’s length.  We calculate the semi-minor axis (half of the grasshopper’s width) as $a=(0.365+0.241\times1000 L)/1000 m$ using a regression from Lactin and Johnson [-@lactin1998environmental]. If $e=\sqrt{1-a^2/c^2}$, surface area can be calculated as follows:
+We calculate the surface area by approximating the body of a female grasshopper as a rotational ellipsoid [@samietz2005altitudinal].  The major axis is equal to the grasshopper’s length.  We calculate the semi-minor axis (half of the grasshopper’s width) as $a=(0.365+0.241\times1000 L)/1000 m$ using a regression from Lactin and Johnson [-@lactin1998environmental]. If $e=\sqrt{1-a^2/c^2}$, the surface area can be calculated as follows:
 $$A= 2 \pi a^2+\frac{2 \pi a c}{e \arcsin{e}}.$$
 The ratio of silhouette area to surface area of a grasshopper is a linear function of zenith angle: $A_s/A = 0.19-0.00173z$. Thus, $A_{s,dir}=A_{s,ref}=(0.19-0.00173z)A$.  We partitioned the observed total radiation ($H_{s,ttl}$) into diffuse ($H_{s,dif}$) and direct ($H_{s,dir}$) components using the polynomial function of a clearness index, $k_t$, developed by Erbs et al. [-@erbs1982estimation].
 
-We estimate thermal radiative flux as the sum of radiation from the sky and ground.  We assume that one half of the grasshopper’s body is subject to atmospheric radiation and the other half is subject to thermal radiation from the ground surface.  Thermal radiation is calculated using the Stefan-Boltmann law, which states that radiative flux is proportional to the forth power of the absolute temperature of a body.  Here $T_b$ is the absolute body temperature, $T_g$ is the absolute ground surface temperature, and $T_{sky}$ is the equivalent black body sky temperature [$T_{sky}=0.0552(T_a+273)^{1.5}$, [@swinbank1963long]].  The Stefan-Boltzmann constant ($\sigma$) characterizes the proportionality of this relationship.  The thermal emissivity ($\epsilon$) accounts for incomplete absorption or emission of thermal radiation, but in this case we assume that both the grasshopper and ground are perfect black bodies ($\epsilon=1$).  We account for the thermal radiative heat transfer surface area ($A_t=A$).  The relationship is thus:
+We estimate thermal radiative flux as the sum of radiation from the sky and ground.  We assume that one half of the grasshopper’s body is subject to atmospheric radiation and the other half is subject to thermal radiation from the ground surface.  Thermal radiation is calculated using the Stefan-Boltzmann law, which states that radiative flux is proportional to the fourth power of the absolute temperature of a body.  Here $T_b$ is the absolute body temperature, $T_g$ is the absolute ground surface temperature, and $T_{sky}$ is the equivalent black body sky temperature [$T_{sky}=0.0552(T_a+273)^{1.5}$, [@swinbank1963long]].  The Stefan-Boltzmann constant ($\sigma$) characterizes the proportionality of this relationship.  The thermal emissivity ($\epsilon$) accounts for incomplete absorption or emission of thermal radiation, but in this case, we assume that both the grasshopper and ground are perfect black bodies ($\epsilon=1$).  We account for the thermal radiative heat transfer surface area ($A_t=A$).  The relationship is thus:
  $$Q_t=0.5A_t \epsilon \sigma (T_b^4-T_{sky}^4)+0.5A_t \epsilon \sigma (T_b^4-T_g^4).$$
 
 Convective heat flux is estimated as the product of the convective heat transfer coefficient in turbulent air $h_{cs} (Wm^{-2}K^{-1})$, the grasshopper’s surface area exposed to convective heat flux ($A_c=A$), and the temperature difference between the grasshopper’s body temperature $T_b$ and air temperature $T_a$:
@@ -514,7 +514,7 @@ legend("bottomright",title= expression("direct radiation, H"), legend=c(200,400,
 
 ## Mussels
 
-We adapted a biophysical model for intertidal mussels that was developed by Helmuth [-@helmuth1998intertidal] to predict mussel body temperature $T_b (K)$ based on environmental conditions, body size (height and length) and whether the mussel is solitary or aggregated. The amount of heat stored within a mussel body $Q_{stored} (W)$ can be described as
+We adapted a biophysical model for intertidal mussels that was developed by Helmuth [-@helmuth1998intertidal] to predict mussel body temperature $T_b (K)$ based on environmental conditions, body size (height and length), and whether the mussel is solitary or aggregated. The amount of heat stored within a mussel body $Q_{stored} (W)$ can be described as
 $$Q_{stored} = Q_{sol} \pm Q_{rad,sky} \pm Q_{rad, ground} \pm Q_{cond} \pm Q_{conv} - Q_{evap} \tag{1}$$
 where $Q_{sol} (W)$ is the short-wave solar radiation to the mussel, $Q_{rad,sky} (W)$, $Q_{rad,ground} (W)$ are the infrared radiation between the mussel and the sky, and between the mussel and the surroundings, $Q_{conv} (W)$ is the convective heat exchange, $Q_{cond} (W)$ is the conduction to and from the ground, and $Q_{evap} (W)$ is the evaporative cooling from water loss [@helmuth1998intertidal]. Since $Q_{stored} (W)$ is a product of mass ($m$), specific heat ($c$), and body temperature ($T_b$), the rate of change of stored heat can be expressed as $Q_{stored} = d(mcT_b)/dt$.
 
@@ -529,13 +529,13 @@ In Environmental Biophysics [@campbell2012introduction], $\varepsilon_{sky}$ is 
 $$Q_{rad,sky} = 4.0\varepsilon_{org}\varepsilon_{sky}^{3/4}\sigma A_{rad,sky}T_a^3(T_b-\varepsilon_{sky}^{1/4}T_a)$$
 $$Q_{rad,ground} = 4.0\varepsilon_{org}\sigma A_{rad,ground}T_g^3(T_b-T_g)$$
 
-Heat conduction $Q_{cond}$ can be calculated as $Q_{cond} = \frac{k_b}{0.5H}A_{cond}(T_b-T_g)$ where $k_b$ is the thermal conductivity of heat in mussel body. Because most of the body of a mussel is composed of water, we approximated conductivity as equal to that of water, $0.60 W m^{-2} K^{-1}$. $H$ represents the height of the mussel and $A_{cond}$ is the mussel area that is touching the ground.
+Heat conduction $Q_{cond}$ can be calculated as $Q_{cond} = \frac{k_b}{0.5H}A_{cond}(T_b-T_g)$ where $k_b$ is the thermal conductivity of heat in the mussel body. Because most of the body of a mussel is composed of water, we approximated conductivity as equal to that of water, $0.60 W m^{-2} K^{-1}$. $H$ represents the height of the mussel and $A_{cond}$ is the mussel area that is touching the ground.
 
-Convective heat flux ($Q_{conv}$) can be calculated from $Q_{conv}=h_cA_{conv}(T_b-T_a)$ where $h_c$ is the coefficient for forced convection and $A_{conv}$ is total surface area exposed to convective heat loss [@helmuth1998intertidal]. We calculate the value of $h_c$ using three empirical formulas relating Nusselt numbers and Reynolds numbers: $Nu = \frac{h_c L}{K_a}$, $Re = \frac{uL}{v}$ and $Nu = aRe^b$, where $L$ is the length of the mussel, $K_a$ is the conductivity of air $K_a = 0.00501 + 7.2 \times10^{–5}T_a (W·m^{–1}·K^{–1})$, $u$ is the wind speed (m/s), and $v$ is the kinematic viscosity of air $v = -1.25 \times 10^{-5} + 9.2 \times 10^{-8} T_a$ [@denny2006hot]. $A_{conv}$ can be assumed equal to the total surface area. The authors empircally acquired $a$ and $b$ in the formula to obtain $Nu$, which vary depending on the position and the state of the mussels. For solitary mussels, $a = 0.38$ and $b = 0.51$ if the anterior or posterior end are facing upwind, and $a = 0.63$ and $b = 0.47$ if the valve is facing upwind. The values were measured to be $a = 0.67$, $b = 0.42$ for aggregated mussels [@helmuth1998intertidal].
+Convective heat flux ($Q_{conv}$) can be calculated from $Q_{conv}=h_cA_{conv}(T_b-T_a)$ where $h_c$ is the coefficient for forced convection and $A_{conv}$ is the total surface area exposed to convective heat loss [@helmuth1998intertidal]. We calculate the value of $h_c$ using three empirical formulas relating Nusselt numbers and Reynolds numbers: $Nu = \frac{h_c L}{K_a}$, $Re = \frac{uL}{v}$, and $Nu = aRe^b$, where $L$ is the length of the mussel, $K_a$ is the conductivity of air $K_a = 0.00501 + 7.2 \times10^{–5}T_a (W·m^{–1}·K^{–1})$, $u$ is the wind speed (m/s), and $v$ is the kinematic viscosity of air $v = -1.25 \times 10^{-5} + 9.2 \times 10^{-8} T_a$ [@denny2006hot]. $A_{conv}$ can be assumed equal to the total surface area. The authors empirically acquired $a$ and $b$ in the formula to obtain $Nu$, which vary depending on the position and the state of the mussels. For solitary mussels, $a = 0.38$ and $b = 0.51$ if the anterior or posterior end are facing upwind, and $a = 0.63$ and $b = 0.47$ if the valve is facing upwind. The values were measured to be $a = 0.67$, $b = 0.42$ for aggregated mussels [@helmuth1998intertidal].
 
 Lastly, $Q_{evap} = \lambda \dot{m}$ where $\lambda$ is the latent heat of vaporization of water ($J/kg$) and $\dot{m}$ is the rate of water loss [@helmuth1998intertidal]. In this model, we assume the rate of water loss to be 5% of initial body mass per hour only when the mussels are gaping.
 
-For simplicity, `Tb_mussel` function examines the steady-state (equilibrium) body temperature of an organism exposed over long periods of time to constant environmental conditions. See Helmuth [-@helmuth1998intertidal] for the transient model. Inserting the values in equation (1) and solving for $T_b$ gives us the following equation.
+For simplicity, `Tb_mussel` function examines the steady-state (equilibrium) body temperature of an organism exposed over long periods to constant environmental conditions. See Helmuth [-@helmuth1998intertidal] for the transient model. Inserting the values in equation (1) and solving for $T_b$ gives us the following equation.
 $$T_{b,steady} = (k_1 A_{sol} S + k_2 A_{rad,sky} k_3 T_a^4 + k_4 A_{rad,ground} T_g^4 + k_5 A_{cond} T_g + h_c A_{conv} T_a - \lambda\dot{m}) / $$
 $$(k_2 A_{rad,sky} T_a^3 + k_4 A_{rad, ground} T_g^3 + k_5 A_{cond} + h_c A_{conv} + \dot{m}c)$$
 Here, $k_1$ to $k_5$ are physical constants and measured coefficients.
@@ -597,7 +597,7 @@ Additionally, land surface models have been modified to predict mussel bed tempe
 
 ## Limpet
 
-We adapted a biophysical model `Tb_Limpet()` from Denny and Harley [-@denny2006hot] to predict the body temperature of limpets based on body size (length and height), environmental conditions and the position of the limpet. We note that our implementation is simplified from the original. In this model, the shape of the limpet is approximated to a cone of radius $r$ and height $H$.
+We adapted a biophysical model `Tb_Limpet()` from Denny and Harley [-@denny2006hot] to predict the body temperature of limpets based on body size (length and height), environmental conditions, and the position of the limpet. We note that our implementation is simplified from the original. In this model, the shape of the limpet is approximated to a cone of radius $r$ and height $H$.
 
 The rate at which energy is stored within the organism $W_{stored} (W)$ is influenced by several heat exchange processes. The processes include the rate of heat absorbed from short-wave radiation $W_{sw} (W)$, net heat transferred by long-wave radiation $W_{lw} (W)$, rate of heat transferred by conduction and convection $W_{cd} (W)$ and $W_{cv} (W)$. We neglected heat gain by metabolism due to the limpets' low metabolic rate. We likewise omitted evaporative heat loss assuming that the limpet has its shell firmly clamped against the substratum, which limits evaporation.
 
@@ -720,9 +720,9 @@ legend("topleft",title="depth (cm)", legend=c(0,5,10,20), lty=c("solid","dashed"
 
 # Example operative environmental temperature calculations
 
-Suppose we want to estimate the hourly body temperature (operative environmental temperature, $T_e$) of a *Sceloporus* lizard on June 1, 2018 in Santa Fe, New Mexico, USA (35.69, -105.944, elevation: 2121m). Let's assume the lizard is in an unshaded location where the daily air temperature varies from a minimum of 10°C to a maximum of 25°C, the soil surface temperature varies from a minimum of 15°C to a maximum of 30°C, and the windspeed is 0.5 m/s. We assume that atmospheric transmissivity $\tau=0.7$ and albedo $\rho=0.6$. 
+Suppose we want to estimate the hourly body temperature (operative environmental temperature, $T_e$) of a *Sceloporus* lizard on June 1, 2018, in Santa Fe, New Mexico, USA (35.69, -105.944, elevation: 2121m). Let's assume the lizard is in an unshaded location where the daily air temperature varies from a minimum of 10°C to a maximum of 25°C, the soil surface temperature varies from a minimum of 15°C to a maximum of 30°C, and the windspeed is 0.5 m/s. We assume that atmospheric transmissivity $\tau=0.7$ and albedo $\rho=0.6$. 
 
-We will initially estimate $T_b$ by balancing an energy balance for steady state conditions.  We then use the $T_b$ estimates to explore the components of an energy balance.
+We will initially estimate $T_b$ by balancing an energy balance for steady-state conditions.  We then use the $T_b$ estimates to explore the components of an energy balance.
 
 ## Environmental data
 
@@ -769,7 +769,7 @@ Ts= sapply(1:24, diurnal_temp_variation_sine, T_max=Tmax_s, T_min=Tmin_s)
 
 ## Operative temperature estimation
 
-We will first use functions based on energy balances to estimate body temperature given the environmental conditions. We first need to estimate several energy balance parameters. We first estimate the surface area exposed to radation We model a 10g *Sceloporus* lizard with solar aborptivity $a=0.9$ [@gates2012biophysical].
+We will first use functions based on energy balances to estimate body temperature given the environmental conditions. We first need to estimate several energy balance parameters. We first estimate the surface area exposed to radiation We model a 10g *Sceloporus* lizard with solar absorptivity $a=0.9$ [@gates2012biophysical].
 ```{r}
 mass=10
 a=0.9 #solar absorptivity
@@ -789,7 +789,7 @@ Qabs= psa*Sdir +0.5*Sdif +0.5*Sref
 We then estimate the lizard's heat transfer coefficient, $H_L$ using an empirical relationship for lizards (`heat_transfer_coefficient()`), but also illustrate a function estimating $H_L$ using a spherical approximation (`heat_transfer_coefficient_approximation()`) and a simplified approximation (`heat_transfer_coefficient_simple()`).  
 
 ```{r}
-#Use DRYAIR in NicheMapR to estimate thermal conductivity of air and kinematic viscocity
+#Use DRYAIR in NicheMapR to estimate the thermal conductivity of air and kinematic viscosity
 #library(NicheMapR)
 
 #estimate Barometric pressure (pascal)
@@ -801,7 +801,7 @@ nu= DRYAIRout$viskin #Kinematic viscosity (m2 s-1)
 
 svl=0.06 #SVL for Sceloporus
 
-#We will use the average of K and nu across the day for simplicity and since there's not substantial variation
+#We will use the average of K and nu across the day for simplicity and since there's not a substantial variation
 K= mean(K)
 nu=mean(nu)
 
@@ -862,17 +862,17 @@ legend("topleft",
 
 ## Energy balance
 
-We will now use the body temperature estimates to examine the components of the energy balance. We will be solving the following energy balance:
+We will now use body temperature estimates to examine the components of the energy balance. We will be solving the following energy balance:
 $$Q_{net} = Q_{abs} - Q_{emit} - Q_{conv} - Q_{cond} + Q_{met} - Q_{evap},$$
 We will estimate each term on the right side of the equation in turn. 
 
-We calculate the hourly radiation asborbed as follows:
+We calculate the hourly radiation absorbed as follows:
 ```{r}
 Qabs= rep(NA, 24)
 for(hr in 1:24) Qabs[hr]= Qradiation_absorbed(a=a, A=A, psa_dir=psa[hr], psa_ref=1-psa[hr], S_dir=Sdir[hr], S_dif=Sdif[hr], a_s=rho)
 ```
 
-We estimate thermal radiation $Q_{emit}$ for the lizard outdoors. We assume the surface emisivity of lizards, $\epsilon_s=0.965$ [@barlett1967energy].
+We estimate thermal radiation $Q_{emit}$ for the lizard outdoors. We assume the surface emissivity of lizards, $\epsilon_s=0.965$ [@barlett1967energy].
 
 ```{r}
 #Use Gates model as Te estimate
@@ -883,8 +883,8 @@ for(hr in 1:24) Qemit[hr]=Qemitted_thermal_radiation(epsilon=epsilon_s, A=A, psa
 ```
 
 We next estimate convection $Q_{conv}$ and conduction $Q_{cond}$. We estimate convective heat exchange between the animal and surrounding air using the following relationship:
-$$Q_{conv}= ef\cdot H_L(A*proportion)(Ta-Tb),$$
-where an enhancement factor, $ef$, multiplier can be incorported to account for increases in heat exchange resulting from air turbulance in field conditions.
+$$Q_{conv}= ef\cdot H_L(A\cdot \mbox{proportion})(T_a-T_b),$$
+where an enhancement factor, $ef$, multiplier can be incorporated to account for increases in heat exchange resulting from air turbulence in field conditions.
 
 The function is available in R assuming that 2/3 of the lizard's surface area is exchanging heat through convection. 
 ```{r}
@@ -893,7 +893,7 @@ for(hr in 1:24) Qconv[hr]= Qconvection(T_a= Ta[hr]+273,T_b= Te[hr]+273,H=H_L,A=A
 ```
 
 We estimate conductance between the lizard and surface assuming conductance through the animal tissue is the rate limiting step as follows:
-$$Q_{cond}= A\cdot proportion\cdot K(T_g-T_b)/d, $$
+$$Q_{cond}= A\cdot \mbox{proportion}\cdot K(T_g-T_b)/d, $$
 We conduct the estimate in R assuming that 1/3 of the lizard surface is in contact with the ground and a skin thinkness of $10^{-6}$:
 ```{r}
 Qcond= rep(NA, 24)
