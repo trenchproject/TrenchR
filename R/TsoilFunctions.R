@@ -268,7 +268,21 @@ soil_temperature_function<- function(j, T_so, params){
 #' time_vector= rep(1:24,4)
 #' solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
 #'
-#' soil_temperature(z_r.intervals=12,z_r=1.5, z=2, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
+#' soil_temperature(
+#'   z_r.intervals=12,
+#'   z_r=1.5, 
+#'   z=2, 
+#'   T_a=temp_vector, 
+#'   u=wind_speed_vector, 
+#'   Tsoil0= 20, 
+#'   z0=0.02, 
+#'   SSA=0.7, 
+#'   TimeIn=time_vector, 
+#'   H= solrad_vector, 
+#'   water_content=0.2, 
+#'   air_pressure=85, 
+#'   rho_so=1620, 
+#'   shade=FALSE)
 #'}
 
 soil_temperature<-function(z_r.intervals=12,z_r, z, T_a, u, Tsoil0, z0, SSA, TimeIn, H, water_content=0.2, air_pressure, rho_so=1620, shade=FALSE){
