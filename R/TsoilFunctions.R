@@ -101,7 +101,16 @@ soil_temperature_integrand<-function(x, L, z0){
 #' @author Joseph Grigg
 #' @examples
 #' \dontrun{
-#' soil_temperature_equation(L=-10, rho_a=1.177, c_a=1006, k=0.41, V_inst=0.3, z_r=1.5, z0=0.02, T_inst=265, T_s=20)
+#' soil_temperature_equation(
+#'   L=-10, 
+#'   rho_a=1.177, 
+#'   c_a=1006, 
+#'   k=0.41, 
+#'   V_inst=0.3, 
+#'   z_r=1.5, 
+#'   z0=0.02, 
+#'   T_inst=265, 
+#'   T_s=20)
 #'}
 
 soil_temperature_equation<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s){ 
@@ -145,7 +154,23 @@ soil_temperature_equation<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, 
 #' time_vector= rep(1:24,4)
 #' solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
 #'
-#' params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0=0.02, H=solrad_vector, T_a=temp_vector, u=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=FALSE)
+#' params=list(
+#'   SSA=0.7, 
+#'   epsilon_so=0.98, 
+#'   k_so=0.293, 
+#'   c_so=800, 
+#'   dz=0.05, 
+#'   z_r=1.5, 
+#'   z0=0.02, 
+#'   H=solrad_vector, 
+#'   T_a=temp_vector, 
+#'   u=wind_speed_vector, 
+#'   rho_a=1.177,
+#'   rho_so=1620, 
+#'   c_a=1006, 
+#'   TimeIn=time_vector, 
+#'   dt=60*60, 
+#'   shade=FALSE)
 #' 
 #' soil_temperature_function(j=1,T_so= rep(20,13), params=params)
 #' 
