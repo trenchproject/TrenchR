@@ -16,7 +16,15 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' diurnal_temp_variation_sineexp(T_max=30, T_min=10, t=11, t_r=6, t_s=18, alpha=2.59, beta= 1.55, gamma=2.2)
+#' diurnal_temp_variation_sineexp(
+#'   T_max=30, 
+#'   T_min=10, 
+#'   t=11, 
+#'   t_r=6, 
+#'   t_s=18, 
+#'   alpha=2.59, 
+#'   beta= 1.55, 
+#'   gamma=2.2)
 #' }
 
 diurnal_temp_variation_sineexp=function(T_max, T_min, t, t_r, t_s, alpha=2.59, beta= 1.55, gamma=2.2){
