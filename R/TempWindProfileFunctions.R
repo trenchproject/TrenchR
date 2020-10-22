@@ -13,6 +13,7 @@
 #' @return surface roughness (m)
 #' @keywords wind profile
 #' @family microclimate functions
+#' @import stats
 #' @export
 #' @examples
 #' \dontrun{
