@@ -94,6 +94,7 @@ soil_temperature_integrand<-function(x, L, z0){
 #' @param z0 is surface roughness in m
 #' @param T_inst instantaneous air temperature in K
 #' @param T_s initial soil suface temperature in °C 
+#' @import stats
 #' @return soil temperature function
 #' @keywords soil temperature
 #' @family soil temperature functions
@@ -136,6 +137,7 @@ soil_temperature_equation<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, 
 #' @return soil temperature function
 #' @keywords soil temperature
 #' @family soil temperature functions
+#' @import stats
 #' @export
 #' @author Joseph Grigg
 #' @examples
