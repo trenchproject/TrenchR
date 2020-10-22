@@ -17,7 +17,15 @@
 #' @author Brian Helmuth lab 
 #' @examples
 #' \dontrun{
-#' Tb_limpetBH(T_a = 25, T_r = 30, L = 0.0176, H = 0.0122, I = 1300, u = 1, s_aspect = 90, s_slope=60, c = 1)
+#' Tb_limpetBH(
+#'   T_a = 25, 
+#'   T_r = 30, 
+#'   L = 0.0176, 
+#'   H = 0.0122, 
+#'   I = 1300, 
+#'   u = 1, 
+#'   s_aspect = 90, 
+#'   s_slope=60, c = 1)
 #' }
 
 Tb_limpetBH = function(T_a, T_r, L, H, I, u, s_aspect, s_slope, c, position = "anterior"){
