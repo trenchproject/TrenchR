@@ -12,7 +12,10 @@
 #' @author Joseph Grigg
 #' @examples
 #' \dontrun{
-#' soil_conductivity(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), lambda=c(0.10,0.40,0.11,0.01,0.2, 0.18), g_a=0.125)
+#' soil_conductivity(
+#'   x=c(0.10,0.40,0.11,0.01,0.2, 0.18), 
+#'   lambda=c(0.10,0.40,0.11,0.01,0.2, 0.18), 
+#'   g_a=0.125)
 #'}
 
 soil_conductivity<-function(x, lambda, g_a){
