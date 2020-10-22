@@ -87,6 +87,7 @@ Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #' @return operative environmental temperature (K)
 #' @keywords operative environmental temperature
 #' @family biophysical models
+#' @import stats
 #' @export
 #' @examples 
 #' \dontrun{
