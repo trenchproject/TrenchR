@@ -26,8 +26,7 @@ The body temperatures, $T_b$, of organisms can depart dramatically from air temp
 
 Calculations of operative environmental temperatures are based on balancing energy input and output to organisms.  The following accounting of heat gains and losses at the surface of the organism can be used to estimate $T_e$ [@gates2012biophysical]:
 $$Q_{net} = Q_{abs} - Q_{emit} - Q_{conv} - Q_{cond} - Q_{met} - Q_{evap},$$
-where $Q_{net}$ is the net energy exchange with the environment (W), $Q_{abs}$ is the solar and thermal radiation absorbed (W), $Q_{emit}$ is the thermal radiation emitted (W), $Q_{conv}$ is energy exchange due to convection (W), $Q_{cond}$ is energy exchange due to conduction (W),
-$Q_{met}$ is the energy emitted due to metabolism (W), and $Q_{evap}$ is the energy emitted due to evaporative water loss (W).
+where $Q_{net}$ is the net energy exchange with the environment (W), $Q_{abs}$ is the solar radiation absorbed (W), $Q_{emit}$ is the net thermal radiation emitted (W), $Q_{conv}$ is energy exchange due to convection (W), $Q_{cond}$ is energy exchange due to conduction (W), $Q_{met}$ is the energy emitted due to metabolism (W), and $Q_{evap}$ is the energy emitted due to evaporative water loss (W).
 
 The energy balance is available in TrenchR as follows:
 ```{r}
@@ -37,9 +36,9 @@ We briefly review each component of the energy balance below.  Details are avail
 
 # Solar radiation, Qabs
 
-The solar and thermal radiation absorbed by animals, $Q_{abs} (W)$, is the sum of direct $S_{dir}$, diffuse $S_{dif}$, and reflected $S_{ref}$ solar radiation ($W/m^2$). The sum is weighted by the organism's surface area $A (m)$ exposed to the radiation sources. Additionally, all forms of incoming radiation are multiplied by the solar absorptivity of the animal surface ($a$ proportion) to estimate absorbed radiation. The summation of incoming solar radiation is thus as follows:
+The solar radiation absorbed by animals, $Q_{abs} (W)$, is the sum of direct $S_{dir}$, diffuse $S_{dif}$, and reflected $S_{ref}$ solar radiation ($W/m^2$). The sum is weighted by the organism's surface area $A (m)$ exposed to the radiation sources. Additionally, all forms of incoming radiation are multiplied by the solar absorptivity of the animal surface ($a$ proportion) to estimate absorbed radiation. The summation of incoming solar radiation is thus as follows:
 $$Qabs= a \times A_{dir} \times S_{dir} + a \times A_{dif} \times S_{dif} + a \times A_{ref} \times S_{ref},$$
-where $A_{dir}$, $A_{dif}$, and $A_{ref}$ are the surface areas expsed to direct, diffuse, and reflected solar radiation, respectively.
+where $A_{dir}$, $A_{dif}$, and $A_{ref}$ are the surface areas exposed to direct, diffuse, and reflected solar radiation, respectively.
 
 The summation is available in R as follows:
 ```{r, fig.height=4, fig.width=8}
@@ -55,7 +54,7 @@ In the functions, psa_dir and psa_ref are the proportions of surface area expose
 
 # Thermal radiation, Qemit
 
-The rate of emission of thermal radiation from the surface of an animal, $Q_{emit} (W)$, is determined by the difference between the surface temperature of the animal $T_b (K)$ and the temperatures of the air $T_a (K)$ and of the ground $T_g (K)$.  $T_a$ is additionally used to estimate sky temperature $T_{sky} (K)$, the effective radiant temperature of the sky as $T_{sky}=1.22\times (T_a-273.15)-20.4+273.15$ [@gates2012biophysical]. The following expressions can be used to estimate $Q_{emit} (W)$ for animals in enclosed and open environments, respectively:
+The net rate of emission of thermal radiation from the surface of an animal, $Q_{emit} (W)$, is determined by the difference between the surface temperature of the animal $T_b (K)$ and the temperatures of the air $T_a (K)$ and of the ground $T_g (K)$.  $T_a$ is additionally used to estimate sky temperature $T_{sky} (K)$, the effective radiant temperature of the sky as $T_{sky}=1.22\times (T_a-273.15)-20.4+273.15$ [@gates2012biophysical]. The following expressions can be used to estimate $Q_{emit} (W)$ for animals in enclosed and open environments, respectively:
 $$
 enclosed: Q_{emit}= A_r \epsilon \sigma (T_b^4 - T_a^4)\\
 open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
@@ -312,7 +311,6 @@ plot(10:30, saturation_water_vapor_pressure(T_a=10:30), type="l", xlab = "temper
 ```
 
 # Solving for operative environmental temperature, Te
-
 TrenchR primarily includes models for calculating the operative temperatures of organisms that have reached an equilibrium with their environment ("steady-state", no heat retention). The following function uses the relationships above to solve the energy balance for $Te (K)$.
 ```{r, fig.height=4, fig.width=6}
 t.seq= lapply(293:313, FUN=Tb_Gates, A=0.1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.0, T_g=303, Qabs=10, epsilon=0.95, H_L=10, ef=1.3, K=0.5)
@@ -339,29 +337,13 @@ where 1.4 is a factor to account for increased convection in natural environment
 
 The function to calculate $T_e$ (called $T_b$ for simplicity) is available in R as follows (including the above calculations of $Q_{emit}$, $g_r$, and $g_{Ha}$):
 ```{r, fig.height=4, fig.width=6}
-plot(293:313, Tb_CampbellNorman(T_a=293:313, S=800, epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", xlab = "air temperature (K)", ylab = "body temperature (K)", xlim=c(295,310), ylim=c(290,325))
+plot(293:313, Tb_CampbellNorman(T_a=293:313, T_g=303, S=600, alpha_L=0.96, epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", xlab = "air temperature (K)", ylab = "body temperature (K)", xlim=c(295,310), ylim=c(290,340))
 abline(a=0, b=1, col="gray")
 
-points(293:313, Tb_CampbellNorman(T_a=293:313, S=400, epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", lty="dashed")
-points(293:313, Tb_CampbellNorman(T_a=293:313, S=600, epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", lty="dotted")
+points(293:313, Tb_CampbellNorman(T_a=293:313, T_g=303, S=200, alpha_L=0.96, epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", lty="dashed")
+points(293:313, Tb_CampbellNorman(T_a=293:313, T_g=303, S=400, alpha_L=0.96, epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", lty="dotted")
 
-legend("bottomright", title= expression("Radiation, Sabs" ~ (W ~ m^{-2})), legend=c(400,600,800), lty=c("dashed","dotted","solid") )
-```
-
-## Fei
-
-```{r, fig.height=4, fig.width=6}
-t.seq= lapply(293:313, FUN=Tb_Fei, T_g=300, H=800, lw=30, shade=0.5, m=10.5, Acondfact=0.05, Agradfact=0.4)
-plot(293:313, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)")
-abline(a=0,b=1, col="gray")
-
-t.seq= lapply(293:313, FUN=Tb_Fei, T_g=300, H=800, lw=30, shade=0.0, m=10.5, Acondfact=0.05, Agradfact=0.4)
-points(293:313, t.seq, type = "l", lty="dashed")
-t.seq= lapply(293:313, FUN=Tb_Fei, T_g=300, H=800, lw=30, shade=1.0, m=10.5, Acondfact=0.05, Agradfact=0.4)
-points(293:313, t.seq, type = "l", lty="dotted")
-
-legend("bottomright", title="proportion shade", legend=c(0.0,0.5,1.0), lty=c("dashed","solid","dotted") )
-
+legend("bottomright", title= expression("Radiation, Sabs" ~ (W ~ m^{-2})), legend=c(200,400,600), lty=c("dashed","dotted","solid") )
 ```
 
 # Specialized energy balance models and functions
@@ -435,7 +417,21 @@ legend("bottomright",title="parameters", legend=c("sun, surface","shade, surface
 
 ```
 
-R code for a transient model of lizard body temperature is available in the following repository: https://github.com/JRubalcaba/BodyTemp.
+The are several transient energy budget models available to predict lizard body temperatures. We include a transient model from Fei at al. [-@fei2012body] that can be implemented as demonstrated below. Please refer to the initial publication for the model details. R code for another transient model of lizard body temperature is available in the following repository: https://github.com/JRubalcaba/BodyTemp.
+
+```{r, fig.height=4, fig.width=6}
+t.seq= lapply(293:313, FUN=Tb_Fei, T_g=300, H=800, lw=30, shade=0.5, m=10.5, Acondfact=0.05, Agradfact=0.4)
+plot(293:313, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)")
+abline(a=0,b=1, col="gray")
+
+t.seq= lapply(293:313, FUN=Tb_Fei, T_g=300, H=800, lw=30, shade=0.0, m=10.5, Acondfact=0.05, Agradfact=0.4)
+points(293:313, t.seq, type = "l", lty="dashed")
+t.seq= lapply(293:313, FUN=Tb_Fei, T_g=300, H=800, lw=30, shade=1.0, m=10.5, Acondfact=0.05, Agradfact=0.4)
+points(293:313, t.seq, type = "l", lty="dotted")
+
+legend("bottomright", title="proportion shade", legend=c(0.0,0.5,1.0), lty=c("dashed","solid","dotted") )
+
+```
 
 ## Butterflies
 
@@ -696,16 +692,12 @@ points(20:40, t.seq, type = "l", col="red")
 #check higher vpd-> lower Te due to greater cooling
 t.seq= lapply(20:40, FUN=Tb_salamander_humid, r_i=4,r_b=1,D=0.01,elev=500,e_a=1.0,e_s=2.5,Qabs=400, epsilon=0.96)
 points(20:40, t.seq, type = "l", col="blue")
-
-#CHECK WITH ERIC?
 ```
 
 ```{r, fig.height=4, fig.width=6}
 plot(20:40, Qthermal_radiation_absorbed(T_a=20:40, T_g=30, epsilon_ground=0.97, a_longwave=0.965), type="l", xlab = "air temperature (°C)", ylab = "thermal radiation absorbed (W)")
 
 Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303, T_g=293, T_a=298, enclosed=FALSE)
-
-#CHECK WITH ERIC?
 ```
 
 ## Tsoil var
@@ -729,29 +721,29 @@ We will initially estimate $T_b$ by balancing an energy balance for steady-state
 Let us first prepare the environmental data for analysis. We will need to estimate hourly air and soil temperatures and radiation. We start by estimating day of year and the timing of sunrise and sunset:
 ```{r}
 #set up input data as variables
-lat=35.69; lon= -105.944; elev=2121
-Tmin=10; Tmax=25; Tmin_s=15; Tmax_s=30
-V=0.5 #wind speed
+lat=35.69; lon= -105.944; elev=2121 #latitude and longitude (degrees) and elevation (m)
+Tmin=10; Tmax=25; Tmin_s=15; Tmax_s=30 #minimum and maximum of air and soil temperatures, respectively (C)
+V=0.5 #wind speed (m/s)
 #assumptions
-tau=0.7; rho=0.6
+tau=0.7; rho=0.6 #atmospheric transmissivity and albedo
+Tb0=25 #initial assumption of body temperature (C)
 
-par(mar = c(5, 5, 3, 5))
-doy= day_of_year("2018-06-01", format= "%Y-%m-%d")
-snoon= solar_noon(lon=lon, doy=doy)
-dayl= daylength(lat=lat, doy=doy)
-tr= snoon-dayl/2
-ts= snoon+dayl/2
+doy= day_of_year("2018-06-01", format= "%Y-%m-%d") 
+snoon= solar_noon(lon=lon, doy=doy) #estimate solar noon
+dayl= daylength(lat=lat, doy=doy) #estimate daylength
+tr= snoon-dayl/2 #time of sunrise
+ts= snoon+dayl/2 #time of sunset
 ```
 
-We can estimate hourly solar radiation as follows:
+While measured solar radiation is preferable if available, we can estimate hourly solar radiation by discounting incoming solar radiation as it moved through the atmosphere as follows:
 ```{r, fig.height=4, fig.width=8}
-psi_deg= sapply(1:24, FUN=zenith_angle, doy=doy, lat=lat, lon=lon)
+psi_deg= sapply(1:24, FUN=zenith_angle, doy=doy, lat=lat, lon=lon) #estimate zenith angle (degrees)
 psi_rad= degree_to_radian(psi_deg) #convert to radians
-Srad= sapply(psi_rad, FUN=estimate_radiation, doy=doy, tau=tau, elev=elev, rho=rho)
+Srad= sapply(psi_rad, FUN=estimate_radiation, doy=doy, tau=tau, elev=elev, rho=rho) #estimate radiation
 #Separate into direct, diffuse, and reflected solar radiation
- Sdir= Srad[1,]
- Sdif= Srad[2,]
- Sref= Srad[3,]
+Sdir= Srad[1,]
+Sdif= Srad[2,]
+Sref= Srad[3,]
  
 #Plot 
 plot(1:24, Sdir, type="l", xlab = "hour", ylab = expression(radiation ~ (W/m^{2})), ylim=c(0,1200))
@@ -763,15 +755,15 @@ legend("topright", title="Solar radiation component", legend=c("direct", "diffus
 
 We can then calculate hourly air and soil temperatures. We use the sine-exponential model for air temperature and the sine model for surface temperature:
 ```{r}
-Ta= sapply(1:24, diurnal_temp_variation_sineexp, T_max=Tmax, T_min=Tmin, t_r=tr, t_s=ts, alpha=2.59, beta= 1.55, gamma=2.2)
-Ts= sapply(1:24, diurnal_temp_variation_sine, T_max=Tmax_s, T_min=Tmin_s)
+Ta= sapply(1:24, diurnal_temp_variation_sineexp, T_max=Tmax, T_min=Tmin, t_r=tr, t_s=ts, alpha=2.59, beta= 1.55, gamma=2.2) #air temperature (C)
+Ts= sapply(1:24, diurnal_temp_variation_sine, T_max=Tmax_s, T_min=Tmin_s) #soil temperature (C)
 ```
 
 ## Operative temperature estimation
 
 We will first use functions based on energy balances to estimate body temperature given the environmental conditions. We first need to estimate several energy balance parameters. We first estimate the surface area exposed to radiation We model a 10g *Sceloporus* lizard with solar absorptivity $a=0.9$ [@gates2012biophysical].
 ```{r}
-mass=10
+mass=10 #mass (g)
 a=0.9 #solar absorptivity
 
 #estimate surface area (m^2) from mass (g)
@@ -790,26 +782,23 @@ We then estimate the lizard's heat transfer coefficient, $H_L$ using an empirica
 
 ```{r}
 #Use DRYAIR in NicheMapR to estimate the thermal conductivity of air and kinematic viscosity
-#library(NicheMapR)
-
-#estimate Barometric pressure (pascal)
-ap= airpressure_from_elev(elev)*1000
-  
+ap= airpressure_from_elev(elev)*1000 #estimate Barometric pressure (pascal)
+ 
 DRYAIRout= DRYAIR(db=Ta, bp=ap, alt=elev)
-K= DRYAIRout$thcond
-nu= DRYAIRout$viskin #Kinematic viscosity (m2 s-1)
+K= DRYAIRout$thcond #thermal conductivity (Wm^-2K^-1) 
+nu= DRYAIRout$viskin #kinematic viscosity (m2 s-1)
 
-svl=0.06 #SVL for Sceloporus
+svl=0.006 #approximate snout vent length (m) for Sceloporus
 
 #We will use the average of K and nu across the day for simplicity and since there's not a substantial variation
 K= mean(K)
 nu=mean(nu)
 
-#Estimate using empirical relationship
-H_L=heat_transfer_coefficient(V=V,D=svl,K=K, nu= 15.3 * 10^(-6) , taxa="lizard_surface")
+#Estimate the heat transfer coefficient using an empirical relationship for lizards
+H_L=heat_transfer_coefficient(V=V,D=svl,K= 25.7 * 10^(-3), nu= 15.3 * 10^(-6) , taxa="lizard_surface")
 
 #Also illustrate estimations using a spherical approximation and a simplified version of the approximation.
-heat_transfer_coefficient_approximation(V=V,D=svl,K= K, nu= 15.3 * 10^(-6), taxa="lizard")
+heat_transfer_coefficient_approximation(V=V,D=svl,K= 25.7 * 10^(-3), nu= 15.3 * 10^(-6), taxa="lizard")
 heat_transfer_coefficient_simple(V=0.5,D=0.05)
 
 ```
@@ -822,10 +811,11 @@ TeGates= rep(NA, 24)
 for(hr in 1:24) TeGates[hr]= Tb_Gates(A=A, D=svl/3, psa_dir=psa[hr], psa_ref=0.5, psa_air=0.5, psa_g=0.05, T_g=Ts[hr]+273, T_a=Ta[hr]+273, Qabs=Qabs[hr]*A, epsilon=epsilon_s, H_L=H_L, ef=1.3, K=0.5)
 ```
 
-We also implement a similiar but simplied energy balance. The energy balance omits conduction with the ground and thus underestimates temperatures, but we implement it for comparison purposes:
+We also implement a similar but simplified energy balance. The energy balance omits conduction with the ground and thus underestimates temperatures, but we implement it for comparison purposes:
 ```{r}
 TeCN= rep(NA, 24)
-for(hr in 1:24) TeCN[hr]= Tb_CampbellNorman(T_a=Ta[hr]+273, S=Qabs[hr], epsilon=epsilon_s, c_p=29.3, D=svl, V=V)
+for(hr in 1:24) TeCN[hr]= Tb_CampbellNorman(T_a=Ta[hr]+273.15, T_g=Ts[hr]+273.15, S=Qabs[hr], alpha_L=0.96, epsilon=epsilon_s, c_p=29.3, D=svl, V=V)
+#S is solar radiation flux (W m^-2), so we divide by surface area, A
 ```
 
 We additionally estimate $T_e$ using the specialized function for lizards:
@@ -834,14 +824,14 @@ TeLiz= rep(NA, 24)
 for(hr in 1:24) TeLiz[hr]= Tb_lizard(T_a=Ta[hr], T_g=Ts[hr], u=V, svl=svl*1000, m=mass, psi=psi_deg[hr], rho_S=rho, elev=elev, doy=doy, sun=TRUE, surface=TRUE, alpha_S=a, alpha_L=0.965, epsilon_s=epsilon_s, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
 
 TeFei= rep(NA, 24)
-for(hr in 1:24) TeFei[hr]= Tb_Fei(T_a=Ta[hr]+273, T_g=Ts[hr]+273, H=Qabs[hr], lw=30, shade=0.5, m=10.5, Acondfact=0.05, Agradfact=0.4)
+for(hr in 1:24) TeFei[hr]= Tb_Fei(T_a=Ta[hr]+273, T_g=Ts[hr]+273, H=Qabs[hr], lw=30, shade=0.0, m=10.5, Acondfact=0.05, Agradfact=0.4)
 ```
 
 We next plot the diurnal trends in environmental data and the operative data.
 ```{r, fig.height=4, fig.width=8}
 par(mar=c(4, 4, 1, 4), mgp=c(2, 1, 0), las=0)
 
-plot(1:24, TeGates-273, type="l", xlab="Hour", ylab="Temperature (°C)", col="blue", ylim=c(0,80)) #Gates
+plot(1:24, TeGates-273, type="l", xlab="Hour", ylab="Temperature (°C)", col="blue", ylim=c(10,38)) #Gates
 points(1:24, TeCN-273, type="l", col="blue", lty="dotted") #Campbell
 points(1:24, TeLiz, type="l", col="blue", lty="dashed") #Buckley 2008
 points(1:24, TeFei-273, type="l", col="blue", lty="dotdash") #Fei et al.

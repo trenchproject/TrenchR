@@ -66,10 +66,10 @@ Tb_Fei <- function(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact){
   for (i in c(1:50)) {
     
     #thermal radiation
-    # different from the paper. source?
-    dQ_IR = epsilon_lizard*A_down*sigma*(T_g^4. - T_o^4.) + epsilon_lizard*A_up*((1-shade)*lw + shade*sigma*T_a^4.) - epsilon_lizard*A_up*sigma*T_o^4.
-    # dQ_IR = epsilon_lizard*A_down*sigma*(T_g^4. - T_o^4.) + epsilon_lizard*A_up*sigma*(T_a^4. - T_o^4.) is the original function
-    
+      dQ_IR = epsilon_lizard*A_down*sigma*(T_g^4. - T_o^4.) + epsilon_lizard*A_up*sigma*(T_a^4. - T_o^4.)
+            #Alternative version
+           #dQ_IR = epsilon_lizard*A_down*sigma*(T_g^4. - T_o^4.) + epsilon_lizard*A_up*((1-shade)*lw + shade*sigma*T_a^4.) - epsilon_lizard*A_up*sigma*T_o^4.
+      
     #conduction
     dQ_cond = A_contact*K_lizard*(T_g - T_o)/(lambda/2)
   

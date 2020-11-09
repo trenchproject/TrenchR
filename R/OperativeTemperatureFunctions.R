@@ -4,7 +4,9 @@
 #' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Campbell and Norman (1998).
 #' 
 #' @param T_a is air temperature in K.
-#' @param S solar and thermal radiation absorbed (W m^-2)
+#' @param T_g is ground temperature in K.
+#' @param S flux density of solar radiation (W m^-2)
+#' @param alpha_L is organismal thermal absoptivity, alpha_L=0.965 for lizards (Bartlett & Gates 1967) 
 #' @param epsilon longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
 #' @param c_p specific heat of air (J mol^-1 K^-1)
 #' @param D characteristic dimension of the animal (m)
@@ -15,25 +17,31 @@
 #' @export
 #' @examples 
 #' \dontrun{
-#' Tb_CampbellNorman(T_a=303, S=823, epsilon=0.96, c_p=29.3, D=0.17, V=1)
+#' Tb_CampbellNorman(T_a=303, T_g=303, S=823, alpha_L=0.96, epsilon=0.96, c_p=29.3, D=0.17, V=1)
 #'}
 #' 
-Tb_CampbellNorman=function(T_a, S, epsilon=0.96, c_p=29.3, D, V){
+Tb_CampbellNorman=function(T_a, T_g, S, alpha_L=0.96, epsilon=0.96, c_p=29.3, D, V){
     
   stopifnot(T_a>200, T_a<400, epsilon>=0.5, epsilon<=1, c_p>=0, D>0, V>=0)
   
   #Stefan-Boltzmann constant
   sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
   
+  #solar and thermal radiation absorbed
+  L_a=sigma*T_a^4  # (10.7) long wave flux densities from atmosphere 
+  L_g=sigma*T_g^4  # (10.7) long wave flux densities from ground
+  F_a=0.5; F_g=0.5 #proportion of organism exposure to air and ground, respectively
+  R_abs= S+alpha_L*(F_a*L_a+F_g*L_g) # (11.14) Absorbed radiation
+  
   #thermal radiation emitted
   Qemit= epsilon*sigma*T_a^4
   
   #conductance
   g_Ha=1.4*0.135*sqrt(V/D) # boundary conductance, factor of 1.4 to account for increased convection (Mitchell 1976), assumes forced conduction
-  g_r= 4*sigma*T_a^3/c_p # (12.7) radiative conductance
+  g_r= 4*epsilon*sigma*T_a^3/c_p # (12.7) radiative conductance
   
   # operative environmental temperature
-  T_e=T_a+(S-Qemit)/(c_p*(g_r+g_Ha))                       
+  T_e=T_a+(R_abs-Qemit)/(c_p*(g_r+g_Ha))                       
 
   return(T_e) 
 }
