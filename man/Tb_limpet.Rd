@@ -36,7 +36,16 @@ Predicts body temperature of a limpet in °C.
 }
 \examples{
 \dontrun{
-Tb_limpet(T_a = 25, T_r = 30, L = 0.0176, H = 0.0122, I = 1300, u = 1, psi = 30, c = 1, position = "anterior")
+Tb_limpet(
+  T_a = 25, 
+  T_r = 30, 
+  L = 0.0176, 
+  H = 0.0122, 
+  I = 1300, 
+  u = 1, 
+  psi = 30, 
+  c = 1, 
+  position = "anterior")
 }
 }
 \seealso{

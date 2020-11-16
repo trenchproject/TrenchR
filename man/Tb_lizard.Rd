@@ -75,7 +75,25 @@ Predicts body temperatures (operative environmental temperature) of a lizard in 
 }
 \examples{
 \dontrun{
-Tb_lizard(T_a=25, T_g=30, u=0.1, svl=60, m=10, psi=34, rho_S=0.24, elev=500, doy=200, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5)
+Tb_lizard(
+  T_a=25, 
+  T_g=30, 
+  u=0.1, 
+  svl=60, 
+  m=10, 
+  psi=34, 
+  rho_S=0.24, 
+  elev=500, 
+  doy=200, 
+  sun=TRUE, 
+  surface=TRUE, 
+  alpha_S=0.9, 
+  alpha_L=0.965, 
+  epsilon_s=0.965, 
+  F_d=0.8, 
+  F_r=0.5, 
+  F_a=0.5, 
+  F_g=0.5)
 }
 
 }

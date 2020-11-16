@@ -31,7 +31,13 @@ Calculates temperature at a specified height
 }
 \examples{
 \dontrun{
-air_temp_profile_segment(T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), z=0.3, T_s=27)
+air_temp_profile_segment(
+ T_r=c(25,22,20),
+ u_r=c(0.01,0.025,0.05), 
+ zr=c(0.05,0.25,0.5), 
+ z0=c(0.01,0.15,0.2), 
+ z=0.3, 
+ T_s=27)
 }
 
 }

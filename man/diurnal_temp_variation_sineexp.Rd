@@ -43,7 +43,15 @@ Estimate temperature across hours using a diurnal temperature variation function
 }
 \examples{
 \dontrun{
-diurnal_temp_variation_sineexp(T_max=30, T_min=10, t=11, t_r=6, t_s=18, alpha=2.59, beta= 1.55, gamma=2.2)
+diurnal_temp_variation_sineexp(
+  T_max=30, 
+  T_min=10, 
+  t=11, 
+  t_r=6, 
+  t_s=18, 
+  alpha=2.59, 
+  beta= 1.55, 
+  gamma=2.2)
 }
 }
 \seealso{

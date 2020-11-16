@@ -58,7 +58,20 @@ Predicts body temperatures (operative environmental temperature) of an ectotherm
 }
 \examples{
 \dontrun{
-Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_g=303, T_a=310, Qabs=800, epsilon=0.95, H_L=10, ef=1.23, K=0.5)
+Tb_Gates(
+  A=1, 
+  D=0.001, 
+  psa_dir=0.6, 
+  psa_ref=0.4, 
+  psa_air=0.6, 
+  psa_g=0.2, 
+  T_g=303, 
+  T_a=310, 
+  Qabs=800, 
+  epsilon=0.95, 
+  H_L=10, 
+  ef=1.23, 
+  K=0.5)
 }
 
 }

@@ -43,7 +43,15 @@ This function allows you to estimate thermal radiation (W) emitted by the surfac
 }
 \examples{
 \dontrun{
-Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303, T_g=293, T_a=298, enclosed=FALSE)
+Qemitted_thermal_radiation(
+  epsilon=0.96,
+  A=1, 
+  psa_dir=0.4, 
+  psa_ref=0.6, 
+  T_b=303, 
+  T_g=293, 
+  T_a=298, 
+  enclosed=FALSE)
 }
 
 }

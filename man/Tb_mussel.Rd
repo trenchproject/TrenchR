@@ -41,7 +41,18 @@ Predicts body temperature of a mussel in °C.
 }
 \examples{
 \dontrun{
-Tb_mussel(L = 0.1, H = 0.05, T_a = 25, T_g = 30, S=500, k_d=0.2, u = 2, psi = 30, evap = FALSE, cl = 0.5, group = "solitary")
+Tb_mussel(
+  L = 0.1, 
+  H = 0.05, 
+  T_a = 25, 
+  T_g = 30, 
+  S=500, 
+  k_d=0.2, 
+  u = 2, 
+  psi = 30, 
+  evap = FALSE, 
+  cl = 0.5, 
+  group = "solitary")
 }
 }
 \seealso{
