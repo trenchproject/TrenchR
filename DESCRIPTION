@@ -25,7 +25,8 @@ Depends: R (>= 3.3.1)
 Imports:
   zoo,
   msm,
-  deSolve
+  deSolve,
+  stats
 Suggests:
     testthat,
     knitr,
