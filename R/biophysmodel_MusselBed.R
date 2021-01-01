@@ -11,7 +11,6 @@
 #' @param evap Are mussels gaping to evaporatively cool? TRUE of FALSE (default), If TRUE, assumes constant mass loss rate of 5 percent of initial body mass per hour 
 #' @param cl fraction of the sky covered by cloud, optional
 #' @return predicted body temperature (°C)
-#' @keywords body temperature biophysical model
 #' @family biophysical models
 #' @export
 #' @examples
