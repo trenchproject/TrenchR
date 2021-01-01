@@ -16,7 +16,7 @@
 #' @param group options are "aggregated": mussels living in beds, "solitary": mussels individuals, anterior or posterior end facing upwind, 
 #'              and "solitary_valve": solitary individuals, valve facing upwind
 #' @return predicted body temperature (°C)
-#' @keywords body temperature, biophysical model
+#' @keywords body temperature biophysical model
 #' @family biophysical models
 #' @export
 #' @examples

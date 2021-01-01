@@ -15,7 +15,7 @@
 #' @param r_g is substrate solar reflectivity (proportion), see Kingsolver (1983)
 #' @param shade is whether body temperature should be calculate in sun (FALSE) or shade (TRUE)
 #' @return predicted body (operative environmental) temperature (°C)
-#' @keywords body temperature, biophysical model
+#' @keywords body temperature biophysical model
 #' @family biophysical models
 #' @export
 #' @examples

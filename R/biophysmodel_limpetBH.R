@@ -11,7 +11,7 @@
 #' @param s_slope solar elevation angle (degree), the altitude of the Sun, which is the angle between the horizon and the sun
 #' @param c fraction of the sky covered by cloud 
 #' @return predicted body temperature (°C)
-#' @keywords body temperature, biophysical model
+#' @keywords body temperature biophysical model
 #' @family biophysical models
 #' @export
 #' @author Brian Helmuth lab 
