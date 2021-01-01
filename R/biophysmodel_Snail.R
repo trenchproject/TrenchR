@@ -11,7 +11,7 @@
 #' @param WL water loss rate (kg/s), 5 percent loss of body mass over one hour is a reasonable maximum level (Helmuth 1999)
 #' @param WSH wind sensor height (m)
 #' @return predicted body temperature (°C)
-#' @keywords body temperature, biophysical model
+#' @keywords body temperature biophysical model
 #' @family biophysical models
 #' @export
 #' @author Brian Helmuth Lab
