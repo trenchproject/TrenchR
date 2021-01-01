@@ -11,7 +11,6 @@
 #' @param c fraction of the sky covered by cloud 
 #' @param position the direction of the limpet that is facing upwind. Options are "anterior", "posterior" and "broadside".
 #' @return predicted body temperature (°C)
-#' @keywords body temperature biophysical model
 #' @family biophysical models
 #' @export
 #' @examples
