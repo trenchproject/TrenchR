@@ -1,5 +1,5 @@
 Package: TrenchR
-Title: An R package encompassing functions for assessing the impact of the environment of organisms
+Title: An R Package Encompassing Functions for Assessing the Impact of the Environment of Organisms
 Description: We aim to create an R package (TrenchR) encompassing resources
              for assessing the impact of the environment of organisms. 
              The package will build off and integrate with existing packages 
@@ -7,6 +7,7 @@ Description: We aim to create an R package (TrenchR) encompassing resources
              in any programming language and thorough commenting will be appreciated. 
              We would also appreciate your including a header that describes the intent, input, and output of your scripts and functions.
 Version: 0.0.0.9000
+Maintainer: Lauren Buckley <lbuckley@uw.edu>
 Authors@R: c(
     person("Lauren", "Buckley", role = c("aut", "cre"), email = "lbuckley@uw.edu"),
     person("Bryan", "Briones Ortiz", role = c("aut","ctb")),
@@ -17,7 +18,7 @@ Authors@R: c(
     person("Yutaro", "Sakairi", role = c("aut","ctb"))
   )
 License: MIT + file LICENSE
-Date: 2017-01-01
+Date: 2021-01-01
 URL: https://github.com/trenchproject/TrenchR
 BugReports: https://github.com/trenchproject/TrenchR/issues
 VignetteBuilder: knitr
