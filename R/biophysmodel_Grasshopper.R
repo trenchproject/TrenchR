@@ -10,7 +10,7 @@
 #' @param H  is total (direct + diffuse) solar radiation flux in W/m^2
 #' @param K_t is the clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.
 #' @param psi is solar zenith angle in degrees
-#' @param L in grasshopper length in m
+#' @param L is grasshopper length in m
 #' @param Acondfact is the proportion of the grasshopper surface area that is in contact with the ground
 #' @param z is grasshopper's distance from the ground in m
 #' @param abs is absorptivity of grasshopper to solar radiation (proportion), See Anderson et al. (1979).

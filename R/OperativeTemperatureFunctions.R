@@ -81,8 +81,8 @@ Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 
 #' @param A surface area  in m^2
 #' @param D characteristic dimension for conduction (m)
-#' @param psa_dir proportion surface area exposed to sky (or enclosure)
-#' @param psa_ref proportion surface area exposed to ground
+#' @param psa_dir proportion surface area exposed to direct radiation from the sky (or enclosure)
+#' @param psa_ref proportion surface area exposed to reflected radiation from the ground
 #' @param psa_air proportion surface area exposed to air
 #' @param psa_g proportion surface area in contact with substrate
 #' @param T_g ground surface temperature in K
@@ -90,8 +90,8 @@ Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #' @param Qabs Solar and thermal radiation absorbed (W)
 #' @param epsilon longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
 #' @param H_L Convective heat transfer coefficient (W m^-2 K^-1)
-#' @param ef enhancement factor used to adjust H_L to field condictions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.
-#' @param K Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step. 
+#' @param ef enhancement factor used to adjust H_L to field conditions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.
+#' @param K Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step. 
 #' @return operative environmental temperature (K)
 #' @keywords operative environmental temperature
 #' @family biophysical models
@@ -132,14 +132,14 @@ Tb_Gates=function(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilo
   
   #estimate effective radiant temperature of sky
   #Tsky=0.0552*(T_a)^1.5; #Kelvin, black body sky temperature from Swinbank (1963), 
-  Tsky= (1.22*(T_a-273.15) -20.4)+273.15 #K, Gates 1980 Biophysical ecology based on Swnback 1960, Kingsolver (1983) estimates using Brunt equation
+  Tsky= (1.22*(T_a-273.15) -20.4)+273.15 #K, Gates 1980 Biophysical ecology based on Swinback 1960, Kingsolver (1983) estimates using Brunt equation
   
   #solve energy balance for steady state conditions
   # 0= Qabs -Qemit -Qconv -Qcond
 
   Qfn = function(Tb, Qabs, epsilon, sigma, A_s, Tsky, A_r, T_g, H_L, A_air, T_a, A_contact, K, D) {
 
-    #Thermal radiaton emitted
+    #Thermal radiation emitted
     Qemit= epsilon*sigma*(A_s*(Tb^4 - Tsky^4)+A_r*(Tb^4 - T_g^4))
     #Convection
     Qconv= ef*H_L*A_air*(Tb-T_a)

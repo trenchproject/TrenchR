@@ -107,7 +107,7 @@ Qconvection<-function(T_a, T_b, H_L=10.45, A, proportion, ef=1.23){
 #' @param V Air velocity m/s.
 #' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
 #' @param K Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR
-#' @param nu Kinematic Viscocity of air, m^2 s^-1, can calculate using DRYAIR or WETAIR in NicheMapR
+#' @param nu Kinematic Viscosity of air, m^2 s^-1, can calculate using DRYAIR or WETAIR in NicheMapR
 #' @param taxa Which class of organism, current choices: sphere, cylinder, frog, lizard_surface, lizard_elevated, flyinginsect, spider
 #' @return heat transfer coefficient, H_L (W m^-2 K^-1)
 #' @keywords heat transfer coefficient
