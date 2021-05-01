@@ -2,12 +2,12 @@
 #' 
 #' 
 #' @details Predicts body temperatures (operative environmental temperature) of a grasshopper in °C.
-#' @description Predicts body temperature (operative environmental temperature) of a grasshopper in °C. Described in Buckleyet al. (2014, Phenotypic clines, energy balances, and ecological responses to climate change. Journal of Animal Ecology 83:41-50.) See also a related model by Anderson et al. (1979, Habitat selection in two species of short-horned grasshoppers. Oecologia 38:359–74.)
+#' @description Predicts body temperature (operative environmental temperature) of a grasshopper in °C. Described in Buckley et al. (2014, Phenotypic clines, energy balances, and ecological responses to climate change. Journal of Animal Ecology 83:41-50.) See also a related model by Anderson et al. (1979, Habitat selection in two species of short-horned grasshoppers. Oecologia 38:359–74.)
 #' 
 #' @param T_a is air temperature in °C
 #' @param T_g  is surface temperature in °C, Kingsolver (1983) assumes T_g-T_a=8.4
 #' @param u is wind speed in m/s
-#' @param H  is total (direct + diffuse) solar radiation flux in W/m^2
+#' @param H is total (direct + diffuse) solar radiation flux in W/m^2
 #' @param K_t is the clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.
 #' @param psi is solar zenith angle in degrees
 #' @param L is grasshopper length in m
@@ -43,13 +43,13 @@ T_g<- T_g+273.15 #Ambient temperature in K
 
 #Biophysical parameters
 #IR emissivity
-omega<-5.66 * 10^-8 # stefan-boltzmann constant (W m^-2 K^-4)
+omega<-5.66 * 10^-8 # Stefan-Boltzmann constant (W m^-2 K^-4)
 epsilon=1 #Gates 1962 in Kingsolver 1983  #emissivity of surface to longwave IR
 
 Kf=0.025  #Kf=0.024+0.00007*T_a[k] #thermal conductivity of fluid
 
-#kineamatic viscosity of air (m^2/s); http://users.wpi.edu/~ierardi/PDF/air_nu_plot.PDF
-v=15.68*10^-6  #m^2/s, kinematic viscocity of air,  at 300K #http://www.engineeringtoolbox.com/air-absolute-kinematic-viscosity-d_601.html
+#kinematic viscosity of air (m^2/s); http://users.wpi.edu/~ierardi/PDF/air_nu_plot.PDF
+v=15.68*10^-6  #m^2/s, kinematic viscosity of air,  at 300K #http://www.engineeringtoolbox.com/air-absolute-kinematic-viscosity-d_601.html
 
 #AREAS
 #Samietz (2005): The body of a grasshopper female was approximated by a rotational ellipsoid with half the body length as the semi-major axis q.
@@ -77,17 +77,9 @@ Hdif=Httl*kd;
 #Anderson 1979 - calculates radiation as W without area dependence 
 psi_r=psi*pi/180 #psi in radians
 
-#Calculate Qabs as W
-Qdir=abs*Hdir/cos(psi_r) #direct radiation
-Qdif=abs*Hdif #diffuse radiation
-Qref= r_g *Httl #reflected radiation
-Qabs= Qdir + Qdif + Qref  #W/m2
-
-#------------------------------
 #convection
-
 #Reynolds number- ratio of interval viscous forces
-#L: Characeristic dimension (length)
+#L: Characteristic dimension (length)
 # u= windspeed #Lactin and Johnson add 1m/s to account for cooling by passive convection
 Re= u*L/v
 #Nusselt number- dimensionless conductance
@@ -96,6 +88,7 @@ h_c= Nu *Kf /L # heat transfer coefficient, Wm^{-2}C^{-1} #reported in Lactin an
 
 hc_s<- h_c *(-0.007*z/L +1.71) # heat transfer coefficient in turbulent air 
 
+#------------------------------
 #conduction 
 Thick= 6*10^(-5) #cuticle thickness (m)
 hcut= 0.15 #W m^-1 K^-1
@@ -112,12 +105,12 @@ sa<-0.19-0.00173*psi #empirical from Anderson 1979, psi in degrees
 Adir= A*sa
 Aref=Adir 
 
-#Calculate Qabs as W/m2
+#Calculate Qabs as W
 Qdir=abs*Adir*Hdir/cos(psi_r)
 Qdif=abs*Aref*Hdif
 Qref= r_g * Aref *Httl
-Qabs= Qdir + Qdif + Qref  #W/m2
-
+Qabs= Qdir + Qdif + Qref  
+ 
 Tsky=0.0552*(T_a+273.15)^1.5; #Kelvin, black body sky temperature from Swinbank (1963), Kingsolver 1983 estimates using Brunt equation
                
 #Qt= 0.5* A * epsilon * omega * (Tb^4 - Tsky^4) +0.5 * A * epsilon * omega * (Tb^4 - T_g^4) 

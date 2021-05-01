@@ -88,7 +88,7 @@ legend("topleft", title="parameters", legend=c("H=5, proportion=0.6","H=15, prop
 
 The convective heat transfer coefficient depends on whether the heat exchange is free or forced (due to fluid flow). The variables involved in heat transfer can be combined into dimensionless groups that are used to compare the scales of heat exchange processes and thus whether modeling free or forced convection is more appropriate. We provide the primary dimensionless numbers.
 
-The Nusselt number provides a dimensionless estimate of conductance as is estimated as $Nu = H_L \cdot D / K$, where $H_L$ is the convective heat transfer coefficient ($W m^{-2} K^{-1}$), $D$ is the characteristic dimension ($m$), and $K$ is thermal conductivity ($W K^{-1}m^{-1}$). 
+The Nusselt number provides a dimensionless estimate of conductance and is estimated as $Nu = H_L \cdot D / K$, where $H_L$ is the convective heat transfer coefficient ($W m^{-2} K^{-1}$), $D$ is the characteristic dimension ($m$), and $K$ is thermal conductivity ($W K^{-1}m^{-1}$). 
 
 The Prandtl number describes the ratio of kinematic viscosity to thermal diffusivity as $Pr= c_p \mu /K$, where $c_p$ is the specific heat at constant pressure ($J mol^{-1} K^{-1}$) and $\mu$ is dynamic viscosity ($mol \:s^{-1}m^{-1}$). 
 
@@ -162,7 +162,7 @@ Free_or_forced_convection(Gr=1, Re=5)
 Free_or_forced_convection(Gr=1000, Re=5)
 ```
 
-We offer methods to estimate the convective heat transfer coefficient based on either empirical measurements (`heat_transfer_coefficient()`) or approximating the animal shape as a sphere (`heat_transfer_coefficient_approximation()`). Approximating the animal shape as a sphere enables simplification while also producing an reasonable approximation [@mitchell1976heat].  The functions approximate forced convective heat transfer as a function of windspeed $V (m/s)$, the characteristic dimension $D (m)$, the thermal conductivity of the air $K (W m^{-1} K^{-1})$, the kinematic viscocity of the air $\nu (m^2 s^{-1})$, and the taxa or a generic shape. An additional, simplified function (`heat_transfer_coefficient_simple()`) provides a reasonable approximation based on $V$ and $D$ for most environmental conditions.
+We offer methods to estimate the convective heat transfer coefficient based on either empirical measurements (`heat_transfer_coefficient()`) or approximating the animal shape as a sphere (`heat_transfer_coefficient_approximation()`). Approximating the animal shape as a sphere enables simplification while also producing a reasonable approximation [@mitchell1976heat].  The functions approximate forced convective heat transfer as a function of windspeed $V (m/s)$, the characteristic dimension $D (m)$, the thermal conductivity of the air $K (W m^{-1} K^{-1})$, the kinematic viscocity of the air $\nu (m^2 s^{-1})$, and the taxa or a generic shape. An additional, simplified function (`heat_transfer_coefficient_simple()`) provides a reasonable approximation based on $V$ and $D$ for most environmental conditions.
 
 ```{r, fig.height=4, fig.width=8}
 par(mar=c(5,5,3,2))
@@ -383,7 +383,7 @@ We then turn to calculate the components of the radiant energy budget of a lizar
 $$p_a=101.3\exp(-E/8200),$$
 where $E$ is the elevation in meters above sea level. We can then calculate $m_a$ as $m_a=\frac{p_a}{101.3 \cos\psi}$.
 
-Direct irradiance is a function of the distance a solar beam travels through the atmosphere; the transmittance of the atmosphere, $\tau$; and the incident flux density, $S_{p0}$: $S_p=S_{p0}\tau^{m_a}$. Sky diffuse radiation can be approximated using an empirical relation [@liu1960interrelationship], $S_d=0.3(1-\tau^{m_a})S_{p0}\cos\psi$. Solar irradiance is the sum of diffuse sky irradiance and the beam irradiance on a surface: $S_t=S_d+S_p \cos\psi$. Finally, reflected radiation is the product of albedo, $\rho_S$, and the total shortwave irradiance: $S_r=\rho_S S_t$. Albedo was empirically derived from satellite images and is the surface reflectance for the solar waveband.
+Direct iradiance is a function of the distance a solar beam travels through the atmosphere; the transmittance of the atmosphere, $\tau$; and the incident flux density, $S_{p0}$: $S_p=S_{p0}\tau^{m_a}$. Sky diffuse radiation can be approximated using an empirical relation [@liu1960interrelationship], $S_d=0.3(1-\tau^{m_a})S_{p0}\cos\psi$. Solar irradiance is the sum of diffuse sky irradiance and the beam irradiance on a surface: $S_t=S_d+S_p \cos\psi$. Finally, reflected radiation is the product of albedo, $\rho_S$, and the total shortwave irradiance: $S_r=\rho_S S_t$. Albedo was empirically derived from satellite images and is the surface reflectance for the solar waveband.
 
 The longwave component of a lizard’s radiant energy budget can be estimated using the Stefan‐Boltzmann law. The longwave flux density from atmosphere, $L_a (W m^{−2})$, is computed as $L_a=\epsilon_{ac}\sigma(T_a+273)^4$, where $\epsilon_{ac}$ is clear sky emissivity. The longwave flux density from the ground is $L_g=\epsilon_s \sigma T_s^4$, where $\epsilon_s$ is surface emissivity.
 

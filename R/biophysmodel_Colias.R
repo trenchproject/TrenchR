@@ -53,7 +53,7 @@ H_sttl= H_sdir + H_sdif
 delta<- delta/10     #delta- thoracic fur thickness, cm
 
 epsilon_s=0.97; #surface emisivity, ranges from 0.95-1
-sigma= 5.67*10^-9; #Stefan-Boltzman constant, mW cm^-2 K^04 or 5.67*10^-8 W m-2 K-4
+sigma= 5.67*10^-8; #Stefan-Boltzman constant, mW cm^-2 K^04 or 5.67*10^-8 W m-2 K-4
 Ep=1; #Ep- butterfly thermal emissivity
 
 k_e= 1.3; #k_e- thermal conductivity of the fur, 1.3mWcm^-1*K^-1
@@ -93,7 +93,7 @@ N_u=0.6*R_e^0.5
 #N_u=2.3; #Kingsolver 1983;
 
 h_c=N_u*k_a/D;
-h_T=(1/h_c+(r_i+delta)*log((r_i+delta)/r_i)/k_e)^-1;  # h_T- total convective heat tranfer coefficient
+h_T=(1/h_c+(r_i+delta)*log((r_i+delta)/r_i)/k_e)^-1;  # h_T- total convective heat transfer coefficient
 #A_c=A_sttl; #A_c- convective heat transfer surface area
 #Q_c= h_T* A_c* (Tb-T_a);     
 #---------------------------------------------   	 
