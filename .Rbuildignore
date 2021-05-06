@@ -16,3 +16,5 @@ TrenchR.Rproj
 ^docs$
 ^pkgdown$
 Contribution.md
+^doc$
+^Meta$

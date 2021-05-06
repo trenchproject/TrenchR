@@ -1,11 +1,11 @@
 ---
-title: "TrenchR: Estimating microclimates"
+title: "Estimating microclimates"
 author: "Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 bibliography: bibliography.bib
 vignette: >
-  %\VignetteIndexEntry{Microclimate}
+  %\VignetteIndexEntry{Estimating microclimates}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 

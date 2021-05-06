@@ -1,11 +1,11 @@
 ---
-title: "TrenchR: Using energy balances to estimate body temperatures"
+title: "Using energy balances to estimate body temperatures"
 author: "Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 bibliography: bibliography.bib
 vignette: >
-  %\VignetteIndexEntry{Te tutorial}
+  %\VignetteIndexEntry{Using energy balances to estimate body temperatures}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
