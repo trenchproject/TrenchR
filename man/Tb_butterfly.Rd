@@ -111,7 +111,3 @@ Other biophysical models:
 \code{\link{saturation_water_vapor_pressure}()}
 }
 \concept{biophysical models}
-\keyword{biophysical}
-\keyword{body}
-\keyword{model}
-\keyword{temperature,}

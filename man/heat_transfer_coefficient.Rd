@@ -13,7 +13,7 @@ heat_transfer_coefficient(V, D, K, nu, taxa = "cylinder")
 
 \item{K}{Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR}
 
-\item{nu}{Kinematic Viscocity of air, m^2 s^-1, can calculate using DRYAIR or WETAIR in NicheMapR}
+\item{nu}{Kinematic Viscosity of air, m^2 s^-1, can calculate using DRYAIR or WETAIR in NicheMapR}
 
 \item{taxa}{Which class of organism, current choices: sphere, cylinder, frog, lizard_surface, lizard_elevated, flyinginsect, spider}
 }

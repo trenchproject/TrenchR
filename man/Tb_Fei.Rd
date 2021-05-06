@@ -84,6 +84,3 @@ Other biophysical models:
 Ofir Levy
 }
 \concept{biophysical models}
-\keyword{Fei}
-\keyword{Operative}
-\keyword{Temperature}
