@@ -5,8 +5,9 @@
 #' 
 #' @param T_a is air temperature in K.
 #' @param T_g is ground temperature in K.
-#' @param S flux density of solar radiation (W m^-2)
-#' @param alpha_L is organismal thermal absoptivity, alpha_L=0.965 for lizards (Bartlett & Gates 1967) 
+#' @param S flux density of solar radiation (W m^-2), combining direct, diffuse, and reflected radiation accounting for view factors
+#' @param alpha_S is organismal solar absorptivity
+#' @param alpha_L is organismal thermal absorptivity, alpha_L=0.965 for lizards (Bartlett & Gates 1967) 
 #' @param epsilon longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
 #' @param c_p specific heat of air (J mol^-1 K^-1)
 #' @param D characteristic dimension of the animal (m)
@@ -17,10 +18,10 @@
 #' @export
 #' @examples 
 #' \dontrun{
-#' Tb_CampbellNorman(T_a=303, T_g=303, S=823, alpha_L=0.96, epsilon=0.96, c_p=29.3, D=0.17, V=1)
+#' Tb_CampbellNorman(T_a=303, T_g=303, S=823, alpha_S=0.7, alpha_L=0.96, epsilon=0.96, c_p=29.3, D=0.17, V=1)
 #'}
 #' 
-Tb_CampbellNorman=function(T_a, T_g, S, alpha_L=0.96, epsilon=0.96, c_p=29.3, D, V){
+Tb_CampbellNorman=function(T_a, T_g, S, alpha_S=0.7, alpha_L=0.96, epsilon=0.96, c_p=29.3, D, V){
     
   stopifnot(T_a>200, T_a<400, epsilon>=0.5, epsilon<=1, c_p>=0, D>0, V>=0)
   
@@ -31,7 +32,7 @@ Tb_CampbellNorman=function(T_a, T_g, S, alpha_L=0.96, epsilon=0.96, c_p=29.3, D,
   L_a=sigma*T_a^4  # (10.7) long wave flux densities from atmosphere 
   L_g=sigma*T_g^4  # (10.7) long wave flux densities from ground
   F_a=0.5; F_g=0.5 #proportion of organism exposure to air and ground, respectively
-  R_abs= S+alpha_L*(F_a*L_a+F_g*L_g) # (11.14) Absorbed radiation
+  R_abs= alpha_S*S+alpha_L*(F_a*L_a+F_g*L_g) # (11.14) Absorbed radiation
   
   #thermal radiation emitted
   Qemit= epsilon*sigma*T_a^4
@@ -50,7 +51,7 @@ Tb_CampbellNorman=function(T_a, T_g, S, alpha_L=0.96, epsilon=0.96, c_p=29.3, D,
 #' 
 #' @details Estimates net energy exchange between an animal and the environment in W. Follows Gates (1980, Biophysical ecology) and others.
 #' 
-#' @param Qabs Solar and thermal radiation absorbed (W)
+#' @param Qabs Solar radiation absorbed (W)
 #' @param Qemit Thermal radiation emitted (W)
 #' @param Qconv Energy exchange due to convection; Energy exchange from an animal to its surrounding environment (air or water) (W)
 #' @param Qcond Energy exchange due to conduction; Energy exchange from animal to a surface if they are in contact  (W)
@@ -87,7 +88,7 @@ Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #' @param psa_g proportion surface area in contact with substrate
 #' @param T_g ground surface temperature in K
 #' @param T_a ambient air temperature in K
-#' @param Qabs Solar and thermal radiation absorbed (W)
+#' @param Qabs Solar radiation absorbed (W)
 #' @param epsilon longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
 #' @param H_L Convective heat transfer coefficient (W m^-2 K^-1)
 #' @param ef enhancement factor used to adjust H_L to field conditions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.

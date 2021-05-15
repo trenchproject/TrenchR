@@ -5,7 +5,7 @@ expect_similar <- function(input, expected) {
 }
 
 test_that("Tb_CampbellNorman function works as expected", {
-  expect_similar(Tb_CampbellNorman(T_a=303, T_g=303, S=823, epsilon=0.96, c_p=29.3, D=0.17, V=1),345.22)
+  expect_similar(Tb_CampbellNorman(T_a=303, T_g=303, S=823, alpha_S=0.7, epsilon=0.96, c_p=29.3, D=0.17, V=1),332.5574)
 })
 
 test_that("Qnet_Gates function works as expected", {
