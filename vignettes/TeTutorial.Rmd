@@ -20,6 +20,34 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 #Load TrenchR package
 library(TrenchR)
+
+
+#to be REMOVED
+Tb_CampbellNorman=function(T_a, T_g, S, alpha_S=0.7, alpha_L=0.96, epsilon=0.96, c_p=29.3, D, V){
+    
+  stopifnot(T_a>200, T_a<400, epsilon>=0.5, epsilon<=1, c_p>=0, D>0, V>=0)
+  
+  #Stefan-Boltzmann constant
+  sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
+  
+  #solar and thermal radiation absorbed
+  L_a=sigma*T_a^4  # (10.7) long wave flux densities from atmosphere 
+  L_g=sigma*T_g^4  # (10.7) long wave flux densities from ground
+  F_a=0.5; F_g=0.5 #proportion of organism exposure to air and ground, respectively
+  R_abs= alpha_S*S+alpha_L*(F_a*L_a+F_g*L_g) # (11.14) Absorbed radiation
+  
+  #thermal radiation emitted
+  Qemit= epsilon*sigma*T_a^4
+  
+  #conductance
+  g_Ha=1.4*0.135*sqrt(V/D) # boundary conductance, factor of 1.4 to account for increased convection (Mitchell 1976), assumes forced conduction
+  g_r= 4*epsilon*sigma*T_a^3/c_p # (12.7) radiative conductance
+  
+  # operative environmental temperature
+  T_e=T_a+(R_abs-Qemit)/(c_p*(g_r+g_Ha))                       
+
+  return(T_e) 
+}
 ```
 
 This tutorial covers how to construct energy balances for applications
@@ -541,11 +569,11 @@ available in R as follows (including the above calculations of
 $Q_{emit}$, $g_r$, and $g_{Ha}$):
 
 ```{r, fig.height=4, fig.width=6}
-plot(293:313, Tb_CampbellNorman(T_a=293:313, T_g=303, S=600, alpha_L=0.96, epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", xlab = "air temperature (K)", ylab = "body temperature (K)", xlim=c(295,310), ylim=c(290,340))
+plot(293:313, Tb_CampbellNorman(T_a=293:313, T_g=303, S=600, alpha_S=0.7, alpha_L=0.96, epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", xlab = "air temperature (K)", ylab = "body temperature (K)", xlim=c(295,310), ylim=c(290,340))
 abline(a=0, b=1, col="gray")
 
-points(293:313, Tb_CampbellNorman(T_a=293:313, T_g=303, S=200, alpha_L=0.96, epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", lty="dashed")
-points(293:313, Tb_CampbellNorman(T_a=293:313, T_g=303, S=400, alpha_L=0.96, epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", lty="dotted")
+points(293:313, Tb_CampbellNorman(T_a=293:313, T_g=303, S=200, alpha_S=0.7, alpha_L=0.96, epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", lty="dashed")
+points(293:313, Tb_CampbellNorman(T_a=293:313, T_g=303, S=400, alpha_S=0.7, alpha_L=0.96, epsilon=0.96, c_p=29.3, D=0.17, V=1), type="l", lty="dotted")
 
 legend("bottomright", title= expression("Radiation, Sabs" ~ (W ~ m^{-2})), legend=c(200,400,600), lty=c("dashed","dotted","solid") )
 ```
