@@ -6,27 +6,31 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Predicts body temperature (operative environmental temperature) of a butterfly in degrees C. — Tb_butterfly • TrenchR</title>
+<title>Predicts body temperature (operative environmental temperature) of a butterfly in °C. — Tb_butterfly • TrenchR</title>
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -35,9 +39,8 @@
 
 
 
-<meta property="og:title" content="Predicts body temperature (operative environmental temperature) of a butterfly in degrees C. — Tb_butterfly" />
-<meta property="og:description" content="Predicts body temperatures (operative environmental temperatures) of a butterfly in degrees C. Based on Kingsolver (1983, Thermoregulation and flight in Colias butterflies: elevational patterns and mechanistic limitations. Ecology 64: 534–545). Assumes butterfly basks with closed wings perpendicular to solar beam. Source: Buckley LB and Kingsolver JK. 2012. The demographic impacts of shifts in climate means and extremes on alpine butterflies. Functional Ecology https://doi.org/10.1111/j.1365-2435.2012.01969.x and subsequent publications." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Predicts body temperature (operative environmental temperature) of a butterfly in °C. — Tb_butterfly" />
+<meta property="og:description" content="Predicts body temperatures (operative environmental temperatures) of a butterfly in °C. Based on Kingsolver (1983, Thermoregulation and flight in Colias butterflies: elevational patterns and mechanistic limitations. Ecology 64: 534–545). Assumes butterfly basks with closed wings perpendicular to solar beam. Source: Buckley LB and Kingsolver JK. 2012. The demographic impacts of shifts in climate means and extremes on alpine butterflies. Functional Ecology https://doi.org/10.1111/j.1365-2435.2012.01969.x and subsequent publications." />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -77,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -108,8 +111,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/trenchproject/TrenchR">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/trenchproject/TrenchR/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -126,32 +129,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Predicts body temperature (operative environmental temperature) of a butterfly in degrees C.</h1>
+    <h1>Predicts body temperature (operative environmental temperature) of a butterfly in °C.</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/biophysmodel_Colias.R'><code>R/biophysmodel_Colias.R</code></a></small>
     <div class="hidden name"><code>Tb_butterfly.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Predicts body temperatures (operative environmental temperatures) of a butterfly in degrees C. Based on Kingsolver (1983, Thermoregulation and flight in Colias butterflies: elevational patterns and mechanistic limitations. Ecology 64: 534–545). Assumes butterfly basks with closed wings perpendicular to solar beam. Source: Buckley LB and Kingsolver JK. 2012. The demographic impacts of shifts in climate means and extremes on alpine butterflies. Functional Ecology https://doi.org/10.1111/j.1365-2435.2012.01969.x and subsequent publications.</p>
+    <p>Predicts body temperatures (operative environmental temperatures) of a butterfly in °C. Based on Kingsolver (1983, Thermoregulation and flight in Colias butterflies: elevational patterns and mechanistic limitations. Ecology 64: 534–545). Assumes butterfly basks with closed wings perpendicular to solar beam. Source: Buckley LB and Kingsolver JK. 2012. The demographic impacts of shifts in climate means and extremes on alpine butterflies. Functional Ecology https://doi.org/10.1111/j.1365-2435.2012.01969.x and subsequent publications.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>Tb_butterfly</span>(<span class='no'>T_a</span>, <span class='no'>Tg</span>, <span class='no'>Tg_sh</span>, <span class='no'>u</span>, <span class='no'>H_sdir</span>, <span class='no'>H_sdif</span>, <span class='no'>z</span>, <span class='no'>D</span>, <span class='no'>delta</span>, <span class='no'>alpha</span>,
-  <span class='kw'>r_g</span> <span class='kw'>=</span> <span class='fl'>0.3</span>, <span class='kw'>shade</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>Tb_butterfly</span><span class='op'>(</span>
+  <span class='va'>T_a</span>,
+  <span class='va'>Tg</span>,
+  <span class='va'>Tg_sh</span>,
+  <span class='va'>u</span>,
+  <span class='va'>H_sdir</span>,
+  <span class='va'>H_sdif</span>,
+  <span class='va'>z</span>,
+  <span class='va'>D</span>,
+  <span class='va'>delta</span>,
+  <span class='va'>alpha</span>,
+  r_g <span class='op'>=</span> <span class='fl'>0.3</span>,
+  shade <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>T_a</th>
-      <td><p>is air temperature in C</p></td>
+      <td><p>is air temperature in °C</p></td>
     </tr>
     <tr>
       <th>Tg</th>
-      <td><p>is surface temperature in C in the sun</p></td>
+      <td><p>is surface temperature in °C in the sun</p></td>
     </tr>
     <tr>
       <th>Tg_sh</th>
-      <td><p>is surface temperature in C in the shade</p></td>
+      <td><p>is surface temperature in °C in the shade</p></td>
     </tr>
     <tr>
       <th>u</th>
@@ -193,67 +208,84 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>predicted body (operative environmental) temperature (C)</p>
+    <p>predicted body (operative environmental) temperature (°C)</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Predicts body temperature (operative environmental temperature) of a butterfly in degrees C.</p>
+    <p>Predicts body temperature (operative environmental temperature) of a butterfly in °C.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other biophysical models: <code><a href='Free_or_forced_convection.html'>Free_or_forced_convection</a></code>,
-  <code><a href='Grashof_number_Gates.html'>Grashof_number_Gates</a></code>,
-  <code><a href='Grashof_number.html'>Grashof_number</a></code>, <code><a href='Nu_from_Gr.html'>Nu_from_Gr</a></code>,
-  <code><a href='Nu_from_Re.html'>Nu_from_Re</a></code>, <code><a href='Nusselt_number.html'>Nusselt_number</a></code>,
-  <code><a href='Prandtl_number.html'>Prandtl_number</a></code>,
-  <code><a href='Qconduction_animal.html'>Qconduction_animal</a></code>,
-  <code><a href='Qconduction_substrate.html'>Qconduction_substrate</a></code>,
-  <code><a href='Qconvection.html'>Qconvection</a></code>,
-  <code><a href='Qemitted_thermal_radiation.html'>Qemitted_thermal_radiation</a></code>,
-  <code><a href='Qevaporation.html'>Qevaporation</a></code>,
-  <code><a href='Qmetabolism_from_mass_temp.html'>Qmetabolism_from_mass_temp</a></code>,
-  <code><a href='Qmetabolism_from_mass.html'>Qmetabolism_from_mass</a></code>,
-  <code><a href='Qnet_Gates.html'>Qnet_Gates</a></code>,
-  <code><a href='Qradiation_absorbed.html'>Qradiation_absorbed</a></code>,
-  <code><a href='Qthermal_radiation_absorbed.html'>Qthermal_radiation_absorbed</a></code>,
-  <code><a href='Reynolds_number.html'>Reynolds_number</a></code>,
-  <code><a href='Tb_CampbellNorman.html'>Tb_CampbellNorman</a></code>, <code><a href='Tb_Fei.html'>Tb_Fei</a></code>,
-  <code><a href='Tb_Gates.html'>Tb_Gates</a></code>, <code><a href='Tb_grasshopper.html'>Tb_grasshopper</a></code>,
-  <code><a href='Tb_lizard.html'>Tb_lizard</a></code>,
-  <code><a href='Tb_salamander_humid.html'>Tb_salamander_humid</a></code>, <code><a href='Tsoil.html'>Tsoil</a></code>,
-  <code><a href='actual_vapor_pressure.html'>actual_vapor_pressure</a></code>,
-  <code><a href='boundary_layer_resistance.html'>boundary_layer_resistance</a></code>,
-  <code><a href='external_resistance_to_water_vapor_transfer.html'>external_resistance_to_water_vapor_transfer</a></code>,
-  <code><a href='heat_transfer_coefficient_approximation.html'>heat_transfer_coefficient_approximation</a></code>,
-  <code><a href='heat_transfer_coefficient_simple.html'>heat_transfer_coefficient_simple</a></code>,
-  <code><a href='heat_transfer_coefficient.html'>heat_transfer_coefficient</a></code>,
-  <code><a href='saturation_vapor_pressure.html'>saturation_vapor_pressure</a></code>,
-  <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a></code></p></div>
+    <div class='dont-index'><p>Other biophysical models: 
+<code><a href='Free_or_forced_convection.html'>Free_or_forced_convection</a>()</code>,
+<code><a href='Grashof_number_Gates.html'>Grashof_number_Gates</a>()</code>,
+<code><a href='Grashof_number.html'>Grashof_number</a>()</code>,
+<code><a href='Nu_from_Gr.html'>Nu_from_Gr</a>()</code>,
+<code><a href='Nu_from_Re.html'>Nu_from_Re</a>()</code>,
+<code><a href='Nusselt_number.html'>Nusselt_number</a>()</code>,
+<code><a href='Prandtl_number.html'>Prandtl_number</a>()</code>,
+<code><a href='Qconduction_animal.html'>Qconduction_animal</a>()</code>,
+<code><a href='Qconduction_substrate.html'>Qconduction_substrate</a>()</code>,
+<code><a href='Qconvection.html'>Qconvection</a>()</code>,
+<code><a href='Qemitted_thermal_radiation.html'>Qemitted_thermal_radiation</a>()</code>,
+<code><a href='Qevaporation.html'>Qevaporation</a>()</code>,
+<code><a href='Qmetabolism_from_mass_temp.html'>Qmetabolism_from_mass_temp</a>()</code>,
+<code><a href='Qmetabolism_from_mass.html'>Qmetabolism_from_mass</a>()</code>,
+<code><a href='Qnet_Gates.html'>Qnet_Gates</a>()</code>,
+<code><a href='Qradiation_absorbed.html'>Qradiation_absorbed</a>()</code>,
+<code><a href='Qthermal_radiation_absorbed.html'>Qthermal_radiation_absorbed</a>()</code>,
+<code><a href='Reynolds_number.html'>Reynolds_number</a>()</code>,
+<code><a href='Tb_CampbellNorman.html'>Tb_CampbellNorman</a>()</code>,
+<code><a href='Tb_Fei.html'>Tb_Fei</a>()</code>,
+<code><a href='Tb_Gates.html'>Tb_Gates</a>()</code>,
+<code><a href='Tb_grasshopper.html'>Tb_grasshopper</a>()</code>,
+<code><a href='Tb_limpetBH.html'>Tb_limpetBH</a>()</code>,
+<code><a href='Tb_limpet.html'>Tb_limpet</a>()</code>,
+<code><a href='Tb_lizard.html'>Tb_lizard</a>()</code>,
+<code><a href='Tb_mussel.html'>Tb_mussel</a>()</code>,
+<code><a href='Tb_salamander_humid.html'>Tb_salamander_humid</a>()</code>,
+<code><a href='Tb_snail.html'>Tb_snail</a>()</code>,
+<code><a href='Tbed_mussel.html'>Tbed_mussel</a>()</code>,
+<code><a href='Tsoil.html'>Tsoil</a>()</code>,
+<code><a href='actual_vapor_pressure.html'>actual_vapor_pressure</a>()</code>,
+<code><a href='boundary_layer_resistance.html'>boundary_layer_resistance</a>()</code>,
+<code><a href='external_resistance_to_water_vapor_transfer.html'>external_resistance_to_water_vapor_transfer</a>()</code>,
+<code><a href='heat_transfer_coefficient_approximation.html'>heat_transfer_coefficient_approximation</a>()</code>,
+<code><a href='heat_transfer_coefficient_simple.html'>heat_transfer_coefficient_simple</a>()</code>,
+<code><a href='heat_transfer_coefficient.html'>heat_transfer_coefficient</a>()</code>,
+<code><a href='saturation_vapor_pressure.html'>saturation_vapor_pressure</a>()</code>,
+<code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>Tb_butterfly</span>(<span class='kw'>T_a</span><span class='kw'>=</span><span class='fl'>25</span>, <span class='kw'>Tg</span><span class='kw'>=</span><span class='fl'>25</span>, <span class='kw'>Tg_sh</span><span class='kw'>=</span><span class='fl'>20</span>, <span class='kw'>u</span><span class='kw'>=</span><span class='fl'>0.4</span>, <span class='kw'>H_sdir</span><span class='kw'>=</span><span class='fl'>300</span>, <span class='kw'>H_sdif</span><span class='kw'>=</span><span class='fl'>100</span>, <span class='kw'>z</span><span class='kw'>=</span><span class='fl'>30</span>, <span class='kw'>D</span><span class='kw'>=</span><span class='fl'>0.36</span>, <span class='kw'>delta</span><span class='kw'>=</span><span class='fl'>1.46</span>, <span class='kw'>alpha</span><span class='kw'>=</span><span class='fl'>0.6</span>, <span class='kw'>r_g</span><span class='kw'>=</span><span class='fl'>0.3</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>Tb_butterfly</span><span class='op'>(</span>
+  T_a<span class='op'>=</span><span class='fl'>25</span>, 
+  Tg<span class='op'>=</span><span class='fl'>25</span>, 
+  Tg_sh<span class='op'>=</span><span class='fl'>20</span>, 
+  u<span class='op'>=</span><span class='fl'>0.4</span>, 
+  H_sdir<span class='op'>=</span><span class='fl'>300</span>, 
+  H_sdif<span class='op'>=</span><span class='fl'>100</span>, 
+  z<span class='op'>=</span><span class='fl'>30</span>, 
+  D<span class='op'>=</span><span class='fl'>0.36</span>, 
+  delta<span class='op'>=</span><span class='fl'>1.46</span>, 
+  alpha<span class='op'>=</span><span class='fl'>0.6</span>, 
+  r_g<span class='op'>=</span><span class='fl'>0.3</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Lauren Buckley, Aji John, Bryan Briones Ortiz, Yutaro Sakairi.</p>
+  <p>Developed by Lauren Buckley, Bryan Briones Ortiz, Aji John, Ofir Levy, Yutaro Sakairi.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

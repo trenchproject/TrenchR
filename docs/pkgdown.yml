@@ -1,9 +1,10 @@
-pandoc: 1.19.2.1
-pkgdown: 1.4.1
+pandoc: 2.11.4
+pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   AllometryAndConversionsTutorial: AllometryAndConversionsTutorial.html
   MicroclimateTutorial: MicroclimateTutorial.html
   Symbols: Symbols.html
   TeTutorial: TeTutorial.html
+last_built: 2021-05-17T18:01Z
 

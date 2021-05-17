@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -40,7 +44,6 @@
 Based on Tham et al. (2010, Estimation of hourly averaged solar irradiation: evaluation of models. Building Serv. Eng. Res. Technol. 31: 9-25) 
 and Al-Rawahi et al. (2011, Prediction of Hourly Solar Radiation on Horizontal and Inclined Surfaces for Muscat/Oman. 
 The Journal of Engineering Research 8:19-31)." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -58,7 +61,7 @@ The Journal of Engineering Research 8:19-31)." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -80,7 +83,7 @@ The Journal of Engineering Research 8:19-31)." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -111,8 +114,8 @@ The Journal of Engineering Research 8:19-31)." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/trenchproject/TrenchR">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/trenchproject/TrenchR/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -141,7 +144,7 @@ and Al-Rawahi et al. (2011, Prediction of Hourly Solar Radiation on Horizontal a
 The Journal of Engineering Research 8:19-31).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>diurnal_radiation_variation</span>(<span class='no'>doy</span>, <span class='no'>solrad</span>, <span class='no'>hour</span>, <span class='no'>lon</span>, <span class='no'>lat</span>)</pre>
+    <pre class="usage"><span class='fu'>diurnal_radiation_variation</span><span class='op'>(</span><span class='va'>doy</span>, <span class='va'>solrad</span>, <span class='va'>hour</span>, <span class='va'>lon</span>, <span class='va'>lat</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -176,47 +179,42 @@ The Journal of Engineering Research 8:19-31).</p>
     <p>Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day).</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other microclimate functions: <code><a href='air_temp_profile_neutral.html'>air_temp_profile_neutral</a></code>,
-  <code><a href='air_temp_profile_segment.html'>air_temp_profile_segment</a></code>,
-  <code><a href='air_temp_profile.html'>air_temp_profile</a></code>,
-  <code><a href='degree_days.html'>degree_days</a></code>,
-  <code><a href='diurnal_temp_variation_sineexp.html'>diurnal_temp_variation_sineexp</a></code>,
-  <code><a href='diurnal_temp_variation_sinesqrt.html'>diurnal_temp_variation_sinesqrt</a></code>,
-  <code><a href='diurnal_temp_variation_sine.html'>diurnal_temp_variation_sine</a></code>,
-  <code><a href='estimate_radiation.html'>estimate_radiation</a></code>,
-  <code><a href='monthly_solar_radiation.html'>monthly_solar_radiation</a></code>,
-  <code><a href='partition_solar_radiation.html'>partition_solar_radiation</a></code>,
-  <code><a href='surface_roughness.html'>surface_roughness</a></code>,
-  <code><a href='wind_speed_profile_neutral.html'>wind_speed_profile_neutral</a></code>,
-  <code><a href='wind_speed_profile_segment.html'>wind_speed_profile_segment</a></code>,
-  <code><a href='wind_speed_profile.html'>wind_speed_profile</a></code></p></div>
+    <div class='dont-index'><p>Other microclimate functions: 
+<code><a href='air_temp_profile_neutral.html'>air_temp_profile_neutral</a>()</code>,
+<code><a href='air_temp_profile_segment.html'>air_temp_profile_segment</a>()</code>,
+<code><a href='air_temp_profile.html'>air_temp_profile</a>()</code>,
+<code><a href='degree_days.html'>degree_days</a>()</code>,
+<code><a href='diurnal_temp_variation_sineexp.html'>diurnal_temp_variation_sineexp</a>()</code>,
+<code><a href='diurnal_temp_variation_sinesqrt.html'>diurnal_temp_variation_sinesqrt</a>()</code>,
+<code><a href='diurnal_temp_variation_sine.html'>diurnal_temp_variation_sine</a>()</code>,
+<code><a href='estimate_radiation.html'>estimate_radiation</a>()</code>,
+<code><a href='monthly_solar_radiation.html'>monthly_solar_radiation</a>()</code>,
+<code><a href='partition_solar_radiation.html'>partition_solar_radiation</a>()</code>,
+<code><a href='surface_roughness.html'>surface_roughness</a>()</code>,
+<code><a href='wind_speed_profile_neutral.html'>wind_speed_profile_neutral</a>()</code>,
+<code><a href='wind_speed_profile_segment.html'>wind_speed_profile_segment</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>diurnal_radiation_variation</span>(<span class='kw'>doy</span><span class='kw'>=</span><span class='fl'>112</span>, <span class='kw'>solrad</span><span class='kw'>=</span><span class='fl'>8000</span>, <span class='kw'>hour</span><span class='kw'>=</span><span class='fl'>12</span>, <span class='kw'>lon</span><span class='kw'>=</span>-<span class='fl'>122.33</span>, <span class='kw'>lat</span><span class='kw'>=</span><span class='fl'>47.61</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>diurnal_radiation_variation</span><span class='op'>(</span>doy<span class='op'>=</span><span class='fl'>112</span>, solrad<span class='op'>=</span><span class='fl'>8000</span>, hour<span class='op'>=</span><span class='fl'>12</span>, lon<span class='op'>=</span><span class='op'>-</span><span class='fl'>122.33</span>, lat<span class='op'>=</span><span class='fl'>47.61</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Lauren Buckley, Aji John, Bryan Briones Ortiz, Yutaro Sakairi.</p>
+  <p>Developed by Lauren Buckley, Bryan Briones Ortiz, Aji John, Ofir Levy, Yutaro Sakairi.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
