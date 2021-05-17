@@ -8,6 +8,7 @@ Tb_CampbellNorman(
   T_a,
   T_g,
   S,
+  alpha_S = 0.7,
   alpha_L = 0.96,
   epsilon = 0.96,
   c_p = 29.3,
@@ -20,9 +21,11 @@ Tb_CampbellNorman(
 
 \item{T_g}{is ground temperature in K.}
 
-\item{S}{flux density of solar radiation (W m^-2)}
+\item{S}{flux density of solar radiation (W m^-2), combining direct, diffuse, and reflected radiation accounting for view factors}
 
-\item{alpha_L}{is organismal thermal absoptivity, alpha_L=0.965 for lizards (Bartlett & Gates 1967)}
+\item{alpha_S}{is organismal solar absorptivity}
+
+\item{alpha_L}{is organismal thermal absorptivity, alpha_L=0.965 for lizards (Bartlett & Gates 1967)}
 
 \item{epsilon}{longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)}
 
@@ -43,7 +46,7 @@ Predicts body temperatures (operative environmental temperature) of an ectotherm
 }
 \examples{
 \dontrun{
-Tb_CampbellNorman(T_a=303, T_g=303, S=823, alpha_L=0.96, epsilon=0.96, c_p=29.3, D=0.17, V=1)
+Tb_CampbellNorman(T_a=303, T_g=303, S=823, alpha_S=0.7, alpha_L=0.96, epsilon=0.96, c_p=29.3, D=0.17, V=1)
 }
 
 }

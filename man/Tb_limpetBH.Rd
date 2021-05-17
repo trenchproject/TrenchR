@@ -92,7 +92,3 @@ Other biophysical models:
 Brian Helmuth lab
 }
 \concept{biophysical models}
-\keyword{biophysical}
-\keyword{body}
-\keyword{model}
-\keyword{temperature,}

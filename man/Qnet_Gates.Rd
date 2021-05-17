@@ -7,7 +7,7 @@
 Qnet_Gates(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap)
 }
 \arguments{
-\item{Qabs}{Solar and thermal radiation absorbed (W)}
+\item{Qabs}{Solar radiation absorbed (W)}
 
 \item{Qemit}{Thermal radiation emitted (W)}
 

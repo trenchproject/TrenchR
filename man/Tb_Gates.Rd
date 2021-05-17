@@ -25,9 +25,9 @@ Tb_Gates(
 
 \item{D}{characteristic dimension for conduction (m)}
 
-\item{psa_dir}{proportion surface area exposed to sky (or enclosure)}
+\item{psa_dir}{proportion surface area exposed to direct radiation from the sky (or enclosure)}
 
-\item{psa_ref}{proportion surface area exposed to ground}
+\item{psa_ref}{proportion surface area exposed to reflected radiation from the ground}
 
 \item{psa_air}{proportion surface area exposed to air}
 
@@ -37,15 +37,15 @@ Tb_Gates(
 
 \item{T_a}{ambient air temperature in K}
 
-\item{Qabs}{Solar and thermal radiation absorbed (W)}
+\item{Qabs}{Solar radiation absorbed (W)}
 
 \item{epsilon}{longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)}
 
 \item{H_L}{Convective heat transfer coefficient (W m^-2 K^-1)}
 
-\item{ef}{enhancement factor used to adjust H_L to field condictions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.}
+\item{ef}{enhancement factor used to adjust H_L to field conditions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.}
 
-\item{K}{Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step.}
+\item{K}{Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step.}
 }
 \value{
 operative environmental temperature (K)
