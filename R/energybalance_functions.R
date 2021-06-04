@@ -182,25 +182,28 @@ heat_transfer_coefficient_approximation<-function(V, D, K, nu, taxa="sphere"){
 
 #' Calculate heat transfer coefficient (based on Mitchell 1976 in Spotila 1992)
 #' 
-#' @details This function allows you to estimate the heat transfer coefficient for various taxa (based on Mitchell 1976 and using relationship in Spotila et al 1992). References: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians; Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569.
+#' @details This function allows you to estimate the heat transfer coefficient (based on Mitchell 1976) using either the relationship in Spotila et al 1992 or that in Gates 1980. References: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians; Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569.
 #' @param V Air velocity m/s.
 #' @param D Characteristic dimension (e.g., diameter or snout-vent length) in meters.
+#' @param type Choice between "Spotila" and "Gates" for equation to use
 #' @return heat transfer coefficient, H_L (W m^-2 K^-1)
 #' @keywords heat transfer coefficient
 #' @family biophysical models
 #' @export
 #' @examples
 #' \dontrun{
-#' heat_transfer_coefficient_simple(V=0.5,D=0.05)
+#' heat_transfer_coefficient_simple(V=0.5,D=0.05, type="Gates")
 #' }
 #' 
 
-heat_transfer_coefficient_simple<-function(V,D){
+heat_transfer_coefficient_simple<-function(V,D, type){
   
   stopifnot(V>=0, D>=0)
   
-  H_L= 6.77 * V^0.6 * D^(-0.4)
-  
+if(type=="Spotila") H_L= 6.77 * V^0.6 * D^(-0.4)
+
+if(type=="Gates") H_L= 3.49 * V^0.5 * D^(-0.5)
+
   return(H_L)
 }
 

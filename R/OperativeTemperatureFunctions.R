@@ -109,7 +109,7 @@ Qnet_Gates=function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #'   psa_g=0.2, 
 #'   T_g=303, 
 #'   T_a=310, 
-#'   Qabs=800, 
+#'   Qabs=2, 
 #'   epsilon=0.95, 
 #'   H_L=10, 
 #'   ef=1.23, 
@@ -157,3 +157,70 @@ Tb_Gates=function(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilo
   
   return(Te.return)
 }
+
+#' Predicts body temperatures (operative environmental temperature) of an ectotherm in K. (FROM KEARNEY)
+#' 
+#' 
+#' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Gates (1980, Biophysical ecology). Omits evaporative and metabolic heat loss.
+
+#' @param A surface area  in m^2
+#' @param D characteristic dimension for conduction (m)
+#' @param T_g ground surface temperature in K
+#' @param T_a ambient air temperature in K
+#' @param Qabs Solar radiation absorbed (W)
+#' @param V Wind speed (m/2)
+#' @param epsilon longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
+#' @return operative environmental temperature (K)
+#' @keywords operative environmental temperature
+#' @family biophysical models
+#' @import stats
+#' @export
+#' @examples 
+#' \dontrun{
+#' Tb_Gates2(A=1, D=0.001, T_g=300, T_a=310, Qabs=2, V=0.1, epsilon=1) 
+#' }
+#' 
+Tb_Gates2=function(A, D, T_g, T_a, Qabs, V, epsilon){
+  
+  A_air=A
+  
+  #Stefan-Boltzmann constant
+  sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
+  
+  #Convection coefficient from Gates (1980)
+  H_L= 3.49*(V^0.5 / D^0.5)
+  
+  #estimate effective radiant temperature of sky
+  Tsky= (1.22*(T_a-273.15) -20.4)+273.15 #K, Gates 1980 Biophysical ecology based on Swinback 1960, Kingsolver (1983) estimates using Brunt equation
+  
+  #Thermal radiation absorbed 
+  QIR= (A_air / 2)*(sigma*epsilon*(T_g)^4 + sigma*epsilon*(Tsky)^4)
+  
+  #estimate effective radiant temperature of sky
+  Tsky= (1.22*(T_a-273.15) -20.4)+273.15 #K, Gates 1980 Biophysical ecology based on Swinback 1960, Kingsolver (1983) estimates using Brunt equation
+  
+  #solve energy balance for steady state conditions
+  # 0= Qabs -Qemit -Qconv -Qcond
+  
+  Qfn = function(T_b, Qabs, epsilon, sigma, Tsky, H_L, A_air, T_a) {
+    
+    #Thermal radiation emitted
+    Qemit= A_air*sigma*epsilon*T_b^4
+    #Convection
+    Qconv= H_L*A_air*(T_b-T_a)
+    
+    return(Qabs +QIR -Qemit -Qconv)
+  }
+  
+  
+  Te <- tryCatch(uniroot(Qfn, c(273, 353),Qabs=Qabs, epsilon=epsilon, sigma=sigma, Tsky=Tsky, H_L=H_L, A_air=A_air, T_a=T_a, tol = 0.0001), error = function(e) {print("Unable to balance energy budget. One issue to check is whether absorbed solar radiation exceeds energy potentially lost to thermal radiation, convection, and conduction.")})
+  Te.return=NA
+  if(length(Te)>1) Te.return=Te$root
+  
+  return(Te.return)
+}
+
+#Tb calc from Gates: Qa − σϵ[Tb+273.15]^4 A_IR − 3.49 (V^0.5 / D^0.5)[Tb−Ta] A_conv = 0 where 
+#Qa = Q_IR + Q_SOL, 
+#Q_IR = (A_IR / 2) (σϵ[Ts+273.15]^4 + σϵ[Tsky+273.15]^4),
+#and Q_SOL is calculated as the diffuse and direct components with their appropriate surface areas, and can split it so a proportion is reflected from the substrate
