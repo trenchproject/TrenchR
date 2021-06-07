@@ -7,12 +7,14 @@
 mass_from_length(l, taxa)
 }
 \arguments{
-\item{l}{Length in meters (m), length is snout-vent length for amphibians and reptiles (excepting turtles where length is carapace length).}
+\item{l}{\code{numeric} length in meters (m). 
+\cr \cr
+Snout-vent length for amphibians and reptiles (excepting turtles where length is carapace length).}
 
-\item{taxa}{Class of organism, current choices: \code{"insect"}, \code{"lizard"}, \code{"salamander"}, \code{"frog"}, \code{"snake"}, \code{"turtle"}.}
+\item{taxa}{\code{character} taxon of organism, current choices: \code{"insect"}, \code{"lizard"}, \code{"salamander"}, \code{"frog"}, \code{"snake"}, \code{"turtle"}.}
 }
 \value{
-Mass in grams (g)
+\code{numeric} mass in grams (g)
 }
 \description{
 Estimate mass (g) from length (m) for a variety of taxa.
@@ -20,29 +22,25 @@ Estimate mass (g) from length (m) for a variety of taxa.
 \details{
 Relationships come from 
  \itemize{
-   \item{insect: Sample et al. (1993)}
-   \item{lizard: Meiri (2010)}
-   \item{salamander: Pough (1980)}
-   \item{frog: Pough (1980)}
-   \item{snake: Pough (1980)}
-   \item{turtle: Pough (1980)} 
+   \item insect: \insertCite{Sample1993}{TrenchR}.
+   \item lizard: \insertCite{Meiri2010}{TrenchR}.
+   \item salamander: \insertCite{Pough1980}{TrenchR}.
+   \item frog: \insertCite{Pough1980}{TrenchR}.
+   \item snake: \insertCite{Pough1980}{TrenchR}.
+   \item turtle: \insertCite{Pough1980}{TrenchR}.
  }
 }
 \examples{
- mass_from_length(l = 0.04, taxa = "insect")
- mass_from_length(l = 0.04, taxa = "lizard")
- mass_from_length(l = 0.04, taxa = "salamander")
- mass_from_length(l = 0.04, taxa = "frog")
- mass_from_length(l = 0.04, taxa = "snake")
- mass_from_length(l = 0.04, taxa = "turtle")
+  mass_from_length(l = 0.04, taxa = "insect")
+  mass_from_length(l = 0.04, taxa = "lizard")
+  mass_from_length(l = 0.04, taxa = "salamander")
+  mass_from_length(l = 0.04, taxa = "frog")
+  mass_from_length(l = 0.04, taxa = "snake")
+  mass_from_length(l = 0.04, taxa = "turtle")
 
 }
 \references{
-Meiri S. 2010. Length-weight allometries in lizards. Journal of Zoology 281: 218-226. 
- 
- Pough. 1980. The Advantages of Ectothermy for Tetrapods. The American Naturalist 115: 92-112.
- 
- Sample BE, Cooper RJ, Greer RD, and Whitmore RC. 1993. Estimation of insect biomass by length and width. The American Midland Naturalist 129:234-240.
+\insertAllCited{}
 }
 \seealso{
 Other allometric functions: 

@@ -2,29 +2,38 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{volume_from_length}
 \alias{volume_from_length}
-\title{Calculate volume from length (Based on Mitchell 1976)}
+\title{Calculate organism volume from length}
 \usage{
 volume_from_length(l, taxa)
 }
 \arguments{
-\item{l}{Length in m.}
+\item{l}{\code{numeric} length in meters (m). 
+\cr \cr
+Snout-vent length for amphibians and reptiles (excepting turtles where length is carapace length).}
 
-\item{taxa}{Which class of organism, current choices: lizard, frog, or sphere}
+\item{taxa}{\code{character} taxon of organism, current choices: \code{"lizard"}, \code{"frog"}, \code{"sphere"}.}
 }
 \value{
-volume (m^3)
+\code{numeric} volume in meters cubed (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}).
 }
 \description{
-Calculate volume from length (Based on Mitchell 1976)
+Estimate volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) from length (m) for a variety of taxa following \insertCite{Mitchell1976}{TrenchR}
 }
 \details{
-This function allows you to estimate volume (m^3) from length (m) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976). Source: Mitchell JW. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16: 561-569.
+Relationships come from \itemize{
+  \item Lizards: \insertCite{Norris1965;textual}{TrenchR}.
+  \item Frogs: \insertCite{Tracy1972}{TrenchR}.
+  \item Sphere: \insertCite{Mitchell1976}{TrenchR}.
+ }
 }
 \examples{
- \dontrun{
-  volume_from_length(l=0.05,"lizard")
-}
+  volume_from_length(l = 0.05, taxa = "lizard")
+  volume_from_length(l = 0.05, taxa = "frog")
+  volume_from_length(l = 0.05, taxa = "sphere")
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other allometric functions: 

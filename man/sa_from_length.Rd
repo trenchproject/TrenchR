@@ -2,27 +2,28 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{sa_from_length}
 \alias{sa_from_length}
-\title{Calculate surface area from length by approximating the animal's body as a rotational ellipsoid}
+\title{Calculate surface area from length}
 \usage{
 sa_from_length(l)
 }
 \arguments{
-\item{l}{Length in m}
+\item{l}{\code{numeric} length in m.}
 }
 \value{
-sa (m^2)
+\code{numeric} surface area in meters squared (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 }
 \description{
-Calculate surface area from length by approximating the animal's body as a rotational ellipsoid
+Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from length (m) by approximating the animal's body as a rotational ellipsoid with half the body length as the semi-major axis.
 }
 \details{
-Estimate surface area (m^2) from length (m) by approximating the animal's body as a rotational ellipsoid with half the body length as the semi-major axis.
+Following \insertCite{Samietz2005;textual}{TrenchR} and  \insertCite{Lactin1998;textual}{TrenchR}.
 }
 \examples{
- \dontrun{
-  sa_from_length(l=0.04)
-}
+  sa_from_length(l = 0.04)
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other allometric functions: 
