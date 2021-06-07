@@ -1,96 +1,153 @@
-#ALLOMETRIC RELATIONSHIPS
-
-#' Calculate surface area from mass 
+#' @title Calculate organism surface area from mass 
 #' 
-#' @details This function allows you to estimate surface area (m^2) from mass (g) for a variety of taxa
-#' @param m mass in g
-#' @param taxa Which class of organism, current choices: lizard, salamander, frog, insect
-#' @return sa (m^2)
+#' @description Estimate surface area (m^2) from mass (g) for a variety of taxa. 
+#' 
+#' @param m Mass in grams (g). \insertCite{Simonis2021}{TrenchR}
+#'
+#' @param taxa Class of organism, current choices: \code{"lizard"}, \code{"salamander"}, \code{"frog"}, \code{"insect"}.
+#' 
+#' @return Surface area in meters squared (m^2).
+#' 
 #' @keywords surface area
-#' @family allometric functions
-#' @export
-#' @examples
-#'  \dontrun{
-#'  sa_from_mass(2,"insect")
-#' }
 #'
-
-sa_from_mass<-function(m, taxa){
-
-  stopifnot(taxa %in% c("lizard", "salamander", "frog", "insect"), m>0)
-  
-  #lizard, O'Connor 1999 in Fei T et al. 2011. A body temperature model for lizards as estimated from the thermal environment. Journal of Thermal Biology 37:56-64.
-  
-  #initial mass in kg
-  if(taxa=="lizard") sa= 0.0314*pi*(m/1000)^(2/3)
-  
-  #Lizard,  Norris (1965) and Porter and James (1979) in Roughgarden J. 1981. Resource partitioning of space and its relationship to body temperature in Anolis lizard populations. Oecologia 50: 256–264. 
-  #initial sa in mm^2
-  #if(taxa=="lizard") sa=0.121*mass^0.688*(0.001)^2   
-  
-  #salamander, Whitford and Hutchinson 1967 in Riddell et al 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87:21-33.
-  if(taxa=="salamander") sa= 8.42*m^0.694/(100*100) #convert cm^2 to m^2
-  
-  #Frog, McClanahan L and Baldwin R. 1969. Rate of water uptake through the integument of the desert toad, Bufo punctatus. Comparative Biochemistry and Physiology 28:381-389.
-  #initial sa in cm^2
-  if(taxa=="frog") sa=9.9*m^0.56*(0.01)^2 
-  
-  #Insects, mostly grasshoppers
-  #Lactin DJ and Johnson DL. 1997. Response of body temperature to solar radiation in restrained nymphal migratory grasshoppers (Orthoptera: Acrididae): influences of orientation and body size 
-  if(taxa=="insect") sa=0.0013*m^0.8 
-  
-  return(sa)
-}
-
-#' Calculate mass from length 
+#' @family allometric functions
 #' 
-#' @details This function allows you to estimate mass (g) from length (m) for a variety of taxa
-#' @param l Length in m, length is snout-vent length for amphibians and reptiles (excepting turtles where length is carapace length).
-#' @param taxa Which class of organism, current choices: insect, lizard, salamander, frog, snake, turtle 
-#' @return mass (g)
-#' @keywords mass length
-#' @family allometric functions
-#' @export
-#' @examples
-#'  \dontrun{
-#'  mass_from_length(0.04,"insect")
-#' }
+#' @details Relationships come from 
+#'  \itemize{
+#'    \item{lizard: \insertCite{Porter1979;textual}{TrenchR} and \insertCite{Porter1979;textual}{TrenchR} in \insertCite{Roughgarden1981;textual}{TrenchR}}
+#'    \item{salamander: whit}
+#'    \item{frog: \insertCite{McClanahan1969;textual}{TrenchR}}
+#'    \item{insect: \insertCite{Lactin1997;textual}{TrenchR}}
+#'  }
+#'    
+#' @references
+#'   \insertAllCited{}
 #'
+#'
+#' @examples
+#'  sa_from_mass(m = 2, taxa = "lizard")
+#'  sa_from_mass(m = 2, taxa = "salamander")
+#'  sa_from_mass(m = 2, taxa = "frog")
+#'  sa_from_mass(m = 2, taxa = "insect")
+#'
+#'
+#' @export
+#'
+sa_from_mass <- function(m, taxa){
 
-mass_from_length<-function(l, taxa){
+  stopifnot(taxa %in% c("lizard", "salamander", "frog", "insect"), m > 0)
   
-  stopifnot(taxa %in% c("insect", "lizard", "salamander", "frog", "snake", "turtle"), l>0)
+
+  if (taxa == "lizard") {
+
+    # initial mass in kg
+
+    0.0314 * pi * (m / 1000) ^ (2 / 3)
   
-  #convert m to mm
-  lengthmm= l*1000
+  } else if (taxa == "salamander") {
+
+    # convert cm^2 to m^2  
+
+    8.42 * m ^ 0.694 / (100 * 100) 
+
+  } else if (taxa == "frog") {
+
+    9.9 * m ^ 0.56 * (0.01) ^ 2 
+
+  } else if (taxa == "insect" ) {
+
+    0.0013 * m ^ 0.8 
+
+  } 
   
-    #Insects
-    #Sample BE, Cooper RJ, Greer RD, and Whitmore RC. 1993. Estimation of insect biomass by length and width. The American Midland Naturalist 129:234-240.
-    #also by orders and families
-    #also has allometry with length * width
-    #length in mm?
-  if(taxa=="insect") mass= exp(-3.628)*lengthmm^2.494/1000
-   #predicts mass in mg so divide by 1000
-  
-  #Lizards
-  #Meiri S. 2010. Length-weight allometries in lizards. Journal of Zoology 281: 218-226. 
-  #also by clades and families
-  #initial length in mm
-  if(taxa=="lizard") mass= 10^(-4.852+3.022*log10(lengthmm))
-  
-  #Below from Pough. 1980. The Advantages of Ectothermy for Tetrapods. The American Naturalist 115: 92-112.
-  #inital length in cm
-  
-  #convert length 
-  lengthcm=l*100
-  
-  if(taxa=="salamander") mass= 0.018*lengthcm^2.94
-  if(taxa=="frog") mass= 0.06*lengthcm^3.24
-  if(taxa=="snake") mass= 0.00066*lengthcm^3.02
-  if(taxa=="turtle") mass= 0.39*lengthcm^2.69
-  
-  return(mass)
 }
+
+#' @title Calculate mass from length 
+#' 
+#' @description Estimate mass (g) from length (m) for a variety of taxa.
+#'
+#' @param l Length in meters (m), length is snout-vent length for amphibians and reptiles (excepting turtles where length is carapace length).
+#'
+#' @param taxa Class of organism, current choices: \code{"insect"}, \code{"lizard"}, \code{"salamander"}, \code{"frog"}, \code{"snake"}, \code{"turtle"}. 
+#'
+#' @return Mass in grams (g)
+#'
+#' @keywords mass length
+#'
+#' @family allometric functions
+#' 
+#' @details Relationships come from 
+#'  \itemize{
+#'    \item{insect: Sample et al. (1993)}
+#'    \item{lizard: Meiri (2010)}
+#'    \item{salamander: Pough (1980)}
+#'    \item{frog: Pough (1980)}
+#'    \item{snake: Pough (1980)}
+#'    \item{turtle: Pough (1980)} 
+#'  }
+#'    
+#' @references
+#'  
+#'  Meiri S. 2010. Length-weight allometries in lizards. Journal of Zoology 281: 218-226. 
+#'  
+#'  Pough. 1980. The Advantages of Ectothermy for Tetrapods. The American Naturalist 115: 92-112.
+#'  
+#'  Sample BE, Cooper RJ, Greer RD, and Whitmore RC. 1993. Estimation of insect biomass by length and width. The American Midland Naturalist 129:234-240.
+#'
+#'
+#' @examples
+#'  mass_from_length(l = 0.04, taxa = "insect")
+#'  mass_from_length(l = 0.04, taxa = "lizard")
+#'  mass_from_length(l = 0.04, taxa = "salamander")
+#'  mass_from_length(l = 0.04, taxa = "frog")
+#'  mass_from_length(l = 0.04, taxa = "snake")
+#'  mass_from_length(l = 0.04, taxa = "turtle")
+#'
+#' @export
+#'
+mass_from_length <- function(l, taxa) {
+  
+  stopifnot(taxa %in% c("insect", "lizard", "salamander", "frog", "snake", "turtle"), l > 0)
+  
+  # convert m to mm and cm
+
+  lengthmm <- l * 1000
+  lengthcm <- l * 100  
+    
+  if (taxa == "insect") {
+ 
+    # predicts mass in mg so divide by 1000
+
+    exp(-3.628) * lengthmm ^ 2.494/1000
+  
+  } else if (taxa == "lizard") {
+
+    10 ^ (-4.852 + 3.022 * log10(lengthmm))
+  
+  } else if (taxa == "salamander"){
+
+    0.018 * lengthcm ^ 2.94
+
+  } else if (taxa == "frog") {    
+
+    0.06 * lengthcm ^ 3.24
+
+  } else if (taxa == "snake") {
+
+    0.00066 * lengthcm ^ 3.02
+
+  } else if (taxa == "turtle") {
+
+    0.39 * lengthcm ^ 2.69
+
+  }
+}
+
+
+#
+#  working here
+#
+
 
 #' Calculate surface area from volume. 
 #' 

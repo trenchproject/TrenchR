@@ -6,10 +6,10 @@ Maintainer: Lauren Buckley <lbuckley@uw.edu>
 Authors@R: c(
     person("Lauren", "Buckley", role = c("aut", "cre"), email = "lbuckley@uw.edu"),
     person("Bryan", "Briones Ortiz", role = c("aut","ctb")),
-     person("Brian", "Helmuth", role = c("ctb")),
+    person("Brian", "Helmuth", role = c("ctb")),
     person("Aji", "John", role = c("aut","ctb")),
-     person("Ofir", "Levy", role = c("aut","ctb")),
-     person("Eric", "Riddell", role = c("ctb")),
+    person("Ofir", "Levy", role = c("aut","ctb")),
+    person("Eric", "Riddell", role = c("ctb")),
     person("Yutaro", "Sakairi", role = c("aut","ctb"))
   )
 License: MIT + file LICENSE
@@ -19,15 +19,18 @@ BugReports: https://github.com/trenchproject/TrenchR/issues
 VignetteBuilder: knitr
 Depends: R (>= 3.3.1)
 Imports:
-  zoo,
-  msm,
   deSolve,
-  stats
+  msm,
+  Rdpack (>= 0.7),
+  stats,
+  zoo
 Suggests:
-    testthat,
-    knitr,
-    covr     ,
-    rmarkdown
+  covr,
+  knitr,
+  rmarkdown,
+  testthat
+RdMacros: 
+  Rdpack
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
