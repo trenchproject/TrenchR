@@ -1,4 +1,6 @@
-We're using `Rdpack` to manage citations in the documentation
+## Documentation Workflow
+
+We're using `Rdpack` and BiBTeX to manage citations in the documentation, which requires a little more work than a standard Roxygen documentation setup.
 
 To include a citation
 
