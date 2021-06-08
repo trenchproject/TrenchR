@@ -24,6 +24,8 @@ Tb_limpetBH(T_a, T_r, L, H, I, u, s_aspect, s_slope, c, position = "anterior")
 \item{s_slope}{solar elevation angle (degree), the altitude of the Sun, which is the angle between the horizon and the sun}
 
 \item{c}{fraction of the sky covered by cloud}
+
+\item{position}{body position}
 }
 \value{
 predicted body temperature (°C)

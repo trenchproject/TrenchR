@@ -16,3 +16,6 @@ TrenchR.Rproj
 ^docs$
 ^pkgdown$
 Contribution.md
+^doc$
+^Meta$
+documentation_workflow.md

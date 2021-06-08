@@ -1,20 +1,15 @@
 Package: TrenchR
-Title: An R Package Encompassing Functions for Assessing the Impact of the Environment of Organisms
-Description: We aim to create an R package (TrenchR) encompassing resources
-             for assessing the impact of the environment of organisms. 
-             The package will build off and integrate with existing packages 
-             (e.g., NicheMapR). Code (scripts and functions) will be accepting
-             in any programming language and thorough commenting will be appreciated. 
-             We would also appreciate your including a header that describes the intent, input, and output of your scripts and functions.
+Title: Assessing the Impact of the Environment of Organisms
+Description: Resources for assessing the impact of the environment of organisms.
 Version: 0.0.0.9000
 Maintainer: Lauren Buckley <lbuckley@uw.edu>
 Authors@R: c(
     person("Lauren", "Buckley", role = c("aut", "cre"), email = "lbuckley@uw.edu"),
     person("Bryan", "Briones Ortiz", role = c("aut","ctb")),
-     person("Brian", "Helmuth", role = c("ctb")),
+    person("Brian", "Helmuth", role = c("ctb")),
     person("Aji", "John", role = c("aut","ctb")),
-     person("Ofir", "Levy", role = c("aut","ctb")),
-     person("Eric", "Riddell", role = c("ctb")),
+    person("Ofir", "Levy", role = c("aut","ctb")),
+    person("Eric", "Riddell", role = c("ctb")),
     person("Yutaro", "Sakairi", role = c("aut","ctb"))
   )
 License: MIT + file LICENSE
@@ -24,15 +19,18 @@ BugReports: https://github.com/trenchproject/TrenchR/issues
 VignetteBuilder: knitr
 Depends: R (>= 3.3.1)
 Imports:
-  zoo,
-  msm,
   deSolve,
-  stats
+  msm,
+  Rdpack (>= 0.7),
+  stats,
+  zoo
 Suggests:
-    testthat,
-    knitr,
-    covr     ,
-    rmarkdown
+  covr,
+  knitr,
+  rmarkdown,
+  testthat
+RdMacros: 
+  Rdpack
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1

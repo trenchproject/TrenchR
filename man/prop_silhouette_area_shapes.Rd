@@ -7,29 +7,28 @@
 prop_silhouette_area_shapes(shape, theta, h, d)
 }
 \arguments{
-\item{shape}{Which shape to approximate an organism. Shapes are assumed to be prolate or have the longest axis parallel with the ground. Current choices: spheroid, cylinder flat ends, or cylinder hemisphere ends.}
+\item{shape}{\code{character} Which shape to approximate an organism. Shapes are assumed to be prolate or have the longest axis parallel with the ground. Current choices are \code{"spheroid"}, \code{"cylinder flat ends"}, and \code{"cylinder hemisphere ends"}.}
 
-\item{theta}{is the angle between the solar beam and the longitudinal axis in degrees}
+\item{theta}{\code{numeric} angle between the solar beam and the longitudinal axis in degrees}
 
-\item{h}{is the height (long axis in m), cross section length for spheroid}
+\item{h}{\code{numeric} height (long axis in m). Cross section length for spheroid.}
 
-\item{d}{is the diameter (short axis in m), cross section length for spheroid}
+\item{d}{\code{numeric} diametere (shoty axis in m). Cross section length for spheroid.}
 }
 \value{
-silhouette area as a proportion
+\code{numeric} silhouette area as a proportion.
 }
 \description{
-Calculate silhouette area using the shape approximations
-}
-\details{
-This function allows you to estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid. From Figure 11.6 in Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
+Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid, using Figure 11.6 in \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
-\dontrun{
-prop_silhouette_area_shapes(shape="spheroid", theta=60, h=0.01, d=0.001)
-prop_silhouette_area_shapes(shape="cylinder flat ends", theta=60, h=0.01, d=0.001)
-prop_silhouette_area_shapes(shape="cylinder hemisphere ends", theta=60, h=0.01, d=0.001)
+  prop_silhouette_area_shapes(shape = "spheroid", theta = 60, h = 0.01, d = 0.001)
+  prop_silhouette_area_shapes(shape = "cylinder flat ends", theta = 60, h = 0.01, d = 0.001)
+  prop_silhouette_area_shapes(shape = "cylinder hemisphere ends", theta = 60, h = 0.01, d = 0.001)
+
 }
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other allometric functions: 

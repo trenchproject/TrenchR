@@ -10,6 +10,7 @@
 #' @param s_aspect solar aspect angle (degree), the angle between the limpet's length dimension and the vector to the Sun. Between 70 and 110 degrees
 #' @param s_slope solar elevation angle (degree), the altitude of the Sun, which is the angle between the horizon and the sun
 #' @param c fraction of the sky covered by cloud 
+#' @param position body position
 #' @return predicted body temperature (°C)
 #' @family biophysical models
 #' @export
