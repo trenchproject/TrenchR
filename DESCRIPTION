@@ -1,6 +1,16 @@
 Package: TrenchR
-Title: Assessing the Impact of the Environment of Organisms
-Description: Resources for assessing the impact of the environment of organisms.
+Title: Assessing the Impact of the Environment on Organisms
+Description: The TrenchR package aids in Translating
+    Environmental Change into organismal responses. The package includes
+    microclimate models to vertically scale weather station data to
+    organismal heights. The biophysical modelling tools include both
+    general models for heat flows and specific models to predict body
+    temperatures for a variety of ectothermic taxa. Additional functions
+    model and temporally partition air and soil temperatures and solar
+    radiation. We offer utility functions to aid in estimating the
+    organismal and environonmental parameters needed for biophysical
+    ecology. TrenchR focuses on relatively simple and modular functions so users
+    can create transparent and flexible biophysical models.
 Version: 0.0.0.9000
 Maintainer: Lauren Buckley <lbuckley@uw.edu>
 Authors@R: c(
