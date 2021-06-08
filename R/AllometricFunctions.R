@@ -10,7 +10,7 @@
 #' 
 #' @keywords surface area 
 #'
-#' @family allometric functions
+#' @family allometric functions 
 #' 
 #' @details Relationships come from \itemize{
 #'   \item Lizards: \insertCite{OConnor1999;textual}{TrenchR} in \insertCite{Fei2012;textual}{TrenchR} and \insertCite{Norris1965;textual}{TrenchR} and \insertCite{Porter1979;textual}{TrenchR} in \insertCite{Roughgarden1981;textual}{TrenchR}
