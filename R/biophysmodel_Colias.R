@@ -9,6 +9,7 @@
 
 
 #' @title Operative Environmental Temperature of a Butterfly
+#'
 #' @description Predicts body temperatures (operative environmental temperatures) of a butterfly in C.
 #'  \cr \cr
 #'  Based on \insertCite{Kingsolver1983;textual}{TrenchR} and \insertCite{Buckley2012;textual}{TrenchR}.
@@ -25,11 +26,11 @@
 #'
 #' @param H_sdif \code{numeric} diffuse solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.
 #'
-#' @param z \code{numeric} solar zenith angle in degrees
+#' @param z \code{numeric} solar zenith angle in degrees.
 #'
-#' @param D \code{numeric} thoracic diameter in cm
+#' @param D \code{numeric} thoracic diameter in cm.
 #'
-#' @param delta \code{numeric} thoracic fur thickness in mm
+#' @param delta \code{numeric} thoracic fur thickness in mm.
 #'
 #' @param alpha \code{numeric} wing solar absorbtivity as a proportion. Range for Colias is 0.4 to 0.7.
 #'

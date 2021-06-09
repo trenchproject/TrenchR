@@ -32,11 +32,11 @@ Tb_butterfly(
 
 \item{H_sdif}{\code{numeric} diffuse solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.}
 
-\item{z}{\code{numeric} solar zenith angle in degrees}
+\item{z}{\code{numeric} solar zenith angle in degrees.}
 
-\item{D}{\code{numeric} thoracic diameter in cm}
+\item{D}{\code{numeric} thoracic diameter in cm.}
 
-\item{delta}{\code{numeric} thoracic fur thickness in mm}
+\item{delta}{\code{numeric} thoracic fur thickness in mm.}
 
 \item{alpha}{\code{numeric} wing solar absorbtivity as a proportion. Range for Colias is 0.4 to 0.7.}
 
