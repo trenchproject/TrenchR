@@ -7,24 +7,40 @@
 mass_from_length(l, taxa)
 }
 \arguments{
-\item{l}{Length in m, length is snout-vent length for amphibians and reptiles (excepting turtles where length is carapace length).}
+\item{l}{\code{numeric} length in meters (m). 
+\cr \cr
+Snout-vent length for amphibians and reptiles (excepting turtles where length is carapace length).}
 
-\item{taxa}{Which class of organism, current choices: insect, lizard, salamander, frog, snake, turtle}
+\item{taxa}{\code{character} taxon of organism, current choices: \code{"insect"}, \code{"lizard"}, \code{"salamander"}, \code{"frog"}, \code{"snake"}, \code{"turtle"}.}
 }
 \value{
-mass (g)
+\code{numeric} mass in grams (g)
 }
 \description{
-Calculate mass from length
+Estimate mass (g) from length (m) for a variety of taxa.
 }
 \details{
-This function allows you to estimate mass (g) from length (m) for a variety of taxa
+Relationships come from 
+ \itemize{
+   \item insect: \insertCite{Sample1993}{TrenchR}.
+   \item lizard: \insertCite{Meiri2010}{TrenchR}.
+   \item salamander: \insertCite{Pough1980}{TrenchR}.
+   \item frog: \insertCite{Pough1980}{TrenchR}.
+   \item snake: \insertCite{Pough1980}{TrenchR}.
+   \item turtle: \insertCite{Pough1980}{TrenchR}.
+ }
 }
 \examples{
- \dontrun{
- mass_from_length(0.04,"insect")
-}
+  mass_from_length(l = 0.04, taxa = "insect")
+  mass_from_length(l = 0.04, taxa = "lizard")
+  mass_from_length(l = 0.04, taxa = "salamander")
+  mass_from_length(l = 0.04, taxa = "frog")
+  mass_from_length(l = 0.04, taxa = "snake")
+  mass_from_length(l = 0.04, taxa = "turtle")
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other allometric functions: 

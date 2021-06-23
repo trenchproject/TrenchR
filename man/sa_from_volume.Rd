@@ -2,29 +2,36 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{sa_from_volume}
 \alias{sa_from_volume}
-\title{Calculate surface area from volume.}
+\title{Calculate organism surface area from volume}
 \usage{
 sa_from_volume(V, taxa)
 }
 \arguments{
-\item{V}{volume (m^3)}
+\item{V}{\code{numeric} volume in meters cubed (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}).}
 
-\item{taxa}{Which class of organism, current choices: lizard, frog, sphere.}
+\item{taxa}{\code{character} taxon of organism, current choices: \code{"lizard"}, \code{"frog"}, \code{"sphere"}.}
 }
 \value{
-surface area (m^2)
+\code{numeric} surface area in meters squared (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 }
 \description{
-Calculate surface area from volume.
+Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) for a variety of taxa following \insertCite{Mitchell1976}{TrenchR}
 }
 \details{
-This function allows you to estimate surface area (m^2) from volume (m^3) for a variety of taxa by approximating animal shape as a sphere. The function is intended for use in estimating convection as in Mitchell (1976). Source: Mitchell JW. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16: 561-569.
+Relationships come from \itemize{
+  \item Lizards: \insertCite{Norris1965;textual}{TrenchR}.
+  \item Frogs: \insertCite{Tracy1972}{TrenchR}.
+  \item Sphere: \insertCite{Mitchell1976}{TrenchR}.
+ }
 }
 \examples{
- \dontrun{
- sa_from_volume(V=0.001,"lizard")
-}
+  sa_from_volume(V = 0.001, taxa = "lizard")
+  sa_from_volume(V = 0.001, taxa = "frog")
+  sa_from_volume(V = 0.001, taxa = "sphere")
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other allometric functions: 

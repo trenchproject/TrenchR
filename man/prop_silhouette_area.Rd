@@ -7,28 +7,38 @@
 prop_silhouette_area(z, taxa, raz = 0, posture = "prostrate")
 }
 \arguments{
-\item{z}{zenith angle in degrees}
+\item{z}{\code{numeric} zenith angle in degrees between \code{0} and \code{360}.}
 
-\item{taxa}{Which class of organism, current choices: frog, lizard, grasshopper}
+\item{taxa}{\code{character} Organism taxon. Current choices are \code{"lizard"}, \code{"frog"}, and \code{"grasshopper"}.}
 
-\item{raz}{if lizard, relative solar azimuth angle (degrees), the horizontal angle of the sun relative to the head and frontal plane of the lizard. Options are 0 (in front), 90 (to side), and 180 (behind) degrees.}
+\item{raz}{\code{numeric} relative solar azimuth angle (in degrees). Required if \code{taxa = "lizard"}. Options currently include \code{0} (in front), \code{90} (to side), and \code{180} (behind) degrees.
+\cr \cr 
+This is the horizontal angle of the sun relative to the head and frontal plane of the lizard.}
 
-\item{posture}{if lizard, indicate posture as "prostrate" or "elevated" (default: prostrate)}
+\item{posture}{\code{character} value describing posture. Required if \code{taxa = "lizard"}. Options include \code{"prostrate"} (default) and \code{"elevated"}.}
 }
 \value{
-silhouette area as a proportion
+\code{numeric} silhouette area as a proportion.
 }
 \description{
-Calculate silhouette area
+Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of zenith angle.
 }
 \details{
-This function allows you to estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of zenith angle.
+Relationships come from \itemize{
+  \item Lizards: \insertCite{Muth1977;textual}{TrenchR}.
+  \item Frogs: \insertCite{Tracy1976}{TrenchR}.
+  \item Grasshoppers: \insertCite{Anderson1979}{TrenchR}.
+ }
 }
 \examples{
-\dontrun{
-prop_silhouette_area(z=60, taxa= "frog")
-}
+  prop_silhouette_area(z = 60, taxa= "frog")
+  prop_silhouette_area(z = 60, taxa= "grasshopper")
+  prop_silhouette_area(z = 60, taxa= "lizard", posture = "prostrate", raz = 90)
+  prop_silhouette_area(z = 60, taxa= "lizard", posture = "elevated", raz = 180)
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other allometric functions: 

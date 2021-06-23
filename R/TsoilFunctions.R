@@ -130,22 +130,6 @@ soil_temperature_equation<- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, 
 #' @param j is the number of the iteration of running the model
 #' @param T_so is the initial soil temperature profile in °C 
 #' @param params is a list containing the following parameters, which are described below: list(SSA, epsilon_so, sigma, k_so, c_so, dz, k, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade).   
-#' @param SSA is the solar absorbtivity of soil surface as a fraction
-#' @param epsilon_so is the thermal absorbtivity of soil surface as a fraction
-#' @param k_so is soil thermal conductivity in W m^-1 K^-1
-#' @param c_so is the soil specific heat capacity in in J kg^-1 K-1.
-#' @param dz is the vertical interval in m for the soil temperature profile
-#' @param z_r is reference height in m
-#' @param z0 is surface roughness in m 
-#' @param H is solar radiation in W m^-2
-#' @param T_a is air temperature in °C
-#' @param u is wind speed (m/s)
-#' @param rho_a is the density of air (kg/m^3)
-#' @param rho_so particle density of soil (kg/m^3)
-#' @param c_a is the specific heat of air (J/(kg*K))
-#' @param TimeIn is a vector of time periods for the model
-#' @param dt = 60*60 is the time interval for running the model
-#' @param shade is whether or not soil temperature should be calculated in the shade, TRUE or FALSE
 #' @return soil temperature function
 #' @keywords soil temperature
 #' @family soil temperature functions

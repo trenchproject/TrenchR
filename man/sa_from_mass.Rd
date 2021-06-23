@@ -2,29 +2,39 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{sa_from_mass}
 \alias{sa_from_mass}
-\title{Calculate surface area from mass}
+\title{Calculate organism surface area from mass}
 \usage{
 sa_from_mass(m, taxa)
 }
 \arguments{
-\item{m}{mass in g}
+\item{m}{\code{numeric} mass in grams (g).}
 
-\item{taxa}{Which class of organism, current choices: lizard, salamander, frog, insect}
+\item{taxa}{\code{character} taxon of organism, current choices: \code{"lizard"}, \code{"salamander"}, \code{"frog"}, \code{"insect"}.}
 }
 \value{
-sa (m^2)
+\code{numeric} surface area in meters squared (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 }
 \description{
-Calculate surface area from mass
+Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from mass (g) for a variety of taxa.
 }
 \details{
-This function allows you to estimate surface area (m^2) from mass (g) for a variety of taxa
+Relationships come from \itemize{
+  \item Lizards: \insertCite{OConnor1999;textual}{TrenchR} in \insertCite{Fei2012;textual}{TrenchR} and \insertCite{Norris1965;textual}{TrenchR} and \insertCite{Porter1979;textual}{TrenchR} in \insertCite{Roughgarden1981;textual}{TrenchR}
+  \item Salamanders: \insertCite{Whitford1967;textual}{TrenchR} in \insertCite{Riddell2017;textual}{TrenchR}.
+  \item Frogs: \insertCite{McClanahan1969;textual}{TrenchR}.
+  \item Insects: \insertCite{Lactin1997;textual}{TrenchR}.
+ }
 }
 \examples{
- \dontrun{
- sa_from_mass(2,"insect")
-}
+  sa_from_mass(m = 2, taxa = "lizard")
+  sa_from_mass(m = 2, taxa = "salamander")
+  sa_from_mass(m = 2, taxa = "frog")
+  sa_from_mass(m = 2, taxa = "insect")
 
+
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other allometric functions: 

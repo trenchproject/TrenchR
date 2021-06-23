@@ -1,11 +1,11 @@
 ---
-title: "TrenchR: Allometries and conversions"
+title: "Allometries and conversions"
 author: "Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 bibliography: bibliography.bib
 vignette: >
-  %\VignetteIndexEntry{Allometry}
+  %\VignetteIndexEntry{Allometries and conversions}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

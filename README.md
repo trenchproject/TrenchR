@@ -3,7 +3,7 @@
 
 an R package for transparent environmental and ecological biophysics
 
-<img src="man/figures/TrenchRIcon.png" width="200px">
+<img src="man/figures/TrenchRIcon.png" width="200px" alt="The TrenchR logo invokes an energy budget for a grasshopper">
 
 **Author:** [TrEnCh project, Buckley Lab, Department of Biology, University of Washington](https://trenchproject.github.io)<br>
 **License:** [MIT](http://opensource.org/licenses/MIT)<br>

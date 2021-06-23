@@ -12,38 +12,6 @@ soil_temperature_function(j, T_so, params)
 \item{T_so}{is the initial soil temperature profile in °C}
 
 \item{params}{is a list containing the following parameters, which are described below: list(SSA, epsilon_so, sigma, k_so, c_so, dz, k, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade).}
-
-\item{SSA}{is the solar absorbtivity of soil surface as a fraction}
-
-\item{epsilon_so}{is the thermal absorbtivity of soil surface as a fraction}
-
-\item{k_so}{is soil thermal conductivity in W m^-1 K^-1}
-
-\item{c_so}{is the soil specific heat capacity in in J kg^-1 K-1.}
-
-\item{dz}{is the vertical interval in m for the soil temperature profile}
-
-\item{z_r}{is reference height in m}
-
-\item{z0}{is surface roughness in m}
-
-\item{H}{is solar radiation in W m^-2}
-
-\item{T_a}{is air temperature in °C}
-
-\item{u}{is wind speed (m/s)}
-
-\item{rho_a}{is the density of air (kg/m^3)}
-
-\item{rho_so}{particle density of soil (kg/m^3)}
-
-\item{c_a}{is the specific heat of air (J/(kg*K))}
-
-\item{TimeIn}{is a vector of time periods for the model}
-
-\item{dt}{= 60*60 is the time interval for running the model}
-
-\item{shade}{is whether or not soil temperature should be calculated in the shade, TRUE or FALSE}
 }
 \value{
 soil temperature function
