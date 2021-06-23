@@ -133,7 +133,7 @@ air_temp_profile= function(T_r, u_r, zr, z0,z,T_s){
   #Temperature at roughness height, z0
   T_z0= (T_r * S_tb +T_s * S_ts)/(S_tb+S_ts)
   #Temperature at local height
-  #Inital from vignette: T_z= T_z0 + (T_r - T_z0)*log(z/z0+1)
+  #Inital from Ecography paper but fixed in vignette: T_z= T_z0 + (T_r - T_z0)*log(z/z0+1)
   T_z= T_z0 + (T_r - T_z0)*log(z/z0+1)/log(zr/z0+1)
   return(T_z)
   }
