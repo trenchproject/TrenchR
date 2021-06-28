@@ -81,10 +81,10 @@ Tb_butterfly <- function (T_a, Tg, Tg_sh, u, H_sdir, H_sdif, z, D, delta, alpha,
 
       u <- u *100  
 
-    # solar flux W/m2 to W/cm2
+    # solar flux W/m2 to mW/cm2
 
-      H_sdir <- H_sdir / 10 #################  May need to be edited
-      H_sdif <- H_sdif / 10 #################  May need to be edited
+      H_sdir <- H_sdir / 10 
+      H_sdif <- H_sdif / 10
 
     # thoracic fur thickness mm to cm
 

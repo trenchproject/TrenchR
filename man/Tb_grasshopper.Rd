@@ -47,7 +47,7 @@ Tb_grasshopper(
 \description{
 Predicts body temperatures (operative environmental temperatures) of a grasshopper in C.
  \cr \cr
- Based on
+ Based on \insertCite{Swinbank1963;textual}{TrenchR}, using the regression in  \insertCite{Lactin1998;textual}{TrenchR} following \insertCite{Gates1962;textual}{TrenchR} in  \insertCite{Kingsolver1983;textual}{TrenchR}.
 }
 \details{
 Total radiative flux is calculated as thermal radiative heat flux plus convective heat flux, following \insertCite{Kingsolver1983;textual}{TrenchR}, with the \insertCite{Erbs1982;textual}{TrenchR} model from \insertCite{Wong2001;textual}{TrenchR}.

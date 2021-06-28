@@ -1,13 +1,8 @@
-# from Swinbank (1963), 
-#regression in Lactin and Johnson (1988)
-#Gates 1962 in Kingsolver 1983  
-
-
 #' @title Operative Environmental Temperature of a Grasshopper
 #'
 #' @description Predicts body temperatures (operative environmental temperatures) of a grasshopper in C.
 #'  \cr \cr
-#'  Based on 
+#'  Based on \insertCite{Swinbank1963;textual}{TrenchR}, using the regression in  \insertCite{Lactin1998;textual}{TrenchR} following \insertCite{Gates1962;textual}{TrenchR} in  \insertCite{Kingsolver1983;textual}{TrenchR}.
 #' 
 #' @param T_a \code{numeric} air temperature in C.
 #'
