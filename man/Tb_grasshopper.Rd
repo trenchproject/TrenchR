@@ -2,7 +2,7 @@
 % Please edit documentation in R/biophysmodel_Grasshopper.R
 \name{Tb_grasshopper}
 \alias{Tb_grasshopper}
-\title{Predicts body temperatures (operative environmental temperature) of a grasshopper in °C.}
+\title{Operative Environmental Temperature of a Grasshopper}
 \usage{
 Tb_grasshopper(
   T_a,
@@ -19,52 +19,64 @@ Tb_grasshopper(
 )
 }
 \arguments{
-\item{T_a}{is air temperature in °C}
+\item{T_a}{\code{numeric} air temperature in C.}
 
-\item{T_g}{is surface temperature in °C, Kingsolver (1983) assumes T_g-T_a=8.4}
+\item{T_g}{\code{numeric} surface temperature in C. \insertCite{Kingsolver1983;textual}{TrenchR} assumes T_g - T_a = 8.4.}
 
-\item{u}{is wind speed in m/s}
+\item{u}{\code{numeric} wind speed in m / s.}
 
-\item{H}{is total (direct + diffuse) solar radiation flux in W/m^2}
+\item{H}{\code{numeric} total (direct + diffuse) solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.}
 
-\item{K_t}{is the clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.}
+\item{K_t}{\code{numeric} clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.}
 
-\item{psi}{is solar zenith angle in degrees}
+\item{psi}{\code{numeric} solar zenith angle in degrees.}
 
-\item{L}{is grasshopper length in m}
+\item{L}{\code{numeric} grasshopper length in m.}
 
-\item{Acondfact}{is the proportion of the grasshopper surface area that is in contact with the ground}
+\item{Acondfact}{\code{numeric} the proportion of the grasshopper surface area that is in contact with the ground.}
 
-\item{z}{is grasshopper's distance from the ground in m}
+\item{z}{\code{numeric} distance from the ground to the grasshopper in m}
 
-\item{abs}{is absorptivity of grasshopper to solar radiation (proportion), See Anderson et al. (1979).}
+\item{abs}{\code{numeric} absorptivity of the grasshopper to solar radiation (proportion). See \insertCite{Anderson1979;textual}{TrenchR}.}
 
-\item{r_g}{is substrate solar reflectivity (proportion), see Kingsolver (1983)}
+\item{r_g}{\code{numeric} substrate solar reflectivity (proportion), see \insertCite{Kingsolver1983;textual}{TrenchR}.}
 }
 \value{
-predicted body (operative environmental) temperature (°C)
+\code{numeric} predicted body (operative environmental) temperature (C).
 }
 \description{
-Predicts body temperature (operative environmental temperature) of a grasshopper in °C. Described in Buckley et al. (2014, Phenotypic clines, energy balances, and ecological responses to climate change. Journal of Animal Ecology 83:41-50.) See also a related model by Anderson et al. (1979, Habitat selection in two species of short-horned grasshoppers. Oecologia 38:359–74.)
+Predicts body temperatures (operative environmental temperatures) of a grasshopper in C.
+ \cr \cr
+ Based on \insertCite{Swinbank1963;textual}{TrenchR}, using the regression in  \insertCite{Lactin1998;textual}{TrenchR} following \insertCite{Gates1962;textual}{TrenchR} in  \insertCite{Kingsolver1983;textual}{TrenchR}.
 }
 \details{
-Predicts body temperatures (operative environmental temperature) of a grasshopper in °C.
+Total radiative flux is calculated as thermal radiative heat flux plus convective heat flux, following \insertCite{Kingsolver1983;textual}{TrenchR}, with the \insertCite{Erbs1982;textual}{TrenchR} model from \insertCite{Wong2001;textual}{TrenchR}.
+  \cr \cr
+  Energy balance is based on \insertCite{Kingsolver1983;textual}{TrenchR}.
+  \cr \cr
+  W is calculated without area dependence \insertCite{Anderson1979}{TrenchR}.
+  \cr \cr
+  The body of a grasshopper female is approximated by a rotational ellipsoid with half the body length as the semi-major axis  \insertCite{Samietz2005}{TrenchR}.
+  \cr \cr
+  The diffuse fraction is corrected following \insertCite{Olyphant1984;textual}{TrenchR}.
 }
 \examples{
-\dontrun{
-Tb_grasshopper(
-  T_a=25, 
-  T_g=25, 
-  u=0.4, 
-  H=400, 
-  K_t=0.7, 
-  psi=30, 
-  L=0.02, 
-  Acondfact=0.25, 
-  z=0.001, 
-  abs=0.7, 
-  r_g=0.3)
+  Tb_grasshopper(
+    T_a = 25, 
+    T_g = 25, 
+    u = 0.4, 
+    H = 400, 
+    K_t = 0.7, 
+    psi = 30, 
+    L = 0.02, 
+    Acondfact = 0.25, 
+    z = 0.001, 
+    abs = 0.7, 
+    r_g = 0.3)
+
 }
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 
