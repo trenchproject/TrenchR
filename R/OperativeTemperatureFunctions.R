@@ -220,7 +220,3 @@ Tb_Gates2=function(A, D, T_g, T_a, Qabs, V, epsilon){
   return(Te.return)
 }
 
-#Tb calc from Gates: Qa − σϵ[Tb+273.15]^4 A_IR − 3.49 (V^0.5 / D^0.5)[Tb−Ta] A_conv = 0 where 
-#Qa = Q_IR + Q_SOL, 
-#Q_IR = (A_IR / 2) (σϵ[Ts+273.15]^4 + σϵ[Tsky+273.15]^4),
-#and Q_SOL is calculated as the diffuse and direct components with their appropriate surface areas, and can split it so a proportion is reflected from the substrate
