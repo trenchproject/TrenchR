@@ -2,7 +2,7 @@
 % Please edit documentation in R/biophysmodel_Colias.R
 \name{Tb_butterfly}
 \alias{Tb_butterfly}
-\title{Predicts body temperature (operative environmental temperature) of a butterfly in °C.}
+\title{Operative Environmental Temperature of a Butterfly}
 \usage{
 Tb_butterfly(
   T_a,
@@ -20,54 +20,58 @@ Tb_butterfly(
 )
 }
 \arguments{
-\item{T_a}{is air temperature in °C}
+\item{T_a}{\code{numeric} air temperature in C.}
 
-\item{Tg}{is surface temperature in °C in the sun}
+\item{Tg}{\code{numeric} surface temperature in C in the sunlight.}
 
-\item{Tg_sh}{is surface temperature in °C in the shade}
+\item{Tg_sh}{\code{numeric} surface temperature in C in the shade.}
 
-\item{u}{is wind speed in m/s}
+\item{u}{\code{numeric} wind speed in m / s.}
 
-\item{H_sdir}{is direct solar radiation flux in W/m^2}
+\item{H_sdir}{\code{numeric} direct solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.}
 
-\item{H_sdif}{is diffuse solar radiation flux in W/m^2}
+\item{H_sdif}{\code{numeric} diffuse solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.}
 
-\item{z}{is solar zenith angle in degrees}
+\item{z}{\code{numeric} solar zenith angle in degrees.}
 
-\item{D}{is thoracic diameter in cm}
+\item{D}{\code{numeric} thoracic diameter in cm.}
 
-\item{delta}{is thoracic fur thickness in mm}
+\item{delta}{\code{numeric} thoracic fur thickness in mm.}
 
-\item{alpha}{is wing solar absorbtivity as a proportion. Range for Colias is 0.4 to 0.7.}
+\item{alpha}{\code{numeric} wing solar absorbtivity as a proportion. Range for Colias is 0.4 to 0.7.}
 
-\item{r_g}{is substrate solar reflectivity (proportion), see Kingsolver (1983)}
+\item{r_g}{\code{numeric} substrate solar reflectivity (proportion), see \insertCite{Kingsolver1983;textual}{TrenchR}.}
 
-\item{shade}{is whether body temperature should be calculate in sun (FALSE) or shade (TRUE)}
+\item{shade}{\code{logical} indicator whether body temperature should be calculate in sun (\code{FALSE}) or shade (\code{TRUE}).}
 }
 \value{
-predicted body (operative environmental) temperature (°C)
+\code{numeric} predicted body (operative environmental) temperature (C).
 }
 \description{
-Predicts body temperatures (operative environmental temperatures) of a butterfly in °C. Based on Kingsolver (1983, Thermoregulation and flight in Colias butterflies: elevational patterns and mechanistic limitations. Ecology 64: 534–545). Assumes butterfly basks with closed wings perpendicular to solar beam. Source: Buckley LB and Kingsolver JK. 2012. The demographic impacts of shifts in climate means and extremes on alpine butterflies. Functional Ecology https://doi.org/10.1111/j.1365-2435.2012.01969.x and subsequent publications.
+Predicts body temperatures (operative environmental temperatures) of a butterfly in C.
+ \cr \cr
+ Based on \insertCite{Kingsolver1983;textual}{TrenchR} and \insertCite{Buckley2012;textual}{TrenchR}.
 }
 \details{
-Predicts body temperature (operative environmental temperature) of a butterfly in °C.
+Thermal radiative flux is calculated following \insertCite{Gates1980;textual}{TrenchR} based on \insertCite{Swinbank1960;textual}{TrenchR} and \insertCite{Kingsolver1983;textual}{TrenchR} estimates using the Brunt equation with black body sky temperature from \insertCite{Swinbank1963;textual}{TrenchR}.
 }
 \examples{
-\dontrun{
-Tb_butterfly(
-  T_a=25, 
-  Tg=25, 
-  Tg_sh=20, 
-  u=0.4, 
-  H_sdir=300, 
-  H_sdif=100, 
-  z=30, 
-  D=0.36, 
-  delta=1.46, 
-  alpha=0.6, 
-  r_g=0.3)
+  Tb_butterfly(
+    T_a = 25, 
+    Tg = 25, 
+    Tg_sh = 20, 
+    u = 0.4, 
+    H_sdir = 300, 
+    H_sdif = 100, 
+    z = 30, 
+    D = 0.36, 
+    delta = 1.46, 
+    alpha = 0.6, 
+    r_g = 0.3)
+
 }
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 
@@ -91,6 +95,7 @@ Other biophysical models:
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
 \code{\link{Tb_Fei}()},
+\code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
