@@ -4,12 +4,14 @@
 \alias{heat_transfer_coefficient_simple}
 \title{Calculate heat transfer coefficient (based on Mitchell 1976 in Spotila 1992)}
 \usage{
-heat_transfer_coefficient_simple(V, D)
+heat_transfer_coefficient_simple(V, D, type)
 }
 \arguments{
 \item{V}{Air velocity m/s.}
 
 \item{D}{Characteristic dimension (e.g., diameter or snout-vent length) in meters.}
+
+\item{type}{Choice between "Spotila" and "Gates" for equation to use}
 }
 \value{
 heat transfer coefficient, H_L (W m^-2 K^-1)
@@ -18,11 +20,11 @@ heat transfer coefficient, H_L (W m^-2 K^-1)
 Calculate heat transfer coefficient (based on Mitchell 1976 in Spotila 1992)
 }
 \details{
-This function allows you to estimate the heat transfer coefficient for various taxa (based on Mitchell 1976 and using relationship in Spotila et al 1992). References: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians; Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569.
+This function allows you to estimate the heat transfer coefficient (based on Mitchell 1976) using either the relationship in Spotila et al 1992 or that in Gates 1980. References: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians; Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569.
 }
 \examples{
 \dontrun{
-heat_transfer_coefficient_simple(V=0.5,D=0.05)
+heat_transfer_coefficient_simple(V=0.5,D=0.05, type="Gates")
 }
 
 }
@@ -48,6 +50,7 @@ Other biophysical models:
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
 \code{\link{Tb_Fei}()},
+\code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},

@@ -58,6 +58,7 @@ Other biophysical models:
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
 \code{\link{Tb_Fei}()},
+\code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},

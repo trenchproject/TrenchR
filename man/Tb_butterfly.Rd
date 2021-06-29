@@ -53,7 +53,7 @@ Predicts body temperatures (operative environmental temperatures) of a butterfly
  Based on \insertCite{Kingsolver1983;textual}{TrenchR} and \insertCite{Buckley2012;textual}{TrenchR}.
 }
 \details{
-Total radiative flux is calculated as thermal radiative heat flux plus convective heat flux, following \insertCite{Kingsolver1983;textual}{TrenchR}
+Thermal radiative flux is calculated following \insertCite{Gates1980;textual}{TrenchR} based on \insertCite{Swinbank1960;textual}{TrenchR} and \insertCite{Kingsolver1983;textual}{TrenchR} estimates using the Brunt equation with black body sky temperature from \insertCite{Swinbank1963;textual}{TrenchR}.
 }
 \examples{
   Tb_butterfly(
@@ -95,6 +95,7 @@ Other biophysical models:
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
 \code{\link{Tb_Fei}()},
+\code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},

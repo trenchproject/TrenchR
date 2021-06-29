@@ -1,13 +1,3 @@
-# TODO:
-#
-#  References to add
-#    Swinbank 1960
-#    Swinbank 1963
-#    Gates 1980
-#    wolfram
-#
-
-
 #' @title Operative Environmental Temperature of a Butterfly
 #'
 #' @description Predicts body temperatures (operative environmental temperatures) of a butterfly in C.
@@ -41,7 +31,7 @@
 #' @return \code{numeric} predicted body (operative environmental) temperature (C).
 #'
 #' @details 
-#'  Total radiative flux is calculated as thermal radiative heat flux plus convective heat flux, following \insertCite{Kingsolver1983;textual}{TrenchR}
+#'  Thermal radiative flux is calculated following \insertCite{Gates1980;textual}{TrenchR} based on \insertCite{Swinbank1960;textual}{TrenchR} and \insertCite{Kingsolver1983;textual}{TrenchR} estimates using the Brunt equation with black body sky temperature from \insertCite{Swinbank1963;textual}{TrenchR}.
 #'
 #' @family biophysical models
 #'
@@ -145,11 +135,11 @@ Tb_butterfly <- function (T_a, Tg, Tg_sh, u, H_sdir, H_sdif, z, D, delta, alpha,
 
     # THERMAL RADIATIVE FLUX in K
 
-    # black body sky temperature from Swinback 1963
+    # black body sky temperature from Swinbank 1963
 
       # Tsky <- 0.0552*(TaK)^1.5 
 
-    # Gates 1980 Biophysical ecology based on Swinback 1960, Kingsolver (1983) estimates using Brunt equation
+    # Gates 1980 Biophysical ecology based on Swinbank 1960, Kingsolver (1983) estimates using Brunt equation
 
       Tsky <- (1.22 * T_a - 20.4) + 273.15 
  
