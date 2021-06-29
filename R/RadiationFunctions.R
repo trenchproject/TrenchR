@@ -213,5 +213,92 @@ monthly_solar_radiation= function(lat,lon,doy,elev,T,Hr,P){
 }
 
 
+#' Estimate direct solar radiation
+#' 
+#' 
+#' @details Estimate direct solar radiation (kW/m^2)
+#' @description Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in Tracy et al. (1983) Estimating clear-day solar radiation: An evaluation of three models. Journal of Thermal Biology, 8(3), 247-251.
+#'  
+#' 
+#' @param lat latitude (degrees)
+#' @param doy doy of year (1-366)
+#' @param elev elevation in m
+#' @param t local time (decimal hours)
+#' @param t0 time of local noon (decimal hours), can be estimated using solar_noon()
+#' @param method method for estimating direct solar radiation, options: "Campbell 1977","Gates 1962"
+#' @return direct solar radiation (W/m^2)
+#' @keywords 
+#' @family microclimate functions
+#' @export
+#' @examples
+#' \dontrun{
+#' direct_solar_radiation(lat=47.61,doy=112,elev=1500,t=9,t0=12, method="Campbell 1977")
+#'}
 
+direct_solar_radiation= function(lat,doy,elev,t,t0, method="Campbell 1977"){
 
+ stopifnot(lat>=-90, lat<=90, doy>0, doy<367, elev>0, t>=0, t<=24, t0>=0, t0<=24)
+  
+  #estimate needed quantities
+  #elliptical longitude
+  E= 0.01675 #eccentricity of the earth's orbit about the sun
+  
+  ELon= (2*pi/365)*(doy-80)+2*E*(sin(2*pi/365*doy)-sin(2*pi/365*80) )
+  
+  #solar declination angle
+  DecAng = asin(0.39795 * sin(ELon))       # Declination angle in radians, McCullough and Porter 1971           
+  
+  #extraterrestrial solar flux
+  S_po = 1.36 #kW m^{-2}
+  
+  #optimal air mass
+  # adjust atmospheric pressure for elevation
+  p_a=101.3* exp (-elev/8200)  # kPa, atmospheric pressure from Campbell & Norman (1998)
+  
+  #geographical latitude
+  geo.lat= lat*pi/180
+  
+  #sin of sun's altitude angle
+  sin_alt_ang= sin(geo.lat)*sin(DecAng)+cos(geo.lat)*cos(DecAng)*cos(0.2618*(t-t0))
+  
+  m_a=p_a/101.3/sin_alt_ang
+  
+  a=0.83 #transmissivity of atmosphere, between 0 and 1
+  #"The atmospheric transmission coefficient. Varies from 0.9 for a very clear atmosphere to around 0.6 for a hazy or smoggy atmosphere. A typical value for a clear day would be around 0.84." (Campbell, 1977)
+  
+  #radius vector of the earth in atmospheric units (AU)
+  #sunr from insol
+  T = (doy - 2451545)/36525
+  epsilon = (23 + 26/60 + 21.448/3600) - (46.815/3600) * T - 
+    (0.00059/3600) * T^2 + (0.001813/3600) * T^3
+  M = 357.5291 + 35999.0503 * T - 0.0001559 * T^2 - 4.8e-07 * 
+    T^3
+  e = 0.016708617 - 4.2037e-05 * T - 1.236e-07 * T^2
+  C = (1.9146 - 0.004817 * T - 1.4e-05 * T^2) * sin(degree_to_radian(M)) + 
+    (0.019993 - 0.000101 * T) * sin(2 * degree_to_radian(M)) + 0.00029 * 
+    sin(3 * degree_to_radian(M))
+  v = M + C
+  r = (1.000001018 * (1 - e^2))/(1 + e * cos(degree_to_radian(v)))
+  
+  #-------
+  #Campbell 1977
+  
+  #direct radiation
+  if(method=="Campbell 1977") Sb= a^m_a*S_po*sin_alt_ang
+
+  #-------
+  #Gates 1962
+  
+  w=6.93 #precipitable water vapour (mm)
+  #"The amount of water vapour in the atmosphere in the zenith direction. Varies from I m for very cold dry atmospheres to about 20 mm in warm moist atmosphere. It can get as high as 30 mm." (Gates, 1962)
+  
+  d=0.896 #haze-dust concentration (particles cm^{-3})
+  #"The concentration of dust and other particulates in the air. Number varies from 0.2-3.0. On clear days it will be 0.6-1.0. Around big cities it will be 1.4-2.0." (Gates, 1962)
+  
+  if(method=="Gates 1962") Sb = (S_po/r^2)*sin_alt_ang*exp(-0.089*(p_a*m_a/101.3)^0.75 -0.174*(w*m_a/20)^0.6 -0.083*(d*m_a)^0.9)
+  
+  Sb=Sb*1000 #Convert from kW/m^2 to W/m^2
+  
+ return(Sb) 
+}  
+  

@@ -88,3 +88,34 @@ partition_solar_radiation=function(method, kt, lat=NA, sol.elev=NA){
 
   }  
 
+#' Estimate the ratio of diffuse to direct solar radiation
+#' 
+#' @details Estimate the ratio of diffuse to direct solar radiation
+#' @description This function estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the McCullough and Porter (1971) SOLRAD model described in Tracy et al. (1983) Estimating clear-day solar radiation: An evaluation of three models. Journal of Thermal Biology, 8(3), 247-251.
+#' @param psi Zenith angle of the sun (degrees)
+#' @param p_a Atmospheric pressure (kPa)
+#' @param A albedo of the substrate (fraction of 1)
+#' @return diffuse fraction
+#' @keywords solar radiation
+#' @family microclimate functions
+#' @export
+#' @examples
+#' \dontrun{
+#' proportion_diffuse_solar_radiation(psi=60, p_a=86.1, A=0.25)
+#'}
+proportion_diffuse_solar_radiation=function(psi, p_a, A){  
+  
+  stopifnot(psi>=0, psi<=89.5, p_a>0, A>=0, A<=1)
+ 
+  if(psi<=50){
+  prop= (5.67*10^-2 +1.698*10^-5*psi + 1.917*10^-6*psi^2 +1.028*10^-7*psi^3)*
+    (1 + 0.01*(p_a - 86.1) + 0.12*(A - 0.25))
+  }
+  
+  if(psi>50){
+    prop= (5.83819968 - 0.390636004*psi + 9.79200778*10^-3*psi^2 -1.0786077*10^-4*psi^3 + 4.42915464*10^-7*psi^4)*
+      (1 + 0.009*(p_a - 86.1) + (0.8-0.015*psi)*(A - 0.25))
+     }
+    
+    return(prop)
+}
