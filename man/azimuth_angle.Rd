@@ -7,7 +7,7 @@
 azimuth_angle(doy, lat, lon, hour, offset = NA)
 }
 \arguments{
-\item{doy}{is day of year.}
+\item{doy}{is day of year (1-366).}
 
 \item{lat}{is latitude in decimal degrees.}
 

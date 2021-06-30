@@ -51,7 +51,7 @@ distance of the sun north or south of the earth's equator, as follows
 (`dec_angle()`):
 $$ \delta= \arcsin[0.39795 \cos(0.21631+ 2 \arctan (0.967 \tan [0.0086(-186+J)]))].$$
 
-The day of year and solar declination angle can be calculated in TrenchR
+The solar declination angle can be calculated in TrenchR
 as follows:
 
 ```{r, fig.height=3, fig.width=5}
@@ -214,7 +214,7 @@ rd=matrix(unlist(rd), nrow=3, byrow=FALSE)
 plot(1:24, rd[1,], type="l", xlab = "hour", ylab = expression(radiation ~ (W/m^{2})), ylim=c(0,800))
 points(1:24, rd[2,], type="l", lty="dotted")
 points(1:24, rd[3,], type="l", lty="dashed")
-legend("topright", title="radiation flux", legend=c("direct", "diffuse", "reflected"), lty=c("solid","dotted","dashed") )
+legend("topright", title="solar radiation flux", legend=c("direct", "diffuse", "reflected"), lty=c("solid","dotted","dashed") )
 ```
 
 We then examine how solar radiation components vary as a function of
@@ -229,7 +229,20 @@ rd=matrix(unlist(rd), nrow=3, byrow=FALSE)
 plot(psi.seq, rd[1,], type="l", xlab = "zenith angle (°)", ylab = expression(radiation ~ (W/m^{2})), ylim=c(0,1200))
 points(psi.seq, rd[2,], type="l", lty="dotted")
 points(psi.seq, rd[3,], type="l", lty="dashed")
-legend("topright", title="zenith angle (°)", legend=c("direct", "diffuse", "reflected"), lty=c("solid","dotted","dashed") )
+legend("topright", title="solar radiation flux", legend=c("direct", "diffuse", "reflected"), lty=c("solid","dotted","dashed") )
+```
+Similar but alternative algorithms for estimating hourly direct solar radiation ($W m^{-2}$) were adapted from a comparison of the methods by Tracy et al. [-@tracy1983estimating]. Algorithms from earleir versions of Campbell and Norman [-@campbell2012introduction] and Gates [-@gates2012biophysical] are implemented. Both estimate radiation as a function of latitude, day of year, elevation, and time.
+
+```{r, fig.height=3, fig.width=5}
+par(mar=c(5,5,3,2))
+r.seq= lapply(seq(4,20), FUN=direct_solar_radiation, lat=43.57,doy=112,elev=866,t0=12, method="Campbell 1977")
+r.seq=unlist(r.seq)
+plot(seq(4,20), r.seq, type = "l", xlab = "hour", ylab = expression(radiation ~ (W/m^{2})))
+
+r.seq= lapply(seq(4,20), FUN=direct_solar_radiation, lat=43.57,doy=112,elev=866,t0=12, method="Gates 1962")
+points(seq(4,20), r.seq, type = "l", lty="dashed")
+
+legend("topright", title="Radiation algorithm", legend=c("Campbell 1977", "Gatesd 1962"), lty=c("solid","dashed") )
 ```
 
 We additionally provide a function (`monthly_solar_radiation()`)
@@ -256,7 +269,7 @@ atmosphere. The relations are compiled in Wong and Chow
 ```{r, fig.height=4, fig.width=8}
 par(mar=c(5,5,3,2))
 r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Erbs", lat=40, sol.elev=60)
-plot(seq(0,1,0.1), r.seq, type = "l", xlab = expression("clearness index" ~ k[t]), ylab = expression(radiation ~ (W/m^{2})), ylim=c(0,1))
+plot(seq(0,1,0.1), r.seq, type = "l", xlab = expression("clearness index" ~ k[t]), ylab = "diffuse fraction", ylim=c(0,1))
 r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Liu_Jordan", lat=40, sol.elev=60)
 points(seq(0,1,0.1), r.seq, type = "l", lty="dashed")
 r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Orgill_Hollands", lat=40, sol.elev=60)
@@ -271,6 +284,20 @@ r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Lam_Li", lat=
 points(seq(0,1,0.1), r.seq, type = "l", lty="twodash")
 
 legend("topright", title="Partitioning method", legend=c("Erbs", "Liu_Jordan", "Orgill_Hollands", "Olyphant", "Reindl-1", "Reindl-2", "Lam_Li"), lty=c("solid","dashed","dotted","dotdash","longdash","longdash","twodash"))
+
+```
+The functions above are fairly coarse approximations. The SOLRAD routine by McCullough and Porter [-@mccullough1971computing] accounts for additional determinations of the diffuse fractions such as zenith angle, atmospheric pressure, and surface albedo. The SOLRAD routine is implemented in  NicheMapR. TrenchR implements a numeric approximation to the SOLRAD routine from Tracy et al. [-@tracy1983estimating]. We illustrate how the diffuse proportion shifts as a function of zenith angle for several different levels of atmospheric pressure and note the function general estimates a lower fraction of diffuse radiation than the algorithms above.
+
+```{r, fig.height=4, fig.width=8}
+par(mar=c(5,5,3,2))
+r.seq= lapply(seq(20,85), FUN=proportion_diffuse_solar_radiation, p_a=86.1, A=0.25)
+plot(seq(20,85), r.seq, type = "l", xlab = "zenith angle (°)", ylab = "diffuse fraction")
+
+r.seq= lapply(seq(20,85), FUN=proportion_diffuse_solar_radiation, p_a=96.1, A=0.25)
+points(seq(20,85), r.seq, type = "l", lty="dashed")
+
+r.seq= lapply(seq(20,85), FUN=proportion_diffuse_solar_radiation, p_a=76.1, A=0.25)
+points(seq(20,85), r.seq, type = "l", lty="dotted")
 
 ```
 
@@ -346,7 +373,7 @@ points(t.seq, z.seq, type = "l", lty="dashed")
 legend("topright", title="surface roughness", legend=c(0.02, 0.05, 0.08), lty=c("solid","dotted","dashed") )
 ```
 
-Temperature at a given height is estimated in the function
+Temperature at a given height is computed by the function
 `air_temp_profile()` by first estimating the temperature at roughness
 height: $$T_{z_0}= \frac{T_r S_{t_b}-T_0 S_{t_s}}{S_{t_b}-S_{t_s}}. $$
 where $S_{t_s}$ is the sublayer Stanton Number
@@ -391,7 +418,7 @@ points(c(0.01,0.025,0.05),c(0.05,0.25,0.5) )
 # Diurnal variation in temperature and radiation
 
 We provide three forms of equations to estimate diurnal temperature
-radiation: a sine model, a sine exponential model, and a sine sqrt
+radiation: a sine model, a sine exponential model, and a sine square root
 model. The models assume that maximum temperature $T_x$ will occur
 sometime between sunrise $t_r$ and sunset $t_s$ and that the minimum
 temperature $T_n$ will occur in the early morning.
@@ -648,24 +675,6 @@ function as follows:
 
 ```{r}
 soil_conductivity(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), lambda=c(0.10,0.40,0.11,0.01,0.2, 0.18), g_a=0.125)
-```
-
-\#\#Properties of dry and wet air We include functions from NicheMapR
-that can be used to estimate the properties of dry and wet air.
-
-```{r}
-DRYAIR(db=30, bp=100*1000, alt=0)
-```
-
-```{r}
-WETAIR(db=30, wb=28, rh=60, bp=100*1000)
-```
-
-The `VAPPRS()` functions calculate saturation vapor pressure for given
-air temperature.
-
-```{r}
-VAPPRS(db=30)
 ```
 
 \#References

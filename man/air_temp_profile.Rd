@@ -40,6 +40,7 @@ Other microclimate functions:
 \code{\link{air_temp_profile_neutral}()},
 \code{\link{air_temp_profile_segment}()},
 \code{\link{degree_days}()},
+\code{\link{direct_solar_radiation}()},
 \code{\link{diurnal_radiation_variation}()},
 \code{\link{diurnal_temp_variation_sineexp}()},
 \code{\link{diurnal_temp_variation_sinesqrt}()},
@@ -47,6 +48,7 @@ Other microclimate functions:
 \code{\link{estimate_radiation}()},
 \code{\link{monthly_solar_radiation}()},
 \code{\link{partition_solar_radiation}()},
+\code{\link{proportion_diffuse_solar_radiation}()},
 \code{\link{surface_roughness}()},
 \code{\link{wind_speed_profile_neutral}()},
 \code{\link{wind_speed_profile_segment}()}

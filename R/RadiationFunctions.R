@@ -227,7 +227,7 @@ monthly_solar_radiation= function(lat,lon,doy,elev,T,Hr,P){
 #' @param t0 time of local noon (decimal hours), can be estimated using solar_noon()
 #' @param method method for estimating direct solar radiation, options: "Campbell 1977","Gates 1962"
 #' @return direct solar radiation (W/m^2)
-#' @keywords 
+#' @keywords solar radiation
 #' @family microclimate functions
 #' @export
 #' @examples
@@ -298,6 +298,9 @@ direct_solar_radiation= function(lat,doy,elev,t,t0, method="Campbell 1977"){
   if(method=="Gates 1962") Sb = (S_po/r^2)*sin_alt_ang*exp(-0.089*(p_a*m_a/101.3)^0.75 -0.174*(w*m_a/20)^0.6 -0.083*(d*m_a)^0.9)
   
   Sb=Sb*1000 #Convert from kW/m^2 to W/m^2
+  
+  #Set negative values before and after sunrise to zero
+  Sb[Sb<0]=0
   
  return(Sb) 
 }  
