@@ -1242,6 +1242,73 @@ legend("bottomright",title= expression("function"), legend=c("Tb_limpet", "Tb_li
 
 ## Salamander
 
+We present a function 'Tb_salamand_humid' adapted from Riddell et al. 
+[-@riddell2018resistance] and Campbell and Norman [-@campbell2012introduction] 
+that calculates the humid operative temperature ($T_{eh}$) of a nocturnal
+salamander. The function estimates $T_{eh}$ by accounting for evaporative
+cooling from the high water loss rates typically associated with amphibians.
+Rates of evaporative cooling are primarily a function of the humidity 
+in the air and the resistance of the skin to water loss. The vapor pressure
+deficit ($D$) describes the drying power of the ambient air and thus the
+potential for evaporative cooling. Similarly, the skin resistance to water
+loss ($r_{i}$) describes the capacity of the integument to resist the flux
+of water given the gradient of humidity in ambient air. 
+
+High rates of water loss, for instance, can occur if humidity or skin resistance
+to water loss is low, resulting in greater amounts of evaporative cooling. The model
+also incorporates additional variables, such as nighttime absorbed radiation,
+radiative conductance, elevation, and boundary layer resistance. Direct 
+and indirect solar radiation are not included because the code was developed
+for a nocturnal species. In addition to the cooling effect from
+evaporation, operative temperatures ($T_{e}$) at night are also generally
+lower than air temperatures due to emitted radiation being larger than absorbed
+[-@campbell2012introduction].
+
+The $T_{eh}$ function is defined as $$T_{eh}=T_{a}+\frac{\gamma^{*}}{s+\gamma^{*}} 
+\left( \frac{R_{abs} - \epsilon_{s}\sigma T^{4}_{a}}{c_{p}g_{Hr}} -\frac{D}
+{\gamma^{*}p_{a}} \right)$$where $T_{a}$ is the air temperature in Celsius,
+$\gamma^{*}$ is the apparent psychrometer constant ($C^{-1}$), $s$ is the slope
+of the saturation mole fraction function ($C^{-1}$), $R_{abs}$ is the absorbed
+radiation ($W\:m^{-2}$), $\epsilon _{s}$ is the emissivity of the surface,
+$\sigma$ is the Stefan-Boltzmann constant ($W\:m^{−2}\:K^{−4}$), $c_{p}$ is 
+specific heat of air (29.3 $J\:mol^{-1}\:C^{-1}$), $g_{Hr}$ is the sum of boundary
+layer conductance for heat and radiative conductance ($mol\:m^{-2}\:s^{-1}$),
+$D$ is the vapor pressure deficit (kPa), and $p_{a}$ is the atmospheric pressure (kPa).
+
+To calculate $s$, we use $s=\Delta/p_{a}$ where $\Delta$ is the slope of 
+saturation vapor pressure. We calculate $\Delta$ using $$\Delta=\frac{bce_{s}(T)}{(c+T)^2}$$ 
+where $b = 17.502$, $c = 240.97^{\circ}C$, $e_s(T)$ is the saturation vapor 
+pressure of the air ($kPa$), and T is temperature in Celsius. For $p_a$ we use 
+$$p_{a}=101.3exp\Big(\frac{-A}{8200}\Big)$$ where $A$ is the altitude in meters
+above sea level and $p_{a}$ is in $kPa$. For $e_s{s}$ we use $$e_{s}(T)=a\:exp\
+Big(\frac{bT}{T+c}\Big)$$ where $a$ is 0.611 kPa and $T$ is the temperature in Celsius.
+
+For $\gamma^{*}$, we use $$\gamma^{*}=\frac{\gamma(1/g_{vs} + 1/g_{vc}+1/g_{va})}
+{1/g_{Hc}+1/g_{Hr}}$$ where $\gamma$ is the thermodynamic psychrometer constant, 
+which is $6.66 \times 10^{-4}C^{-1}$ [-@campbell2012introduction], 
+$g_{vs}$ is the conductance of the skin to vapor ($mol\:m^{−2}\:s^{−1}$), $g_{vc}$ 
+is the conductance of the coat to vapor ($mol\:m^{−2}\:s^{−1}$), $g_{va}$ is 
+the boundary layer conductance for vapor ($mol\:m^{−2}\:s^{−1}$), $g_{Hc}$ is 
+the conductance of the coat for heat ($mol\:m^{−2}\:s^{−1}$), and $g_{Hr}$ is 
+the sum of boundary layer conductance for heat and radiative conductance 
+($mol\:m^{−2}\:s^{−1}$). 
+
+Both $1/g_{Hc}$ and $1/g_{vc}$ are assumed to be
+zero since salamanders do not have insulation, such as fur, feathers, or clothing.
+Thus, $\gamma^{*}$ can also be calculated as $\gamma^{*}=\gamma H_{r}/g_{v}$ 
+where $g_{v}$ is the total vapor conductance ($mol\:m^{−2}\:s^{−1}$).
+We calculate $g_{v}$ using $$g_{v}=\frac{g_{vs} g_{va}}{g_{vs}+g_{va}}$$. 
+We convert skin and boundary layer resistance for vapor to conductance by 
+multiplying the values by 100 to convert to $s\:m^{-2}$ and then dividing 
+by 41.1 $mol\:m^{-3}$. The boundary layer conductance for heat is calculated
+as $g_{Ha}=1.4*0.135*sqrt(u/d)$, where u is the wind speed $(m/s)$ and $d$ 
+is the characteristic dimension $(m)$. We use a wind speed 0.1 m/s in our 
+calculations of $g_{Ha}$ to mimic still air near the ground 
+[-@campbell2012introduction], and for $D$ the cross-sectional diameter of
+a cylinder approximating the size of a salamander.
+
+We provide the humid operative temperature model as follows.
+
 ```{r, fig.height=4, fig.width=6}
 plot(0:40, actual_vapor_pressure(Tdewpoint=0:40), type="l", xlab = "dewpoint temperature (°C)", ylab = "vapor pressure (kPa)")
 points(0:40, saturation_vapor_pressure(T_a=273:(40+273)), type="l", lty="dashed")
