@@ -630,12 +630,12 @@ Tb_salamander_humid<-function(r_i,r_b,D,T_a,elev,e_a, e_s,Qabs, epsilon=0.96){
   radiative_conductance= (4*(5.670373*10^-8)*(T_a+273.15)^3)/29.3
  
   gamma_naut = 0.000666
-  a = (r_i*100.0)/41.4
-  gva = (r_b*100)/41.4
-  rad = (4*5670373*10^(-8)*(T_a+273.15)*3.)/29.3
-  gamma = gamma_naut*((a+(1./gva))/((1./rad)+(1./gva)))
+  gvs = 1/((r_i*100.0)/41.4)
+  gva = 1/((r_b*100)/41.4)
+  gHa = 1.4*0.135*sqrt(.1/D)
+  gamma_naut = gamma*((radiative_conductance + gHa)/((gvs*gva)/(gvs+gva)))
   s = ((((17.502*240.97))*0.611*exp((17.502*T_a)/(T_a+240.97)))/(240.97+T_a)^2)/(101.3*exp(-elev/8200))
-  Tbh = T_a+(gamma/(gamma+s))*(((Qabs - (epsilon*sigma*((T_a+273.15)^4)))/(29.3*(radiative_conductance+gva)))-(vpd/(gamma*(101.3*exp(-elev/8200)))))
+  Tbh = T_a+(gamma_naut/(gamma_naut+s))*(((Qabs - (epsilon*sigma*((T_a+273.15)^4)))/(29.3*(radiative_conductance+gHa)))-(vpd/(gamma_naut*(101.3*exp(-elev/8200)))))
   
   return(Tbh)
 }
