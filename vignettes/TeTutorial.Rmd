@@ -1326,16 +1326,19 @@ legend("topleft",title="depth (cm)", legend=c(0,5,10,20), lty=c("solid","dashed"
 
 We illustrate the humid operative temperature model by comparing an example parameterization (solid lines) to a 1:1 line (dotted line) indicating when humid operative temperatures equal air temperatures. Evaporative cooling lowers humid operative temperatures below air temperatures for the nocturnal salamander. Higher skin resistance to evaporation reduced cooling (red) whereas higher vapor pressure deficit augments cooling (blue). 
 ```{r, fig.height=4, fig.width=6}
-t.seq= lapply(20:40, FUN=Tb_salamander_humid, r_i=4,r_b=1,D=0.01,elev=500,e_a=1.5,e_s=2.5,Qabs=400, epsilon=0.96)
+#estimate thermal radiation absorbed
+rad.seq= sapply(20:40, FUN=Qthermal_radiation_absorbed, T_g=30, epsilon_ground=0.97, a_longwave=0.965)
+
+t.seq= mapply(FUN=Tb_salamander_humid, T_a=20:40, r_i=4,r_b=1,D=0.01,elev=500,e_a=1.5,e_s=2.5,Qabs=rad.seq, epsilon=0.96)
 plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "humid operative temperature (°C)")
 abline(a=0, b=1, lty="dotted")
 
 #check higher skin resistance-> Te closer to air due to reduced cooling
-t.seq= lapply(20:40, FUN=Tb_salamander_humid, r_i=20,r_b=1,D=0.01,elev=500,e_a=1.5,e_s=2.5,Qabs=400, epsilon=0.96)
+t.seq= mapply(FUN=Tb_salamander_humid, T_a=20:40, r_i=20,r_b=1,D=0.01,elev=500,e_a=1.5,e_s=2.5,Qabs=rad.seq, epsilon=0.96)
 points(20:40, t.seq, type = "l", col="red")
 
 #check higher vpd-> lower Te due to greater cooling
-t.seq= lapply(20:40, FUN=Tb_salamander_humid, r_i=4,r_b=1,D=0.01,elev=500,e_a=1.0,e_s=2.5,Qabs=400, epsilon=0.96)
+t.seq= mapply(FUN=Tb_salamander_humid, T_a=20:40, r_i=4,r_b=1,D=0.01,elev=500,e_a=1.0,e_s=2.5,Qabs=rad.seq, epsilon=0.96)
 points(20:40, t.seq, type = "l", col="blue")
 
 legend("topleft",title="", legend=c("base scenario","higher skin resistance","higher vpd"), lty=c("solid"), col=c("black","red","blue") )
