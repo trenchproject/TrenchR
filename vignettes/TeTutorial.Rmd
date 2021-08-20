@@ -1129,7 +1129,7 @@ bed temperatures [@mislan2015biophysical]. We do not include these more
 complex models in TrenchR because they are available elsewhere (Mislan
 and Wethey 2014: <https://zenodo.org/record/13380#.XpidHJNKjm0>)
 
-## Limpet
+## Limpets
 
 We adapted a biophysical model `Tb_Limpet()` from Denny and Harley
 [-@denny2006hot] to predict the body temperature of limpets based on
@@ -1240,7 +1240,7 @@ abline(a=0,b=1, col="gray")
 legend("bottomright",title= expression("function"), legend=c("Tb_limpet", "Tb_limpetBH", "Tb_Snail"), lty=c("solid", "dashed","dotted") )
 ```
 
-## Salamander
+## Noctural Salamanders (humid operative temperatures)
 
 We present a function 'Tb_salamand_humid' adapted from Riddell et al. 
 [-@riddell2018resistance] and Campbell and Norman [-@campbell2012introduction] 
@@ -1262,7 +1262,7 @@ and indirect solar radiation are not included because the code was developed
 for a nocturnal species. In addition to the cooling effect from
 evaporation, operative temperatures ($T_{e}$) at night are also generally
 lower than air temperatures due to emitted radiation being larger than absorbed
-[-@campbell2012introduction].
+[@campbell2012introduction].
 
 The $T_{eh}$ function is defined as $$T_{eh}=T_{a}+\frac{\gamma^{*}}{s+\gamma^{*}} 
 \left( \frac{R_{abs} - \epsilon_{s}\sigma T^{4}_{a}}{c_{p}g_{Hr}} -\frac{D}
@@ -1273,7 +1273,7 @@ radiation ($W\:m^{-2}$), $\epsilon _{s}$ is the emissivity of the surface,
 $\sigma$ is the Stefan-Boltzmann constant ($W\:m^{−2}\:K^{−4}$), $c_{p}$ is 
 specific heat of air (29.3 $J\:mol^{-1}\:C^{-1}$), $g_{Hr}$ is the sum of boundary
 layer conductance for heat and radiative conductance ($mol\:m^{-2}\:s^{-1}$),
-$D$ is the vapor pressure deficit (kPa), and $p_{a}$ is the atmospheric pressure (kPa).
+$D$ is the vapor pressure deficit (vpd, kPa), and $p_{a}$ is the atmospheric pressure (kPa).
 
 To calculate $s$, we use $s=\Delta/p_{a}$ where $\Delta$ is the slope of 
 saturation vapor pressure. We calculate $\Delta$ using $$\Delta=\frac{bce_{s}(T)}{(c+T)^2}$$ 
@@ -1285,7 +1285,7 @@ Big(\frac{bT}{T+c}\Big)$$ where $a$ is 0.611 kPa and $T$ is the temperature in C
 
 For $\gamma^{*}$, we use $$\gamma^{*}=\frac{\gamma(1/g_{vs} + 1/g_{vc}+1/g_{va})}
 {1/g_{Hc}+1/g_{Hr}}$$ where $\gamma$ is the thermodynamic psychrometer constant, 
-which is $6.66 \times 10^{-4}C^{-1}$ [-@campbell2012introduction], 
+which is $6.66 \times 10^{-4}C^{-1}$ [@campbell2012introduction], 
 $g_{vs}$ is the conductance of the skin to vapor ($mol\:m^{−2}\:s^{−1}$), $g_{vc}$ 
 is the conductance of the coat to vapor ($mol\:m^{−2}\:s^{−1}$), $g_{va}$ is 
 the boundary layer conductance for vapor ($mol\:m^{−2}\:s^{−1}$), $g_{Hc}$ is 
@@ -1304,24 +1304,27 @@ by 41.1 $mol\:m^{-3}$. The boundary layer conductance for heat is calculated
 as $g_{Ha}=1.4*0.135*sqrt(u/d)$, where u is the wind speed $(m/s)$ and $d$ 
 is the characteristic dimension $(m)$. We use a wind speed 0.1 m/s in our 
 calculations of $g_{Ha}$ to mimic still air near the ground 
-[-@campbell2012introduction], and for $D$ the cross-sectional diameter of
+[@campbell2012introduction], and for $D$ the cross-sectional diameter of
 a cylinder approximating the size of a salamander.
 
-We provide the humid operative temperature model as follows.
-
-```{r, fig.height=4, fig.width=6}
-plot(0:40, actual_vapor_pressure(Tdewpoint=0:40), type="l", xlab = "dewpoint temperature (°C)", ylab = "vapor pressure (kPa)")
-points(0:40, saturation_vapor_pressure(T_a=273:(40+273)), type="l", lty="dashed")
-```
-
+Boundary layer resistance can be estimated as follows.
 ```{r, fig.height=4, fig.width=6}
 par(mar=c(5,5,3,2))
 blr.seq= lapply(293:313, FUN=boundary_layer_resistance, e_s=2.5, e_a=2.3, elev=500, D=0.007, u=2)
 plot(293:313, blr.seq, type = "l", xlab = "air temperature (K)", ylab = expression("boundary layer resistance" ~ (s ~ cm^{-1})))
-blr.seq= lapply(sqrt(5:20), FUN=boundary_layer_resistance, T_a=293, e_s=2.5, e_a=2.3, elev=500, u=2)
-plot(sqrt(5:20), blr.seq, type = "l", xlab = "diameter (m)", ylab = expression("boundary layer resistance" ~ (s ~ cm^{-1})))
 ```
 
+TrenchR includes several support functions, often adapted from [@campbell2012introduction], used for estimating humid operative temperatures. Functions estimate thermal radiation absorbed ('Qthermal_radiation_absorbed') and emitted ('Qemitted_thermal_radiation') as well as actual ('actual_vapor_pressure') and saturation ('saturation_vapor_pressure') vapor pressure. The functions also include a statistical approximation from [@campbell2012introduction] for estimating soil temperatures at specified depths.
+```{r, fig.height=4, fig.width=8}
+plot(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=0), type="l", xlab = "hour", ylab = "soil temperature (°C)")
+points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=5), type="l", lty="dashed")
+points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=10), type="l", lty="dotted")
+points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=20), type="l", lty="dotdash")
+
+legend("topleft",title="depth (cm)", legend=c(0,5,10,20), lty=c("solid","dashed","dotted","dotdash") )
+```
+
+We illustrate the humid operative temperature model by comparing an example parameterization (solid lines) to a 1:1 line (dotted line) indicating when humid operative temperatures equal air temperatures. Evaporative cooling lowers humid operative temperatures below air temperatures for the nocturnal salamander. Higher skin resistance to evaporation reduced cooling (red) whereas higher vapor pressure deficit augments cooling (blue). 
 ```{r, fig.height=4, fig.width=6}
 t.seq= lapply(20:40, FUN=Tb_salamander_humid, r_i=4,r_b=1,D=0.01,elev=500,e_a=1.5,e_s=2.5,Qabs=400, epsilon=0.96)
 plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "humid operative temperature (°C)")
@@ -1334,23 +1337,8 @@ points(20:40, t.seq, type = "l", col="red")
 #check higher vpd-> lower Te due to greater cooling
 t.seq= lapply(20:40, FUN=Tb_salamander_humid, r_i=4,r_b=1,D=0.01,elev=500,e_a=1.0,e_s=2.5,Qabs=400, epsilon=0.96)
 points(20:40, t.seq, type = "l", col="blue")
-```
 
-```{r, fig.height=4, fig.width=6}
-plot(20:40, Qthermal_radiation_absorbed(T_a=20:40, T_g=30, epsilon_ground=0.97, a_longwave=0.965), type="l", xlab = "air temperature (°C)", ylab = "thermal radiation absorbed (W)")
-
-Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303, T_g=293, T_a=298, enclosed=FALSE)
-```
-
-## Tsoil var
-
-```{r, fig.height=4, fig.width=8}
-plot(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=0), type="l", xlab = "hour", ylab = "soil temperature (°C)")
-points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=5), type="l", lty="dashed")
-points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=10), type="l", lty="dotted")
-points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=20), type="l", lty="dotdash")
-
-legend("topleft",title="depth (cm)", legend=c(0,5,10,20), lty=c("solid","dashed","dotted","dotdash") )
+legend("topleft",title="", legend=c("base scenario","higher skin resistance","higher vpd"), lty=c("solid"), col=c("black","red","blue") )
 ```
 
 # Example operative environmental temperature calculations

@@ -476,7 +476,7 @@ Qmetabolism_from_mass_temp<-function(m, T_b, taxa){
 #' Calculate actual vapor pressure from dewpoint temperature
 #'
 #' 
-#' @details Calculate actual vapor pressure from dewpoint temperature based on Stull 2000. Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
+#' @details Calculate actual vapor pressure from dewpoint temperature based on Stull 2000. Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
 #' @param Tdewpoint dewpoint temperature (°C)
 #' @return actual vapor pressure, e_a (kPa)
 #' @keywords actual vapor pressure
@@ -499,7 +499,7 @@ actual_vapor_pressure<-function(Tdewpoint){
 #' Calculate saturation vapor pressure
 #'
 #' 
-#' @details Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation (Stull 2000). Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
+#' @details Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation (Stull 2000). Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
 #' @param T_a air temperature (K)
 #' @return saturation vapor pressure, e_s (kPa)
 #' @keywords saturation vapor pressure
@@ -528,7 +528,7 @@ saturation_vapor_pressure<-function(T_a){
 
 #' Estimate the boundary layer resistance
 #' 
-#' @details This function allows you to estimate boundary layer resistance under free convection. Based on the function in Riddell et al. 2017. Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23. 
+#' @details This function allows you to estimate boundary layer resistance under free convection. Based on the function in Riddell et al. 2017. Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
 #' @param T_a air temperature (K)
 #' @param e_s saturation vapor pressure (kPa)
 #' @param e_a actual vapor pressure (kPa)
@@ -594,7 +594,7 @@ boundary_layer_resistance<-function(T_a, e_s, e_a, elev, D, u=NA){
 #' Calculate humid operative temperature
 #'
 #' 
-#' @details This function allows you to calculate humid operative temperature (adaptation of Campbell and Norman 1998). Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
+#' @details This function allows you to calculate humid operative temperature (adaptation of Campbell and Norman 1998). Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
 #' @param r_i internal (skin) resistance (s cm^-1)
 #' @param r_b boundary layer resistance (s cm^-1)
 #' @param D body diameter (m), (diameter = 0.0016*log(mass) + 0.0061 for mass(g)) #empirical formula for diameter, Riddell et al. 2017
@@ -642,7 +642,7 @@ Tb_salamander_humid<-function(r_i,r_b,D,T_a,elev,e_a, e_s,Qabs, epsilon=0.96){
 
 #' Estimate absorbed longwave (thermal) radiation
 #' 
-#' @details This function allows you to estimate longwave (thermal) radiation (W) absorbed from the sky and the ground (adaptation of Campbell and Norman 1998). Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
+#' @details This function allows you to estimate longwave (thermal) radiation (W) absorbed from the sky and the ground (adaptation of Campbell and Norman 1998). Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
 #' @param T_a air temperature (°C)
 #' @param T_g ground temperature (°C)
 #' @param epsilon_ground emmisitivity (proportion) for more soil types (Campbell and Norman 1998), default value of 0.97
@@ -680,7 +680,7 @@ Qthermal_radiation_absorbed<-function(T_a,T_g, epsilon_ground=0.97, a_longwave=0
 #' Statistical approximation of soil temperature
 #'
 #' 
-#' @details This function allows you to estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from Campbell and Norman 1998). Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
+#' @details This function allows you to estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from Campbell and Norman 1998). Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
 #' @param Tg_max daily maximum soil surface temperature (°C)
 #' @param Tg_min daily minimum soil surface temperature (°C)
 #' @param hour hour of the day
