@@ -30,20 +30,20 @@ degree_days=function(T_min,T_max,LDT=NA,UDT=NA, method="single.sine"){
   if (method == "single.sine") {
     
     
-    if (T_min >= UDT && T_max > UDT) { # entirely above both thresholds
+    if (T_min >= UDT && T_max >= UDT) { # entirely above both thresholds
       dd = (T_max - T_min)
-     } else  if ( T_min > LDT  && T_max > UDT) { #Intercepted by upper threshold 
+     } else  if ( T_min >= LDT  && T_max >= UDT) { #Intercepted by upper threshold 
       theta2=asin((UDT-(T_max+T_min)/2)/alpha)
       dd = 1 / pi * (((T_max + T_min) / 2 - LDT) * (theta2 + pi / 2) + (UDT - LDT) *
                        (pi / 2 - theta2) - alpha * cos(theta2))
-      } else  if (T_min < LDT &&  T_max > UDT ) {  #Intercepted by both thresholds
+      } else  if (T_min <= LDT &&  T_max >= UDT ) {  #Intercepted by both thresholds
       theta2=asin((UDT-(T_max+T_min)/2)/alpha)
       theta1=asin((LDT-(T_max+T_min)/2)/alpha)
       dd = 1 / pi * ((  ((T_max + T_min) / 2) - LDT) * (theta2 - theta1) + alpha * (cos(theta1) -
              cos(theta2)) + (UDT - LDT) * (pi / 2 - theta2))
-    } else if (T_min > LDT &&  T_max < UDT ) { #Entirely between both thresholds
+    } else if (T_min >= LDT &&  T_max <= UDT ) { #Entirely between both thresholds
       dd = ((T_max + T_min) / 2) - LDT
-     } else if (T_min < LDT && T_max > LDT) {  # intercepted by LDT  
+     } else if (T_min <= LDT && T_max >= LDT) {  # intercepted by LDT  
       #theta1=asin((LDT-(T_max+T_min)/2)/alpha)
       # credit - http://stackoverflow.com/questions/20998460/unexpected-behavior-in-asin
       #It's a floating point issue. The way floating point numbers work is that all 
@@ -60,24 +60,24 @@ degree_days=function(T_min,T_max,LDT=NA,UDT=NA, method="single.sine"){
   #double sine calculation
   if (method == "double.sine") {
     
-    if (T_min >= LDT && T_max > UDT) { # entirely above both thresholds
+    if (T_min >= LDT && T_max >= UDT) { # entirely above both thresholds
       dd = (UDT - LDT) / 2
-    } else if (T_min > LDT  && T_max > UDT) { #Intercepted by upper threshold
+    } else if (T_min >= LDT  && T_max >= UDT) { #Intercepted by upper threshold
       theta2=asin((UDT-(T_max+T_min)/2)/alpha)
       dd = 1 / (2 * pi) * (((T_max + T_min) / 2 - LDT) * (theta2 + pi / 2) + (UDT -
           LDT) * (pi / 2 - theta2) - alpha * cos(theta2))
-    } else if (T_min < LDT &&  T_max > UDT) { #Intercepted by both thresholds
+    } else if (T_min <= LDT &&  T_max >= UDT) { #Intercepted by both thresholds
       theta2=asin((UDT-(T_max+T_min)/2)/alpha)
       theta1=asin((LDT-(T_max+T_min)/2)/alpha)
       dd = 1 / (2 * pi) * (((T_max + T_min) / 2 - LDT) * (theta2 - theta1) + alpha *
                              (cos(theta1) - cos(theta2)) + (UDT - LDT) * (pi / 2 - theta2))
-    } else if (T_min > LDT &&  T_max < UDT) { #Entirely between both thresholds
+    } else if (T_min >= LDT &&  T_max <= UDT) { #Entirely between both thresholds
       dd = 0.5 * ((T_max + T_min) / 2 - LDT)
-    } else if (T_min < LDT && T_max > LDT) { # intercepted by LDT
+    } else if (T_min <= LDT && T_max >= LDT) { # intercepted by LDT
       theta1= asin(pmax(-1,pmin(1,(LDT-(T_max+T_min)/2)/alpha)))
       dd = 1 / (2 * pi) * (((T_max + T_min) / 2 - LDT) * (pi / 2 - theta1) + alpha *
                              cos(theta1))
-    } else if (T_min < LDT && T_max <= LDT) { # entirely below both thresholds
+    } else if (T_min <= LDT && T_max <= LDT) { # entirely below both thresholds
       dd = 0
     }
   dd= dd*2
@@ -87,17 +87,17 @@ degree_days=function(T_min,T_max,LDT=NA,UDT=NA, method="single.sine"){
   if (method == "single.triangulation") {
     
     MT = (T_max+T_min)/2
-    if (T_min >= UDT && T_max > UDT) { # entirely above both thresholds
+    if (T_min >= UDT && T_max >= UDT) { # entirely above both thresholds
       dd = (UDT - LDT)
-    } else  if ( T_min > LDT  && T_max > UDT) { #Intercepted by upper threshold 
+    } else  if ( T_min >= LDT  && T_max >= UDT) { #Intercepted by upper threshold 
       dd = (MT-LDT)-((T_max-UDT)^2/((T_max-T_min)*2))
-    } else  if (T_min < LDT &&  T_max > UDT ) {  #Intercepted by both thresholds
+    } else  if (T_min <= LDT &&  T_max >= UDT ) {  #Intercepted by both thresholds
       dd = ((T_max-LDT)^2-(T_max-UDT)^2)/((T_max-T_min)*2)
-    } else if (T_min > LDT &&  T_max < UDT ) { #Entirely between both thresholds
+    } else if (T_min >= LDT &&  T_max <= UDT ) { #Entirely between both thresholds
       dd = MT-LDT
-    } else if (T_min < LDT && T_max > LDT) {  # intercepted by LDT  
+    } else if (T_min <= LDT && T_max >= LDT) {  # intercepted by LDT  
       dd = (T_max-LDT)^2/((T_max-T_min)*2)
-    } else if (T_min < LDT && T_max <= LDT) { # entirely below both thresholds
+    } else if (T_min <= LDT && T_max <= LDT) { # entirely below both thresholds
       dd = 0
     }
   } #end single triangulation method
@@ -106,17 +106,17 @@ degree_days=function(T_min,T_max,LDT=NA,UDT=NA, method="single.sine"){
   if (method == "double.triangulation") {
     
     MT = (T_max+T_min)/2
-    if (T_min >= UDT && T_max > UDT) { # entirely above both thresholds
+    if (T_min >= UDT && T_max >= UDT) { # entirely above both thresholds
       dd = (UDT - LDT)/2
-    } else  if ( T_min > LDT  && T_max > UDT) { #Intercepted by upper threshold 
+    } else  if ( T_min >= LDT  && T_max >= UDT) { #Intercepted by upper threshold 
       dd = (MT-LDT)-((T_max-UDT)^2/((T_max-T_min)*4))
-    } else  if (T_min < LDT &&  T_max > UDT ) {  #Intercepted by both thresholds
+    } else  if (T_min <= LDT &&  T_max >= UDT ) {  #Intercepted by both thresholds
       dd = ((T_max-LDT)^2-(T_max-UDT)^2)/((T_max-T_min)*4)
-    } else if (T_min > LDT &&  T_max < UDT ) { #Entirely between both thresholds
+    } else if (T_min >= LDT &&  T_max <= UDT ) { #Entirely between both thresholds
       dd = (MT/4)-(LDT/2)
-    } else if (T_min < LDT && T_max > LDT) {  # intercepted by LDT  
+    } else if (T_min <= LDT && T_max >= LDT) {  # intercepted by LDT  
       dd = (T_max-LDT)^2/((T_max-T_min)*4)
-    } else if (T_min < LDT && T_max <= LDT) { # entirely below both thresholds
+    } else if (T_min <= LDT && T_max <= LDT) { # entirely below both thresholds
       dd = 0
     }
    dd= dd*2 
