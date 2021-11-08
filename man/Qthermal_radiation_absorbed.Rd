@@ -27,7 +27,7 @@ thermal radiation absorbed (W)
 Estimate absorbed longwave (thermal) radiation
 }
 \details{
-This function allows you to estimate longwave (thermal) radiation (W) absorbed from the sky and the ground (adaptation of Campbell and Norman 1998). Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
+This function allows you to estimate longwave (thermal) radiation (W) absorbed from the sky and the ground (adaptation of Campbell and Norman 1998). Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
 }
 \examples{
 \dontrun{
