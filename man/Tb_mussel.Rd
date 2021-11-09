@@ -33,7 +33,7 @@ Tb_mussel(L, H, T_a, T_g, S, k_d, u, psi, evap = FALSE, cl, group = "solitary")
 predicted body temperature (C).
 }
 \description{
-Predicts body temperature of a mussel in C. Implements a steady‐state model, which assumes unchanging environmental conditions.
+Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions.
 }
 \details{
 Thermal radiative flux is calculated following \insertCite{Helmuth1998;textual}{TrenchR}, \insertCite{Helmuth1999;textual}{TrenchR}, and \insertCite{Idso1969;textual}{TrenchR}.

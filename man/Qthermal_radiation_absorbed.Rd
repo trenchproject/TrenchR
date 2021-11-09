@@ -12,9 +12,9 @@ Qthermal_radiation_absorbed(
 )
 }
 \arguments{
-\item{T_a}{air temperature (°C)}
+\item{T_a}{air temperature (C)}
 
-\item{T_g}{ground temperature (°C)}
+\item{T_g}{ground temperature (C)}
 
 \item{epsilon_ground}{emmisitivity (proportion) for more soil types (Campbell and Norman 1998), default value of 0.97}
 

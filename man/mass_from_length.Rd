@@ -2,41 +2,59 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{mass_from_length}
 \alias{mass_from_length}
-\title{Calculate mass from length}
+\title{Allometry: Mass from Length}
 \usage{
-mass_from_length(l, taxa)
+mass_from_length(L, taxon)
 }
 \arguments{
-\item{l}{\code{numeric} length in meters (m). 
+\item{L}{\code{numeric} vector of length (m). Can be 1 or more values.
 \cr \cr
-Snout-vent length for amphibians and reptiles (excepting turtles where length is carapace length).}
+Snout-vent length is used for amphibians and reptiles, except turtles where length is carapace length.}
 
-\item{taxa}{\code{character} taxon of organism, current choices: \code{"insect"}, \code{"lizard"}, \code{"salamander"}, \code{"frog"}, \code{"snake"}, \code{"turtle"}.}
+\item{taxon}{\code{character} taxon of organism, current choices: \code{"insect"}, \code{"lizard"}, \code{"salamander"}, \code{"frog"}, \code{"snake"}, \code{"turtle"}.}
 }
 \value{
-\code{numeric} mass in grams (g)
+\code{numeric} mass (g).
 }
 \description{
 Estimate mass (g) from length (m) for a variety of taxa.
 }
 \details{
-Relationships come from 
+All models follow (\ifelse{html}{\out{M = a L<sup>b</sup>}}{\eqn{M = a L^b}{ASCII}}) with mass in grams and length in meters.
  \itemize{
-   \item insect: \insertCite{Sample1993}{TrenchR}.
-   \item lizard: \insertCite{Meiri2010}{TrenchR}.
-   \item salamander: \insertCite{Pough1980}{TrenchR}.
-   \item frog: \insertCite{Pough1980}{TrenchR}.
-   \item snake: \insertCite{Pough1980}{TrenchR}.
-   \item turtle: \insertCite{Pough1980}{TrenchR}.
+  \item Lizards: \insertCite{Meiri2010;textual}{TrenchR}.
+    \cr 
+    \cr \eqn{a = 16368.17} 
+    \cr \eqn{b = 3.022}
+  \item Salamanders: \insertCite{Pough1980;textual}{TrenchR}.
+    \cr 
+    \cr \eqn{a = 13654.4} 
+    \cr \eqn{b = 2.94}
+  \item Frogs: \insertCite{Pough1980;textual}{TrenchR}.
+    \cr 
+    \cr \eqn{a = 181197.1} 
+    \cr \eqn{b = 3.24}
+  \item Snakes: \insertCite{Pough1980;textual}{TrenchR}.
+    \cr 
+    \cr \eqn{a = 723.6756} 
+    \cr \eqn{b = 3.02}
+  \item Turtles: \insertCite{Pough1980;textual}{TrenchR}.
+    \cr 
+    \cr \eqn{a = 93554.48} 
+    \cr \eqn{b = 2.69}
+  \item Insects: \insertCite{Sample1993;textual}{TrenchR}.
+    \cr 
+    \cr \eqn{a = 806.0827} 
+    \cr \eqn{b = 2.494}
  }
 }
 \examples{
-  mass_from_length(l = 0.04, taxa = "insect")
-  mass_from_length(l = 0.04, taxa = "lizard")
-  mass_from_length(l = 0.04, taxa = "salamander")
-  mass_from_length(l = 0.04, taxa = "frog")
-  mass_from_length(l = 0.04, taxa = "snake")
-  mass_from_length(l = 0.04, taxa = "turtle")
+  mass_from_length(L = 0.04, taxon = "insect")
+  mass_from_length(L = 0.04, taxon = "lizard")
+  mass_from_length(L = 0.04, taxon = "salamander")
+  mass_from_length(L = 0.04, taxon = "frog")
+  mass_from_length(L = 0.04, taxon = "snake")
+  mass_from_length(L = 0.04, taxon = "turtle")
 
 }
 \references{
@@ -44,13 +62,11 @@ Relationships come from
 }
 \seealso{
 Other allometric functions: 
-\code{\link{prop_silhouette_area_shapes}()},
-\code{\link{prop_silhouette_area}()},
-\code{\link{sa_from_length}()},
-\code{\link{sa_from_mass}()},
-\code{\link{sa_from_volume}()},
+\code{\link{proportion_silhouette_area_shapes}()},
+\code{\link{proportion_silhouette_area}()},
+\code{\link{surface_area_from_length}()},
+\code{\link{surface_area_from_mass}()},
+\code{\link{surface_area_from_volume}()},
 \code{\link{volume_from_length}()}
 }
 \concept{allometric functions}
-\keyword{length}
-\keyword{mass}

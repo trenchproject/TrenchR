@@ -32,9 +32,8 @@ This function allows you to calculate conductance (W) of an ectothermic animal t
          Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
 }
 \examples{
-\dontrun{
 Qconduction_substrate(T_g= 293, T_b=303, D=0.01, K_g=0.3, A=10^-2, proportion=0.2)
-}
+
 
 }
 \seealso{

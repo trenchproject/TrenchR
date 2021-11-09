@@ -7,7 +7,7 @@
 DRYAIR(db = db, bp = 0, alt = 0)
 }
 \arguments{
-\item{db}{Dry bulb temperature (°C)}
+\item{db}{Dry bulb temperature (C)}
 
 \item{bp}{Barometric pressure (pascal)}
 
@@ -48,7 +48,6 @@ The user must supply values for the input variables (db, bp and alt).
 If alt is known (-1000 < alt < 20000) but not BP, then set BP=0
 }
 \examples{
-\dontrun{
-DRYAIR(db=30, bp=100*1000, alt=0)
-}
+  DRYAIR(db=30, bp=100*1000, alt=0)
+
 }

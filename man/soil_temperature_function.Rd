@@ -9,7 +9,7 @@ soil_temperature_function(j, T_so, params)
 \arguments{
 \item{j}{is the number of the iteration of running the model}
 
-\item{T_so}{is the initial soil temperature profile in °C}
+\item{T_so}{is the initial soil temperature profile in C}
 
 \item{params}{is a list containing the following parameters, which are described below: list(SSA, epsilon_so, sigma, k_so, c_so, dz, k, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade).}
 }

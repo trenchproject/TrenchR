@@ -7,7 +7,7 @@
 air_temp_profile(T_r, u_r, zr, z0, z, T_s)
 }
 \arguments{
-\item{T_r}{is temperature at reference height in °C.}
+\item{T_r}{is temperature at reference height in C.}
 
 \item{u_r}{is windspeed at reference height in m/s.}
 
@@ -17,13 +17,13 @@ air_temp_profile(T_r, u_r, zr, z0, z, T_s)
 
 \item{z}{is height to scale in m.}
 
-\item{T_s}{is surface temperatures in °C.}
+\item{T_s}{is surface temperatures in C.}
 }
 \value{
-temperature (°C)
+temperature (C)
 }
 \description{
-This function allows you to estimate temperature (°C) at a specified height (m).  
+This function allows you to estimate temperature (C) at a specified height (m).  
 Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.
 }
 \details{

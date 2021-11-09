@@ -7,9 +7,9 @@
 Grashof_number(Ta, Tg, D, nu)
 }
 \arguments{
-\item{Ta}{Air temperature (°C).}
+\item{Ta}{Air temperature (C).}
 
-\item{Tg}{Ground (surface) temperature (°C).}
+\item{Tg}{Ground (surface) temperature (C).}
 
 \item{D}{is characteristic dimension (e.g., body diameter) (m)}
 

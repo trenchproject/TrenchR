@@ -1,6 +1,6 @@
 #' @title Calculate Operative Environmental Temperature of a mussel in C.
 #' 
-#' @description Predicts body temperature of a mussel in C. Implements a steady‐state model, which assumes unchanging environmental conditions. 
+#' @description Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions. 
 #' 
 #' @param L mussel length (anterior/posterior axis) (m).
 #' 

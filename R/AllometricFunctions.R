@@ -1,197 +1,243 @@
-#' @title Calculate organism surface area from mass 
+#' @title Allometry: Surface Area from Mass 
 #' 
-#' @description Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from mass (g) for a variety of taxa. 
+#' @description Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from mass (g) for one of a variety of taxa. 
 #' 
-#' @param m \code{numeric} mass in grams (g). 
+#' @param M \code{numeric} vector of mass (g).
 #'
-#' @param taxa \code{character} taxon of organism, current choices: \code{"lizard"}, \code{"salamander"}, \code{"frog"}, \code{"insect"}.
+#' @param taxon \code{character} taxonomic classification of organism, current choices: \code{"lizard"}, \code{"salamander"}, \code{"frog"}, \code{"insect"}.
 #' 
-#' @return \code{numeric} surface area in meters squared (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
+#' @return \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
-#' @keywords surface area 
-#'
 #' @family allometric functions 
 #' 
-#' @details Relationships come from \itemize{
-#'   \item Lizards: \insertCite{OConnor1999;textual}{TrenchR} in \insertCite{Fei2012;textual}{TrenchR} and \insertCite{Norris1965;textual}{TrenchR} and \insertCite{Porter1979;textual}{TrenchR} in \insertCite{Roughgarden1981;textual}{TrenchR}
-#'   \item Salamanders: \insertCite{Whitford1967;textual}{TrenchR} in \insertCite{Riddell2017;textual}{TrenchR}.
-#'   \item Frogs: \insertCite{McClanahan1969;textual}{TrenchR}.
-#'   \item Insects: \insertCite{Lactin1997;textual}{TrenchR}.
+#' @details All models follow (\ifelse{html}{\out{SA = a M<sup>b</sup>}}{\eqn{SA = a M^b}{ASCII}}) with mass in grams and surface area in \ifelse{html}{\out{meters<sup>2</sup>}}{\eqn{meters^2}{ASCII}}.
+#' \cr
+#'  \itemize{
+#'   \item Lizards \insertCite{Norris1965,Porter1979,Roughgarden1981,OConnor1999,Fei2012}{TrenchR}:
+#'     \cr 
+#'     \cr \eqn{a = 0.000314 \pi} 
+#'     \cr \eqn{b = 2/3}
+#'   \item Salamanders \insertCite{Whitford1967,Riddell2017}{TrenchR}:
+#'     \cr 
+#'     \cr \eqn{a = 0.000842} 
+#'     \cr \eqn{b = 0.694}
+#'   \item Frogs \insertCite{McClanahan1969}{TrenchR}:
+#'     \cr 
+#'     \cr \eqn{a = 0.00099} 
+#'     \cr \eqn{b = 0.56}
+#'   \item Insects \insertCite{Lactin1997}{TrenchR}.
+#'     \cr 
+#'     \cr \eqn{a = 0.0013} 
+#'     \cr \eqn{b = 0.8}
 #'  }
 #'
 #' @references
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   sa_from_mass(m = 2, taxa = "lizard")
-#'   sa_from_mass(m = 2, taxa = "salamander")
-#'   sa_from_mass(m = 2, taxa = "frog")
-#'   sa_from_mass(m = 2, taxa = "insect")
+#'   surface_area_from_mass(M = 1:50, taxon = "lizard")
+#'   surface_area_from_mass(M = 1:50, taxon = "salamander")
+#'   surface_area_from_mass(M = 1:50, taxon = "frog")
+#'   surface_area_from_mass(M = seq(0.1, 5, 0.1), taxon = "insect")
 #'
 #'
 #' @export
 #'
-sa_from_mass <- function(m, taxa){
+surface_area_from_mass <- function(M, taxon){
 
-  stopifnot(taxa %in% c("lizard", "salamander", "frog", "insect"), m > 0)
+  stopifnot(length(taxon) == 1, taxon %in% c("lizard", "salamander", "frog", "insect"), M > 0)
+ 
 
-  if (taxa == "lizard") {
+  if (taxon == "lizard") {
 
-    # initial mass in kg
-
-    0.0314 * pi * (m / 1000) ^ (2 / 3)
+    a <- 0.000314 * pi
+    b <- 2/3
   
-  } else if (taxa == "salamander") {
+  } else if (taxon == "salamander") {
 
-    # convert cm^2 to m^2  
+    a <- 0.000842
+    b <- 0.694
 
-    8.42 * m ^ 0.694 / (100 * 100) 
+  } else if (taxon == "frog") {
 
-  } else if (taxa == "frog") {
+    a <- 0.00099
+    b <- 0.56
 
-    9.9 * m ^ 0.56 * (0.01) ^ 2 
+  } else if (taxon == "insect" ) {
 
-  } else if (taxa == "insect" ) {
-
-    0.0013 * m ^ 0.8 
+    a <- 0.0013
+    b <- 0.8
 
   } 
   
+  a * M ^ b
+
 }
 
-#' @title Calculate mass from length 
+#' @title Allometry: Mass from Length 
 #' 
 #' @description Estimate mass (g) from length (m) for a variety of taxa.
 #'
-#' @param l \code{numeric} length in meters (m). 
+#' @param L \code{numeric} vector of length (m). Can be 1 or more values.
 #'  \cr \cr
-#'  Snout-vent length for amphibians and reptiles (excepting turtles where length is carapace length).
+#'  Snout-vent length is used for amphibians and reptiles, except turtles where length is carapace length.
 #'
-#' @param taxa \code{character} taxon of organism, current choices: \code{"insect"}, \code{"lizard"}, \code{"salamander"}, \code{"frog"}, \code{"snake"}, \code{"turtle"}. 
+#' @param taxon \code{character} taxon of organism, current choices: \code{"insect"}, \code{"lizard"}, \code{"salamander"}, \code{"frog"}, \code{"snake"}, \code{"turtle"}. 
 #'
-#' @return \code{numeric} mass in grams (g)
-#'
-#' @keywords mass length
+#' @return \code{numeric} mass (g).
 #'
 #' @family allometric functions
 #' 
-#' @details Relationships come from 
+#' @details All models follow (\ifelse{html}{\out{M = a L<sup>b</sup>}}{\eqn{M = a L^b}{ASCII}}) with mass in grams and length in meters.
 #'  \itemize{
-#'    \item insect: \insertCite{Sample1993}{TrenchR}.
-#'    \item lizard: \insertCite{Meiri2010}{TrenchR}.
-#'    \item salamander: \insertCite{Pough1980}{TrenchR}.
-#'    \item frog: \insertCite{Pough1980}{TrenchR}.
-#'    \item snake: \insertCite{Pough1980}{TrenchR}.
-#'    \item turtle: \insertCite{Pough1980}{TrenchR}.
+#'   \item Lizards: \insertCite{Meiri2010;textual}{TrenchR}.
+#'     \cr 
+#'     \cr \eqn{a = 16368.17} 
+#'     \cr \eqn{b = 3.022}
+#'   \item Salamanders: \insertCite{Pough1980;textual}{TrenchR}.
+#'     \cr 
+#'     \cr \eqn{a = 13654.4} 
+#'     \cr \eqn{b = 2.94}
+#'   \item Frogs: \insertCite{Pough1980;textual}{TrenchR}.
+#'     \cr 
+#'     \cr \eqn{a = 181197.1} 
+#'     \cr \eqn{b = 3.24}
+#'   \item Snakes: \insertCite{Pough1980;textual}{TrenchR}.
+#'     \cr 
+#'     \cr \eqn{a = 723.6756} 
+#'     \cr \eqn{b = 3.02}
+#'   \item Turtles: \insertCite{Pough1980;textual}{TrenchR}.
+#'     \cr 
+#'     \cr \eqn{a = 93554.48} 
+#'     \cr \eqn{b = 2.69}
+#'   \item Insects: \insertCite{Sample1993;textual}{TrenchR}.
+#'     \cr 
+#'     \cr \eqn{a = 806.0827} 
+#'     \cr \eqn{b = 2.494}
 #'  }
-#'    
+#'
 #' @references
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   mass_from_length(l = 0.04, taxa = "insect")
-#'   mass_from_length(l = 0.04, taxa = "lizard")
-#'   mass_from_length(l = 0.04, taxa = "salamander")
-#'   mass_from_length(l = 0.04, taxa = "frog")
-#'   mass_from_length(l = 0.04, taxa = "snake")
-#'   mass_from_length(l = 0.04, taxa = "turtle")
+#'   mass_from_length(L = 0.04, taxon = "insect")
+#'   mass_from_length(L = 0.04, taxon = "lizard")
+#'   mass_from_length(L = 0.04, taxon = "salamander")
+#'   mass_from_length(L = 0.04, taxon = "frog")
+#'   mass_from_length(L = 0.04, taxon = "snake")
+#'   mass_from_length(L = 0.04, taxon = "turtle")
 #'
 #' @export
 #'
-mass_from_length <- function(l, taxa) {
+mass_from_length <- function(L, taxon) {
   
-  stopifnot(taxa %in% c("insect", "lizard", "salamander", "frog", "snake", "turtle"), l > 0)
+  stopifnot(length(taxon) == 1, taxon %in% c("insect", "lizard", "salamander", "frog", "snake", "turtle"), L > 0)
+
+  if (taxon == "insect") {
+
+    a <- 806.0827
+    b <- 2.494 
   
-  # convert m to mm and cm
+  } else if (taxon == "lizard") {
 
-  lengthmm <- l * 1000
-  lengthcm <- l * 100  
-    
-  if (taxa == "insect") {
- 
-    # predicts mass in mg so divide by 1000
-
-    exp(-3.628) * lengthmm ^ 2.494/1000
+    a <- 16368.17
+    b <- 3.022
   
-  } else if (taxa == "lizard") {
+  } else if (taxon == "salamander"){
 
-    10 ^ (-4.852 + 3.022 * log10(lengthmm))
-  
-  } else if (taxa == "salamander"){
+    a <- 13654.4 
+    b <- 2.94
 
-    0.018 * lengthcm ^ 2.94
+  } else if (taxon == "frog") {    
 
-  } else if (taxa == "frog") {    
+    a <- 181197.1 
+    b <- 3.24
 
-    0.06 * lengthcm ^ 3.24
+  } else if (taxon == "snake") {
 
-  } else if (taxa == "snake") {
+    a <- 723.6756
+    b <- 3.02
 
-    0.00066 * lengthcm ^ 3.02
+  } else if (taxon == "turtle") {
 
-  } else if (taxa == "turtle") {
-
-    0.39 * lengthcm ^ 2.69
+    a <- 93554.48
+    b <- 2.69
 
   }
+
+  a * L ^ b
+
 }
 
 
-#' @title Calculate organism surface area from volume 
+#' @title Allometry: Surface Area from Volume 
 #' 
 #' @description Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) for a variety of taxa following \insertCite{Mitchell1976}{TrenchR}
 #' 
-#' @param V \code{numeric} volume in meters cubed (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}).
+#' @param V \code{numeric} vector of volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}). Can be one or more values.
 #'
-#' @param taxa \code{character} taxon of organism, current choices: \code{"lizard"}, \code{"frog"}, \code{"sphere"}.
+#' @param taxon \code{character} taxon of organism, current choices: \code{"lizard"}, \code{"frog"}, \code{"sphere"}.
 #' 
-#' @return \code{numeric} surface area in meters squared (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
-#' 
-#' @keywords surface area 
+#' @return \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #'
 #' @family allometric functions
 #' 
-#' @details Relationships come from \itemize{
+#' @details All models follow (\ifelse{html}{\out{SA = Ka V<sup>2/3</sup>}}{\eqn{SA = Ka V^{2/3}}{ASCII}}) with mass in grams and length in meters.
+#'  \itemize{
 #'   \item Lizards: \insertCite{Norris1965;textual}{TrenchR}.
-#'   \item Frogs: \insertCite{Tracy1972}{TrenchR}.
-#'   \item Sphere: \insertCite{Mitchell1976}{TrenchR}.
-#'  }
+#'     \cr 
+#'     \cr \eqn{Ka = 11.0} 
+#'   \item Frogs: \insertCite{Tracy1972;textual}{TrenchR}.
+#'     \cr 
+#'     \cr \eqn{Ka = 11.0} 
+#'   \item Sphere: \insertCite{Mitchell1976;textual}{TrenchR}.
+#'     \cr 
+#'     \cr \eqn{Ka = 4.83} 
+#'  }   
 #'
 #' @references
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   sa_from_volume(V = 0.001, taxa = "lizard")
-#'   sa_from_volume(V = 0.001, taxa = "frog")
-#'   sa_from_volume(V = 0.001, taxa = "sphere")
+#'   surface_area_from_volume(V = 0.001, taxon = "lizard")
+#'   surface_area_from_volume(V = 0.001, taxon = "frog")
+#'   surface_area_from_volume(V = 0.001, taxon = "sphere")
 #'
 #' @export
 #'
-sa_from_volume <- function (V, taxa) {
+surface_area_from_volume <- function (V, taxon) {
 
-  stopifnot(taxa %in% c("lizard", "frog", "sphere"), V > 0)
+  stopifnot(length(taxon) == 1, taxon %in% c("lizard", "frog", "sphere"), V > 0)
   
-  # Ka is an empirical constant (Mitchell 1976)
+  if (taxon == "lizard") {
 
-  Ka <- switch(taxa, 
-               "lizard" = 11.0,
-               "frog" = 11.0,
-               "sphere" = 4.83)
+    Ka <- 11
+  
+  } else if (taxon == "frog") {    
+
+    Ka <- 11 
+
+  } else if (taxon == "sphere") {
+
+    Ka <- 4.83 
+
+  }
 
   Ka * V^(2/3) 
+
 }
 
-#' @title Calculate organism volume from length
+#' @title Calculate Organism Volume from Length
 #' 
 #' @description Estimate volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) from length (m) for a variety of taxa following \insertCite{Mitchell1976}{TrenchR}
 #' 
-#' @param l \code{numeric} length in meters (m). 
+#' @param L \code{numeric} length (m). 
 #'  \cr \cr
-#'  Snout-vent length for amphibians and reptiles (excepting turtles where length is carapace length).
+#'  Snout-vent length for amphibians and reptiles is used, except for turltes (carapace length is used).
 #'
-#' @param taxa \code{character} taxon of organism, current choices: \code{"lizard"}, \code{"frog"}, \code{"sphere"}.
+#' @param taxon \code{character} taxon of organism, current choices: \code{"lizard"}, \code{"frog"}, \code{"sphere"}.
 #' 
-#' @return \code{numeric} volume in meters cubed (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}).
+#' @return \code{numeric} volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}).
 #' 
 #' @keywords volume length
 #'
@@ -207,33 +253,49 @@ sa_from_volume <- function (V, taxa) {
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   volume_from_length(l = 0.05, taxa = "lizard")
-#'   volume_from_length(l = 0.05, taxa = "frog")
-#'   volume_from_length(l = 0.05, taxa = "sphere")
+#'   volume_from_length(L = 0.05, taxon = "lizard")
+#'   volume_from_length(L = 0.05, taxon = "frog")
+#'   volume_from_length(L = 0.05, taxon = "sphere")
 #'
 #' @export
 #'
-volume_from_length <- function (l, taxa) {
+volume_from_length <- function (L, taxon) {
   
-  stopifnot(taxa %in% c("lizard", "frog", "sphere"), l > 0)
+  stopifnot(length(taxon) == 1, taxon %in% c("lizard", "frog", "sphere"), L > 0)
   
-  Kl <- switch(taxa, 
-               "lizard" = 3.3,
-               "frog" = 2.27,
-               "sphere" = 1.24)
+  if (taxon == "lizard") {
 
+    Kl <- 3.3
+  
+  } else if (taxon == "frog") {    
 
-  (l / Kl) ^ 3
+    Kl <- 2.27 
+
+  } else if (taxon == "sphere") {
+
+    Kl <- 1.24 
+
+  }
+
+  (L / Kl) ^ 3
 
 }
 
-#' @title Calculate surface area from length
+
+
+#############
+#
+#  working here on tidying
+#
+
+
+#' @title Calculate Organism Surface Area from Length
 #' 
 #' @description  Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from length (m) by approximating the animal's body as a rotational ellipsoid with half the body length as the semi-major axis. 
 #' 
-#' @param l  \code{numeric} length in m.
+#' @param L \code{numeric} length (m).
 #'
-#' @return \code{numeric} surface area in meters squared (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
+#' @return \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #'
 #' @keywords surface area
 #'
@@ -247,22 +309,22 @@ volume_from_length <- function (l, taxa) {
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   sa_from_length(l = 0.04)
+#'   surface_area_from_length(L = 0.04)
 #'
-sa_from_length <- function (l) {
+surface_area_from_length <- function (L) {
   
-  stopifnot(l > 0)
+  stopifnot(L > 0)
   
   # m to mm
 
-  l = l*1000
+  L_mm = L * 1000
   
   # inital units: mm
   #  c- semi-major axis (half of grasshopper length), 
   #  a- semi-minor axis (half of grasshopper width)
 
-  c <- l/2
-  a <- (0.365 + 0.241 * l * 1000) / 1000  
+  c <- L_mm/2
+  a <- (0.365 + 0.241 * L_mm * 1000) / 1000  
   e <- sqrt(1 - a^2 / c^2)
   sa <- 2 * pi * a^2 + 2 * pi * a * c / (e * asin(e))
   
@@ -272,19 +334,17 @@ sa_from_length <- function (l) {
 
 }
 
-#' @title Calculate silhouette area
+#' @title Calculate Organism Silhouette Area
 #' 
 #' @description Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of zenith angle.
 #' 
 #' @param z \code{numeric} zenith angle in degrees between \code{0} and \code{360}.
 #' 
-#' @param taxa \code{character} Organism taxon. Current choices are \code{"lizard"}, \code{"frog"}, and \code{"grasshopper"}.
+#' @param taxon \code{character} Organism taxon. Current choices are \code{"lizard"}, \code{"frog"}, and \code{"grasshopper"}.
 #' 
-#' @param raz \code{numeric} relative solar azimuth angle (in degrees). Required if \code{taxa = "lizard"}. Options currently include \code{0} (in front), \code{90} (to side), and \code{180} (behind) degrees.
-#'   \cr \cr 
-#'   This is the horizontal angle of the sun relative to the head and frontal plane of the lizard.  
+#' @param raz \code{numeric} relative solar azimuth angle (in degrees). Required if \code{taxon = "lizard"}. This is the horizontal angle of the sun relative to the head and frontal plane of the lizard and options currently include \code{0} (in front), \code{90} (to side), and \code{180} (behind) degrees.
 #' 
-#' @param posture \code{character} value describing posture. Required if \code{taxa = "lizard"}. Options include \code{"prostrate"} (default) and \code{"elevated"}.
+#' @param posture \code{character} value describing posture. Required if \code{taxon = "lizard"}. Options include \code{"prostrate"} (default) and \code{"elevated"}.
 #'
 #' @return \code{numeric} silhouette area as a proportion.
 #' 
@@ -304,32 +364,26 @@ sa_from_length <- function (l) {
 #' @export
 #' 
 #' @examples
-#'   prop_silhouette_area(z = 60, taxa= "frog")
-#'   prop_silhouette_area(z = 60, taxa= "grasshopper")
-#'   prop_silhouette_area(z = 60, taxa= "lizard", posture = "prostrate", raz = 90)
-#'   prop_silhouette_area(z = 60, taxa= "lizard", posture = "elevated", raz = 180)
+#'   proportion_silhouette_area(z = 60, taxon = "frog")
+#'   proportion_silhouette_area(z = 60, taxon = "grasshopper")
+#'   proportion_silhouette_area(z = 60, taxon = "lizard", posture = "prostrate", raz = 90)
+#'   proportion_silhouette_area(z = 60, taxon = "lizard", posture = "elevated", raz = 180)
 #' 
-prop_silhouette_area <- function (z, taxa, raz = 0, posture = "prostrate") {
+proportion_silhouette_area <- function (z, taxon, raz = 0, posture = "prostrate") {
   
-  stopifnot(taxa %in% c("frog", "lizard", "grasshopper"), z >= 0, z  < 360)
+  stopifnot(length(taxon) == 1, taxon %in% c("frog", "lizard", "grasshopper"), z >= 0, z  < 360)
   
-  if (taxa == "frog"){
+  if (taxon == "frog"){
 
-    psa <- (1.38171*10^(-6) * z^4 - 1.93335*10^(-4) * z^3 + 4.75761*10^(-3) * z^2 - 0.167912 * z + 45.8228) / 100
+    (1.38171e-6 * z^4 - 1.93335e-4 * z^3 + 4.75761e-3 * z^2 - 0.167912 * z + 45.8228) / 100
   
-  } else if (taxa == "grasshopper") {
+  } else if (taxon == "grasshopper") {
 
-    psa <- 0.19 - 0.00173 * z 
+    0.19 - 0.00173 * z 
 
-  } else if (taxa == "lizard") {
+  } else if (taxon == "lizard") {
 
-    if (!raz %in% c(0, 90, 180)) {
-      stop("raz must be 0, 90, or 180") 
-    }
- 
-    if (!posture %in% c("prostrate", "elevated")){
-      stop("posture should be prostrate or elevated")
-    }
+    stopifnot(raz %in% c(0, 90, 180), posture %in% c("prostrate", "elevated"))
 
     if (posture == "prostrate") { 
 
@@ -383,17 +437,15 @@ prop_silhouette_area <- function (z, taxa, raz = 0, posture = "prostrate") {
 
     }
 
-    psa <- (A * z^3 + B * z^2 + C * z + D) / 100 
+    (A * z^3 + B * z^2 + C * z + D) / 100 
   
   }
-  
-  psa
 
 }
 
 
 
-#' @title Calculate silhouette area using the shape approximations
+#' @title Calculate Organism Silhouette Area using Shape Approximations
 #' 
 #' @description Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid, using Figure 11.6 in \insertCite{Campbell1998}{TrenchR}. 
 #' 
@@ -401,9 +453,9 @@ prop_silhouette_area <- function (z, taxa, raz = 0, posture = "prostrate") {
 #' 
 #' @param theta \code{numeric} angle between the solar beam and the longitudinal axis in degrees
 #' 
-#' @param h \code{numeric} height (long axis in m). Cross section length for spheroid.
+#' @param H \code{numeric} height (long axis in m). Cross section length for spheroid.
 #' 
-#' @param d \code{numeric} diametere (shoty axis in m). Cross section length for spheroid.
+#' @param D \code{numeric} diameter (shoty axis in m). Cross section length for spheroid.
 #'
 #' @return \code{numeric} silhouette area as a proportion.
 #' 
@@ -417,13 +469,13 @@ prop_silhouette_area <- function (z, taxa, raz = 0, posture = "prostrate") {
 #' @export
 #' 
 #' @examples
-#'   prop_silhouette_area_shapes(shape = "spheroid", theta = 60, h = 0.01, d = 0.001)
-#'   prop_silhouette_area_shapes(shape = "cylinder flat ends", theta = 60, h = 0.01, d = 0.001)
-#'   prop_silhouette_area_shapes(shape = "cylinder hemisphere ends", theta = 60, h = 0.01, d = 0.001)
+#'   proportion_silhouette_area_shapes(shape = "spheroid", theta = 60, H = 0.01, D = 0.001)
+#'   proportion_silhouette_area_shapes(shape = "cylinder flat ends", theta = 60, H = 0.01, D = 0.001)
+#'   proportion_silhouette_area_shapes(shape = "cylinder hemisphere ends", theta = 60, H = 0.01, D = 0.001)
 #'
-prop_silhouette_area_shapes <- function(shape, theta, h, d){
+proportion_silhouette_area_shapes <- function(shape, theta, H, D){
   
-  stopifnot(shape %in% c("spheroid", "cylinder flat ends", "cylinder hemisphere ends"), theta >= 0, theta < 360, h >= 0, d >= 0)
+  stopifnot(length(shape) == 1, shape %in% c("spheroid", "cylinder flat ends", "cylinder hemisphere ends"), theta >= 0, theta < 360, H >= 0, D >= 0)
   
   #convert degree to radian
 
@@ -432,23 +484,23 @@ prop_silhouette_area_shapes <- function(shape, theta, h, d){
 
   if (shape == "spheroid") {
 
-    x <- d/h
-    psa <- sqrt(1 + (x^2 - 1) * cos(theta_r)^2) / (2 * x+ (2 * asin(sqrt(1 - x^2)) / sqrt(1 - x^2))) #sin not converted to radians, check
+    x <- D / H
+
+    sqrt(1 + (x^2 - 1) * cos(theta_r)^2) / (2 * x+ (2 * asin(sqrt(1 - x^2)) / sqrt(1 - x^2))) #sin not converted to radians, check
 
   }
   
   else if (shape == "cylinder flat ends") {
 
-    psa <- (cos(theta_r) + 4 * h * sin(theta_r) / (pi * d)) / (2 + 4 * h / d)
+    (cos(theta_r) + 4 * H * sin(theta_r) / (pi * D)) / (2 + 4 * H / D)
 
   }
   
   else if (shape == "cylinder hemisphere ends") {
 
-    psa <- (1 + 4 * h * sin(theta_r) / (pi * d)) / (4 + 4 * h / d)
+    (1 + 4 * H * sin(theta_r) / (pi * D)) / (4 + 4 * H / D)
 
   }
   
-  psa
 }
 

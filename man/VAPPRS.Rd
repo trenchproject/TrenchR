@@ -7,7 +7,7 @@
 VAPPRS(db = db)
 }
 \arguments{
-\item{db}{Dry bulb temperature (°C)}
+\item{db}{Dry bulb temperature (C)}
 }
 \value{
 esat Saturation vapour pressure (Pa)
@@ -16,7 +16,7 @@ esat Saturation vapour pressure (Pa)
 Calculates saturation vapour pressure for a given air temperature.
 }
 \examples{
-\dontrun{
+
 VAPPRS(db=30)
-}
+
 }

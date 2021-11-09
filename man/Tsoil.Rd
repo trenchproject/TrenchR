@@ -7,16 +7,16 @@
 Tsoil(Tg_max, Tg_min, hour, depth)
 }
 \arguments{
-\item{Tg_max}{daily maximum soil surface temperature (°C)}
+\item{Tg_max}{daily maximum soil surface temperature (C)}
 
-\item{Tg_min}{daily minimum soil surface temperature (°C)}
+\item{Tg_min}{daily minimum soil surface temperature (C)}
 
 \item{hour}{hour of the day}
 
 \item{depth}{depth (cm) ???}
 }
 \value{
-soil temperature (°C)
+soil temperature (C)
 }
 \description{
 Statistical approximation of soil temperature

@@ -7,7 +7,7 @@
 actual_vapor_pressure(Tdewpoint)
 }
 \arguments{
-\item{Tdewpoint}{dewpoint temperature (°C)}
+\item{Tdewpoint}{dewpoint temperature (C)}
 }
 \value{
 actual vapor pressure, e_a (kPa)
