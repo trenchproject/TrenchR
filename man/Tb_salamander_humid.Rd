@@ -29,15 +29,11 @@ Tb_salamander_humid(r_i, r_b, D, T_a, elev, e_a, e_s, Qabs, epsilon = 0.96)
 humid operative temperature (C)
 }
 \description{
-Calculate humid operative temperature
-}
-\details{
-This function allows you to calculate humid operative temperature (adaptation of Campbell and Norman 1998). Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
+calculate humid operative temperature (adaptation of Campbell and Norman 1998). Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
 }
 \examples{
-\dontrun{
 Tb_salamander_humid(r_i=4,r_b=1,D=0.01,T_a=20,elev=500,e_a=2.0,e_s=2.5,Qabs=400, epsilon=0.96)
-}
+
 
 }
 \seealso{

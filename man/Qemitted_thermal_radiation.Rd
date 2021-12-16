@@ -36,13 +36,9 @@ Qemitted_thermal_radiation(
 emitted thermal radiation, Qemit (W)
 }
 \description{
-Calculate emitted thermal radiation
-}
-\details{
-This function allows you to estimate thermal radiation (W) emitted by the surface of an animal. Follows Gates' Biophysical Ecology and Spotila et al. 1992. Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians; Porter et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
+estimate thermal radiation (W) emitted by the surface of an animal. Follows Gates' Biophysical Ecology and Spotila et al. 1992. Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians; Porter et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
 }
 \examples{
-\dontrun{
 Qemitted_thermal_radiation(
   epsilon=0.96,
   A=1, 
@@ -52,7 +48,7 @@ Qemitted_thermal_radiation(
   T_g=293, 
   T_a=298, 
   enclosed=FALSE)
-}
+
 
 }
 \seealso{

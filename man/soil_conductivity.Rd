@@ -17,18 +17,13 @@ soil_conductivity(x, lambda, g_a)
 soil thermal conductivity (W m^-1 K^-1)
 }
 \description{
-This function allows you to estimate soil thermal conductivity in W m^-1 K^-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).
-}
-\details{
-Estimate soil thermal conductivity in W m^-1 K^-1
+estimate soil thermal conductivity in W m^-1 K^-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).
 }
 \examples{
-\dontrun{
 soil_conductivity(
   x=c(0.10,0.40,0.11,0.01,0.2, 0.18), 
   lambda=c(0.10,0.40,0.11,0.01,0.2, 0.18), 
   g_a=0.125)
-}
 }
 \seealso{
 Other soil temperature functions: 

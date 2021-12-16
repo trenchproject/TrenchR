@@ -7,22 +7,15 @@
 radian_to_degree(rad)
 }
 \arguments{
-\item{rad}{angle in radians}
+\item{rad}{\code{numeric} angle in radians.}
 }
 \value{
-angle in degrees
+\code{numeric} angle in degrees.
 }
 \description{
-This function allows you to convert angle in radians to degrees.
-}
-\details{
-Converts angles in radians to degrees.
+Convert angle in radians to degrees.
 }
 \examples{
-\dontrun{
-radian_to_degree(0.831)
+  radian_to_degree(0.831)
+
 }
-}
-\keyword{degrees}
-\keyword{radians}
-\keyword{to}

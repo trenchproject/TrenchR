@@ -7,21 +7,18 @@
 kelvin_to_celsius(T)
 }
 \arguments{
-\item{T}{Temperature in Kelvin.}
+\item{T}{\code{numeric}  temperature in Kelvin.}
 }
 \value{
-Temperature in Celsius
+\code{numeric} temperature in Celsius
 }
 \description{
-This function allows you to convert temperature from Kelvin to Celsius. Source: https://swcarpentry.github.io.
-}
-\details{
-Converts Kelvin to Celsius.
+Convert temperature from Kelvin to Celsius. Source: https://swcarpentry.github.io.
 }
 \examples{
-\dontrun{
+
 kelvin_to_celsius(270)
-}
+
 }
 \seealso{
 Other utility functions: 

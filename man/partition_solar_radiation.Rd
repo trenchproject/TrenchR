@@ -19,10 +19,7 @@ partition_solar_radiation(method, kt, lat = NA, sol.elev = NA)
 diffuse fraction
 }
 \description{
-This function allows you to partition solar radiation (W m^-2) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in Wong and Chow (2001, Applied Energy 69:1991-224).
-}
-\details{
-Estimate the diffuse fraction (k_d) for partitioning solar radiation (W m^-2) into direct and diffuse components
+partition solar radiation (W m^-2) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in Wong and Chow (2001, Applied Energy 69:1991-224).
 }
 \examples{
 \dontrun{

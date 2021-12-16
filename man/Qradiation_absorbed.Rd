@@ -36,16 +36,12 @@ Qradiation_absorbed(
 solar radiation absorbed (W)
 }
 \description{
-Calculate absorbed solar and thermal radiation
-}
-\details{
-This function allows you to estimate solar and thermal radiation (W) absorbed by the surface of an animal. 
+estimate solar and thermal radiation (W) absorbed by the surface of an animal. 
          Follows Gates' Biophysical Ecology and Spotila et al. 1992. Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
 }
 \examples{
-\dontrun{
 Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=1000, S_dif=200, a_s=0.5)
-}
+
 
 }
 \seealso{

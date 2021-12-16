@@ -1,7 +1,6 @@
-#' Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components 
+#' @title Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components 
 #'
-#' @details Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components.
-#' @description This function allows you to estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: Parton WJ and Logan JA. 1981. A model for diurnal variation in soil and air temperature. Agricultural Meteorology 23: 205-216.
+#' @description  estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: Parton WJ and Logan JA. 1981. A model for diurnal variation in soil and air temperature. Agricultural Meteorology 23: 205-216.
 #' 
 #' @param T_max maximum daily temperature (C)
 #' 
@@ -75,11 +74,9 @@ if(t>(t_r + beta) &
 return(T)
 }
 
-#' Diurnal temperature across hours
+#' @title Diurnal temperature across hours
 #'
-#' @details Uses a sine interpolation to estimate temperature across hours.
-#' 
-#' @description This function allows you to estimate temperature for a specified hour using the sine interpolation in Campbell and Norman (1998). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
+#' @description  estimate temperature for a specified hour using the sine interpolation in Campbell and Norman (1998). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 #' 
 #' @param T_max maximum daily temperature (C) 
 #' 
@@ -115,7 +112,7 @@ diurnal_temp_variation_sine=function(T_max, T_min, t){
 #'
 #' @details  Estimates temperature across hours using sine and square root functions
 #' 
-#' @description This function allows you to estimate temperature for a specified hour using sine and square root functions. Source: Cesaraccio C et al. 2001. An improved model for determining degree-day values from daily temperature data. International Journal of Biometeorology 45:161-169.
+#' @description  estimate temperature for a specified hour using sine and square root functions. Source: Cesaraccio C et al. 2001. An improved model for determining degree-day values from daily temperature data. International Journal of Biometeorology 45:161-169.
 #' 
 #' @param t hour or hours for temperature estimate
 #' 

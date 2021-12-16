@@ -4,7 +4,7 @@
 #' 
 #' @param L mussel length (anterior/posterior axis) (m).
 #' 
-#' @param H mussel height (dorsal/ventral axis) (m). It is reasonable to assume \code{hH = 0.5 * L}.
+#' @param H mussel height (dorsal/ventral axis) (m). It is reasonable to assume \code{H = 0.5 * L}.
 #' 
 #' @param T_a air temperature (C).
 #' 
@@ -64,7 +64,8 @@ Tb_mussel <- function(L, H, T_a, T_g, S, k_d, u, psi, evap = FALSE, cl, group = 
     A <- 1.08 * L^2 + 0.0461 * L - 0.0016   
 
   # mussel body mass, kg
-    m = 191*L^3.53  
+  
+    m <- 191*L^3.53  
 
   # conversion to radians
 
@@ -78,11 +79,7 @@ Tb_mussel <- function(L, H, T_a, T_g, S, k_d, u, psi, evap = FALSE, cl, group = 
 
     # latent heat of vaporization of water (J/kg)
  
-      lambda <- 2.48         
-
-    # specific heat of water (J kg^-1 K^-1)
-
-      c <- 4180               
+      lambda <- 2.48                   
   
   #  Short-wave solar flux  
 
@@ -223,7 +220,7 @@ Tb_mussel <- function(L, H, T_a, T_g, S, k_d, u, psi, evap = FALSE, cl, group = 
   
   T_b <- (k1 * (A_sol * S_p + A_d * S_d) + k2 * A_radSky * k3 * T_a^4 + k4 * A_radGround * T_g^4 + k5 * A_cond * T_g + 
            hc * A_conv * T_a - lambda * mflux) / (k2 * A_radSky * T_a^3 + k4 * A_radGround * T_g^3 + k5 * A_cond + 
-                                                    hc * A_conv + mflux * c)
+                                                    hc * A_conv + mflux * specific_heat_h2o())
   
   T_b - 273.15
 }

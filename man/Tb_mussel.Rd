@@ -9,7 +9,7 @@ Tb_mussel(L, H, T_a, T_g, S, k_d, u, psi, evap = FALSE, cl, group = "solitary")
 \arguments{
 \item{L}{mussel length (anterior/posterior axis) (m).}
 
-\item{H}{mussel height (dorsal/ventral axis) (m). It is reasonable to assume \code{hH = 0.5 * L}.}
+\item{H}{mussel height (dorsal/ventral axis) (m). It is reasonable to assume \code{H = 0.5 * L}.}
 
 \item{T_a}{air temperature (C).}
 

@@ -42,8 +42,7 @@ Relative humidity (\%)
 Calculates several properties of humid air as output variables below. The program
 is based on equations from List, R. J. 1971. Smithsonian Meteorological Tables. Smithsonian
 Institution Press. Washington, DC. WETAIR must be used in conjunction with function VAPPRS.
-}
-\details{
+
 Input variables are shown below. The user must supply known values for DB and BP (BP at one standard
 atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has
 either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP)

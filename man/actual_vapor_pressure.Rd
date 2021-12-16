@@ -13,15 +13,11 @@ actual_vapor_pressure(Tdewpoint)
 actual vapor pressure, e_a (kPa)
 }
 \description{
-Calculate actual vapor pressure from dewpoint temperature
-}
-\details{
 Calculate actual vapor pressure from dewpoint temperature based on Stull 2000. Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
 }
 \examples{
-\dontrun{
 actual_vapor_pressure(Tdewpoint=20)
-}
+
 
 }
 \seealso{

@@ -21,15 +21,11 @@ heat_transfer_coefficient_approximation(V, D, K, nu, taxa = "sphere")
 heat transfer coefficient, H_L (W m^-2 K^-1)
 }
 \description{
-Calculate heat transfer coefficient using a sphereical approximation (based on Mitchell 1976)
-}
-\details{
-This function allows you to estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569. (Uses Table III: Convective Heat Transfer Relations for Animal Shapes.)
+estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569. (Uses Table III: Convective Heat Transfer Relations for Animal Shapes.)
 }
 \examples{
-\dontrun{
 heat_transfer_coefficient_approximation(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "sphere")
-}
+
 
 }
 \seealso{

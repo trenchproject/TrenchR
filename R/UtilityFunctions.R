@@ -1,101 +1,106 @@
-#' Calculate day of the year from a passed date
+#' @title Julian Day from Date
 #' 
-#'  
-#' @details Calculate day of the year
+#' @description Convert a date to a Julian Day.
 #'
-#' @description This function allows you to calculate day of year from text specifying a date.
-#' @param day day 
-#' @param format date format following "POSIXlt" conventions 
-#' @return day number, 1-366, for eg. 1 for January 1st
-#' @keywords day
+#' @param day R object that is suitable to be converted to a date. 
+#'
+#' @param format \code{character} date format following \code{\link[base]{POSIXlt}}" conventions 
+#'
+#' @return \code{numeric} Julian day number, 1-366, for eg. 1 for January 1st
 #' 
 #' @export
+#'
 #' @examples
-#' \dontrun{
-#' day_of_year("2017-04-22", format= "%Y-%m-%d")
-#' }
-
-day_of_year<- function(day, format="%Y-%m-%d"){
-  day=  as.POSIXlt(day, format=format)
-  return(as.numeric(strftime(day, format = "%j")))
+#'   day_of_year("2017-04-22", format= "%Y-%m-%d")
+#'
+day_of_year <- function(day, format = "%Y-%m-%d"){
+  day <- as.POSIXlt(day, format = format)
+  as.numeric(strftime(day, format = "%j"))
 }
 
-#' Calculate solar declination in radians
+#'  @title Calculate solar declination in radians
 #' 
-#'  
-#' @details Calculate solar declination in radians
-#'
-#' @description This function allows you to calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-#' @param doy day of year (1-366)
-#' @return declination angle in radians
-#' @keywords Declination angle
+#' @description Calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year \insertCite{Campbell1998}{TrenchR}.
+#' 
+#' @param doy \code{numeric} day of year (1-366).
+#' 
+#' @return \code{numeric} declination angle in radians.
+#' 
 #' @family utility functions
+#'
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
 #' dec_angle(doy=112)
-#' }
-
+#' 
 dec_angle <- function(doy){
-  stopifnot(doy>0, doy<367)
+  stopifnot(doy > 0, doy < 367)
   
-  RevAng = 0.21631 + 2 * atan (0.967 * tan (0.0086 * (-186 + doy))) # Revolution angle in radians, calculated per day
-  DecAng = asin (0.39795 * cos (RevAng))                            # Declination angle in radians  
-  return(DecAng)
+  RevAng <- 0.21631 + 2 * atan(0.967 * tan (0.0086 * (-186 + doy))) # Revolution angle in radians, calculated per day
+  asin(0.39795 * cos (RevAng))                                      # Declination angle in radians  
+  
 }
 
-#' Calculate day length
+#'  @title Calculate day length
 #' 
-#' 
-#' @details Calculate day length
+#' @description Calculate daylength in hours as a function of latitude and day of year. Uses the CMB model \insertCite{Campbell1998}{TrenchR}.
 #'
-#' @description This function allows you to calculate daylength in hours as a function of latitude and day of year. Uses the CMB model (Forsythe et al. 1995). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-#' @param lat latitude in decimal degrees
-#' @param doy day of year (1-366)
-#' @return day length in hours 
+#' @param lat \code{numeric} latitude in decimal degrees.
 #' 
-#' @keywords day length
+#' @param doy \code{numeric} day of year (1-366).
+#' 
+#' @return \code{numeric} day length in hours.
+#'
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @family utility functions
+#'
 #' @export
+#'
 #' @examples
-#' \dontrun{
-#' daylength(lat=47.61, doy=112)
-#' }
-
+#'   daylength(lat=47.61, doy=112)
+#'
 daylength <- function(lat, doy){
-  stopifnot(lat>=-90, lat<=90, doy>0, doy<367)
+  stopifnot(lat >= -90, lat <= 90, doy > 0, doy < 367)
   
-  lat=lat*pi/180 #convert degrees to radians
-  RevAng = 0.21631 + 2 * atan (0.967 * tan (0.0086 * (-186 + doy))) # Revolution angle in radians, calculated per day
-  DecAng = asin (0.39795 * cos (RevAng))                            # Declination angle in radians  
-  subset <- (sin (6 * pi / 180) + sin (lat) * sin (DecAng)) / (cos (lat) * cos (DecAng))
-  subset[which(subset>1)]=1
-  subset[which(subset< -1)]= -1
-  Daylength = 24 - (24 / pi) * acos(subset) #hours of daylight
-  return(Daylength)
+  lat_rad <- degree_to_radian(lat)
+  DecAng <- dec_angle(doy)
+  subset <- (sin (6 * pi / 180) + sin (lat_rad) * sin (DecAng)) / (cos (lat_rad) * cos (DecAng))
+  subset[which(subset>1)] <- 1
+  subset[which(subset< -1)] <- -1
+  24 - (24 / pi) * acos(subset) 
+  
 }
 
-#' Calculate time of solar noon
+#' @title Calculate time of solar noon
 #' 
-#' 
-#' @details Calculate time of solar noon
+#' @description  Calculate the time of solar noon in hours as a function of the day of year and longitude  \insertCite{Campbell1998}{TrenchR}.
 #'
-#' @description This function allows you to calculate the time of solar noon in hours as a function of the day of year and longitude. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-#' @param lon longitude in decimal degrees 
-#' @param doy day of year
-#' @param offset is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)
-#' @return time at solar noon
-#' @keywords Solar noon time
+#' @param lon \code{numeric} longitude in decimal degrees. 
+#'
+#' @param doy \code{numeric} day of year.
+#'
+#' @param offset \code{numeric} number of hours to add to UTC to get local time (to improve accuracy but not always necessary).
+#'
+#' @return \code{numeric} time at solar noon.
+#'
+#' @references
+#'   \insertAllCited{}
+#'
 #' @family utility functions
+#'
 #' @export
+#'
 #' @examples
-#' \dontrun{
-#' solar_noon(lon=-122.335, doy=112)
-#' }
-
-solar_noon <- function(lon, doy, offset=NA){
+#'   solar_noon(lon=-122.335, doy=112)
+#'
+solar_noon <- function(lon, doy, offset = NA){
   
-  stopifnot(lon>=-180, lon<=180, doy>0, doy<367)
+  stopifnot(lon >= -180, lon <= 180, doy > 0, doy < 367)
   
   # Calculate the time of solar noon for each day using longitude correction (LC), equation of time (ET), and a conversion (f)
   f=(279.575+0.9856*doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
@@ -117,31 +122,38 @@ solar_noon <- function(lon, doy, offset=NA){
     t_0 = t_0 - offset_theory + offset
   }
   
-  return(t_0)
+  t_0
 }
 
 
-#' Calculate Zenith Angle
+#' @title Calculate Zenith Angle
 #' 
+#' @description  calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @details Calculate Zenith angle
-#'
-#' @description This function allows you to calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-#' @param doy is day of year.
-#' @param lat is latitude in decimal degrees.
-#' @param lon is longitude in decimal degrees.
-#' @param hour is hour of the day.
-#' @param offset is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)
-#' @return Zenith angle in degrees
-#' @keywords Zenith angle
+#' @param doy \code{numeric}  day of year.
+#' 
+#' @param lat \code{numeric}  latitude in decimal degrees.
+#' 
+#' @param lon \code{numeric}  longitude in decimal degrees.
+#' 
+#' @param hour \code{numeric}  hour of the day.
+#' 
+#' @param offset \code{numeric}  the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)
+#' 
+#' @return \code{numeric} zenith angle in degrees.
+#' 
 #' @family utility functions
+#' 
 #' @export
+#'
+#' @references
+#'   \insertAllCited{}
+#'
 #' @examples
-#' \dontrun{
+#' 
 #' zenith_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
-#' }
-
-zenith_angle=function(doy, lat, lon, hour, offset=NA){
+#' 
+zenith_angle <- function(doy, lat, lon, hour, offset = NA){
 
   stopifnot(doy>0, doy<367, lat>=-90, lat<=90, lon>=-180, lon<=180, hour>=0, hour<=24)
   
@@ -170,30 +182,36 @@ zenith_angle=function(doy, lat, lon, hour, offset=NA){
   zenith=acos(cos.zenith)*180/pi # zenith angle in degrees
   zenith[zenith>90]=90 # if measured from the vertical psi can't be greater than pi/2 (90 degrees)
 
-return(zenith)
+zenith
 }
 
-#' Calculate Azimuth angle
-#' 
-#' 
-#' @details Calculate azimuth angle
+#'  @title Calculate Azimuth angle
 #'
-#' @description This function allows you to calculate the azimuth angle, the angle (in degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-#' @param doy is day of year (1-366).
-#' @param lat is latitude in decimal degrees.
-#' @param lon is longitude in decimal degrees.
-#' @param hour is hour of the day.
-#' @param offset is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)
-#' @return Azimuth angle in degrees
-#' @keywords Azimuth angle
+#' @description  calculate the azimuth angle, the angle (in degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east \insertCite{Campbell1998}{TrenchR}.
+#' 
+#' @param doy \code{numeric} day of year (1-366).
+#' 
+#' @param lat \code{numeric} latitude in decimal degrees.
+#' 
+#' @param lon \code{numeric} longitude in decimal degrees.
+#' 
+#' @param hour \code{numeric} hour of the day.
+#' 
+#' @param offset \code{numeric} number of hours to add to UTC to get local time (to improve accuracy but not always necessary)
+#' 
+#' @return \code{numeric} azimuth angle in degrees
+#'
+#' @references
+#'   \insertAllCited{}
+#'
 #' @family utility functions
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12, offset = -8)
-#' }
-
-azimuth_angle=function(doy, lat, lon, hour, offset=NA){
+#'   azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12, offset = -8)
+#' 
+azimuth_angle <- function(doy, lat, lon, hour, offset = NA){
   
   stopifnot(doy>0, doy<367, lat>=-90, lat<=90, lon>=-180, lon<=180, hour>=0, hour<=24)
   
@@ -244,124 +262,130 @@ azimuth_angle=function(doy, lat, lon, hour, offset=NA){
     azimuth = 360 - azimuth
   }
   
-  return(azimuth)
+  azimuth
 }
 
-#' Estimate air pressure in kPa (Kilo Pascal)
+#'  @title Estimate air pressure in kPa (Kilo Pascal)
+#'
+#' @description Calculate estimated air pressure (kPa) as a function of elevation. Source: http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html.
 #' 
+#' @param elev \code{numeric} elevation in meters.
 #' 
-#' @details Estimate air pressure (kPa) as a function of elevation. 
-#' @description  This function allows you to calculate estimated air pressure (kPa) as a function of elevation. Source: http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html.
-#' @param elev elevation in meters.
-#' @keywords Air Pressure
 #' @family utility functions
-#' @return Air pressure in kPa
+#' 
+#' @return \code{numeric} air pressure in kPa.
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' airpressure_from_elev(1500)
-#' }
-airpressure_from_elev<- function(elev){  
+#'   airpressure_from_elev(1500)
+#'
+airpressure_from_elev <- function(elev){  
  
-  stopifnot(elev>=0)
+  stopifnot(elev >= 0)
   
   #p= 101325* (1 - 2.25577*10^(-5)*elev)^5.25588       
   #p= p/1000 #convert to kPa
   
-  p_a=101.3* exp (-elev/8200)  #Campbell and Norman
-  
-  return(p_a)
+  101.3 * exp (-elev/8200)  
+
 }
 
-#' Converts Fahrenheit to Kelvin
+#' @title Converts Fahrenheit to Kelvin
 #' 
+#' @description Convert temperature from Fahrenheit to Kelvin. Source: https://swcarpentry.github.io.
 #' 
-#' @details Converts Fahrenheit to Kelvin.
-#' @description  This function allows you to convert temperature from Fahrenheit to Kelvin. Source: https://swcarpentry.github.io.
-#' @param T Temperature in Fahrenheit.
-#' @keywords Fahrenheit Kelvin
+#' @param T \code{numeric} temperature in Fahrenheit.
+#' 
 #' @family utility functions
-#' @return Temperature in Kelvin
+#' 
+#' @return \code{numeric}  temperature in Kelvin.
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' fahrenheit_to_kelvin(85)
-#' }
-
+#'   fahrenheit_to_kelvin(85)
+#' 
 fahrenheit_to_kelvin <- function(T) {
-  kelvin <- ((T - 32) * (5/9)) + 273.15
-  return(kelvin)
+  ((T - 32) * (5/9)) + 273.15
 }
 
-#' Converts Kelvin to Celsius
+#' @title Converts Kelvin to Celsius
 #' 
 #' 
-#' @details Converts Kelvin to Celsius.
-#' @description This function allows you to convert temperature from Kelvin to Celsius. Source: https://swcarpentry.github.io.
-#' @param T Temperature in Kelvin.
+#' @description Convert temperature from Kelvin to Celsius. Source: https://swcarpentry.github.io.
+#' 
+#' @param T \code{numeric}  temperature in Kelvin.
+#' 
 #' @keywords Celsius Kelvin
+#' 
 #' @family utility functions
-#' @return Temperature in Celsius
+#' 
+#' @return \code{numeric} temperature in Celsius
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
+#' 
 #' kelvin_to_celsius(270)
-#' }
-
+#' 
 kelvin_to_celsius <- function(T) {
-  Celsius <- T - 273.15
-  return(Celsius)
+  T - 273.15
 }
 
-#' Converts Fahrenheit to Celsius
+#' @title Converts Fahrenheit to Celsius
 #' 
+#' @description Convert temperature from Fahrenheit to Celsius. Source: https://swcarpentry.github.io.
 #' 
-#' @details Converts Fahrenheit to Celsius.
-#' @description This function allows you to convert temperature from Fahrenheit to Celsius. Source: https://swcarpentry.github.io.
-#' @param T Temperature in Fahrenheit.
-#' @keywords Fahrenheit Celsius
+#' @param T \code{numeric} temperature in Fahrenheit.
+#' 
 #' @family utility functions
-#' @return Temperature in Celsius
+#' 
+#' @return \code{numeric} temperature in Celsius
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' fahrenheit_to_celsius(85)
-#' }
-
+#'   fahrenheit_to_celsius(85)
+#' 
 fahrenheit_to_celsius <- function(T) {
   temp_k <- fahrenheit_to_kelvin(T)
-  result <- kelvin_to_celsius(temp_k)
-  return(result)
+  kelvin_to_celsius(temp_k)
 }
 
-#' Converts angle in radians to degrees
-#'
-#' @details Converts angles in radians to degrees.
+#' @title Converts angle in radians to degrees
 #' 
-#' @description This function allows you to convert angle in radians to degrees.
-#' @param rad angle in radians
-#' @keywords radians to degrees
-#' @return angle in degrees
+#' @description Convert angle in radians to degrees.
+#' 
+#' @param rad \code{numeric} angle in radians.
+#' 
+#' @return \code{numeric} angle in degrees.
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' radian_to_degree(0.831)
-#' }
-radian_to_degree <- function(rad) {(rad * 180) / (pi)}
+#'   radian_to_degree(0.831)
+#' 
+radian_to_degree <- function(rad) {
+  (rad * 180) / (pi)
+}
 
-#' Converts angle in degrees to radians
+#'  @title Converts angle in degrees to radians
 #'
-#'
-#' @details Converts angle in degrees to radians.
-#' @description This function allows you to convert angle in degrees to radians.
-#' @param deg angle in degrees
-#' @keywords degrees to radians
+#' @description Convert angle in degrees to radians.
+#' 
+#' @param deg \code{numeric} angle in degrees.
+#' 
 #' @family utility functions
-#' @return angle in radians
+#' 
+#' @return \code{numeric} angle in radians.
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' degree_to_radian(47.608)
-#' }
-degree_to_radian <- function(deg) {(deg * pi) / (180)}
+#'   degree_to_radian(47.608)
+#' 
+degree_to_radian <- function(deg) {
+  (deg * pi) / (180)
+}
 

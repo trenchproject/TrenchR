@@ -13,15 +13,11 @@ saturation_vapor_pressure(T_a)
 saturation vapor pressure, e_s (kPa)
 }
 \description{
-Calculate saturation vapor pressure
-}
-\details{
 Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation (Stull 2000). Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
 }
 \examples{
-\dontrun{
 saturation_vapor_pressure(T_a=293)
-}
+
 
 }
 \seealso{

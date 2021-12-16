@@ -15,7 +15,9 @@ TrenchR.Rproj
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
-Contribution.md
+CONTRIBUTION.md
 ^doc$
 ^Meta$
 documentation_workflow.md
+CODE_OF_CONDUCT.md
+template.R

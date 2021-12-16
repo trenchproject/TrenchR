@@ -28,7 +28,9 @@ predicted body temperature (C)
 Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Helmuth1999;textual}{TrenchR}
 }
 \examples{
- Tbed_mussel(L = 0.1, T_a = 25, S = 500, k_d = 0.2, u = 1, evap = FALSE)
+ Tbed_mussel(L = 0.1, 
+   T_a = 25,
+  S = 500, k_d = 0.2, u = 1, evap = FALSE)
 
 }
 \seealso{

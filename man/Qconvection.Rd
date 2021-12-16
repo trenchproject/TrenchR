@@ -23,15 +23,11 @@ Qconvection(T_a, T_b, H_L = 10.45, A, proportion, ef = 1.23)
 convection (W)
 }
 \description{
-Calculate convection
-}
-\details{
-This function allows you to calculate convection from an organism to its environment as in Mitchell (1976). Includes an enhancement factor associated with outdoor environments. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569.
+calculate convection from an organism to its environment as in Mitchell (1976). Includes an enhancement factor associated with outdoor environments. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569.
 }
 \examples{
-\dontrun{
 Qconvection(T_a= 293, T_b= 303, H_L=10.45, A=0.0025, proportion=0.85)
-}
+
 
 }
 \seealso{

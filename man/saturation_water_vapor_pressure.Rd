@@ -13,15 +13,11 @@ saturation_water_vapor_pressure(T_a)
 Saturation water vapor pressure, e_s (Pa)
 }
 \description{
-Approximate saturation water vapor pressure
-}
-\details{
 Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C (Rosenberg 1974 in Spotila et al. 1992, see also NichMapR WETAIR and DRYAIR functions from Tracy et al. 1980).  Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
 }
 \examples{
-\dontrun{
 saturation_water_vapor_pressure(T_a=20)
-}
+
 
 }
 \seealso{

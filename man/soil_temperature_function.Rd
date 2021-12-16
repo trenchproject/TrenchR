@@ -19,11 +19,7 @@ soil temperature function
 \description{
 Function called to calculate soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly.
 }
-\details{
-Function to calculate soil temperature.
-}
 \examples{
-\dontrun{
 temp_vector= runif(96, min=-10, max=10)
 wind_speed_vector= runif(96, min=0, max=0.4)
 time_vector= rep(1:24,4)
@@ -49,7 +45,7 @@ params=list(
 
 soil_temperature_function(j=1,T_so= rep(20,13), params=params)
 
-}
+
 }
 \seealso{
 Other soil temperature functions: 

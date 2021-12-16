@@ -56,9 +56,6 @@ soil temperature (C)
 \description{
 Function called to calculate soil temperature in C from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature.
 }
-\details{
-Function to calculate soil temperature in C using ODEs.
-}
 \examples{
 \dontrun{
 temp_vector= runif(96, min=-10, max=10)

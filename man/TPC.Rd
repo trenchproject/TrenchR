@@ -25,9 +25,8 @@ Constructs a thermal performance curve by combining as a gaussian function to de
 Construct a Gaussian-quadratic thermal performance curve.
 }
 \examples{
-\dontrun{
 TPC(T=0:60, Topt=30, CTmin=10, CTmax=40)
-}
+
 }
 \keyword{curve}
 \keyword{performance}

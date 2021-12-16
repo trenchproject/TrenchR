@@ -15,10 +15,7 @@ external_resistance_to_water_vapor_transfer(H, rhocp = 12000)
 external resistance to water vapor transfer (s m^-1)
 }
 \description{
-Calculate external resistance to water vapor transfer
-}
-\details{
-This function allows you to estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport. Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
+estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport. Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
 }
 \examples{
 \dontrun{

@@ -17,10 +17,7 @@ proportion_diffuse_solar_radiation(psi, p_a, A)
 diffuse fraction
 }
 \description{
-This function estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the McCullough and Porter (1971) SOLRAD model described in Tracy et al. (1983) Estimating clear-day solar radiation: An evaluation of three models. Journal of Thermal Biology, 8(3), 247-251.
-}
-\details{
-Estimate the ratio of diffuse to direct solar radiation
+Estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the McCullough and Porter (1971) SOLRAD model described in Tracy et al. (1983) Estimating clear-day solar radiation: An evaluation of three models. Journal of Thermal Biology, 8(3), 247-251.
 }
 \examples{
 \dontrun{

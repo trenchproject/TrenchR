@@ -15,15 +15,11 @@ Free_or_forced_convection(Gr, Re)
 "free", "forced" or "intermediate"
 }
 \description{
-Commpare Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980)
-}
-\details{
-This function allows you to commpare the Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980).
+commpare the Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980).
 }
 \examples{
-\dontrun{
 Free_or_forced_convection(Gr=100, Re=5)
-}
+
 
 }
 \seealso{

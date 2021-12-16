@@ -2,26 +2,22 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{degree_to_radian}
 \alias{degree_to_radian}
-\title{Converts angle in degrees to radians}
+\title{@title Converts angle in degrees to radians}
 \usage{
 degree_to_radian(deg)
 }
 \arguments{
-\item{deg}{angle in degrees}
+\item{deg}{\code{numeric} angle in degrees.}
 }
 \value{
-angle in radians
+\code{numeric} angle in radians.
 }
 \description{
-This function allows you to convert angle in degrees to radians.
-}
-\details{
-Converts angle in degrees to radians.
+Convert angle in degrees to radians.
 }
 \examples{
-\dontrun{
-degree_to_radian(47.608)
-}
+  degree_to_radian(47.608)
+
 }
 \seealso{
 Other utility functions: 
@@ -36,6 +32,3 @@ Other utility functions:
 \code{\link{zenith_angle}()}
 }
 \concept{utility functions}
-\keyword{degrees}
-\keyword{radians}
-\keyword{to}

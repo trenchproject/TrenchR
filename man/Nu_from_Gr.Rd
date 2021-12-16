@@ -13,15 +13,11 @@ Nu_from_Gr(Gr)
 Nusselt number (dimensionless)
 }
 \description{
-Estimate the Nusselt number from the Grashof number (based on Gates 1980)
-}
-\details{
-This function allows you to estimate the Nusselt number from the Grashof Number.
+estimate the Nusselt number from the Grashof Number.
 }
 \examples{
-\dontrun{
 Nu_from_Gr(Gr=5)
-}
+
 
 }
 \seealso{

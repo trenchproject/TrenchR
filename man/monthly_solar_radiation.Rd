@@ -25,11 +25,8 @@ monthly_solar_radiation(lat, lon, doy, elev, T, Hr, P)
 average monthly solar radiation (W/m^2)
 }
 \description{
-Function to estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information
+Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information
 as input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
-}
-\details{
-Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information as input.
 }
 \examples{
 \dontrun{

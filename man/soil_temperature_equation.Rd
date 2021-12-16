@@ -31,11 +31,7 @@ soil temperature function
 \description{
 Function called by soil_temp_noint to solve equation for soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior).
 }
-\details{
-Function called by soil_temperature_function() to solve equation for soil temperature.
-}
 \examples{
-\dontrun{
 soil_temperature_equation(
   L=-10, 
   rho_a=1.177, 
@@ -46,7 +42,7 @@ soil_temperature_equation(
   z0=0.02, 
   T_inst=265, 
   T_s=20)
-}
+
 }
 \seealso{
 Other soil temperature functions: 

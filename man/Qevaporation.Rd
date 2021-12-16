@@ -27,16 +27,12 @@ Qevaporation(A, T_b, taxa, rho_s = NA, rho_a = NA, h = NA, H = NA, r_i = NA)
 evaporative heat loss (W)
 }
 \description{
-Calculate heat loss associated with evaporative water loss
-}
-\details{
-This function allows you to estimate heat loss associated with evaporative water loss by an amphibian (Spotila et al. 1992) or lizard (based on empirical measurements in Porter et al. 1973). Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
+estimate heat loss associated with evaporative water loss by an amphibian (Spotila et al. 1992) or lizard (based on empirical measurements in Porter et al. 1973). Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
 }
 \examples{
-\dontrun{
 Qevaporation(A=0.1, T_b=293, taxa="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50)
 Qevaporation(A=0.1, T_b=293, taxa="lizard")
-}
+
 
 }
 \seealso{

@@ -25,9 +25,6 @@ direct solar radiation (W/m^2)
 \description{
 Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in Tracy et al. (1983) Estimating clear-day solar radiation: An evaluation of three models. Journal of Thermal Biology, 8(3), 247-251.
 }
-\details{
-Estimate direct solar radiation (kW/m^2)
-}
 \examples{
 \dontrun{
 direct_solar_radiation(lat=47.61,doy=112,elev=1500,t=9,t0=12, method="Campbell 1977")
