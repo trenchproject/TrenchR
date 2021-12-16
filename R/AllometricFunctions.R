@@ -449,7 +449,7 @@ proportion_silhouette_area <- function (z, taxon, raz = 0, posture = "prostrate"
 #' 
 #' @param H \code{numeric} height (long axis in m). Cross section length for spheroid.
 #' 
-#' @param D \code{numeric} diameter (shoty axis in m). Cross section length for spheroid.
+#' @param D \code{numeric} diameter (short axis in m). Cross section length for spheroid.
 #'
 #' @return \code{numeric} silhouette area as a proportion.
 #' 
@@ -465,7 +465,8 @@ proportion_silhouette_area <- function (z, taxon, raz = 0, posture = "prostrate"
 #' @examples
 #'   proportion_silhouette_area_shapes(shape = "spheroid", theta = 60, H = 0.01, D = 0.001)
 #'   proportion_silhouette_area_shapes(shape = "cylinder flat ends", theta = 60, H = 0.01, D = 0.001)
-#'   proportion_silhouette_area_shapes(shape = "cylinder hemisphere ends", theta = 60, H = 0.01, D = 0.001)
+#'   proportion_silhouette_area_shapes(shape = "cylinder hemisphere ends", theta = 60, H = 0.01, 
+#'     D = 0.001)
 #'
 proportion_silhouette_area_shapes <- function(shape, theta, H, D){
   

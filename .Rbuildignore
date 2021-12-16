@@ -3,6 +3,7 @@ vignettes/figure
 appveyor.yml
 .travis.yml
 .gitignore
+^.github$
 TrenchR.Rproj
 ^.*\.Rproj$
 ^\.Rproj\.user$
@@ -15,7 +16,7 @@ TrenchR.Rproj
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
-CONTRIBUTION.md
+CONTRIBUTING.md
 ^doc$
 ^Meta$
 documentation_workflow.md
