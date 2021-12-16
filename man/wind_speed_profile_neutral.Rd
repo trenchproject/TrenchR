@@ -19,18 +19,14 @@ wind_speed_profile_neutral(u_r, zr, z0, z)
 windspeed in m/s
 }
 \description{
-This function allows you to calculate wind speed (m/s) at a 
+calculate wind speed (m/s) at a 
 specified height (m) within a boundary layer near the surface.  The profile assumes neutral conditions.
 The velocity profile is the neutral profile described by Sellers (1965). 
 Function is equations (2) and (3) of Porter et al. (1973). Source: Porter WP et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
 }
-\details{
-Calculates wind speed at a specified height under neutral conditions
-}
 \examples{
-\dontrun{
 wind_speed_profile_neutral(u_r=0.1, zr=0.1, z0=0.2, z=0.15)
-}
+
 }
 \seealso{
 Other microclimate functions: 

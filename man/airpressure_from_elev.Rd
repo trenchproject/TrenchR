@@ -2,26 +2,22 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{airpressure_from_elev}
 \alias{airpressure_from_elev}
-\title{Estimate air pressure in kPa (Kilo Pascal)}
+\title{@title Estimate air pressure in kPa (Kilo Pascal)}
 \usage{
 airpressure_from_elev(elev)
 }
 \arguments{
-\item{elev}{elevation in meters.}
+\item{elev}{\code{numeric} elevation in meters.}
 }
 \value{
-Air pressure in kPa
+\code{numeric} air pressure in kPa.
 }
 \description{
-This function allows you to calculate estimated air pressure (kPa) as a function of elevation. Source: http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html.
-}
-\details{
-Estimate air pressure (kPa) as a function of elevation.
+Calculate estimated air pressure (kPa) as a function of elevation. Source: http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html.
 }
 \examples{
-\dontrun{
-airpressure_from_elev(1500)
-}
+  airpressure_from_elev(1500)
+
 }
 \seealso{
 Other utility functions: 
@@ -36,5 +32,3 @@ Other utility functions:
 \code{\link{zenith_angle}()}
 }
 \concept{utility functions}
-\keyword{Air}
-\keyword{Pressure}

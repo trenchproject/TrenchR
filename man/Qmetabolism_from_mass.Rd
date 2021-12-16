@@ -15,15 +15,10 @@ Qmetabolism_from_mass(m, taxa = "reptile")
 metabolism (W)
 }
 \description{
-Calculate metabolism as a function of mass
-}
-\details{
-This function allows you to estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from Nagy KA. 2005. Field metabolic rate and body size. Journal of Experimental Biology 208: 1621-1625.
+estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from Nagy KA. 2005. Field metabolic rate and body size. Journal of Experimental Biology 208: 1621-1625.
 }
 \examples{
-\dontrun{
 Qmetabolism_from_mass(m=12,"reptile")
-}
 
 }
 \seealso{

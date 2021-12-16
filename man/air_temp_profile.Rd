@@ -23,16 +23,12 @@ air_temp_profile(T_r, u_r, zr, z0, z, T_s)
 temperature (C)
 }
 \description{
-This function allows you to estimate temperature (C) at a specified height (m).  
+estimate temperature (C) at a specified height (m).  
 Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.
 }
-\details{
-Estimate temperature at a specified height
-}
 \examples{
-\dontrun{
 air_temp_profile(T_r=20, u_r=0.1, zr=0.1, z0=0.2, z=0.15, T_s=25)
-}
+
 
 }
 \seealso{

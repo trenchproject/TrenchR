@@ -1,7 +1,6 @@
-#' Estimate the diffuse fraction (k_d) for partitioning solar radiation
+#' @title Estimate the diffuse fraction (k_d) for partitioning solar radiation
 #' 
-#' @details Estimate the diffuse fraction (k_d) for partitioning solar radiation (W m^-2) into direct and diffuse components
-#' @description This function allows you to partition solar radiation (W m^-2) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in Wong and Chow (2001, Applied Energy 69:1991-224).
+#' @description  partition solar radiation (W m^-2) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in Wong and Chow (2001, Applied Energy 69:1991-224).
 #' @param method to use for estimating the diffuse fraction, currently available: "Liu_Jordan", "Orgill_Hollands", "Erbs", "Olyphant", "Spencer", "Reindl-1", "Reindl-2", "Lam_Li"
 #' @param kt is the clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.
 #' @param lat is latitude in degrees, needed if method is Spencer
@@ -88,10 +87,9 @@ partition_solar_radiation <- function(method, kt, lat = NA, sol.elev = NA){
 
   }  
 
-#' Estimate the ratio of diffuse to direct solar radiation
+#' @title Estimate the ratio of diffuse to direct solar radiation
 #' 
-#' @details Estimate the ratio of diffuse to direct solar radiation
-#' @description This function estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the McCullough and Porter (1971) SOLRAD model described in Tracy et al. (1983) Estimating clear-day solar radiation: An evaluation of three models. Journal of Thermal Biology, 8(3), 247-251.
+#' @description Estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the McCullough and Porter (1971) SOLRAD model described in Tracy et al. (1983) Estimating clear-day solar radiation: An evaluation of three models. Journal of Thermal Biology, 8(3), 247-251.
 #' @param psi Zenith angle of the sun (degrees)
 #' @param p_a Atmospheric pressure (kPa)
 #' @param A albedo of the substrate (fraction of 1)

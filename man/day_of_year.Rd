@@ -2,27 +2,22 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{day_of_year}
 \alias{day_of_year}
-\title{Calculate day of the year from a passed date}
+\title{Julian Day from Date}
 \usage{
 day_of_year(day, format = "\%Y-\%m-\%d")
 }
 \arguments{
-\item{day}{day}
+\item{day}{R object that is suitable to be converted to a date.}
 
-\item{format}{date format following "POSIXlt" conventions}
+\item{format}{\code{character} date format following \code{\link[base]{POSIXlt}}" conventions}
 }
 \value{
-day number, 1-366, for eg. 1 for January 1st
+\code{numeric} Julian day number, 1-366, for eg. 1 for January 1st
 }
 \description{
-This function allows you to calculate day of year from text specifying a date.
-}
-\details{
-Calculate day of the year
+Convert a date to a Julian Day.
 }
 \examples{
-\dontrun{
-day_of_year("2017-04-22", format= "\%Y-\%m-\%d")
+  day_of_year("2017-04-22", format= "\%Y-\%m-\%d")
+
 }
-}
-\keyword{day}

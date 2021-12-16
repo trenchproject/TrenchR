@@ -17,10 +17,7 @@ Prandtl_number(c_p, mu, K)
 Prandtl number
 }
 \description{
-Calculate Prandtl Number
-}
-\details{
-This function allows you to estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity (Gates 1980 Biophysical Ecology).
+estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity (Gates 1980 Biophysical Ecology).
 }
 \examples{
 \dontrun{

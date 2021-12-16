@@ -2,26 +2,25 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{dec_angle}
 \alias{dec_angle}
-\title{Calculate solar declination in radians}
+\title{@title Calculate solar declination in radians}
 \usage{
 dec_angle(doy)
 }
 \arguments{
-\item{doy}{day of year (1-366)}
+\item{doy}{\code{numeric} day of year (1-366).}
 }
 \value{
-declination angle in radians
+\code{numeric} declination angle in radians.
 }
 \description{
-This function allows you to calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-}
-\details{
-Calculate solar declination in radians
+Calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
-\dontrun{
 dec_angle(doy=112)
+
 }
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other utility functions: 
@@ -36,5 +35,3 @@ Other utility functions:
 \code{\link{zenith_angle}()}
 }
 \concept{utility functions}
-\keyword{Declination}
-\keyword{angle}

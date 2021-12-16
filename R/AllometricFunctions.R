@@ -283,15 +283,9 @@ volume_from_length <- function (L, taxon) {
 
 
 
-#############
-#
-#  working here on tidying
-#
-
-
 #' @title Calculate Organism Surface Area from Length
 #' 
-#' @description  Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from length (m) by approximating the animal's body as a rotational ellipsoid with half the body length as the semi-major axis. 
+#' @description Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from length (m) by approximating the animal's body as a rotational ellipsoid with half the body length as the semi-major axis. 
 #' 
 #' @param L \code{numeric} length (m).
 #'
@@ -315,7 +309,7 @@ surface_area_from_length <- function (L) {
   
   stopifnot(L > 0)
   
-  # m to mm
+  # convert m to mm
 
   L_mm = L * 1000
   
@@ -477,7 +471,7 @@ proportion_silhouette_area_shapes <- function(shape, theta, H, D){
   
   stopifnot(length(shape) == 1, shape %in% c("spheroid", "cylinder flat ends", "cylinder hemisphere ends"), theta >= 0, theta < 360, H >= 0, D >= 0)
   
-  #convert degree to radian
+  # convert degree to radian
 
   theta_r <- theta * (2 * pi) / 360
   

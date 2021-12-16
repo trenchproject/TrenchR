@@ -21,17 +21,13 @@ air_temp_profile_neutral(T_r, zr, z0, z, T_s)
 temperature (C)
 }
 \description{
-This function allows you to calculate temperature (C) at a specified height (m) within a 
+calculate temperature (C) at a specified height (m) within a 
 boundary layer near the surface.  The velocity profile is the neutral profile described by Sellers (1965). 
 Function in equations (2) and (3) of Porter et al. (1973). Source: Porter WP et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
 }
-\details{
-Calculates temperature at a specified height under neutral conditions
-}
 \examples{
-\dontrun{
 air_temp_profile_neutral(T_r=20, zr=0.1, z0=0.2, z=0.15, T_s=25)
-}
+
 
 }
 \seealso{

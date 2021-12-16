@@ -29,9 +29,8 @@ Construct a thermal performance curve based on a beta function. Reference: Asbur
 Construct a thermal performance curve based on a beta function.
 }
 \examples{
-\dontrun{
 TPC.beta(T=0:60, shift=-1, breadth=0.1, aran=0, tolerance= 43, skew=0.7)
-}
+
 }
 \keyword{curve}
 \keyword{performance}

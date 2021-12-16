@@ -21,15 +21,11 @@ Grashof_number_Gates(Ta, Tg, beta, D, nu)
 Grashof number
 }
 \description{
-Calculate Grashof Number in Gates
-}
-\details{
-This function allows you to estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity (Gates 1980 Biophysical Ecology). Ratio of a buoyant force times an inertial force to the square of a viscous force.
+estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity (Gates 1980 Biophysical Ecology). Ratio of a buoyant force times an inertial force to the square of a viscous force.
 }
 \examples{
-\dontrun{
 Grashof_number_Gates(Ta=30, Tg=35, beta=0.00367, D=0.001, nu=1.2)
-}
+
 
 }
 \seealso{

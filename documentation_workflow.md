@@ -43,3 +43,9 @@ and then installing the package from the built zip file and running
 ?TrenchR::functionname
 ```
 
+## ALL the Help Files
+
+To generate all of the help files in one line of code, run
+```
+mapply(Rdpack::viewRd, paste0("./man/", list.files("./man")[grepl(".Rd", list.files("./man"))]))
+```

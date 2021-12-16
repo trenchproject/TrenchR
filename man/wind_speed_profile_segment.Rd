@@ -16,19 +16,15 @@ wind_speed_profile_segment(u_r, zr, z0, z)
 \item{z}{is height to scale in m.}
 }
 \description{
-This function allows you to calculate wind speed (m/s) at a specified height (m).   
+calculate wind speed (m/s) at a specified height (m).   
 Estimates a three segment velocity and temperature profile based on user-specified, 
 experimentally determined values for 3 roughness heights and reference heights.  
 Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks.
 Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Porter 2016. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.
 }
-\details{
-Calculates temperature at a specified height
-}
 \examples{
-\dontrun{
 wind_speed_profile_segment(u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), z=0.3)
-}
+
 
 }
 \seealso{

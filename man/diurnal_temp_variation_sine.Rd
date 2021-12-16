@@ -17,10 +17,7 @@ diurnal_temp_variation_sine(T_max, T_min, t)
 temperature (C) at a specified hour
 }
 \description{
-This function allows you to estimate temperature for a specified hour using the sine interpolation in Campbell and Norman (1998). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-}
-\details{
-Uses a sine interpolation to estimate temperature across hours.
+estimate temperature for a specified hour using the sine interpolation in Campbell and Norman (1998). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
 }
 \examples{
 

@@ -2,28 +2,27 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{daylength}
 \alias{daylength}
-\title{Calculate day length}
+\title{@title Calculate day length}
 \usage{
 daylength(lat, doy)
 }
 \arguments{
-\item{lat}{latitude in decimal degrees}
+\item{lat}{\code{numeric} latitude in decimal degrees.}
 
-\item{doy}{day of year (1-366)}
+\item{doy}{\code{numeric} day of year (1-366).}
 }
 \value{
-day length in hours
+\code{numeric} day length in hours.
 }
 \description{
-This function allows you to calculate daylength in hours as a function of latitude and day of year. Uses the CMB model (Forsythe et al. 1995). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-}
-\details{
-Calculate day length
+Calculate daylength in hours as a function of latitude and day of year. Uses the CMB model \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
-\dontrun{
-daylength(lat=47.61, doy=112)
+  daylength(lat=47.61, doy=112)
+
 }
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other utility functions: 
@@ -38,5 +37,3 @@ Other utility functions:
 \code{\link{zenith_angle}()}
 }
 \concept{utility functions}
-\keyword{day}
-\keyword{length}

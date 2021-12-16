@@ -36,10 +36,7 @@ diurnal_temp_variation_sineexp(
 temperature (C) at a specified hour
 }
 \description{
-This function allows you to estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: Parton WJ and Logan JA. 1981. A model for diurnal variation in soil and air temperature. Agricultural Meteorology 23: 205-216.
-}
-\details{
-Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components.
+estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: Parton WJ and Logan JA. 1981. A model for diurnal variation in soil and air temperature. Agricultural Meteorology 23: 205-216.
 }
 \examples{
   diurnal_temp_variation_sineexp(

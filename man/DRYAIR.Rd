@@ -37,9 +37,6 @@ bbemit black body emittance (W m-2)
 emtmax Wave length of maximum emittance (m)
 }
 \description{
-DRYAIR
-}
-\details{
 Calculates several properties of dry air and related characteristics shownas output variables below. The program
 is based on equations from List, R. J. 1971. Smithsonian Meteorological Tables. Smithsonian
 Institution Press. Washington, DC. WETAIR must be used in conjunction with function VAPPRS.

@@ -1,8 +1,8 @@
 #WETAIR and DRYAIR from NicheMapR
 
-#' DRYAIR
+#' @title DRYAIR
 #'
-#' @details Calculates several properties of dry air and related characteristics shownas output variables below. The program
+#' @description Calculates several properties of dry air and related characteristics shownas output variables below. The program
 #' is based on equations from List, R. J. 1971. Smithsonian Meteorological Tables. Smithsonian
 #' Institution Press. Washington, DC. WETAIR must be used in conjunction with function VAPPRS.
 #'
@@ -87,9 +87,9 @@ VAPPRS <- function(db=db){
   return(esat)
 }
 
-#' WETAIR
+#' @title WETAIR
 #'
-#' Calculates several properties of humid air as output variables below. The program
+#' @description Calculates several properties of humid air as output variables below. The program
 #' is based on equations from List, R. J. 1971. Smithsonian Meteorological Tables. Smithsonian
 #' Institution Press. Washington, DC. WETAIR must be used in conjunction with function VAPPRS.
 #'

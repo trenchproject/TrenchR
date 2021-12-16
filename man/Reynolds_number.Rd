@@ -17,15 +17,11 @@ Reynolds_number(u, D, nu)
 Reynolds number
 }
 \description{
-Calculate Reynolds Number
-}
-\details{
-This function allows you to estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces (Gates 1980 Biophysical Ecology).
+estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces (Gates 1980 Biophysical Ecology).
 }
 \examples{
-\dontrun{
 Reynolds_number(u=1, D=0.001, nu=1.2)
-}
+
 
 }
 \seealso{

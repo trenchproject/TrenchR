@@ -1,8 +1,6 @@
-#' Estimate surface roughness from empirical measurements.
+#' @title Estimate surface roughness from empirical measurements.
 #' 
-#' 
-#' @details Estimate surface roughness in m
-#' @description This function allows you to estimate surface roughness in m from empirical wind speed (m/s) 
+#' @description  estimate surface roughness in m from empirical wind speed (m/s) 
 #' data collected at a vector of heights (m). Estimates surface roughness from empirical measurements. 
 #' References: Kingsolver and Buckley. 2015. Climate variability slows evolutionary responses of Colias butterflies to recent climate change. PRSb;
 #' G. S. Campbell, J. M. Norman, An introduction to environmental biophysics. (Springer Science, New York, 1998); W. P. Porter, J. W. Mitchell, W. A. Beckman, C. B. DeWitt, Behavioral implications of mechanistic
@@ -40,10 +38,9 @@ surface_roughness <- function(u_r, zr){
  }
 
 
-#' Estimate wind speed at a specific height under neutral conditions.
+#' @title Estimate wind speed at a specific height under neutral conditions.
 #' 
-#' @details Calculates wind speed at a specified height under neutral conditions
-#' @description This function allows you to calculate wind speed (m/s) at a 
+#' @description  calculate wind speed (m/s) at a 
 #' specified height (m) within a boundary layer near the surface.  The profile assumes neutral conditions.
 #' The velocity profile is the neutral profile described by Sellers (1965). 
 #' Function is equations (2) and (3) of Porter et al. (1973). Source: Porter WP et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
@@ -57,22 +54,20 @@ surface_roughness <- function(u_r, zr){
 #' @family microclimate functions
 #' @export
 #' @examples
-#' \dontrun{
 #' wind_speed_profile_neutral(u_r=0.1, zr=0.1, z0=0.2, z=0.15)
-#'}
+#'
  
 wind_speed_profile_neutral <- function(u_r, zr, z0, z) {
 
   stopifnot(u_r>=0, zr>=0, z0>=0, z>=0)
   
-      u_z = u_r* log(z/z0 + 1) / log(zr/z0 + 1)
-  return(u_z)
-  }
+   u_r* log(z/z0 + 1) / log(zr/z0 + 1)
 
-#' Estimate temperature at a specified height under neutral conditions
+}
+
+#' @title Estimate temperature at a specified height under neutral conditions
 #' 
-#' @details Calculates temperature at a specified height under neutral conditions
-#' @description This function allows you to calculate temperature (C) at a specified height (m) within a 
+#' @description  calculate temperature (C) at a specified height (m) within a 
 #' boundary layer near the surface.  The velocity profile is the neutral profile described by Sellers (1965). 
 #' Function in equations (2) and (3) of Porter et al. (1973). Source: Porter WP et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
 #' 
@@ -86,22 +81,20 @@ wind_speed_profile_neutral <- function(u_r, zr, z0, z) {
 #' @family microclimate functions
 #' @export
 #' @examples
-#' \dontrun{
 #' air_temp_profile_neutral(T_r=20, zr=0.1, z0=0.2, z=0.15, T_s=25)
-#'}
+#'
 #'
 air_temp_profile_neutral<-function(T_r, zr, z0, z, T_s){
 
   stopifnot(zr>=0, z0>=0, z>=0)
   
-  T_z= (T_r-T_s)*log(z/z0+1)/log(zr/z0+1)+T_s 
-  return(T_z)
+  (T_r-T_s)*log(z/z0+1)/log(zr/z0+1)+T_s 
+
 }
 
-#' Estimate air temperature profile as in NicheMapR
+#' @title Estimate air temperature profile as in NicheMapR
 #' 
-#' @details Estimate temperature at a specified height
-#' @description This function allows you to estimate temperature (C) at a specified height (m).  
+#' @description  estimate temperature (C) at a specified height (m).  
 #' Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.
 #' 
 #' @param T_r is temperature at reference height in C.
@@ -115,9 +108,8 @@ air_temp_profile_neutral<-function(T_r, zr, z0, z, T_s){
 #' @family microclimate functions
 #' @export
 #' @examples
-#' \dontrun{
 #' air_temp_profile(T_r=20, u_r=0.1, zr=0.1, z0=0.2, z=0.15, T_s=25)
-#'}
+#'
 #'
 
 air_temp_profile= function(T_r, u_r, zr, z0,z,T_s){
@@ -134,15 +126,13 @@ air_temp_profile= function(T_r, u_r, zr, z0,z,T_s){
   T_z0= (T_r * S_tb +T_s * S_ts)/(S_tb+S_ts)
   #Temperature at local height
   #Inital from Ecography paper but fixed in vignette: T_z= T_z0 + (T_r - T_z0)*log(z/z0+1)
-  T_z= T_z0 + (T_r - T_z0)*log(z/z0+1)/log(zr/z0+1)
-  return(T_z)
-  }
+  T_z0 + (T_r - T_z0)*log(z/z0+1)/log(zr/z0+1)
 
-#' Estimate temperature at a specified height 
+}
+
+#' @title Estimate temperature at a specified height 
 #' 
-#'   
-#' @details Calculates temperature at a specified height
-#' @description This function allows you to calculate temperature (C) at a specified height (m).  
+#' @description  calculate temperature (C) at a specified height (m).  
 #' Estimates a three segment velocity and temperature profile based on user-specified, 
 #' experimentally determined values for 3 roughness heights and reference heights.  
 #' Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks.
@@ -158,7 +148,6 @@ air_temp_profile= function(T_r, u_r, zr, z0,z,T_s){
 #' @family microclimate functions
 #' @export
 #' @examples
-#' \dontrun{
 #' air_temp_profile_segment(
 #'  T_r=c(25,22,20),
 #'  u_r=c(0.01,0.025,0.05), 
@@ -166,7 +155,7 @@ air_temp_profile= function(T_r, u_r, zr, z0,z,T_s){
 #'  z0=c(0.01,0.15,0.2), 
 #'  z=0.3, 
 #'  T_s=27)
-#'}
+#'
 #'
 
 air_temp_profile_segment= function(T_r, u_r, zr, z0,z,T_s){
@@ -197,15 +186,13 @@ air_temp_profile_segment= function(T_r, u_r, zr, z0,z,T_s){
   #Temperature at roughness height, z0
   T_z0= (T_rs * S_tb +T_s * S_ts)/(S_tb+S_ts)
   #Temperature ar local height
-  T_z= T_z0 + (T_rs - T_z0)*log(z/z0s+1)/log(zrs/z0s+1)
-  return(T_z)
+  T_z0 + (T_rs - T_z0)*log(z/z0s+1)/log(zrs/z0s+1)
+
 }
 
-#' Estimate windspeed at a specified height 
+#' @title Estimate windspeed at a specified height 
 #' 
-#'   
-#' @details Calculates temperature at a specified height
-#' @description This function allows you to calculate wind speed (m/s) at a specified height (m).   
+#' @description  calculate wind speed (m/s) at a specified height (m).   
 #' Estimates a three segment velocity and temperature profile based on user-specified, 
 #' experimentally determined values for 3 roughness heights and reference heights.  
 #' Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks.
@@ -219,9 +206,9 @@ air_temp_profile_segment= function(T_r, u_r, zr, z0,z,T_s){
 #' @family microclimate functions
 #' @export
 #' @examples
-#' \dontrun{
+
 #' wind_speed_profile_segment(u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), z=0.3)
-#'}
+#'
 #'
 
 wind_speed_profile_segment= function(u_r, zr, z0, z){
@@ -242,7 +229,6 @@ wind_speed_profile_segment= function(u_r, zr, z0, z){
   if(z>zr[3] & z<zr[2]) {us_star=u_star[2]; z0s= z0[2]; zrs= zr[2]}
   if(z>=zr[2]) {us_star=u_star[1]; z0s= z0[1]; zrs= zr[1]}
   #estimate windspeed
-  u_z= 2.5*us_star*log(z/z0s+1)
-  
-  return(u_z)
+  .5*us_star*log(z/z0s+1)
+
 }
