@@ -121,7 +121,7 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
 #' @param lon longitude in degrees
 #' @param doy day of year
 #' @param elev elevation in m
-#' @param T mean monthly temperature (°C)
+#' @param T mean monthly temperature (C)
 #' @param Hr mean month relative humidity (in percentage)
 #' @param P total monthly precipitation (mm)
 #' @return average monthly solar radiation (W/m^2)

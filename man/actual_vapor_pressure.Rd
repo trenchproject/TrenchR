@@ -7,7 +7,7 @@
 actual_vapor_pressure(Tdewpoint)
 }
 \arguments{
-\item{Tdewpoint}{dewpoint temperature (°C)}
+\item{Tdewpoint}{dewpoint temperature (C)}
 }
 \value{
 actual vapor pressure, e_a (kPa)
@@ -16,7 +16,7 @@ actual vapor pressure, e_a (kPa)
 Calculate actual vapor pressure from dewpoint temperature
 }
 \details{
-Calculate actual vapor pressure from dewpoint temperature based on Stull 2000. Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
+Calculate actual vapor pressure from dewpoint temperature based on Stull 2000. Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
 }
 \examples{
 \dontrun{

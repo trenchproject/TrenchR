@@ -7,13 +7,13 @@
 WETAIR(db = db, wb = db, rh = 0, dp = 999, bp = 101325)
 }
 \arguments{
-\item{db}{Dry bulb temperature (°C)}
+\item{db}{Dry bulb temperature (C)}
 
-\item{wb}{Wet bulb temperature (°C)}
+\item{wb}{Wet bulb temperature (C)}
 
 \item{rh}{Relative humidity (\%)}
 
-\item{dp}{Dew point temperature (°C)}
+\item{dp}{Dew point temperature (C)}
 
 \item{bp}{Barometric pressure (pascal)}
 }
@@ -55,7 +55,7 @@ If RH is known but not WB then set WB = 0 and DP = 999.
 If DP is known then set WB = 0 and RH = 0.
 }
 \examples{
-\dontrun{
+
 WETAIR(db=30, wb=28, rh=60, bp=100*1000)
-}
+
 }

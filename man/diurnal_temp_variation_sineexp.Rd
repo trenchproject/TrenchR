@@ -16,9 +16,9 @@ diurnal_temp_variation_sineexp(
 )
 }
 \arguments{
-\item{T_max}{maximum daily temperature (°C)}
+\item{T_max}{maximum daily temperature (C)}
 
-\item{T_min}{minimum daily temperature (°C)}
+\item{T_min}{minimum daily temperature (C)}
 
 \item{t}{time for temperature estimate (hour)}
 
@@ -33,7 +33,7 @@ diurnal_temp_variation_sineexp(
 \item{gamma}{decay parameter for rate of t change from sunset to t_n (time of minimum temp)}
 }
 \value{
-temperature (°C) at a specified hour
+temperature (C) at a specified hour
 }
 \description{
 This function allows you to estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: Parton WJ and Logan JA. 1981. A model for diurnal variation in soil and air temperature. Agricultural Meteorology 23: 205-216.
@@ -42,8 +42,7 @@ This function allows you to estimate temperature across hours using a diurnal te
 Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components.
 }
 \examples{
-\dontrun{
-diurnal_temp_variation_sineexp(
+  diurnal_temp_variation_sineexp(
   T_max=30, 
   T_min=10, 
   t=11, 
@@ -52,7 +51,7 @@ diurnal_temp_variation_sineexp(
   alpha=2.59, 
   beta= 1.55, 
   gamma=2.2)
-}
+
 }
 \seealso{
 Other microclimate functions: 

@@ -2,23 +2,32 @@
 #' 
 #' 
 #' @details Calculate degree days
+#' 
 #' @description This function allows you to calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minima is equal to previous day. Double Sine wave approximation of degree days from Allen JC. 1976.  A Modified Sine Wave Method for Calculating Degree Days. Environmental Entomology 5:388–396. 
-#' @param T_min Minimum temperature of the day (°C)
-#' @param T_max Maximum temperature of the day (°C)
-#' @param LDT lower developmental threshold (°C).
-#' @param UDT upper developmental threshold (°C).
+#' 
+#' @param T_min Minimum temperature of the day (C)
+#' 
+#' @param T_max Maximum temperature of the day (C)
+#' 
+#' @param LDT lower developmental threshold (C).
+#' 
+#' @param UDT upper developmental threshold (C).
+#' 
 #' @param method type of method being used. Current choices: "single.sine","double.sine", "single.triangulation" or "double.triangulation".
-#' @return degree days (°C)
+#' 
+#' @return degree days (C)
+#' 
 #' @keywords degree days
+#' 
 #' @family microclimate functions
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
+#' 
 #' degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.sine")
 #' degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.triangulation")
-#' }
 #' 
-
 degree_days=function(T_min,T_max,LDT=NA,UDT=NA, method="single.sine"){
   
   stopifnot(T_max>=T_min, method %in% c("single.sine","double.sine", "single.triangulation", "double.triangulation"))

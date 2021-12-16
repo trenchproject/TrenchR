@@ -15,7 +15,7 @@ monthly_solar_radiation(lat, lon, doy, elev, T, Hr, P)
 
 \item{elev}{elevation in m}
 
-\item{T}{mean monthly temperature (°C)}
+\item{T}{mean monthly temperature (C)}
 
 \item{Hr}{mean month relative humidity (in percentage)}
 

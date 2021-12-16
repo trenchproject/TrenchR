@@ -7,22 +7,22 @@
 Tsoil(Tg_max, Tg_min, hour, depth)
 }
 \arguments{
-\item{Tg_max}{daily maximum soil surface temperature (°C)}
+\item{Tg_max}{daily maximum soil surface temperature (C)}
 
-\item{Tg_min}{daily minimum soil surface temperature (°C)}
+\item{Tg_min}{daily minimum soil surface temperature (C)}
 
 \item{hour}{hour of the day}
 
 \item{depth}{depth (cm) ???}
 }
 \value{
-soil temperature (°C)
+soil temperature (C)
 }
 \description{
 Statistical approximation of soil temperature
 }
 \details{
-This function allows you to estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from Campbell and Norman 1998). Source: Riddell EA. 2017. Physical calculations of resistance to water loss improve predictions of species range models. Ecological Monographs 87: 21-23.
+This function allows you to estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from Campbell and Norman 1998). Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
 }
 \examples{
 \dontrun{

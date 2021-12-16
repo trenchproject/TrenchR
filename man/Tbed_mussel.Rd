@@ -2,38 +2,34 @@
 % Please edit documentation in R/biophysmodel_MusselBed.R
 \name{Tbed_mussel}
 \alias{Tbed_mussel}
-\title{Predicts body temperature (operative environmental temperature) of a mussel bed in °C.}
+\title{Operative Environmental Temperature of a Mussel Bed}
 \usage{
 Tbed_mussel(L, T_a, S, k_d, u, evap = FALSE, cl = NA)
 }
 \arguments{
 \item{L}{mussel length (anterior/posterior axis) (m)}
 
-\item{T_a}{air temperature at 4 m above ground (°C)}
+\item{T_a}{air temperature at 4 m above ground (C)}
 
-\item{S}{direct solar flux density (W/m2)}
+\item{S}{direct solar flux density (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
 \item{k_d}{diffuse fraction, proportion of solar radiation that is diffuse}
 
-\item{u}{wind speed at 4 m above ground (m/s)}
+\item{u}{wind speed at 4 m above ground (m/s).}
 
-\item{evap}{Are mussels gaping to evaporatively cool? TRUE of FALSE (default), If TRUE, assumes constant mass loss rate of 5 percent of initial body mass per hour}
+\item{evap}{Are mussels gaping to evaporatively cool? TRUE of FALSE (default), If TRUE, assumes constant mass loss rate of 5 percent of initial body mass per hour.}
 
-\item{cl}{fraction of the sky covered by cloud, optional}
+\item{cl}{fraction of the sky covered by cloud, optional.}
 }
 \value{
-predicted body temperature (°C)
+predicted body temperature (C)
 }
 \description{
-Predicts body temperature of a mussel in °C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Helmuth 1999. Thermal biology of rocky intertidal mussels: quantifying body temperatures using climatological data. Ecology 80:15-34.
-}
-\details{
-Predicts body temperature of a mussel in °C.
+Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Helmuth1999;textual}{TrenchR}
 }
 \examples{
-\dontrun{
-Tbed_mussel(L = 0.1, T_a = 25, S=500, k_d=0.2, u = 1, evap = FALSE)
-}
+ Tbed_mussel(L = 0.1, T_a = 25, S = 500, k_d = 0.2, u = 1, evap = FALSE)
+
 }
 \seealso{
 Other biophysical models: 

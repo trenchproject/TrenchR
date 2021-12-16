@@ -62,4 +62,7 @@ If you use this package, We would appreciate a citation. You can see an up to da
 If you are using macOS, you might need to install R package "rgl" which indirectly would ask you to install XQuartz. The reason for it is that there is a dependency for package "ks".
 
 ### Developer notes
-Update documentation: devtools::document()
+Please see the [Contributor Notes](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md).
+
+We use [Rdpack](https://cran.r-project.org/package=Rdpack) to facilitate package documentation with [BibTeX](www.bibtex.org) citations. See the [documentation workflow document](doumentation_workflow.md) for more details about building package manual components.
+

@@ -14,7 +14,7 @@
 #' \dontrun{
 #' partition_solar_radiation(method="Erbs", kt=0.5, lat=40, sol.elev=60)
 #'}
-partition_solar_radiation=function(method, kt, lat=NA, sol.elev=NA){  
+partition_solar_radiation <- function(method, kt, lat = NA, sol.elev = NA){  
  
   stopifnot(method %in% c("Liu_Jordan", "Orgill_Hollands", "Erbs", "Olyphant", "Spencer", "Reindl-1", "Reindl-2", "Lam_Li"), kt>=0, kt<=1)
   
@@ -103,12 +103,12 @@ partition_solar_radiation=function(method, kt, lat=NA, sol.elev=NA){
 #' \dontrun{
 #' proportion_diffuse_solar_radiation(psi=60, p_a=86.1, A=0.25)
 #'}
-proportion_diffuse_solar_radiation=function(psi, p_a, A){  
+proportion_diffuse_solar_radiation <- function(psi, p_a, A){  
   
   stopifnot(psi>=0, psi<=89.5, p_a>0, A>=0, A<=1)
  
   if(psi<=50){
-  prop= (5.67*10^-2 +1.698*10^-5*psi + 1.917*10^-6*psi^2 +1.028*10^-7*psi^3)*
+    prop <- (5.67*10^-2 +1.698*10^-5*psi + 1.917*10^-6*psi^2 +1.028*10^-7*psi^3)*
     (1 + 0.01*(p_a - 86.1) + 0.12*(A - 0.25))
   }
   

@@ -2,7 +2,7 @@
 % Please edit documentation in R/biophysmodel_Sceloporus.R
 \name{Tb_lizard}
 \alias{Tb_lizard}
-\title{Predicts body temperatures (operative environmental temperature) of a lizard in °C.}
+\title{Predicts body temperatures (operative environmental temperature) of a lizard in C.}
 \usage{
 Tb_lizard(
   T_a,
@@ -26,9 +26,9 @@ Tb_lizard(
 )
 }
 \arguments{
-\item{T_a}{is air temperature in °C}
+\item{T_a}{is air temperature in C}
 
-\item{T_g}{is surface temperature in °C}
+\item{T_g}{is surface temperature in C}
 
 \item{u}{is wind speed in m/s}
 
@@ -63,19 +63,18 @@ Tb_lizard(
 \item{F_g}{is the view factor between the surface of the lizard and ground thermal radation}
 }
 \value{
-T_e Operative temperature (°C)
+T_e Operative temperature (C)
 }
 \description{
-Predicts body temperature (operative environmental temperature) of a lizard in °C. 
+Predicts body temperature (operative environmental temperature) of a lizard in C. 
 Based on Campbell and Norman (1998, An introduction to environmental biophysics). 
 Designed for Sceloporus lizards and described in Buckley (2008, Linking traits to energetics and population dynamics to predict lizard ranges in changing environments. American Naturalist 171: E1-E19).
 }
 \details{
-Predicts body temperatures (operative environmental temperature) of a lizard in °C.
+Predicts body temperatures (operative environmental temperature) of a lizard in C.
 }
 \examples{
-\dontrun{
-Tb_lizard(
+  Tb_lizard(
   T_a=25, 
   T_g=30, 
   u=0.1, 
@@ -94,7 +93,6 @@ Tb_lizard(
   F_r=0.5, 
   F_a=0.5, 
   F_g=0.5)
-}
 
 }
 \seealso{

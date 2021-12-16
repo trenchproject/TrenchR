@@ -2,42 +2,44 @@
 % Please edit documentation in R/biophysmodel_LizardFei.R
 \name{Tb_Fei}
 \alias{Tb_Fei}
-\title{Calculate body temperature(Operative Temperature) of Lizard using model by Fei et al.}
+\title{Calculate Operative Temperature of Lizard Using model by Fei et al.}
 \usage{
 Tb_Fei(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact)
 }
 \arguments{
-\item{T_a}{is air temperature at lizard height in K}
+\item{T_a}{air temperature at lizard height in K.}
 
-\item{T_g}{is surface temperature in K}
+\item{T_g}{surface temperature in K.}
 
-\item{H}{is total (direct + diffuse) solar radiation flux in W/m^2}
+\item{H}{total (direct + diffuse) solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.}
 
-\item{lw}{Downward flux of near-infrared radiation (W/m^2)}
+\item{lw}{Downward flux of near-infrared radiation (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
-\item{shade}{proportion of shade}
+\item{shade}{proportion of shade.}
 
-\item{m}{is lizard mass in g}
+\item{m}{lizard mass in g.}
 
-\item{Acondfact}{is the proportion of the lizard projected area that is in contact with the ground, Acondfact=0.1 for standing and Acondfact=0.4 for lying on ground}
+\item{Acondfact}{the proportion of the lizard projected area that is in contact with the ground. \code{Acondfact = 0.1} for standing and \code{Acondfact = 0.4} for lying on ground.}
 
-\item{Agradfact}{is the proportion of the lizard projected area exposed to radiation from the ground, Agradfact=0.3 for standing and Agradfact=0.0 for lying on ground}
+\item{Agradfact}{the proportion of the lizard projected area exposed to radiation from the ground. \code{Agradfact = 0.3} for standing and \code{Agradfact = 0.0} for lying on ground.}
 }
 \value{
-Body temperature of a lizard in K
+Body temperature of a lizard in K.
 }
 \description{
-Transient model for predicting operative environmental temperature using model in the following publication: T. Fei, A. K. Skidmore, V. Venus, T. Wang, M. Schlerf, B. Toxopeus, 
-S. van Overjijk, M. Bian, and Y. Liu, “A body temperature model for lizards as estimated from the thermal environment,” J. Therm. Biol., vol. 37, no. 1, pp. 56–64, 2012.
+Predicts body temperature (operative environmental temperature) of a lizard in K based on \insertCite{Fei2012;textual}{TrenchR}.
+ \cr \cr
 }
 \details{
-Predicts body temperature (operative environmental temperature) of a lizard in K.
+Thermal radiative flux is calculated following \insertCite{Fei2012;textual}{TrenchR} based on \insertCite{Bartlett1967;textual}{TrenchR} and \insertCite{Porter1973;textual}{TrenchR}.
 }
 \examples{
-\dontrun{
-Tb_Fei(T_a=293, T_g=300, H=1300, lw=60, shade=0.5, m=10.5, Acondfact=0.1, Agradfact=0.3)
-}
+  Tb_Fei(T_a = 293, T_g = 300, H = 1300, lw = 60, shade = 0.5, m = 10.5, Acondfact = 0.1, Agradfact = 0.3)
 
+
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 
