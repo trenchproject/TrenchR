@@ -154,12 +154,50 @@ doi: <a href="https://doi.org/10.1086/physzool.40.2.30152447" class="external-li
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code>  <span class="fu">surface_area_from_mass</span><span class="op">(</span>M <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, taxon <span class="op">=</span> <span class="st">"lizard"</span><span class="op">)</span>
-  <span class="fu">surface_area_from_mass</span><span class="op">(</span>M <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, taxon <span class="op">=</span> <span class="st">"salamander"</span><span class="op">)</span>
-  <span class="fu">surface_area_from_mass</span><span class="op">(</span>M <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, taxon <span class="op">=</span> <span class="st">"frog"</span><span class="op">)</span>
-  <span class="fu">surface_area_from_mass</span><span class="op">(</span>M <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">5</span>, <span class="fl">0.1</span><span class="op">)</span>, taxon <span class="op">=</span> <span class="st">"insect"</span><span class="op">)</span>
-
-
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">surface_area_from_mass</span><span class="op">(</span>M <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, taxon <span class="op">=</span> <span class="st">"lizard"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.0009864601 0.0015659078 0.0020519197 0.0024857237 0.0028844268</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] 0.0032572195 0.0036097591 0.0039458404 0.0042681649 0.0045787422</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] 0.0048791179 0.0051705136 0.0054539157 0.0057301353 0.0059998495</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] 0.0062636312 0.0065219701 0.0067752895 0.0070239582 0.0072683001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] 0.0075086014 0.0077451169 0.0079780743 0.0082076787 0.0084341152</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] 0.0086575515 0.0088781408 0.0090960228 0.0093113257 0.0095241675</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] 0.0097346569 0.0099428947 0.0101489742 0.0103529822 0.0105549995</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [36] 0.0107551017 0.0109533594 0.0111498387 0.0113446019 0.0115377072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] 0.0117292099 0.0119191618 0.0121076119 0.0122946066 0.0124801900</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [46] 0.0126644036 0.0128472870 0.0130288778 0.0132092119 0.0133883233</span>
+<span class="r-in">  <span class="fu">surface_area_from_mass</span><span class="op">(</span>M <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, taxon <span class="op">=</span> <span class="st">"salamander"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.000842000 0.001362156 0.001804821 0.002203645 0.002572748 0.002919773</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.003249452 0.003564975 0.003868623 0.004162096 0.004446708 0.004723500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 0.004993313 0.005256842 0.005514669 0.005767284 0.006015111 0.006258514</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] 0.006497811 0.006733284 0.006965179 0.007193718 0.007419100 0.007641501</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] 0.007861084 0.008077995 0.008292368 0.008504323 0.008713975 0.008921425</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] 0.009126770 0.009330097 0.009531489 0.009731022 0.009928767 0.010124790</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] 0.010319154 0.010511917 0.010703133 0.010892855 0.011081131 0.011268007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [43] 0.011453526 0.011637729 0.011820656 0.012002343 0.012182825 0.012362136</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] 0.012540307 0.012717369</span>
+<span class="r-in">  <span class="fu">surface_area_from_mass</span><span class="op">(</span>M <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, taxon <span class="op">=</span> <span class="st">"frog"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.000990000 0.001459527 0.001831568 0.002151735 0.002438139 0.002700225</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.002943677 0.003172237 0.003388527 0.003594473 0.003791535 0.003980858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 0.004163355 0.004339772 0.004510724 0.004676731 0.004838231 0.004995602</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] 0.005149170 0.005299221 0.005446005 0.005589744 0.005730635 0.005868856</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] 0.006004566 0.006137907 0.006269009 0.006397992 0.006524963 0.006650022</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] 0.006773260 0.006894760 0.007014601 0.007132855 0.007249588 0.007364862</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] 0.007478735 0.007591262 0.007702494 0.007812478 0.007921258 0.008028877</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [43] 0.008135374 0.008240787 0.008345151 0.008448499 0.008550864 0.008652274</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] 0.008752760 0.008852346</span>
+<span class="r-in">  <span class="fu">surface_area_from_mass</span><span class="op">(</span>M <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">5</span>, <span class="fl">0.1</span><span class="op">)</span>, taxon <span class="op">=</span> <span class="st">"insect"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.0002060361 0.0003587297 0.0004961813 0.0006245847 0.0007466539</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] 0.0008639017 0.0009772862 0.0010874651 0.0011949160 0.0013000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] 0.0014029994 0.0015041403 0.0016036073 0.0017015542 0.0017981104</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] 0.0018933868 0.0019874787 0.0020804695 0.0021724322 0.0022634315</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] 0.0023535248 0.0024427639 0.0025311951 0.0026188604 0.0027057979</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] 0.0027920425 0.0028776261 0.0029625779 0.0030469249 0.0031306921</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] 0.0032139026 0.0032965778 0.0033787379 0.0034604015 0.0035415860</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [36] 0.0036223078 0.0037025824 0.0037824242 0.0038618468 0.0039408631</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] 0.0040194852 0.0040977248 0.0041755926 0.0042530990 0.0043302539</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [46] 0.0044070666 0.0044835461 0.0045597008 0.0046355388 0.0047110678</span>
+<span class="r-in"></span>
+<span class="r-in"></span>
 </code></pre></div>
     </div>
   </div>
@@ -174,7 +212,7 @@ doi: <a href="https://doi.org/10.1086/physzool.40.2.30152447" class="external-li
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer></div>

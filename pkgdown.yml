@@ -1,12 +1,12 @@
 pandoc: 2.7.3
-pkgdown: 2.0.1.9000
-pkgdown_sha: 83ddb78f31dfeb6491ade584a720d5f101c54389
+pkgdown: 2.0.1
+pkgdown_sha: ~
 articles:
   AllometryAndConversionsTutorial: AllometryAndConversionsTutorial.html
   MicroclimateTutorial: MicroclimateTutorial.html
   Symbols: Symbols.html
   TeTutorial: TeTutorial.html
-last_built: 2021-12-17T20:35Z
+last_built: 2021-12-17T23:43Z
 urls:
   reference: https://trenchproject.github.io/TrenchR/reference
   article: https://trenchproject.github.io/TrenchR/articles
