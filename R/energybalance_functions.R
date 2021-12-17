@@ -613,8 +613,8 @@ boundary_layer_resistance<-function(T_a, e_s, e_a, elev, D, u=NA){
 #' @family biophysical models
 #' @export
 #' @author Eric Riddell
-#' @examples
-#' Tb_salamander_humid(r_i=4,r_b=1,D=0.01,T_a=20,elev=500,e_a=2.0,e_s=2.5,Qabs=400, epsilon=0.96)
+### @examples
+### Tb_salamander_humid(r_i=4,r_b=1,D=0.01,T_a=20,elev=500,e_a=2.0,e_s=2.5,Qabs=400, epsilon=0.96)
 #' 
 #' 
 

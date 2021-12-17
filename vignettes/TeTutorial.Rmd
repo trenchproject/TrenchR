@@ -20,34 +20,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 #Load TrenchR package
 library(TrenchR)
-
-
-#to be REMOVED
-Tb_CampbellNorman=function(T_a, T_g, S, alpha_S=0.7, alpha_L=0.96, epsilon=0.96, c_p=29.3, D, V){
-    
-  stopifnot(T_a>200, T_a<400, epsilon>=0.5, epsilon<=1, c_p>=0, D>0, V>=0)
-  
-  #Stefan-Boltzmann constant
-  sigma= 5.673*10^(-8) #W m^(-2) K^(-4)
-  
-  #solar and thermal radiation absorbed
-  L_a=sigma*T_a^4  # (10.7) long wave flux densities from atmosphere 
-  L_g=sigma*T_g^4  # (10.7) long wave flux densities from ground
-  F_a=0.5; F_g=0.5 #proportion of organism exposure to air and ground, respectively
-  R_abs= alpha_S*S+alpha_L*(F_a*L_a+F_g*L_g) # (11.14) Absorbed radiation
-  
-  #thermal radiation emitted
-  Qemit= epsilon*sigma*T_a^4
-  
-  #conductance
-  g_Ha=1.4*0.135*sqrt(V/D) # boundary conductance, factor of 1.4 to account for increased convection (Mitchell 1976), assumes forced conduction
-  g_r= 4*epsilon*sigma*T_a^3/c_p # (12.7) radiative conductance
-  
-  # operative environmental temperature
-  T_e=T_a+(R_abs-Qemit)/(c_p*(g_r+g_Ha))                       
-
-  return(T_e) 
-}
 ```
 
 This tutorial covers how to construct energy balances for applications
@@ -118,8 +90,8 @@ legend("topleft", title="parameters", legend=c("a=0.9, psa_dir=0.4, a_s=0.5", "a
 
 In the functions, psa_dir and psa_ref are the proportions of surface
 area exposed to direct and reflected solar radiation, respectively. We
-assume psa_dif = psa_dir. The functions `prop_silhouette_area()` and
-`prop_silhouette_area_shapes()` provide assistance calculating the
+assume psa_dif = psa_dir. The functions `proportion_silhouette_area()` and
+`proportion_silhouette_area_shapes()` provide assistance calculating the
 proportional of surface area exposed via estimating silhouette area.
 Additionally, see the microclimate tutorial for tools for estimating
 incoming solar radiation.
@@ -324,9 +296,9 @@ legend("bottomright", title="taxa", legend=c("sphere","frog","lizard","flyingins
 ```
 
 ```{r, fig.height=4, fig.width=6}
-plot(seq(0,3,0.25), heat_transfer_coefficient_simple(V=seq(0,3,0.25),D=0.05), type="l", xlab = "Air velocity (m/s)", ylab = expression("heat transfer coefficient," ~ H[L] ~ (W ~ m^{-2} ~ K^{-1})))
-points(seq(0,3,0.25), heat_transfer_coefficient_simple(V=seq(0,3,0.25),D=0.03), type="l", lty="dashed")
-points(seq(0,3,0.25), heat_transfer_coefficient_simple(V=seq(0,3,0.25),D=0.07), type="l", lty="dotted")
+plot(seq(0,3,0.25), heat_transfer_coefficient_simple(V=seq(0,3,0.25),D=0.05, type = "Spotila"), type="l", xlab = "Air velocity (m/s)", ylab = expression("heat transfer coefficient," ~ H[L] ~ (W ~ m^{-2} ~ K^{-1})))
+points(seq(0,3,0.25), heat_transfer_coefficient_simple(V=seq(0,3,0.25),D=0.03, type = "Spotila"), type="l", lty="dashed")
+points(seq(0,3,0.25), heat_transfer_coefficient_simple(V=seq(0,3,0.25),D=0.07, type = "Spotila"), type="l", lty="dotted")
 
 legend("bottomright", title="characteristic dimension (m)", legend=c(0.03,0.05,0.07), lty=c("dashed","solid","dotted") )
 ```
@@ -1326,22 +1298,24 @@ legend("topleft",title="depth (cm)", legend=c(0,5,10,20), lty=c("solid","dashed"
 
 We illustrate the humid operative temperature model by comparing an example parameterization (solid lines) to a 1:1 line (dotted line) indicating when humid operative temperatures equal air temperatures. Evaporative cooling lowers humid operative temperatures below air temperatures for the nocturnal salamander. Higher skin resistance to evaporation reduced cooling (red) whereas higher vapor pressure deficit augments cooling (blue). 
 ```{r, fig.height=4, fig.width=6}
+#
+# temporarily commented out
 #estimate thermal radiation absorbed
-rad.seq= sapply(20:40, FUN=Qthermal_radiation_absorbed, T_g=30, epsilon_ground=0.97, a_longwave=0.965)
-
-t.seq= mapply(FUN=Tb_salamander_humid, T_a=20:40, r_i=4,r_b=1,D=0.01,elev=500,e_a=1.5,e_s=2.5,Qabs=rad.seq, epsilon=0.96)
-plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "humid operative temperature (°C)")
-abline(a=0, b=1, lty="dotted")
+#rad.seq= sapply(20:40, FUN=Qthermal_radiation_absorbed, T_g=30, epsilon_ground=0.97, a_longwave=0.965)
+#
+#t.seq= mapply(FUN=Tb_salamander_humid, T_a=20:40, r_i=4,r_b=1,D=0.01,elev=500,e_a=1.5,e_s=2.5,Qabs=rad.seq, epsilon=0.96)
+#plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "humid operative temperature (°C)")
+#abline(a=0, b=1, lty="dotted")
 
 #check higher skin resistance-> Te closer to air due to reduced cooling
-t.seq= mapply(FUN=Tb_salamander_humid, T_a=20:40, r_i=20,r_b=1,D=0.01,elev=500,e_a=1.5,e_s=2.5,Qabs=rad.seq, epsilon=0.96)
-points(20:40, t.seq, type = "l", col="red")
+#t.seq= mapply(FUN=Tb_salamander_humid, T_a=20:40, r_i=20,r_b=1,D=0.01,elev=500,e_a=1.5,e_s=2.5,Qabs=rad.seq, epsilon=0.96)
+#points(20:40, t.seq, type = "l", col="red")
 
 #check higher vpd-> lower Te due to greater cooling
-t.seq= mapply(FUN=Tb_salamander_humid, T_a=20:40, r_i=4,r_b=1,D=0.01,elev=500,e_a=1.0,e_s=2.5,Qabs=rad.seq, epsilon=0.96)
-points(20:40, t.seq, type = "l", col="blue")
+#t.seq= mapply(FUN=Tb_salamander_humid, T_a=20:40, r_i=4,r_b=1,D=0.01,elev=500,e_a=1.0,e_s=2.5,Qabs=rad.seq, epsilon=0.96)
+#points(20:40, t.seq, type = "l", col="blue")
 
-legend("topleft",title="", legend=c("base scenario","higher skin resistance","higher vpd"), lty=c("solid"), col=c("black","red","blue") )
+#legend("topleft",title="", legend=c("base scenario","higher skin resistance","higher vpd"), lty=c("solid"), col=c("black","red","blue") )
 ```
 
 # Example operative environmental temperature calculations
@@ -1424,9 +1398,9 @@ mass=10 #mass (g)
 a=0.9 #solar absorptivity
 
 #estimate surface area (m^2) from mass (g)
-A= sa_from_mass(mass, "lizard")
+A= surface_area_from_mass(mass, "lizard")
 #estimate projected (silhouette) area as a portion of surface area
-psa= sapply(psi_deg, prop_silhouette_area, taxa= "lizard", posture= "elevated")
+psa= sapply(psi_deg, proportion_silhouette_area, taxon= "lizard", posture= "elevated")
 #change negative values to zero
 psa[psa<0]=0
 
@@ -1460,7 +1434,7 @@ H_L=heat_transfer_coefficient(V=V,D=svl,K= 25.7 * 10^(-3), nu= 15.3 * 10^(-6) , 
 
 #Also illustrate estimations using a spherical approximation and a simplified version of the approximation.
 heat_transfer_coefficient_approximation(V=V,D=svl,K= 25.7 * 10^(-3), nu= 15.3 * 10^(-6), taxa="lizard")
-heat_transfer_coefficient_simple(V=0.5,D=0.05)
+heat_transfer_coefficient_simple(V=0.5,D=0.05, type = "Spotila")
 
 ```
 
