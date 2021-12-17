@@ -2,7 +2,7 @@
 
 on:
   push:
-    branches: [main, master]]
+    branches: [main, master]
   release:
     types: [published]
 
