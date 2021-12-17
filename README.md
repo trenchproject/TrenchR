@@ -8,21 +8,20 @@ An R package for transparent environmental and ecological biophysics.
 **Author:** [TrEnCh project, Buckley Lab, Department of Biology, University of Washington](https://trenchproject.github.io)<br>
 **License:** [MIT](http://opensource.org/licenses/MIT)<br>
 
-[![Build Status](https://travis-ci.org/trenchproject/TrenchR.svg?branch=master)](https://travis-ci.org/trenchproject/TrenchR)
+[![R-CMD-check](https://github.com/trenchproject/TrenchR/actions/workflows/r_command_check.yaml/badge.svg)](https://github.com/trenchproject/TrenchR/actions/workflows/r_command_check.yaml)
 [![NSF-1349865](https://img.shields.io/badge/NSF-1349865-blue.svg)](https://nsf.gov/awardsearch/showAward?AWD_ID=1349865)
 
 [Package website](https://trenchproject.github.io/TrenchR/)
 
 ### Description
-The TrenchR package aids in Translating Environmental Change into organismal responses (https://github.com/trenchproject/TrenchR). The package facilitates microclimate modelling to translate weather station data into the environmental conditions experienced by organisms and biophysical modelling to predict organismal body temperatures given the environmental conditions. The package aims to introduce and enable microclimate and biophysical modelling to improve ecological and evolutionary forecasting and includes tutorials and well as a series of educational modules introducing microclimate and biophysical modelling. The package complements and integrates with the NicheMapR package (https://github.com/mrke/NicheMapR). 
+The [TrenchR package]((https://github.com/trenchproject/TrenchR)) aids in Translating Environmental Change into organismal responses. The package facilitates microclimate modelling to translate weather station data into the environmental conditions experienced by organisms and biophysical modelling to predict organismal body temperatures given the environmental conditions. The package aims to introduce and enable microclimate and biophysical modelling to improve ecological and evolutionary forecasting and includes tutorials and well as a series of educational modules introducing microclimate and biophysical modelling. The package complements and integrates with the [NicheMapR package](https://github.com/mrke/NicheMapR). 
 
 ### Installation
 You can install the package from the [github repository](https://github.com/trenchproject/TrenchR):
 
 ```r
 install.packages("devtools")   
-library("devtools")   
-devtools::install_github(build_vignettes = TRUE,repo = "trenchproject/TrenchR")
+devtools::install_github("trenchproject/TrenchR")
 ```
 
 ### Using the package
