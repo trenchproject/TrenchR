@@ -3,6 +3,8 @@
 [![NSF-1349865](https://img.shields.io/badge/NSF-1349865-blue.svg)](https://nsf.gov/awardsearch/showAward?AWD_ID=1349865)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/trenchproject/TrenchR/master/LICENSE)
 
+<img src="man/figures/TrenchRIcon.png" width="200px" alt="The TrenchR logo invokes an energy budget for a grasshopper. A tan and blue hexagon is centered on a white square, with white thick arrows within pointing towards the center and then towards the bottom. The word TrenchR is in a salmon orange color with arrows pointing up and down from the h. Below the text is a blue-green and orange grasshopper, on a blue ground, with colors alluding to temperature.">
+
 **Author:** [TrEnCh project, Buckley Lab, Department of Biology, University of Washington](https://trenchproject.github.io)<br>
 **License:** [MIT](http://opensource.org/licenses/MIT)<br>
 
