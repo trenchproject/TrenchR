@@ -1,4 +1,4 @@
-# building website
+# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
 
 on:
   push:
@@ -13,12 +13,13 @@ name: pkgdown
 
 jobs:
   pkgdown:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       _R_CHECK_FORCE_SUGGESTS_: true
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       CRAN_REPO: https://packagemanager.rstudio.com/all/__linux__/focal/latest
+      isPush: ${{ github.event_name == 'push' }}
     steps:
       - uses: actions/checkout@v2
 
@@ -57,6 +58,7 @@ jobs:
         run: R CMD INSTALL .
 
       - name: Deploy package
+        if: contains(env.isPush, 'true')
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
