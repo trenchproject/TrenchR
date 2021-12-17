@@ -65,7 +65,6 @@ jobs:
           Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
 
       - name: Create website
-        if: contains(env.isPush, 'false')
         run: |
           pkgdown::build_site()
         shell: Rscript {0}
