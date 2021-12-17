@@ -57,7 +57,7 @@ jobs:
       - name: Install package
         run: R CMD INSTALL .
 
-      - name: Create and deploy website
+      - name: Deploy package
         if: contains(env.isPush, 'true')
         run: |
           git config --local user.email "actions@github.com"
