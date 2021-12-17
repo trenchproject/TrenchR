@@ -464,7 +464,8 @@ proportion_silhouette_area <- function (z, taxon, raz = 0, posture = "prostrate"
 #' 
 #' @examples
 #'   proportion_silhouette_area_shapes(shape = "spheroid", theta = 60, H = 0.01, D = 0.001)
-#'   proportion_silhouette_area_shapes(shape = "cylinder flat ends", theta = 60, H = 0.01, D = 0.001)
+#'   proportion_silhouette_area_shapes(shape = "cylinder flat ends", theta = 60, H = 0.01,
+#'     D = 0.001)
 #'   proportion_silhouette_area_shapes(shape = "cylinder hemisphere ends", theta = 60, H = 0.01, 
 #'     D = 0.001)
 #'

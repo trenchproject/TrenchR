@@ -23,7 +23,8 @@ Estimate the projected (silhouette) area as a portion of the surface area of the
 }
 \examples{
   proportion_silhouette_area_shapes(shape = "spheroid", theta = 60, H = 0.01, D = 0.001)
-  proportion_silhouette_area_shapes(shape = "cylinder flat ends", theta = 60, H = 0.01, D = 0.001)
+  proportion_silhouette_area_shapes(shape = "cylinder flat ends", theta = 60, H = 0.01,
+    D = 0.001)
   proportion_silhouette_area_shapes(shape = "cylinder hemisphere ends", theta = 60, H = 0.01, 
     D = 0.001)
 
