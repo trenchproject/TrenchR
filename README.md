@@ -9,7 +9,6 @@
 
 
 **Author:** [TrEnCh project, Buckley Lab, Department of Biology, University of Washington](https://trenchproject.github.io)<br>
-**License:** [MIT](http://opensource.org/licenses/MIT)<br>
 
 [Package website](https://trenchproject.github.io/TrenchR/)
 
