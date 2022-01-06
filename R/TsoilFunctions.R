@@ -1,73 +1,118 @@
 #' @title Estimate soil thermal conductivity
 #' 
-#' @description  estimate soil thermal conductivity in W m^-1 K^-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).
-#' @param x is a vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.
-#' @param lambda is a vector of the thermal conductivities (W m^-1 K^-1) of the soil constituents.
-#' @param g_a is a shape factor on soil particles.  The soil particles are assumed to be ellipsoids with axes g_a, g_b, and g_c, where g_a +g_b +g_c=1 and g_a=g_b.  de Vries 1952 suggests g_a=g_b=0.125.
-#' @return soil thermal conductivity (W m^-1 K^-1)
+#' @description Estimates soil thermal conductivity (W m^-1 K^-1) using the methods of \insertCite{deVries1963;textual}{TrenchR}
+#' 
+#' @param x \code{numeric} vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.
+#' 
+#' @param lambda \code{numeric} vector of the thermal conductivities (W m^-1 K^-1) of the soil constituents
+#' 
+#' @param g_a \code{numeric} shape factor on soil particles. The soil particles are assumed to be ellipsoids with axes g_a, g_b, and g_c, where g_a + g_b + g_c = 1 and g_a = g_b. \insertCite{deVries1952;textual}{TrenchR} suggests g_a = g_b = 0.125.
+#' 
+#' @return \code{numeric} soil thermal conductivity (W m^-1 K^-1)
+#' 
 #' @keywords soil temperature
+#' 
 #' @family soil temperature functions
+#' 
 #' @export
+#' 
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @author Joseph Grigg
+#' 
 #' @examples
-#' soil_conductivity(
-#'   x=c(0.10,0.40,0.11,0.01,0.2, 0.18), 
-#'   lambda=c(0.10,0.40,0.11,0.01,0.2, 0.18), 
-#'   g_a=0.125)
-
-
-soil_conductivity<-function(x, lambda, g_a){
+#'   soil_conductivity(x = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), lambda = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), g_a = 0.125)
+#'   
+soil_conductivity <- function(x, lambda, g_a){
   
-  stopifnot(g_a>0,g_a<1)
+  stopifnot(g_a > 0, g_a < 1)
   
-  g_c<-1-2*g_a #estimate ellipsoid axis g_c assuming g_a=g_b.
+  g_c <- 1 - 2 * g_a # Estimate ellipsoid axis g_c assuming g_a = g_b.
   
-  #solve for k, where k is the 
-  k<-rep(NA,length(x))
+  k <- rep(NA, length(x))
+  
   for(i in 1:length(x)){
-    if(i!=6){k[i]<- 1/3*sum(2/(1+(lambda[i]/lambda[5]-1)*g_a),1/(1+(lambda[i]/lambda[1]-1)*g_c))}
-    if(i==6){k[i]<-1/3*sum(2/(1+(lambda[i]/lambda[5]-1)*0.2),1/(1+(lambda[i]/lambda[1]-1)*0.6))}
+    
+    if(i != 6) {
+      
+      k[i] <- 1 / 3 * sum(2 / (1 + (lambda[i] / lambda[5] - 1) * g_a), 1 / (1 + (lambda[i] / lambda[1] - 1) * g_c))
+      
+    }
+    
+    if(i == 6) {
+      
+      k[i] <- 1 / 3 * sum(2 / (1 + (lambda[i] / lambda[5] - 1) * 0.2), 1 / (1 + (lambda[i] / lambda[1] - 1) * 0.6))
+      
+    }
+    
   }
-  lambda_tot<- sum(k*x*lambda)/sum(k*x)
-  return(lambda_tot)
+  
+  sum(k * x * lambda) / sum(k * x)
+  
 }
 
 #' @title Estimate soil specific heat
 #' 
-#' @description  estimate soil specific heat in J kg^-1 K^-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).  Uses the volume fraction of organic material, minerals, and water in soil.  CHECK Campbell and Norman (2000) section 8.2.
-#' @param x_o is volume fraction of organic material
-#' @param x_m is volume fraction of minerals
-#' @param x_w is volume fraction of water
-#' @param rho_so is particle density of soil in kg/m^3 (bulk density)
-#' @return soil specific heat (J kg^-1 K^-1)
+#' @description Estimates soil specific heat (J kg^-1 K^-1) using the methods of \insertCite{deVries1963;textual}{TrenchR}. Uses the volume fraction of organic material, minerals, and water in soil.
+#' 
+#' @param x_o \code{numeric} volume fraction of organic material
+#' 
+#' @param x_m \code{numeric} volume fraction of minerals
+#' 
+#' @param x_w \code{numeric} volume fraction of water
+#' 
+#' @param rho_so \code{numeric} particle density of soil in kg/m^3 (bulk density). Defaults to 1620.
+#' 
+#' @return \code{numeric} soil specific heat (J kg^-1 K^-1)
+#' 
 #' @keywords soil temperature
+#' 
 #' @family soil temperature functions
+#' 
 #' @export
+#' 
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @author Joseph Grigg
+#' 
 #' @examples
-#' soil_specific_heat(x_o=0.01, x_m=0.6, x_w=0.2, rho_so=1620)
+#'   soil_specific_heat(x_o = 0.01, x_m = 0.6, x_w = 0.2, rho_so = 1620)
 #'
-soil_specific_heat<-function(x_o, x_m, x_w, rho_so){
+soil_specific_heat <- function(x_o, x_m, x_w, rho_so){
   
-  stopifnot(x_o>=0, x_o<=1, x_m>=0, x_m<=1, x_w>=0, x_w<=1, rho_so>0)
+  stopifnot(x_o >= 0, x_o <= 1, x_m >= 0, x_m <= 1, x_w >= 0, x_w <= 1, rho_so > 0)
   
-  c_so<-(1300*1920*x_o + 2650*870*x_m + 1.00*4.18*x_w)/rho_so #4.184 converts from cal/K to J/K, 1000000 converts from cm^-3 to m^-3, /rho_so converts from heat capacity per unit volume to per kg
-  return(c_so)
+  # 4.184 converts from cal/K to J/K
+  # 1000000 converts from cm^-3 to m^-3
+  # /rho_so converts from heat capacity per unit volume to per kg
+  (1300 * 1920 * x_o + 2650 * 870 * x_m + 1.00 * 4.18 * x_w) / rho_so 
+  
 }
 
 #' @title Solve equation for soil temperature
 #' 
 #' @description Function called by soil_temp_noint to solve equation for soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). The function represents the integrand in the equation. It is not intended to be called directly.
+#' 
 #' @param x is a vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.
+#' 
 #' @param L is the Monin-Obukhov length, a measure of the instability of heat flow (see Beckman et al. 1973)
+#' 
 #' @param z0 is surface rougness in m 
+#' 
 #' @return integrand for soil temperature function
+#' 
 #' @keywords soil temperature
+#' 
 #' @family soil temperature functions
+#' 
 #' @export
+#' 
 #' @author Joseph Grigg
+#' 
 #' @examples
-#' soil_temperature_integrand(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), L=-10,z0=0.2)
+#'   soil_temperature_integrand(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), L=-10,z0=0.2)
 #
 
 soil_temperature_integrand<-function(x, L, z0){ 

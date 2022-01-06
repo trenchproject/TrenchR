@@ -304,11 +304,11 @@ azimuth_angle <- function(doy, lat, lon, hour, offset = NA){
 #'
 #' @description Calculate estimated air pressure (kPa) as a function of elevation. Source: http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html.
 #' 
-#' @param elev \code{numeric} elevation in meters.
+#' @param elev \code{numeric} elevation (meters)
 #' 
 #' @family utility functions
 #' 
-#' @return \code{numeric} air pressure in kPa.
+#' @return \code{numeric} air pressure (kPa)
 #' 
 #' @export
 #' 
