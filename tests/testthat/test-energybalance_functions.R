@@ -89,7 +89,7 @@ test_that("expect_similar(boundary_layer_resistance function works as expected",
 })
 
 test_that("Tb_salamander_humid function works as expected", {
-  expect_similar(Tb_salamander_humid(r_i=4,r_b=1,D=0.01,T_a=20,elev=500,e_a=2.3,e_s=2.5,Qabs=400,epsilon=0.96), 19.81881)
+  expect_similar(Tb_salamander_humid(r_i=4,r_b=1,D=0.01,T_a=20,elev=500,e_a=2.0,e_s=2.5,Qabs=400,epsilon=0.96), 19.258)
 })
 
 test_that("Qthermal_radiation_absorbed function works as expected", {

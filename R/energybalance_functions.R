@@ -629,7 +629,7 @@ Tb_salamander_humid<-function(r_i,r_b,D,T_a,elev,e_a, e_s,Qabs, epsilon=0.96){
   #radiative conductance function, Campbell and Norman 1998
   radiative_conductance= (4*(5.670373*10^-8)*(T_a+273.15)^3)/29.3
  
-  gamma_naut = 0.000666
+  gamma = 0.000666
   gvs = 1/((r_i*100.0)/41.4)
   gva = 1/((r_b*100)/41.4)
   gHa = 1.4*0.135*sqrt(.1/D)
