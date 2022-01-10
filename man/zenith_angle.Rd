@@ -7,29 +7,29 @@
 zenith_angle(doy, lat, lon, hour, offset = NA)
 }
 \arguments{
-\item{doy}{is day of year.}
+\item{doy}{\code{numeric}  day of year.}
 
-\item{lat}{is latitude in decimal degrees.}
+\item{lat}{\code{numeric}  latitude in decimal degrees.}
 
-\item{lon}{is longitude in decimal degrees.}
+\item{lon}{\code{numeric}  longitude in decimal degrees.}
 
-\item{hour}{is hour of the day.}
+\item{hour}{\code{numeric}  hour of the day.}
 
-\item{offset}{is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)}
+\item{offset}{\code{numeric}  the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)}
 }
 \value{
-Zenith angle in degrees
+\code{numeric} zenith angle in degrees.
 }
 \description{
-This function allows you to calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-}
-\details{
-Calculate Zenith angle
+calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
-\dontrun{
+
 zenith_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
+
 }
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other utility functions: 
@@ -44,5 +44,3 @@ Other utility functions:
 \code{\link{solar_noon}()}
 }
 \concept{utility functions}
-\keyword{Zenith}
-\keyword{angle}

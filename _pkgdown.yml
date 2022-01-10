@@ -1,1 +1,4 @@
-destination: docs
+url: https://trenchproject.github.io/TrenchR/
+
+development:
+  mode: auto

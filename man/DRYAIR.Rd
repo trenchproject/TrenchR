@@ -7,7 +7,7 @@
 DRYAIR(db = db, bp = 0, alt = 0)
 }
 \arguments{
-\item{db}{Dry bulb temperature (°C)}
+\item{db}{Dry bulb temperature (C)}
 
 \item{bp}{Barometric pressure (pascal)}
 
@@ -37,9 +37,6 @@ bbemit black body emittance (W m-2)
 emtmax Wave length of maximum emittance (m)
 }
 \description{
-DRYAIR
-}
-\details{
 Calculates several properties of dry air and related characteristics shownas output variables below. The program
 is based on equations from List, R. J. 1971. Smithsonian Meteorological Tables. Smithsonian
 Institution Press. Washington, DC. WETAIR must be used in conjunction with function VAPPRS.
@@ -48,7 +45,6 @@ The user must supply values for the input variables (db, bp and alt).
 If alt is known (-1000 < alt < 20000) but not BP, then set BP=0
 }
 \examples{
-\dontrun{
-DRYAIR(db=30, bp=100*1000, alt=0)
-}
+  DRYAIR(db=30, bp=100*1000, alt=0)
+
 }

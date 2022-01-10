@@ -1,8 +1,7 @@
-#' Estimate radiation (three parts - Direct, Diffused and Reflected)
+#' @title Estimate radiation (three parts - Direct, Diffused and Reflected)
 #' 
 #' 
-#' @details Function to estimate direct, diffuse, and reflected components of solar radiation in (W/m^2).
-#' @description Function to estimate direct, diffuse, and reflected components of solar radiation in W m^-2 using the model in Campbell & Norman (1998). 
+#' @description Estimate direct, diffuse, and reflected components of solar radiation in W m^-2 using the model in Campbell & Norman (1998). 
 #' 
 #' @param doy is the day of year
 #' @param psi is the zenith angle in radians
@@ -54,11 +53,10 @@ estimate_radiation=function(doy, psi, tau, elev, rho=0.7){
   return( c(S_p, S_d, S_r))
 }
 
-#' Estimate diurnal radiation 
+#' @title Estimate diurnal radiation 
 #' 
 #' 
-#' @details Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day).
-#' @description Function to estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day).
+#' @description Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day).
 #' Based on Tham et al. (2010, Estimation of hourly averaged solar irradiation: evaluation of models. Building Serv. Eng. Res. Technol. 31: 9-25) 
 #' and Al-Rawahi et al. (2011, Prediction of Hourly Solar Radiation on Horizontal and Inclined Surfaces for Muscat/Oman. 
 #' The Journal of Engineering Research 8:19-31). 
@@ -109,11 +107,10 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
   return(solrad_hour)
 }
 
-#' Estimate average monthly solar radiation
+#' @title Estimate average monthly solar radiation
 #' 
 #' 
-#' @details Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information as input.
-#' @description Function to estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information
+#' @description Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information
 #' as input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
 #'  
 #' 
@@ -121,7 +118,7 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
 #' @param lon longitude in degrees
 #' @param doy day of year
 #' @param elev elevation in m
-#' @param T mean monthly temperature (°C)
+#' @param T mean monthly temperature (C)
 #' @param Hr mean month relative humidity (in percentage)
 #' @param P total monthly precipitation (mm)
 #' @return average monthly solar radiation (W/m^2)
@@ -213,10 +210,9 @@ monthly_solar_radiation= function(lat,lon,doy,elev,T,Hr,P){
 }
 
 
-#' Estimate direct solar radiation
+#' @title Estimate direct solar radiation
 #' 
 #' 
-#' @details Estimate direct solar radiation (kW/m^2)
 #' @description Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in Tracy et al. (1983) Estimating clear-day solar radiation: An evaluation of three models. Journal of Thermal Biology, 8(3), 247-251.
 #'  
 #' 

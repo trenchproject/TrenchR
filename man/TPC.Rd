@@ -7,13 +7,13 @@
 TPC(T, Topt, CTmin, CTmax)
 }
 \arguments{
-\item{T}{temperature range (°C)}
+\item{T}{temperature range (C)}
 
-\item{Topt}{thermal optima (°C), the temperature at which peak performance occurs}
+\item{Topt}{thermal optima (C), the temperature at which peak performance occurs}
 
-\item{CTmin}{critical thermal minima (°C), the lower temperature limit for performance}
+\item{CTmin}{critical thermal minima (C), the lower temperature limit for performance}
 
-\item{CTmax}{critical thermal maxima (°C), the upper temperature limit for performance}
+\item{CTmax}{critical thermal maxima (C), the upper temperature limit for performance}
 }
 \value{
 performance
@@ -25,9 +25,8 @@ Constructs a thermal performance curve by combining as a gaussian function to de
 Construct a Gaussian-quadratic thermal performance curve.
 }
 \examples{
-\dontrun{
 TPC(T=0:60, Topt=30, CTmin=10, CTmax=40)
-}
+
 }
 \keyword{curve}
 \keyword{performance}

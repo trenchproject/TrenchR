@@ -7,9 +7,9 @@
 Grashof_number(Ta, Tg, D, nu)
 }
 \arguments{
-\item{Ta}{Air temperature (°C).}
+\item{Ta}{Air temperature (C).}
 
-\item{Tg}{Ground (surface) temperature (°C).}
+\item{Tg}{Ground (surface) temperature (C).}
 
 \item{D}{is characteristic dimension (e.g., body diameter) (m)}
 
@@ -19,15 +19,11 @@ Grashof_number(Ta, Tg, D, nu)
 Grashof number
 }
 \description{
-Calculate Grashof Number
-}
-\details{
-This function allows you to estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force. Reference: Campell and Norman. 1998. An Introduction to Environmental Biophysics
+estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force. Reference: Campell and Norman. 1998. An Introduction to Environmental Biophysics
 }
 \examples{
-\dontrun{
 Grashof_number(Ta=30, Tg=35, D=0.001, nu=1.2)
-}
+
 
 }
 \seealso{

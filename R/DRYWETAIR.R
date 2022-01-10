@@ -1,33 +1,46 @@
 #WETAIR and DRYAIR from NicheMapR
 
-#' DRYAIR
+#' @title DRYAIR
 #'
-#' @details Calculates several properties of dry air and related characteristics shownas output variables below. The program
+#' @description Calculates several properties of dry air and related characteristics shownas output variables below. The program
 #' is based on equations from List, R. J. 1971. Smithsonian Meteorological Tables. Smithsonian
 #' Institution Press. Washington, DC. WETAIR must be used in conjunction with function VAPPRS.
 #'
 #' The user must supply values for the input variables (db, bp and alt).
 #' If alt is known (-1000 < alt < 20000) but not BP, then set BP=0
-#' @param db Dry bulb temperature (°C)
+#' @param db Dry bulb temperature (C)
+#' 
 #' @param bp Barometric pressure (pascal)
+#' 
 #' @param alt Altitude (m)
+#' 
 #' @return patmos Standard atmospheric pressure (Pa)
+#' 
 #' @return densty Density (kg m-3)
+#' 
 #' @return visdyn Dynamic viscosity (kg m-1 s-1)
+#' 
 #' @return viskin Kinematic viscosity (m2 s-1)
+#' 
 #' @return difvpr Diffusivity of water vapor in air (m2 s-1)
+#' 
 #' @return thcond Thermal conductivity (W m-1 K-1)
+#' 
 #' @return htovpr Latent heat of vapourisation of water (J kg-1)
+#' 
 #' @return tcoeff Temperature coefficient of volume expansion (K-1)
+#' 
 #' @return ggroup Group of variables in Grashof number (1-m3 -K)
+#' 
 #' @return bbemit black body emittance (W m-2)
+#' 
 #' @return emtmax Wave length of maximum emittance (m)
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' DRYAIR(db=30, bp=100*1000, alt=0)
-#' }
-
+#'   DRYAIR(db=30, bp=100*1000, alt=0)
+#' 
 DRYAIR <- function(db=db, bp=0, alt=0){
   tstd=273.15
   pstd=101325.
@@ -54,14 +67,17 @@ DRYAIR <- function(db=db, bp=0, alt=0){
 #' VAPPRS
 #'
 #' Calculates saturation vapour pressure for a given air temperature.
-#' @param db Dry bulb temperature (°C)
+#' 
+#' @param db Dry bulb temperature (C)
+#' 
 #' @return esat Saturation vapour pressure (Pa)
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
+#' 
 #' VAPPRS(db=30)
-#' }
-
+#' 
 VAPPRS <- function(db=db){
   t=db+273.16
   loge=t
@@ -71,9 +87,9 @@ VAPPRS <- function(db=db){
   return(esat)
 }
 
-#' WETAIR
+#' @title WETAIR
 #'
-#' Calculates several properties of humid air as output variables below. The program
+#' @description Calculates several properties of humid air as output variables below. The program
 #' is based on equations from List, R. J. 1971. Smithsonian Meteorological Tables. Smithsonian
 #' Institution Press. Washington, DC. WETAIR must be used in conjunction with function VAPPRS.
 #'
@@ -86,27 +102,43 @@ VAPPRS <- function(db=db){
 #' If RH is known but not WB then set WB = 0 and DP = 999.
 #' (2) Hygrometric data:
 #' If DP is known then set WB = 0 and RH = 0.
-#' @param db Dry bulb temperature (°C)
-#' @param wb Wet bulb temperature (°C)
+#' 
+#' @param db Dry bulb temperature (C)
+#' 
+#' @param wb Wet bulb temperature (C)
+#' 
 #' @param rh Relative humidity (\%)
-#' @param dp Dew point temperature (°C)
+#' 
+#' @param dp Dew point temperature (C)
+#' 
 #' @param bp Barometric pressure (pascal)
+#' 
 #' @return e Vapour pressure (Pa)
+#' 
 #' @return esat Saturation vapour pressure (Pa)
+#' 
 #' @return vd Vapour density (kg m-3)
+#' 
 #' @return rw Mixing ration (kg kg-1)
+#' 
 #' @return tvir Virtual temperature (K)
+#' 
 #' @return tvinc Virtual temperature increment (K)
+#' 
 #' @return denair Hourly predictions of the soil moisture under the maximum specified shade
+#' 
 #' @return cp Specific heat of air at constant pressure (J kg-1 K-1)
+#' 
 #' @return wtrpot Water potential (Pa)
+#' 
 #' @return Relative humidity (\%)
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
+#' 
 #' WETAIR(db=30, wb=28, rh=60, bp=100*1000)
-#' }
-
+#' 
 WETAIR <- function(db=db, wb=db, rh=0, dp=999, bp=101325){
   
   stopifnot(rh>=0, rh<=100, bp>0)

@@ -7,21 +7,17 @@
 fahrenheit_to_kelvin(T)
 }
 \arguments{
-\item{T}{Temperature in Fahrenheit.}
+\item{T}{\code{numeric} temperature in Fahrenheit.}
 }
 \value{
-Temperature in Kelvin
+\code{numeric}  temperature in Kelvin.
 }
 \description{
-This function allows you to convert temperature from Fahrenheit to Kelvin. Source: https://swcarpentry.github.io.
-}
-\details{
-Converts Fahrenheit to Kelvin.
+Convert temperature from Fahrenheit to Kelvin. Source: https://swcarpentry.github.io.
 }
 \examples{
-\dontrun{
-fahrenheit_to_kelvin(85)
-}
+  fahrenheit_to_kelvin(85)
+
 }
 \seealso{
 Other utility functions: 
@@ -36,5 +32,3 @@ Other utility functions:
 \code{\link{zenith_angle}()}
 }
 \concept{utility functions}
-\keyword{Fahrenheit}
-\keyword{Kelvin}

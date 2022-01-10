@@ -1,34 +1,54 @@
-#' Predicts body temperatures (operative environmental temperature) of a lizard in °C.
+#' Predicts body temperatures (operative environmental temperature) of a lizard in C.
 #' 
-#' @details Predicts body temperatures (operative environmental temperature) of a lizard in °C.
-#' @description Predicts body temperature (operative environmental temperature) of a lizard in °C. 
+#' @details Predicts body temperatures (operative environmental temperature) of a lizard in C.
+#' @description Predicts body temperature (operative environmental temperature) of a lizard in C. 
 #' Based on Campbell and Norman (1998, An introduction to environmental biophysics). 
 #' Designed for Sceloporus lizards and described in Buckley (2008, Linking traits to energetics and population dynamics to predict lizard ranges in changing environments. American Naturalist 171: E1-E19).
 #' 
-#' @param T_a is air temperature in °C
-#' @param T_g  is surface temperature in °C
+#' @param T_a is air temperature in C
+#' 
+#' @param T_g  is surface temperature in C
+#' 
 #' @param u is wind speed in m/s
+#' 
 #' @param svl is lizard snout vent length in mm
+#' 
 #' @param m is lizard mass in g, note that it can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 (Tinkle and Ballinger 1972)
+#' 
 #' @param psi is solar zenith angle in degrees
+#' 
 #' @param rho_S is surface albedo (proportion). ~0.25 for grass, ~0.1 for dark soil, >0.75 for fresh snow (Campbell & Norman 1998)
+#' 
 #' @param elev is elevation in m
+#' 
 #' @param doy is day of year (1-366)
+#' 
 #' @param sun indicates whether lizard is in sun (TRUE) or shade (FALSE)
+#' 
 #' @param surface indicates whether lizard is on ground surface (TRUE) or above surface (FALSE, e.g. in a tree)
+#' 
 #' @param alpha_S is lizard solar absorptivity, alpha_S=0.9 (Gates 1980, Table 11.4)
+#' 
 #' @param alpha_L is lizard thermal absoptivity, alpha_L=0.965 (Bartlett & Gates 1967) 
+#' 
 #' @param epsilon_s is surface emisivity of lizards, epsilon_s=0.965 (Bartlett & Gates 1967)
+#' 
 #' @param F_d is the view factor between the surface of the lizard and diffuse solar radiation (Bartlett & Gates 1967)
+#' 
 #' @param F_r is the view factor between the surface of the lizard and reflected solar radiation
+#' 
 #' @param F_a is the view factor between the surface of the lizard and atmospheric radiation
+#' 
 #' @param F_g is the view factor between the surface of the lizard and ground thermal radation
-#' @return T_e Operative temperature (°C)
+#' 
+#' @return T_e Operative temperature (C)
+#' 
 #' @family biophysical models
+#' 
 #' @export 
+#' 
 #' @examples
-#' \dontrun{
-#' Tb_lizard(
+#'   Tb_lizard(
 #'   T_a=25, 
 #'   T_g=30, 
 #'   u=0.1, 
@@ -47,7 +67,6 @@
 #'   F_r=0.5, 
 #'   F_a=0.5, 
 #'   F_g=0.5)
-#'}
 #' 
 Tb_lizard=function(T_a, T_g, u, svl, m, psi, rho_S, elev, doy, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L=0.965, epsilon_s=0.965, F_d=0.8, F_r=0.5, F_a=0.5, F_g=0.5){
   
@@ -57,7 +76,7 @@ Tb_lizard=function(T_a, T_g, u, svl, m, psi, rho_S, elev, doy, sun=TRUE, surface
   
   # constants
   sigma=5.67*10^-8 # stefan-boltzman constant, W m^-2 K^-4
-  c_p=29.3 # specific heat of air, J/mol °C (p.279) Parentheses all from Campbell & Norman 1998
+  c_p=29.3 # specific heat of air, J/mol C (p.279) Parentheses all from Campbell & Norman 1998
   
   tau=0.65 # atmospheric transmisivity
   S_p0=1360 # extraterrestrial flux density, W/m^2 (p.159)

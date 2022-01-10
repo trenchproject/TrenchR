@@ -15,15 +15,11 @@ Nu_from_Re(Re, taxa = "cylinder")
 Nusselt number (dimensionless)
 }
 \description{
-Estimate the Nusselt number from the Reynolds number (based on Mitchell 1976)
-}
-\details{
-This function allows you to estimate the Nusselt number from the Reynolds number for various taxa.  Source: Mitchell JW. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16: 561-569. See Table 1. Convective Heat Trasfer Relations for Animal Shapes.
+estimate the Nusselt number from the Reynolds number for various taxa.  Source: Mitchell JW. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16: 561-569. See Table 1. Convective Heat Trasfer Relations for Animal Shapes.
 }
 \examples{
-\dontrun{
 Nu_from_Re(Re=5, taxa="cylinder")
-}
+
 
 }
 \seealso{

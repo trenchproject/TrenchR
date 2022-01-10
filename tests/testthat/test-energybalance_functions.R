@@ -28,7 +28,8 @@ test_that("heat_transfer_coefficient_approximation function works as expected", 
 })
 
 test_that("heat_transfer_coefficient_simple function works as expected", {
-  expect_similar(heat_transfer_coefficient_simple(V=0.5,D=0.05), 14.80412)
+  expect_similar(heat_transfer_coefficient_simple(V=0.5,D=0.05, type = "Spotila"), 14.80412)
+  expect_similar(heat_transfer_coefficient_simple(V=0.5,D=0.05, type = "Gates"), 11.03635)
 })
 
 test_that("Qradiation_absorbed function works as expected", {

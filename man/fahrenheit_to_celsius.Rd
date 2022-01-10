@@ -7,21 +7,17 @@
 fahrenheit_to_celsius(T)
 }
 \arguments{
-\item{T}{Temperature in Fahrenheit.}
+\item{T}{\code{numeric} temperature in Fahrenheit.}
 }
 \value{
-Temperature in Celsius
+\code{numeric} temperature in Celsius
 }
 \description{
-This function allows you to convert temperature from Fahrenheit to Celsius. Source: https://swcarpentry.github.io.
-}
-\details{
-Converts Fahrenheit to Celsius.
+Convert temperature from Fahrenheit to Celsius. Source: https://swcarpentry.github.io.
 }
 \examples{
-\dontrun{
-fahrenheit_to_celsius(85)
-}
+  fahrenheit_to_celsius(85)
+
 }
 \seealso{
 Other utility functions: 
@@ -36,5 +32,3 @@ Other utility functions:
 \code{\link{zenith_angle}()}
 }
 \concept{utility functions}
-\keyword{Celsius}
-\keyword{Fahrenheit}

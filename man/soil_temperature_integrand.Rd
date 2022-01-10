@@ -19,13 +19,8 @@ integrand for soil temperature function
 \description{
 Function called by soil_temp_noint to solve equation for soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). The function represents the integrand in the equation. It is not intended to be called directly.
 }
-\details{
-Function called by soil_temp_equation to solve equation for soil temperature.
-}
 \examples{
-\dontrun{
 soil_temperature_integrand(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), L=-10,z0=0.2)
-}
 }
 \seealso{
 Other soil temperature functions: 

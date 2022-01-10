@@ -1,22 +1,33 @@
-#' Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components 
+#' @title Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components 
 #'
-#' @details Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components.
-#' @description This function allows you to estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: Parton WJ and Logan JA. 1981. A model for diurnal variation in soil and air temperature. Agricultural Meteorology 23: 205-216.
-#' @param T_max maximum daily temperature (°C)
-#' @param T_min minimum daily temperature (°C)
+#' @description  estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: Parton WJ and Logan JA. 1981. A model for diurnal variation in soil and air temperature. Agricultural Meteorology 23: 205-216.
+#' 
+#' @param T_max maximum daily temperature (C)
+#' 
+#' @param T_min minimum daily temperature (C)
+#' 
 #' @param t_s time of sunrise (hour)
+#' 
 #' @param t_r time of sunset (hour)
+#' 
 #' @param t time for temperature estimate (hour)
+#' 
 #' @param alpha  time difference between t_x (time of maximum temperature) and noon (hour)
+#' 
 #' @param gamma decay parameter for rate of t change from sunset to t_n (time of minimum temp)
+#' 
 #' @param beta time difference between t_x and sunrise (hour)
-#' @return temperature (°C) at a specified hour 
+#' 
+#' @return temperature (C) at a specified hour 
+#' 
 #' @keywords Temperature
+#' 
 #' @family microclimate functions
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' diurnal_temp_variation_sineexp(
+#'   diurnal_temp_variation_sineexp(
 #'   T_max=30, 
 #'   T_min=10, 
 #'   t=11, 
@@ -25,8 +36,7 @@
 #'   alpha=2.59, 
 #'   beta= 1.55, 
 #'   gamma=2.2)
-#' }
-
+#' 
 diurnal_temp_variation_sineexp=function(T_max, T_min, t, t_r, t_s, alpha=2.59, beta= 1.55, gamma=2.2){
 
   stopifnot(T_max>=T_min, t_s>=0, t_s<=24,t_r>=0, t_r<=24,t>=0, t<=24,alpha>=0, alpha<=24,gamma>=0, gamma<=24,beta>=0, beta<=24)
@@ -64,23 +74,28 @@ if(t>(t_r + beta) &
 return(T)
 }
 
-#' Diurnal temperature across hours
+#' @title Diurnal temperature across hours
 #'
-#' @details Uses a sine interpolation to estimate temperature across hours.
-#' @description This function allows you to estimate temperature for a specified hour using the sine interpolation in Campbell and Norman (1998). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-#' @param T_max maximum daily temperature (°C) 
-#' @param T_min minimum daily temperature (°C)
+#' @description  estimate temperature for a specified hour using the sine interpolation in Campbell and Norman (1998). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
+#' 
+#' @param T_max maximum daily temperature (C) 
+#' 
+#' @param T_min minimum daily temperature (C)
+#' 
 #' @param t time for temperature estimate (hour)
-#' @return temperature (°C) at a specified hour 
+#' 
+#' @return temperature (C) at a specified hour 
+#' 
 #' @keywords Temperature
+#' 
 #' @family microclimate functions
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
+#' 
 #' diurnal_temp_variation_sine(T_max=30, T_min=10, t=11)
-#' }
-
-
+#' 
 diurnal_temp_variation_sine=function(T_max, T_min, t){
   
   stopifnot(t>=0, t<=24, T_max>=T_min)
@@ -96,22 +111,32 @@ diurnal_temp_variation_sine=function(T_max, T_min, t){
 #' Estimates temperature across hours using sine and square root functions
 #'
 #' @details  Estimates temperature across hours using sine and square root functions
-#' @description This function allows you to estimate temperature for a specified hour using sine and square root functions. Source: Cesaraccio C et al. 2001. An improved model for determining degree-day values from daily temperature data. International Journal of Biometeorology 45:161-169.
+#' 
+#' @description  estimate temperature for a specified hour using sine and square root functions. Source: Cesaraccio C et al. 2001. An improved model for determining degree-day values from daily temperature data. International Journal of Biometeorology 45:161-169.
+#' 
 #' @param t hour or hours for temperature estimate
+#' 
 #' @param tr sunrise hour (0-23)
+#' 
 #' @param ts sunset hour (0-23)
-#' @param T_max maximum temperature of current day (°C) 
-#' @param T_min minimum temperature of current day (°C)
-#' @param T_minp minimum temperature of following day (°C)
-#' @return temperature (°C) at a specified hour 
+#' 
+#' @param T_max maximum temperature of current day (C) 
+#' 
+#' @param T_min minimum temperature of current day (C)
+#' 
+#' @param T_minp minimum temperature of following day (C)
+#' 
+#' @return temperature (C) at a specified hour 
+#' 
 #' @keywords Temperature
+#' 
 #' @family microclimate functions
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
 #' diurnal_temp_variation_sinesqrt(t=8, tr=6, ts=18, T_max=30, T_min=10, T_minp=12)
-#' }
-
+#' 
 diurnal_temp_variation_sinesqrt=function(t, tr, ts, T_max, T_min, T_minp){
  
   stopifnot(t>=0, t<=24, tr>=0, tr<=24, ts>=0, ts<=24, T_max>=T_min)

@@ -1,367 +1,431 @@
-#' Calculate day of the year from a passed date
+#' @title Utility: Julian Day from Date
 #' 
-#'  
-#' @details Calculate day of the year
+#' @description Convert a date (day, month, year) to Julian Day (day of year).
 #'
-#' @description This function allows you to calculate day of year from text specifying a date.
-#' @param day day 
-#' @param format date format following "POSIXlt" conventions 
-#' @return day number, 1-366, for eg. 1 for January 1st
-#' @keywords day
+#' @param day \code{character} numerical date in standard format (e.g. "2017-01-02", "01-02", "01/02/2017" etc). 
+#'
+#' @param format \code{character} date format following \code{\link[base]{POSIXlt}}" conventions. Default value = "%Y-%m-%d" 
+#'
+#' @return \code{numeric} Julian day number, 1-366 (eg. 1 for January 1st)
 #' 
+#' @details
+#' \cr \cr
+#' 
+#' @family utility functions  
+#'  
 #' @export
+#'
 #' @examples
-#' \dontrun{
-#' day_of_year("2017-04-22", format= "%Y-%m-%d")
-#' }
-
-day_of_year<- function(day, format="%Y-%m-%d"){
-  day=  as.POSIXlt(day, format=format)
-  return(as.numeric(strftime(day, format = "%j")))
+#'   day_of_year(day = "2017-04-22", format = "%Y-%m-%d")
+#'   day_of_year(day = "2017-04-22")
+#'   day_of_year(day = "04/22/2017", format = "%m/%d/%Y")
+#'
+day_of_year <- function(day, format = "%Y-%m-%d"){
+  
+  day <- as.POSIXlt(day, format = format)
+  as.numeric(strftime(day, format = "%j"))
+  
 }
 
-#' Calculate solar declination in radians
+#' @title Utility: Calculate solar declination in radians
 #' 
-#'  
-#' @details Calculate solar declination in radians
-#'
-#' @description This function allows you to calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-#' @param doy day of year (1-366)
-#' @return declination angle in radians
-#' @keywords Declination angle
+#' @description Calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year \insertCite{Campbell1998}{TrenchR}.
+#' 
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)
+#' 
+#' @return \code{numeric} declination angle (radians)
+#' 
 #' @family utility functions
+#'
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' dec_angle(doy=112)
-#' }
-
+#' dec_angle(doy = 112)
+#' dec_angle(doy = 360)
+#' 
 dec_angle <- function(doy){
-  stopifnot(doy>0, doy<367)
   
-  RevAng = 0.21631 + 2 * atan (0.967 * tan (0.0086 * (-186 + doy))) # Revolution angle in radians, calculated per day
-  DecAng = asin (0.39795 * cos (RevAng))                            # Declination angle in radians  
-  return(DecAng)
+  stopifnot(doy > 0, doy < 367)
+  
+  RevAng <- 0.21631 + 2 * atan(0.967 * tan (0.0086 * (-186 + doy))) 
+  asin(0.39795 * cos (RevAng)) 
+  
 }
 
-#' Calculate day length
+#' @title Utility: Calculate day length
 #' 
-#' 
-#' @details Calculate day length
+#' @description Calculate daylength in hours as a function of latitude and day of year. Uses the CMB model \insertCite{Campbell1998}{TrenchR}.
 #'
-#' @description This function allows you to calculate daylength in hours as a function of latitude and day of year. Uses the CMB model (Forsythe et al. 1995). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-#' @param lat latitude in decimal degrees
-#' @param doy day of year (1-366)
-#' @return day length in hours 
+#' @param lat \code{numeric} latitude (decimal degrees)
 #' 
-#' @keywords day length
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)
+#' 
+#' @return \code{numeric} day length (hours).
+#'
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @family utility functions
+#'
 #' @export
+#'
 #' @examples
-#' \dontrun{
-#' daylength(lat=47.61, doy=112)
-#' }
-
+#'   daylength(lat = 47.61, doy = 112)
+#'
 daylength <- function(lat, doy){
-  stopifnot(lat>=-90, lat<=90, doy>0, doy<367)
   
-  lat=lat*pi/180 #convert degrees to radians
-  RevAng = 0.21631 + 2 * atan (0.967 * tan (0.0086 * (-186 + doy))) # Revolution angle in radians, calculated per day
-  DecAng = asin (0.39795 * cos (RevAng))                            # Declination angle in radians  
-  subset <- (sin (6 * pi / 180) + sin (lat) * sin (DecAng)) / (cos (lat) * cos (DecAng))
-  subset[which(subset>1)]=1
-  subset[which(subset< -1)]= -1
-  Daylength = 24 - (24 / pi) * acos(subset) #hours of daylight
-  return(Daylength)
+  stopifnot(lat >= -90, lat <= 90, doy > 0, doy < 367)
+  
+  lat_rad <- degree_to_radian(lat)
+  DecAng <- dec_angle(doy)
+  subset <- (sin (6 * pi / 180) + sin (lat_rad) * sin (DecAng)) / (cos (lat_rad) * cos (DecAng))
+  subset[which(subset>1)] <- 1
+  subset[which(subset< -1)] <- -1
+  24 - (24 / pi) * acos(subset) 
+  
 }
 
-#' Calculate time of solar noon
+#' @title Utility: Calculate time of solar noon
 #' 
-#' 
-#' @details Calculate time of solar noon
+#' @description  Calculate the time of solar noon in hours as a function of the day of year and longitude  \insertCite{Campbell1998}{TrenchR}.
 #'
-#' @description This function allows you to calculate the time of solar noon in hours as a function of the day of year and longitude. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-#' @param lon longitude in decimal degrees 
-#' @param doy day of year
-#' @param offset is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)
-#' @return time at solar noon
-#' @keywords Solar noon time
+#' @param lon \code{numeric} longitude (decimal degrees)
+#'
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)
+#'
+#' @param offset \code{numeric} number of hours to add to UTC to get local time (improves accuracy but not always necessary). Defaults to NA.
+#'
+#' @return \code{numeric} time of solar noon (hours).
+#'
+#' @references
+#'   \insertAllCited{}
+#'
 #' @family utility functions
+#'
 #' @export
+#'
 #' @examples
-#' \dontrun{
-#' solar_noon(lon=-122.335, doy=112)
-#' }
-
-solar_noon <- function(lon, doy, offset=NA){
+#'   solar_noon(lon = -122.335, doy = 112)
+#'
+solar_noon <- function(lon, doy, offset = NA){
   
-  stopifnot(lon>=-180, lon<=180, doy>0, doy<367)
+  stopifnot(lon >= -180, lon <= 180, doy > 0, doy < 367)
   
-  # Calculate the time of solar noon for each day using longitude correction (LC), equation of time (ET), and a conversion (f)
-  f=(279.575+0.9856*doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
-  f[f>360]=f[f>360]-360 #ensure 0 to 360 degrees
-  f=f*pi/180 #convert f in degrees to radians
+  # Calculates the time of solar noon for each day using longitude correction (LC), equation of time (ET), and a conversion (f)
+  f <- (279.575 + 0.9856 * doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
+  f[f > 360] = f[f > 360] - 360  # ensure 0 to 360 degrees
+  f <- f * pi / 180              # convert f in degrees to radians
   
-  ET= (-104.7*sin (f)+596.2*sin (2*f)+4.3*sin (3*f)-12.7*sin (4*f)-429.3*cos (f)-2.0*cos (2*f)+19.3*cos (3*f))/3600   # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
+  # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
+  ET <- (-104.7 * sin(f) + 596.2 * sin(2*f) + 4.3 * sin(3*f) - 12.7 * sin(4*f) - 429.3 * cos(f) - 2.0 * cos(2*f) + 19.3 * cos(3*f)) / 3600
   
-  lon[lon<0]=360+lon[lon<0] #convert to 0 to 360
-  LC= 1/15*(lon%%15) # longitude correction, 1/15h for each degree of standard meridian
-  LC[LC>0.5]= LC[LC>0.5]-1
-  t_0 = 12-LC-ET # solar noon
+  lon[lon < 0] <- 360 + lon[lon < 0] # convert to 0 to 360
+  LC <- 1 / 15 * (lon %% 15) # longitude correction, 1/15h for each degree of standard meridian
+  LC[LC > 0.5] <- LC[LC > 0.5] - 1
+  t_0 <- 12 - LC - ET # solar noon
   
-  #Check if offset is as expected. (Is the timezone of the location the same as that of the meridian 
-  #that's within 7.5 degrees from that location?)
-  lon[lon>180]=lon[lon>180]-360
+  # Check if offset is as expected. (Is the timezone of the location the same as that of the meridian 
+  # that's within 7.5 degrees from that location?)
+  lon[lon > 180] <- lon[lon > 180] - 360
   if (!is.na(offset)) {
+    
     offset_theory <- as.integer(lon / 15) + lon / abs(lon) * as.integer(abs(lon) %% 15 / 7.5)
     t_0 = t_0 - offset_theory + offset
+    
   }
   
-  return(t_0)
+  t_0
 }
 
 
-#' Calculate Zenith Angle
+#' @title Utility: Calculate Zenith Angle
 #' 
+#' @description  calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @details Calculate Zenith angle
-#'
-#' @description This function allows you to calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-#' @param doy is day of year.
-#' @param lat is latitude in decimal degrees.
-#' @param lon is longitude in decimal degrees.
-#' @param hour is hour of the day.
-#' @param offset is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)
-#' @return Zenith angle in degrees
-#' @keywords Zenith angle
+#' @param doy \code{numeric}  day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)
+#' 
+#' @param lat \code{numeric}  latitude (decimal degrees)
+#' 
+#' @param lon \code{numeric}  longitude (decimal degrees)
+#' 
+#' @param hour \code{numeric}  hour of the day
+#' 
+#' @param offset \code{numeric}  the number of hours to add to UTC to get local time (improves accuracy but not always necessary). Optional. Defaults to NA.
+#' 
+#' @return \code{numeric} zenith angle (degrees)
+#' 
 #' @family utility functions
+#' 
 #' @export
+#'
+#' @references
+#'   \insertAllCited{}
+#'
 #' @examples
-#' \dontrun{
-#' zenith_angle(doy=112, lat=47.61, lon=-122.33, hour=12)
-#' }
+#' 
+#' zenith_angle(doy = 112, lat = 47.61, lon = -122.33, hour = 12)
+#' 
+zenith_angle <- function(doy, lat, lon, hour, offset = NA){
 
-zenith_angle=function(doy, lat, lon, hour, offset=NA){
-
-  stopifnot(doy>0, doy<367, lat>=-90, lat<=90, lon>=-180, lon<=180, hour>=0, hour<=24)
+  stopifnot(doy > 0, doy < 367, lat >= -90, lat <= 90, lon >= -180, lon <= 180, hour >= 0, hour <= 24)
   
-  lat=lat*pi/180 #to radians
+  lat <- lat * pi / 180 # to radians
     
-  RevAng = 0.21631 + 2 * atan(0.967 * tan(0.0086 * (-186 + doy))); # Revolution angle in radians
-  DecAng = asin(0.39795 * cos(RevAng));                            # Declination angle in radians           
+  RevAng <- 0.21631 + 2 * atan(0.967 * tan(0.0086 * (-186 + doy))) # Revolution angle in radians
+  DecAng <- asin(0.39795 * cos(RevAng))                            # Declination angle in radians           
     
-  f=(279.575+0.9856*doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
-  f=f*pi/180 #convert f in degrees to radians
-  ET= (-104.7*sin (f)+596.2*sin (2*f)+4.3*sin (3*f)-12.7*sin (4*f)-429.3*cos (f)-2.0*cos (2*f)+19.3*cos (3*f))/3600   # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
-  lon[lon<0]=360+lon[lon<0] #convert to 0 to 360
-  LC= 1/15*(lon%%15) # longitude correction, 1/15h for each degree of standard meridian
-  LC[LC>0.5]= LC[LC>0.5]-1
-  t_0 = 12-LC-ET # solar noon
+  f <- 279.575 + 0.9856 * doy # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
+  f <- f * pi / 180 # convert f in degrees to radians
   
-  #Check if offset is as expected. (Is the timezone of the location the same as that of the meridian 
-  #that's within 7.5 degrees from that location?)
-  lon[lon>180]=lon[lon>180]-360
+  # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
+  ET <- (-104.7 * sin(f) + 596.2 * sin(2 * f) + 4.3 * sin(3 * f) - 12.7 * sin(4 * f) - 429.3 * cos(f) - 2.0 * cos(2 * f) + 19.3 * cos(3 * f)) / 3600   
+  
+  lon[lon < 0] <- 360 + lon[lon < 0] #convert to 0 to 360
+  LC <- 1 / 15 * (lon %% 15) # longitude correction, 1/15h for each degree of standard meridian
+  LC[LC > 0.5] <- LC[LC > 0.5] - 1
+  t_0 <- 12 - LC - ET # solar noon
+  
+  # Check if offset is as expected. (Is the timezone of the location the same as that of the meridian 
+  # that's within 7.5 degrees from that location?)
+  lon[lon > 180] <- lon[lon > 180] - 360
   if (!is.na(offset)) {
     offset_theory <- as.integer(lon / 15) + lon / abs(lon) * as.integer(abs(lon) %% 15 / 7.5)
-    t_0 = t_0 - offset_theory + offset
+    t_0 <- t_0 - offset_theory + offset
   }
   
-  cos.zenith= sin(DecAng)*sin(lat) + cos(DecAng)*cos(lat)*cos(pi/12*(hour-t_0)); #cos of zenith angle in radians
-  zenith=acos(cos.zenith)*180/pi # zenith angle in degrees
-  zenith[zenith>90]=90 # if measured from the vertical psi can't be greater than pi/2 (90 degrees)
+  cos.zenith <- sin(DecAng) * sin(lat) + cos(DecAng) * cos(lat) * cos(pi / 12 * (hour - t_0)) # cos of zenith angle in radians
+  zenith <- acos(cos.zenith) * 180 / pi # zenith angle in degrees
+  zenith[zenith > 90] <- 90 # if measured from the vertical psi can't be greater than pi/2 (90 degrees)
 
-return(zenith)
+  zenith
 }
 
-#' Calculate Azimuth angle
-#' 
-#' 
-#' @details Calculate azimuth angle
+#' @title Utility: Calculate Azimuth angle
 #'
-#' @description This function allows you to calculate the azimuth angle, the angle (in degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-#' @param doy is day of year (1-366).
-#' @param lat is latitude in decimal degrees.
-#' @param lon is longitude in decimal degrees.
-#' @param hour is hour of the day.
-#' @param offset is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)
-#' @return Azimuth angle in degrees
-#' @keywords Azimuth angle
+#' @description  calculate the azimuth angle, the angle (degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east \insertCite{Campbell1998}{TrenchR}.
+#' 
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)
+#' 
+#' @param lat \code{numeric} latitude (decimal degrees)
+#' 
+#' @param lon \code{numeric} longitude (decimal degrees)
+#' 
+#' @param hour \code{numeric} hour of the day
+#' 
+#' @param offset \code{numeric} number of hours to add to UTC to get local time (to improve accuracy but not always necessary). Optional. Defaults to NA.
+#' 
+#' @return \code{numeric} azimuth angle (degrees)
+#'
+#' @references
+#'   \insertAllCited{}
+#'
 #' @family utility functions
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12, offset = -8)
-#' }
+#'   azimuth_angle(doy = 112, lat = 47.61, lon = -122.33, hour = 12, offset = -8)
+#' 
+azimuth_angle <- function(doy, lat, lon, hour, offset = NA){
+  
+  stopifnot(doy > 0, doy < 367, lat >= -90, lat <= 90, lon >= -180, lon <= 180, hour >= 0, hour <= 24)
+  
+  lat <- lat * pi / 180 #to radians
+  
+  RevAng <- 0.21631 + 2 * atan(0.967 * tan(0.0086 * (-186 + doy))) # Revolution angle in radians
+  DecAng <- asin(0.39795 * cos(RevAng))                            # Declination angle in radians           
 
-azimuth_angle=function(doy, lat, lon, hour, offset=NA){
+  f <- 279.575 + 0.9856 * doy  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
+  f <- f * pi / 180 # convert f in degrees to radians
   
-  stopifnot(doy>0, doy<367, lat>=-90, lat<=90, lon>=-180, lon<=180, hour>=0, hour<=24)
-  
-  lat=lat*pi/180 #to radians
-  
-  RevAng = 0.21631 + 2 * atan(0.967 * tan(0.0086 * (-186 + doy))); # Revolution angle in radians
-  DecAng = asin(0.39795 * cos(RevAng));                          # Declination angle in radians           
+  # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
+  ET <- (-104.7 * sin(f) + 596.2 * sin(2 * f) + 4.3 * sin(3 * f) - 12.7 * sin(4 * f) - 429.3 * cos(f) - 2.0 * cos(2 * f) + 19.3 * cos(3 * f)) / 3600  
+  lon[lon < 0] <- 360 + lon[lon < 0] # convert to 0 to 360
 
-  f=(279.575+0.9856*doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
-  f=f*pi/180 #convert f in degrees to radians
+  # Set up two booleans on whether we need to apply a correction on azimuth angle at the end
+  azi_corr1 <- FALSE
+  azi_corr2 <- TRUE
   
-  ET= (-104.7*sin (f)+596.2*sin (2*f)+4.3*sin (3*f)-12.7*sin (4*f)-429.3*cos (f)-2.0*cos (2*f)+19.3*cos (3*f))/3600   # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
-  lon[lon<0]=360+lon[lon<0] #convert to 0 to 360
-
-  ##Set up two booleans on whether we need to apply a correction on azimuth angle at the end
-  azi_corr1 = FALSE
-  azi_corr2 = TRUE
-  
-  LC= 1/15*(lon%%15) # longitude correction, 1/15h for each degree of standard meridian
+  LC <- 1 / 15 * (lon %% 15) # longitude correction, 1/15h for each degree of standard meridian
 
   if (LC > 0.5) {
+    
     LC = LC - 1
+  
   } else {
+    
     azi_corr1 = TRUE
+    
   }
   
-  t_0 = 12-LC-ET # solar noon
+  t_0 <- 12 - LC - ET # solar noon
   
-  #Check if offset is as expected. (Is the timezone of the location the same as that of the meridian 
-  #that's within 7.5 degrees from that location?)
-  lon[lon>180]=lon[lon>180]-360
+  # Check if offset is as expected. (Is the timezone of the location the same as that of the meridian 
+  # that's within 7.5 degrees from that location?)
+  lon[lon > 180] <- lon[lon > 180] - 360
   if (!is.na(offset)) {
+    
     offset_theory <- as.integer(lon / 15) + lon / abs(lon) * as.integer(abs(lon) %% 15 / 7.5)
+    
     if (offset_theory != offset) {
-      t_0 = t_0 - offset_theory + offset
-      azi_corr2 = FALSE
+      
+      t_0 <- t_0 - offset_theory + offset
+      azi_corr2 <- FALSE
+      
     }
+    
   }
   
-  cos.zenith = sin(DecAng) * sin(lat) + cos(DecAng) * cos(lat) * cos(pi / 12 * (hour - t_0)); #cos of zenith angle in radians
-  zenith = acos(cos.zenith) # zenith angle in radians
-  if (zenith > pi / 2) zenith = pi / 2 # if measured from the vertical psi can't be greater than pi/2 (90 degrees)
+  cos.zenith <- sin(DecAng) * sin(lat) + cos(DecAng) * cos(lat) * cos(pi / 12 * (hour - t_0)) #cos of zenith angle in radians
+  zenith <- acos(cos.zenith) # zenith angle in radians
   
-  cos.azimuth = -(sin(DecAng) - cos(zenith)*sin(lat)) / (cos(lat) * sin(zenith))
-  azimuth = acos(cos.azimuth) * 180 / pi #azimuth angle in degrees
+  if (zenith > pi / 2){
+    
+    zenith <- pi / 2 # if measured from the vertical psi can't be greater than pi/2 (90 degrees)
+    
+  } 
+  
+  cos.azimuth <- -(sin(DecAng) - cos(zenith) * sin(lat)) / (cos(lat) * sin(zenith))
+  azimuth <- acos(cos.azimuth) * 180 / pi # azimuth angle in degrees
   
   if (azi_corr1 && azi_corr2) {
+    
     azimuth = 360 - azimuth
+    
   }
   
-  return(azimuth)
+  azimuth
 }
 
-#' Estimate air pressure in kPa (Kilo Pascal)
+#' @title Utility: Estimate air pressure in kPa (Kilo Pascal)
+#'
+#' @description Calculate estimated air pressure (kPa) as a function of elevation. Source: http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html.
 #' 
+#' @param elev \code{numeric} elevation (meters)
 #' 
-#' @details Estimate air pressure (kPa) as a function of elevation. 
-#' @description  This function allows you to calculate estimated air pressure (kPa) as a function of elevation. Source: http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html.
-#' @param elev elevation in meters.
-#' @keywords Air Pressure
 #' @family utility functions
-#' @return Air pressure in kPa
+#' 
+#' @return \code{numeric} air pressure (kPa)
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' airpressure_from_elev(1500)
-#' }
-airpressure_from_elev<- function(elev){  
+#'   airpressure_from_elev(elev = 1500)
+#'
+airpressure_from_elev <- function(elev){  
  
-  stopifnot(elev>=0)
+  stopifnot(elev >= 0)
   
-  #p= 101325* (1 - 2.25577*10^(-5)*elev)^5.25588       
-  #p= p/1000 #convert to kPa
-  
-  p_a=101.3* exp (-elev/8200)  #Campbell and Norman
-  
-  return(p_a)
+  101.3 * exp (-elev / 8200)  
+
 }
 
-#' Converts Fahrenheit to Kelvin
+#' @title Utility: Converts Fahrenheit to Kelvin
 #' 
+#' @description Convert temperature from Fahrenheit to Kelvin. Source: https://swcarpentry.github.io.
 #' 
-#' @details Converts Fahrenheit to Kelvin.
-#' @description  This function allows you to convert temperature from Fahrenheit to Kelvin. Source: https://swcarpentry.github.io.
-#' @param T Temperature in Fahrenheit.
-#' @keywords Fahrenheit Kelvin
+#' @param T \code{numeric} temperature (Fahrenheit)
+#' 
 #' @family utility functions
-#' @return Temperature in Kelvin
+#' 
+#' @return \code{numeric} temperature (Kelvin)
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' fahrenheit_to_kelvin(85)
-#' }
-
+#'   fahrenheit_to_kelvin(T = 85)
+#' 
 fahrenheit_to_kelvin <- function(T) {
-  kelvin <- ((T - 32) * (5/9)) + 273.15
-  return(kelvin)
+  
+  ((T - 32) * (5 / 9)) + 273.15
+  
 }
 
-#' Converts Kelvin to Celsius
+#' @title Utility: Converts Kelvin to Celsius
 #' 
+#' @description Convert temperature from Kelvin to Celsius. Source: https://swcarpentry.github.io.
 #' 
-#' @details Converts Kelvin to Celsius.
-#' @description This function allows you to convert temperature from Kelvin to Celsius. Source: https://swcarpentry.github.io.
-#' @param T Temperature in Kelvin.
+#' @param T \code{numeric} temperature (Kelvin)
+#' 
 #' @keywords Celsius Kelvin
+#' 
 #' @family utility functions
-#' @return Temperature in Celsius
+#' 
+#' @return \code{numeric} temperature (Celsius)
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' kelvin_to_celsius(270)
-#' }
-
+#'   kelvin_to_celsius(T = 270)
+#' 
 kelvin_to_celsius <- function(T) {
-  Celsius <- T - 273.15
-  return(Celsius)
+  
+  T - 273.15
+  
 }
 
-#' Converts Fahrenheit to Celsius
+#' @title Utility: Converts Fahrenheit to Celsius
 #' 
+#' @description Convert temperature from Fahrenheit to Celsius. Source: https://swcarpentry.github.io.
 #' 
-#' @details Converts Fahrenheit to Celsius.
-#' @description This function allows you to convert temperature from Fahrenheit to Celsius. Source: https://swcarpentry.github.io.
-#' @param T Temperature in Fahrenheit.
-#' @keywords Fahrenheit Celsius
+#' @param T \code{numeric} temperature (Fahrenheit)
+#' 
 #' @family utility functions
-#' @return Temperature in Celsius
+#' 
+#' @return \code{numeric} temperature (Celsius)
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' fahrenheit_to_celsius(85)
-#' }
-
+#'   fahrenheit_to_celsius(T = 85)
+#' 
 fahrenheit_to_celsius <- function(T) {
+  
   temp_k <- fahrenheit_to_kelvin(T)
-  result <- kelvin_to_celsius(temp_k)
-  return(result)
+  kelvin_to_celsius(temp_k)
+  
 }
 
-#' Converts angle in radians to degrees
-#'
-#' @details Converts angles in radians to degrees.
+#' @title Utility: Converts angle in radians to degrees
 #' 
-#' @description This function allows you to convert angle in radians to degrees.
-#' @param rad angle in radians
-#' @keywords radians to degrees
-#' @return angle in degrees
+#' @description Convert angle in radians to degrees.
+#' 
+#' @param rad \code{numeric} angle (radians)
+#' 
+#' @return \code{numeric} angle (degrees)
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' radian_to_degree(0.831)
-#' }
-radian_to_degree <- function(rad) {(rad * 180) / (pi)}
+#'   radian_to_degree(0.831)
+#' 
+radian_to_degree <- function(rad) {
+  
+  rad * 180 / pi
+  
+}
 
-#' Converts angle in degrees to radians
+#' @title Utility: Converts angle in degrees to radians
 #'
-#'
-#' @details Converts angle in degrees to radians.
-#' @description This function allows you to convert angle in degrees to radians.
-#' @param deg angle in degrees
-#' @keywords degrees to radians
+#' @description Convert angle in degrees to radians.
+#' 
+#' @param deg \code{numeric} angle (degrees)
+#' 
 #' @family utility functions
-#' @return angle in radians
+#' 
+#' @return \code{numeric} angle (radians)
+#' 
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' degree_to_radian(47.608)
-#' }
-degree_to_radian <- function(deg) {(deg * pi) / (180)}
+#'   degree_to_radian(47.608)
+#' 
+degree_to_radian <- function(deg) {
+  
+  deg * pi / 180
+  
+}
 

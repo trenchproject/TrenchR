@@ -15,14 +15,11 @@ surface_roughness(u_r, zr)
 surface roughness (m)
 }
 \description{
-This function allows you to estimate surface roughness in m from empirical wind speed (m/s) 
+estimate surface roughness in m from empirical wind speed (m/s) 
 data collected at a vector of heights (m). Estimates surface roughness from empirical measurements. 
 References: Kingsolver and Buckley. 2015. Climate variability slows evolutionary responses of Colias butterflies to recent climate change. PRSb;
 G. S. Campbell, J. M. Norman, An introduction to environmental biophysics. (Springer Science, New York, 1998); W. P. Porter, J. W. Mitchell, W. A. Beckman, C. B. DeWitt, Behavioral implications of mechanistic
 ecology. Thermal and behavioral modeling of desert ecotherms and their microenvironment. Oecologia 13, 1-54 (1973)
-}
-\details{
-Estimate surface roughness in m
 }
 \examples{
 \dontrun{

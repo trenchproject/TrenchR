@@ -1,24 +1,34 @@
-#' Predicts body temperature (operative environmental temperature) of a marine snail in °C.
+#' Predicts body temperature (operative environmental temperature) of a marine snail in C.
 #' 
 #' 
-#' @details Predicts body temperature of a snail in °C.
-#' @description Predicts body temperature of a snail in °C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Iacarella and Helmuth 2012. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication. 
-#' @param temp air temperature (°C)
+#' @details Predicts body temperature of a snail in C.
+#' @description Predicts body temperature of a snail in C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Iacarella and Helmuth 2012. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication. 
+#' 
+#' @param temp air temperature (C)
+#' 
 #' @param Len snail length (m)
+#' 
 #' @param solar direct solar flux density (W/m2)
+#' 
 #' @param WS wind speed (m/s)
+#' 
 #' @param CC fraction of the sky covered by cloud (0-1)
+#' 
 #' @param WL water loss rate (kg/s), 5 percent loss of body mass over one hour is a reasonable maximum level (Helmuth 1999)
+#' 
 #' @param WSH wind sensor height (m)
-#' @return predicted body temperature (°C)
+#' 
+#' @return predicted body temperature (C)
+#' 
 #' @family biophysical models
+#' 
 #' @export
+#' 
 #' @author Brian Helmuth Lab
+#' 
 #' @examples
-#' \dontrun{
-#' Tb_snail(temp = 25, Len = 0.012, solar=800, WS=1, CC=0.5, WL=0, WSH=10)
-#' }
-
+#'   Tb_snail(temp = 25, Len = 0.012, solar=800, WS=1, CC=0.5, WL=0, WSH=10)
+#' 
 Tb_snail = function(temp, Len, solar, WS, CC, WL, WSH){
   
   stopifnot(Len>0, solar>=0, WS>= 0, CC>=0, CC<=1, WL>=0, WSH>=0)

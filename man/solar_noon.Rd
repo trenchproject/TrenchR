@@ -7,25 +7,24 @@
 solar_noon(lon, doy, offset = NA)
 }
 \arguments{
-\item{lon}{longitude in decimal degrees}
+\item{lon}{\code{numeric} longitude in decimal degrees.}
 
-\item{doy}{day of year}
+\item{doy}{\code{numeric} day of year.}
 
-\item{offset}{is the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)}
+\item{offset}{\code{numeric} number of hours to add to UTC to get local time (to improve accuracy but not always necessary).}
 }
 \value{
-time at solar noon
+\code{numeric} time at solar noon.
 }
 \description{
-This function allows you to calculate the time of solar noon in hours as a function of the day of year and longitude. Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
-}
-\details{
-Calculate time of solar noon
+Calculate the time of solar noon in hours as a function of the day of year and longitude  \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
-\dontrun{
-solar_noon(lon=-122.335, doy=112)
+  solar_noon(lon=-122.335, doy=112)
+
 }
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other utility functions: 
@@ -40,6 +39,3 @@ Other utility functions:
 \code{\link{zenith_angle}()}
 }
 \concept{utility functions}
-\keyword{Solar}
-\keyword{noon}
-\keyword{time}

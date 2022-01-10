@@ -23,18 +23,14 @@ Qconduction_substrate(T_g, T_b, D, K_g = 0.5, A, proportion)
 conductance (W)
 }
 \description{
-Calculate conductance assuming substrate thermal conductivity is rate limiting
-}
-\details{
-This function allows you to calculate conductance (W) of an ectothermic animal to its substate.
+calculate conductance (W) of an ectothermic animal to its substate.
          Method assumes the major resistance to conduction is the substrate and that the interior of the 
          animal is equal in temperature to its surface (thermally well mixed). 
          Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
 }
 \examples{
-\dontrun{
 Qconduction_substrate(T_g= 293, T_b=303, D=0.01, K_g=0.3, A=10^-2, proportion=0.2)
-}
+
 
 }
 \seealso{

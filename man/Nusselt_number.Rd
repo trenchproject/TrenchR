@@ -17,10 +17,7 @@ Nusselt_number(H_L, D, K)
 Nusselt number
 }
 \description{
-Calculate Nusselt Number
-}
-\details{
-This function allows you to estimate the Nusselt Number, which describes dimensionless conductance (Gates 1980 Biophysical Ecology).
+estimate the Nusselt Number, which describes dimensionless conductance (Gates 1980 Biophysical Ecology).
 }
 \examples{
 \dontrun{

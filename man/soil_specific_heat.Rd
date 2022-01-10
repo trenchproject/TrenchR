@@ -19,15 +19,11 @@ soil_specific_heat(x_o, x_m, x_w, rho_so)
 soil specific heat (J kg^-1 K^-1)
 }
 \description{
-This function allows you to estimate soil specific heat in J kg^-1 K^-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).  Uses the volume fraction of organic material, minerals, and water in soil.  CHECK Campbell and Norman (2000) section 8.2.
-}
-\details{
-Estimate soil specific heat in J kg^-1 K^-1.
+estimate soil specific heat in J kg^-1 K^-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).  Uses the volume fraction of organic material, minerals, and water in soil.  CHECK Campbell and Norman (2000) section 8.2.
 }
 \examples{
-\dontrun{
 soil_specific_heat(x_o=0.01, x_m=0.6, x_w=0.2, rho_so=1620)
-}
+
 }
 \seealso{
 Other soil temperature functions: 

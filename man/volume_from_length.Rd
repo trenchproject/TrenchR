@@ -2,19 +2,19 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{volume_from_length}
 \alias{volume_from_length}
-\title{Calculate organism volume from length}
+\title{Calculate Organism Volume from Length}
 \usage{
-volume_from_length(l, taxa)
+volume_from_length(L, taxon)
 }
 \arguments{
-\item{l}{\code{numeric} length in meters (m). 
+\item{L}{\code{numeric} length (m). 
 \cr \cr
-Snout-vent length for amphibians and reptiles (excepting turtles where length is carapace length).}
+Snout-vent length for amphibians and reptiles is used, except for turltes (carapace length is used).}
 
-\item{taxa}{\code{character} taxon of organism, current choices: \code{"lizard"}, \code{"frog"}, \code{"sphere"}.}
+\item{taxon}{\code{character} taxon of organism, current choices: \code{"lizard"}, \code{"frog"}, \code{"sphere"}.}
 }
 \value{
-\code{numeric} volume in meters cubed (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}).
+\code{numeric} volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}).
 }
 \description{
 Estimate volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) from length (m) for a variety of taxa following \insertCite{Mitchell1976}{TrenchR}
@@ -27,9 +27,9 @@ Relationships come from \itemize{
  }
 }
 \examples{
-  volume_from_length(l = 0.05, taxa = "lizard")
-  volume_from_length(l = 0.05, taxa = "frog")
-  volume_from_length(l = 0.05, taxa = "sphere")
+  volume_from_length(L = 0.05, taxon = "lizard")
+  volume_from_length(L = 0.05, taxon = "frog")
+  volume_from_length(L = 0.05, taxon = "sphere")
 
 }
 \references{
@@ -38,11 +38,11 @@ Relationships come from \itemize{
 \seealso{
 Other allometric functions: 
 \code{\link{mass_from_length}()},
-\code{\link{prop_silhouette_area_shapes}()},
-\code{\link{prop_silhouette_area}()},
-\code{\link{sa_from_length}()},
-\code{\link{sa_from_mass}()},
-\code{\link{sa_from_volume}()}
+\code{\link{proportion_silhouette_area_shapes}()},
+\code{\link{proportion_silhouette_area}()},
+\code{\link{surface_area_from_length}()},
+\code{\link{surface_area_from_mass}()},
+\code{\link{surface_area_from_volume}()}
 }
 \concept{allometric functions}
 \keyword{length}

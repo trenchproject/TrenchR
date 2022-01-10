@@ -2,45 +2,44 @@
 % Please edit documentation in R/biophysmodel_Mussel.R
 \name{Tb_mussel}
 \alias{Tb_mussel}
-\title{Predicts body temperature (operative environmental temperature) of a mussel in °C.}
+\title{Calculate Operative Environmental Temperature of a mussel in C.}
 \usage{
 Tb_mussel(L, H, T_a, T_g, S, k_d, u, psi, evap = FALSE, cl, group = "solitary")
 }
 \arguments{
-\item{L}{mussel length (anterior/posterior axis) (m)}
+\item{L}{mussel length (anterior/posterior axis) (m).}
 
-\item{H}{mussel height (dorsal/ventral axis) (m), reasonable to assume 0.5*L}
+\item{H}{mussel height (dorsal/ventral axis) (m). It is reasonable to assume \code{H = 0.5 * L}.}
 
-\item{T_a}{air temperature (°C)}
+\item{T_a}{air temperature (C).}
 
-\item{T_g}{ground temperature (°C)}
+\item{T_g}{ground temperature (C).}
 
-\item{S}{direct solar flux density (W/m2)}
+\item{S}{direct solar flux density (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
 \item{k_d}{diffuse fraction, proportion of solar radiation that is diffuse}
 
-\item{u}{wind speed (m/s)}
+\item{u}{wind speed (m/s).}
 
 \item{psi}{solar zenith angle (degrees): can be calculated from zenith_angle function}
 
-\item{evap}{Are mussels gaping to evaporatively cool? TRUE of FALSE (default), If TRUE, assumes constant mass loss rate of 5 percent of initial body mass per hour}
+\item{evap}{Are mussels gaping to evaporatively cool? \code{TRUE} or \code{FALSE} (default), If \code{TRUE}, assumes constant mass loss rate of 5 percent of initial body mass per hour.}
 
 \item{cl}{fraction of the sky covered by cloud}
 
-\item{group}{options are "aggregated": mussels living in beds, "solitary": mussels individuals, anterior or posterior end facing upwind, 
-and "solitary_valve": solitary individuals, valve facing upwind}
+\item{group}{\code{character}; options are \code{"aggregated"}: mussels living in beds; \code{"solitary"}: mussels individuals, anterior or posterior end facing upwind; and \code{"solitary_valve"}: solitary individuals, valve facing upwind.}
 }
 \value{
-predicted body temperature (°C)
+predicted body temperature (C).
 }
 \description{
-Predicts body temperature of a mussel in °C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Helmuth 1998, INTERTIDAL MUSSEL MICROCLIMATES: PREDICTING THE BODY TEMPERATURE OF A SESSILE INVERTEBRATE
+Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions.
 }
 \details{
-Predicts body temperature of a mussel in °C.
+Thermal radiative flux is calculated following \insertCite{Helmuth1998;textual}{TrenchR}, \insertCite{Helmuth1999;textual}{TrenchR}, and \insertCite{Idso1969;textual}{TrenchR}.
 }
 \examples{
-\dontrun{
+
 Tb_mussel(
   L = 0.1, 
   H = 0.05, 
@@ -53,7 +52,10 @@ Tb_mussel(
   evap = FALSE, 
   cl = 0.5, 
   group = "solitary")
+
 }
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

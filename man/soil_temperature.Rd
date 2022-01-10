@@ -2,7 +2,7 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_temperature}
 \alias{soil_temperature}
-\title{Function to calculate soil temperature in °C using ODEs.}
+\title{Function to calculate soil temperature in C using ODEs.}
 \usage{
 soil_temperature(
   z_r.intervals = 12,
@@ -28,11 +28,11 @@ soil_temperature(
 
 \item{z}{is interval of the soil profile to return (1 to z_r.intervals)}
 
-\item{T_a}{is a vector of air temperature in degrees °C, Note: missing values will be linearly interpolated}
+\item{T_a}{is a vector of air temperature in degrees C, Note: missing values will be linearly interpolated}
 
 \item{u}{is a vector of wind speed (m/s)}
 
-\item{Tsoil0}{is the initial soil temperature in degrees °C}
+\item{Tsoil0}{is the initial soil temperature in degrees C}
 
 \item{z0}{is surface roughness in m}
 
@@ -51,13 +51,10 @@ soil_temperature(
 \item{shade}{is whether or not soil temperature should be calculated in the shade, TRUE or FALSE}
 }
 \value{
-soil temperature (°C)
+soil temperature (C)
 }
 \description{
-Function called to calculate soil temperature in °C from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature.
-}
-\details{
-Function to calculate soil temperature in °C using ODEs.
+Function called to calculate soil temperature in C from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature.
 }
 \examples{
 \dontrun{
