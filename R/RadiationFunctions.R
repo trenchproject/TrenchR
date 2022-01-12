@@ -156,22 +156,19 @@ monthly_solar_radiation <- function(lat, lon, doy, elev, T, Hr, P){
   # functions to calculate sin and cos for angles in degrees
   cos.deg <- function(deg) { 
     
-    rad <- deg * pi / 180
-    cos(rad)
+    cos(degree_to_radian(deg))
   
   }
   
   sin.deg <- function(deg) { 
     
-    rad <- deg * pi / 180
-    sin(rad)
+    sin(degree_to_radian(deg))
     
   }
   
   tan.deg <- function(deg) { 
     
-    rad <- deg * pi / 180
-    tan(rad)
+    tan(degree_to_radian(deg))
     
   }
   
