@@ -14,6 +14,9 @@
 #' @family utility functions  
 #'  
 #' @export
+#' 
+#' @references
+#'   \insertAllCited{}
 #'
 #' @examples
 #'   day_of_year(day = "2017-04-22", format = "%Y-%m-%d")
@@ -312,6 +315,9 @@ azimuth_angle <- function(doy, lat, lon, hour, offset = NA){
 #' 
 #' @export
 #' 
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @examples
 #'   airpressure_from_elev(elev = 1500)
 #'
@@ -334,6 +340,9 @@ airpressure_from_elev <- function(elev){
 #' @return \code{numeric} temperature (Kelvin)
 #' 
 #' @export
+#' 
+#' @references
+#'   \insertAllCited{}
 #' 
 #' @examples
 #'   fahrenheit_to_kelvin(T = 85)
@@ -358,6 +367,9 @@ fahrenheit_to_kelvin <- function(T) {
 #' 
 #' @export
 #' 
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @examples
 #'   kelvin_to_celsius(T = 270)
 #' 
@@ -379,6 +391,9 @@ kelvin_to_celsius <- function(T) {
 #' 
 #' @export
 #' 
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @examples
 #'   fahrenheit_to_celsius(T = 85)
 #' 
@@ -398,6 +413,9 @@ fahrenheit_to_celsius <- function(T) {
 #' @return \code{numeric} angle (degrees)
 #' 
 #' @export
+#' 
+#' @references
+#'   \insertAllCited{}
 #' 
 #' @examples
 #'   radian_to_degree(0.831)
@@ -419,6 +437,9 @@ radian_to_degree <- function(rad) {
 #' @return \code{numeric} angle (radians)
 #' 
 #' @export
+#' 
+#' @references
+#'   \insertAllCited{}
 #' 
 #' @examples
 #'   degree_to_radian(47.608)

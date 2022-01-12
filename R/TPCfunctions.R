@@ -16,6 +16,9 @@
 #' 
 #' @keywords thermal performance curve
 #' 
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @export
 #' 
 #' @examples
@@ -57,6 +60,9 @@ TPC <- function(T, Topt, CTmin, CTmax){
 #' @return performance
 #' 
 #' @keywords thermal performance curve
+#' 
+#' @references
+#'   \insertAllCited{}
 #' 
 #' @export
 #' 

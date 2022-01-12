@@ -14,6 +14,9 @@
 #' 
 #' @import stats
 #' 
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @export
 #' 
 #' @examples
@@ -62,6 +65,9 @@ surface_roughness <- function(u_r, zr){
 #' 
 #' @family microclimate functions
 #' 
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @export
 #' 
 #' @examples
@@ -93,6 +99,9 @@ wind_speed_profile_neutral <- function(u_r, zr, z0, z) {
 #' @return temperature (C)
 #' 
 #' @keywords temperature profile
+#' 
+#' @references
+#'   \insertAllCited{}
 #' 
 #' @family microclimate functions
 #' 
@@ -131,6 +140,9 @@ air_temp_profile_neutral <- function(T_r, zr, z0, z, T_s){
 #' @keywords temperature profile
 #' 
 #' @family microclimate functions
+#' 
+#' @references
+#'   \insertAllCited{}
 #' 
 #' @export
 #' 
@@ -176,6 +188,9 @@ air_temp_profile <- function(T_r, u_r, zr, z0,z,T_s){
 #' @family microclimate functions
 #' 
 #' @export
+#' 
+#' @references
+#'   \insertAllCited{}
 #' 
 #' @examples
 #' air_temp_profile_segment(T_r = c(25, 22, 20), u_r = c(0.01, 0.025, 0.05), zr = c(0.05, 0.25, 0.5), z0 = c(0.01, 0.15, 0.2), z = 0.3, T_s = 27)
@@ -253,6 +268,9 @@ air_temp_profile_segment <- function(T_r, u_r, zr, z0, z, T_s){
 #' @keywords wind speed profile
 #' 
 #' @family microclimate functions
+#' 
+#' @references
+#'   \insertAllCited{}
 #' 
 #' @export
 #' 

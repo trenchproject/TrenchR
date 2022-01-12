@@ -20,6 +20,9 @@
 #' 
 #' @export
 #' 
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @examples
 #' estimate_radiation(doy = 112, psi = 1, tau = 0.6, elev = 1500, rho = 0.7)
 #'
@@ -53,7 +56,7 @@ estimate_radiation <- function(doy, psi, tau, elev, rho = 0.7){
 
 #' @title Estimate diurnal radiation 
 #' 
-#' @description Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day). Based on Tham et al. (2010, Estimation of hourly averaged solar irradiation: evaluation of models. Building Serv. Eng. Res. Technol. 31: 9-25) and Al-Rawahi et al. (2011, Prediction of Hourly Solar Radiation on Horizontal and Inclined Surfaces for Muscat/Oman. The Journal of Engineering Research 8:19-31). 
+#' @description Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day). Based on \insertCite{Tham2010}{TrenchR} and \insertCite{AlRawahi2011}{TrenchR}.
 #' 
 #' @param doy \code{numeric} is the day of year
 #' 
@@ -72,6 +75,9 @@ estimate_radiation <- function(doy, psi, tau, elev, rho = 0.7){
 #' @family microclimate functions
 #' 
 #' @export
+#' 
+#' @references
+#'   \insertAllCited{}
 #' 
 #' @examples
 #' diurnal_radiation_variation(doy = 112, solrad = 8000, hour = 12, lon = -122.33, lat = 47.61)
@@ -111,7 +117,7 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
 
 #' @title Estimate average monthly solar radiation
 #' 
-#' @description Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information as input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
+#' @description Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information as input. Based on \insertCite{Nikolov1992}{TrenchR}
 #' 
 #' @param lat \code{numeric} latitude (degrees)
 #' 
@@ -134,6 +140,9 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
 #' @family microclimate functions
 #' 
 #' @export
+#' 
+#' @references
+#'   \insertAllCited{}
 #' 
 #' @examples
 #' monthly_solar_radiation(lat = 47.61, lon = -122.33, doy = 112, elev = 1500, T = 15, Hr = 50, P = 50)
@@ -228,7 +237,7 @@ monthly_solar_radiation <- function(lat, lon, doy, elev, T, Hr, P){
 
 #' @title Estimate direct solar radiation
 #' 
-#' @description Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in Tracy et al. (1983) Estimating clear-day solar radiation: An evaluation of three models. Journal of Thermal Biology, 8(3), 247-251.
+#' @description Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in \insertCite{Tracy1983}{TrenchR}. Also references: \insertCite{McCullough1971}{TrenchR}, insertCite{Campbell1998}{TrenchR}
 #' 
 #' @param lat \code{numeric} latitude (degrees)
 #' 
@@ -249,6 +258,9 @@ monthly_solar_radiation <- function(lat, lon, doy, elev, T, Hr, P){
 #' @family microclimate functions
 #' 
 #' @export
+#' 
+#' @references
+#'   \insertAllCited{}
 #' 
 #' @examples
 #' direct_solar_radiation(lat = 47.61, doy = 112, elev = 1500, t = 9, t0 = 12, method = "Campbell 1977")

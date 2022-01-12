@@ -109,6 +109,9 @@ soil_specific_heat <- function(x_o, x_m, x_w, rho_so){
 #' 
 #' @export
 #' 
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @author Joseph Grigg
 #' 
 #' @examples
@@ -155,6 +158,9 @@ soil_temperature_integrand <- function(x, L, z0){
 #' 
 #' @export
 #' 
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @author Joseph Grigg
 #' 
 #' @examples
@@ -189,6 +195,9 @@ soil_temperature_equation <- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst,
 #' @import stats
 #' 
 #' @export
+#' 
+#' @references
+#'   \insertAllCited{}
 #' 
 #' @author Joseph Grigg
 #' 
@@ -344,6 +353,9 @@ soil_temperature_function<- function(j, T_so, params){
 #' @family soil temperature functions
 #' 
 #' @export
+#' 
+#' @references
+#'   \insertAllCited{}
 #' 
 #' @author Joseph Grigg
 #' 

@@ -18,10 +18,12 @@
 #' 
 #' @export
 #' 
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @examples
-#' \dontrun{
-#' partition_solar_radiation(method="Erbs", kt=0.5, lat=40, sol.elev=60)
-#'}
+#' partition_solar_radiation(method = "Erbs", kt = 0.5, lat = 40, sol.elev = 60)
+#'
 partition_solar_radiation <- function(method, kt, lat = NA, sol.elev = NA){  
  
   stopifnot(method %in% c("Liu_Jordan", "Orgill_Hollands", "Erbs", "Olyphant", "Spencer", "Reindl-1", "Reindl-2", "Lam_Li"), kt >= 0, kt <= 1)
@@ -121,7 +123,7 @@ partition_solar_radiation <- function(method, kt, lat = NA, sol.elev = NA){
 
 #' @title Estimate the ratio of diffuse to direct solar radiation
 #' 
-#' @description Estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the McCullough and Porter (1971) SOLRAD model described in Tracy et al. (1983) Estimating clear-day solar radiation: An evaluation of three models. Journal of Thermal Biology, 8(3), 247-251.
+#' @description Estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the \insertCite{McCullough1971}{TrenchR} SOLRAD model described in \insertCite{Tracy1983}{TrenchR}
 #' 
 #' @param psi \code{numeric} Zenith angle of the sun (degrees)
 #' 
@@ -136,6 +138,9 @@ partition_solar_radiation <- function(method, kt, lat = NA, sol.elev = NA){
 #' @family microclimate functions
 #' 
 #' @export
+#' 
+#' @references
+#'   \insertAllCited{}
 #' 
 #' @examples
 #' proportion_diffuse_solar_radiation(psi = 60, p_a = 86.1, A = 0.25)

@@ -28,6 +28,9 @@
 #' 
 #' @export
 #' 
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @examples 
 #' Tb_CampbellNorman(T_a = 303, T_g = 303, S = 823, alpha_S = 0.7, alpha_L = 0.96, epsilon = 0.96, c_p = 29.3, D = 0.17, V = 1)
 #'
@@ -80,6 +83,9 @@ Tb_CampbellNorman <- function(T_a, T_g, S, alpha_S = 0.7, alpha_L = 0.96, epsilo
 #' 
 #' @export
 #' 
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @examples 
 #' Qnet_Gates(Qabs=500, Qemit=10, Qconv=100, Qcond=100, Qmet=10, Qevap=5)
 #' 
@@ -131,6 +137,9 @@ Qnet_Gates <- function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #' @import stats
 #' 
 #' @export
+#' 
+#' @references
+#'   \insertAllCited{}
 #' 
 #' @examples 
 #' Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_g=303, T_a=310, Qabs=2, epsilon=0.95, H_L=10, ef=1.23, K=0.5)
@@ -207,6 +216,9 @@ Tb_Gates <- function(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, eps
 #' @import stats
 #' 
 #' @export
+#' 
+#' @references
+#'   \insertAllCited{}
 #' 
 #' @examples 
 #' Tb_Gates2(A = 1, D = 0.001, T_g = 300, T_a = 310, Qabs = 2, V = 0.1, epsilon = 1) 
