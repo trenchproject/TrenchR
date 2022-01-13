@@ -136,7 +136,7 @@ VAPPRS <- function(db = db) {
 #' 
 #' @return wtrpot \code{numeric} Water potential (Pa)
 #' 
-#' @return rh \code{numeric} Relative humidity (\%)
+#' @return rh \code{numeric} Relative humidity (%)
 #' 
 #' @export
 #' 
