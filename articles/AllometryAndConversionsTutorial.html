@@ -103,13 +103,13 @@
 <code class="sourceCode R"><span class="co">##Load TrenchR package</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/trenchproject/TrenchR" class="external-link">TrenchR</a></span><span class="op">)</span></code></pre></div>
 <p>This tutorial reviews tools that use allometries to estimate the dimensions of organisms needed for energy balances and other analyses. The tutorial also documents convenience functions for converting units. Finally, we present functions that describe thermal performance curves.</p>
-<div class="section level1">
-<h1 id="allometries">Allometries<a class="anchor" aria-label="anchor" href="#allometries"></a>
-</h1>
+<div class="section level2">
+<h2 id="allometries">Allometries<a class="anchor" aria-label="anchor" href="#allometries"></a>
+</h2>
 <p>We provide tools for estimating additional dimensions of organisms from measured dimensions.</p>
-<div class="section level3">
-<h3 id="mass">Mass<a class="anchor" aria-label="anchor" href="#mass"></a>
-</h3>
+<div class="section level4">
+<h4 id="mass">Mass<a class="anchor" aria-label="anchor" href="#mass"></a>
+</h4>
 <p>The function <code><a href="../reference/mass_from_length.html">mass_from_length()</a></code> encompasses empirically-derived relationships to estimate mass as a power law function of mass for six taxonomic classifications. The relationships are derived by relating length to mass for specimens of numerous species. We use the <code><a href="../reference/mass_from_length.html">mass_from_length()</a></code> function to illustrate the allometries for different taxa:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
@@ -122,9 +122,9 @@
 <span class="fu"><a href="https://rdrr.io/r/graphics/box.html" class="external-link">box</a></span><span class="op">(</span>bty <span class="op">=</span> <span class="st">"L"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-2-1.png" width="576"></p>
 </div>
-<div class="section level3">
-<h3 id="surface-area">Surface Area<a class="anchor" aria-label="anchor" href="#surface-area"></a>
-</h3>
+<div class="section level4">
+<h4 id="surface-area">Surface Area<a class="anchor" aria-label="anchor" href="#surface-area"></a>
+</h4>
 <p>Surface area is needed for several aspects of biophysical models but is rarely measured. We provide functions to estimate surface area (<span class="math inline">\(m^3\)</span>) from length, mass, or volume for a variety of taxa.</p>
 <p>The function <code><a href="../reference/surface_area_from_mass.html">surface_area_from_mass()</a></code> encompasses empirically-derived relationship to estimate surface area as a power law function of mass for lizards, frogs, and insects.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -178,9 +178,9 @@
 <p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-7-4.png" width="576"></p>
 </div>
 </div>
-<div class="section level1">
-<h1 id="conversions">Conversions<a class="anchor" aria-label="anchor" href="#conversions"></a>
-</h1>
+<div class="section level2">
+<h2 id="conversions">Conversions<a class="anchor" aria-label="anchor" href="#conversions"></a>
+</h2>
 <p>We offer convenience functions to convert among units for angles and temperatures:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/degree_to_radian.html">degree_to_radian</a></span><span class="op">(</span><span class="fl">47.608</span><span class="op">)</span></code></pre></div>
@@ -198,18 +198,18 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/kelvin_to_celsius.html">kelvin_to_celsius</a></span><span class="op">(</span><span class="fl">270</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] -3.15</span></code></pre>
 </div>
-<div class="section level1">
-<h1 id="thermal-performance-curve-functions">Thermal Performance Curve Functions<a class="anchor" aria-label="anchor" href="#thermal-performance-curve-functions"></a>
-</h1>
+<div class="section level2">
+<h2 id="thermal-performance-curve-functions">Thermal Performance Curve Functions<a class="anchor" aria-label="anchor" href="#thermal-performance-curve-functions"></a>
+</h2>
 <p>Thermal performance curves (TPCs) describe the temperature dependence of organismal performance such as locomotion and digestion <span class="citation">(Huey and Kingsolver 1989)</span>. They have become an important tool to understand organismal responses to environmental conditions, particularly responses to climate change <span class="citation">(Sinclair et al. 2016)</span>. TrenchR includes two forms of TPCs. We include a function <code><a href="../reference/TPC.html">TPC()</a></code> to describe a Gaussian-quadratic TPC as a function of thermal optima and critical thermal minima and maxima <span class="citation">(Deutsch et al. 2008)</span>. The <code><a href="../reference/TPC.beta.html">TPC.beta()</a></code> function uses a beta function to define a TPC based on mode, breadth, and skew. A scale factor enables including a thermodynamic effect on mean performance <span class="citation">(Asbury and Angilletta Jr 2010)</span>.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">60</span>, <span class="fu"><a href="../reference/TPC.html">TPC</a></span><span class="op">(</span>T<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">60</span>, Topt<span class="op">=</span><span class="fl">30</span>, CTmin<span class="op">=</span><span class="fl">10</span>, CTmax<span class="op">=</span><span class="fl">40</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"l"</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">3</span><span class="op">)</span>, ylab<span class="op">=</span><span class="st">"performance"</span>, xlab<span class="op">=</span><span class="st">"temperature (°C)"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">60</span>, <span class="fu"><a href="../reference/TPC.beta.html">TPC.beta</a></span><span class="op">(</span>T<span class="op">=</span><span class="fl">0</span><span class="op">:</span><span class="fl">60</span>, shift<span class="op">=</span><span class="op">-</span><span class="fl">1</span>, breadth<span class="op">=</span><span class="fl">0.1</span>, aran<span class="op">=</span><span class="fl">0</span>, tolerance<span class="op">=</span> <span class="fl">43</span>, skew<span class="op">=</span><span class="fl">0.7</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"l"</span>, lty <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></code></pre></div>
 <p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
 </div>
-<div class="section level1 unnumbered">
-<h1 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
-</h1>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
 <div id="refs" class="references">
 <div id="ref-asbury2010thermodynamic">
 <p>Asbury, Dee A, and Michael J Angilletta Jr. 2010. “Thermodynamic Effects on the Evolution of Performance Curves.” <em>The American Naturalist</em> 176 (2): E40–E49.</p>
@@ -247,7 +247,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
