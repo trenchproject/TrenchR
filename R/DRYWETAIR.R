@@ -38,7 +38,7 @@
 #' @examples
 #'   DRYAIR(db = 30, bp = 100*1000, alt = 0)
 #' 
-DRYAIR <- function(db, bp = 0, alt = 0) {
+DRYAIR <- function(db = db, bp = 0, alt = 0) {
   
   tstd <- 273.15
   
@@ -86,7 +86,7 @@ DRYAIR <- function(db, bp = 0, alt = 0) {
 #' @examples
 #' VAPPRS(db = 30)
 #' 
-VAPPRS <- function(db) {
+VAPPRS <- function(db = db) {
   
   t <- db + 273.16
   
@@ -146,7 +146,7 @@ VAPPRS <- function(db) {
 #' @examples
 #' WETAIR(db=30, wb=28, rh=60, bp=100*1000)
 #' 
-WETAIR <- function(db, wb, rh=0, dp=999, bp=101325){
+WETAIR <- function(db = db, wb = db, rh = 0, dp = 999, bp = 101325) {
   
   stopifnot(rh >= 0, rh <= 100, bp > 0)
   
