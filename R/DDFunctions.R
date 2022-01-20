@@ -20,6 +20,9 @@
 #' 
 #' @export
 #' 
+#' @references
+#'   \insertAllCited{}
+#' 
 #' @examples
 #'   degree_days(T_min = 7, T_max = 14, LDT = 12, UDT = 33, method = "single.sine")
 #'   degree_days(T_min = 7, T_max = 14, LDT = 12, UDT = 33, method = "single.triangulation")
