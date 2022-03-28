@@ -111,7 +111,7 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
 #' 
 #' 
 #' @description Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information
-#' as input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
+#' as input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168. Cloudiness is stochastically modeled, so output will vary between functional calls.
 #'  
 #' 
 #' @param lat latitude in degrees 
