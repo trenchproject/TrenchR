@@ -16,40 +16,34 @@ Qemitted_thermal_radiation(
 )
 }
 \arguments{
-\item{epsilon}{longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)}
+\item{epsilon}{\code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}}
 
-\item{A}{surface area  in m^2}
+\item{A}{\code{numeric} surface area (m^2)}
 
-\item{psa_dir}{proportion surface area exposed to sky (or enclosure)}
+\item{psa_dir}{\code{numeric} proportion surface area exposed to sky (or enclosure) (0-1)}
 
-\item{psa_ref}{proportion surface area exposed to ground}
+\item{psa_ref}{\code{numeric} proportion surface area exposed to ground (0-1)}
 
-\item{T_b}{body surface temperature in K}
+\item{T_b}{\code{numeric} body surface temperature (K)}
 
-\item{T_g}{ground surface temperature in K}
+\item{T_g}{\code{numeric} ground surface temperature (K)}
 
-\item{T_a}{ambient air temperature in K, only required if animal is in enclosed environment}
+\item{T_a}{\code{numeric} ambient air temperature (K), only required if animal is in enclosed environment}
 
-\item{enclosed}{TRUE or FALSE}
+\item{enclosed}{\code{boolean} TRUE or FALSE}
 }
 \value{
-emitted thermal radiation, Qemit (W)
+\code{numeric} emitted thermal radiation, Qemit (W)
 }
 \description{
-estimate thermal radiation (W) emitted by the surface of an animal. Follows Gates' Biophysical Ecology and Spotila et al. 1992. Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians; Porter et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
+estimate thermal radiation (W) emitted by the surface of an animal. Follows \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
 }
 \examples{
-Qemitted_thermal_radiation(
-  epsilon=0.96,
-  A=1, 
-  psa_dir=0.4, 
-  psa_ref=0.6, 
-  T_b=303, 
-  T_g=293, 
-  T_a=298, 
-  enclosed=FALSE)
+  Qemitted_thermal_radiation(epsilon = 0.96, A = 1, psa_dir = 0.4, psa_ref = 0.6, T_b = 303, T_g = 293, T_a = 298, enclosed = FALSE)
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

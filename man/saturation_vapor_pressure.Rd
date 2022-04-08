@@ -7,18 +7,20 @@
 saturation_vapor_pressure(T_a)
 }
 \arguments{
-\item{T_a}{air temperature (K)}
+\item{T_a}{\code{numeric} air temperature (K)}
 }
 \value{
-saturation vapor pressure, e_s (kPa)
+\code{numeric} saturation vapor pressure, e_s (kPa)
 }
 \description{
-Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation (Stull 2000). Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
+Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation \insertCite{Stull2000}{TrenchR}. Source: insertCite{Riddell2018}{TrenchR}.
 }
 \examples{
-saturation_vapor_pressure(T_a=293)
+  saturation_vapor_pressure(T_a = 293)
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

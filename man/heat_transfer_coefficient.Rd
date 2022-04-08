@@ -7,25 +7,28 @@
 heat_transfer_coefficient(V, D, K, nu, taxa = "cylinder")
 }
 \arguments{
-\item{V}{Air velocity m/s.}
+\item{V}{\code{numeric} Air velocity (m/s).}
 
-\item{D}{Characteristic dimension (e.g., diameter or snout-vent length) in meters.}
+\item{D}{\code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).}
 
-\item{K}{Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR}
+\item{K}{\code{numeric} Thermal conductivity of air (W m^-1 K^-1), can calculate using DRYAIR or WETAIR in NicheMapR}
 
-\item{nu}{Kinematic Viscosity of air, m^2 s^-1, can calculate using DRYAIR or WETAIR in NicheMapR}
+\item{nu}{\code{numeric} Kinematic Viscosity of air (m^2 s^-1), can calculate using DRYAIR or WETAIR in NicheMapR}
 
-\item{taxa}{Which class of organism, current choices: sphere, cylinder, frog, lizard_surface, lizard_elevated, flyinginsect, spider}
+\item{taxa}{\code{character} Which class of organism, current choices: sphere, cylinder, frog, lizard_surface, lizard_elevated, flyinginsect, spider. Notes: Cylinder assumes 40<Re<4000. lizard assumes prostrate on or elevated above surface, average for parallel and perpendicular to air flow}
 }
 \value{
-heat transfer coefficient, H_L (W m^-2 K^-1)
+\code{numeric} heat transfer coefficient, H_L (W m^-2 K^-1)
 }
 \description{
-estimate the heat transfer coefficient for various taxa based on empirical measurements. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569. (Uses Table I: Convective Heat Transfer Relations for Animal Shapes)
+estimate the heat transfer coefficient for various taxa based on empirical measurements. Reference: \insertCite{Mitchell1976}{TrenchR}
 }
 \examples{
-heat_transfer_coefficient(V=0.5,D=0.05,K= 25.7 * 10^(-3), nu= 15.3 * 10^(-6), "cylinder")
+  heat_transfer_coefficient(V = 0.5, D = 0.05, K = 25.7 * 10^(-3), nu = 15.3 * 10^(-6), "cylinder")
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

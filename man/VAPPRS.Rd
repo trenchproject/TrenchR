@@ -7,16 +7,18 @@
 VAPPRS(db = db)
 }
 \arguments{
-\item{db}{Dry bulb temperature (C)}
+\item{db}{\code{numeric} Dry bulb temperature (C)}
 }
 \value{
-esat Saturation vapour pressure (Pa)
+esat \code{numeric} Saturation vapour pressure (Pa)
 }
 \description{
 Calculates saturation vapour pressure for a given air temperature.
 }
 \examples{
+VAPPRS(db = 30)
 
-VAPPRS(db=30)
-
+}
+\references{
+\insertAllCited{}
 }

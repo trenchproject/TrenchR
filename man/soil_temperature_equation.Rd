@@ -7,42 +7,36 @@
 soil_temperature_equation(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s)
 }
 \arguments{
-\item{L}{is the Monin-Obukhov length, a measure of the instability of heat flow (see Beckman et al. 1973)}
+\item{L}{\code{numeric} Monin-Obukhov length, a measure of the instability of heat flow (see \insertCite{Beckman1973;textual}{TrenchR})}
 
-\item{rho_a}{is density of air in kg m^-3}
+\item{rho_a}{\code{numeric} density of air (kg m^-3)}
 
-\item{c_a}{is specific heat of air (J/(kg*K))}
+\item{c_a}{\code{numeric} specific heat of air (J/(kg*K))}
 
-\item{k}{is von Karman's constant}
+\item{k}{\code{numeric} von Karman's constant}
 
-\item{V_inst}{is instantaneous wind speed in m/s}
+\item{V_inst}{\code{numeric} instantaneous wind speed (m/s)}
 
-\item{z_r}{is reference height in m}
+\item{z_r}{\code{numeric} reference height (meters)}
 
-\item{z0}{is surface roughness in m}
+\item{z0}{\code{numeric} surface roughness (meters)}
 
-\item{T_inst}{instantaneous air temperature in K}
+\item{T_inst}{\code{numeric} instantaneous air temperature (K)}
 
-\item{T_s}{initial soil suface temperature in C}
+\item{T_s}{\code{numeric} initial soil suface temperature (C)}
 }
 \value{
 soil temperature function
 }
 \description{
-Function called by soil_temp_noint to solve equation for soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior).
+Function called by soil_temp_noint to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}.
 }
 \examples{
-soil_temperature_equation(
-  L=-10, 
-  rho_a=1.177, 
-  c_a=1006, 
-  k=0.41, 
-  V_inst=0.3, 
-  z_r=1.5, 
-  z0=0.02, 
-  T_inst=265, 
-  T_s=20)
+soil_temperature_equation(L = -10, rho_a = 1.177, c_a = 1006, k = 0.41, V_inst = 0.3, z_r = 1.5, z0 = 0.02, T_inst = 265, T_s = 20)
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other soil temperature functions: 

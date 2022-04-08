@@ -7,25 +7,23 @@
 wind_speed_profile_segment(u_r, zr, z0, z)
 }
 \arguments{
-\item{u_r}{is a vector of wind speeds at the 3 reference heights in m/s.}
+\item{u_r}{\code{numeric} a vector of wind speeds at the 3 reference heights (m/s).}
 
-\item{zr}{is a vector of 3 reference heights in m.}
+\item{zr}{\code{numeric} a vector of 3 reference heights (meters).}
 
-\item{z0}{is a vector of 3 experimentally determined roughness heights in m.}
+\item{z0}{\code{numeric} a vector of 3 experimentally determined roughness heights (meters).}
 
-\item{z}{is height to scale in m.}
+\item{z}{\code{numeric} height to scale (meters).}
 }
 \description{
-calculate wind speed (m/s) at a specified height (m).   
-Estimates a three segment velocity and temperature profile based on user-specified, 
-experimentally determined values for 3 roughness heights and reference heights.  
-Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks.
-Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Porter 2016. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.
+calculate wind speed (m/s) at a specified height (meters). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017}{TrenchR}
 }
 \examples{
-wind_speed_profile_segment(u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), z=0.3)
+wind_speed_profile_segment(u_r = c(0.01, 0.025, 0.05), zr = c(0.05, 0.25, 0.5), z0 = c(0.01, 0.15, 0.2), z = 0.3)
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other microclimate functions: 

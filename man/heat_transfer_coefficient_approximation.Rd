@@ -2,31 +2,33 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{heat_transfer_coefficient_approximation}
 \alias{heat_transfer_coefficient_approximation}
-\title{Calculate heat transfer coefficient using a sphereical approximation (based on Mitchell 1976)}
+\title{Calculate heat transfer coefficient using a spherical approximation}
 \usage{
 heat_transfer_coefficient_approximation(V, D, K, nu, taxa = "sphere")
 }
 \arguments{
-\item{V}{Air velocity m/s.}
+\item{V}{\code{numeric} Air velocity (m/s).}
 
-\item{D}{Characteristic dimension (e.g., diameter or snout-vent length) in meters.}
+\item{D}{\code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).}
 
-\item{K}{Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR}
+\item{K}{\code{numeric} Thermal conductivity of air (W m^-1 K^-1), can calculate using DRYAIR or WETAIR in NicheMapR}
 
-\item{nu}{Kinematic Viscocity of air, m^2 s^-1, can calculate using DRYAIR or WETAIR in NicheMapR}
+\item{nu}{\code{numeric} Kinematic Viscocity of air (m^2 s^-1), can calculate using DRYAIR or WETAIR in NicheMapR}
 
-\item{taxa}{Which class of organism, current choices: sphere,frog,lizard,flyinginsect,spider}
+\item{taxa}{\code{character} Which class of organism, current choices: sphere, frog, lizard, flyinginsect, spider}
 }
 \value{
-heat transfer coefficient, H_L (W m^-2 K^-1)
+\code{numeric} heat transfer coefficient, H_L (W m^-2 K^-1)
 }
 \description{
-estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569. (Uses Table III: Convective Heat Transfer Relations for Animal Shapes.)
+estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere. Reference: \insertCite{Mitchell1976}{TrenchR}
 }
 \examples{
-heat_transfer_coefficient_approximation(V=3,D=0.05,K= 25.7 * 10^(-3),nu= 15.3 * 10^(-6), "sphere")
+ heat_transfer_coefficient_approximation(V = 3, D = 0.05, K = 25.7 * 10^(-3), nu = 15.3 * 10^(-6), "sphere")
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

@@ -7,30 +7,33 @@
 TPC.beta(T, shift = -1, breadth = 0.1, aran = 0, tolerance = 43, skew = 0.7)
 }
 \arguments{
-\item{T}{temperature (C)}
+\item{T}{\code{numeric} temperature (C)}
 
-\item{shift}{mode of the thermal performance curve}
+\item{shift}{\code{numeric} mode of the thermal performance curve. Defaults to -1}
 
-\item{breadth}{breadth of the thermal performance curve}
+\item{breadth}{\code{numeric} breadth of the thermal performance curve. Defaults to 0.1}
 
-\item{aran}{scale performance value? if aran=0, no scaling; if aran=1, include a thermodynamic effect on mean performance.}
+\item{aran}{\code{numeric} scale performance value. if aran=0, no scaling; if aran=1, include a thermodynamic effect on mean performance. Defaults to 0.}
 
-\item{tolerance}{maximal breath (C) of the thermal performance curve}
+\item{tolerance}{\code{numeric} maximal breath (C) of the thermal performance curve. Defaults to 43}
 
-\item{skew}{skewness of the thermal performance curve (0-1)}
+\item{skew}{\code{numeric} skewness of the thermal performance curve (0-1). Defaults to 0.7}
 }
 \value{
 performance
 }
 \description{
-Construct a thermal performance curve based on a beta function. Reference: Asbury, D.A. & Angilletta, M.J. (2010) Thermodynamic effects on the evolution of performance curves. American Naturalist, 176, E40–E49.
+Construct a thermal performance curve based on a beta function. Reference: \insertCite{Asbury2010}{TrenchR}
 }
 \details{
 Construct a thermal performance curve based on a beta function.
 }
 \examples{
-TPC.beta(T=0:60, shift=-1, breadth=0.1, aran=0, tolerance= 43, skew=0.7)
+TPC.beta(T = 0:60, shift = -1, breadth = 0.1, aran = 0, tolerance = 43, skew = 0.7)
 
+}
+\references{
+\insertAllCited{}
 }
 \keyword{curve}
 \keyword{performance}

@@ -7,20 +7,22 @@
 Free_or_forced_convection(Gr, Re)
 }
 \arguments{
-\item{Gr}{is the Grashof Number (dimensionless)}
+\item{Gr}{\code{numeric} is the Grashof Number (dimensionless)}
 
-\item{Re}{is the Reynolds Number (dimensionless)}
+\item{Re}{\code{numeric} is the Reynolds Number (dimensionless)}
 }
 \value{
-"free", "forced" or "intermediate"
+\code{character} "free", "forced" or "intermediate"
 }
 \description{
 commpare the Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980).
 }
 \examples{
-Free_or_forced_convection(Gr=100, Re=5)
+  Free_or_forced_convection(Gr = 100, Re = 5)
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

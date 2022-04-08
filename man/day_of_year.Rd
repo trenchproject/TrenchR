@@ -7,17 +7,39 @@
 day_of_year(day, format = "\%Y-\%m-\%d")
 }
 \arguments{
-\item{day}{R object that is suitable to be converted to a date.}
+\item{day}{\code{character} numerical date in standard format (e.g. "2017-01-02", "01-02", "01/02/2017" etc).}
 
-\item{format}{\code{character} date format following \code{\link[base]{POSIXlt}}" conventions}
+\item{format}{\code{character} date format following \code{\link[base]{POSIXlt}}" conventions. Default value = "%Y-%m-%d"}
 }
 \value{
-\code{numeric} Julian day number, 1-366, for eg. 1 for January 1st
+\code{numeric} Julian day number, 1-366 (eg. 1 for January 1st)
 }
 \description{
-Convert a date to a Julian Day.
+Convert a date (day, month, year) to Julian Day (day of year).
+}
+\details{
+\cr \cr
 }
 \examples{
-  day_of_year("2017-04-22", format= "\%Y-\%m-\%d")
+  day_of_year(day = "2017-04-22", format = "\%Y-\%m-\%d")
+  day_of_year(day = "2017-04-22")
+  day_of_year(day = "04/22/2017", format = "\%m/\%d/\%Y")
 
 }
+\references{
+\insertAllCited{}
+}
+\seealso{
+Other utility functions: 
+\code{\link{airpressure_from_elev}()},
+\code{\link{azimuth_angle}()},
+\code{\link{daylength}()},
+\code{\link{dec_angle}()},
+\code{\link{degree_to_radian}()},
+\code{\link{fahrenheit_to_celsius}()},
+\code{\link{fahrenheit_to_kelvin}()},
+\code{\link{kelvin_to_celsius}()},
+\code{\link{solar_noon}()},
+\code{\link{zenith_angle}()}
+}
+\concept{utility functions}

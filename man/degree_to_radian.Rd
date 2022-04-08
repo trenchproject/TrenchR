@@ -2,15 +2,15 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{degree_to_radian}
 \alias{degree_to_radian}
-\title{@title Converts angle in degrees to radians}
+\title{Utility: Converts angle in degrees to radians}
 \usage{
 degree_to_radian(deg)
 }
 \arguments{
-\item{deg}{\code{numeric} angle in degrees.}
+\item{deg}{\code{numeric} angle (degrees)}
 }
 \value{
-\code{numeric} angle in radians.
+\code{numeric} angle (radians)
 }
 \description{
 Convert angle in degrees to radians.
@@ -19,10 +19,14 @@ Convert angle in degrees to radians.
   degree_to_radian(47.608)
 
 }
+\references{
+\insertAllCited{}
+}
 \seealso{
 Other utility functions: 
 \code{\link{airpressure_from_elev}()},
 \code{\link{azimuth_angle}()},
+\code{\link{day_of_year}()},
 \code{\link{daylength}()},
 \code{\link{dec_angle}()},
 \code{\link{fahrenheit_to_celsius}()},

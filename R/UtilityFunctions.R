@@ -1,4 +1,4 @@
-#' @title Utility: Julian Day from Date
+#' @title Julian Day from Date
 #' 
 #' @description Convert a date (day, month, year) to Julian Day (day of year).
 #'

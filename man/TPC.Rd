@@ -7,26 +7,29 @@
 TPC(T, Topt, CTmin, CTmax)
 }
 \arguments{
-\item{T}{temperature range (C)}
+\item{T}{\code{numeric} vector of temperature range (C)}
 
-\item{Topt}{thermal optima (C), the temperature at which peak performance occurs}
+\item{Topt}{\code{numeric} thermal optima (C), the temperature at which peak performance occurs}
 
-\item{CTmin}{critical thermal minima (C), the lower temperature limit for performance}
+\item{CTmin}{\code{numeric} critical thermal minima (C), the lower temperature limit for performance}
 
-\item{CTmax}{critical thermal maxima (C), the upper temperature limit for performance}
+\item{CTmax}{\code{numeric} critical thermal maxima (C), the upper temperature limit for performance}
 }
 \value{
 performance
 }
 \description{
-Constructs a thermal performance curve by combining as a gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures. Reference: Deutsch CA, Tewksbury JJ, Huey RB, Sheldon KS, Ghalambor CK, Haak DC, Martin PR (2008) Impacts of climate warming on terrestrial ectotherms across latitude. Proceedings of the National Academy of Science of the United States of America, 105, 6668– 6672.
+Constructs a thermal performance curve by combining as a gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures. Reference: \insertCite{Deutsch2008}{TrenchR}
 }
 \details{
 Construct a Gaussian-quadratic thermal performance curve.
 }
 \examples{
-TPC(T=0:60, Topt=30, CTmin=10, CTmax=40)
+TPC(T = 0:60, Topt = 30, CTmin = 10, CTmax = 40)
 
+}
+\references{
+\insertAllCited{}
 }
 \keyword{curve}
 \keyword{performance}

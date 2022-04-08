@@ -2,28 +2,31 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{kelvin_to_celsius}
 \alias{kelvin_to_celsius}
-\title{Converts Kelvin to Celsius}
+\title{Utility: Converts Kelvin to Celsius}
 \usage{
 kelvin_to_celsius(T)
 }
 \arguments{
-\item{T}{\code{numeric}  temperature in Kelvin.}
+\item{T}{\code{numeric} temperature (Kelvin)}
 }
 \value{
-\code{numeric} temperature in Celsius
+\code{numeric} temperature (Celsius)
 }
 \description{
 Convert temperature from Kelvin to Celsius. Source: https://swcarpentry.github.io.
 }
 \examples{
+  kelvin_to_celsius(T = 270)
 
-kelvin_to_celsius(270)
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other utility functions: 
 \code{\link{airpressure_from_elev}()},
 \code{\link{azimuth_angle}()},
+\code{\link{day_of_year}()},
 \code{\link{daylength}()},
 \code{\link{dec_angle}()},
 \code{\link{degree_to_radian}()},

@@ -7,19 +7,22 @@
 Qmetabolism_from_mass(m, taxa = "reptile")
 }
 \arguments{
-\item{m}{Mass in grams.}
+\item{m}{\code{numeric} Mass (grams).}
 
-\item{taxa}{Which taxa. Current options: reptile, bird, mammal}
+\item{taxa}{\code{character} Taxa to use in calculate. Options: reptile, bird, mammal}
 }
 \value{
-metabolism (W)
+\code{numeric} metabolism (W)
 }
 \description{
-estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from Nagy KA. 2005. Field metabolic rate and body size. Journal of Experimental Biology 208: 1621-1625.
+estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from \insertCite{Nagy2005}{TrenchR}.
 }
 \examples{
-Qmetabolism_from_mass(m=12,"reptile")
+  Qmetabolism_from_mass(m = 12, "reptile")
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

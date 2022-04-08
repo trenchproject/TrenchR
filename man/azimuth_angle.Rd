@@ -2,29 +2,29 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{azimuth_angle}
 \alias{azimuth_angle}
-\title{@title Calculate Azimuth angle}
+\title{Utility: Calculate Azimuth angle}
 \usage{
 azimuth_angle(doy, lat, lon, hour, offset = NA)
 }
 \arguments{
-\item{doy}{\code{numeric} day of year (1-366).}
+\item{doy}{\code{numeric} day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)}
 
-\item{lat}{\code{numeric} latitude in decimal degrees.}
+\item{lat}{\code{numeric} latitude (decimal degrees)}
 
-\item{lon}{\code{numeric} longitude in decimal degrees.}
+\item{lon}{\code{numeric} longitude (decimal degrees)}
 
-\item{hour}{\code{numeric} hour of the day.}
+\item{hour}{\code{numeric} hour of the day}
 
-\item{offset}{\code{numeric} number of hours to add to UTC to get local time (to improve accuracy but not always necessary)}
+\item{offset}{\code{numeric} number of hours to add to UTC to get local time (to improve accuracy but not always necessary). Optional. Defaults to NA.}
 }
 \value{
-\code{numeric} azimuth angle in degrees
+\code{numeric} azimuth angle (degrees)
 }
 \description{
-calculate the azimuth angle, the angle (in degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east \insertCite{Campbell1998}{TrenchR}.
+calculate the azimuth angle, the angle (degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
-  azimuth_angle(doy=112, lat=47.61, lon=-122.33, hour=12, offset = -8)
+  azimuth_angle(doy = 112, lat = 47.61, lon = -122.33, hour = 12, offset = -8)
 
 }
 \references{
@@ -33,6 +33,7 @@ calculate the azimuth angle, the angle (in degrees) from which the sunlight is c
 \seealso{
 Other utility functions: 
 \code{\link{airpressure_from_elev}()},
+\code{\link{day_of_year}()},
 \code{\link{daylength}()},
 \code{\link{dec_angle}()},
 \code{\link{degree_to_radian}()},

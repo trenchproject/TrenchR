@@ -12,24 +12,26 @@ Qthermal_radiation_absorbed(
 )
 }
 \arguments{
-\item{T_a}{air temperature (C)}
+\item{T_a}{\code{numeric} air temperature (C)}
 
-\item{T_g}{ground temperature (C)}
+\item{T_g}{\code{numeric} ground temperature (C)}
 
-\item{epsilon_ground}{emmisitivity (proportion) for more soil types (Campbell and Norman 1998), default value of 0.97}
+\item{epsilon_ground}{\code{numeric} emmisitivity (proportion) for more soil types \insertCite{Campbell1998}{TrenchR}, default value of 0.97}
 
-\item{a_longwave}{absorptance (proportion) of organism to longwave radiation (Bartlett and Gates 1967, Buckley 2008), default value of 0.965}
+\item{a_longwave}{\code{numeric} absorptance (proportion) of organism to longwave radiation (\insertCite{Bartlett1967}{TrenchR} and Buckley 2008), default value of 0.965}
 }
 \value{
-thermal radiation absorbed (W)
+\code{numeric} thermal radiation absorbed (W)
 }
 \description{
-estimate longwave (thermal) radiation (W) absorbed from the sky and the ground (adaptation of Campbell and Norman 1998). Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
+estimate longwave (thermal) radiation (W) absorbed from the sky and the ground \insertCite{Campbell1998}{TrenchR}. Source: \insertCite{Riddell2018}{TrenchR}
 }
 \examples{
-Qthermal_radiation_absorbed(T_a=20, T_g=25, epsilon_ground=0.97, a_longwave=0.965)
+  Qthermal_radiation_absorbed(T_a = 20, T_g = 25, epsilon_ground = 0.97, a_longwave = 0.965)
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

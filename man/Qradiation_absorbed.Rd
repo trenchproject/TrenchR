@@ -16,33 +16,34 @@ Qradiation_absorbed(
 )
 }
 \arguments{
-\item{a}{solar absorptivity of animal surface (proportion), default value is for reptiles}
+\item{a}{\code{numeric} solar absorptivity of animal surface (proportion), default value is for reptiles. (0-1)}
 
-\item{A}{surface area in m^2}
+\item{A}{\code{numeric} surface area (m^2)}
 
-\item{psa_dir}{proportion surface area exposed to solar radiation}
+\item{psa_dir}{\code{numeric} proportion surface area exposed to solar radiation. (0-1)}
 
-\item{psa_ref}{proportion surface area exposed to reflected solar radiation}
+\item{psa_ref}{\code{numeric} proportion surface area exposed to reflected solar radiation. (0-1)}
 
-\item{S_dir}{direct solar radiation (W/m^2)}
+\item{S_dir}{\code{numeric} direct solar radiation (W/m^2)}
 
-\item{S_dif}{diffuse solar radiation (W/m^2)}
+\item{S_dif}{\code{numeric} diffuse solar radiation (W/m^2)}
 
-\item{S_ref}{reflected solar radiation (W/m^2), either provided or estimated if surface albedo is provided instead}
+\item{S_ref}{\code{numeric} reflected solar radiation (W/m^2), either provided or estimated if surface albedo is provided instead}
 
-\item{a_s}{is surface albedo (proportion), optional (not used) if reflected radiation is provided, Values available in Gates Biophysical ecology Table 8.2.}
+\item{a_s}{\code{numeric} is surface albedo (proportion), optional (not used) if reflected radiation is provided. Values available in \insertCite{Gates1980}{TrenchR} Table 8.2.}
 }
 \value{
-solar radiation absorbed (W)
+\code{numeric} solar radiation absorbed (W)
 }
 \description{
-estimate solar and thermal radiation (W) absorbed by the surface of an animal. 
-         Follows Gates' Biophysical Ecology and Spotila et al. 1992. Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
+estimate solar and thermal radiation (W) absorbed by the surface of an animal. Follows \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
 }
 \examples{
-Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=1000, S_dif=200, a_s=0.5)
+  Qradiation_absorbed(a = 0.9, A = 1, psa_dir = 0.4, psa_ref = 0.4, S_dir = 1000, S_dif = 200, a_s = 0.5)
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

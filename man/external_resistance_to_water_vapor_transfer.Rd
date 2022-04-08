@@ -7,21 +7,22 @@
 external_resistance_to_water_vapor_transfer(H, rhocp = 12000)
 }
 \arguments{
-\item{H}{heat transfer (convection) coefficient (W m^-2 C^-1)}
+\item{H}{\code{numeric} heat transfer (convection) coefficient (W m^-2 C^-1)}
 
-\item{rhocp}{aggregate parameter (J m^-3 C^-1) that is the product of the density of air (kg m^-3) and the specific heat of air at constant pressure (J kg^-1 C^-1). Default of 12000 J m^-3 C^-1 is commonly assumed.}
+\item{rhocp}{\code{numeric} aggregate parameter (J m^-3 C^-1) that is the product of the density of air (kg m^-3) and the specific heat of air at constant pressure (J kg^-1 C^-1). Default of 12000 J m^-3 C^-1 is commonly assumed.}
 }
 \value{
-external resistance to water vapor transfer (s m^-1)
+\code{numeric} external resistance to water vapor transfer (s m^-1)
 }
 \description{
-estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport. Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
+estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport. Reference: \insertCite{Spotila1992}{TrenchR}
 }
 \examples{
-\dontrun{
-external_resistance_to_water_vapor_transfer(H=20)
-}
+  external_resistance_to_water_vapor_transfer(H = 20)
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

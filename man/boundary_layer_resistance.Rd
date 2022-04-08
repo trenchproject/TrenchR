@@ -7,28 +7,30 @@
 boundary_layer_resistance(T_a, e_s, e_a, elev, D, u = NA)
 }
 \arguments{
-\item{T_a}{air temperature (K)}
+\item{T_a}{\code{numeric} air temperature (K)}
 
-\item{e_s}{saturation vapor pressure (kPa)}
+\item{e_s}{\code{numeric} saturation vapor pressure (kPa)}
 
-\item{e_a}{actual vapor pressure (kPa)}
+\item{e_a}{\code{numeric} actual vapor pressure (kPa)}
 
-\item{elev}{elevation (m)}
+\item{elev}{\code{numeric} elevation (m)}
 
-\item{D}{characteristic dimension (e.g., body diameter) (m)}
+\item{D}{\code{numeric} characteristic dimension (e.g., body diameter) (m)}
 
-\item{u}{is wind speed in m/s, if not provided assume free convection; if provided, use forced convection if appropriate}
+\item{u}{\code{numeric} wind speed (m/s), if not provided assume free convection; if provided, use forced convection if appropriate}
 }
 \value{
-boundary layer resistance (s cm^-1)
+\code{numeric} boundary layer resistance (s cm^-1)
 }
 \description{
-estimate boundary layer resistance under free convection. Based on the function in Riddell et al. 2017. Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
+estimate boundary layer resistance under free convection. Based on the function in \insertCite{Riddell2018}{TrenchR}.
 }
 \examples{
-boundary_layer_resistance(T_a=293, e_s=2.5, e_a=2.0, elev=500, D=0.007, u=2)
+  boundary_layer_resistance(T_a = 293, e_s = 2.5, e_a = 2.0, elev = 500, D = 0.007, u = 2)
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

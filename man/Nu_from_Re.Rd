@@ -2,25 +2,27 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Nu_from_Re}
 \alias{Nu_from_Re}
-\title{Estimate the Nusselt number from the Reynolds number (based on Mitchell 1976)}
+\title{Estimate the Nusselt number from the Reynolds number}
 \usage{
 Nu_from_Re(Re, taxa = "cylinder")
 }
 \arguments{
-\item{Re}{is the Reynolds Number (dimensionless)}
+\item{Re}{\code{numeric} is the Reynolds Number (dimensionless)}
 
-\item{taxa}{Which class of organism, current choices: sphere, cylinder, frog, lizard_traverse_to_air_flow, lizard_parallel_to_air_flow, lizard_surface, lizard_elevated, flyinginsect, spider}
+\item{taxa}{\code{character} Which class of organism, current choices: sphere, cylinder, frog, lizard_traverse_to_air_flow, lizard_parallel_to_air_flow, lizard_surface, lizard_elevated, flyinginsect, spider}
 }
 \value{
-Nusselt number (dimensionless)
+\code{numeric} Nusselt number (dimensionless)
 }
 \description{
-estimate the Nusselt number from the Reynolds number for various taxa.  Source: Mitchell JW. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16: 561-569. See Table 1. Convective Heat Trasfer Relations for Animal Shapes.
+estimate the Nusselt number from the Reynolds number for various taxa.  Source: \insertCite{Mitchell1976}{TrenchR} See Table 1. Convective Heat Trasfer Relations for Animal Shapes.
 }
 \examples{
-Nu_from_Re(Re=5, taxa="cylinder")
+  Nu_from_Re(Re = 5, taxa = "cylinder")
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

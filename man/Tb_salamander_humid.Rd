@@ -7,29 +7,36 @@
 Tb_salamander_humid(r_i, r_b, D, T_a, elev, e_a, e_s, Qabs, epsilon = 0.96)
 }
 \arguments{
-\item{r_i}{internal (skin) resistance (s cm^-1)}
+\item{r_i}{\code{numeric} internal (skin) resistance (s cm^-1)}
 
-\item{r_b}{boundary layer resistance (s cm^-1)}
+\item{r_b}{\code{numeric} boundary layer resistance (s cm^-1)}
 
-\item{D}{body diameter (m), (diameter = 0.0016*log(mass) + 0.0061 for mass(g)) #empirical formula for diameter, Riddell et al. 2017}
+\item{D}{\code{numeric} body diameter (meters), (diameter = 0.0016*log(mass) + 0.0061 for mass(g))}
 
-\item{T_a}{ambient temperature (C)}
+\item{T_a}{\code{numeric} ambient temperature (C)}
 
-\item{elev}{elevation (m)}
+\item{elev}{\code{numeric} elevation (m)}
 
-\item{e_a}{actual vapor pressure (kPa)}
+\item{e_a}{\code{numeric} actual vapor pressure (kPa)}
 
-\item{e_s}{saturation vapor pressure (kPa)}
+\item{e_s}{\code{numeric} saturation vapor pressure (kPa)}
 
-\item{Qabs}{Solar and thermal radiation absorbed (W)}
+\item{Qabs}{\code{numeric} Solar and thermal radiation absorbed (W)}
 
-\item{epsilon}{emissivity of salamander skin, default epsilon=0.96}
+\item{epsilon}{\code{numeric} emissivity of salamander skin, default epsilon=0.96}
 }
 \value{
-humid operative temperature (C)
+\code{numeric} humid operative temperature (C)
 }
 \description{
-calculate humid operative temperature (adaptation of Campbell and Norman 1998). Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
+calculate humid operative temperature (adaptation of \insertCite{Campbell1998}{TrenchR}). Source: \insertCite{Riddell2018}{TrenchR}.
+}
+\examples{
+  Tb_salamander_humid(r_i = 4, r_b = 1, D = 0.01, T_a = 20, elev = 500, e_a = 2.0, e_s = 2.5, Qabs = 400, epsilon = 0.96)
+
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

@@ -7,29 +7,30 @@
 air_temp_profile(T_r, u_r, zr, z0, z, T_s)
 }
 \arguments{
-\item{T_r}{is temperature at reference height in C.}
+\item{T_r}{\code{numeric} temperature at reference height (C).}
 
-\item{u_r}{is windspeed at reference height in m/s.}
+\item{u_r}{\code{numeric} windspeed at reference height (m/s).}
 
-\item{zr}{is initial reference height in m.}
+\item{zr}{\code{numeric} initial reference height (meters).}
 
-\item{z0}{is surface roughness in m.}
+\item{z0}{\code{numeric} surface roughness (meters).}
 
-\item{z}{is height to scale in m.}
+\item{z}{\code{numeric} height to scale (meters).}
 
-\item{T_s}{is surface temperatures in C.}
+\item{T_s}{\code{numeric} surface temperatures (C).}
 }
 \value{
 temperature (C)
 }
 \description{
-estimate temperature (C) at a specified height (m).  
-Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.
+estimate temperature (C) at a specified height (meters). Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR. Source: \insertCite{Kearney2017}{TrenchR}.
 }
 \examples{
-air_temp_profile(T_r=20, u_r=0.1, zr=0.1, z0=0.2, z=0.15, T_s=25)
+air_temp_profile(T_r = 20, u_r = 0.1, zr = 0.1, z0 = 0.2, z = 0.15, T_s = 25)
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other microclimate functions: 

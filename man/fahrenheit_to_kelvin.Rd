@@ -2,27 +2,31 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{fahrenheit_to_kelvin}
 \alias{fahrenheit_to_kelvin}
-\title{Converts Fahrenheit to Kelvin}
+\title{Utility: Converts Fahrenheit to Kelvin}
 \usage{
 fahrenheit_to_kelvin(T)
 }
 \arguments{
-\item{T}{\code{numeric} temperature in Fahrenheit.}
+\item{T}{\code{numeric} temperature (Fahrenheit)}
 }
 \value{
-\code{numeric}  temperature in Kelvin.
+\code{numeric} temperature (Kelvin)
 }
 \description{
 Convert temperature from Fahrenheit to Kelvin. Source: https://swcarpentry.github.io.
 }
 \examples{
-  fahrenheit_to_kelvin(85)
+  fahrenheit_to_kelvin(T = 85)
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other utility functions: 
 \code{\link{airpressure_from_elev}()},
 \code{\link{azimuth_angle}()},
+\code{\link{day_of_year}()},
 \code{\link{daylength}()},
 \code{\link{dec_angle}()},
 \code{\link{degree_to_radian}()},

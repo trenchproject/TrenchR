@@ -7,23 +7,24 @@
 Nusselt_number(H_L, D, K)
 }
 \arguments{
-\item{H_L}{Convective heat transfer coefficient (W m^-2 K^-1)}
+\item{H_L}{\code{numeric} Convective heat transfer coefficient (W m^-2 K^-1)}
 
-\item{D}{is characteristic dimension (e.g., body diameter) (m)}
+\item{D}{\code{numeric} Characteristic dimension (e.g., body diameter) (m)}
 
-\item{K}{Thermal conductivity (W K^-1 m^-1)}
+\item{K}{\code{numeric} Thermal conductivity (W K^-1 m^-1)}
 }
 \value{
-Nusselt number
+\code{numeric} Nusselt number
 }
 \description{
-estimate the Nusselt Number, which describes dimensionless conductance (Gates 1980 Biophysical Ecology).
+estimate the Nusselt Number, which describes dimensionless conductance \insertCite{Gates1980}{TrenchR}
 }
 \examples{
-\dontrun{
-Nusselt_number(H_L=20, D=0.01, K=0.5)
-}
+  Nusselt_number(H_L = 20, D = 0.01, K = 0.5)
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

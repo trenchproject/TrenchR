@@ -7,22 +7,24 @@
 diurnal_temp_variation_sine(T_max, T_min, t)
 }
 \arguments{
-\item{T_max}{maximum daily temperature (C)}
+\item{T_max}{\code{numeric} maximum daily temperature (C)}
 
-\item{T_min}{minimum daily temperature (C)}
+\item{T_min}{\code{numeric} minimum daily temperature (C)}
 
-\item{t}{time for temperature estimate (hour)}
+\item{t}{\code{numeric} time for temperature estimate (hour)}
 }
 \value{
-temperature (C) at a specified hour
+\code{numeric} temperature (C) at a specified hour
 }
 \description{
-estimate temperature for a specified hour using the sine interpolation in Campbell and Norman (1998). Source: Campbell and Norman. 1998. An Introduction to Environmental Biophysics.
+estimate temperature for a specified hour using the sine interpolation in \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
+diurnal_temp_variation_sine(T_max = 30, T_min = 10, t = 11)
 
-diurnal_temp_variation_sine(T_max=30, T_min=10, t=11)
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other microclimate functions: 

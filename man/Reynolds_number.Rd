@@ -7,22 +7,24 @@
 Reynolds_number(u, D, nu)
 }
 \arguments{
-\item{u}{is wind speed in m/s}
+\item{u}{\code{numeric} wind speed (m/s)}
 
-\item{D}{is characteristic dimension (e.g., body diameter) (m)}
+\item{D}{\code{numeric} characteristic dimension (e.g., body diameter) (m)}
 
-\item{nu}{is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^(-1)), can calculate from DRYAIR or WETAIR}
+\item{nu}{\code{numeric} the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^(-1)), can calculate from DRYAIR or WETAIR functions}
 }
 \value{
-Reynolds number
+\code{numeric} Reynolds number
 }
 \description{
-estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces (Gates 1980 Biophysical Ecology).
+estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces \insertCite{Gates1980}{TrenchR}
 }
 \examples{
-Reynolds_number(u=1, D=0.001, nu=1.2)
+  Reynolds_number(u = 1, D = 0.001, nu = 1.2)
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

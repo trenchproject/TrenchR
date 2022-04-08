@@ -7,27 +7,29 @@
 degree_days(T_min, T_max, LDT = NA, UDT = NA, method = "single.sine")
 }
 \arguments{
-\item{T_min}{Minimum temperature of the day (C)}
+\item{T_min}{\code{numeric} Minimum temperature of the day (C)}
 
-\item{T_max}{Maximum temperature of the day (C)}
+\item{T_max}{\code{numeric} Maximum temperature of the day (C)}
 
-\item{LDT}{lower developmental threshold (C).}
+\item{LDT}{\code{numeric} lower developmental threshold (C)}
 
-\item{UDT}{upper developmental threshold (C).}
+\item{UDT}{\code{numeric} upper developmental threshold (C)}
 
-\item{method}{type of method being used. Current choices: "single.sine","double.sine", "single.triangulation" or "double.triangulation".}
+\item{method}{\code{character} type of method being used. Current choices: "single.sine","double.sine", "single.triangulation" or "double.triangulation"}
 }
 \value{
-degree days (C)
+\code{numeric} degree days (C)
 }
 \description{
-calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minima is equal to previous day. Double Sine wave approximation of degree days from Allen JC. 1976.  A Modified Sine Wave Method for Calculating Degree Days. Environmental Entomology 5:388–396.
+calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minima is equal to previous day. Double Sine wave approximation of degree days from \insertCite{Allen1976}.
 }
 \examples{
+  degree_days(T_min = 7, T_max = 14, LDT = 12, UDT = 33, method = "single.sine")
+  degree_days(T_min = 7, T_max = 14, LDT = 12, UDT = 33, method = "single.triangulation")
 
-degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.sine")
-degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.triangulation")
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other microclimate functions: 

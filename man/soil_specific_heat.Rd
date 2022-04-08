@@ -7,23 +7,26 @@
 soil_specific_heat(x_o, x_m, x_w, rho_so)
 }
 \arguments{
-\item{x_o}{is volume fraction of organic material}
+\item{x_o}{\code{numeric} volume fraction of organic material}
 
-\item{x_m}{is volume fraction of minerals}
+\item{x_m}{\code{numeric} volume fraction of minerals}
 
-\item{x_w}{is volume fraction of water}
+\item{x_w}{\code{numeric} volume fraction of water}
 
-\item{rho_so}{is particle density of soil in kg/m^3 (bulk density)}
+\item{rho_so}{\code{numeric} particle density of soil in kg/m^3 (bulk density). Defaults to 1620.}
 }
 \value{
-soil specific heat (J kg^-1 K^-1)
+\code{numeric} soil specific heat (J kg^-1 K^-1)
 }
 \description{
-estimate soil specific heat in J kg^-1 K^-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).  Uses the volume fraction of organic material, minerals, and water in soil.  CHECK Campbell and Norman (2000) section 8.2.
+Estimates soil specific heat (J kg^-1 K^-1) using the methods of \insertCite{deVries1963;textual}{TrenchR}. Uses the volume fraction of organic material, minerals, and water in soil.
 }
 \examples{
-soil_specific_heat(x_o=0.01, x_m=0.6, x_w=0.2, rho_so=1620)
+  soil_specific_heat(x_o = 0.01, x_m = 0.6, x_w = 0.2, rho_so = 1620)
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other soil temperature functions: 

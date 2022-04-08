@@ -7,28 +7,29 @@
 air_temp_profile_neutral(T_r, zr, z0, z, T_s)
 }
 \arguments{
-\item{T_r}{is temperature at reference height in C.}
+\item{T_r}{\code{numeric} temperature at reference height (C).}
 
-\item{zr}{is initial reference height in m.}
+\item{zr}{\code{numeric} initial reference height (meters).}
 
-\item{z0}{is surface roughness in m.}
+\item{z0}{\code{numeric} surface roughness (meters).}
 
-\item{z}{is height to scale to in m.}
+\item{z}{\code{numeric} height to scale to (meters).}
 
-\item{T_s}{is surface temperatures in C.}
+\item{T_s}{\code{numeric} surface temperatures (C).}
 }
 \value{
 temperature (C)
 }
 \description{
-calculate temperature (C) at a specified height (m) within a 
-boundary layer near the surface.  The velocity profile is the neutral profile described by Sellers (1965). 
-Function in equations (2) and (3) of Porter et al. (1973). Source: Porter WP et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
+calculate temperature (C) at a specified height (m) within a boundary layer near the surface.  The velocity profile is the neutral profile described by \insertCite{Sellers1965}{TrenchR}. Function in equations (2) and (3) of \insertCite{Porter1973}{TrenchR}.
 }
 \examples{
-air_temp_profile_neutral(T_r=20, zr=0.1, z0=0.2, z=0.15, T_s=25)
+air_temp_profile_neutral(T_r = 20, zr = 0.1, z0 = 0.2, z = 0.15, T_s = 25)
 
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other microclimate functions: 
