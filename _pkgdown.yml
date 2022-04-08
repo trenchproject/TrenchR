@@ -2,3 +2,29 @@ url: https://trenchproject.github.io/TrenchR/
 
 development:
   mode: auto
+
+navbar:
+  structure:
+    left: [home, articles, reference, news]
+    right: [github] 
+  components: 
+    articles:
+      text: "Vignettes"
+      menu:
+       - text: "Allometries and conversions"
+         href: articles/AllometryAndConversionsTutorial.html
+       - text: "Estimating microclimates"
+         href: articles/MicroclimateTutorial.html
+       - text: "List of symbols"
+         href: articles/Symbols.html
+       - text: "Using energy balances to estimate body temperatures"
+         href: articles/TeTutorial.html
+    reference: 
+      text: "Functions"
+      href: reference/index.html
+    news: 
+      text: "News"
+      href: news/index.html
+    github:
+      icon: fa-github
+      href: https://github.com/trenchproject/
