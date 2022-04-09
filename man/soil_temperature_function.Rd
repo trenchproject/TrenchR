@@ -20,14 +20,32 @@ soil temperature function
 Function called to calculate soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from \insertCite{Porter1973;textual}{TrenchR} and \insertCite{Kingsolver1979;textual}{TrenchR}
 }
 \examples{
-temp_vector= runif(96, min = -10, max = 10)
-wind_speed_vector= runif(96, min = 0, max = 0.4)
-time_vector= rep(1:24, 4)
-solrad_vector= rep(c(rep(0, 6),seq(10, 700, length.out = 6), seq(700, 10, length.out = 6), rep(0, 6)), 4)
+  set.seed(123)
+  temp_vector       <- runif(96, min = -10, max = 10)
+  wind_speed_vector <- runif(96, min = 0, max = 0.4)
+  time_vector       <- rep(1:24, 4)
+  solrad_vector     <- rep(c(rep(0, 6), seq(10, 700, length.out = 6), seq(700, 10, length.out = 6), rep(0, 6)), 4)
+  params            <- list(SSA        = 0.7, 
+                            epsilon_so = 0.98, 
+                            k_so       = 0.293, 
+                            c_so       = 800, 
+                            dz         = 0.05, 
+                            z_r        = 1.5, 
+                            z0         = 0.02, 
+                            H          = solrad_vector, 
+                            T_a        = temp_vector, 
+                            u          = wind_speed_vector, 
+                            rho_a      = 1.177, 
+                            rho_so     = 1620,
+                            c_a        = 1006, 
+                            TimeIn     = time_vector, 
+                            dt         = 60 * 60, 
+                            shade      = FALSE)
 
-params=list(SSA = 0.7, epsilon_so = 0.98, k_so = 0.293, c_so = 800, dz = 0.05, z_r = 1.5, z0 = 0.02, H = solrad_vector, T_a = temp_vector, u = wind_speed_vector, rho_a = 1.177, rho_so = 1620, c_a = 1006, TimeIn = time_vector, dt = 60 * 60, shade = FALSE)
+soil_temperature_function(j      = 1, 
+                          T_so   = rep(20,13), 
+                          params = params)
 
-soil_temperature_function(j=1,T_so= rep(20,13), params=params)
 
 
 }

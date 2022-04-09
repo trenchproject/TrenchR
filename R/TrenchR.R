@@ -1,4 +1,8 @@
+#' @importFrom deSolve ode
+#' @importFrom msm rtnorm
 #' @importFrom Rdpack reprompt
+#' @importFrom stats integrate lm runif uniroot
+#' @importFrom zoo na.approx
 
 #' @title Translating Environmental Change Into Organismal Responses
 #'

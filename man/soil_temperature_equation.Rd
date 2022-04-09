@@ -32,7 +32,15 @@ soil temperature function
 Function called by soil_temp_noint to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}.
 }
 \examples{
-soil_temperature_equation(L = -10, rho_a = 1.177, c_a = 1006, k = 0.41, V_inst = 0.3, z_r = 1.5, z0 = 0.02, T_inst = 265, T_s = 20)
+soil_temperature_equation(L      = -10, 
+                          rho_a  = 1.177, 
+                          c_a    = 1006, 
+                          k      = 0.41, 
+                          V_inst = 0.3, 
+                          z_r    = 1.5, 
+                          z0     = 0.02, 
+                          T_inst = 265, 
+                          T_s    = 20)
 
 }
 \references{

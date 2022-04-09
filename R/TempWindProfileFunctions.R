@@ -12,8 +12,6 @@
 #' 
 #' @family microclimate functions
 #' 
-#' @import stats
-#' 
 #' @references
 #'   \insertAllCited{}
 #' 

@@ -20,7 +20,9 @@ soil_conductivity(x, lambda, g_a)
 Estimates soil thermal conductivity (W m^-1 K^-1) using the methods of \insertCite{deVries1963;textual}{TrenchR}
 }
 \examples{
-  soil_conductivity(x = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), lambda = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), g_a = 0.125)
+  soil_conductivity(x      = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), 
+                    lambda = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), 
+                    g_a     = 0.125)
   
 }
 \references{

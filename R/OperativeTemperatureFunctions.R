@@ -134,8 +134,6 @@ Qnet_Gates <- function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #' 
 #' @family biophysical models
 #' 
-#' @import stats
-#' 
 #' @export
 #' 
 #' @references
@@ -212,8 +210,6 @@ Tb_Gates <- function(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, eps
 #' @keywords operative environmental temperature
 #' 
 #' @family biophysical models
-#' 
-#' @import stats
 #' 
 #' @export
 #' 
