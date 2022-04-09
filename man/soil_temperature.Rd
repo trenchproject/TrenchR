@@ -55,7 +55,7 @@ soil_temperature(
 soil temperature (C)
 }
 \description{
-Function called to calculate soil temperature in C from \insertCite{Beckman1973;textual}{TrenchR}. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from \insertCite{DeVries1963}{TrenchR}
+Function called to calculate soil temperature in C from \insertCite{Beckman1973;textual}{TrenchR}. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from \insertCite{deVries1963}{TrenchR}
 }
 \examples{
   set.seed(123)
