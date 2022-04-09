@@ -9,7 +9,7 @@ solar_noon(lon, doy, offset = NA)
 \arguments{
 \item{lon}{\code{numeric} longitude (decimal degrees)}
 
-\item{doy}{\code{numeric} day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)}
+\item{doy}{\code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)}
 
 \item{offset}{\code{numeric} number of hours to add to UTC to get local time (improves accuracy but not always necessary). Defaults to NA.}
 }

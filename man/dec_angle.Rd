@@ -7,7 +7,7 @@
 dec_angle(doy)
 }
 \arguments{
-\item{doy}{\code{numeric} day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)}
+\item{doy}{\code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)}
 }
 \value{
 \code{numeric} declination angle (radians)
@@ -16,8 +16,8 @@ dec_angle(doy)
 Calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
-dec_angle(doy = 112)
-dec_angle(doy = 360)
+  dec_angle(doy = 112)
+  dec_angle(doy = 360)
 
 }
 \references{

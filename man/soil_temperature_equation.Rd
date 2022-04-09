@@ -23,7 +23,7 @@ soil_temperature_equation(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s)
 
 \item{T_inst}{\code{numeric} instantaneous air temperature (K)}
 
-\item{T_s}{\code{numeric} initial soil suface temperature (C)}
+\item{T_s}{\code{numeric} initial soil surface temperature (C)}
 }
 \value{
 soil temperature function

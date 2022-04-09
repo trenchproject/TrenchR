@@ -58,7 +58,7 @@ Tb_Fei <- function(T_a,
   
   # Constants
 
-    # thermal absoptivity (proportion), Bartlett & Gates 1967
+    # thermal absorptivity (proportion), Bartlett & Gates 1967
 
       alpha_L <- 0.965 
 

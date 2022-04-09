@@ -2,11 +2,11 @@
 #' 
 #' @description Convert a date (day, month, year) to Julian Day (day of year).
 #'
-#' @param day \code{character} numerical date in standard format (e.g. "2017-01-02", "01-02", "01/02/2017" etc). 
+#' @param day \code{character} numerical date in standard format (e.g. \code{"2017-01-02"}, \code{"01-02"}, \code{"01/02/2017"} etc). 
 #'
-#' @param format \code{character} date format following \code{\link[base]{POSIXlt}} conventions. Default value = "\%Y-\%m-\%d" 
+#' @param format \code{character} date format following \code{\link[base]{POSIXlt}} conventions. Default value = \code{"\%Y-\%m-\%d"}. 
 #'
-#' @return \code{numeric} Julian day number, 1-366 (eg. 1 for January 1st)
+#' @return \code{numeric} Julian day number, 1-366 (e.g. 1 for January 1st)
 #' 
 #' @family utility functions  
 #'  
@@ -31,7 +31,7 @@ day_of_year <- function (day,
 #' 
 #' @description Calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)
 #' 
 #' @return \code{numeric} declination angle (radians)
 #' 
@@ -43,8 +43,8 @@ day_of_year <- function (day,
 #' @export
 #' 
 #' @examples
-#' dec_angle(doy = 112)
-#' dec_angle(doy = 360)
+#'   dec_angle(doy = 112)
+#'   dec_angle(doy = 360)
 #' 
 dec_angle <- function (doy) {
   
@@ -61,7 +61,7 @@ dec_angle <- function (doy) {
 #'
 #' @param lat \code{numeric} latitude (decimal degrees)
 #' 
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)
 #' 
 #' @return \code{numeric} day length (hours).
 #'
@@ -96,7 +96,7 @@ daylength <- function(lat,
 #'
 #' @param lon \code{numeric} longitude (decimal degrees)
 #'
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)
 #'
 #' @param offset \code{numeric} number of hours to add to UTC to get local time (improves accuracy but not always necessary). Defaults to NA.
 #'
@@ -150,7 +150,7 @@ solar_noon <- function (lon,
 #' 
 #' @description  calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @param doy \code{numeric}  day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)
+#' @param doy \code{numeric}  day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)
 #' 
 #' @param lat \code{numeric}  latitude (decimal degrees)
 #' 
@@ -218,7 +218,7 @@ zenith_angle <- function (doy,
 #'
 #' @description  calculate the azimuth angle, the angle (degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)
 #' 
 #' @param lat \code{numeric} latitude (decimal degrees)
 #' 
@@ -430,9 +430,6 @@ fahrenheit_to_celsius <- function (T) {
 #' 
 #' @export
 #' 
-#' @references
-#'   \insertAllCited{}
-#' 
 #' @examples
 #'   radian_to_degree(0.831)
 #' 
@@ -453,9 +450,6 @@ radian_to_degree <- function (rad) {
 #' @return \code{numeric} angle (radians)
 #' 
 #' @export
-#' 
-#' @references
-#'   \insertAllCited{}
 #' 
 #' @examples
 #'   degree_to_radian(47.608)

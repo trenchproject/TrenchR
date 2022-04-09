@@ -9,7 +9,7 @@ Qevaporation(A, T_b, taxa, rho_s = NA, rho_a = NA, h = NA, H = NA, r_i = NA)
 \arguments{
 \item{A}{\code{numeric} surface area (m^2)}
 
-\item{T_b}{\code{numeric} body temperatue (K)}
+\item{T_b}{\code{numeric} body temperature (K)}
 
 \item{taxa}{\code{character} taxa current choices: lizard, amphibian_wetskin (fully wet skin), amphibian (not fully wet skin)}
 

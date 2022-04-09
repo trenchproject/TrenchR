@@ -10,7 +10,7 @@
 #' 
 #' @return patmos \code{numeric} Standard atmospheric pressure (Pa)
 #' 
-#' @return densty \code{numeric} Density (kg m-3)
+#' @return density \code{numeric} Density (kg m-3)
 #' 
 #' @return visdyn \code{numeric} Dynamic viscosity (kg m-1 s-1)
 #' 
@@ -20,7 +20,7 @@
 #' 
 #' @return thcond \code{numeric} Thermal conductivity (W m-1 K-1)
 #' 
-#' @return htovpr \code{numeric} Latent heat of vapourisation of water (J kg-1)
+#' @return htovpr \code{numeric} Latent heat of vaporization of water (J kg-1)
 #' 
 #' @return tcoeff \code{numeric} Temperature coefficient of volume expansion (K-1)
 #' 
@@ -48,14 +48,14 @@ DRYAIR <- function(db = db, bp = 0, alt = 0) {
   bp <- rep(bp,length(patmos))
   bp[bp <= 0] <- patmos[bp <= 0]
   
-  densty <- bp / (287.04 * (db + tstd))
+  density <- bp / (287.04 * (db + tstd))
   
   visnot <- 1.8325E-5
   tnot <- 296.16
   c <- 120.
   
   visdyn <- (visnot * ((tnot + c) / (db + tstd + c))) * (((db + tstd) / tnot)^1.5)
-  viskin <- visdyn / densty
+  viskin <- visdyn / density
   
   difvpr <- 2.26E-5 * (((db + tstd) / tstd)^1.81) * (1.E5 / bp)
   thcond <- 0.02425 + (7.038E-5 * db)
@@ -65,18 +65,18 @@ DRYAIR <- function(db = db, bp = 0, alt = 0) {
   bbemit <- 5.670367E-8 * ((db + tstd)^4)
   emtmax <- 2.897E-3 / (db + tstd)
   
-  list(patmos=patmos, densty=densty, visdyn=visdyn, viskin=viskin, difvpr=difvpr, thcond=thcond, htovpr=htovpr, tcoeff=tcoeff, ggroup=ggroup, bbemit=bbemit, emtmax=emtmax)
+  list(patmos=patmos, density=density, visdyn=visdyn, viskin=viskin, difvpr=difvpr, thcond=thcond, htovpr=htovpr, tcoeff=tcoeff, ggroup=ggroup, bbemit=bbemit, emtmax=emtmax)
 
 }
 
 
 #' @title VAPPRS
 #'
-#' @description Calculates saturation vapour pressure for a given air temperature.
+#' @description Calculates saturation vapor pressure for a given air temperature.
 #' 
 #' @param db \code{numeric} Dry bulb temperature (C)
 #' 
-#' @return esat \code{numeric} Saturation vapour pressure (Pa)
+#' @return esat \code{numeric} Saturation vapor pressure (Pa)
 #' 
 #' @export
 #' 
@@ -118,11 +118,11 @@ VAPPRS <- function(db = db) {
 #' 
 #' @param bp \code{numeric} Barometric pressure (pascal)
 #' 
-#' @return e \code{numeric} Vapour pressure (Pa)
+#' @return e \code{numeric} Vapor pressure (Pa)
 #' 
-#' @return esat \code{numeric} Saturation vapour pressure (Pa)
+#' @return esat \code{numeric} Saturation vapor pressure (Pa)
 #' 
-#' @return vd \code{numeric} Vapour density (kg m-3)
+#' @return vd \code{numeric} Vapor density (kg m-3)
 #' 
 #' @return rw \code{numeric} Mixing ration (kg kg-1)
 #' 
@@ -136,7 +136,7 @@ VAPPRS <- function(db = db) {
 #' 
 #' @return wtrpot \code{numeric} Water potential (Pa)
 #' 
-#' @return rh \code{numeric} Relative humidity (%)
+#' @return rh \code{numeric} Relative humidity (\%)
 #' 
 #' @export
 #' 

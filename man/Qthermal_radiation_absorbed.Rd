@@ -16,7 +16,7 @@ Qthermal_radiation_absorbed(
 
 \item{T_g}{\code{numeric} ground temperature (C)}
 
-\item{epsilon_ground}{\code{numeric} emmisitivity (proportion) for more soil types \insertCite{Campbell1998}{TrenchR}, default value of 0.97}
+\item{epsilon_ground}{\code{numeric} emissitivity (proportion) for more soil types \insertCite{Campbell1998}{TrenchR}, default value of 0.97}
 
 \item{a_longwave}{\code{numeric} absorptance (proportion) of organism to longwave radiation (\insertCite{Bartlett1967}{TrenchR} and Buckley 2008), default value of 0.965}
 }

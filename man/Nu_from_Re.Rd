@@ -15,7 +15,7 @@ Nu_from_Re(Re, taxa = "cylinder")
 \code{numeric} Nusselt number (dimensionless)
 }
 \description{
-estimate the Nusselt number from the Reynolds number for various taxa.  Source: \insertCite{Mitchell1976}{TrenchR} See Table 1. Convective Heat Trasfer Relations for Animal Shapes.
+estimate the Nusselt number from the Reynolds number for various taxa.  Source: \insertCite{Mitchell1976}{TrenchR} See Table 1. Convective Heat Transfer Relations for Animal Shapes.
 }
 \examples{
   Nu_from_Re(Re   = 5, 

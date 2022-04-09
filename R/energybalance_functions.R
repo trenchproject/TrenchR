@@ -1,6 +1,6 @@
 #' @title Calculate Conductance Assuming Animal Thermal Conductivity is Rate Limiting
 #' 
-#' @description Calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
+#' @description Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
 #' 
 #' @param T_g \code{numeric} Ground surface temperature (Kelvin).
 #' 
@@ -55,7 +55,7 @@ Qconduction_animal <- function (T_g,
 
 #' @title Calculate conductance assuming substrate thermal conductivity is rate limiting
 #' 
-#' @description  calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
+#' @description  calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
 #' 
 #' @param T_g \code{numeric} Surface temperature (Kelvin).
 #' 
@@ -229,7 +229,7 @@ heat_transfer_coefficient <- function (V,
 #' 
 #' @param K \code{numeric} Thermal conductivity of air (W m^-1 K^-1), can calculate using DRYAIR or WETAIR in NicheMapR
 #' 
-#' @param nu \code{numeric} Kinematic Viscocity of air (m^2 s^-1), can calculate using DRYAIR or WETAIR in NicheMapR
+#' @param nu \code{numeric} Kinematic Viscosity of air (m^2 s^-1), can calculate using DRYAIR or WETAIR in NicheMapR
 #' 
 #' @param taxa \code{character} Which class of organism, current choices: sphere, frog, lizard, flyinginsect, spider
 #' 
@@ -476,7 +476,7 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 #' 
 #' @param A \code{numeric} surface area (m^2)
 #' 
-#' @param T_b \code{numeric} body temperatue (K)
+#' @param T_b \code{numeric} body temperature (K)
 #' 
 #' @param taxa \code{character} taxa current choices: lizard, amphibian_wetskin (fully wet skin), amphibian (not fully wet skin)
 #' 
@@ -712,7 +712,7 @@ Qmetabolism_from_mass <- function(m,
 #' 
 #' @param taxa \code{character} Taxa to use. Options: bird, mammal, reptile, amphibian, invertebrate
 #' 
-#' @return \code{numeric} basal metabolim (W)
+#' @return \code{numeric} basal metabolism (W)
 #' 
 #' @keywords metabolism
 #' 
@@ -1014,7 +1014,7 @@ Tb_salamander_humid <- function (r_i,
 #' 
 #' @param T_g \code{numeric} ground temperature (C)
 #' 
-#' @param epsilon_ground \code{numeric} emmisitivity (proportion) for more soil types \insertCite{Campbell1998}{TrenchR}, default value of 0.97
+#' @param epsilon_ground \code{numeric} emissitivity (proportion) for more soil types \insertCite{Campbell1998}{TrenchR}, default value of 0.97
 #' 
 #' @param a_longwave \code{numeric} absorptance (proportion) of organism to longwave radiation (\insertCite{Bartlett1967}{TrenchR} and Buckley 2008), default value of 0.965
 #' 
@@ -1217,7 +1217,7 @@ Reynolds_number <- function(u,
 
 #' @title Calculate Grashof Number
 #'
-#' @description  estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force. Reference: \insertCite{Campbell1998}{TrenchR}
+#' @description  estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force. Reference: \insertCite{Campbell1998}{TrenchR}
 #' 
 #' @param Ta \code{numeric} Air temperature (C).
 #' 
@@ -1261,7 +1261,7 @@ Grashof_number <- function (Ta,
 
 #' @title Calculate Grashof Number in Gates
 #'
-#' @description  estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity \insertCite{Gates1980}{TrenchR}. Ratio of a buoyant force times an inertial force to the square of a viscous force.
+#' @description  estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity \insertCite{Gates1980}{TrenchR}. Ratio of a buoyant force times an inertial force to the square of a viscous force.
 #' 
 #' @param Ta \code{numeric} Air temperature (C).
 #' 
@@ -1308,7 +1308,7 @@ Grashof_number_Gates <- function (Ta,
 
 #' @title Estimate the Nusselt Number from the Reynolds Number
 #' 
-#' @description  estimate the Nusselt number from the Reynolds number for various taxa.  Source: \insertCite{Mitchell1976}{TrenchR} See Table 1. Convective Heat Trasfer Relations for Animal Shapes.  
+#' @description  estimate the Nusselt number from the Reynolds number for various taxa.  Source: \insertCite{Mitchell1976}{TrenchR} See Table 1. Convective Heat Transfer Relations for Animal Shapes.  
 #' 
 #' @param Re \code{numeric} is the Reynolds Number (dimensionless)
 #' 
@@ -1374,9 +1374,9 @@ Nu_from_Gr <- function (Gr) {
 }
 
 
-#' @title Commpare Grashof and Reyolds Numbers to Determine If Convection is Free or Forced 
+#' @title Compare Grashof and Reyolds Numbers to Determine If Convection is Free or Forced 
 #' 
-#' @description  commpare the Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980).
+#' @description  Compare the Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980).
 #' 
 #' @param Gr \code{numeric} is the Grashof Number (dimensionless)
 #' 
