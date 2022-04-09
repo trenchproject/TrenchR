@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate convection — Qconvection • TrenchR</title>
+<title>Calculate Convection — Qconvection • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Calculate convection — Qconvection" />
-<meta property="og:description" content="calculate convection from an organism to its environment as in Mitchell (1976). Includes an enhancement factor associated with outdoor environments. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569." />
+<meta property="og:title" content="Calculate Convection — Qconvection" />
+<meta property="og:description" content="Calculate convection from an organism to its environment as in (Mitchell 1976)
+. Includes an enhancement factor associated with outdoor environments." />
 
 
 
@@ -132,49 +133,58 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate convection</h1>
+    <h1>Calculate Convection</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/energybalance_functions.R'><code>R/energybalance_functions.R</code></a></small>
     <div class="hidden name"><code>Qconvection.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>calculate convection from an organism to its environment as in Mitchell (1976). Includes an enhancement factor associated with outdoor environments. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569.</p>
+    <p>Calculate convection from an organism to its environment as in (Mitchell 1976)
+. Includes an enhancement factor associated with outdoor environments.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>Qconvection</span><span class='op'>(</span><span class='va'>T_a</span>, <span class='va'>T_b</span>, H_L <span class='op'>=</span> <span class='fl'>10.45</span>, <span class='va'>A</span>, <span class='va'>proportion</span>, ef <span class='op'>=</span> <span class='fl'>1.23</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>Qconvection</span><span class='op'>(</span><span class='va'>T_a</span>, <span class='va'>T_b</span>, <span class='va'>A</span>, <span class='va'>proportion</span>, H_L <span class='op'>=</span> <span class='fl'>10.45</span>, ef <span class='op'>=</span> <span class='fl'>1.23</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>T_a</th>
-      <td><p>Air Temperature in Kelvin.</p></td>
+      <td><p><code>numeric</code> Air temperature (Kelvin).</p></td>
     </tr>
     <tr>
       <th>T_b</th>
-      <td><p>Initial Body Temperature in Kelvin.</p></td>
-    </tr>
-    <tr>
-      <th>H_L</th>
-      <td><p>Convective heat transfer coefficient (W m^-2 K^-1)</p></td>
+      <td><p><code>numeric</code> Initial body temperature (Kelvin).</p></td>
     </tr>
     <tr>
       <th>A</th>
-      <td><p>Surface area in m^2</p></td>
+      <td><p><code>numeric</code> Surface area (m^2)</p></td>
     </tr>
     <tr>
       <th>proportion</th>
-      <td><p>of surface area exposed to air</p></td>
+      <td><p><code>numeric</code> proportion of surface area exposed to air</p></td>
+    </tr>
+    <tr>
+      <th>H_L</th>
+      <td><p><code>numeric</code> Convective heat transfer coefficient (W m^-2 K^-1)</p></td>
     </tr>
     <tr>
       <th>ef</th>
-      <td><p>is the enhancement factor, used to adjust H to field conditions.  Approximated as mean value of 1.23 by default, but see Mitchell 1976 for further information.</p></td>
+      <td><p><code>numeric</code> is the enhancement factor, used to adjust H to field conditions.  Approximated as mean value of 1.23 by default, but see (Mitchell 1976)
+ for further information.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>convection (W)</p>
+    <p><code>numeric</code> convection (W)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Mitchell JW (1976).
+&#8220;Heat transfer from spheres and other animal forms.&#8221;
+<em>Biophysical Journal</em>, <b>16</b>(6), 561--569.
+ISSN 0006-3495, doi: <a href='https://doi.org/10.1016/S0006-3495(76)85711-6'>10.1016/S0006-3495(76)85711-6</a>
+, <a href='https://www.sciencedirect.com/science/article/pii/S0006349576857116'>https://www.sciencedirect.com/science/article/pii/S0006349576857116</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
@@ -219,7 +229,11 @@
 <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>Qconvection</span><span class='op'>(</span>T_a<span class='op'>=</span> <span class='fl'>293</span>, T_b<span class='op'>=</span> <span class='fl'>303</span>, H_L<span class='op'>=</span><span class='fl'>10.45</span>, A<span class='op'>=</span><span class='fl'>0.0025</span>, proportion<span class='op'>=</span><span class='fl'>0.85</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>Qconvection</span><span class='op'>(</span>T_a        <span class='op'>=</span> <span class='fl'>293</span>, 
+              T_b        <span class='op'>=</span> <span class='fl'>303</span>, 
+              H_L        <span class='op'>=</span> <span class='fl'>10.45</span>, 
+              A          <span class='op'>=</span> <span class='fl'>0.0025</span>, 
+              proportion <span class='op'>=</span> <span class='fl'>0.85</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 0.2731369</div><div class='input'>
 
 </div></pre>

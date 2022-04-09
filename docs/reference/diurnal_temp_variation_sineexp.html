@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components — diurnal_temp_variation_sineexp • TrenchR</title>
+<title>Estimate Temperature Across Hours Using a Diurnal Temperature Variation Function Incorporating Sine and Exponential Components — diurnal_temp_variation_sineexp • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,11 @@
 
 
 
-<meta property="og:title" content="Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components — diurnal_temp_variation_sineexp" />
-<meta property="og:description" content="estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: Parton WJ and Logan JA. 1981. A model for diurnal variation in soil and air temperature. Agricultural Meteorology 23: 205-216." />
+<meta property="og:title" content="Estimate Temperature Across Hours Using a Diurnal Temperature Variation Function Incorporating Sine and Exponential Components — diurnal_temp_variation_sineexp" />
+<meta property="og:description" content="estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: (Parton and Logan 1981)
+. Default alpha, beta, gamma values are the average of 5 North Carolina sites  (M. Wann and Gold 1985)
+. Other alpha, beta, gamma parameterizations include values for Denver, Colorado from (Parton and Logan 1981)
+: 150cm air temperature: alpha = 1.86, beta = 2.20, gamma = -0.17; 10cm air temperature: alpha = 1.52, beta = 2.00, gamma = -0.18; soil surface temperature: alpha = 0.50, beta = 1.81, gamma = 0.49; 10cm soil temperature: alpha = 0.45, beta = 2.28, gamma = 1.83." />
 
 
 
@@ -132,13 +135,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components</h1>
+    <h1>Estimate Temperature Across Hours Using a Diurnal Temperature Variation Function Incorporating Sine and Exponential Components</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/DTRFunctions.R'><code>R/DTRFunctions.R</code></a></small>
     <div class="hidden name"><code>diurnal_temp_variation_sineexp.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: Parton WJ and Logan JA. 1981. A model for diurnal variation in soil and air temperature. Agricultural Meteorology 23: 205-216.</p>
+    <p>estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: (Parton and Logan 1981)
+. Default alpha, beta, gamma values are the average of 5 North Carolina sites  (M. Wann and Gold 1985)
+. Other alpha, beta, gamma parameterizations include values for Denver, Colorado from (Parton and Logan 1981)
+: 150cm air temperature: alpha = 1.86, beta = 2.20, gamma = -0.17; 10cm air temperature: alpha = 1.52, beta = 2.00, gamma = -0.18; soil surface temperature: alpha = 0.50, beta = 1.81, gamma = 0.49; 10cm soil temperature: alpha = 0.45, beta = 2.28, gamma = 1.83.</p>
     </div>
 
     <pre class="usage"><span class='fu'>diurnal_temp_variation_sineexp</span><span class='op'>(</span>
@@ -157,41 +163,51 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>T_max</th>
-      <td><p>maximum daily temperature (C)</p></td>
+      <td><p><code>numeric</code> maximum daily temperature (C)</p></td>
     </tr>
     <tr>
       <th>T_min</th>
-      <td><p>minimum daily temperature (C)</p></td>
+      <td><p><code>numeric</code> minimum daily temperature (C)</p></td>
     </tr>
     <tr>
       <th>t</th>
-      <td><p>time for temperature estimate (hour)</p></td>
+      <td><p><code>numeric</code> time for temperature estimate (hour)</p></td>
     </tr>
     <tr>
       <th>t_r</th>
-      <td><p>time of sunset (hour)</p></td>
+      <td><p><code>numeric</code> time of sunset (hour)</p></td>
     </tr>
     <tr>
       <th>t_s</th>
-      <td><p>time of sunrise (hour)</p></td>
+      <td><p><code>numeric</code> time of sunrise (hour)</p></td>
     </tr>
     <tr>
       <th>alpha</th>
-      <td><p>time difference between t_x (time of maximum temperature) and noon (hour)</p></td>
+      <td><p><code>numeric</code> time difference between t_x (time of maximum temperature) and noon (hour). Defaults to 2.59</p></td>
     </tr>
     <tr>
       <th>beta</th>
-      <td><p>time difference between t_x and sunrise (hour)</p></td>
+      <td><p><code>numeric</code> time difference between t_x and sunrise (hour). Defaults to 1.55</p></td>
     </tr>
     <tr>
       <th>gamma</th>
-      <td><p>decay parameter for rate of t change from sunset to t_n (time of minimum temp)</p></td>
+      <td><p><code>numeric</code> decay parameter for rate of t change from sunset to t_n (time of minimum temp). Defaults to 2.2</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>temperature (C) at a specified hour</p>
+    <p><code>numeric</code> temperature (C) at a specified hour</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>M. Wann DY, Gold HJ (1985).
+&#8220;Evaluation and calibration of three models for daily cycle of air temperature.&#8221;
+<em>Agricultural and Forest Meteorology</em>, <b>34</b>, 121--128.
+<a href='https://agris.fao.org/agris-search/search.do?recordID=NL19850065824'>https://agris.fao.org/agris-search/search.do?recordID=NL19850065824</a>.<br /><br /> Parton WJ, Logan JA (1981).
+&#8220;A model for diurnal variation in soil and air temperature.&#8221;
+<em>Agricultural Meteorology</em>, <b>23</b>, 205--216.
+doi: <a href='https://doi.org/10.1016/0002-1571(81)90105-9'>10.1016/0002-1571(81)90105-9</a>
+, <a href='https://www.sciencedirect.com/science/article/abs/pii/0002157181901059'>https://www.sciencedirect.com/science/article/abs/pii/0002157181901059</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other microclimate functions: 
@@ -212,15 +228,14 @@
 <code><a href='wind_speed_profile_segment.html'>wind_speed_profile_segment</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='fu'>diurnal_temp_variation_sineexp</span><span class='op'>(</span>
-  T_max<span class='op'>=</span><span class='fl'>30</span>, 
-  T_min<span class='op'>=</span><span class='fl'>10</span>, 
-  t<span class='op'>=</span><span class='fl'>11</span>, 
-  t_r<span class='op'>=</span><span class='fl'>6</span>, 
-  t_s<span class='op'>=</span><span class='fl'>18</span>, 
-  alpha<span class='op'>=</span><span class='fl'>2.59</span>, 
-  beta<span class='op'>=</span> <span class='fl'>1.55</span>, 
-  gamma<span class='op'>=</span><span class='fl'>2.2</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>diurnal_temp_variation_sineexp</span><span class='op'>(</span>T_max <span class='op'>=</span> <span class='fl'>30</span>, 
+                                 T_min <span class='op'>=</span> <span class='fl'>10</span>, 
+                                 t     <span class='op'>=</span> <span class='fl'>11</span>, 
+                                 t_r   <span class='op'>=</span> <span class='fl'>6</span>, 
+                                 t_s   <span class='op'>=</span> <span class='fl'>18</span>, 
+                                 alpha <span class='op'>=</span> <span class='fl'>2.59</span>, 
+                                 beta  <span class='op'>=</span> <span class='fl'>1.55</span>, 
+                                 gamma <span class='op'>=</span> <span class='fl'>2.2</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 23.91954</div><div class='input'>
 </div></pre>
   </div>

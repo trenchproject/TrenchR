@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Julian Day from Date — day_of_year" />
-<meta property="og:description" content="Convert a date to a Julian Day." />
+<meta property="og:description" content="Convert a date (day, month, year) to Julian Day (day of year)." />
 
 
 
@@ -138,7 +138,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Convert a date to a Julian Day.</p>
+    <p>Convert a date (day, month, year) to Julian Day (day of year).</p>
     </div>
 
     <pre class="usage"><span class='fu'>day_of_year</span><span class='op'>(</span><span class='va'>day</span>, format <span class='op'>=</span> <span class='st'>"%Y-%m-%d"</span><span class='op'>)</span></pre>
@@ -148,20 +148,37 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>day</th>
-      <td><p>R object that is suitable to be converted to a date.</p></td>
+      <td><p><code>character</code> numerical date in standard format (e.g. "2017-01-02", "01-02", "01/02/2017" etc).</p></td>
     </tr>
     <tr>
       <th>format</th>
-      <td><p><code>character</code> date format following <code><a href='https://rdrr.io/r/base/DateTimeClasses.html'>POSIXlt</a></code>" conventions</p></td>
+      <td><p><code>character</code> date format following <code><a href='https://rdrr.io/r/base/DateTimeClasses.html'>POSIXlt</a></code> conventions. Default value = "%Y-%m-%d"</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>numeric</code> Julian day number, 1-366, for eg. 1 for January 1st</p>
+    <p><code>numeric</code> Julian day number, 1-366 (eg. 1 for January 1st)</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other utility functions: 
+<code><a href='airpressure_from_elev.html'>airpressure_from_elev</a>()</code>,
+<code><a href='azimuth_angle.html'>azimuth_angle</a>()</code>,
+<code><a href='daylength.html'>daylength</a>()</code>,
+<code><a href='dec_angle.html'>dec_angle</a>()</code>,
+<code><a href='degree_to_radian.html'>degree_to_radian</a>()</code>,
+<code><a href='fahrenheit_to_celsius.html'>fahrenheit_to_celsius</a>()</code>,
+<code><a href='fahrenheit_to_kelvin.html'>fahrenheit_to_kelvin</a>()</code>,
+<code><a href='kelvin_to_celsius.html'>kelvin_to_celsius</a>()</code>,
+<code><a href='solar_noon.html'>solar_noon</a>()</code>,
+<code><a href='zenith_angle.html'>zenith_angle</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='fu'>day_of_year</span><span class='op'>(</span><span class='st'>"2017-04-22"</span>, format<span class='op'>=</span> <span class='st'>"%Y-%m-%d"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>day_of_year</span><span class='op'>(</span>day    <span class='op'>=</span> <span class='st'>"2017-04-22"</span>, 
+              format <span class='op'>=</span> <span class='st'>"%Y-%m-%d"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 112</div><div class='input'>  <span class='fu'>day_of_year</span><span class='op'>(</span>day    <span class='op'>=</span> <span class='st'>"2017-04-22"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 112</div><div class='input'>  <span class='fu'>day_of_year</span><span class='op'>(</span>day    <span class='op'>=</span> <span class='st'>"04/22/2017"</span>, 
+              format <span class='op'>=</span> <span class='st'>"%m/%d/%Y"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 112</div><div class='input'>
 </div></pre>
   </div>

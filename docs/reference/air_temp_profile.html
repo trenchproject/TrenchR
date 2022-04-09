@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimate air temperature profile as in NicheMapR — air_temp_profile • TrenchR</title>
+<title>Estimate Air Temperature Profile as in NicheMapR — air_temp_profile • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Estimate air temperature profile as in NicheMapR — air_temp_profile" />
-<meta property="og:description" content="estimate temperature (C) at a specified height (m).  
-Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674." />
+<meta property="og:title" content="Estimate Air Temperature Profile as in NicheMapR — air_temp_profile" />
+<meta property="og:description" content="estimate temperature (C) at a specified height (meters). Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR. Source: (Kearney and Porter 2017)
+." />
 
 
 
@@ -133,14 +133,14 @@ Estimates a single, unsegmented temperature profile using the MICRO routine from
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimate air temperature profile as in NicheMapR</h1>
+    <h1>Estimate Air Temperature Profile as in NicheMapR</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/TempWindProfileFunctions.R'><code>R/TempWindProfileFunctions.R</code></a></small>
     <div class="hidden name"><code>air_temp_profile.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>estimate temperature (C) at a specified height (m).  
-Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.</p>
+    <p>estimate temperature (C) at a specified height (meters). Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR. Source: (Kearney and Porter 2017)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>air_temp_profile</span><span class='op'>(</span><span class='va'>T_r</span>, <span class='va'>u_r</span>, <span class='va'>zr</span>, <span class='va'>z0</span>, <span class='va'>z</span>, <span class='va'>T_s</span><span class='op'>)</span></pre>
@@ -150,33 +150,39 @@ Estimates a single, unsegmented temperature profile using the MICRO routine from
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>T_r</th>
-      <td><p>is temperature at reference height in C.</p></td>
+      <td><p><code>numeric</code> temperature at reference height (C).</p></td>
     </tr>
     <tr>
       <th>u_r</th>
-      <td><p>is windspeed at reference height in m/s.</p></td>
+      <td><p><code>numeric</code> windspeed at reference height (m/s).</p></td>
     </tr>
     <tr>
       <th>zr</th>
-      <td><p>is initial reference height in m.</p></td>
+      <td><p><code>numeric</code> initial reference height (meters).</p></td>
     </tr>
     <tr>
       <th>z0</th>
-      <td><p>is surface roughness in m.</p></td>
+      <td><p><code>numeric</code> surface roughness (meters).</p></td>
     </tr>
     <tr>
       <th>z</th>
-      <td><p>is height to scale in m.</p></td>
+      <td><p><code>numeric</code> height to scale (meters).</p></td>
     </tr>
     <tr>
       <th>T_s</th>
-      <td><p>is surface temperatures in C.</p></td>
+      <td><p><code>numeric</code> surface temperatures (C).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>temperature (C)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Kearney MR, Porter WP (2017).
+&#8220;NicheMapR 㤼㸶 an R package for biophysical modelling: the microclimate model.&#8221;
+<em>Ecography</em>, <b>40</b>, 664--674doi.
+<a href='https://onlinelibrary.wiley.com/doi/10.1111/ecog.02360'>https://onlinelibrary.wiley.com/doi/10.1111/ecog.02360</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other microclimate functions: 
@@ -197,9 +203,13 @@ Estimates a single, unsegmented temperature profile using the MICRO routine from
 <code><a href='wind_speed_profile_segment.html'>wind_speed_profile_segment</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>air_temp_profile</span><span class='op'>(</span>T_r<span class='op'>=</span><span class='fl'>20</span>, u_r<span class='op'>=</span><span class='fl'>0.1</span>, zr<span class='op'>=</span><span class='fl'>0.1</span>, z0<span class='op'>=</span><span class='fl'>0.2</span>, z<span class='op'>=</span><span class='fl'>0.15</span>, T_s<span class='op'>=</span><span class='fl'>25</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>air_temp_profile</span><span class='op'>(</span>T_r <span class='op'>=</span> <span class='fl'>20</span>,
+                   u_r <span class='op'>=</span> <span class='fl'>0.1</span>, 
+                   zr  <span class='op'>=</span> <span class='fl'>0.1</span>, 
+                   z0  <span class='op'>=</span> <span class='fl'>0.2</span>, 
+                   z   <span class='op'>=</span> <span class='fl'>0.15</span>, 
+                   T_s <span class='op'>=</span> <span class='fl'>25</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 18.3358</div><div class='input'>
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

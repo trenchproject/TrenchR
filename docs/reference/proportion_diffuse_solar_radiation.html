@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimate the ratio of diffuse to direct solar radiation — proportion_diffuse_solar_radiation • TrenchR</title>
+<title>Estimate the Ratio of Diffuse to Direct Solar Radiation — proportion_diffuse_solar_radiation • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Estimate the ratio of diffuse to direct solar radiation — proportion_diffuse_solar_radiation" />
-<meta property="og:description" content="Estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the McCullough and Porter (1971) SOLRAD model described in Tracy et al. (1983) Estimating clear-day solar radiation: An evaluation of three models. Journal of Thermal Biology, 8(3), 247-251." />
+<meta property="og:title" content="Estimate the Ratio of Diffuse to Direct Solar Radiation — proportion_diffuse_solar_radiation" />
+<meta property="og:description" content="Estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the (McCullough and Porter 1971)
+ SOLRAD model described in (C. R. Tracy 1983)" />
 
 
 
@@ -132,13 +133,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimate the ratio of diffuse to direct solar radiation</h1>
+    <h1>Estimate the Ratio of Diffuse to Direct Solar Radiation</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/RadiationPartitioningFunctions.R'><code>R/RadiationPartitioningFunctions.R</code></a></small>
     <div class="hidden name"><code>proportion_diffuse_solar_radiation.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the McCullough and Porter (1971) SOLRAD model described in Tracy et al. (1983) Estimating clear-day solar radiation: An evaluation of three models. Journal of Thermal Biology, 8(3), 247-251.</p>
+    <p>Estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the (McCullough and Porter 1971)
+ SOLRAD model described in (C. R. Tracy 1983)</p>
     </div>
 
     <pre class="usage"><span class='fu'>proportion_diffuse_solar_radiation</span><span class='op'>(</span><span class='va'>psi</span>, <span class='va'>p_a</span>, <span class='va'>A</span><span class='op'>)</span></pre>
@@ -148,21 +150,32 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>psi</th>
-      <td><p>Zenith angle of the sun (degrees)</p></td>
+      <td><p><code>numeric</code> Zenith angle of the sun (degrees)</p></td>
     </tr>
     <tr>
       <th>p_a</th>
-      <td><p>Atmospheric pressure (kPa)</p></td>
+      <td><p><code>numeric</code> Atmospheric pressure (kPa)</p></td>
     </tr>
     <tr>
       <th>A</th>
-      <td><p>albedo of the substrate (fraction of 1)</p></td>
+      <td><p><code>numeric</code> albedo of the substrate (fraction of 1)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>diffuse fraction</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>C. R. Tracy KAHRALWJSIDBTADWSCW (1983).
+&#8220;Estimating clear-day solar radiation: An evaluation of three models.&#8221;
+<em>Journal of Thermal Biology</em>, <b>8</b>(3), 247--251.
+doi: <a href='https://doi.org/10.1016/0306-4565(83)90003-7'>10.1016/0306-4565(83)90003-7</a>
+, <a href='https://libgen.ggfwzs.net/book/2898239/f9e0c8'>https://libgen.ggfwzs.net/book/2898239/f9e0c8</a>.<br /><br /> McCullough EC, Porter WP (1971).
+&#8220;Computing Clear Day Solar Radiation Spectra for the Terrestrial Ecological Environment.&#8221;
+<em>Ecology</em>, <b>52</b>(6), 1008--1015.
+doi: <a href='https://doi.org/10.2307/1933806'>10.2307/1933806</a>
+, <a href='https://esajournals.onlinelibrary.wiley.com/doi/10.2307/1933806'>https://esajournals.onlinelibrary.wiley.com/doi/10.2307/1933806</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other microclimate functions: 
@@ -183,9 +196,10 @@
 <code><a href='wind_speed_profile_segment.html'>wind_speed_profile_segment</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>proportion_diffuse_solar_radiation</span><span class='op'>(</span>psi<span class='op'>=</span><span class='fl'>60</span>, p_a<span class='op'>=</span><span class='fl'>86.1</span>, A<span class='op'>=</span><span class='fl'>0.25</span><span class='op'>)</span>
-<span class='op'>}</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>proportion_diffuse_solar_radiation</span><span class='op'>(</span>psi <span class='op'>=</span> <span class='fl'>60</span>, 
+                                     p_a <span class='op'>=</span> <span class='fl'>86.1</span>, 
+                                     A   <span class='op'>=</span> <span class='fl'>0.25</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.09352554</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

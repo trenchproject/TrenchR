@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>@title Calculate day length — daylength • TrenchR</title>
+<title>Calculate Day Length — daylength • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="@title Calculate day length — daylength" />
+<meta property="og:title" content="Calculate Day Length — daylength" />
 <meta property="og:description" content="Calculate daylength in hours as a function of latitude and day of year. Uses the CMB model (Campbell and Norman 1998)
 ." />
 
@@ -133,7 +133,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>@title Calculate day length</h1>
+    <h1>Calculate Day Length</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/UtilityFunctions.R'><code>R/UtilityFunctions.R</code></a></small>
     <div class="hidden name"><code>daylength.Rd</code></div>
     </div>
@@ -150,17 +150,17 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>lat</th>
-      <td><p><code>numeric</code> latitude in decimal degrees.</p></td>
+      <td><p><code>numeric</code> latitude (decimal degrees)</p></td>
     </tr>
     <tr>
       <th>doy</th>
-      <td><p><code>numeric</code> day of year (1-366).</p></td>
+      <td><p><code>numeric</code> day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>numeric</code> day length in hours.</p>
+    <p><code>numeric</code> day length (hours).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Campbell GS, Norman JM (1998).
@@ -172,6 +172,7 @@ ISBN 0387949372.</p>
     <div class='dont-index'><p>Other utility functions: 
 <code><a href='airpressure_from_elev.html'>airpressure_from_elev</a>()</code>,
 <code><a href='azimuth_angle.html'>azimuth_angle</a>()</code>,
+<code><a href='day_of_year.html'>day_of_year</a>()</code>,
 <code><a href='dec_angle.html'>dec_angle</a>()</code>,
 <code><a href='degree_to_radian.html'>degree_to_radian</a>()</code>,
 <code><a href='fahrenheit_to_celsius.html'>fahrenheit_to_celsius</a>()</code>,
@@ -181,7 +182,8 @@ ISBN 0387949372.</p>
 <code><a href='zenith_angle.html'>zenith_angle</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='fu'>daylength</span><span class='op'>(</span>lat<span class='op'>=</span><span class='fl'>47.61</span>, doy<span class='op'>=</span><span class='fl'>112</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>daylength</span><span class='op'>(</span>lat <span class='op'>=</span> <span class='fl'>47.61</span>, 
+            doy <span class='op'>=</span> <span class='fl'>112</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 15.06007</div><div class='input'>
 </div></pre>
   </div>

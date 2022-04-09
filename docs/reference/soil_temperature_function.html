@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function to calculate soil temperature. — soil_temperature_function • TrenchR</title>
+<title>Function to Calculate Soil Temperature. — soil_temperature_function • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Function to calculate soil temperature. — soil_temperature_function" />
-<meta property="og:description" content="Function called to calculate soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly." />
+<meta property="og:title" content="Function to Calculate Soil Temperature. — soil_temperature_function" />
+<meta property="og:description" content="Function called to calculate soil temperature from W.A. Beckman and Porter (1973)
+. Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from Porter et al. (1973)
+ and Kingsolver (1979)" />
 
 
 
@@ -132,13 +134,15 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function to calculate soil temperature.</h1>
+    <h1>Function to Calculate Soil Temperature.</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/TsoilFunctions.R'><code>R/TsoilFunctions.R</code></a></small>
     <div class="hidden name"><code>soil_temperature_function.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Function called to calculate soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly.</p>
+    <p>Function called to calculate soil temperature from W.A. Beckman and Porter (1973)
+. Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from Porter et al. (1973)
+ and Kingsolver (1979)</p>
     </div>
 
     <pre class="usage"><span class='fu'>soil_temperature_function</span><span class='op'>(</span><span class='va'>j</span>, <span class='va'>T_so</span>, <span class='va'>params</span><span class='op'>)</span></pre>
@@ -148,21 +152,32 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>j</th>
-      <td><p>is the number of the iteration of running the model</p></td>
+      <td><p><code>numeric</code> is the number of the iteration of running the model</p></td>
     </tr>
     <tr>
       <th>T_so</th>
-      <td><p>is the initial soil temperature profile in C</p></td>
+      <td><p><code>numeric</code> is the initial soil temperature profile in C</p></td>
     </tr>
     <tr>
       <th>params</th>
-      <td><p>is a list containing the following parameters, which are described below: list(SSA, epsilon_so, sigma, k_so, c_so, dz, k, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade).</p></td>
+      <td><p>is a list containing the following parameters, which are described or calculated in soil_temperature(): list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>soil temperature function</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Kingsolver JG (1979).
+&#8220;Thermal and hydric aspects of environmental hetergeneity in the pitcher plant mosquito.&#8221;
+<em>Ecological Monographys</em>, <b>49</b>, 357--376.<br /><br /> Porter WP, Mitchell JW, Bekman A, DeWitt CB (1973).
+&#8220;Behavioral implications of mechanistic ecology: thermal and behavioral modeling of desert ectotherms and their microenvironments.&#8221;
+<em>Oecologia</em>, <b>13</b>, 1--54.<br /><br /> W.A. Beckman JWM, Porter WP (1973).
+&#8220;Thermal Model for Prediction of a Desert Iguana㤼㸲s Daily and Seasonal Behavior.&#8221;
+<em>J. Heat Transfer</em>, <b>95</b>(2), 257--262.
+doi: <a href='https://doi.org/10.1115/1.3450037'>10.1115/1.3450037</a>
+, <a href='https://asmedigitalcollection.asme.org/heattransfer/article-abstract/95/2/257/416609/Thermal-Model-for-Prediction-of-a-Desert-Iguana-s?redirectedFrom=fulltext'>https://asmedigitalcollection.asme.org/heattransfer/article-abstract/95/2/257/416609/Thermal-Model-for-Prediction-of-a-Desert-Iguana-s?redirectedFrom=fulltext</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other soil temperature functions: 
@@ -176,34 +191,40 @@
     <p>Joseph Grigg</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>temp_vector</span><span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>96</span>, min<span class='op'>=</span><span class='op'>-</span><span class='fl'>10</span>, max<span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span>
-<span class='va'>wind_speed_vector</span><span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>96</span>, min<span class='op'>=</span><span class='fl'>0</span>, max<span class='op'>=</span><span class='fl'>0.4</span><span class='op'>)</span>
-<span class='va'>time_vector</span><span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>24</span>,<span class='fl'>4</span><span class='op'>)</span>
-<span class='va'>solrad_vector</span><span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>6</span><span class='op'>)</span>,<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>10</span>,<span class='fl'>700</span>,length.out<span class='op'>=</span><span class='fl'>6</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>700</span>,<span class='fl'>10</span>,length.out<span class='op'>=</span><span class='fl'>6</span><span class='op'>)</span>,<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>6</span><span class='op'>)</span><span class='op'>)</span>,<span class='fl'>4</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
+  <span class='va'>temp_vector</span>       <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>96</span>, min <span class='op'>=</span> <span class='op'>-</span><span class='fl'>10</span>, max <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
+  <span class='va'>wind_speed_vector</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>96</span>, min <span class='op'>=</span> <span class='fl'>0</span>, max <span class='op'>=</span> <span class='fl'>0.4</span><span class='op'>)</span>
+  <span class='va'>time_vector</span>       <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>24</span>, <span class='fl'>4</span><span class='op'>)</span>
+  <span class='va'>solrad_vector</span>     <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>6</span><span class='op'>)</span>, 
+                             <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>10</span>, <span class='fl'>700</span>, length.out <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>, 
+                             <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>700</span>, <span class='fl'>10</span>, length.out <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>, 
+                             <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>6</span><span class='op'>)</span><span class='op'>)</span>,
+                           <span class='fl'>4</span><span class='op'>)</span>
+  <span class='va'>params</span>            <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>SSA        <span class='op'>=</span> <span class='fl'>0.7</span>, 
+                            epsilon_so <span class='op'>=</span> <span class='fl'>0.98</span>, 
+                            k_so       <span class='op'>=</span> <span class='fl'>0.293</span>, 
+                            c_so       <span class='op'>=</span> <span class='fl'>800</span>, 
+                            dz         <span class='op'>=</span> <span class='fl'>0.05</span>, 
+                            z_r        <span class='op'>=</span> <span class='fl'>1.5</span>, 
+                            z0         <span class='op'>=</span> <span class='fl'>0.02</span>, 
+                            H          <span class='op'>=</span> <span class='va'>solrad_vector</span>, 
+                            T_a        <span class='op'>=</span> <span class='va'>temp_vector</span>, 
+                            u          <span class='op'>=</span> <span class='va'>wind_speed_vector</span>, 
+                            rho_a      <span class='op'>=</span> <span class='fl'>1.177</span>, 
+                            rho_so     <span class='op'>=</span> <span class='fl'>1620</span>,
+                            c_a        <span class='op'>=</span> <span class='fl'>1006</span>, 
+                            TimeIn     <span class='op'>=</span> <span class='va'>time_vector</span>, 
+                            dt         <span class='op'>=</span> <span class='fl'>60</span> <span class='op'>*</span> <span class='fl'>60</span>, 
+                            shade      <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='va'>params</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-  SSA<span class='op'>=</span><span class='fl'>0.7</span>, 
-  epsilon_so<span class='op'>=</span><span class='fl'>0.98</span>, 
-  k_so<span class='op'>=</span><span class='fl'>0.293</span>, 
-  c_so<span class='op'>=</span><span class='fl'>800</span>, 
-  dz<span class='op'>=</span><span class='fl'>0.05</span>, 
-  z_r<span class='op'>=</span><span class='fl'>1.5</span>, 
-  z0<span class='op'>=</span><span class='fl'>0.02</span>, 
-  H<span class='op'>=</span><span class='va'>solrad_vector</span>, 
-  T_a<span class='op'>=</span><span class='va'>temp_vector</span>, 
-  u<span class='op'>=</span><span class='va'>wind_speed_vector</span>, 
-  rho_a<span class='op'>=</span><span class='fl'>1.177</span>,
-  rho_so<span class='op'>=</span><span class='fl'>1620</span>, 
-  c_a<span class='op'>=</span><span class='fl'>1006</span>, 
-  TimeIn<span class='op'>=</span><span class='va'>time_vector</span>, 
-  dt<span class='op'>=</span><span class='fl'>60</span><span class='op'>*</span><span class='fl'>60</span>, 
-  shade<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
-
-<span class='fu'>soil_temperature_function</span><span class='op'>(</span>j<span class='op'>=</span><span class='fl'>1</span>,T_so<span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>20</span>,<span class='fl'>13</span><span class='op'>)</span>, params<span class='op'>=</span><span class='va'>params</span><span class='op'>)</span>
+<span class='fu'>soil_temperature_function</span><span class='op'>(</span>j      <span class='op'>=</span> <span class='fl'>1</span>, 
+                          T_so   <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>20</span>,<span class='fl'>13</span><span class='op'>)</span>, 
+                          params <span class='op'>=</span> <span class='va'>params</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [[1]]
-#&gt;  [1] -33.1753   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000
-#&gt;  [9]   0.0000   0.0000   0.0000   0.0000   0.0000
+#&gt;  [1] -32.87361   0.00000   0.00000   0.00000   0.00000   0.00000   0.00000
+#&gt;  [8]   0.00000   0.00000   0.00000   0.00000   0.00000   0.00000
 #&gt; </div><div class='input'>
+
 
 </div></pre>
   </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimate windspeed at a specified height — wind_speed_profile_segment • TrenchR</title>
+<title>Estimate Windspeed at a Specified Height — wind_speed_profile_segment • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,12 +39,8 @@
 
 
 
-<meta property="og:title" content="Estimate windspeed at a specified height — wind_speed_profile_segment" />
-<meta property="og:description" content="calculate wind speed (m/s) at a specified height (m).   
-Estimates a three segment velocity and temperature profile based on user-specified, 
-experimentally determined values for 3 roughness heights and reference heights.  
-Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks.
-Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Porter 2016. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674." />
+<meta property="og:title" content="Estimate Windspeed at a Specified Height — wind_speed_profile_segment" />
+<meta property="og:description" content="Calculate wind speed (m/s) at a specified height (meters). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in (Kearney and Porter 2017)" />
 
 
 
@@ -136,17 +132,13 @@ Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Por
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimate windspeed at a specified height</h1>
+    <h1>Estimate Windspeed at a Specified Height</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/TempWindProfileFunctions.R'><code>R/TempWindProfileFunctions.R</code></a></small>
     <div class="hidden name"><code>wind_speed_profile_segment.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>calculate wind speed (m/s) at a specified height (m).   
-Estimates a three segment velocity and temperature profile based on user-specified, 
-experimentally determined values for 3 roughness heights and reference heights.  
-Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks.
-Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Porter 2016. Source: Kearney MR and Porter WP. 2016. NicheMapR – an R package for biophysical modelling: the microclimate model. Ecography 40:664-674.</p>
+    <p>Calculate wind speed (m/s) at a specified height (meters). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in (Kearney and Porter 2017)</p>
     </div>
 
     <pre class="usage"><span class='fu'>wind_speed_profile_segment</span><span class='op'>(</span><span class='va'>u_r</span>, <span class='va'>zr</span>, <span class='va'>z0</span>, <span class='va'>z</span><span class='op'>)</span></pre>
@@ -156,22 +148,28 @@ Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Por
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>u_r</th>
-      <td><p>is a vector of wind speeds at the 3 reference heights in m/s.</p></td>
+      <td><p><code>numeric</code> a vector of wind speeds at the 3 reference heights (m/s).</p></td>
     </tr>
     <tr>
       <th>zr</th>
-      <td><p>is a vector of 3 reference heights in m.</p></td>
+      <td><p><code>numeric</code> a vector of 3 reference heights (meters).</p></td>
     </tr>
     <tr>
       <th>z0</th>
-      <td><p>is a vector of 3 experimentally determined roughness heights in m.</p></td>
+      <td><p><code>numeric</code> a vector of 3 experimentally determined roughness heights (meters).</p></td>
     </tr>
     <tr>
       <th>z</th>
-      <td><p>is height to scale in m.</p></td>
+      <td><p><code>numeric</code> height to scale (meters).</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Kearney MR, Porter WP (2017).
+&#8220;NicheMapR 㤼㸶 an R package for biophysical modelling: the microclimate model.&#8221;
+<em>Ecography</em>, <b>40</b>, 664--674doi.
+<a href='https://onlinelibrary.wiley.com/doi/10.1111/ecog.02360'>https://onlinelibrary.wiley.com/doi/10.1111/ecog.02360</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other microclimate functions: 
@@ -192,9 +190,11 @@ Implements the MICROSEGMT routine from NicheMapR as described in Kearney and Por
 <code><a href='wind_speed_profile_neutral.html'>wind_speed_profile_neutral</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>wind_speed_profile_segment</span><span class='op'>(</span>u_r<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.01</span>,<span class='fl'>0.025</span>,<span class='fl'>0.05</span><span class='op'>)</span>, zr<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.05</span>,<span class='fl'>0.25</span>,<span class='fl'>0.5</span><span class='op'>)</span>, z0<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.01</span>,<span class='fl'>0.15</span>,<span class='fl'>0.2</span><span class='op'>)</span>, z<span class='op'>=</span><span class='fl'>0.3</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>wind_speed_profile_segment</span><span class='op'>(</span>u_r <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.01</span>, <span class='fl'>0.025</span>, <span class='fl'>0.05</span><span class='op'>)</span>, 
+                             zr  <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.05</span>, <span class='fl'>0.25</span>, <span class='fl'>0.5</span><span class='op'>)</span>, 
+                             z0  <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.01</span>, <span class='fl'>0.15</span>, <span class='fl'>0.2</span><span class='op'>)</span>, 
+                             z   <span class='op'>=</span> <span class='fl'>0.3</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 0.007314159</div><div class='input'>
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

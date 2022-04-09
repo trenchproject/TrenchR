@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimate surface roughness from empirical measurements. — surface_roughness • TrenchR</title>
+<title>Estimate Surface Roughness from Empirical Measurements — surface_roughness • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,12 +39,11 @@
 
 
 
-<meta property="og:title" content="Estimate surface roughness from empirical measurements. — surface_roughness" />
-<meta property="og:description" content="estimate surface roughness in m from empirical wind speed (m/s) 
-data collected at a vector of heights (m). Estimates surface roughness from empirical measurements. 
-References: Kingsolver and Buckley. 2015. Climate variability slows evolutionary responses of Colias butterflies to recent climate change. PRSb;
-G. S. Campbell, J. M. Norman, An introduction to environmental biophysics. (Springer Science, New York, 1998); W. P. Porter, J. W. Mitchell, W. A. Beckman, C. B. DeWitt, Behavioral implications of mechanistic
-ecology. Thermal and behavioral modeling of desert ecotherms and their microenvironment. Oecologia 13, 1-54 (1973)" />
+<meta property="og:title" content="Estimate Surface Roughness from Empirical Measurements — surface_roughness" />
+<meta property="og:description" content="estimate surface roughness (m) from empirical wind speed (m/s) data collected at a vector of heights (m). Estimates surface roughness from empirical measurements. References: (Kingsolver and Buckley 2015)
+, (Campbell and Norman 1998)
+, and (Porter and James 1979)
+." />
 
 
 
@@ -136,17 +135,16 @@ ecology. Thermal and behavioral modeling of desert ecotherms and their microenvi
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimate surface roughness from empirical measurements.</h1>
+    <h1>Estimate Surface Roughness from Empirical Measurements</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/TempWindProfileFunctions.R'><code>R/TempWindProfileFunctions.R</code></a></small>
     <div class="hidden name"><code>surface_roughness.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>estimate surface roughness in m from empirical wind speed (m/s) 
-data collected at a vector of heights (m). Estimates surface roughness from empirical measurements. 
-References: Kingsolver and Buckley. 2015. Climate variability slows evolutionary responses of Colias butterflies to recent climate change. PRSb;
-G. S. Campbell, J. M. Norman, An introduction to environmental biophysics. (Springer Science, New York, 1998); W. P. Porter, J. W. Mitchell, W. A. Beckman, C. B. DeWitt, Behavioral implications of mechanistic
-ecology. Thermal and behavioral modeling of desert ecotherms and their microenvironment. Oecologia 13, 1-54 (1973)</p>
+    <p>estimate surface roughness (m) from empirical wind speed (m/s) data collected at a vector of heights (m). Estimates surface roughness from empirical measurements. References: (Kingsolver and Buckley 2015)
+, (Campbell and Norman 1998)
+, and (Porter and James 1979)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>surface_roughness</span><span class='op'>(</span><span class='va'>u_r</span>, <span class='va'>zr</span><span class='op'>)</span></pre>
@@ -156,17 +154,30 @@ ecology. Thermal and behavioral modeling of desert ecotherms and their microenvi
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>u_r</th>
-      <td><p>is wind velocity at a vector of reference heights in m/s.</p></td>
+      <td><p><code>numeric</code> wind velocity at a vector of reference heights (m/s).</p></td>
     </tr>
     <tr>
       <th>zr</th>
-      <td><p>is the vector of reference heights in m.</p></td>
+      <td><p><code>numeric</code> vector of reference heights (meters)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>surface roughness (m)</p>
+    <p>surface roughness (meters)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Campbell GS, Norman JM (1998).
+<em>Introduction to environmental biophysics</em>, 2nd ed. edition.
+Springer, New York.
+ISBN 0387949372.<br /><br /> Kingsolver JG, Buckley LB (2015).
+&#8220;Climate variability slows evolutionary responses of Colias butterflies to recent climate change.&#8221;
+<em>Proceedings Royal Society B.</em>, <b>282</b>(1802).
+doi: <a href='https://doi.org/10.1098/rspb.2014.2470'>10.1098/rspb.2014.2470</a>
+, <a href='https://royalsocietypublishing.org/doi/full/10.1098/rspb.2014.2470'>https://royalsocietypublishing.org/doi/full/10.1098/rspb.2014.2470</a>.<br /><br /> Porter WP, James FC (1979).
+&#8220;Behavioral Implications of Mechanistic Ecology II: The African Rainbow Lizard, Agama agama.&#8221;
+<em>Copeia</em>, <b>1979</b>(4), 594--619.
+ISSN 00458511, 19385110, <a href='http://www.jstor.org/stable/1443867'>http://www.jstor.org/stable/1443867</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other microclimate functions: 
@@ -187,9 +198,9 @@ ecology. Thermal and behavioral modeling of desert ecotherms and their microenvi
 <code><a href='wind_speed_profile_segment.html'>wind_speed_profile_segment</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>surface_roughness</span><span class='op'>(</span>u_r<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.01</span>,<span class='fl'>0.025</span>,<span class='fl'>0.05</span>,<span class='fl'>0.1</span>,<span class='fl'>0.2</span><span class='op'>)</span>, zr<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.05</span>,<span class='fl'>0.25</span>,<span class='fl'>0.5</span>,<span class='fl'>0.75</span>,<span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>}</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>surface_roughness</span><span class='op'>(</span>u_r <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.01</span>, <span class='fl'>0.025</span>, <span class='fl'>0.05</span>, <span class='fl'>0.1</span>, <span class='fl'>0.2</span><span class='op'>)</span>, 
+                    zr  <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.05</span>, <span class='fl'>0.25</span>, <span class='fl'>0.5</span>, <span class='fl'>0.75</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.1100434</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

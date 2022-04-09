@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate heat transfer coefficient using a sphereical approximation (based on Mitchell 1976) — heat_transfer_coefficient_approximation • TrenchR</title>
+<title>Calculate Heat Transfer Coefficient Using a Spherical Approximation — heat_transfer_coefficient_approximation • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Calculate heat transfer coefficient using a sphereical approximation (based on Mitchell 1976) — heat_transfer_coefficient_approximation" />
-<meta property="og:description" content="estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569. (Uses Table III: Convective Heat Transfer Relations for Animal Shapes.)" />
+<meta property="og:title" content="Calculate Heat Transfer Coefficient Using a Spherical Approximation — heat_transfer_coefficient_approximation" />
+<meta property="og:description" content="estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere. Reference: (Mitchell 1976)" />
 
 
 
@@ -132,13 +132,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate heat transfer coefficient using a sphereical approximation (based on Mitchell 1976)</h1>
+    <h1>Calculate Heat Transfer Coefficient Using a Spherical Approximation</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/energybalance_functions.R'><code>R/energybalance_functions.R</code></a></small>
     <div class="hidden name"><code>heat_transfer_coefficient_approximation.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere. Reference: Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569. (Uses Table III: Convective Heat Transfer Relations for Animal Shapes.)</p>
+    <p>estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere. Reference: (Mitchell 1976)</p>
     </div>
 
     <pre class="usage"><span class='fu'>heat_transfer_coefficient_approximation</span><span class='op'>(</span><span class='va'>V</span>, <span class='va'>D</span>, <span class='va'>K</span>, <span class='va'>nu</span>, taxa <span class='op'>=</span> <span class='st'>"sphere"</span><span class='op'>)</span></pre>
@@ -148,29 +148,36 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>V</th>
-      <td><p>Air velocity m/s.</p></td>
+      <td><p><code>numeric</code> Air velocity (m/s).</p></td>
     </tr>
     <tr>
       <th>D</th>
-      <td><p>Characteristic dimension (e.g., diameter or snout-vent length) in meters.</p></td>
+      <td><p><code>numeric</code> Characteristic dimension (e.g., diameter or snout-vent length) (meters).</p></td>
     </tr>
     <tr>
       <th>K</th>
-      <td><p>Thermal conductivity of air, W m^-1 K^-1, can calculate using DRYAIR or WETAIR in NicheMapR</p></td>
+      <td><p><code>numeric</code> Thermal conductivity of air (W m^-1 K^-1), can calculate using DRYAIR or WETAIR in NicheMapR</p></td>
     </tr>
     <tr>
       <th>nu</th>
-      <td><p>Kinematic Viscocity of air, m^2 s^-1, can calculate using DRYAIR or WETAIR in NicheMapR</p></td>
+      <td><p><code>numeric</code> Kinematic Viscocity of air (m^2 s^-1), can calculate using DRYAIR or WETAIR in NicheMapR</p></td>
     </tr>
     <tr>
       <th>taxa</th>
-      <td><p>Which class of organism, current choices: sphere,frog,lizard,flyinginsect,spider</p></td>
+      <td><p><code>character</code> Which class of organism, current choices: sphere, frog, lizard, flyinginsect, spider</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>heat transfer coefficient, H_L (W m^-2 K^-1)</p>
+    <p><code>numeric</code> heat transfer coefficient, H_L (W m^-2 K^-1)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Mitchell JW (1976).
+&#8220;Heat transfer from spheres and other animal forms.&#8221;
+<em>Biophysical Journal</em>, <b>16</b>(6), 561--569.
+ISSN 0006-3495, doi: <a href='https://doi.org/10.1016/S0006-3495(76)85711-6'>10.1016/S0006-3495(76)85711-6</a>
+, <a href='https://www.sciencedirect.com/science/article/pii/S0006349576857116'>https://www.sciencedirect.com/science/article/pii/S0006349576857116</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
@@ -215,9 +222,12 @@
 <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>heat_transfer_coefficient_approximation</span><span class='op'>(</span>V<span class='op'>=</span><span class='fl'>3</span>,D<span class='op'>=</span><span class='fl'>0.05</span>,K<span class='op'>=</span> <span class='fl'>25.7</span> <span class='op'>*</span> <span class='fl'>10</span><span class='op'>^</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>3</span><span class='op'>)</span>,nu<span class='op'>=</span> <span class='fl'>15.3</span> <span class='op'>*</span> <span class='fl'>10</span><span class='op'>^</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>6</span><span class='op'>)</span>, <span class='st'>"sphere"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'> <span class='fu'>heat_transfer_coefficient_approximation</span><span class='op'>(</span>V    <span class='op'>=</span> <span class='fl'>3</span>, 
+                                         D    <span class='op'>=</span> <span class='fl'>0.05</span>, 
+                                         K    <span class='op'>=</span> <span class='fl'>25.7</span> <span class='op'>*</span> <span class='fl'>10</span><span class='op'>^</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>3</span><span class='op'>)</span>, 
+                                         nu   <span class='op'>=</span> <span class='fl'>15.3</span> <span class='op'>*</span> <span class='fl'>10</span><span class='op'>^</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>6</span><span class='op'>)</span>, 
+                                         taxa <span class='op'>=</span> <span class='st'>"sphere"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 43.37924</div><div class='input'>
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Predicts body temperature (operative environmental temperature) of a marine snail in C. — Tb_snail • TrenchR</title>
+<title>Predict Body Temperature (Operative Environmental Temperature) of a Marine Snail in C — Tb_snail • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Predicts body temperature (operative environmental temperature) of a marine snail in C. — Tb_snail" />
-<meta property="og:description" content="Predicts body temperature of a snail in C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Iacarella and Helmuth 2012. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication." />
+<meta property="og:title" content="Predict Body Temperature (Operative Environmental Temperature) of a Marine Snail in C — Tb_snail" />
+<meta property="og:description" content="Predicts body temperature of a snail in C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on (Iacarella and Helmuth 2012)
+. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication." />
 
 
 
@@ -132,13 +133,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Predicts body temperature (operative environmental temperature) of a marine snail in C.</h1>
+    <h1>Predict Body Temperature (Operative Environmental Temperature) of a Marine Snail in C</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/biophysmodel_Snail.R'><code>R/biophysmodel_Snail.R</code></a></small>
     <div class="hidden name"><code>Tb_snail.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Predicts body temperature of a snail in C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on Iacarella and Helmuth 2012. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication.</p>
+    <p>Predicts body temperature of a snail in C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on (Iacarella and Helmuth 2012)
+. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication.</p>
     </div>
 
     <pre class="usage"><span class='fu'>Tb_snail</span><span class='op'>(</span><span class='va'>temp</span>, <span class='va'>Len</span>, <span class='va'>solar</span>, <span class='va'>WS</span>, <span class='va'>CC</span>, <span class='va'>WL</span>, <span class='va'>WSH</span><span class='op'>)</span></pre>
@@ -148,40 +150,44 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>temp</th>
-      <td><p>air temperature (C)</p></td>
+      <td><p><code>numeric</code> air temperature (C)</p></td>
     </tr>
     <tr>
       <th>Len</th>
-      <td><p>snail length (m)</p></td>
+      <td><p><code>numeric</code> snail length (m)</p></td>
     </tr>
     <tr>
       <th>solar</th>
-      <td><p>direct solar flux density (W/m2)</p></td>
+      <td><p><code>numeric</code> direct solar flux density (W/m2)</p></td>
     </tr>
     <tr>
       <th>WS</th>
-      <td><p>wind speed (m/s)</p></td>
+      <td><p><code>numeric</code> wind speed (m/s)</p></td>
     </tr>
     <tr>
       <th>CC</th>
-      <td><p>fraction of the sky covered by cloud (0-1)</p></td>
+      <td><p><code>numeric</code> fraction of the sky covered by cloud (0-1)</p></td>
     </tr>
     <tr>
       <th>WL</th>
-      <td><p>water loss rate (kg/s), 5 percent loss of body mass over one hour is a reasonable maximum level (Helmuth 1999)</p></td>
+      <td><p><code>numeric</code> water loss rate (kg/s), 5 percent loss of body mass over one hour is a reasonable maximum level (Helmuth 1999)</p></td>
     </tr>
     <tr>
       <th>WSH</th>
-      <td><p>wind sensor height (m)</p></td>
+      <td><p><code>numeric</code> wind sensor height (m)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>predicted body temperature (C)</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <p><code>numeric</code> predicted body temperature (C)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Predicts body temperature of a snail in C.</p>
+    <p>Iacarella J, Helmuth B (2012).
+&#8220;Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy.&#8221;
+<em>Journal of Thermal Biology</em>, <b>37</b>(1).
+doi: <a href='https://doi.org/10.1016/j.jtherbio.2011.10.003'>10.1016/j.jtherbio.2011.10.003</a>
+, <a href='https://www.researchgate.net/publication/238501940_Body_temperature_and_desiccation_constrain_the_activity_of_Littoraria_irrorata_within_the_Spartina_alterniflora_canopy'>https://www.researchgate.net/publication/238501940_Body_temperature_and_desiccation_constrain_the_activity_of_Littoraria_irrorata_within_the_Spartina_alterniflora_canopy</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
@@ -229,7 +235,13 @@
     <p>Brian Helmuth Lab</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='fu'>Tb_snail</span><span class='op'>(</span>temp <span class='op'>=</span> <span class='fl'>25</span>, Len <span class='op'>=</span> <span class='fl'>0.012</span>, solar<span class='op'>=</span><span class='fl'>800</span>, WS<span class='op'>=</span><span class='fl'>1</span>, CC<span class='op'>=</span><span class='fl'>0.5</span>, WL<span class='op'>=</span><span class='fl'>0</span>, WSH<span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>Tb_snail</span><span class='op'>(</span>temp  <span class='op'>=</span> <span class='fl'>25</span>, 
+           Len   <span class='op'>=</span> <span class='fl'>0.012</span>, 
+           solar <span class='op'>=</span> <span class='fl'>800</span>, 
+           WS    <span class='op'>=</span> <span class='fl'>1</span>, 
+           CC    <span class='op'>=</span> <span class='fl'>0.5</span>, 
+           WL    <span class='op'>=</span> <span class='fl'>0</span>, 
+           WSH   <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 38.73688</div><div class='input'>
 </div></pre>
   </div>

@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Calculate Reynolds Number — Reynolds_number" />
-<meta property="og:description" content="estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces (Gates 1980 Biophysical Ecology)." />
+<meta property="og:description" content="estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces (Gates 1980)" />
 
 
 
@@ -138,7 +138,7 @@
     </div>
 
     <div class="ref-description">
-    <p>estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces (Gates 1980 Biophysical Ecology).</p>
+    <p>estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces (Gates 1980)</p>
     </div>
 
     <pre class="usage"><span class='fu'>Reynolds_number</span><span class='op'>(</span><span class='va'>u</span>, <span class='va'>D</span>, <span class='va'>nu</span><span class='op'>)</span></pre>
@@ -148,21 +148,26 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>u</th>
-      <td><p>is wind speed in m/s</p></td>
+      <td><p><code>numeric</code> wind speed (m/s)</p></td>
     </tr>
     <tr>
       <th>D</th>
-      <td><p>is characteristic dimension (e.g., body diameter) (m)</p></td>
+      <td><p><code>numeric</code> characteristic dimension (e.g., body diameter) (m)</p></td>
     </tr>
     <tr>
       <th>nu</th>
-      <td><p>is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^(-1)), can calculate from DRYAIR or WETAIR</p></td>
+      <td><p><code>numeric</code> the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^(-1)), can calculate from DRYAIR or WETAIR functions</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Reynolds number</p>
+    <p><code>numeric</code> Reynolds number</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Gates DM (1980).
+<em>Biophysical Ecology</em>.
+Springer-Verlag, New York, NY, USA.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
@@ -207,9 +212,10 @@
 <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>Reynolds_number</span><span class='op'>(</span>u<span class='op'>=</span><span class='fl'>1</span>, D<span class='op'>=</span><span class='fl'>0.001</span>, nu<span class='op'>=</span><span class='fl'>1.2</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>Reynolds_number</span><span class='op'>(</span>u  <span class='op'>=</span> <span class='fl'>1</span>, 
+                  D  <span class='op'>=</span> <span class='fl'>0.001</span>, 
+                  nu <span class='op'>=</span> <span class='fl'>1.2</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 0.0008333333</div><div class='input'>
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

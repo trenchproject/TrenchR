@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Approximate saturation water vapor pressure — saturation_water_vapor_pressure • TrenchR</title>
+<title>Approximate Saturation Water Vapor Pressure — saturation_water_vapor_pressure • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Approximate saturation water vapor pressure — saturation_water_vapor_pressure" />
-<meta property="og:description" content="Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C (Rosenberg 1974 in Spotila et al. 1992, see also NichMapR WETAIR and DRYAIR functions from Tracy et al. 1980).  Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians." />
+<meta property="og:title" content="Approximate Saturation Water Vapor Pressure — saturation_water_vapor_pressure" />
+<meta property="og:description" content="Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C using Rosenberg 1974 in (Spotila and Burggren 1992)
+. See also NichMapR WETAIR and DRYAIR functions (Kearney and Porter 2020)
+." />
 
 
 
@@ -132,13 +134,15 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Approximate saturation water vapor pressure</h1>
+    <h1>Approximate Saturation Water Vapor Pressure</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/energybalance_functions.R'><code>R/energybalance_functions.R</code></a></small>
     <div class="hidden name"><code>saturation_water_vapor_pressure.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C (Rosenberg 1974 in Spotila et al. 1992, see also NichMapR WETAIR and DRYAIR functions from Tracy et al. 1980).  Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.</p>
+    <p>Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C using Rosenberg 1974 in (Spotila and Burggren 1992)
+. See also NichMapR WETAIR and DRYAIR functions (Kearney and Porter 2020)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>saturation_water_vapor_pressure</span><span class='op'>(</span><span class='va'>T_a</span><span class='op'>)</span></pre>
@@ -148,13 +152,23 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>T_a</th>
-      <td><p>air temperature (C)</p></td>
+      <td><p><code>numeric</code> air temperature (C)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Saturation water vapor pressure, e_s (Pa)</p>
+    <p><code>numeric</code> Saturation water vapor pressure, e_s (Pa)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Kearney MR, Porter WP (2020).
+&#8220;NicheMapR 㤼㸶 an R package for biophysical modelling: the ectotherm and Dynamic Energy Budget models.&#8221;
+<em>Ecography</em>, <b>43</b>(1), 85--96.
+doi: <a href='https://doi.org/10.1111/ecog.04680'>10.1111/ecog.04680</a>
+, <a href='https://onlinelibrary.wiley.com/doi/abs/10.1111/ecog.04680'>https://onlinelibrary.wiley.com/doi/abs/10.1111/ecog.04680</a>.<br /><br /> Spotila F, Burggren (1992).
+&#8220;Biophysics of Heat and Mass Transfer.&#8221;
+<em>Environmental Physiology of the Amphibians</em>.
+<a href='https://press.uchicago.edu/ucp/books/book/chicago/E/bo3636401.html'>https://press.uchicago.edu/ucp/books/book/chicago/E/bo3636401.html</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
@@ -199,9 +213,8 @@
 <code><a href='saturation_vapor_pressure.html'>saturation_vapor_pressure</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>saturation_water_vapor_pressure</span><span class='op'>(</span>T_a<span class='op'>=</span><span class='fl'>20</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>saturation_water_vapor_pressure</span><span class='op'>(</span>T_a <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 2216.563</div><div class='input'>
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

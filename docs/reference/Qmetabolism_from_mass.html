@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate metabolism as a function of mass — Qmetabolism_from_mass • TrenchR</title>
+<title>Calculate Metabolism as a Function of Mass — Qmetabolism_from_mass • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Calculate metabolism as a function of mass — Qmetabolism_from_mass" />
-<meta property="og:description" content="estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from Nagy KA. 2005. Field metabolic rate and body size. Journal of Experimental Biology 208: 1621-1625." />
+<meta property="og:title" content="Calculate Metabolism as a Function of Mass — Qmetabolism_from_mass" />
+<meta property="og:description" content="Estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from (Nagy 2005)
+." />
 
 
 
@@ -132,13 +133,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate metabolism as a function of mass</h1>
+    <h1>Calculate Metabolism as a Function of Mass</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/energybalance_functions.R'><code>R/energybalance_functions.R</code></a></small>
     <div class="hidden name"><code>Qmetabolism_from_mass.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from Nagy KA. 2005. Field metabolic rate and body size. Journal of Experimental Biology 208: 1621-1625.</p>
+    <p>Estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from (Nagy 2005)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>Qmetabolism_from_mass</span><span class='op'>(</span><span class='va'>m</span>, taxa <span class='op'>=</span> <span class='st'>"reptile"</span><span class='op'>)</span></pre>
@@ -148,17 +150,24 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>m</th>
-      <td><p>Mass in grams.</p></td>
+      <td><p><code>numeric</code> Mass (grams).</p></td>
     </tr>
     <tr>
       <th>taxa</th>
-      <td><p>Which taxa. Current options: reptile, bird, mammal</p></td>
+      <td><p><code>character</code> Taxa to use in calculate. Options: reptile, bird, mammal</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>metabolism (W)</p>
+    <p><code>numeric</code> metabolism (W)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Nagy KA (2005).
+&#8220;Field metabolic rate and body size.&#8221;
+<em>Journal of Experimental Biology</em>, <b>208</b>, 1621--1625.
+doi: <a href='https://doi.org/10.1242/jeb.01553'>10.1242/jeb.01553</a>
+, <a href='https://journals.biologists.com/jeb/article/208/9/1621/9364/Field-metabolic-rate-and-body-size'>https://journals.biologists.com/jeb/article/208/9/1621/9364/Field-metabolic-rate-and-body-size</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
@@ -203,7 +212,8 @@
 <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>Qmetabolism_from_mass</span><span class='op'>(</span>m<span class='op'>=</span><span class='fl'>12</span>,<span class='st'>"reptile"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>Qmetabolism_from_mass</span><span class='op'>(</span>m    <span class='op'>=</span> <span class='fl'>12</span>,
+                        taxa <span class='op'>=</span> <span class='st'>"reptile"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 0.02066024</div><div class='input'>
 </div></pre>
   </div>

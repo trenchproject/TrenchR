@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Predicts body temperatures (operative environmental temperature) of a lizard in C. — Tb_lizard • TrenchR</title>
+<title>Predict Body Temperature (Operative Environmental Temperature) of a Lizard in C — Tb_lizard • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,10 @@
 
 
 
-<meta property="og:title" content="Predicts body temperatures (operative environmental temperature) of a lizard in C. — Tb_lizard" />
-<meta property="og:description" content="Predicts body temperature (operative environmental temperature) of a lizard in C. 
-Based on Campbell and Norman (1998, An introduction to environmental biophysics). 
-Designed for Sceloporus lizards and described in Buckley (2008, Linking traits to energetics and population dynamics to predict lizard ranges in changing environments. American Naturalist 171: E1-E19)." />
+<meta property="og:title" content="Predict Body Temperature (Operative Environmental Temperature) of a Lizard in C — Tb_lizard" />
+<meta property="og:description" content="Predicts body temperature (operative environmental temperature) of a lizard in C based on (Campbell and Norman 1998)
+. Designed for Sceloporus lizards and described in (Buckley 2008)
+." />
 
 
 
@@ -134,15 +134,15 @@ Designed for Sceloporus lizards and described in Buckley (2008, Linking traits t
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Predicts body temperatures (operative environmental temperature) of a lizard in C.</h1>
+    <h1>Predict Body Temperature (Operative Environmental Temperature) of a Lizard in C</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/biophysmodel_Sceloporus.R'><code>R/biophysmodel_Sceloporus.R</code></a></small>
     <div class="hidden name"><code>Tb_lizard.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Predicts body temperature (operative environmental temperature) of a lizard in C. 
-Based on Campbell and Norman (1998, An introduction to environmental biophysics). 
-Designed for Sceloporus lizards and described in Buckley (2008, Linking traits to energetics and population dynamics to predict lizard ranges in changing environments. American Naturalist 171: E1-E19).</p>
+    <p>Predicts body temperature (operative environmental temperature) of a lizard in C based on (Campbell and Norman 1998)
+. Designed for Sceloporus lizards and described in (Buckley 2008)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>Tb_lizard</span><span class='op'>(</span>
@@ -171,84 +171,100 @@ Designed for Sceloporus lizards and described in Buckley (2008, Linking traits t
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>T_a</th>
-      <td><p>is air temperature in C</p></td>
+      <td><p><code>numeric</code> air temperature (C)</p></td>
     </tr>
     <tr>
       <th>T_g</th>
-      <td><p>is surface temperature in C</p></td>
+      <td><p><code>numeric</code> surface temperature (C)</p></td>
     </tr>
     <tr>
       <th>u</th>
-      <td><p>is wind speed in m/s</p></td>
+      <td><p><code>numeric</code> wind speed (m/s)</p></td>
     </tr>
     <tr>
       <th>svl</th>
-      <td><p>is lizard snout vent length in mm</p></td>
+      <td><p><code>numeric</code> lizard snout vent length (mm)</p></td>
     </tr>
     <tr>
       <th>m</th>
-      <td><p>is lizard mass in g, note that it can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 (Tinkle and Ballinger 1972)</p></td>
+      <td><p><code>numeric</code> lizard mass in g, note that it can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 (Tinkle and Ballinger 1972)</p></td>
     </tr>
     <tr>
       <th>psi</th>
-      <td><p>is solar zenith angle in degrees</p></td>
+      <td><p><code>numeric</code> solar zenith angle (degrees)</p></td>
     </tr>
     <tr>
       <th>rho_S</th>
-      <td><p>is surface albedo (proportion). ~0.25 for grass, ~0.1 for dark soil, &gt;0.75 for fresh snow (Campbell &amp; Norman 1998)</p></td>
+      <td><p><code>numeric</code> surface albedo (proportion). ~0.25 for grass, ~0.1 for dark soil, &gt;0.75 for fresh snow (Campbell and Norman 1998)</p></td>
     </tr>
     <tr>
       <th>elev</th>
-      <td><p>is elevation in m</p></td>
+      <td><p><code>numeric</code> elevation (m)</p></td>
     </tr>
     <tr>
       <th>doy</th>
-      <td><p>is day of year (1-366)</p></td>
+      <td><p><code>numeric</code> day of year (1-366)</p></td>
     </tr>
     <tr>
       <th>sun</th>
-      <td><p>indicates whether lizard is in sun (TRUE) or shade (FALSE)</p></td>
+      <td><p><code>boolean</code> indicates whether lizard is in sun (TRUE) or shade (FALSE)</p></td>
     </tr>
     <tr>
       <th>surface</th>
-      <td><p>indicates whether lizard is on ground surface (TRUE) or above surface (FALSE, e.g. in a tree)</p></td>
+      <td><p><code>boolean</code> indicates whether lizard is on ground surface (TRUE) or above surface (FALSE, e.g. in a tree)</p></td>
     </tr>
     <tr>
       <th>alpha_S</th>
-      <td><p>is lizard solar absorptivity, alpha_S=0.9 (Gates 1980, Table 11.4)</p></td>
+      <td><p><code>numeric</code> lizard solar absorptivity, alpha_S=0.9 (Gates 1980)
+ (Table 11.4)</p></td>
     </tr>
     <tr>
       <th>alpha_L</th>
-      <td><p>is lizard thermal absoptivity, alpha_L=0.965 (Bartlett &amp; Gates 1967)</p></td>
+      <td><p><code>numeric</code> lizard thermal absoptivity, alpha_L=0.965 (Bartlett and Gates 1967)</p></td>
     </tr>
     <tr>
       <th>epsilon_s</th>
-      <td><p>is surface emisivity of lizards, epsilon_s=0.965 (Bartlett &amp; Gates 1967)</p></td>
+      <td><p><code>numeric</code> surface emisivity of lizards, epsilon_s=0.965 (Bartlett and Gates 1967)</p></td>
     </tr>
     <tr>
       <th>F_d</th>
-      <td><p>is the view factor between the surface of the lizard and diffuse solar radiation (Bartlett &amp; Gates 1967)</p></td>
+      <td><p><code>numeric</code> the view factor between the surface of the lizard and diffuse solar radiation (Bartlett and Gates 1967)</p></td>
     </tr>
     <tr>
       <th>F_r</th>
-      <td><p>is the view factor between the surface of the lizard and reflected solar radiation</p></td>
+      <td><p><code>numeric</code> the view factor between the surface of the lizard and reflected solar radiation</p></td>
     </tr>
     <tr>
       <th>F_a</th>
-      <td><p>is the view factor between the surface of the lizard and atmospheric radiation</p></td>
+      <td><p><code>numeric</code> the view factor between the surface of the lizard and atmospheric radiation</p></td>
     </tr>
     <tr>
       <th>F_g</th>
-      <td><p>is the view factor between the surface of the lizard and ground thermal radation</p></td>
+      <td><p><code>numeric</code> the view factor between the surface of the lizard and ground thermal radation</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>T_e Operative temperature (C)</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <p>T_e <code>numeric</code> Operative temperature (C)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Predicts body temperatures (operative environmental temperature) of a lizard in C.</p>
+    <p>Bartlett PN, Gates DM (1967).
+&#8220;The energy budget of a lizard on a tree trunk.&#8221;
+<em>Ecology</em>, <b>48</b>, 316--322.<br /><br /> Buckley LB (2008).
+&#8220;Linking traits to energetics and population dynamics to predict lizard ranges in changing environments.&#8221;
+<em>American Naturalist</em>, <b>171</b>(1), E1--E19.
+doi: <a href='https://doi.org/10.1086/523949'>10.1086/523949</a>
+, <a href='https://pubmed.ncbi.nlm.nih.gov/18171140/'>https://pubmed.ncbi.nlm.nih.gov/18171140/</a>.<br /><br /> Campbell GS, Norman JM (1998).
+<em>Introduction to environmental biophysics</em>, 2nd ed. edition.
+Springer, New York.
+ISBN 0387949372.<br /><br /> Gates DM (1980).
+<em>Biophysical Ecology</em>.
+Springer-Verlag, New York, NY, USA.<br /><br /> Tinkle DW, Ballinger RE (1972).
+&#8220;Sceloporus Undulatus: A Study of the Intraspecific Comparative Demography of a Lizard.&#8221;
+<em>Ecology</em>, <b>53</b>(4), 570--584.
+doi: <a href='https://doi.org/10.2307/1934772'>10.2307/1934772</a>
+, <a href='https://esajournals.onlinelibrary.wiley.com/doi/10.2307/1934772'>https://esajournals.onlinelibrary.wiley.com/doi/10.2307/1934772</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
@@ -293,25 +309,24 @@ Designed for Sceloporus lizards and described in Buckley (2008, Linking traits t
 <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='fu'>Tb_lizard</span><span class='op'>(</span>
-  T_a<span class='op'>=</span><span class='fl'>25</span>, 
-  T_g<span class='op'>=</span><span class='fl'>30</span>, 
-  u<span class='op'>=</span><span class='fl'>0.1</span>, 
-  svl<span class='op'>=</span><span class='fl'>60</span>, 
-  m<span class='op'>=</span><span class='fl'>10</span>, 
-  psi<span class='op'>=</span><span class='fl'>34</span>, 
-  rho_S<span class='op'>=</span><span class='fl'>0.24</span>, 
-  elev<span class='op'>=</span><span class='fl'>500</span>, 
-  doy<span class='op'>=</span><span class='fl'>200</span>, 
-  sun<span class='op'>=</span><span class='cn'>TRUE</span>, 
-  surface<span class='op'>=</span><span class='cn'>TRUE</span>, 
-  alpha_S<span class='op'>=</span><span class='fl'>0.9</span>, 
-  alpha_L<span class='op'>=</span><span class='fl'>0.965</span>, 
-  epsilon_s<span class='op'>=</span><span class='fl'>0.965</span>, 
-  F_d<span class='op'>=</span><span class='fl'>0.8</span>, 
-  F_r<span class='op'>=</span><span class='fl'>0.5</span>, 
-  F_a<span class='op'>=</span><span class='fl'>0.5</span>, 
-  F_g<span class='op'>=</span><span class='fl'>0.5</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>Tb_lizard</span><span class='op'>(</span>T_a       <span class='op'>=</span> <span class='fl'>25</span>, 
+            T_g       <span class='op'>=</span> <span class='fl'>30</span>, 
+            u         <span class='op'>=</span> <span class='fl'>0.1</span>, 
+            svl       <span class='op'>=</span> <span class='fl'>60</span>, 
+            m         <span class='op'>=</span> <span class='fl'>10</span>, 
+            psi       <span class='op'>=</span> <span class='fl'>34</span>, 
+            rho_S     <span class='op'>=</span> <span class='fl'>0.24</span>, 
+            elev      <span class='op'>=</span> <span class='fl'>500</span>, 
+            doy       <span class='op'>=</span> <span class='fl'>200</span>, 
+            sun       <span class='op'>=</span> <span class='cn'>TRUE</span>, 
+            surface   <span class='op'>=</span> <span class='cn'>TRUE</span>, 
+            alpha_S   <span class='op'>=</span> <span class='fl'>0.9</span>, 
+            alpha_L   <span class='op'>=</span> <span class='fl'>0.965</span>, 
+            epsilon_s <span class='op'>=</span> <span class='fl'>0.965</span>, 
+            F_d       <span class='op'>=</span> <span class='fl'>0.8</span>, 
+            F_r       <span class='op'>=</span> <span class='fl'>0.5</span>, 
+            F_a       <span class='op'>=</span> <span class='fl'>0.5</span>, 
+            F_g       <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 48.97929</div><div class='input'>
 </div></pre>
   </div>

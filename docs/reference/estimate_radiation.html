@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimate radiation (three parts - Direct, Diffused and Reflected) — estimate_radiation • TrenchR</title>
+<title>Estimate Radiation (Three Parts - Direct, Diffused and Reflected) — estimate_radiation • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Estimate radiation (three parts - Direct, Diffused and Reflected) — estimate_radiation" />
-<meta property="og:description" content="Estimate direct, diffuse, and reflected components of solar radiation in W m^-2 using the model in Campbell &amp;amp; Norman (1998)." />
+<meta property="og:title" content="Estimate Radiation (Three Parts - Direct, Diffused and Reflected) — estimate_radiation" />
+<meta property="og:description" content="Estimate direct, diffuse, and reflected components of solar radiation (W m^-2) using the model in (Campbell and Norman 1998)" />
 
 
 
@@ -132,13 +132,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimate radiation (three parts - Direct, Diffused and Reflected)</h1>
+    <h1>Estimate Radiation (Three Parts - Direct, Diffused and Reflected)</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/RadiationFunctions.R'><code>R/RadiationFunctions.R</code></a></small>
     <div class="hidden name"><code>estimate_radiation.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Estimate direct, diffuse, and reflected components of solar radiation in W m^-2 using the model in Campbell &amp; Norman (1998).</p>
+    <p>Estimate direct, diffuse, and reflected components of solar radiation (W m^-2) using the model in (Campbell and Norman 1998)</p>
     </div>
 
     <pre class="usage"><span class='fu'>estimate_radiation</span><span class='op'>(</span><span class='va'>doy</span>, <span class='va'>psi</span>, <span class='va'>tau</span>, <span class='va'>elev</span>, rho <span class='op'>=</span> <span class='fl'>0.7</span><span class='op'>)</span></pre>
@@ -148,29 +148,35 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>doy</th>
-      <td><p>is the day of year</p></td>
+      <td><p><code>numeric</code> the day of year (Can be calculated using TrenchR::day_of_year() function)</p></td>
     </tr>
     <tr>
       <th>psi</th>
-      <td><p>is the zenith angle in radians</p></td>
+      <td><p><code>numeric</code>  zenith angle (radians)</p></td>
     </tr>
     <tr>
       <th>tau</th>
-      <td><p>atmospheric transmissivity (proportion), which is ratio of global solar radiation at ground level to extra-terrestrial solar radiation</p></td>
+      <td><p><code>numeric</code> atmospheric transmissivity (proportion), which is ratio of global solar radiation at ground level to extra-terrestrial solar radiation</p></td>
     </tr>
     <tr>
       <th>elev</th>
-      <td><p>is elevation (m)</p></td>
+      <td><p><code>numeric</code> elevation (meters)</p></td>
     </tr>
     <tr>
       <th>rho</th>
-      <td><p>is the albedo as a proportion</p></td>
+      <td><p><code>numeric</code> albedo as a proportion (0-1). Defaults to 0.7</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>radiation components - direct, diffused and reflected (W/m^2)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Campbell GS, Norman JM (1998).
+<em>Introduction to environmental biophysics</em>, 2nd ed. edition.
+Springer, New York.
+ISBN 0387949372.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other microclimate functions: 
@@ -191,9 +197,12 @@
 <code><a href='wind_speed_profile_segment.html'>wind_speed_profile_segment</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>estimate_radiation</span><span class='op'>(</span>doy<span class='op'>=</span><span class='fl'>112</span>, psi<span class='op'>=</span><span class='fl'>1</span>, tau<span class='op'>=</span><span class='fl'>0.6</span>, elev<span class='op'>=</span><span class='fl'>1500</span>, rho<span class='op'>=</span><span class='fl'>0.7</span><span class='op'>)</span>
-<span class='op'>}</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>estimate_radiation</span><span class='op'>(</span>doy <span class='op'>=</span> <span class='fl'>112</span>, 
+                     psi <span class='op'>=</span> <span class='fl'>1</span>, 
+                     tau <span class='op'>=</span> <span class='fl'>0.6</span>, 
+                     elev <span class='op'>=</span> <span class='fl'>1500</span>, 
+                     rho <span class='op'>=</span> <span class='fl'>0.7</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 334.3606 120.1351 318.1471</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

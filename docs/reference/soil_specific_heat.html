@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimate soil specific heat — soil_specific_heat • TrenchR</title>
+<title>Estimate Soil Specific Heat — soil_specific_heat • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Estimate soil specific heat — soil_specific_heat" />
-<meta property="og:description" content="estimate soil specific heat in J kg^-1 K^-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).  Uses the volume fraction of organic material, minerals, and water in soil.  CHECK Campbell and Norman (2000) section 8.2." />
+<meta property="og:title" content="Estimate Soil Specific Heat — soil_specific_heat" />
+<meta property="og:description" content="Estimates soil specific heat (J kg^-1 K^-1) using the methods of deVries (1963)
+. Uses the volume fraction of organic material, minerals, and water in soil." />
 
 
 
@@ -132,13 +133,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimate soil specific heat</h1>
+    <h1>Estimate Soil Specific Heat</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/TsoilFunctions.R'><code>R/TsoilFunctions.R</code></a></small>
     <div class="hidden name"><code>soil_specific_heat.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>estimate soil specific heat in J kg^-1 K^-1 using the methods of de Vries (1963, The Physics of Plant Environments, Ch2 in Environmental Control of Plant Growth).  Uses the volume fraction of organic material, minerals, and water in soil.  CHECK Campbell and Norman (2000) section 8.2.</p>
+    <p>Estimates soil specific heat (J kg^-1 K^-1) using the methods of deVries (1963)
+. Uses the volume fraction of organic material, minerals, and water in soil.</p>
     </div>
 
     <pre class="usage"><span class='fu'>soil_specific_heat</span><span class='op'>(</span><span class='va'>x_o</span>, <span class='va'>x_m</span>, <span class='va'>x_w</span>, <span class='va'>rho_so</span><span class='op'>)</span></pre>
@@ -148,25 +150,32 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x_o</th>
-      <td><p>is volume fraction of organic material</p></td>
+      <td><p><code>numeric</code> volume fraction of organic material</p></td>
     </tr>
     <tr>
       <th>x_m</th>
-      <td><p>is volume fraction of minerals</p></td>
+      <td><p><code>numeric</code> volume fraction of minerals</p></td>
     </tr>
     <tr>
       <th>x_w</th>
-      <td><p>is volume fraction of water</p></td>
+      <td><p><code>numeric</code> volume fraction of water</p></td>
     </tr>
     <tr>
       <th>rho_so</th>
-      <td><p>is particle density of soil in kg/m^3 (bulk density)</p></td>
+      <td><p><code>numeric</code> particle density of soil in kg/m^3 (bulk density). Defaults to 1620.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>soil specific heat (J kg^-1 K^-1)</p>
+    <p><code>numeric</code> soil specific heat (J kg^-1 K^-1)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>deVries DA (1963).
+&#8220;Thermal Properties of Soils.&#8221;
+<em>W. R. Van Wijk's Physics of Plant Environment</em>, <b>Chapter 2</b>.
+ISSN 19640701041, doi: <a href='https://doi.org/10.1002/qj.49709038628'>10.1002/qj.49709038628</a>
+, <a href='https://doi.org/10.1002/qj.49709038628'>https://doi.org/10.1002/qj.49709038628</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other soil temperature functions: 
@@ -180,7 +189,10 @@
     <p>Joseph Grigg</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>soil_specific_heat</span><span class='op'>(</span>x_o<span class='op'>=</span><span class='fl'>0.01</span>, x_m<span class='op'>=</span><span class='fl'>0.6</span>, x_w<span class='op'>=</span><span class='fl'>0.2</span>, rho_so<span class='op'>=</span><span class='fl'>1620</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>soil_specific_heat</span><span class='op'>(</span>x_o    <span class='op'>=</span> <span class='fl'>0.01</span>, 
+                     x_m    <span class='op'>=</span> <span class='fl'>0.6</span>, 
+                     x_w    <span class='op'>=</span> <span class='fl'>0.2</span>, 
+                     rho_so <span class='op'>=</span> <span class='fl'>1620</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 869.2968</div><div class='input'>
 </div></pre>
   </div>

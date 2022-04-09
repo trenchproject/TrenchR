@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>@title Estimate air pressure in kPa (Kilo Pascal) — airpressure_from_elev • TrenchR</title>
+<title>Estimate Air Pressure in kPa — airpressure_from_elev • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="@title Estimate air pressure in kPa (Kilo Pascal) — airpressure_from_elev" />
+<meta property="og:title" content="Estimate Air Pressure in kPa — airpressure_from_elev" />
 <meta property="og:description" content="Calculate estimated air pressure (kPa) as a function of elevation. Source: http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html." />
 
 
@@ -132,7 +132,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>@title Estimate air pressure in kPa (Kilo Pascal)</h1>
+    <h1>Estimate Air Pressure in kPa</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/UtilityFunctions.R'><code>R/UtilityFunctions.R</code></a></small>
     <div class="hidden name"><code>airpressure_from_elev.Rd</code></div>
     </div>
@@ -148,17 +148,21 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>elev</th>
-      <td><p><code>numeric</code> elevation in meters.</p></td>
+      <td><p><code>numeric</code> elevation (meters)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>numeric</code> air pressure in kPa.</p>
+    <p><code>numeric</code> air pressure (kPa)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>There are no references for Rd macro <code>\insertAllCites</code> on this help page.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other utility functions: 
 <code><a href='azimuth_angle.html'>azimuth_angle</a>()</code>,
+<code><a href='day_of_year.html'>day_of_year</a>()</code>,
 <code><a href='daylength.html'>daylength</a>()</code>,
 <code><a href='dec_angle.html'>dec_angle</a>()</code>,
 <code><a href='degree_to_radian.html'>degree_to_radian</a>()</code>,
@@ -169,7 +173,7 @@
 <code><a href='zenith_angle.html'>zenith_angle</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='fu'>airpressure_from_elev</span><span class='op'>(</span><span class='fl'>1500</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>airpressure_from_elev</span><span class='op'>(</span>elev <span class='op'>=</span> <span class='fl'>1500</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 84.36559</div><div class='input'>
 </div></pre>
   </div>

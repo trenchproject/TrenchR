@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function called by soil_temperature_function() to solve equation for soil temperature. — soil_temperature_equation • TrenchR</title>
+<title>Core Function Called to Solve Equation for Soil Temperature — soil_temperature_equation • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Function called by soil_temperature_function() to solve equation for soil temperature. — soil_temperature_equation" />
-<meta property="og:description" content="Function called by soil_temp_noint to solve equation for soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior)." />
+<meta property="og:title" content="Core Function Called to Solve Equation for Soil Temperature — soil_temperature_equation" />
+<meta property="og:description" content="Function called by soil_temp_noint to solve equation for soil temperature from W.A. Beckman and Porter (1973)
+." />
 
 
 
@@ -132,13 +133,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function called by soil_temperature_function() to solve equation for soil temperature.</h1>
+    <h1>Core Function Called to Solve Equation for Soil Temperature</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/TsoilFunctions.R'><code>R/TsoilFunctions.R</code></a></small>
     <div class="hidden name"><code>soil_temperature_equation.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Function called by soil_temp_noint to solve equation for soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior).</p>
+    <p>Function called by soil_temp_noint to solve equation for soil temperature from W.A. Beckman and Porter (1973)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>soil_temperature_equation</span><span class='op'>(</span><span class='va'>L</span>, <span class='va'>rho_a</span>, <span class='va'>c_a</span>, <span class='va'>k</span>, <span class='va'>V_inst</span>, <span class='va'>z_r</span>, <span class='va'>z0</span>, <span class='va'>T_inst</span>, <span class='va'>T_s</span><span class='op'>)</span></pre>
@@ -148,45 +150,53 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>L</th>
-      <td><p>is the Monin-Obukhov length, a measure of the instability of heat flow (see Beckman et al. 1973)</p></td>
+      <td><p><code>numeric</code> Monin-Obukhov length, a measure of the instability of heat flow (see W.A. Beckman and Porter (1973)
+)</p></td>
     </tr>
     <tr>
       <th>rho_a</th>
-      <td><p>is density of air in kg m^-3</p></td>
+      <td><p><code>numeric</code> density of air (kg m^-3)</p></td>
     </tr>
     <tr>
       <th>c_a</th>
-      <td><p>is specific heat of air (J/(kg*K))</p></td>
+      <td><p><code>numeric</code> specific heat of air (J/(kg*K))</p></td>
     </tr>
     <tr>
       <th>k</th>
-      <td><p>is von Karman's constant</p></td>
+      <td><p><code>numeric</code> von Karman's constant</p></td>
     </tr>
     <tr>
       <th>V_inst</th>
-      <td><p>is instantaneous wind speed in m/s</p></td>
+      <td><p><code>numeric</code> instantaneous wind speed (m/s)</p></td>
     </tr>
     <tr>
       <th>z_r</th>
-      <td><p>is reference height in m</p></td>
+      <td><p><code>numeric</code> reference height (meters)</p></td>
     </tr>
     <tr>
       <th>z0</th>
-      <td><p>is surface roughness in m</p></td>
+      <td><p><code>numeric</code> surface roughness (meters)</p></td>
     </tr>
     <tr>
       <th>T_inst</th>
-      <td><p>instantaneous air temperature in K</p></td>
+      <td><p><code>numeric</code> instantaneous air temperature (K)</p></td>
     </tr>
     <tr>
       <th>T_s</th>
-      <td><p>initial soil suface temperature in C</p></td>
+      <td><p><code>numeric</code> initial soil suface temperature (C)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>soil temperature function</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>W.A. Beckman JWM, Porter WP (1973).
+&#8220;Thermal Model for Prediction of a Desert Iguana㤼㸲s Daily and Seasonal Behavior.&#8221;
+<em>J. Heat Transfer</em>, <b>95</b>(2), 257--262.
+doi: <a href='https://doi.org/10.1115/1.3450037'>10.1115/1.3450037</a>
+, <a href='https://asmedigitalcollection.asme.org/heattransfer/article-abstract/95/2/257/416609/Thermal-Model-for-Prediction-of-a-Desert-Iguana-s?redirectedFrom=fulltext'>https://asmedigitalcollection.asme.org/heattransfer/article-abstract/95/2/257/416609/Thermal-Model-for-Prediction-of-a-Desert-Iguana-s?redirectedFrom=fulltext</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other soil temperature functions: 
@@ -200,16 +210,15 @@
     <p>Joseph Grigg</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>soil_temperature_equation</span><span class='op'>(</span>
-  L<span class='op'>=</span><span class='op'>-</span><span class='fl'>10</span>, 
-  rho_a<span class='op'>=</span><span class='fl'>1.177</span>, 
-  c_a<span class='op'>=</span><span class='fl'>1006</span>, 
-  k<span class='op'>=</span><span class='fl'>0.41</span>, 
-  V_inst<span class='op'>=</span><span class='fl'>0.3</span>, 
-  z_r<span class='op'>=</span><span class='fl'>1.5</span>, 
-  z0<span class='op'>=</span><span class='fl'>0.02</span>, 
-  T_inst<span class='op'>=</span><span class='fl'>265</span>, 
-  T_s<span class='op'>=</span><span class='fl'>20</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='fu'>soil_temperature_equation</span><span class='op'>(</span>L      <span class='op'>=</span> <span class='op'>-</span><span class='fl'>10</span>, 
+                          rho_a  <span class='op'>=</span> <span class='fl'>1.177</span>, 
+                          c_a    <span class='op'>=</span> <span class='fl'>1006</span>, 
+                          k      <span class='op'>=</span> <span class='fl'>0.41</span>, 
+                          V_inst <span class='op'>=</span> <span class='fl'>0.3</span>, 
+                          z_r    <span class='op'>=</span> <span class='fl'>1.5</span>, 
+                          z0     <span class='op'>=</span> <span class='fl'>0.02</span>, 
+                          T_inst <span class='op'>=</span> <span class='fl'>265</span>, 
+                          T_s    <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 1340.707</div><div class='input'>
 </div></pre>
   </div>
