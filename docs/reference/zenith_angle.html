@@ -150,29 +150,29 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>doy</th>
-      <td><p><code>numeric</code>  day of year.</p></td>
+      <td><p><code>numeric</code>  day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)</p></td>
     </tr>
     <tr>
       <th>lat</th>
-      <td><p><code>numeric</code>  latitude in decimal degrees.</p></td>
+      <td><p><code>numeric</code>  latitude (decimal degrees)</p></td>
     </tr>
     <tr>
       <th>lon</th>
-      <td><p><code>numeric</code>  longitude in decimal degrees.</p></td>
+      <td><p><code>numeric</code>  longitude (decimal degrees)</p></td>
     </tr>
     <tr>
       <th>hour</th>
-      <td><p><code>numeric</code>  hour of the day.</p></td>
+      <td><p><code>numeric</code>  hour of the day</p></td>
     </tr>
     <tr>
       <th>offset</th>
-      <td><p><code>numeric</code>  the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)</p></td>
+      <td><p><code>numeric</code>  the number of hours to add to UTC to get local time (improves accuracy but not always necessary). Optional. Defaults to NA.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>numeric</code> zenith angle in degrees.</p>
+    <p><code>numeric</code> zenith angle (degrees)</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Campbell GS, Norman JM (1998).
@@ -184,6 +184,7 @@ ISBN 0387949372.</p>
     <div class='dont-index'><p>Other utility functions: 
 <code><a href='airpressure_from_elev.html'>airpressure_from_elev</a>()</code>,
 <code><a href='azimuth_angle.html'>azimuth_angle</a>()</code>,
+<code><a href='day_of_year.html'>day_of_year</a>()</code>,
 <code><a href='daylength.html'>daylength</a>()</code>,
 <code><a href='dec_angle.html'>dec_angle</a>()</code>,
 <code><a href='degree_to_radian.html'>degree_to_radian</a>()</code>,
@@ -193,8 +194,10 @@ ISBN 0387949372.</p>
 <code><a href='solar_noon.html'>solar_noon</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'>zenith_angle</span><span class='op'>(</span>doy<span class='op'>=</span><span class='fl'>112</span>, lat<span class='op'>=</span><span class='fl'>47.61</span>, lon<span class='op'>=</span><span class='op'>-</span><span class='fl'>122.33</span>, hour<span class='op'>=</span><span class='fl'>12</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>zenith_angle</span><span class='op'>(</span>doy  <span class='op'>=</span> <span class='fl'>112</span>, 
+               lat  <span class='op'>=</span> <span class='fl'>47.61</span>, 
+               lon  <span class='op'>=</span> <span class='op'>-</span><span class='fl'>122.33</span>, 
+               hour <span class='op'>=</span> <span class='fl'>12</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 35.71846</div><div class='input'>
 </div></pre>
   </div>

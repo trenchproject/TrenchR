@@ -40,11 +40,8 @@
 
 
 <meta property="og:title" content="DRYAIR — DRYAIR" />
-<meta property="og:description" content="Calculates several properties of dry air and related characteristics shownas output variables below. The program
-is based on equations from List, R. J. 1971. Smithsonian Meteorological Tables. Smithsonian
-Institution Press. Washington, DC. WETAIR must be used in conjunction with function VAPPRS.
-The user must supply values for the input variables (db, bp and alt).
-If alt is known (-1000 &amp;lt; alt &amp;lt; 20000) but not BP, then set BP=0" />
+<meta property="og:description" content="Calculates several properties of dry air and related characteristics shownas output variables below. The program is based on equations from (List 1971)
+. WETAIR must be used in conjunction with function VAPPRS. The user must supply values for the input variables (db, bp and alt). If alt is known (-1000 &amp;lt; alt &amp;lt; 20000) but not BP, then set BP=0" />
 
 
 
@@ -142,11 +139,8 @@ If alt is known (-1000 &amp;lt; alt &amp;lt; 20000) but not BP, then set BP=0" /
     </div>
 
     <div class="ref-description">
-    <p>Calculates several properties of dry air and related characteristics shownas output variables below. The program
-is based on equations from List, R. J. 1971. Smithsonian Meteorological Tables. Smithsonian
-Institution Press. Washington, DC. WETAIR must be used in conjunction with function VAPPRS.</p>
-<p>The user must supply values for the input variables (db, bp and alt).
-If alt is known (-1000 &lt; alt &lt; 20000) but not BP, then set BP=0</p>
+    <p>Calculates several properties of dry air and related characteristics shownas output variables below. The program is based on equations from (List 1971)
+. WETAIR must be used in conjunction with function VAPPRS. The user must supply values for the input variables (db, bp and alt). If alt is known (-1000 &lt; alt &lt; 20000) but not BP, then set BP=0</p>
     </div>
 
     <pre class="usage"><span class='fu'>DRYAIR</span><span class='op'>(</span>db <span class='op'>=</span> <span class='va'>db</span>, bp <span class='op'>=</span> <span class='fl'>0</span>, alt <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></pre>
@@ -156,34 +150,40 @@ If alt is known (-1000 &lt; alt &lt; 20000) but not BP, then set BP=0</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>db</th>
-      <td><p>Dry bulb temperature (C)</p></td>
+      <td><p><code>numeric</code> Dry bulb temperature (C)</p></td>
     </tr>
     <tr>
       <th>bp</th>
-      <td><p>Barometric pressure (pascal)</p></td>
+      <td><p><code>numeric</code> Barometric pressure (pascal)</p></td>
     </tr>
     <tr>
       <th>alt</th>
-      <td><p>Altitude (m)</p></td>
+      <td><p><code>numeric</code> Altitude (m)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>patmos Standard atmospheric pressure (Pa)</p>
-<p>densty Density (kg m-3)</p>
-<p>visdyn Dynamic viscosity (kg m-1 s-1)</p>
-<p>viskin Kinematic viscosity (m2 s-1)</p>
-<p>difvpr Diffusivity of water vapor in air (m2 s-1)</p>
-<p>thcond Thermal conductivity (W m-1 K-1)</p>
-<p>htovpr Latent heat of vapourisation of water (J kg-1)</p>
-<p>tcoeff Temperature coefficient of volume expansion (K-1)</p>
-<p>ggroup Group of variables in Grashof number (1-m3 -K)</p>
-<p>bbemit black body emittance (W m-2)</p>
-<p>emtmax Wave length of maximum emittance (m)</p>
+    <p>patmos <code>numeric</code> Standard atmospheric pressure (Pa)</p>
+<p>densty <code>numeric</code> Density (kg m-3)</p>
+<p>visdyn <code>numeric</code> Dynamic viscosity (kg m-1 s-1)</p>
+<p>viskin <code>numeric</code> Kinematic viscosity (m2 s-1)</p>
+<p>difvpr <code>numeric</code> Diffusivity of water vapor in air (m2 s-1)</p>
+<p>thcond <code>numeric</code> Thermal conductivity (W m-1 K-1)</p>
+<p>htovpr <code>numeric</code> Latent heat of vapourisation of water (J kg-1)</p>
+<p>tcoeff <code>numeric</code> Temperature coefficient of volume expansion (K-1)</p>
+<p>ggroup <code>numeric</code> Group of variables in Grashof number (1-m3 -K)</p>
+<p>bbemit <code>numeric</code> black body emittance (W m-2)</p>
+<p>emtmax <code>numeric</code> Wave length of maximum emittance (m)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>List RJ (1971).
+&#8220;Smithsonian Meteorological Tables.&#8221;
+<em>Smithsonian Miscellaneous Collections</em>, <b>114</b>(1), 1--527.
+<a href='https://repository.si.edu/handle/10088/23746'>https://repository.si.edu/handle/10088/23746</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='fu'>DRYAIR</span><span class='op'>(</span>db<span class='op'>=</span><span class='fl'>30</span>, bp<span class='op'>=</span><span class='fl'>100</span><span class='op'>*</span><span class='fl'>1000</span>, alt<span class='op'>=</span><span class='fl'>0</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>DRYAIR</span><span class='op'>(</span>db <span class='op'>=</span> <span class='fl'>30</span>, bp <span class='op'>=</span> <span class='fl'>100</span><span class='op'>*</span><span class='fl'>1000</span>, alt <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $patmos
 #&gt; [1] 101325
 #&gt; 

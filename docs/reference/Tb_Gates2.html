@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Predicts body temperatures (operative environmental temperature) of an ectotherm in K. (FROM KEARNEY) — Tb_Gates2 • TrenchR</title>
+<title>Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K — Tb_Gates2 • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Predicts body temperatures (operative environmental temperature) of an ectotherm in K. (FROM KEARNEY) — Tb_Gates2" />
-<meta property="og:description" content="Predicts body temperatures (operative environmental temperature) of an ectotherm in K. (FROM KEARNEY)" />
+<meta property="og:title" content="Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K — Tb_Gates2" />
+<meta property="og:description" content="Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K" />
 
 
 
@@ -132,13 +132,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Predicts body temperatures (operative environmental temperature) of an ectotherm in K. (FROM KEARNEY)</h1>
+    <h1>Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/OperativeTemperatureFunctions.R'><code>R/OperativeTemperatureFunctions.R</code></a></small>
     <div class="hidden name"><code>Tb_Gates2.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Predicts body temperatures (operative environmental temperature) of an ectotherm in K. (FROM KEARNEY)</p>
+    <p>Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K</p>
     </div>
 
     <pre class="usage"><span class='fu'>Tb_Gates2</span><span class='op'>(</span><span class='va'>A</span>, <span class='va'>D</span>, <span class='va'>T_g</span>, <span class='va'>T_a</span>, <span class='va'>Qabs</span>, <span class='va'>V</span>, <span class='va'>epsilon</span><span class='op'>)</span></pre>
@@ -148,40 +148,46 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>A</th>
-      <td><p>surface area  in m^2</p></td>
+      <td><p><code>numeric</code> surface area (m^2)</p></td>
     </tr>
     <tr>
       <th>D</th>
-      <td><p>characteristic dimension for conduction (m)</p></td>
+      <td><p><code>numeric</code> characteristic dimension for conduction (meters)</p></td>
     </tr>
     <tr>
       <th>T_g</th>
-      <td><p>ground surface temperature in K</p></td>
+      <td><p><code>numeric</code> ground surface temperature (K)</p></td>
     </tr>
     <tr>
       <th>T_a</th>
-      <td><p>ambient air temperature in K</p></td>
+      <td><p><code>numeric</code> ambient air temperature (K)</p></td>
     </tr>
     <tr>
       <th>Qabs</th>
-      <td><p>Solar radiation absorbed (W)</p></td>
+      <td><p><code>numeric</code> Solar radiation absorbed (W)</p></td>
     </tr>
     <tr>
       <th>V</th>
-      <td><p>Wind speed (m/2)</p></td>
+      <td><p><code>numeric</code> Wind speed (m/2)</p></td>
     </tr>
     <tr>
       <th>epsilon</th>
-      <td><p>longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)</p></td>
+      <td><p><code>numeric</code> longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>operative environmental temperature (K)</p>
+    <p><code>numeric</code> operative environmental temperature (K)</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Gates (1980, Biophysical ecology). Omits evaporative and metabolic heat loss.</p>
+    <p>Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in (Gates 1980)
+. Omits evaporative and metabolic heat loss.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Gates DM (1980).
+<em>Biophysical Ecology</em>.
+Springer-Verlag, New York, NY, USA.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
@@ -226,10 +232,14 @@
 <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>Tb_Gates2</span><span class='op'>(</span>A<span class='op'>=</span><span class='fl'>1</span>, D<span class='op'>=</span><span class='fl'>0.001</span>, T_g<span class='op'>=</span><span class='fl'>300</span>, T_a<span class='op'>=</span><span class='fl'>310</span>, Qabs<span class='op'>=</span><span class='fl'>2</span>, V<span class='op'>=</span><span class='fl'>0.1</span>, epsilon<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span> 
-<span class='op'>}</span>
-
+    <pre class="examples"><div class='input'>  <span class='fu'>Tb_Gates2</span><span class='op'>(</span>A       <span class='op'>=</span> <span class='fl'>1</span>, 
+            D       <span class='op'>=</span> <span class='fl'>0.001</span>, 
+            T_g     <span class='op'>=</span> <span class='fl'>300</span>, 
+            T_a     <span class='op'>=</span> <span class='fl'>310</span>, 
+            Qabs    <span class='op'>=</span> <span class='fl'>2</span>, 
+            V       <span class='op'>=</span> <span class='fl'>0.1</span>, 
+            epsilon <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> 
+</div><div class='output co'>#&gt; [1] 308.3333</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

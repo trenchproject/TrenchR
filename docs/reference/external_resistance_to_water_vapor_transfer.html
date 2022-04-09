@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate external resistance to water vapor transfer — external_resistance_to_water_vapor_transfer • TrenchR</title>
+<title>Calculate External Resistance to Water Vapor Transfer — external_resistance_to_water_vapor_transfer • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Calculate external resistance to water vapor transfer — external_resistance_to_water_vapor_transfer" />
-<meta property="og:description" content="estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport. Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians." />
+<meta property="og:title" content="Calculate External Resistance to Water Vapor Transfer — external_resistance_to_water_vapor_transfer" />
+<meta property="og:description" content="estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport. Reference: (Spotila and Burggren 1992)" />
 
 
 
@@ -132,13 +132,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate external resistance to water vapor transfer</h1>
+    <h1>Calculate External Resistance to Water Vapor Transfer</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/energybalance_functions.R'><code>R/energybalance_functions.R</code></a></small>
     <div class="hidden name"><code>external_resistance_to_water_vapor_transfer.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport. Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.</p>
+    <p>estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport. Reference: (Spotila and Burggren 1992)</p>
     </div>
 
     <pre class="usage"><span class='fu'>external_resistance_to_water_vapor_transfer</span><span class='op'>(</span><span class='va'>H</span>, rhocp <span class='op'>=</span> <span class='fl'>12000</span><span class='op'>)</span></pre>
@@ -148,17 +148,23 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>H</th>
-      <td><p>heat transfer (convection) coefficient (W m^-2 C^-1)</p></td>
+      <td><p><code>numeric</code> heat transfer (convection) coefficient (W m^-2 C^-1)</p></td>
     </tr>
     <tr>
       <th>rhocp</th>
-      <td><p>aggregate parameter (J m^-3 C^-1) that is the product of the density of air (kg m^-3) and the specific heat of air at constant pressure (J kg^-1 C^-1). Default of 12000 J m^-3 C^-1 is commonly assumed.</p></td>
+      <td><p><code>numeric</code> aggregate parameter (J m^-3 C^-1) that is the product of the density of air (kg m^-3) and the specific heat of air at constant pressure (J kg^-1 C^-1). Default of 12000 J m^-3 C^-1 is commonly assumed.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>external resistance to water vapor transfer (s m^-1)</p>
+    <p><code>numeric</code> external resistance to water vapor transfer (s m^-1)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Spotila F, Burggren (1992).
+&#8220;Biophysics of Heat and Mass Transfer.&#8221;
+<em>Environmental Physiology of the Amphibians</em>.
+<a href='https://press.uchicago.edu/ucp/books/book/chicago/E/bo3636401.html'>https://press.uchicago.edu/ucp/books/book/chicago/E/bo3636401.html</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
@@ -203,10 +209,8 @@
 <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>external_resistance_to_water_vapor_transfer</span><span class='op'>(</span>H<span class='op'>=</span><span class='fl'>20</span><span class='op'>)</span>
-<span class='op'>}</span>
-
+    <pre class="examples"><div class='input'>  <span class='fu'>external_resistance_to_water_vapor_transfer</span><span class='op'>(</span>H <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 558</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

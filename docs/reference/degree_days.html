@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate degree days — degree_days • TrenchR</title>
+<title>Calculate Degree Days — degree_days • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Calculate degree days — degree_days" />
-<meta property="og:description" content="calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minima is equal to previous day. Double Sine wave approximation of degree days from Allen JC. 1976.  A Modified Sine Wave Method for Calculating Degree Days. Environmental Entomology 5:388–396." />
+<meta property="og:title" content="Calculate Degree Days — degree_days" />
+<meta property="og:description" content="Calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minima is equal to previous day. Double Sine wave approximation of degree days from (Allen 1976)
+." />
 
 
 
@@ -132,13 +133,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate degree days</h1>
+    <h1>Calculate Degree Days</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/DDFunctions.R'><code>R/DDFunctions.R</code></a></small>
     <div class="hidden name"><code>degree_days.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minima is equal to previous day. Double Sine wave approximation of degree days from Allen JC. 1976.  A Modified Sine Wave Method for Calculating Degree Days. Environmental Entomology 5:388–396.</p>
+    <p>Calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minima is equal to previous day. Double Sine wave approximation of degree days from (Allen 1976)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>degree_days</span><span class='op'>(</span><span class='va'>T_min</span>, <span class='va'>T_max</span>, LDT <span class='op'>=</span> <span class='cn'>NA</span>, UDT <span class='op'>=</span> <span class='cn'>NA</span>, method <span class='op'>=</span> <span class='st'>"single.sine"</span><span class='op'>)</span></pre>
@@ -148,29 +150,36 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>T_min</th>
-      <td><p>Minimum temperature of the day (C)</p></td>
+      <td><p><code>numeric</code> Minimum temperature of the day (C)</p></td>
     </tr>
     <tr>
       <th>T_max</th>
-      <td><p>Maximum temperature of the day (C)</p></td>
+      <td><p><code>numeric</code> Maximum temperature of the day (C)</p></td>
     </tr>
     <tr>
       <th>LDT</th>
-      <td><p>lower developmental threshold (C).</p></td>
+      <td><p><code>numeric</code> lower developmental threshold (C)</p></td>
     </tr>
     <tr>
       <th>UDT</th>
-      <td><p>upper developmental threshold (C).</p></td>
+      <td><p><code>numeric</code> upper developmental threshold (C)</p></td>
     </tr>
     <tr>
       <th>method</th>
-      <td><p>type of method being used. Current choices: "single.sine","double.sine", "single.triangulation" or "double.triangulation".</p></td>
+      <td><p><code>character</code> type of method being used. Current choices: "single.sine","double.sine", "single.triangulation" or "double.triangulation"</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>degree days (C)</p>
+    <p><code>numeric</code> degree days (C)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Allen JC (1976).
+&#8220;A Modified Sine Wave Method for Calculating Degree Days.&#8221;
+<em>Environmental Entomology</em>, <b>5</b>(3), 388--396.
+doi: <a href='https://doi.org/https://doi-org.eres.qnl.qa/10.1093/ee/5.3.388'>https://doi-org.eres.qnl.qa/10.1093/ee/5.3.388</a>
+, <a href='https://academic-oup-com.eres.qnl.qa/ee/article/5/3/388/2395585?login=true'>https://academic-oup-com.eres.qnl.qa/ee/article/5/3/388/2395585?login=true</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other microclimate functions: 
@@ -191,9 +200,16 @@
 <code><a href='wind_speed_profile_segment.html'>wind_speed_profile_segment</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'>degree_days</span><span class='op'>(</span>T_min<span class='op'>=</span><span class='fl'>7</span>, T_max<span class='op'>=</span><span class='fl'>14</span>, LDT<span class='op'>=</span><span class='fl'>12</span>, UDT<span class='op'>=</span><span class='fl'>33</span>, method<span class='op'>=</span><span class='st'>"single.sine"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 0.47</div><div class='input'><span class='fu'>degree_days</span><span class='op'>(</span>T_min<span class='op'>=</span><span class='fl'>7</span>, T_max<span class='op'>=</span><span class='fl'>14</span>, LDT<span class='op'>=</span><span class='fl'>12</span>, UDT<span class='op'>=</span><span class='fl'>33</span>, method<span class='op'>=</span><span class='st'>"single.triangulation"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>degree_days</span><span class='op'>(</span>T_min  <span class='op'>=</span> <span class='fl'>7</span>, 
+              T_max  <span class='op'>=</span> <span class='fl'>14</span>, 
+              LDT    <span class='op'>=</span> <span class='fl'>12</span>, 
+              UDT    <span class='op'>=</span> <span class='fl'>33</span>, 
+              method <span class='op'>=</span> <span class='st'>"single.sine"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.47</div><div class='input'>  <span class='fu'>degree_days</span><span class='op'>(</span>T_min  <span class='op'>=</span> <span class='fl'>7</span>, 
+              T_max  <span class='op'>=</span> <span class='fl'>14</span>, 
+              LDT    <span class='op'>=</span> <span class='fl'>12</span>, 
+              UDT    <span class='op'>=</span> <span class='fl'>33</span>, 
+              method <span class='op'>=</span> <span class='st'>"single.triangulation"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 0.29</div><div class='input'>
 </div></pre>
   </div>

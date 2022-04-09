@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimate diurnal radiation — diurnal_radiation_variation • TrenchR</title>
+<title>Estimate Diurnal Radiation — diurnal_radiation_variation • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,11 +39,10 @@
 
 
 
-<meta property="og:title" content="Estimate diurnal radiation — diurnal_radiation_variation" />
-<meta property="og:description" content="Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day).
-Based on Tham et al. (2010, Estimation of hourly averaged solar irradiation: evaluation of models. Building Serv. Eng. Res. Technol. 31: 9-25) 
-and Al-Rawahi et al. (2011, Prediction of Hourly Solar Radiation on Horizontal and Inclined Surfaces for Muscat/Oman. 
-The Journal of Engineering Research 8:19-31)." />
+<meta property="og:title" content="Estimate Diurnal Radiation — diurnal_radiation_variation" />
+<meta property="og:description" content="Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day). Based on (Y. Tham and Davison 2010)
+ and (Y. Tham and Davison 2011)
+." />
 
 
 
@@ -135,16 +134,15 @@ The Journal of Engineering Research 8:19-31)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimate diurnal radiation</h1>
+    <h1>Estimate Diurnal Radiation</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/RadiationFunctions.R'><code>R/RadiationFunctions.R</code></a></small>
     <div class="hidden name"><code>diurnal_radiation_variation.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day).
-Based on Tham et al. (2010, Estimation of hourly averaged solar irradiation: evaluation of models. Building Serv. Eng. Res. Technol. 31: 9-25) 
-and Al-Rawahi et al. (2011, Prediction of Hourly Solar Radiation on Horizontal and Inclined Surfaces for Muscat/Oman. 
-The Journal of Engineering Research 8:19-31).</p>
+    <p>Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day). Based on (Y. Tham and Davison 2010)
+ and (Y. Tham and Davison 2011)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>diurnal_radiation_variation</span><span class='op'>(</span><span class='va'>doy</span>, <span class='va'>solrad</span>, <span class='va'>hour</span>, <span class='va'>lon</span>, <span class='va'>lat</span><span class='op'>)</span></pre>
@@ -154,29 +152,40 @@ The Journal of Engineering Research 8:19-31).</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>doy</th>
-      <td><p>is the day of year</p></td>
+      <td><p><code>numeric</code> is the day of year</p></td>
     </tr>
     <tr>
       <th>solrad</th>
-      <td><p>is solar radiation in W m^-2 per day</p></td>
+      <td><p><code>numeric</code> is solar radiation (W/m^2) per day</p></td>
     </tr>
     <tr>
       <th>hour</th>
-      <td><p>is hour (0-24)</p></td>
+      <td><p><code>numeric</code> is hour (0-24)</p></td>
     </tr>
     <tr>
       <th>lon</th>
-      <td><p>longitude in degrees</p></td>
+      <td><p><code>numeric</code> longitude (degrees)</p></td>
     </tr>
     <tr>
       <th>lat</th>
-      <td><p>latitude in degrees</p></td>
+      <td><p><code>numeric</code> latitude (degrees)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>hourly solar radiation (W/m^2)</p>
+    <p><code>numeric</code> hourly solar radiation (W/m^2)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Y. Tham TM, Davison B (2010).
+&#8220;Estimation of hourly averaged solar irradiation: evaluation of models.&#8221;
+<em>Building Services Engingeering Research Technology</em>, <b>31</b>(1).
+doi: <a href='https://doi.org/10.1177/0143624409350547'>10.1177/0143624409350547</a>
+, <a href='https://journals.sagepub.com/doi/abs/10.1177/0143624409350547'>https://journals.sagepub.com/doi/abs/10.1177/0143624409350547</a>.<br /><br /> Y. Tham TM, Davison B (2011).
+&#8220;Prediction of Hourly Solar Radiation on Horizontal and Inclined Surfaces for Muscat/Oman.&#8221;
+<em>The Journal of Engineering Research</em>, <b>8</b>(2), 19--31.
+doi: <a href='https://doi.org/10.24200/tjer.vol8iss2pp19-31'>10.24200/tjer.vol8iss2pp19-31</a>
+, <a href='https://www.researchgate.net/publication/253240330_Prediction_of_Hourly_Solar_Radiation_on_Horizontal_and_Inclined_Surfaces_for_MuscatOman'>https://www.researchgate.net/publication/253240330_Prediction_of_Hourly_Solar_Radiation_on_Horizontal_and_Inclined_Surfaces_for_MuscatOman</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other microclimate functions: 
@@ -197,9 +206,12 @@ The Journal of Engineering Research 8:19-31).</p>
 <code><a href='wind_speed_profile_segment.html'>wind_speed_profile_segment</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>diurnal_radiation_variation</span><span class='op'>(</span>doy<span class='op'>=</span><span class='fl'>112</span>, solrad<span class='op'>=</span><span class='fl'>8000</span>, hour<span class='op'>=</span><span class='fl'>12</span>, lon<span class='op'>=</span><span class='op'>-</span><span class='fl'>122.33</span>, lat<span class='op'>=</span><span class='fl'>47.61</span><span class='op'>)</span>
-<span class='op'>}</span>
+    <pre class="examples"><div class='input'><span class='fu'>diurnal_radiation_variation</span><span class='op'>(</span>doy    <span class='op'>=</span> <span class='fl'>112</span>, 
+                            solrad <span class='op'>=</span> <span class='fl'>8000</span>, 
+                            hour   <span class='op'>=</span> <span class='fl'>12</span>, 
+                            lon    <span class='op'>=</span> <span class='op'>-</span><span class='fl'>122.33</span>, 
+                            lat    <span class='op'>=</span> <span class='fl'>47.61</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 1006.89</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

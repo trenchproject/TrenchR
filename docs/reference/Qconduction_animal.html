@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate conductance assuming animal thermal conductivity is rate limiting — Qconduction_animal • TrenchR</title>
+<title>Calculate Conductance Assuming Animal Thermal Conductivity is Rate Limiting — Qconduction_animal • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Calculate conductance assuming animal thermal conductivity is rate limiting — Qconduction_animal" />
-<meta property="og:description" content="calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians." />
+<meta property="og:title" content="Calculate Conductance Assuming Animal Thermal Conductivity is Rate Limiting — Qconduction_animal" />
+<meta property="og:description" content="Calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: (Spotila and Burggren 1992)" />
 
 
 
@@ -132,13 +132,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate conductance assuming animal thermal conductivity is rate limiting</h1>
+    <h1>Calculate Conductance Assuming Animal Thermal Conductivity is Rate Limiting</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/energybalance_functions.R'><code>R/energybalance_functions.R</code></a></small>
     <div class="hidden name"><code>Qconduction_animal.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.</p>
+    <p>Calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: (Spotila and Burggren 1992)</p>
     </div>
 
     <pre class="usage"><span class='fu'>Qconduction_animal</span><span class='op'>(</span><span class='va'>T_g</span>, <span class='va'>T_b</span>, <span class='va'>d</span>, K <span class='op'>=</span> <span class='fl'>0.5</span>, <span class='va'>A</span>, <span class='va'>proportion</span><span class='op'>)</span></pre>
@@ -148,33 +148,39 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>T_g</th>
-      <td><p>Ground (Surface) Temperature in Kelvin.</p></td>
+      <td><p><code>numeric</code> Ground surface temperature (Kelvin).</p></td>
     </tr>
     <tr>
       <th>T_b</th>
-      <td><p>Body Temperature in Kelvin.</p></td>
+      <td><p><code>numeric</code> Body temperature (Kelvin).</p></td>
     </tr>
     <tr>
       <th>d</th>
-      <td><p>Mean thickness of the animal skin (surface) in (m), assumes well mixed interior</p></td>
+      <td><p><code>numeric</code> Mean thickness of the animal skin (surface) in (meters), assumes well mixed interior</p></td>
     </tr>
     <tr>
       <th>K</th>
-      <td><p>Thermal conductivity (W K^-1 m^-1), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.</p></td>
+      <td><p><code>numeric</code> Thermal conductivity (W K^-1 m^-1), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.</p></td>
     </tr>
     <tr>
       <th>A</th>
-      <td><p>Surface area in m^2</p></td>
+      <td><p><code>numeric</code> Surface area (m^2)</p></td>
     </tr>
     <tr>
       <th>proportion</th>
-      <td><p>in contact with the surface</p></td>
+      <td><p><code>numeric</code> proportion of body in contact with the surface (0-1)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>conductance (W)</p>
+    <p><code>numeric</code> conductance (W)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Spotila F, Burggren (1992).
+&#8220;Biophysics of Heat and Mass Transfer.&#8221;
+<em>Environmental Physiology of the Amphibians</em>.
+<a href='https://press.uchicago.edu/ucp/books/book/chicago/E/bo3636401.html'>https://press.uchicago.edu/ucp/books/book/chicago/E/bo3636401.html</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
@@ -219,7 +225,12 @@
 <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>Qconduction_animal</span><span class='op'>(</span>T_g<span class='op'>=</span> <span class='fl'>293</span>,T_b<span class='op'>=</span><span class='fl'>303</span>,d<span class='op'>=</span><span class='fl'>10</span><span class='op'>^</span><span class='op'>-</span><span class='fl'>6</span>,K<span class='op'>=</span><span class='fl'>0.5</span>,A<span class='op'>=</span><span class='fl'>10</span><span class='op'>^</span><span class='op'>-</span><span class='fl'>3</span>, proportion<span class='op'>=</span><span class='fl'>0.2</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>Qconduction_animal</span><span class='op'>(</span>T_g        <span class='op'>=</span> <span class='fl'>293</span>,
+                     T_b        <span class='op'>=</span> <span class='fl'>303</span>, 
+                     d          <span class='op'>=</span> <span class='fl'>10</span><span class='op'>^</span><span class='op'>-</span><span class='fl'>6</span>, 
+                     K          <span class='op'>=</span> <span class='fl'>0.5</span>, 
+                     A          <span class='op'>=</span> <span class='fl'>10</span><span class='op'>^</span><span class='op'>-</span><span class='fl'>3</span>, 
+                     proportion <span class='op'>=</span> <span class='fl'>0.2</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 1000</div><div class='input'>
 </div></pre>
   </div>

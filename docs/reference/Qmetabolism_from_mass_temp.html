@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate basal (or resting) metabolism as a function of mass and body temperature. — Qmetabolism_from_mass_temp • TrenchR</title>
+<title>Calculate Basal (Resting) Metabolism as a Function of Mass and Body Temperature — Qmetabolism_from_mass_temp • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Calculate basal (or resting) metabolism as a function of mass and body temperature. — Qmetabolism_from_mass_temp" />
-<meta property="og:description" content="estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). Reference:  Gillooly JF et al. 2001. Effects of size and temperature on metabolic rate. Science 293: 2248-2251." />
+<meta property="og:title" content="Calculate Basal (Resting) Metabolism as a Function of Mass and Body Temperature — Qmetabolism_from_mass_temp" />
+<meta property="og:description" content="Estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). Reference: (James F. Gillooly and Charnov 2001)
+." />
 
 
 
@@ -132,13 +133,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate basal (or resting) metabolism as a function of mass and body temperature.</h1>
+    <h1>Calculate Basal (Resting) Metabolism as a Function of Mass and Body Temperature</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/energybalance_functions.R'><code>R/energybalance_functions.R</code></a></small>
     <div class="hidden name"><code>Qmetabolism_from_mass_temp.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). Reference:  Gillooly JF et al. 2001. Effects of size and temperature on metabolic rate. Science 293: 2248-2251.</p>
+    <p>Estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). Reference: (James F. Gillooly and Charnov 2001)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>Qmetabolism_from_mass_temp</span><span class='op'>(</span><span class='va'>m</span>, <span class='va'>T_b</span>, <span class='va'>taxa</span><span class='op'>)</span></pre>
@@ -148,21 +150,28 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>m</th>
-      <td><p>Mass in grams.</p></td>
+      <td><p><code>numeric</code> Mass (grams).</p></td>
     </tr>
     <tr>
       <th>T_b</th>
-      <td><p>body temperature in K</p></td>
+      <td><p><code>numeric</code> body temperature (K)</p></td>
     </tr>
     <tr>
       <th>taxa</th>
-      <td><p>Which taxa. options: bird, mammal, reptile, amphibian, invertebrate.</p></td>
+      <td><p><code>character</code> Taxa to use. Options: bird, mammal, reptile, amphibian, invertebrate</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>basal metabolim (W)</p>
+    <p><code>numeric</code> basal metabolim (W)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>James F. Gillooly JHBGBWVMS, Charnov EL (2001).
+&#8220;Effects of size and temperature on metabolic rate.&#8221;
+<em>Science</em>, <b>293</b>, 2248--2251.
+doi: <a href='https://doi.org/10.1126/science.1061967'>10.1126/science.1061967</a>
+, <a href='https://www.science.org/doi/10.1126/science.1061967'>https://www.science.org/doi/10.1126/science.1061967</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
@@ -207,9 +216,10 @@
 <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>Qmetabolism_from_mass_temp</span><span class='op'>(</span>m<span class='op'>=</span><span class='fl'>100</span>, T_b<span class='op'>=</span><span class='fl'>303</span>, <span class='st'>"reptile"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>Qmetabolism_from_mass_temp</span><span class='op'>(</span>m    <span class='op'>=</span> <span class='fl'>100</span>, 
+                             T_b  <span class='op'>=</span> <span class='fl'>303</span>, 
+                             taxa <span class='op'>=</span> <span class='st'>"reptile"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 0.06282736</div><div class='input'>
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

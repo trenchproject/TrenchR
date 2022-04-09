@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Construct a Gaussian-quadratic thermal performance curve. — TPC • TrenchR</title>
+<title>Construct a Gaussian-Quadratic Thermal Performance Curve. — TPC • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Construct a Gaussian-quadratic thermal performance curve. — TPC" />
-<meta property="og:description" content="Constructs a thermal performance curve by combining as a gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures. Reference: Deutsch CA, Tewksbury JJ, Huey RB, Sheldon KS, Ghalambor CK, Haak DC, Martin PR (2008) Impacts of climate warming on terrestrial ectotherms across latitude. Proceedings of the National Academy of Science of the United States of America, 105, 6668– 6672." />
+<meta property="og:title" content="Construct a Gaussian-Quadratic Thermal Performance Curve. — TPC" />
+<meta property="og:description" content="Constructs a thermal performance curve by combining as a gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures. Reference: (CA Deutsch 2008)" />
 
 
 
@@ -132,13 +132,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Construct a Gaussian-quadratic thermal performance curve.</h1>
+    <h1>Construct a Gaussian-Quadratic Thermal Performance Curve.</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/TPCfunctions.R'><code>R/TPCfunctions.R</code></a></small>
     <div class="hidden name"><code>TPC.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Constructs a thermal performance curve by combining as a gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures. Reference: Deutsch CA, Tewksbury JJ, Huey RB, Sheldon KS, Ghalambor CK, Haak DC, Martin PR (2008) Impacts of climate warming on terrestrial ectotherms across latitude. Proceedings of the National Academy of Science of the United States of America, 105, 6668– 6672.</p>
+    <p>Constructs a thermal performance curve by combining as a gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures. Reference: (CA Deutsch 2008)</p>
     </div>
 
     <pre class="usage"><span class='fu'>TPC</span><span class='op'>(</span><span class='cn'>T</span>, <span class='va'>Topt</span>, <span class='va'>CTmin</span>, <span class='va'>CTmax</span><span class='op'>)</span></pre>
@@ -148,19 +148,19 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>T</th>
-      <td><p>temperature range (C)</p></td>
+      <td><p><code>numeric</code> vector of temperature range (C)</p></td>
     </tr>
     <tr>
       <th>Topt</th>
-      <td><p>thermal optima (C), the temperature at which peak performance occurs</p></td>
+      <td><p><code>numeric</code> thermal optima (C), the temperature at which peak performance occurs</p></td>
     </tr>
     <tr>
       <th>CTmin</th>
-      <td><p>critical thermal minima (C), the lower temperature limit for performance</p></td>
+      <td><p><code>numeric</code> critical thermal minima (C), the lower temperature limit for performance</p></td>
     </tr>
     <tr>
       <th>CTmax</th>
-      <td><p>critical thermal maxima (C), the upper temperature limit for performance</p></td>
+      <td><p><code>numeric</code> critical thermal maxima (C), the upper temperature limit for performance</p></td>
     </tr>
     </table>
 
@@ -170,9 +170,19 @@
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Construct a Gaussian-quadratic thermal performance curve.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>CA Deutsch JTRHKSCGDHPM (2008).
+&#8220;Impacts of climate warming on terrestrial ectotherms across latitude.&#8221;
+<em>Proceedings of the National Academy of Science of the United States of America</em>, <b>105</b>, 6668--6672.
+doi: <a href='https://doi.org/10.1073/pnas.0709472105'>10.1073/pnas.0709472105</a>
+, <a href='https://www.pnas.org/content/105/18/6668'>https://www.pnas.org/content/105/18/6668</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>TPC</span><span class='op'>(</span>T<span class='op'>=</span><span class='fl'>0</span><span class='op'>:</span><span class='fl'>60</span>, Topt<span class='op'>=</span><span class='fl'>30</span>, CTmin<span class='op'>=</span><span class='fl'>10</span>, CTmax<span class='op'>=</span><span class='fl'>40</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>TPC</span><span class='op'>(</span>T     <span class='op'>=</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>60</span>, 
+      Topt  <span class='op'>=</span> <span class='fl'>30</span>, 
+      CTmin <span class='op'>=</span> <span class='fl'>10</span>, 
+      CTmax <span class='op'>=</span> <span class='fl'>40</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] 0.0001234098 0.0002226299 0.0003936690 0.0006823281 0.0011592292
 #&gt;  [6] 0.0019304541 0.0031511116 0.0050417603 0.0079070541 0.0121551783
 #&gt; [11] 0.0183156389 0.0270518469 0.0391638951 0.0555762126 0.0773047404

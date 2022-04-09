@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function to calculate soil temperature in C using ODEs. — soil_temperature • TrenchR</title>
+<title>Function to Calculate Soil Temperature in C using ODEs. — soil_temperature • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Function to calculate soil temperature in C using ODEs. — soil_temperature" />
-<meta property="og:description" content="Function called to calculate soil temperature in C from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature." />
+<meta property="og:title" content="Function to Calculate Soil Temperature in C using ODEs. — soil_temperature" />
+<meta property="og:description" content="Function called to calculate soil temperature in C from W.A. Beckman and Porter (1973)
+. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from (deVries 1963)" />
 
 
 
@@ -132,13 +133,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function to calculate soil temperature in C using ODEs.</h1>
+    <h1>Function to Calculate Soil Temperature in C using ODEs.</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/TsoilFunctions.R'><code>R/TsoilFunctions.R</code></a></small>
     <div class="hidden name"><code>soil_temperature.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Function called to calculate soil temperature in C from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature.</p>
+    <p>Function called to calculate soil temperature in C from W.A. Beckman and Porter (1973)
+. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from (deVries 1963)</p>
     </div>
 
     <pre class="usage"><span class='fu'>soil_temperature</span><span class='op'>(</span>
@@ -163,65 +165,77 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>z_r.intervals</th>
-      <td><p>is the number of intervals in the soil profile to calculate</p></td>
+      <td><p><code>numeric</code> the number of intervals in the soil profile to calculate, defaults to 12
+ß</p></td>
     </tr>
     <tr>
       <th>z_r</th>
-      <td><p>is reference height in m</p></td>
+      <td><p><code>numeric</code> reference height in0 (meters)</p></td>
     </tr>
     <tr>
       <th>z</th>
-      <td><p>is interval of the soil profile to return (1 to z_r.intervals)</p></td>
+      <td><p><code>numeric</code> interval of the soil profile to return (1 to z_r.intervals)</p></td>
     </tr>
     <tr>
       <th>T_a</th>
-      <td><p>is a vector of air temperature in degrees C, Note: missing values will be linearly interpolated</p></td>
+      <td><p><code>numeric</code> vector of air temperature (degrees C), Note: missing values will be linearly interpolated</p></td>
     </tr>
     <tr>
       <th>u</th>
-      <td><p>is a vector of wind speed (m/s)</p></td>
+      <td><p><code>numeric</code> vector of wind speed (m/s)</p></td>
     </tr>
     <tr>
       <th>Tsoil0</th>
-      <td><p>is the initial soil temperature in degrees C</p></td>
+      <td><p><code>numeric</code> initial soil temperature (degrees C)</p></td>
     </tr>
     <tr>
       <th>z0</th>
-      <td><p>is surface roughness in m</p></td>
+      <td><p><code>numeric</code> surface roughness (meters)</p></td>
     </tr>
     <tr>
       <th>SSA</th>
-      <td><p>is the solar absorbtivity of soil surface as a fraction</p></td>
+      <td><p><code>numeric</code> solar absorbtivity of soil surface as a fraction</p></td>
     </tr>
     <tr>
       <th>TimeIn</th>
-      <td><p>is a vector of time periods for the model</p></td>
+      <td><p><code>numeric</code> vector of time periods for the model</p></td>
     </tr>
     <tr>
       <th>H</th>
-      <td><p>is a vector of solar radiation in W m^-2</p></td>
+      <td><p><code>numeric</code> vector of solar radiation (W m^-2)</p></td>
     </tr>
     <tr>
       <th>water_content</th>
-      <td><p>is percent water content (percent)</p></td>
+      <td><p><code>numeric</code> percent water content (percent). Defaults to 0.2</p></td>
     </tr>
     <tr>
       <th>air_pressure</th>
-      <td><p>is air pressure in kPa</p></td>
+      <td><p><code>numeric</code> air pressure (kPa)</p></td>
     </tr>
     <tr>
       <th>rho_so</th>
-      <td><p>particle density of soil</p></td>
+      <td><p><code>numeric</code> particle density of soil. Defaults to 1620.</p></td>
     </tr>
     <tr>
       <th>shade</th>
-      <td><p>is whether or not soil temperature should be calculated in the shade, TRUE or FALSE</p></td>
+      <td><p><code>numeric</code> whether or not soil temperature should be calculated in the shade (TRUE/FALSE)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>soil temperature (C)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>deVries DA (1963).
+&#8220;Thermal Properties of Soils.&#8221;
+<em>W. R. Van Wijk's Physics of Plant Environment</em>, <b>Chapter 2</b>.
+ISSN 19640701041, doi: <a href='https://doi.org/10.1002/qj.49709038628'>10.1002/qj.49709038628</a>
+, <a href='https://doi.org/10.1002/qj.49709038628'>https://doi.org/10.1002/qj.49709038628</a>.<br /><br /> W.A. Beckman JWM, Porter WP (1973).
+&#8220;Thermal Model for Prediction of a Desert Iguana㤼㸲s Daily and Seasonal Behavior.&#8221;
+<em>J. Heat Transfer</em>, <b>95</b>(2), 257--262.
+doi: <a href='https://doi.org/10.1115/1.3450037'>10.1115/1.3450037</a>
+, <a href='https://asmedigitalcollection.asme.org/heattransfer/article-abstract/95/2/257/416609/Thermal-Model-for-Prediction-of-a-Desert-Iguana-s?redirectedFrom=fulltext'>https://asmedigitalcollection.asme.org/heattransfer/article-abstract/95/2/257/416609/Thermal-Model-for-Prediction-of-a-Desert-Iguana-s?redirectedFrom=fulltext</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other soil temperature functions: 
@@ -235,28 +249,37 @@
     <p>Joseph Grigg</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>temp_vector</span><span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>96</span>, min<span class='op'>=</span><span class='op'>-</span><span class='fl'>10</span>, max<span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span>
-<span class='va'>wind_speed_vector</span><span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>96</span>, min<span class='op'>=</span><span class='fl'>0</span>, max<span class='op'>=</span><span class='fl'>0.4</span><span class='op'>)</span>
-<span class='va'>time_vector</span><span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>24</span>,<span class='fl'>4</span><span class='op'>)</span>
-<span class='va'>solrad_vector</span><span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>6</span><span class='op'>)</span>,<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>10</span>,<span class='fl'>700</span>,length.out<span class='op'>=</span><span class='fl'>6</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>700</span>,<span class='fl'>10</span>,length.out<span class='op'>=</span><span class='fl'>6</span><span class='op'>)</span>,<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>6</span><span class='op'>)</span><span class='op'>)</span>,<span class='fl'>4</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
+  <span class='va'>temp_vector</span>       <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>48</span>, min <span class='op'>=</span> <span class='op'>-</span><span class='fl'>10</span>, max <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
+  <span class='va'>wind_speed_vector</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>48</span>, min <span class='op'>=</span> <span class='fl'>0</span>, max <span class='op'>=</span> <span class='fl'>0.4</span><span class='op'>)</span>
+  <span class='va'>time_vector</span>       <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>24</span>, <span class='fl'>2</span><span class='op'>)</span>
+  <span class='va'>solrad_vector</span>     <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>6</span><span class='op'>)</span>, 
+                             <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>10</span>, <span class='fl'>700</span>, length.out <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>, 
+                             <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>700</span>, <span class='fl'>10</span>, length.out <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>, 
+                             <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>6</span><span class='op'>)</span><span class='op'>)</span>,
+                           <span class='fl'>2</span><span class='op'>)</span>
 
-<span class='fu'>soil_temperature</span><span class='op'>(</span>
-  z_r.intervals<span class='op'>=</span><span class='fl'>12</span>,
-  z_r<span class='op'>=</span><span class='fl'>1.5</span>, 
-  z<span class='op'>=</span><span class='fl'>2</span>, 
-  T_a<span class='op'>=</span><span class='va'>temp_vector</span>, 
-  u<span class='op'>=</span><span class='va'>wind_speed_vector</span>, 
-  Tsoil0<span class='op'>=</span> <span class='fl'>20</span>, 
-  z0<span class='op'>=</span><span class='fl'>0.02</span>, 
-  SSA<span class='op'>=</span><span class='fl'>0.7</span>, 
-  TimeIn<span class='op'>=</span><span class='va'>time_vector</span>, 
-  H<span class='op'>=</span> <span class='va'>solrad_vector</span>, 
-  water_content<span class='op'>=</span><span class='fl'>0.2</span>, 
-  air_pressure<span class='op'>=</span><span class='fl'>85</span>, 
-  rho_so<span class='op'>=</span><span class='fl'>1620</span>, 
-  shade<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
-<span class='op'>}</span>
+  <span class='fu'>soil_temperature</span><span class='op'>(</span>z_r.intervals <span class='op'>=</span> <span class='fl'>12</span>, 
+                   z_r           <span class='op'>=</span> <span class='fl'>1.5</span>, 
+                   z             <span class='op'>=</span> <span class='fl'>2</span>, 
+                   T_a           <span class='op'>=</span> <span class='va'>temp_vector</span>, 
+                   u             <span class='op'>=</span> <span class='va'>wind_speed_vector</span>, 
+                   Tsoil0        <span class='op'>=</span> <span class='fl'>20</span>, 
+                   z0            <span class='op'>=</span> <span class='fl'>0.02</span>, 
+                   SSA           <span class='op'>=</span> <span class='fl'>0.7</span>, 
+                   TimeIn        <span class='op'>=</span> <span class='va'>time_vector</span>, 
+                   H             <span class='op'>=</span> <span class='va'>solrad_vector</span>, 
+                   water_content <span class='op'>=</span> <span class='fl'>0.2</span>, 
+                   air_pressure  <span class='op'>=</span> <span class='fl'>85</span>, 
+                   rho_so        <span class='op'>=</span> <span class='fl'>1620</span>, 
+                   shade         <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] 20.000000 12.339950 11.180040  9.286421  9.519004  9.276450  5.876114
+#&gt;  [8]  5.850459 10.020513 12.991114 15.664699 22.013450 26.230581 28.463296
+#&gt; [15] 28.649168 23.767555 23.091116 15.606473 10.403332  8.170456  9.723145
+#&gt; [22]  9.114185  7.811254  6.684010  7.773036  6.070261  5.836625  4.626048
+#&gt; [29]  4.301875  2.632974  1.038409  3.946260  7.266697 10.732009 15.272042
+#&gt; [36] 17.527402 22.648567 28.053649 24.650392 20.349976 16.396396 11.772210
+#&gt; [43]  9.453015  7.779332  5.773844  4.137864  2.554147  2.289415</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

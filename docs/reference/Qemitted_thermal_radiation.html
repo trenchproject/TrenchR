@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate emitted thermal radiation — Qemitted_thermal_radiation • TrenchR</title>
+<title>Calculate Emitted Thermal Radiation — Qemitted_thermal_radiation • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Calculate emitted thermal radiation — Qemitted_thermal_radiation" />
-<meta property="og:description" content="estimate thermal radiation (W) emitted by the surface of an animal. Follows Gates' Biophysical Ecology and Spotila et al. 1992. Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians; Porter et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54." />
+<meta property="og:title" content="Calculate Emitted Thermal Radiation — Qemitted_thermal_radiation" />
+<meta property="og:description" content="estimate thermal radiation (W) emitted by the surface of an animal. Follows (Gates 1980)
+ and (Spotila and Burggren 1992)
+." />
 
 
 
@@ -132,13 +134,15 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate emitted thermal radiation</h1>
+    <h1>Calculate Emitted Thermal Radiation</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/energybalance_functions.R'><code>R/energybalance_functions.R</code></a></small>
     <div class="hidden name"><code>Qemitted_thermal_radiation.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>estimate thermal radiation (W) emitted by the surface of an animal. Follows Gates' Biophysical Ecology and Spotila et al. 1992. Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians; Porter et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.</p>
+    <p>estimate thermal radiation (W) emitted by the surface of an animal. Follows (Gates 1980)
+ and (Spotila and Burggren 1992)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>Qemitted_thermal_radiation</span><span class='op'>(</span>
@@ -157,41 +161,49 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>epsilon</th>
-      <td><p>longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)</p></td>
+      <td><p><code>numeric</code> longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)</p></td>
     </tr>
     <tr>
       <th>A</th>
-      <td><p>surface area  in m^2</p></td>
+      <td><p><code>numeric</code> surface area (m^2)</p></td>
     </tr>
     <tr>
       <th>psa_dir</th>
-      <td><p>proportion surface area exposed to sky (or enclosure)</p></td>
+      <td><p><code>numeric</code> proportion surface area exposed to sky (or enclosure) (0-1)</p></td>
     </tr>
     <tr>
       <th>psa_ref</th>
-      <td><p>proportion surface area exposed to ground</p></td>
+      <td><p><code>numeric</code> proportion surface area exposed to ground (0-1)</p></td>
     </tr>
     <tr>
       <th>T_b</th>
-      <td><p>body surface temperature in K</p></td>
+      <td><p><code>numeric</code> body surface temperature (K)</p></td>
     </tr>
     <tr>
       <th>T_g</th>
-      <td><p>ground surface temperature in K</p></td>
+      <td><p><code>numeric</code> ground surface temperature (K)</p></td>
     </tr>
     <tr>
       <th>T_a</th>
-      <td><p>ambient air temperature in K, only required if animal is in enclosed environment</p></td>
+      <td><p><code>numeric</code> ambient air temperature (K), only required if animal is in enclosed environment</p></td>
     </tr>
     <tr>
       <th>enclosed</th>
-      <td><p>TRUE or FALSE</p></td>
+      <td><p><code>boolean</code> TRUE or FALSE</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>emitted thermal radiation, Qemit (W)</p>
+    <p><code>numeric</code> emitted thermal radiation, Qemit (W)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Gates DM (1980).
+<em>Biophysical Ecology</em>.
+Springer-Verlag, New York, NY, USA.<br /><br /> Spotila F, Burggren (1992).
+&#8220;Biophysics of Heat and Mass Transfer.&#8221;
+<em>Environmental Physiology of the Amphibians</em>.
+<a href='https://press.uchicago.edu/ucp/books/book/chicago/E/bo3636401.html'>https://press.uchicago.edu/ucp/books/book/chicago/E/bo3636401.html</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
@@ -236,17 +248,15 @@
 <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>Qemitted_thermal_radiation</span><span class='op'>(</span>
-  epsilon<span class='op'>=</span><span class='fl'>0.96</span>,
-  A<span class='op'>=</span><span class='fl'>1</span>, 
-  psa_dir<span class='op'>=</span><span class='fl'>0.4</span>, 
-  psa_ref<span class='op'>=</span><span class='fl'>0.6</span>, 
-  T_b<span class='op'>=</span><span class='fl'>303</span>, 
-  T_g<span class='op'>=</span><span class='fl'>293</span>, 
-  T_a<span class='op'>=</span><span class='fl'>298</span>, 
-  enclosed<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>Qemitted_thermal_radiation</span><span class='op'>(</span>epsilon  <span class='op'>=</span> <span class='fl'>0.96</span>, 
+                             A        <span class='op'>=</span> <span class='fl'>1</span>, 
+                             psa_dir  <span class='op'>=</span> <span class='fl'>0.4</span>, 
+                             psa_ref  <span class='op'>=</span> <span class='fl'>0.6</span>, 
+                             T_b      <span class='op'>=</span> <span class='fl'>303</span>, 
+                             T_g      <span class='op'>=</span> <span class='fl'>293</span>, 
+                             T_a      <span class='op'>=</span> <span class='fl'>298</span>, 
+                             enclosed <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 78.35451</div><div class='input'>
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

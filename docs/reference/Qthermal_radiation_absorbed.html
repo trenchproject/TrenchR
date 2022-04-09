@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="Estimate absorbed longwave (thermal) radiation — Qthermal_radiation_absorbed" />
-<meta property="og:description" content="estimate longwave (thermal) radiation (W) absorbed from the sky and the ground (adaptation of Campbell and Norman 1998). Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471." />
+<meta property="og:description" content="estimate longwave (thermal) radiation (W) absorbed from the sky and the ground (Campbell and Norman 1998)
+. Source: (Eric Riddell and Sears 2018)" />
 
 
 
@@ -138,7 +139,8 @@
     </div>
 
     <div class="ref-description">
-    <p>estimate longwave (thermal) radiation (W) absorbed from the sky and the ground (adaptation of Campbell and Norman 1998). Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.</p>
+    <p>estimate longwave (thermal) radiation (W) absorbed from the sky and the ground (Campbell and Norman 1998)
+. Source: (Eric Riddell and Sears 2018)</p>
     </div>
 
     <pre class="usage"><span class='fu'>Qthermal_radiation_absorbed</span><span class='op'>(</span>
@@ -153,25 +155,39 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>T_a</th>
-      <td><p>air temperature (C)</p></td>
+      <td><p><code>numeric</code> air temperature (C)</p></td>
     </tr>
     <tr>
       <th>T_g</th>
-      <td><p>ground temperature (C)</p></td>
+      <td><p><code>numeric</code> ground temperature (C)</p></td>
     </tr>
     <tr>
       <th>epsilon_ground</th>
-      <td><p>emmisitivity (proportion) for more soil types (Campbell and Norman 1998), default value of 0.97</p></td>
+      <td><p><code>numeric</code> emmisitivity (proportion) for more soil types (Campbell and Norman 1998)
+, default value of 0.97</p></td>
     </tr>
     <tr>
       <th>a_longwave</th>
-      <td><p>absorptance (proportion) of organism to longwave radiation (Bartlett and Gates 1967, Buckley 2008), default value of 0.965</p></td>
+      <td><p><code>numeric</code> absorptance (proportion) of organism to longwave radiation ((Bartlett and Gates 1967)
+ and Buckley 2008), default value of 0.965</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>thermal radiation absorbed (W)</p>
+    <p><code>numeric</code> thermal radiation absorbed (W)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Bartlett PN, Gates DM (1967).
+&#8220;The energy budget of a lizard on a tree trunk.&#8221;
+<em>Ecology</em>, <b>48</b>, 316--322.<br /><br /> Campbell GS, Norman JM (1998).
+<em>Introduction to environmental biophysics</em>, 2nd ed. edition.
+Springer, New York.
+ISBN 0387949372.<br /><br /> Eric Riddell JPOJDD, Sears MW (2018).
+&#8220;Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity.&#8221;
+<em>Science Advances</em>, <b>4</b>(4).
+doi: <a href='https://doi.org/10.1126/sciadv.aar5471'>10.1126/sciadv.aar5471</a>
+, <a href='https://www.researchgate.net/publication/326332138_Plasticity_reveals_hidden_resistance_to_extinction_under_climate_change_in_the_global_hotspot_of_salamander_diversity'>https://www.researchgate.net/publication/326332138_Plasticity_reveals_hidden_resistance_to_extinction_under_climate_change_in_the_global_hotspot_of_salamander_diversity</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
@@ -219,9 +235,11 @@
     <p>Eric Riddell</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>Qthermal_radiation_absorbed</span><span class='op'>(</span>T_a<span class='op'>=</span><span class='fl'>20</span>, T_g<span class='op'>=</span><span class='fl'>25</span>, epsilon_ground<span class='op'>=</span><span class='fl'>0.97</span>, a_longwave<span class='op'>=</span><span class='fl'>0.965</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>Qthermal_radiation_absorbed</span><span class='op'>(</span>T_a            <span class='op'>=</span> <span class='fl'>20</span>, 
+                              T_g            <span class='op'>=</span> <span class='fl'>25</span>, 
+                              epsilon_ground <span class='op'>=</span> <span class='fl'>0.97</span>, 
+                              a_longwave     <span class='op'>=</span> <span class='fl'>0.965</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 372.4115</div><div class='input'>
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

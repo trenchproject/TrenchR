@@ -40,7 +40,9 @@
 
 
 <meta property="og:title" content="Calculate heat loss associated with evaporative water loss — Qevaporation" />
-<meta property="og:description" content="estimate heat loss associated with evaporative water loss by an amphibian (Spotila et al. 1992) or lizard (based on empirical measurements in Porter et al. 1973). Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians." />
+<meta property="og:description" content="estimate heat loss associated with evaporative water loss by an amphibian (Spotila and Burggren 1992)
+ or lizard (based on empirical measurements in (Porter et al. 1973)
+)." />
 
 
 
@@ -138,7 +140,9 @@
     </div>
 
     <div class="ref-description">
-    <p>estimate heat loss associated with evaporative water loss by an amphibian (Spotila et al. 1992) or lizard (based on empirical measurements in Porter et al. 1973). Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.</p>
+    <p>estimate heat loss associated with evaporative water loss by an amphibian (Spotila and Burggren 1992)
+ or lizard (based on empirical measurements in (Porter et al. 1973)
+).</p>
     </div>
 
     <pre class="usage"><span class='fu'>Qevaporation</span><span class='op'>(</span><span class='va'>A</span>, <span class='va'>T_b</span>, <span class='va'>taxa</span>, rho_s <span class='op'>=</span> <span class='cn'>NA</span>, rho_a <span class='op'>=</span> <span class='cn'>NA</span>, h <span class='op'>=</span> <span class='cn'>NA</span>, H <span class='op'>=</span> <span class='cn'>NA</span>, r_i <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span></pre>
@@ -148,41 +152,49 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>A</th>
-      <td><p>surface area  in m^2</p></td>
+      <td><p><code>numeric</code> surface area (m^2)</p></td>
     </tr>
     <tr>
       <th>T_b</th>
-      <td><p>body temperatue in K</p></td>
+      <td><p><code>numeric</code> body temperatue (K)</p></td>
     </tr>
     <tr>
       <th>taxa</th>
-      <td><p>taxa current choices: lizard, amphibian_wetskin (fully wet skin), amphibian (not fully wet skin)</p></td>
+      <td><p><code>character</code> taxa current choices: lizard, amphibian_wetskin (fully wet skin), amphibian (not fully wet skin)</p></td>
     </tr>
     <tr>
       <th>rho_s</th>
-      <td><p>saturation water vapor density at skin surface (kg/m^3) (needed if amphibian)</p></td>
+      <td><p><code>numeric</code> saturation water vapor density at skin surface (kg/m^3) (needed if amphibian)</p></td>
     </tr>
     <tr>
       <th>rho_a</th>
-      <td><p>saturation water vapor density in ambient air (kg/m^3) (needed if amphibian)</p></td>
+      <td><p><code>numeric</code> saturation water vapor density in ambient air (kg/m^3) (needed if amphibian)</p></td>
     </tr>
     <tr>
       <th>h</th>
-      <td><p>relative humidity (0-1) (needed if amphibian)</p></td>
+      <td><p><code>numeric</code> relative humidity (0-1) (needed if amphibian)</p></td>
     </tr>
     <tr>
       <th>H</th>
-      <td><p>convective heat transfer coefficient (W m^-2 K^-1) (needed if amphibian)</p></td>
+      <td><p><code>numeric</code> convective heat transfer coefficient (W m^-2 K^-1) (needed if amphibian)</p></td>
     </tr>
     <tr>
       <th>r_i</th>
-      <td><p>internal (cutaneous) resistance to vapor transport (s/m) (needed if amphibian)</p></td>
+      <td><p><code>numeric</code> internal (cutaneous) resistance to vapor transport (s/m) (needed if amphibian)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>evaporative heat loss (W)</p>
+    <p><code>numeric</code> evaporative heat loss (W)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Porter WP, Mitchell JW, Bekman A, DeWitt CB (1973).
+&#8220;Behavioral implications of mechanistic ecology: thermal and behavioral modeling of desert ectotherms and their microenvironments.&#8221;
+<em>Oecologia</em>, <b>13</b>, 1--54.<br /><br /> Spotila F, Burggren (1992).
+&#8220;Biophysics of Heat and Mass Transfer.&#8221;
+<em>Environmental Physiology of the Amphibians</em>.
+<a href='https://press.uchicago.edu/ucp/books/book/chicago/E/bo3636401.html'>https://press.uchicago.edu/ucp/books/book/chicago/E/bo3636401.html</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
@@ -227,10 +239,18 @@
 <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>Qevaporation</span><span class='op'>(</span>A<span class='op'>=</span><span class='fl'>0.1</span>, T_b<span class='op'>=</span><span class='fl'>293</span>, taxa<span class='op'>=</span><span class='st'>"amphibian"</span>, rho_s<span class='op'>=</span><span class='fl'>0.003</span>, rho_a<span class='op'>=</span><span class='fl'>0.002</span>, h<span class='op'>=</span><span class='fl'>0.5</span>, H<span class='op'>=</span><span class='fl'>20</span>, r_i<span class='op'>=</span><span class='fl'>50</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 4.612476</div><div class='input'><span class='fu'>Qevaporation</span><span class='op'>(</span>A<span class='op'>=</span><span class='fl'>0.1</span>, T_b<span class='op'>=</span><span class='fl'>293</span>, taxa<span class='op'>=</span><span class='st'>"lizard"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>Qevaporation</span><span class='op'>(</span>A     <span class='op'>=</span> <span class='fl'>0.1</span>, 
+               T_b   <span class='op'>=</span> <span class='fl'>293</span>, 
+               taxa  <span class='op'>=</span> <span class='st'>"amphibian"</span>, 
+               rho_s <span class='op'>=</span> <span class='fl'>0.003</span>, 
+               rho_a <span class='op'>=</span> <span class='fl'>0.002</span>, 
+               h     <span class='op'>=</span> <span class='fl'>0.5</span>, 
+               H     <span class='op'>=</span> <span class='fl'>20</span>, 
+               r_i   <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 4.612476</div><div class='input'>  <span class='fu'>Qevaporation</span><span class='op'>(</span>A    <span class='op'>=</span> <span class='fl'>0.1</span>,
+               T_b  <span class='op'>=</span> <span class='fl'>293</span>, 
+               taxa <span class='op'>=</span> <span class='st'>"lizard"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 1.043334</div><div class='input'>
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

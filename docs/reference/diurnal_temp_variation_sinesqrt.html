@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimates temperature across hours using sine and square root functions — diurnal_temp_variation_sinesqrt • TrenchR</title>
+<title>Estimate Temperature Across Hours Using Sine and Square Root Functions — diurnal_temp_variation_sinesqrt • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Estimates temperature across hours using sine and square root functions — diurnal_temp_variation_sinesqrt" />
-<meta property="og:description" content="estimate temperature for a specified hour using sine and square root functions. Source: Cesaraccio C et al. 2001. An improved model for determining degree-day values from daily temperature data. International Journal of Biometeorology 45:161-169." />
+<meta property="og:title" content="Estimate Temperature Across Hours Using Sine and Square Root Functions — diurnal_temp_variation_sinesqrt" />
+<meta property="og:description" content="estimate temperature for a specified hour using sine and square root functions. Source: (C. Cesaraccio and Snyder 2001)" />
 
 
 
@@ -132,13 +132,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimates temperature across hours using sine and square root functions</h1>
+    <h1>Estimate Temperature Across Hours Using Sine and Square Root Functions</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/DTRFunctions.R'><code>R/DTRFunctions.R</code></a></small>
     <div class="hidden name"><code>diurnal_temp_variation_sinesqrt.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>estimate temperature for a specified hour using sine and square root functions. Source: Cesaraccio C et al. 2001. An improved model for determining degree-day values from daily temperature data. International Journal of Biometeorology 45:161-169.</p>
+    <p>estimate temperature for a specified hour using sine and square root functions. Source: (C. Cesaraccio and Snyder 2001)</p>
     </div>
 
     <pre class="usage"><span class='fu'>diurnal_temp_variation_sinesqrt</span><span class='op'>(</span><span class='va'>t</span>, <span class='va'>tr</span>, <span class='va'>ts</span>, <span class='va'>T_max</span>, <span class='va'>T_min</span>, <span class='va'>T_minp</span><span class='op'>)</span></pre>
@@ -148,36 +148,43 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>t</th>
-      <td><p>hour or hours for temperature estimate</p></td>
+      <td><p><code>numeric</code> hour or hours for temperature estimate</p></td>
     </tr>
     <tr>
       <th>tr</th>
-      <td><p>sunrise hour (0-23)</p></td>
+      <td><p><code>numeric</code> sunrise hour (0-23)</p></td>
     </tr>
     <tr>
       <th>ts</th>
-      <td><p>sunset hour (0-23)</p></td>
+      <td><p><code>numeric</code> sunset hour (0-23)</p></td>
     </tr>
     <tr>
       <th>T_max</th>
-      <td><p>maximum temperature of current day (C)</p></td>
+      <td><p><code>numeric</code> maximum temperature of current day (C)</p></td>
     </tr>
     <tr>
       <th>T_min</th>
-      <td><p>minimum temperature of current day (C)</p></td>
+      <td><p><code>numeric</code> minimum temperature of current day (C)</p></td>
     </tr>
     <tr>
       <th>T_minp</th>
-      <td><p>minimum temperature of following day (C)</p></td>
+      <td><p><code>numeric</code> minimum temperature of following day (C)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>temperature (C) at a specified hour</p>
+    <p><code>numeric</code> temperature (C) at a specified hour</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Estimates temperature across hours using sine and square root functions</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>C. Cesaraccio DSPD, Snyder RL (2001).
+&#8220;An improved model for determining degree-day values from daily temperature data.&#8221;
+<em>International Journal of Biometeorology</em>, <b>45</b>, 161--169.
+doi: <a href='https://doi.org/10.1007/s004840100104'>10.1007/s004840100104</a>
+, <a href='https://www.researchgate.net/publication/11589157_An_improved_model_for_determining_degree-day_values_from_daily_temperature_data'>https://www.researchgate.net/publication/11589157_An_improved_model_for_determining_degree-day_values_from_daily_temperature_data</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other microclimate functions: 
@@ -198,7 +205,12 @@
 <code><a href='wind_speed_profile_segment.html'>wind_speed_profile_segment</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>diurnal_temp_variation_sinesqrt</span><span class='op'>(</span>t<span class='op'>=</span><span class='fl'>8</span>, tr<span class='op'>=</span><span class='fl'>6</span>, ts<span class='op'>=</span><span class='fl'>18</span>, T_max<span class='op'>=</span><span class='fl'>30</span>, T_min<span class='op'>=</span><span class='fl'>10</span>, T_minp<span class='op'>=</span><span class='fl'>12</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>diurnal_temp_variation_sinesqrt</span><span class='op'>(</span>t      <span class='op'>=</span> <span class='fl'>8</span>, 
+                                  tr     <span class='op'>=</span> <span class='fl'>6</span>, 
+                                  ts     <span class='op'>=</span> <span class='fl'>18</span>, 
+                                  T_max  <span class='op'>=</span> <span class='fl'>30</span>, 
+                                  T_min  <span class='op'>=</span> <span class='fl'>10</span>, 
+                                  T_minp <span class='op'>=</span> <span class='fl'>12</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 17.65367</div><div class='input'>
 </div></pre>
   </div>

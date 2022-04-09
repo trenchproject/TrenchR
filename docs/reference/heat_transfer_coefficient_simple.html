@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate heat transfer coefficient (based on Mitchell 1976 in Spotila 1992) — heat_transfer_coefficient_simple • TrenchR</title>
+<title>Calculate heat transfer coefficient — heat_transfer_coefficient_simple • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,11 @@
 
 
 
-<meta property="og:title" content="Calculate heat transfer coefficient (based on Mitchell 1976 in Spotila 1992) — heat_transfer_coefficient_simple" />
-<meta property="og:description" content="estimate the heat transfer coefficient (based on Mitchell 1976) using either the relationship in Spotila et al 1992 or that in Gates 1980. References: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians; Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569." />
+<meta property="og:title" content="Calculate heat transfer coefficient — heat_transfer_coefficient_simple" />
+<meta property="og:description" content="estimate the heat transfer coefficient (Mitchell 1976)
+ using either the relationship in (Spotila and Burggren 1992)
+ or that in (Gates 1980)
+." />
 
 
 
@@ -132,13 +135,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate heat transfer coefficient (based on Mitchell 1976 in Spotila 1992)</h1>
+    <h1>Calculate heat transfer coefficient</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/energybalance_functions.R'><code>R/energybalance_functions.R</code></a></small>
     <div class="hidden name"><code>heat_transfer_coefficient_simple.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>estimate the heat transfer coefficient (based on Mitchell 1976) using either the relationship in Spotila et al 1992 or that in Gates 1980. References: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians; Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569.</p>
+    <p>estimate the heat transfer coefficient (Mitchell 1976)
+ using either the relationship in (Spotila and Burggren 1992)
+ or that in (Gates 1980)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>heat_transfer_coefficient_simple</span><span class='op'>(</span><span class='va'>V</span>, <span class='va'>D</span>, <span class='va'>type</span><span class='op'>)</span></pre>
@@ -148,21 +154,33 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>V</th>
-      <td><p>Air velocity m/s.</p></td>
+      <td><p><code>numeric</code> Air velocity (m/s).</p></td>
     </tr>
     <tr>
       <th>D</th>
-      <td><p>Characteristic dimension (e.g., diameter or snout-vent length) in meters.</p></td>
+      <td><p><code>numeric</code> Characteristic dimension (e.g., diameter or snout-vent length) (meters).</p></td>
     </tr>
     <tr>
       <th>type</th>
-      <td><p>Choice between "Spotila" and "Gates" for equation to use</p></td>
+      <td><p><code>character</code> Choice between "Spotila" and "Gates" for equation to use</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>heat transfer coefficient, H_L (W m^-2 K^-1)</p>
+    <p><code>numeric</code> heat transfer coefficient, H_L (W m^-2 K^-1)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Gates DM (1980).
+<em>Biophysical Ecology</em>.
+Springer-Verlag, New York, NY, USA.<br /><br /> Mitchell JW (1976).
+&#8220;Heat transfer from spheres and other animal forms.&#8221;
+<em>Biophysical Journal</em>, <b>16</b>(6), 561--569.
+ISSN 0006-3495, doi: <a href='https://doi.org/10.1016/S0006-3495(76)85711-6'>10.1016/S0006-3495(76)85711-6</a>
+, <a href='https://www.sciencedirect.com/science/article/pii/S0006349576857116'>https://www.sciencedirect.com/science/article/pii/S0006349576857116</a>.<br /><br /> Spotila F, Burggren (1992).
+&#8220;Biophysics of Heat and Mass Transfer.&#8221;
+<em>Environmental Physiology of the Amphibians</em>.
+<a href='https://press.uchicago.edu/ucp/books/book/chicago/E/bo3636401.html'>https://press.uchicago.edu/ucp/books/book/chicago/E/bo3636401.html</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
@@ -207,9 +225,10 @@
 <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>heat_transfer_coefficient_simple</span><span class='op'>(</span>V<span class='op'>=</span><span class='fl'>0.5</span>,D<span class='op'>=</span><span class='fl'>0.05</span>, type<span class='op'>=</span><span class='st'>"Gates"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>heat_transfer_coefficient_simple</span><span class='op'>(</span>V    <span class='op'>=</span> <span class='fl'>0.5</span>, 
+                                   D    <span class='op'>=</span> <span class='fl'>0.05</span>, 
+                                   type <span class='op'>=</span> <span class='st'>"Gates"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 11.03635</div><div class='input'>
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Calculate Prandtl Number — Prandtl_number" />
-<meta property="og:description" content="estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity (Gates 1980 Biophysical Ecology)." />
+<meta property="og:description" content="estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity (Gates 1980)" />
 
 
 
@@ -138,7 +138,7 @@
     </div>
 
     <div class="ref-description">
-    <p>estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity (Gates 1980 Biophysical Ecology).</p>
+    <p>estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity (Gates 1980)</p>
     </div>
 
     <pre class="usage"><span class='fu'>Prandtl_number</span><span class='op'>(</span><span class='va'>c_p</span>, <span class='va'>mu</span>, <span class='va'>K</span><span class='op'>)</span></pre>
@@ -148,21 +148,26 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>c_p</th>
-      <td><p>is specific heat at constant pressure (J mol^-1 K^-1)</p></td>
+      <td><p><code>numeric</code> specific heat at constant pressure (J mol^-1 K^-1)</p></td>
     </tr>
     <tr>
       <th>mu</th>
-      <td><p>is dynamic viscosity (mol s^-1m^-1)</p></td>
+      <td><p><code>numeric</code> dynamic viscosity (mol s^-1m^-1)</p></td>
     </tr>
     <tr>
       <th>K</th>
-      <td><p>Thermal conductivity (W K^-1 m^-1)</p></td>
+      <td><p><code>numeric</code> Thermal conductivity (W K^-1 m^-1)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Prandtl number</p>
+    <p><code>numeric</code> Prandtl number</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Gates DM (1980).
+<em>Biophysical Ecology</em>.
+Springer-Verlag, New York, NY, USA.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
@@ -207,10 +212,10 @@
 <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>Prandtl_number</span><span class='op'>(</span>c_p<span class='op'>=</span><span class='fl'>29.3</span>, mu<span class='op'>=</span><span class='fl'>0.00001</span>, K<span class='op'>=</span><span class='fl'>0.5</span><span class='op'>)</span>
-<span class='op'>}</span>
-
+    <pre class="examples"><div class='input'>  <span class='fu'>Prandtl_number</span><span class='op'>(</span>c_p <span class='op'>=</span> <span class='fl'>29.3</span>, 
+                 mu  <span class='op'>=</span> <span class='fl'>0.00001</span>, 
+                 K   <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.000586</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

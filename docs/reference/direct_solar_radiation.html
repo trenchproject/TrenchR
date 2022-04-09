@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimate direct solar radiation — direct_solar_radiation • TrenchR</title>
+<title>Estimate Direct Solar Radiation — direct_solar_radiation • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Estimate direct solar radiation — direct_solar_radiation" />
-<meta property="og:description" content="Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in Tracy et al. (1983) Estimating clear-day solar radiation: An evaluation of three models. Journal of Thermal Biology, 8(3), 247-251." />
+<meta property="og:title" content="Estimate Direct Solar Radiation — direct_solar_radiation" />
+<meta property="og:description" content="Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in (C. R. Tracy 1983)
+. Also references: (McCullough and Porter 1971)
+, insertCiteCampbell1998TrenchR" />
 
 
 
@@ -132,13 +134,15 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimate direct solar radiation</h1>
+    <h1>Estimate Direct Solar Radiation</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/RadiationFunctions.R'><code>R/RadiationFunctions.R</code></a></small>
     <div class="hidden name"><code>direct_solar_radiation.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in Tracy et al. (1983) Estimating clear-day solar radiation: An evaluation of three models. Journal of Thermal Biology, 8(3), 247-251.</p>
+    <p>Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in (C. R. Tracy 1983)
+. Also references: (McCullough and Porter 1971)
+, insertCiteCampbell1998TrenchR</p>
     </div>
 
     <pre class="usage"><span class='fu'>direct_solar_radiation</span><span class='op'>(</span><span class='va'>lat</span>, <span class='va'>doy</span>, <span class='va'>elev</span>, <span class='va'>t</span>, <span class='va'>t0</span>, method <span class='op'>=</span> <span class='st'>"Campbell 1977"</span><span class='op'>)</span></pre>
@@ -148,33 +152,44 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>lat</th>
-      <td><p>latitude (degrees)</p></td>
+      <td><p><code>numeric</code> latitude (degrees)</p></td>
     </tr>
     <tr>
       <th>doy</th>
-      <td><p>doy of year (1-366)</p></td>
+      <td><p><code>numeric</code> doy of year (1-366)</p></td>
     </tr>
     <tr>
       <th>elev</th>
-      <td><p>elevation in m</p></td>
+      <td><p><code>numeric</code> elevation in m</p></td>
     </tr>
     <tr>
       <th>t</th>
-      <td><p>local time (decimal hours)</p></td>
+      <td><p><code>numeric</code> local time (decimal hours)</p></td>
     </tr>
     <tr>
       <th>t0</th>
-      <td><p>time of local noon (decimal hours), can be estimated using solar_noon()</p></td>
+      <td><p><code>numeric</code> time of local noon (decimal hours), can be estimated using solar_noon()</p></td>
     </tr>
     <tr>
       <th>method</th>
-      <td><p>method for estimating direct solar radiation, options: "Campbell 1977","Gates 1962"</p></td>
+      <td><p><code>character</code> method for estimating direct solar radiation, options: "Campbell 1977","Gates 1962". Defaults to Campbell 1977.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>direct solar radiation (W/m^2)</p>
+    <p><code>numeric</code> direct solar radiation (W/m^2)</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>C. R. Tracy KAHRALWJSIDBTADWSCW (1983).
+&#8220;Estimating clear-day solar radiation: An evaluation of three models.&#8221;
+<em>Journal of Thermal Biology</em>, <b>8</b>(3), 247--251.
+doi: <a href='https://doi.org/10.1016/0306-4565(83)90003-7'>10.1016/0306-4565(83)90003-7</a>
+, <a href='https://libgen.ggfwzs.net/book/2898239/f9e0c8'>https://libgen.ggfwzs.net/book/2898239/f9e0c8</a>.<br /><br /> McCullough EC, Porter WP (1971).
+&#8220;Computing Clear Day Solar Radiation Spectra for the Terrestrial Ecological Environment.&#8221;
+<em>Ecology</em>, <b>52</b>(6), 1008--1015.
+doi: <a href='https://doi.org/10.2307/1933806'>10.2307/1933806</a>
+, <a href='https://esajournals.onlinelibrary.wiley.com/doi/10.2307/1933806'>https://esajournals.onlinelibrary.wiley.com/doi/10.2307/1933806</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other microclimate functions: 
@@ -195,9 +210,13 @@
 <code><a href='wind_speed_profile_segment.html'>wind_speed_profile_segment</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>direct_solar_radiation</span><span class='op'>(</span>lat<span class='op'>=</span><span class='fl'>47.61</span>,doy<span class='op'>=</span><span class='fl'>112</span>,elev<span class='op'>=</span><span class='fl'>1500</span>,t<span class='op'>=</span><span class='fl'>9</span>,t0<span class='op'>=</span><span class='fl'>12</span>, method<span class='op'>=</span><span class='st'>"Campbell 1977"</span><span class='op'>)</span>
-<span class='op'>}</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>direct_solar_radiation</span><span class='op'>(</span>lat    <span class='op'>=</span> <span class='fl'>47.61</span>, 
+                         doy    <span class='op'>=</span> <span class='fl'>112</span>, 
+                         elev   <span class='op'>=</span> <span class='fl'>1500</span>, 
+                         t      <span class='op'>=</span> <span class='fl'>9</span>, 
+                         t0     <span class='op'>=</span> <span class='fl'>12</span>, 
+                         method <span class='op'>=</span> <span class='st'>"Campbell 1977"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 656.1941</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

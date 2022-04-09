@@ -40,12 +40,8 @@
 
 
 <meta property="og:title" content="WETAIR — WETAIR" />
-<meta property="og:description" content="Calculates several properties of humid air as output variables below. The program
-is based on equations from List, R. J. 1971. Smithsonian Meteorological Tables. Smithsonian
-Institution Press. Washington, DC. WETAIR must be used in conjunction with function VAPPRS.
-Input variables are shown below. The user must supply known values for DB and BP (BP at one standard
-atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has
-either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP)
+<meta property="og:description" content="Calculates several properties of humid air as output variables below. The program is based on equations from (List 1971)
+. WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP)
 (1) Psychrometric data:
 If WB is known but not RH, then set RH = -1 and DP = 999.
 If RH is known but not WB then set WB = 0 and DP = 999.
@@ -148,12 +144,8 @@ If DP is known then set WB = 0 and RH = 0." />
     </div>
 
     <div class="ref-description">
-    <p>Calculates several properties of humid air as output variables below. The program
-is based on equations from List, R. J. 1971. Smithsonian Meteorological Tables. Smithsonian
-Institution Press. Washington, DC. WETAIR must be used in conjunction with function VAPPRS.</p>
-<p>Input variables are shown below. The user must supply known values for DB and BP (BP at one standard
-atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has
-either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP)</p>
+    <p>Calculates several properties of humid air as output variables below. The program is based on equations from (List 1971)
+. WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP)</p>
 <p>(1) Psychrometric data:
 If WB is known but not RH, then set RH = -1 and DP = 999.
 If RH is known but not WB then set WB = 0 and DP = 999.
@@ -168,42 +160,47 @@ If DP is known then set WB = 0 and RH = 0.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>db</th>
-      <td><p>Dry bulb temperature (C)</p></td>
+      <td><p><code>numeric</code> Dry bulb temperature (C)</p></td>
     </tr>
     <tr>
       <th>wb</th>
-      <td><p>Wet bulb temperature (C)</p></td>
+      <td><p><code>numeric</code> Wet bulb temperature (C)</p></td>
     </tr>
     <tr>
       <th>rh</th>
-      <td><p>Relative humidity (%)</p></td>
+      <td><p><code>numeric</code> Relative humidity (%)</p></td>
     </tr>
     <tr>
       <th>dp</th>
-      <td><p>Dew point temperature (C)</p></td>
+      <td><p><code>numeric</code> Dew point temperature (C)</p></td>
     </tr>
     <tr>
       <th>bp</th>
-      <td><p>Barometric pressure (pascal)</p></td>
+      <td><p><code>numeric</code> Barometric pressure (pascal)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>e Vapour pressure (Pa)</p>
-<p>esat Saturation vapour pressure (Pa)</p>
-<p>vd Vapour density (kg m-3)</p>
-<p>rw Mixing ration (kg kg-1)</p>
-<p>tvir Virtual temperature (K)</p>
-<p>tvinc Virtual temperature increment (K)</p>
-<p>denair Hourly predictions of the soil moisture under the maximum specified shade</p>
-<p>cp Specific heat of air at constant pressure (J kg-1 K-1)</p>
-<p>wtrpot Water potential (Pa)</p>
-<p>Relative humidity (%)</p>
+    <p>e <code>numeric</code> Vapour pressure (Pa)</p>
+<p>esat <code>numeric</code> Saturation vapour pressure (Pa)</p>
+<p>vd <code>numeric</code> Vapour density (kg m-3)</p>
+<p>rw <code>numeric</code> Mixing ration (kg kg-1)</p>
+<p>tvir <code>numeric</code> Virtual temperature (K)</p>
+<p>tvinc <code>numeric</code> Virtual temperature increment (K)</p>
+<p>denair <code>numeric</code> Hourly predictions of the soil moisture under the maximum specified shade</p>
+<p>cp <code>numeric</code> Specific heat of air at constant pressure (J kg-1 K-1)</p>
+<p>wtrpot <code>numeric</code> Water potential (Pa)</p>
+<p>rh <code>numeric</code> Relative humidity (<!-- %) --></p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>List RJ (1971).
+&#8220;Smithsonian Meteorological Tables.&#8221;
+<em>Smithsonian Miscellaneous Collections</em>, <b>114</b>(1), 1--527.
+<a href='https://repository.si.edu/handle/10088/23746'>https://repository.si.edu/handle/10088/23746</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'>WETAIR</span><span class='op'>(</span>db<span class='op'>=</span><span class='fl'>30</span>, wb<span class='op'>=</span><span class='fl'>28</span>, rh<span class='op'>=</span><span class='fl'>60</span>, bp<span class='op'>=</span><span class='fl'>100</span><span class='op'>*</span><span class='fl'>1000</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='fu'>WETAIR</span><span class='op'>(</span>db<span class='op'>=</span><span class='fl'>30</span>, wb<span class='op'>=</span><span class='fl'>28</span>, rh<span class='op'>=</span><span class='fl'>60</span>, bp<span class='op'>=</span><span class='fl'>100</span><span class='op'>*</span><span class='fl'>1000</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $e
 #&gt; [1] 2545.82
 #&gt; 
