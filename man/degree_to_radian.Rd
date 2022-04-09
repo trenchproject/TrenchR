@@ -19,9 +19,6 @@ Convert angle in degrees to radians.
   degree_to_radian(47.608)
 
 }
-\references{
-\insertAllCited{}
-}
 \seealso{
 Other utility functions: 
 \code{\link{airpressure_from_elev}()},

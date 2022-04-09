@@ -16,7 +16,7 @@ DRYAIR(db = db, bp = 0, alt = 0)
 \value{
 patmos \code{numeric} Standard atmospheric pressure (Pa)
 
-densty \code{numeric} Density (kg m-3)
+density \code{numeric} Density (kg m-3)
 
 visdyn \code{numeric} Dynamic viscosity (kg m-1 s-1)
 
@@ -26,7 +26,7 @@ difvpr \code{numeric} Diffusivity of water vapor in air (m2 s-1)
 
 thcond \code{numeric} Thermal conductivity (W m-1 K-1)
 
-htovpr \code{numeric} Latent heat of vapourisation of water (J kg-1)
+htovpr \code{numeric} Latent heat of vaporisation of water (J kg-1)
 
 tcoeff \code{numeric} Temperature coefficient of volume expansion (K-1)
 

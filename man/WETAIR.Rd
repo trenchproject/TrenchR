@@ -18,11 +18,11 @@ WETAIR(db = db, wb = db, rh = 0, dp = 999, bp = 101325)
 \item{bp}{\code{numeric} Barometric pressure (pascal)}
 }
 \value{
-e \code{numeric} Vapour pressure (Pa)
+e \code{numeric} Vapor pressure (Pa)
 
-esat \code{numeric} Saturation vapour pressure (Pa)
+esat \code{numeric} Saturation vapor pressure (Pa)
 
-vd \code{numeric} Vapour density (kg m-3)
+vd \code{numeric} Vapor density (kg m-3)
 
 rw \code{numeric} Mixing ration (kg kg-1)
 
@@ -36,7 +36,7 @@ cp \code{numeric} Specific heat of air at constant pressure (J kg-1 K-1)
 
 wtrpot \code{numeric} Water potential (Pa)
 
-rh \code{numeric} Relative humidity (%)
+rh \code{numeric} Relative humidity (\%)
 }
 \description{
 Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971}{TrenchR}. WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP)

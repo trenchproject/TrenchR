@@ -37,7 +37,7 @@ soil_temperature(
 
 \item{z0}{\code{numeric} surface roughness (meters)}
 
-\item{SSA}{\code{numeric} solar absorbtivity of soil surface as a fraction}
+\item{SSA}{\code{numeric} solar absorptivity of soil surface as a fraction}
 
 \item{TimeIn}{\code{numeric} vector of time periods for the model}
 

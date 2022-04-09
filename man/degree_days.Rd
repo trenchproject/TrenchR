@@ -21,7 +21,7 @@ degree_days(T_min, T_max, LDT = NA, UDT = NA, method = "single.sine")
 \code{numeric} degree days (C)
 }
 \description{
-Calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minima is equal to previous day. Double Sine wave approximation of degree days from \insertCite{Allen1976}{TrenchR}.
+Calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minimum is equal to previous day. Double Sine wave approximation of degree days from \insertCite{Allen1976}{TrenchR}.
 }
 \examples{
   degree_days(T_min  = 7, 

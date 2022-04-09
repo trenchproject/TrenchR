@@ -13,7 +13,7 @@ heat_transfer_coefficient_approximation(V, D, K, nu, taxa = "sphere")
 
 \item{K}{\code{numeric} Thermal conductivity of air (W m^-1 K^-1), can calculate using DRYAIR or WETAIR in NicheMapR}
 
-\item{nu}{\code{numeric} Kinematic Viscocity of air (m^2 s^-1), can calculate using DRYAIR or WETAIR in NicheMapR}
+\item{nu}{\code{numeric} Kinematic Viscosity of air (m^2 s^-1), can calculate using DRYAIR or WETAIR in NicheMapR}
 
 \item{taxa}{\code{character} Which class of organism, current choices: sphere, frog, lizard, flyinginsect, spider}
 }

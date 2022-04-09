@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Free_or_forced_convection}
 \alias{Free_or_forced_convection}
-\title{Commpare Grashof and Reyolds Numbers to Determine If Convection is Free or Forced}
+\title{Compare Grashof and Reyolds Numbers to Determine If Convection is Free or Forced}
 \usage{
 Free_or_forced_convection(Gr, Re)
 }
@@ -15,7 +15,7 @@ Free_or_forced_convection(Gr, Re)
 \code{character} "free", "forced" or "intermediate"
 }
 \description{
-commpare the Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980).
+Compare the Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980).
 }
 \examples{
   Free_or_forced_convection(Gr = 100, 

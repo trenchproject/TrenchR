@@ -10,10 +10,10 @@ VAPPRS(db = db)
 \item{db}{\code{numeric} Dry bulb temperature (C)}
 }
 \value{
-esat \code{numeric} Saturation vapour pressure (Pa)
+esat \code{numeric} Saturation vapor pressure (Pa)
 }
 \description{
-Calculates saturation vapour pressure for a given air temperature.
+Calculates saturation vapor pressure for a given air temperature.
 }
 \examples{
 VAPPRS(db = 30)

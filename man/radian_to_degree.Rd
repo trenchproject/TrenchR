@@ -19,6 +19,3 @@ Convert angle in radians to degrees.
   radian_to_degree(0.831)
 
 }
-\references{
-\insertAllCited{}
-}

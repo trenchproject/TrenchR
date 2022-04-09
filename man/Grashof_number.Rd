@@ -19,7 +19,7 @@ Grashof_number(Ta, Tg, D, nu)
 \code{numeric} Grashof number
 }
 \description{
-estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force. Reference: \insertCite{Campbell1998}{TrenchR}
+estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force. Reference: \insertCite{Campbell1998}{TrenchR}
 }
 \examples{
   Grashof_number(Ta = 30, 
