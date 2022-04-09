@@ -23,7 +23,7 @@ Qconduction_substrate(T_g, T_b, D, K_g = 0.5, A, proportion)
 conductance (W)
 }
 \description{
-calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
+calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
 }
 \examples{
   Qconduction_substrate(T_g        = 293, 

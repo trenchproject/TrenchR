@@ -22,74 +22,63 @@ knitr::opts_chunk$set(echo = TRUE)
 library(TrenchR)
 ```
 
-This tutorial covers approaches and functions for preparing
-environmental data for analyses such as examining organismal energy
-balances. The tutorial first covers estimating the intensity and
-partitioning of solar radiation, including estimating solar angles and
-day length. We then turn to estimating temperature and wind speed
-profiles that can scale weather station data to the conditions
-experienced by organisms. We review functions for modeling diurnal
-variation in temperature and solar radiation as well as heat
-accumulation (degree days). The tutorial concludes with a microclimate
-model for estimating soil temperatures.
+This tutorial covers approaches and functions for preparing environmental data for analyses such as examining organismal energy balances. The tutorial first covers estimating the intensity and partitioning of solar radiation, including estimating solar angles and day length. We then turn to estimating temperature and wind speed profiles that can scale weather station data to the conditions experienced by organisms. We review functions for modeling diurnal variation in temperature and solar radiation as well as heat accumulation (degree days). The tutorial concludes with a microclimate model for estimating soil temperatures.
 
 # Radiation
 
 ## Solar angles and day length
 
-Sun position and day length are often estimated based on the calendar
-date. We provide a function `day_of_year()` that facilitates translating
-a date into a calendar date.
+Sun position and day length are often estimated based on the calendar date. We provide a function `day_of_year()` that facilitates translating a date into a calendar date.
 
-```{r, fig.height=3, fig.width=5}
-day_of_year("2017-04-22", format= "%Y-%m-%d")
+```{r}
+
+  day_of_year("2017-04-22", format= "%Y-%m-%d")
+
 ```
 
-We next present functions to calculate sun angles. We use the calendar
-date (J) to estimate solar declination (radian), which is the angular
-distance of the sun north or south of the earth's equator, as follows
-(`dec_angle()`):
+We next present functions to calculate sun angles. We use the calendar date (J) to estimate solar declination (radian), which is the angular distance of the sun north or south of the earth's equator, as follows (`dec_angle()`):
+
 $$ \delta= \arcsin[0.39795 \cos(0.21631+ 2 \arctan (0.967 \tan [0.0086(-186+J)]))].$$
 
-The solar declination angle can be calculated in TrenchR
-as follows:
+The solar declination angle can be calculated in TrenchR as follows:
 
-```{r, fig.height=3, fig.width=5}
-plot(1:365, dec_angle(1:365), type="l", xlab="day of year", ylab="declination angle (radian)")
+```{r}
+
+  plot(1:365, dec_angle(1:365), type="l", xlab="day of year", ylab="declination angle (radian)")
+
 ```
 
-Zenith angle $\psi$ (°), the location of the sun as an angle measured
-from vertical, can be estimated as:
-$$\cos \psi = \sin( \delta) \sin( \phi) + \cos(\delta)\cos(\phi)\cos(\pi/12*(h-h_0)),$$
-where $J$ is calendar date, $\phi$ is latitude (radians), $h$ is hour,
-and $h_0$ is the time of solar noon. We illustrate how zenith angles (°)
-change over the day throughout the year in Seattle, WA, USA:
+Zenith angle $\psi$ (&deg;), the location of the sun as an angle measured from vertical, can be estimated as: $$\cos \psi = \sin( \delta) \sin( \phi) + \cos(\delta)\cos(\phi)\cos(\pi/12*(h-h_0)),$$ where $J$ is calendar date, $\phi$ is latitude (radians), $h$ is hour, and $h_0$ is the time of solar noon. We illustrate how zenith angles (&deg;) change over the day throughout the year in Seattle, WA, USA:
 
 ```{r, fig.height=4, fig.width=6}
-zen= unlist(lapply(1:24, FUN=zenith_angle, doy=200, lat=47.61, lon=-122.33))
-plot(1:24, zen, type="l", ylab="zenith angle (°)", xlab="hour")
-zen= unlist(lapply(1:24, FUN=zenith_angle, doy=1, lat=47.61, lon=-122.33))
-points(1:24, zen, type="l", lty="dotted")
-zen= unlist(lapply(1:24, FUN=zenith_angle, doy=100, lat=47.61, lon=-122.33))
-points(1:24, zen, type="l", lty="dotdash")
-zen= unlist(lapply(1:24, FUN=zenith_angle, doy=300, lat=47.61, lon=-122.33))
-points(1:24, zen, type="l", lty="dashed")
 
-legend("bottomleft", title="day of year", legend=c(0, 100, 200, 300), lty=c("dotted","dotdash","solid","dashed") )
+  zenith <- unlist(lapply(1:24, FUN = zenith_angle, doy = 200, lat = 47.61, lon = -122.33))
+  plot(1:24, zenith, type = "l", ylab = "zenith angle (°)", xlab = "hour")
+
+  zenith <- unlist(lapply(1:24, FUN = zenith_angle, doy = 1, lat = 47.61, lon = -122.33))
+  points(1:24, zenith, type = "l", lty = "dotted")
+
+  zenith <- unlist(lapply(1:24, FUN = zenith_angle, doy = 100, lat = 47.61, lon = -122.33))
+  points(1:24, zenith, type = "l", lty = "dotdash")
+  
+  zenith <-  unlist(lapply(1:24, FUN = zenith_angle, doy = 300, lat = 47.61, lon = -122.33))
+  points(1:24, zenith, type = "l", lty = "dashed")
+
+  legend("bottomleft", title = "day of year", legend = c(0, 100, 200, 300), lty = c("dotted", "dotdash", "solid", "dashed") )
+
 ```
 
-We also examine how zenith angles (°) at noon change over the course of
-the year for latitudes along the longitude of Seattle, WA USA:
+We also examine how zenith angles (&deg;) at noon change over the course of the year for latitudes along the longitude of Seattle, WA USA:
 
 ```{r, fig.height=4, fig.width=6}
-zen= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=60, lon=-122.33))
-plot(1:365, zen, type="l", ylim=range(0,90), ylab="zenith angle (°)", xlab="day of year")
-zen= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=40, lon=-122.33))
-points(1:365, zen, type="l", lty="dotted")
-zen= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=20, lon=-122.33))
-points(1:365, zen, type="l", lty="dotdash")
-zen= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=0, lon=-122.33))
-points(1:365, zen, type="l", lty="dashed")
+zenith= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=60, lon=-122.33))
+plot(1:365, zenith, type="l", ylim=range(0,90), ylab="zenith angle (°)", xlab="day of year")
+zenith= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=40, lon=-122.33))
+points(1:365, zenith, type="l", lty="dotted")
+zenith= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=20, lon=-122.33))
+points(1:365, zenith, type="l", lty="dotdash")
+zenith= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=0, lon=-122.33))
+points(1:365, zenith, type="l", lty="dashed")
 
 legend("top", title="latitude (°)", legend=c(0, 20, 40, 60), lty=c("dashed","dotdash","dotted","solid") )
 ```
@@ -117,7 +106,7 @@ coming measured from true north or south measured in the horizontal
 plane. The azimuth angle ($AZ$ in degrees) is estimated with respect to
 due south, increasing in the counter-clockwise direction such that
 $90^\circ$ is east. $AZ$ can be calculated as a function of declination
-angle $\delta$ (°), zenith angle $\psi$ (°), and latitude $\phi$ (°) as
+angle $\delta$ (&deg;), zenith angle $\psi$ (&deg;), and latitude $\phi$ (&deg;) as
 follows:
 $$\cos AZ= \frac{-(\sin \delta - \cos \psi \sin \phi)}{\cos \phi \sin \psi}.$$
 TrenchR includes a function to estimate azimuth angle as follows. We
@@ -182,7 +171,7 @@ extraterrestrial flux density as $1,360 W m^{−2}$. The optical air mass
 number, $m_a$, is the ratio of slant path length through the atmosphere
 to zenith path length and is a function of atmospheric pressure:
 $m_a=p_a/(101.3\cos(\psi))$, where $p_a$ is air pressure (kPa) and
-$\psi$ is zenith angle (°, see above). The function
+$\psi$ is zenith angle (&deg;, see above). The function
 `airpressure_from_elev()` estimates air pressure as
 $p_a (kPa)= 101.3 e ^{\frac{-E}{8200}}$, where $E$ is the elevation in
 meters above sea level. TrenchR provides a function to estimate air
@@ -616,7 +605,7 @@ temperature:
 $$T_0^{p+1}= a \alpha_s S + a \epsilon_S \sigma [(T^p_{sky})^4-(T^p_0)^4]+a h_s (T^p-T_0^p) +a \frac{k_s}{dz}(T^p_{dz}-T^p_0)+T_0^p$$
 
 Soil temperature can be estimated in TrenchR as follows. The solid line
-depicts air temperature (°C).
+depicts air temperature (&deg;C).
 
 ```{r, fig.height=4, fig.width=6}
 library(deSolve)

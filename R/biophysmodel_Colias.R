@@ -22,7 +22,7 @@
 #'
 #' @param delta \code{numeric} thoracic fur thickness in mm.
 #'
-#' @param alpha \code{numeric} wing solar absorbtivity as a proportion. Range for Colias is 0.4 to 0.7.
+#' @param alpha \code{numeric} wing solar absorptivity as a proportion. Range for Colias is 0.4 to 0.7.
 #'
 #' @param r_g \code{numeric} substrate solar reflectivity (proportion), see \insertCite{Kingsolver1983;textual}{TrenchR}.
 #'

@@ -367,7 +367,7 @@ soil_temperature_function <- function (j,
 #' @description Function called to calculate soil temperature in C from \insertCite{Beckman1973;textual}{TrenchR}. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from \insertCite{deVries1963}{TrenchR}
 #' 
 #' @param z_r.intervals \code{numeric} the number of intervals in the soil profile to calculate, defaults to 12
-#' ß
+#' 
 #' @param z_r \code{numeric} reference height in0 (meters)
 #' 
 #' @param z \code{numeric} interval of the soil profile to return (1 to z_r.intervals)

@@ -26,7 +26,7 @@ difvpr \code{numeric} Diffusivity of water vapor in air (m2 s-1)
 
 thcond \code{numeric} Thermal conductivity (W m-1 K-1)
 
-htovpr \code{numeric} Latent heat of vaporisation of water (J kg-1)
+htovpr \code{numeric} Latent heat of vaporization of water (J kg-1)
 
 tcoeff \code{numeric} Temperature coefficient of volume expansion (K-1)
 

@@ -1,6 +1,6 @@
 #' @title Calculate Conductance Assuming Animal Thermal Conductivity is Rate Limiting
 #' 
-#' @description Calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
+#' @description Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
 #' 
 #' @param T_g \code{numeric} Ground surface temperature (Kelvin).
 #' 
@@ -55,7 +55,7 @@ Qconduction_animal <- function (T_g,
 
 #' @title Calculate conductance assuming substrate thermal conductivity is rate limiting
 #' 
-#' @description  calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
+#' @description  calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
 #' 
 #' @param T_g \code{numeric} Surface temperature (Kelvin).
 #' 

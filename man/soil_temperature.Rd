@@ -22,8 +22,7 @@ soil_temperature(
 )
 }
 \arguments{
-\item{z_r.intervals}{\code{numeric} the number of intervals in the soil profile to calculate, defaults to 12
-ß}
+\item{z_r.intervals}{\code{numeric} the number of intervals in the soil profile to calculate, defaults to 12}
 
 \item{z_r}{\code{numeric} reference height in0 (meters)}
 

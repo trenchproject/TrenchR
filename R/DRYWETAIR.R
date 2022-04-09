@@ -20,7 +20,7 @@
 #' 
 #' @return thcond \code{numeric} Thermal conductivity (W m-1 K-1)
 #' 
-#' @return htovpr \code{numeric} Latent heat of vaporisation of water (J kg-1)
+#' @return htovpr \code{numeric} Latent heat of vaporization of water (J kg-1)
 #' 
 #' @return tcoeff \code{numeric} Temperature coefficient of volume expansion (K-1)
 #' 

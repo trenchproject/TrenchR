@@ -44,7 +44,7 @@ vignette("MicroclimateTutorial", package="TrenchR")
 
 ```
 
-Finally, the core biophysical modelling functions are described in a tutorial on Using energy balances to estimate body temperatures. Components of an energy budget can be estimated using individual functions and then operative environmental temperatures, Te, can be solved for using either a generic energy balance or taxa specific biophysical models.
+Finally, the core biophysical modeling functions are described in a tutorial on Using energy balances to estimate body temperatures. Components of an energy budget can be estimated using individual functions and then operative environmental temperatures, Te, can be solved for using either a generic energy balance or taxa specific biophysical models.
 
 ```r
 vignette("TeTutorial", package="TrenchR")

@@ -523,7 +523,7 @@ Stefan-Boltzmann constant ($5.673*10^{-8} W m^{-2} K^{-4}$).
 
 The thermal radiation exchanged between the animals and the walls of the
 cavity is proportional to the temperature differences and the radiative
-conductance. Cambell and Norman [-@campbell2012introduction] thus use a
+conductance. Campbell and Norman [-@campbell2012introduction] thus use a
 denominator term that combines thermal radiative exchange with
 convective heat exchange. The radiative conductance describing the heat
 exchange between the core of the animal and the environment is estimated
