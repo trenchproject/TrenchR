@@ -43,16 +43,15 @@ The original equation uses a finite-difference approach where they divide the ro
   Air conductivity values (W / (\ifelse{html}{\out{m<sup>-1</sup>}}{\eqn{m^-1}{ASCII}} \ifelse{html}{\out{K<sup>-1</sup>}}{\eqn{K^-1}{ASCII}})) are calculated following \insertCite{Denny2006;textual}{TrenchR}.
 }
 \examples{
-  Tb_limpetBH(
-    T_a = 25, 
-    T_r = 30, 
-    L = 0.0176, 
-    H = 0.0122, 
-    I = 1300, 
-    u = 1, 
-    s_aspect = 90, 
-    s_slope = 60, 
-    c = 1)
+  Tb_limpetBH(T_a = 25, 
+              T_r = 30, 
+              L = 0.0176, 
+              H = 0.0122, 
+              I = 1300, 
+              u = 1, 
+              s_aspect = 90, 
+              s_slope = 60, 
+              c = 1)
 
 }
 \references{

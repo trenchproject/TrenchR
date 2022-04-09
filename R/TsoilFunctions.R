@@ -1,4 +1,4 @@
-#' @title Estimate soil thermal conductivity
+#' @title Estimate Soil Thermal Conductivity
 #' 
 #' @description Estimates soil thermal conductivity (W m^-1 K^-1) using the methods of \insertCite{deVries1963;textual}{TrenchR}
 #' 
@@ -22,9 +22,13 @@
 #' @author Joseph Grigg
 #' 
 #' @examples
-#'   soil_conductivity(x = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), lambda = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), g_a = 0.125)
+#'   soil_conductivity(x      = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), 
+#'                     lambda = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), 
+#'                     g_a     = 0.125)
 #'   
-soil_conductivity <- function(x, lambda, g_a){
+soil_conductivity <- function (x, 
+                               lambda, 
+                               g_a) {
   
   stopifnot(g_a > 0, g_a < 1)
   
@@ -52,7 +56,7 @@ soil_conductivity <- function(x, lambda, g_a){
   
 }
 
-#' @title Estimate soil specific heat
+#' @title Estimate Soil Specific Heat
 #' 
 #' @description Estimates soil specific heat (J kg^-1 K^-1) using the methods of \insertCite{deVries1963;textual}{TrenchR}. Uses the volume fraction of organic material, minerals, and water in soil.
 #' 
@@ -78,9 +82,15 @@ soil_conductivity <- function(x, lambda, g_a){
 #' @author Joseph Grigg
 #' 
 #' @examples
-#'   soil_specific_heat(x_o = 0.01, x_m = 0.6, x_w = 0.2, rho_so = 1620)
+#'   soil_specific_heat(x_o    = 0.01, 
+#'                      x_m    = 0.6, 
+#'                      x_w    = 0.2, 
+#'                      rho_so = 1620)
 #'
-soil_specific_heat <- function(x_o, x_m, x_w, rho_so){
+soil_specific_heat <- function (x_o, 
+                                x_m, 
+                                x_w, 
+                                rho_so) {
   
   stopifnot(x_o >= 0, x_o <= 1, x_m >= 0, x_m <= 1, x_w >= 0, x_w <= 1, rho_so > 0)
   
@@ -91,7 +101,7 @@ soil_specific_heat <- function(x_o, x_m, x_w, rho_so){
   
 }
 
-#' @title Solve equation for soil temperature
+#' @title Solve Equation for Soil Temperature
 #' 
 #' @description Function called by soil_temp_noint to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. The function represents the integrand in the equation. It is not intended to be called directly.
 #' 
@@ -115,18 +125,22 @@ soil_specific_heat <- function(x_o, x_m, x_w, rho_so){
 #' @author Joseph Grigg
 #' 
 #' @examples
-#'   soil_temperature_integrand(x = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), L = -10, z0 = 0.2)
-#
-
-soil_temperature_integrand <- function(x, L, z0){ 
+#'   soil_temperature_integrand(x  = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), 
+#'                              L  = -10, 
+#'                              z0 = 0.2)
+#'
+soil_temperature_integrand <- function (x, 
+                                        L, 
+                                        z0) { 
   
   stopifnot(z0 > 0)
   
   (3 - 1.4 * exp(1.5 * x))^-1 * (exp(x + z0 / L) / (exp(x + z0 / L) - 1))
+
 }
 
 
-#' @title Function called by soil_temperature_function() to solve equation for soil temperature.
+#' @title Core Function Called to Solve Equation for Soil Temperature
 #'
 #' @description Function called by soil_temp_noint to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}.
 #' 
@@ -148,8 +162,6 @@ soil_temperature_integrand <- function(x, L, z0){
 #' 
 #' @param T_s \code{numeric} initial soil suface temperature (C) 
 #' 
-#' @import stats
-#' 
 #' @return soil temperature function
 #' 
 #' @keywords soil temperature
@@ -164,10 +176,25 @@ soil_temperature_integrand <- function(x, L, z0){
 #' @author Joseph Grigg
 #' 
 #' @examples
-#' soil_temperature_equation(L = -10, rho_a = 1.177, c_a = 1006, k = 0.41, V_inst = 0.3, z_r = 1.5, z0 = 0.02, T_inst = 265, T_s = 20)
+#' soil_temperature_equation(L      = -10, 
+#'                           rho_a  = 1.177, 
+#'                           c_a    = 1006, 
+#'                           k      = 0.41, 
+#'                           V_inst = 0.3, 
+#'                           z_r    = 1.5, 
+#'                           z0     = 0.02, 
+#'                           T_inst = 265, 
+#'                           T_s    = 20)
 #'
-
-soil_temperature_equation <- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s){ 
+soil_temperature_equation <- function (L, 
+                                       rho_a, 
+                                       c_a, 
+                                       k, 
+                                       V_inst, 
+                                       z_r, 
+                                       z0, 
+                                       T_inst, 
+                                       T_s) { 
   
   stopifnot(rho_a > 0, c_a > 0, k > 0, T_inst > 200, T_inst < 400, z_r > 0, z0 > 0)
   
@@ -176,7 +203,7 @@ soil_temperature_equation <- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst,
 }
 
 
-#' @title Function to calculate soil temperature.
+#' @title Function to Calculate Soil Temperature.
 #' 
 #' @description Function called to calculate soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from \insertCite{Porter1973;textual}{TrenchR} and \insertCite{Kingsolver1979;textual}{TrenchR}
 #' 
@@ -192,8 +219,6 @@ soil_temperature_equation <- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst,
 #' 
 #' @family soil temperature functions
 #' 
-#' @import stats
-#' 
 #' @export
 #' 
 #' @references
@@ -202,18 +227,41 @@ soil_temperature_equation <- function(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst,
 #' @author Joseph Grigg
 #' 
 #' @examples
-#' temp_vector= runif(96, min = -10, max = 10)
-#' wind_speed_vector= runif(96, min = 0, max = 0.4)
-#' time_vector= rep(1:24, 4)
-#' solrad_vector= rep(c(rep(0, 6),seq(10, 700, length.out = 6), seq(700, 10, length.out = 6), rep(0, 6)), 4)
-#'
-#' params=list(SSA = 0.7, epsilon_so = 0.98, k_so = 0.293, c_so = 800, dz = 0.05, z_r = 1.5, z0 = 0.02, H = solrad_vector, T_a = temp_vector, u = wind_speed_vector, rho_a = 1.177, rho_so = 1620, c_a = 1006, TimeIn = time_vector, dt = 60 * 60, shade = FALSE)
+#'   set.seed(123)
+#'   temp_vector       <- runif(96, min = -10, max = 10)
+#'   wind_speed_vector <- runif(96, min = 0, max = 0.4)
+#'   time_vector       <- rep(1:24, 4)
+#'   solrad_vector     <- rep(c(rep(0, 6), 
+#'                              seq(10, 700, length.out = 6), 
+#'                              seq(700, 10, length.out = 6), 
+#'                              rep(0, 6)),
+#'                            4)
+#'   params            <- list(SSA        = 0.7, 
+#'                             epsilon_so = 0.98, 
+#'                             k_so       = 0.293, 
+#'                             c_so       = 800, 
+#'                             dz         = 0.05, 
+#'                             z_r        = 1.5, 
+#'                             z0         = 0.02, 
+#'                             H          = solrad_vector, 
+#'                             T_a        = temp_vector, 
+#'                             u          = wind_speed_vector, 
+#'                             rho_a      = 1.177, 
+#'                             rho_so     = 1620,
+#'                             c_a        = 1006, 
+#'                             TimeIn     = time_vector, 
+#'                             dt         = 60 * 60, 
+#'                             shade      = FALSE)
 #' 
-#' soil_temperature_function(j=1,T_so= rep(20,13), params=params)
+#' soil_temperature_function(j      = 1, 
+#'                           T_so   = rep(20,13), 
+#'                           params = params)
 #' 
 #'
-
-soil_temperature_function<- function(j, T_so, params){
+#'
+soil_temperature_function <- function (j, 
+                                       T_so, 
+                                       params) {
   
   sigma <- 5.670373*10^(-8) # is the stefan-boltzmann constant (W/(m^2*K^4))
   k <- 0.41 #is von Karman's constant
@@ -314,9 +362,9 @@ soil_temperature_function<- function(j, T_so, params){
   )) 
 } 
 
-#' @title Function to calculate soil temperature in C using ODEs.
+#' @title Function to Calculate Soil Temperature in C using ODEs.
 #' 
-#' @description Function called to calculate soil temperature in C from \insertCite{Beckman1973;textual}{TrenchR}. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from \insertCite{DeVries1963}{TrenchR}
+#' @description Function called to calculate soil temperature in C from \insertCite{Beckman1973;textual}{TrenchR}. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from \insertCite{deVries1963}{TrenchR}
 #' 
 #' @param z_r.intervals \code{numeric} the number of intervals in the soil profile to calculate, defaults to 12
 #' ß
@@ -360,15 +408,45 @@ soil_temperature_function<- function(j, T_so, params){
 #' @author Joseph Grigg
 #' 
 #' @examples
-#' temp_vector= runif(96, min = -10, max = 10)
-#' wind_speed_vector= runif(96, min = 0, max = 0.4)
-#' time_vector= rep(1:24, 4)
-#' solrad_vector= rep(c(rep(0, 6), seq(10, 700, length.out = 6), seq(700, 10, length.out = 6), rep(0, 6)), 4)
+#'   set.seed(123)
+#'   temp_vector       <- runif(48, min = -10, max = 10)
+#'   wind_speed_vector <- runif(48, min = 0, max = 0.4)
+#'   time_vector       <- rep(1:24, 2)
+#'   solrad_vector     <- rep(c(rep(0, 6), 
+#'                              seq(10, 700, length.out = 6), 
+#'                              seq(700, 10, length.out = 6), 
+#'                              rep(0, 6)),
+#'                            2)
 #'
-#' soil_temperature(z_r.intervals = 12, z_r = 1.5, z = 2, T_a = temp_vector, u = wind_speed_vector, Tsoil0 = 20, z0 = 0.02, SSA = 0.7, TimeIn = time_vector, H = solrad_vector, water_content = 0.2, air_pressure = 85, rho_so = 1620, shade = FALSE)
+#'   soil_temperature(z_r.intervals = 12, 
+#'                    z_r           = 1.5, 
+#'                    z             = 2, 
+#'                    T_a           = temp_vector, 
+#'                    u             = wind_speed_vector, 
+#'                    Tsoil0        = 20, 
+#'                    z0            = 0.02, 
+#'                    SSA           = 0.7, 
+#'                    TimeIn        = time_vector, 
+#'                    H             = solrad_vector, 
+#'                    water_content = 0.2, 
+#'                    air_pressure  = 85, 
+#'                    rho_so        = 1620, 
+#'                    shade         = FALSE)
 #'
-
-soil_temperature <- function(z_r.intervals = 12, z_r, z, T_a, u, Tsoil0, z0, SSA, TimeIn, H, water_content = 0.2, air_pressure, rho_so = 1620, shade = FALSE){
+soil_temperature <- function (z_r.intervals = 12, 
+                              z_r, 
+                              z, 
+                              T_a, 
+                              u, 
+                              Tsoil0, 
+                              z0, 
+                              SSA, 
+                              TimeIn, 
+                              H, 
+                              water_content = 0.2, 
+                              air_pressure, 
+                              rho_so        = 1620, 
+                              shade         = FALSE) {
   
   stopifnot(z_r.intervals > 0, z_r >= 0, z0 > 0, SSA >= 0, SSA <= 1, water_content >= 0, water_content <= 1, air_pressure > 0, rho_so > 0, shade %in% c(TRUE, FALSE))
   
@@ -378,7 +456,7 @@ soil_temperature <- function(z_r.intervals = 12, z_r, z, T_a, u, Tsoil0, z0, SSA
   last.dat <- max(which(!is.na(T_a)))
   
   # fill temperature data
-  T_a <- zoo::na.approx(T_a, na.rm = FALSE) #Interpolate
+  T_a <- na.approx(T_a, na.rm = FALSE) #Interpolate
   
   # parameters/constants:
   # SI units were used
@@ -455,7 +533,7 @@ soil_temperature <- function(z_r.intervals = 12, z_r, z, T_a, u, Tsoil0, z0, SSA
   # SOLVE ODE
   params <- list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade)
   
-  Tsoil <- suppressWarnings(deSolve::ode(y = rep(Tsoil0, z_r.intervals + 1), func = soil_temperature_function, times = 1:length(H), params))
+  Tsoil <- suppressWarnings(ode(y = rep(Tsoil0, z_r.intervals + 1), func = soil_temperature_function, times = 1:length(H), params))
   
   return(Tsoil[, z])
   

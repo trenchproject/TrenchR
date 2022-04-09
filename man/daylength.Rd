@@ -2,23 +2,24 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{daylength}
 \alias{daylength}
-\title{@title Calculate day length}
+\title{Calculate Day Length}
 \usage{
 daylength(lat, doy)
 }
 \arguments{
-\item{lat}{\code{numeric} latitude in decimal degrees.}
+\item{lat}{\code{numeric} latitude (decimal degrees)}
 
-\item{doy}{\code{numeric} day of year (1-366).}
+\item{doy}{\code{numeric} day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)}
 }
 \value{
-\code{numeric} day length in hours.
+\code{numeric} day length (hours).
 }
 \description{
 Calculate daylength in hours as a function of latitude and day of year. Uses the CMB model \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
-  daylength(lat=47.61, doy=112)
+  daylength(lat = 47.61, 
+            doy = 112)
 
 }
 \references{
@@ -28,6 +29,7 @@ Calculate daylength in hours as a function of latitude and day of year. Uses the
 Other utility functions: 
 \code{\link{airpressure_from_elev}()},
 \code{\link{azimuth_angle}()},
+\code{\link{day_of_year}()},
 \code{\link{dec_angle}()},
 \code{\link{degree_to_radian}()},
 \code{\link{fahrenheit_to_celsius}()},

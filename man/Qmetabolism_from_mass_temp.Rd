@@ -2,27 +2,31 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Qmetabolism_from_mass_temp}
 \alias{Qmetabolism_from_mass_temp}
-\title{Calculate basal (or resting) metabolism as a function of mass and body temperature.}
+\title{Calculate Basal (Resting) Metabolism as a Function of Mass and Body Temperature}
 \usage{
 Qmetabolism_from_mass_temp(m, T_b, taxa)
 }
 \arguments{
-\item{m}{Mass in grams.}
+\item{m}{\code{numeric} Mass (grams).}
 
-\item{T_b}{body temperature in K}
+\item{T_b}{\code{numeric} body temperature (K)}
 
-\item{taxa}{Which taxa. options: bird, mammal, reptile, amphibian, invertebrate.}
+\item{taxa}{\code{character} Taxa to use. Options: bird, mammal, reptile, amphibian, invertebrate}
 }
 \value{
-basal metabolim (W)
+\code{numeric} basal metabolim (W)
 }
 \description{
-estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). Reference:  Gillooly JF et al. 2001. Effects of size and temperature on metabolic rate. Science 293: 2248-2251.
+Estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). Reference: \insertCite{Gillooly2001}{TrenchR}.
 }
 \examples{
-Qmetabolism_from_mass_temp(m=100, T_b=303, "reptile")
+  Qmetabolism_from_mass_temp(m    = 100, 
+                             T_b  = 303, 
+                             taxa = "reptile")
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

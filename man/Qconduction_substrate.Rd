@@ -7,31 +7,36 @@
 Qconduction_substrate(T_g, T_b, D, K_g = 0.5, A, proportion)
 }
 \arguments{
-\item{T_g}{Surface Temperature in Kelvin.}
+\item{T_g}{\code{numeric} Surface temperature (Kelvin).}
 
-\item{T_b}{Body Temperature in Kelvin.}
+\item{T_b}{\code{numeric} Body temperature (Kelvin).}
 
-\item{D}{Characteristic dimension of the animal in meters}
+\item{D}{\code{numeric} Characteristic dimension of the animal (meters)}
 
-\item{K_g}{Thermal conductivity of substrate (W K^-1 m^-1)}
+\item{K_g}{\code{numeric} Thermal conductivity of substrate (W K^-1 m^-1)}
 
-\item{A}{Surface area in m^2}
+\item{A}{\code{numeric} Surface area (m^2)}
 
-\item{proportion}{In contact to the surface}
+\item{proportion}{\code{numeric} proportion in contact to the surface}
 }
 \value{
 conductance (W)
 }
 \description{
-calculate conductance (W) of an ectothermic animal to its substate.
-         Method assumes the major resistance to conduction is the substrate and that the interior of the 
-         animal is equal in temperature to its surface (thermally well mixed). 
-         Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
+calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
 }
 \examples{
-Qconduction_substrate(T_g= 293, T_b=303, D=0.01, K_g=0.3, A=10^-2, proportion=0.2)
+  Qconduction_substrate(T_g        = 293, 
+                        T_b        = 303, 
+                        D          = 0.01,
+                        K_g        = 0.3, 
+                        A          = 10^-2, 
+                        proportion = 0.2)
 
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

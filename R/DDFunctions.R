@@ -1,6 +1,6 @@
-#' @title Calculate degree days
+#' @title Calculate Degree Days
 #' 
-#' @description calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minima is equal to previous day. Double Sine wave approximation of degree days from \insertCite{Allen1976}.
+#' @description Calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minima is equal to previous day. Double Sine wave approximation of degree days from \insertCite{Allen1976}{TrenchR}.
 #' 
 #' @param T_min \code{numeric} Minimum temperature of the day (C)
 #' 
@@ -24,10 +24,22 @@
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   degree_days(T_min = 7, T_max = 14, LDT = 12, UDT = 33, method = "single.sine")
-#'   degree_days(T_min = 7, T_max = 14, LDT = 12, UDT = 33, method = "single.triangulation")
+#'   degree_days(T_min  = 7, 
+#'               T_max  = 14, 
+#'               LDT    = 12, 
+#'               UDT    = 33, 
+#'               method = "single.sine")
+#'   degree_days(T_min  = 7, 
+#'               T_max  = 14, 
+#'               LDT    = 12, 
+#'               UDT    = 33, 
+#'               method = "single.triangulation")
 #' 
-degree_days <- function(T_min, T_max, LDT = NA, UDT = NA, method = "single.sine") {
+degree_days <- function (T_min, 
+                         T_max, 
+                         LDT    = NA, 
+                         UDT    = NA, 
+                         method = "single.sine") {
   
   stopifnot(T_max >= T_min, method %in% c("single.sine", "double.sine", "single.triangulation", "double.triangulation"))
   

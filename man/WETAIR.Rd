@@ -7,45 +7,39 @@
 WETAIR(db = db, wb = db, rh = 0, dp = 999, bp = 101325)
 }
 \arguments{
-\item{db}{Dry bulb temperature (C)}
+\item{db}{\code{numeric} Dry bulb temperature (C)}
 
-\item{wb}{Wet bulb temperature (C)}
+\item{wb}{\code{numeric} Wet bulb temperature (C)}
 
-\item{rh}{Relative humidity (\%)}
+\item{rh}{\code{numeric} Relative humidity (\%)}
 
-\item{dp}{Dew point temperature (C)}
+\item{dp}{\code{numeric} Dew point temperature (C)}
 
-\item{bp}{Barometric pressure (pascal)}
+\item{bp}{\code{numeric} Barometric pressure (pascal)}
 }
 \value{
-e Vapour pressure (Pa)
+e \code{numeric} Vapour pressure (Pa)
 
-esat Saturation vapour pressure (Pa)
+esat \code{numeric} Saturation vapour pressure (Pa)
 
-vd Vapour density (kg m-3)
+vd \code{numeric} Vapour density (kg m-3)
 
-rw Mixing ration (kg kg-1)
+rw \code{numeric} Mixing ration (kg kg-1)
 
-tvir Virtual temperature (K)
+tvir \code{numeric} Virtual temperature (K)
 
-tvinc Virtual temperature increment (K)
+tvinc \code{numeric} Virtual temperature increment (K)
 
-denair Hourly predictions of the soil moisture under the maximum specified shade
+denair \code{numeric} Hourly predictions of the soil moisture under the maximum specified shade
 
-cp Specific heat of air at constant pressure (J kg-1 K-1)
+cp \code{numeric} Specific heat of air at constant pressure (J kg-1 K-1)
 
-wtrpot Water potential (Pa)
+wtrpot \code{numeric} Water potential (Pa)
 
-Relative humidity (\%)
+rh \code{numeric} Relative humidity (%)
 }
 \description{
-Calculates several properties of humid air as output variables below. The program
-is based on equations from List, R. J. 1971. Smithsonian Meteorological Tables. Smithsonian
-Institution Press. Washington, DC. WETAIR must be used in conjunction with function VAPPRS.
-
-Input variables are shown below. The user must supply known values for DB and BP (BP at one standard
-atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has
-either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP)
+Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971}{TrenchR}. WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP)
 
 (1) Psychrometric data:
 If WB is known but not RH, then set RH = -1 and DP = 999.
@@ -54,7 +48,9 @@ If RH is known but not WB then set WB = 0 and DP = 999.
 If DP is known then set WB = 0 and RH = 0.
 }
 \examples{
-
 WETAIR(db=30, wb=28, rh=60, bp=100*1000)
 
+}
+\references{
+\insertAllCited{}
 }

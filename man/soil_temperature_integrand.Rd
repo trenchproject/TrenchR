@@ -2,25 +2,31 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_temperature_integrand}
 \alias{soil_temperature_integrand}
-\title{Solve equation for soil temperature}
+\title{Solve Equation for Soil Temperature}
 \usage{
 soil_temperature_integrand(x, L, z0)
 }
 \arguments{
-\item{x}{is a vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.}
+\item{x}{\code{numeric} vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.}
 
-\item{L}{is the Monin-Obukhov length, a measure of the instability of heat flow (see Beckman et al. 1973)}
+\item{L}{\code{numeric} Monin-Obukhov length, a measure of the instability of heat flow (see \insertCite{Beckman1973;textual}{TrenchR})}
 
-\item{z0}{is surface rougness in m}
+\item{z0}{\code{numeric} surface roughness (meters)}
 }
 \value{
-integrand for soil temperature function
+\code{numeric} integrand for soil temperature function
 }
 \description{
-Function called by soil_temp_noint to solve equation for soil temperature from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). The function represents the integrand in the equation. It is not intended to be called directly.
+Function called by soil_temp_noint to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. The function represents the integrand in the equation. It is not intended to be called directly.
 }
 \examples{
-soil_temperature_integrand(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), L=-10,z0=0.2)
+  soil_temperature_integrand(x  = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), 
+                             L  = -10, 
+                             z0 = 0.2)
+
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other soil temperature functions: 

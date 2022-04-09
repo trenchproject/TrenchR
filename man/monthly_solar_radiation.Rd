@@ -2,36 +2,43 @@
 % Please edit documentation in R/RadiationFunctions.R
 \name{monthly_solar_radiation}
 \alias{monthly_solar_radiation}
-\title{Estimate average monthly solar radiation}
+\title{Estimate Average Monthly Solar Radiation}
 \usage{
 monthly_solar_radiation(lat, lon, doy, elev, T, Hr, P)
 }
 \arguments{
-\item{lat}{latitude in degrees}
+\item{lat}{\code{numeric} latitude (degrees)}
 
-\item{lon}{longitude in degrees}
+\item{lon}{\code{numeric} longitude (degrees)}
 
-\item{doy}{day of year}
+\item{doy}{\code{numeric} day of year (1-366)}
 
-\item{elev}{elevation in m}
+\item{elev}{\code{numeric} elevation (meters)}
 
-\item{T}{mean monthly temperature (C)}
+\item{T}{\code{numeric} mean monthly temperature (C)}
 
-\item{Hr}{mean month relative humidity (in percentage)}
+\item{Hr}{\code{numeric} mean month relative humidity (percentage)}
 
-\item{P}{total monthly precipitation (mm)}
+\item{P}{\code{numeric} total monthly precipitation (mm)}
 }
 \value{
 average monthly solar radiation (W/m^2)
 }
 \description{
-Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information
-as input. Based on Nikolov and Zeller. 1992. A solar radiation algorithm for ecosystem dynamic models. Ecological modelling 61: 149-168.
+Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information as input. Based on \insertCite{Nikolov1992}{TrenchR}
 }
 \examples{
-\dontrun{
-monthly_solar_radiation(lat=47.61,lon=-122.33,doy=112,elev=1500,T=15,Hr=50,P=50)
+  monthly_solar_radiation(lat  = 47.61, 
+                          lon  = -122.33, 
+                          doy  = 112, 
+                          elev = 1500, 
+                          T    = 15, 
+                          Hr   = 50, 
+                          P   = 50)
+
 }
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other microclimate functions: 

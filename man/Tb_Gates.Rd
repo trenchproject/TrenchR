@@ -2,7 +2,7 @@
 % Please edit documentation in R/OperativeTemperatureFunctions.R
 \name{Tb_Gates}
 \alias{Tb_Gates}
-\title{Predicts body temperatures (operative environmental temperature) of an ectotherm in K.}
+\title{Predict Body Temperature (Operative Environmental Temperature) of an ectotherm in K.}
 \usage{
 Tb_Gates(
   A,
@@ -21,59 +21,59 @@ Tb_Gates(
 )
 }
 \arguments{
-\item{A}{surface area  in m^2}
+\item{A}{\code{numeric} surface area (m^2)}
 
-\item{D}{characteristic dimension for conduction (m)}
+\item{D}{\code{numeric} characteristic dimension for conduction (meters)}
 
-\item{psa_dir}{proportion surface area exposed to direct radiation from the sky (or enclosure)}
+\item{psa_dir}{\code{numeric} proportion surface area exposed to direct radiation from the sky (or enclosure) (0-1)}
 
-\item{psa_ref}{proportion surface area exposed to reflected radiation from the ground}
+\item{psa_ref}{\code{numeric} proportion surface area exposed to reflected radiation from the ground (0-1)}
 
-\item{psa_air}{proportion surface area exposed to air}
+\item{psa_air}{\code{numeric} proportion surface area exposed to air (0-1)}
 
-\item{psa_g}{proportion surface area in contact with substrate}
+\item{psa_g}{\code{numeric} proportion surface area in contact with substrate (0-1)}
 
-\item{T_g}{ground surface temperature in K}
+\item{T_g}{\code{numeric} ground surface temperature (K)}
 
-\item{T_a}{ambient air temperature in K}
+\item{T_a}{\code{numeric} ambient air temperature (K)}
 
-\item{Qabs}{Solar radiation absorbed (W)}
+\item{Qabs}{\code{numeric} Solar radiation absorbed (W)}
 
-\item{epsilon}{longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)}
+\item{epsilon}{\code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)}
 
-\item{H_L}{Convective heat transfer coefficient (W m^-2 K^-1)}
+\item{H_L}{\code{numeric} Convective heat transfer coefficient (W m^-2 K^-1)}
 
-\item{ef}{enhancement factor used to adjust H_L to field conditions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.}
+\item{ef}{\code{numeric} enhancement factor used to adjust H_L to field conditions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.}
 
-\item{K}{Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step.}
+\item{K}{\code{numeric} Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step.}
 }
 \value{
-operative environmental temperature (K)
+\code{numeric} operative environmental temperature (K)
 }
 \description{
-Predicts body temperatures (operative environmental temperature) of an ectotherm in K.
+Predict Body Temperature (Operative Environmental Temperature) of an ectotherm in K.
 }
 \details{
-Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Gates (1980, Biophysical ecology). Omits evaporative and metabolic heat loss.
+Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980}{TrenchR}. Omits evaporative and metabolic heat loss. Other sources: \insertCite{Mitchell1976}{TrenchR}, \insertCite{Kingsolver1983}{TrenchR}
 }
 \examples{
-\dontrun{
-Tb_Gates(
-  A=1, 
-  D=0.001, 
-  psa_dir=0.6, 
-  psa_ref=0.4, 
-  psa_air=0.6, 
-  psa_g=0.2, 
-  T_g=303, 
-  T_a=310, 
-  Qabs=2, 
-  epsilon=0.95, 
-  H_L=10, 
-  ef=1.23, 
-  K=0.5)
-}
+ Tb_Gates (A       = 1, 
+           D       = 0.001, 
+           psa_dir = 0.6, 
+           psa_ref = 0.4, 
+           psa_air = 0.6, 
+           psa_g   = 0.2, 
+           T_g     = 303, 
+           T_a     = 310, 
+           Qabs    = 2, 
+           epsilon = 0.95, 
+           H_L     = 10, 
+           ef      = 1.23, 
+           K       = 0.5)
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

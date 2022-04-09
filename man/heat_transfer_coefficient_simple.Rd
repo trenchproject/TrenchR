@@ -2,27 +2,31 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{heat_transfer_coefficient_simple}
 \alias{heat_transfer_coefficient_simple}
-\title{Calculate heat transfer coefficient (based on Mitchell 1976 in Spotila 1992)}
+\title{Calculate heat transfer coefficient}
 \usage{
 heat_transfer_coefficient_simple(V, D, type)
 }
 \arguments{
-\item{V}{Air velocity m/s.}
+\item{V}{\code{numeric} Air velocity (m/s).}
 
-\item{D}{Characteristic dimension (e.g., diameter or snout-vent length) in meters.}
+\item{D}{\code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).}
 
-\item{type}{Choice between "Spotila" and "Gates" for equation to use}
+\item{type}{\code{character} Choice between "Spotila" and "Gates" for equation to use}
 }
 \value{
-heat transfer coefficient, H_L (W m^-2 K^-1)
+\code{numeric} heat transfer coefficient, H_L (W m^-2 K^-1)
 }
 \description{
-estimate the heat transfer coefficient (based on Mitchell 1976) using either the relationship in Spotila et al 1992 or that in Gates 1980. References: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians; Mitchell. 1976. Heat transfer from spheres and other animal forms. Biophysical Journal 16(6): 561–569.
+estimate the heat transfer coefficient \insertCite{Mitchell1976}{TrenchR} using either the relationship in \insertCite{Spotila1992}{TrenchR} or that in \insertCite{Gates1980}{TrenchR}.
 }
 \examples{
-heat_transfer_coefficient_simple(V=0.5,D=0.05, type="Gates")
+  heat_transfer_coefficient_simple(V    = 0.5, 
+                                   D    = 0.05, 
+                                   type = "Gates")
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

@@ -7,22 +7,26 @@
 fahrenheit_to_celsius(T)
 }
 \arguments{
-\item{T}{\code{numeric} temperature in Fahrenheit.}
+\item{T}{\code{numeric} temperature (Fahrenheit)}
 }
 \value{
-\code{numeric} temperature in Celsius
+\code{numeric} temperature (Celsius)
 }
 \description{
 Convert temperature from Fahrenheit to Celsius. Source: https://swcarpentry.github.io.
 }
 \examples{
-  fahrenheit_to_celsius(85)
+  fahrenheit_to_celsius(T = 85)
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other utility functions: 
 \code{\link{airpressure_from_elev}()},
 \code{\link{azimuth_angle}()},
+\code{\link{day_of_year}()},
 \code{\link{daylength}()},
 \code{\link{dec_angle}()},
 \code{\link{degree_to_radian}()},

@@ -7,26 +7,32 @@
 Grashof_number_Gates(Ta, Tg, beta, D, nu)
 }
 \arguments{
-\item{Ta}{Air temperature (C).}
+\item{Ta}{\code{numeric} Air temperature (C).}
 
-\item{Tg}{Ground (surface) temperature (C).}
+\item{Tg}{\code{numeric} Ground (surface) temperature (C).}
 
-\item{beta}{coefficient of volumetric thermal expansion, beta= 3.67 x 10^-3 C^-1  in air and 41.9 x 10^-4 C^-1 in water.}
+\item{beta}{\code{numeric} coefficient of volumetric thermal expansion, beta= 3.67 x 10^-3 C^-1  in air and 41.9 x 10^-4 C^-1 in water.}
 
-\item{D}{is characteristic dimension (e.g., body diameter) (m)}
+\item{D}{\code{numeric} is characteristic dimension (e.g., body diameter) (m)}
 
-\item{nu}{is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s-1), can calculate from DRYAIR or WETAIR}
+\item{nu}{\code{numeric} is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s-1), can calculate from DRYAIR or WETAIR}
 }
 \value{
-Grashof number
+\code{numeric} Grashof number
 }
 \description{
-estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity (Gates 1980 Biophysical Ecology). Ratio of a buoyant force times an inertial force to the square of a viscous force.
+estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity \insertCite{Gates1980}{TrenchR}. Ratio of a buoyant force times an inertial force to the square of a viscous force.
 }
 \examples{
-Grashof_number_Gates(Ta=30, Tg=35, beta=0.00367, D=0.001, nu=1.2)
+  Grashof_number_Gates(Ta   = 30, 
+                       Tg   = 35, 
+                       beta = 0.00367,
+                       D    = 0.001, 
+                       nu   = 1.2)
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

@@ -32,9 +32,12 @@ All models follow (\ifelse{html}{\out{SA = Ka V<sup>2/3</sup>}}{\eqn{SA = Ka V^{
  }
 }
 \examples{
-  surface_area_from_volume(V = 0.001, taxon = "lizard")
-  surface_area_from_volume(V = 0.001, taxon = "frog")
-  surface_area_from_volume(V = 0.001, taxon = "sphere")
+  surface_area_from_volume(V = 0.001, 
+                           taxon = "lizard")
+  surface_area_from_volume(V = 0.001,  
+                           taxon = "frog")
+  surface_area_from_volume(V = 0.001,  
+                           taxon = "sphere")
 
 }
 \references{

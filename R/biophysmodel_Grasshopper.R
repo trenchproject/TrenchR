@@ -47,20 +47,29 @@
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   Tb_grasshopper(
-#'     T_a = 25, 
-#'     T_g = 25, 
-#'     u = 0.4, 
-#'     H = 400, 
-#'     K_t = 0.7, 
-#'     psi = 30, 
-#'     L = 0.02, 
-#'     Acondfact = 0.25, 
-#'     z = 0.001, 
-#'     abs = 0.7, 
-#'     r_g = 0.3)
+#'   Tb_grasshopper(T_a       = 25, 
+#'                  T_g       = 25,      
+#'                  u         = 0.4, 
+#'                  H         = 400, 
+#'                  K_t       = 0.7, 
+#'                  psi       = 30, 
+#'                  L         = 0.02, 
+#'                  Acondfact = 0.25, 
+#'                  z         = 0.001, 
+#'                  abs       = 0.7, 
+#'                  r_g       = 0.3)
 #' 
-Tb_grasshopper <- function (T_a, T_g, u, H, K_t, psi, L, Acondfact = 0.25, z = 0.001, abs = 0.7, r_g = 0.3) {
+Tb_grasshopper <- function (T_a, 
+                            T_g, 
+                            u, 
+                            H, 
+                            K_t, 
+                            psi, 
+                            L, 
+                            Acondfact = 0.25, 
+                            z         = 0.001, 
+                            abs       = 0.7, 
+                            r_g       = 0.3) {
 
   stopifnot(u >= 0, H >= 0, K_t >= 0, K_t <= 1, psi >= -90, psi <= 90, L>= 0, Acondfact >= 0, Acondfact <= 1, z>= 0, abs >= 0, abs <= 1, r_g >= 0, r_g <= 1)
     

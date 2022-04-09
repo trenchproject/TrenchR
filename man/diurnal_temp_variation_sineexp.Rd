@@ -2,7 +2,7 @@
 % Please edit documentation in R/DTRFunctions.R
 \name{diurnal_temp_variation_sineexp}
 \alias{diurnal_temp_variation_sineexp}
-\title{Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components}
+\title{Estimate Temperature Across Hours Using a Diurnal Temperature Variation Function Incorporating Sine and Exponential Components}
 \usage{
 diurnal_temp_variation_sineexp(
   T_max,
@@ -16,39 +16,41 @@ diurnal_temp_variation_sineexp(
 )
 }
 \arguments{
-\item{T_max}{maximum daily temperature (C)}
+\item{T_max}{\code{numeric} maximum daily temperature (C)}
 
-\item{T_min}{minimum daily temperature (C)}
+\item{T_min}{\code{numeric} minimum daily temperature (C)}
 
-\item{t}{time for temperature estimate (hour)}
+\item{t}{\code{numeric} time for temperature estimate (hour)}
 
-\item{t_r}{time of sunset (hour)}
+\item{t_r}{\code{numeric} time of sunset (hour)}
 
-\item{t_s}{time of sunrise (hour)}
+\item{t_s}{\code{numeric} time of sunrise (hour)}
 
-\item{alpha}{time difference between t_x (time of maximum temperature) and noon (hour)}
+\item{alpha}{\code{numeric} time difference between t_x (time of maximum temperature) and noon (hour). Defaults to 2.59}
 
-\item{beta}{time difference between t_x and sunrise (hour)}
+\item{beta}{\code{numeric} time difference between t_x and sunrise (hour). Defaults to 1.55}
 
-\item{gamma}{decay parameter for rate of t change from sunset to t_n (time of minimum temp)}
+\item{gamma}{\code{numeric} decay parameter for rate of t change from sunset to t_n (time of minimum temp). Defaults to 2.2}
 }
 \value{
-temperature (C) at a specified hour
+\code{numeric} temperature (C) at a specified hour
 }
 \description{
-estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: Parton WJ and Logan JA. 1981. A model for diurnal variation in soil and air temperature. Agricultural Meteorology 23: 205-216.
+estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: \insertCite{Parton1981}{TrenchR}. Default alpha, beta, gamma values are the average of 5 North Carolina sites  \insertCite{Wann1985}{TrenchR}. Other alpha, beta, gamma parameterizations include values for Denver, Colorado from \insertCite{Parton1981}{TrenchR}: 150cm air temperature: alpha = 1.86, beta = 2.20, gamma = -0.17; 10cm air temperature: alpha = 1.52, beta = 2.00, gamma = -0.18; soil surface temperature: alpha = 0.50, beta = 1.81, gamma = 0.49; 10cm soil temperature: alpha = 0.45, beta = 2.28, gamma = 1.83.
 }
 \examples{
-  diurnal_temp_variation_sineexp(
-  T_max=30, 
-  T_min=10, 
-  t=11, 
-  t_r=6, 
-  t_s=18, 
-  alpha=2.59, 
-  beta= 1.55, 
-  gamma=2.2)
+  diurnal_temp_variation_sineexp(T_max = 30, 
+                                 T_min = 10, 
+                                 t     = 11, 
+                                 t_r   = 6, 
+                                 t_s   = 18, 
+                                 alpha = 2.59, 
+                                 beta  = 1.55, 
+                                 gamma = 2.2)
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other microclimate functions: 

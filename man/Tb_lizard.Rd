@@ -2,7 +2,7 @@
 % Please edit documentation in R/biophysmodel_Sceloporus.R
 \name{Tb_lizard}
 \alias{Tb_lizard}
-\title{Predicts body temperatures (operative environmental temperature) of a lizard in C.}
+\title{Predict Body Temperature (Operative Environmental Temperature) of a Lizard in C}
 \usage{
 Tb_lizard(
   T_a,
@@ -26,74 +26,71 @@ Tb_lizard(
 )
 }
 \arguments{
-\item{T_a}{is air temperature in C}
+\item{T_a}{\code{numeric} air temperature (C)}
 
-\item{T_g}{is surface temperature in C}
+\item{T_g}{\code{numeric} surface temperature (C)}
 
-\item{u}{is wind speed in m/s}
+\item{u}{\code{numeric} wind speed (m/s)}
 
-\item{svl}{is lizard snout vent length in mm}
+\item{svl}{\code{numeric} lizard snout vent length (mm)}
 
-\item{m}{is lizard mass in g, note that it can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 (Tinkle and Ballinger 1972)}
+\item{m}{\code{numeric} lizard mass in g, note that it can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 \insertCite{Tinkle1972}{TrenchR}}
 
-\item{psi}{is solar zenith angle in degrees}
+\item{psi}{\code{numeric} solar zenith angle (degrees)}
 
-\item{rho_S}{is surface albedo (proportion). ~0.25 for grass, ~0.1 for dark soil, >0.75 for fresh snow (Campbell & Norman 1998)}
+\item{rho_S}{\code{numeric} surface albedo (proportion). ~0.25 for grass, ~0.1 for dark soil, >0.75 for fresh snow \insertCite{Campbell1998}{TrenchR}}
 
-\item{elev}{is elevation in m}
+\item{elev}{\code{numeric} elevation (m)}
 
-\item{doy}{is day of year (1-366)}
+\item{doy}{\code{numeric} day of year (1-366)}
 
-\item{sun}{indicates whether lizard is in sun (TRUE) or shade (FALSE)}
+\item{sun}{\code{boolean} indicates whether lizard is in sun (TRUE) or shade (FALSE)}
 
-\item{surface}{indicates whether lizard is on ground surface (TRUE) or above surface (FALSE, e.g. in a tree)}
+\item{surface}{\code{boolean} indicates whether lizard is on ground surface (TRUE) or above surface (FALSE, e.g. in a tree)}
 
-\item{alpha_S}{is lizard solar absorptivity, alpha_S=0.9 (Gates 1980, Table 11.4)}
+\item{alpha_S}{\code{numeric} lizard solar absorptivity, alpha_S=0.9 \insertCite{Gates1980}{TrenchR} (Table 11.4)}
 
-\item{alpha_L}{is lizard thermal absoptivity, alpha_L=0.965 (Bartlett & Gates 1967)}
+\item{alpha_L}{\code{numeric} lizard thermal absoptivity, alpha_L=0.965 \insertCite{Bartlett1967}{TrenchR}}
 
-\item{epsilon_s}{is surface emisivity of lizards, epsilon_s=0.965 (Bartlett & Gates 1967)}
+\item{epsilon_s}{\code{numeric} surface emisivity of lizards, epsilon_s=0.965 \insertCite{Bartlett1967}{TrenchR}}
 
-\item{F_d}{is the view factor between the surface of the lizard and diffuse solar radiation (Bartlett & Gates 1967)}
+\item{F_d}{\code{numeric} the view factor between the surface of the lizard and diffuse solar radiation \insertCite{Bartlett1967}{TrenchR}}
 
-\item{F_r}{is the view factor between the surface of the lizard and reflected solar radiation}
+\item{F_r}{\code{numeric} the view factor between the surface of the lizard and reflected solar radiation}
 
-\item{F_a}{is the view factor between the surface of the lizard and atmospheric radiation}
+\item{F_a}{\code{numeric} the view factor between the surface of the lizard and atmospheric radiation}
 
-\item{F_g}{is the view factor between the surface of the lizard and ground thermal radation}
+\item{F_g}{\code{numeric} the view factor between the surface of the lizard and ground thermal radation}
 }
 \value{
-T_e Operative temperature (C)
+T_e \code{numeric} Operative temperature (C)
 }
 \description{
-Predicts body temperature (operative environmental temperature) of a lizard in C. 
-Based on Campbell and Norman (1998, An introduction to environmental biophysics). 
-Designed for Sceloporus lizards and described in Buckley (2008, Linking traits to energetics and population dynamics to predict lizard ranges in changing environments. American Naturalist 171: E1-E19).
-}
-\details{
-Predicts body temperatures (operative environmental temperature) of a lizard in C.
+Predicts body temperature (operative environmental temperature) of a lizard in C based on \insertCite{Campbell1998}{TrenchR}. Designed for Sceloporus lizards and described in \insertCite{Buckley2008}{TrenchR}.
 }
 \examples{
-  Tb_lizard(
-  T_a=25, 
-  T_g=30, 
-  u=0.1, 
-  svl=60, 
-  m=10, 
-  psi=34, 
-  rho_S=0.24, 
-  elev=500, 
-  doy=200, 
-  sun=TRUE, 
-  surface=TRUE, 
-  alpha_S=0.9, 
-  alpha_L=0.965, 
-  epsilon_s=0.965, 
-  F_d=0.8, 
-  F_r=0.5, 
-  F_a=0.5, 
-  F_g=0.5)
+  Tb_lizard(T_a       = 25, 
+            T_g       = 30, 
+            u         = 0.1, 
+            svl       = 60, 
+            m         = 10, 
+            psi       = 34, 
+            rho_S     = 0.24, 
+            elev      = 500, 
+            doy       = 200, 
+            sun       = TRUE, 
+            surface   = TRUE, 
+            alpha_S   = 0.9, 
+            alpha_L   = 0.965, 
+            epsilon_s = 0.965, 
+            F_d       = 0.8, 
+            F_r       = 0.5, 
+            F_a       = 0.5, 
+            F_g       = 0.5)
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

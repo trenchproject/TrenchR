@@ -7,44 +7,42 @@
 DRYAIR(db = db, bp = 0, alt = 0)
 }
 \arguments{
-\item{db}{Dry bulb temperature (C)}
+\item{db}{\code{numeric} Dry bulb temperature (C)}
 
-\item{bp}{Barometric pressure (pascal)}
+\item{bp}{\code{numeric} Barometric pressure (pascal)}
 
-\item{alt}{Altitude (m)}
+\item{alt}{\code{numeric} Altitude (m)}
 }
 \value{
-patmos Standard atmospheric pressure (Pa)
+patmos \code{numeric} Standard atmospheric pressure (Pa)
 
-densty Density (kg m-3)
+densty \code{numeric} Density (kg m-3)
 
-visdyn Dynamic viscosity (kg m-1 s-1)
+visdyn \code{numeric} Dynamic viscosity (kg m-1 s-1)
 
-viskin Kinematic viscosity (m2 s-1)
+viskin \code{numeric} Kinematic viscosity (m2 s-1)
 
-difvpr Diffusivity of water vapor in air (m2 s-1)
+difvpr \code{numeric} Diffusivity of water vapor in air (m2 s-1)
 
-thcond Thermal conductivity (W m-1 K-1)
+thcond \code{numeric} Thermal conductivity (W m-1 K-1)
 
-htovpr Latent heat of vapourisation of water (J kg-1)
+htovpr \code{numeric} Latent heat of vapourisation of water (J kg-1)
 
-tcoeff Temperature coefficient of volume expansion (K-1)
+tcoeff \code{numeric} Temperature coefficient of volume expansion (K-1)
 
-ggroup Group of variables in Grashof number (1-m3 -K)
+ggroup \code{numeric} Group of variables in Grashof number (1-m3 -K)
 
-bbemit black body emittance (W m-2)
+bbemit \code{numeric} black body emittance (W m-2)
 
-emtmax Wave length of maximum emittance (m)
+emtmax \code{numeric} Wave length of maximum emittance (m)
 }
 \description{
-Calculates several properties of dry air and related characteristics shownas output variables below. The program
-is based on equations from List, R. J. 1971. Smithsonian Meteorological Tables. Smithsonian
-Institution Press. Washington, DC. WETAIR must be used in conjunction with function VAPPRS.
-
-The user must supply values for the input variables (db, bp and alt).
-If alt is known (-1000 < alt < 20000) but not BP, then set BP=0
+Calculates several properties of dry air and related characteristics shownas output variables below. The program is based on equations from \insertCite{List1971}{TrenchR}. WETAIR must be used in conjunction with function VAPPRS. The user must supply values for the input variables (db, bp and alt). If alt is known (-1000 < alt < 20000) but not BP, then set BP=0
 }
 \examples{
-  DRYAIR(db=30, bp=100*1000, alt=0)
+  DRYAIR(db = 30, bp = 100*1000, alt = 0)
 
+}
+\references{
+\insertAllCited{}
 }

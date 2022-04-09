@@ -7,33 +7,44 @@
 Qevaporation(A, T_b, taxa, rho_s = NA, rho_a = NA, h = NA, H = NA, r_i = NA)
 }
 \arguments{
-\item{A}{surface area  in m^2}
+\item{A}{\code{numeric} surface area (m^2)}
 
-\item{T_b}{body temperatue in K}
+\item{T_b}{\code{numeric} body temperatue (K)}
 
-\item{taxa}{taxa current choices: lizard, amphibian_wetskin (fully wet skin), amphibian (not fully wet skin)}
+\item{taxa}{\code{character} taxa current choices: lizard, amphibian_wetskin (fully wet skin), amphibian (not fully wet skin)}
 
-\item{rho_s}{saturation water vapor density at skin surface (kg/m^3) (needed if amphibian)}
+\item{rho_s}{\code{numeric} saturation water vapor density at skin surface (kg/m^3) (needed if amphibian)}
 
-\item{rho_a}{saturation water vapor density in ambient air (kg/m^3) (needed if amphibian)}
+\item{rho_a}{\code{numeric} saturation water vapor density in ambient air (kg/m^3) (needed if amphibian)}
 
-\item{h}{relative humidity (0-1) (needed if amphibian)}
+\item{h}{\code{numeric} relative humidity (0-1) (needed if amphibian)}
 
-\item{H}{convective heat transfer coefficient (W m^-2 K^-1) (needed if amphibian)}
+\item{H}{\code{numeric} convective heat transfer coefficient (W m^-2 K^-1) (needed if amphibian)}
 
-\item{r_i}{internal (cutaneous) resistance to vapor transport (s/m) (needed if amphibian)}
+\item{r_i}{\code{numeric} internal (cutaneous) resistance to vapor transport (s/m) (needed if amphibian)}
 }
 \value{
-evaporative heat loss (W)
+\code{numeric} evaporative heat loss (W)
 }
 \description{
-estimate heat loss associated with evaporative water loss by an amphibian (Spotila et al. 1992) or lizard (based on empirical measurements in Porter et al. 1973). Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
+estimate heat loss associated with evaporative water loss by an amphibian \insertCite{Spotila1992}{TrenchR} or lizard (based on empirical measurements in \insertCite{Porter1973}{TrenchR}).
 }
 \examples{
-Qevaporation(A=0.1, T_b=293, taxa="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50)
-Qevaporation(A=0.1, T_b=293, taxa="lizard")
+  Qevaporation(A     = 0.1, 
+               T_b   = 293, 
+               taxa  = "amphibian", 
+               rho_s = 0.003, 
+               rho_a = 0.002, 
+               h     = 0.5, 
+               H     = 20, 
+               r_i   = 50)
+  Qevaporation(A    = 0.1,
+               T_b  = 293, 
+               taxa = "lizard")
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

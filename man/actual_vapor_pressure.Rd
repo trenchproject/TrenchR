@@ -2,23 +2,25 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{actual_vapor_pressure}
 \alias{actual_vapor_pressure}
-\title{Calculate actual vapor pressure from dewpoint temperature}
+\title{Calculate Actual Vapor Pressure from Dewpoint Temperature}
 \usage{
 actual_vapor_pressure(Tdewpoint)
 }
 \arguments{
-\item{Tdewpoint}{dewpoint temperature (C)}
+\item{Tdewpoint}{\code{numeric} dewpoint temperature (C)}
 }
 \value{
-actual vapor pressure, e_a (kPa)
+\code{numeric} actual vapor pressure, e_a (kPa)
 }
 \description{
-Calculate actual vapor pressure from dewpoint temperature based on Stull 2000. Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
+Calculate actual vapor pressure from dewpoint temperature based on \insertCite{Stull2000}{TrenchR}. Source: \insertCite{Riddell2018}{TrenchR}
 }
 \examples{
-actual_vapor_pressure(Tdewpoint=20)
+  actual_vapor_pressure(Tdewpoint = 20)
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

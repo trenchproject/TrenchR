@@ -1,36 +1,33 @@
-#' @title Utility: Julian Day from Date
+#' @title Julian Day from Date
 #' 
 #' @description Convert a date (day, month, year) to Julian Day (day of year).
 #'
 #' @param day \code{character} numerical date in standard format (e.g. "2017-01-02", "01-02", "01/02/2017" etc). 
 #'
-#' @param format \code{character} date format following \code{\link[base]{POSIXlt}}" conventions. Default value = "%Y-%m-%d" 
+#' @param format \code{character} date format following \code{\link[base]{POSIXlt}} conventions. Default value = "\%Y-\%m-\%d" 
 #'
 #' @return \code{numeric} Julian day number, 1-366 (eg. 1 for January 1st)
-#' 
-#' @details
-#' \cr \cr
 #' 
 #' @family utility functions  
 #'  
 #' @export
 #' 
-#' @references
-#'   \insertAllCited{}
-#'
 #' @examples
-#'   day_of_year(day = "2017-04-22", format = "%Y-%m-%d")
-#'   day_of_year(day = "2017-04-22")
-#'   day_of_year(day = "04/22/2017", format = "%m/%d/%Y")
+#'   day_of_year(day    = "2017-04-22", 
+#'               format = "%Y-%m-%d")
+#'   day_of_year(day    = "2017-04-22")
+#'   day_of_year(day    = "04/22/2017", 
+#'               format = "%m/%d/%Y")
 #'
-day_of_year <- function(day, format = "%Y-%m-%d"){
+day_of_year <- function (day, 
+                         format = "%Y-%m-%d") {
   
   day <- as.POSIXlt(day, format = format)
   as.numeric(strftime(day, format = "%j"))
   
 }
 
-#' @title Utility: Calculate solar declination in radians
+#' @title Calculate Solar Declination in Radians
 #' 
 #' @description Calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year \insertCite{Campbell1998}{TrenchR}.
 #' 
@@ -49,7 +46,7 @@ day_of_year <- function(day, format = "%Y-%m-%d"){
 #' dec_angle(doy = 112)
 #' dec_angle(doy = 360)
 #' 
-dec_angle <- function(doy){
+dec_angle <- function (doy) {
   
   stopifnot(doy > 0, doy < 367)
   
@@ -58,7 +55,7 @@ dec_angle <- function(doy){
   
 }
 
-#' @title Utility: Calculate day length
+#' @title Calculate Day Length
 #' 
 #' @description Calculate daylength in hours as a function of latitude and day of year. Uses the CMB model \insertCite{Campbell1998}{TrenchR}.
 #'
@@ -76,9 +73,11 @@ dec_angle <- function(doy){
 #' @export
 #'
 #' @examples
-#'   daylength(lat = 47.61, doy = 112)
+#'   daylength(lat = 47.61, 
+#'             doy = 112)
 #'
-daylength <- function(lat, doy){
+daylength <- function(lat,
+                      doy){
   
   stopifnot(lat >= -90, lat <= 90, doy > 0, doy < 367)
   
@@ -91,7 +90,7 @@ daylength <- function(lat, doy){
   
 }
 
-#' @title Utility: Calculate time of solar noon
+#' @title Calculate Time of Solar Noon
 #' 
 #' @description  Calculate the time of solar noon in hours as a function of the day of year and longitude  \insertCite{Campbell1998}{TrenchR}.
 #'
@@ -111,9 +110,12 @@ daylength <- function(lat, doy){
 #' @export
 #'
 #' @examples
-#'   solar_noon(lon = -122.335, doy = 112)
+#'   solar_noon(lon = -122.335,
+#'              doy = 112)
 #'
-solar_noon <- function(lon, doy, offset = NA){
+solar_noon <- function (lon,
+                        doy, 
+                        offset = NA){
   
   stopifnot(lon >= -180, lon <= 180, doy > 0, doy < 367)
   
@@ -144,7 +146,7 @@ solar_noon <- function(lon, doy, offset = NA){
 }
 
 
-#' @title Utility: Calculate Zenith Angle
+#' @title Calculate Zenith Angle
 #' 
 #' @description  calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical \insertCite{Campbell1998}{TrenchR}.
 #' 
@@ -168,10 +170,16 @@ solar_noon <- function(lon, doy, offset = NA){
 #'   \insertAllCited{}
 #'
 #' @examples
+#'   zenith_angle(doy  = 112, 
+#'                lat  = 47.61, 
+#'                lon  = -122.33, 
+#'                hour = 12)
 #' 
-#' zenith_angle(doy = 112, lat = 47.61, lon = -122.33, hour = 12)
-#' 
-zenith_angle <- function(doy, lat, lon, hour, offset = NA){
+zenith_angle <- function (doy, 
+                          lat, 
+                          lon, 
+                          hour, 
+                          offset = NA) {
 
   stopifnot(doy > 0, doy < 367, lat >= -90, lat <= 90, lon >= -180, lon <= 180, hour >= 0, hour <= 24)
   
@@ -206,7 +214,7 @@ zenith_angle <- function(doy, lat, lon, hour, offset = NA){
   zenith
 }
 
-#' @title Utility: Calculate Azimuth angle
+#' @title Calculate Azimuth Angle
 #'
 #' @description  calculate the azimuth angle, the angle (degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east \insertCite{Campbell1998}{TrenchR}.
 #' 
@@ -230,9 +238,17 @@ zenith_angle <- function(doy, lat, lon, hour, offset = NA){
 #' @export
 #' 
 #' @examples
-#'   azimuth_angle(doy = 112, lat = 47.61, lon = -122.33, hour = 12, offset = -8)
+#'   azimuth_angle(doy    = 112, 
+#'                 lat    = 47.61, 
+#'                 lon    = -122.33, 
+#'                 hour   = 12, 
+#'                 offset = -8)
 #' 
-azimuth_angle <- function(doy, lat, lon, hour, offset = NA){
+azimuth_angle <- function (doy,
+                           lat, 
+                           lon, 
+                           hour, 
+                           offset = NA) {
   
   stopifnot(doy > 0, doy < 367, lat >= -90, lat <= 90, lon >= -180, lon <= 180, hour >= 0, hour <= 24)
   
@@ -303,7 +319,7 @@ azimuth_angle <- function(doy, lat, lon, hour, offset = NA){
   azimuth
 }
 
-#' @title Utility: Estimate air pressure in kPa (Kilo Pascal)
+#' @title Estimate Air Pressure in kPa 
 #'
 #' @description Calculate estimated air pressure (kPa) as a function of elevation. Source: http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html.
 #' 
@@ -321,7 +337,7 @@ azimuth_angle <- function(doy, lat, lon, hour, offset = NA){
 #' @examples
 #'   airpressure_from_elev(elev = 1500)
 #'
-airpressure_from_elev <- function(elev){  
+airpressure_from_elev <- function (elev) {  
  
   stopifnot(elev >= 0)
   
@@ -329,7 +345,7 @@ airpressure_from_elev <- function(elev){
 
 }
 
-#' @title Utility: Converts Fahrenheit to Kelvin
+#' @title Convert Fahrenheit to Kelvin
 #' 
 #' @description Convert temperature from Fahrenheit to Kelvin. Source: https://swcarpentry.github.io.
 #' 
@@ -347,13 +363,13 @@ airpressure_from_elev <- function(elev){
 #' @examples
 #'   fahrenheit_to_kelvin(T = 85)
 #' 
-fahrenheit_to_kelvin <- function(T) {
+fahrenheit_to_kelvin <- function (T) {
   
   ((T - 32) * (5 / 9)) + 273.15
   
 }
 
-#' @title Utility: Converts Kelvin to Celsius
+#' @title Convert Kelvin to Celsius
 #' 
 #' @description Convert temperature from Kelvin to Celsius. Source: https://swcarpentry.github.io.
 #' 
@@ -373,13 +389,13 @@ fahrenheit_to_kelvin <- function(T) {
 #' @examples
 #'   kelvin_to_celsius(T = 270)
 #' 
-kelvin_to_celsius <- function(T) {
+kelvin_to_celsius <- function (T) {
   
   T - 273.15
   
 }
 
-#' @title Utility: Converts Fahrenheit to Celsius
+#' @title Converts Fahrenheit to Celsius
 #' 
 #' @description Convert temperature from Fahrenheit to Celsius. Source: https://swcarpentry.github.io.
 #' 
@@ -397,14 +413,14 @@ kelvin_to_celsius <- function(T) {
 #' @examples
 #'   fahrenheit_to_celsius(T = 85)
 #' 
-fahrenheit_to_celsius <- function(T) {
+fahrenheit_to_celsius <- function (T) {
   
   temp_k <- fahrenheit_to_kelvin(T)
   kelvin_to_celsius(temp_k)
   
 }
 
-#' @title Utility: Converts angle in radians to degrees
+#' @title Convert Angle in Radians to Degrees
 #' 
 #' @description Convert angle in radians to degrees.
 #' 
@@ -420,13 +436,13 @@ fahrenheit_to_celsius <- function(T) {
 #' @examples
 #'   radian_to_degree(0.831)
 #' 
-radian_to_degree <- function(rad) {
+radian_to_degree <- function (rad) {
   
   rad * 180 / pi
   
 }
 
-#' @title Utility: Converts angle in degrees to radians
+#' @title Convert Angle in Degrees to Radians
 #'
 #' @description Convert angle in degrees to radians.
 #' 
@@ -444,7 +460,7 @@ radian_to_degree <- function(rad) {
 #' @examples
 #'   degree_to_radian(47.608)
 #' 
-degree_to_radian <- function(deg) {
+degree_to_radian <- function (deg) {
   
   deg * pi / 180
   

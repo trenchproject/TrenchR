@@ -1,4 +1,4 @@
-#' @title Predicts body temperatures (operative environmental temperature) of an ectotherm in K. 
+#' @title Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
 #' 
 #' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Campbell1998}{TrenchR} and \insertCite{Mitchell1976}{TrenchR}.
 #' 
@@ -32,9 +32,25 @@
 #'   \insertAllCited{}
 #' 
 #' @examples 
-#' Tb_CampbellNorman(T_a = 303, T_g = 303, S = 823, alpha_S = 0.7, alpha_L = 0.96, epsilon = 0.96, c_p = 29.3, D = 0.17, V = 1)
+#' Tb_CampbellNorman (T_a     = 303, 
+#'                    T_g     = 303, 
+#'                    S       = 823, 
+#'                    alpha_S = 0.7, 
+#'                    alpha_L = 0.96, 
+#'                    epsilon = 0.96, 
+#'                    c_p     = 29.3, 
+#'                    D       = 0.17, 
+#'                    V       = 1)
 #'
-Tb_CampbellNorman <- function(T_a, T_g, S, alpha_S = 0.7, alpha_L = 0.96, epsilon = 0.96, c_p = 29.3, D, V){
+Tb_CampbellNorman <- function (T_a, 
+                               T_g, 
+                               S, 
+                               alpha_S = 0.7, 
+                               alpha_L = 0.96, 
+                               epsilon = 0.96, 
+                               c_p = 29.3, 
+                               D, 
+                               V) {
     
   stopifnot(T_a > 200, T_a < 400, epsilon >= 0.5, epsilon <= 1, c_p >= 0, D > 0, V >= 0)
   
@@ -59,7 +75,7 @@ Tb_CampbellNorman <- function(T_a, T_g, S, alpha_S = 0.7, alpha_L = 0.96, epsilo
   
 }
 
-#' @title Estimates net energy exchange (W) between an animal and the environment.
+#' @title Estimate Net Energy Exchange (W) Between an Animal and the Environment
 #' 
 #' @details Estimates net energy exchange between an animal and the environment in W. Follows \insertCite{Gates1980}{TrenchR} and others.
 #' 
@@ -87,9 +103,19 @@ Tb_CampbellNorman <- function(T_a, T_g, S, alpha_S = 0.7, alpha_L = 0.96, epsilo
 #'   \insertAllCited{}
 #' 
 #' @examples 
-#' Qnet_Gates(Qabs=500, Qemit=10, Qconv=100, Qcond=100, Qmet=10, Qevap=5)
+#' Qnet_Gates(Qabs  = 500,
+#'            Qemit = 10, 
+#'            Qconv = 100, 
+#'            Qcond = 100, 
+#'            Qmet  = 10, 
+#'            Qevap = 5)
 #' 
-Qnet_Gates <- function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
+Qnet_Gates <- function (Qabs, 
+                        Qemit, 
+                        Qconv, 
+                        Qcond, 
+                        Qmet, 
+                        Qevap) {
   
   stopifnot(Qabs >= 0, Qmet >= 0, Qevap >= 0)
   
@@ -98,7 +124,7 @@ Qnet_Gates <- function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 }
 
 
-#' @title Predicts body temperatures (operative environmental temperature) of an ectotherm in K. 
+#' @title Predict Body Temperature (Operative Environmental Temperature) of an ectotherm in K. 
 #' 
 #' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980}{TrenchR}. Omits evaporative and metabolic heat loss. Other sources: \insertCite{Mitchell1976}{TrenchR}, \insertCite{Kingsolver1983}{TrenchR}
 #' 
@@ -134,17 +160,39 @@ Qnet_Gates <- function(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap){
 #' 
 #' @family biophysical models
 #' 
-#' @import stats
-#' 
 #' @export
 #' 
 #' @references
 #'   \insertAllCited{}
 #' 
 #' @examples 
-#' Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_g=303, T_a=310, Qabs=2, epsilon=0.95, H_L=10, ef=1.23, K=0.5)
+#'  Tb_Gates (A       = 1, 
+#'            D       = 0.001, 
+#'            psa_dir = 0.6, 
+#'            psa_ref = 0.4, 
+#'            psa_air = 0.6, 
+#'            psa_g   = 0.2, 
+#'            T_g     = 303, 
+#'            T_a     = 310, 
+#'            Qabs    = 2, 
+#'            epsilon = 0.95, 
+#'            H_L     = 10, 
+#'            ef      = 1.23, 
+#'            K       = 0.5)
 #' 
-Tb_Gates <- function(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, epsilon, H_L, ef = 1.3, K){
+Tb_Gates <- function (A, 
+                      D, 
+                      psa_dir, 
+                      psa_ref, 
+                      psa_air, 
+                      psa_g, 
+                      T_g, 
+                      T_a, 
+                      Qabs, 
+                      epsilon, 
+                      H_L, 
+                      ef = 1.3, 
+                      K) {
 
   stopifnot(A > 0, D > 0, psa_dir >= 0, psa_dir <= 1, psa_ref >= 0, psa_ref <= 1, psa_air >= 0, psa_air <= 1, psa_g >= 0, psa_g <= 1, T_g > 200, T_g < 400, T_a > 200, T_a < 400, Qabs >= 0, epsilon > 0.5, epsilon <= 1, H_L > 0, K > 0)
   
@@ -189,7 +237,7 @@ Tb_Gates <- function(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, eps
   Te.return
 }
 
-#' Predicts body temperatures (operative environmental temperature) of an ectotherm in K.
+#' @title Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
 #' 
 #' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980}{TrenchR}. Omits evaporative and metabolic heat loss.
 #' 
@@ -213,17 +261,27 @@ Tb_Gates <- function(A, D, psa_dir, psa_ref, psa_air, psa_g, T_g, T_a, Qabs, eps
 #' 
 #' @family biophysical models
 #' 
-#' @import stats
-#' 
 #' @export
 #' 
 #' @references
 #'   \insertAllCited{}
 #' 
 #' @examples 
-#' Tb_Gates2(A = 1, D = 0.001, T_g = 300, T_a = 310, Qabs = 2, V = 0.1, epsilon = 1) 
+#'   Tb_Gates2(A       = 1, 
+#'             D       = 0.001, 
+#'             T_g     = 300, 
+#'             T_a     = 310, 
+#'             Qabs    = 2, 
+#'             V       = 0.1, 
+#'             epsilon = 1) 
 #' 
-Tb_Gates2 <- function(A, D, T_g, T_a, Qabs, V, epsilon){
+Tb_Gates2 <- function (A, 
+                       D, 
+                       T_g, 
+                       T_a, 
+                       Qabs, 
+                       V, 
+                       epsilon) {
   
   A_air <- A
   

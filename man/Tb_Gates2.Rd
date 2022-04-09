@@ -2,39 +2,46 @@
 % Please edit documentation in R/OperativeTemperatureFunctions.R
 \name{Tb_Gates2}
 \alias{Tb_Gates2}
-\title{Predicts body temperatures (operative environmental temperature) of an ectotherm in K. (FROM KEARNEY)}
+\title{Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K}
 \usage{
 Tb_Gates2(A, D, T_g, T_a, Qabs, V, epsilon)
 }
 \arguments{
-\item{A}{surface area  in m^2}
+\item{A}{\code{numeric} surface area (m^2)}
 
-\item{D}{characteristic dimension for conduction (m)}
+\item{D}{\code{numeric} characteristic dimension for conduction (meters)}
 
-\item{T_g}{ground surface temperature in K}
+\item{T_g}{\code{numeric} ground surface temperature (K)}
 
-\item{T_a}{ambient air temperature in K}
+\item{T_a}{\code{numeric} ambient air temperature (K)}
 
-\item{Qabs}{Solar radiation absorbed (W)}
+\item{Qabs}{\code{numeric} Solar radiation absorbed (W)}
 
-\item{V}{Wind speed (m/2)}
+\item{V}{\code{numeric} Wind speed (m/2)}
 
-\item{epsilon}{longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)}
+\item{epsilon}{\code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)}
 }
 \value{
-operative environmental temperature (K)
+\code{numeric} operative environmental temperature (K)
 }
 \description{
-Predicts body temperatures (operative environmental temperature) of an ectotherm in K. (FROM KEARNEY)
+Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
 }
 \details{
-Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Gates (1980, Biophysical ecology). Omits evaporative and metabolic heat loss.
+Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980}{TrenchR}. Omits evaporative and metabolic heat loss.
 }
 \examples{
-\dontrun{
-Tb_Gates2(A=1, D=0.001, T_g=300, T_a=310, Qabs=2, V=0.1, epsilon=1) 
-}
+  Tb_Gates2(A       = 1, 
+            D       = 0.001, 
+            T_g     = 300, 
+            T_a     = 310, 
+            Qabs    = 2, 
+            V       = 0.1, 
+            epsilon = 1) 
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

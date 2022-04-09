@@ -40,11 +40,14 @@ All models follow (\ifelse{html}{\out{SA = a M<sup>b</sup>}}{\eqn{SA = a M^b}{AS
  }
 }
 \examples{
-  surface_area_from_mass(M = 1:50, taxon = "lizard")
-  surface_area_from_mass(M = 1:50, taxon = "salamander")
-  surface_area_from_mass(M = 1:50, taxon = "frog")
-  surface_area_from_mass(M = seq(0.1, 5, 0.1), taxon = "insect")
-
+  surface_area_from_mass(M     = 1:50, 
+                         taxon = "lizard")
+  surface_area_from_mass(M = 1:50,  
+                         taxon = "salamander")
+  surface_area_from_mass(M = 1:50,  
+                         taxon = "frog")
+  surface_area_from_mass(M = seq(0.1, 5, 0.1),  
+                         taxon = "insect")
 
 }
 \references{

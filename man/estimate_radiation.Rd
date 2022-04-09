@@ -2,31 +2,37 @@
 % Please edit documentation in R/RadiationFunctions.R
 \name{estimate_radiation}
 \alias{estimate_radiation}
-\title{Estimate radiation (three parts - Direct, Diffused and Reflected)}
+\title{Estimate Radiation (Three Parts - Direct, Diffused and Reflected)}
 \usage{
 estimate_radiation(doy, psi, tau, elev, rho = 0.7)
 }
 \arguments{
-\item{doy}{is the day of year}
+\item{doy}{\code{numeric} the day of year (Can be calculated using TrenchR::day_of_year() function)}
 
-\item{psi}{is the zenith angle in radians}
+\item{psi}{\code{numeric}  zenith angle (radians)}
 
-\item{tau}{atmospheric transmissivity (proportion), which is ratio of global solar radiation at ground level to extra-terrestrial solar radiation}
+\item{tau}{\code{numeric} atmospheric transmissivity (proportion), which is ratio of global solar radiation at ground level to extra-terrestrial solar radiation}
 
-\item{elev}{is elevation (m)}
+\item{elev}{\code{numeric} elevation (meters)}
 
-\item{rho}{is the albedo as a proportion}
+\item{rho}{\code{numeric} albedo as a proportion (0-1). Defaults to 0.7}
 }
 \value{
 radiation components - direct, diffused and reflected (W/m^2)
 }
 \description{
-Estimate direct, diffuse, and reflected components of solar radiation in W m^-2 using the model in Campbell & Norman (1998).
+Estimate direct, diffuse, and reflected components of solar radiation (W m^-2) using the model in \insertCite{Campbell1998}{TrenchR}
 }
 \examples{
-\dontrun{
-estimate_radiation(doy=112, psi=1, tau=0.6, elev=1500, rho=0.7)
+  estimate_radiation(doy = 112, 
+                     psi = 1, 
+                     tau = 0.6, 
+                     elev = 1500, 
+                     rho = 0.7)
+
 }
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other microclimate functions: 

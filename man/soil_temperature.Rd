@@ -2,7 +2,7 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_temperature}
 \alias{soil_temperature}
-\title{Function to calculate soil temperature in C using ODEs.}
+\title{Function to Calculate Soil Temperature in C using ODEs.}
 \usage{
 soil_temperature(
   z_r.intervals = 12,
@@ -22,63 +22,70 @@ soil_temperature(
 )
 }
 \arguments{
-\item{z_r.intervals}{is the number of intervals in the soil profile to calculate}
+\item{z_r.intervals}{\code{numeric} the number of intervals in the soil profile to calculate, defaults to 12
+ß}
 
-\item{z_r}{is reference height in m}
+\item{z_r}{\code{numeric} reference height in0 (meters)}
 
-\item{z}{is interval of the soil profile to return (1 to z_r.intervals)}
+\item{z}{\code{numeric} interval of the soil profile to return (1 to z_r.intervals)}
 
-\item{T_a}{is a vector of air temperature in degrees C, Note: missing values will be linearly interpolated}
+\item{T_a}{\code{numeric} vector of air temperature (degrees C), Note: missing values will be linearly interpolated}
 
-\item{u}{is a vector of wind speed (m/s)}
+\item{u}{\code{numeric} vector of wind speed (m/s)}
 
-\item{Tsoil0}{is the initial soil temperature in degrees C}
+\item{Tsoil0}{\code{numeric} initial soil temperature (degrees C)}
 
-\item{z0}{is surface roughness in m}
+\item{z0}{\code{numeric} surface roughness (meters)}
 
-\item{SSA}{is the solar absorbtivity of soil surface as a fraction}
+\item{SSA}{\code{numeric} solar absorbtivity of soil surface as a fraction}
 
-\item{TimeIn}{is a vector of time periods for the model}
+\item{TimeIn}{\code{numeric} vector of time periods for the model}
 
-\item{H}{is a vector of solar radiation in W m^-2}
+\item{H}{\code{numeric} vector of solar radiation (W m^-2)}
 
-\item{water_content}{is percent water content (percent)}
+\item{water_content}{\code{numeric} percent water content (percent). Defaults to 0.2}
 
-\item{air_pressure}{is air pressure in kPa}
+\item{air_pressure}{\code{numeric} air pressure (kPa)}
 
-\item{rho_so}{particle density of soil}
+\item{rho_so}{\code{numeric} particle density of soil. Defaults to 1620.}
 
-\item{shade}{is whether or not soil temperature should be calculated in the shade, TRUE or FALSE}
+\item{shade}{\code{numeric} whether or not soil temperature should be calculated in the shade (TRUE/FALSE)}
 }
 \value{
 soil temperature (C)
 }
 \description{
-Function called to calculate soil temperature in C from Beckman et al. (1973, Thermal Model for Prediction of a Desert Iguana's Daily and Seasonal Behavior). Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature.
+Function called to calculate soil temperature in C from \insertCite{Beckman1973;textual}{TrenchR}. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from \insertCite{deVries1963}{TrenchR}
 }
 \examples{
-\dontrun{
-temp_vector= runif(96, min=-10, max=10)
-wind_speed_vector= runif(96, min=0, max=0.4)
-time_vector= rep(1:24,4)
-solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
+  set.seed(123)
+  temp_vector       <- runif(48, min = -10, max = 10)
+  wind_speed_vector <- runif(48, min = 0, max = 0.4)
+  time_vector       <- rep(1:24, 2)
+  solrad_vector     <- rep(c(rep(0, 6), 
+                             seq(10, 700, length.out = 6), 
+                             seq(700, 10, length.out = 6), 
+                             rep(0, 6)),
+                           2)
 
-soil_temperature(
-  z_r.intervals=12,
-  z_r=1.5, 
-  z=2, 
-  T_a=temp_vector, 
-  u=wind_speed_vector, 
-  Tsoil0= 20, 
-  z0=0.02, 
-  SSA=0.7, 
-  TimeIn=time_vector, 
-  H= solrad_vector, 
-  water_content=0.2, 
-  air_pressure=85, 
-  rho_so=1620, 
-  shade=FALSE)
+  soil_temperature(z_r.intervals = 12, 
+                   z_r           = 1.5, 
+                   z             = 2, 
+                   T_a           = temp_vector, 
+                   u             = wind_speed_vector, 
+                   Tsoil0        = 20, 
+                   z0            = 0.02, 
+                   SSA           = 0.7, 
+                   TimeIn        = time_vector, 
+                   H             = solrad_vector, 
+                   water_content = 0.2, 
+                   air_pressure  = 85, 
+                   rho_so        = 1620, 
+                   shade         = FALSE)
+
 }
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other soil temperature functions: 

@@ -29,10 +29,18 @@ Relationships come from \itemize{
  }
 }
 \examples{
-  proportion_silhouette_area(z = 60, taxon = "frog")
-  proportion_silhouette_area(z = 60, taxon = "grasshopper")
-  proportion_silhouette_area(z = 60, taxon = "lizard", posture = "prostrate", raz = 90)
-  proportion_silhouette_area(z = 60, taxon = "lizard", posture = "elevated", raz = 180)
+  proportion_silhouette_area(z     = 60,   
+                             taxon = "frog")
+  proportion_silhouette_area(z     = 60, 
+                             taxon = "grasshopper")
+  proportion_silhouette_area(z       = 60, 
+                             taxon   = "lizard", 
+                             posture = "prostrate", 
+                             raz     = 90)
+  proportion_silhouette_area(z       = 60, 
+                             taxon   = "lizard", 
+                             posture = "elevated", 
+                             raz     = 180)
 
 }
 \references{

@@ -2,33 +2,40 @@
 % Please edit documentation in R/RadiationFunctions.R
 \name{direct_solar_radiation}
 \alias{direct_solar_radiation}
-\title{Estimate direct solar radiation}
+\title{Estimate Direct Solar Radiation}
 \usage{
 direct_solar_radiation(lat, doy, elev, t, t0, method = "Campbell 1977")
 }
 \arguments{
-\item{lat}{latitude (degrees)}
+\item{lat}{\code{numeric} latitude (degrees)}
 
-\item{doy}{doy of year (1-366)}
+\item{doy}{\code{numeric} doy of year (1-366)}
 
-\item{elev}{elevation in m}
+\item{elev}{\code{numeric} elevation in m}
 
-\item{t}{local time (decimal hours)}
+\item{t}{\code{numeric} local time (decimal hours)}
 
-\item{t0}{time of local noon (decimal hours), can be estimated using solar_noon()}
+\item{t0}{\code{numeric} time of local noon (decimal hours), can be estimated using solar_noon()}
 
-\item{method}{method for estimating direct solar radiation, options: "Campbell 1977","Gates 1962"}
+\item{method}{\code{character} method for estimating direct solar radiation, options: "Campbell 1977","Gates 1962". Defaults to Campbell 1977.}
 }
 \value{
-direct solar radiation (W/m^2)
+\code{numeric} direct solar radiation (W/m^2)
 }
 \description{
-Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in Tracy et al. (1983) Estimating clear-day solar radiation: An evaluation of three models. Journal of Thermal Biology, 8(3), 247-251.
+Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in \insertCite{Tracy1983}{TrenchR}. Also references: \insertCite{McCullough1971}{TrenchR}, insertCite{Campbell1998}{TrenchR}
 }
 \examples{
-\dontrun{
-direct_solar_radiation(lat=47.61,doy=112,elev=1500,t=9,t0=12, method="Campbell 1977")
+  direct_solar_radiation(lat    = 47.61, 
+                         doy    = 112, 
+                         elev   = 1500, 
+                         t      = 9, 
+                         t0     = 12, 
+                         method = "Campbell 1977")
+
 }
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other microclimate functions: 

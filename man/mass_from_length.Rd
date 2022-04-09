@@ -49,12 +49,18 @@ All models follow (\ifelse{html}{\out{M = a L<sup>b</sup>}}{\eqn{M = a L^b}{ASCI
  }
 }
 \examples{
-  mass_from_length(L = 0.04, taxon = "insect")
-  mass_from_length(L = 0.04, taxon = "lizard")
-  mass_from_length(L = 0.04, taxon = "salamander")
-  mass_from_length(L = 0.04, taxon = "frog")
-  mass_from_length(L = 0.04, taxon = "snake")
-  mass_from_length(L = 0.04, taxon = "turtle")
+  mass_from_length(L = 0.04,
+                   taxon = "insect")
+  mass_from_length(L = 0.04,
+                   taxon = "lizard")
+  mass_from_length(L = 0.04,
+                   taxon = "salamander")
+  mass_from_length(L = 0.04,
+                   taxon = "frog")
+  mass_from_length(L = 0.04, 
+                   taxon = "snake")
+  mass_from_length(L = 0.04, 
+                   taxon = "turtle")
 
 }
 \references{

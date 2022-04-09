@@ -2,29 +2,28 @@
 % Please edit documentation in R/TempWindProfileFunctions.R
 \name{surface_roughness}
 \alias{surface_roughness}
-\title{Estimate surface roughness from empirical measurements.}
+\title{Estimate Surface Roughness from Empirical Measurements}
 \usage{
 surface_roughness(u_r, zr)
 }
 \arguments{
-\item{u_r}{is wind velocity at a vector of reference heights in m/s.}
+\item{u_r}{\code{numeric} wind velocity at a vector of reference heights (m/s).}
 
-\item{zr}{is the vector of reference heights in m.}
+\item{zr}{\code{numeric} vector of reference heights (meters)}
 }
 \value{
-surface roughness (m)
+surface roughness (meters)
 }
 \description{
-estimate surface roughness in m from empirical wind speed (m/s) 
-data collected at a vector of heights (m). Estimates surface roughness from empirical measurements. 
-References: Kingsolver and Buckley. 2015. Climate variability slows evolutionary responses of Colias butterflies to recent climate change. PRSb;
-G. S. Campbell, J. M. Norman, An introduction to environmental biophysics. (Springer Science, New York, 1998); W. P. Porter, J. W. Mitchell, W. A. Beckman, C. B. DeWitt, Behavioral implications of mechanistic
-ecology. Thermal and behavioral modeling of desert ecotherms and their microenvironment. Oecologia 13, 1-54 (1973)
+estimate surface roughness (m) from empirical wind speed (m/s) data collected at a vector of heights (m). Estimates surface roughness from empirical measurements. References: \insertCite{Kingsolver2015}{TrenchR}, \insertCite{Campbell1998}{TrenchR}, and \insertCite{Porter1979}{TrenchR}.
 }
 \examples{
-\dontrun{
-surface_roughness(u_r=c(0.01,0.025,0.05,0.1,0.2), zr=c(0.05,0.25,0.5,0.75,1))
+  surface_roughness(u_r = c(0.01, 0.025, 0.05, 0.1, 0.2), 
+                    zr  = c(0.05, 0.25, 0.5, 0.75, 1))
+
 }
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other microclimate functions: 

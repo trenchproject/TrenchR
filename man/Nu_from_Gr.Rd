@@ -2,23 +2,25 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Nu_from_Gr}
 \alias{Nu_from_Gr}
-\title{Estimate the Nusselt number from the Grashof number (based on Gates 1980)}
+\title{Estimate the Nusselt Number from the Grashof Number}
 \usage{
 Nu_from_Gr(Gr)
 }
 \arguments{
-\item{Gr}{is the Grashof Number (dimensionless)}
+\item{Gr}{\code{numeric} is the Grashof Number (dimensionless)}
 }
 \value{
-Nusselt number (dimensionless)
+\code{numeric} Nusselt number (dimensionless)
 }
 \description{
-estimate the Nusselt number from the Grashof Number.
+estimate the Nusselt number from the Grashof Number \insertCite{Gates1980}{TrenchR}
 }
 \examples{
-Nu_from_Gr(Gr=5)
+  Nu_from_Gr(Gr = 5)
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

@@ -2,29 +2,34 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Tsoil}
 \alias{Tsoil}
-\title{Statistical approximation of soil temperature}
+\title{Statistical Approximation of Soil Temperature}
 \usage{
 Tsoil(Tg_max, Tg_min, hour, depth)
 }
 \arguments{
-\item{Tg_max}{daily maximum soil surface temperature (C)}
+\item{Tg_max}{\code{numeric} daily maximum soil surface temperature (C)}
 
-\item{Tg_min}{daily minimum soil surface temperature (C)}
+\item{Tg_min}{\code{numeric} daily minimum soil surface temperature (C)}
 
-\item{hour}{hour of the day}
+\item{hour}{\code{numeric} hour of the day}
 
-\item{depth}{depth (cm) ???}
+\item{depth}{\code{numeric} depth (cm)}
 }
 \value{
-soil temperature (C)
+\code{numeric} soil temperature (C)
 }
 \description{
-estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from Campbell and Norman 1998). Source: Riddell, E.A., et al. 2018. Plasticity reveals hidden resistance to extinction under climate change in the global hotspot of salamander diversity. Science advances 4.7: eaar5471.
+Estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from \insertCite{Campbell1998}{TrenchR}). Source: \insertCite{Riddell2018}{TrenchR}
 }
 \examples{
-Tsoil(Tg_max=30, Tg_min=15, hour=12, depth=5)
+  Tsoil(Tg_max = 30,
+        Tg_min = 15, 
+        hour   = 12, 
+        depth  = 5)
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

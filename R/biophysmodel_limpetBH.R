@@ -42,18 +42,25 @@
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   Tb_limpetBH(
-#'     T_a = 25, 
-#'     T_r = 30, 
-#'     L = 0.0176, 
-#'     H = 0.0122, 
-#'     I = 1300, 
-#'     u = 1, 
-#'     s_aspect = 90, 
-#'     s_slope = 60, 
-#'     c = 1)
+#'   Tb_limpetBH(T_a = 25, 
+#'               T_r = 30, 
+#'               L = 0.0176, 
+#'               H = 0.0122, 
+#'               I = 1300, 
+#'               u = 1, 
+#'               s_aspect = 90, 
+#'               s_slope = 60, 
+#'               c = 1)
 #' 
-Tb_limpetBH <- function (T_a, T_r, L, H, I, u, s_aspect, s_slope, c) {
+Tb_limpetBH <- function (T_a, 
+                         T_r, 
+                         L, 
+                         H, 
+                         I, 
+                         u, 
+                         s_aspect, 
+                         s_slope, 
+                         c) {
   
   stopifnot(L > 0, H > 0, I > 0, u >= 0, s_slope >= 0, s_slope <= 90, s_aspect >= 70, s_aspect <= 110, c >= 0, c <= 1)
   

@@ -7,23 +7,26 @@
 Prandtl_number(c_p, mu, K)
 }
 \arguments{
-\item{c_p}{is specific heat at constant pressure (J mol^{-1} K^{-1})}
+\item{c_p}{\code{numeric} specific heat at constant pressure (J mol^{-1} K^{-1})}
 
-\item{mu}{is dynamic viscosity (mol s^{-1}m^{-1})}
+\item{mu}{\code{numeric} dynamic viscosity (mol s^{-1}m^{-1})}
 
-\item{K}{Thermal conductivity (W K^-1 m^-1)}
+\item{K}{\code{numeric} Thermal conductivity (W K^-1 m^-1)}
 }
 \value{
-Prandtl number
+\code{numeric} Prandtl number
 }
 \description{
-estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity (Gates 1980 Biophysical Ecology).
+estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity \insertCite{Gates1980}{TrenchR}
 }
 \examples{
-\dontrun{
-Prandtl_number(c_p=29.3, mu=0.00001, K=0.5)
-}
+  Prandtl_number(c_p = 29.3, 
+                 mu  = 0.00001, 
+                 K   = 0.5)
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

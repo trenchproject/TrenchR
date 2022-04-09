@@ -27,9 +27,12 @@ Relationships come from \itemize{
  }
 }
 \examples{
-  volume_from_length(L = 0.05, taxon = "lizard")
-  volume_from_length(L = 0.05, taxon = "frog")
-  volume_from_length(L = 0.05, taxon = "sphere")
+  volume_from_length(L = 0.05,  
+                     taxon = "lizard")
+  volume_from_length(L = 0.05,   
+                     taxon = "frog")
+  volume_from_length(L = 0.05,   
+                     taxon = "sphere")
 
 }
 \references{

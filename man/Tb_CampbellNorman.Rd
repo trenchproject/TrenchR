@@ -2,7 +2,7 @@
 % Please edit documentation in R/OperativeTemperatureFunctions.R
 \name{Tb_CampbellNorman}
 \alias{Tb_CampbellNorman}
-\title{Predicts body temperatures (operative environmental temperature) of an ectotherm in K.}
+\title{Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K}
 \usage{
 Tb_CampbellNorman(
   T_a,
@@ -17,38 +17,47 @@ Tb_CampbellNorman(
 )
 }
 \arguments{
-\item{T_a}{is air temperature in K.}
+\item{T_a}{\code{numeric} air temperature (K).}
 
-\item{T_g}{is ground temperature in K.}
+\item{T_g}{\code{numeric} ground temperature (K).}
 
-\item{S}{flux density of solar radiation (W m^-2), combining direct, diffuse, and reflected radiation accounting for view factors}
+\item{S}{\code{numeric} flux density of solar radiation (W/m^2), combining direct, diffuse, and reflected radiation accounting for view factors}
 
-\item{alpha_S}{is organismal solar absorptivity}
+\item{alpha_S}{\code{numeric} organismal solar absorptivity. Defaults to 0.7}
 
-\item{alpha_L}{is organismal thermal absorptivity, alpha_L=0.965 for lizards (Bartlett & Gates 1967)}
+\item{alpha_L}{\code{numeric} organismal thermal absorptivity, alpha_L=0.965 for lizards \insertCite{Bartlett1967}{TrenchR}. Defaults to 0.96}
 
-\item{epsilon}{longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)}
+\item{epsilon}{\code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}. Defaults to 0.96}
 
-\item{c_p}{specific heat of air (J mol^-1 K^-1)}
+\item{c_p}{\code{numeric} specific heat of air (J mol^-1 K^-1). Defaults to 29.3}
 
-\item{D}{characteristic dimension of the animal (m)}
+\item{D}{\code{numeric} characteristic dimension of the animal (meters)}
 
-\item{V}{is wind speed in m/s}
+\item{V}{\code{numeric} is wind speed (m/s)}
 }
 \value{
 operative environmental temperature, T_e (K)
 }
 \description{
-Predicts body temperatures (operative environmental temperature) of an ectotherm in K.
+Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
 }
 \details{
-Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Campbell and Norman (1998).
+Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Campbell1998}{TrenchR} and \insertCite{Mitchell1976}{TrenchR}.
 }
 \examples{
- Tb_CampbellNorman(T_a=303, T_g=303, S=823, alpha_S=0.7, alpha_L=0.96, epsilon=0.96, c_p=29.3, 
-   D=0.17, V=1)
+Tb_CampbellNorman (T_a     = 303, 
+                   T_g     = 303, 
+                   S       = 823, 
+                   alpha_S = 0.7, 
+                   alpha_L = 0.96, 
+                   epsilon = 0.96, 
+                   c_p     = 29.3, 
+                   D       = 0.17, 
+                   V       = 1)
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

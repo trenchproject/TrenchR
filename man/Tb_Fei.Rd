@@ -34,15 +34,14 @@ Predicts body temperature (operative environmental temperature) of a lizard in K
 Thermal radiative flux is calculated following \insertCite{Fei2012;textual}{TrenchR} based on \insertCite{Bartlett1967;textual}{TrenchR} and \insertCite{Porter1973;textual}{TrenchR}.
 }
 \examples{
-  Tb_Fei(
-    T_a = 293,
-    T_g = 300,
-    H = 1300, 
-    lw = 60, 
-    shade = 0.5, 
-    m = 10.5, 
-    Acondfact = 0.1, 
-    Agradfact = 0.3)
+  Tb_Fei(T_a       = 293,
+         T_g       = 300,
+         H         = 1300, 
+         lw        = 60, 
+         shade     = 0.5, 
+         m         = 10.5, 
+         Acondfact = 0.1, 
+         Agradfact = 0.3)
 
 
 }

@@ -72,7 +72,7 @@ DRYAIR <- function(db = db, bp = 0, alt = 0) {
 
 #' @title VAPPRS
 #'
-#' @descriptions Calculates saturation vapour pressure for a given air temperature.
+#' @description Calculates saturation vapour pressure for a given air temperature.
 #' 
 #' @param db \code{numeric} Dry bulb temperature (C)
 #' 

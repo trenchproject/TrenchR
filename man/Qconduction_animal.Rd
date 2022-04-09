@@ -2,32 +2,40 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Qconduction_animal}
 \alias{Qconduction_animal}
-\title{Calculate conductance assuming animal thermal conductivity is rate limiting}
+\title{Calculate Conductance Assuming Animal Thermal Conductivity is Rate Limiting}
 \usage{
 Qconduction_animal(T_g, T_b, d, K = 0.5, A, proportion)
 }
 \arguments{
-\item{T_g}{Ground (Surface) Temperature in Kelvin.}
+\item{T_g}{\code{numeric} Ground surface temperature (Kelvin).}
 
-\item{T_b}{Body Temperature in Kelvin.}
+\item{T_b}{\code{numeric} Body temperature (Kelvin).}
 
-\item{d}{Mean thickness of the animal skin (surface) in (m), assumes well mixed interior}
+\item{d}{\code{numeric} Mean thickness of the animal skin (surface) in (meters), assumes well mixed interior}
 
-\item{K}{Thermal conductivity (W K^-1 m^-1), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.}
+\item{K}{\code{numeric} Thermal conductivity (W K^-1 m^-1), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.}
 
-\item{A}{Surface area in m^2}
+\item{A}{\code{numeric} Surface area (m^2)}
 
-\item{proportion}{in contact with the surface}
+\item{proportion}{\code{numeric} proportion of body in contact with the surface (0-1)}
 }
 \value{
-conductance (W)
+\code{numeric} conductance (W)
 }
 \description{
-calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
+Calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
 }
 \examples{
-Qconduction_animal(T_g= 293,T_b=303,d=10^-6,K=0.5,A=10^-3, proportion=0.2)
+  Qconduction_animal(T_g        = 293,
+                     T_b        = 303, 
+                     d          = 10^-6, 
+                     K          = 0.5, 
+                     A          = 10^-3, 
+                     proportion = 0.2)
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

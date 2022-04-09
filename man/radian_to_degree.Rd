@@ -2,15 +2,15 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{radian_to_degree}
 \alias{radian_to_degree}
-\title{Converts angle in radians to degrees}
+\title{Convert Angle in Radians to Degrees}
 \usage{
 radian_to_degree(rad)
 }
 \arguments{
-\item{rad}{\code{numeric} angle in radians.}
+\item{rad}{\code{numeric} angle (radians)}
 }
 \value{
-\code{numeric} angle in degrees.
+\code{numeric} angle (degrees)
 }
 \description{
 Convert angle in radians to degrees.
@@ -18,4 +18,7 @@ Convert angle in radians to degrees.
 \examples{
   radian_to_degree(0.831)
 
+}
+\references{
+\insertAllCited{}
 }

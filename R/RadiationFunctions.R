@@ -1,4 +1,4 @@
-#' @title Estimate radiation (three parts - Direct, Diffused and Reflected)
+#' @title Estimate Radiation (Three Parts - Direct, Diffused and Reflected)
 #' 
 #' @description Estimate direct, diffuse, and reflected components of solar radiation (W m^-2) using the model in \insertCite{Campbell1998}{TrenchR} 
 #' 
@@ -24,9 +24,17 @@
 #'   \insertAllCited{}
 #' 
 #' @examples
-#' estimate_radiation(doy = 112, psi = 1, tau = 0.6, elev = 1500, rho = 0.7)
+#'   estimate_radiation(doy = 112, 
+#'                      psi = 1, 
+#'                      tau = 0.6, 
+#'                      elev = 1500, 
+#'                      rho = 0.7)
 #'
-estimate_radiation <- function(doy, psi, tau, elev, rho = 0.7){
+estimate_radiation <- function (doy, 
+                                psi, 
+                                tau, 
+                                elev, 
+                                rho = 0.7){
   
   stopifnot(doy > 0, doy < 367, psi <= 2 * pi, tau >= 0, tau <= 1, elev > 0, rho >= 0, rho <= 1)
   
@@ -54,7 +62,7 @@ estimate_radiation <- function(doy, psi, tau, elev, rho = 0.7){
   
 }
 
-#' @title Estimate diurnal radiation 
+#' @title Estimate Diurnal Radiation 
 #' 
 #' @description Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day). Based on \insertCite{Tham2010}{TrenchR} and \insertCite{AlRawahi2011}{TrenchR}.
 #' 
@@ -80,9 +88,17 @@ estimate_radiation <- function(doy, psi, tau, elev, rho = 0.7){
 #'   \insertAllCited{}
 #' 
 #' @examples
-#' diurnal_radiation_variation(doy = 112, solrad = 8000, hour = 12, lon = -122.33, lat = 47.61)
+#' diurnal_radiation_variation(doy    = 112, 
+#'                             solrad = 8000, 
+#'                             hour   = 12, 
+#'                             lon    = -122.33, 
+#'                             lat    = 47.61)
 #'
-diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){ 
+diurnal_radiation_variation <- function(doy, 
+                                        solrad, 
+                                        hour, 
+                                        lon, 
+                                        lat) { 
 
   stopifnot(doy > 0, doy < 367, solrad > 0, hour >= 0, hour <= 24, lon >- 180, lon <= 180, lat >= -90, lat <= 90)
   
@@ -115,7 +131,7 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
   
 }
 
-#' @title Estimate average monthly solar radiation
+#' @title Estimate Average Monthly Solar Radiation
 #' 
 #' @description Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information as input. Based on \insertCite{Nikolov1992}{TrenchR}
 #' 
@@ -145,9 +161,21 @@ diurnal_radiation_variation=function(doy, solrad, hour, lon, lat){
 #'   \insertAllCited{}
 #' 
 #' @examples
-#' monthly_solar_radiation(lat = 47.61, lon = -122.33, doy = 112, elev = 1500, T = 15, Hr = 50, P = 50)
+#'   monthly_solar_radiation(lat  = 47.61, 
+#'                           lon  = -122.33, 
+#'                           doy  = 112, 
+#'                           elev = 1500, 
+#'                           T    = 15, 
+#'                           Hr   = 50, 
+#'                           P   = 50)
 #'
-monthly_solar_radiation <- function(lat, lon, doy, elev, T, Hr, P){
+monthly_solar_radiation <- function (lat,
+                                     lon, 
+                                     doy, 
+                                     elev, 
+                                     T, 
+                                     Hr, 
+                                     P) {
 
   stopifnot(lat >= -90, lat <= 90, lon > -180, lon <= 180, doy > 0, doy < 367, elev > 0, Hr >= 0, Hr <= 100, P > 0)
   
@@ -205,7 +233,7 @@ monthly_solar_radiation <- function(lat, lon, doy, elev, T, Hr, P){
   alpha <- 32.9835 - 64.88411 * (1 - 1.3614 * cos.deg(lat))
   
   # VARY CLOUDINESS: USE CLOUDINESS DATA TO ESTIMATE MEAN AND SD
-  C1 <- msm::rtnorm(1, mean = C, sd = 1.5, lower = 0, upper = 10)
+  C1 <- rtnorm(1, mean = C, sd = 1.5, lower = 0, upper = 10)
   
   # Average portion of the sky covered by clouds (Bonan 1988)
   R <- R_0 * (beta - omega * C1) - alpha
@@ -232,7 +260,7 @@ monthly_solar_radiation <- function(lat, lon, doy, elev, T, Hr, P){
 }
 
 
-#' @title Estimate direct solar radiation
+#' @title Estimate Direct Solar Radiation
 #' 
 #' @description Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in \insertCite{Tracy1983}{TrenchR}. Also references: \insertCite{McCullough1971}{TrenchR}, insertCite{Campbell1998}{TrenchR}
 #' 
@@ -260,9 +288,19 @@ monthly_solar_radiation <- function(lat, lon, doy, elev, T, Hr, P){
 #'   \insertAllCited{}
 #' 
 #' @examples
-#' direct_solar_radiation(lat = 47.61, doy = 112, elev = 1500, t = 9, t0 = 12, method = "Campbell 1977")
+#'   direct_solar_radiation(lat    = 47.61, 
+#'                          doy    = 112, 
+#'                          elev   = 1500, 
+#'                          t      = 9, 
+#'                          t0     = 12, 
+#'                          method = "Campbell 1977")
 #'
-direct_solar_radiation <- function(lat, doy, elev, t, t0, method="Campbell 1977") {
+direct_solar_radiation <- function (lat, 
+                                    doy, 
+                                    elev, 
+                                    t, 
+                                    t0, 
+                                    method = "Campbell 1977") {
 
   stopifnot(lat >= -90, lat <= 90, doy > 0, doy < 367, elev > 0, t >= 0, t <= 24, t0 >= 0, t0 <= 24)
   

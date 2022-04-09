@@ -2,23 +2,25 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{saturation_water_vapor_pressure}
 \alias{saturation_water_vapor_pressure}
-\title{Approximate saturation water vapor pressure}
+\title{Approximate Saturation Water Vapor Pressure}
 \usage{
 saturation_water_vapor_pressure(T_a)
 }
 \arguments{
-\item{T_a}{air temperature (C)}
+\item{T_a}{\code{numeric} air temperature (C)}
 }
 \value{
-Saturation water vapor pressure, e_s (Pa)
+\code{numeric} Saturation water vapor pressure, e_s (Pa)
 }
 \description{
-Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C (Rosenberg 1974 in Spotila et al. 1992, see also NichMapR WETAIR and DRYAIR functions from Tracy et al. 1980).  Reference: Spotila et al. 1992. Biophysics of Heat and Mass Transfer. In Feder and Burggren. Environmental Physiology of the Amphibians.
+Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C using Rosenberg 1974 in \insertCite{Spotila1992}{TrenchR}. See also NichMapR WETAIR and DRYAIR functions \insertCite{Kearney2020}{TrenchR}.
 }
 \examples{
-saturation_water_vapor_pressure(T_a=20)
+  saturation_water_vapor_pressure(T_a = 20)
 
-
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other biophysical models: 

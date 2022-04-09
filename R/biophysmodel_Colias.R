@@ -41,20 +41,30 @@
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   Tb_butterfly(
-#'     T_a = 25, 
-#'     Tg = 25, 
-#'     Tg_sh = 20, 
-#'     u = 0.4, 
-#'     H_sdir = 300, 
-#'     H_sdif = 100, 
-#'     z = 30, 
-#'     D = 0.36, 
-#'     delta = 1.46, 
-#'     alpha = 0.6, 
-#'     r_g = 0.3)
+#'   Tb_butterfly(T_a    = 25, 
+#'                Tg     = 25, 
+#'                Tg_sh  = 20, 
+#'                u      = 0.4, 
+#'                H_sdir = 300, 
+#'                H_sdif = 100, 
+#'                z      = 30, 
+#'                D      = 0.36, 
+#'                delta  = 1.46, 
+#'                alpha  = 0.6, 
+#'                r_g    = 0.3)
 #'
-Tb_butterfly <- function (T_a, Tg, Tg_sh, u, H_sdir, H_sdif, z, D, delta, alpha, r_g = 0.3, shade = FALSE) {
+Tb_butterfly <- function (T_a, 
+                          Tg, 
+                          Tg_sh, 
+                          u, 
+                          H_sdir, 
+                          H_sdif, 
+                          z, 
+                          D, 
+                          delta, 
+                          alpha, 
+                          r_g    = 0.3,
+                          shade  = FALSE) {
 
   stopifnot(u >= 0, H_sdir >= 0, H_sdif >= 0, z >= -90, z <= 90, D > 0, delta >= 0, alpha >= 0, r_g >= 0, r_g <= 1, shade %in% c(FALSE, TRUE) )  
   

@@ -2,21 +2,22 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{dec_angle}
 \alias{dec_angle}
-\title{@title Calculate solar declination in radians}
+\title{Calculate Solar Declination in Radians}
 \usage{
 dec_angle(doy)
 }
 \arguments{
-\item{doy}{\code{numeric} day of year (1-366).}
+\item{doy}{\code{numeric} day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)}
 }
 \value{
-\code{numeric} declination angle in radians.
+\code{numeric} declination angle (radians)
 }
 \description{
 Calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
-dec_angle(doy=112)
+dec_angle(doy = 112)
+dec_angle(doy = 360)
 
 }
 \references{
@@ -26,6 +27,7 @@ dec_angle(doy=112)
 Other utility functions: 
 \code{\link{airpressure_from_elev}()},
 \code{\link{azimuth_angle}()},
+\code{\link{day_of_year}()},
 \code{\link{daylength}()},
 \code{\link{degree_to_radian}()},
 \code{\link{fahrenheit_to_celsius}()},

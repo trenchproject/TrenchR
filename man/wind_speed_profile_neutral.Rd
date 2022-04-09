@@ -2,31 +2,34 @@
 % Please edit documentation in R/TempWindProfileFunctions.R
 \name{wind_speed_profile_neutral}
 \alias{wind_speed_profile_neutral}
-\title{Estimate wind speed at a specific height under neutral conditions.}
+\title{Estimate Wind Speed at a Specific Height Under Neutral Conditions}
 \usage{
 wind_speed_profile_neutral(u_r, zr, z0, z)
 }
 \arguments{
-\item{u_r}{is wind velocity at reference height in m/s.}
+\item{u_r}{\code{numeric} wind velocity at reference height (m/s)}
 
-\item{zr}{is initial reference height in m.}
+\item{zr}{\code{numeric} initial reference height (meters).}
 
-\item{z0}{is surface roughness in m.}
+\item{z0}{\code{numeric} surface roughness (meters).}
 
-\item{z}{is height to scale in m.}
+\item{z}{\code{numeric} height to scale (meters).}
 }
 \value{
-windspeed in m/s
+windspeed (m/s)
 }
 \description{
-calculate wind speed (m/s) at a 
-specified height (m) within a boundary layer near the surface.  The profile assumes neutral conditions.
-The velocity profile is the neutral profile described by Sellers (1965). 
-Function is equations (2) and (3) of Porter et al. (1973). Source: Porter WP et al. 1973. Behavioral implications of mechanistic ecology. Oecologia 13:1-54.
+Calculate wind speed (m/s) at a specified height (m) within a boundary layer near the surface.  The profile assumes neutral conditions. The velocity profile is the neutral profile described by \insertCite{Sellers1965}{TrenchR}. Function is equations (2) and (3) of \insertCite{Porter1973}{TrenchR}.
 }
 \examples{
-wind_speed_profile_neutral(u_r=0.1, zr=0.1, z0=0.2, z=0.15)
+  wind_speed_profile_neutral(u_r = 0.1, 
+                             zr  = 0.1, 
+                             z0  = 0.2, 
+                             z   = 0.15)
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other microclimate functions: 

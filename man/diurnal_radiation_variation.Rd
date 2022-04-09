@@ -2,34 +2,37 @@
 % Please edit documentation in R/RadiationFunctions.R
 \name{diurnal_radiation_variation}
 \alias{diurnal_radiation_variation}
-\title{Estimate diurnal radiation}
+\title{Estimate Diurnal Radiation}
 \usage{
 diurnal_radiation_variation(doy, solrad, hour, lon, lat)
 }
 \arguments{
-\item{doy}{is the day of year}
+\item{doy}{\code{numeric} is the day of year}
 
-\item{solrad}{is solar radiation in W m^-2 per day}
+\item{solrad}{\code{numeric} is solar radiation (W/m^2) per day}
 
-\item{hour}{is hour (0-24)}
+\item{hour}{\code{numeric} is hour (0-24)}
 
-\item{lon}{longitude in degrees}
+\item{lon}{\code{numeric} longitude (degrees)}
 
-\item{lat}{latitude in degrees}
+\item{lat}{\code{numeric} latitude (degrees)}
 }
 \value{
-hourly solar radiation (W/m^2)
+\code{numeric} hourly solar radiation (W/m^2)
 }
 \description{
-Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day).
-Based on Tham et al. (2010, Estimation of hourly averaged solar irradiation: evaluation of models. Building Serv. Eng. Res. Technol. 31: 9-25) 
-and Al-Rawahi et al. (2011, Prediction of Hourly Solar Radiation on Horizontal and Inclined Surfaces for Muscat/Oman. 
-The Journal of Engineering Research 8:19-31).
+Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day). Based on \insertCite{Tham2010}{TrenchR} and \insertCite{AlRawahi2011}{TrenchR}.
 }
 \examples{
-\dontrun{
-diurnal_radiation_variation(doy=112, solrad=8000, hour=12, lon=-122.33, lat=47.61)
+diurnal_radiation_variation(doy    = 112, 
+                            solrad = 8000, 
+                            hour   = 12, 
+                            lon    = -122.33, 
+                            lat    = 47.61)
+
 }
+\references{
+\insertAllCited{}
 }
 \seealso{
 Other microclimate functions: 
