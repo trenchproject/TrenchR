@@ -22,12 +22,9 @@
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav"><li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+      <ul class="nav navbar-nav"><li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Vignettes
      
     <span class="caret"></span>
   </a>
@@ -38,18 +35,21 @@
       <a href="../articles/MicroclimateTutorial.html">Estimating microclimates</a>
     </li>
     <li>
-      <a href="../articles/Symbols.html">List of Symbols</a>
+      <a href="../articles/Symbols.html">List of symbols</a>
     </li>
     <li>
       <a href="../articles/TeTutorial.html">Using energy balances to estimate body temperatures</a>
     </li>
   </ul></li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../reference/index.html">Functions</a>
+</li>
+<li>
+  <a href="../news/index.html">News</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/trenchproject/TrenchR/" class="external-link">
-    <span class="fab fa-github fa-lg"></span>
+  <a href="https://github.com/trenchproject/" class="external-link">
+    <span class="fa fa-github"></span>
      
   </a>
 </li>
@@ -78,17 +78,20 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>db</dt>
-<dd><p>Dry bulb temperature (C)</p></dd>
+<dd><p><code>numeric</code> Dry bulb temperature (C)</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>esat Saturation vapour pressure (Pa)</p>
+    <p>esat <code>numeric</code> Saturation vapour pressure (Pa)</p>
+    </div>
+    <div id="references">
+    <h2>References</h2>
+    <p>There are no references for Rd macro <code>\insertAllCites</code> on this help page.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="fu">VAPPRS</span><span class="op">(</span>db<span class="op">=</span><span class="fl">30</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">VAPPRS</span><span class="op">(</span>db <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4243.033</span>
 <span class="r-in"></span>
 </code></pre></div>

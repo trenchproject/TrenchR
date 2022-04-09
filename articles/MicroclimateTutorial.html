@@ -39,12 +39,9 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../reference/index.html">Reference</a>
-</li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Vignettes
      
     <span class="caret"></span>
   </a>
@@ -56,7 +53,7 @@
       <a href="../articles/MicroclimateTutorial.html">Estimating microclimates</a>
     </li>
     <li>
-      <a href="../articles/Symbols.html">List of Symbols</a>
+      <a href="../articles/Symbols.html">List of symbols</a>
     </li>
     <li>
       <a href="../articles/TeTutorial.html">Using energy balances to estimate body temperatures</a>
@@ -64,13 +61,16 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../reference/index.html">Functions</a>
+</li>
+<li>
+  <a href="../news/index.html">News</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/trenchproject/TrenchR/" class="external-link">
-    <span class="fab fa-github fa-lg"></span>
+  <a href="https://github.com/trenchproject/" class="external-link">
+    <span class="fa fa-github"></span>
      
   </a>
 </li>
@@ -90,7 +90,7 @@
       <h1 data-toc-skip>Estimating microclimates</h1>
                         <h4 data-toc-skip class="author">Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington</h4>
             
-            <h4 data-toc-skip class="date">2022-01-20</h4>
+            <h4 data-toc-skip class="date">2022-04-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/trenchproject/TrenchR/blob/HEAD/vignettes/MicroclimateTutorial.Rmd" class="external-link"><code>vignettes/MicroclimateTutorial.Rmd</code></a></small>
       <div class="hidden name"><code>MicroclimateTutorial.Rmd</code></div>
@@ -314,7 +314,7 @@
 
 <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topright"</span>, title<span class="op">=</span><span class="st">"surface roughness"</span>, legend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.05</span>, <span class="fl">0.08</span><span class="op">)</span>, lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>,<span class="st">"dotted"</span>,<span class="st">"dashed"</span><span class="op">)</span> <span class="op">)</span></code></pre></div>
 <p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-20-1.png" width="576"></p>
-<p>TrenchR also adapts functions from NicheMapR <span class="citation">(Kearney and Porter 2017)</span> to refine wind speed and air temperature profiles by using multiple segments:</p>
+<p>TrenchR also adapts functions from NicheMapR <span class="citation">(<span class="citeproc-not-found" data-reference-id="kearney2017nichemapr"><strong>???</strong></span>)</span> to refine wind speed and air temperature profiles by using multiple segments:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">z.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>
 <span class="va">t.seq</span><span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">z.seq</span>, FUN<span class="op">=</span><span class="va">air_temp_profile_segment</span>, T_r<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">25</span>,<span class="fl">22</span>,<span class="fl">20</span><span class="op">)</span>,u_r<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.01</span>,<span class="fl">0.025</span>,<span class="fl">0.05</span><span class="op">)</span>, zr<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.05</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span><span class="op">)</span>, z0<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.01</span>,<span class="fl">0.05</span>,<span class="fl">0.1</span><span class="op">)</span>, T_s<span class="op">=</span><span class="fl">27</span><span class="op">)</span>
@@ -397,7 +397,7 @@
 <div class="section level2">
 <h2 id="soil-temperatures">Soil temperatures<a class="anchor" aria-label="anchor" href="#soil-temperatures"></a>
 </h2>
-<p>TrenchR includes a microclimate model that uses finite-difference methods to solve heat balance equations describing soil temperatures at the surface and specified depths. The function requires air temperature and radiation data as input. Our approach follows Porter et al. <span class="citation">(1973)</span> and is similar to that described for the NicheMapR R package <span class="citation">(Kearney and Porter 2017)</span>. The primary function to call to calculate soil temperature is <code><a href="../reference/soil_temperature.html">soil_temperature()</a></code>. The function is a wrapper to solve the differential equations below for equilibrium conditions. The called function <code><a href="../reference/soil_temperature_function.html">soil_temperature_function()</a></code> contains the majority of the soil temperature model and calls two helper functions. The two functions implement an equation for calculating soil temperature adapted from Beckman et al. <span class="citation">(1973)</span>; <code><a href="../reference/soil_temperature_integrand.html">soil_temperature_integrand()</a></code> includes the integrand in the equation and is called by <code><a href="../reference/soil_temperature_equation.html">soil_temperature_equation()</a></code>, which represents the full equation. Below we outline the soil temperature model encapsulated by the functions.</p>
+<p>TrenchR includes a microclimate model that uses finite-difference methods to solve heat balance equations describing soil temperatures at the surface and specified depths. The function requires air temperature and radiation data as input. Our approach follows Porter et al. <span class="citation">(1973)</span> and is similar to that described for the NicheMapR R package <span class="citation">(<span class="citeproc-not-found" data-reference-id="kearney2017nichemapr"><strong>???</strong></span>)</span>. The primary function to call to calculate soil temperature is <code><a href="../reference/soil_temperature.html">soil_temperature()</a></code>. The function is a wrapper to solve the differential equations below for equilibrium conditions. The called function <code><a href="../reference/soil_temperature_function.html">soil_temperature_function()</a></code> contains the majority of the soil temperature model and calls two helper functions. The two functions implement an equation for calculating soil temperature adapted from Beckman et al. <span class="citation">(1973)</span>; <code><a href="../reference/soil_temperature_integrand.html">soil_temperature_integrand()</a></code> includes the integrand in the equation and is called by <code><a href="../reference/soil_temperature_equation.html">soil_temperature_equation()</a></code>, which represents the full equation. Below we outline the soil temperature model encapsulated by the functions.</p>
 <p>The change in soil temperature (<span class="math inline">\(T_s\)</span>) through time <span class="math inline">\(t\)</span> and depth <span class="math inline">\(z\)</span> can be approximated with a differential equation <span class="math display">\[\frac{dT_s}{dt}= \frac{k_s}{\rho_s c_s} \frac{\delta^2T_s}{\delta z^2}\]</span> where <span class="math inline">\(k_s\)</span> is the thermal conductivity of soil (W/m·K), <span class="math inline">\(\rho_s\)</span> is the density of soil, and <span class="math inline">\(c_s\)</span> is the specific heat of soil (J/kg·K). We solve the differential equation by breaking the soil profile into depth nodes, exchanging heat. We estimate the steady-state temperature profile, which is independent of initial conditions. The choice of initial conditions only affects the rate of convergence to the steady-state solution. A finite difference approximation of the differential equation yields a transient equation for the temperature at depth <span class="math inline">\(i\)</span> and time <span class="math inline">\(p\)</span> where we let <span class="math inline">\(a= \frac{k_s}{\rho_s c_s}\)</span>: <span class="math display">\[\frac{T_i^{p+1}-T_i^p}{dt}= a \frac{T_{i+dz}^p+T_{i-dz}^p-2T_i^p}{dz^2}. \]</span> Solving for <span class="math inline">\(T_i^{p+1}\)</span> produces as expression for solving soil temperature at depth <span class="math inline">\(i\)</span> at any time: <span class="math display">\[T_i^{p+1} = a \frac{dt}{dz^2}(T_{i+dz}^p+T_{i-dz}^p)+(1-2a \frac{dt}{dz^2})T_i^p\]</span></p>
 <p>##Soil boundary conditions Solving the equation requires two boundary conditions: 1) the deep soil temperature, and 2) the soil surface temperature. We assume that the soil temperature at 60cm is constant diurnally. The soil surface temperature at time <span class="math inline">\(p\)</span> is estimated using an energy balance equating the energy conducted to the soil surface the net heat transfer to the surface by solar radiation, infrared radiation, and conduction <span class="citation">(Beckman, Mitchell, and Porter 1973)</span>: <span class="math display">\[Q_{net_s}= Q_{sol_s} + Q_{emit_s} + Q_{conv_s} +Q_{cond_s}\]</span> where the solar radiation absorbed by the soil surface is the product of incoming radiation <span class="math inline">\(S\)</span> and the proportion of radiation absorbed <span class="math inline">\(\alpha_s\)</span>, <span class="math inline">\(Q_{sol_s}= \alpha_s S\)</span>. The net thermal radiation to the soil surface is determined by the balance of radiation emitted by the soil surface <span class="math inline">\(\sigma T_s^4\)</span> and sky radiation absorbed by the soil surface <span class="math inline">\(\sigma T_{sky}^4\)</span>: <span class="math inline">\(Q_{emit_s}= \epsilon_s \sigma [(T^p_{sky})^4-(T^p_0)^4]\)</span>, where <span class="math inline">\(\epsilon_s\)</span> is the thermal emissivity of the soil surface and <span class="math inline">\(T^p_{sky}=0.552 T^{1.5}\)</span>. Convection between the soil surface and air is estimated as a function of the temperature difference <span class="math inline">\(Q_{conv_s}= h_s(T^p-T^p_s)\)</span>, where <span class="math inline">\(h_s\)</span> is the surface heat transfer coefficient. Consideration of temperature profiles and surface roughness yields an expression during neutral conditions <span class="citation">(Sellers 1965)</span>: <span class="math display">\[h_s= \frac{\rho_s c_s k^2 V_r}{ln(z_r/z_o+1)^2},\]</span> where <span class="math inline">\(V\)</span> is the wind speed at reference height <span class="math inline">\(z_r\)</span> and <span class="math inline">\(z_0\)</span> is roughness length. Conduction within the soil profile is estimated as <span class="math inline">\(Q_{cond_s}=k_s \frac{\delta T_s}{\delta z}\)</span>, at <span class="math inline">\(z=0\)</span>. Approximating <span class="math inline">\(Q_{cond_s}\)</span> by finite difference yields <span class="math inline">\(Q_{cond_s}=\frac{k_s}{dz}(T^p_{dz}-T^p_s)\)</span>, at <span class="math inline">\(z=0\)</span></p>
 <p>The net heat transfer through the profile across time is expressed as <span class="math display">\[Q_{net_s}= \frac{\rho_s c_s dz}{2 dt} (T_0^{p+1}-T_0^p).\]</span> Letting <span class="math inline">\(a=\frac{2dt}{\rho_s c_s dz}\)</span> and solving for <span class="math inline">\(T_0^{p+1}\)</span> in the soil energy budget yields the following boundary condition for soil surface temperature: <span class="math display">\[T_0^{p+1}= a \alpha_s S + a \epsilon_S \sigma [(T^p_{sky})^4-(T^p_0)^4]+a h_s (T^p-T_0^p) +a \frac{k_s}{dz}(T^p_{dz}-T^p_0)+T_0^p\]</span></p>
@@ -456,9 +456,6 @@
 </div>
 <div id="ref-gates2012biophysical">
 <p>Gates, David M. 2012. <em>Biophysical Ecology</em>. Courier Corporation.</p>
-</div>
-<div id="ref-kearney2017nichemapr">
-<p>Kearney, Michael R, and Warren P Porter. 2017. “NicheMapR–an R Package for Biophysical Modelling: The Microclimate Model.” <em>Ecography</em> 40 (5): 664–74.</p>
 </div>
 <div id="ref-liu1960interrelationship">
 <p>Liu, Benjamin YH, and Richard C Jordan. 1960. “The Interrelationship and Characteristic Distribution of Direct, Diffuse and Total Solar Radiation.” <em>Solar Energy</em> 4 (3): 1–19.</p>

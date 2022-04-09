@@ -22,12 +22,9 @@
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav"><li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+      <ul class="nav navbar-nav"><li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Vignettes
      
     <span class="caret"></span>
   </a>
@@ -38,18 +35,21 @@
       <a href="../articles/MicroclimateTutorial.html">Estimating microclimates</a>
     </li>
     <li>
-      <a href="../articles/Symbols.html">List of Symbols</a>
+      <a href="../articles/Symbols.html">List of symbols</a>
     </li>
     <li>
       <a href="../articles/TeTutorial.html">Using energy balances to estimate body temperatures</a>
     </li>
   </ul></li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../reference/index.html">Functions</a>
+</li>
+<li>
+  <a href="../news/index.html">News</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/trenchproject/TrenchR/" class="external-link">
-    <span class="fab fa-github fa-lg"></span>
+  <a href="https://github.com/trenchproject/" class="external-link">
+    <span class="fa fa-github"></span>
      
   </a>
 </li>
@@ -125,11 +125,14 @@ ISSN 0006-3568, doi: <a href="https://doi.org/10.2307/1296267" class="external-l
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">volume_from_length</span><span class="op">(</span>L <span class="op">=</span> <span class="fl">0.05</span>, taxon <span class="op">=</span> <span class="st">"lizard"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">volume_from_length</span><span class="op">(</span>L <span class="op">=</span> <span class="fl">0.05</span>,  </span>
+<span class="r-in">                     taxon <span class="op">=</span> <span class="st">"lizard"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3.478309e-06</span>
-<span class="r-in">  <span class="fu">volume_from_length</span><span class="op">(</span>L <span class="op">=</span> <span class="fl">0.05</span>, taxon <span class="op">=</span> <span class="st">"frog"</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu">volume_from_length</span><span class="op">(</span>L <span class="op">=</span> <span class="fl">0.05</span>,   </span>
+<span class="r-in">                     taxon <span class="op">=</span> <span class="st">"frog"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.068642e-05</span>
-<span class="r-in">  <span class="fu">volume_from_length</span><span class="op">(</span>L <span class="op">=</span> <span class="fl">0.05</span>, taxon <span class="op">=</span> <span class="st">"sphere"</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu">volume_from_length</span><span class="op">(</span>L <span class="op">=</span> <span class="fl">0.05</span>,   </span>
+<span class="r-in">                     taxon <span class="op">=</span> <span class="st">"sphere"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6.556091e-05</span>
 <span class="r-in"></span>
 </code></pre></div>

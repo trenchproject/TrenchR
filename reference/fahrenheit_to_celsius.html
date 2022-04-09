@@ -22,12 +22,9 @@
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav"><li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+      <ul class="nav navbar-nav"><li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Vignettes
      
     <span class="caret"></span>
   </a>
@@ -38,18 +35,21 @@
       <a href="../articles/MicroclimateTutorial.html">Estimating microclimates</a>
     </li>
     <li>
-      <a href="../articles/Symbols.html">List of Symbols</a>
+      <a href="../articles/Symbols.html">List of symbols</a>
     </li>
     <li>
       <a href="../articles/TeTutorial.html">Using energy balances to estimate body temperatures</a>
     </li>
   </ul></li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../reference/index.html">Functions</a>
+</li>
+<li>
+  <a href="../news/index.html">News</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/trenchproject/TrenchR/" class="external-link">
-    <span class="fab fa-github fa-lg"></span>
+  <a href="https://github.com/trenchproject/" class="external-link">
+    <span class="fa fa-github"></span>
      
   </a>
 </li>
@@ -78,17 +78,22 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>T</dt>
-<dd><p><code>numeric</code> temperature in Fahrenheit.</p></dd>
+<dd><p><code>numeric</code> temperature (Fahrenheit)</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>numeric</code> temperature in Celsius</p>
+    <p><code>numeric</code> temperature (Celsius)</p>
+    </div>
+    <div id="references">
+    <h2>References</h2>
+    <p>There are no references for Rd macro <code>\insertAllCites</code> on this help page.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other utility functions: 
 <code><a href="airpressure_from_elev.html">airpressure_from_elev</a>()</code>,
 <code><a href="azimuth_angle.html">azimuth_angle</a>()</code>,
+<code><a href="day_of_year.html">day_of_year</a>()</code>,
 <code><a href="daylength.html">daylength</a>()</code>,
 <code><a href="dec_angle.html">dec_angle</a>()</code>,
 <code><a href="degree_to_radian.html">degree_to_radian</a>()</code>,
@@ -100,7 +105,7 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">fahrenheit_to_celsius</span><span class="op">(</span><span class="fl">85</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">fahrenheit_to_celsius</span><span class="op">(</span>T <span class="op">=</span> <span class="fl">85</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 29.44444</span>
 <span class="r-in"></span>
 </code></pre></div>

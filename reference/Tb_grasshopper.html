@@ -28,12 +28,9 @@
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav"><li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+      <ul class="nav navbar-nav"><li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Vignettes
      
     <span class="caret"></span>
   </a>
@@ -44,18 +41,21 @@
       <a href="../articles/MicroclimateTutorial.html">Estimating microclimates</a>
     </li>
     <li>
-      <a href="../articles/Symbols.html">List of Symbols</a>
+      <a href="../articles/Symbols.html">List of symbols</a>
     </li>
     <li>
       <a href="../articles/TeTutorial.html">Using energy balances to estimate body temperatures</a>
     </li>
   </ul></li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../reference/index.html">Functions</a>
+</li>
+<li>
+  <a href="../news/index.html">News</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/trenchproject/TrenchR/" class="external-link">
-    <span class="fab fa-github fa-lg"></span>
+  <a href="https://github.com/trenchproject/" class="external-link">
+    <span class="fa fa-github"></span>
      
   </a>
 </li>
@@ -227,18 +227,17 @@ ISSN 0306-2619, doi: <a href="https://doi.org/10.1016/S0306-2619(01)00012-5" cla
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">Tb_grasshopper</span><span class="op">(</span></span>
-<span class="r-in">    T_a <span class="op">=</span> <span class="fl">25</span>, </span>
-<span class="r-in">    T_g <span class="op">=</span> <span class="fl">25</span>, </span>
-<span class="r-in">    u <span class="op">=</span> <span class="fl">0.4</span>, </span>
-<span class="r-in">    H <span class="op">=</span> <span class="fl">400</span>, </span>
-<span class="r-in">    K_t <span class="op">=</span> <span class="fl">0.7</span>, </span>
-<span class="r-in">    psi <span class="op">=</span> <span class="fl">30</span>, </span>
-<span class="r-in">    L <span class="op">=</span> <span class="fl">0.02</span>, </span>
-<span class="r-in">    Acondfact <span class="op">=</span> <span class="fl">0.25</span>, </span>
-<span class="r-in">    z <span class="op">=</span> <span class="fl">0.001</span>, </span>
-<span class="r-in">    abs <span class="op">=</span> <span class="fl">0.7</span>, </span>
-<span class="r-in">    r_g <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">Tb_grasshopper</span><span class="op">(</span>T_a       <span class="op">=</span> <span class="fl">25</span>, </span>
+<span class="r-in">                 T_g       <span class="op">=</span> <span class="fl">25</span>,      </span>
+<span class="r-in">                 u         <span class="op">=</span> <span class="fl">0.4</span>, </span>
+<span class="r-in">                 H         <span class="op">=</span> <span class="fl">400</span>, </span>
+<span class="r-in">                 K_t       <span class="op">=</span> <span class="fl">0.7</span>, </span>
+<span class="r-in">                 psi       <span class="op">=</span> <span class="fl">30</span>, </span>
+<span class="r-in">                 L         <span class="op">=</span> <span class="fl">0.02</span>, </span>
+<span class="r-in">                 Acondfact <span class="op">=</span> <span class="fl">0.25</span>, </span>
+<span class="r-in">                 z         <span class="op">=</span> <span class="fl">0.001</span>, </span>
+<span class="r-in">                 abs       <span class="op">=</span> <span class="fl">0.7</span>, </span>
+<span class="r-in">                 r_g       <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 25.03181</span>
 <span class="r-in"></span>
 </code></pre></div>

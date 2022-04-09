@@ -23,12 +23,9 @@
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav"><li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+      <ul class="nav navbar-nav"><li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Vignettes
      
     <span class="caret"></span>
   </a>
@@ -39,18 +36,21 @@
       <a href="../articles/MicroclimateTutorial.html">Estimating microclimates</a>
     </li>
     <li>
-      <a href="../articles/Symbols.html">List of Symbols</a>
+      <a href="../articles/Symbols.html">List of symbols</a>
     </li>
     <li>
       <a href="../articles/TeTutorial.html">Using energy balances to estimate body temperatures</a>
     </li>
   </ul></li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../reference/index.html">Functions</a>
+</li>
+<li>
+  <a href="../news/index.html">News</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/trenchproject/TrenchR/" class="external-link">
-    <span class="fab fa-github fa-lg"></span>
+  <a href="https://github.com/trenchproject/" class="external-link">
+    <span class="fa fa-github"></span>
      
   </a>
 </li>
@@ -80,19 +80,19 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>doy</dt>
-<dd><p><code>numeric</code>  day of year.</p></dd>
+<dd><p><code>numeric</code>  day of year (1-366). (This can be obtained from standard date via the TrenchR::day_of_year() function.)</p></dd>
 <dt>lat</dt>
-<dd><p><code>numeric</code>  latitude in decimal degrees.</p></dd>
+<dd><p><code>numeric</code>  latitude (decimal degrees)</p></dd>
 <dt>lon</dt>
-<dd><p><code>numeric</code>  longitude in decimal degrees.</p></dd>
+<dd><p><code>numeric</code>  longitude (decimal degrees)</p></dd>
 <dt>hour</dt>
-<dd><p><code>numeric</code>  hour of the day.</p></dd>
+<dd><p><code>numeric</code>  hour of the day</p></dd>
 <dt>offset</dt>
-<dd><p><code>numeric</code>  the number of hours to add to UTC to get local time (to improve accuracy but not always necessary)</p></dd>
+<dd><p><code>numeric</code>  the number of hours to add to UTC to get local time (improves accuracy but not always necessary). Optional. Defaults to NA.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>numeric</code> zenith angle in degrees.</p>
+    <p><code>numeric</code> zenith angle (degrees)</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -106,6 +106,7 @@ ISBN 0387949372.</p>
     <div class="dont-index"><p>Other utility functions: 
 <code><a href="airpressure_from_elev.html">airpressure_from_elev</a>()</code>,
 <code><a href="azimuth_angle.html">azimuth_angle</a>()</code>,
+<code><a href="day_of_year.html">day_of_year</a>()</code>,
 <code><a href="daylength.html">daylength</a>()</code>,
 <code><a href="dec_angle.html">dec_angle</a>()</code>,
 <code><a href="degree_to_radian.html">degree_to_radian</a>()</code>,
@@ -117,8 +118,10 @@ ISBN 0387949372.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="fu">zenith_angle</span><span class="op">(</span>doy<span class="op">=</span><span class="fl">112</span>, lat<span class="op">=</span><span class="fl">47.61</span>, lon<span class="op">=</span><span class="op">-</span><span class="fl">122.33</span>, hour<span class="op">=</span><span class="fl">12</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">zenith_angle</span><span class="op">(</span>doy  <span class="op">=</span> <span class="fl">112</span>, </span>
+<span class="r-in">               lat  <span class="op">=</span> <span class="fl">47.61</span>, </span>
+<span class="r-in">               lon  <span class="op">=</span> <span class="op">-</span><span class="fl">122.33</span>, </span>
+<span class="r-in">               hour <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 35.71846</span>
 <span class="r-in"></span>
 </code></pre></div>
