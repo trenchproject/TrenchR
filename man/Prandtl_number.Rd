@@ -20,7 +20,9 @@ Prandtl_number(c_p, mu, K)
 estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity \insertCite{Gates1980}{TrenchR}
 }
 \examples{
-  Prandtl_number(c_p = 29.3, mu = 0.00001, K = 0.5)
+  Prandtl_number(c_p = 29.3, 
+                 mu  = 0.00001, 
+                 K   = 0.5)
 
 }
 \references{

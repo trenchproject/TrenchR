@@ -2,7 +2,7 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{fahrenheit_to_kelvin}
 \alias{fahrenheit_to_kelvin}
-\title{Utility: Converts Fahrenheit to Kelvin}
+\title{Convert Fahrenheit to Kelvin}
 \usage{
 fahrenheit_to_kelvin(T)
 }

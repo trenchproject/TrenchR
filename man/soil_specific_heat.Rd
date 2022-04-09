@@ -2,7 +2,7 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_specific_heat}
 \alias{soil_specific_heat}
-\title{Estimate soil specific heat}
+\title{Estimate Soil Specific Heat}
 \usage{
 soil_specific_heat(x_o, x_m, x_w, rho_so)
 }
@@ -22,7 +22,10 @@ soil_specific_heat(x_o, x_m, x_w, rho_so)
 Estimates soil specific heat (J kg^-1 K^-1) using the methods of \insertCite{deVries1963;textual}{TrenchR}. Uses the volume fraction of organic material, minerals, and water in soil.
 }
 \examples{
-  soil_specific_heat(x_o = 0.01, x_m = 0.6, x_w = 0.2, rho_so = 1620)
+  soil_specific_heat(x_o    = 0.01, 
+                     x_m    = 0.6, 
+                     x_w    = 0.2, 
+                     rho_so = 1620)
 
 }
 \references{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{daylength}
 \alias{daylength}
-\title{Utility: Calculate day length}
+\title{Calculate Day Length}
 \usage{
 daylength(lat, doy)
 }
@@ -18,7 +18,8 @@ daylength(lat, doy)
 Calculate daylength in hours as a function of latitude and day of year. Uses the CMB model \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
-  daylength(lat = 47.61, doy = 112)
+  daylength(lat = 47.61, 
+            doy = 112)
 
 }
 \references{

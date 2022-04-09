@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Nu_from_Gr}
 \alias{Nu_from_Gr}
-\title{Estimate the Nusselt number from the Grashof number}
+\title{Estimate the Nusselt Number from the Grashof Number}
 \usage{
 Nu_from_Gr(Gr)
 }

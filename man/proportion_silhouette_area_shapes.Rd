@@ -22,11 +22,18 @@ proportion_silhouette_area_shapes(shape, theta, H, D)
 Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid, using Figure 11.6 in \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
-  proportion_silhouette_area_shapes(shape = "spheroid", theta = 60, H = 0.01, D = 0.001)
-  proportion_silhouette_area_shapes(shape = "cylinder flat ends", theta = 60, H = 0.01,
-    D = 0.001)
-  proportion_silhouette_area_shapes(shape = "cylinder hemisphere ends", theta = 60, H = 0.01, 
-    D = 0.001)
+  proportion_silhouette_area_shapes(shape = "spheroid", 
+                                    theta = 60,  
+                                    H     = 0.01,  
+                                    D     = 0.001)
+  proportion_silhouette_area_shapes(shape = "cylinder flat ends",  
+                                    theta = 60,  
+                                    H     = 0.01, 
+                                    D     = 0.001)
+  proportion_silhouette_area_shapes(shape = "cylinder hemisphere ends",  
+                                    theta = 60,  
+                                    H     = 0.01, 
+                                    D     = 0.001)
 
 }
 \references{

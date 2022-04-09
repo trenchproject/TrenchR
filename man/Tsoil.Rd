@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Tsoil}
 \alias{Tsoil}
-\title{Statistical approximation of soil temperature}
+\title{Statistical Approximation of Soil Temperature}
 \usage{
 Tsoil(Tg_max, Tg_min, hour, depth)
 }
@@ -19,10 +19,13 @@ Tsoil(Tg_max, Tg_min, hour, depth)
 \code{numeric} soil temperature (C)
 }
 \description{
-estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from \insertCite{Campbell1998}{TrenchR}). Source: \insertCite{Riddell2018}{TrenchR}
+Estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from \insertCite{Campbell1998}{TrenchR}). Source: \insertCite{Riddell2018}{TrenchR}
 }
 \examples{
-  Tsoil(Tg_max = 30, Tg_min = 15, hour = 12, depth = 5)
+  Tsoil(Tg_max = 30,
+        Tg_min = 15, 
+        hour   = 12, 
+        depth  = 5)
 
 }
 \references{

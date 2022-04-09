@@ -24,7 +24,11 @@ heat_transfer_coefficient(V, D, K, nu, taxa = "cylinder")
 estimate the heat transfer coefficient for various taxa based on empirical measurements. Reference: \insertCite{Mitchell1976}{TrenchR}
 }
 \examples{
-  heat_transfer_coefficient(V = 0.5, D = 0.05, K = 25.7 * 10^(-3), nu = 15.3 * 10^(-6), "cylinder")
+  heat_transfer_coefficient(V    = 0.5, 
+                            D    = 0.05, 
+                            K    = 25.7 * 10^(-3), 
+                            nu   = 15.3 * 10^(-6), 
+                            taxa = "cylinder")
 
 }
 \references{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{external_resistance_to_water_vapor_transfer}
 \alias{external_resistance_to_water_vapor_transfer}
-\title{Calculate external resistance to water vapor transfer}
+\title{Calculate External Resistance to Water Vapor Transfer}
 \usage{
 external_resistance_to_water_vapor_transfer(H, rhocp = 12000)
 }

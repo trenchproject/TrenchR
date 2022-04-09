@@ -1,6 +1,6 @@
-#' @title Calculate conductance assuming animal thermal conductivity is rate limiting
+#' @title Calculate Conductance Assuming Animal Thermal Conductivity is Rate Limiting
 #' 
-#' @description calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
+#' @description Calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
 #' 
 #' @param T_g \code{numeric} Ground surface temperature (Kelvin).
 #' 
@@ -26,10 +26,20 @@
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Qconduction_animal(T_g = 293, T_b = 303, d = 10^-6, K = 0.5, A = 10^-3, proportion = 0.2)
+#'   Qconduction_animal(T_g        = 293,
+#'                      T_b        = 303, 
+#'                      d          = 10^-6, 
+#'                      K          = 0.5, 
+#'                      A          = 10^-3, 
+#'                      proportion = 0.2)
 #' 
 
-Qconduction_animal <- function(T_g, T_b, d , K = 0.5, A, proportion){
+Qconduction_animal <- function (T_g, 
+                                T_b, 
+                                d, 
+                                K = 0.5, 
+                                A,
+                                proportion) {
  
   stopifnot(T_g > 200, T_g < 400, T_b > 200, T_b < 400, d >= 0, K > 0, A > 0, proportion >= 0, proportion <= 1)
   
@@ -71,10 +81,20 @@ Qconduction_animal <- function(T_g, T_b, d , K = 0.5, A, proportion){
 #'   \insertAllCited{}
 #' 
 #' @examples
-#' Qconduction_substrate(T_g = 293, T_b = 303, D = 0.01, K_g = 0.3, A = 10^-2, proportion = 0.2)
+#'   Qconduction_substrate(T_g        = 293, 
+#'                         T_b        = 303, 
+#'                         D          = 0.01,
+#'                         K_g        = 0.3, 
+#'                         A          = 10^-2, 
+#'                         proportion = 0.2)
 #' 
 #' 
-Qconduction_substrate <- function(T_g, T_b, D, K_g = 0.5, A, proportion){
+Qconduction_substrate <- function (T_g, 
+                                   T_b, 
+                                   D, 
+                                   K_g = 0.5, 
+                                   A, 
+                                   proportion) {
   
   stopifnot(T_g > 200, T_g < 400, T_b > 200, T_b < 400, D >= 0, K_g > 0, A > 0, proportion >= 0, proportion <= 1)
   
@@ -90,9 +110,9 @@ Qconduction_substrate <- function(T_g, T_b, D, K_g = 0.5, A, proportion){
 }
 
 
-#' @title Calculate convection
+#' @title Calculate Convection
 #' 
-#' @description calculate convection from an organism to its environment as in \insertCite{Mitchell1976}{TrenchR}. Includes an enhancement factor associated with outdoor environments. 
+#' @description Calculate convection from an organism to its environment as in \insertCite{Mitchell1976}{TrenchR}. Includes an enhancement factor associated with outdoor environments. 
 #' 
 #' @param T_a \code{numeric} Air temperature (Kelvin).
 #' 
@@ -118,10 +138,19 @@ Qconduction_substrate <- function(T_g, T_b, D, K_g = 0.5, A, proportion){
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Qconvection(T_a = 293, T_b = 303, H_L = 10.45, A = 0.0025, proportion = 0.85)
+#'   Qconvection(T_a        = 293, 
+#'               T_b        = 303, 
+#'               H_L        = 10.45, 
+#'               A          = 0.0025, 
+#'               proportion = 0.85)
 #' 
 #' 
-Qconvection <- function(T_a, T_b, H_L = 10.45, A, proportion, ef = 1.23) {
+Qconvection <- function (T_a, 
+                         T_b, 
+                         A, 
+                         proportion, 
+                         H_L         = 10.45,
+                         ef          = 1.23) {
   
   stopifnot(T_a > 200, T_a < 400, T_b > 200, T_b < 400, H_L > 0, A > 0, proportion >= 0, proportion <= 1, ef >= 1)
   
@@ -159,9 +188,17 @@ Qconvection <- function(T_a, T_b, H_L = 10.45, A, proportion, ef = 1.23) {
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   heat_transfer_coefficient(V = 0.5, D = 0.05, K = 25.7 * 10^(-3), nu = 15.3 * 10^(-6), "cylinder")
+#'   heat_transfer_coefficient(V    = 0.5, 
+#'                             D    = 0.05, 
+#'                             K    = 25.7 * 10^(-3), 
+#'                             nu   = 15.3 * 10^(-6), 
+#'                             taxa = "cylinder")
 #' 
-heat_transfer_coefficient <- function(V, D, K, nu, taxa = "cylinder") {
+heat_transfer_coefficient <- function (V, 
+                                       D, 
+                                       K, 
+                                       nu, 
+                                       taxa = "cylinder") {
   
   stopifnot(V >= 0, D >= 0, K >= 0, nu >= 0, taxa %in% c("sphere", "cylinder", "frog", "lizard_surface", "lizard_elevated", "flyinginsect", "spider"))
   
@@ -182,7 +219,7 @@ heat_transfer_coefficient <- function(V, D, K, nu, taxa = "cylinder") {
 }
 
 
-#' @title Calculate heat transfer coefficient using a spherical approximation
+#' @title Calculate Heat Transfer Coefficient Using a Spherical Approximation
 #' 
 #' @description  estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere. Reference: \insertCite{Mitchell1976}{TrenchR}
 #' 
@@ -208,9 +245,17 @@ heat_transfer_coefficient <- function(V, D, K, nu, taxa = "cylinder") {
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'  heat_transfer_coefficient_approximation(V = 3, D = 0.05, K = 25.7 * 10^(-3), nu = 15.3 * 10^(-6), "sphere")
+#'  heat_transfer_coefficient_approximation(V    = 3, 
+#'                                          D    = 0.05, 
+#'                                          K    = 25.7 * 10^(-3), 
+#'                                          nu   = 15.3 * 10^(-6), 
+#'                                          taxa = "sphere")
 #' 
-heat_transfer_coefficient_approximation <- function(V, D, K, nu, taxa = "sphere") {
+heat_transfer_coefficient_approximation <- function (V, 
+                                                     D, 
+                                                     K, 
+                                                     nu, 
+                                                     taxa = "sphere") {
   
   stopifnot(V >= 0, D >= 0, K >= 0, nu >= 0, taxa %in% c("sphere", "frog", "lizard", "flyinginsect", "spider"))
   
@@ -253,9 +298,13 @@ heat_transfer_coefficient_approximation <- function(V, D, K, nu, taxa = "sphere"
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   heat_transfer_coefficient_simple(V = 0.5, D = 0.05, type = "Gates")
+#'   heat_transfer_coefficient_simple(V    = 0.5, 
+#'                                    D    = 0.05, 
+#'                                    type = "Gates")
 #' 
-heat_transfer_coefficient_simple <- function(V, D, type) {
+heat_transfer_coefficient_simple <- function(V, 
+                                             D, 
+                                             type) {
   
   stopifnot(V >= 0, D >= 0)
   
@@ -307,9 +356,22 @@ heat_transfer_coefficient_simple <- function(V, D, type) {
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Qradiation_absorbed(a = 0.9, A = 1, psa_dir = 0.4, psa_ref = 0.4, S_dir = 1000, S_dif = 200, a_s = 0.5)
+#'   Qradiation_absorbed(a       = 0.9, 
+#'                       A       = 1, 
+#'                       psa_dir = 0.4, 
+#'                       psa_ref = 0.4, 
+#'                       S_dir   = 1000, 
+#'                       S_dif   = 200, 
+#'                       a_s     = 0.5)
 #'
-Qradiation_absorbed <- function(a = 0.9, A, psa_dir, psa_ref, S_dir, S_dif, S_ref = NA, a_s = NA) {
+Qradiation_absorbed <- function (a = 0.9,
+                                 A, 
+                                 psa_dir, 
+                                 psa_ref, 
+                                 S_dir, 
+                                 S_dif, 
+                                 S_ref = NA, 
+                                 a_s   = NA) {
 
   stopifnot(a >= 0, a <= 1, A > 0, psa_dir >= 0, psa_dir <= 1, psa_ref >= 0, psa_ref <= 1, S_dir > 0, S_dif > 0)  
   
@@ -331,7 +393,7 @@ Qradiation_absorbed <- function(a = 0.9, A, psa_dir, psa_ref, S_dir, S_dif, S_re
 }
 
 
-#' @title Calculate emitted thermal radiation
+#' @title Calculate Emitted Thermal Radiation
 #' 
 #' @description estimate thermal radiation (W) emitted by the surface of an animal. Follows \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
 #' 
@@ -363,9 +425,23 @@ Qradiation_absorbed <- function(a = 0.9, A, psa_dir, psa_ref, S_dir, S_dif, S_re
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Qemitted_thermal_radiation(epsilon = 0.96, A = 1, psa_dir = 0.4, psa_ref = 0.6, T_b = 303, T_g = 293, T_a = 298, enclosed = FALSE)
+#'   Qemitted_thermal_radiation(epsilon  = 0.96, 
+#'                              A        = 1, 
+#'                              psa_dir  = 0.4, 
+#'                              psa_ref  = 0.6, 
+#'                              T_b      = 303, 
+#'                              T_g      = 293, 
+#'                              T_a      = 298, 
+#'                              enclosed = FALSE)
 #' 
-Qemitted_thermal_radiation <- function(epsilon = 0.96, A, psa_dir, psa_ref, T_b, T_g, T_a, enclosed = FALSE){
+Qemitted_thermal_radiation <- function (epsilon  = 0.96, 
+                                        A, 
+                                        psa_dir, 
+                                        psa_ref, 
+                                        T_b, 
+                                        T_g, 
+                                        T_a, 
+                                        enclosed = FALSE){
   
   stopifnot(epsilon >= 0, epsilon <= 1, A > 0, psa_dir >= 0, psa_dir <= 1, psa_ref >= 0, psa_ref <= 1, T_b > 200, T_b < 400, T_g > 200, T_g < 400, T_a > 200, T_a < 400, enclosed %in% c(TRUE, FALSE))
   
@@ -426,10 +502,26 @@ Qemitted_thermal_radiation <- function(epsilon = 0.96, A, psa_dir, psa_ref, T_b,
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Qevaporation(A = 0.1, T_b = 293, taxa = "amphibian", rho_s = 0.003, rho_a = 0.002, h = 0.5, H = 20, r_i = 50)
-#'   Qevaporation(A = 0.1, T_b = 293, taxa = "lizard")
+#'   Qevaporation(A     = 0.1, 
+#'                T_b   = 293, 
+#'                taxa  = "amphibian", 
+#'                rho_s = 0.003, 
+#'                rho_a = 0.002, 
+#'                h     = 0.5, 
+#'                H     = 20, 
+#'                r_i   = 50)
+#'   Qevaporation(A    = 0.1,
+#'                T_b  = 293, 
+#'                taxa = "lizard")
 #' 
-Qevaporation <- function(A, T_b, taxa, rho_s = NA, rho_a = NA, h = NA, H = NA, r_i = NA) {
+Qevaporation <- function (A, 
+                          T_b, 
+                          taxa, 
+                          rho_s = NA, 
+                          rho_a = NA, 
+                          h     = NA, 
+                          H     = NA, 
+                          r_i   = NA) {
   
   stopifnot(A > 0, T_b > 200, T_b < 400, taxa %in% c("lizard", "amphibian_wetskin", "amphibian"))
 
@@ -493,7 +585,7 @@ Qevaporation <- function(A, T_b, taxa, rho_s = NA, rho_a = NA, h = NA, H = NA, r
 }
 
 
-#' @title Approximate saturation water vapor pressure
+#' @title Approximate Saturation Water Vapor Pressure
 #' 
 #' @description Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C using Rosenberg 1974 in \insertCite{Spotila1992}{TrenchR}. See also NichMapR WETAIR and DRYAIR functions \insertCite{Kearney2020}{TrenchR}.
 #' 
@@ -511,16 +603,16 @@ Qevaporation <- function(A, T_b, taxa, rho_s = NA, rho_a = NA, h = NA, H = NA, r
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   saturation_water_vapor_pressure(T_a=20)
+#'   saturation_water_vapor_pressure(T_a = 20)
 #' 
-saturation_water_vapor_pressure <- function(T_a) {
+saturation_water_vapor_pressure <- function (T_a) {
   
   10^(0.02604 * T_a + 2.82488)
 
 }
 
 
-#' @title Calculate external resistance to water vapor transfer
+#' @title Calculate External Resistance to Water Vapor Transfer
 #'
 #' @description  estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport. Reference: \insertCite{Spotila1992}{TrenchR}
 #' 
@@ -542,7 +634,8 @@ saturation_water_vapor_pressure <- function(T_a) {
 #' @examples
 #'   external_resistance_to_water_vapor_transfer(H = 20)
 #' 
-external_resistance_to_water_vapor_transfer <- function(H, rhocp = 12000) {
+external_resistance_to_water_vapor_transfer <- function (H, 
+                                                         rhocp = 12000) {
  
   stopifnot(H > 0)
   
@@ -551,9 +644,9 @@ external_resistance_to_water_vapor_transfer <- function(H, rhocp = 12000) {
 }
 
 
-#' @title Calculate metabolism as a function of mass
+#' @title Calculate Metabolism as a Function of Mass
 #' 
-#' @description estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from \insertCite{Nagy2005}{TrenchR}.
+#' @description Estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from \insertCite{Nagy2005}{TrenchR}.
 #' 
 #' @param m \code{numeric} Mass (grams).
 #' 
@@ -571,10 +664,12 @@ external_resistance_to_water_vapor_transfer <- function(H, rhocp = 12000) {
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Qmetabolism_from_mass(m = 12, "reptile")
+#'   Qmetabolism_from_mass(m    = 12,
+#'                         taxa = "reptile")
 #' 
 
-Qmetabolism_from_mass <- function(m, taxa = "reptile") {
+Qmetabolism_from_mass <- function(m, 
+                                  taxa = "reptile") {
   
   stopifnot(m > 0, taxa %in% c("reptile", "bird", "mammal"))
   
@@ -607,9 +702,9 @@ Qmetabolism_from_mass <- function(m, taxa = "reptile") {
 }
 
 
-#' @title Calculate basal (or resting) metabolism as a function of mass and body temperature.
+#' @title Calculate Basal (Resting) Metabolism as a Function of Mass and Body Temperature
 #' 
-#' @description  estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). Reference: \insertCite{Gillooly2001}{TrenchR}.
+#' @description  Estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). Reference: \insertCite{Gillooly2001}{TrenchR}.
 #' 
 #' @param m \code{numeric} Mass (grams).
 #' 
@@ -629,9 +724,13 @@ Qmetabolism_from_mass <- function(m, taxa = "reptile") {
 #'   \insertAllCited{}
 #' 
 #' @examples 
-#'   Qmetabolism_from_mass_temp(m = 100, T_b = 303, "reptile")
+#'   Qmetabolism_from_mass_temp(m    = 100, 
+#'                              T_b  = 303, 
+#'                              taxa = "reptile")
 #' 
-Qmetabolism_from_mass_temp <- function(m, T_b, taxa){
+Qmetabolism_from_mass_temp <- function (m, 
+                                        T_b, 
+                                        taxa) {
   
   stopifnot(m > 0, T_b > 200, T_b < 400, taxa %in% c("bird", "mammal", "reptile", "amphibian", "invertebrate"))
   
@@ -664,7 +763,7 @@ Qmetabolism_from_mass_temp <- function(m, T_b, taxa){
 }
 
 
-#' @title Calculate actual vapor pressure from dewpoint temperature
+#' @title Calculate Actual Vapor Pressure from Dewpoint Temperature
 #'
 #' @description Calculate actual vapor pressure from dewpoint temperature based on \insertCite{Stull2000}{TrenchR}. Source: \insertCite{Riddell2018}{TrenchR}
 #' 
@@ -686,14 +785,14 @@ Qmetabolism_from_mass_temp <- function(m, T_b, taxa){
 #' @examples
 #'   actual_vapor_pressure(Tdewpoint = 20)
 #' 
-actual_vapor_pressure <- function(Tdewpoint) {
+actual_vapor_pressure <- function (Tdewpoint) {
   
   0.611 * (2.71828182845904^(((1.0 / 273.0) - (1.0 / (Tdewpoint + 273.15))) * 5422.9939))
 
 }
 
 
-#' @title Calculate saturation vapor pressure
+#' @title Calculate Saturation Vapor Pressure
 #'
 #' @description Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation \insertCite{Stull2000}{TrenchR}. Source: insertCite{Riddell2018}{TrenchR}.
 #' 
@@ -715,7 +814,7 @@ actual_vapor_pressure <- function(Tdewpoint) {
 #' @examples
 #'   saturation_vapor_pressure(T_a = 293)
 #' 
-saturation_vapor_pressure <- function(T_a) {
+saturation_vapor_pressure <- function (T_a) {
   
   stopifnot(T_a > 200, T_a < 400)
   
@@ -728,7 +827,7 @@ saturation_vapor_pressure <- function(T_a) {
 }
 
 
-#' @title Estimate the boundary layer resistance
+#' @title Estimate the Boundary Layer Resistance
 #' 
 #' @description estimate boundary layer resistance under free convection. Based on the function in \insertCite{Riddell2018}{TrenchR}.
 #' 
@@ -758,9 +857,19 @@ saturation_vapor_pressure <- function(T_a) {
 #' @author Eric Riddell
 #' 
 #' @examples
-#'   boundary_layer_resistance(T_a = 293, e_s = 2.5, e_a = 2.0, elev = 500, D = 0.007, u = 2)
+#'   boundary_layer_resistance(T_a  = 293, 
+#'                             e_s  = 2.5, 
+#'                             e_a  = 2.0, 
+#'                             elev = 500, 
+#'                             D    = 0.007, 
+#'                             u    = 2)
 #' 
-boundary_layer_resistance <- function(T_a, e_s, e_a, elev, D, u = NA){
+boundary_layer_resistance <- function (T_a, 
+                                       e_s, 
+                                       e_a, 
+                                       elev, 
+                                       D, 
+                                       u = NA) {
   
   stopifnot(T_a > 200, T_a < 400, e_s > 0, e_a > 0, elev > 0, D > 0)
   
@@ -813,7 +922,7 @@ boundary_layer_resistance <- function(T_a, e_s, e_a, elev, D, u = NA){
 }
 
 
-#' @title Calculate humid operative temperature
+#' @title Calculate Humid Operative Temperature
 #'
 #' @description calculate humid operative temperature (adaptation of \insertCite{Campbell1998}{TrenchR}). Source: \insertCite{Riddell2018}{TrenchR}.
 #' 
@@ -849,9 +958,25 @@ boundary_layer_resistance <- function(T_a, e_s, e_a, elev, D, u = NA){
 #' @author Eric Riddell
 #' 
 #' @examples
-#'   Tb_salamander_humid(r_i = 4, r_b = 1, D = 0.01, T_a = 20, elev = 500, e_a = 2.0, e_s = 2.5, Qabs = 400, epsilon = 0.96)
+#'   Tb_salamander_humid(r_i     = 4, 
+#'                       r_b     = 1, 
+#'                       D       = 0.01, 
+#'                       T_a     = 20, 
+#'                       elev    = 500, 
+#'                       e_a     = 2.0, 
+#'                       e_s     = 2.5, 
+#'                       Qabs    = 400, 
+#'                       epsilon = 0.96)
 #' 
-Tb_salamander_humid <- function(r_i, r_b, D, T_a, elev, e_a, e_s, Qabs, epsilon = 0.96) {
+Tb_salamander_humid <- function (r_i, 
+                                 r_b, 
+                                 D, 
+                                 T_a, 
+                                 elev, 
+                                 e_a, 
+                                 e_s, 
+                                 Qabs, 
+                                 epsilon = 0.96) {
   
   stopifnot(r_i > 0, r_b > 0, D > 0, elev > 0, e_s > 0, e_a > 0, epsilon > 0.5, epsilon <= 1)
   
@@ -907,9 +1032,15 @@ Tb_salamander_humid <- function(r_i, r_b, D, T_a, elev, e_a, e_s, Qabs, epsilon 
 #' @author Eric Riddell
 #' 
 #' @examples
-#'   Qthermal_radiation_absorbed(T_a = 20, T_g = 25, epsilon_ground = 0.97, a_longwave = 0.965)
+#'   Qthermal_radiation_absorbed(T_a            = 20, 
+#'                               T_g            = 25, 
+#'                               epsilon_ground = 0.97, 
+#'                               a_longwave     = 0.965)
 #' 
-Qthermal_radiation_absorbed <- function(T_a, T_g, epsilon_ground = 0.97, a_longwave = 0.965) {
+Qthermal_radiation_absorbed <- function (T_a, 
+                                         T_g, 
+                                         epsilon_ground = 0.97, 
+                                         a_longwave = 0.965) {
   
   stopifnot(epsilon_ground >= 0, epsilon_ground <= 1, a_longwave >= 0, a_longwave <= 1)
   
@@ -928,9 +1059,9 @@ Qthermal_radiation_absorbed <- function(T_a, T_g, epsilon_ground = 0.97, a_longw
 }
 
 
-#' @title Statistical approximation of soil temperature
+#' @title Statistical Approximation of Soil Temperature
 #'
-#' @description  estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from \insertCite{Campbell1998}{TrenchR}). Source: \insertCite{Riddell2018}{TrenchR}
+#' @description Estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from \insertCite{Campbell1998}{TrenchR}). Source: \insertCite{Riddell2018}{TrenchR}
 #' 
 #' @param Tg_max \code{numeric} daily maximum soil surface temperature (C)
 #' 
@@ -954,9 +1085,15 @@ Qthermal_radiation_absorbed <- function(T_a, T_g, epsilon_ground = 0.97, a_longw
 #' @author Eric Riddell
 #' 
 #' @examples
-#'   Tsoil(Tg_max = 30, Tg_min = 15, hour = 12, depth = 5)
+#'   Tsoil(Tg_max = 30,
+#'         Tg_min = 15, 
+#'         hour   = 12, 
+#'         depth  = 5)
 #' 
-Tsoil <- function(Tg_max, Tg_min, hour, depth){
+Tsoil <- function (Tg_max,
+                   Tg_min, 
+                   hour, 
+                   depth) {
  
   stopifnot(Tg_max > Tg_min, depth >= 0)
   
@@ -989,9 +1126,13 @@ Tsoil <- function(Tg_max, Tg_min, hour, depth){
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Nusselt_number(H_L = 20, D = 0.01, K = 0.5)
+#'   Nusselt_number(H_L = 20, 
+#'                  D   = 0.01,
+#'                  K   = 0.5)
 #' 
-Nusselt_number <- function(H_L, D, K) {
+Nusselt_number <- function(H_L, 
+                           D, 
+                           K) {
   
   stopifnot(H_L > 0, D > 0, K > 0)
   
@@ -1022,9 +1163,13 @@ Nusselt_number <- function(H_L, D, K) {
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Prandtl_number(c_p = 29.3, mu = 0.00001, K = 0.5)
+#'   Prandtl_number(c_p = 29.3, 
+#'                  mu  = 0.00001, 
+#'                  K   = 0.5)
 #' 
-Prandtl_number <- function(c_p, mu, K) {
+Prandtl_number <- function (c_p, 
+                            mu, 
+                            K) {
   
   stopifnot(c_p > 0, mu > 0, K > 0)
   
@@ -1055,9 +1200,13 @@ Prandtl_number <- function(c_p, mu, K) {
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Reynolds_number(u = 1, D = 0.001, nu = 1.2)
+#'   Reynolds_number(u  = 1, 
+#'                   D  = 0.001, 
+#'                   nu = 1.2)
 #' 
-Reynolds_number <- function(u, D, nu) {
+Reynolds_number <- function(u, 
+                            D, 
+                            nu) {
   
   stopifnot(D >= 0, u >= 0, nu >= 0)
   
@@ -1090,9 +1239,15 @@ Reynolds_number <- function(u, D, nu) {
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Grashof_number(Ta = 30, Tg = 35, D = 0.001, nu = 1.2)
+#'   Grashof_number(Ta = 30, 
+#'                  Tg = 35, 
+#'                  D  = 0.001, 
+#'                  nu = 1.2)
 #' 
-Grashof_number <- function(Ta, Tg, D, nu){
+Grashof_number <- function (Ta, 
+                            Tg, 
+                            D, 
+                            nu) {
   
   stopifnot(D >= 0, nu >= 0)
   
@@ -1130,9 +1285,17 @@ Grashof_number <- function(Ta, Tg, D, nu){
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Grashof_number_Gates(Ta = 30, Tg = 35, beta = 0.00367, D = 0.001, nu = 1.2)
+#'   Grashof_number_Gates(Ta   = 30, 
+#'                        Tg   = 35, 
+#'                        beta = 0.00367,
+#'                        D    = 0.001, 
+#'                        nu   = 1.2)
 #' 
-Grashof_number_Gates <- function(Ta, Tg, beta, D, nu) {
+Grashof_number_Gates <- function (Ta, 
+                                  Tg, 
+                                  beta, 
+                                  D, 
+                                  nu) {
 
   stopifnot(beta > 0, D >= 0, nu > 0)
   
@@ -1143,7 +1306,7 @@ Grashof_number_Gates <- function(Ta, Tg, beta, D, nu) {
 }
 
 
-#' @title Estimate the Nusselt number from the Reynolds number
+#' @title Estimate the Nusselt Number from the Reynolds Number
 #' 
 #' @description  estimate the Nusselt number from the Reynolds number for various taxa.  Source: \insertCite{Mitchell1976}{TrenchR} See Table 1. Convective Heat Trasfer Relations for Animal Shapes.  
 #' 
@@ -1163,9 +1326,11 @@ Grashof_number_Gates <- function(Ta, Tg, beta, D, nu) {
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Nu_from_Re(Re = 5, taxa = "cylinder")
+#'   Nu_from_Re(Re   = 5, 
+#'              taxa = "cylinder")
 #' 
-Nu_from_Re <- function(Re, taxa = "cylinder") {
+Nu_from_Re <- function (Re, 
+                        taxa = "cylinder") {
   
   taxas <- c("sphere", "cylinder", "frog", "lizard_traverse_to_air_flow", "lizard_parallel_to_air_flow", "lizard_surface", "lizard_elevated", "flyinginsect", "spider")
   stopifnot(taxa %in% taxas)
@@ -1182,7 +1347,7 @@ Nu_from_Re <- function(Re, taxa = "cylinder") {
 }
 
 
-#' @title Estimate the Nusselt number from the Grashof number 
+#' @title Estimate the Nusselt Number from the Grashof Number 
 #' 
 #' @description estimate the Nusselt number from the Grashof Number \insertCite{Gates1980}{TrenchR}
 #' 
@@ -1202,14 +1367,14 @@ Nu_from_Re <- function(Re, taxa = "cylinder") {
 #' @examples
 #'   Nu_from_Gr(Gr = 5)
 #' 
-Nu_from_Gr <- function(Gr) {
+Nu_from_Gr <- function (Gr) {
   
   0.48 * Gr^0.25
   
 }
 
 
-#' @title Commpare Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980)
+#' @title Commpare Grashof and Reyolds Numbers to Determine If Convection is Free or Forced 
 #' 
 #' @description  commpare the Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980).
 #' 
@@ -1229,9 +1394,11 @@ Nu_from_Gr <- function(Gr) {
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Free_or_forced_convection(Gr = 100, Re = 5)
+#'   Free_or_forced_convection(Gr = 100, 
+#'                             Re = 5)
 #' 
-Free_or_forced_convection <- function(Gr, Re){
+Free_or_forced_convection <- function (Gr, 
+                                       Re) {
   
   conv <- "intermediate condition, mixed convection based on Nusselt numbers is appropriate"
   

@@ -1,4 +1,4 @@
-#' @title Predicts body temperatures (operative environmental temperature) of a lizard in C.
+#' @title Predict Body Temperature (Operative Environmental Temperature) of a Lizard in C
 #' 
 #' @description Predicts body temperature (operative environmental temperature) of a lizard in C based on \insertCite{Campbell1998}{TrenchR}. Designed for Sceloporus lizards and described in \insertCite{Buckley2008}{TrenchR}.
 #' 
@@ -48,9 +48,43 @@
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Tb_lizard(T_a = 25, T_g = 30, u = 0.1, svl = 60, m = 10, psi = 34, rho_S = 0.24, elev = 500, doy = 200, sun = TRUE, surface = TRUE, alpha_S = 0.9, alpha_L = 0.965, epsilon_s = 0.965, F_d = 0.8, F_r = 0.5, F_a = 0.5, F_g = 0.5)
+#'   Tb_lizard(T_a       = 25, 
+#'             T_g       = 30, 
+#'             u         = 0.1, 
+#'             svl       = 60, 
+#'             m         = 10, 
+#'             psi       = 34, 
+#'             rho_S     = 0.24, 
+#'             elev      = 500, 
+#'             doy       = 200, 
+#'             sun       = TRUE, 
+#'             surface   = TRUE, 
+#'             alpha_S   = 0.9, 
+#'             alpha_L   = 0.965, 
+#'             epsilon_s = 0.965, 
+#'             F_d       = 0.8, 
+#'             F_r       = 0.5, 
+#'             F_a       = 0.5, 
+#'             F_g       = 0.5)
 #' 
-Tb_lizard <- function(T_a, T_g, u, svl, m, psi, rho_S, elev, doy, sun=TRUE, surface=TRUE, alpha_S=0.9, alpha_L = 0.965, epsilon_s = 0.965, F_d = 0.8, F_r = 0.5, F_a = 0.5, F_g = 0.5){
+Tb_lizard <- function (T_a, 
+                       T_g, 
+                       u, 
+                       svl, 
+                       m, 
+                       psi, 
+                       rho_S, 
+                       elev, 
+                       doy, 
+                       sun       = TRUE, 
+                       surface   = TRUE, 
+                       alpha_S   = 0.9, 
+                       alpha_L   = 0.965, 
+                       epsilon_s = 0.965, 
+                       F_d       = 0.8, 
+                       F_r       = 0.5, 
+                       F_a       = 0.5, 
+                       F_g       = 0.5) {
   
   stopifnot(u >= 0, svl >= 0, m >= 0, rho_S >= 0, rho_S <= 1, elev >= 0, doy > 0, doy < 367, sun %in% c(TRUE, FALSE), surface %in% c(TRUE, FALSE), alpha_S >= 0, alpha_S <= 1, alpha_L >= 0, alpha_L <= 1, epsilon_s >= 0, epsilon_s <= 1, F_d >= 0, F_d <= 1, F_r >= 0, F_r <= 1, F_a >= 0, F_a <= 1, F_g >= 0, F_g <= 1)
   

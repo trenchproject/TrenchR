@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Qconduction_animal}
 \alias{Qconduction_animal}
-\title{Calculate conductance assuming animal thermal conductivity is rate limiting}
+\title{Calculate Conductance Assuming Animal Thermal Conductivity is Rate Limiting}
 \usage{
 Qconduction_animal(T_g, T_b, d, K = 0.5, A, proportion)
 }
@@ -23,10 +23,15 @@ Qconduction_animal(T_g, T_b, d, K = 0.5, A, proportion)
 \code{numeric} conductance (W)
 }
 \description{
-calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
+Calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
 }
 \examples{
-  Qconduction_animal(T_g = 293, T_b = 303, d = 10^-6, K = 0.5, A = 10^-3, proportion = 0.2)
+  Qconduction_animal(T_g        = 293,
+                     T_b        = 303, 
+                     d          = 10^-6, 
+                     K          = 0.5, 
+                     A          = 10^-3, 
+                     proportion = 0.2)
 
 }
 \references{

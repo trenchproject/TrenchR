@@ -2,7 +2,7 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{azimuth_angle}
 \alias{azimuth_angle}
-\title{Utility: Calculate Azimuth angle}
+\title{Calculate Azimuth Angle}
 \usage{
 azimuth_angle(doy, lat, lon, hour, offset = NA)
 }
@@ -24,7 +24,11 @@ azimuth_angle(doy, lat, lon, hour, offset = NA)
 calculate the azimuth angle, the angle (degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
-  azimuth_angle(doy = 112, lat = 47.61, lon = -122.33, hour = 12, offset = -8)
+  azimuth_angle(doy    = 112, 
+                lat    = 47.61, 
+                lon    = -122.33, 
+                hour   = 12, 
+                offset = -8)
 
 }
 \references{

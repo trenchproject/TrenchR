@@ -2,7 +2,7 @@
 % Please edit documentation in R/DDFunctions.R
 \name{degree_days}
 \alias{degree_days}
-\title{Calculate degree days}
+\title{Calculate Degree Days}
 \usage{
 degree_days(T_min, T_max, LDT = NA, UDT = NA, method = "single.sine")
 }
@@ -24,8 +24,16 @@ degree_days(T_min, T_max, LDT = NA, UDT = NA, method = "single.sine")
 Calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minima is equal to previous day. Double Sine wave approximation of degree days from \insertCite{Allen1976}{TrenchR}.
 }
 \examples{
-  degree_days(T_min = 7, T_max = 14, LDT = 12, UDT = 33, method = "single.sine")
-  degree_days(T_min = 7, T_max = 14, LDT = 12, UDT = 33, method = "single.triangulation")
+  degree_days(T_min  = 7, 
+              T_max  = 14, 
+              LDT    = 12, 
+              UDT    = 33, 
+              method = "single.sine")
+  degree_days(T_min  = 7, 
+              T_max  = 14, 
+              LDT    = 12, 
+              UDT    = 33, 
+              method = "single.triangulation")
 
 }
 \references{

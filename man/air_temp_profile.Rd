@@ -2,7 +2,7 @@
 % Please edit documentation in R/TempWindProfileFunctions.R
 \name{air_temp_profile}
 \alias{air_temp_profile}
-\title{Estimate air temperature profile as in NicheMapR}
+\title{Estimate Air Temperature Profile as in NicheMapR}
 \usage{
 air_temp_profile(T_r, u_r, zr, z0, z, T_s)
 }
@@ -26,7 +26,12 @@ temperature (C)
 estimate temperature (C) at a specified height (meters). Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR. Source: \insertCite{Kearney2017}{TrenchR}.
 }
 \examples{
-air_temp_profile(T_r = 20, u_r = 0.1, zr = 0.1, z0 = 0.2, z = 0.15, T_s = 25)
+  air_temp_profile(T_r = 20,
+                   u_r = 0.1, 
+                   zr  = 0.1, 
+                   z0  = 0.2, 
+                   z   = 0.15, 
+                   T_s = 25)
 
 }
 \references{

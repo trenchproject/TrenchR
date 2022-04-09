@@ -18,9 +18,11 @@ day_of_year(day, format = "\%Y-\%m-\%d")
 Convert a date (day, month, year) to Julian Day (day of year).
 }
 \examples{
-  day_of_year(day = "2017-04-22", format = "\%Y-\%m-\%d")
-  day_of_year(day = "2017-04-22")
-  day_of_year(day = "04/22/2017", format = "\%m/\%d/\%Y")
+  day_of_year(day    = "2017-04-22", 
+              format = "\%Y-\%m-\%d")
+  day_of_year(day    = "2017-04-22")
+  day_of_year(day    = "04/22/2017", 
+              format = "\%m/\%d/\%Y")
 
 }
 \seealso{

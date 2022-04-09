@@ -35,15 +35,19 @@
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   surface_area_from_mass(M = 1:50, taxon = "lizard")
-#'   surface_area_from_mass(M = 1:50, taxon = "salamander")
-#'   surface_area_from_mass(M = 1:50, taxon = "frog")
-#'   surface_area_from_mass(M = seq(0.1, 5, 0.1), taxon = "insect")
-#'
+#'   surface_area_from_mass(M     = 1:50, 
+#'                          taxon = "lizard")
+#'   surface_area_from_mass(M = 1:50,  
+#'                          taxon = "salamander")
+#'   surface_area_from_mass(M = 1:50,  
+#'                          taxon = "frog")
+#'   surface_area_from_mass(M = seq(0.1, 5, 0.1),  
+#'                          taxon = "insect")
 #'
 #' @export
 #'
-surface_area_from_mass <- function(M, taxon){
+surface_area_from_mass <- function(M, 
+                                   taxon){
 
   stopifnot(length(taxon) == 1, taxon %in% c("lizard", "salamander", "frog", "insect"), M > 0)
  
@@ -120,12 +124,18 @@ surface_area_from_mass <- function(M, taxon){
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   mass_from_length(L = 0.04, taxon = "insect")
-#'   mass_from_length(L = 0.04, taxon = "lizard")
-#'   mass_from_length(L = 0.04, taxon = "salamander")
-#'   mass_from_length(L = 0.04, taxon = "frog")
-#'   mass_from_length(L = 0.04, taxon = "snake")
-#'   mass_from_length(L = 0.04, taxon = "turtle")
+#'   mass_from_length(L = 0.04,
+#'                    taxon = "insect")
+#'   mass_from_length(L = 0.04,
+#'                    taxon = "lizard")
+#'   mass_from_length(L = 0.04,
+#'                    taxon = "salamander")
+#'   mass_from_length(L = 0.04,
+#'                    taxon = "frog")
+#'   mass_from_length(L = 0.04, 
+#'                    taxon = "snake")
+#'   mass_from_length(L = 0.04, 
+#'                    taxon = "turtle")
 #'
 #' @export
 #'
@@ -199,13 +209,17 @@ mass_from_length <- function(L, taxon) {
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   surface_area_from_volume(V = 0.001, taxon = "lizard")
-#'   surface_area_from_volume(V = 0.001, taxon = "frog")
-#'   surface_area_from_volume(V = 0.001, taxon = "sphere")
+#'   surface_area_from_volume(V = 0.001, 
+#'                            taxon = "lizard")
+#'   surface_area_from_volume(V = 0.001,  
+#'                            taxon = "frog")
+#'   surface_area_from_volume(V = 0.001,  
+#'                            taxon = "sphere")
 #'
 #' @export
 #'
-surface_area_from_volume <- function (V, taxon) {
+surface_area_from_volume <- function (V,  
+                                      taxon) {
 
   stopifnot(length(taxon) == 1, taxon %in% c("lizard", "frog", "sphere"), V > 0)
   
@@ -253,13 +267,17 @@ surface_area_from_volume <- function (V, taxon) {
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   volume_from_length(L = 0.05, taxon = "lizard")
-#'   volume_from_length(L = 0.05, taxon = "frog")
-#'   volume_from_length(L = 0.05, taxon = "sphere")
+#'   volume_from_length(L = 0.05,  
+#'                      taxon = "lizard")
+#'   volume_from_length(L = 0.05,   
+#'                      taxon = "frog")
+#'   volume_from_length(L = 0.05,   
+#'                      taxon = "sphere")
 #'
 #' @export
 #'
-volume_from_length <- function (L, taxon) {
+volume_from_length <- function (L,   
+                                taxon) {
   
   stopifnot(length(taxon) == 1, taxon %in% c("lizard", "frog", "sphere"), L > 0)
   
@@ -358,10 +376,18 @@ surface_area_from_length <- function (L) {
 #' @export
 #' 
 #' @examples
-#'   proportion_silhouette_area(z = 60, taxon = "frog")
-#'   proportion_silhouette_area(z = 60, taxon = "grasshopper")
-#'   proportion_silhouette_area(z = 60, taxon = "lizard", posture = "prostrate", raz = 90)
-#'   proportion_silhouette_area(z = 60, taxon = "lizard", posture = "elevated", raz = 180)
+#'   proportion_silhouette_area(z     = 60,   
+#'                              taxon = "frog")
+#'   proportion_silhouette_area(z     = 60, 
+#'                              taxon = "grasshopper")
+#'   proportion_silhouette_area(z       = 60, 
+#'                              taxon   = "lizard", 
+#'                              posture = "prostrate", 
+#'                              raz     = 90)
+#'   proportion_silhouette_area(z       = 60, 
+#'                              taxon   = "lizard", 
+#'                              posture = "elevated", 
+#'                              raz     = 180)
 #' 
 proportion_silhouette_area <- function (z, taxon, raz = 0, posture = "prostrate") {
   
@@ -463,13 +489,23 @@ proportion_silhouette_area <- function (z, taxon, raz = 0, posture = "prostrate"
 #' @export
 #' 
 #' @examples
-#'   proportion_silhouette_area_shapes(shape = "spheroid", theta = 60, H = 0.01, D = 0.001)
-#'   proportion_silhouette_area_shapes(shape = "cylinder flat ends", theta = 60, H = 0.01,
-#'     D = 0.001)
-#'   proportion_silhouette_area_shapes(shape = "cylinder hemisphere ends", theta = 60, H = 0.01, 
-#'     D = 0.001)
+#'   proportion_silhouette_area_shapes(shape = "spheroid", 
+#'                                     theta = 60,  
+#'                                     H     = 0.01,  
+#'                                     D     = 0.001)
+#'   proportion_silhouette_area_shapes(shape = "cylinder flat ends",  
+#'                                     theta = 60,  
+#'                                     H     = 0.01, 
+#'                                     D     = 0.001)
+#'   proportion_silhouette_area_shapes(shape = "cylinder hemisphere ends",  
+#'                                     theta = 60,  
+#'                                     H     = 0.01, 
+#'                                     D     = 0.001)
 #'
-proportion_silhouette_area_shapes <- function(shape, theta, H, D){
+proportion_silhouette_area_shapes <- function(shape, 
+                                              theta, 
+                                              H, 
+                                              D){
   
   stopifnot(length(shape) == 1, shape %in% c("spheroid", "cylinder flat ends", "cylinder hemisphere ends"), theta >= 0, theta < 360, H >= 0, D >= 0)
   

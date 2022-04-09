@@ -2,9 +2,9 @@
 % Please edit documentation in R/biophysmodel_Mussel.R
 \name{Tb_mussel}
 \alias{Tb_mussel}
-\title{Calculate Operative Environmental Temperature of a mussel in C.}
+\title{Calculate Operative Environmental Temperature of a Mussel in C.}
 \usage{
-Tb_mussel(L, H, T_a, T_g, S, k_d, u, psi, evap = FALSE, cl, group = "solitary")
+Tb_mussel(L, H, T_a, T_g, S, k_d, u, psi, cl, evap = FALSE, group = "solitary")
 }
 \arguments{
 \item{L}{mussel length (anterior/posterior axis) (m).}
@@ -23,9 +23,9 @@ Tb_mussel(L, H, T_a, T_g, S, k_d, u, psi, evap = FALSE, cl, group = "solitary")
 
 \item{psi}{solar zenith angle (degrees): can be calculated from zenith_angle function}
 
-\item{evap}{Are mussels gaping to evaporatively cool? \code{TRUE} or \code{FALSE} (default), If \code{TRUE}, assumes constant mass loss rate of 5 percent of initial body mass per hour.}
-
 \item{cl}{fraction of the sky covered by cloud}
+
+\item{evap}{Are mussels gaping to evaporatively cool? \code{TRUE} or \code{FALSE} (default), If \code{TRUE}, assumes constant mass loss rate of 5 percent of initial body mass per hour.}
 
 \item{group}{\code{character}; options are \code{"aggregated"}: mussels living in beds; \code{"solitary"}: mussels individuals, anterior or posterior end facing upwind; and \code{"solitary_valve"}: solitary individuals, valve facing upwind.}
 }
@@ -40,18 +40,17 @@ Thermal radiative flux is calculated following \insertCite{Helmuth1998;textual}{
 }
 \examples{
 
-Tb_mussel(
-  L = 0.1, 
-  H = 0.05, 
-  T_a = 25, 
-  T_g = 30, 
-  S=500, 
-  k_d=0.2, 
-  u = 2, 
-  psi = 30, 
-  evap = FALSE, 
-  cl = 0.5, 
-  group = "solitary")
+Tb_mussel(L     = 0.1, 
+          H     = 0.05, 
+          T_a   = 25, 
+          T_g   = 30, 
+          S     = 500, 
+          k_d   = 0.2, 
+          u     = 2, 
+          psi   = 30, 
+          evap  = FALSE, 
+          cl    = 0.5, 
+          group = "solitary")
 
 }
 \references{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/RadiationFunctions.R
 \name{diurnal_radiation_variation}
 \alias{diurnal_radiation_variation}
-\title{Estimate diurnal radiation}
+\title{Estimate Diurnal Radiation}
 \usage{
 diurnal_radiation_variation(doy, solrad, hour, lon, lat)
 }
@@ -24,7 +24,11 @@ diurnal_radiation_variation(doy, solrad, hour, lon, lat)
 Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day). Based on \insertCite{Tham2010}{TrenchR} and \insertCite{AlRawahi2011}{TrenchR}.
 }
 \examples{
-diurnal_radiation_variation(doy = 112, solrad = 8000, hour = 12, lon = -122.33, lat = 47.61)
+diurnal_radiation_variation(doy    = 112, 
+                            solrad = 8000, 
+                            hour   = 12, 
+                            lon    = -122.33, 
+                            lat    = 47.61)
 
 }
 \references{

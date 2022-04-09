@@ -2,7 +2,7 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{radian_to_degree}
 \alias{radian_to_degree}
-\title{Utility: Converts angle in radians to degrees}
+\title{Convert Angle in Radians to Degrees}
 \usage{
 radian_to_degree(rad)
 }

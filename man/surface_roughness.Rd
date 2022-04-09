@@ -2,7 +2,7 @@
 % Please edit documentation in R/TempWindProfileFunctions.R
 \name{surface_roughness}
 \alias{surface_roughness}
-\title{Estimate surface roughness from empirical measurements.}
+\title{Estimate Surface Roughness from Empirical Measurements}
 \usage{
 surface_roughness(u_r, zr)
 }
@@ -18,7 +18,8 @@ surface roughness (meters)
 estimate surface roughness (m) from empirical wind speed (m/s) data collected at a vector of heights (m). Estimates surface roughness from empirical measurements. References: \insertCite{Kingsolver2015}{TrenchR}, \insertCite{Campbell1998}{TrenchR}, and \insertCite{Porter1979}{TrenchR}.
 }
 \examples{
-surface_roughness(u_r = c(0.01, 0.025, 0.05, 0.1, 0.2), zr = c(0.05, 0.25, 0.5, 0.75, 1))
+  surface_roughness(u_r = c(0.01, 0.025, 0.05, 0.1, 0.2), 
+                    zr  = c(0.05, 0.25, 0.5, 0.75, 1))
 
 }
 \references{

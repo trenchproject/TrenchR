@@ -2,7 +2,7 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{solar_noon}
 \alias{solar_noon}
-\title{Utility: Calculate time of solar noon}
+\title{Calculate Time of Solar Noon}
 \usage{
 solar_noon(lon, doy, offset = NA)
 }
@@ -20,7 +20,8 @@ solar_noon(lon, doy, offset = NA)
 Calculate the time of solar noon in hours as a function of the day of year and longitude  \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
-  solar_noon(lon = -122.335, doy = 112)
+  solar_noon(lon = -122.335,
+             doy = 112)
 
 }
 \references{

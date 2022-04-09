@@ -2,7 +2,7 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{kelvin_to_celsius}
 \alias{kelvin_to_celsius}
-\title{Utility: Converts Kelvin to Celsius}
+\title{Convert Kelvin to Celsius}
 \usage{
 kelvin_to_celsius(T)
 }

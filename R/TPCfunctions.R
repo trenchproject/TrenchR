@@ -1,4 +1,4 @@
-#' @title Construct a Gaussian-quadratic thermal performance curve. 
+#' @title Construct a Gaussian-Quadratic Thermal Performance Curve. 
 #'     
 #' @details Construct a Gaussian-quadratic thermal performance curve.
 #' 
@@ -22,10 +22,16 @@
 #' @export
 #' 
 #' @examples
-#' TPC(T = 0:60, Topt = 30, CTmin = 10, CTmax = 40)
+#'   TPC(T     = 0:60, 
+#'       Topt  = 30, 
+#'       CTmin = 10, 
+#'       CTmax = 40)
 #'
 
-TPC <- function(T, Topt, CTmin, CTmax){
+TPC <- function (T, 
+                 Topt, 
+                 CTmin, 
+                 CTmax) {
   
   F <- T
   F[] <- NA

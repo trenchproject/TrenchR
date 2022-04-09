@@ -2,7 +2,7 @@
 % Please edit documentation in R/RadiationFunctions.R
 \name{monthly_solar_radiation}
 \alias{monthly_solar_radiation}
-\title{Estimate average monthly solar radiation}
+\title{Estimate Average Monthly Solar Radiation}
 \usage{
 monthly_solar_radiation(lat, lon, doy, elev, T, Hr, P)
 }
@@ -28,7 +28,13 @@ average monthly solar radiation (W/m^2)
 Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information as input. Based on \insertCite{Nikolov1992}{TrenchR}
 }
 \examples{
-monthly_solar_radiation(lat = 47.61, lon = -122.33, doy = 112, elev = 1500, T = 15, Hr = 50, P = 50)
+  monthly_solar_radiation(lat  = 47.61, 
+                          lon  = -122.33, 
+                          doy  = 112, 
+                          elev = 1500, 
+                          T    = 15, 
+                          Hr   = 50, 
+                          P   = 50)
 
 }
 \references{

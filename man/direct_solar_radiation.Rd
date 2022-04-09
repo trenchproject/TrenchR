@@ -2,7 +2,7 @@
 % Please edit documentation in R/RadiationFunctions.R
 \name{direct_solar_radiation}
 \alias{direct_solar_radiation}
-\title{Estimate direct solar radiation}
+\title{Estimate Direct Solar Radiation}
 \usage{
 direct_solar_radiation(lat, doy, elev, t, t0, method = "Campbell 1977")
 }
@@ -26,7 +26,12 @@ direct_solar_radiation(lat, doy, elev, t, t0, method = "Campbell 1977")
 Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in \insertCite{Tracy1983}{TrenchR}. Also references: \insertCite{McCullough1971}{TrenchR}, insertCite{Campbell1998}{TrenchR}
 }
 \examples{
-direct_solar_radiation(lat = 47.61, doy = 112, elev = 1500, t = 9, t0 = 12, method = "Campbell 1977")
+  direct_solar_radiation(lat    = 47.61, 
+                         doy    = 112, 
+                         elev   = 1500, 
+                         t      = 9, 
+                         t0     = 12, 
+                         method = "Campbell 1977")
 
 }
 \references{

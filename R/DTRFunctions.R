@@ -1,4 +1,4 @@
-#' @title Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components 
+#' @title Estimate Temperature Across Hours Using a Diurnal Temperature Variation Function Incorporating Sine and Exponential Components 
 #'
 #' @description  estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: \insertCite{Parton1981}{TrenchR}. Default alpha, beta, gamma values are the average of 5 North Carolina sites  \insertCite{Wann1985}{TrenchR}. Other alpha, beta, gamma parameterizations include values for Denver, Colorado from \insertCite{Parton1981}{TrenchR}: 150cm air temperature: alpha = 1.86, beta = 2.20, gamma = -0.17; 10cm air temperature: alpha = 1.52, beta = 2.00, gamma = -0.18; soil surface temperature: alpha = 0.50, beta = 1.81, gamma = 0.49; 10cm soil temperature: alpha = 0.45, beta = 2.28, gamma = 1.83.
 #' 
@@ -30,9 +30,23 @@
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   diurnal_temp_variation_sineexp(T_max = 30, T_min = 10, t = 11, t_r = 6, t_s = 18, alpha = 2.59, beta = 1.55, gamma = 2.2)
+#'   diurnal_temp_variation_sineexp(T_max = 30, 
+#'                                  T_min = 10, 
+#'                                  t     = 11, 
+#'                                  t_r   = 6, 
+#'                                  t_s   = 18, 
+#'                                  alpha = 2.59, 
+#'                                  beta  = 1.55, 
+#'                                  gamma = 2.2)
 #' 
-diurnal_temp_variation_sineexp <- function(T_max, T_min, t, t_r, t_s, alpha = 2.59, beta = 1.55, gamma = 2.2){
+diurnal_temp_variation_sineexp <- function (T_max, 
+                                            T_min, 
+                                            t, 
+                                            t_r, 
+                                            t_s, 
+                                            alpha = 2.59, 
+                                            beta  = 1.55, 
+                                            gamma = 2.2) {
 
   stopifnot(T_max >= T_min, t_s >= 0, t_s <= 24,t_r >= 0, t_r <= 24,t >= 0, t <= 24, alpha >= 0, alpha <= 24,gamma >= 0, gamma <= 24,beta >= 0, beta <= 24)
    
@@ -73,7 +87,7 @@ diurnal_temp_variation_sineexp <- function(T_max, T_min, t, t_r, t_s, alpha = 2.
 }
 
 
-#' @title Diurnal temperature across hours
+#' @title Diurnal Temperature Across Hours
 #'
 #' @description estimate temperature for a specified hour using the sine interpolation in \insertCite{Campbell1998}{TrenchR}.
 #' 
@@ -95,9 +109,13 @@ diurnal_temp_variation_sineexp <- function(T_max, T_min, t, t_r, t_s, alpha = 2.
 #'   \insertAllCited{}
 #' 
 #' @examples
-#' diurnal_temp_variation_sine(T_max = 30, T_min = 10, t = 11)
+#'   diurnal_temp_variation_sine(T_max = 30, 
+#'                               T_min = 10, 
+#'                               t     = 11)
 #' 
-diurnal_temp_variation_sine <- function(T_max, T_min, t){
+diurnal_temp_variation_sine <- function (T_max, 
+                                         T_min, 
+                                         t) {
   
   stopifnot(t >= 0, t <= 24, T_max >= T_min)
   
@@ -109,7 +127,7 @@ diurnal_temp_variation_sine <- function(T_max, T_min, t){
 }
 
 
-#' @title Estimates temperature across hours using sine and square root functions
+#' @title Estimate Temperature Across Hours Using Sine and Square Root Functions
 #'
 #' @details  Estimates temperature across hours using sine and square root functions
 #' 
@@ -139,9 +157,19 @@ diurnal_temp_variation_sine <- function(T_max, T_min, t){
 #'   \insertAllCited{}
 #' 
 #' @examples
-#' diurnal_temp_variation_sinesqrt(t=8, tr=6, ts=18, T_max=30, T_min=10, T_minp=12)
+#'   diurnal_temp_variation_sinesqrt(t      = 8, 
+#'                                   tr     = 6, 
+#'                                   ts     = 18, 
+#'                                   T_max  = 30, 
+#'                                   T_min  = 10, 
+#'                                   T_minp = 12)
 #' 
-diurnal_temp_variation_sinesqrt <- function(t, tr, ts, T_max, T_min, T_minp){
+diurnal_temp_variation_sinesqrt <- function (t, 
+                                             tr, 
+                                             ts, 
+                                             T_max, 
+                                             T_min, 
+                                             T_minp) {
  
   stopifnot(t >= 0, t <= 24, tr >= 0, tr <= 24, ts >= 0, ts <= 24, T_max >= T_min)
   

@@ -2,7 +2,7 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_conductivity}
 \alias{soil_conductivity}
-\title{Estimate soil thermal conductivity}
+\title{Estimate Soil Thermal Conductivity}
 \usage{
 soil_conductivity(x, lambda, g_a)
 }

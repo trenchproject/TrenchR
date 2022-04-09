@@ -2,7 +2,7 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_temperature_equation}
 \alias{soil_temperature_equation}
-\title{Function called by soil_temperature_function() to solve equation for soil temperature.}
+\title{Core Function Called to Solve Equation for Soil Temperature}
 \usage{
 soil_temperature_equation(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s)
 }

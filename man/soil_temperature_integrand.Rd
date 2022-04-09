@@ -2,7 +2,7 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_temperature_integrand}
 \alias{soil_temperature_integrand}
-\title{Solve equation for soil temperature}
+\title{Solve Equation for Soil Temperature}
 \usage{
 soil_temperature_integrand(x, L, z0)
 }
@@ -20,9 +20,10 @@ soil_temperature_integrand(x, L, z0)
 Function called by soil_temp_noint to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. The function represents the integrand in the equation. It is not intended to be called directly.
 }
 \examples{
-  soil_temperature_integrand(x = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), 
-                             L = -10, 
+  soil_temperature_integrand(x  = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), 
+                             L  = -10, 
                              z0 = 0.2)
+
 }
 \references{
 \insertAllCited{}

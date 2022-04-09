@@ -2,20 +2,20 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Qconvection}
 \alias{Qconvection}
-\title{Calculate convection}
+\title{Calculate Convection}
 \usage{
-Qconvection(T_a, T_b, H_L = 10.45, A, proportion, ef = 1.23)
+Qconvection(T_a, T_b, A, proportion, H_L = 10.45, ef = 1.23)
 }
 \arguments{
 \item{T_a}{\code{numeric} Air temperature (Kelvin).}
 
 \item{T_b}{\code{numeric} Initial body temperature (Kelvin).}
 
-\item{H_L}{\code{numeric} Convective heat transfer coefficient (W m^-2 K^-1)}
-
 \item{A}{\code{numeric} Surface area (m^2)}
 
 \item{proportion}{\code{numeric} proportion of surface area exposed to air}
+
+\item{H_L}{\code{numeric} Convective heat transfer coefficient (W m^-2 K^-1)}
 
 \item{ef}{\code{numeric} is the enhancement factor, used to adjust H to field conditions.  Approximated as mean value of 1.23 by default, but see \insertCite{Mitchell1976}{TrenchR} for further information.}
 }
@@ -23,10 +23,14 @@ Qconvection(T_a, T_b, H_L = 10.45, A, proportion, ef = 1.23)
 \code{numeric} convection (W)
 }
 \description{
-calculate convection from an organism to its environment as in \insertCite{Mitchell1976}{TrenchR}. Includes an enhancement factor associated with outdoor environments.
+Calculate convection from an organism to its environment as in \insertCite{Mitchell1976}{TrenchR}. Includes an enhancement factor associated with outdoor environments.
 }
 \examples{
-  Qconvection(T_a = 293, T_b = 303, H_L = 10.45, A = 0.0025, proportion = 0.85)
+  Qconvection(T_a        = 293, 
+              T_b        = 303, 
+              H_L        = 10.45, 
+              A          = 0.0025, 
+              proportion = 0.85)
 
 
 }

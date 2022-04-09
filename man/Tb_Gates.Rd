@@ -2,7 +2,7 @@
 % Please edit documentation in R/OperativeTemperatureFunctions.R
 \name{Tb_Gates}
 \alias{Tb_Gates}
-\title{Predicts body temperatures (operative environmental temperature) of an ectotherm in K.}
+\title{Predict Body Temperature (Operative Environmental Temperature) of an ectotherm in K.}
 \usage{
 Tb_Gates(
   A,
@@ -51,13 +51,25 @@ Tb_Gates(
 \code{numeric} operative environmental temperature (K)
 }
 \description{
-Predicts body temperatures (operative environmental temperature) of an ectotherm in K.
+Predict Body Temperature (Operative Environmental Temperature) of an ectotherm in K.
 }
 \details{
 Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980}{TrenchR}. Omits evaporative and metabolic heat loss. Other sources: \insertCite{Mitchell1976}{TrenchR}, \insertCite{Kingsolver1983}{TrenchR}
 }
 \examples{
-Tb_Gates(A=1, D=0.001, psa_dir=0.6, psa_ref=0.4, psa_air=0.6, psa_g=0.2, T_g=303, T_a=310, Qabs=2, epsilon=0.95, H_L=10, ef=1.23, K=0.5)
+ Tb_Gates (A       = 1, 
+           D       = 0.001, 
+           psa_dir = 0.6, 
+           psa_ref = 0.4, 
+           psa_air = 0.6, 
+           psa_g   = 0.2, 
+           T_g     = 303, 
+           T_a     = 310, 
+           Qabs    = 2, 
+           epsilon = 0.95, 
+           H_L     = 10, 
+           ef      = 1.23, 
+           K       = 0.5)
 
 }
 \references{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/TempWindProfileFunctions.R
 \name{air_temp_profile_neutral}
 \alias{air_temp_profile_neutral}
-\title{Estimate temperature at a specified height under neutral conditions}
+\title{Estimate Temperature at a Specified Height Under Neutral Conditions}
 \usage{
 air_temp_profile_neutral(T_r, zr, z0, z, T_s)
 }
@@ -24,7 +24,11 @@ temperature (C)
 calculate temperature (C) at a specified height (m) within a boundary layer near the surface.  The velocity profile is the neutral profile described by \insertCite{Sellers1965}{TrenchR}. Function in equations (2) and (3) of \insertCite{Porter1973}{TrenchR}.
 }
 \examples{
-air_temp_profile_neutral(T_r = 20, zr = 0.1, z0 = 0.2, z = 0.15, T_s = 25)
+  air_temp_profile_neutral(T_r = 20, 
+                           zr  = 0.1, 
+                           z0  = 0.2, 
+                           z   = 0.15, 
+                           T_s = 25)
 
 
 }

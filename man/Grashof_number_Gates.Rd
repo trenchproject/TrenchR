@@ -24,7 +24,11 @@ Grashof_number_Gates(Ta, Tg, beta, D, nu)
 estimate the Grashof Number, which describes the abilty of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity \insertCite{Gates1980}{TrenchR}. Ratio of a buoyant force times an inertial force to the square of a viscous force.
 }
 \examples{
-  Grashof_number_Gates(Ta = 30, Tg = 35, beta = 0.00367, D = 0.001, nu = 1.2)
+  Grashof_number_Gates(Ta   = 30, 
+                       Tg   = 35, 
+                       beta = 0.00367,
+                       D    = 0.001, 
+                       nu   = 1.2)
 
 }
 \references{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Qmetabolism_from_mass}
 \alias{Qmetabolism_from_mass}
-\title{Calculate metabolism as a function of mass}
+\title{Calculate Metabolism as a Function of Mass}
 \usage{
 Qmetabolism_from_mass(m, taxa = "reptile")
 }
@@ -15,10 +15,11 @@ Qmetabolism_from_mass(m, taxa = "reptile")
 \code{numeric} metabolism (W)
 }
 \description{
-estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from \insertCite{Nagy2005}{TrenchR}.
+Estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from \insertCite{Nagy2005}{TrenchR}.
 }
 \examples{
-  Qmetabolism_from_mass(m = 12, "reptile")
+  Qmetabolism_from_mass(m    = 12,
+                        taxa = "reptile")
 
 }
 \references{

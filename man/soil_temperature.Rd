@@ -2,7 +2,7 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_temperature}
 \alias{soil_temperature}
-\title{Function to calculate soil temperature in C using ODEs.}
+\title{Function to Calculate Soil Temperature in C using ODEs.}
 \usage{
 soil_temperature(
   z_r.intervals = 12,
@@ -59,25 +59,29 @@ Function called to calculate soil temperature in C from \insertCite{Beckman1973;
 }
 \examples{
   set.seed(123)
-  temp_vector       <- runif(96, min = -10, max = 10)
-  wind_speed_vector <- runif(96, min = 0, max = 0.4)
-  time_vector       <- rep(1:24, 4)
-  solrad_vector     <- rep(c(rep(0, 6), seq(10, 700, length.out = 6), seq(700, 10, length.out = 6), rep(0, 6)), 4)
+  temp_vector       <- runif(48, min = -10, max = 10)
+  wind_speed_vector <- runif(48, min = 0, max = 0.4)
+  time_vector       <- rep(1:24, 2)
+  solrad_vector     <- rep(c(rep(0, 6), 
+                             seq(10, 700, length.out = 6), 
+                             seq(700, 10, length.out = 6), 
+                             rep(0, 6)),
+                           2)
 
   soil_temperature(z_r.intervals = 12, 
-                   z_r = 1.5, 
-                   z = 2, 
-                   T_a = temp_vector, 
-                   u = wind_speed_vector, 
-                   Tsoil0 = 20, 
-                   z0 = 0.02, 
-                   SSA = 0.7, 
-                   TimeIn = time_vector, 
-                   H = solrad_vector, 
+                   z_r           = 1.5, 
+                   z             = 2, 
+                   T_a           = temp_vector, 
+                   u             = wind_speed_vector, 
+                   Tsoil0        = 20, 
+                   z0            = 0.02, 
+                   SSA           = 0.7, 
+                   TimeIn        = time_vector, 
+                   H             = solrad_vector, 
                    water_content = 0.2, 
-                   air_pressure = 85, 
-                   rho_so = 1620, 
-                   shade = FALSE)
+                   air_pressure  = 85, 
+                   rho_so        = 1620, 
+                   shade         = FALSE)
 
 }
 \references{

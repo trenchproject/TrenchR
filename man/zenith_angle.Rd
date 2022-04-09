@@ -2,7 +2,7 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{zenith_angle}
 \alias{zenith_angle}
-\title{Utility: Calculate Zenith Angle}
+\title{Calculate Zenith Angle}
 \usage{
 zenith_angle(doy, lat, lon, hour, offset = NA)
 }
@@ -24,8 +24,10 @@ zenith_angle(doy, lat, lon, hour, offset = NA)
 calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
-
-zenith_angle(doy = 112, lat = 47.61, lon = -122.33, hour = 12)
+  zenith_angle(doy  = 112, 
+               lat  = 47.61, 
+               lon  = -122.33, 
+               hour = 12)
 
 }
 \references{

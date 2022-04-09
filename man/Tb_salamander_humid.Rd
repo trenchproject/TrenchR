@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Tb_salamander_humid}
 \alias{Tb_salamander_humid}
-\title{Calculate humid operative temperature}
+\title{Calculate Humid Operative Temperature}
 \usage{
 Tb_salamander_humid(r_i, r_b, D, T_a, elev, e_a, e_s, Qabs, epsilon = 0.96)
 }
@@ -32,7 +32,15 @@ Tb_salamander_humid(r_i, r_b, D, T_a, elev, e_a, e_s, Qabs, epsilon = 0.96)
 calculate humid operative temperature (adaptation of \insertCite{Campbell1998}{TrenchR}). Source: \insertCite{Riddell2018}{TrenchR}.
 }
 \examples{
-  Tb_salamander_humid(r_i = 4, r_b = 1, D = 0.01, T_a = 20, elev = 500, e_a = 2.0, e_s = 2.5, Qabs = 400, epsilon = 0.96)
+  Tb_salamander_humid(r_i     = 4, 
+                      r_b     = 1, 
+                      D       = 0.01, 
+                      T_a     = 20, 
+                      elev    = 500, 
+                      e_a     = 2.0, 
+                      e_s     = 2.5, 
+                      Qabs    = 400, 
+                      epsilon = 0.96)
 
 }
 \references{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{boundary_layer_resistance}
 \alias{boundary_layer_resistance}
-\title{Estimate the boundary layer resistance}
+\title{Estimate the Boundary Layer Resistance}
 \usage{
 boundary_layer_resistance(T_a, e_s, e_a, elev, D, u = NA)
 }
@@ -26,7 +26,12 @@ boundary_layer_resistance(T_a, e_s, e_a, elev, D, u = NA)
 estimate boundary layer resistance under free convection. Based on the function in \insertCite{Riddell2018}{TrenchR}.
 }
 \examples{
-  boundary_layer_resistance(T_a = 293, e_s = 2.5, e_a = 2.0, elev = 500, D = 0.007, u = 2)
+  boundary_layer_resistance(T_a  = 293, 
+                            e_s  = 2.5, 
+                            e_a  = 2.0, 
+                            elev = 500, 
+                            D    = 0.007, 
+                            u    = 2)
 
 }
 \references{

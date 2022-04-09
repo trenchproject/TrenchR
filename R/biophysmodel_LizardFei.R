@@ -34,19 +34,25 @@
 #'  \insertAllCited{}
 #'  
 #' @examples
-#'   Tb_Fei(
-#'     T_a = 293,
-#'     T_g = 300,
-#'     H = 1300, 
-#'     lw = 60, 
-#'     shade = 0.5, 
-#'     m = 10.5, 
-#'     Acondfact = 0.1, 
-#'     Agradfact = 0.3)
+#'   Tb_Fei(T_a       = 293,
+#'          T_g       = 300,
+#'          H         = 1300, 
+#'          lw        = 60, 
+#'          shade     = 0.5, 
+#'          m         = 10.5, 
+#'          Acondfact = 0.1, 
+#'          Agradfact = 0.3)
 #' 
 #' 
 
-Tb_Fei <- function(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact){
+Tb_Fei <- function(T_a, 
+                   T_g, 
+                   H, 
+                   lw, 
+                   shade, 
+                   m, 
+                   Acondfact, 
+                   Agradfact) {
   
   stopifnot(T_a > 200, T_a < 400, T_g > 200, T_g < 400, H >= 0, lw >= 0, shade >= 0, shade <= 1, m >= 0, Acondfact >= 0, Acondfact <= 1, Agradfact >= 0, Agradfact <= 1)
   

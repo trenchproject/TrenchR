@@ -2,7 +2,7 @@
 % Please edit documentation in R/TempWindProfileFunctions.R
 \name{wind_speed_profile_neutral}
 \alias{wind_speed_profile_neutral}
-\title{Estimate wind speed at a specific height under neutral conditions.}
+\title{Estimate Wind Speed at a Specific Height Under Neutral Conditions}
 \usage{
 wind_speed_profile_neutral(u_r, zr, z0, z)
 }
@@ -19,10 +19,13 @@ wind_speed_profile_neutral(u_r, zr, z0, z)
 windspeed (m/s)
 }
 \description{
-calculate wind speed (m/s) at a specified height (m) within a boundary layer near the surface.  The profile assumes neutral conditions. The velocity profile is the neutral profile described by \insertCite{Sellers1965}{TrenchR}. Function is equations (2) and (3) of \insertCite{Porter1973}{TrenchR}.
+Calculate wind speed (m/s) at a specified height (m) within a boundary layer near the surface.  The profile assumes neutral conditions. The velocity profile is the neutral profile described by \insertCite{Sellers1965}{TrenchR}. Function is equations (2) and (3) of \insertCite{Porter1973}{TrenchR}.
 }
 \examples{
-wind_speed_profile_neutral(u_r = 0.1, zr = 0.1, z0 = 0.2, z = 0.15)
+  wind_speed_profile_neutral(u_r = 0.1, 
+                             zr  = 0.1, 
+                             z0  = 0.2, 
+                             z   = 0.15)
 
 }
 \references{

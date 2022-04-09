@@ -2,7 +2,7 @@
 % Please edit documentation in R/DTRFunctions.R
 \name{diurnal_temp_variation_sine}
 \alias{diurnal_temp_variation_sine}
-\title{Diurnal temperature across hours}
+\title{Diurnal Temperature Across Hours}
 \usage{
 diurnal_temp_variation_sine(T_max, T_min, t)
 }
@@ -20,7 +20,9 @@ diurnal_temp_variation_sine(T_max, T_min, t)
 estimate temperature for a specified hour using the sine interpolation in \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
-diurnal_temp_variation_sine(T_max = 30, T_min = 10, t = 11)
+  diurnal_temp_variation_sine(T_max = 30, 
+                              T_min = 10, 
+                              t     = 11)
 
 }
 \references{

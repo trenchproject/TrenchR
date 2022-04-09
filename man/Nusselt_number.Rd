@@ -20,7 +20,9 @@ Nusselt_number(H_L, D, K)
 estimate the Nusselt Number, which describes dimensionless conductance \insertCite{Gates1980}{TrenchR}
 }
 \examples{
-  Nusselt_number(H_L = 20, D = 0.01, K = 0.5)
+  Nusselt_number(H_L = 20, 
+                 D   = 0.01,
+                 K   = 0.5)
 
 }
 \references{

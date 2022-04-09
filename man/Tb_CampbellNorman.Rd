@@ -2,7 +2,7 @@
 % Please edit documentation in R/OperativeTemperatureFunctions.R
 \name{Tb_CampbellNorman}
 \alias{Tb_CampbellNorman}
-\title{Predicts body temperatures (operative environmental temperature) of an ectotherm in K.}
+\title{Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K}
 \usage{
 Tb_CampbellNorman(
   T_a,
@@ -39,13 +39,21 @@ Tb_CampbellNorman(
 operative environmental temperature, T_e (K)
 }
 \description{
-Predicts body temperatures (operative environmental temperature) of an ectotherm in K.
+Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
 }
 \details{
 Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Campbell1998}{TrenchR} and \insertCite{Mitchell1976}{TrenchR}.
 }
 \examples{
-Tb_CampbellNorman(T_a = 303, T_g = 303, S = 823, alpha_S = 0.7, alpha_L = 0.96, epsilon = 0.96, c_p = 29.3, D = 0.17, V = 1)
+Tb_CampbellNorman (T_a     = 303, 
+                   T_g     = 303, 
+                   S       = 823, 
+                   alpha_S = 0.7, 
+                   alpha_L = 0.96, 
+                   epsilon = 0.96, 
+                   c_p     = 29.3, 
+                   D       = 0.17, 
+                   V       = 1)
 
 }
 \references{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/RadiationPartitioningFunctions.R
 \name{partition_solar_radiation}
 \alias{partition_solar_radiation}
-\title{Estimate the diffuse fraction (k_d) for partitioning solar radiation}
+\title{Estimate the Diffuse Fraction (k_d) for Partitioning Solar Radiation}
 \usage{
 partition_solar_radiation(method, kt, lat = NA, sol.elev = NA)
 }
@@ -22,7 +22,10 @@ diffuse fraction
 partition solar radiation (W m^-2) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in \insertCite{Wong2001}{TrenchR}.
 }
 \examples{
-partition_solar_radiation(method = "Erbs", kt = 0.5, lat = 40, sol.elev = 60)
+  partition_solar_radiation(method   = "Erbs", 
+                            kt       = 0.5, 
+                            lat      = 40, 
+                            sol.elev = 60)
 
 }
 \references{

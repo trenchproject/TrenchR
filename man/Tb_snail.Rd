@@ -2,7 +2,7 @@
 % Please edit documentation in R/biophysmodel_Snail.R
 \name{Tb_snail}
 \alias{Tb_snail}
-\title{Predicts body temperature (operative environmental temperature) of a marine snail in C}
+\title{Predict Body Temperature (Operative Environmental Temperature) of a Marine Snail in C}
 \usage{
 Tb_snail(temp, Len, solar, WS, CC, WL, WSH)
 }
@@ -28,7 +28,13 @@ Tb_snail(temp, Len, solar, WS, CC, WL, WSH)
 Predicts body temperature of a snail in C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on \insertCite{Iacarella2012}{TrenchR}. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication.
 }
 \examples{
-  Tb_snail(temp = 25, Len = 0.012, solar = 800, WS = 1, CC = 0.5, WL = 0, WSH = 10)
+  Tb_snail(temp  = 25, 
+           Len   = 0.012, 
+           solar = 800, 
+           WS    = 1, 
+           CC    = 0.5, 
+           WL    = 0, 
+           WSH   = 10)
 
 }
 \references{

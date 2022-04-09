@@ -2,7 +2,7 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{airpressure_from_elev}
 \alias{airpressure_from_elev}
-\title{Utility: Estimate air pressure in kPa (Kilo Pascal)}
+\title{Estimate Air Pressure in kPa}
 \usage{
 airpressure_from_elev(elev)
 }

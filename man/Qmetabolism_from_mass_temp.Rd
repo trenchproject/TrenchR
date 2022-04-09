@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Qmetabolism_from_mass_temp}
 \alias{Qmetabolism_from_mass_temp}
-\title{Calculate basal (or resting) metabolism as a function of mass and body temperature.}
+\title{Calculate Basal (Resting) Metabolism as a Function of Mass and Body Temperature}
 \usage{
 Qmetabolism_from_mass_temp(m, T_b, taxa)
 }
@@ -17,10 +17,12 @@ Qmetabolism_from_mass_temp(m, T_b, taxa)
 \code{numeric} basal metabolim (W)
 }
 \description{
-estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). Reference: \insertCite{Gillooly2001}{TrenchR}.
+Estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). Reference: \insertCite{Gillooly2001}{TrenchR}.
 }
 \examples{
-  Qmetabolism_from_mass_temp(m = 100, T_b = 303, "reptile")
+  Qmetabolism_from_mass_temp(m    = 100, 
+                             T_b  = 303, 
+                             taxa = "reptile")
 
 }
 \references{

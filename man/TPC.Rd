@@ -2,7 +2,7 @@
 % Please edit documentation in R/TPCfunctions.R
 \name{TPC}
 \alias{TPC}
-\title{Construct a Gaussian-quadratic thermal performance curve.}
+\title{Construct a Gaussian-Quadratic Thermal Performance Curve.}
 \usage{
 TPC(T, Topt, CTmin, CTmax)
 }
@@ -25,7 +25,10 @@ Constructs a thermal performance curve by combining as a gaussian function to de
 Construct a Gaussian-quadratic thermal performance curve.
 }
 \examples{
-TPC(T = 0:60, Topt = 30, CTmin = 10, CTmax = 40)
+  TPC(T     = 0:60, 
+      Topt  = 30, 
+      CTmin = 10, 
+      CTmax = 40)
 
 }
 \references{

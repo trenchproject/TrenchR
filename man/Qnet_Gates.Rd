@@ -2,7 +2,7 @@
 % Please edit documentation in R/OperativeTemperatureFunctions.R
 \name{Qnet_Gates}
 \alias{Qnet_Gates}
-\title{Estimates net energy exchange (W) between an animal and the environment.}
+\title{Estimate Net Energy Exchange (W) Between an Animal and the Environment}
 \usage{
 Qnet_Gates(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap)
 }
@@ -23,13 +23,18 @@ Qnet_Gates(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap)
 net energy exchange (W)
 }
 \description{
-Estimates net energy exchange (W) between an animal and the environment.
+Estimate Net Energy Exchange (W) Between an Animal and the Environment
 }
 \details{
 Estimates net energy exchange between an animal and the environment in W. Follows \insertCite{Gates1980}{TrenchR} and others.
 }
 \examples{
-Qnet_Gates(Qabs=500, Qemit=10, Qconv=100, Qcond=100, Qmet=10, Qevap=5)
+Qnet_Gates(Qabs  = 500,
+           Qemit = 10, 
+           Qconv = 100, 
+           Qcond = 100, 
+           Qmet  = 10, 
+           Qevap = 5)
 
 }
 \references{

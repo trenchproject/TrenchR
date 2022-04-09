@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Nu_from_Re}
 \alias{Nu_from_Re}
-\title{Estimate the Nusselt number from the Reynolds number}
+\title{Estimate the Nusselt Number from the Reynolds Number}
 \usage{
 Nu_from_Re(Re, taxa = "cylinder")
 }
@@ -18,7 +18,8 @@ Nu_from_Re(Re, taxa = "cylinder")
 estimate the Nusselt number from the Reynolds number for various taxa.  Source: \insertCite{Mitchell1976}{TrenchR} See Table 1. Convective Heat Trasfer Relations for Animal Shapes.
 }
 \examples{
-  Nu_from_Re(Re = 5, taxa = "cylinder")
+  Nu_from_Re(Re   = 5, 
+             taxa = "cylinder")
 
 }
 \references{

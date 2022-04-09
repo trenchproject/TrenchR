@@ -2,7 +2,7 @@
 % Please edit documentation in R/RadiationPartitioningFunctions.R
 \name{proportion_diffuse_solar_radiation}
 \alias{proportion_diffuse_solar_radiation}
-\title{Estimate the ratio of diffuse to direct solar radiation}
+\title{Estimate the Ratio of Diffuse to Direct Solar Radiation}
 \usage{
 proportion_diffuse_solar_radiation(psi, p_a, A)
 }
@@ -20,7 +20,9 @@ diffuse fraction
 Estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the \insertCite{McCullough1971}{TrenchR} SOLRAD model described in \insertCite{Tracy1983}{TrenchR}
 }
 \examples{
-proportion_diffuse_solar_radiation(psi = 60, p_a = 86.1, A = 0.25)
+  proportion_diffuse_solar_radiation(psi = 60, 
+                                     p_a = 86.1, 
+                                     A   = 0.25)
 
 }
 \references{

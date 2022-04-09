@@ -27,7 +27,10 @@ Qthermal_radiation_absorbed(
 estimate longwave (thermal) radiation (W) absorbed from the sky and the ground \insertCite{Campbell1998}{TrenchR}. Source: \insertCite{Riddell2018}{TrenchR}
 }
 \examples{
-  Qthermal_radiation_absorbed(T_a = 20, T_g = 25, epsilon_ground = 0.97, a_longwave = 0.965)
+  Qthermal_radiation_absorbed(T_a            = 20, 
+                              T_g            = 25, 
+                              epsilon_ground = 0.97, 
+                              a_longwave     = 0.965)
 
 }
 \references{

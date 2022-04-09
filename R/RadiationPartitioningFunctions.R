@@ -1,4 +1,4 @@
-#' @title Estimate the diffuse fraction (k_d) for partitioning solar radiation
+#' @title Estimate the Diffuse Fraction (k_d) for Partitioning Solar Radiation
 #' 
 #' @description  partition solar radiation (W m^-2) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in \insertCite{Wong2001}{TrenchR}.
 #' 
@@ -22,9 +22,15 @@
 #'   \insertAllCited{}
 #' 
 #' @examples
-#' partition_solar_radiation(method = "Erbs", kt = 0.5, lat = 40, sol.elev = 60)
+#'   partition_solar_radiation(method   = "Erbs", 
+#'                             kt       = 0.5, 
+#'                             lat      = 40, 
+#'                             sol.elev = 60)
 #'
-partition_solar_radiation <- function(method, kt, lat = NA, sol.elev = NA){  
+partition_solar_radiation <- function (method, 
+                                       kt, 
+                                       lat = NA, 
+                                       sol.elev = NA){  
  
   stopifnot(method %in% c("Liu_Jordan", "Orgill_Hollands", "Erbs", "Olyphant", "Spencer", "Reindl-1", "Reindl-2", "Lam_Li"), kt >= 0, kt <= 1)
   
@@ -121,7 +127,7 @@ partition_solar_radiation <- function(method, kt, lat = NA, sol.elev = NA){
 
 }  
 
-#' @title Estimate the ratio of diffuse to direct solar radiation
+#' @title Estimate the Ratio of Diffuse to Direct Solar Radiation
 #' 
 #' @description Estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the \insertCite{McCullough1971}{TrenchR} SOLRAD model described in \insertCite{Tracy1983}{TrenchR}
 #' 
@@ -143,9 +149,13 @@ partition_solar_radiation <- function(method, kt, lat = NA, sol.elev = NA){
 #'   \insertAllCited{}
 #' 
 #' @examples
-#' proportion_diffuse_solar_radiation(psi = 60, p_a = 86.1, A = 0.25)
+#'   proportion_diffuse_solar_radiation(psi = 60, 
+#'                                      p_a = 86.1, 
+#'                                      A   = 0.25)
 #'
-proportion_diffuse_solar_radiation <- function(psi, p_a, A){  
+proportion_diffuse_solar_radiation <- function (psi, 
+                                                p_a, 
+                                                A) {  
   
   stopifnot(psi >= 0, psi <= 89.5, p_a > 0, A >= 0, A <= 1)
  

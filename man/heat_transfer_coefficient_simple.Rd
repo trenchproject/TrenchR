@@ -20,7 +20,9 @@ heat_transfer_coefficient_simple(V, D, type)
 estimate the heat transfer coefficient \insertCite{Mitchell1976}{TrenchR} using either the relationship in \insertCite{Spotila1992}{TrenchR} or that in \insertCite{Gates1980}{TrenchR}.
 }
 \examples{
-  heat_transfer_coefficient_simple(V = 0.5, D = 0.05, type = "Gates")
+  heat_transfer_coefficient_simple(V    = 0.5, 
+                                   D    = 0.05, 
+                                   type = "Gates")
 
 }
 \references{

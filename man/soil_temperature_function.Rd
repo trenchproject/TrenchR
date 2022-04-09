@@ -2,7 +2,7 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_temperature_function}
 \alias{soil_temperature_function}
-\title{Function to calculate soil temperature.}
+\title{Function to Calculate Soil Temperature.}
 \usage{
 soil_temperature_function(j, T_so, params)
 }
@@ -24,7 +24,11 @@ Function called to calculate soil temperature from \insertCite{Beckman1973;textu
   temp_vector       <- runif(96, min = -10, max = 10)
   wind_speed_vector <- runif(96, min = 0, max = 0.4)
   time_vector       <- rep(1:24, 4)
-  solrad_vector     <- rep(c(rep(0, 6), seq(10, 700, length.out = 6), seq(700, 10, length.out = 6), rep(0, 6)), 4)
+  solrad_vector     <- rep(c(rep(0, 6), 
+                             seq(10, 700, length.out = 6), 
+                             seq(700, 10, length.out = 6), 
+                             rep(0, 6)),
+                           4)
   params            <- list(SSA        = 0.7, 
                             epsilon_so = 0.98, 
                             k_so       = 0.293, 

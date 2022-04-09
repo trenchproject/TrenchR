@@ -2,7 +2,7 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{fahrenheit_to_celsius}
 \alias{fahrenheit_to_celsius}
-\title{Utility: Converts Fahrenheit to Celsius}
+\title{Converts Fahrenheit to Celsius}
 \usage{
 fahrenheit_to_celsius(T)
 }

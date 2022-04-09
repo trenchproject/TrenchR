@@ -2,7 +2,7 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{dec_angle}
 \alias{dec_angle}
-\title{Utility: Calculate solar declination in radians}
+\title{Calculate Solar Declination in Radians}
 \usage{
 dec_angle(doy)
 }

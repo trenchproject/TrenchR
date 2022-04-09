@@ -56,18 +56,17 @@ Predicts body temperatures (operative environmental temperatures) of a butterfly
 Thermal radiative flux is calculated following \insertCite{Gates1980;textual}{TrenchR} based on \insertCite{Swinbank1960;textual}{TrenchR} and \insertCite{Kingsolver1983;textual}{TrenchR} estimates using the Brunt equation with black body sky temperature from \insertCite{Swinbank1963;textual}{TrenchR}.
 }
 \examples{
-  Tb_butterfly(
-    T_a = 25, 
-    Tg = 25, 
-    Tg_sh = 20, 
-    u = 0.4, 
-    H_sdir = 300, 
-    H_sdif = 100, 
-    z = 30, 
-    D = 0.36, 
-    delta = 1.46, 
-    alpha = 0.6, 
-    r_g = 0.3)
+  Tb_butterfly(T_a    = 25, 
+               Tg     = 25, 
+               Tg_sh  = 20, 
+               u      = 0.4, 
+               H_sdir = 300, 
+               H_sdif = 100, 
+               z      = 30, 
+               D      = 0.36, 
+               delta  = 1.46, 
+               alpha  = 0.6, 
+               r_g    = 0.3)
 
 }
 \references{

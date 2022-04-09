@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{saturation_water_vapor_pressure}
 \alias{saturation_water_vapor_pressure}
-\title{Approximate saturation water vapor pressure}
+\title{Approximate Saturation Water Vapor Pressure}
 \usage{
 saturation_water_vapor_pressure(T_a)
 }
@@ -16,7 +16,7 @@ saturation_water_vapor_pressure(T_a)
 Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C using Rosenberg 1974 in \insertCite{Spotila1992}{TrenchR}. See also NichMapR WETAIR and DRYAIR functions \insertCite{Kearney2020}{TrenchR}.
 }
 \examples{
-  saturation_water_vapor_pressure(T_a=20)
+  saturation_water_vapor_pressure(T_a = 20)
 
 }
 \references{
