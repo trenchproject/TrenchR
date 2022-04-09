@@ -231,7 +231,7 @@ points(psi.seq, rd[2,], type="l", lty="dotted")
 points(psi.seq, rd[3,], type="l", lty="dashed")
 legend("topright", title="solar radiation flux", legend=c("direct", "diffuse", "reflected"), lty=c("solid","dotted","dashed") )
 ```
-Similar but alternative algorithms for estimating hourly direct solar radiation ($W m^{-2}$) were adapted from a comparison of the methods by Tracy et al. [-@tracy1983estimating]. Algorithms from earleir versions of Campbell and Norman [-@campbell2012introduction] and Gates [-@gates2012biophysical] are implemented. Both estimate radiation as a function of latitude, day of year, elevation, and time.
+Similar but alternative algorithms for estimating hourly direct solar radiation ($W m^{-2}$) were adapted from a comparison of the methods by Tracy et al. [-@tracy1983estimating]. Algorithms from earlier versions of Campbell and Norman [-@campbell2012introduction] and Gates [-@gates2012biophysical] are implemented. Both estimate radiation as a function of latitude, day of year, elevation, and time.
 
 ```{r, fig.height=3, fig.width=5}
 par(mar=c(5,5,3,2))

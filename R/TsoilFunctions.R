@@ -160,7 +160,7 @@ soil_temperature_integrand <- function (x,
 #' 
 #' @param T_inst \code{numeric} instantaneous air temperature (K)
 #' 
-#' @param T_s \code{numeric} initial soil suface temperature (C) 
+#' @param T_s \code{numeric} initial soil surface temperature (C) 
 #' 
 #' @return soil temperature function
 #' 
@@ -380,7 +380,7 @@ soil_temperature_function <- function (j,
 #' 
 #' @param z0 \code{numeric} surface roughness (meters)
 #' 
-#' @param SSA \code{numeric} solar absorbtivity of soil surface as a fraction
+#' @param SSA \code{numeric} solar absorptivity of soil surface as a fraction
 #' 
 #' @param TimeIn \code{numeric} vector of time periods for the model
 #' 

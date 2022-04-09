@@ -26,9 +26,9 @@
 #' 
 #' @param alpha_S \code{numeric} lizard solar absorptivity, alpha_S=0.9 \insertCite{Gates1980}{TrenchR} (Table 11.4)
 #' 
-#' @param alpha_L \code{numeric} lizard thermal absoptivity, alpha_L=0.965 \insertCite{Bartlett1967}{TrenchR} 
+#' @param alpha_L \code{numeric} lizard thermal absorptivity, alpha_L=0.965 \insertCite{Bartlett1967}{TrenchR} 
 #' 
-#' @param epsilon_s \code{numeric} surface emisivity of lizards, epsilon_s=0.965 \insertCite{Bartlett1967}{TrenchR}
+#' @param epsilon_s \code{numeric} surface emissivity of lizards, epsilon_s=0.965 \insertCite{Bartlett1967}{TrenchR}
 #' 
 #' @param F_d \code{numeric} the view factor between the surface of the lizard and diffuse solar radiation \insertCite{Bartlett1967}{TrenchR}
 #' 
@@ -36,7 +36,7 @@
 #' 
 #' @param F_a \code{numeric} the view factor between the surface of the lizard and atmospheric radiation
 #' 
-#' @param F_g \code{numeric} the view factor between the surface of the lizard and ground thermal radation
+#' @param F_g \code{numeric} the view factor between the surface of the lizard and ground thermal radiation
 #' 
 #' @return T_e \code{numeric} Operative temperature (C)
 #' 

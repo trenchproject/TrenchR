@@ -347,8 +347,8 @@ direct_solar_radiation <- function (lat,
   #-------
   # Gates 1962
   
-  w <- 6.93 #precipitable water vapour (mm)
-  #"The amount of water vapour in the atmosphere in the zenith direction. Varies from I m for very cold dry atmospheres to about 20 mm in warm moist atmosphere. It can get as high as 30 mm." (Gates, 1962)
+  w <- 6.93 #precipitable water vapor (mm)
+  #"The amount of water vapor in the atmosphere in the zenith direction. Varies from I m for very cold dry atmospheres to about 20 mm in warm moist atmosphere. It can get as high as 30 mm." (Gates, 1962)
   
   d <- 0.896 #haze-dust concentration (particles cm^{-3})
   #"The concentration of dust and other particulates in the air. Number varies from 0.2-3.0. On clear days it will be 0.6-1.0. Around big cities it will be 1.4-2.0." (Gates, 1962)

@@ -98,7 +98,7 @@ Tb_butterfly <- function (T_a,
 
   # Butterfly Parameters
 
-    # surface emisivity, ranges from 0.95-1
+    # surface emissivity, ranges from 0.95-1
 
       epsilon_s <- 0.97; 
 
@@ -122,7 +122,7 @@ Tb_butterfly <- function (T_a,
 
       k_a <- 0.25
 
-    #  kinematic viscocity of air, cm^2/s at 300K 
+    #  kinematic viscosity of air, cm^2/s at 300K 
     #     http://www.engineeringtoolbox.com/air-absolute-kinematic-viscosity-d_601.html
 
       v <- 15.68 * 10^-2  

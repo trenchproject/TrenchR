@@ -229,7 +229,7 @@ Relations among the dimensionless groups can also be used for
 estimation. Empirically-derived relationships can be used to estimate
 the Nusselt number $Nu$ from the Reynolds number $Re$ or the Grashof
 number $Gr$. Comparisons of $Gr$ and $Re$ allow determining whether
-modelling free or forced convection is appropriate. Forced convection is
+modeling free or forced convection is appropriate. Forced convection is
 appropriate when $Gr \leq 16 Re^2$. For convenience, we provide the
 relationships as R functions:
 
@@ -1212,9 +1212,9 @@ abline(a=0,b=1, col="gray")
 legend("bottomright",title= expression("function"), legend=c("Tb_limpet", "Tb_limpetBH", "Tb_Snail"), lty=c("solid", "dashed","dotted") )
 ```
 
-## Noctural Salamanders (humid operative temperatures)
+## Nocturnal Salamanders (humid operative temperatures)
 
-We present a function 'Tb_salamand_humid' adapted from Riddell et al. 
+We present a function 'Tb_salamander_humid' adapted from Riddell et al. 
 [-@riddell2018resistance] and Campbell and Norman [-@campbell2012introduction] 
 that calculates the humid operative temperature ($T_{eh}$) of a nocturnal
 salamander. The function estimates $T_{eh}$ by accounting for evaporative

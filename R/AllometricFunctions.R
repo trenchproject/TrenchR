@@ -247,7 +247,7 @@ surface_area_from_volume <- function (V,
 #' 
 #' @param L \code{numeric} length (m). 
 #'  \cr \cr
-#'  Snout-vent length for amphibians and reptiles is used, except for turltes (carapace length is used).
+#'  Snout-vent length for amphibians and reptiles is used, except for turtles (carapace length is used).
 #'
 #' @param taxon \code{character} taxon of organism, current choices: \code{"lizard"}, \code{"frog"}, \code{"sphere"}.
 #' 
