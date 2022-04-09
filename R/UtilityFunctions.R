@@ -4,20 +4,14 @@
 #'
 #' @param day \code{character} numerical date in standard format (e.g. "2017-01-02", "01-02", "01/02/2017" etc). 
 #'
-#' @param format \code{character} date format following \code{\link[base]{POSIXlt}}" conventions. Default value = "%Y-%m-%d" 
+#' @param format \code{character} date format following \code{\link[base]{POSIXlt}} conventions. Default value = "\%Y-\%m-\%d" 
 #'
 #' @return \code{numeric} Julian day number, 1-366 (eg. 1 for January 1st)
-#' 
-#' @details
-#' \cr \cr
 #' 
 #' @family utility functions  
 #'  
 #' @export
 #' 
-#' @references
-#'   \insertAllCited{}
-#'
 #' @examples
 #'   day_of_year(day = "2017-04-22", format = "%Y-%m-%d")
 #'   day_of_year(day = "2017-04-22")

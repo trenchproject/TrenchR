@@ -495,7 +495,7 @@ Qevaporation <- function(A, T_b, taxa, rho_s = NA, rho_a = NA, h = NA, H = NA, r
 
 #' @title Approximate saturation water vapor pressure
 #' 
-#' @description Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C using Rosenberg 1974 in \insertCite{Spotila1992}{TrenchR}. See also NichMapR WETAIR and DRYAIR functions \insertCite{Keaney2020}{TrenchR}.
+#' @description Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C using Rosenberg 1974 in \insertCite{Spotila1992}{TrenchR}. See also NichMapR WETAIR and DRYAIR functions \insertCite{Kearney2020}{TrenchR}.
 #' 
 #' @param T_a \code{numeric} air temperature (C)
 #' 

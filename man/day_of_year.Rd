@@ -9,7 +9,7 @@ day_of_year(day, format = "\%Y-\%m-\%d")
 \arguments{
 \item{day}{\code{character} numerical date in standard format (e.g. "2017-01-02", "01-02", "01/02/2017" etc).}
 
-\item{format}{\code{character} date format following \code{\link[base]{POSIXlt}}" conventions. Default value = "%Y-%m-%d"}
+\item{format}{\code{character} date format following \code{\link[base]{POSIXlt}} conventions. Default value = "\%Y-\%m-\%d"}
 }
 \value{
 \code{numeric} Julian day number, 1-366 (eg. 1 for January 1st)
@@ -17,17 +17,11 @@ day_of_year(day, format = "\%Y-\%m-\%d")
 \description{
 Convert a date (day, month, year) to Julian Day (day of year).
 }
-\details{
-\cr \cr
-}
 \examples{
   day_of_year(day = "2017-04-22", format = "\%Y-\%m-\%d")
   day_of_year(day = "2017-04-22")
   day_of_year(day = "04/22/2017", format = "\%m/\%d/\%Y")
 
-}
-\references{
-\insertAllCited{}
 }
 \seealso{
 Other utility functions: 
