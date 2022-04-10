@@ -13,7 +13,7 @@ kelvin_to_celsius(T)
 \code{numeric} temperature (Celsius).
 }
 \description{
-Convert temperature from Kelvin to Celsius. Source: https://swcarpentry.github.io.
+Convert temperature from Kelvin to Celsius \insertCite{Blischak}{TrenchR}.
 }
 \examples{
   kelvin_to_celsius(T = 270)

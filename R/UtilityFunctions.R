@@ -321,7 +321,7 @@ azimuth_angle <- function (doy,
 
 #' @title Air Pressure in kPa 
 #'
-#' @description Calculate estimated air pressure (kPa) as a function of elevation. Source: http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html.
+#' @description Calculate estimated air pressure (kPa) as a function of elevation \insertCite{engingeeringtoolbox}{TrenchR}.
 #' 
 #' @param elev \code{numeric} elevation (meters).
 #' .
@@ -347,7 +347,7 @@ airpressure_from_elev <- function (elev) {
 
 #' @title Convert Fahrenheit to Kelvin
 #' 
-#' @description Convert temperature from Fahrenheit to Kelvin. Source: https://swcarpentry.github.io.
+#' @description Convert temperature from Fahrenheit to Kelvin \insertCite{Blischak}{TrenchR}.
 #' 
 #' @param T \code{numeric} temperature (Fahrenheit).
 #' 
@@ -371,7 +371,7 @@ fahrenheit_to_kelvin <- function (T) {
 
 #' @title Convert Kelvin to Celsius
 #' 
-#' @description Convert temperature from Kelvin to Celsius. Source: https://swcarpentry.github.io.
+#' @description Convert temperature from Kelvin to Celsius \insertCite{Blischak}{TrenchR}.
 #' 
 #' @param T \code{numeric} temperature (Kelvin).
 #' 
@@ -395,7 +395,7 @@ kelvin_to_celsius <- function (T) {
 
 #' @title Converts Fahrenheit to Celsius
 #' 
-#' @description Convert temperature from Fahrenheit to Celsius. Source: https://swcarpentry.github.io.
+#' @description Convert temperature from Fahrenheit to Celsius \insertCite{Blischak}{TrenchR}.
 #' 
 #' @param T \code{numeric} temperature (Fahrenheit).
 #' 

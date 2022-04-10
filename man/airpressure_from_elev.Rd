@@ -14,7 +14,7 @@ airpressure_from_elev(elev)
 \code{numeric} air pressure (kPa).
 }
 \description{
-Calculate estimated air pressure (kPa) as a function of elevation. Source: http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html.
+Calculate estimated air pressure (kPa) as a function of elevation \insertCite{engingeeringtoolbox}{TrenchR}.
 }
 \examples{
   airpressure_from_elev(elev = 1500)

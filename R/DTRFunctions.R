@@ -128,7 +128,7 @@ diurnal_temp_variation_sine <- function (T_max,
 #'
 #' @details  Estimates temperature across hours using sine and square root functions
 #' 
-#' @description  estimate temperature for a specified hour using sine and square root functions. Source: \insertCite{Cesaraccio2001}{TrenchR}
+#' @description  estimate temperature for a specified hour using sine and square root functions \insertCite{Cesaraccio2001}{TrenchR}.
 #' 
 #' @param t \code{numeric} hour or hours for temperature estimate.
 #' 

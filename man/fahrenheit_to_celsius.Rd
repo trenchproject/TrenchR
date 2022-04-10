@@ -13,7 +13,7 @@ fahrenheit_to_celsius(T)
 \code{numeric} temperature (Celsius).
 }
 \description{
-Convert temperature from Fahrenheit to Celsius. Source: https://swcarpentry.github.io.
+Convert temperature from Fahrenheit to Celsius \insertCite{Blischak}{TrenchR}.
 }
 \examples{
   fahrenheit_to_celsius(T = 85)

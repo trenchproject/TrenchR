@@ -1259,7 +1259,7 @@ Grashof_number_Gates <- function (Ta,
 
 #' @title Estimate the Nusselt Number from the Reynolds Number
 #' 
-#' @description Estimate the Nusselt number from the Reynolds number for various taxa.  Source: \insertCite{Mitchell1976}{TrenchR} See Table 1. Convective Heat Transfer Relations for Animal Shapes.  
+#' @description Estimate the Nusselt number from the Reynolds number for various taxa \insertCite{Mitchell1976;textual}{TrenchR} Table 1 (Convective Heat Transfer Relations for Animal Shapes).  
 #' 
 #' @param Re \code{numeric} is the Reynolds Number (dimensionless)
 #' 
