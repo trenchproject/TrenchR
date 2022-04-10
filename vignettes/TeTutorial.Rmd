@@ -234,21 +234,21 @@ appropriate when $Gr \leq 16 Re^2$. For convenience, we provide the
 relationships as R functions:
 
 ```{r, fig.height=4, fig.width=8}
-plot(1:10, Nu_from_Re(Re=1:10, taxa="sphere"), type="l", xlab = "Re", ylab = "Nu", ylim=c(0,4))
-points(1:10, Nu_from_Re(Re=1:10, taxa="cylinder"), type="l", lty="dashed")
-points(1:10, Nu_from_Re(Re=1:10, taxa="frog"), type="l", lty="dotted")
-points(1:10, Nu_from_Re(Re=1:10, taxa="lizard_traverse_to_air_flow"), type="l", lty="dotdash")
-points(1:10, Nu_from_Re(Re=1:10, taxa="lizard_parallel_to_air_flow"), type="l", lty="dotdash", col="red")
-points(1:10, Nu_from_Re(Re=1:10, taxa="lizard_surface"), type="l", lty="dotdash", col="orange")
-points(1:10, Nu_from_Re(Re=1:10, taxa="lizard_elevated"), type="l", lty="dotdash", col="green")
-points(1:10, Nu_from_Re(Re=1:10, taxa="flyinginsect"), type="l", lty="longdash")
-points(1:10, Nu_from_Re(Re=1:10, taxa="spider"), type="l", lty="twodash")
+plot(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="sphere"), type="l", xlab = "Re", ylab = "Nu", ylim=c(0,4))
+points(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="cylinder"), type="l", lty="dashed")
+points(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="frog"), type="l", lty="dotted")
+points(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="lizard_traverse_to_air_flow"), type="l", lty="dotdash")
+points(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="lizard_parallel_to_air_flow"), type="l", lty="dotdash", col="red")
+points(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="lizard_surface"), type="l", lty="dotdash", col="orange")
+points(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="lizard_elevated"), type="l", lty="dotdash", col="green")
+points(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="flyinginsect"), type="l", lty="longdash")
+points(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="spider"), type="l", lty="twodash")
 
 legend("topright", title="taxa", legend=c("sphere","cylinder","frog","lizard_traverse_to_air_flow","lizard_parallel_to_air_flow","lizard_surface","lizard_elevated","flyinginsect","spider"), lty=c("solid","dashed","dotted","dotdash","dotdash","dotdash","dotdash","longdash","twodash"), col=c("black","black","black","black","red","orange","green","black","black" ) )
 ```
 
 ```{r}
-Nu_from_Gr(Gr=5)
+Nusselt_from_Grashof(Gr=5)
 ```
 
 ```{r}
