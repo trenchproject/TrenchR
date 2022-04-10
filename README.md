@@ -33,21 +33,21 @@ The package encompasses simple functions that can be combined to estimate enviro
 We introduce each function in categorically grouped tutorials.  A good place to start is the Allometry and conversions tutorial, which provides tools for preparing data such as estimating additional dimensions of organisms from measured dimensions. 
 
 ```r
-vignette("AllometryAndConversionsTutorial.Rmd", package="TrenchR")
+vignette("AllometryAndConversionsTutorial.Rmd", package = "TrenchR")
 
 ```
 
 The Estimating microclimates tutorial provides resources for estimating the environmental conditions experienced by organisms.  This includes estimating solar radiation and its components, diurnal variation in temperature and radiation, temperature and wind speed profiles, and soil temperatures and profiles. 
 
 ```r
-vignette("MicroclimateTutorial", package="TrenchR")
+vignette("MicroclimateTutorial", package = "TrenchR")
 
 ```
 
 Finally, the core biophysical modeling functions are described in a tutorial on Using energy balances to estimate body temperatures. Components of an energy budget can be estimated using individual functions and then operative environmental temperatures, Te, can be solved for using either a generic energy balance or taxa specific biophysical models.
 
 ```r
-vignette("TeTutorial", package="TrenchR")
+vignette("TeTutorial", package = "TrenchR")
 
 ```
 
@@ -63,5 +63,5 @@ If you are using macOS, you might need to install R package "rgl" which indirect
 ### Developer notes
 Please see the [Contributor Notes](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md).
 
-We use [Rdpack](https://cran.r-project.org/package=Rdpack) to facilitate package documentation with [BibTeX](www.bibtex.org) citations. See the [documentation workflow document](doumentation_workflow.md) for more details about building package manual components.
+We use [Rdpack](https://cran.r-project.org/package=Rdpack) to facilitate package documentation with [BibTeX](www.bibtex.org) citations. See the [documentation workflow document](documentation_workflow.md) for more details about building package manual components.
 

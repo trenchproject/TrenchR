@@ -21,7 +21,7 @@ Tb_mussel(L, H, T_a, T_g, S, k_d, u, psi, cl, evap = FALSE, group = "solitary")
 
 \item{u}{\code{numeric} wind speed (m/s).}
 
-\item{psi}{\code{numeric} solar zenith angle (degrees): can be calculated from \code{\link{zenith_angle function}}.}
+\item{psi}{\code{numeric} solar zenith angle (degrees): can be calculated from \code{\link{zenith_angle}}.}
 
 \item{cl}{\code{numeric} fraction of the sky covered by cloud.}
 

@@ -16,7 +16,7 @@
 #' 
 #' @param u \code{numeric} wind speed (m/s).
 #' 
-#' @param psi \code{numeric} solar zenith angle (degrees): can be calculated from \code{\link{zenith_angle function}}.
+#' @param psi \code{numeric} solar zenith angle (degrees): can be calculated from \code{\link{zenith_angle}}.
 #' 
 #' @param evap \code{logical} if mussels gaping to evaporatively cool. If \code{TRUE}, assumes constant mass loss rate of 5 percent of initial body mass per hour. 
 #' 
