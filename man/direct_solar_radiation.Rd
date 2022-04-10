@@ -7,23 +7,23 @@
 direct_solar_radiation(lat, doy, elev, t, t0, method = "Campbell 1977")
 }
 \arguments{
-\item{lat}{\code{numeric} latitude (degrees)}
+\item{lat}{\code{numeric} latitude (degrees).}
 
-\item{doy}{\code{numeric} doy of year (1-366)}
+\item{doy}{\code{numeric} day of year (1-366).}
 
-\item{elev}{\code{numeric} elevation in m}
+\item{elev}{\code{numeric} elevation in m.}
 
-\item{t}{\code{numeric} local time (decimal hours)}
+\item{t}{\code{numeric} local time (decimal hours).}
 
-\item{t0}{\code{numeric} time of local noon (decimal hours), can be estimated using solar_noon()}
+\item{t0}{\code{numeric} time of local noon (decimal hours), can be estimated using \code{\link{solar_noon}}.}
 
-\item{method}{\code{character} method for estimating direct solar radiation, options: "Campbell 1977","Gates 1962". Defaults to Campbell 1977.}
+\item{method}{\code{character} method for estimating direct solar radiation, options: \code{"Campbell 1977"} (default), \code{"Gates 1962"}.}
 }
 \value{
-\code{numeric} direct solar radiation (W/m^2)
+\code{numeric} direct solar radiation (W/m^2).
 }
 \description{
-Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in \insertCite{Tracy1983}{TrenchR}. Also references: \insertCite{McCullough1971}{TrenchR}, insertCite{Campbell1998}{TrenchR}
+Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in \insertCite{Tracy1983;textual}{TrenchR} \insertCite{McCullough1971,Campbell1998}{TrenchR}.
 }
 \examples{
   direct_solar_radiation(lat    = 47.61, 
@@ -56,5 +56,3 @@ Other microclimate functions:
 \code{\link{wind_speed_profile_segment}()}
 }
 \concept{microclimate functions}
-\keyword{radiation}
-\keyword{solar}

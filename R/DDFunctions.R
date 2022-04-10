@@ -1,20 +1,18 @@
 #' @title Calculate Degree Days
 #' 
-#' @description Calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minimum is equal to previous day. Double Sine wave approximation of degree days from \insertCite{Allen1976}{TrenchR}.
+#' @description Calculate degree days using single or double sine wave and single or double triangulation approximation \insertCite{ucipm}{TrenchR}. Double methods assume symmetry, that is that next day's thermal minimum is equal to previous day. Double Sine wave approximation of degree days from \insertCite{Allen1976}{TrenchR}.
 #' 
-#' @param T_min \code{numeric} Minimum temperature of the day (C)
+#' @param T_min \code{numeric} Minimum temperature of the day (C).
 #' 
-#' @param T_max \code{numeric} Maximum temperature of the day (C)
+#' @param T_max \code{numeric} Maximum temperature of the day (C).
 #' 
-#' @param LDT \code{numeric} lower developmental threshold (C)
+#' @param LDT \code{numeric} lower developmental threshold (C).
 #' 
-#' @param UDT \code{numeric} upper developmental threshold (C)
+#' @param UDT \code{numeric} upper developmental threshold (C).
 #' 
-#' @param method \code{character} type of method being used. Current choices: "single.sine","double.sine", "single.triangulation" or "double.triangulation"
+#' @param method \code{character} type of method being used. Current choices: \code{"single.sine"}, \code{"double.sine"}, \code{"single.triangulation"}, and \code{"double.triangulation"}.
 #' 
-#' @return \code{numeric} degree days (C)
-#' 
-#' @keywords degree days
+#' @return \code{numeric} degree days (C).
 #' 
 #' @family microclimate functions
 #' 

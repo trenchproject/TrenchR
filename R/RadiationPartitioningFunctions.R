@@ -1,6 +1,6 @@
 #' @title Estimate the Diffuse Fraction (k_d) for Partitioning Solar Radiation
 #' 
-#' @description  partition solar radiation (W m^-2) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in \insertCite{Wong2001}{TrenchR}.
+#' @description Partition solar radiation (W m^-2) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in \insertCite{Wong2001;textual}{TrenchR}.
 #' 
 #' @param method \code{character} method to use for estimating the diffuse fraction, currently available: "Liu_Jordan", "Orgill_Hollands", "Erbs", "Olyphant", "Spencer", "Reindl-1", "Reindl-2", "Lam_Li"
 #' 
@@ -11,8 +11,6 @@
 #' @param sol.elev \code{numeric} the solar elevation angles (degrees). Needed only if method is Reindl-2 
 #' 
 #' @return diffuse fraction
-#' 
-#' @keywords solar radiation
 #' 
 #' @family microclimate functions
 #' 
@@ -129,17 +127,15 @@ partition_solar_radiation <- function (method,
 
 #' @title Estimate the Ratio of Diffuse to Direct Solar Radiation
 #' 
-#' @description Estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the \insertCite{McCullough1971}{TrenchR} SOLRAD model described in \insertCite{Tracy1983}{TrenchR}
+#' @description Estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the \insertCite{McCullough1971;textual}{TrenchR} SOLRAD model described in \insertCite{Tracy1983;textual}{TrenchR}.
 #' 
-#' @param psi \code{numeric} Zenith angle of the sun (degrees)
+#' @param psi \code{numeric} Zenith angle of the sun (degrees).
 #' 
-#' @param p_a \code{numeric} Atmospheric pressure (kPa)
+#' @param p_a \code{numeric} Atmospheric pressure (kPa).
 #' 
-#' @param A \code{numeric} albedo of the substrate (fraction of 1)
+#' @param A \code{numeric} albedo of the substrate (fraction of 1).
 #' 
-#' @return diffuse fraction
-#' 
-#' @keywords solar radiation
+#' @return \code{numeric} diffuse fraction.
 #' 
 #' @family microclimate functions
 #' 

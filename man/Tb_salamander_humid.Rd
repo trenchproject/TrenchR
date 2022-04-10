@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Tb_salamander_humid}
 \alias{Tb_salamander_humid}
-\title{Calculate Humid Operative Temperature}
+\title{Humid Operative Temperature}
 \usage{
 Tb_salamander_humid(r_i, r_b, D, T_a, elev, e_a, e_s, Qabs, epsilon = 0.96)
 }
@@ -29,7 +29,7 @@ Tb_salamander_humid(r_i, r_b, D, T_a, elev, e_a, e_s, Qabs, epsilon = 0.96)
 \code{numeric} humid operative temperature (C)
 }
 \description{
-calculate humid operative temperature (adaptation of \insertCite{Campbell1998}{TrenchR}). Source: \insertCite{Riddell2018}{TrenchR}.
+Calculate humid operative temperature, using adaptation of \insertCite{Campbell1998;textual}{TrenchR} \insertCite{Riddell2018}{TrenchR}.
 }
 \examples{
   Tb_salamander_humid(r_i     = 4, 
@@ -51,8 +51,8 @@ Other biophysical models:
 \code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -92,6 +92,3 @@ Other biophysical models:
 Eric Riddell
 }
 \concept{biophysical models}
-\keyword{humid}
-\keyword{operative}
-\keyword{temperature}

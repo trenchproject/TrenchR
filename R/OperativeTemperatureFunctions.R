@@ -1,28 +1,26 @@
 #' @title Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
 #' 
-#' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Campbell1998}{TrenchR} and \insertCite{Mitchell1976}{TrenchR}.
+#' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
 #' 
 #' @param T_a \code{numeric} air temperature (K).
 #' 
 #' @param T_g \code{numeric} ground temperature (K).
 #' 
-#' @param S \code{numeric} flux density of solar radiation (W/m^2), combining direct, diffuse, and reflected radiation accounting for view factors
+#' @param S \code{numeric} flux density of solar radiation (W/m^2), combining direct, diffuse, and reflected radiation accounting for view factors.
 #' 
-#' @param alpha_S \code{numeric} organismal solar absorptivity. Defaults to 0.7
+#' @param alpha_S \code{numeric} organismal solar absorptivity. 
 #' 
-#' @param alpha_L \code{numeric} organismal thermal absorptivity, alpha_L=0.965 for lizards \insertCite{Bartlett1967}{TrenchR}. Defaults to 0.96
+#' @param alpha_L \code{numeric} organismal thermal absorptivity; 0.965 for lizards \insertCite{Bartlett1967}{TrenchR}.
 #' 
-#' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}. Defaults to 0.96
+#' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.
 #' 
-#' @param c_p \code{numeric} specific heat of air (J mol^-1 K^-1). Defaults to 29.3
+#' @param c_p \code{numeric} specific heat of air (J mol^-1 K^-1). Defaults to 29.3.
 #' 
-#' @param D \code{numeric} characteristic dimension of the animal (meters)
+#' @param D \code{numeric} characteristic dimension of the animal (meters).
 #' 
-#' @param V \code{numeric} is wind speed (m/s)
+#' @param V \code{numeric} is wind speed (m/s).
 #' 
-#' @return operative environmental temperature, T_e (K)
-#' 
-#' @keywords operative environmental temperature
+#' @return \code{numeric} operative environmental temperature, T_e (K).
 #' 
 #' @family biophysical models
 #' 
@@ -77,23 +75,21 @@ Tb_CampbellNorman <- function (T_a,
 
 #' @title Estimate Net Energy Exchange (W) Between an Animal and the Environment
 #' 
-#' @details Estimates net energy exchange between an animal and the environment in W. Follows \insertCite{Gates1980}{TrenchR} and others.
+#' @details Estimates net energy exchange between an animal and the environment in W. Follows \insertCite{Gates1980;textual}{TrenchR} and others.
 #' 
-#' @param Qabs \code{numeric} Solar radiation absorbed (W)
+#' @param Qabs \code{numeric} Solar radiation absorbed (W).
 #' 
-#' @param Qemit \code{numeric} Thermal radiation emitted (W)
+#' @param Qemit \code{numeric} Thermal radiation emitted (W).
 #' 
-#' @param Qconv \code{numeric} Energy exchange due to convection; Energy exchange from an animal to its surrounding environment (air or water) (W)
+#' @param Qconv \code{numeric} Energy exchange due to convection; Energy exchange from an animal to its surrounding environment (air or water) (W).
 #' 
-#' @param Qcond \code{numeric} Energy exchange due to conduction; Energy exchange from animal to a surface if they are in contact  (W)
+#' @param Qcond \code{numeric} Energy exchange due to conduction; Energy exchange from animal to a surface if they are in contact  (W).
 #' 
-#' @param Qmet \code{numeric} Energy emitted due to metabolism (W)
+#' @param Qmet \code{numeric} Energy emitted due to metabolism (W).
 #' 
-#' @param Qevap \code{numeric} Energy emitted due to evaporative water loss (W)
+#' @param Qevap \code{numeric} Energy emitted due to evaporative water loss (W).
 #' 
-#' @return net energy exchange (W)
-#' 
-#' @keywords operative environmental temperature
+#' @return \code{numeric} net energy exchange (W).
 #' 
 #' @family biophysical models
 #' 
@@ -126,37 +122,35 @@ Qnet_Gates <- function (Qabs,
 
 #' @title Predict Body Temperature (Operative Environmental Temperature) of an ectotherm in K. 
 #' 
-#' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980}{TrenchR}. Omits evaporative and metabolic heat loss. Other sources: \insertCite{Mitchell1976}{TrenchR}, \insertCite{Kingsolver1983}{TrenchR}
+#' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980;textual}{TrenchR}. Omits evaporative and metabolic heat loss \insertCite{Mitchell1976,Kingsolver1983}{TrenchR}.
 #' 
-#' @param A \code{numeric} surface area (m^2)
+#' @param A \code{numeric} surface area (m^2).
 #' 
-#' @param D \code{numeric} characteristic dimension for conduction (meters)
+#' @param D \code{numeric} characteristic dimension for conduction (meters).
 #' 
-#' @param psa_dir \code{numeric} proportion surface area exposed to direct radiation from the sky (or enclosure) (0-1)
+#' @param psa_dir \code{numeric} proportion surface area exposed to direct radiation from the sky (or enclosure) (0-1).
 #' 
-#' @param psa_ref \code{numeric} proportion surface area exposed to reflected radiation from the ground (0-1)
+#' @param psa_ref \code{numeric} proportion surface area exposed to reflected radiation from the ground (0-1).
 #' 
-#' @param psa_air \code{numeric} proportion surface area exposed to air (0-1)
+#' @param psa_air \code{numeric} proportion surface area exposed to air (0-1).
 #' 
-#' @param psa_g \code{numeric} proportion surface area in contact with substrate (0-1)
+#' @param psa_g \code{numeric} proportion surface area in contact with substrate (0-1).
 #' 
-#' @param T_g \code{numeric} ground surface temperature (K)
+#' @param T_g \code{numeric} ground surface temperature (K).
 #' 
-#' @param T_a \code{numeric} ambient air temperature (K)
+#' @param T_a \code{numeric} ambient air temperature (K).
 #' 
-#' @param Qabs \code{numeric} Solar radiation absorbed (W)
+#' @param Qabs \code{numeric} Solar radiation absorbed (W).
 #' 
-#' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
+#' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.
 #' 
-#' @param H_L \code{numeric} Convective heat transfer coefficient (W m^-2 K^-1)
+#' @param H_L \code{numeric} Convective heat transfer coefficient (W m^-2 K^-1).
 #' 
-#' @param ef \code{numeric} enhancement factor used to adjust H_L to field conditions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.
+#' @param ef \code{numeric} enhancement factor used to adjust H_L to field conditions (using h_L approximation from \insertCite{Mitchell1976;textual}{TrenchR}).  Approximated as 1.23 by default, but see \insertCite{Mitchell1976;textual}{TrenchR} for relationship.
 #' 
-#' @param K \code{numeric} Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step. 
+#' @param K \code{numeric} Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle \insertCite{Galushko2005;textual}{TrenchR}; conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step. 
 #' 
-#' @return \code{numeric} operative environmental temperature (K)
-#' 
-#' @keywords operative environmental temperature
+#' @return \code{numeric} operative environmental temperature (K).
 #' 
 #' @family biophysical models
 #' 
@@ -239,25 +233,23 @@ Tb_Gates <- function (A,
 
 #' @title Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
 #' 
-#' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980}{TrenchR}. Omits evaporative and metabolic heat loss.
+#' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980;textual}{TrenchR}. Omits evaporative and metabolic heat loss.
 #' 
-#' @param A \code{numeric} surface area (m^2)
+#' @param A \code{numeric} surface area (m^2).
 #' 
-#' @param D \code{numeric} characteristic dimension for conduction (meters)
+#' @param D \code{numeric} characteristic dimension for conduction (meters).
 #' 
-#' @param T_g \code{numeric} ground surface temperature (K)
+#' @param T_g \code{numeric} ground surface temperature (K).
 #' 
-#' @param T_a \code{numeric} ambient air temperature (K)
+#' @param T_a \code{numeric} ambient air temperature (K).
 #' 
-#' @param Qabs \code{numeric} Solar radiation absorbed (W)
+#' @param Qabs \code{numeric} Solar radiation absorbed (W).
 #' 
-#' @param V \code{numeric} Wind speed (m/2)
+#' @param V \code{numeric} Wind speed (m/2).
 #' 
-#' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
+#' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.
 #' 
-#' @return \code{numeric} operative environmental temperature (K)
-#' 
-#' @keywords operative environmental temperature
+#' @return \code{numeric} operative environmental temperature (K). 
 #' 
 #' @family biophysical models
 #' 

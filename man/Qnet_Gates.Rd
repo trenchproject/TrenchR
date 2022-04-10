@@ -7,26 +7,26 @@
 Qnet_Gates(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap)
 }
 \arguments{
-\item{Qabs}{\code{numeric} Solar radiation absorbed (W)}
+\item{Qabs}{\code{numeric} Solar radiation absorbed (W).}
 
-\item{Qemit}{\code{numeric} Thermal radiation emitted (W)}
+\item{Qemit}{\code{numeric} Thermal radiation emitted (W).}
 
-\item{Qconv}{\code{numeric} Energy exchange due to convection; Energy exchange from an animal to its surrounding environment (air or water) (W)}
+\item{Qconv}{\code{numeric} Energy exchange due to convection; Energy exchange from an animal to its surrounding environment (air or water) (W).}
 
-\item{Qcond}{\code{numeric} Energy exchange due to conduction; Energy exchange from animal to a surface if they are in contact  (W)}
+\item{Qcond}{\code{numeric} Energy exchange due to conduction; Energy exchange from animal to a surface if they are in contact  (W).}
 
-\item{Qmet}{\code{numeric} Energy emitted due to metabolism (W)}
+\item{Qmet}{\code{numeric} Energy emitted due to metabolism (W).}
 
-\item{Qevap}{\code{numeric} Energy emitted due to evaporative water loss (W)}
+\item{Qevap}{\code{numeric} Energy emitted due to evaporative water loss (W).}
 }
 \value{
-net energy exchange (W)
+\code{numeric} net energy exchange (W).
 }
 \description{
 Estimate Net Energy Exchange (W) Between an Animal and the Environment
 }
 \details{
-Estimates net energy exchange between an animal and the environment in W. Follows \insertCite{Gates1980}{TrenchR} and others.
+Estimates net energy exchange between an animal and the environment in W. Follows \insertCite{Gates1980;textual}{TrenchR} and others.
 }
 \examples{
 Qnet_Gates(Qabs  = 500,
@@ -45,8 +45,8 @@ Other biophysical models:
 \code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -83,6 +83,3 @@ Other biophysical models:
 \code{\link{saturation_water_vapor_pressure}()}
 }
 \concept{biophysical models}
-\keyword{environmental}
-\keyword{operative}
-\keyword{temperature}

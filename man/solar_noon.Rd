@@ -2,7 +2,7 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{solar_noon}
 \alias{solar_noon}
-\title{Calculate Time of Solar Noon}
+\title{Time of Solar Noon}
 \usage{
 solar_noon(lon, doy, offset = NA)
 }

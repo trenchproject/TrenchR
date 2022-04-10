@@ -2,7 +2,7 @@
 % Please edit documentation in R/TempWindProfileFunctions.R
 \name{air_temp_profile_neutral}
 \alias{air_temp_profile_neutral}
-\title{Estimate Temperature at a Specified Height Under Neutral Conditions}
+\title{Air Temperature at a Specified Height Under Neutral Conditions}
 \usage{
 air_temp_profile_neutral(T_r, zr, z0, z, T_s)
 }
@@ -18,10 +18,10 @@ air_temp_profile_neutral(T_r, zr, z0, z, T_s)
 \item{T_s}{\code{numeric} surface temperatures (C).}
 }
 \value{
-temperature (C)
+\code{numeric} temperature (C).
 }
 \description{
-calculate temperature (C) at a specified height (m) within a boundary layer near the surface.  The velocity profile is the neutral profile described by \insertCite{Sellers1965}{TrenchR}. Function in equations (2) and (3) of \insertCite{Porter1973}{TrenchR}.
+Calculate temperature (C) at a specified height (m) within a boundary layer near the surface.  The velocity profile is the neutral profile described by \insertCite{Sellers1965;textual}{TrenchR}. Function in equations (2) and (3) of \insertCite{Porter1973;textual}{TrenchR}.
 }
 \examples{
   air_temp_profile_neutral(T_r = 20, 
@@ -54,5 +54,3 @@ Other microclimate functions:
 \code{\link{wind_speed_profile_segment}()}
 }
 \concept{microclimate functions}
-\keyword{profile}
-\keyword{temperature}

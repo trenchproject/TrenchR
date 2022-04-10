@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{surface_area_from_length}
 \alias{surface_area_from_length}
-\title{Calculate Organism Surface Area from Length}
+\title{Organism Surface Area from Length}
 \usage{
 surface_area_from_length(L)
 }
@@ -16,7 +16,7 @@ surface_area_from_length(L)
 Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from length (m) by approximating the animal's body as a rotational ellipsoid with half the body length as the semi-major axis.
 }
 \details{
-Following \insertCite{Samietz2005;textual}{TrenchR} and  \insertCite{Lactin1998;textual}{TrenchR}.
+Following \insertCite{Samietz2005;textual}{TrenchR} and \insertCite{Lactin1998;textual}{TrenchR}.
 }
 \examples{
   surface_area_from_length(L = 0.04)
@@ -35,5 +35,3 @@ Other allometric functions:
 \code{\link{volume_from_length}()}
 }
 \concept{allometric functions}
-\keyword{area}
-\keyword{surface}

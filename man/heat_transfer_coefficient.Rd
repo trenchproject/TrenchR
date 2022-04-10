@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{heat_transfer_coefficient}
 \alias{heat_transfer_coefficient}
-\title{Calculate heat transfer coefficient.}
+\title{Heat Transfer Coefficient}
 \usage{
 heat_transfer_coefficient(V, D, K, nu, taxa = "cylinder")
 }
@@ -21,7 +21,7 @@ heat_transfer_coefficient(V, D, K, nu, taxa = "cylinder")
 \code{numeric} heat transfer coefficient, H_L (W m^-2 K^-1)
 }
 \description{
-estimate the heat transfer coefficient for various taxa based on empirical measurements. Reference: \insertCite{Mitchell1976}{TrenchR}
+Estimate the heat transfer coefficient for various taxa based on empirical measurements \insertCite{Mitchell1976}{TrenchR}.
 }
 \examples{
   heat_transfer_coefficient(V    = 0.5, 
@@ -39,8 +39,8 @@ Other biophysical models:
 \code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -77,6 +77,3 @@ Other biophysical models:
 \code{\link{saturation_water_vapor_pressure}()}
 }
 \concept{biophysical models}
-\keyword{coefficient}
-\keyword{heat}
-\keyword{transfer}

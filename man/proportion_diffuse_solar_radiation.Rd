@@ -7,17 +7,17 @@
 proportion_diffuse_solar_radiation(psi, p_a, A)
 }
 \arguments{
-\item{psi}{\code{numeric} Zenith angle of the sun (degrees)}
+\item{psi}{\code{numeric} Zenith angle of the sun (degrees).}
 
-\item{p_a}{\code{numeric} Atmospheric pressure (kPa)}
+\item{p_a}{\code{numeric} Atmospheric pressure (kPa).}
 
-\item{A}{\code{numeric} albedo of the substrate (fraction of 1)}
+\item{A}{\code{numeric} albedo of the substrate (fraction of 1).}
 }
 \value{
-diffuse fraction
+\code{numeric} diffuse fraction.
 }
 \description{
-Estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the \insertCite{McCullough1971}{TrenchR} SOLRAD model described in \insertCite{Tracy1983}{TrenchR}
+Estimates the ratio of diffuse to direct solar radiation.  Based on the approximation of the \insertCite{McCullough1971;textual}{TrenchR} SOLRAD model described in \insertCite{Tracy1983;textual}{TrenchR}.
 }
 \examples{
   proportion_diffuse_solar_radiation(psi = 60, 
@@ -47,5 +47,3 @@ Other microclimate functions:
 \code{\link{wind_speed_profile_segment}()}
 }
 \concept{microclimate functions}
-\keyword{radiation}
-\keyword{solar}

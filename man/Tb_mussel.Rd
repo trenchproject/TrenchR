@@ -7,30 +7,30 @@
 Tb_mussel(L, H, T_a, T_g, S, k_d, u, psi, cl, evap = FALSE, group = "solitary")
 }
 \arguments{
-\item{L}{mussel length (anterior/posterior axis) (m).}
+\item{L}{\code{numeric} mussel length (anterior/posterior axis) (m).}
 
-\item{H}{mussel height (dorsal/ventral axis) (m). It is reasonable to assume \code{H = 0.5 * L}.}
+\item{H}{\code{numeric} mussel height (dorsal/ventral axis) (m). It is reasonable to assume \code{H = 0.5 * L}.}
 
-\item{T_a}{air temperature (C).}
+\item{T_a}{\code{numeric} air temperature (C).}
 
-\item{T_g}{ground temperature (C).}
+\item{T_g}{\code{numeric} ground temperature (C).}
 
-\item{S}{direct solar flux density (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
+\item{S}{\code{numeric} direct solar flux density (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
-\item{k_d}{diffuse fraction, proportion of solar radiation that is diffuse}
+\item{k_d}{\code{numeric} diffuse fraction, proportion of solar radiation that is diffuse.}
 
-\item{u}{wind speed (m/s).}
+\item{u}{\code{numeric} wind speed (m/s).}
 
-\item{psi}{solar zenith angle (degrees): can be calculated from zenith_angle function}
+\item{psi}{\code{numeric} solar zenith angle (degrees): can be calculated from \code{\link{zenith_angle function}}.}
 
-\item{cl}{fraction of the sky covered by cloud}
+\item{cl}{\code{numeric} fraction of the sky covered by cloud.}
 
-\item{evap}{Are mussels gaping to evaporatively cool? \code{TRUE} or \code{FALSE} (default), If \code{TRUE}, assumes constant mass loss rate of 5 percent of initial body mass per hour.}
+\item{evap}{\code{logical} if mussels gaping to evaporatively cool. If \code{TRUE}, assumes constant mass loss rate of 5 percent of initial body mass per hour.}
 
 \item{group}{\code{character}; options are \code{"aggregated"}: mussels living in beds; \code{"solitary"}: mussels individuals, anterior or posterior end facing upwind; and \code{"solitary_valve"}: solitary individuals, valve facing upwind.}
 }
 \value{
-predicted body temperature (C).
+\code{numeric} predicted body temperature (C).
 }
 \description{
 Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions.
@@ -61,8 +61,8 @@ Other biophysical models:
 \code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},

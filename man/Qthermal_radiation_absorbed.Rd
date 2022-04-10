@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Qthermal_radiation_absorbed}
 \alias{Qthermal_radiation_absorbed}
-\title{Estimate absorbed longwave (thermal) radiation}
+\title{Absorbed Thermal Radiation}
 \usage{
 Qthermal_radiation_absorbed(
   T_a,
@@ -24,7 +24,7 @@ Qthermal_radiation_absorbed(
 \code{numeric} thermal radiation absorbed (W)
 }
 \description{
-estimate longwave (thermal) radiation (W) absorbed from the sky and the ground \insertCite{Campbell1998}{TrenchR}. Source: \insertCite{Riddell2018}{TrenchR}
+Estimate longwave (thermal) radiation (W) absorbed from the sky and the ground \insertCite{Campbell1998,Riddell2018}{TrenchR}.
 }
 \examples{
   Qthermal_radiation_absorbed(T_a            = 20, 
@@ -41,8 +41,8 @@ Other biophysical models:
 \code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -82,7 +82,3 @@ Other biophysical models:
 Eric Riddell
 }
 \concept{biophysical models}
-\keyword{(thermal)}
-\keyword{absorbed}
-\keyword{longwave}
-\keyword{radiation}

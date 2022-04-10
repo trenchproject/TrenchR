@@ -1,22 +1,22 @@
 #' @title Predict Body Temperature (Operative Environmental Temperature) of a Marine Snail in C
 #' 
-#' @description Predicts body temperature of a snail in C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on \insertCite{Iacarella2012}{TrenchR}. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication. 
+#' @description Predicts body temperature of a snail in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Iacarella2012}{TrenchR}. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication. 
 #' 
-#' @param temp \code{numeric} air temperature (C)
+#' @param temp \code{numeric} air temperature (C).
 #' 
-#' @param Len \code{numeric} snail length (m)
+#' @param Len \code{numeric} snail length (m).
 #' 
-#' @param solar \code{numeric} direct solar flux density (W/m2)
+#' @param solar \code{numeric} direct solar flux density (W/m2).
 #' 
-#' @param WS \code{numeric} wind speed (m/s)
+#' @param WS \code{numeric} wind speed (m/s).
 #' 
-#' @param CC \code{numeric} fraction of the sky covered by cloud (0-1)
+#' @param CC \code{numeric} fraction of the sky covered by cloud (0-1).
 #' 
-#' @param WL \code{numeric} water loss rate (kg/s), 5 percent loss of body mass over one hour is a reasonable maximum level (Helmuth 1999)
+#' @param WL \code{numeric} water loss rate (kg/s), 5 percent loss of body mass over one hour is a reasonable maximum level \insertCite{Helmuth1999}{TrenchR}. 
 #' 
-#' @param WSH \code{numeric} wind sensor height (m)
+#' @param WSH \code{numeric} wind sensor height (m).
 #' 
-#' @return \code{numeric} predicted body temperature (C)
+#' @return \code{numeric} predicted body temperature (C).
 #' 
 #' @family biophysical models
 #' 

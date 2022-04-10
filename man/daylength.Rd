@@ -2,12 +2,12 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{daylength}
 \alias{daylength}
-\title{Calculate Day Length}
+\title{Day Length}
 \usage{
 daylength(lat, doy)
 }
 \arguments{
-\item{lat}{\code{numeric} latitude (decimal degrees)}
+\item{lat}{\code{numeric} latitude (decimal degrees).}
 
 \item{doy}{\code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)}
 }

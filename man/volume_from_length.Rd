@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{volume_from_length}
 \alias{volume_from_length}
-\title{Calculate Organism Volume from Length}
+\title{Organism Volume from Length}
 \usage{
 volume_from_length(L, taxon)
 }
@@ -48,5 +48,3 @@ Other allometric functions:
 \code{\link{surface_area_from_volume}()}
 }
 \concept{allometric functions}
-\keyword{length}
-\keyword{volume}

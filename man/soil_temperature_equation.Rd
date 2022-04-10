@@ -7,23 +7,23 @@
 soil_temperature_equation(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s)
 }
 \arguments{
-\item{L}{\code{numeric} Monin-Obukhov length, a measure of the instability of heat flow (see \insertCite{Beckman1973;textual}{TrenchR})}
+\item{L}{\code{numeric} Monin-Obukhov length, a measure of the instability of heat flow (see \insertCite{Beckman1973;textual}{TrenchR}).}
 
-\item{rho_a}{\code{numeric} density of air (kg m^-3)}
+\item{rho_a}{\code{numeric} density of air (kg m^-3).}
 
-\item{c_a}{\code{numeric} specific heat of air (J/(kg*K))}
+\item{c_a}{\code{numeric} specific heat of air (J/(kg*K)).}
 
-\item{k}{\code{numeric} von Karman's constant}
+\item{k}{\code{numeric} von Karman's constant.}
 
-\item{V_inst}{\code{numeric} instantaneous wind speed (m/s)}
+\item{V_inst}{\code{numeric} instantaneous wind speed (m/s).}
 
-\item{z_r}{\code{numeric} reference height (meters)}
+\item{z_r}{\code{numeric} reference height (meters).}
 
-\item{z0}{\code{numeric} surface roughness (meters)}
+\item{z0}{\code{numeric} surface roughness (meters).}
 
-\item{T_inst}{\code{numeric} instantaneous air temperature (K)}
+\item{T_inst}{\code{numeric} instantaneous air temperature (K).}
 
-\item{T_s}{\code{numeric} initial soil surface temperature (C)}
+\item{T_s}{\code{numeric} initial soil surface temperature (C).}
 }
 \value{
 soil temperature function
@@ -58,5 +58,3 @@ Other soil temperature functions:
 Joseph Grigg
 }
 \concept{soil temperature functions}
-\keyword{soil}
-\keyword{temperature}

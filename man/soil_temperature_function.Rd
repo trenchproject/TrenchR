@@ -2,19 +2,19 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_temperature_function}
 \alias{soil_temperature_function}
-\title{Function to Calculate Soil Temperature.}
+\title{Core Calculate Soil Temperature Function}
 \usage{
 soil_temperature_function(j, T_so, params)
 }
 \arguments{
-\item{j}{\code{numeric} is the number of the iteration of running the model}
+\item{j}{\code{numeric} is the number of the iteration of running the model.}
 
-\item{T_so}{\code{numeric} is the initial soil temperature profile in C}
+\item{T_so}{\code{numeric} is the initial soil temperature profile in C.}
 
 \item{params}{is a list containing the following parameters, which are described or calculated in soil_temperature(): list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade).}
 }
 \value{
-soil temperature function
+Soil temperature profile as a \code{list}.
 }
 \description{
 Function called to calculate soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from \insertCite{Porter1973;textual}{TrenchR} and \insertCite{Kingsolver1979;textual}{TrenchR}
@@ -68,5 +68,3 @@ Other soil temperature functions:
 Joseph Grigg
 }
 \concept{soil temperature functions}
-\keyword{soil}
-\keyword{temperature}

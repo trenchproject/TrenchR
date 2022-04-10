@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Nusselt_number}
 \alias{Nusselt_number}
-\title{Calculate Nusselt Number}
+\title{Nusselt Number}
 \usage{
 Nusselt_number(H_L, D, K)
 }
@@ -17,7 +17,7 @@ Nusselt_number(H_L, D, K)
 \code{numeric} Nusselt number
 }
 \description{
-estimate the Nusselt Number, which describes dimensionless conductance \insertCite{Gates1980}{TrenchR}
+Estimate the Nusselt Number, which describes dimensionless conductance \insertCite{Gates1980}{TrenchR}.
 }
 \examples{
   Nusselt_number(H_L = 20, 
@@ -33,8 +33,8 @@ Other biophysical models:
 \code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
 \code{\link{Qconduction_substrate}()},
@@ -71,5 +71,3 @@ Other biophysical models:
 \code{\link{saturation_water_vapor_pressure}()}
 }
 \concept{biophysical models}
-\keyword{Nusselt}
-\keyword{number}

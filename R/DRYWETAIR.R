@@ -1,34 +1,34 @@
-#' @title DRYAIR
+#' @title Calculate Properties of Dry Air
 #'
-#' @description Calculates several properties of dry air and related characteristics shownas output variables below. The program is based on equations from \insertCite{List1971}{TrenchR}. WETAIR must be used in conjunction with function VAPPRS. The user must supply values for the input variables (db, bp and alt). If alt is known (-1000 < alt < 20000) but not BP, then set BP=0
+#' @description Calculates several properties of dry air and related characteristics shown as output variables below. The program is based on equations from \insertCite{List1971}{TrenchR}. WETAIR must be used in conjunction with function VAPPRS. The user must supply values for the input variables (db, bp and alt). If alt is known (-1000 < alt < 20000) but not BP, then set BP=0.
 #' 
-#' @param db \code{numeric} Dry bulb temperature (C)
+#' @param db \code{numeric} Dry bulb temperature (C).
 #' 
-#' @param bp \code{numeric} Barometric pressure (pascal)
+#' @param bp \code{numeric} Barometric pressure (Pa).
 #' 
-#' @param alt \code{numeric} Altitude (m)
+#' @param alt \code{numeric} Altitude (m).
 #' 
-#' @return patmos \code{numeric} Standard atmospheric pressure (Pa)
+#' @return patmos \code{numeric} Standard atmospheric pressure (Pa).
 #' 
-#' @return density \code{numeric} Density (kg m-3)
+#' @return density \code{numeric} Density (kg m-3).
 #' 
-#' @return visdyn \code{numeric} Dynamic viscosity (kg m-1 s-1)
+#' @return visdyn \code{numeric} Dynamic viscosity (kg m-1 s-1).
 #' 
-#' @return viskin \code{numeric} Kinematic viscosity (m2 s-1)
+#' @return viskin \code{numeric} Kinematic viscosity (m2 s-1).
 #' 
-#' @return difvpr \code{numeric} Diffusivity of water vapor in air (m2 s-1)
+#' @return difvpr \code{numeric} Diffusivity of water vapor in air (m2 s-1).
 #' 
-#' @return thcond \code{numeric} Thermal conductivity (W m-1 K-1)
+#' @return thcond \code{numeric} Thermal conductivity (W m-1 K-1).
 #' 
-#' @return htovpr \code{numeric} Latent heat of vaporization of water (J kg-1)
+#' @return htovpr \code{numeric} Latent heat of vaporization of water (J kg-1).
 #' 
-#' @return tcoeff \code{numeric} Temperature coefficient of volume expansion (K-1)
+#' @return tcoeff \code{numeric} Temperature coefficient of volume expansion (K-1).
 #' 
-#' @return ggroup \code{numeric} Group of variables in Grashof number (1-m3 -K)
+#' @return ggroup \code{numeric} Group of variables in Grashof number (1-m3 -K).
 #' 
-#' @return bbemit \code{numeric} black body emittance (W m-2)
+#' @return bbemit \code{numeric} black body emittance (W m-2).
 #' 
-#' @return emtmax \code{numeric} Wave length of maximum emittance (m)
+#' @return emtmax \code{numeric} Wave length of maximum emittance (m).
 #' 
 #' @export
 #' 
@@ -70,7 +70,7 @@ DRYAIR <- function(db = db, bp = 0, alt = 0) {
 }
 
 
-#' @title VAPPRS
+#' @title Calculate Saturation Vapor Pressure
 #'
 #' @description Calculates saturation vapor pressure for a given air temperature.
 #' 
@@ -84,7 +84,7 @@ DRYAIR <- function(db = db, bp = 0, alt = 0) {
 #'   \insertAllCited{}
 #' 
 #' @examples
-#' VAPPRS(db = 30)
+#'   VAPPRS(db = 30)
 #' 
 VAPPRS <- function(db = db) {
   
@@ -98,7 +98,7 @@ VAPPRS <- function(db = db) {
   
 }
 
-#' @title WETAIR
+#' @title Calculate Properties of Wet Air
 #'
 #' @description Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971}{TrenchR}. WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP)
 #'
@@ -108,35 +108,35 @@ VAPPRS <- function(db = db) {
 #' (2) Hygrometric data:
 #' If DP is known then set WB = 0 and RH = 0.
 #' 
-#' @param db \code{numeric} Dry bulb temperature (C)
+#' @param db \code{numeric} Dry bulb temperature (C).
 #' 
-#' @param wb \code{numeric} Wet bulb temperature (C)
+#' @param wb \code{numeric} Wet bulb temperature (C).
 #' 
-#' @param rh \code{numeric} Relative humidity (\%)
+#' @param rh \code{numeric} Relative humidity (\%).
 #' 
-#' @param dp \code{numeric} Dew point temperature (C)
+#' @param dp \code{numeric} Dew point temperature (C).
 #' 
-#' @param bp \code{numeric} Barometric pressure (pascal)
+#' @param bp \code{numeric} Barometric pressure (Pa).
 #' 
-#' @return e \code{numeric} Vapor pressure (Pa)
+#' @return e \code{numeric} Vapor pressure (Pa).
 #' 
-#' @return esat \code{numeric} Saturation vapor pressure (Pa)
+#' @return esat \code{numeric} Saturation vapor pressure (Pa).
 #' 
-#' @return vd \code{numeric} Vapor density (kg m-3)
+#' @return vd \code{numeric} Vapor density (kg m-3).
 #' 
-#' @return rw \code{numeric} Mixing ration (kg kg-1)
+#' @return rw \code{numeric} Mixing ration (kg kg-1).
 #' 
-#' @return tvir \code{numeric} Virtual temperature (K)
+#' @return tvir \code{numeric} Virtual temperature (K).
 #' 
-#' @return tvinc \code{numeric} Virtual temperature increment (K)
+#' @return tvinc \code{numeric} Virtual temperature increment (K).
 #' 
-#' @return denair \code{numeric} Hourly predictions of the soil moisture under the maximum specified shade
+#' @return denair \code{numeric} Hourly predictions of the soil moisture under the maximum specified shade.
 #' 
-#' @return cp \code{numeric} Specific heat of air at constant pressure (J kg-1 K-1)
+#' @return cp \code{numeric} Specific heat of air at constant pressure (J kg-1 K-1).
 #' 
-#' @return wtrpot \code{numeric} Water potential (Pa)
+#' @return wtrpot \code{numeric} Water potential (Pa).
 #' 
-#' @return rh \code{numeric} Relative humidity (\%)
+#' @return rh \code{numeric} Relative humidity (\%).
 #' 
 #' @export
 #' 
@@ -144,7 +144,7 @@ VAPPRS <- function(db = db) {
 #'   \insertAllCited{}
 #' 
 #' @examples
-#' WETAIR(db=30, wb=28, rh=60, bp=100*1000)
+#'   WETAIR(db=30, wb=28, rh=60, bp=100*1000)
 #' 
 WETAIR <- function(db = db, wb = db, rh = 0, dp = 999, bp = 101325) {
   

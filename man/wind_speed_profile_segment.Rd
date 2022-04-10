@@ -2,7 +2,7 @@
 % Please edit documentation in R/TempWindProfileFunctions.R
 \name{wind_speed_profile_segment}
 \alias{wind_speed_profile_segment}
-\title{Estimate Windspeed at a Specified Height}
+\title{Windspeed at a Specified Height}
 \usage{
 wind_speed_profile_segment(u_r, zr, z0, z)
 }
@@ -15,8 +15,11 @@ wind_speed_profile_segment(u_r, zr, z0, z)
 
 \item{z}{\code{numeric} height to scale (meters).}
 }
+\value{
+\code{numeric} temperature (C).
+}
 \description{
-Calculate wind speed (m/s) at a specified height (meters). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017}{TrenchR}
+Calculate wind speed (m/s) at a specified height (meters). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
 }
 \examples{
   wind_speed_profile_segment(u_r = c(0.01, 0.025, 0.05), 
@@ -47,6 +50,3 @@ Other microclimate functions:
 \code{\link{wind_speed_profile_neutral}()}
 }
 \concept{microclimate functions}
-\keyword{profile}
-\keyword{speed}
-\keyword{wind}

@@ -7,10 +7,10 @@
 kelvin_to_celsius(T)
 }
 \arguments{
-\item{T}{\code{numeric} temperature (Kelvin)}
+\item{T}{\code{numeric} temperature (Kelvin).}
 }
 \value{
-\code{numeric} temperature (Celsius)
+\code{numeric} temperature (Celsius).
 }
 \description{
 Convert temperature from Kelvin to Celsius. Source: https://swcarpentry.github.io.
@@ -36,5 +36,3 @@ Other utility functions:
 \code{\link{zenith_angle}()}
 }
 \concept{utility functions}
-\keyword{Celsius}
-\keyword{Kelvin}

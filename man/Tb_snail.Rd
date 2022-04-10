@@ -7,25 +7,25 @@
 Tb_snail(temp, Len, solar, WS, CC, WL, WSH)
 }
 \arguments{
-\item{temp}{\code{numeric} air temperature (C)}
+\item{temp}{\code{numeric} air temperature (C).}
 
-\item{Len}{\code{numeric} snail length (m)}
+\item{Len}{\code{numeric} snail length (m).}
 
-\item{solar}{\code{numeric} direct solar flux density (W/m2)}
+\item{solar}{\code{numeric} direct solar flux density (W/m2).}
 
-\item{WS}{\code{numeric} wind speed (m/s)}
+\item{WS}{\code{numeric} wind speed (m/s).}
 
-\item{CC}{\code{numeric} fraction of the sky covered by cloud (0-1)}
+\item{CC}{\code{numeric} fraction of the sky covered by cloud (0-1).}
 
-\item{WL}{\code{numeric} water loss rate (kg/s), 5 percent loss of body mass over one hour is a reasonable maximum level (Helmuth 1999)}
+\item{WL}{\code{numeric} water loss rate (kg/s), 5 percent loss of body mass over one hour is a reasonable maximum level \insertCite{Helmuth1999}{TrenchR}.}
 
-\item{WSH}{\code{numeric} wind sensor height (m)}
+\item{WSH}{\code{numeric} wind sensor height (m).}
 }
 \value{
-\code{numeric} predicted body temperature (C)
+\code{numeric} predicted body temperature (C).
 }
 \description{
-Predicts body temperature of a snail in C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on \insertCite{Iacarella2012}{TrenchR}. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication.
+Predicts body temperature of a snail in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Iacarella2012}{TrenchR}. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication.
 }
 \examples{
   Tb_snail(temp  = 25, 
@@ -45,8 +45,8 @@ Other biophysical models:
 \code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},

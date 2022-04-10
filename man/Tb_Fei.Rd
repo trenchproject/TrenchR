@@ -2,33 +2,32 @@
 % Please edit documentation in R/biophysmodel_LizardFei.R
 \name{Tb_Fei}
 \alias{Tb_Fei}
-\title{Calculate Operative Temperature of Lizard Using model by Fei et al.}
+\title{Operative Temperature of Lizard Using model by Fei et al.}
 \usage{
 Tb_Fei(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact)
 }
 \arguments{
-\item{T_a}{air temperature at lizard height in K.}
+\item{T_a}{\code{numeric} air temperature at lizard height in K.}
 
-\item{T_g}{surface temperature in K.}
+\item{T_g}{\code{numeric}surface temperature in K.}
 
-\item{H}{total (direct + diffuse) solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.}
+\item{H}{\code{numeric} total (direct + diffuse) solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.}
 
-\item{lw}{Downward flux of near-infrared radiation (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
+\item{lw}{\code{numeric} downward flux of near-infrared radiation (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
-\item{shade}{proportion of shade.}
+\item{shade}{\code{numeric} proportion of shade.}
 
-\item{m}{lizard mass in g.}
+\item{m}{\code{numeric} lizard mass in g.}
 
-\item{Acondfact}{the proportion of the lizard projected area that is in contact with the ground. \code{Acondfact = 0.1} for standing and \code{Acondfact = 0.4} for lying on ground.}
+\item{Acondfact}{\code{numeric} proportion of the lizard projected area that is in contact with the ground. \code{Acondfact = 0.1} for standing and \code{Acondfact = 0.4} for lying on ground.}
 
-\item{Agradfact}{the proportion of the lizard projected area exposed to radiation from the ground. \code{Agradfact = 0.3} for standing and \code{Agradfact = 0.0} for lying on ground.}
+\item{Agradfact}{\code{numeric} proportion of the lizard projected area exposed to radiation from the ground. \code{Agradfact = 0.3} for standing and \code{Agradfact = 0.0} for lying on ground.}
 }
 \value{
-Body temperature of a lizard in K.
+\code{numeric} body temperature of a lizard in K.
 }
 \description{
-Predicts body temperature (operative environmental temperature) of a lizard in K based on \insertCite{Fei2012;textual}{TrenchR}.
- \cr \cr
+Predict body temperature (operative environmental temperature) of a lizard in K based on \insertCite{Fei2012;textual}{TrenchR}.
 }
 \details{
 Thermal radiative flux is calculated following \insertCite{Fei2012;textual}{TrenchR} based on \insertCite{Bartlett1967;textual}{TrenchR} and \insertCite{Porter1973;textual}{TrenchR}.
@@ -53,8 +52,8 @@ Other biophysical models:
 \code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},

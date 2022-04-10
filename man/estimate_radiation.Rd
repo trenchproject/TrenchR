@@ -7,21 +7,21 @@
 estimate_radiation(doy, psi, tau, elev, rho = 0.7)
 }
 \arguments{
-\item{doy}{\code{numeric} the day of year (Can be calculated using TrenchR::day_of_year() function)}
+\item{doy}{\code{numeric} the day of year (Can be calculated using TrenchR::day_of_year() function).}
 
-\item{psi}{\code{numeric}  zenith angle (radians)}
+\item{psi}{\code{numeric} zenith angle (radians).}
 
-\item{tau}{\code{numeric} atmospheric transmissivity (proportion), which is ratio of global solar radiation at ground level to extra-terrestrial solar radiation}
+\item{tau}{\code{numeric} atmospheric transmissivity (proportion), which is ratio of global solar radiation at ground level to extra-terrestrial solar radiation.}
 
-\item{elev}{\code{numeric} elevation (meters)}
+\item{elev}{\code{numeric} elevation (meters).}
 
-\item{rho}{\code{numeric} albedo as a proportion (0-1). Defaults to 0.7}
+\item{rho}{\code{numeric} albedo as a proportion (0-1).}
 }
 \value{
-radiation components - direct, diffused and reflected (W/m^2)
+\code{numeric} radiation components - direct, diffused and reflected (W/m^2).
 }
 \description{
-Estimate direct, diffuse, and reflected components of solar radiation (W m^-2) using the model in \insertCite{Campbell1998}{TrenchR}
+Estimate direct, diffuse, and reflected components of solar radiation (W m^-2) using the model in \insertCite{Campbell1998;textual}{TrenchR}.
 }
 \examples{
   estimate_radiation(doy = 112, 
@@ -53,4 +53,3 @@ Other microclimate functions:
 \code{\link{wind_speed_profile_segment}()}
 }
 \concept{microclimate functions}
-\keyword{radiation}

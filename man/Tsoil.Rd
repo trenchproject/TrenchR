@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Tsoil}
 \alias{Tsoil}
-\title{Statistical Approximation of Soil Temperature}
+\title{Approximate Soil Temperature}
 \usage{
 Tsoil(Tg_max, Tg_min, hour, depth)
 }
@@ -19,7 +19,7 @@ Tsoil(Tg_max, Tg_min, hour, depth)
 \code{numeric} soil temperature (C)
 }
 \description{
-Estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from \insertCite{Campbell1998}{TrenchR}). Source: \insertCite{Riddell2018}{TrenchR}
+Estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal; adapted from \insertCite{Campbell1998;textual}{TrenchR} \insertCite{Riddell2018}{TrenchR}.
 }
 \examples{
   Tsoil(Tg_max = 30,
@@ -36,8 +36,8 @@ Other biophysical models:
 \code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -77,5 +77,3 @@ Other biophysical models:
 Eric Riddell
 }
 \concept{biophysical models}
-\keyword{soil}
-\keyword{temperature}

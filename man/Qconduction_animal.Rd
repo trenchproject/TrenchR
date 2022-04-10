@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Qconduction_animal}
 \alias{Qconduction_animal}
-\title{Calculate Conductance Assuming Animal Thermal Conductivity is Rate Limiting}
+\title{Conductance Assuming Animal Thermal Conductivity is Rate Limiting}
 \usage{
 Qconduction_animal(T_g, T_b, d, K = 0.5, A, proportion)
 }
@@ -23,7 +23,7 @@ Qconduction_animal(T_g, T_b, d, K = 0.5, A, proportion)
 \code{numeric} conductance (W)
 }
 \description{
-Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
+Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
 }
 \examples{
   Qconduction_animal(T_g        = 293,
@@ -42,8 +42,8 @@ Other biophysical models:
 \code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_substrate}()},
@@ -80,4 +80,3 @@ Other biophysical models:
 \code{\link{saturation_water_vapor_pressure}()}
 }
 \concept{biophysical models}
-\keyword{conductance}

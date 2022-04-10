@@ -7,10 +7,10 @@
 fahrenheit_to_celsius(T)
 }
 \arguments{
-\item{T}{\code{numeric} temperature (Fahrenheit)}
+\item{T}{\code{numeric} temperature (Fahrenheit).}
 }
 \value{
-\code{numeric} temperature (Celsius)
+\code{numeric} temperature (Celsius).
 }
 \description{
 Convert temperature from Fahrenheit to Celsius. Source: https://swcarpentry.github.io.

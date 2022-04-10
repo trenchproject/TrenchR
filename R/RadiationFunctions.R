@@ -1,20 +1,18 @@
 #' @title Estimate Radiation (Three Parts - Direct, Diffused and Reflected)
 #' 
-#' @description Estimate direct, diffuse, and reflected components of solar radiation (W m^-2) using the model in \insertCite{Campbell1998}{TrenchR} 
+#' @description Estimate direct, diffuse, and reflected components of solar radiation (W m^-2) using the model in \insertCite{Campbell1998;textual}{TrenchR}. 
 #' 
-#' @param doy \code{numeric} the day of year (Can be calculated using TrenchR::day_of_year() function)
+#' @param doy \code{numeric} the day of year (Can be calculated using TrenchR::day_of_year() function).
 #' 
-#' @param psi \code{numeric}  zenith angle (radians)
+#' @param psi \code{numeric} zenith angle (radians).
 #' 
-#' @param tau \code{numeric} atmospheric transmissivity (proportion), which is ratio of global solar radiation at ground level to extra-terrestrial solar radiation
+#' @param tau \code{numeric} atmospheric transmissivity (proportion), which is ratio of global solar radiation at ground level to extra-terrestrial solar radiation.
 #' 
-#' @param elev \code{numeric} elevation (meters)
+#' @param elev \code{numeric} elevation (meters).
 #' 
-#' @param rho \code{numeric} albedo as a proportion (0-1). Defaults to 0.7
+#' @param rho \code{numeric} albedo as a proportion (0-1). 
 #' 
-#' @return radiation components - direct, diffused and reflected (W/m^2)
-#' 
-#' @keywords radiation
+#' @return \code{numeric} radiation components - direct, diffused and reflected (W/m^2).
 #' 
 #' @family microclimate functions
 #' 
@@ -64,21 +62,19 @@ estimate_radiation <- function (doy,
 
 #' @title Estimate Diurnal Radiation 
 #' 
-#' @description Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day). Based on \insertCite{Tham2010}{TrenchR} and \insertCite{AlRawahi2011}{TrenchR}.
+#' @description Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day). Based on \insertCite{Tham2010;textual}{TrenchR} and \insertCite{AlRawahi2011;textual}{TrenchR}.
 #' 
-#' @param doy \code{numeric} is the day of year
+#' @param doy \code{numeric} is the day of year.
 #' 
-#' @param solrad \code{numeric} is solar radiation (W/m^2) per day
+#' @param solrad \code{numeric} is solar radiation (W/m^2) per day.
 #' 
-#' @param hour \code{numeric} is hour (0-24) 
+#' @param hour \code{numeric} is hour (0-24). 
 #' 
-#' @param lon \code{numeric} longitude (degrees)
+#' @param lon \code{numeric} longitude (degrees).
 #' 
-#' @param lat \code{numeric} latitude (degrees)
+#' @param lat \code{numeric} latitude (degrees).
 #' 
-#' @return \code{numeric} hourly solar radiation (W/m^2)
-#' 
-#' @keywords diurnal radiation
+#' @return \code{numeric} hourly solar radiation (W/m^2).
 #' 
 #' @family microclimate functions
 #' 
@@ -133,25 +129,23 @@ diurnal_radiation_variation <- function(doy,
 
 #' @title Estimate Average Monthly Solar Radiation
 #' 
-#' @description Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information as input. Based on \insertCite{Nikolov1992}{TrenchR}
+#' @description Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information as input. Based on \insertCite{Nikolov1992;textual}{TrenchR}.
 #' 
-#' @param lat \code{numeric} latitude (degrees)
+#' @param lat \code{numeric} latitude (degrees).
 #' 
-#' @param lon \code{numeric} longitude (degrees)
+#' @param lon \code{numeric} longitude (degrees).
 #' 
-#' @param doy \code{numeric} day of year (1-366)
+#' @param doy \code{numeric} day of year (1-366).
 #' 
-#' @param elev \code{numeric} elevation (meters)
+#' @param elev \code{numeric} elevation (meters).
 #' 
-#' @param T \code{numeric} mean monthly temperature (C)
+#' @param T \code{numeric} mean monthly temperature (C).
 #' 
-#' @param Hr \code{numeric} mean month relative humidity (percentage)
+#' @param Hr \code{numeric} mean month relative humidity (percentage).
 #' 
-#' @param P \code{numeric} total monthly precipitation (mm)
+#' @param P \code{numeric} total monthly precipitation (mm).
 #' 
-#' @return average monthly solar radiation (W/m^2)
-#' 
-#' @keywords average monthly solar radiation
+#' @return \code{numeric} average monthly solar radiation (W/m^2).
 #' 
 #' @family microclimate functions
 #' 
@@ -262,23 +256,21 @@ monthly_solar_radiation <- function (lat,
 
 #' @title Estimate Direct Solar Radiation
 #' 
-#' @description Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in \insertCite{Tracy1983}{TrenchR}. Also references: \insertCite{McCullough1971}{TrenchR}, insertCite{Campbell1998}{TrenchR}
+#' @description Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in \insertCite{Tracy1983;textual}{TrenchR} \insertCite{McCullough1971,Campbell1998}{TrenchR}.
 #' 
-#' @param lat \code{numeric} latitude (degrees)
+#' @param lat \code{numeric} latitude (degrees).
 #' 
-#' @param doy \code{numeric} doy of year (1-366)
+#' @param doy \code{numeric} day of year (1-366).
 #' 
-#' @param elev \code{numeric} elevation in m
+#' @param elev \code{numeric} elevation in m.
 #' 
-#' @param t \code{numeric} local time (decimal hours)
+#' @param t \code{numeric} local time (decimal hours).
 #' 
-#' @param t0 \code{numeric} time of local noon (decimal hours), can be estimated using solar_noon()
+#' @param t0 \code{numeric} time of local noon (decimal hours), can be estimated using \code{\link{solar_noon}}.
 #' 
-#' @param method \code{character} method for estimating direct solar radiation, options: "Campbell 1977","Gates 1962". Defaults to Campbell 1977.
+#' @param method \code{character} method for estimating direct solar radiation, options: \code{"Campbell 1977"} (default), \code{"Gates 1962"}.
 #' 
-#' @return \code{numeric} direct solar radiation (W/m^2)
-#' 
-#' @keywords solar radiation
+#' @return \code{numeric} direct solar radiation (W/m^2).
 #' 
 #' @family microclimate functions
 #' 

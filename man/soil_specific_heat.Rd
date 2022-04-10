@@ -2,21 +2,21 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_specific_heat}
 \alias{soil_specific_heat}
-\title{Estimate Soil Specific Heat}
+\title{Soil Specific Heat}
 \usage{
 soil_specific_heat(x_o, x_m, x_w, rho_so)
 }
 \arguments{
-\item{x_o}{\code{numeric} volume fraction of organic material}
+\item{x_o}{\code{numeric} volume fraction of organic material.}
 
-\item{x_m}{\code{numeric} volume fraction of minerals}
+\item{x_m}{\code{numeric} volume fraction of minerals.}
 
-\item{x_w}{\code{numeric} volume fraction of water}
+\item{x_w}{\code{numeric} volume fraction of water.}
 
-\item{rho_so}{\code{numeric} particle density of soil in kg/m^3 (bulk density). Defaults to 1620.}
+\item{rho_so}{\code{numeric} particle density of soil in kg/m^3 (bulk density).}
 }
 \value{
-\code{numeric} soil specific heat (J kg^-1 K^-1)
+\code{numeric} soil specific heat (J kg^-1 K^-1).
 }
 \description{
 Estimates soil specific heat (J kg^-1 K^-1) using the methods of \insertCite{deVries1963;textual}{TrenchR}. Uses the volume fraction of organic material, minerals, and water in soil.
@@ -43,5 +43,3 @@ Other soil temperature functions:
 Joseph Grigg
 }
 \concept{soil temperature functions}
-\keyword{soil}
-\keyword{temperature}

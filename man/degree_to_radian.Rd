@@ -7,10 +7,10 @@
 degree_to_radian(deg)
 }
 \arguments{
-\item{deg}{\code{numeric} angle (degrees)}
+\item{deg}{\code{numeric} angle (degrees).}
 }
 \value{
-\code{numeric} angle (radians)
+\code{numeric} angle (radians).
 }
 \description{
 Convert angle in degrees to radians.

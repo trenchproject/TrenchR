@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{surface_area_from_mass}
 \alias{surface_area_from_mass}
-\title{Allometry: Surface Area from Mass}
+\title{Surface Area from Mass}
 \usage{
 surface_area_from_mass(M, taxon)
 }

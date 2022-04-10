@@ -29,14 +29,12 @@ Tb_limpet(T_a, T_r, L, H, I, u, psi, c, position = "anterior")
 \code{numeric} predicted body (operative environmental) temperature (C).
 }
 \description{
-Predicts body temperatures (operative environmental temperatures) of a limpet in C.
- \cr \cr
- Based on \insertCite{Denny2006;textual}{TrenchR}.
+Predict body temperatures (operative environmental temperatures) of a limpet in C. Based on \insertCite{Denny2006;textual}{TrenchR}.
 }
 \details{
 The original equation uses a finite-difference approach where they divide the rock into series of chunks, and calculate the temperature at each node to derive the conductive heat. For simplification, here it takes the rock temperature as a parameter, and conductive heat is calculated by the product of the area, thermal conductivity of rock and the difference in temperatures of the rock and the body.
   \cr \cr
-  Limpets are simulated as cones following and using solar emissiviity values from \insertCite{Campbell1998;textual}{TrenchR}.
+  Limpets are simulated as cones following and using solar emissivity values from \insertCite{Campbell1998;textual}{TrenchR}.
   \cr \cr
   The area of the limpet's shell (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) is projected in the direction at which sunlight strikes the organism \insertCite{Pennell1989;textual}{TrenchR}.
   \cr \cr
@@ -63,8 +61,8 @@ Other biophysical models:
 \code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},

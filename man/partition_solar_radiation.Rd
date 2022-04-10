@@ -19,7 +19,7 @@ partition_solar_radiation(method, kt, lat = NA, sol.elev = NA)
 diffuse fraction
 }
 \description{
-partition solar radiation (W m^-2) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in \insertCite{Wong2001}{TrenchR}.
+Partition solar radiation (W m^-2) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in \insertCite{Wong2001;textual}{TrenchR}.
 }
 \examples{
   partition_solar_radiation(method   = "Erbs", 
@@ -50,5 +50,3 @@ Other microclimate functions:
 \code{\link{wind_speed_profile_segment}()}
 }
 \concept{microclimate functions}
-\keyword{radiation}
-\keyword{solar}

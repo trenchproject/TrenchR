@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{proportion_silhouette_area}
 \alias{proportion_silhouette_area}
-\title{Calculate Organism Silhouette Area}
+\title{Organism Silhouette Area}
 \usage{
 proportion_silhouette_area(z, taxon, raz = 0, posture = "prostrate")
 }
@@ -56,5 +56,3 @@ Other allometric functions:
 \code{\link{volume_from_length}()}
 }
 \concept{allometric functions}
-\keyword{area}
-\keyword{silhouette}

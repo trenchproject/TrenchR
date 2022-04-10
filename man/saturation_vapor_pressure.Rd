@@ -13,7 +13,7 @@ saturation_vapor_pressure(T_a)
 \code{numeric} saturation vapor pressure, e_s (kPa)
 }
 \description{
-Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation \insertCite{Stull2000}{TrenchR}. Source: insertCite{Riddell2018}{TrenchR}.
+Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation \insertCite{Stull2000,Riddell2018}{TrenchR}.
 }
 \examples{
   saturation_vapor_pressure(T_a = 293)
@@ -27,8 +27,8 @@ Other biophysical models:
 \code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -68,6 +68,3 @@ Other biophysical models:
 Eric Riddell
 }
 \concept{biophysical models}
-\keyword{pressure}
-\keyword{saturation}
-\keyword{vapor}

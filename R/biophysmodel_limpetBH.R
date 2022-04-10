@@ -1,8 +1,6 @@
 #' @title Helmuth Lab Calculations for Operative Environmental Temperature of a Limpet
 #'
-#' @description Predicts body temperatures (operative environmental temperatures) of a limpet in C.
-#'  \cr \cr
-#'  Calculations from Helmuth Lab -- although radiation and convection are altered from original model -- based on \insertCite{Denny2006;textual}{TrenchR}.
+#' @description Predicts body temperatures (operative environmental temperatures) of a limpet in C. Calculations from Helmuth Lab -- although radiation and convection are altered from original model -- based on \insertCite{Denny2006;textual}{TrenchR}.
 #' 
 #' @param T_a \code{numeric} air temperature in C.
 #'

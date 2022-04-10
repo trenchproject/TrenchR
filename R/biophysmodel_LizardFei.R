@@ -1,25 +1,24 @@
-#' @title Calculate Operative Temperature of Lizard Using model by Fei et al.
+#' @title Operative Temperature of Lizard Using model by Fei et al.
 #' 
-#' @description Predicts body temperature (operative environmental temperature) of a lizard in K based on \insertCite{Fei2012;textual}{TrenchR}.
-#'  \cr \cr
+#' @description Predict body temperature (operative environmental temperature) of a lizard in K based on \insertCite{Fei2012;textual}{TrenchR}.
 #'
-#' @param T_a air temperature at lizard height in K.
+#' @param T_a \code{numeric} air temperature at lizard height in K.
 #' 
-#' @param T_g surface temperature in K.
+#' @param T_g \code{numeric}surface temperature in K.
 #' 
-#' @param H  total (direct + diffuse) solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.
+#' @param H \code{numeric} total (direct + diffuse) solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.
 #' 
-#' @param lw Downward flux of near-infrared radiation (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
+#' @param lw \code{numeric} downward flux of near-infrared radiation (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
-#' @param shade proportion of shade.
+#' @param shade \code{numeric} proportion of shade.
 #' 
-#' @param m lizard mass in g.
+#' @param m \code{numeric} lizard mass in g.
 #' 
-#' @param Acondfact the proportion of the lizard projected area that is in contact with the ground. \code{Acondfact = 0.1} for standing and \code{Acondfact = 0.4} for lying on ground.
+#' @param Acondfact \code{numeric} proportion of the lizard projected area that is in contact with the ground. \code{Acondfact = 0.1} for standing and \code{Acondfact = 0.4} for lying on ground.
 #' 
-#' @param Agradfact the proportion of the lizard projected area exposed to radiation from the ground. \code{Agradfact = 0.3} for standing and \code{Agradfact = 0.0} for lying on ground.
+#' @param Agradfact \code{numeric} proportion of the lizard projected area exposed to radiation from the ground. \code{Agradfact = 0.3} for standing and \code{Agradfact = 0.0} for lying on ground.
 #' 
-#' @return Body temperature of a lizard in K.
+#' @return \code{numeric} body temperature of a lizard in K.
 #' 
 #' @family biophysical models
 #' 
