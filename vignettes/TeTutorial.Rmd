@@ -252,9 +252,9 @@ Nusselt_from_Grashof(Gr=5)
 ```
 
 ```{r}
-Free_or_forced_convection(Gr=100, Re=5)
-Free_or_forced_convection(Gr=1, Re=5)
-Free_or_forced_convection(Gr=1000, Re=5)
+free_or_forced_convection(Gr=100, Re=5)
+free_or_forced_convection(Gr=1, Re=5)
+free_or_forced_convection(Gr=1000, Re=5)
 ```
 
 We offer methods to estimate the convective heat transfer coefficient

@@ -26,11 +26,11 @@ diurnal_temp_variation_sineexp(
 
 \item{t_s}{\code{numeric} time of sunrise (hour).}
 
-\item{alpha}{\code{numeric} time difference between t_x (time of maximum temperature) and noon (hour).}
+\item{alpha}{\code{numeric} time difference between \code{t_x} (time of maximum temperature) and noon (hour).}
 
-\item{beta}{\code{numeric} time difference between t_x and sunrise (hour).}
+\item{beta}{\code{numeric} time difference between \code{t_x} and sunrise (hour).}
 
-\item{gamma}{\code{numeric} decay parameter for rate of t change from sunset to t_n (time of minimum temp).}
+\item{gamma}{\code{numeric} decay parameter for rate of \code{t} change from sunset to \code{t_n} (time of minimum temp).}
 }
 \value{
 \code{numeric} temperature (C) at a specified hour.

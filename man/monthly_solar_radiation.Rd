@@ -22,10 +22,10 @@ monthly_solar_radiation(lat, lon, doy, elev, T, Hr, P)
 \item{P}{\code{numeric} total monthly precipitation (mm).}
 }
 \value{
-\code{numeric} average monthly solar radiation (W/m^2).
+\code{numeric} average monthly solar radiation ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}})).
 }
 \description{
-Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information as input. Based on \insertCite{Nikolov1992;textual}{TrenchR}.
+Estimate average monthly solar radiation ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per day) using basic topographic and climatic information as input. Based on \insertCite{Nikolov1992;textual}{TrenchR}.
 }
 \examples{
   monthly_solar_radiation(lat  = 47.61, 

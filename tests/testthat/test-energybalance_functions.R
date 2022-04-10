@@ -121,18 +121,18 @@ test_that("Grashof_number_Gates function works as expected", {
   expect_similar(Grashof_number_Gates(Ta=30, Tg=35, beta=0.00367, D=0.001, nu=1.2), 1.248819e-10)
 })
 
-test_that("Nu_from_Re function works as expected", {
-  expect_similar(Nu_from_Re(Re=5, taxa="cylinder"), 1.301952)
-  expect_similar(Nu_from_Re(Re=5, taxa="frog"), 0.7548014)
-  expect_similar(Nu_from_Re(Re=5, taxa="lizard_parallel_to_air_flow"), 0.3290317)
+test_that("Nusselt_from_Reynolds function works as expected", {
+  expect_similar(Nusselt_from_Reynolds(Re=5, taxa="cylinder"), 1.301952)
+  expect_similar(Nusselt_from_Reynolds(Re=5, taxa="frog"), 0.7548014)
+  expect_similar(Nusselt_from_Reynolds(Re=5, taxa="lizard_parallel_to_air_flow"), 0.3290317)
 })
 
-test_that("Nu_from_Gr function works as expected", {
-  expect_similar(Nu_from_Gr(5), 0.7177674)
+test_that("Nusselt_from_Grashof function works as expected", {
+  expect_similar(Nusselt_from_Grashof(5), 0.7177674)
 })
 
-test_that("Free_or_forced_convection function works as expected", {
-  expect_identical(Free_or_forced_convection(Gr=100, Re=5), "intermediate condition, mixed convection based on Nusselt numbers is appropriate")
-  expect_identical(Free_or_forced_convection(1,10), "forced convection")
-  expect_identical(Free_or_forced_convection(1000,1), "free convection")
+test_that("free_or_forced_convection function works as expected", {
+  expect_identical(free_or_forced_convection(Gr=100, Re=5), "intermediate condition, mixed convection based on Nusselt numbers is appropriate")
+  expect_identical(free_or_forced_convection(1,10), "forced convection")
+  expect_identical(free_or_forced_convection(1000,1), "free convection")
 })

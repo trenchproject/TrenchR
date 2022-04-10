@@ -11,14 +11,14 @@ heat_transfer_coefficient(V, D, K, nu, taxa = "cylinder")
 
 \item{D}{\code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).}
 
-\item{K}{\code{numeric} Thermal conductivity of air (W m^-1 K^-1), can calculate using DRYAIR or WETAIR in NicheMapR}
+\item{K}{\code{numeric} Thermal conductivity of air (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
 
-\item{nu}{\code{numeric} Kinematic Viscosity of air (m^2 s^-1), can calculate using DRYAIR or WETAIR in NicheMapR}
+\item{nu}{\code{numeric} Kinematic viscosity of air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
 
-\item{taxa}{\code{character} Which class of organism, current choices: sphere, cylinder, frog, lizard_surface, lizard_elevated, flyinginsect, spider. Notes: Cylinder assumes 40<Re<4000. lizard assumes prostrate on or elevated above surface, average for parallel and perpendicular to air flow}
+\item{taxa}{\code{character} Which class of organism, current choices: sphere, cylinder, frog, lizard_surface, lizard_elevated, flyinginsect, spider. Notes: Cylinder assumes 40<Re<4000. lizard assumes prostrate on or elevated above surface, average for parallel and perpendicular to air flow.}
 }
 \value{
-\code{numeric} heat transfer coefficient, H_L (W m^-2 K^-1)
+\code{numeric} heat transfer coefficient, \code{H_L} (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).
 }
 \description{
 Estimate the heat transfer coefficient for various taxa based on empirical measurements \insertCite{Mitchell1976}{TrenchR}.
@@ -36,7 +36,6 @@ Estimate the heat transfer coefficient for various taxa based on empirical measu
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
 \code{\link{Nusselt_from_Grashof}()},
@@ -71,6 +70,7 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{saturation_vapor_pressure}()},

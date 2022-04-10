@@ -21,7 +21,7 @@ Tb_CampbellNorman(
 
 \item{T_g}{\code{numeric} ground temperature (K).}
 
-\item{S}{\code{numeric} flux density of solar radiation (W/m^2), combining direct, diffuse, and reflected radiation accounting for view factors.}
+\item{S}{\code{numeric} flux density of solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}), combining direct, diffuse, and reflected radiation accounting for view factors.}
 
 \item{alpha_S}{\code{numeric} organismal solar absorptivity.}
 
@@ -61,7 +61,6 @@ Tb_CampbellNorman (T_a     = 303,
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
 \code{\link{Nusselt_from_Grashof}()},
@@ -95,6 +94,7 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{heat_transfer_coefficient}()},

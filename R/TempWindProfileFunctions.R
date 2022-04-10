@@ -281,15 +281,15 @@ air_temp_profile_segment <- function (T_r,
 
 #' @title Windspeed at a Specified Height 
 #' 
-#' @description Calculate wind speed (m/s) at a specified height (meters). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
+#' @description Calculate wind speed (m/s) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
 #' 
 #' @param u_r \code{numeric} a vector of wind speeds at the 3 reference heights (m/s).
 #' 
-#' @param zr \code{numeric} a vector of 3 reference heights (meters).
+#' @param zr \code{numeric} a vector of 3 reference heights (m).
 #' 
-#' @param z0 \code{numeric} a vector of 3 experimentally determined roughness heights (meters).
+#' @param z0 \code{numeric} a vector of 3 experimentally determined roughness heights (m).
 #' 
-#' @param z \code{numeric} height to scale (meters).
+#' @param z \code{numeric} height to scale (m).
 #' 
 #' @return \code{numeric} temperature (C).
 #' 

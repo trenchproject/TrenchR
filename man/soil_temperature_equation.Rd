@@ -9,17 +9,17 @@ soil_temperature_equation(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s)
 \arguments{
 \item{L}{\code{numeric} Monin-Obukhov length, a measure of the instability of heat flow (see \insertCite{Beckman1973;textual}{TrenchR}).}
 
-\item{rho_a}{\code{numeric} density of air (kg m^-3).}
+\item{rho_a}{\code{numeric} density of air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}).}
 
-\item{c_a}{\code{numeric} specific heat of air (J/(kg*K)).}
+\item{c_a}{\code{numeric} specific heat of air (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}).}
 
 \item{k}{\code{numeric} von Karman's constant.}
 
 \item{V_inst}{\code{numeric} instantaneous wind speed (m/s).}
 
-\item{z_r}{\code{numeric} reference height (meters).}
+\item{z_r}{\code{numeric} reference height (m).}
 
-\item{z0}{\code{numeric} surface roughness (meters).}
+\item{z0}{\code{numeric} surface roughness (m).}
 
 \item{T_inst}{\code{numeric} instantaneous air temperature (K).}
 

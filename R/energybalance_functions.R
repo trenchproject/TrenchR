@@ -6,15 +6,15 @@
 #' 
 #' @param T_b \code{numeric} Body temperature (Kelvin).
 #' 
-#' @param d \code{numeric} Mean thickness of the animal skin (surface) in (meters), assumes well mixed interior
+#' @param d \code{numeric} Mean thickness of the animal skin (surface) in (meters), assumes well mixed interior.
 #' 
-#' @param K \code{numeric} Thermal conductivity (W K^-1 m^-1), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.
+#' @param K \code{numeric} Thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), \code{K = 0.5} for naked skin, \code{K = 0.15} for insect cuticle \insertCite{Galushko2005}{TrenchR}; conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.
 #' 
-#' @param A \code{numeric} Surface area (m^2)
+#' @param A \code{numeric} Surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
-#' @param proportion \code{numeric} proportion of body in contact with the surface (0-1)
+#' @param proportion \code{numeric} proportion of body in contact with the surface (0-1).
 #' 
-#' @return \code{numeric} conductance (W)
+#' @return \code{numeric} conductance (W).
 #' 
 #' @family biophysical models
 #' 
@@ -55,19 +55,19 @@ Qconduction_animal <- function (T_g,
 #' 
 #' @description Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
 #' 
-#' @param T_g \code{numeric} Surface temperature (Kelvin).
+#' @param T_g \code{numeric} Surface temperature (K).
 #' 
-#' @param T_b \code{numeric} Body temperature (Kelvin).
+#' @param T_b \code{numeric} Body temperature (K).
 #' 
-#' @param D \code{numeric} Characteristic dimension of the animal (meters)
+#' @param D \code{numeric} Characteristic dimension of the animal (m).
 #' 
-#' @param K_g \code{numeric} Thermal conductivity of substrate (W K^-1 m^-1)
+#' @param K_g \code{numeric} Thermal conductivity of substrate (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}).
 #' 
-#' @param A \code{numeric} Surface area (m^2)
+#' @param A \code{numeric} Surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
-#' @param proportion \code{numeric} proportion in contact to the surface
+#' @param proportion \code{numeric} proportion in contact to the surface.
 #' 
-#' @return conductance (W)
+#' @return \code{numeric} conductance (W).
 #' 
 #' @family biophysical models
 #' 
@@ -110,19 +110,19 @@ Qconduction_substrate <- function (T_g,
 #' 
 #' @description Calculate convection from an organism to its environment as in \insertCite{Mitchell1976}{TrenchR}. Includes an enhancement factor associated with outdoor environments. 
 #' 
-#' @param T_a \code{numeric} Air temperature (Kelvin).
+#' @param T_a \code{numeric} Air temperature (K).
 #' 
-#' @param T_b \code{numeric} Initial body temperature (Kelvin).
+#' @param T_b \code{numeric} Initial body temperature (K).
 #' 
-#' @param H_L \code{numeric} Convective heat transfer coefficient (W m^-2 K^-1)
+#' @param H_L \code{numeric} Convective heat transfer coefficient (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).
 #' 
-#' @param A \code{numeric} Surface area (m^2)
+#' @param A \code{numeric} Surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
-#' @param proportion \code{numeric} proportion of surface area exposed to air
+#' @param proportion \code{numeric} proportion of surface area exposed to air.
 #' 
 #' @param ef \code{numeric} is the enhancement factor, used to adjust H to field conditions.  Approximated as mean value of 1.23 by default, but see \insertCite{Mitchell1976}{TrenchR} for further information.
 #' 
-#' @return \code{numeric} convection (W)
+#' @return \code{numeric} convection (W).
 #' 
 #' @family biophysical models
 #' 
@@ -164,13 +164,13 @@ Qconvection <- function (T_a,
 #' 
 #' @param D \code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).
 #' 
-#' @param K \code{numeric} Thermal conductivity of air (W m^-1 K^-1), can calculate using DRYAIR or WETAIR in NicheMapR
+#' @param K \code{numeric} Thermal conductivity of air (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #' 
-#' @param nu \code{numeric} Kinematic Viscosity of air (m^2 s^-1), can calculate using DRYAIR or WETAIR in NicheMapR
+#' @param nu \code{numeric} Kinematic viscosity of air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #' 
-#' @param taxa \code{character} Which class of organism, current choices: sphere, cylinder, frog, lizard_surface, lizard_elevated, flyinginsect, spider. Notes: Cylinder assumes 40<Re<4000. lizard assumes prostrate on or elevated above surface, average for parallel and perpendicular to air flow
+#' @param taxa \code{character} Which class of organism, current choices: sphere, cylinder, frog, lizard_surface, lizard_elevated, flyinginsect, spider. Notes: Cylinder assumes 40<Re<4000. lizard assumes prostrate on or elevated above surface, average for parallel and perpendicular to air flow.
 #' 
-#' @return \code{numeric} heat transfer coefficient, H_L (W m^-2 K^-1)
+#' @return \code{numeric} heat transfer coefficient, \code{H_L} (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).
 #' 
 #' @family biophysical models
 #' 
@@ -219,13 +219,13 @@ heat_transfer_coefficient <- function (V,
 #' 
 #' @param D \code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).
 #' 
-#' @param K \code{numeric} Thermal conductivity of air (W m^-1 K^-1), can calculate using DRYAIR or WETAIR in NicheMapR
+#' @param K \code{numeric} Thermal conductivity of air (W m^-1 K^-1), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #' 
-#' @param nu \code{numeric} Kinematic Viscosity of air (m^2 s^-1), can calculate using DRYAIR or WETAIR in NicheMapR
+#' @param nu \code{numeric} Kinematic Viscosity of air (m^2 s^-1), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #' 
 #' @param taxa \code{character} Which class of organism, current choices: sphere, frog, lizard, flyinginsect, spider
 #' 
-#' @return \code{numeric} heat transfer coefficient, H_L (W m^-2 K^-1)
+#' @return \code{numeric} heat transfer coefficient, \code{H_L} (W m^-2 K^-1)
 #' 
 #' @family biophysical models
 #' 
@@ -274,7 +274,7 @@ heat_transfer_coefficient_approximation <- function (V,
 #' 
 #' @param D \code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).
 #' 
-#' @param type \code{character} Choice between "Spotila" and "Gates" for equation to use
+#' @param type \code{character} Choice between "Spotila" and "Gates" for equation to use.
 #' 
 #' @return \code{numeric} heat transfer coefficient, H_L (W m^-2 K^-1)
 #' 
@@ -1178,11 +1178,11 @@ Reynolds_number <- function(u,
 #' 
 #' @param Tg \code{numeric} Ground (surface) temperature (C).
 #' 
-#' @param D \code{numeric} characteristic dimension (e.g., body diameter) (meters)
+#' @param D \code{numeric} characteristic dimension (e.g., body diameter) (meters).
 #' 
 #' @param nu \code{numeric} the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^-1), can calculate from DRYAIR() or WETAIR()
 #' 
-#' @return \code{numeric} Grashof number
+#' @return \code{numeric} Grashof number.
 #' 
 #' @family biophysical models
 #' 
@@ -1323,13 +1323,13 @@ Nusselt_from_Grashof <- function (Gr) {
 
 #' @title Determine If Convection is Free or Forced 
 #' 
-#' @description Compare the Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980).
+#' @description Compare the Grashof and Reyolds numbers to determine whether convection is free or forced \insertCite{Gates1980}{TrenchR}.
 #' 
-#' @param Gr \code{numeric} is the Grashof Number (dimensionless)
+#' @param Gr \code{numeric} is the Grashof Number (dimensionless).
 #' 
-#' @param Re \code{numeric} is the Reynolds Number (dimensionless)
+#' @param Re \code{numeric} is the Reynolds Number (dimensionless).
 #' 
-#' @return \code{character} "free", "forced" or "intermediate"
+#' @return \code{character} \code{"free"}, \code{"forced"}, or \code{"intermediate"}.
 #' 
 #' @family biophysical models
 #' 
@@ -1342,7 +1342,7 @@ Nusselt_from_Grashof <- function (Gr) {
 #'   Free_or_forced_convection(Gr = 100, 
 #'                             Re = 5)
 #' 
-Free_or_forced_convection <- function (Gr, 
+free_or_forced_convection <- function (Gr, 
                                        Re) {
   
   conv <- "intermediate condition, mixed convection based on Nusselt numbers is appropriate"

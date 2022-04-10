@@ -22,9 +22,9 @@ e \code{numeric} Vapor pressure (Pa).
 
 esat \code{numeric} Saturation vapor pressure (Pa).
 
-vd \code{numeric} Vapor density (kg m-3).
+vd \code{numeric} Vapor density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}).
 
-rw \code{numeric} Mixing ration (kg kg-1).
+rw \code{numeric} Mixing ration (\ifelse{html}{\out{kg kg<sup>-1</sup>}}{\eqn{kg kg^-1}{ASCII}}).
 
 tvir \code{numeric} Virtual temperature (K).
 
@@ -32,7 +32,7 @@ tvinc \code{numeric} Virtual temperature increment (K).
 
 denair \code{numeric} Hourly predictions of the soil moisture under the maximum specified shade.
 
-cp \code{numeric} Specific heat of air at constant pressure (J kg-1 K-1).
+cp \code{numeric} Specific heat of air at constant pressure (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}).
 
 wtrpot \code{numeric} Water potential (Pa).
 

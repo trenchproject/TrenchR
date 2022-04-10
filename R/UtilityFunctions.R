@@ -31,7 +31,7 @@ day_of_year <- function (day,
 #' 
 #' @description Calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)
 #' 
 #' @return \code{numeric} declination angle (radians).
 #' 
@@ -61,7 +61,7 @@ dec_angle <- function (doy) {
 #'
 #' @param lat \code{numeric} latitude (decimal degrees).
 #' 
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)
 #' 
 #' @return \code{numeric} day length (hours).
 #'
@@ -96,7 +96,7 @@ daylength <- function(lat,
 #'
 #' @param lon \code{numeric} longitude (decimal degrees)
 #'
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)
 #'
 #' @param offset \code{numeric} number of hours to add to UTC to get local time (improves accuracy but not always necessary). Defaults to NA.
 #'
@@ -150,7 +150,7 @@ solar_noon <- function (lon,
 #' 
 #' @description  calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)
 #' 
 #' @param lat \code{numeric} latitude (decimal degrees).
 #' 
@@ -218,7 +218,7 @@ zenith_angle <- function (doy,
 #'
 #' @description  calculate the azimuth angle, the angle (degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)
 #' 
 #' @param lat \code{numeric} latitude (decimal degrees).
 #' 

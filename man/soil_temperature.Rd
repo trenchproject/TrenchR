@@ -24,7 +24,7 @@ soil_temperature(
 \arguments{
 \item{z_r.intervals}{\code{numeric} the number of intervals in the soil profile to calculate, defaults to 12.}
 
-\item{z_r}{\code{numeric} reference height in0 (meters).}
+\item{z_r}{\code{numeric} reference height in0 (m).}
 
 \item{z}{\code{numeric} interval of the soil profile to return (1 to z_r.intervals).}
 
@@ -34,13 +34,13 @@ soil_temperature(
 
 \item{Tsoil0}{\code{numeric} initial soil temperature (degrees C).}
 
-\item{z0}{\code{numeric} surface roughness (meters).}
+\item{z0}{\code{numeric} surface roughness (m).}
 
 \item{SSA}{\code{numeric} solar absorptivity of soil surface as a fraction.}
 
 \item{TimeIn}{\code{numeric} vector of time periods for the model.}
 
-\item{H}{\code{numeric} vector of solar radiation (W m^-2).}
+\item{H}{\code{numeric} vector of solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).}
 
 \item{water_content}{\code{numeric} percent water content (percent).}
 

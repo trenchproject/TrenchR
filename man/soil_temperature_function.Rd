@@ -11,13 +11,13 @@ soil_temperature_function(j, T_so, params)
 
 \item{T_so}{\code{numeric} is the initial soil temperature profile in C.}
 
-\item{params}{is a list containing the following parameters, which are described or calculated in soil_temperature(): list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade).}
+\item{params}{is a list containing the following param, which are described or calculated in \code{\link{soil_temperature}}: \code{list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade)}.}
 }
 \value{
 Soil temperature profile as a \code{list}.
 }
 \description{
-Function called to calculate soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from \insertCite{Porter1973;textual}{TrenchR} and \insertCite{Kingsolver1979;textual}{TrenchR}
+Function called to calculate soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. Param are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from \insertCite{Porter1973;textual}{TrenchR} and \insertCite{Kingsolver1979;textual}{TrenchR}
 }
 \examples{
   set.seed(123)

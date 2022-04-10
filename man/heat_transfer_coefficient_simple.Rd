@@ -11,7 +11,7 @@ heat_transfer_coefficient_simple(V, D, type)
 
 \item{D}{\code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).}
 
-\item{type}{\code{character} Choice between "Spotila" and "Gates" for equation to use}
+\item{type}{\code{character} Choice between "Spotila" and "Gates" for equation to use.}
 }
 \value{
 \code{numeric} heat transfer coefficient, H_L (W m^-2 K^-1)
@@ -30,7 +30,6 @@ estimate the heat transfer coefficient \insertCite{Mitchell1976}{TrenchR} using 
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
 \code{\link{Nusselt_from_Grashof}()},
@@ -65,6 +64,7 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient}()},
 \code{\link{saturation_vapor_pressure}()},

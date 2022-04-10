@@ -6,7 +6,7 @@
 #' 
 #' @param T_g \code{numeric} ground temperature (K).
 #' 
-#' @param S \code{numeric} flux density of solar radiation (W/m^2), combining direct, diffuse, and reflected radiation accounting for view factors.
+#' @param S \code{numeric} flux density of solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}), combining direct, diffuse, and reflected radiation accounting for view factors.
 #' 
 #' @param alpha_S \code{numeric} organismal solar absorptivity. 
 #' 
@@ -124,7 +124,7 @@ Qnet_Gates <- function (Qabs,
 #' 
 #' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980;textual}{TrenchR}. Omits evaporative and metabolic heat loss \insertCite{Mitchell1976,Kingsolver1983}{TrenchR}.
 #' 
-#' @param A \code{numeric} surface area (m^2).
+#' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
 #' @param D \code{numeric} characteristic dimension for conduction (meters).
 #' 
@@ -235,7 +235,7 @@ Tb_Gates <- function (A,
 #' 
 #' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980;textual}{TrenchR}. Omits evaporative and metabolic heat loss.
 #' 
-#' @param A \code{numeric} surface area (m^2).
+#' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
 #' @param D \code{numeric} characteristic dimension for conduction (meters).
 #' 

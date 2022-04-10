@@ -1,15 +1,14 @@
 #' @title Soil Thermal Conductivity
 #' 
-#' @description Estimates soil thermal conductivity (W m^-1 K^-1) using the methods of \insertCite{deVries1963;textual}{TrenchR}.
+#' @description Estimates soil thermal conductivity (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) using the methods of \insertCite{deVries1963;textual}{TrenchR}.
 #' 
 #' @param x \code{numeric} vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.
 #' 
-#' @param lambda \code{numeric} vector of the thermal conductivities (W m^-1 K^-1) of the soil constituents.
+#' @param lambda \code{numeric} vector of the thermal conductivities (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) of the soil constituents.
 #' 
-#' @param g_a \code{numeric} shape factor on soil particles. The soil particles are assumed to be ellipsoids with axes g_a, g_b, and g_c, where g_a + g_b + g_c = 1 and g_a = g_b. \insertCite{deVries1952;textual}{TrenchR} suggests g_a = g_b = 0.125.
+#' @param g_a \code{numeric} shape factor on soil particles. The soil particles are assumed to be ellipsoids with axes \code{g_a}, \code{g_b}, and \code{g_c}, where \code{g_a + g_b + g_c = 1} and \code{g_a = g_b}. \insertCite{deVries1952;textual}{TrenchR} suggests \code{g_a = g_b = 0.125\code}.
 #' 
-#' @return \code{numeric} soil thermal conductivity (W m^-1 K^-1).
-#' 
+#' @return \code{numeric} soil thermal conductivity (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}).
 #' 
 #' @family soil temperature functions
 #' 
@@ -57,7 +56,7 @@ soil_conductivity <- function (x,
 
 #' @title Soil Specific Heat
 #' 
-#' @description Estimates soil specific heat (J kg^-1 K^-1) using the methods of \insertCite{deVries1963;textual}{TrenchR}. Uses the volume fraction of organic material, minerals, and water in soil.
+#' @description Estimates soil specific heat (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}) using the methods of \insertCite{deVries1963;textual}{TrenchR}. Uses the volume fraction of organic material, minerals, and water in soil.
 #' 
 #' @param x_o \code{numeric} volume fraction of organic material.
 #' 
@@ -65,9 +64,9 @@ soil_conductivity <- function (x,
 #' 
 #' @param x_w \code{numeric} volume fraction of water.
 #' 
-#' @param rho_so \code{numeric} particle density of soil in kg/m^3 (bulk density).
+#' @param rho_so \code{numeric} particle density of soil in (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (bulk density).
 #' 
-#' @return \code{numeric} soil specific heat (J kg^-1 K^-1).
+#' @return \code{numeric} soil specific heat (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}).
 #' 
 #' 
 #' @family soil temperature functions
@@ -107,7 +106,7 @@ soil_specific_heat <- function (x_o,
 #' 
 #' @param L \code{numeric} Monin-Obukhov length, a measure of the instability of heat flow (see \insertCite{Beckman1973;textual}{TrenchR}).
 #' 
-#' @param z0 \code{numeric} surface roughness (meters).
+#' @param z0 \code{numeric} surface roughness (m).
 #' 
 #' @return \code{numeric} integrand for soil temperature function.
 #' 
@@ -143,17 +142,17 @@ soil_temperature_integrand <- function (x,
 #' 
 #' @param L \code{numeric} Monin-Obukhov length, a measure of the instability of heat flow (see \insertCite{Beckman1973;textual}{TrenchR}).
 #' 
-#' @param rho_a \code{numeric} density of air (kg m^-3).
+#' @param rho_a \code{numeric} density of air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}).
 #' 
-#' @param c_a \code{numeric} specific heat of air (J/(kg*K)).
+#' @param c_a \code{numeric} specific heat of air (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}).
 #' 
 #' @param k \code{numeric} von Karman's constant.
 #' 
 #' @param V_inst \code{numeric} instantaneous wind speed (m/s).
 #' 
-#' @param z_r \code{numeric} reference height (meters).
+#' @param z_r \code{numeric} reference height (m).
 #' 
-#' @param z0 \code{numeric} surface roughness (meters).
+#' @param z0 \code{numeric} surface roughness (m).
 #' 
 #' @param T_inst \code{numeric} instantaneous air temperature (K).
 #' 
@@ -200,13 +199,13 @@ soil_temperature_equation <- function (L,
 
 #' @title Core Calculate Soil Temperature Function
 #' 
-#' @description Function called to calculate soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from \insertCite{Porter1973;textual}{TrenchR} and \insertCite{Kingsolver1979;textual}{TrenchR}
+#' @description Function called to calculate soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. Param are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from \insertCite{Porter1973;textual}{TrenchR} and \insertCite{Kingsolver1979;textual}{TrenchR}
 #' 
 #' @param j \code{numeric} is the number of the iteration of running the model.
 #' 
 #' @param T_so \code{numeric} is the initial soil temperature profile in C. 
 #' 
-#' @param params is a list containing the following parameters, which are described or calculated in soil_temperature(): list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade).   
+#' @param params is a list containing the following param, which are described or calculated in \code{\link{soil_temperature}}: \code{list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade)}.   
 #' 
 #' @return Soil temperature profile as a \code{list}.
 #' 
@@ -361,7 +360,7 @@ soil_temperature_function <- function (j,
 #' 
 #' @param z_r.intervals \code{numeric} the number of intervals in the soil profile to calculate, defaults to 12.
 #' 
-#' @param z_r \code{numeric} reference height in0 (meters).
+#' @param z_r \code{numeric} reference height in0 (m).
 #' 
 #' @param z \code{numeric} interval of the soil profile to return (1 to z_r.intervals).
 #' 
@@ -371,13 +370,13 @@ soil_temperature_function <- function (j,
 #' 
 #' @param Tsoil0 \code{numeric} initial soil temperature (degrees C). 
 #' 
-#' @param z0 \code{numeric} surface roughness (meters).
+#' @param z0 \code{numeric} surface roughness (m).
 #' 
 #' @param SSA \code{numeric} solar absorptivity of soil surface as a fraction.
 #' 
 #' @param TimeIn \code{numeric} vector of time periods for the model.
 #' 
-#' @param H \code{numeric} vector of solar radiation (W m^-2).
+#' @param H \code{numeric} vector of solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).
 #' 
 #' @param water_content \code{numeric} percent water content (percent).
 #' 
@@ -516,7 +515,7 @@ soil_temperature <- function (z_r.intervals = 12,
   c_so <- soil_specific_heat(x_o, x_solid - x_o, x_w, rho_so) #calculate soil specific heat
   alpha2 <- k_so / (c_so * rho_so)
   
-  #parameters for ODE
+  #param for ODE
   dt <- 60 * 60
   
   #------------------

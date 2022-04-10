@@ -11,12 +11,12 @@ Grashof_number(Ta, Tg, D, nu)
 
 \item{Tg}{\code{numeric} Ground (surface) temperature (C).}
 
-\item{D}{\code{numeric} characteristic dimension (e.g., body diameter) (meters)}
+\item{D}{\code{numeric} characteristic dimension (e.g., body diameter) (meters).}
 
 \item{nu}{\code{numeric} the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^-1), can calculate from DRYAIR() or WETAIR()}
 }
 \value{
-\code{numeric} Grashof number
+\code{numeric} Grashof number.
 }
 \description{
 Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force \insertCite{Campbell1998}{TrenchR}.
@@ -33,7 +33,6 @@ Estimate the Grashof Number, which describes the ability of a parcel of fluid wa
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Nusselt_from_Grashof}()},
 \code{\link{Nusselt_from_Reynolds}()},
@@ -67,6 +66,7 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{heat_transfer_coefficient}()},

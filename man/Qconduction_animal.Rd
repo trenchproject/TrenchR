@@ -11,16 +11,16 @@ Qconduction_animal(T_g, T_b, d, K = 0.5, A, proportion)
 
 \item{T_b}{\code{numeric} Body temperature (Kelvin).}
 
-\item{d}{\code{numeric} Mean thickness of the animal skin (surface) in (meters), assumes well mixed interior}
+\item{d}{\code{numeric} Mean thickness of the animal skin (surface) in (meters), assumes well mixed interior.}
 
-\item{K}{\code{numeric} Thermal conductivity (W K^-1 m^-1), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.}
+\item{K}{\code{numeric} Thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), \code{K = 0.5} for naked skin, \code{K = 0.15} for insect cuticle \insertCite{Galushko2005}{TrenchR}; conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.}
 
-\item{A}{\code{numeric} Surface area (m^2)}
+\item{A}{\code{numeric} Surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
-\item{proportion}{\code{numeric} proportion of body in contact with the surface (0-1)}
+\item{proportion}{\code{numeric} proportion of body in contact with the surface (0-1).}
 }
 \value{
-\code{numeric} conductance (W)
+\code{numeric} conductance (W).
 }
 \description{
 Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
@@ -39,7 +39,6 @@ Calculate conductance (W) of an ectothermic animal to its substrate. Method assu
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
 \code{\link{Nusselt_from_Grashof}()},
@@ -73,6 +72,7 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{heat_transfer_coefficient}()},

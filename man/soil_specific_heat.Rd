@@ -13,13 +13,13 @@ soil_specific_heat(x_o, x_m, x_w, rho_so)
 
 \item{x_w}{\code{numeric} volume fraction of water.}
 
-\item{rho_so}{\code{numeric} particle density of soil in kg/m^3 (bulk density).}
+\item{rho_so}{\code{numeric} particle density of soil in (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (bulk density).}
 }
 \value{
-\code{numeric} soil specific heat (J kg^-1 K^-1).
+\code{numeric} soil specific heat (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}).
 }
 \description{
-Estimates soil specific heat (J kg^-1 K^-1) using the methods of \insertCite{deVries1963;textual}{TrenchR}. Uses the volume fraction of organic material, minerals, and water in soil.
+Estimates soil specific heat (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}) using the methods of \insertCite{deVries1963;textual}{TrenchR}. Uses the volume fraction of organic material, minerals, and water in soil.
 }
 \examples{
   soil_specific_heat(x_o    = 0.01, 

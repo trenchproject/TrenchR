@@ -48,11 +48,11 @@ Tb_lizard(
 
 \item{surface}{\code{logical} indicates whether lizard is on ground surface (\code{TRUE}) or above the surface (\code{FALSE}, e.g. in a tree).}
 
-\item{alpha_S}{\code{numeric} lizard solar absorptivity, alpha_S=0.9 \insertCite{Gates1980}{TrenchR} (Table 11.4).}
+\item{alpha_S}{\code{numeric} lizard solar absorptivity, \code{alpha_S = 0.9} \insertCite{Gates1980}{TrenchR} (Table 11.4).}
 
-\item{alpha_L}{\code{numeric} lizard thermal absorptivity, alpha_L=0.965 \insertCite{Bartlett1967}{TrenchR}.}
+\item{alpha_L}{\code{numeric} lizard thermal absorptivity, \code{alpha_L = 0.965} \insertCite{Bartlett1967}{TrenchR}.}
 
-\item{epsilon_s}{\code{numeric} surface emissivity of lizards, epsilon_s=0.965 \insertCite{Bartlett1967}{TrenchR}.}
+\item{epsilon_s}{\code{numeric} surface emissivity of lizards, \code{epsilon_s = 0.965} \insertCite{Bartlett1967}{TrenchR}.}
 
 \item{F_d}{\code{numeric} the view factor between the surface of the lizard and diffuse solar radiation \insertCite{Bartlett1967}{TrenchR}.}
 
@@ -94,7 +94,6 @@ Predicts body temperature (operative environmental temperature) of a lizard in C
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
 \code{\link{Nusselt_from_Grashof}()},
@@ -128,6 +127,7 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{heat_transfer_coefficient}()},

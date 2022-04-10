@@ -6,7 +6,7 @@
 #' 
 #' @param Len \code{numeric} snail length (m).
 #' 
-#' @param solar \code{numeric} direct solar flux density (W/m2).
+#' @param solar \code{numeric} direct solar flux density (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).
 #' 
 #' @param WS \code{numeric} wind speed (m/s).
 #' 

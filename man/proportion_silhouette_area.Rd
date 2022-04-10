@@ -24,8 +24,8 @@ Estimate the projected (silhouette) area as a portion of the surface area of the
 \details{
 Relationships come from \itemize{
   \item Lizards: \insertCite{Muth1977;textual}{TrenchR}.
-  \item Frogs: \insertCite{Tracy1976}{TrenchR}.
-  \item Grasshoppers: \insertCite{Anderson1979}{TrenchR}.
+  \item Frogs: \insertCite{Tracy1976;textual}{TrenchR}.
+  \item Grasshoppers: \insertCite{Anderson1979;textual}{TrenchR}.
  }
 }
 \examples{

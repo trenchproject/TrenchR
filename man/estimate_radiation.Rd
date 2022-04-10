@@ -7,7 +7,7 @@
 estimate_radiation(doy, psi, tau, elev, rho = 0.7)
 }
 \arguments{
-\item{doy}{\code{numeric} the day of year (Can be calculated using TrenchR::day_of_year() function).}
+\item{doy}{\code{numeric} the day of year; \code{\link{day_of_year}}.}
 
 \item{psi}{\code{numeric} zenith angle (radians).}
 
@@ -18,7 +18,7 @@ estimate_radiation(doy, psi, tau, elev, rho = 0.7)
 \item{rho}{\code{numeric} albedo as a proportion (0-1).}
 }
 \value{
-\code{numeric} radiation components - direct, diffused and reflected (W/m^2).
+\code{numeric} radiation components - direct, diffused and reflected (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).
 }
 \description{
 Estimate direct, diffuse, and reflected components of solar radiation (W m^-2) using the model in \insertCite{Campbell1998;textual}{TrenchR}.

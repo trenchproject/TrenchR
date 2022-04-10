@@ -24,11 +24,11 @@
 #' 
 #' @param surface \code{logical} indicates whether lizard is on ground surface (\code{TRUE}) or above the surface (\code{FALSE}, e.g. in a tree).
 #' 
-#' @param alpha_S \code{numeric} lizard solar absorptivity, alpha_S=0.9 \insertCite{Gates1980}{TrenchR} (Table 11.4).
+#' @param alpha_S \code{numeric} lizard solar absorptivity, \code{alpha_S = 0.9} \insertCite{Gates1980}{TrenchR} (Table 11.4).
 #' 
-#' @param alpha_L \code{numeric} lizard thermal absorptivity, alpha_L=0.965 \insertCite{Bartlett1967}{TrenchR}.
+#' @param alpha_L \code{numeric} lizard thermal absorptivity, \code{alpha_L = 0.965} \insertCite{Bartlett1967}{TrenchR}.
 #' 
-#' @param epsilon_s \code{numeric} surface emissivity of lizards, epsilon_s=0.965 \insertCite{Bartlett1967}{TrenchR}.
+#' @param epsilon_s \code{numeric} surface emissivity of lizards, \code{epsilon_s = 0.965} \insertCite{Bartlett1967}{TrenchR}.
 #' 
 #' @param F_d \code{numeric} the view factor between the surface of the lizard and diffuse solar radiation \insertCite{Bartlett1967}{TrenchR}.
 #' 

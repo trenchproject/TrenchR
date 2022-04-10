@@ -9,17 +9,17 @@ wind_speed_profile_segment(u_r, zr, z0, z)
 \arguments{
 \item{u_r}{\code{numeric} a vector of wind speeds at the 3 reference heights (m/s).}
 
-\item{zr}{\code{numeric} a vector of 3 reference heights (meters).}
+\item{zr}{\code{numeric} a vector of 3 reference heights (m).}
 
-\item{z0}{\code{numeric} a vector of 3 experimentally determined roughness heights (meters).}
+\item{z0}{\code{numeric} a vector of 3 experimentally determined roughness heights (m).}
 
-\item{z}{\code{numeric} height to scale (meters).}
+\item{z}{\code{numeric} height to scale (m).}
 }
 \value{
 \code{numeric} temperature (C).
 }
 \description{
-Calculate wind speed (m/s) at a specified height (meters). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
+Calculate wind speed (m/s) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
 }
 \examples{
   wind_speed_profile_segment(u_r = c(0.01, 0.025, 0.05), 

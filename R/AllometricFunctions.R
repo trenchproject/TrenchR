@@ -243,7 +243,7 @@ surface_area_from_volume <- function (V,
 
 #' @title Organism Volume from Length
 #' 
-#' @description Estimate volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) from length (m) for a variety of taxa following \insertCite{Mitchell1976}{TrenchR}
+#' @description Estimate volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) from length (m) for a variety of taxa following \insertCite{Mitchell1976;textual}{TrenchR}.
 #' 
 #' @param L \code{numeric} length (m). 
 #'  \cr \cr
@@ -257,8 +257,8 @@ surface_area_from_volume <- function (V,
 #' 
 #' @details Relationships come from \itemize{
 #'   \item Lizards: \insertCite{Norris1965;textual}{TrenchR}.
-#'   \item Frogs: \insertCite{Tracy1972}{TrenchR}.
-#'   \item Sphere: \insertCite{Mitchell1976}{TrenchR}.
+#'   \item Frogs: \insertCite{Tracy1972;textual}{TrenchR}.
+#'   \item Sphere: \insertCite{Mitchell1976;textual}{TrenchR}.
 #'  }
 #'
 #' @references
@@ -360,8 +360,8 @@ surface_area_from_length <- function (L) {
 #' 
 #' @details Relationships come from \itemize{
 #'   \item Lizards: \insertCite{Muth1977;textual}{TrenchR}.
-#'   \item Frogs: \insertCite{Tracy1976}{TrenchR}.
-#'   \item Grasshoppers: \insertCite{Anderson1979}{TrenchR}.
+#'   \item Frogs: \insertCite{Tracy1976;textual}{TrenchR}.
+#'   \item Grasshoppers: \insertCite{Anderson1979;textual}{TrenchR}.
 #'  }
 #'
 #' @references
@@ -461,7 +461,7 @@ proportion_silhouette_area <- function (z, taxon, raz = 0, posture = "prostrate"
 
 #' @title Organism Silhouette Area using Shape Approximations
 #' 
-#' @description Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid, using Figure 11.6 in \insertCite{Campbell1998}{TrenchR}. 
+#' @description Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid, using Figure 11.6 in \insertCite{Campbell1998;textual}{TrenchR}. 
 #' 
 #' @param shape \code{character} Which shape to approximate an organism. Shapes are assumed to be prolate or have the longest axis parallel with the ground. Current choices are \code{"spheroid"}, \code{"cylinder flat ends"}, and \code{"cylinder hemisphere ends"}.
 #' 

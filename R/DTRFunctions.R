@@ -12,11 +12,11 @@
 #' 
 #' @param t \code{numeric} time for temperature estimate (hour).
 #' 
-#' @param alpha \code{numeric} time difference between t_x (time of maximum temperature) and noon (hour). 
+#' @param alpha \code{numeric} time difference between \code{t_x} (time of maximum temperature) and noon (hour). 
 #' 
-#' @param gamma \code{numeric} decay parameter for rate of t change from sunset to t_n (time of minimum temp). 
+#' @param gamma \code{numeric} decay parameter for rate of \code{t} change from sunset to \code{t_n} (time of minimum temp). 
 #' 
-#' @param beta \code{numeric} time difference between t_x and sunrise (hour).
+#' @param beta \code{numeric} time difference between \code{t_x} and sunrise (hour).
 #' 
 #' @return \code{numeric} temperature (C) at a specified hour. 
 #' 

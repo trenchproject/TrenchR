@@ -9,7 +9,7 @@ diurnal_radiation_variation(doy, solrad, hour, lon, lat)
 \arguments{
 \item{doy}{\code{numeric} is the day of year.}
 
-\item{solrad}{\code{numeric} is solar radiation (W/m^2) per day.}
+\item{solrad}{\code{numeric} is solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per day.}
 
 \item{hour}{\code{numeric} is hour (0-24).}
 
@@ -18,10 +18,10 @@ diurnal_radiation_variation(doy, solrad, hour, lon, lat)
 \item{lat}{\code{numeric} latitude (degrees).}
 }
 \value{
-\code{numeric} hourly solar radiation (W/m^2).
+\code{numeric} hourly solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).
 }
 \description{
-Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day). Based on \insertCite{Tham2010;textual}{TrenchR} and \insertCite{AlRawahi2011;textual}{TrenchR}.
+Estimate hourly solar radiation ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per hour) as a function of daily global solar radiation (in (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per day). Based on \insertCite{Tham2010;textual}{TrenchR} and \insertCite{AlRawahi2011;textual}{TrenchR}.
 }
 \examples{
 diurnal_radiation_variation(doy    = 112, 

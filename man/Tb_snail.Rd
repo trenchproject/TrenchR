@@ -11,7 +11,7 @@ Tb_snail(temp, Len, solar, WS, CC, WL, WSH)
 
 \item{Len}{\code{numeric} snail length (m).}
 
-\item{solar}{\code{numeric} direct solar flux density (W/m2).}
+\item{solar}{\code{numeric} direct solar flux density (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).}
 
 \item{WS}{\code{numeric} wind speed (m/s).}
 
@@ -42,7 +42,6 @@ Predicts body temperature of a snail in C. Implements a steady-state model, whic
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
 \code{\link{Nusselt_from_Grashof}()},
@@ -76,6 +75,7 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{heat_transfer_coefficient}()},

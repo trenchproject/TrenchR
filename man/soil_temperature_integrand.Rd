@@ -11,7 +11,7 @@ soil_temperature_integrand(x, L, z0)
 
 \item{L}{\code{numeric} Monin-Obukhov length, a measure of the instability of heat flow (see \insertCite{Beckman1973;textual}{TrenchR}).}
 
-\item{z0}{\code{numeric} surface roughness (meters).}
+\item{z0}{\code{numeric} surface roughness (m).}
 }
 \value{
 \code{numeric} integrand for soil temperature function.

@@ -2,7 +2,7 @@
 #' 
 #' @description Estimate direct, diffuse, and reflected components of solar radiation (W m^-2) using the model in \insertCite{Campbell1998;textual}{TrenchR}. 
 #' 
-#' @param doy \code{numeric} the day of year (Can be calculated using TrenchR::day_of_year() function).
+#' @param doy \code{numeric} the day of year; \code{\link{day_of_year}}.
 #' 
 #' @param psi \code{numeric} zenith angle (radians).
 #' 
@@ -12,7 +12,7 @@
 #' 
 #' @param rho \code{numeric} albedo as a proportion (0-1). 
 #' 
-#' @return \code{numeric} radiation components - direct, diffused and reflected (W/m^2).
+#' @return \code{numeric} radiation components - direct, diffused and reflected (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).
 #' 
 #' @family microclimate functions
 #' 
@@ -62,11 +62,11 @@ estimate_radiation <- function (doy,
 
 #' @title Estimate Diurnal Radiation 
 #' 
-#' @description Estimate hourly solar radiation (W m^-2 per hour) as a function of daily global solar radiation (in W m^-2 per day). Based on \insertCite{Tham2010;textual}{TrenchR} and \insertCite{AlRawahi2011;textual}{TrenchR}.
+#' @description Estimate hourly solar radiation ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per hour) as a function of daily global solar radiation (in (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per day). Based on \insertCite{Tham2010;textual}{TrenchR} and \insertCite{AlRawahi2011;textual}{TrenchR}.
 #' 
 #' @param doy \code{numeric} is the day of year.
 #' 
-#' @param solrad \code{numeric} is solar radiation (W/m^2) per day.
+#' @param solrad \code{numeric} is solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per day.
 #' 
 #' @param hour \code{numeric} is hour (0-24). 
 #' 
@@ -74,7 +74,7 @@ estimate_radiation <- function (doy,
 #' 
 #' @param lat \code{numeric} latitude (degrees).
 #' 
-#' @return \code{numeric} hourly solar radiation (W/m^2).
+#' @return \code{numeric} hourly solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).
 #' 
 #' @family microclimate functions
 #' 
@@ -129,7 +129,7 @@ diurnal_radiation_variation <- function(doy,
 
 #' @title Estimate Average Monthly Solar Radiation
 #' 
-#' @description Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information as input. Based on \insertCite{Nikolov1992;textual}{TrenchR}.
+#' @description Estimate average monthly solar radiation ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per day) using basic topographic and climatic information as input. Based on \insertCite{Nikolov1992;textual}{TrenchR}.
 #' 
 #' @param lat \code{numeric} latitude (degrees).
 #' 
@@ -145,7 +145,7 @@ diurnal_radiation_variation <- function(doy,
 #' 
 #' @param P \code{numeric} total monthly precipitation (mm).
 #' 
-#' @return \code{numeric} average monthly solar radiation (W/m^2).
+#' @return \code{numeric} average monthly solar radiation ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}})).
 #' 
 #' @family microclimate functions
 #' 
@@ -256,7 +256,7 @@ monthly_solar_radiation <- function (lat,
 
 #' @title Estimate Direct Solar Radiation
 #' 
-#' @description Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in \insertCite{Tracy1983;textual}{TrenchR} \insertCite{McCullough1971,Campbell1998}{TrenchR}.
+#' @description Estimate direct solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in \insertCite{Tracy1983;textual}{TrenchR} \insertCite{McCullough1971,Campbell1998}{TrenchR}.
 #' 
 #' @param lat \code{numeric} latitude (degrees).
 #' 
@@ -270,7 +270,7 @@ monthly_solar_radiation <- function (lat,
 #' 
 #' @param method \code{character} method for estimating direct solar radiation, options: \code{"Campbell 1977"} (default), \code{"Gates 1962"}.
 #' 
-#' @return \code{numeric} direct solar radiation (W/m^2).
+#' @return \code{numeric} direct solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).
 #' 
 #' @family microclimate functions
 #' 
