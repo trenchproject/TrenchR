@@ -78,31 +78,31 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>L</dt>
-<dd><p>mussel length (anterior/posterior axis) (m).</p></dd>
+<dd><p><code>numeric</code> mussel length (anterior/posterior axis) (m).</p></dd>
 <dt>H</dt>
-<dd><p>mussel height (dorsal/ventral axis) (m). It is reasonable to assume <code>H = 0.5 * L</code>.</p></dd>
+<dd><p><code>numeric</code> mussel height (dorsal/ventral axis) (m). It is reasonable to assume <code>H = 0.5 * L</code>.</p></dd>
 <dt>T_a</dt>
-<dd><p>air temperature (C).</p></dd>
+<dd><p><code>numeric</code> air temperature (C).</p></dd>
 <dt>T_g</dt>
-<dd><p>ground temperature (C).</p></dd>
+<dd><p><code>numeric</code> ground temperature (C).</p></dd>
 <dt>S</dt>
-<dd><p>direct solar flux density (W / m<sup>2</sup>).</p></dd>
+<dd><p><code>numeric</code> direct solar flux density (W / m<sup>2</sup>).</p></dd>
 <dt>k_d</dt>
-<dd><p>diffuse fraction, proportion of solar radiation that is diffuse</p></dd>
+<dd><p><code>numeric</code> diffuse fraction, proportion of solar radiation that is diffuse.</p></dd>
 <dt>u</dt>
-<dd><p>wind speed (m/s).</p></dd>
+<dd><p><code>numeric</code> wind speed (m/s).</p></dd>
 <dt>psi</dt>
-<dd><p>solar zenith angle (degrees): can be calculated from zenith_angle function</p></dd>
+<dd><p><code>numeric</code> solar zenith angle (degrees): can be calculated from <code><a href="zenith_angle.html">zenith_angle</a></code>.</p></dd>
 <dt>cl</dt>
-<dd><p>fraction of the sky covered by cloud</p></dd>
+<dd><p><code>numeric</code> fraction of the sky covered by cloud.</p></dd>
 <dt>evap</dt>
-<dd><p>Are mussels gaping to evaporatively cool? <code>TRUE</code> or <code>FALSE</code> (default), If <code>TRUE</code>, assumes constant mass loss rate of 5 percent of initial body mass per hour.</p></dd>
+<dd><p><code>logical</code> if mussels gaping to evaporatively cool. If <code>TRUE</code>, assumes constant mass loss rate of 5 percent of initial body mass per hour.</p></dd>
 <dt>group</dt>
 <dd><p><code>character</code>; options are <code>"aggregated"</code>: mussels living in beds; <code>"solitary"</code>: mussels individuals, anterior or posterior end facing upwind; and <code>"solitary_valve"</code>: solitary individuals, valve facing upwind.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>predicted body temperature (C).</p>
+    <p><code>numeric</code> predicted body temperature (C).</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -129,11 +129,10 @@ doi: <a href="https://doi.org/10.1029/JC074i023p05397" class="external-link">10.
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other biophysical models: 
-<code><a href="Free_or_forced_convection.html">Free_or_forced_convection</a>()</code>,
 <code><a href="Grashof_number_Gates.html">Grashof_number_Gates</a>()</code>,
 <code><a href="Grashof_number.html">Grashof_number</a>()</code>,
-<code><a href="Nu_from_Gr.html">Nu_from_Gr</a>()</code>,
-<code><a href="Nu_from_Re.html">Nu_from_Re</a>()</code>,
+<code><a href="Nusselt_from_Grashof.html">Nusselt_from_Grashof</a>()</code>,
+<code><a href="Nusselt_from_Reynolds.html">Nusselt_from_Reynolds</a>()</code>,
 <code><a href="Nusselt_number.html">Nusselt_number</a>()</code>,
 <code><a href="Prandtl_number.html">Prandtl_number</a>()</code>,
 <code><a href="Qconduction_animal.html">Qconduction_animal</a>()</code>,
@@ -163,6 +162,7 @@ doi: <a href="https://doi.org/10.1029/JC074i023p05397" class="external-link">10.
 <code><a href="actual_vapor_pressure.html">actual_vapor_pressure</a>()</code>,
 <code><a href="boundary_layer_resistance.html">boundary_layer_resistance</a>()</code>,
 <code><a href="external_resistance_to_water_vapor_transfer.html">external_resistance_to_water_vapor_transfer</a>()</code>,
+<code><a href="Free_or_forced_convection.html">free_or_forced_convection</a>()</code>,
 <code><a href="heat_transfer_coefficient_approximation.html">heat_transfer_coefficient_approximation</a>()</code>,
 <code><a href="heat_transfer_coefficient_simple.html">heat_transfer_coefficient_simple</a>()</code>,
 <code><a href="heat_transfer_coefficient.html">heat_transfer_coefficient</a>()</code>,

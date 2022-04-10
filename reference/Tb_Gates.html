@@ -92,45 +92,53 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>A</dt>
-<dd><p><code>numeric</code> surface area (m^2)</p></dd>
+<dd><p><code>numeric</code> surface area (m<sup>2</sup>).</p></dd>
 <dt>D</dt>
-<dd><p><code>numeric</code> characteristic dimension for conduction (meters)</p></dd>
+<dd><p><code>numeric</code> characteristic dimension for conduction (meters).</p></dd>
 <dt>psa_dir</dt>
-<dd><p><code>numeric</code> proportion surface area exposed to direct radiation from the sky (or enclosure) (0-1)</p></dd>
+<dd><p><code>numeric</code> proportion surface area exposed to direct radiation from the sky (or enclosure) (0-1).</p></dd>
 <dt>psa_ref</dt>
-<dd><p><code>numeric</code> proportion surface area exposed to reflected radiation from the ground (0-1)</p></dd>
+<dd><p><code>numeric</code> proportion surface area exposed to reflected radiation from the ground (0-1).</p></dd>
 <dt>psa_air</dt>
-<dd><p><code>numeric</code> proportion surface area exposed to air (0-1)</p></dd>
+<dd><p><code>numeric</code> proportion surface area exposed to air (0-1).</p></dd>
 <dt>psa_g</dt>
-<dd><p><code>numeric</code> proportion surface area in contact with substrate (0-1)</p></dd>
+<dd><p><code>numeric</code> proportion surface area in contact with substrate (0-1).</p></dd>
 <dt>T_g</dt>
-<dd><p><code>numeric</code> ground surface temperature (K)</p></dd>
+<dd><p><code>numeric</code> ground surface temperature (K).</p></dd>
 <dt>T_a</dt>
-<dd><p><code>numeric</code> ambient air temperature (K)</p></dd>
+<dd><p><code>numeric</code> ambient air temperature (K).</p></dd>
 <dt>Qabs</dt>
-<dd><p><code>numeric</code> Solar radiation absorbed (W)</p></dd>
+<dd><p><code>numeric</code> Solar radiation absorbed (W).</p></dd>
 <dt>epsilon</dt>
-<dd><p><code>numeric</code> longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)</p></dd>
+<dd><p><code>numeric</code> longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)
+.</p></dd>
 <dt>H_L</dt>
-<dd><p><code>numeric</code> Convective heat transfer coefficient (W m^-2 K^-1)</p></dd>
+<dd><p><code>numeric</code> Convective heat transfer coefficient (W m^-2 K^-1).</p></dd>
 <dt>ef</dt>
-<dd><p><code>numeric</code> enhancement factor used to adjust H_L to field conditions (using h_L approximation from Mitchell 1976).  Approximated as 1.23 by default, but see Mitchell 1976 for relationship.</p></dd>
+<dd><p><code>numeric</code> enhancement factor used to adjust H_L to field conditions (using h_L approximation from Mitchell (1976)
+).  Approximated as 1.23 by default, but see Mitchell (1976)
+ for relationship.</p></dd>
 <dt>K</dt>
-<dd><p><code>numeric</code> Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step.</p></dd>
+<dd><p><code>numeric</code> Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle Galushko et al. (2005)
+; conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>numeric</code> operative environmental temperature (K)</p>
+    <p><code>numeric</code> operative environmental temperature (K).</p>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in (Gates 1980)
-. Omits evaporative and metabolic heat loss. Other sources: (Mitchell 1976)
-, (Kingsolver 1983)</p>
+    <p>Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Gates (1980)
+. Omits evaporative and metabolic heat loss (Mitchell 1976; Kingsolver 1983)
+.</p>
     </div>
     <div id="references">
     <h2>References</h2>
-    <p>Gates DM (1980).
+    <p>Galushko D, Ermakov N, Karpovski M, Palevski A, Ishay JS, Bergman DJ (2005).
+“Electrical, thermoelectric and thermophysical properties of hornet cuticle.”
+<em>Semiconductor Science and Technology</em>, <b>20</b>(3), 286--289.
+doi: <a href="https://doi.org/10.1088/0268-1242/20/3/005" class="external-link">10.1088/0268-1242/20/3/005</a>
+.<br><br> Gates DM (1980).
 <em>Biophysical Ecology</em>.
 Springer-Verlag, New York, NY, USA.<br><br> Kingsolver JG (1983).
 “Thermoregulation and Flight in Colias Butterflies: Elevational Patterns and Mechanistic Limitations.”
@@ -145,11 +153,10 @@ ISSN 0006-3495, doi: <a href="https://doi.org/10.1016/S0006-3495(76)85711-6" cla
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other biophysical models: 
-<code><a href="Free_or_forced_convection.html">Free_or_forced_convection</a>()</code>,
 <code><a href="Grashof_number_Gates.html">Grashof_number_Gates</a>()</code>,
 <code><a href="Grashof_number.html">Grashof_number</a>()</code>,
-<code><a href="Nu_from_Gr.html">Nu_from_Gr</a>()</code>,
-<code><a href="Nu_from_Re.html">Nu_from_Re</a>()</code>,
+<code><a href="Nusselt_from_Grashof.html">Nusselt_from_Grashof</a>()</code>,
+<code><a href="Nusselt_from_Reynolds.html">Nusselt_from_Reynolds</a>()</code>,
 <code><a href="Nusselt_number.html">Nusselt_number</a>()</code>,
 <code><a href="Prandtl_number.html">Prandtl_number</a>()</code>,
 <code><a href="Qconduction_animal.html">Qconduction_animal</a>()</code>,
@@ -179,6 +186,7 @@ ISSN 0006-3495, doi: <a href="https://doi.org/10.1016/S0006-3495(76)85711-6" cla
 <code><a href="actual_vapor_pressure.html">actual_vapor_pressure</a>()</code>,
 <code><a href="boundary_layer_resistance.html">boundary_layer_resistance</a>()</code>,
 <code><a href="external_resistance_to_water_vapor_transfer.html">external_resistance_to_water_vapor_transfer</a>()</code>,
+<code><a href="Free_or_forced_convection.html">free_or_forced_convection</a>()</code>,
 <code><a href="heat_transfer_coefficient_approximation.html">heat_transfer_coefficient_approximation</a>()</code>,
 <code><a href="heat_transfer_coefficient_simple.html">heat_transfer_coefficient_simple</a>()</code>,
 <code><a href="heat_transfer_coefficient.html">heat_transfer_coefficient</a>()</code>,

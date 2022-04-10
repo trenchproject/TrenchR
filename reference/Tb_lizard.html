@@ -101,46 +101,51 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>T_a</dt>
-<dd><p><code>numeric</code> air temperature (C)</p></dd>
+<dd><p><code>numeric</code> air temperature (C).</p></dd>
 <dt>T_g</dt>
-<dd><p><code>numeric</code> surface temperature (C)</p></dd>
+<dd><p><code>numeric</code> surface temperature (C).</p></dd>
 <dt>u</dt>
-<dd><p><code>numeric</code> wind speed (m/s)</p></dd>
+<dd><p><code>numeric</code> wind speed (m/s).</p></dd>
 <dt>svl</dt>
-<dd><p><code>numeric</code> lizard snout vent length (mm)</p></dd>
+<dd><p><code>numeric</code> lizard snout vent length (mm).</p></dd>
 <dt>m</dt>
-<dd><p><code>numeric</code> lizard mass in g, note that it can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 (Tinkle and Ballinger 1972)</p></dd>
+<dd><p><code>numeric</code> lizard mass in g, note that it can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 (Tinkle and Ballinger 1972)
+.</p></dd>
 <dt>psi</dt>
-<dd><p><code>numeric</code> solar zenith angle (degrees)</p></dd>
+<dd><p><code>numeric</code> solar zenith angle (degrees).</p></dd>
 <dt>rho_S</dt>
-<dd><p><code>numeric</code> surface albedo (proportion). ~0.25 for grass, ~0.1 for dark soil, &gt;0.75 for fresh snow (Campbell and Norman 1998)</p></dd>
+<dd><p><code>numeric</code> surface albedo (proportion). ~0.25 for grass, ~0.1 for dark soil, &gt;0.75 for fresh snow (Campbell and Norman 1998)
+.</p></dd>
 <dt>elev</dt>
-<dd><p><code>numeric</code> elevation (m)</p></dd>
+<dd><p><code>numeric</code> elevation (m).</p></dd>
 <dt>doy</dt>
-<dd><p><code>numeric</code> day of year (1-366)</p></dd>
+<dd><p><code>numeric</code> day of year (1-366).</p></dd>
 <dt>sun</dt>
-<dd><p><code>boolean</code> indicates whether lizard is in sun (TRUE) or shade (FALSE)</p></dd>
+<dd><p><code>logical</code> indicates whether lizard is in sun (<code>TRUE</code>) or shade (<code>FALSE</code>).</p></dd>
 <dt>surface</dt>
-<dd><p><code>boolean</code> indicates whether lizard is on ground surface (TRUE) or above surface (FALSE, e.g. in a tree)</p></dd>
+<dd><p><code>logical</code> indicates whether lizard is on ground surface (<code>TRUE</code>) or above the surface (<code>FALSE</code>, e.g. in a tree).</p></dd>
 <dt>alpha_S</dt>
-<dd><p><code>numeric</code> lizard solar absorptivity, alpha_S=0.9 (Gates 1980)
- (Table 11.4)</p></dd>
+<dd><p><code>numeric</code> lizard solar absorptivity, <code>alpha_S = 0.9</code> (Gates 1980)
+ (Table 11.4).</p></dd>
 <dt>alpha_L</dt>
-<dd><p><code>numeric</code> lizard thermal absorptivity, alpha_L=0.965 (Bartlett and Gates 1967)</p></dd>
+<dd><p><code>numeric</code> lizard thermal absorptivity, <code>alpha_L = 0.965</code> (Bartlett and Gates 1967)
+.</p></dd>
 <dt>epsilon_s</dt>
-<dd><p><code>numeric</code> surface emissivity of lizards, epsilon_s=0.965 (Bartlett and Gates 1967)</p></dd>
+<dd><p><code>numeric</code> surface emissivity of lizards, <code>epsilon_s = 0.965</code> (Bartlett and Gates 1967)
+.</p></dd>
 <dt>F_d</dt>
-<dd><p><code>numeric</code> the view factor between the surface of the lizard and diffuse solar radiation (Bartlett and Gates 1967)</p></dd>
+<dd><p><code>numeric</code> the view factor between the surface of the lizard and diffuse solar radiation (Bartlett and Gates 1967)
+.</p></dd>
 <dt>F_r</dt>
-<dd><p><code>numeric</code> the view factor between the surface of the lizard and reflected solar radiation</p></dd>
+<dd><p><code>numeric</code> the view factor between the surface of the lizard and reflected solar radiation.</p></dd>
 <dt>F_a</dt>
-<dd><p><code>numeric</code> the view factor between the surface of the lizard and atmospheric radiation</p></dd>
+<dd><p><code>numeric</code> the view factor between the surface of the lizard and atmospheric radiation.</p></dd>
 <dt>F_g</dt>
-<dd><p><code>numeric</code> the view factor between the surface of the lizard and ground thermal radiation</p></dd>
+<dd><p><code>numeric</code> the view factor between the surface of the lizard and ground thermal radiation.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>T_e <code>numeric</code> Operative temperature (C)</p>
+    <p>T_e <code>numeric</code> Operative temperature (C).</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -164,11 +169,10 @@ doi: <a href="https://doi.org/10.2307/1934772" class="external-link">10.2307/193
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other biophysical models: 
-<code><a href="Free_or_forced_convection.html">Free_or_forced_convection</a>()</code>,
 <code><a href="Grashof_number_Gates.html">Grashof_number_Gates</a>()</code>,
 <code><a href="Grashof_number.html">Grashof_number</a>()</code>,
-<code><a href="Nu_from_Gr.html">Nu_from_Gr</a>()</code>,
-<code><a href="Nu_from_Re.html">Nu_from_Re</a>()</code>,
+<code><a href="Nusselt_from_Grashof.html">Nusselt_from_Grashof</a>()</code>,
+<code><a href="Nusselt_from_Reynolds.html">Nusselt_from_Reynolds</a>()</code>,
 <code><a href="Nusselt_number.html">Nusselt_number</a>()</code>,
 <code><a href="Prandtl_number.html">Prandtl_number</a>()</code>,
 <code><a href="Qconduction_animal.html">Qconduction_animal</a>()</code>,
@@ -198,6 +202,7 @@ doi: <a href="https://doi.org/10.2307/1934772" class="external-link">10.2307/193
 <code><a href="actual_vapor_pressure.html">actual_vapor_pressure</a>()</code>,
 <code><a href="boundary_layer_resistance.html">boundary_layer_resistance</a>()</code>,
 <code><a href="external_resistance_to_water_vapor_transfer.html">external_resistance_to_water_vapor_transfer</a>()</code>,
+<code><a href="Free_or_forced_convection.html">free_or_forced_convection</a>()</code>,
 <code><a href="heat_transfer_coefficient_approximation.html">heat_transfer_coefficient_approximation</a>()</code>,
 <code><a href="heat_transfer_coefficient_simple.html">heat_transfer_coefficient_simple</a>()</code>,
 <code><a href="heat_transfer_coefficient.html">heat_transfer_coefficient</a>()</code>,
