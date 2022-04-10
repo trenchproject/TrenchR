@@ -1339,7 +1339,7 @@ Nusselt_from_Grashof <- function (Gr) {
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Free_or_forced_convection(Gr = 100, 
+#'   free_or_forced_convection(Gr = 100, 
 #'                             Re = 5)
 #' 
 free_or_forced_convection <- function (Gr, 
