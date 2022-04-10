@@ -148,43 +148,43 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>L</th>
-      <td><p>mussel length (anterior/posterior axis) (m).</p></td>
+      <td><p><code>numeric</code> mussel length (anterior/posterior axis) (m).</p></td>
     </tr>
     <tr>
       <th>H</th>
-      <td><p>mussel height (dorsal/ventral axis) (m). It is reasonable to assume <code>H = 0.5 * L</code>.</p></td>
+      <td><p><code>numeric</code> mussel height (dorsal/ventral axis) (m). It is reasonable to assume <code>H = 0.5 * L</code>.</p></td>
     </tr>
     <tr>
       <th>T_a</th>
-      <td><p>air temperature (C).</p></td>
+      <td><p><code>numeric</code> air temperature (C).</p></td>
     </tr>
     <tr>
       <th>T_g</th>
-      <td><p>ground temperature (C).</p></td>
+      <td><p><code>numeric</code> ground temperature (C).</p></td>
     </tr>
     <tr>
       <th>S</th>
-      <td><p>direct solar flux density (W / m<sup>2</sup>).</p></td>
+      <td><p><code>numeric</code> direct solar flux density (W / m<sup>2</sup>).</p></td>
     </tr>
     <tr>
       <th>k_d</th>
-      <td><p>diffuse fraction, proportion of solar radiation that is diffuse</p></td>
+      <td><p><code>numeric</code> diffuse fraction, proportion of solar radiation that is diffuse.</p></td>
     </tr>
     <tr>
       <th>u</th>
-      <td><p>wind speed (m/s).</p></td>
+      <td><p><code>numeric</code> wind speed (m/s).</p></td>
     </tr>
     <tr>
       <th>psi</th>
-      <td><p>solar zenith angle (degrees): can be calculated from zenith_angle function</p></td>
+      <td><p><code>numeric</code> solar zenith angle (degrees): can be calculated from <code><a href='zenith_angle.html'>zenith_angle</a></code>.</p></td>
     </tr>
     <tr>
       <th>cl</th>
-      <td><p>fraction of the sky covered by cloud</p></td>
+      <td><p><code>numeric</code> fraction of the sky covered by cloud.</p></td>
     </tr>
     <tr>
       <th>evap</th>
-      <td><p>Are mussels gaping to evaporatively cool? <code>TRUE</code> or <code>FALSE</code> (default), If <code>TRUE</code>, assumes constant mass loss rate of 5 percent of initial body mass per hour.</p></td>
+      <td><p><code>logical</code> if mussels gaping to evaporatively cool. If <code>TRUE</code>, assumes constant mass loss rate of 5 percent of initial body mass per hour.</p></td>
     </tr>
     <tr>
       <th>group</th>
@@ -194,7 +194,7 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>predicted body temperature (C).</p>
+    <p><code>numeric</code> predicted body temperature (C).</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Thermal radiative flux is calculated following Helmuth (1998)
@@ -218,11 +218,10 @@ doi: <a href='https://doi.org/10.1029/JC074i023p05397'>10.1029/JC074i023p05397</
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
-<code><a href='Free_or_forced_convection.html'>Free_or_forced_convection</a>()</code>,
 <code><a href='Grashof_number_Gates.html'>Grashof_number_Gates</a>()</code>,
 <code><a href='Grashof_number.html'>Grashof_number</a>()</code>,
-<code><a href='Nu_from_Gr.html'>Nu_from_Gr</a>()</code>,
-<code><a href='Nu_from_Re.html'>Nu_from_Re</a>()</code>,
+<code><a href='Nusselt_from_Grashof.html'>Nusselt_from_Grashof</a>()</code>,
+<code><a href='Nusselt_from_Reynolds.html'>Nusselt_from_Reynolds</a>()</code>,
 <code><a href='Nusselt_number.html'>Nusselt_number</a>()</code>,
 <code><a href='Prandtl_number.html'>Prandtl_number</a>()</code>,
 <code><a href='Qconduction_animal.html'>Qconduction_animal</a>()</code>,
@@ -252,6 +251,7 @@ doi: <a href='https://doi.org/10.1029/JC074i023p05397'>10.1029/JC074i023p05397</
 <code><a href='actual_vapor_pressure.html'>actual_vapor_pressure</a>()</code>,
 <code><a href='boundary_layer_resistance.html'>boundary_layer_resistance</a>()</code>,
 <code><a href='external_resistance_to_water_vapor_transfer.html'>external_resistance_to_water_vapor_transfer</a>()</code>,
+<code><a href='free_or_forced_convection.html'>free_or_forced_convection</a>()</code>,
 <code><a href='heat_transfer_coefficient_approximation.html'>heat_transfer_coefficient_approximation</a>()</code>,
 <code><a href='heat_transfer_coefficient_simple.html'>heat_transfer_coefficient_simple</a>()</code>,
 <code><a href='heat_transfer_coefficient.html'>heat_transfer_coefficient</a>()</code>,

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimate Soil Thermal Conductivity — soil_conductivity • TrenchR</title>
+<title>Soil Thermal Conductivity — soil_conductivity • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Estimate Soil Thermal Conductivity — soil_conductivity" />
-<meta property="og:description" content="Estimates soil thermal conductivity (W m^-1 K^-1) using the methods of deVries (1963)" />
+<meta property="og:title" content="Soil Thermal Conductivity — soil_conductivity" />
+<meta property="og:description" content="Estimates soil thermal conductivity (W m-1 K-1) using the methods of deVries (1963)
+." />
 
 
 
@@ -132,13 +133,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimate Soil Thermal Conductivity</h1>
+    <h1>Soil Thermal Conductivity</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/TsoilFunctions.R'><code>R/TsoilFunctions.R</code></a></small>
     <div class="hidden name"><code>soil_conductivity.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Estimates soil thermal conductivity (W m^-1 K^-1) using the methods of deVries (1963)</p>
+    <p>Estimates soil thermal conductivity (W m<sup>-1</sup> K<sup>-1</sup>) using the methods of deVries (1963)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>soil_conductivity</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>lambda</span>, <span class='va'>g_a</span><span class='op'>)</span></pre>
@@ -152,18 +154,18 @@
     </tr>
     <tr>
       <th>lambda</th>
-      <td><p><code>numeric</code> vector of the thermal conductivities (W m^-1 K^-1) of the soil constituents</p></td>
+      <td><p><code>numeric</code> vector of the thermal conductivities (W m<sup>-1</sup> K<sup>-1</sup>) of the soil constituents.</p></td>
     </tr>
     <tr>
       <th>g_a</th>
-      <td><p><code>numeric</code> shape factor on soil particles. The soil particles are assumed to be ellipsoids with axes g_a, g_b, and g_c, where g_a + g_b + g_c = 1 and g_a = g_b. deVries (1952)
- suggests g_a = g_b = 0.125.</p></td>
+      <td><p><code>numeric</code> shape factor on soil particles. The soil particles are assumed to be ellipsoids with axes <code>g_a</code>, <code>g_b</code>, and <code>g_c</code>, where <code>g_a + g_b + g_c = 1</code> and <code>g_a = g_b</code>. deVries (1952)
+ suggests <code>g_a = g_b = 0.125</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>numeric</code> soil thermal conductivity (W m^-1 K^-1)</p>
+    <p><code>numeric</code> soil thermal conductivity (W m<sup>-1</sup> K<sup>-1</sup>).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>deVries DA (1963).

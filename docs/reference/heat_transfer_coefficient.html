@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate heat transfer coefficient. — heat_transfer_coefficient • TrenchR</title>
+<title>Heat Transfer Coefficient — heat_transfer_coefficient • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Calculate heat transfer coefficient. — heat_transfer_coefficient" />
-<meta property="og:description" content="estimate the heat transfer coefficient for various taxa based on empirical measurements. Reference: (Mitchell 1976)" />
+<meta property="og:title" content="Heat Transfer Coefficient — heat_transfer_coefficient" />
+<meta property="og:description" content="Estimate the heat transfer coefficient for various taxa based on empirical measurements (Mitchell 1976)
+." />
 
 
 
@@ -132,13 +133,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate heat transfer coefficient.</h1>
+    <h1>Heat Transfer Coefficient</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/energybalance_functions.R'><code>R/energybalance_functions.R</code></a></small>
     <div class="hidden name"><code>heat_transfer_coefficient.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>estimate the heat transfer coefficient for various taxa based on empirical measurements. Reference: (Mitchell 1976)</p>
+    <p>Estimate the heat transfer coefficient for various taxa based on empirical measurements (Mitchell 1976)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>heat_transfer_coefficient</span><span class='op'>(</span><span class='va'>V</span>, <span class='va'>D</span>, <span class='va'>K</span>, <span class='va'>nu</span>, taxa <span class='op'>=</span> <span class='st'>"cylinder"</span><span class='op'>)</span></pre>
@@ -156,21 +158,21 @@
     </tr>
     <tr>
       <th>K</th>
-      <td><p><code>numeric</code> Thermal conductivity of air (W m^-1 K^-1), can calculate using DRYAIR or WETAIR in NicheMapR</p></td>
+      <td><p><code>numeric</code> Thermal conductivity of air (W K<sup>-1</sup> m<sup>-1</sup>), can calculate using <code><a href='DRYAIR.html'>DRYAIR</a></code> or <code><a href='WETAIR.html'>WETAIR</a></code>.</p></td>
     </tr>
     <tr>
       <th>nu</th>
-      <td><p><code>numeric</code> Kinematic Viscosity of air (m^2 s^-1), can calculate using DRYAIR or WETAIR in NicheMapR</p></td>
+      <td><p><code>numeric</code> Kinematic viscosity of air (m<sup>2</sup> s<sup>-1</sup>), can calculate using <code><a href='DRYAIR.html'>DRYAIR</a></code> or <code><a href='WETAIR.html'>WETAIR</a></code>.</p></td>
     </tr>
     <tr>
       <th>taxa</th>
-      <td><p><code>character</code> Which class of organism, current choices: sphere, cylinder, frog, lizard_surface, lizard_elevated, flyinginsect, spider. Notes: Cylinder assumes 40&lt;Re&lt;4000. lizard assumes prostrate on or elevated above surface, average for parallel and perpendicular to air flow</p></td>
+      <td><p><code>character</code> Which class of organism, current choices: sphere, cylinder, frog, lizard_surface, lizard_elevated, flyinginsect, spider. Notes: Cylinder assumes 40&lt;Re&lt;4000. lizard assumes prostrate on or elevated above surface, average for parallel and perpendicular to air flow.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>numeric</code> heat transfer coefficient, H_L (W m^-2 K^-1)</p>
+    <p><code>numeric</code> heat transfer coefficient, <code>H_L</code> (W K<sup>-1</sup> m<sup>-2</sup>).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Mitchell JW (1976).
@@ -181,11 +183,10 @@ ISSN 0006-3495, doi: <a href='https://doi.org/10.1016/S0006-3495(76)85711-6'>10.
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
-<code><a href='Free_or_forced_convection.html'>Free_or_forced_convection</a>()</code>,
 <code><a href='Grashof_number_Gates.html'>Grashof_number_Gates</a>()</code>,
 <code><a href='Grashof_number.html'>Grashof_number</a>()</code>,
-<code><a href='Nu_from_Gr.html'>Nu_from_Gr</a>()</code>,
-<code><a href='Nu_from_Re.html'>Nu_from_Re</a>()</code>,
+<code><a href='Nusselt_from_Grashof.html'>Nusselt_from_Grashof</a>()</code>,
+<code><a href='Nusselt_from_Reynolds.html'>Nusselt_from_Reynolds</a>()</code>,
 <code><a href='Nusselt_number.html'>Nusselt_number</a>()</code>,
 <code><a href='Prandtl_number.html'>Prandtl_number</a>()</code>,
 <code><a href='Qconduction_animal.html'>Qconduction_animal</a>()</code>,
@@ -216,6 +217,7 @@ ISSN 0006-3495, doi: <a href='https://doi.org/10.1016/S0006-3495(76)85711-6'>10.
 <code><a href='actual_vapor_pressure.html'>actual_vapor_pressure</a>()</code>,
 <code><a href='boundary_layer_resistance.html'>boundary_layer_resistance</a>()</code>,
 <code><a href='external_resistance_to_water_vapor_transfer.html'>external_resistance_to_water_vapor_transfer</a>()</code>,
+<code><a href='free_or_forced_convection.html'>free_or_forced_convection</a>()</code>,
 <code><a href='heat_transfer_coefficient_approximation.html'>heat_transfer_coefficient_approximation</a>()</code>,
 <code><a href='heat_transfer_coefficient_simple.html'>heat_transfer_coefficient_simple</a>()</code>,
 <code><a href='saturation_vapor_pressure.html'>saturation_vapor_pressure</a>()</code>,

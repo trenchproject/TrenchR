@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate Operative Temperature of Lizard Using model by Fei et al. — Tb_Fei • TrenchR</title>
+<title>Operative Temperature of Lizard Using model by Fei et al. — Tb_Fei • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,9 @@
 
 
 
-<meta property="og:title" content="Calculate Operative Temperature of Lizard Using model by Fei et al. — Tb_Fei" />
-<meta property="og:description" content="Predicts body temperature (operative environmental temperature) of a lizard in K based on Fei et al. (2012)
-.
-  " />
+<meta property="og:title" content="Operative Temperature of Lizard Using model by Fei et al. — Tb_Fei" />
+<meta property="og:description" content="Predict body temperature (operative environmental temperature) of a lizard in K based on Fei et al. (2012)
+." />
 
 
 
@@ -134,15 +133,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate Operative Temperature of Lizard Using model by Fei et al.</h1>
+    <h1>Operative Temperature of Lizard Using model by Fei et al.</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/biophysmodel_LizardFei.R'><code>R/biophysmodel_LizardFei.R</code></a></small>
     <div class="hidden name"><code>Tb_Fei.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Predicts body temperature (operative environmental temperature) of a lizard in K based on Fei et al. (2012)
-.
- <br /> <br /></p>
+    <p>Predict body temperature (operative environmental temperature) of a lizard in K based on Fei et al. (2012)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>Tb_Fei</span><span class='op'>(</span><span class='va'>T_a</span>, <span class='va'>T_g</span>, <span class='va'>H</span>, <span class='va'>lw</span>, <span class='va'>shade</span>, <span class='va'>m</span>, <span class='va'>Acondfact</span>, <span class='va'>Agradfact</span><span class='op'>)</span></pre>
@@ -152,41 +150,41 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>T_a</th>
-      <td><p>air temperature at lizard height in K.</p></td>
+      <td><p><code>numeric</code> air temperature at lizard height in K.</p></td>
     </tr>
     <tr>
       <th>T_g</th>
-      <td><p>surface temperature in K.</p></td>
+      <td><p><code>numeric</code>surface temperature in K.</p></td>
     </tr>
     <tr>
       <th>H</th>
-      <td><p>total (direct + diffuse) solar radiation flux in W / m<sup>2</sup>.</p></td>
+      <td><p><code>numeric</code> total (direct + diffuse) solar radiation flux in W / m<sup>2</sup>.</p></td>
     </tr>
     <tr>
       <th>lw</th>
-      <td><p>Downward flux of near-infrared radiation (W / m<sup>2</sup>).</p></td>
+      <td><p><code>numeric</code> downward flux of near-infrared radiation (W / m<sup>2</sup>).</p></td>
     </tr>
     <tr>
       <th>shade</th>
-      <td><p>proportion of shade.</p></td>
+      <td><p><code>numeric</code> proportion of shade.</p></td>
     </tr>
     <tr>
       <th>m</th>
-      <td><p>lizard mass in g.</p></td>
+      <td><p><code>numeric</code> lizard mass in g.</p></td>
     </tr>
     <tr>
       <th>Acondfact</th>
-      <td><p>the proportion of the lizard projected area that is in contact with the ground. <code>Acondfact = 0.1</code> for standing and <code>Acondfact = 0.4</code> for lying on ground.</p></td>
+      <td><p><code>numeric</code> proportion of the lizard projected area that is in contact with the ground. <code>Acondfact = 0.1</code> for standing and <code>Acondfact = 0.4</code> for lying on ground.</p></td>
     </tr>
     <tr>
       <th>Agradfact</th>
-      <td><p>the proportion of the lizard projected area exposed to radiation from the ground. <code>Agradfact = 0.3</code> for standing and <code>Agradfact = 0.0</code> for lying on ground.</p></td>
+      <td><p><code>numeric</code> proportion of the lizard projected area exposed to radiation from the ground. <code>Agradfact = 0.3</code> for standing and <code>Agradfact = 0.0</code> for lying on ground.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Body temperature of a lizard in K.</p>
+    <p><code>numeric</code> body temperature of a lizard in K.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Thermal radiative flux is calculated following Fei et al. (2012)
@@ -207,11 +205,10 @@ ISSN 0306-4565, doi: <a href='https://doi.org/10.1016/j.jtherbio.2011.10.013'>10
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
-<code><a href='Free_or_forced_convection.html'>Free_or_forced_convection</a>()</code>,
 <code><a href='Grashof_number_Gates.html'>Grashof_number_Gates</a>()</code>,
 <code><a href='Grashof_number.html'>Grashof_number</a>()</code>,
-<code><a href='Nu_from_Gr.html'>Nu_from_Gr</a>()</code>,
-<code><a href='Nu_from_Re.html'>Nu_from_Re</a>()</code>,
+<code><a href='Nusselt_from_Grashof.html'>Nusselt_from_Grashof</a>()</code>,
+<code><a href='Nusselt_from_Reynolds.html'>Nusselt_from_Reynolds</a>()</code>,
 <code><a href='Nusselt_number.html'>Nusselt_number</a>()</code>,
 <code><a href='Prandtl_number.html'>Prandtl_number</a>()</code>,
 <code><a href='Qconduction_animal.html'>Qconduction_animal</a>()</code>,
@@ -241,6 +238,7 @@ ISSN 0306-4565, doi: <a href='https://doi.org/10.1016/j.jtherbio.2011.10.013'>10
 <code><a href='actual_vapor_pressure.html'>actual_vapor_pressure</a>()</code>,
 <code><a href='boundary_layer_resistance.html'>boundary_layer_resistance</a>()</code>,
 <code><a href='external_resistance_to_water_vapor_transfer.html'>external_resistance_to_water_vapor_transfer</a>()</code>,
+<code><a href='free_or_forced_convection.html'>free_or_forced_convection</a>()</code>,
 <code><a href='heat_transfer_coefficient_approximation.html'>heat_transfer_coefficient_approximation</a>()</code>,
 <code><a href='heat_transfer_coefficient_simple.html'>heat_transfer_coefficient_simple</a>()</code>,
 <code><a href='heat_transfer_coefficient.html'>heat_transfer_coefficient</a>()</code>,

@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Estimate Temperature Across Hours Using a Diurnal Temperature Variation Function Incorporating Sine and Exponential Components — diurnal_temp_variation_sineexp" />
-<meta property="og:description" content="estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: (Parton and Logan 1981)
+<meta property="og:description" content="Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components (Parton and Logan 1981)
 . Default alpha, beta, gamma values are the average of 5 North Carolina sites  (M. Wann and Gold 1985)
 . Other alpha, beta, gamma parameterizations include values for Denver, Colorado from (Parton and Logan 1981)
 : 150cm air temperature: alpha = 1.86, beta = 2.20, gamma = -0.17; 10cm air temperature: alpha = 1.52, beta = 2.00, gamma = -0.18; soil surface temperature: alpha = 0.50, beta = 1.81, gamma = 0.49; 10cm soil temperature: alpha = 0.45, beta = 2.28, gamma = 1.83." />
@@ -141,7 +141,7 @@
     </div>
 
     <div class="ref-description">
-    <p>estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: (Parton and Logan 1981)
+    <p>Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components (Parton and Logan 1981)
 . Default alpha, beta, gamma values are the average of 5 North Carolina sites  (M. Wann and Gold 1985)
 . Other alpha, beta, gamma parameterizations include values for Denver, Colorado from (Parton and Logan 1981)
 : 150cm air temperature: alpha = 1.86, beta = 2.20, gamma = -0.17; 10cm air temperature: alpha = 1.52, beta = 2.00, gamma = -0.18; soil surface temperature: alpha = 0.50, beta = 1.81, gamma = 0.49; 10cm soil temperature: alpha = 0.45, beta = 2.28, gamma = 1.83.</p>
@@ -163,41 +163,41 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>T_max</th>
-      <td><p><code>numeric</code> maximum daily temperature (C)</p></td>
+      <td><p><code>numeric</code> maximum daily temperature (C).</p></td>
     </tr>
     <tr>
       <th>T_min</th>
-      <td><p><code>numeric</code> minimum daily temperature (C)</p></td>
+      <td><p><code>numeric</code> minimum daily temperature (C).</p></td>
     </tr>
     <tr>
       <th>t</th>
-      <td><p><code>numeric</code> time for temperature estimate (hour)</p></td>
+      <td><p><code>numeric</code> time for temperature estimate (hour).</p></td>
     </tr>
     <tr>
       <th>t_r</th>
-      <td><p><code>numeric</code> time of sunset (hour)</p></td>
+      <td><p><code>numeric</code> time of sunset (hour).</p></td>
     </tr>
     <tr>
       <th>t_s</th>
-      <td><p><code>numeric</code> time of sunrise (hour)</p></td>
+      <td><p><code>numeric</code> time of sunrise (hour).</p></td>
     </tr>
     <tr>
       <th>alpha</th>
-      <td><p><code>numeric</code> time difference between t_x (time of maximum temperature) and noon (hour). Defaults to 2.59</p></td>
+      <td><p><code>numeric</code> time difference between <code>t_x</code> (time of maximum temperature) and noon (hour).</p></td>
     </tr>
     <tr>
       <th>beta</th>
-      <td><p><code>numeric</code> time difference between t_x and sunrise (hour). Defaults to 1.55</p></td>
+      <td><p><code>numeric</code> time difference between <code>t_x</code> and sunrise (hour).</p></td>
     </tr>
     <tr>
       <th>gamma</th>
-      <td><p><code>numeric</code> decay parameter for rate of t change from sunset to t_n (time of minimum temp). Defaults to 2.2</p></td>
+      <td><p><code>numeric</code> decay parameter for rate of <code>t</code> change from sunset to <code>t_n</code> (time of minimum temp).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>numeric</code> temperature (C) at a specified hour</p>
+    <p><code>numeric</code> temperature (C) at a specified hour.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>M. Wann DY, Gold HJ (1985).

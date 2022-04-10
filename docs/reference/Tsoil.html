@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Statistical Approximation of Soil Temperature — Tsoil • TrenchR</title>
+<title>Approximate Soil Temperature — Tsoil • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,10 @@
 
 
 
-<meta property="og:title" content="Statistical Approximation of Soil Temperature — Tsoil" />
-<meta property="og:description" content="Estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from (Campbell and Norman 1998)
-). Source: (Eric Riddell and Sears 2018)" />
+<meta property="og:title" content="Approximate Soil Temperature — Tsoil" />
+<meta property="og:description" content="Estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal; adapted from Campbell and Norman (1998)
+ (Eric Riddell and Sears 2018)
+." />
 
 
 
@@ -133,14 +134,15 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Statistical Approximation of Soil Temperature</h1>
+    <h1>Approximate Soil Temperature</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/energybalance_functions.R'><code>R/energybalance_functions.R</code></a></small>
     <div class="hidden name"><code>Tsoil.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from (Campbell and Norman 1998)
-). Source: (Eric Riddell and Sears 2018)</p>
+    <p>Estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal; adapted from Campbell and Norman (1998)
+ (Eric Riddell and Sears 2018)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>Tsoil</span><span class='op'>(</span><span class='va'>Tg_max</span>, <span class='va'>Tg_min</span>, <span class='va'>hour</span>, <span class='va'>depth</span><span class='op'>)</span></pre>
@@ -182,11 +184,10 @@ doi: <a href='https://doi.org/10.1126/sciadv.aar5471'>10.1126/sciadv.aar5471</a>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
-<code><a href='Free_or_forced_convection.html'>Free_or_forced_convection</a>()</code>,
 <code><a href='Grashof_number_Gates.html'>Grashof_number_Gates</a>()</code>,
 <code><a href='Grashof_number.html'>Grashof_number</a>()</code>,
-<code><a href='Nu_from_Gr.html'>Nu_from_Gr</a>()</code>,
-<code><a href='Nu_from_Re.html'>Nu_from_Re</a>()</code>,
+<code><a href='Nusselt_from_Grashof.html'>Nusselt_from_Grashof</a>()</code>,
+<code><a href='Nusselt_from_Reynolds.html'>Nusselt_from_Reynolds</a>()</code>,
 <code><a href='Nusselt_number.html'>Nusselt_number</a>()</code>,
 <code><a href='Prandtl_number.html'>Prandtl_number</a>()</code>,
 <code><a href='Qconduction_animal.html'>Qconduction_animal</a>()</code>,
@@ -216,6 +217,7 @@ doi: <a href='https://doi.org/10.1126/sciadv.aar5471'>10.1126/sciadv.aar5471</a>
 <code><a href='actual_vapor_pressure.html'>actual_vapor_pressure</a>()</code>,
 <code><a href='boundary_layer_resistance.html'>boundary_layer_resistance</a>()</code>,
 <code><a href='external_resistance_to_water_vapor_transfer.html'>external_resistance_to_water_vapor_transfer</a>()</code>,
+<code><a href='free_or_forced_convection.html'>free_or_forced_convection</a>()</code>,
 <code><a href='heat_transfer_coefficient_approximation.html'>heat_transfer_coefficient_approximation</a>()</code>,
 <code><a href='heat_transfer_coefficient_simple.html'>heat_transfer_coefficient_simple</a>()</code>,
 <code><a href='heat_transfer_coefficient.html'>heat_transfer_coefficient</a>()</code>,

@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="Calculate Degree Days — degree_days" />
-<meta property="og:description" content="Calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minima is equal to previous day. Double Sine wave approximation of degree days from (Allen 1976)
+<meta property="og:description" content="Calculate degree days using single or double sine wave and single or double triangulation approximation (of California Integrated Pest Management Program 2016)
+. Double methods assume symmetry, that is that next day's thermal minimum is equal to previous day. Double Sine wave approximation of degree days from (Allen 1976)
 ." />
 
 
@@ -139,7 +140,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minima is equal to previous day. Double Sine wave approximation of degree days from (Allen 1976)
+    <p>Calculate degree days using single or double sine wave and single or double triangulation approximation (of California Integrated Pest Management Program 2016)
+. Double methods assume symmetry, that is that next day's thermal minimum is equal to previous day. Double Sine wave approximation of degree days from (Allen 1976)
 .</p>
     </div>
 
@@ -150,36 +152,38 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>T_min</th>
-      <td><p><code>numeric</code> Minimum temperature of the day (C)</p></td>
+      <td><p><code>numeric</code> Minimum temperature of the day (C).</p></td>
     </tr>
     <tr>
       <th>T_max</th>
-      <td><p><code>numeric</code> Maximum temperature of the day (C)</p></td>
+      <td><p><code>numeric</code> Maximum temperature of the day (C).</p></td>
     </tr>
     <tr>
       <th>LDT</th>
-      <td><p><code>numeric</code> lower developmental threshold (C)</p></td>
+      <td><p><code>numeric</code> lower developmental threshold (C).</p></td>
     </tr>
     <tr>
       <th>UDT</th>
-      <td><p><code>numeric</code> upper developmental threshold (C)</p></td>
+      <td><p><code>numeric</code> upper developmental threshold (C).</p></td>
     </tr>
     <tr>
       <th>method</th>
-      <td><p><code>character</code> type of method being used. Current choices: "single.sine","double.sine", "single.triangulation" or "double.triangulation"</p></td>
+      <td><p><code>character</code> type of method being used. Current choices: <code>"single.sine"</code>, <code>"double.sine"</code>, <code>"single.triangulation"</code>, and <code>"double.triangulation"</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>numeric</code> degree days (C)</p>
+    <p><code>numeric</code> degree days (C).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Allen JC (1976).
 &#8220;A Modified Sine Wave Method for Calculating Degree Days.&#8221;
 <em>Environmental Entomology</em>, <b>5</b>(3), 388--396.
 doi: <a href='https://doi.org/https://doi-org.eres.qnl.qa/10.1093/ee/5.3.388'>https://doi-org.eres.qnl.qa/10.1093/ee/5.3.388</a>
-, <a href='https://academic-oup-com.eres.qnl.qa/ee/article/5/3/388/2395585?login=true'>https://academic-oup-com.eres.qnl.qa/ee/article/5/3/388/2395585?login=true</a>.</p>
+, <a href='https://academic-oup-com.eres.qnl.qa/ee/article/5/3/388/2395585?login=true'>https://academic-oup-com.eres.qnl.qa/ee/article/5/3/388/2395585?login=true</a>.<br /><br /> of California Integrated Pest Management Program U (2016).
+<em>Degree Days: Methods</em>.
+<a href='http://ipm.ucanr.edu/WEATHER/ddfigindex.html'>http://ipm.ucanr.edu/WEATHER/ddfigindex.html</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other microclimate functions: 

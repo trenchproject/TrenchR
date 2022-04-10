@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate conductance assuming substrate thermal conductivity is rate limiting — Qconduction_substrate • TrenchR</title>
+<title>Conductance Assuming Substrate Thermal Conductivity is Rate Limiting — Qconduction_substrate • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Calculate conductance assuming substrate thermal conductivity is rate limiting — Qconduction_substrate" />
-<meta property="og:description" content="calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: (Spotila and Burggren 1992)" />
+<meta property="og:title" content="Conductance Assuming Substrate Thermal Conductivity is Rate Limiting — Qconduction_substrate" />
+<meta property="og:description" content="Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed) (Spotila and Burggren 1992)
+." />
 
 
 
@@ -132,13 +133,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate conductance assuming substrate thermal conductivity is rate limiting</h1>
+    <h1>Conductance Assuming Substrate Thermal Conductivity is Rate Limiting</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/energybalance_functions.R'><code>R/energybalance_functions.R</code></a></small>
     <div class="hidden name"><code>Qconduction_substrate.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: (Spotila and Burggren 1992)</p>
+    <p>Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed) (Spotila and Burggren 1992)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>Qconduction_substrate</span><span class='op'>(</span><span class='va'>T_g</span>, <span class='va'>T_b</span>, <span class='va'>D</span>, K_g <span class='op'>=</span> <span class='fl'>0.5</span>, <span class='va'>A</span>, <span class='va'>proportion</span><span class='op'>)</span></pre>
@@ -148,33 +150,33 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>T_g</th>
-      <td><p><code>numeric</code> Surface temperature (Kelvin).</p></td>
+      <td><p><code>numeric</code> Surface temperature (K).</p></td>
     </tr>
     <tr>
       <th>T_b</th>
-      <td><p><code>numeric</code> Body temperature (Kelvin).</p></td>
+      <td><p><code>numeric</code> Body temperature (K).</p></td>
     </tr>
     <tr>
       <th>D</th>
-      <td><p><code>numeric</code> Characteristic dimension of the animal (meters)</p></td>
+      <td><p><code>numeric</code> Characteristic dimension of the animal (m).</p></td>
     </tr>
     <tr>
       <th>K_g</th>
-      <td><p><code>numeric</code> Thermal conductivity of substrate (W K^-1 m^-1)</p></td>
+      <td><p><code>numeric</code> Thermal conductivity of substrate (W K<sup>-1</sup> m<sup>-1</sup>).</p></td>
     </tr>
     <tr>
       <th>A</th>
-      <td><p><code>numeric</code> Surface area (m^2)</p></td>
+      <td><p><code>numeric</code> Surface area (m<sup>2</sup>).</p></td>
     </tr>
     <tr>
       <th>proportion</th>
-      <td><p><code>numeric</code> proportion in contact to the surface</p></td>
+      <td><p><code>numeric</code> proportion in contact to the surface.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>conductance (W)</p>
+    <p><code>numeric</code> conductance (W).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Spotila F, Burggren (1992).
@@ -184,11 +186,10 @@
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
-<code><a href='Free_or_forced_convection.html'>Free_or_forced_convection</a>()</code>,
 <code><a href='Grashof_number_Gates.html'>Grashof_number_Gates</a>()</code>,
 <code><a href='Grashof_number.html'>Grashof_number</a>()</code>,
-<code><a href='Nu_from_Gr.html'>Nu_from_Gr</a>()</code>,
-<code><a href='Nu_from_Re.html'>Nu_from_Re</a>()</code>,
+<code><a href='Nusselt_from_Grashof.html'>Nusselt_from_Grashof</a>()</code>,
+<code><a href='Nusselt_from_Reynolds.html'>Nusselt_from_Reynolds</a>()</code>,
 <code><a href='Nusselt_number.html'>Nusselt_number</a>()</code>,
 <code><a href='Prandtl_number.html'>Prandtl_number</a>()</code>,
 <code><a href='Qconduction_animal.html'>Qconduction_animal</a>()</code>,
@@ -218,6 +219,7 @@
 <code><a href='actual_vapor_pressure.html'>actual_vapor_pressure</a>()</code>,
 <code><a href='boundary_layer_resistance.html'>boundary_layer_resistance</a>()</code>,
 <code><a href='external_resistance_to_water_vapor_transfer.html'>external_resistance_to_water_vapor_transfer</a>()</code>,
+<code><a href='free_or_forced_convection.html'>free_or_forced_convection</a>()</code>,
 <code><a href='heat_transfer_coefficient_approximation.html'>heat_transfer_coefficient_approximation</a>()</code>,
 <code><a href='heat_transfer_coefficient_simple.html'>heat_transfer_coefficient_simple</a>()</code>,
 <code><a href='heat_transfer_coefficient.html'>heat_transfer_coefficient</a>()</code>,

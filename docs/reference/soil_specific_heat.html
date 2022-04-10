@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimate Soil Specific Heat — soil_specific_heat • TrenchR</title>
+<title>Soil Specific Heat — soil_specific_heat • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Estimate Soil Specific Heat — soil_specific_heat" />
-<meta property="og:description" content="Estimates soil specific heat (J kg^-1 K^-1) using the methods of deVries (1963)
+<meta property="og:title" content="Soil Specific Heat — soil_specific_heat" />
+<meta property="og:description" content="Estimates soil specific heat (J kg-1 K-1) using the methods of deVries (1963)
 . Uses the volume fraction of organic material, minerals, and water in soil." />
 
 
@@ -133,13 +133,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimate Soil Specific Heat</h1>
+    <h1>Soil Specific Heat</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/TsoilFunctions.R'><code>R/TsoilFunctions.R</code></a></small>
     <div class="hidden name"><code>soil_specific_heat.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Estimates soil specific heat (J kg^-1 K^-1) using the methods of deVries (1963)
+    <p>Estimates soil specific heat (J kg<sup>-1</sup> K<sup>-1</sup>) using the methods of deVries (1963)
 . Uses the volume fraction of organic material, minerals, and water in soil.</p>
     </div>
 
@@ -150,25 +150,25 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x_o</th>
-      <td><p><code>numeric</code> volume fraction of organic material</p></td>
+      <td><p><code>numeric</code> volume fraction of organic material.</p></td>
     </tr>
     <tr>
       <th>x_m</th>
-      <td><p><code>numeric</code> volume fraction of minerals</p></td>
+      <td><p><code>numeric</code> volume fraction of minerals.</p></td>
     </tr>
     <tr>
       <th>x_w</th>
-      <td><p><code>numeric</code> volume fraction of water</p></td>
+      <td><p><code>numeric</code> volume fraction of water.</p></td>
     </tr>
     <tr>
       <th>rho_so</th>
-      <td><p><code>numeric</code> particle density of soil in kg/m^3 (bulk density). Defaults to 1620.</p></td>
+      <td><p><code>numeric</code> particle density of soil in (kg m<sup>-3</sup>) (bulk density).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>numeric</code> soil specific heat (J kg^-1 K^-1)</p>
+    <p><code>numeric</code> soil specific heat (J kg<sup>-1</sup> K<sup>-1</sup>).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>deVries DA (1963).

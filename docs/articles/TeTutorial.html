@@ -94,7 +94,7 @@
       <h1 data-toc-skip>Using energy balances to estimate body temperatures</h1>
                         <h4 class="author">Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington</h4>
             
-            <h4 class="date">2022-04-08</h4>
+            <h4 class="date">2022-04-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/trenchproject/TrenchR/blob/master/vignettes/TeTutorial.Rmd"><code>vignettes/TeTutorial.Rmd</code></a></small>
       <div class="hidden name"><code>TeTutorial.Rmd</code></div>
@@ -105,7 +105,7 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Load TrenchR package</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/trenchproject/TrenchR">TrenchR</a></span><span class="op">)</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://trenchproject.github.io/trenchr/">TrenchR</a></span><span class="op">)</span></code></pre></div>
 <p>This tutorial covers how to construct energy balances for applications such as estimating the body temperature of organisms. The tutorial first reviews general functions to estimate forms of heat exchange and balance the exchanges. Finally, we present functions to implement specialized energy balances for particular organisms.</p>
 <div id="operative-environmental-temperatures" class="section level1">
 <h1 class="hasAnchor">
@@ -336,10 +336,10 @@ Under the assumption that limpet has a cone shape, where <span class="math inlin
 <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">"bottomright"</span>,title<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="st">"function"</span><span class="op">)</span>, legend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Tb_limpet"</span>, <span class="st">"Tb_limpetBH"</span>, <span class="st">"Tb_Snail"</span><span class="op">)</span>, lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>,<span class="st">"dotted"</span><span class="op">)</span> <span class="op">)</span></code></pre></div>
 <p><img src="TeTutorial_files/figure-html/unnamed-chunk-33-1.png" width="576"></p>
 </div>
-<div id="noctural-salamanders-humid-operative-temperatures" class="section level2">
+<div id="nocturnal-salamanders-humid-operative-temperatures" class="section level2">
 <h2 class="hasAnchor">
-<a href="#noctural-salamanders-humid-operative-temperatures" class="anchor"></a>Noctural Salamanders (humid operative temperatures)</h2>
-<p>We present a function ‘Tb_salamand_humid’ adapted from Riddell et al.  <span class="citation">(2018)</span> and Campbell and Norman <span class="citation">(2012)</span> that calculates the humid operative temperature (<span class="math inline">\(T_{eh}\)</span>) of a nocturnal salamander. The function estimates <span class="math inline">\(T_{eh}\)</span> by accounting for evaporative cooling from the high water loss rates typically associated with amphibians. Rates of evaporative cooling are primarily a function of the humidity in the air and the resistance of the skin to water loss. The vapor pressure deficit (<span class="math inline">\(D\)</span>) describes the drying power of the ambient air and thus the potential for evaporative cooling. Similarly, the skin resistance to water loss (<span class="math inline">\(r_{i}\)</span>) describes the capacity of the integument to resist the flux of water given the gradient of humidity in ambient air.</p>
+<a href="#nocturnal-salamanders-humid-operative-temperatures" class="anchor"></a>Nocturnal Salamanders (humid operative temperatures)</h2>
+<p>We present a function ‘Tb_salamander_humid’ adapted from Riddell et al.  <span class="citation">(2018)</span> and Campbell and Norman <span class="citation">(2012)</span> that calculates the humid operative temperature (<span class="math inline">\(T_{eh}\)</span>) of a nocturnal salamander. The function estimates <span class="math inline">\(T_{eh}\)</span> by accounting for evaporative cooling from the high water loss rates typically associated with amphibians. Rates of evaporative cooling are primarily a function of the humidity in the air and the resistance of the skin to water loss. The vapor pressure deficit (<span class="math inline">\(D\)</span>) describes the drying power of the ambient air and thus the potential for evaporative cooling. Similarly, the skin resistance to water loss (<span class="math inline">\(r_{i}\)</span>) describes the capacity of the integument to resist the flux of water given the gradient of humidity in ambient air.</p>
 <p>High rates of water loss, for instance, can occur if humidity or skin resistance to water loss is low, resulting in greater amounts of evaporative cooling. The model also incorporates additional variables, such as nighttime absorbed radiation, radiative conductance, elevation, and boundary layer resistance. Direct and indirect solar radiation are not included because the code was developed for a nocturnal species. In addition to the cooling effect from evaporation, operative temperatures (<span class="math inline">\(T_{e}\)</span>) at night are also generally lower than air temperatures due to emitted radiation being larger than absorbed <span class="citation">(Campbell and Norman 2012)</span>.</p>
 <p>The <span class="math inline">\(T_{eh}\)</span> function is defined as <span class="math display">\[T_{eh}=T_{a}+\frac{\gamma^{*}}{s+\gamma^{*}} 
 \left( \frac{R_{abs} - \epsilon_{s}\sigma T^{4}_{a}}{c_{p}g_{Hr}} -\frac{D}
@@ -591,7 +591,7 @@ Erbs, DG, SA Klein, and JA Duffie. 1982. <span>“Estimation of the Diffuse Radi
 Fei, Teng, Andrew K Skidmore, Valentijn Venus, Tiejun Wang, Martin Schlerf, Bert Toxopeus, Sjef Van Overjijk, Meng Bian, and Yaolin Liu. 2012. <span>“A Body Temperature Model for Lizards as Estimated from the Thermal Environment.”</span> <em>Journal of Thermal Biology</em> 37 (1): 56–64.
 </div>
 <div id="ref-forsythe1995model" class="csl-entry">
-Forsythe, William C, Edward J Rykiel Jr, Randal S Stahl, Hsin-i Wu, and Robert M Schoolfield. 1995. <span>“A Model Comparison for Daylength as a Function of Latitude and Day of Year.”</span> <em>Ecological Modelling</em> 80 (1): 87–95.
+Forsythe, William C, Edward J Rykiel Jr, Randal S Stahl, Hsin-i Wu, and Robert M Schoolfield. 1995. <span>“A Model Comparison for Daylength as a Function of Latitude and Day of Year.”</span> <em>Ecological Modeling</em> 80 (1): 87–95.
 </div>
 <div id="ref-galushko2005electrical" class="csl-entry">
 Galushko, D, N Ermakov, M Karpovski, A Palevski, JS Ishay, and DJ Bergman. 2005. <span>“Electrical, Thermoelectric and Thermophysical Properties of Hornet Cuticle.”</span> <em>Semiconductor Science and Technology</em> 20 (3): 286.

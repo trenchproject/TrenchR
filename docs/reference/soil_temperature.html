@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function to Calculate Soil Temperature in C using ODEs. — soil_temperature • TrenchR</title>
+<title>Calculate Soil Temperature in C using ODEs — soil_temperature • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Function to Calculate Soil Temperature in C using ODEs. — soil_temperature" />
+<meta property="og:title" content="Calculate Soil Temperature in C using ODEs — soil_temperature" />
 <meta property="og:description" content="Function called to calculate soil temperature in C from W.A. Beckman and Porter (1973)
 . Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from (deVries 1963)" />
 
@@ -133,7 +133,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function to Calculate Soil Temperature in C using ODEs.</h1>
+    <h1>Calculate Soil Temperature in C using ODEs</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/TsoilFunctions.R'><code>R/TsoilFunctions.R</code></a></small>
     <div class="hidden name"><code>soil_temperature.Rd</code></div>
     </div>
@@ -165,66 +165,65 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>z_r.intervals</th>
-      <td><p><code>numeric</code> the number of intervals in the soil profile to calculate, defaults to 12
-ß</p></td>
+      <td><p><code>numeric</code> the number of intervals in the soil profile to calculate, defaults to 12.</p></td>
     </tr>
     <tr>
       <th>z_r</th>
-      <td><p><code>numeric</code> reference height in0 (meters)</p></td>
+      <td><p><code>numeric</code> reference height in0 (m).</p></td>
     </tr>
     <tr>
       <th>z</th>
-      <td><p><code>numeric</code> interval of the soil profile to return (1 to z_r.intervals)</p></td>
+      <td><p><code>numeric</code> interval of the soil profile to return (1 to z_r.intervals).</p></td>
     </tr>
     <tr>
       <th>T_a</th>
-      <td><p><code>numeric</code> vector of air temperature (degrees C), Note: missing values will be linearly interpolated</p></td>
+      <td><p><code>numeric</code> vector of air temperature (degrees C), Note: missing values will be linearly interpolated.</p></td>
     </tr>
     <tr>
       <th>u</th>
-      <td><p><code>numeric</code> vector of wind speed (m/s)</p></td>
+      <td><p><code>numeric</code> vector of wind speed (m/s).</p></td>
     </tr>
     <tr>
       <th>Tsoil0</th>
-      <td><p><code>numeric</code> initial soil temperature (degrees C)</p></td>
+      <td><p><code>numeric</code> initial soil temperature (degrees C).</p></td>
     </tr>
     <tr>
       <th>z0</th>
-      <td><p><code>numeric</code> surface roughness (meters)</p></td>
+      <td><p><code>numeric</code> surface roughness (m).</p></td>
     </tr>
     <tr>
       <th>SSA</th>
-      <td><p><code>numeric</code> solar absorbtivity of soil surface as a fraction</p></td>
+      <td><p><code>numeric</code> solar absorptivity of soil surface as a fraction.</p></td>
     </tr>
     <tr>
       <th>TimeIn</th>
-      <td><p><code>numeric</code> vector of time periods for the model</p></td>
+      <td><p><code>numeric</code> vector of time periods for the model.</p></td>
     </tr>
     <tr>
       <th>H</th>
-      <td><p><code>numeric</code> vector of solar radiation (W m^-2)</p></td>
+      <td><p><code>numeric</code> vector of solar radiation (W/m<sup>2</sup>).</p></td>
     </tr>
     <tr>
       <th>water_content</th>
-      <td><p><code>numeric</code> percent water content (percent). Defaults to 0.2</p></td>
+      <td><p><code>numeric</code> percent water content (percent).</p></td>
     </tr>
     <tr>
       <th>air_pressure</th>
-      <td><p><code>numeric</code> air pressure (kPa)</p></td>
+      <td><p><code>numeric</code> air pressure (kPa).</p></td>
     </tr>
     <tr>
       <th>rho_so</th>
-      <td><p><code>numeric</code> particle density of soil. Defaults to 1620.</p></td>
+      <td><p><code>numeric</code> particle density of soil.</p></td>
     </tr>
     <tr>
       <th>shade</th>
-      <td><p><code>numeric</code> whether or not soil temperature should be calculated in the shade (TRUE/FALSE)</p></td>
+      <td><p><code>logical</code> whether or not soil temperature should be calculated in the shade.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>soil temperature (C)</p>
+    <p><code>numeric</code> soil temperature (C).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>deVries DA (1963).

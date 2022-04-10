@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Construct a Gaussian-Quadratic Thermal Performance Curve. — TPC • TrenchR</title>
+<title>Construct a Gaussian-Quadratic Thermal Performance Curve — TPC • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Construct a Gaussian-Quadratic Thermal Performance Curve. — TPC" />
-<meta property="og:description" content="Constructs a thermal performance curve by combining as a gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures. Reference: (CA Deutsch 2008)" />
+<meta property="og:title" content="Construct a Gaussian-Quadratic Thermal Performance Curve — TPC" />
+<meta property="og:description" content="Constructs a thermal performance curve by combining as a Gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures (CA Deutsch 2008)
+." />
 
 
 
@@ -132,13 +133,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Construct a Gaussian-Quadratic Thermal Performance Curve.</h1>
+    <h1>Construct a Gaussian-Quadratic Thermal Performance Curve</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/TPCfunctions.R'><code>R/TPCfunctions.R</code></a></small>
     <div class="hidden name"><code>TPC.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Constructs a thermal performance curve by combining as a gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures. Reference: (CA Deutsch 2008)</p>
+    <p>Constructs a thermal performance curve by combining as a Gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures (CA Deutsch 2008)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>TPC</span><span class='op'>(</span><span class='cn'>T</span>, <span class='va'>Topt</span>, <span class='va'>CTmin</span>, <span class='va'>CTmax</span><span class='op'>)</span></pre>
@@ -148,28 +150,25 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>T</th>
-      <td><p><code>numeric</code> vector of temperature range (C)</p></td>
+      <td><p><code>numeric</code> vector of temperature range (C).</p></td>
     </tr>
     <tr>
       <th>Topt</th>
-      <td><p><code>numeric</code> thermal optima (C), the temperature at which peak performance occurs</p></td>
+      <td><p><code>numeric</code> thermal optima (C), the temperature at which peak performance occurs.</p></td>
     </tr>
     <tr>
       <th>CTmin</th>
-      <td><p><code>numeric</code> critical thermal minima (C), the lower temperature limit for performance</p></td>
+      <td><p><code>numeric</code> critical thermal minima (C), the lower temperature limit for performance.</p></td>
     </tr>
     <tr>
       <th>CTmax</th>
-      <td><p><code>numeric</code> critical thermal maxima (C), the upper temperature limit for performance</p></td>
+      <td><p><code>numeric</code> critical thermal maxima (C), the upper temperature limit for performance.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>performance</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Construct a Gaussian-quadratic thermal performance curve.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>CA Deutsch JTRHKSCGDHPM (2008).

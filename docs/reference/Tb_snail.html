@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Predict Body Temperature (Operative Environmental Temperature) of a Marine Snail in C — Tb_snail" />
-<meta property="og:description" content="Predicts body temperature of a snail in C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on (Iacarella and Helmuth 2012)
+<meta property="og:description" content="Predicts body temperature of a snail in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on (Iacarella and Helmuth 2012)
 . Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication." />
 
 
@@ -139,7 +139,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Predicts body temperature of a snail in C. Implements a steady‐state model, which assumes unchanging environmental conditions. Based on (Iacarella and Helmuth 2012)
+    <p>Predicts body temperature of a snail in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on (Iacarella and Helmuth 2012)
 . Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication.</p>
     </div>
 
@@ -150,40 +150,45 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>temp</th>
-      <td><p><code>numeric</code> air temperature (C)</p></td>
+      <td><p><code>numeric</code> air temperature (C).</p></td>
     </tr>
     <tr>
       <th>Len</th>
-      <td><p><code>numeric</code> snail length (m)</p></td>
+      <td><p><code>numeric</code> snail length (m).</p></td>
     </tr>
     <tr>
       <th>solar</th>
-      <td><p><code>numeric</code> direct solar flux density (W/m2)</p></td>
+      <td><p><code>numeric</code> direct solar flux density (W/m<sup>2</sup>).</p></td>
     </tr>
     <tr>
       <th>WS</th>
-      <td><p><code>numeric</code> wind speed (m/s)</p></td>
+      <td><p><code>numeric</code> wind speed (m/s).</p></td>
     </tr>
     <tr>
       <th>CC</th>
-      <td><p><code>numeric</code> fraction of the sky covered by cloud (0-1)</p></td>
+      <td><p><code>numeric</code> fraction of the sky covered by cloud (0-1).</p></td>
     </tr>
     <tr>
       <th>WL</th>
-      <td><p><code>numeric</code> water loss rate (kg/s), 5 percent loss of body mass over one hour is a reasonable maximum level (Helmuth 1999)</p></td>
+      <td><p><code>numeric</code> water loss rate (kg/s), 5 percent loss of body mass over one hour is a reasonable maximum level (Helmuth 1999)
+.</p></td>
     </tr>
     <tr>
       <th>WSH</th>
-      <td><p><code>numeric</code> wind sensor height (m)</p></td>
+      <td><p><code>numeric</code> wind sensor height (m).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>numeric</code> predicted body temperature (C)</p>
+    <p><code>numeric</code> predicted body temperature (C).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Iacarella J, Helmuth B (2012).
+    <p>Helmuth B (1999).
+&#8220;Thermal biology of rocky intertidal mussels: quantifying body temperatures using climatological data.&#8221;
+<em>Ecology</em>, <b>80</b>(1), 15--34.
+doi: <a href='https://doi.org/10.1890/0012-9658(1999)080[0015:TBORIM]2.0.CO;2'>10.1890/0012-9658(1999)080[0015:TBORIM]2.0.CO;2</a>
+, <a href='https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/0012-9658%281999%29080%5B0015%3ATBORIM%5D2.0.CO%3B2'>https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/0012-9658%281999%29080%5B0015%3ATBORIM%5D2.0.CO%3B2</a>.<br /><br /> Iacarella J, Helmuth B (2012).
 &#8220;Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy.&#8221;
 <em>Journal of Thermal Biology</em>, <b>37</b>(1).
 doi: <a href='https://doi.org/10.1016/j.jtherbio.2011.10.003'>10.1016/j.jtherbio.2011.10.003</a>
@@ -191,11 +196,10 @@ doi: <a href='https://doi.org/10.1016/j.jtherbio.2011.10.003'>10.1016/j.jtherbio
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
-<code><a href='Free_or_forced_convection.html'>Free_or_forced_convection</a>()</code>,
 <code><a href='Grashof_number_Gates.html'>Grashof_number_Gates</a>()</code>,
 <code><a href='Grashof_number.html'>Grashof_number</a>()</code>,
-<code><a href='Nu_from_Gr.html'>Nu_from_Gr</a>()</code>,
-<code><a href='Nu_from_Re.html'>Nu_from_Re</a>()</code>,
+<code><a href='Nusselt_from_Grashof.html'>Nusselt_from_Grashof</a>()</code>,
+<code><a href='Nusselt_from_Reynolds.html'>Nusselt_from_Reynolds</a>()</code>,
 <code><a href='Nusselt_number.html'>Nusselt_number</a>()</code>,
 <code><a href='Prandtl_number.html'>Prandtl_number</a>()</code>,
 <code><a href='Qconduction_animal.html'>Qconduction_animal</a>()</code>,
@@ -225,6 +229,7 @@ doi: <a href='https://doi.org/10.1016/j.jtherbio.2011.10.003'>10.1016/j.jtherbio
 <code><a href='actual_vapor_pressure.html'>actual_vapor_pressure</a>()</code>,
 <code><a href='boundary_layer_resistance.html'>boundary_layer_resistance</a>()</code>,
 <code><a href='external_resistance_to_water_vapor_transfer.html'>external_resistance_to_water_vapor_transfer</a>()</code>,
+<code><a href='free_or_forced_convection.html'>free_or_forced_convection</a>()</code>,
 <code><a href='heat_transfer_coefficient_approximation.html'>heat_transfer_coefficient_approximation</a>()</code>,
 <code><a href='heat_transfer_coefficient_simple.html'>heat_transfer_coefficient_simple</a>()</code>,
 <code><a href='heat_transfer_coefficient.html'>heat_transfer_coefficient</a>()</code>,

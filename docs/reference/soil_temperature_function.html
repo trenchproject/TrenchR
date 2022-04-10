@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function to Calculate Soil Temperature. — soil_temperature_function • TrenchR</title>
+<title>Core Calculate Soil Temperature Function — soil_temperature_function • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Function to Calculate Soil Temperature. — soil_temperature_function" />
+<meta property="og:title" content="Core Calculate Soil Temperature Function — soil_temperature_function" />
 <meta property="og:description" content="Function called to calculate soil temperature from W.A. Beckman and Porter (1973)
-. Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from Porter et al. (1973)
+. Param are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from Porter et al. (1973)
  and Kingsolver (1979)" />
 
 
@@ -134,14 +134,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function to Calculate Soil Temperature.</h1>
+    <h1>Core Calculate Soil Temperature Function</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/TsoilFunctions.R'><code>R/TsoilFunctions.R</code></a></small>
     <div class="hidden name"><code>soil_temperature_function.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Function called to calculate soil temperature from W.A. Beckman and Porter (1973)
-. Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from Porter et al. (1973)
+. Param are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from Porter et al. (1973)
  and Kingsolver (1979)</p>
     </div>
 
@@ -152,21 +152,21 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>j</th>
-      <td><p><code>numeric</code> is the number of the iteration of running the model</p></td>
+      <td><p><code>numeric</code> is the number of the iteration of running the model.</p></td>
     </tr>
     <tr>
       <th>T_so</th>
-      <td><p><code>numeric</code> is the initial soil temperature profile in C</p></td>
+      <td><p><code>numeric</code> is the initial soil temperature profile in C.</p></td>
     </tr>
     <tr>
       <th>params</th>
-      <td><p>is a list containing the following parameters, which are described or calculated in soil_temperature(): list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade).</p></td>
+      <td><p>is a list containing the following param, which are described or calculated in <code><a href='soil_temperature.html'>soil_temperature</a></code>: <code><a href='https://rdrr.io/r/base/list.html'>list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade)</a></code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>soil temperature function</p>
+    <p>Soil temperature profile as a <code>list</code>.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Kingsolver JG (1979).
