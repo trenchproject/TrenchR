@@ -7,28 +7,28 @@
 Tb_Gates2(A, D, T_g, T_a, Qabs, V, epsilon)
 }
 \arguments{
-\item{A}{\code{numeric} surface area (m^2)}
+\item{A}{\code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
-\item{D}{\code{numeric} characteristic dimension for conduction (meters)}
+\item{D}{\code{numeric} characteristic dimension for conduction (meters).}
 
-\item{T_g}{\code{numeric} ground surface temperature (K)}
+\item{T_g}{\code{numeric} ground surface temperature (K).}
 
-\item{T_a}{\code{numeric} ambient air temperature (K)}
+\item{T_a}{\code{numeric} ambient air temperature (K).}
 
-\item{Qabs}{\code{numeric} Solar radiation absorbed (W)}
+\item{Qabs}{\code{numeric} Solar radiation absorbed (W).}
 
-\item{V}{\code{numeric} Wind speed (m/2)}
+\item{V}{\code{numeric} Wind speed (m/2).}
 
-\item{epsilon}{\code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals (Gates 1980)}
+\item{epsilon}{\code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.}
 }
 \value{
-\code{numeric} operative environmental temperature (K)
+\code{numeric} operative environmental temperature (K).
 }
 \description{
 Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
 }
 \details{
-Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980}{TrenchR}. Omits evaporative and metabolic heat loss.
+Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980;textual}{TrenchR}. Omits evaporative and metabolic heat loss.
 }
 \examples{
   Tb_Gates2(A       = 1, 
@@ -45,11 +45,10 @@ Predicts body temperatures (operative environmental temperature) of an ectotherm
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -79,6 +78,7 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{heat_transfer_coefficient}()},
@@ -86,6 +86,3 @@ Other biophysical models:
 \code{\link{saturation_water_vapor_pressure}()}
 }
 \concept{biophysical models}
-\keyword{environmental}
-\keyword{operative}
-\keyword{temperature}

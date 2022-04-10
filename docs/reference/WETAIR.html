@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WETAIR — WETAIR • TrenchR</title>
+<title>Calculate Properties of Wet Air — WETAIR • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="WETAIR — WETAIR" />
+<meta property="og:title" content="Calculate Properties of Wet Air — WETAIR" />
 <meta property="og:description" content="Calculates several properties of humid air as output variables below. The program is based on equations from (List 1971)
 . WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP)
 (1) Psychrometric data:
@@ -138,7 +138,7 @@ If DP is known then set WB = 0 and RH = 0." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>WETAIR</h1>
+    <h1>Calculate Properties of Wet Air</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/DRYWETAIR.R'><code>R/DRYWETAIR.R</code></a></small>
     <div class="hidden name"><code>WETAIR.Rd</code></div>
     </div>
@@ -160,38 +160,38 @@ If DP is known then set WB = 0 and RH = 0.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>db</th>
-      <td><p><code>numeric</code> Dry bulb temperature (C)</p></td>
+      <td><p><code>numeric</code> Dry bulb temperature (C).</p></td>
     </tr>
     <tr>
       <th>wb</th>
-      <td><p><code>numeric</code> Wet bulb temperature (C)</p></td>
+      <td><p><code>numeric</code> Wet bulb temperature (C).</p></td>
     </tr>
     <tr>
       <th>rh</th>
-      <td><p><code>numeric</code> Relative humidity (%)</p></td>
+      <td><p><code>numeric</code> Relative humidity (%).</p></td>
     </tr>
     <tr>
       <th>dp</th>
-      <td><p><code>numeric</code> Dew point temperature (C)</p></td>
+      <td><p><code>numeric</code> Dew point temperature (C).</p></td>
     </tr>
     <tr>
       <th>bp</th>
-      <td><p><code>numeric</code> Barometric pressure (pascal)</p></td>
+      <td><p><code>numeric</code> Barometric pressure (Pa).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>e <code>numeric</code> Vapour pressure (Pa)</p>
-<p>esat <code>numeric</code> Saturation vapour pressure (Pa)</p>
-<p>vd <code>numeric</code> Vapour density (kg m-3)</p>
-<p>rw <code>numeric</code> Mixing ration (kg kg-1)</p>
-<p>tvir <code>numeric</code> Virtual temperature (K)</p>
-<p>tvinc <code>numeric</code> Virtual temperature increment (K)</p>
-<p>denair <code>numeric</code> Hourly predictions of the soil moisture under the maximum specified shade</p>
-<p>cp <code>numeric</code> Specific heat of air at constant pressure (J kg-1 K-1)</p>
-<p>wtrpot <code>numeric</code> Water potential (Pa)</p>
-<p>rh <code>numeric</code> Relative humidity (<!-- %) --></p>
+    <p>e <code>numeric</code> Vapor pressure (Pa).</p>
+<p>esat <code>numeric</code> Saturation vapor pressure (Pa).</p>
+<p>vd <code>numeric</code> Vapor density (kg m<sup>-3</sup>).</p>
+<p>rw <code>numeric</code> Mixing ration (kg kg<sup>-1</sup>).</p>
+<p>tvir <code>numeric</code> Virtual temperature (K).</p>
+<p>tvinc <code>numeric</code> Virtual temperature increment (K).</p>
+<p>denair <code>numeric</code> Hourly predictions of the soil moisture under the maximum specified shade.</p>
+<p>cp <code>numeric</code> Specific heat of air at constant pressure (J kg<sup>-1</sup> K<sup>-1</sup>).</p>
+<p>wtrpot <code>numeric</code> Water potential (Pa).</p>
+<p>rh <code>numeric</code> Relative humidity (%).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>List RJ (1971).
@@ -200,7 +200,7 @@ If DP is known then set WB = 0 and RH = 0.</p>
 <a href='https://repository.si.edu/handle/10088/23746'>https://repository.si.edu/handle/10088/23746</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>WETAIR</span><span class='op'>(</span>db<span class='op'>=</span><span class='fl'>30</span>, wb<span class='op'>=</span><span class='fl'>28</span>, rh<span class='op'>=</span><span class='fl'>60</span>, bp<span class='op'>=</span><span class='fl'>100</span><span class='op'>*</span><span class='fl'>1000</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>WETAIR</span><span class='op'>(</span>db<span class='op'>=</span><span class='fl'>30</span>, wb<span class='op'>=</span><span class='fl'>28</span>, rh<span class='op'>=</span><span class='fl'>60</span>, bp<span class='op'>=</span><span class='fl'>100</span><span class='op'>*</span><span class='fl'>1000</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $e
 #&gt; [1] 2545.82
 #&gt; 

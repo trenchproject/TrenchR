@@ -7,21 +7,21 @@
 degree_days(T_min, T_max, LDT = NA, UDT = NA, method = "single.sine")
 }
 \arguments{
-\item{T_min}{\code{numeric} Minimum temperature of the day (C)}
+\item{T_min}{\code{numeric} Minimum temperature of the day (C).}
 
-\item{T_max}{\code{numeric} Maximum temperature of the day (C)}
+\item{T_max}{\code{numeric} Maximum temperature of the day (C).}
 
-\item{LDT}{\code{numeric} lower developmental threshold (C)}
+\item{LDT}{\code{numeric} lower developmental threshold (C).}
 
-\item{UDT}{\code{numeric} upper developmental threshold (C)}
+\item{UDT}{\code{numeric} upper developmental threshold (C).}
 
-\item{method}{\code{character} type of method being used. Current choices: "single.sine","double.sine", "single.triangulation" or "double.triangulation"}
+\item{method}{\code{character} type of method being used. Current choices: \code{"single.sine"}, \code{"double.sine"}, \code{"single.triangulation"}, and \code{"double.triangulation"}.}
 }
 \value{
-\code{numeric} degree days (C)
+\code{numeric} degree days (C).
 }
 \description{
-Calculate degree days using single or double sine wave and single or double triangulation approximation. Source: http://ipm.ucanr.edu/WEATHER/ddfigindex.html. Double methods assume symmetry, that is that next day's thermal minimum is equal to previous day. Double Sine wave approximation of degree days from \insertCite{Allen1976}{TrenchR}.
+Calculate degree days using single or double sine wave and single or double triangulation approximation \insertCite{ucipm}{TrenchR}. Double methods assume symmetry, that is that next day's thermal minimum is equal to previous day. Double Sine wave approximation of degree days from \insertCite{Allen1976}{TrenchR}.
 }
 \examples{
   degree_days(T_min  = 7, 
@@ -58,5 +58,3 @@ Other microclimate functions:
 \code{\link{wind_speed_profile_segment}()}
 }
 \concept{microclimate functions}
-\keyword{days}
-\keyword{degree}

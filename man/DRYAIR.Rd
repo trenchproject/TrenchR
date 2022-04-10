@@ -2,42 +2,42 @@
 % Please edit documentation in R/DRYWETAIR.R
 \name{DRYAIR}
 \alias{DRYAIR}
-\title{DRYAIR}
+\title{Calculate Properties of Dry Air}
 \usage{
 DRYAIR(db = db, bp = 0, alt = 0)
 }
 \arguments{
-\item{db}{\code{numeric} Dry bulb temperature (C)}
+\item{db}{\code{numeric} Dry bulb temperature (C).}
 
-\item{bp}{\code{numeric} Barometric pressure (pascal)}
+\item{bp}{\code{numeric} Barometric pressure (Pa).}
 
-\item{alt}{\code{numeric} Altitude (m)}
+\item{alt}{\code{numeric} Altitude (m).}
 }
 \value{
-patmos \code{numeric} Standard atmospheric pressure (Pa)
+patmos \code{numeric} Standard atmospheric pressure (Pa).
 
-density \code{numeric} Density (kg m-3)
+density \code{numeric} Density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}).
 
-visdyn \code{numeric} Dynamic viscosity (kg m-1 s-1)
+visdyn \code{numeric} Dynamic viscosity (\ifelse{html}{\out{kg m<sup>-1</sup> s<sup>-1</sup>}}{\eqn{kg m^-1 s^-1}{ASCII}}).
 
-viskin \code{numeric} Kinematic viscosity (m2 s-1)
+viskin \code{numeric} Kinematic viscosity (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}).
 
-difvpr \code{numeric} Diffusivity of water vapor in air (m2 s-1)
+difvpr \code{numeric} Diffusivity of water vapor in air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}).
 
-thcond \code{numeric} Thermal conductivity (W m-1 K-1)
+thcond \code{numeric} Thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}).
 
-htovpr \code{numeric} Latent heat of vaporization of water (J kg-1)
+htovpr \code{numeric} Latent heat of vaporization of water (\ifelse{html}{\out{J kg<sup>-1</sup>}}{\eqn{J kg^-1}{ASCII}}).
 
-tcoeff \code{numeric} Temperature coefficient of volume expansion (K-1)
+tcoeff \code{numeric} Temperature coefficient of volume expansion (\ifelse{html}{\out{K<sup>-1</sup>}}{\eqn{K^-1}{ASCII}}).
 
-ggroup \code{numeric} Group of variables in Grashof number (1-m3 -K)
+ggroup \code{numeric} Group of variables in Grashof number (1-m3 -K).
 
-bbemit \code{numeric} black body emittance (W m-2)
+bbemit \code{numeric} black body emittance ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}})).
 
-emtmax \code{numeric} Wave length of maximum emittance (m)
+emtmax \code{numeric} Wave length of maximum emittance (m).
 }
 \description{
-Calculates several properties of dry air and related characteristics shownas output variables below. The program is based on equations from \insertCite{List1971}{TrenchR}. WETAIR must be used in conjunction with function VAPPRS. The user must supply values for the input variables (db, bp and alt). If alt is known (-1000 < alt < 20000) but not BP, then set BP=0
+Calculates several properties of dry air and related characteristics shown as output variables below. The program is based on equations from \insertCite{List1971}{TrenchR}. WETAIR must be used in conjunction with function VAPPRS. The user must supply values for the input variables (db, bp and alt). If alt is known (-1000 < alt < 20000) but not BP, then set \code{bp = 0}.
 }
 \examples{
   DRYAIR(db = 30, bp = 100*1000, alt = 0)

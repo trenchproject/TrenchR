@@ -2,20 +2,20 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{zenith_angle}
 \alias{zenith_angle}
-\title{Calculate Zenith Angle}
+\title{Zenith Angle}
 \usage{
 zenith_angle(doy, lat, lon, hour, offset = NA)
 }
 \arguments{
-\item{doy}{\code{numeric}  day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)}
+\item{doy}{\code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)}
 
-\item{lat}{\code{numeric}  latitude (decimal degrees)}
+\item{lat}{\code{numeric} latitude (decimal degrees).}
 
-\item{lon}{\code{numeric}  longitude (decimal degrees)}
+\item{lon}{\code{numeric} longitude (decimal degrees).}
 
-\item{hour}{\code{numeric}  hour of the day}
+\item{hour}{\code{numeric} hour of the day.}
 
-\item{offset}{\code{numeric}  the number of hours to add to UTC to get local time (improves accuracy but not always necessary). Optional. Defaults to NA.}
+\item{offset}{\code{numeric} the number of hours to add to UTC to get local time (improves accuracy but not always necessary). Optional. Defaults to NA.}
 }
 \value{
 \code{numeric} zenith angle (degrees)

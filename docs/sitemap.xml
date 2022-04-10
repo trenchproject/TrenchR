@@ -70,7 +70,7 @@
     <loc>https://trenchproject.github.io/TrenchR//reference/fahrenheit_to_kelvin.html</loc>
   </url>
   <url>
-    <loc>https://trenchproject.github.io/TrenchR//reference/Free_or_forced_convection.html</loc>
+    <loc>https://trenchproject.github.io/TrenchR//reference/free_or_forced_convection.html</loc>
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR//reference/Grashof_number.html</loc>
@@ -97,13 +97,13 @@
     <loc>https://trenchproject.github.io/TrenchR//reference/monthly_solar_radiation.html</loc>
   </url>
   <url>
+    <loc>https://trenchproject.github.io/TrenchR//reference/Nusselt_from_Grashof.html</loc>
+  </url>
+  <url>
+    <loc>https://trenchproject.github.io/TrenchR//reference/Nusselt_from_Reynolds.html</loc>
+  </url>
+  <url>
     <loc>https://trenchproject.github.io/TrenchR//reference/Nusselt_number.html</loc>
-  </url>
-  <url>
-    <loc>https://trenchproject.github.io/TrenchR//reference/Nu_from_Gr.html</loc>
-  </url>
-  <url>
-    <loc>https://trenchproject.github.io/TrenchR//reference/Nu_from_Re.html</loc>
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR//reference/partition_solar_radiation.html</loc>

@@ -2,22 +2,22 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_conductivity}
 \alias{soil_conductivity}
-\title{Estimate Soil Thermal Conductivity}
+\title{Soil Thermal Conductivity}
 \usage{
 soil_conductivity(x, lambda, g_a)
 }
 \arguments{
 \item{x}{\code{numeric} vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.}
 
-\item{lambda}{\code{numeric} vector of the thermal conductivities (W m^-1 K^-1) of the soil constituents}
+\item{lambda}{\code{numeric} vector of the thermal conductivities (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) of the soil constituents.}
 
-\item{g_a}{\code{numeric} shape factor on soil particles. The soil particles are assumed to be ellipsoids with axes g_a, g_b, and g_c, where g_a + g_b + g_c = 1 and g_a = g_b. \insertCite{deVries1952;textual}{TrenchR} suggests g_a = g_b = 0.125.}
+\item{g_a}{\code{numeric} shape factor on soil particles. The soil particles are assumed to be ellipsoids with axes \code{g_a}, \code{g_b}, and \code{g_c}, where \code{g_a + g_b + g_c = 1} and \code{g_a = g_b}. \insertCite{deVries1952;textual}{TrenchR} suggests \code{g_a = g_b = 0.125}.}
 }
 \value{
-\code{numeric} soil thermal conductivity (W m^-1 K^-1)
+\code{numeric} soil thermal conductivity (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}).
 }
 \description{
-Estimates soil thermal conductivity (W m^-1 K^-1) using the methods of \insertCite{deVries1963;textual}{TrenchR}
+Estimates soil thermal conductivity (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) using the methods of \insertCite{deVries1963;textual}{TrenchR}.
 }
 \examples{
   soil_conductivity(x      = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), 
@@ -40,5 +40,3 @@ Other soil temperature functions:
 Joseph Grigg
 }
 \concept{soil temperature functions}
-\keyword{soil}
-\keyword{temperature}

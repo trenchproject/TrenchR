@@ -11,17 +11,17 @@ heat_transfer_coefficient_approximation(V, D, K, nu, taxa = "sphere")
 
 \item{D}{\code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).}
 
-\item{K}{\code{numeric} Thermal conductivity of air (W m^-1 K^-1), can calculate using DRYAIR or WETAIR in NicheMapR}
+\item{K}{\code{numeric} Thermal conductivity of air (W m^-1 K^-1), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
 
-\item{nu}{\code{numeric} Kinematic Viscosity of air (m^2 s^-1), can calculate using DRYAIR or WETAIR in NicheMapR}
+\item{nu}{\code{numeric} Kinematic Viscosity of air (m^2 s^-1), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
 
 \item{taxa}{\code{character} Which class of organism, current choices: sphere, frog, lizard, flyinginsect, spider}
 }
 \value{
-\code{numeric} heat transfer coefficient, H_L (W m^-2 K^-1)
+\code{numeric} heat transfer coefficient, \code{H_L} (W m^-2 K^-1)
 }
 \description{
-estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere. Reference: \insertCite{Mitchell1976}{TrenchR}
+estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere \insertCite{Mitchell1976}{TrenchR}.
 }
 \examples{
  heat_transfer_coefficient_approximation(V    = 3, 
@@ -36,11 +36,10 @@ estimate the heat transfer coefficient for various taxa.  Approximates forced co
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -71,12 +70,10 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{heat_transfer_coefficient}()},
 \code{\link{saturation_vapor_pressure}()},
 \code{\link{saturation_water_vapor_pressure}()}
 }
 \concept{biophysical models}
-\keyword{coefficient}
-\keyword{heat}
-\keyword{transfer}

@@ -7,23 +7,23 @@
 diurnal_temp_variation_sinesqrt(t, tr, ts, T_max, T_min, T_minp)
 }
 \arguments{
-\item{t}{\code{numeric} hour or hours for temperature estimate}
+\item{t}{\code{numeric} hour or hours for temperature estimate.}
 
-\item{tr}{\code{numeric} sunrise hour (0-23)}
+\item{tr}{\code{numeric} sunrise hour (0-23).}
 
-\item{ts}{\code{numeric} sunset hour (0-23)}
+\item{ts}{\code{numeric} sunset hour (0-23).}
 
-\item{T_max}{\code{numeric} maximum temperature of current day (C)}
+\item{T_max}{\code{numeric} maximum temperature of current day (C).}
 
-\item{T_min}{\code{numeric} minimum temperature of current day (C)}
+\item{T_min}{\code{numeric} minimum temperature of current day (C).}
 
-\item{T_minp}{\code{numeric} minimum temperature of following day (C)}
+\item{T_minp}{\code{numeric} minimum temperature of following day (C).}
 }
 \value{
-\code{numeric} temperature (C) at a specified hour
+\code{numeric} temperature (C) at a specified hour.
 }
 \description{
-estimate temperature for a specified hour using sine and square root functions. Source: \insertCite{Cesaraccio2001}{TrenchR}
+estimate temperature for a specified hour using sine and square root functions \insertCite{Cesaraccio2001}{TrenchR}.
 }
 \details{
 Estimates temperature across hours using sine and square root functions
@@ -59,4 +59,3 @@ Other microclimate functions:
 \code{\link{wind_speed_profile_segment}()}
 }
 \concept{microclimate functions}
-\keyword{Temperature}

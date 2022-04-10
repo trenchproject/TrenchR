@@ -1,20 +1,18 @@
-#' @title Construct a Gaussian-Quadratic Thermal Performance Curve. 
+#' @title Construct a Gaussian-Quadratic Thermal Performance Curve 
 #'     
-#' @details Construct a Gaussian-quadratic thermal performance curve.
+#' @description Constructs a thermal performance curve by combining as a Gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures \insertCite{Deutsch2008}{TrenchR}.
 #' 
-#' @description Constructs a thermal performance curve by combining as a gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures. Reference: \insertCite{Deutsch2008}{TrenchR} 
+#' @param T \code{numeric} vector of temperature range (C).
 #' 
-#' @param T \code{numeric} vector of temperature range (C)
+#' @param Topt \code{numeric} thermal optima (C), the temperature at which peak performance occurs.
 #' 
-#' @param Topt \code{numeric} thermal optima (C), the temperature at which peak performance occurs
+#' @param CTmin \code{numeric} critical thermal minima (C), the lower temperature limit for performance.
 #' 
-#' @param CTmin \code{numeric} critical thermal minima (C), the lower temperature limit for performance
-#' 
-#' @param CTmax \code{numeric} critical thermal maxima (C), the upper temperature limit for performance
+#' @param CTmax \code{numeric} critical thermal maxima (C), the upper temperature limit for performance.
 #' 
 #' @return performance
 #' 
-#' @keywords thermal performance curve
+
 #' 
 #' @references
 #'   \insertAllCited{}
@@ -47,25 +45,21 @@ TPC <- function (T,
 
 #' @title Construct a thermal performance curve based on a beta function. 
 #'  
-#' @details Construct a thermal performance curve based on a beta function.
+#' @description Construct a thermal performance curve based on a beta function \insertCite{Asbury2010}{TrenchR}.
 #' 
-#' @description Construct a thermal performance curve based on a beta function. Reference: \insertCite{Asbury2010}{TrenchR}
+#' @param T \code{numeric} temperature (C).
 #' 
-#' @param T \code{numeric} temperature (C)
+#' @param shift \code{numeric} mode of the thermal performance curve.
 #' 
-#' @param shift \code{numeric} mode of the thermal performance curve. Defaults to -1
+#' @param breadth \code{numeric} breadth of the thermal performance curve. 
 #' 
-#' @param breadth \code{numeric} breadth of the thermal performance curve. Defaults to 0.1
+#' @param aran \code{numeric} scale performance value. if aran=0, no scaling; if aran=1, include a thermodynamic effect on mean performance.
 #' 
-#' @param aran \code{numeric} scale performance value. if aran=0, no scaling; if aran=1, include a thermodynamic effect on mean performance. Defaults to 0.
+#' @param tolerance \code{numeric} maximal breath (C) of the thermal performance curve.
 #' 
-#' @param tolerance \code{numeric} maximal breath (C) of the thermal performance curve. Defaults to 43
+#' @param skew \code{numeric} skewness of the thermal performance curve (0-1). 
 #' 
-#' @param skew \code{numeric} skewness of the thermal performance curve (0-1). Defaults to 0.7
-#' 
-#' @return performance
-#' 
-#' @keywords thermal performance curve
+#' @return \code{numeric} performance.
 #' 
 #' @references
 #'   \insertAllCited{}

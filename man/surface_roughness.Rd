@@ -9,13 +9,13 @@ surface_roughness(u_r, zr)
 \arguments{
 \item{u_r}{\code{numeric} wind velocity at a vector of reference heights (m/s).}
 
-\item{zr}{\code{numeric} vector of reference heights (meters)}
+\item{zr}{\code{numeric} vector of reference heights (meters).}
 }
 \value{
-surface roughness (meters)
+\code{numeric} surface roughness (meters).
 }
 \description{
-estimate surface roughness (m) from empirical wind speed (m/s) data collected at a vector of heights (m). Estimates surface roughness from empirical measurements. References: \insertCite{Kingsolver2015}{TrenchR}, \insertCite{Campbell1998}{TrenchR}, and \insertCite{Porter1979}{TrenchR}.
+Estimate surface roughness (m) from empirical wind speed (m/s) data collected at a vector of heights (m). Estimates surface roughness from empirical measurements \insertCite{Kingsolver2015,Campbell1998,Porter1979}{TrenchR}.
 }
 \examples{
   surface_roughness(u_r = c(0.01, 0.025, 0.05, 0.1, 0.2), 
@@ -44,5 +44,3 @@ Other microclimate functions:
 \code{\link{wind_speed_profile_segment}()}
 }
 \concept{microclimate functions}
-\keyword{profile}
-\keyword{wind}

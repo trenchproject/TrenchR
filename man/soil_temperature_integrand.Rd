@@ -9,12 +9,12 @@ soil_temperature_integrand(x, L, z0)
 \arguments{
 \item{x}{\code{numeric} vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.}
 
-\item{L}{\code{numeric} Monin-Obukhov length, a measure of the instability of heat flow (see \insertCite{Beckman1973;textual}{TrenchR})}
+\item{L}{\code{numeric} Monin-Obukhov length, a measure of the instability of heat flow (see \insertCite{Beckman1973;textual}{TrenchR}).}
 
-\item{z0}{\code{numeric} surface roughness (meters)}
+\item{z0}{\code{numeric} surface roughness (m).}
 }
 \value{
-\code{numeric} integrand for soil temperature function
+\code{numeric} integrand for soil temperature function.
 }
 \description{
 Function called by soil_temp_noint to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. The function represents the integrand in the equation. It is not intended to be called directly.
@@ -40,5 +40,3 @@ Other soil temperature functions:
 Joseph Grigg
 }
 \concept{soil temperature functions}
-\keyword{soil}
-\keyword{temperature}

@@ -2,28 +2,28 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Qconduction_substrate}
 \alias{Qconduction_substrate}
-\title{Calculate conductance assuming substrate thermal conductivity is rate limiting}
+\title{Conductance Assuming Substrate Thermal Conductivity is Rate Limiting}
 \usage{
 Qconduction_substrate(T_g, T_b, D, K_g = 0.5, A, proportion)
 }
 \arguments{
-\item{T_g}{\code{numeric} Surface temperature (Kelvin).}
+\item{T_g}{\code{numeric} Surface temperature (K).}
 
-\item{T_b}{\code{numeric} Body temperature (Kelvin).}
+\item{T_b}{\code{numeric} Body temperature (K).}
 
-\item{D}{\code{numeric} Characteristic dimension of the animal (meters)}
+\item{D}{\code{numeric} Characteristic dimension of the animal (m).}
 
-\item{K_g}{\code{numeric} Thermal conductivity of substrate (W K^-1 m^-1)}
+\item{K_g}{\code{numeric} Thermal conductivity of substrate (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}).}
 
-\item{A}{\code{numeric} Surface area (m^2)}
+\item{A}{\code{numeric} Surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
-\item{proportion}{\code{numeric} proportion in contact to the surface}
+\item{proportion}{\code{numeric} proportion in contact to the surface.}
 }
 \value{
-conductance (W)
+\code{numeric} conductance (W).
 }
 \description{
-calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
+Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
 }
 \examples{
   Qconduction_substrate(T_g        = 293, 
@@ -40,11 +40,10 @@ calculate conductance (W) of an ectothermic animal to its substrate. Method assu
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -74,6 +73,7 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{heat_transfer_coefficient}()},
@@ -81,4 +81,3 @@ Other biophysical models:
 \code{\link{saturation_water_vapor_pressure}()}
 }
 \concept{biophysical models}
-\keyword{conductance}

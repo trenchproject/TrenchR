@@ -26,44 +26,44 @@ Tb_lizard(
 )
 }
 \arguments{
-\item{T_a}{\code{numeric} air temperature (C)}
+\item{T_a}{\code{numeric} air temperature (C).}
 
-\item{T_g}{\code{numeric} surface temperature (C)}
+\item{T_g}{\code{numeric} surface temperature (C).}
 
-\item{u}{\code{numeric} wind speed (m/s)}
+\item{u}{\code{numeric} wind speed (m/s).}
 
-\item{svl}{\code{numeric} lizard snout vent length (mm)}
+\item{svl}{\code{numeric} lizard snout vent length (mm).}
 
-\item{m}{\code{numeric} lizard mass in g, note that it can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 \insertCite{Tinkle1972}{TrenchR}}
+\item{m}{\code{numeric} lizard mass in g, note that it can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 \insertCite{Tinkle1972}{TrenchR}.}
 
-\item{psi}{\code{numeric} solar zenith angle (degrees)}
+\item{psi}{\code{numeric} solar zenith angle (degrees).}
 
-\item{rho_S}{\code{numeric} surface albedo (proportion). ~0.25 for grass, ~0.1 for dark soil, >0.75 for fresh snow \insertCite{Campbell1998}{TrenchR}}
+\item{rho_S}{\code{numeric} surface albedo (proportion). ~0.25 for grass, ~0.1 for dark soil, >0.75 for fresh snow \insertCite{Campbell1998}{TrenchR}.}
 
-\item{elev}{\code{numeric} elevation (m)}
+\item{elev}{\code{numeric} elevation (m).}
 
-\item{doy}{\code{numeric} day of year (1-366)}
+\item{doy}{\code{numeric} day of year (1-366).}
 
-\item{sun}{\code{boolean} indicates whether lizard is in sun (TRUE) or shade (FALSE)}
+\item{sun}{\code{logical} indicates whether lizard is in sun (\code{TRUE}) or shade (\code{FALSE}).}
 
-\item{surface}{\code{boolean} indicates whether lizard is on ground surface (TRUE) or above surface (FALSE, e.g. in a tree)}
+\item{surface}{\code{logical} indicates whether lizard is on ground surface (\code{TRUE}) or above the surface (\code{FALSE}, e.g. in a tree).}
 
-\item{alpha_S}{\code{numeric} lizard solar absorptivity, alpha_S=0.9 \insertCite{Gates1980}{TrenchR} (Table 11.4)}
+\item{alpha_S}{\code{numeric} lizard solar absorptivity, \code{alpha_S = 0.9} \insertCite{Gates1980}{TrenchR} (Table 11.4).}
 
-\item{alpha_L}{\code{numeric} lizard thermal absorptivity, alpha_L=0.965 \insertCite{Bartlett1967}{TrenchR}}
+\item{alpha_L}{\code{numeric} lizard thermal absorptivity, \code{alpha_L = 0.965} \insertCite{Bartlett1967}{TrenchR}.}
 
-\item{epsilon_s}{\code{numeric} surface emissivity of lizards, epsilon_s=0.965 \insertCite{Bartlett1967}{TrenchR}}
+\item{epsilon_s}{\code{numeric} surface emissivity of lizards, \code{epsilon_s = 0.965} \insertCite{Bartlett1967}{TrenchR}.}
 
-\item{F_d}{\code{numeric} the view factor between the surface of the lizard and diffuse solar radiation \insertCite{Bartlett1967}{TrenchR}}
+\item{F_d}{\code{numeric} the view factor between the surface of the lizard and diffuse solar radiation \insertCite{Bartlett1967}{TrenchR}.}
 
-\item{F_r}{\code{numeric} the view factor between the surface of the lizard and reflected solar radiation}
+\item{F_r}{\code{numeric} the view factor between the surface of the lizard and reflected solar radiation.}
 
-\item{F_a}{\code{numeric} the view factor between the surface of the lizard and atmospheric radiation}
+\item{F_a}{\code{numeric} the view factor between the surface of the lizard and atmospheric radiation.}
 
-\item{F_g}{\code{numeric} the view factor between the surface of the lizard and ground thermal radiation}
+\item{F_g}{\code{numeric} the view factor between the surface of the lizard and ground thermal radiation.}
 }
 \value{
-T_e \code{numeric} Operative temperature (C)
+T_e \code{numeric} Operative temperature (C).
 }
 \description{
 Predicts body temperature (operative environmental temperature) of a lizard in C based on \insertCite{Campbell1998}{TrenchR}. Designed for Sceloporus lizards and described in \insertCite{Buckley2008}{TrenchR}.
@@ -94,11 +94,10 @@ Predicts body temperature (operative environmental temperature) of a lizard in C
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -128,6 +127,7 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{heat_transfer_coefficient}()},

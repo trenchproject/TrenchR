@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate Conductance Assuming Animal Thermal Conductivity is Rate Limiting — Qconduction_animal • TrenchR</title>
+<title>Conductance Assuming Animal Thermal Conductivity is Rate Limiting — Qconduction_animal • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Calculate Conductance Assuming Animal Thermal Conductivity is Rate Limiting — Qconduction_animal" />
-<meta property="og:description" content="Calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: (Spotila and Burggren 1992)" />
+<meta property="og:title" content="Conductance Assuming Animal Thermal Conductivity is Rate Limiting — Qconduction_animal" />
+<meta property="og:description" content="Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed) (Spotila and Burggren 1992)
+." />
 
 
 
@@ -132,13 +133,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate Conductance Assuming Animal Thermal Conductivity is Rate Limiting</h1>
+    <h1>Conductance Assuming Animal Thermal Conductivity is Rate Limiting</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/energybalance_functions.R'><code>R/energybalance_functions.R</code></a></small>
     <div class="hidden name"><code>Qconduction_animal.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calculate conductance (W) of an ectothermic animal to its substate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: (Spotila and Burggren 1992)</p>
+    <p>Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed) (Spotila and Burggren 1992)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>Qconduction_animal</span><span class='op'>(</span><span class='va'>T_g</span>, <span class='va'>T_b</span>, <span class='va'>d</span>, K <span class='op'>=</span> <span class='fl'>0.5</span>, <span class='va'>A</span>, <span class='va'>proportion</span><span class='op'>)</span></pre>
@@ -156,39 +158,43 @@
     </tr>
     <tr>
       <th>d</th>
-      <td><p><code>numeric</code> Mean thickness of the animal skin (surface) in (meters), assumes well mixed interior</p></td>
+      <td><p><code>numeric</code> Mean thickness of the animal skin (surface) in (meters), assumes well mixed interior.</p></td>
     </tr>
     <tr>
       <th>K</th>
-      <td><p><code>numeric</code> Thermal conductivity (W K^-1 m^-1), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.</p></td>
+      <td><p><code>numeric</code> Thermal conductivity (W K<sup>-1</sup> m<sup>-1</sup>), <code>K = 0.5</code> for naked skin, <code>K = 0.15</code> for insect cuticle (Galushko et al. 2005)
+; conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.</p></td>
     </tr>
     <tr>
       <th>A</th>
-      <td><p><code>numeric</code> Surface area (m^2)</p></td>
+      <td><p><code>numeric</code> Surface area (m<sup>2</sup>).</p></td>
     </tr>
     <tr>
       <th>proportion</th>
-      <td><p><code>numeric</code> proportion of body in contact with the surface (0-1)</p></td>
+      <td><p><code>numeric</code> proportion of body in contact with the surface (0-1).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>numeric</code> conductance (W)</p>
+    <p><code>numeric</code> conductance (W).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Spotila F, Burggren (1992).
+    <p>Galushko D, Ermakov N, Karpovski M, Palevski A, Ishay JS, Bergman DJ (2005).
+&#8220;Electrical, thermoelectric and thermophysical properties of hornet cuticle.&#8221;
+<em>Semiconductor Science and Technology</em>, <b>20</b>(3), 286--289.
+doi: <a href='https://doi.org/10.1088/0268-1242/20/3/005'>10.1088/0268-1242/20/3/005</a>
+, <a href='https://doi.org/10.1088/0268-1242/20/3/005'>https://doi.org/10.1088/0268-1242/20/3/005</a>.<br /><br /> Spotila F, Burggren (1992).
 &#8220;Biophysics of Heat and Mass Transfer.&#8221;
 <em>Environmental Physiology of the Amphibians</em>.
 <a href='https://press.uchicago.edu/ucp/books/book/chicago/E/bo3636401.html'>https://press.uchicago.edu/ucp/books/book/chicago/E/bo3636401.html</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other biophysical models: 
-<code><a href='Free_or_forced_convection.html'>Free_or_forced_convection</a>()</code>,
 <code><a href='Grashof_number_Gates.html'>Grashof_number_Gates</a>()</code>,
 <code><a href='Grashof_number.html'>Grashof_number</a>()</code>,
-<code><a href='Nu_from_Gr.html'>Nu_from_Gr</a>()</code>,
-<code><a href='Nu_from_Re.html'>Nu_from_Re</a>()</code>,
+<code><a href='Nusselt_from_Grashof.html'>Nusselt_from_Grashof</a>()</code>,
+<code><a href='Nusselt_from_Reynolds.html'>Nusselt_from_Reynolds</a>()</code>,
 <code><a href='Nusselt_number.html'>Nusselt_number</a>()</code>,
 <code><a href='Prandtl_number.html'>Prandtl_number</a>()</code>,
 <code><a href='Qconduction_substrate.html'>Qconduction_substrate</a>()</code>,
@@ -218,6 +224,7 @@
 <code><a href='actual_vapor_pressure.html'>actual_vapor_pressure</a>()</code>,
 <code><a href='boundary_layer_resistance.html'>boundary_layer_resistance</a>()</code>,
 <code><a href='external_resistance_to_water_vapor_transfer.html'>external_resistance_to_water_vapor_transfer</a>()</code>,
+<code><a href='free_or_forced_convection.html'>free_or_forced_convection</a>()</code>,
 <code><a href='heat_transfer_coefficient_approximation.html'>heat_transfer_coefficient_approximation</a>()</code>,
 <code><a href='heat_transfer_coefficient_simple.html'>heat_transfer_coefficient_simple</a>()</code>,
 <code><a href='heat_transfer_coefficient.html'>heat_transfer_coefficient</a>()</code>,

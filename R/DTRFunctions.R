@@ -1,26 +1,24 @@
 #' @title Estimate Temperature Across Hours Using a Diurnal Temperature Variation Function Incorporating Sine and Exponential Components 
 #'
-#' @description  estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components. Source: \insertCite{Parton1981}{TrenchR}. Default alpha, beta, gamma values are the average of 5 North Carolina sites  \insertCite{Wann1985}{TrenchR}. Other alpha, beta, gamma parameterizations include values for Denver, Colorado from \insertCite{Parton1981}{TrenchR}: 150cm air temperature: alpha = 1.86, beta = 2.20, gamma = -0.17; 10cm air temperature: alpha = 1.52, beta = 2.00, gamma = -0.18; soil surface temperature: alpha = 0.50, beta = 1.81, gamma = 0.49; 10cm soil temperature: alpha = 0.45, beta = 2.28, gamma = 1.83.
+#' @description Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components \insertCite{Parton1981}{TrenchR}. Default alpha, beta, gamma values are the average of 5 North Carolina sites  \insertCite{Wann1985}{TrenchR}. Other alpha, beta, gamma parameterizations include values for Denver, Colorado from \insertCite{Parton1981}{TrenchR}: 150cm air temperature: alpha = 1.86, beta = 2.20, gamma = -0.17; 10cm air temperature: alpha = 1.52, beta = 2.00, gamma = -0.18; soil surface temperature: alpha = 0.50, beta = 1.81, gamma = 0.49; 10cm soil temperature: alpha = 0.45, beta = 2.28, gamma = 1.83.
 #' 
-#' @param T_max \code{numeric} maximum daily temperature (C)
+#' @param T_max \code{numeric} maximum daily temperature (C).
 #' 
-#' @param T_min \code{numeric} minimum daily temperature (C)
+#' @param T_min \code{numeric} minimum daily temperature (C).
 #' 
-#' @param t_s \code{numeric} time of sunrise (hour)
+#' @param t_s \code{numeric} time of sunrise (hour).
 #' 
-#' @param t_r \code{numeric} time of sunset (hour)
+#' @param t_r \code{numeric} time of sunset (hour).
 #' 
-#' @param t \code{numeric} time for temperature estimate (hour)
+#' @param t \code{numeric} time for temperature estimate (hour).
 #' 
-#' @param alpha \code{numeric} time difference between t_x (time of maximum temperature) and noon (hour). Defaults to 2.59
+#' @param alpha \code{numeric} time difference between \code{t_x} (time of maximum temperature) and noon (hour). 
 #' 
-#' @param gamma \code{numeric} decay parameter for rate of t change from sunset to t_n (time of minimum temp). Defaults to 2.2
+#' @param gamma \code{numeric} decay parameter for rate of \code{t} change from sunset to \code{t_n} (time of minimum temp). 
 #' 
-#' @param beta \code{numeric} time difference between t_x and sunrise (hour). Defaults to 1.55
+#' @param beta \code{numeric} time difference between \code{t_x} and sunrise (hour).
 #' 
-#' @return \code{numeric} temperature (C) at a specified hour 
-#' 
-#' @keywords Temperature
+#' @return \code{numeric} temperature (C) at a specified hour. 
 #' 
 #' @family microclimate functions
 #' 
@@ -91,15 +89,14 @@ diurnal_temp_variation_sineexp <- function (T_max,
 #'
 #' @description estimate temperature for a specified hour using the sine interpolation in \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @param T_max \code{numeric} maximum daily temperature (C) 
+#' @param T_max \code{numeric} maximum daily temperature (C). 
 #' 
-#' @param T_min \code{numeric} minimum daily temperature (C)
+#' @param T_min \code{numeric} minimum daily temperature (C).
 #' 
-#' @param t \code{numeric} time for temperature estimate (hour)
+#' @param t \code{numeric} time for temperature estimate (hour).
 #' 
-#' @return \code{numeric} temperature (C) at a specified hour 
+#' @return \code{numeric} temperature (C) at a specified hour. 
 #' 
-#' @keywords Temperature
 #' 
 #' @family microclimate functions
 #' 
@@ -131,23 +128,22 @@ diurnal_temp_variation_sine <- function (T_max,
 #'
 #' @details  Estimates temperature across hours using sine and square root functions
 #' 
-#' @description  estimate temperature for a specified hour using sine and square root functions. Source: \insertCite{Cesaraccio2001}{TrenchR}
+#' @description  estimate temperature for a specified hour using sine and square root functions \insertCite{Cesaraccio2001}{TrenchR}.
 #' 
-#' @param t \code{numeric} hour or hours for temperature estimate
+#' @param t \code{numeric} hour or hours for temperature estimate.
 #' 
-#' @param tr \code{numeric} sunrise hour (0-23)
+#' @param tr \code{numeric} sunrise hour (0-23).
 #' 
-#' @param ts \code{numeric} sunset hour (0-23)
+#' @param ts \code{numeric} sunset hour (0-23).
 #' 
-#' @param T_max \code{numeric} maximum temperature of current day (C) 
+#' @param T_max \code{numeric} maximum temperature of current day (C).
 #' 
-#' @param T_min \code{numeric} minimum temperature of current day (C)
+#' @param T_min \code{numeric} minimum temperature of current day (C).
 #' 
-#' @param T_minp \code{numeric} minimum temperature of following day (C)
+#' @param T_minp \code{numeric} minimum temperature of following day (C).
 #' 
-#' @return \code{numeric} temperature (C) at a specified hour 
+#' @return \code{numeric} temperature (C) at a specified hour. 
 #' 
-#' @keywords Temperature
 #' 
 #' @family microclimate functions
 #' 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Grashof_number_Gates}
 \alias{Grashof_number_Gates}
-\title{Calculate Grashof Number in Gates}
+\title{Grashof Number in Gates}
 \usage{
 Grashof_number_Gates(Ta, Tg, beta, D, nu)
 }
@@ -21,7 +21,7 @@ Grashof_number_Gates(Ta, Tg, beta, D, nu)
 \code{numeric} Grashof number
 }
 \description{
-estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity \insertCite{Gates1980}{TrenchR}. Ratio of a buoyant force times an inertial force to the square of a viscous force.
+Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity \insertCite{Gates1980}{TrenchR}. Ratio of a buoyant force times an inertial force to the square of a viscous force.
 }
 \examples{
   Grashof_number_Gates(Ta   = 30, 
@@ -36,10 +36,9 @@ estimate the Grashof Number, which describes the ability of a parcel of fluid wa
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -70,6 +69,7 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{heat_transfer_coefficient}()},
@@ -77,5 +77,3 @@ Other biophysical models:
 \code{\link{saturation_water_vapor_pressure}()}
 }
 \concept{biophysical models}
-\keyword{Grashof}
-\keyword{number}

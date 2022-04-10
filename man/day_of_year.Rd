@@ -12,7 +12,7 @@ day_of_year(day, format = "\%Y-\%m-\%d")
 \item{format}{\code{character} date format following \code{\link[base]{POSIXlt}} conventions. Default value = \code{"\%Y-\%m-\%d"}.}
 }
 \value{
-\code{numeric} Julian day number, 1-366 (e.g. 1 for January 1st)
+\code{numeric} Julian day number, 1-366 (e.g. 1 for January 1st).
 }
 \description{
 Convert a date (day, month, year) to Julian Day (day of year).

@@ -6,7 +6,7 @@
 #'
 #' @param format \code{character} date format following \code{\link[base]{POSIXlt}} conventions. Default value = \code{"\%Y-\%m-\%d"}. 
 #'
-#' @return \code{numeric} Julian day number, 1-366 (e.g. 1 for January 1st)
+#' @return \code{numeric} Julian day number, 1-366 (e.g. 1 for January 1st).
 #' 
 #' @family utility functions  
 #'  
@@ -31,9 +31,9 @@ day_of_year <- function (day,
 #' 
 #' @description Calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)
 #' 
-#' @return \code{numeric} declination angle (radians)
+#' @return \code{numeric} declination angle (radians).
 #' 
 #' @family utility functions
 #'
@@ -55,13 +55,13 @@ dec_angle <- function (doy) {
   
 }
 
-#' @title Calculate Day Length
+#' @title Day Length
 #' 
 #' @description Calculate daylength in hours as a function of latitude and day of year. Uses the CMB model \insertCite{Campbell1998}{TrenchR}.
 #'
-#' @param lat \code{numeric} latitude (decimal degrees)
+#' @param lat \code{numeric} latitude (decimal degrees).
 #' 
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)
 #' 
 #' @return \code{numeric} day length (hours).
 #'
@@ -90,13 +90,13 @@ daylength <- function(lat,
   
 }
 
-#' @title Calculate Time of Solar Noon
+#' @title Time of Solar Noon
 #' 
 #' @description  Calculate the time of solar noon in hours as a function of the day of year and longitude  \insertCite{Campbell1998}{TrenchR}.
 #'
 #' @param lon \code{numeric} longitude (decimal degrees)
 #'
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)
 #'
 #' @param offset \code{numeric} number of hours to add to UTC to get local time (improves accuracy but not always necessary). Defaults to NA.
 #'
@@ -146,19 +146,19 @@ solar_noon <- function (lon,
 }
 
 
-#' @title Calculate Zenith Angle
+#' @title Zenith Angle
 #' 
 #' @description  calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @param doy \code{numeric}  day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)
 #' 
-#' @param lat \code{numeric}  latitude (decimal degrees)
+#' @param lat \code{numeric} latitude (decimal degrees).
 #' 
-#' @param lon \code{numeric}  longitude (decimal degrees)
+#' @param lon \code{numeric} longitude (decimal degrees).
 #' 
-#' @param hour \code{numeric}  hour of the day
+#' @param hour \code{numeric} hour of the day.
 #' 
-#' @param offset \code{numeric}  the number of hours to add to UTC to get local time (improves accuracy but not always necessary). Optional. Defaults to NA.
+#' @param offset \code{numeric} the number of hours to add to UTC to get local time (improves accuracy but not always necessary). Optional. Defaults to NA.
 #' 
 #' @return \code{numeric} zenith angle (degrees)
 #' 
@@ -214,21 +214,21 @@ zenith_angle <- function (doy,
   zenith
 }
 
-#' @title Calculate Azimuth Angle
+#' @title Azimuth Angle
 #'
 #' @description  calculate the azimuth angle, the angle (degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)
+#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)
 #' 
-#' @param lat \code{numeric} latitude (decimal degrees)
+#' @param lat \code{numeric} latitude (decimal degrees).
 #' 
-#' @param lon \code{numeric} longitude (decimal degrees)
+#' @param lon \code{numeric} longitude (decimal degrees).
 #' 
-#' @param hour \code{numeric} hour of the day
+#' @param hour \code{numeric} hour of the day.
 #' 
 #' @param offset \code{numeric} number of hours to add to UTC to get local time (to improve accuracy but not always necessary). Optional. Defaults to NA.
 #' 
-#' @return \code{numeric} azimuth angle (degrees)
+#' @return \code{numeric} azimuth angle (degrees).
 #'
 #' @references
 #'   \insertAllCited{}
@@ -319,15 +319,15 @@ azimuth_angle <- function (doy,
   azimuth
 }
 
-#' @title Estimate Air Pressure in kPa 
+#' @title Air Pressure in kPa 
 #'
-#' @description Calculate estimated air pressure (kPa) as a function of elevation. Source: http://www.engineeringtoolbox.com/air-altitude-pressure-d_462.html.
+#' @description Calculate estimated air pressure (kPa) as a function of elevation \insertCite{engingeeringtoolbox}{TrenchR}.
 #' 
-#' @param elev \code{numeric} elevation (meters)
-#' 
+#' @param elev \code{numeric} elevation (meters).
+#' .
 #' @family utility functions
 #' 
-#' @return \code{numeric} air pressure (kPa)
+#' @return \code{numeric} air pressure (kPa).
 #' 
 #' @export
 #' 
@@ -347,13 +347,13 @@ airpressure_from_elev <- function (elev) {
 
 #' @title Convert Fahrenheit to Kelvin
 #' 
-#' @description Convert temperature from Fahrenheit to Kelvin. Source: https://swcarpentry.github.io.
+#' @description Convert temperature from Fahrenheit to Kelvin \insertCite{Blischak}{TrenchR}.
 #' 
-#' @param T \code{numeric} temperature (Fahrenheit)
+#' @param T \code{numeric} temperature (Fahrenheit).
 #' 
 #' @family utility functions
 #' 
-#' @return \code{numeric} temperature (Kelvin)
+#' @return \code{numeric} temperature (Kelvin).
 #' 
 #' @export
 #' 
@@ -371,15 +371,13 @@ fahrenheit_to_kelvin <- function (T) {
 
 #' @title Convert Kelvin to Celsius
 #' 
-#' @description Convert temperature from Kelvin to Celsius. Source: https://swcarpentry.github.io.
+#' @description Convert temperature from Kelvin to Celsius \insertCite{Blischak}{TrenchR}.
 #' 
-#' @param T \code{numeric} temperature (Kelvin)
-#' 
-#' @keywords Celsius Kelvin
+#' @param T \code{numeric} temperature (Kelvin).
 #' 
 #' @family utility functions
 #' 
-#' @return \code{numeric} temperature (Celsius)
+#' @return \code{numeric} temperature (Celsius).
 #' 
 #' @export
 #' 
@@ -397,13 +395,13 @@ kelvin_to_celsius <- function (T) {
 
 #' @title Converts Fahrenheit to Celsius
 #' 
-#' @description Convert temperature from Fahrenheit to Celsius. Source: https://swcarpentry.github.io.
+#' @description Convert temperature from Fahrenheit to Celsius \insertCite{Blischak}{TrenchR}.
 #' 
-#' @param T \code{numeric} temperature (Fahrenheit)
+#' @param T \code{numeric} temperature (Fahrenheit).
 #' 
 #' @family utility functions
 #' 
-#' @return \code{numeric} temperature (Celsius)
+#' @return \code{numeric} temperature (Celsius).
 #' 
 #' @export
 #' 
@@ -424,9 +422,9 @@ fahrenheit_to_celsius <- function (T) {
 #' 
 #' @description Convert angle in radians to degrees.
 #' 
-#' @param rad \code{numeric} angle (radians)
+#' @param rad \code{numeric} angle (radians).
 #' 
-#' @return \code{numeric} angle (degrees)
+#' @return \code{numeric} angle (degrees).
 #' 
 #' @export
 #' 
@@ -443,11 +441,11 @@ radian_to_degree <- function (rad) {
 #'
 #' @description Convert angle in degrees to radians.
 #' 
-#' @param deg \code{numeric} angle (degrees)
+#' @param deg \code{numeric} angle (degrees).
 #' 
 #' @family utility functions
 #' 
-#' @return \code{numeric} angle (radians)
+#' @return \code{numeric} angle (radians).
 #' 
 #' @export
 #' 

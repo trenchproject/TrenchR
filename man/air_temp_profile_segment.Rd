@@ -2,7 +2,7 @@
 % Please edit documentation in R/TempWindProfileFunctions.R
 \name{air_temp_profile_segment}
 \alias{air_temp_profile_segment}
-\title{Estimate Temperature at a Specified Height}
+\title{Air Temperature at a Specified Height}
 \usage{
 air_temp_profile_segment(T_r, u_r, zr, z0, z, T_s)
 }
@@ -19,8 +19,11 @@ air_temp_profile_segment(T_r, u_r, zr, z0, z, T_s)
 
 \item{T_s}{\code{numeric} surface temperatures (C).}
 }
+\value{
+\code{numeric} temperature (C).
+}
 \description{
-calculate temperature (C) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017}{TrenchR}.
+Calculate temperature (C) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
 }
 \examples{
   air_temp_profile_segment(T_r = c(25, 22, 20), 
@@ -53,5 +56,3 @@ Other microclimate functions:
 \code{\link{wind_speed_profile_segment}()}
 }
 \concept{microclimate functions}
-\keyword{profile}
-\keyword{temperature}

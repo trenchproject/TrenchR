@@ -7,19 +7,19 @@
 partition_solar_radiation(method, kt, lat = NA, sol.elev = NA)
 }
 \arguments{
-\item{method}{\code{character} method to use for estimating the diffuse fraction, currently available: "Liu_Jordan", "Orgill_Hollands", "Erbs", "Olyphant", "Spencer", "Reindl-1", "Reindl-2", "Lam_Li"}
+\item{method}{\code{character} method to use for estimating the diffuse fraction, currently available: \code{"Liu_Jordan"}, \code{"Orgill_Hollands"}, \code{"Erbs"}, \code{"Olyphant"}, \code{"Spencer"}, \code{"Reindl-1"}, \code{"Reindl-2"}, \code{"Lam_Li"}.}
 
 \item{kt}{\code{numeric} the clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere. (0-1)}
 
 \item{lat}{\code{numeric} latitude (degrees). Needed only if method is Spencer}
 
-\item{sol.elev}{\code{numeric} the solar elevation angles (degrees). Needed only if method is Reindl-2}
+\item{sol.elev}{\code{numeric} the solar elevation angles (degrees). Needed only if method is \code{"Reindl-2"}.}
 }
 \value{
 diffuse fraction
 }
 \description{
-partition solar radiation (W m^-2) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in \insertCite{Wong2001}{TrenchR}.
+Partition solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in \insertCite{Wong2001;textual}{TrenchR}.
 }
 \examples{
   partition_solar_radiation(method   = "Erbs", 
@@ -50,5 +50,3 @@ Other microclimate functions:
 \code{\link{wind_speed_profile_segment}()}
 }
 \concept{microclimate functions}
-\keyword{radiation}
-\keyword{solar}

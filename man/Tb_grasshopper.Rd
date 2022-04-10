@@ -21,7 +21,8 @@ Tb_grasshopper(
 \arguments{
 \item{T_a}{\code{numeric} air temperature in C.}
 
-\item{T_g}{\code{numeric} surface temperature in C. \insertCite{Kingsolver1983;textual}{TrenchR} assumes T_g - T_a = 8.4.}
+\item{T_g}{\code{numeric} surface temperature in C. \cr 
+\insertCite{Kingsolver1983;textual}{TrenchR} assumes \code{T_g - T_a = 8.4}.}
 
 \item{u}{\code{numeric} wind speed in m / s.}
 
@@ -45,9 +46,7 @@ Tb_grasshopper(
 \code{numeric} predicted body (operative environmental) temperature (C).
 }
 \description{
-Predicts body temperatures (operative environmental temperatures) of a grasshopper in C.
- \cr \cr
- Based on \insertCite{Swinbank1963;textual}{TrenchR}, using the regression in  \insertCite{Lactin1998;textual}{TrenchR} following \insertCite{Gates1962;textual}{TrenchR} in  \insertCite{Kingsolver1983;textual}{TrenchR}.
+Predict body temperatures (operative environmental temperatures) of a grasshopper in C. Based on \insertCite{Swinbank1963;textual}{TrenchR}, using the regression in  \insertCite{Lactin1998;textual}{TrenchR} following \insertCite{Gates1962;textual}{TrenchR} in \insertCite{Kingsolver1983;textual}{TrenchR}.
 }
 \details{
 Total radiative flux is calculated as thermal radiative heat flux plus convective heat flux, following \insertCite{Kingsolver1983;textual}{TrenchR}, with the \insertCite{Erbs1982;textual}{TrenchR} model from \insertCite{Wong2001;textual}{TrenchR}.
@@ -79,11 +78,10 @@ Total radiative flux is calculated as thermal radiative heat flux plus convectiv
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -113,6 +111,7 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{heat_transfer_coefficient}()},

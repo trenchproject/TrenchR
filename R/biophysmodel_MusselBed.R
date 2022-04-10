@@ -1,22 +1,22 @@
 #' @title Operative Environmental Temperature of a Mussel Bed
 #' 
-#' @description Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Helmuth1999;textual}{TrenchR}
+#' @description Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Helmuth1999;textual}{TrenchR}.
 #' 
-#' @param L \code{numeric} mussel length (anterior/posterior axis) (m)
+#' @param L \code{numeric} mussel length (anterior/posterior axis) (m).
 #' 
-#' @param T_a \code{numeric} air temperature at 4 m above ground (C)
+#' @param T_a \code{numeric} air temperature at 4 m above ground (C).
 #' 
 #' @param S \code{numeric} direct solar flux density (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
-#' @param k_d \code{numeric} diffuse fraction, proportion of solar radiation that is diffuse
+#' @param k_d \code{numeric} diffuse fraction, proportion of solar radiation that is diffuse.
 #' 
 #' @param u \code{numeric} wind speed at 4 m above ground (m/s).
 #' 
-#' @param evap \code{boolean} Are mussels gaping to evaporatively cool? TRUE of FALSE (default), If TRUE, assumes constant mass loss rate of 5 percent of initial body mass per hour. 
+#' @param evap \code{logical} Are mussels gaping to evaporatively cool? If \code{TRUE}, assumes constant mass loss rate of 5 percent of initial body mass per hour. 
 #' 
 #' @param cl \code{numeric} fraction of the sky covered by cloud, optional.
 #' 
-#' @return \code{numeric} predicted body temperature (C)
+#' @return \code{numeric} predicted body temperature (C).
 #' 
 #' @family biophysical models
 #' 

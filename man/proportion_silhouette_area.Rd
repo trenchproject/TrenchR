@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{proportion_silhouette_area}
 \alias{proportion_silhouette_area}
-\title{Calculate Organism Silhouette Area}
+\title{Organism Silhouette Area}
 \usage{
 proportion_silhouette_area(z, taxon, raz = 0, posture = "prostrate")
 }
@@ -24,8 +24,8 @@ Estimate the projected (silhouette) area as a portion of the surface area of the
 \details{
 Relationships come from \itemize{
   \item Lizards: \insertCite{Muth1977;textual}{TrenchR}.
-  \item Frogs: \insertCite{Tracy1976}{TrenchR}.
-  \item Grasshoppers: \insertCite{Anderson1979}{TrenchR}.
+  \item Frogs: \insertCite{Tracy1976;textual}{TrenchR}.
+  \item Grasshoppers: \insertCite{Anderson1979;textual}{TrenchR}.
  }
 }
 \examples{
@@ -56,5 +56,3 @@ Other allometric functions:
 \code{\link{volume_from_length}()}
 }
 \concept{allometric functions}
-\keyword{area}
-\keyword{silhouette}

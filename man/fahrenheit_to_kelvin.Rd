@@ -7,13 +7,13 @@
 fahrenheit_to_kelvin(T)
 }
 \arguments{
-\item{T}{\code{numeric} temperature (Fahrenheit)}
+\item{T}{\code{numeric} temperature (Fahrenheit).}
 }
 \value{
-\code{numeric} temperature (Kelvin)
+\code{numeric} temperature (Kelvin).
 }
 \description{
-Convert temperature from Fahrenheit to Kelvin. Source: https://swcarpentry.github.io.
+Convert temperature from Fahrenheit to Kelvin \insertCite{Blischak}{TrenchR}.
 }
 \examples{
   fahrenheit_to_kelvin(T = 85)

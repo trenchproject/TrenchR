@@ -2,31 +2,31 @@
 #' 
 #' @description Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions. 
 #' 
-#' @param L mussel length (anterior/posterior axis) (m).
+#' @param L \code{numeric} mussel length (anterior/posterior axis) (m).
 #' 
-#' @param H mussel height (dorsal/ventral axis) (m). It is reasonable to assume \code{H = 0.5 * L}.
+#' @param H \code{numeric} mussel height (dorsal/ventral axis) (m). It is reasonable to assume \code{H = 0.5 * L}.
 #' 
-#' @param T_a air temperature (C).
+#' @param T_a \code{numeric} air temperature (C).
 #' 
-#' @param T_g ground temperature (C).
+#' @param T_g \code{numeric} ground temperature (C).
 #' 
-#' @param S direct solar flux density (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
+#' @param S \code{numeric} direct solar flux density (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
-#' @param k_d diffuse fraction, proportion of solar radiation that is diffuse
+#' @param k_d \code{numeric} diffuse fraction, proportion of solar radiation that is diffuse.
 #' 
-#' @param u wind speed (m/s).
+#' @param u \code{numeric} wind speed (m/s).
 #' 
-#' @param psi solar zenith angle (degrees): can be calculated from zenith_angle function
+#' @param psi \code{numeric} solar zenith angle (degrees): can be calculated from \code{\link{zenith_angle}}.
 #' 
-#' @param evap Are mussels gaping to evaporatively cool? \code{TRUE} or \code{FALSE} (default), If \code{TRUE}, assumes constant mass loss rate of 5 percent of initial body mass per hour. 
+#' @param evap \code{logical} if mussels gaping to evaporatively cool. If \code{TRUE}, assumes constant mass loss rate of 5 percent of initial body mass per hour. 
 #' 
-#' @param cl fraction of the sky covered by cloud 
+#' @param cl \code{numeric} fraction of the sky covered by cloud. 
 #' 
 #' @param group \code{character}; options are \code{"aggregated"}: mussels living in beds; \code{"solitary"}: mussels individuals, anterior or posterior end facing upwind; and \code{"solitary_valve"}: solitary individuals, valve facing upwind.
 #'
 #' @details Thermal radiative flux is calculated following \insertCite{Helmuth1998;textual}{TrenchR}, \insertCite{Helmuth1999;textual}{TrenchR}, and \insertCite{Idso1969;textual}{TrenchR}.
 #'
-#' @return predicted body temperature (C).
+#' @return \code{numeric} predicted body temperature (C).
 #' 
 #' @family biophysical models
 #' 

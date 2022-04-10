@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{heat_transfer_coefficient_simple}
 \alias{heat_transfer_coefficient_simple}
-\title{Calculate heat transfer coefficient}
+\title{Calculate Heat Transfer Coefficient}
 \usage{
 heat_transfer_coefficient_simple(V, D, type)
 }
@@ -11,7 +11,7 @@ heat_transfer_coefficient_simple(V, D, type)
 
 \item{D}{\code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).}
 
-\item{type}{\code{character} Choice between "Spotila" and "Gates" for equation to use}
+\item{type}{\code{character} Choice between "Spotila" and "Gates" for equation to use.}
 }
 \value{
 \code{numeric} heat transfer coefficient, H_L (W m^-2 K^-1)
@@ -30,11 +30,10 @@ estimate the heat transfer coefficient \insertCite{Mitchell1976}{TrenchR} using 
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -65,12 +64,10 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient}()},
 \code{\link{saturation_vapor_pressure}()},
 \code{\link{saturation_water_vapor_pressure}()}
 }
 \concept{biophysical models}
-\keyword{coefficient}
-\keyword{heat}
-\keyword{transfer}

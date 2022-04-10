@@ -1,4 +1,4 @@
-#' @title Allometry: Surface Area from Mass 
+#' @title Surface Area from Mass 
 #' 
 #' @description Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from mass (g) for one of a variety of taxa. 
 #' 
@@ -78,7 +78,7 @@ surface_area_from_mass <- function(M,
 
 }
 
-#' @title Allometry: Mass from Length 
+#' @title Mass from Length 
 #' 
 #' @description Estimate mass (g) from length (m) for a variety of taxa.
 #'
@@ -180,9 +180,9 @@ mass_from_length <- function(L, taxon) {
 }
 
 
-#' @title Allometry: Surface Area from Volume 
+#' @title Surface Area from Volume 
 #' 
-#' @description Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) for a variety of taxa following \insertCite{Mitchell1976}{TrenchR}
+#' @description Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) for a variety of taxa following \insertCite{Mitchell1976;textual}{TrenchR}.
 #' 
 #' @param V \code{numeric} vector of volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}). Can be one or more values.
 #'
@@ -241,9 +241,9 @@ surface_area_from_volume <- function (V,
 
 }
 
-#' @title Calculate Organism Volume from Length
+#' @title Organism Volume from Length
 #' 
-#' @description Estimate volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) from length (m) for a variety of taxa following \insertCite{Mitchell1976}{TrenchR}
+#' @description Estimate volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) from length (m) for a variety of taxa following \insertCite{Mitchell1976;textual}{TrenchR}.
 #' 
 #' @param L \code{numeric} length (m). 
 #'  \cr \cr
@@ -253,14 +253,12 @@ surface_area_from_volume <- function (V,
 #' 
 #' @return \code{numeric} volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}).
 #' 
-#' @keywords volume length
-#'
 #' @family allometric functions
 #' 
 #' @details Relationships come from \itemize{
 #'   \item Lizards: \insertCite{Norris1965;textual}{TrenchR}.
-#'   \item Frogs: \insertCite{Tracy1972}{TrenchR}.
-#'   \item Sphere: \insertCite{Mitchell1976}{TrenchR}.
+#'   \item Frogs: \insertCite{Tracy1972;textual}{TrenchR}.
+#'   \item Sphere: \insertCite{Mitchell1976;textual}{TrenchR}.
 #'  }
 #'
 #' @references
@@ -301,7 +299,7 @@ volume_from_length <- function (L,
 
 
 
-#' @title Calculate Organism Surface Area from Length
+#' @title Organism Surface Area from Length
 #' 
 #' @description Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from length (m) by approximating the animal's body as a rotational ellipsoid with half the body length as the semi-major axis. 
 #' 
@@ -309,11 +307,9 @@ volume_from_length <- function (L,
 #'
 #' @return \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #'
-#' @keywords surface area
-#'
 #' @family allometric functions
 #'
-#' @details Following \insertCite{Samietz2005;textual}{TrenchR} and  \insertCite{Lactin1998;textual}{TrenchR}.
+#' @details Following \insertCite{Samietz2005;textual}{TrenchR} and \insertCite{Lactin1998;textual}{TrenchR}.
 #'
 #' @export
 #'
@@ -346,7 +342,7 @@ surface_area_from_length <- function (L) {
 
 }
 
-#' @title Calculate Organism Silhouette Area
+#' @title Organism Silhouette Area
 #' 
 #' @description Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of zenith angle.
 #' 
@@ -360,14 +356,12 @@ surface_area_from_length <- function (L) {
 #'
 #' @return \code{numeric} silhouette area as a proportion.
 #' 
-#' @keywords silhouette area
-#' 
 #' @family allometric functions
 #' 
 #' @details Relationships come from \itemize{
 #'   \item Lizards: \insertCite{Muth1977;textual}{TrenchR}.
-#'   \item Frogs: \insertCite{Tracy1976}{TrenchR}.
-#'   \item Grasshoppers: \insertCite{Anderson1979}{TrenchR}.
+#'   \item Frogs: \insertCite{Tracy1976;textual}{TrenchR}.
+#'   \item Grasshoppers: \insertCite{Anderson1979;textual}{TrenchR}.
 #'  }
 #'
 #' @references
@@ -465,13 +459,13 @@ proportion_silhouette_area <- function (z, taxon, raz = 0, posture = "prostrate"
 
 
 
-#' @title Calculate Organism Silhouette Area using Shape Approximations
+#' @title Organism Silhouette Area using Shape Approximations
 #' 
-#' @description Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid, using Figure 11.6 in \insertCite{Campbell1998}{TrenchR}. 
+#' @description Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid, using Figure 11.6 in \insertCite{Campbell1998;textual}{TrenchR}. 
 #' 
 #' @param shape \code{character} Which shape to approximate an organism. Shapes are assumed to be prolate or have the longest axis parallel with the ground. Current choices are \code{"spheroid"}, \code{"cylinder flat ends"}, and \code{"cylinder hemisphere ends"}.
 #' 
-#' @param theta \code{numeric} angle between the solar beam and the longitudinal axis in degrees
+#' @param theta \code{numeric} angle between the solar beam and the longitudinal axis in degrees.
 #' 
 #' @param H \code{numeric} height (long axis in m). Cross section length for spheroid.
 #' 
@@ -479,8 +473,6 @@ proportion_silhouette_area <- function (z, taxon, raz = 0, posture = "prostrate"
 #'
 #' @return \code{numeric} silhouette area as a proportion.
 #' 
-#' @keywords silhouette area
-#'
 #' @references
 #'   \insertAllCited{}
 #' 

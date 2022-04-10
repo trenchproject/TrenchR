@@ -23,7 +23,7 @@ boundary_layer_resistance(T_a, e_s, e_a, elev, D, u = NA)
 \code{numeric} boundary layer resistance (s cm^-1)
 }
 \description{
-estimate boundary layer resistance under free convection. Based on the function in \insertCite{Riddell2018}{TrenchR}.
+Estimate boundary layer resistance under free convection. Based on the function in \insertCite{Riddell2018}{TrenchR}.
 }
 \examples{
   boundary_layer_resistance(T_a  = 293, 
@@ -39,11 +39,10 @@ estimate boundary layer resistance under free convection. Based on the function 
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -73,6 +72,7 @@ Other biophysical models:
 \code{\link{Tsoil}()},
 \code{\link{actual_vapor_pressure}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{heat_transfer_coefficient}()},
@@ -83,6 +83,3 @@ Other biophysical models:
 Eric Riddell
 }
 \concept{biophysical models}
-\keyword{boundary}
-\keyword{layer}
-\keyword{resistance}

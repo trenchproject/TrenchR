@@ -2,27 +2,24 @@
 % Please edit documentation in R/TPCfunctions.R
 \name{TPC}
 \alias{TPC}
-\title{Construct a Gaussian-Quadratic Thermal Performance Curve.}
+\title{Construct a Gaussian-Quadratic Thermal Performance Curve}
 \usage{
 TPC(T, Topt, CTmin, CTmax)
 }
 \arguments{
-\item{T}{\code{numeric} vector of temperature range (C)}
+\item{T}{\code{numeric} vector of temperature range (C).}
 
-\item{Topt}{\code{numeric} thermal optima (C), the temperature at which peak performance occurs}
+\item{Topt}{\code{numeric} thermal optima (C), the temperature at which peak performance occurs.}
 
-\item{CTmin}{\code{numeric} critical thermal minima (C), the lower temperature limit for performance}
+\item{CTmin}{\code{numeric} critical thermal minima (C), the lower temperature limit for performance.}
 
-\item{CTmax}{\code{numeric} critical thermal maxima (C), the upper temperature limit for performance}
+\item{CTmax}{\code{numeric} critical thermal maxima (C), the upper temperature limit for performance.}
 }
 \value{
 performance
 }
 \description{
-Constructs a thermal performance curve by combining as a gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures. Reference: \insertCite{Deutsch2008}{TrenchR}
-}
-\details{
-Construct a Gaussian-quadratic thermal performance curve.
+Constructs a thermal performance curve by combining as a Gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures \insertCite{Deutsch2008}{TrenchR}.
 }
 \examples{
   TPC(T     = 0:60, 
@@ -34,6 +31,3 @@ Construct a Gaussian-quadratic thermal performance curve.
 \references{
 \insertAllCited{}
 }
-\keyword{curve}
-\keyword{performance}
-\keyword{thermal}

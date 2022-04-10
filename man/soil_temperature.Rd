@@ -2,7 +2,7 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_temperature}
 \alias{soil_temperature}
-\title{Function to Calculate Soil Temperature in C using ODEs.}
+\title{Calculate Soil Temperature in C using ODEs}
 \usage{
 soil_temperature(
   z_r.intervals = 12,
@@ -22,36 +22,36 @@ soil_temperature(
 )
 }
 \arguments{
-\item{z_r.intervals}{\code{numeric} the number of intervals in the soil profile to calculate, defaults to 12}
+\item{z_r.intervals}{\code{numeric} the number of intervals in the soil profile to calculate, defaults to 12.}
 
-\item{z_r}{\code{numeric} reference height in0 (meters)}
+\item{z_r}{\code{numeric} reference height in0 (m).}
 
-\item{z}{\code{numeric} interval of the soil profile to return (1 to z_r.intervals)}
+\item{z}{\code{numeric} interval of the soil profile to return (1 to z_r.intervals).}
 
-\item{T_a}{\code{numeric} vector of air temperature (degrees C), Note: missing values will be linearly interpolated}
+\item{T_a}{\code{numeric} vector of air temperature (degrees C), Note: missing values will be linearly interpolated.}
 
-\item{u}{\code{numeric} vector of wind speed (m/s)}
+\item{u}{\code{numeric} vector of wind speed (m/s).}
 
-\item{Tsoil0}{\code{numeric} initial soil temperature (degrees C)}
+\item{Tsoil0}{\code{numeric} initial soil temperature (degrees C).}
 
-\item{z0}{\code{numeric} surface roughness (meters)}
+\item{z0}{\code{numeric} surface roughness (m).}
 
-\item{SSA}{\code{numeric} solar absorptivity of soil surface as a fraction}
+\item{SSA}{\code{numeric} solar absorptivity of soil surface as a fraction.}
 
-\item{TimeIn}{\code{numeric} vector of time periods for the model}
+\item{TimeIn}{\code{numeric} vector of time periods for the model.}
 
-\item{H}{\code{numeric} vector of solar radiation (W m^-2)}
+\item{H}{\code{numeric} vector of solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).}
 
-\item{water_content}{\code{numeric} percent water content (percent). Defaults to 0.2}
+\item{water_content}{\code{numeric} percent water content (percent).}
 
-\item{air_pressure}{\code{numeric} air pressure (kPa)}
+\item{air_pressure}{\code{numeric} air pressure (kPa).}
 
-\item{rho_so}{\code{numeric} particle density of soil. Defaults to 1620.}
+\item{rho_so}{\code{numeric} particle density of soil.}
 
-\item{shade}{\code{numeric} whether or not soil temperature should be calculated in the shade (TRUE/FALSE)}
+\item{shade}{\code{logical} whether or not soil temperature should be calculated in the shade.}
 }
 \value{
-soil temperature (C)
+\code{numeric} soil temperature (C).
 }
 \description{
 Function called to calculate soil temperature in C from \insertCite{Beckman1973;textual}{TrenchR}. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from \insertCite{deVries1963}{TrenchR}
@@ -98,5 +98,3 @@ Other soil temperature functions:
 Joseph Grigg
 }
 \concept{soil temperature functions}
-\keyword{soil}
-\keyword{temperature}

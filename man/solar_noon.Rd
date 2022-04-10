@@ -2,14 +2,14 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{solar_noon}
 \alias{solar_noon}
-\title{Calculate Time of Solar Noon}
+\title{Time of Solar Noon}
 \usage{
 solar_noon(lon, doy, offset = NA)
 }
 \arguments{
 \item{lon}{\code{numeric} longitude (decimal degrees)}
 
-\item{doy}{\code{numeric} day of year (1-366). (This can be obtained from standard date via the \code{\link{day_of_year}} function.)}
+\item{doy}{\code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)}
 
 \item{offset}{\code{numeric} number of hours to add to UTC to get local time (improves accuracy but not always necessary). Defaults to NA.}
 }

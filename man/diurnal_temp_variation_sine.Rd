@@ -7,14 +7,14 @@
 diurnal_temp_variation_sine(T_max, T_min, t)
 }
 \arguments{
-\item{T_max}{\code{numeric} maximum daily temperature (C)}
+\item{T_max}{\code{numeric} maximum daily temperature (C).}
 
-\item{T_min}{\code{numeric} minimum daily temperature (C)}
+\item{T_min}{\code{numeric} minimum daily temperature (C).}
 
-\item{t}{\code{numeric} time for temperature estimate (hour)}
+\item{t}{\code{numeric} time for temperature estimate (hour).}
 }
 \value{
-\code{numeric} temperature (C) at a specified hour
+\code{numeric} temperature (C) at a specified hour.
 }
 \description{
 estimate temperature for a specified hour using the sine interpolation in \insertCite{Campbell1998}{TrenchR}.
@@ -47,4 +47,3 @@ Other microclimate functions:
 \code{\link{wind_speed_profile_segment}()}
 }
 \concept{microclimate functions}
-\keyword{Temperature}

@@ -40,9 +40,9 @@
 
 
 <meta property="og:title" content="Estimate Direct Solar Radiation — direct_solar_radiation" />
-<meta property="og:description" content="Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in (C. R. Tracy 1983)
-. Also references: (McCullough and Porter 1971)
-, insertCiteCampbell1998TrenchR" />
+<meta property="og:description" content="Estimate direct solar radiation (W/m2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in C. R. Tracy (1983)
+ (McCullough and Porter 1971; Campbell and Norman 1998)
+." />
 
 
 
@@ -140,9 +140,9 @@
     </div>
 
     <div class="ref-description">
-    <p>Estimate direct solar radiation (kW/m^2) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in (C. R. Tracy 1983)
-. Also references: (McCullough and Porter 1971)
-, insertCiteCampbell1998TrenchR</p>
+    <p>Estimate direct solar radiation (W/m<sup>2</sup>) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in C. R. Tracy (1983)
+ (McCullough and Porter 1971; Campbell and Norman 1998)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>direct_solar_radiation</span><span class='op'>(</span><span class='va'>lat</span>, <span class='va'>doy</span>, <span class='va'>elev</span>, <span class='va'>t</span>, <span class='va'>t0</span>, method <span class='op'>=</span> <span class='st'>"Campbell 1977"</span><span class='op'>)</span></pre>
@@ -152,40 +152,43 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>lat</th>
-      <td><p><code>numeric</code> latitude (degrees)</p></td>
+      <td><p><code>numeric</code> latitude (degrees).</p></td>
     </tr>
     <tr>
       <th>doy</th>
-      <td><p><code>numeric</code> doy of year (1-366)</p></td>
+      <td><p><code>numeric</code> day of year (1-366).</p></td>
     </tr>
     <tr>
       <th>elev</th>
-      <td><p><code>numeric</code> elevation in m</p></td>
+      <td><p><code>numeric</code> elevation in m.</p></td>
     </tr>
     <tr>
       <th>t</th>
-      <td><p><code>numeric</code> local time (decimal hours)</p></td>
+      <td><p><code>numeric</code> local time (decimal hours).</p></td>
     </tr>
     <tr>
       <th>t0</th>
-      <td><p><code>numeric</code> time of local noon (decimal hours), can be estimated using solar_noon()</p></td>
+      <td><p><code>numeric</code> time of local noon (decimal hours), can be estimated using <code><a href='solar_noon.html'>solar_noon</a></code>.</p></td>
     </tr>
     <tr>
       <th>method</th>
-      <td><p><code>character</code> method for estimating direct solar radiation, options: "Campbell 1977","Gates 1962". Defaults to Campbell 1977.</p></td>
+      <td><p><code>character</code> method for estimating direct solar radiation, options: <code>"Campbell 1977"</code> (default), <code>"Gates 1962"</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>numeric</code> direct solar radiation (W/m^2)</p>
+    <p><code>numeric</code> direct solar radiation (W/m<sup>2</sup>).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>C. R. Tracy KAHRALWJSIDBTADWSCW (1983).
 &#8220;Estimating clear-day solar radiation: An evaluation of three models.&#8221;
 <em>Journal of Thermal Biology</em>, <b>8</b>(3), 247--251.
 doi: <a href='https://doi.org/10.1016/0306-4565(83)90003-7'>10.1016/0306-4565(83)90003-7</a>
-, <a href='https://libgen.ggfwzs.net/book/2898239/f9e0c8'>https://libgen.ggfwzs.net/book/2898239/f9e0c8</a>.<br /><br /> McCullough EC, Porter WP (1971).
+, <a href='https://libgen.ggfwzs.net/book/2898239/f9e0c8'>https://libgen.ggfwzs.net/book/2898239/f9e0c8</a>.<br /><br /> Campbell GS, Norman JM (1998).
+<em>Introduction to environmental biophysics</em>, 2nd ed. edition.
+Springer, New York.
+ISBN 0387949372.<br /><br /> McCullough EC, Porter WP (1971).
 &#8220;Computing Clear Day Solar Radiation Spectra for the Terrestrial Ecological Environment.&#8221;
 <em>Ecology</em>, <b>52</b>(6), 1008--1015.
 doi: <a href='https://doi.org/10.2307/1933806'>10.2307/1933806</a>

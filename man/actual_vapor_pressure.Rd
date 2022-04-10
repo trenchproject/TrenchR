@@ -13,7 +13,7 @@ actual_vapor_pressure(Tdewpoint)
 \code{numeric} actual vapor pressure, e_a (kPa)
 }
 \description{
-Calculate actual vapor pressure from dewpoint temperature based on \insertCite{Stull2000}{TrenchR}. Source: \insertCite{Riddell2018}{TrenchR}
+Calculate actual vapor pressure from dewpoint temperature based on \insertCite{Stull2000,Riddell2018}{TrenchR}
 }
 \examples{
   actual_vapor_pressure(Tdewpoint = 20)
@@ -24,11 +24,10 @@ Calculate actual vapor pressure from dewpoint temperature based on \insertCite{S
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -58,6 +57,7 @@ Other biophysical models:
 \code{\link{Tsoil}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{heat_transfer_coefficient}()},
@@ -68,6 +68,3 @@ Other biophysical models:
 Eric Riddell
 }
 \concept{biophysical models}
-\keyword{actual}
-\keyword{pressure}
-\keyword{vapor}

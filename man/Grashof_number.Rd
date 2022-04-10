@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Grashof_number}
 \alias{Grashof_number}
-\title{Calculate Grashof Number}
+\title{Grashof Number}
 \usage{
 Grashof_number(Ta, Tg, D, nu)
 }
@@ -11,15 +11,15 @@ Grashof_number(Ta, Tg, D, nu)
 
 \item{Tg}{\code{numeric} Ground (surface) temperature (C).}
 
-\item{D}{\code{numeric} characteristic dimension (e.g., body diameter) (meters)}
+\item{D}{\code{numeric} characteristic dimension (e.g., body diameter) (meters).}
 
 \item{nu}{\code{numeric} the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^-1), can calculate from DRYAIR() or WETAIR()}
 }
 \value{
-\code{numeric} Grashof number
+\code{numeric} Grashof number.
 }
 \description{
-estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force. Reference: \insertCite{Campbell1998}{TrenchR}
+Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
   Grashof_number(Ta = 30, 
@@ -33,10 +33,9 @@ estimate the Grashof Number, which describes the ability of a parcel of fluid wa
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -67,6 +66,7 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{heat_transfer_coefficient}()},
@@ -74,5 +74,3 @@ Other biophysical models:
 \code{\link{saturation_water_vapor_pressure}()}
 }
 \concept{biophysical models}
-\keyword{Grashof}
-\keyword{number}

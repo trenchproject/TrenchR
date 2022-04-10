@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{volume_from_length}
 \alias{volume_from_length}
-\title{Calculate Organism Volume from Length}
+\title{Organism Volume from Length}
 \usage{
 volume_from_length(L, taxon)
 }
@@ -17,13 +17,13 @@ Snout-vent length for amphibians and reptiles is used, except for turtles (carap
 \code{numeric} volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}).
 }
 \description{
-Estimate volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) from length (m) for a variety of taxa following \insertCite{Mitchell1976}{TrenchR}
+Estimate volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) from length (m) for a variety of taxa following \insertCite{Mitchell1976;textual}{TrenchR}.
 }
 \details{
 Relationships come from \itemize{
   \item Lizards: \insertCite{Norris1965;textual}{TrenchR}.
-  \item Frogs: \insertCite{Tracy1972}{TrenchR}.
-  \item Sphere: \insertCite{Mitchell1976}{TrenchR}.
+  \item Frogs: \insertCite{Tracy1972;textual}{TrenchR}.
+  \item Sphere: \insertCite{Mitchell1976;textual}{TrenchR}.
  }
 }
 \examples{
@@ -48,5 +48,3 @@ Other allometric functions:
 \code{\link{surface_area_from_volume}()}
 }
 \concept{allometric functions}
-\keyword{length}
-\keyword{volume}

@@ -21,28 +21,28 @@ Tb_CampbellNorman(
 
 \item{T_g}{\code{numeric} ground temperature (K).}
 
-\item{S}{\code{numeric} flux density of solar radiation (W/m^2), combining direct, diffuse, and reflected radiation accounting for view factors}
+\item{S}{\code{numeric} flux density of solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}), combining direct, diffuse, and reflected radiation accounting for view factors.}
 
-\item{alpha_S}{\code{numeric} organismal solar absorptivity. Defaults to 0.7}
+\item{alpha_S}{\code{numeric} organismal solar absorptivity.}
 
-\item{alpha_L}{\code{numeric} organismal thermal absorptivity, alpha_L=0.965 for lizards \insertCite{Bartlett1967}{TrenchR}. Defaults to 0.96}
+\item{alpha_L}{\code{numeric} organismal thermal absorptivity; 0.965 for lizards \insertCite{Bartlett1967}{TrenchR}.}
 
-\item{epsilon}{\code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}. Defaults to 0.96}
+\item{epsilon}{\code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.}
 
-\item{c_p}{\code{numeric} specific heat of air (J mol^-1 K^-1). Defaults to 29.3}
+\item{c_p}{\code{numeric} specific heat of air (J mol^-1 K^-1). Defaults to 29.3.}
 
-\item{D}{\code{numeric} characteristic dimension of the animal (meters)}
+\item{D}{\code{numeric} characteristic dimension of the animal (meters).}
 
-\item{V}{\code{numeric} is wind speed (m/s)}
+\item{V}{\code{numeric} is wind speed (m/s).}
 }
 \value{
-operative environmental temperature, T_e (K)
+\code{numeric} operative environmental temperature, T_e (K).
 }
 \description{
 Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
 }
 \details{
-Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Campbell1998}{TrenchR} and \insertCite{Mitchell1976}{TrenchR}.
+Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
 }
 \examples{
 Tb_CampbellNorman (T_a     = 303, 
@@ -61,11 +61,10 @@ Tb_CampbellNorman (T_a     = 303,
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -95,6 +94,7 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{heat_transfer_coefficient}()},
@@ -102,6 +102,3 @@ Other biophysical models:
 \code{\link{saturation_water_vapor_pressure}()}
 }
 \concept{biophysical models}
-\keyword{environmental}
-\keyword{operative}
-\keyword{temperature}

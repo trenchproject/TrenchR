@@ -2,43 +2,43 @@
 #' 
 #' @description Predicts body temperature (operative environmental temperature) of a lizard in C based on \insertCite{Campbell1998}{TrenchR}. Designed for Sceloporus lizards and described in \insertCite{Buckley2008}{TrenchR}.
 #' 
-#' @param T_a \code{numeric} air temperature (C)
+#' @param T_a \code{numeric} air temperature (C).
 #' 
-#' @param T_g \code{numeric} surface temperature (C)
+#' @param T_g \code{numeric} surface temperature (C).
 #' 
-#' @param u \code{numeric} wind speed (m/s)
+#' @param u \code{numeric} wind speed (m/s).
 #' 
-#' @param svl \code{numeric} lizard snout vent length (mm)
+#' @param svl \code{numeric} lizard snout vent length (mm).
 #' 
-#' @param m \code{numeric} lizard mass in g, note that it can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 \insertCite{Tinkle1972}{TrenchR}
+#' @param m \code{numeric} lizard mass in g, note that it can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 \insertCite{Tinkle1972}{TrenchR}.
 #' 
-#' @param psi \code{numeric} solar zenith angle (degrees)
+#' @param psi \code{numeric} solar zenith angle (degrees).
 #' 
-#' @param rho_S \code{numeric} surface albedo (proportion). ~0.25 for grass, ~0.1 for dark soil, >0.75 for fresh snow \insertCite{Campbell1998}{TrenchR}
+#' @param rho_S \code{numeric} surface albedo (proportion). ~0.25 for grass, ~0.1 for dark soil, >0.75 for fresh snow \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @param elev \code{numeric} elevation (m)
+#' @param elev \code{numeric} elevation (m).
 #' 
-#' @param doy \code{numeric} day of year (1-366)
+#' @param doy \code{numeric} day of year (1-366).
 #' 
-#' @param sun \code{boolean} indicates whether lizard is in sun (TRUE) or shade (FALSE)
+#' @param sun \code{logical} indicates whether lizard is in sun (\code{TRUE}) or shade (\code{FALSE}).
 #' 
-#' @param surface \code{boolean} indicates whether lizard is on ground surface (TRUE) or above surface (FALSE, e.g. in a tree)
+#' @param surface \code{logical} indicates whether lizard is on ground surface (\code{TRUE}) or above the surface (\code{FALSE}, e.g. in a tree).
 #' 
-#' @param alpha_S \code{numeric} lizard solar absorptivity, alpha_S=0.9 \insertCite{Gates1980}{TrenchR} (Table 11.4)
+#' @param alpha_S \code{numeric} lizard solar absorptivity, \code{alpha_S = 0.9} \insertCite{Gates1980}{TrenchR} (Table 11.4).
 #' 
-#' @param alpha_L \code{numeric} lizard thermal absorptivity, alpha_L=0.965 \insertCite{Bartlett1967}{TrenchR} 
+#' @param alpha_L \code{numeric} lizard thermal absorptivity, \code{alpha_L = 0.965} \insertCite{Bartlett1967}{TrenchR}.
 #' 
-#' @param epsilon_s \code{numeric} surface emissivity of lizards, epsilon_s=0.965 \insertCite{Bartlett1967}{TrenchR}
+#' @param epsilon_s \code{numeric} surface emissivity of lizards, \code{epsilon_s = 0.965} \insertCite{Bartlett1967}{TrenchR}.
 #' 
-#' @param F_d \code{numeric} the view factor between the surface of the lizard and diffuse solar radiation \insertCite{Bartlett1967}{TrenchR}
+#' @param F_d \code{numeric} the view factor between the surface of the lizard and diffuse solar radiation \insertCite{Bartlett1967}{TrenchR}.
 #' 
-#' @param F_r \code{numeric} the view factor between the surface of the lizard and reflected solar radiation
+#' @param F_r \code{numeric} the view factor between the surface of the lizard and reflected solar radiation.
 #' 
-#' @param F_a \code{numeric} the view factor between the surface of the lizard and atmospheric radiation
+#' @param F_a \code{numeric} the view factor between the surface of the lizard and atmospheric radiation.
 #' 
-#' @param F_g \code{numeric} the view factor between the surface of the lizard and ground thermal radiation
+#' @param F_g \code{numeric} the view factor between the surface of the lizard and ground thermal radiation.
 #' 
-#' @return T_e \code{numeric} Operative temperature (C)
+#' @return T_e \code{numeric} Operative temperature (C).
 #' 
 #' @family biophysical models
 #' 

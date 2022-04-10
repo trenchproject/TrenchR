@@ -7,25 +7,25 @@
 monthly_solar_radiation(lat, lon, doy, elev, T, Hr, P)
 }
 \arguments{
-\item{lat}{\code{numeric} latitude (degrees)}
+\item{lat}{\code{numeric} latitude (degrees).}
 
-\item{lon}{\code{numeric} longitude (degrees)}
+\item{lon}{\code{numeric} longitude (degrees).}
 
-\item{doy}{\code{numeric} day of year (1-366)}
+\item{doy}{\code{numeric} day of year (1-366).}
 
-\item{elev}{\code{numeric} elevation (meters)}
+\item{elev}{\code{numeric} elevation (meters).}
 
-\item{T}{\code{numeric} mean monthly temperature (C)}
+\item{T}{\code{numeric} mean monthly temperature (C).}
 
-\item{Hr}{\code{numeric} mean month relative humidity (percentage)}
+\item{Hr}{\code{numeric} mean month relative humidity (percentage).}
 
-\item{P}{\code{numeric} total monthly precipitation (mm)}
+\item{P}{\code{numeric} total monthly precipitation (mm).}
 }
 \value{
-average monthly solar radiation (W/m^2)
+\code{numeric} average monthly solar radiation ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}})).
 }
 \description{
-Estimate average monthly solar radiation (W m^-2 per day) using basic topographic and climatic information as input. Based on \insertCite{Nikolov1992}{TrenchR}
+Estimate average monthly solar radiation ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per day) using basic topographic and climatic information as input. Based on \insertCite{Nikolov1992;textual}{TrenchR}.
 }
 \examples{
   monthly_solar_radiation(lat  = 47.61, 
@@ -59,7 +59,3 @@ Other microclimate functions:
 \code{\link{wind_speed_profile_segment}()}
 }
 \concept{microclimate functions}
-\keyword{average}
-\keyword{monthly}
-\keyword{radiation}
-\keyword{solar}

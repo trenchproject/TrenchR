@@ -7,25 +7,25 @@
 Tbed_mussel(L, T_a, S, k_d, u, evap = FALSE, cl = NA)
 }
 \arguments{
-\item{L}{\code{numeric} mussel length (anterior/posterior axis) (m)}
+\item{L}{\code{numeric} mussel length (anterior/posterior axis) (m).}
 
-\item{T_a}{\code{numeric} air temperature at 4 m above ground (C)}
+\item{T_a}{\code{numeric} air temperature at 4 m above ground (C).}
 
 \item{S}{\code{numeric} direct solar flux density (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
-\item{k_d}{\code{numeric} diffuse fraction, proportion of solar radiation that is diffuse}
+\item{k_d}{\code{numeric} diffuse fraction, proportion of solar radiation that is diffuse.}
 
 \item{u}{\code{numeric} wind speed at 4 m above ground (m/s).}
 
-\item{evap}{\code{boolean} Are mussels gaping to evaporatively cool? TRUE of FALSE (default), If TRUE, assumes constant mass loss rate of 5 percent of initial body mass per hour.}
+\item{evap}{\code{logical} Are mussels gaping to evaporatively cool? If \code{TRUE}, assumes constant mass loss rate of 5 percent of initial body mass per hour.}
 
 \item{cl}{\code{numeric} fraction of the sky covered by cloud, optional.}
 }
 \value{
-\code{numeric} predicted body temperature (C)
+\code{numeric} predicted body temperature (C).
 }
 \description{
-Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Helmuth1999;textual}{TrenchR}
+Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Helmuth1999;textual}{TrenchR}.
 }
 \examples{
  Tbed_mussel(L   = 0.1, 
@@ -41,11 +41,10 @@ Predicts body temperature of a mussel in C. Implements a steady-state model, whi
 }
 \seealso{
 Other biophysical models: 
-\code{\link{Free_or_forced_convection}()},
 \code{\link{Grashof_number_Gates}()},
 \code{\link{Grashof_number}()},
-\code{\link{Nu_from_Gr}()},
-\code{\link{Nu_from_Re}()},
+\code{\link{Nusselt_from_Grashof}()},
+\code{\link{Nusselt_from_Reynolds}()},
 \code{\link{Nusselt_number}()},
 \code{\link{Prandtl_number}()},
 \code{\link{Qconduction_animal}()},
@@ -75,6 +74,7 @@ Other biophysical models:
 \code{\link{actual_vapor_pressure}()},
 \code{\link{boundary_layer_resistance}()},
 \code{\link{external_resistance_to_water_vapor_transfer}()},
+\code{\link{free_or_forced_convection}()},
 \code{\link{heat_transfer_coefficient_approximation}()},
 \code{\link{heat_transfer_coefficient_simple}()},
 \code{\link{heat_transfer_coefficient}()},

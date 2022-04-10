@@ -1,22 +1,20 @@
-#' @title Calculate Conductance Assuming Animal Thermal Conductivity is Rate Limiting
+#' @title Conductance Assuming Animal Thermal Conductivity is Rate Limiting
 #' 
-#' @description Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
+#' @description Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
 #' 
 #' @param T_g \code{numeric} Ground surface temperature (Kelvin).
 #' 
 #' @param T_b \code{numeric} Body temperature (Kelvin).
 #' 
-#' @param d \code{numeric} Mean thickness of the animal skin (surface) in (meters), assumes well mixed interior
+#' @param d \code{numeric} Mean thickness of the animal skin (surface) in (meters), assumes well mixed interior.
 #' 
-#' @param K \code{numeric} Thermal conductivity (W K^-1 m^-1), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle (Galushko et al 2005); conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.
+#' @param K \code{numeric} Thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), \code{K = 0.5} for naked skin, \code{K = 0.15} for insect cuticle \insertCite{Galushko2005}{TrenchR}; conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.
 #' 
-#' @param A \code{numeric} Surface area (m^2)
+#' @param A \code{numeric} Surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
-#' @param proportion \code{numeric} proportion of body in contact with the surface (0-1)
+#' @param proportion \code{numeric} proportion of body in contact with the surface (0-1).
 #' 
-#' @return \code{numeric} conductance (W)
-#' 
-#' @keywords conductance
+#' @return \code{numeric} conductance (W).
 #' 
 #' @family biophysical models
 #' 
@@ -53,25 +51,23 @@ Qconduction_animal <- function (T_g,
 
 }
 
-#' @title Calculate conductance assuming substrate thermal conductivity is rate limiting
+#' @title Conductance Assuming Substrate Thermal Conductivity is Rate Limiting
 #' 
-#' @description  calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed). Reference: \insertCite{Spotila1992}{TrenchR}
+#' @description Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
 #' 
-#' @param T_g \code{numeric} Surface temperature (Kelvin).
+#' @param T_g \code{numeric} Surface temperature (K).
 #' 
-#' @param T_b \code{numeric} Body temperature (Kelvin).
+#' @param T_b \code{numeric} Body temperature (K).
 #' 
-#' @param D \code{numeric} Characteristic dimension of the animal (meters)
+#' @param D \code{numeric} Characteristic dimension of the animal (m).
 #' 
-#' @param K_g \code{numeric} Thermal conductivity of substrate (W K^-1 m^-1)
+#' @param K_g \code{numeric} Thermal conductivity of substrate (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}).
 #' 
-#' @param A \code{numeric} Surface area (m^2)
+#' @param A \code{numeric} Surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
-#' @param proportion \code{numeric} proportion in contact to the surface
+#' @param proportion \code{numeric} proportion in contact to the surface.
 #' 
-#' @return conductance (W)
-#' 
-#' @keywords conductance
+#' @return \code{numeric} conductance (W).
 #' 
 #' @family biophysical models
 #' 
@@ -114,21 +110,19 @@ Qconduction_substrate <- function (T_g,
 #' 
 #' @description Calculate convection from an organism to its environment as in \insertCite{Mitchell1976}{TrenchR}. Includes an enhancement factor associated with outdoor environments. 
 #' 
-#' @param T_a \code{numeric} Air temperature (Kelvin).
+#' @param T_a \code{numeric} Air temperature (K).
 #' 
-#' @param T_b \code{numeric} Initial body temperature (Kelvin).
+#' @param T_b \code{numeric} Initial body temperature (K).
 #' 
-#' @param H_L \code{numeric} Convective heat transfer coefficient (W m^-2 K^-1)
+#' @param H_L \code{numeric} Convective heat transfer coefficient (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).
 #' 
-#' @param A \code{numeric} Surface area (m^2)
+#' @param A \code{numeric} Surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
-#' @param proportion \code{numeric} proportion of surface area exposed to air
+#' @param proportion \code{numeric} proportion of surface area exposed to air.
 #' 
 #' @param ef \code{numeric} is the enhancement factor, used to adjust H to field conditions.  Approximated as mean value of 1.23 by default, but see \insertCite{Mitchell1976}{TrenchR} for further information.
 #' 
-#' @return \code{numeric} convection (W)
-#' 
-#' @keywords convection
+#' @return \code{numeric} convection (W).
 #' 
 #' @family biophysical models
 #' 
@@ -162,23 +156,21 @@ Qconvection <- function (T_a,
 }
 
 
-#' @title Calculate heat transfer coefficient. 
+#' @title Heat Transfer Coefficient
 #' 
-#' @description  estimate the heat transfer coefficient for various taxa based on empirical measurements. Reference: \insertCite{Mitchell1976}{TrenchR}
+#' @description Estimate the heat transfer coefficient for various taxa based on empirical measurements \insertCite{Mitchell1976}{TrenchR}.
 #' 
 #' @param V \code{numeric} Air velocity (m/s).
 #' 
 #' @param D \code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).
 #' 
-#' @param K \code{numeric} Thermal conductivity of air (W m^-1 K^-1), can calculate using DRYAIR or WETAIR in NicheMapR
+#' @param K \code{numeric} Thermal conductivity of air (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #' 
-#' @param nu \code{numeric} Kinematic Viscosity of air (m^2 s^-1), can calculate using DRYAIR or WETAIR in NicheMapR
+#' @param nu \code{numeric} Kinematic viscosity of air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #' 
-#' @param taxa \code{character} Which class of organism, current choices: sphere, cylinder, frog, lizard_surface, lizard_elevated, flyinginsect, spider. Notes: Cylinder assumes 40<Re<4000. lizard assumes prostrate on or elevated above surface, average for parallel and perpendicular to air flow
+#' @param taxa \code{character} Which class of organism, current choices: sphere, cylinder, frog, lizard_surface, lizard_elevated, flyinginsect, spider. Notes: Cylinder assumes 40<Re<4000. lizard assumes prostrate on or elevated above surface, average for parallel and perpendicular to air flow.
 #' 
-#' @return \code{numeric} heat transfer coefficient, H_L (W m^-2 K^-1)
-#' 
-#' @keywords heat transfer coefficient
+#' @return \code{numeric} heat transfer coefficient, \code{H_L} (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).
 #' 
 #' @family biophysical models
 #' 
@@ -221,21 +213,19 @@ heat_transfer_coefficient <- function (V,
 
 #' @title Calculate Heat Transfer Coefficient Using a Spherical Approximation
 #' 
-#' @description  estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere. Reference: \insertCite{Mitchell1976}{TrenchR}
+#' @description  estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere \insertCite{Mitchell1976}{TrenchR}.
 #' 
 #' @param V \code{numeric} Air velocity (m/s).
 #' 
 #' @param D \code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).
 #' 
-#' @param K \code{numeric} Thermal conductivity of air (W m^-1 K^-1), can calculate using DRYAIR or WETAIR in NicheMapR
+#' @param K \code{numeric} Thermal conductivity of air (W m^-1 K^-1), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #' 
-#' @param nu \code{numeric} Kinematic Viscosity of air (m^2 s^-1), can calculate using DRYAIR or WETAIR in NicheMapR
+#' @param nu \code{numeric} Kinematic Viscosity of air (m^2 s^-1), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #' 
 #' @param taxa \code{character} Which class of organism, current choices: sphere, frog, lizard, flyinginsect, spider
 #' 
-#' @return \code{numeric} heat transfer coefficient, H_L (W m^-2 K^-1)
-#' 
-#' @keywords heat transfer coefficient
+#' @return \code{numeric} heat transfer coefficient, \code{H_L} (W m^-2 K^-1)
 #' 
 #' @family biophysical models
 #' 
@@ -276,7 +266,7 @@ heat_transfer_coefficient_approximation <- function (V,
 }
 
 
-#' @title Calculate heat transfer coefficient
+#' @title Calculate Heat Transfer Coefficient
 #' 
 #' @description estimate the heat transfer coefficient \insertCite{Mitchell1976}{TrenchR} using either the relationship in \insertCite{Spotila1992}{TrenchR} or that in \insertCite{Gates1980}{TrenchR}.
 #' 
@@ -284,11 +274,9 @@ heat_transfer_coefficient_approximation <- function (V,
 #' 
 #' @param D \code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).
 #' 
-#' @param type \code{character} Choice between "Spotila" and "Gates" for equation to use
+#' @param type \code{character} Choice between "Spotila" and "Gates" for equation to use.
 #' 
 #' @return \code{numeric} heat transfer coefficient, H_L (W m^-2 K^-1)
-#' 
-#' @keywords heat transfer coefficient
 #' 
 #' @family biophysical models
 #' 
@@ -324,7 +312,7 @@ heat_transfer_coefficient_simple <- function(V,
   
 }
 
-#' @title Calculate absorbed solar and thermal radiation
+#' @title Calculate Absorbed Solar and Thermal Radiation
 #' 
 #' @description  estimate solar and thermal radiation (W) absorbed by the surface of an animal. Follows \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
 #' 
@@ -345,8 +333,6 @@ heat_transfer_coefficient_simple <- function(V,
 #' @param a_s \code{numeric} is surface albedo (proportion), optional (not used) if reflected radiation is provided. Values available in \insertCite{Gates1980}{TrenchR} Table 8.2.
 #' 
 #' @return \code{numeric} solar radiation absorbed (W)
-#' 
-#' @keywords Solar radiation absorbed
 #' 
 #' @family biophysical models
 #' 
@@ -395,7 +381,7 @@ Qradiation_absorbed <- function (a = 0.9,
 
 #' @title Calculate Emitted Thermal Radiation
 #' 
-#' @description estimate thermal radiation (W) emitted by the surface of an animal. Follows \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
+#' @description estimate thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
 #' 
 #' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}
 #' 
@@ -414,8 +400,6 @@ Qradiation_absorbed <- function (a = 0.9,
 #' @param enclosed \code{boolean} TRUE or FALSE
 #' 
 #' @return \code{numeric} emitted thermal radiation, Qemit (W)
-#' 
-#' @keywords emitted thermal radiation
 #' 
 #' @family biophysical models
 #' 
@@ -470,7 +454,7 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 }
 
 
-#' @title Calculate heat loss associated with evaporative water loss
+#' @title Calculate Heat Loss Associated with Evaporative Water Loss
 #' 
 #' @description  estimate heat loss associated with evaporative water loss by an amphibian \insertCite{Spotila1992}{TrenchR} or lizard (based on empirical measurements in \insertCite{Porter1973}{TrenchR}).
 #' 
@@ -491,8 +475,6 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 #' @param r_i \code{numeric} internal (cutaneous) resistance to vapor transport (s/m) (needed if amphibian)
 #' 
 #' @return \code{numeric} evaporative heat loss (W)
-#' 
-#' @keywords evaporative heat loss
 #' 
 #' @family biophysical models
 #' 
@@ -593,8 +575,6 @@ Qevaporation <- function (A,
 #' 
 #' @return \code{numeric} Saturation water vapor pressure, e_s (Pa)
 #' 
-#' @keywords Saturation water vapor pressure
-#' 
 #' @family biophysical models
 #' 
 #' @export
@@ -614,15 +594,13 @@ saturation_water_vapor_pressure <- function (T_a) {
 
 #' @title Calculate External Resistance to Water Vapor Transfer
 #'
-#' @description  estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport. Reference: \insertCite{Spotila1992}{TrenchR}
+#' @description  estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport \insertCite{Spotila1992}{TrenchR}
 #' 
 #' @param H \code{numeric} heat transfer (convection) coefficient (W m^-2 C^-1)
 #' 
 #' @param rhocp \code{numeric} aggregate parameter (J m^-3 C^-1) that is the product of the density of air (kg m^-3) and the specific heat of air at constant pressure (J kg^-1 C^-1). Default of 12000 J m^-3 C^-1 is commonly assumed.
 #' 
 #' @return \code{numeric} external resistance to water vapor transfer (s m^-1)
-#' 
-#' @keywords external resistance to water vapor transfer
 #' 
 #' @family biophysical models
 #' 
@@ -654,8 +632,6 @@ external_resistance_to_water_vapor_transfer <- function (H,
 #' 
 #' @return \code{numeric} metabolism (W)
 #' 
-#' @keywords metabolism
-#' 
 #' @family biophysical models
 #' 
 #' @export
@@ -667,7 +643,6 @@ external_resistance_to_water_vapor_transfer <- function (H,
 #'   Qmetabolism_from_mass(m    = 12,
 #'                         taxa = "reptile")
 #' 
-
 Qmetabolism_from_mass <- function(m, 
                                   taxa = "reptile") {
   
@@ -704,7 +679,7 @@ Qmetabolism_from_mass <- function(m,
 
 #' @title Calculate Basal (Resting) Metabolism as a Function of Mass and Body Temperature
 #' 
-#' @description  Estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent). Reference: \insertCite{Gillooly2001}{TrenchR}.
+#' @description  Estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent) \insertCite{Gillooly2001}{TrenchR}.
 #' 
 #' @param m \code{numeric} Mass (grams).
 #' 
@@ -713,8 +688,6 @@ Qmetabolism_from_mass <- function(m,
 #' @param taxa \code{character} Taxa to use. Options: bird, mammal, reptile, amphibian, invertebrate
 #' 
 #' @return \code{numeric} basal metabolism (W)
-#' 
-#' @keywords metabolism
 #' 
 #' @family biophysical models
 #' 
@@ -765,13 +738,11 @@ Qmetabolism_from_mass_temp <- function (m,
 
 #' @title Calculate Actual Vapor Pressure from Dewpoint Temperature
 #'
-#' @description Calculate actual vapor pressure from dewpoint temperature based on \insertCite{Stull2000}{TrenchR}. Source: \insertCite{Riddell2018}{TrenchR}
+#' @description Calculate actual vapor pressure from dewpoint temperature based on \insertCite{Stull2000,Riddell2018}{TrenchR}
 #' 
 #' @param Tdewpoint \code{numeric} dewpoint temperature (C)
 #' 
 #' @return \code{numeric} actual vapor pressure, e_a (kPa)
-#' 
-#' @keywords actual vapor pressure
 #' 
 #' @family biophysical models
 #' 
@@ -794,13 +765,11 @@ actual_vapor_pressure <- function (Tdewpoint) {
 
 #' @title Calculate Saturation Vapor Pressure
 #'
-#' @description Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation \insertCite{Stull2000}{TrenchR}. Source: insertCite{Riddell2018}{TrenchR}.
+#' @description Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation \insertCite{Stull2000,Riddell2018}{TrenchR}.
 #' 
 #' @param T_a \code{numeric} air temperature (K)
 #' 
 #' @return \code{numeric} saturation vapor pressure, e_s (kPa)
-#' 
-#' @keywords saturation vapor pressure
 #' 
 #' @family biophysical models
 #' 
@@ -829,7 +798,7 @@ saturation_vapor_pressure <- function (T_a) {
 
 #' @title Estimate the Boundary Layer Resistance
 #' 
-#' @description estimate boundary layer resistance under free convection. Based on the function in \insertCite{Riddell2018}{TrenchR}.
+#' @description Estimate boundary layer resistance under free convection. Based on the function in \insertCite{Riddell2018}{TrenchR}.
 #' 
 #' @param T_a \code{numeric} air temperature (K)
 #' 
@@ -844,8 +813,6 @@ saturation_vapor_pressure <- function (T_a) {
 #' @param u \code{numeric} wind speed (m/s), if not provided assume free convection; if provided, use forced convection if appropriate 
 #' 
 #' @return \code{numeric} boundary layer resistance (s cm^-1) 
-#' 
-#' @keywords boundary layer resistance
 #' 
 #' @family biophysical models
 #' 
@@ -922,9 +889,9 @@ boundary_layer_resistance <- function (T_a,
 }
 
 
-#' @title Calculate Humid Operative Temperature
+#' @title Humid Operative Temperature
 #'
-#' @description calculate humid operative temperature (adaptation of \insertCite{Campbell1998}{TrenchR}). Source: \insertCite{Riddell2018}{TrenchR}.
+#' @description Calculate humid operative temperature, using adaptation of \insertCite{Campbell1998;textual}{TrenchR} \insertCite{Riddell2018}{TrenchR}.
 #' 
 #' @param r_i \code{numeric} internal (skin) resistance (s cm^-1)
 #' 
@@ -945,8 +912,6 @@ boundary_layer_resistance <- function (T_a,
 #' @param epsilon \code{numeric} emissivity of salamander skin, default epsilon=0.96 
 #' 
 #' @return \code{numeric} humid operative temperature (C)
-#' 
-#' @keywords humid operative temperature
 #' 
 #' @family biophysical models
 #' 
@@ -1006,9 +971,9 @@ Tb_salamander_humid <- function (r_i,
 }
 
  
-#' @title Estimate absorbed longwave (thermal) radiation
+#' @title Absorbed Thermal Radiation
 #' 
-#' @description  estimate longwave (thermal) radiation (W) absorbed from the sky and the ground \insertCite{Campbell1998}{TrenchR}. Source: \insertCite{Riddell2018}{TrenchR}
+#' @description Estimate longwave (thermal) radiation (W) absorbed from the sky and the ground \insertCite{Campbell1998,Riddell2018}{TrenchR}.
 #' 
 #' @param T_a \code{numeric} air temperature (C)
 #' 
@@ -1019,8 +984,6 @@ Tb_salamander_humid <- function (r_i,
 #' @param a_longwave \code{numeric} absorptance (proportion) of organism to longwave radiation (\insertCite{Bartlett1967}{TrenchR} and Buckley 2008), default value of 0.965
 #' 
 #' @return \code{numeric} thermal radiation absorbed (W)
-#' 
-#' @keywords longwave (thermal) radiation absorbed
 #' 
 #' @family biophysical models
 #' 
@@ -1059,9 +1022,9 @@ Qthermal_radiation_absorbed <- function (T_a,
 }
 
 
-#' @title Statistical Approximation of Soil Temperature
+#' @title Approximate Soil Temperature
 #'
-#' @description Estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal (adapted from \insertCite{Campbell1998}{TrenchR}). Source: \insertCite{Riddell2018}{TrenchR}
+#' @description Estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal; adapted from \insertCite{Campbell1998;textual}{TrenchR} \insertCite{Riddell2018}{TrenchR}.
 #' 
 #' @param Tg_max \code{numeric} daily maximum soil surface temperature (C)
 #' 
@@ -1072,8 +1035,6 @@ Qthermal_radiation_absorbed <- function (T_a,
 #' @param depth \code{numeric} depth (cm) 
 #' 
 #' @return \code{numeric} soil temperature (C)
-#' 
-#' @keywords soil temperature
 #' 
 #' @family biophysical models
 #' 
@@ -1104,9 +1065,9 @@ Tsoil <- function (Tg_max,
 }
 
 
-#' @title Calculate Nusselt Number
+#' @title Nusselt Number
 #'
-#' @description  estimate the Nusselt Number, which describes dimensionless conductance \insertCite{Gates1980}{TrenchR}
+#' @description Estimate the Nusselt Number, which describes dimensionless conductance \insertCite{Gates1980}{TrenchR}.
 #' 
 #' @param H_L \code{numeric} Convective heat transfer coefficient (W m^-2 K^-1)
 #' 
@@ -1115,8 +1076,6 @@ Tsoil <- function (Tg_max,
 #' @param K \code{numeric} Thermal conductivity (W K^-1 m^-1)
 #' 
 #' @return \code{numeric} Nusselt number
-#' 
-#' @keywords Nusselt number
 #' 
 #' @family biophysical models
 #' 
@@ -1141,9 +1100,9 @@ Nusselt_number <- function(H_L,
 }
 
 
-#' @title Calculate Prandtl Number
+#' @title Prandtl Number
 #'
-#' @description  estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity \insertCite{Gates1980}{TrenchR}
+#' @description Estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity \insertCite{Gates1980}{TrenchR}.
 #' 
 #' @param c_p \code{numeric} specific heat at constant pressure (J mol^{-1} K^{-1})
 #' 
@@ -1152,8 +1111,6 @@ Nusselt_number <- function(H_L,
 #' @param K \code{numeric} Thermal conductivity (W K^-1 m^-1)
 #' 
 #' @return \code{numeric} Prandtl number
-#' 
-#' @keywords Prandtl number
 #' 
 #' @family biophysical models
 #' 
@@ -1178,9 +1135,9 @@ Prandtl_number <- function (c_p,
 }
 
 
-#' @title Calculate Reynolds Number
+#' @title Reynolds Number
 #'
-#' @description  estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces \insertCite{Gates1980}{TrenchR}
+#' @description Estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces \insertCite{Gates1980}{TrenchR}.
 #' 
 #' @param D \code{numeric} characteristic dimension (e.g., body diameter) (m)
 #' 
@@ -1189,8 +1146,6 @@ Prandtl_number <- function (c_p,
 #' @param nu \code{numeric} the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^(-1)), can calculate from DRYAIR or WETAIR functions
 #' 
 #' @return \code{numeric} Reynolds number
-#' 
-#' @keywords Reynolds number
 #' 
 #' @family biophysical models
 #' 
@@ -1215,21 +1170,19 @@ Reynolds_number <- function(u,
 }
 
 
-#' @title Calculate Grashof Number
+#' @title Grashof Number
 #'
-#' @description  estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force. Reference: \insertCite{Campbell1998}{TrenchR}
+#' @description Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force \insertCite{Campbell1998}{TrenchR}.
 #' 
 #' @param Ta \code{numeric} Air temperature (C).
 #' 
 #' @param Tg \code{numeric} Ground (surface) temperature (C).
 #' 
-#' @param D \code{numeric} characteristic dimension (e.g., body diameter) (meters)
+#' @param D \code{numeric} characteristic dimension (e.g., body diameter) (meters).
 #' 
 #' @param nu \code{numeric} the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^-1), can calculate from DRYAIR() or WETAIR()
 #' 
-#' @return \code{numeric} Grashof number
-#' 
-#' @keywords Grashof number
+#' @return \code{numeric} Grashof number.
 #' 
 #' @family biophysical models
 #' 
@@ -1259,9 +1212,9 @@ Grashof_number <- function (Ta,
 }
 
 
-#' @title Calculate Grashof Number in Gates
+#' @title Grashof Number in Gates
 #'
-#' @description  estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity \insertCite{Gates1980}{TrenchR}. Ratio of a buoyant force times an inertial force to the square of a viscous force.
+#' @description Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity \insertCite{Gates1980}{TrenchR}. Ratio of a buoyant force times an inertial force to the square of a viscous force.
 #' 
 #' @param Ta \code{numeric} Air temperature (C).
 #' 
@@ -1274,8 +1227,6 @@ Grashof_number <- function (Ta,
 #' @param nu \code{numeric} is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s-1), can calculate from DRYAIR or WETAIR
 #' 
 #' @return \code{numeric} Grashof number
-#' 
-#' @keywords Grashof number
 #' 
 #' @family biophysical models
 #' 
@@ -1308,15 +1259,13 @@ Grashof_number_Gates <- function (Ta,
 
 #' @title Estimate the Nusselt Number from the Reynolds Number
 #' 
-#' @description  estimate the Nusselt number from the Reynolds number for various taxa.  Source: \insertCite{Mitchell1976}{TrenchR} See Table 1. Convective Heat Transfer Relations for Animal Shapes.  
+#' @description Estimate the Nusselt number from the Reynolds number for various taxa \insertCite{Mitchell1976;textual}{TrenchR} Table 1 (Convective Heat Transfer Relations for Animal Shapes).  
 #' 
 #' @param Re \code{numeric} is the Reynolds Number (dimensionless)
 #' 
 #' @param taxa \code{character} Which class of organism, current choices: sphere, cylinder, frog, lizard_traverse_to_air_flow, lizard_parallel_to_air_flow, lizard_surface, lizard_elevated, flyinginsect, spider
 #' 
 #' @return \code{numeric} Nusselt number (dimensionless)
-#' 
-#' @keywords Nusselt number
 #' 
 #' @family biophysical models
 #' 
@@ -1326,11 +1275,11 @@ Grashof_number_Gates <- function (Ta,
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Nu_from_Re(Re   = 5, 
-#'              taxa = "cylinder")
+#'   Nusselt_from_Reynolds(Re   = 5, 
+#'                         taxa = "cylinder")
 #' 
-Nu_from_Re <- function (Re, 
-                        taxa = "cylinder") {
+Nusselt_from_Reynolds <- function (Re, 
+                                   taxa = "cylinder") {
   
   taxas <- c("sphere", "cylinder", "frog", "lizard_traverse_to_air_flow", "lizard_parallel_to_air_flow", "lizard_surface", "lizard_elevated", "flyinginsect", "spider")
   stopifnot(taxa %in% taxas)
@@ -1349,13 +1298,11 @@ Nu_from_Re <- function (Re,
 
 #' @title Estimate the Nusselt Number from the Grashof Number 
 #' 
-#' @description estimate the Nusselt number from the Grashof Number \insertCite{Gates1980}{TrenchR}
+#' @description Estimate the Nusselt number from the Grashof Number \insertCite{Gates1980}{TrenchR}.
 #' 
 #' @param Gr \code{numeric} is the Grashof Number (dimensionless)
 #' 
 #' @return \code{numeric} Nusselt number (dimensionless)
-#' 
-#' @keywords Nusselt number
 #' 
 #' @family biophysical models
 #' 
@@ -1365,26 +1312,24 @@ Nu_from_Re <- function (Re,
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Nu_from_Gr(Gr = 5)
+#'   Nusselt_from_Grashof(Gr = 5)
 #' 
-Nu_from_Gr <- function (Gr) {
+Nusselt_from_Grashof <- function (Gr) {
   
   0.48 * Gr^0.25
   
 }
 
 
-#' @title Compare Grashof and Reyolds Numbers to Determine If Convection is Free or Forced 
+#' @title Determine If Convection is Free or Forced 
 #' 
-#' @description  Compare the Grashof and Reyolds numbers to determine whether convection is free or forced (Gates 1980).
+#' @description Compare the Grashof and Reyolds numbers to determine whether convection is free or forced \insertCite{Gates1980}{TrenchR}.
 #' 
-#' @param Gr \code{numeric} is the Grashof Number (dimensionless)
+#' @param Gr \code{numeric} is the Grashof Number (dimensionless).
 #' 
-#' @param Re \code{numeric} is the Reynolds Number (dimensionless)
+#' @param Re \code{numeric} is the Reynolds Number (dimensionless).
 #' 
-#' @return \code{character} "free", "forced" or "intermediate"
-#' 
-#' @keywords free or forced convection
+#' @return \code{character} \code{"free"}, \code{"forced"}, or \code{"intermediate"}.
 #' 
 #' @family biophysical models
 #' 
@@ -1394,10 +1339,10 @@ Nu_from_Gr <- function (Gr) {
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   Free_or_forced_convection(Gr = 100, 
+#'   free_or_forced_convection(Gr = 100, 
 #'                             Re = 5)
 #' 
-Free_or_forced_convection <- function (Gr, 
+free_or_forced_convection <- function (Gr, 
                                        Re) {
   
   conv <- "intermediate condition, mixed convection based on Nusselt numbers is appropriate"
@@ -1410,7 +1355,7 @@ Free_or_forced_convection <- function (Gr,
   
   if(Gr > 16 * Re^2) {
     
-    conv="free convection"
+    conv <- "free convection"
     
   }
   

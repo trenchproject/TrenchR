@@ -1,12 +1,11 @@
 #' @title Operative Environmental Temperature of a Grasshopper
 #'
-#' @description Predicts body temperatures (operative environmental temperatures) of a grasshopper in C.
-#'  \cr \cr
-#'  Based on \insertCite{Swinbank1963;textual}{TrenchR}, using the regression in  \insertCite{Lactin1998;textual}{TrenchR} following \insertCite{Gates1962;textual}{TrenchR} in  \insertCite{Kingsolver1983;textual}{TrenchR}.
+#' @description Predict body temperatures (operative environmental temperatures) of a grasshopper in C. Based on \insertCite{Swinbank1963;textual}{TrenchR}, using the regression in  \insertCite{Lactin1998;textual}{TrenchR} following \insertCite{Gates1962;textual}{TrenchR} in \insertCite{Kingsolver1983;textual}{TrenchR}.
 #' 
 #' @param T_a \code{numeric} air temperature in C.
 #'
-#' @param T_g  \code{numeric} surface temperature in C. \insertCite{Kingsolver1983;textual}{TrenchR} assumes T_g - T_a = 8.4.
+#' @param T_g  \code{numeric} surface temperature in C. \cr 
+#'             \insertCite{Kingsolver1983;textual}{TrenchR} assumes \code{T_g - T_a = 8.4}.
 #'
 #' @param u \code{numeric} wind speed in m / s.
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/DRYWETAIR.R
 \name{VAPPRS}
 \alias{VAPPRS}
-\title{VAPPRS}
+\title{Calculate Saturation Vapor Pressure}
 \usage{
 VAPPRS(db = db)
 }
@@ -16,7 +16,7 @@ esat \code{numeric} Saturation vapor pressure (Pa)
 Calculates saturation vapor pressure for a given air temperature.
 }
 \examples{
-VAPPRS(db = 30)
+  VAPPRS(db = 30)
 
 }
 \references{
