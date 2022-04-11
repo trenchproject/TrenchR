@@ -1,7 +1,7 @@
 #' @title Helmuth Lab Calculations for Operative Environmental Temperature of a Limpet
 #'
 #' @description Predicts body temperatures (operative environmental temperatures) of a limpet in C. Calculations from Helmuth Lab -- although radiation and convection are altered from original model -- based on \insertCite{Denny2006;textual}{TrenchR}.
-#' 
+#'
 #' @param T_a \code{numeric} air temperature in C.
 #'
 #' @param T_r \code{numeric} rock surface temperature in C in the sunlight.
@@ -22,13 +22,13 @@
 #'
 #' @return \code{numeric} predicted body (operative environmental) temperature (C).
 #'
-#' @family biophysical models 
+#' @family biophysical models
 #'
-#' @author Brian Helmuth lab 
+#' @author Brian Helmuth lab
 #'
 #' @details The original equation uses a finite-difference approach where they divide the rock into series of chunks, and calculate the temperature at each node to derive the conductive heat. For simplification, here it takes the rock temperature as a parameter, and conductive heat is calculated by the product of the area, thermal conductivity of rock and the difference in temperatures of the rock and the body.
 #'   \cr \cr
-#'   Limpets are simulated as cones following and using solar emissiviity values from \insertCite{Campbell1998;textual}{TrenchR}.
+#'   Limpets are simulated as cones following and using solar emissivity values from \insertCite{Campbell1998;textual}{TrenchR}.
 #'   \cr \cr
 #'   The area of the limpet's shell (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) is projected in the direction at which sunlight strikes the organism \insertCite{Pennell1989;textual}{TrenchR}.
 #'   \cr \cr
@@ -40,41 +40,41 @@
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   Tb_limpetBH(T_a = 25, 
-#'               T_r = 30, 
-#'               L = 0.0176, 
-#'               H = 0.0122, 
-#'               I = 1300, 
-#'               u = 1, 
-#'               s_aspect = 90, 
-#'               s_slope = 60, 
+#'   Tb_limpetBH(T_a = 25,
+#'               T_r = 30,
+#'               L = 0.0176,
+#'               H = 0.0122,
+#'               I = 1300,
+#'               u = 1,
+#'               s_aspect = 90,
+#'               s_slope = 60,
 #'               c = 1)
-#' 
-Tb_limpetBH <- function (T_a, 
-                         T_r, 
-                         L, 
-                         H, 
-                         I, 
-                         u, 
-                         s_aspect, 
-                         s_slope, 
+#'
+Tb_limpetBH <- function (T_a,
+                         T_r,
+                         L,
+                         H,
+                         I,
+                         u,
+                         s_aspect,
+                         s_slope,
                          c) {
-  
+
   stopifnot(L > 0, H > 0, I > 0, u >= 0, s_slope >= 0, s_slope <= 90, s_aspect >= 70, s_aspect <= 110, c >= 0, c <= 1)
-  
+
   # Conversions
 
     # temperatures C to K
 
-      T_a <- T_a + 273.15   
-      T_r <- T_r + 273.15   
+      T_a <- T_a + 273.15
+      T_r <- T_r + 273.15
 
     # dgrees to radians
 
       s_aspect <- s_aspect * pi / 180 # covert to radians
       s_slope <- s_slope * pi / 180 # covert to radians
-      r <- L / 2            
-  
+      r <- L / 2
+
   # Calculations
 
     # Adjust solar radiation for sun angles
@@ -84,17 +84,17 @@ Tb_limpetBH <- function (T_a,
 
       delta_i <- cos(r_slope)*cos(s_slope)*cos(s_aspect-r_aspect)+sin(r_slope)*sin(s_slope)
       I <- I*delta_i
-  
+
     # Short wave heat transfer
-  
+
       # Area of the limpet's shell (m^2) projected in the direction at which sunlight strikes the organism (Pennell and Deignan 1989)
 
         Ap <- pi * r^2
 
-      # short-wave absorptivity of the shell (the fraction of light energy that is absorbed) 
-      # Absorptivity from Luke Miller 
+      # short-wave absorptivity of the shell (the fraction of light energy that is absorbed)
+      # Absorptivity from Luke Miller
 
-        if (L >= 0.037) {  
+        if (L >= 0.037) {
 
           alpha_sw <- 0.615
 
@@ -104,25 +104,25 @@ Tb_limpetBH <- function (T_a,
 
         } else {
 
-          alpha_sw <- 0.68 
+          alpha_sw <- 0.68
 
-        } 
-  
+        }
+
         q1 = Ap * alpha_sw * I
-  
+
     # Long-wave energy transfer
-  
+
       # View factor. (Campbell and Norman 1998) simulating limpets as a cone.
-    
+
         Vs <- 0.7
-    
+
       # lateral area of a limpet shell (m^2)
 
-        Al <- pi * r * sqrt(H^2 + r^2) 
+        Al <- pi * r * sqrt(H^2 + r^2)
 
-      #  long-wave emissivity of the shell 
+      #  long-wave emissivity of the shell
 
-        eps_ws <- 0.97  
+        eps_ws <- 0.97
 
       # stefan-boltzmann constant (W m^-2 K^-4)
 
@@ -130,33 +130,33 @@ Tb_limpetBH <- function (T_a,
 
       # clear sky emissivity (Campbell and Norman 1998, 10.11)
 
-        eps_ac <- 9.2 * 10^-6 * T_a^2 
+        eps_ac <- 9.2 * 10^-6 * T_a^2
 
       # emissivity of air with clouds (same as above, 10.12)
 
-        eps_wa <- (1 - 0.84 * c) * eps_ac + 0.84 * c  
+        eps_wa <- (1 - 0.84 * c) * eps_ac + 0.84 * c
 
       q2 <- Vs * Al * eps_ws * sigma * T_a^4 * (eps_wa - 1)
       q3 <- 4 * Vs * Al * eps_ws * sigma * T_a^3
-  
+
 
     # Convective heat transfer
-  
+
       # conductivity of air (W m^-1 K^-1)
 
-        Ka <- 0.00501 + 7.2 * 10^-5 * T_a       
+        Ka <- 0.00501 + 7.2 * 10^-5 * T_a
 
       # kinematic viscosity of air (m^2 s^-1)
 
-        v <- -1.25 * 10^-5 + 9.2 * 10^-8 * T_a  
-  
+        v <- -1.25 * 10^-5 + 9.2 * 10^-8 * T_a
+
       # Reynolds number
 
         Re <- u * L / v
-  
-     # Absorptivity from Luke Miller 
 
-      if (L >= 0.037) {  
+     # Absorptivity from Luke Miller
+
+      if (L >= 0.037) {
 
         a <- 0.447
         b <- 0.516
@@ -171,34 +171,34 @@ Tb_limpetBH <- function (T_a,
         a <- 0.1658
         b <- 0.6206
 
-      } 
-  
+      }
+
       # Nusselt number
 
-        Nu <- a * Re^b    
+        Nu <- a * Re^b
 
       # Heat transfer coefficient (W m^-2 K^-1)
 
-        hc <- a * Ka * ((u / v)^b) * (L^(b - 1)) 
-  
+        hc <- a * Ka * ((u / v)^b) * (L^(b - 1))
+
       # area of the shell in convective contact with the air (m^2)
 
-        A_cv <- Al  
+        A_cv <- Al
         q4 <- hc * A_cv
-  
+
   # Conductive heat transfer
-  
+
     # area of conductive contact between the limpet's foot and the rock (m^2)
 
-      A_cd <- pi * r^2  
+      A_cd <- pi * r^2
 
     # thermal conductivity of rock (W m^-1 K^-1)
 
       Kr <- 3.06
       q5 <- A_cd * Kr
-  
-  
+
+
   T_b <- (q1 + q2 + (q3 + q4) * T_a + q5 * T_r) / (q3 + q4 + q5)
-  
+
   T_b - 273.15
 }
