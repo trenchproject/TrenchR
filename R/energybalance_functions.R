@@ -55,15 +55,15 @@ Qconduction_animal <- function (T_g,
 #' 
 #' @description Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
 #' 
-#' @param T_g \code{numeric} Surface temperature (K).
+#' @param T_g \code{numeric} surface temperature (K).
 #' 
-#' @param T_b \code{numeric} Body temperature (K).
+#' @param T_b \code{numeric} body temperature (K).
 #' 
-#' @param D \code{numeric} Characteristic dimension of the animal (m).
+#' @param D \code{numeric} characteristic dimension of the animal (m).
 #' 
-#' @param K_g \code{numeric} Thermal conductivity of substrate (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}).
+#' @param K_g \code{numeric} thermal conductivity of substrate (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}).
 #' 
-#' @param A \code{numeric} Surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
+#' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
 #' @param proportion \code{numeric} proportion in contact to the surface.
 #' 
@@ -110,13 +110,13 @@ Qconduction_substrate <- function (T_g,
 #' 
 #' @description Calculate convection from an organism to its environment as in \insertCite{Mitchell1976}{TrenchR}. Includes an enhancement factor associated with outdoor environments. 
 #' 
-#' @param T_a \code{numeric} Air temperature (K).
+#' @param T_a \code{numeric} air temperature (K).
 #' 
-#' @param T_b \code{numeric} Initial body temperature (K).
+#' @param T_b \code{numeric} initial body temperature (K).
 #' 
-#' @param H_L \code{numeric} Convective heat transfer coefficient (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).
+#' @param H_L \code{numeric} convective heat transfer coefficient (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).
 #' 
-#' @param A \code{numeric} Surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
+#' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
 #' @param proportion \code{numeric} proportion of surface area exposed to air.
 #' 
@@ -160,7 +160,7 @@ Qconvection <- function (T_a,
 #' 
 #' @description Estimate the heat transfer coefficient for various taxa based on empirical measurements \insertCite{Mitchell1976}{TrenchR}.
 #' 
-#' @param V \code{numeric} Air velocity (m/s).
+#' @param V \code{numeric} air velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
 #' @param D \code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).
 #' 
@@ -215,17 +215,17 @@ heat_transfer_coefficient <- function (V,
 #' 
 #' @description  estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere \insertCite{Mitchell1976}{TrenchR}.
 #' 
-#' @param V \code{numeric} Air velocity (m/s).
+#' @param V \code{numeric} air velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
-#' @param D \code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).
+#' @param D \code{numeric} characteristic dimension (e.g., diameter or snout-vent length) (meters).
 #' 
-#' @param K \code{numeric} Thermal conductivity of air (W m^-1 K^-1), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
+#' @param K \code{numeric} thermal conductivity of air (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #' 
-#' @param nu \code{numeric} Kinematic Viscosity of air (m^2 s^-1), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
+#' @param nu \code{numeric} kinematic Viscosity of air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #' 
-#' @param taxa \code{character} Which class of organism, current choices: sphere, frog, lizard, flyinginsect, spider
+#' @param taxa \code{character} which class of organism, current choices: sphere, frog, lizard, flyinginsect, spider
 #' 
-#' @return \code{numeric} heat transfer coefficient, \code{H_L} (W m^-2 K^-1)
+#' @return \code{numeric} heat transfer coefficient, \code{H_L} (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}).
 #' 
 #' @family biophysical models
 #' 
@@ -270,13 +270,13 @@ heat_transfer_coefficient_approximation <- function (V,
 #' 
 #' @description estimate the heat transfer coefficient \insertCite{Mitchell1976}{TrenchR} using either the relationship in \insertCite{Spotila1992}{TrenchR} or that in \insertCite{Gates1980}{TrenchR}.
 #' 
-#' @param V \code{numeric} Air velocity (m/s).
+#' @param V \code{numeric} air velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
-#' @param D \code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).
+#' @param D \code{numeric} characteristic dimension (e.g., diameter or snout-vent length) (m).
 #' 
-#' @param type \code{character} Choice between "Spotila" and "Gates" for equation to use.
+#' @param type \code{character} choice between "Spotila" and "Gates" for equation to use.
 #' 
-#' @return \code{numeric} heat transfer coefficient, H_L (W m^-2 K^-1)
+#' @return \code{numeric} heat transfer coefficient, H_L (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}).
 #' 
 #' @family biophysical models
 #' 
@@ -316,19 +316,19 @@ heat_transfer_coefficient_simple <- function(V,
 #' 
 #' @description  estimate solar and thermal radiation (W) absorbed by the surface of an animal. Follows \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
 #' 
-#' @param a \code{numeric} solar absorptivity of animal surface (proportion), default value is for reptiles. (0-1)
+#' @param a \code{numeric} solar absorptivity of animal surface (proportion), default value is for reptiles (0-1).
 #' 
-#' @param A \code{numeric} surface area (m^2)
+#' @param A \code{numeric} surface area ((\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
-#' @param psa_dir \code{numeric} proportion surface area exposed to solar radiation. (0-1)
+#' @param psa_dir \code{numeric} proportion surface area exposed to solar radiation (0-1).
 #' 
-#' @param psa_ref \code{numeric} proportion surface area exposed to reflected solar radiation. (0-1)
+#' @param psa_ref \code{numeric} proportion surface area exposed to reflected solar radiation (0-1).
 #' 
-#' @param S_dir \code{numeric} direct solar radiation (W/m^2)
+#' @param S_dir \code{numeric} direct solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #' 
-#' @param S_dif \code{numeric} diffuse solar radiation (W/m^2)
+#' @param S_dif \code{numeric} diffuse solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #' 
-#' @param S_ref \code{numeric} reflected solar radiation (W/m^2), either provided or estimated if surface albedo is provided instead
+#' @param S_ref \code{numeric} reflected solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}), either provided or estimated if surface albedo is provided instead
 #' 
 #' @param a_s \code{numeric} is surface albedo (proportion), optional (not used) if reflected radiation is provided. Values available in \insertCite{Gates1980}{TrenchR} Table 8.2.
 #' 
@@ -383,21 +383,21 @@ Qradiation_absorbed <- function (a = 0.9,
 #' 
 #' @description estimate thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
 #' 
-#' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}
+#' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.
 #' 
-#' @param A \code{numeric} surface area (m^2)
+#' @param A \code{numeric} surface area ((\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
 #' @param psa_dir \code{numeric} proportion surface area exposed to sky (or enclosure) (0-1)
 #' 
-#' @param psa_ref \code{numeric} proportion surface area exposed to ground (0-1)
+#' @param psa_ref \code{numeric} proportion surface area exposed to ground (0-1).
 #' 
-#' @param T_b \code{numeric} body surface temperature (K)
+#' @param T_b \code{numeric} body surface temperature (K).
 #' 
-#' @param T_g \code{numeric} ground surface temperature (K)
+#' @param T_g \code{numeric} ground surface temperature (K).
 #' 
-#' @param T_a \code{numeric} ambient air temperature (K), only required if animal is in enclosed environment
+#' @param T_a \code{numeric} ambient air temperature (K), only required if animal is in enclosed environment.
 #' 
-#' @param enclosed \code{boolean} TRUE or FALSE
+#' @param enclosed \code{logical} if the animal is an enclosed environment or not.
 #' 
 #' @return \code{numeric} emitted thermal radiation, Qemit (W)
 #' 
@@ -458,23 +458,23 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 #' 
 #' @description  estimate heat loss associated with evaporative water loss by an amphibian \insertCite{Spotila1992}{TrenchR} or lizard (based on empirical measurements in \insertCite{Porter1973}{TrenchR}).
 #' 
-#' @param A \code{numeric} surface area (m^2)
+#' @param A \code{numeric} surface area ((\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
-#' @param T_b \code{numeric} body temperature (K)
+#' @param T_b \code{numeric} body temperature (K).
 #' 
-#' @param taxa \code{character} taxa current choices: lizard, amphibian_wetskin (fully wet skin), amphibian (not fully wet skin)
+#' @param taxa \code{character} taxa current choices: lizard, amphibian_wetskin (fully wet skin), amphibian (not fully wet skin).
 #' 
-#' @param rho_s \code{numeric} saturation water vapor density at skin surface (kg/m^3) (needed if amphibian)
+#' @param rho_s \code{numeric} saturation water vapor density at skin surface (kg/m^3) (needed if amphibian).
 #' 
-#' @param rho_a \code{numeric} saturation water vapor density in ambient air (kg/m^3) (needed if amphibian)
+#' @param rho_a \code{numeric} saturation water vapor density in ambient air (kg/m^3) (needed if amphibian).
 #' 
-#' @param h \code{numeric} relative humidity (0-1) (needed if amphibian)
+#' @param h \code{numeric} relative humidity (0-1) (needed if amphibian).
 #' 
-#' @param H \code{numeric} convective heat transfer coefficient (W m^-2 K^-1) (needed if amphibian)
+#' @param H \code{numeric} convective heat transfer coefficient (W m^-2 K^-1) (needed if amphibian).
 #' 
-#' @param r_i \code{numeric} internal (cutaneous) resistance to vapor transport (s/m) (needed if amphibian)
+#' @param r_i \code{numeric} internal (cutaneous) resistance to vapor transport (s/m) (needed if amphibian).
 #' 
-#' @return \code{numeric} evaporative heat loss (W)
+#' @return \code{numeric} evaporative heat loss (W).
 #' 
 #' @family biophysical models
 #' 
@@ -571,9 +571,9 @@ Qevaporation <- function (A,
 #' 
 #' @description Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C using Rosenberg 1974 in \insertCite{Spotila1992}{TrenchR}. See also NichMapR WETAIR and DRYAIR functions \insertCite{Kearney2020}{TrenchR}.
 #' 
-#' @param T_a \code{numeric} air temperature (C)
+#' @param T_a \code{numeric} air temperature (C).
 #' 
-#' @return \code{numeric} Saturation water vapor pressure, e_s (Pa)
+#' @return \code{numeric} Saturation water vapor pressure, \code{e_s} (Pa).
 #' 
 #' @family biophysical models
 #' 
@@ -626,11 +626,11 @@ external_resistance_to_water_vapor_transfer <- function (H,
 #' 
 #' @description Estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from \insertCite{Nagy2005}{TrenchR}.
 #' 
-#' @param m \code{numeric} Mass (grams).
+#' @param m \code{numeric} mass (grams).
 #' 
-#' @param taxa \code{character} Taxa to use in calculate. Options: reptile, bird, mammal
+#' @param taxa \code{character} taxa to use in calculate. Options: reptile, bird, mammal.
 #' 
-#' @return \code{numeric} metabolism (W)
+#' @return \code{numeric} metabolism (W).
 #' 
 #' @family biophysical models
 #' 
@@ -681,13 +681,13 @@ Qmetabolism_from_mass <- function(m,
 #' 
 #' @description  Estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent) \insertCite{Gillooly2001}{TrenchR}.
 #' 
-#' @param m \code{numeric} Mass (grams).
+#' @param m \code{numeric} mass (grams).
 #' 
 #' @param T_b \code{numeric} body temperature (K)
 #' 
-#' @param taxa \code{character} Taxa to use. Options: bird, mammal, reptile, amphibian, invertebrate
+#' @param taxa \code{character} taxa to use. Options: bird, mammal, reptile, amphibian, invertebrate.
 #' 
-#' @return \code{numeric} basal metabolism (W)
+#' @return \code{numeric} basal metabolism (W).
 #' 
 #' @family biophysical models
 #' 
@@ -738,11 +738,11 @@ Qmetabolism_from_mass_temp <- function (m,
 
 #' @title Calculate Actual Vapor Pressure from Dewpoint Temperature
 #'
-#' @description Calculate actual vapor pressure from dewpoint temperature based on \insertCite{Stull2000,Riddell2018}{TrenchR}
+#' @description Calculate actual vapor pressure from dewpoint temperature based on \insertCite{Stull2000,Riddell2018;textual}{TrenchR}.
 #' 
-#' @param Tdewpoint \code{numeric} dewpoint temperature (C)
+#' @param Tdewpoint \code{numeric} dewpoint temperature (C).
 #' 
-#' @return \code{numeric} actual vapor pressure, e_a (kPa)
+#' @return \code{numeric} actual vapor pressure (kPa).
 #' 
 #' @family biophysical models
 #' 
@@ -800,19 +800,19 @@ saturation_vapor_pressure <- function (T_a) {
 #' 
 #' @description Estimate boundary layer resistance under free convection. Based on the function in \insertCite{Riddell2018}{TrenchR}.
 #' 
-#' @param T_a \code{numeric} air temperature (K)
+#' @param T_a \code{numeric} air temperature (K).
 #' 
-#' @param e_s \code{numeric} saturation vapor pressure (kPa)
+#' @param e_s \code{numeric} saturation vapor pressure (kPa).
 #' 
-#' @param e_a \code{numeric} actual vapor pressure (kPa)
+#' @param e_a \code{numeric} actual vapor pressure (kPa).
 #' 
-#' @param elev \code{numeric} elevation (m)
+#' @param elev \code{numeric} elevation (m).
 #' 
-#' @param D \code{numeric} characteristic dimension (e.g., body diameter) (m)
+#' @param D \code{numeric} characteristic dimension (e.g., body diameter) (m).
 #' 
-#' @param u \code{numeric} wind speed (m/s), if not provided assume free convection; if provided, use forced convection if appropriate 
+#' @param u \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}), if not provided assume free convection; if provided, use forced convection if appropriate.
 #' 
-#' @return \code{numeric} boundary layer resistance (s cm^-1) 
+#' @return \code{numeric} boundary layer resistance (\ifelse{html}{\out{s cm<sup>-1</sup>}}{\eqn{s cm^-1}{ASCII}}). 
 #' 
 #' @family biophysical models
 #' 
@@ -893,25 +893,25 @@ boundary_layer_resistance <- function (T_a,
 #'
 #' @description Calculate humid operative temperature, using adaptation of \insertCite{Campbell1998;textual}{TrenchR} \insertCite{Riddell2018}{TrenchR}.
 #' 
-#' @param r_i \code{numeric} internal (skin) resistance (s cm^-1)
+#' @param r_i \code{numeric} internal (skin) resistance (\ifelse{html}{\out{s cm<sup>-1</sup>}}{\eqn{s cm^-1}{ASCII}}).
 #' 
-#' @param r_b \code{numeric} boundary layer resistance (s cm^-1)
+#' @param r_b \code{numeric} boundary layer resistance (\ifelse{html}{\out{s cm<sup>-1</sup>}}{\eqn{s cm^-1}{ASCII}}).
 #' 
-#' @param D \code{numeric} body diameter (meters), (diameter = 0.0016*log(mass) + 0.0061 for mass(g))
+#' @param D \code{numeric} body diameter (meters), (diameter = 0.0016*log(mass) + 0.0061 for mass(g)).
 #' 
-#' @param T_a \code{numeric} ambient temperature (C)
+#' @param T_a \code{numeric} ambient temperature (C).
 #' 
-#' @param elev \code{numeric} elevation (m)
+#' @param elev \code{numeric} elevation (m).
 #' 
-#' @param e_s \code{numeric} saturation vapor pressure (kPa)
+#' @param e_s \code{numeric} saturation vapor pressure (kPa).
 #' 
-#' @param e_a \code{numeric} actual vapor pressure (kPa)
+#' @param e_a \code{numeric} actual vapor pressure (kPa).
 #' 
-#' @param Qabs \code{numeric} Solar and thermal radiation absorbed (W)
+#' @param Qabs \code{numeric} Solar and thermal radiation absorbed (W).
 #' 
-#' @param epsilon \code{numeric} emissivity of salamander skin, default epsilon=0.96 
+#' @param epsilon \code{numeric} emissivity of salamander skin.
 #' 
-#' @return \code{numeric} humid operative temperature (C)
+#' @return \code{numeric} humid operative temperature (C).
 #' 
 #' @family biophysical models
 #' 
@@ -975,15 +975,15 @@ Tb_salamander_humid <- function (r_i,
 #' 
 #' @description Estimate longwave (thermal) radiation (W) absorbed from the sky and the ground \insertCite{Campbell1998,Riddell2018}{TrenchR}.
 #' 
-#' @param T_a \code{numeric} air temperature (C)
+#' @param T_a \code{numeric} air temperature (C).
 #' 
-#' @param T_g \code{numeric} ground temperature (C)
+#' @param T_g \code{numeric} ground temperature (C).
 #' 
-#' @param epsilon_ground \code{numeric} emissitivity (proportion) for more soil types \insertCite{Campbell1998}{TrenchR}, default value of 0.97
+#' @param epsilon_ground \code{numeric} emissitivity (proportion) for more soil types \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @param a_longwave \code{numeric} absorptance (proportion) of organism to longwave radiation (\insertCite{Bartlett1967}{TrenchR} and Buckley 2008), default value of 0.965
+#' @param a_longwave \code{numeric} absorptance (proportion) of organism to longwave radiation (\insertCite{Bartlett1967}{TrenchR} and Buckley 2008).
 #' 
-#' @return \code{numeric} thermal radiation absorbed (W)
+#' @return \code{numeric} thermal radiation absorbed (W).
 #' 
 #' @family biophysical models
 #' 
@@ -1026,15 +1026,15 @@ Qthermal_radiation_absorbed <- function (T_a,
 #'
 #' @description Estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal; adapted from \insertCite{Campbell1998;textual}{TrenchR} \insertCite{Riddell2018}{TrenchR}.
 #' 
-#' @param Tg_max \code{numeric} daily maximum soil surface temperature (C)
+#' @param Tg_max \code{numeric} daily maximum soil surface temperature (C).
 #' 
-#' @param Tg_min \code{numeric} daily minimum soil surface temperature (C)
+#' @param Tg_min \code{numeric} daily minimum soil surface temperature (C).
 #' 
-#' @param hour \code{numeric} hour of the day
+#' @param hour \code{numeric} hour of the day.
 #' 
-#' @param depth \code{numeric} depth (cm) 
+#' @param depth \code{numeric} depth (cm) .
 #' 
-#' @return \code{numeric} soil temperature (C)
+#' @return \code{numeric} soil temperature (C).
 #' 
 #' @family biophysical models
 #' 
@@ -1069,13 +1069,13 @@ Tsoil <- function (Tg_max,
 #'
 #' @description Estimate the Nusselt Number, which describes dimensionless conductance \insertCite{Gates1980}{TrenchR}.
 #' 
-#' @param H_L \code{numeric} Convective heat transfer coefficient (W m^-2 K^-1)
+#' @param H_L \code{numeric} convective heat transfer coefficient (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}).
 #' 
-#' @param D \code{numeric} Characteristic dimension (e.g., body diameter) (m)
+#' @param D \code{numeric} characteristic dimension (e.g., body diameter) (m).
 #' 
-#' @param K \code{numeric} Thermal conductivity (W K^-1 m^-1)
+#' @param K \code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}).
 #' 
-#' @return \code{numeric} Nusselt number
+#' @return \code{numeric} Nusselt number.
 #' 
 #' @family biophysical models
 #' 
@@ -1104,13 +1104,13 @@ Nusselt_number <- function(H_L,
 #'
 #' @description Estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity \insertCite{Gates1980}{TrenchR}.
 #' 
-#' @param c_p \code{numeric} specific heat at constant pressure (J mol^{-1} K^{-1})
+#' @param c_p \code{numeric} specific heat at constant pressure (\ifelse{html}{\out{J mol<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J mol^-1 K^-1}{ASCII}}).
 #' 
-#' @param mu \code{numeric} dynamic viscosity (mol s^{-1}m^{-1})
+#' @param mu \code{numeric} dynamic viscosity (\ifelse{html}{\out{mol s<sup>-1</sup> m<sup>-1</sup>}}{\eqn{mol s^-1 m^-1}{ASCII}}).
 #' 
-#' @param K \code{numeric} Thermal conductivity (W K^-1 m^-1)
+#' @param K \code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}).
 #' 
-#' @return \code{numeric} Prandtl number
+#' @return \code{numeric} Prandtl number.
 #' 
 #' @family biophysical models
 #' 

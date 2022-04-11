@@ -7,10 +7,10 @@
 saturation_water_vapor_pressure(T_a)
 }
 \arguments{
-\item{T_a}{\code{numeric} air temperature (C)}
+\item{T_a}{\code{numeric} air temperature (C).}
 }
 \value{
-\code{numeric} Saturation water vapor pressure, e_s (Pa)
+\code{numeric} Saturation water vapor pressure, \code{e_s} (Pa).
 }
 \description{
 Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40C using Rosenberg 1974 in \insertCite{Spotila1992}{TrenchR}. See also NichMapR WETAIR and DRYAIR functions \insertCite{Kearney2020}{TrenchR}.

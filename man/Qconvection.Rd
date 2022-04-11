@@ -7,15 +7,15 @@
 Qconvection(T_a, T_b, A, proportion, H_L = 10.45, ef = 1.23)
 }
 \arguments{
-\item{T_a}{\code{numeric} Air temperature (K).}
+\item{T_a}{\code{numeric} air temperature (K).}
 
-\item{T_b}{\code{numeric} Initial body temperature (K).}
+\item{T_b}{\code{numeric} initial body temperature (K).}
 
-\item{A}{\code{numeric} Surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
+\item{A}{\code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
 \item{proportion}{\code{numeric} proportion of surface area exposed to air.}
 
-\item{H_L}{\code{numeric} Convective heat transfer coefficient (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).}
+\item{H_L}{\code{numeric} convective heat transfer coefficient (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).}
 
 \item{ef}{\code{numeric} is the enhancement factor, used to adjust H to field conditions.  Approximated as mean value of 1.23 by default, but see \insertCite{Mitchell1976}{TrenchR} for further information.}
 }

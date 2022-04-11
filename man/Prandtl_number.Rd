@@ -7,14 +7,14 @@
 Prandtl_number(c_p, mu, K)
 }
 \arguments{
-\item{c_p}{\code{numeric} specific heat at constant pressure (J mol^{-1} K^{-1})}
+\item{c_p}{\code{numeric} specific heat at constant pressure (\ifelse{html}{\out{J mol<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J mol^-1 K^-1}{ASCII}}).}
 
-\item{mu}{\code{numeric} dynamic viscosity (mol s^{-1}m^{-1})}
+\item{mu}{\code{numeric} dynamic viscosity (\ifelse{html}{\out{mol s<sup>-1</sup> m<sup>-1</sup>}}{\eqn{mol s^-1 m^-1}{ASCII}}).}
 
-\item{K}{\code{numeric} Thermal conductivity (W K^-1 m^-1)}
+\item{K}{\code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}).}
 }
 \value{
-\code{numeric} Prandtl number
+\code{numeric} Prandtl number.
 }
 \description{
 Estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity \insertCite{Gates1980}{TrenchR}.

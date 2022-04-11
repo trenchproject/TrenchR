@@ -7,14 +7,14 @@
 heat_transfer_coefficient_simple(V, D, type)
 }
 \arguments{
-\item{V}{\code{numeric} Air velocity (m/s).}
+\item{V}{\code{numeric} air velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
-\item{D}{\code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).}
+\item{D}{\code{numeric} characteristic dimension (e.g., diameter or snout-vent length) (m).}
 
-\item{type}{\code{character} Choice between "Spotila" and "Gates" for equation to use.}
+\item{type}{\code{character} choice between "Spotila" and "Gates" for equation to use.}
 }
 \value{
-\code{numeric} heat transfer coefficient, H_L (W m^-2 K^-1)
+\code{numeric} heat transfer coefficient, H_L (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}).
 }
 \description{
 estimate the heat transfer coefficient \insertCite{Mitchell1976}{TrenchR} using either the relationship in \insertCite{Spotila1992}{TrenchR} or that in \insertCite{Gates1980}{TrenchR}.

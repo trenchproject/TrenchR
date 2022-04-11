@@ -24,7 +24,7 @@ Named \code{list} with elements \itemize{
   \item{\code{htovpr}:}{ \code{numeric} latent heat of vaporization of water (\ifelse{html}{\out{J kg<sup>-1</sup>}}{\eqn{J kg^-1}{ASCII}})}
   \item{\code{tcoeff}:}{ \code{numeric} temperature coefficient of volume expansion (\ifelse{html}{\out{K<sup>-1</sup>}}{\eqn{K^-1}{ASCII}})}
   \item{\code{ggroup}:}{ \code{numeric} group of variables in Grashof number (1-m3 -K)}
-  \item{\code{bbemit}:}{ \code{numeric} black body emittance (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}})}
+  \item{\code{bbemit}:}{ \code{numeric} black body emittance (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}})}
   \item{\code{emtmax}:}{ \code{numeric} wave length of maximum emittance (m)}
  }
 }

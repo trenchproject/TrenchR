@@ -7,26 +7,26 @@
 Tb_salamander_humid(r_i, r_b, D, T_a, elev, e_a, e_s, Qabs, epsilon = 0.96)
 }
 \arguments{
-\item{r_i}{\code{numeric} internal (skin) resistance (s cm^-1)}
+\item{r_i}{\code{numeric} internal (skin) resistance (\ifelse{html}{\out{s cm<sup>-1</sup>}}{\eqn{s cm^-1}{ASCII}}).}
 
-\item{r_b}{\code{numeric} boundary layer resistance (s cm^-1)}
+\item{r_b}{\code{numeric} boundary layer resistance (\ifelse{html}{\out{s cm<sup>-1</sup>}}{\eqn{s cm^-1}{ASCII}}).}
 
-\item{D}{\code{numeric} body diameter (meters), (diameter = 0.0016*log(mass) + 0.0061 for mass(g))}
+\item{D}{\code{numeric} body diameter (meters), (diameter = 0.0016*log(mass) + 0.0061 for mass(g)).}
 
-\item{T_a}{\code{numeric} ambient temperature (C)}
+\item{T_a}{\code{numeric} ambient temperature (C).}
 
-\item{elev}{\code{numeric} elevation (m)}
+\item{elev}{\code{numeric} elevation (m).}
 
-\item{e_a}{\code{numeric} actual vapor pressure (kPa)}
+\item{e_a}{\code{numeric} actual vapor pressure (kPa).}
 
-\item{e_s}{\code{numeric} saturation vapor pressure (kPa)}
+\item{e_s}{\code{numeric} saturation vapor pressure (kPa).}
 
-\item{Qabs}{\code{numeric} Solar and thermal radiation absorbed (W)}
+\item{Qabs}{\code{numeric} Solar and thermal radiation absorbed (W).}
 
-\item{epsilon}{\code{numeric} emissivity of salamander skin, default epsilon=0.96}
+\item{epsilon}{\code{numeric} emissivity of salamander skin.}
 }
 \value{
-\code{numeric} humid operative temperature (C)
+\code{numeric} humid operative temperature (C).
 }
 \description{
 Calculate humid operative temperature, using adaptation of \insertCite{Campbell1998;textual}{TrenchR} \insertCite{Riddell2018}{TrenchR}.

@@ -10,7 +10,7 @@
 #' 
 #' @param svl \code{numeric} lizard snout vent length (mm).
 #' 
-#' @param m \code{numeric} lizard mass in g, note that it can be estimated as massfromsvl=function(svl) 3.55*10^-5*(svl)^3.00 \insertCite{Tinkle1972}{TrenchR}.
+#' @param m \code{numeric} lizard mass in g, note that it can be estimated as \code{\link{mass_from_length}}: \ifelse{html}{\out{3.55*10<sup>-5</sup>*length<sup>3</sup>}}{\eqn{3.55*10^-5 * length^3}{ASCII}}
 #' 
 #' @param psi \code{numeric} solar zenith angle (degrees).
 #' 
