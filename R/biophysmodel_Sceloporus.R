@@ -14,7 +14,7 @@
 #' 
 #' @param psi \code{numeric} solar zenith angle (degrees).
 #' 
-#' @param rho_S \code{numeric} surface albedo (proportion). ~0.25 for grass, ~0.1 for dark soil, >0.75 for fresh snow \insertCite{Campbell1998}{TrenchR}.
+#' @param rho_S \code{numeric} surface albedo (proportion). ~ 0.25 for grass, ~ 0.1 for dark soil, > 0.75 for fresh snow \insertCite{Campbell1998}{TrenchR}.
 #' 
 #' @param elev \code{numeric} elevation (m).
 #' 

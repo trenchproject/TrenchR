@@ -458,21 +458,21 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 #' 
 #' @description  estimate heat loss associated with evaporative water loss by an amphibian \insertCite{Spotila1992}{TrenchR} or lizard (based on empirical measurements in \insertCite{Porter1973}{TrenchR}).
 #' 
-#' @param A \code{numeric} surface area ((\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
+#' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
 #' @param T_b \code{numeric} body temperature (K).
 #' 
 #' @param taxa \code{character} taxa current choices: lizard, amphibian_wetskin (fully wet skin), amphibian (not fully wet skin).
 #' 
-#' @param rho_s \code{numeric} saturation water vapor density at skin surface (kg/m^3) (needed if amphibian).
+#' @param rho_s \code{numeric} saturation water vapor density at skin surface (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).
 #' 
-#' @param rho_a \code{numeric} saturation water vapor density in ambient air (kg/m^3) (needed if amphibian).
+#' @param rho_a \code{numeric} saturation water vapor density in ambient air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).
 #' 
 #' @param h \code{numeric} relative humidity (0-1) (needed if amphibian).
 #' 
-#' @param H \code{numeric} convective heat transfer coefficient (W m^-2 K^-1) (needed if amphibian).
+#' @param H \code{numeric} convective heat transfer coefficient (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}) (needed if amphibian).
 #' 
-#' @param r_i \code{numeric} internal (cutaneous) resistance to vapor transport (s/m) (needed if amphibian).
+#' @param r_i \code{numeric} internal (cutaneous) resistance to vapor transport (\ifelse{html}{\out{s m<sup>-1</sup>}}{\eqn{s m^-1}{ASCII}}) (needed if amphibian).
 #' 
 #' @return \code{numeric} evaporative heat loss (W).
 #' 
@@ -596,11 +596,11 @@ saturation_water_vapor_pressure <- function (T_a) {
 #'
 #' @description  estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport \insertCite{Spotila1992}{TrenchR}
 #' 
-#' @param H \code{numeric} heat transfer (convection) coefficient (W m^-2 C^-1)
+#' @param H \code{numeric} heat transfer (convection) coefficient (\ifelse{html}{\out{W m<sup>-2</sup> C<sup>-1</sup>}}{\eqn{W m^-2 C^-1}{ASCII}}).
 #' 
-#' @param rhocp \code{numeric} aggregate parameter (J m^-3 C^-1) that is the product of the density of air (kg m^-3) and the specific heat of air at constant pressure (J kg^-1 C^-1). Default of 12000 J m^-3 C^-1 is commonly assumed.
+#' @param rhocp \code{numeric} aggregate parameter (\ifelse{html}{\out{J m<sup>-3</sup> C<sup>-1</sup>}}{\eqn{J m^-3 C^-1}{ASCII}}) that is the product of the density of air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) and the specific heat of air at constant pressure (\ifelse{html}{\out{J kg<sup>-1</sup> C<sup>-1</sup>}}{\eqn{J kg^-1 C^-1}{ASCII}}). Default of 12000 (\ifelse{html}{\out{J m<sup>-3</sup> C<sup>-1</sup>}}{\eqn{J m^-3 C^-1}{ASCII}}) commonly assumed.
 #' 
-#' @return \code{numeric} external resistance to water vapor transfer (s m^-1)
+#' @return \code{numeric} external resistance to water vapor transfer (\ifelse{html}{\out{s m<sup>-1</sup>}}{\eqn{s m^-1}{ASCII}}).
 #' 
 #' @family biophysical models
 #' 
@@ -683,7 +683,7 @@ Qmetabolism_from_mass <- function(m,
 #' 
 #' @param m \code{numeric} mass (grams).
 #' 
-#' @param T_b \code{numeric} body temperature (K)
+#' @param T_b \code{numeric} body temperature (K).
 #' 
 #' @param taxa \code{character} taxa to use. Options: bird, mammal, reptile, amphibian, invertebrate.
 #' 
@@ -767,9 +767,9 @@ actual_vapor_pressure <- function (Tdewpoint) {
 #'
 #' @description Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation \insertCite{Stull2000,Riddell2018}{TrenchR}.
 #' 
-#' @param T_a \code{numeric} air temperature (K)
+#' @param T_a \code{numeric} air temperature (K).
 #' 
-#' @return \code{numeric} saturation vapor pressure, e_s (kPa)
+#' @return \code{numeric} saturation vapor pressure, \code{e_s} (kPa).
 #' 
 #' @family biophysical models
 #' 
@@ -1032,7 +1032,7 @@ Qthermal_radiation_absorbed <- function (T_a,
 #' 
 #' @param hour \code{numeric} hour of the day.
 #' 
-#' @param depth \code{numeric} depth (cm) .
+#' @param depth \code{numeric} depth (cm).
 #' 
 #' @return \code{numeric} soil temperature (C).
 #' 
@@ -1141,11 +1141,11 @@ Prandtl_number <- function (c_p,
 #' 
 #' @param D \code{numeric} characteristic dimension (e.g., body diameter) (m)
 #' 
-#' @param u \code{numeric} wind speed (m/s)
+#' @param u \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
-#' @param nu \code{numeric} the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^(-1)), can calculate from DRYAIR or WETAIR functions
+#' @param nu \code{numeric} the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}); can calculate from \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #' 
-#' @return \code{numeric} Reynolds number
+#' @return \code{numeric} Reynolds number.
 #' 
 #' @family biophysical models
 #' 
@@ -1176,11 +1176,11 @@ Reynolds_number <- function(u,
 #' 
 #' @param Ta \code{numeric} Air temperature (C).
 #' 
-#' @param Tg \code{numeric} Ground (surface) temperature (C).
+#' @param Tg \code{numeric} ground (surface) temperature (C).
 #' 
 #' @param D \code{numeric} characteristic dimension (e.g., body diameter) (meters).
 #' 
-#' @param nu \code{numeric} the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^-1), can calculate from DRYAIR() or WETAIR()
+#' @param nu \code{numeric} the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}); can calculate from \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #' 
 #' @return \code{numeric} Grashof number.
 #' 
@@ -1220,11 +1220,11 @@ Grashof_number <- function (Ta,
 #' 
 #' @param Tg \code{numeric} Ground (surface) temperature (C).
 #' 
-#' @param beta \code{numeric} coefficient of volumetric thermal expansion, beta= 3.67 x 10^-3 C^-1  in air and 41.9 x 10^-4 C^-1 in water.
+#' @param beta \code{numeric} coefficient of volumetric thermal expansion, \code{beta} = 3.67 x \ifelse{html}{\out{10<sup>-3</sup> C<sup>-1</sup>}}{\eqn{10^-3 C^-1}{ASCII}}  in air and 41.9 x \ifelse{html}{\out{10<sup>-4</sup> C<sup>-1</sup>}}{\eqn{10^-4 C^-1}{ASCII}} in water.
 #' 
 #' @param D \code{numeric} is characteristic dimension (e.g., body diameter) (m)
 #' 
-#' @param nu \code{numeric} is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s-1), can calculate from DRYAIR or WETAIR
+#' @param nu \code{numeric} is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}); can calculate from \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #' 
 #' @return \code{numeric} Grashof number
 #' 
@@ -1261,11 +1261,11 @@ Grashof_number_Gates <- function (Ta,
 #' 
 #' @description Estimate the Nusselt number from the Reynolds number for various taxa \insertCite{Mitchell1976;textual}{TrenchR} Table 1 (Convective Heat Transfer Relations for Animal Shapes).  
 #' 
-#' @param Re \code{numeric} is the Reynolds Number (dimensionless)
+#' @param Re \code{numeric} Reynolds Number (dimensionless).
 #' 
-#' @param taxa \code{character} Which class of organism, current choices: sphere, cylinder, frog, lizard_traverse_to_air_flow, lizard_parallel_to_air_flow, lizard_surface, lizard_elevated, flyinginsect, spider
+#' @param taxa \code{character} which class of organism, current choices: sphere, cylinder, frog, lizard_traverse_to_air_flow, lizard_parallel_to_air_flow, lizard_surface, lizard_elevated, flyinginsect, spider.
 #' 
-#' @return \code{numeric} Nusselt number (dimensionless)
+#' @return \code{numeric} Nusselt number (dimensionless).
 #' 
 #' @family biophysical models
 #' 
@@ -1300,9 +1300,9 @@ Nusselt_from_Reynolds <- function (Re,
 #' 
 #' @description Estimate the Nusselt number from the Grashof Number \insertCite{Gates1980}{TrenchR}.
 #' 
-#' @param Gr \code{numeric} is the Grashof Number (dimensionless)
+#' @param Gr \code{numeric} Grashof Number (dimensionless).
 #' 
-#' @return \code{numeric} Nusselt number (dimensionless)
+#' @return \code{numeric} Nusselt number (dimensionless).
 #' 
 #' @family biophysical models
 #' 

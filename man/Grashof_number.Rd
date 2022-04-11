@@ -9,11 +9,11 @@ Grashof_number(Ta, Tg, D, nu)
 \arguments{
 \item{Ta}{\code{numeric} Air temperature (C).}
 
-\item{Tg}{\code{numeric} Ground (surface) temperature (C).}
+\item{Tg}{\code{numeric} ground (surface) temperature (C).}
 
 \item{D}{\code{numeric} characteristic dimension (e.g., body diameter) (meters).}
 
-\item{nu}{\code{numeric} the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^-1), can calculate from DRYAIR() or WETAIR()}
+\item{nu}{\code{numeric} the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}); can calculate from \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
 }
 \value{
 \code{numeric} Grashof number.

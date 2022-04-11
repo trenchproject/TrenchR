@@ -7,10 +7,10 @@
 Nusselt_from_Grashof(Gr)
 }
 \arguments{
-\item{Gr}{\code{numeric} is the Grashof Number (dimensionless)}
+\item{Gr}{\code{numeric} Grashof Number (dimensionless).}
 }
 \value{
-\code{numeric} Nusselt number (dimensionless)
+\code{numeric} Nusselt number (dimensionless).
 }
 \description{
 Estimate the Nusselt number from the Grashof Number \insertCite{Gates1980}{TrenchR}.

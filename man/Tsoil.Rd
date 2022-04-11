@@ -13,7 +13,7 @@ Tsoil(Tg_max, Tg_min, hour, depth)
 
 \item{hour}{\code{numeric} hour of the day.}
 
-\item{depth}{\code{numeric} depth (cm) .}
+\item{depth}{\code{numeric} depth (cm).}
 }
 \value{
 \code{numeric} soil temperature (C).

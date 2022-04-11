@@ -9,7 +9,7 @@ Qmetabolism_from_mass_temp(m, T_b, taxa)
 \arguments{
 \item{m}{\code{numeric} mass (grams).}
 
-\item{T_b}{\code{numeric} body temperature (K)}
+\item{T_b}{\code{numeric} body temperature (K).}
 
 \item{taxa}{\code{character} taxa to use. Options: bird, mammal, reptile, amphibian, invertebrate.}
 }
