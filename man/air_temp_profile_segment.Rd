@@ -7,9 +7,9 @@
 air_temp_profile_segment(T_r, u_r, zr, z0, z, T_s)
 }
 \arguments{
-\item{T_r}{\code{numeric} a vector of temperature at the 3 reference heights (C).}
+\item{T_r}{\code{numeric} a vector of temperature (C) at the 3 reference heights.}
 
-\item{u_r}{\code{numeric} a vector of wind speeds at the 3 reference heights (m/s).}
+\item{u_r}{\code{numeric} a vector of wind speeds (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at the 3 reference heights.}
 
 \item{zr}{\code{numeric} a vector of 3 reference heights (meters).}
 

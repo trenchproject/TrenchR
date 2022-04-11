@@ -7,13 +7,13 @@
 air_temp_profile_neutral(T_r, zr, z0, z, T_s)
 }
 \arguments{
-\item{T_r}{\code{numeric} temperature at reference height (C).}
+\item{T_r}{\code{numeric} temperature (C) at reference height.}
 
-\item{zr}{\code{numeric} initial reference height (meters).}
+\item{zr}{\code{numeric} initial reference height (m).}
 
-\item{z0}{\code{numeric} surface roughness (meters).}
+\item{z0}{\code{numeric} surface roughness (m).}
 
-\item{z}{\code{numeric} height to scale to (meters).}
+\item{z}{\code{numeric} height to scale to (m).}
 
 \item{T_s}{\code{numeric} surface temperatures (C).}
 }

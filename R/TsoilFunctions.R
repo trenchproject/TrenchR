@@ -138,7 +138,7 @@ soil_temperature_integrand <- function (x,
 
 #' @title Core Function Called to Solve Equation for Soil Temperature
 #'
-#' @description Function called by soil_temp_noint to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}.
+#' @description Function called by \code{\link{soil_temperature_function}} to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}.
 #' 
 #' @param L \code{numeric} Monin-Obukhov length, a measure of the instability of heat flow (see \insertCite{Beckman1973;textual}{TrenchR}).
 #' 
@@ -148,7 +148,7 @@ soil_temperature_integrand <- function (x,
 #' 
 #' @param k \code{numeric} von Karman's constant.
 #' 
-#' @param V_inst \code{numeric} instantaneous wind speed (m/s).
+#' @param V_inst \code{numeric} instantaneous wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
 #' @param z_r \code{numeric} reference height (m).
 #' 

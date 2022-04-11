@@ -7,15 +7,15 @@
 air_temp_profile(T_r, u_r, zr, z0, z, T_s)
 }
 \arguments{
-\item{T_r}{\code{numeric} temperature at reference height (C).}
+\item{T_r}{\code{numeric} temperature (C) at reference height.}
 
-\item{u_r}{\code{numeric} windspeed at reference height (m/s).}
+\item{u_r}{\code{numeric} windspeed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at reference height.}
 
-\item{zr}{\code{numeric} initial reference height (meters).}
+\item{zr}{\code{numeric} initial reference height (m).}
 
-\item{z0}{\code{numeric} surface roughness (meters).}
+\item{z0}{\code{numeric} surface roughness (m).}
 
-\item{z}{\code{numeric} height to scale (meters).}
+\item{z}{\code{numeric} height to scale (m).}
 
 \item{T_s}{\code{numeric} surface temperatures (C).}
 }
@@ -23,7 +23,7 @@ air_temp_profile(T_r, u_r, zr, z0, z, T_s)
 \code{numeric} temperature (C).
 }
 \description{
-estimate temperature (C) at a specified height (meters). Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR \insertCite{Kearney2017}{TrenchR}.
+estimate temperature (C) at a specified height (m). Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR \insertCite{Kearney2017}{TrenchR}.
 }
 \examples{
   air_temp_profile(T_r = 20,

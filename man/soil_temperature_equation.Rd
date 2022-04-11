@@ -15,7 +15,7 @@ soil_temperature_equation(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s)
 
 \item{k}{\code{numeric} von Karman's constant.}
 
-\item{V_inst}{\code{numeric} instantaneous wind speed (m/s).}
+\item{V_inst}{\code{numeric} instantaneous wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
 \item{z_r}{\code{numeric} reference height (m).}
 
@@ -29,7 +29,7 @@ soil_temperature_equation(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s)
 soil temperature function
 }
 \description{
-Function called by soil_temp_noint to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}.
+Function called by \code{\link{soil_temperature_function}} to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}.
 }
 \examples{
 soil_temperature_equation(L      = -10, 
