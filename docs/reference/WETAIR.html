@@ -41,12 +41,9 @@
 
 <meta property="og:title" content="Calculate Properties of Wet Air — WETAIR" />
 <meta property="og:description" content="Calculates several properties of humid air as output variables below. The program is based on equations from (List 1971)
-. WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP)
-(1) Psychrometric data:
-If WB is known but not RH, then set RH = -1 and DP = 999.
-If RH is known but not WB then set WB = 0 and DP = 999.
-(2) Hygrometric data:
-If DP is known then set WB = 0 and RH = 0." />
+. 
+  
+ WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. See Details." />
 
 
 
@@ -145,15 +142,12 @@ If DP is known then set WB = 0 and RH = 0." />
 
     <div class="ref-description">
     <p>Calculates several properties of humid air as output variables below. The program is based on equations from (List 1971)
-. WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP)</p>
-<p>(1) Psychrometric data:
-If WB is known but not RH, then set RH = -1 and DP = 999.
-If RH is known but not WB then set WB = 0 and DP = 999.
-(2) Hygrometric data:
-If DP is known then set WB = 0 and RH = 0.</p>
+. 
+ <br /> 
+ WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. See Details.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>WETAIR</span><span class='op'>(</span>db <span class='op'>=</span> <span class='va'>db</span>, wb <span class='op'>=</span> <span class='va'>db</span>, rh <span class='op'>=</span> <span class='fl'>0</span>, dp <span class='op'>=</span> <span class='fl'>999</span>, bp <span class='op'>=</span> <span class='fl'>101325</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>WETAIR</span><span class='op'>(</span><span class='va'>db</span>, wb <span class='op'>=</span> <span class='va'>db</span>, rh <span class='op'>=</span> <span class='fl'>0</span>, dp <span class='op'>=</span> <span class='fl'>999</span>, bp <span class='op'>=</span> <span class='fl'>101325</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -182,16 +176,25 @@ If DP is known then set WB = 0 and RH = 0.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>e <code>numeric</code> Vapor pressure (Pa).</p>
-<p>esat <code>numeric</code> Saturation vapor pressure (Pa).</p>
-<p>vd <code>numeric</code> Vapor density (kg m<sup>-3</sup>).</p>
-<p>rw <code>numeric</code> Mixing ration (kg kg<sup>-1</sup>).</p>
-<p>tvir <code>numeric</code> Virtual temperature (K).</p>
-<p>tvinc <code>numeric</code> Virtual temperature increment (K).</p>
-<p>denair <code>numeric</code> Hourly predictions of the soil moisture under the maximum specified shade.</p>
-<p>cp <code>numeric</code> Specific heat of air at constant pressure (J kg<sup>-1</sup> K<sup>-1</sup>).</p>
-<p>wtrpot <code>numeric</code> Water potential (Pa).</p>
-<p>rh <code>numeric</code> Relative humidity (%).</p>
+    <p>Named <code>list</code> with elements</p><ul>
+<li><p><code>e</code>: <code>numeric</code> saturation vapor pressure (Pa)</p></li>
+<li><p><code>vd</code>: <code>numeric</code> vapor density (kg m<sup>-3</sup>)</p></li>
+<li><p><code>rw</code>: <code>numeric</code> mixing ration (kg kg<sup>-1</sup>)</p></li>
+<li><p><code>tvir</code>: <code>numeric</code> virtual temperature (K)</p></li>
+<li><p><code>tvinc</code>: <code>numeric</code> virtual temperature increment (K)</p></li>
+<li><p><code>denair</code>: denair <code>numeric</code> hourly predictions of the soil moisture under the maximum specified shade</p></li>
+<li><p><code>cp</code>: <code>numeric</code> specific heat of air at constant pressure (J kg<sup>-1</sup> K<sup>-1</sup>)</p></li>
+<li><p><code>wtrpot</code>: <code>numeric</code> water potential (Pa)</p></li>
+<li><p><code>rh</code>: <code>numeric</code> relative humidity (%)</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP):</p><ul>
+<li><p>Psychrometric data: If WB is known but not RH, then set RH = -1 and DP = 999. If RH is known but not WB then set WB = 0 and DP = 999</p></li>
+<li><p>Hygrometric data: If DP is known, set WB = 0 and RH = 0</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>List RJ (1971).
@@ -200,7 +203,10 @@ If DP is known then set WB = 0 and RH = 0.</p>
 <a href='https://repository.si.edu/handle/10088/23746'>https://repository.si.edu/handle/10088/23746</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='fu'>WETAIR</span><span class='op'>(</span>db<span class='op'>=</span><span class='fl'>30</span>, wb<span class='op'>=</span><span class='fl'>28</span>, rh<span class='op'>=</span><span class='fl'>60</span>, bp<span class='op'>=</span><span class='fl'>100</span><span class='op'>*</span><span class='fl'>1000</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>WETAIR</span><span class='op'>(</span>db <span class='op'>=</span> <span class='fl'>30</span>, 
+         wb <span class='op'>=</span> <span class='fl'>28</span>, 
+         rh <span class='op'>=</span> <span class='fl'>60</span>, 
+         bp <span class='op'>=</span> <span class='fl'>100</span> <span class='op'>*</span> <span class='fl'>1000</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $e
 #&gt; [1] 2545.82
 #&gt; 
