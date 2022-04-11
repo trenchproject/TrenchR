@@ -7,15 +7,15 @@
 WETAIR(db, wb = db, rh = 0, dp = 999, bp = 101325)
 }
 \arguments{
-\item{db}{\code{numeric} Dry bulb temperature (C).}
+\item{db}{\code{numeric} dry bulb temperature (C).}
 
-\item{wb}{\code{numeric} Wet bulb temperature (C).}
+\item{wb}{\code{numeric} wet bulb temperature (C).}
 
-\item{rh}{\code{numeric} Relative humidity (\%).}
+\item{rh}{\code{numeric} relative humidity (\%).}
 
-\item{dp}{\code{numeric} Dew point temperature (C).}
+\item{dp}{\code{numeric} dew point temperature (C).}
 
-\item{bp}{\code{numeric} Barometric pressure (Pa).}
+\item{bp}{\code{numeric} barometric pressure (Pa).}
 }
 \value{
 Named \code{list} with elements \itemize{
@@ -31,7 +31,7 @@ Named \code{list} with elements \itemize{
   }
 }
 \description{
-Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971}{TrenchR}. 
+Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from \insertCite{Kearney2017,Kearney2020;textual}{TrenchR}.
  \cr 
  WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. See Details.
 }

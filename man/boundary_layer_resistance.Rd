@@ -26,11 +26,11 @@ boundary_layer_resistance(T_a, e_s, e_a, elev, D, u = NA)
 Estimate boundary layer resistance under free convection. Based on the function in \insertCite{Riddell2018}{TrenchR}.
 }
 \examples{
-  boundary_layer_resistance(T_a  = 293, 
-                            e_s  = 2.5, 
-                            e_a  = 2.0, 
-                            elev = 500, 
-                            D    = 0.007, 
+  boundary_layer_resistance(T_a  = 293,
+                            e_s  = 2.5,
+                            e_a  = 2.0,
+                            elev = 500,
+                            D    = 0.007,
                             u    = 2)
 
 }

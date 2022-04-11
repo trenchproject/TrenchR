@@ -1,12 +1,14 @@
 #' @title Calculate Properties of Dry Air
 #'
-#' @description Calculates several properties of dry air and related characteristics shown as output variables below. The program is based on equations from \insertCite{List1971}{TrenchR}. WETAIR must be used in conjunction with function VAPPRS. The user must supply values for the input variables (db, bp and alt). If alt is known (-1000 < alt < 20000) but not BP, then set \code{bp = 0}.
+#' @description Calculates several properties of dry air and related characteristics shown as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from \insertCite{Kearney2017,Kearney2020;textual}{TrenchR}.
+#'   \cr
+#'  WETAIR must be used in conjunction with \code{\link{VAPPRS}}. The user must supply values for the input variables \code{db}, \code{bp}, and \code{alt}. If \code{alt} is known (-1000 < alt < 20000) but not BP, then set \code{bp = 0}.
 #' 
-#' @param db \code{numeric} Dry bulb temperature (C).
+#' @param db \code{numeric} dry bulb temperature (C).
 #' 
-#' @param bp \code{numeric} Barometric pressure (Pa).
+#' @param bp \code{numeric} barometric pressure (Pa).
 #' 
-#' @param alt \code{numeric} Altitude (m).
+#' @param alt \code{numeric} altitude (m).
 #' 
 #' @return Named \code{list} with elements \itemize{
 #'   \item{\code{patmos}:}{ \code{numeric} standard atmospheric pressure (Pa)}
@@ -17,7 +19,7 @@
 #'   \item{\code{thcond}:}{ \code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}})}
 #'   \item{\code{htovpr}:}{ \code{numeric} latent heat of vaporization of water (\ifelse{html}{\out{J kg<sup>-1</sup>}}{\eqn{J kg^-1}{ASCII}})}
 #'   \item{\code{tcoeff}:}{ \code{numeric} temperature coefficient of volume expansion (\ifelse{html}{\out{K<sup>-1</sup>}}{\eqn{K^-1}{ASCII}})}
-#'   \item{\code{ggroup}:}{ \code{numeric} group of variables in Grashof number (1-m3 -K)}
+#'   \item{\code{ggroup}:}{ \code{numeric} group of variables in Grashof number (\ifelse{html}{\out{m<sup>-3</sup> K<sup>-1</sup>}}{\eqn{m^-3 K^-1}{ASCII}})}
 #'   \item{\code{bbemit}:}{ \code{numeric} black body emittance (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}})}
 #'   \item{\code{emtmax}:}{ \code{numeric} wave length of maximum emittance (m)}
 #'  } 
@@ -106,7 +108,7 @@ VAPPRS <- function(db) {
 
 #' @title Calculate Properties of Wet Air
 #'
-#' @description Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971}{TrenchR}. 
+#' @description Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from \insertCite{Kearney2017,Kearney2020;textual}{TrenchR}.
 #'  \cr 
 #'  WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. See Details. 
 #'
@@ -116,15 +118,15 @@ VAPPRS <- function(db) {
 #'   \item{Hygrometric data:}{ If DP is known, set WB = 0 and RH = 0}
 #'  } 
 #'
-#' @param db \code{numeric} Dry bulb temperature (C).
+#' @param db \code{numeric} dry bulb temperature (C).
 #' 
-#' @param wb \code{numeric} Wet bulb temperature (C).
+#' @param wb \code{numeric} wet bulb temperature (C).
 #' 
-#' @param rh \code{numeric} Relative humidity (\%).
+#' @param rh \code{numeric} relative humidity (\%).
 #' 
-#' @param dp \code{numeric} Dew point temperature (C).
+#' @param dp \code{numeric} dew point temperature (C).
 #' 
-#' @param bp \code{numeric} Barometric pressure (Pa).
+#' @param bp \code{numeric} barometric pressure (Pa).
 #' 
 #' @return Named \code{list} with elements \itemize{
 #'   \item{\code{e}:}{ \code{numeric} saturation vapor pressure (Pa)}

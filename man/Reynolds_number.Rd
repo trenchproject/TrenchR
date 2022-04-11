@@ -20,8 +20,8 @@ Reynolds_number(u, D, nu)
 Estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces \insertCite{Gates1980}{TrenchR}.
 }
 \examples{
-  Reynolds_number(u  = 1, 
-                  D  = 0.001, 
+  Reynolds_number(u  = 1,
+                  D  = 0.001,
                   nu = 1.2)
 
 }

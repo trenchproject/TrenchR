@@ -27,10 +27,10 @@ Calculate conductance (W) of an ectothermic animal to its substrate. Method assu
 }
 \examples{
   Qconduction_animal(T_g        = 293,
-                     T_b        = 303, 
-                     d          = 10^-6, 
-                     K          = 0.5, 
-                     A          = 10^-3, 
+                     T_b        = 303,
+                     d          = 10^-6,
+                     K          = 0.5,
+                     A          = 10^-3,
                      proportion = 0.2)
 
 }
