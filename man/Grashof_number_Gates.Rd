@@ -11,11 +11,11 @@ Grashof_number_Gates(Ta, Tg, beta, D, nu)
 
 \item{Tg}{\code{numeric} Ground (surface) temperature (C).}
 
-\item{beta}{\code{numeric} coefficient of volumetric thermal expansion, beta= 3.67 x 10^-3 C^-1  in air and 41.9 x 10^-4 C^-1 in water.}
+\item{beta}{\code{numeric} coefficient of volumetric thermal expansion, \code{beta} = 3.67 x \ifelse{html}{\out{10<sup>-3</sup> C<sup>-1</sup>}}{\eqn{10^-3 C^-1}{ASCII}}  in air and 41.9 x \ifelse{html}{\out{10<sup>-4</sup> C<sup>-1</sup>}}{\eqn{10^-4 C^-1}{ASCII}} in water.}
 
 \item{D}{\code{numeric} is characteristic dimension (e.g., body diameter) (m)}
 
-\item{nu}{\code{numeric} is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s-1), can calculate from DRYAIR or WETAIR}
+\item{nu}{\code{numeric} is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}); can calculate from \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
 }
 \value{
 \code{numeric} Grashof number

@@ -29,7 +29,7 @@ Tb_CampbellNorman(
 
 \item{epsilon}{\code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.}
 
-\item{c_p}{\code{numeric} specific heat of air (J mol^-1 K^-1). Defaults to 29.3.}
+\item{c_p}{\code{numeric} specific heat of air (\ifelse{html}{\out{J mol<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J mol^-1 K^-1}{ASCII}}).}
 
 \item{D}{\code{numeric} characteristic dimension of the animal (meters).}
 

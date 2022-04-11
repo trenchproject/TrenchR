@@ -7,7 +7,7 @@
 heat_transfer_coefficient(V, D, K, nu, taxa = "cylinder")
 }
 \arguments{
-\item{V}{\code{numeric} Air velocity (m/s).}
+\item{V}{\code{numeric} air velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
 \item{D}{\code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).}
 

@@ -7,10 +7,10 @@
 saturation_vapor_pressure(T_a)
 }
 \arguments{
-\item{T_a}{\code{numeric} air temperature (K)}
+\item{T_a}{\code{numeric} air temperature (K).}
 }
 \value{
-\code{numeric} saturation vapor pressure, e_s (kPa)
+\code{numeric} saturation vapor pressure, \code{e_s} (kPa).
 }
 \description{
 Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation \insertCite{Stull2000,Riddell2018}{TrenchR}.

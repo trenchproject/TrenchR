@@ -4,7 +4,7 @@
 \alias{WETAIR}
 \title{Calculate Properties of Wet Air}
 \usage{
-WETAIR(db = db, wb = db, rh = 0, dp = 999, bp = 101325)
+WETAIR(db, wb = db, rh = 0, dp = 999, bp = 101325)
 }
 \arguments{
 \item{db}{\code{numeric} Dry bulb temperature (C).}
@@ -18,37 +18,35 @@ WETAIR(db = db, wb = db, rh = 0, dp = 999, bp = 101325)
 \item{bp}{\code{numeric} Barometric pressure (Pa).}
 }
 \value{
-e \code{numeric} Vapor pressure (Pa).
-
-esat \code{numeric} Saturation vapor pressure (Pa).
-
-vd \code{numeric} Vapor density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}).
-
-rw \code{numeric} Mixing ration (\ifelse{html}{\out{kg kg<sup>-1</sup>}}{\eqn{kg kg^-1}{ASCII}}).
-
-tvir \code{numeric} Virtual temperature (K).
-
-tvinc \code{numeric} Virtual temperature increment (K).
-
-denair \code{numeric} Hourly predictions of the soil moisture under the maximum specified shade.
-
-cp \code{numeric} Specific heat of air at constant pressure (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}).
-
-wtrpot \code{numeric} Water potential (Pa).
-
-rh \code{numeric} Relative humidity (\%).
+Named \code{list} with elements \itemize{
+  \item{\code{e}:}{ \code{numeric} saturation vapor pressure (Pa)}
+  \item{\code{vd}:}{ \code{numeric} vapor density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
+  \item{\code{rw}:}{ \code{numeric} mixing ration (\ifelse{html}{\out{kg kg<sup>-1</sup>}}{\eqn{kg kg^-1}{ASCII}})}
+  \item{\code{tvir}:}{ \code{numeric} virtual temperature (K)}
+  \item{\code{tvinc}:}{ \code{numeric} virtual temperature increment (K)}
+  \item{\code{denair}:}{ denair \code{numeric} hourly predictions of the soil moisture under the maximum specified shade}
+  \item{\code{cp}:}{ \code{numeric} specific heat of air at constant pressure (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}})}
+  \item{\code{wtrpot}:}{ \code{numeric} water potential (Pa)}
+  \item{\code{rh}:}{ \code{numeric} relative humidity (\%)}
+  }
 }
 \description{
-Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971}{TrenchR}. WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP)
-
-(1) Psychrometric data:
-If WB is known but not RH, then set RH = -1 and DP = 999.
-If RH is known but not WB then set WB = 0 and DP = 999.
-(2) Hygrometric data:
-If DP is known then set WB = 0 and RH = 0.
+Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971}{TrenchR}. 
+ \cr 
+ WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. See Details.
+}
+\details{
+The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP): 
+  \itemize{
+  \item{Psychrometric data:}{ If WB is known but not RH, then set RH = -1 and DP = 999. If RH is known but not WB then set WB = 0 and DP = 999}
+  \item{Hygrometric data:}{ If DP is known, set WB = 0 and RH = 0}
+ }
 }
 \examples{
-  WETAIR(db=30, wb=28, rh=60, bp=100*1000)
+  WETAIR(db = 30, 
+         wb = 28, 
+         rh = 60, 
+         bp = 100 * 1000)
 
 }
 \references{

@@ -16,21 +16,21 @@ Qemitted_thermal_radiation(
 )
 }
 \arguments{
-\item{epsilon}{\code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}}
+\item{epsilon}{\code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.}
 
-\item{A}{\code{numeric} surface area (m^2)}
+\item{A}{\code{numeric} surface area ((\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
 \item{psa_dir}{\code{numeric} proportion surface area exposed to sky (or enclosure) (0-1)}
 
-\item{psa_ref}{\code{numeric} proportion surface area exposed to ground (0-1)}
+\item{psa_ref}{\code{numeric} proportion surface area exposed to ground (0-1).}
 
-\item{T_b}{\code{numeric} body surface temperature (K)}
+\item{T_b}{\code{numeric} body surface temperature (K).}
 
-\item{T_g}{\code{numeric} ground surface temperature (K)}
+\item{T_g}{\code{numeric} ground surface temperature (K).}
 
-\item{T_a}{\code{numeric} ambient air temperature (K), only required if animal is in enclosed environment}
+\item{T_a}{\code{numeric} ambient air temperature (K), only required if animal is in enclosed environment.}
 
-\item{enclosed}{\code{boolean} TRUE or FALSE}
+\item{enclosed}{\code{logical} if the animal is an enclosed environment or not.}
 }
 \value{
 \code{numeric} emitted thermal radiation, Qemit (W)

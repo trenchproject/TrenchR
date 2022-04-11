@@ -7,15 +7,15 @@
 Qconduction_substrate(T_g, T_b, D, K_g = 0.5, A, proportion)
 }
 \arguments{
-\item{T_g}{\code{numeric} Surface temperature (K).}
+\item{T_g}{\code{numeric} surface temperature (K).}
 
-\item{T_b}{\code{numeric} Body temperature (K).}
+\item{T_b}{\code{numeric} body temperature (K).}
 
-\item{D}{\code{numeric} Characteristic dimension of the animal (m).}
+\item{D}{\code{numeric} characteristic dimension of the animal (m).}
 
-\item{K_g}{\code{numeric} Thermal conductivity of substrate (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}).}
+\item{K_g}{\code{numeric} thermal conductivity of substrate (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}).}
 
-\item{A}{\code{numeric} Surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
+\item{A}{\code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
 \item{proportion}{\code{numeric} proportion in contact to the surface.}
 }

@@ -7,12 +7,12 @@
 Nusselt_from_Reynolds(Re, taxa = "cylinder")
 }
 \arguments{
-\item{Re}{\code{numeric} is the Reynolds Number (dimensionless)}
+\item{Re}{\code{numeric} Reynolds Number (dimensionless).}
 
-\item{taxa}{\code{character} Which class of organism, current choices: sphere, cylinder, frog, lizard_traverse_to_air_flow, lizard_parallel_to_air_flow, lizard_surface, lizard_elevated, flyinginsect, spider}
+\item{taxa}{\code{character} which class of organism, current choices: sphere, cylinder, frog, lizard_traverse_to_air_flow, lizard_parallel_to_air_flow, lizard_surface, lizard_elevated, flyinginsect, spider.}
 }
 \value{
-\code{numeric} Nusselt number (dimensionless)
+\code{numeric} Nusselt number (dimensionless).
 }
 \description{
 Estimate the Nusselt number from the Reynolds number for various taxa \insertCite{Mitchell1976;textual}{TrenchR} Table 1 (Convective Heat Transfer Relations for Animal Shapes).

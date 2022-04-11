@@ -14,7 +14,7 @@
 #' 
 #' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.
 #' 
-#' @param c_p \code{numeric} specific heat of air (J mol^-1 K^-1). Defaults to 29.3.
+#' @param c_p \code{numeric} specific heat of air (\ifelse{html}{\out{J mol<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J mol^-1 K^-1}{ASCII}}). 
 #' 
 #' @param D \code{numeric} characteristic dimension of the animal (meters).
 #' 
@@ -144,11 +144,11 @@ Qnet_Gates <- function (Qabs,
 #' 
 #' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.
 #' 
-#' @param H_L \code{numeric} Convective heat transfer coefficient (W m^-2 K^-1).
+#' @param H_L \code{numeric} Convective heat transfer coefficient (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}).
 #' 
 #' @param ef \code{numeric} enhancement factor used to adjust H_L to field conditions (using h_L approximation from \insertCite{Mitchell1976;textual}{TrenchR}).  Approximated as 1.23 by default, but see \insertCite{Mitchell1976;textual}{TrenchR} for relationship.
 #' 
-#' @param K \code{numeric} Thermal conductivity (W K^-1 m^-1 ), K=0.5 W K^-1 m^-1 for naked skin, K=0.15 for insect cuticle \insertCite{Galushko2005;textual}{TrenchR}; conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step. 
+#' @param K \code{numeric} Thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), K = 0.5 \ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}} for naked skin, K = 0.15 \ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}for insect cuticle \insertCite{Galushko2005;textual}{TrenchR}; conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step. 
 #' 
 #' @return \code{numeric} operative environmental temperature (K).
 #' 

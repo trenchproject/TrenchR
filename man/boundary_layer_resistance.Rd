@@ -7,20 +7,20 @@
 boundary_layer_resistance(T_a, e_s, e_a, elev, D, u = NA)
 }
 \arguments{
-\item{T_a}{\code{numeric} air temperature (K)}
+\item{T_a}{\code{numeric} air temperature (K).}
 
-\item{e_s}{\code{numeric} saturation vapor pressure (kPa)}
+\item{e_s}{\code{numeric} saturation vapor pressure (kPa).}
 
-\item{e_a}{\code{numeric} actual vapor pressure (kPa)}
+\item{e_a}{\code{numeric} actual vapor pressure (kPa).}
 
-\item{elev}{\code{numeric} elevation (m)}
+\item{elev}{\code{numeric} elevation (m).}
 
-\item{D}{\code{numeric} characteristic dimension (e.g., body diameter) (m)}
+\item{D}{\code{numeric} characteristic dimension (e.g., body diameter) (m).}
 
-\item{u}{\code{numeric} wind speed (m/s), if not provided assume free convection; if provided, use forced convection if appropriate}
+\item{u}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}), if not provided assume free convection; if provided, use forced convection if appropriate.}
 }
 \value{
-\code{numeric} boundary layer resistance (s cm^-1)
+\code{numeric} boundary layer resistance (\ifelse{html}{\out{s cm<sup>-1</sup>}}{\eqn{s cm^-1}{ASCII}}).
 }
 \description{
 Estimate boundary layer resistance under free convection. Based on the function in \insertCite{Riddell2018}{TrenchR}.

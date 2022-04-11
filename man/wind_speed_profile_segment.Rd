@@ -7,7 +7,7 @@
 wind_speed_profile_segment(u_r, zr, z0, z)
 }
 \arguments{
-\item{u_r}{\code{numeric} a vector of wind speeds at the 3 reference heights (m/s).}
+\item{u_r}{\code{numeric} a vector of wind speeds (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at the 3 reference heights.}
 
 \item{zr}{\code{numeric} a vector of 3 reference heights (m).}
 

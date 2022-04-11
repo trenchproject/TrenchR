@@ -7,19 +7,19 @@
 wind_speed_profile_neutral(u_r, zr, z0, z)
 }
 \arguments{
-\item{u_r}{\code{numeric} wind velocity at reference height (m/s)}
+\item{u_r}{\code{numeric} wind velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at reference height.}
 
-\item{zr}{\code{numeric} initial reference height (meters).}
+\item{zr}{\code{numeric} initial reference height (m).}
 
-\item{z0}{\code{numeric} surface roughness (meters).}
+\item{z0}{\code{numeric} surface roughness (m).}
 
-\item{z}{\code{numeric} height to scale (meters).}
+\item{z}{\code{numeric} height to scale (m).}
 }
 \value{
-\code{numeric} windspeed (m/s).
+\code{numeric} windspeed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 }
 \description{
-Calculate wind speed (m/s) at a specified height (m) within a boundary layer near the surface.  The profile assumes neutral conditions. The velocity profile is the neutral profile described by \insertCite{Sellers1965;textual}{TrenchR}. Function is equations (2) and (3) of \insertCite{Porter1973;textual}{TrenchR}.
+Calculate wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at a specified height (m) within a boundary layer near the surface.  The profile assumes neutral conditions. The velocity profile is the neutral profile described by \insertCite{Sellers1965;textual}{TrenchR}. Function is equations (2) and (3) of \insertCite{Porter1973;textual}{TrenchR}.
 }
 \examples{
   wind_speed_profile_neutral(u_r = 0.1, 

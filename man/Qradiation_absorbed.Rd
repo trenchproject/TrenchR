@@ -16,19 +16,19 @@ Qradiation_absorbed(
 )
 }
 \arguments{
-\item{a}{\code{numeric} solar absorptivity of animal surface (proportion), default value is for reptiles. (0-1)}
+\item{a}{\code{numeric} solar absorptivity of animal surface (proportion), default value is for reptiles (0-1).}
 
-\item{A}{\code{numeric} surface area (m^2)}
+\item{A}{\code{numeric} surface area ((\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
-\item{psa_dir}{\code{numeric} proportion surface area exposed to solar radiation. (0-1)}
+\item{psa_dir}{\code{numeric} proportion surface area exposed to solar radiation (0-1).}
 
-\item{psa_ref}{\code{numeric} proportion surface area exposed to reflected solar radiation. (0-1)}
+\item{psa_ref}{\code{numeric} proportion surface area exposed to reflected solar radiation (0-1).}
 
-\item{S_dir}{\code{numeric} direct solar radiation (W/m^2)}
+\item{S_dir}{\code{numeric} direct solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
 
-\item{S_dif}{\code{numeric} diffuse solar radiation (W/m^2)}
+\item{S_dif}{\code{numeric} diffuse solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
 
-\item{S_ref}{\code{numeric} reflected solar radiation (W/m^2), either provided or estimated if surface albedo is provided instead}
+\item{S_ref}{\code{numeric} reflected solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}), either provided or estimated if surface albedo is provided instead}
 
 \item{a_s}{\code{numeric} is surface albedo (proportion), optional (not used) if reflected radiation is provided. Values available in \insertCite{Gates1980}{TrenchR} Table 8.2.}
 }

@@ -4,7 +4,7 @@
 \alias{VAPPRS}
 \title{Calculate Saturation Vapor Pressure}
 \usage{
-VAPPRS(db = db)
+VAPPRS(db)
 }
 \arguments{
 \item{db}{\code{numeric} Dry bulb temperature (C)}

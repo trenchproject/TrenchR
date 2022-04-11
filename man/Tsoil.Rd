@@ -7,16 +7,16 @@
 Tsoil(Tg_max, Tg_min, hour, depth)
 }
 \arguments{
-\item{Tg_max}{\code{numeric} daily maximum soil surface temperature (C)}
+\item{Tg_max}{\code{numeric} daily maximum soil surface temperature (C).}
 
-\item{Tg_min}{\code{numeric} daily minimum soil surface temperature (C)}
+\item{Tg_min}{\code{numeric} daily minimum soil surface temperature (C).}
 
-\item{hour}{\code{numeric} hour of the day}
+\item{hour}{\code{numeric} hour of the day.}
 
-\item{depth}{\code{numeric} depth (cm)}
+\item{depth}{\code{numeric} depth (cm).}
 }
 \value{
-\code{numeric} soil temperature (C)
+\code{numeric} soil temperature (C).
 }
 \description{
 Estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal; adapted from \insertCite{Campbell1998;textual}{TrenchR} \insertCite{Riddell2018}{TrenchR}.

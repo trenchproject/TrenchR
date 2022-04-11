@@ -7,14 +7,14 @@
 Reynolds_number(u, D, nu)
 }
 \arguments{
-\item{u}{\code{numeric} wind speed (m/s)}
+\item{u}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
 \item{D}{\code{numeric} characteristic dimension (e.g., body diameter) (m)}
 
-\item{nu}{\code{numeric} the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (m^2 s^(-1)), can calculate from DRYAIR or WETAIR functions}
+\item{nu}{\code{numeric} the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}); can calculate from \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
 }
 \value{
-\code{numeric} Reynolds number
+\code{numeric} Reynolds number.
 }
 \description{
 Estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces \insertCite{Gates1980}{TrenchR}.

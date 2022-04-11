@@ -1,6 +1,6 @@
 #' @title Estimate Radiation (Three Parts - Direct, Diffused and Reflected)
 #' 
-#' @description Estimate direct, diffuse, and reflected components of solar radiation (W m^-2) using the model in \insertCite{Campbell1998;textual}{TrenchR}. 
+#' @description Estimate direct, diffuse, and reflected components of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}) using the model in \insertCite{Campbell1998;textual}{TrenchR}. 
 #' 
 #' @param doy \code{numeric} the day of year; \code{\link{day_of_year}}.
 #' 

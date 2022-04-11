@@ -7,24 +7,24 @@
 Qevaporation(A, T_b, taxa, rho_s = NA, rho_a = NA, h = NA, H = NA, r_i = NA)
 }
 \arguments{
-\item{A}{\code{numeric} surface area (m^2)}
+\item{A}{\code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
-\item{T_b}{\code{numeric} body temperature (K)}
+\item{T_b}{\code{numeric} body temperature (K).}
 
-\item{taxa}{\code{character} taxa current choices: lizard, amphibian_wetskin (fully wet skin), amphibian (not fully wet skin)}
+\item{taxa}{\code{character} taxa current choices: lizard, amphibian_wetskin (fully wet skin), amphibian (not fully wet skin).}
 
-\item{rho_s}{\code{numeric} saturation water vapor density at skin surface (kg/m^3) (needed if amphibian)}
+\item{rho_s}{\code{numeric} saturation water vapor density at skin surface (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).}
 
-\item{rho_a}{\code{numeric} saturation water vapor density in ambient air (kg/m^3) (needed if amphibian)}
+\item{rho_a}{\code{numeric} saturation water vapor density in ambient air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).}
 
-\item{h}{\code{numeric} relative humidity (0-1) (needed if amphibian)}
+\item{h}{\code{numeric} relative humidity (0-1) (needed if amphibian).}
 
-\item{H}{\code{numeric} convective heat transfer coefficient (W m^-2 K^-1) (needed if amphibian)}
+\item{H}{\code{numeric} convective heat transfer coefficient (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}) (needed if amphibian).}
 
-\item{r_i}{\code{numeric} internal (cutaneous) resistance to vapor transport (s/m) (needed if amphibian)}
+\item{r_i}{\code{numeric} internal (cutaneous) resistance to vapor transport (\ifelse{html}{\out{s m<sup>-1</sup>}}{\eqn{s m^-1}{ASCII}}) (needed if amphibian).}
 }
 \value{
-\code{numeric} evaporative heat loss (W)
+\code{numeric} evaporative heat loss (W).
 }
 \description{
 estimate heat loss associated with evaporative water loss by an amphibian \insertCite{Spotila1992}{TrenchR} or lizard (based on empirical measurements in \insertCite{Porter1973}{TrenchR}).

@@ -143,7 +143,7 @@
 . WETAIR must be used in conjunction with function VAPPRS. The user must supply values for the input variables (db, bp and alt). If alt is known (-1000 &lt; alt &lt; 20000) but not BP, then set <code>bp = 0</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>DRYAIR</span><span class='op'>(</span>db <span class='op'>=</span> <span class='va'>db</span>, bp <span class='op'>=</span> <span class='fl'>0</span>, alt <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>DRYAIR</span><span class='op'>(</span><span class='va'>db</span>, bp <span class='op'>=</span> <span class='fl'>0</span>, alt <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,17 +164,20 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>patmos <code>numeric</code> Standard atmospheric pressure (Pa).</p>
-<p>density <code>numeric</code> Density (kg m<sup>-3</sup>).</p>
-<p>visdyn <code>numeric</code> Dynamic viscosity (kg m<sup>-1</sup> s<sup>-1</sup>).</p>
-<p>viskin <code>numeric</code> Kinematic viscosity (m<sup>2</sup> s<sup>-1</sup>).</p>
-<p>difvpr <code>numeric</code> Diffusivity of water vapor in air (m<sup>2</sup> s<sup>-1</sup>).</p>
-<p>thcond <code>numeric</code> Thermal conductivity (W K<sup>-1</sup> m<sup>-1</sup>).</p>
-<p>htovpr <code>numeric</code> Latent heat of vaporization of water (J kg<sup>-1</sup>).</p>
-<p>tcoeff <code>numeric</code> Temperature coefficient of volume expansion (K<sup>-1</sup>).</p>
-<p>ggroup <code>numeric</code> Group of variables in Grashof number (1-m3 -K).</p>
-<p>bbemit <code>numeric</code> black body emittance ((W/m<sup>2</sup>)).</p>
-<p>emtmax <code>numeric</code> Wave length of maximum emittance (m).</p>
+    <p>Named <code>list</code> with elements</p><ul>
+<li><p><code>patmos</code>: <code>numeric</code> standard atmospheric pressure (Pa)</p></li>
+<li><p><code>density</code>: <code>numeric</code> density (kg m<sup>-3</sup>)</p></li>
+<li><p><code>visdyn</code>: <code>numeric</code> dynamic viscosity (kg m<sup>-1</sup> s<sup>-1</sup>)</p></li>
+<li><p><code>viskin</code>: <code>numeric</code> kinematic viscosity (m<sup>2</sup> s<sup>-1</sup>)</p></li>
+<li><p><code>difvpr</code>: <code>numeric</code> diffusivity of water vapor in air (m<sup>2</sup> s<sup>-1</sup>)</p></li>
+<li><p><code>thcond</code>: <code>numeric</code> thermal conductivity (W K<sup>-1</sup> m<sup>-1</sup>)</p></li>
+<li><p><code>htovpr</code>: <code>numeric</code> latent heat of vaporization of water (J kg<sup>-1</sup>)</p></li>
+<li><p><code>tcoeff</code>: <code>numeric</code> temperature coefficient of volume expansion (K<sup>-1</sup>)</p></li>
+<li><p><code>ggroup</code>: <code>numeric</code> group of variables in Grashof number (1-m3 -K)</p></li>
+<li><p><code>bbemit</code>: <code>numeric</code> black body emittance (W m<sup>-2</sup>)</p></li>
+<li><p><code>emtmax</code>: <code>numeric</code> wave length of maximum emittance (m)</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>List RJ (1971).
@@ -183,7 +186,9 @@
 <a href='https://repository.si.edu/handle/10088/23746'>https://repository.si.edu/handle/10088/23746</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='fu'>DRYAIR</span><span class='op'>(</span>db <span class='op'>=</span> <span class='fl'>30</span>, bp <span class='op'>=</span> <span class='fl'>100</span><span class='op'>*</span><span class='fl'>1000</span>, alt <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>DRYAIR</span><span class='op'>(</span>db <span class='op'>=</span> <span class='fl'>30</span>, 
+         bp <span class='op'>=</span> <span class='fl'>100</span><span class='op'>*</span><span class='fl'>1000</span>, 
+         alt <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $patmos
 #&gt; [1] 101325
 #&gt; 

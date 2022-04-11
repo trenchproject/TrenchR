@@ -7,18 +7,18 @@
 heat_transfer_coefficient_approximation(V, D, K, nu, taxa = "sphere")
 }
 \arguments{
-\item{V}{\code{numeric} Air velocity (m/s).}
+\item{V}{\code{numeric} air velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
-\item{D}{\code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).}
+\item{D}{\code{numeric} characteristic dimension (e.g., diameter or snout-vent length) (meters).}
 
-\item{K}{\code{numeric} Thermal conductivity of air (W m^-1 K^-1), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
+\item{K}{\code{numeric} thermal conductivity of air (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
 
-\item{nu}{\code{numeric} Kinematic Viscosity of air (m^2 s^-1), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
+\item{nu}{\code{numeric} kinematic Viscosity of air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
 
-\item{taxa}{\code{character} Which class of organism, current choices: sphere, frog, lizard, flyinginsect, spider}
+\item{taxa}{\code{character} which class of organism, current choices: sphere, frog, lizard, flyinginsect, spider}
 }
 \value{
-\code{numeric} heat transfer coefficient, \code{H_L} (W m^-2 K^-1)
+\code{numeric} heat transfer coefficient, \code{H_L} (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}).
 }
 \description{
 estimate the heat transfer coefficient for various taxa.  Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere \insertCite{Mitchell1976}{TrenchR}.

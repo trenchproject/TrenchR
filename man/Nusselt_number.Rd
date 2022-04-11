@@ -7,14 +7,14 @@
 Nusselt_number(H_L, D, K)
 }
 \arguments{
-\item{H_L}{\code{numeric} Convective heat transfer coefficient (W m^-2 K^-1)}
+\item{H_L}{\code{numeric} convective heat transfer coefficient (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}).}
 
-\item{D}{\code{numeric} Characteristic dimension (e.g., body diameter) (m)}
+\item{D}{\code{numeric} characteristic dimension (e.g., body diameter) (m).}
 
-\item{K}{\code{numeric} Thermal conductivity (W K^-1 m^-1)}
+\item{K}{\code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}).}
 }
 \value{
-\code{numeric} Nusselt number
+\code{numeric} Nusselt number.
 }
 \description{
 Estimate the Nusselt Number, which describes dimensionless conductance \insertCite{Gates1980}{TrenchR}.
