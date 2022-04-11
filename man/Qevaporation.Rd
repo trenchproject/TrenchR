@@ -30,16 +30,16 @@ Qevaporation(A, T_b, taxa, rho_s = NA, rho_a = NA, h = NA, H = NA, r_i = NA)
 estimate heat loss associated with evaporative water loss by an amphibian \insertCite{Spotila1992}{TrenchR} or lizard (based on empirical measurements in \insertCite{Porter1973}{TrenchR}).
 }
 \examples{
-  Qevaporation(A     = 0.1, 
-               T_b   = 293, 
-               taxa  = "amphibian", 
-               rho_s = 0.003, 
-               rho_a = 0.002, 
-               h     = 0.5, 
-               H     = 20, 
+  Qevaporation(A     = 0.1,
+               T_b   = 293,
+               taxa  = "amphibian",
+               rho_s = 0.003,
+               rho_a = 0.002,
+               h     = 0.5,
+               H     = 20,
                r_i   = 50)
   Qevaporation(A    = 0.1,
-               T_b  = 293, 
+               T_b  = 293,
                taxa = "lizard")
 
 }

@@ -40,8 +40,11 @@
 
 
 <meta property="og:title" content="Calculate Properties of Dry Air — DRYAIR" />
-<meta property="og:description" content="Calculates several properties of dry air and related characteristics shown as output variables below. The program is based on equations from (List 1971)
-. WETAIR must be used in conjunction with function VAPPRS. The user must supply values for the input variables (db, bp and alt). If alt is known (-1000 &amp;lt; alt &amp;lt; 20000) but not BP, then set bp = 0." />
+<meta property="og:description" content="Calculates several properties of dry air and related characteristics shown as output variables below. The program is based on equations from List (1971)
+ and code implementation from Kearney and Porter (2017); Kearney and Porter (2020)
+.
+  
+ WETAIR must be used in conjunction with VAPPRS. The user must supply values for the input variables db, bp, and alt. If alt is known (-1000 &amp;lt; alt &amp;lt; 20000) but not BP, then set bp = 0." />
 
 
 
@@ -139,8 +142,11 @@
     </div>
 
     <div class="ref-description">
-    <p>Calculates several properties of dry air and related characteristics shown as output variables below. The program is based on equations from (List 1971)
-. WETAIR must be used in conjunction with function VAPPRS. The user must supply values for the input variables (db, bp and alt). If alt is known (-1000 &lt; alt &lt; 20000) but not BP, then set <code>bp = 0</code>.</p>
+    <p>Calculates several properties of dry air and related characteristics shown as output variables below. The program is based on equations from List (1971)
+ and code implementation from Kearney and Porter (2017); Kearney and Porter (2020)
+.
+  <br />
+ WETAIR must be used in conjunction with <code><a href='VAPPRS.html'>VAPPRS</a></code>. The user must supply values for the input variables <code>db</code>, <code>bp</code>, and <code>alt</code>. If <code>alt</code> is known (-1000 &lt; alt &lt; 20000) but not BP, then set <code>bp = 0</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>DRYAIR</span><span class='op'>(</span><span class='va'>db</span>, bp <span class='op'>=</span> <span class='fl'>0</span>, alt <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></pre>
@@ -150,15 +156,15 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>db</th>
-      <td><p><code>numeric</code> Dry bulb temperature (C).</p></td>
+      <td><p><code>numeric</code> dry bulb temperature (C).</p></td>
     </tr>
     <tr>
       <th>bp</th>
-      <td><p><code>numeric</code> Barometric pressure (Pa).</p></td>
+      <td><p><code>numeric</code> barometric pressure (Pa).</p></td>
     </tr>
     <tr>
       <th>alt</th>
-      <td><p><code>numeric</code> Altitude (m).</p></td>
+      <td><p><code>numeric</code> altitude (m).</p></td>
     </tr>
     </table>
 
@@ -173,14 +179,21 @@
 <li><p><code>thcond</code>: <code>numeric</code> thermal conductivity (W K<sup>-1</sup> m<sup>-1</sup>)</p></li>
 <li><p><code>htovpr</code>: <code>numeric</code> latent heat of vaporization of water (J kg<sup>-1</sup>)</p></li>
 <li><p><code>tcoeff</code>: <code>numeric</code> temperature coefficient of volume expansion (K<sup>-1</sup>)</p></li>
-<li><p><code>ggroup</code>: <code>numeric</code> group of variables in Grashof number (1-m3 -K)</p></li>
+<li><p><code>ggroup</code>: <code>numeric</code> group of variables in Grashof number (m<sup>-3</sup> K<sup>-1</sup>)</p></li>
 <li><p><code>bbemit</code>: <code>numeric</code> black body emittance (W m<sup>-2</sup>)</p></li>
 <li><p><code>emtmax</code>: <code>numeric</code> wave length of maximum emittance (m)</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>List RJ (1971).
+    <p>Kearney MR, Porter WP (2017).
+&#8220;NicheMapR 㤼㸶 an R package for biophysical modelling: the microclimate model.&#8221;
+<em>Ecography</em>, <b>40</b>, 664--674doi.
+<a href='https://onlinelibrary.wiley.com/doi/10.1111/ecog.02360'>https://onlinelibrary.wiley.com/doi/10.1111/ecog.02360</a>.<br /><br /> Kearney MR, Porter WP (2020).
+&#8220;NicheMapR 㤼㸶 an R package for biophysical modelling: the ectotherm and Dynamic Energy Budget models.&#8221;
+<em>Ecography</em>, <b>43</b>(1), 85--96.
+doi: <a href='https://doi.org/10.1111/ecog.04680'>10.1111/ecog.04680</a>
+, <a href='https://onlinelibrary.wiley.com/doi/abs/10.1111/ecog.04680'>https://onlinelibrary.wiley.com/doi/abs/10.1111/ecog.04680</a>.<br /><br /> List RJ (1971).
 &#8220;Smithsonian Meteorological Tables.&#8221;
 <em>Smithsonian Miscellaneous Collections</em>, <b>114</b>(1), 1--527.
 <a href='https://repository.si.edu/handle/10088/23746'>https://repository.si.edu/handle/10088/23746</a>.</p>
@@ -234,7 +247,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Lauren Buckley, Bryan Briones Ortiz, Aji John, Ofir Levy, Yutaro Sakairi.</p>
+  <p>Developed by Lauren Buckley, Bryan Briones Ortiz, Isaac Caruso, Aji John, Ofir Levy, Abigail Meyer, Eric Riddell, Yutaro Sakairi, Juniper Simonis.</p>
 </div>
 
 <div class="pkgdown">

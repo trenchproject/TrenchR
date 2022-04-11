@@ -39,13 +39,13 @@ Qemitted_thermal_radiation(
 estimate thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
 }
 \examples{
-  Qemitted_thermal_radiation(epsilon  = 0.96, 
-                             A        = 1, 
-                             psa_dir  = 0.4, 
-                             psa_ref  = 0.6, 
-                             T_b      = 303, 
-                             T_g      = 293, 
-                             T_a      = 298, 
+  Qemitted_thermal_radiation(epsilon  = 0.96,
+                             A        = 1,
+                             psa_dir  = 0.4,
+                             psa_ref  = 0.6,
+                             T_b      = 303,
+                             T_g      = 293,
+                             T_a      = 298,
                              enclosed = FALSE)
 
 }

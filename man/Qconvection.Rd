@@ -26,10 +26,10 @@ Qconvection(T_a, T_b, A, proportion, H_L = 10.45, ef = 1.23)
 Calculate convection from an organism to its environment as in \insertCite{Mitchell1976}{TrenchR}. Includes an enhancement factor associated with outdoor environments.
 }
 \examples{
-  Qconvection(T_a        = 293, 
-              T_b        = 303, 
-              H_L        = 10.45, 
-              A          = 0.0025, 
+  Qconvection(T_a        = 293,
+              T_b        = 303,
+              H_L        = 10.45,
+              A          = 0.0025,
               proportion = 0.85)
 
 

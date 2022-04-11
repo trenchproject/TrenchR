@@ -39,12 +39,12 @@ Qradiation_absorbed(
 estimate solar and thermal radiation (W) absorbed by the surface of an animal. Follows \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
 }
 \examples{
-  Qradiation_absorbed(a       = 0.9, 
-                      A       = 1, 
-                      psa_dir = 0.4, 
-                      psa_ref = 0.4, 
-                      S_dir   = 1000, 
-                      S_dif   = 200, 
+  Qradiation_absorbed(a       = 0.9,
+                      A       = 1,
+                      psa_dir = 0.4,
+                      psa_ref = 0.4,
+                      S_dir   = 1000,
+                      S_dif   = 200,
                       a_s     = 0.5)
 
 }

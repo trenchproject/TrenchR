@@ -16,7 +16,7 @@ Qthermal_radiation_absorbed(
 
 \item{T_g}{\code{numeric} ground temperature (C).}
 
-\item{epsilon_ground}{\code{numeric} emissitivity (proportion) for more soil types \insertCite{Campbell1998}{TrenchR}.}
+\item{epsilon_ground}{\code{numeric} emissivity (proportion) for more soil types \insertCite{Campbell1998}{TrenchR}.}
 
 \item{a_longwave}{\code{numeric} absorptance (proportion) of organism to longwave radiation (\insertCite{Bartlett1967}{TrenchR} and Buckley 2008).}
 }
@@ -27,9 +27,9 @@ Qthermal_radiation_absorbed(
 Estimate longwave (thermal) radiation (W) absorbed from the sky and the ground \insertCite{Campbell1998,Riddell2018}{TrenchR}.
 }
 \examples{
-  Qthermal_radiation_absorbed(T_a            = 20, 
-                              T_g            = 25, 
-                              epsilon_ground = 0.97, 
+  Qthermal_radiation_absorbed(T_a            = 20,
+                              T_g            = 25,
+                              epsilon_ground = 0.97,
                               a_longwave     = 0.965)
 
 }

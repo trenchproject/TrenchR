@@ -23,8 +23,8 @@ Estimate soil temperature at a given depth and hour approximating diurnal variat
 }
 \examples{
   Tsoil(Tg_max = 30,
-        Tg_min = 15, 
-        hour   = 12, 
+        Tg_min = 15,
+        hour   = 12,
         depth  = 5)
 
 }

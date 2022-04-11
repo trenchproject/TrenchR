@@ -15,10 +15,10 @@ free_or_forced_convection(Gr, Re)
 \code{character} \code{"free"}, \code{"forced"}, or \code{"intermediate"}.
 }
 \description{
-Compare the Grashof and Reyolds numbers to determine whether convection is free or forced \insertCite{Gates1980}{TrenchR}.
+Compare the Grashof and Reynolds numbers to determine whether convection is free or forced \insertCite{Gates1980}{TrenchR}.
 }
 \examples{
-  free_or_forced_convection(Gr = 100, 
+  free_or_forced_convection(Gr = 100,
                             Re = 5)
 
 }

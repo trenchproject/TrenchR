@@ -20,8 +20,8 @@ Qmetabolism_from_mass_temp(m, T_b, taxa)
 Estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent) \insertCite{Gillooly2001}{TrenchR}.
 }
 \examples{
-  Qmetabolism_from_mass_temp(m    = 100, 
-                             T_b  = 303, 
+  Qmetabolism_from_mass_temp(m    = 100,
+                             T_b  = 303,
                              taxa = "reptile")
 
 }
