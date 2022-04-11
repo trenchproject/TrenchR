@@ -8,37 +8,33 @@
 #' 
 #' @param alt \code{numeric} Altitude (m).
 #' 
-#' @return patmos \code{numeric} Standard atmospheric pressure (Pa).
-#' 
-#' @return density \code{numeric} Density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}).
-#' 
-#' @return visdyn \code{numeric} Dynamic viscosity (\ifelse{html}{\out{kg m<sup>-1</sup> s<sup>-1</sup>}}{\eqn{kg m^-1 s^-1}{ASCII}}).
-#' 
-#' @return viskin \code{numeric} Kinematic viscosity (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}).
-#' 
-#' @return difvpr \code{numeric} Diffusivity of water vapor in air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}).
-#' 
-#' @return thcond \code{numeric} Thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}).
-#' 
-#' @return htovpr \code{numeric} Latent heat of vaporization of water (\ifelse{html}{\out{J kg<sup>-1</sup>}}{\eqn{J kg^-1}{ASCII}}).
-#' 
-#' @return tcoeff \code{numeric} Temperature coefficient of volume expansion (\ifelse{html}{\out{K<sup>-1</sup>}}{\eqn{K^-1}{ASCII}}).
-#' 
-#' @return ggroup \code{numeric} Group of variables in Grashof number (1-m3 -K).
-#' 
-#' @return bbemit \code{numeric} black body emittance ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}})).
-#' 
-#' @return emtmax \code{numeric} Wave length of maximum emittance (m).
-#' 
+#' @return Named \code{list} with elements \itemize{
+#'   \item{\code{patmos}:}{ \code{numeric} standard atmospheric pressure (Pa)}
+#'   \item{\code{density}:}{ \code{numeric} density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
+#'   \item{\code{visdyn}:}{ \code{numeric} dynamic viscosity (\ifelse{html}{\out{kg m<sup>-1</sup> s<sup>-1</sup>}}{\eqn{kg m^-1 s^-1}{ASCII}})}
+#'   \item{\code{viskin}:}{ \code{numeric} kinematic viscosity (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}})}
+#'   \item{\code{difvpr}:}{ \code{numeric} diffusivity of water vapor in air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}})}
+#'   \item{\code{thcond}:}{ \code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}})}
+#'   \item{\code{htovpr}:}{ \code{numeric} latent heat of vaporization of water (\ifelse{html}{\out{J kg<sup>-1</sup>}}{\eqn{J kg^-1}{ASCII}})}
+#'   \item{\code{tcoeff}:}{ \code{numeric} temperature coefficient of volume expansion (\ifelse{html}{\out{K<sup>-1</sup>}}{\eqn{K^-1}{ASCII}})}
+#'   \item{\code{ggroup}:}{ \code{numeric} group of variables in Grashof number (1-m3 -K)}
+#'   \item{\code{bbemit}:}{ \code{numeric} black body emittance (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}})}
+#'   \item{\code{emtmax}:}{ \code{numeric} wave length of maximum emittance (m)}
+#'  } 
+#'
 #' @export
 #' 
 #' @references
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   DRYAIR(db = 30, bp = 100*1000, alt = 0)
+#'   DRYAIR(db = 30, 
+#'          bp = 100*1000, 
+#'          alt = 0)
 #' 
-DRYAIR <- function(db = db, bp = 0, alt = 0) {
+DRYAIR <- function(db, 
+                   bp = 0, 
+                   alt = 0) {
   
   tstd <- 273.15
   
@@ -65,7 +61,17 @@ DRYAIR <- function(db = db, bp = 0, alt = 0) {
   bbemit <- 5.670367E-8 * ((db + tstd)^4)
   emtmax <- 2.897E-3 / (db + tstd)
   
-  list(patmos=patmos, density=density, visdyn=visdyn, viskin=viskin, difvpr=difvpr, thcond=thcond, htovpr=htovpr, tcoeff=tcoeff, ggroup=ggroup, bbemit=bbemit, emtmax=emtmax)
+  list(patmos  = patmos, 
+       density = density, 
+       visdyn  = visdyn, 
+       viskin  = viskin, 
+       difvpr  = difvpr, 
+       thcond  = thcond, 
+       htovpr  = htovpr, 
+       tcoeff  = tcoeff, 
+       ggroup  = ggroup, 
+       bbemit  = bbemit, 
+       emtmax  = emtmax)
 
 }
 
@@ -86,7 +92,7 @@ DRYAIR <- function(db = db, bp = 0, alt = 0) {
 #' @examples
 #'   VAPPRS(db = 30)
 #' 
-VAPPRS <- function(db = db) {
+VAPPRS <- function(db) {
   
   t <- db + 273.16
   
@@ -100,14 +106,16 @@ VAPPRS <- function(db = db) {
 
 #' @title Calculate Properties of Wet Air
 #'
-#' @description Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971}{TrenchR}. WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP)
+#' @description Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971}{TrenchR}. 
+#'  \cr 
+#'  WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. See Details. 
 #'
-#' (1) Psychrometric data:
-#' If WB is known but not RH, then set RH = -1 and DP = 999.
-#' If RH is known but not WB then set WB = 0 and DP = 999.
-#' (2) Hygrometric data:
-#' If DP is known then set WB = 0 and RH = 0.
-#' 
+#' @details The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP): 
+#'   \itemize{
+#'   \item{Psychrometric data:}{ If WB is known but not RH, then set RH = -1 and DP = 999. If RH is known but not WB then set WB = 0 and DP = 999}
+#'   \item{Hygrometric data:}{ If DP is known, set WB = 0 and RH = 0}
+#'  } 
+#'
 #' @param db \code{numeric} Dry bulb temperature (C).
 #' 
 #' @param wb \code{numeric} Wet bulb temperature (C).
@@ -118,25 +126,17 @@ VAPPRS <- function(db = db) {
 #' 
 #' @param bp \code{numeric} Barometric pressure (Pa).
 #' 
-#' @return e \code{numeric} Vapor pressure (Pa).
-#' 
-#' @return esat \code{numeric} Saturation vapor pressure (Pa).
-#' 
-#' @return vd \code{numeric} Vapor density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}).
-#' 
-#' @return rw \code{numeric} Mixing ration (\ifelse{html}{\out{kg kg<sup>-1</sup>}}{\eqn{kg kg^-1}{ASCII}}).
-#' 
-#' @return tvir \code{numeric} Virtual temperature (K).
-#' 
-#' @return tvinc \code{numeric} Virtual temperature increment (K).
-#' 
-#' @return denair \code{numeric} Hourly predictions of the soil moisture under the maximum specified shade.
-#' 
-#' @return cp \code{numeric} Specific heat of air at constant pressure (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}).
-#' 
-#' @return wtrpot \code{numeric} Water potential (Pa).
-#' 
-#' @return rh \code{numeric} Relative humidity (\%).
+#' @return Named \code{list} with elements \itemize{
+#'   \item{\code{e}:}{ \code{numeric} saturation vapor pressure (Pa)}
+#'   \item{\code{vd}:}{ \code{numeric} vapor density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
+#'   \item{\code{rw}:}{ \code{numeric} mixing ration (\ifelse{html}{\out{kg kg<sup>-1</sup>}}{\eqn{kg kg^-1}{ASCII}})}
+#'   \item{\code{tvir}:}{ \code{numeric} virtual temperature (K)}
+#'   \item{\code{tvinc}:}{ \code{numeric} virtual temperature increment (K)}
+#'   \item{\code{denair}:}{ denair \code{numeric} hourly predictions of the soil moisture under the maximum specified shade}
+#'   \item{\code{cp}:}{ \code{numeric} specific heat of air at constant pressure (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}})}
+#'   \item{\code{wtrpot}:}{ \code{numeric} water potential (Pa)}
+#'   \item{\code{rh}:}{ \code{numeric} relative humidity (\%)}
+#'   }
 #' 
 #' @export
 #' 
@@ -144,9 +144,16 @@ VAPPRS <- function(db = db) {
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   WETAIR(db=30, wb=28, rh=60, bp=100*1000)
+#'   WETAIR(db = 30, 
+#'          wb = 28, 
+#'          rh = 60, 
+#'          bp = 100 * 1000)
 #' 
-WETAIR <- function(db = db, wb = db, rh = 0, dp = 999, bp = 101325) {
+WETAIR <- function (db, 
+                    wb = db, 
+                    rh = 0, 
+                    dp = 999, 
+                    bp = 101325) {
   
   stopifnot(rh >= 0, rh <= 100, bp > 0)
   
@@ -191,7 +198,15 @@ WETAIR <- function(db = db, wb = db, rh = 0, dp = 999, bp = 101325) {
     
   }
   
-  list(e=e, esat=esat, vd=vd, rw=rw, tvinc=tvinc, denair=denair, cp=cp, wtrpot=wtrpot, rh=rh)
+  list(e      = e, 
+       esat   = esat, 
+       vd     = vd, 
+       rw     = rw, 
+       tvinc  = tvinc, 
+       denair = denair, 
+       cp     = cp, 
+       wtrpot = wtrpot, 
+       rh     = rh)
   
 }
 

@@ -4,7 +4,7 @@
 \alias{DRYAIR}
 \title{Calculate Properties of Dry Air}
 \usage{
-DRYAIR(db = db, bp = 0, alt = 0)
+DRYAIR(db, bp = 0, alt = 0)
 }
 \arguments{
 \item{db}{\code{numeric} Dry bulb temperature (C).}
@@ -14,33 +14,27 @@ DRYAIR(db = db, bp = 0, alt = 0)
 \item{alt}{\code{numeric} Altitude (m).}
 }
 \value{
-patmos \code{numeric} Standard atmospheric pressure (Pa).
-
-density \code{numeric} Density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}).
-
-visdyn \code{numeric} Dynamic viscosity (\ifelse{html}{\out{kg m<sup>-1</sup> s<sup>-1</sup>}}{\eqn{kg m^-1 s^-1}{ASCII}}).
-
-viskin \code{numeric} Kinematic viscosity (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}).
-
-difvpr \code{numeric} Diffusivity of water vapor in air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}).
-
-thcond \code{numeric} Thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}).
-
-htovpr \code{numeric} Latent heat of vaporization of water (\ifelse{html}{\out{J kg<sup>-1</sup>}}{\eqn{J kg^-1}{ASCII}}).
-
-tcoeff \code{numeric} Temperature coefficient of volume expansion (\ifelse{html}{\out{K<sup>-1</sup>}}{\eqn{K^-1}{ASCII}}).
-
-ggroup \code{numeric} Group of variables in Grashof number (1-m3 -K).
-
-bbemit \code{numeric} black body emittance ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}})).
-
-emtmax \code{numeric} Wave length of maximum emittance (m).
+Named \code{list} with elements \itemize{
+  \item{\code{patmos}:}{ \code{numeric} standard atmospheric pressure (Pa)}
+  \item{\code{density}:}{ \code{numeric} density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
+  \item{\code{visdyn}:}{ \code{numeric} dynamic viscosity (\ifelse{html}{\out{kg m<sup>-1</sup> s<sup>-1</sup>}}{\eqn{kg m^-1 s^-1}{ASCII}})}
+  \item{\code{viskin}:}{ \code{numeric} kinematic viscosity (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}})}
+  \item{\code{difvpr}:}{ \code{numeric} diffusivity of water vapor in air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}})}
+  \item{\code{thcond}:}{ \code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}})}
+  \item{\code{htovpr}:}{ \code{numeric} latent heat of vaporization of water (\ifelse{html}{\out{J kg<sup>-1</sup>}}{\eqn{J kg^-1}{ASCII}})}
+  \item{\code{tcoeff}:}{ \code{numeric} temperature coefficient of volume expansion (\ifelse{html}{\out{K<sup>-1</sup>}}{\eqn{K^-1}{ASCII}})}
+  \item{\code{ggroup}:}{ \code{numeric} group of variables in Grashof number (1-m3 -K)}
+  \item{\code{bbemit}:}{ \code{numeric} black body emittance (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}})}
+  \item{\code{emtmax}:}{ \code{numeric} wave length of maximum emittance (m)}
+ }
 }
 \description{
 Calculates several properties of dry air and related characteristics shown as output variables below. The program is based on equations from \insertCite{List1971}{TrenchR}. WETAIR must be used in conjunction with function VAPPRS. The user must supply values for the input variables (db, bp and alt). If alt is known (-1000 < alt < 20000) but not BP, then set \code{bp = 0}.
 }
 \examples{
-  DRYAIR(db = 30, bp = 100*1000, alt = 0)
+  DRYAIR(db = 30, 
+         bp = 100*1000, 
+         alt = 0)
 
 }
 \references{
