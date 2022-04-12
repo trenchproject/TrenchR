@@ -4,10 +4,10 @@
 \alias{surface_area_from_length}
 \title{Organism Surface Area from Length}
 \usage{
-surface_area_from_length(L)
+surface_area_from_length(l)
 }
 \arguments{
-\item{L}{\code{numeric} length (m).}
+\item{l}{\code{numeric} length (m).}
 }
 \value{
 \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
@@ -19,7 +19,7 @@ Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) fro
 Following \insertCite{Samietz2005;textual}{TrenchR} and \insertCite{Lactin1998;textual}{TrenchR}.
 }
 \examples{
-  surface_area_from_length(L = 0.04)
+  surface_area_from_length(l = 0.04)
 
 }
 \references{

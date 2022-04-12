@@ -1,8 +1,6 @@
 #' @title Operative Environmental Temperature of a Butterfly
 #'
-#' @description Predicts body temperatures (operative environmental temperatures) of a butterfly in C.
-#'  \cr \cr
-#'  Based on \insertCite{Kingsolver1983;textual}{TrenchR} and \insertCite{Buckley2012;textual}{TrenchR}.
+#' @description Predicts body temperatures (operative environmental temperatures) of a butterfly in C. Based on \insertCite{Kingsolver1983;textual}{TrenchR} and \insertCite{Buckley2012;textual}{TrenchR}.
 #' 
 #' @param T_a \code{numeric} air temperature in C.
 #'
@@ -66,7 +64,17 @@ Tb_butterfly <- function (T_a,
                           r_g    = 0.3,
                           shade  = FALSE) {
 
-  stopifnot(u >= 0, H_sdir >= 0, H_sdif >= 0, z >= -90, z <= 90, D > 0, delta >= 0, alpha >= 0, r_g >= 0, r_g <= 1, shade %in% c(FALSE, TRUE) )  
+  stopifnot(u >= 0, 
+            H_sdir >= 0, 
+            H_sdif >= 0, 
+            z >= -90, 
+            z <= 90, 
+            D > 0, 
+            delta >= 0, 
+            alpha >= 0, 
+            r_g >= 0, 
+            r_g <= 1, 
+            is.logical(shade))  
   
   # conversions
 

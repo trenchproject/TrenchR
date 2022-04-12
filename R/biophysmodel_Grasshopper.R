@@ -9,13 +9,13 @@
 #'
 #' @param u \code{numeric} wind speed in m / s.
 #'
-#' @param H \code{numeric} total (direct + diffuse) solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.
+#' @param H \code{numeric} total (direct + diffuse) solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}.
 #'
 #' @param K_t \code{numeric} clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.
 #'
 #' @param psi \code{numeric} solar zenith angle in degrees.
 #'
-#' @param L \code{numeric} grasshopper length in m.
+#' @param l \code{numeric} grasshopper length in m.
 #'
 #' @param Acondfact \code{numeric} the proportion of the grasshopper surface area that is in contact with the ground.
 #'
@@ -52,7 +52,7 @@
 #'                  H         = 400, 
 #'                  K_t       = 0.7, 
 #'                  psi       = 30, 
-#'                  L         = 0.02, 
+#'                  l         = 0.02, 
 #'                  Acondfact = 0.25, 
 #'                  z         = 0.001, 
 #'                  abs       = 0.7, 
@@ -64,13 +64,26 @@ Tb_grasshopper <- function (T_a,
                             H, 
                             K_t, 
                             psi, 
-                            L, 
+                            l, 
                             Acondfact = 0.25, 
                             z         = 0.001, 
                             abs       = 0.7, 
                             r_g       = 0.3) {
 
-  stopifnot(u >= 0, H >= 0, K_t >= 0, K_t <= 1, psi >= -90, psi <= 90, L>= 0, Acondfact >= 0, Acondfact <= 1, z>= 0, abs >= 0, abs <= 1, r_g >= 0, r_g <= 1)
+  stopifnot(u >= 0, 
+            H >= 0, 
+            K_t >= 0, 
+            K_t <= 1, 
+            psi >= -90, 
+            psi <= 90, 
+            l >= 0, 
+            Acondfact >= 0, 
+            Acondfact <= 1, 
+            z >= 0, 
+            abs >= 0, 
+            abs <= 1, 
+            r_g >= 0, 
+            r_g <= 1)
     
   # conversions
 
@@ -107,8 +120,8 @@ Tb_grasshopper <- function (T_a,
     #   c: semi-major axis
     #   a: semi-minor axis
 
-      c <- L / 2
-      a <- (0.365 + 0.241 * L * 1000) / 1000
+      c <- l / 2
+      a <- (0.365 + 0.241 * l * 1000) / 1000
       e <- sqrt(1 - a^2 / c^2)
       A <- 2 * pi * a^2 + 2 * pi * a * c / e * asin(e)
 
@@ -139,7 +152,7 @@ Tb_grasshopper <- function (T_a,
       #   u = windspeed 
       #   Lactin and Johnson add 1m/s to account for cooling by passive convection
 
-        Re <- u * L / v
+        Re <- u * l / v
 
       # Nusselt number- dimensionless conductance
       #   Anderson 1979 empirical
@@ -147,8 +160,8 @@ Tb_grasshopper <- function (T_a,
       #   hc_s: heat transfer coefficient in turbulent air 
 
         Nu <- 0.41* Re^0.5 
-        h_c <- Nu * Kf / L 
-        hc_s <- h_c * (-0.007 * z / L + 1.71) 
+        h_c <- Nu * Kf / l 
+        hc_s <- h_c * (-0.007 * z / l + 1.71) 
 
 
     # Conduction 

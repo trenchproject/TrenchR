@@ -78,7 +78,10 @@ wind_speed_profile_neutral <- function (u_r,
                                         z0, 
                                         z) {
 
-  stopifnot(u_r >= 0, zr >= 0, z0 >= 0, z >= 0)
+  stopifnot(u_r >= 0, 
+            zr >= 0, 
+            z0 >= 0, 
+            z >= 0)
   
   u_r * log(z / z0 + 1) / log(zr / z0 + 1)
 
@@ -121,7 +124,9 @@ air_temp_profile_neutral <- function (T_r,
                                       z, 
                                       T_s) {
 
-  stopifnot(zr >= 0, z0 >= 0, z >= 0)
+  stopifnot(zr >= 0, 
+            z0 >= 0, 
+            z >= 0)
   
   (T_r - T_s) * log(z / z0 + 1) / log(zr / z0 + 1) + T_s 
 
@@ -167,7 +172,10 @@ air_temp_profile <- function (T_r,
                               z,
                               T_s) {
   
-  stopifnot(u_r >= 0, zr >= 0, z0 >= 0, z >= 0)
+  stopifnot(u_r >= 0, 
+            zr >= 0, 
+            z0 >= 0, 
+            z >= 0)
   
   # friction velocity
   u_star <- 0.4 * u_r / log(zr / z0 + 1)  #0.4 is von Karman constant
@@ -311,7 +319,10 @@ wind_speed_profile_segment <- function (u_r,
                                         z0, 
                                         z) {
   
-  stopifnot(z >= 0, length(u_r) == 3, length(zr) == 3, length(z0) == 3)
+  stopifnot(z >= 0, 
+            length(u_r) == 3, 
+            length(zr) == 3, 
+            length(z0) == 3)
   
   # order roughness and segment heights so that z1>z2>z0 
   zr.ord <- order(zr, decreasing = TRUE)

@@ -2,19 +2,19 @@
 #' 
 #' @description Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions. 
 #' 
-#' @param L \code{numeric} mussel length (anterior/posterior axis) (m).
+#' @param l \code{numeric} mussel length (anterior/posterior axis) (m).
 #' 
-#' @param H \code{numeric} mussel height (dorsal/ventral axis) (m). It is reasonable to assume \code{H = 0.5 * L}.
+#' @param h \code{numeric} mussel height (dorsal/ventral axis) (m). It is reasonable to assume \code{h = 0.5 * l}.
 #' 
 #' @param T_a \code{numeric} air temperature (C).
 #' 
 #' @param T_g \code{numeric} ground temperature (C).
 #' 
-#' @param S \code{numeric} direct solar flux density (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
+#' @param S \code{numeric} direct solar flux density (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #' 
 #' @param k_d \code{numeric} diffuse fraction, proportion of solar radiation that is diffuse.
 #' 
-#' @param u \code{numeric} wind speed (m/s).
+#' @param u \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
 #' @param psi \code{numeric} solar zenith angle (degrees): can be calculated from \code{\link{zenith_angle}}.
 #' 
@@ -37,8 +37,8 @@
 #' 
 #' @examples
 #' 
-#' Tb_mussel(L     = 0.1, 
-#'           H     = 0.05, 
+#' Tb_mussel(l     = 0.1, 
+#'           h     = 0.05, 
 #'           T_a   = 25, 
 #'           T_g   = 30, 
 #'           S     = 500, 
@@ -49,8 +49,8 @@
 #'           cl    = 0.5, 
 #'           group = "solitary")
 #' 
-Tb_mussel <- function (L, 
-                       H, 
+Tb_mussel <- function (l, 
+                       h, 
                        T_a, 
                        T_g, 
                        S, 
@@ -61,7 +61,15 @@ Tb_mussel <- function (L,
                        evap  = FALSE, 
                        group = "solitary") {
   
-  stopifnot(L > 0, H > 0, u >= 0, psi >= 0, psi <= 90, evap %in% c("TRUE","FALSE"), cl >= 0, cl <= 1, group %in% c("aggregated", "solitary", "solitary_valve"))
+  stopifnot(l > 0, 
+            h > 0, 
+            u >= 0, 
+            psi >= 0, 
+            psi <= 90, 
+            is.logical(evap), 
+            cl >= 0, 
+            cl <= 1, 
+            group %in% c("aggregated", "solitary", "solitary_valve"))
   
   # conversion to kelvin
 
@@ -70,11 +78,11 @@ Tb_mussel <- function (L,
 
   # total mussel shell surface area (m^2)
 
-    A <- 1.08 * L^2 + 0.0461 * L - 0.0016   
+    A <- 1.08 * l^2 + 0.0461 * l - 0.0016   
 
   # mussel body mass, kg
   
-    m <- 191*L^3.53  
+    m <- 191 * l^3.53  
 
   # conversion to radians
 
@@ -99,11 +107,11 @@ Tb_mussel <- function (L,
   
   # direct radiation
 
-    S_p <- S*(1-k_d) 
+    S_p <- S * (1 - k_d) 
 
   # diffuse radiation
 
-    S_d <- S*(k_d)
+    S_d <- S * (k_d)
 
   # omit reflected radiation
   
@@ -113,11 +121,11 @@ Tb_mussel <- function (L,
 
       # Helmuth 1999 from Idso and Jackson 1969
 
-        eps_ac <- 0.72 +0.005*(T_a-273) 
+        eps_ac <- 0.72 + 0.005 * (T_a - 273) 
 
       # Helmuth 1999
 
-        eps_sky <- eps_ac + cl*(1-eps_ac-8/T_a)
+        eps_sky <- eps_ac + cl * (1 - eps_ac - 8 / T_a)
 
       # infrared emissivity of organism (same as above, p.163)
 
@@ -134,7 +142,7 @@ Tb_mussel <- function (L,
   #   Approximated to that of water because mussels are mostly made of water
 
     kb <- 0.6      
-    k5 <- kb / (0.5 * H)
+    k5 <- kb / (0.5 * h)
   
   # Convection
   # Denny and Harley. 2006, Hot limpets: predicting body temperature in a conductance-mediated thermal system 
@@ -149,7 +157,7 @@ Tb_mussel <- function (L,
   
   # average body dimensions (Helmuth 1998 p.74)
 
-    d <- L * 2 / 3   
+    d <- l * 2 / 3   
 
   # Reynolds number
 

@@ -46,7 +46,19 @@ diurnal_temp_variation_sineexp <- function (T_max,
                                             beta  = 1.55, 
                                             gamma = 2.2) {
 
-  stopifnot(T_max >= T_min, t_s >= 0, t_s <= 24,t_r >= 0, t_r <= 24,t >= 0, t <= 24, alpha >= 0, alpha <= 24,gamma >= 0, gamma <= 24,beta >= 0, beta <= 24)
+  stopifnot(T_max >= T_min, 
+            t_s >= 0, 
+            t_s <= 24,
+            t_r >= 0, 
+            t_r <= 24,
+            t >= 0, 
+            t <= 24, 
+            alpha >= 0, 
+            alpha <= 24,
+            gamma >= 0, 
+            gamma <= 24,
+            beta >= 0, 
+            beta <= 24)
    
   l <- t_s - t_r #daylength
   
@@ -114,7 +126,9 @@ diurnal_temp_variation_sine <- function (T_max,
                                          T_min, 
                                          t) {
   
-  stopifnot(t >= 0, t <= 24, T_max >= T_min)
+  stopifnot(t >= 0, 
+            t <= 24, 
+            T_max >= T_min)
   
   W <- pi / 12
   gamma <- 0.44 - 0.46 * sin(0.9 + W * t) + 0.11 * sin(0.9 + 2 * W * t)   # (2.2) diurnal temperature function
@@ -167,7 +181,13 @@ diurnal_temp_variation_sinesqrt <- function (t,
                                              T_min, 
                                              T_minp) {
  
-  stopifnot(t >= 0, t <= 24, tr >= 0, tr <= 24, ts >= 0, ts <= 24, T_max >= T_min)
+  stopifnot(t >= 0, 
+            t <= 24, 
+            tr >= 0, 
+            tr <= 24, 
+            ts >= 0, 
+            ts <= 24, 
+            T_max >= T_min)
   
   # Time estimates
   tp <- tr + 24 # sunrise time following day

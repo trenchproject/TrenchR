@@ -48,9 +48,7 @@ Tb_butterfly(
 \code{numeric} predicted body (operative environmental) temperature (C).
 }
 \description{
-Predicts body temperatures (operative environmental temperatures) of a butterfly in C.
- \cr \cr
- Based on \insertCite{Kingsolver1983;textual}{TrenchR} and \insertCite{Buckley2012;textual}{TrenchR}.
+Predicts body temperatures (operative environmental temperatures) of a butterfly in C. Based on \insertCite{Kingsolver1983;textual}{TrenchR} and \insertCite{Buckley2012;textual}{TrenchR}.
 }
 \details{
 Thermal radiative flux is calculated following \insertCite{Gates1980;textual}{TrenchR} based on \insertCite{Swinbank1960;textual}{TrenchR} and \insertCite{Kingsolver1983;textual}{TrenchR} estimates using the Brunt equation with black body sky temperature from \insertCite{Swinbank1963;textual}{TrenchR}.

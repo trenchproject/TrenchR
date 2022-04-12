@@ -933,13 +933,13 @@ grasshopper is well mixed.
 We provide the operative temperature model for grasshoppers as follows:
 
 ```{r, fig.height=4, fig.width=6}
-t.seq= lapply(20:40, FUN=Tb_grasshopper, T_g=25, u=0.4, H=800, K_t=0.7, psi=30, L=0.05, Acondfact=0.00, z=0.001, abs=0.7, r_g=0.3)
+t.seq= lapply(20:40, FUN=Tb_grasshopper, T_g=25, u=0.4, H=800, K_t=0.7, psi=30, l=0.05, Acondfact=0.00, z=0.001, abs=0.7, r_g=0.3)
 plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", xlim=c(20,40), ylim=c(20,40))
 abline(a=0,b=1, col="gray")
 
-t.seq= lapply(20:40, FUN=Tb_grasshopper, T_g=25, u=0.4, H=400, K_t=0.7, psi=30, L=0.05, Acondfact=0.00, z=0.001, abs=0.7, r_g=0.3)
+t.seq= lapply(20:40, FUN=Tb_grasshopper, T_g=25, u=0.4, H=400, K_t=0.7, psi=30, l=0.05, Acondfact=0.00, z=0.001, abs=0.7, r_g=0.3)
 points(20:40, t.seq, type = "l", lty="dashed")
-t.seq= lapply(20:40, FUN=Tb_grasshopper, T_g=25, u=0.4, H=600, K_t=0.7, psi=30, L=0.05, Acondfact=0.00, z=0.001, abs=0.7, r_g=0.3)
+t.seq= lapply(20:40, FUN=Tb_grasshopper, T_g=25, u=0.4, H=600, K_t=0.7, psi=30, l=0.05, Acondfact=0.00, z=0.001, abs=0.7, r_g=0.3)
 points(20:40, t.seq, type = "l", lty="dotted")
 
 legend("bottomright",title= expression("direct radiation, H"), legend=c(200,400,600), lty=c("dashed","dotted","solid") )
@@ -1037,13 +1037,13 @@ Here, $k_1$ to $k_5$ are physical constants and measured coefficients.
 We provide the operative temperature model as follows.
 
 ```{r, fig.height=4, fig.width=6}
-t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, S=500, k_d=0.2, u = 0.2, psi =30, evap = TRUE, cl = 0.5, group = "solitary")
+t.seq <- lapply(20:40, FUN = Tb_mussel, l = 0.1, h = 0.05, T_g = 30, S=500, k_d=0.2, u = 0.2, psi =30, evap = TRUE, cl = 0.5, group = "solitary")
 plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(25, 45))
 
-t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, S=500, k_d=0.2, u = 1, psi =30, evap = TRUE, cl = 0.5, group = "solitary")
+t.seq <- lapply(20:40, FUN = Tb_mussel, l = 0.1, h = 0.05, T_g = 30, S=500, k_d=0.2, u = 1, psi =30, evap = TRUE, cl = 0.5, group = "solitary")
 points(20:40, t.seq, type = "l", lty = "dashed")
 
-t.seq <- lapply(20:40, FUN = Tb_mussel, L = 0.1, H = 0.05, T_g = 30, S=500, k_d=0.2, u = 2, psi =30, evap = TRUE, cl = 0.5, group = "solitary")
+t.seq <- lapply(20:40, FUN = Tb_mussel, l = 0.1, h = 0.05, T_g = 30, S=500, k_d=0.2, u = 2, psi =30, evap = TRUE, cl = 0.5, group = "solitary")
 points(20:40, t.seq, type = "l", lty = "dotted")
 
 abline(a=0,b=1, col="gray")
@@ -1058,16 +1058,16 @@ evaporative heat loss.
 
 ```{r, fig.height=4, fig.width=6}
 
-t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 0.5, psi =60, evap = FALSE, cl = 0, group = "solitary")
+t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, h = 0.05, T_g = 30, S=500, k_d=0, u = 0.5, psi =60, evap = FALSE, cl = 0, group = "solitary")
 plot(seq(0.02,0.14,0.01), t.seq, type = "l", xlab = "mussel length (m)", ylab = "body temperature (°C)", ylim=c(25,32) )
 
-t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 1, psi =60, evap = FALSE, cl = 0, group = "solitary")
+t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, h = 0.05, T_g = 30, S=500, k_d=0, u = 1, psi =60, evap = FALSE, cl = 0, group = "solitary")
 points(seq(0.02,0.14,0.01), t.seq, type = "l", lty="dashed")
 
-t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 3, psi =60, evap = FALSE, cl = 0, group = "solitary")
+t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, h = 0.05, T_g = 30, S=500, k_d=0, u = 3, psi =60, evap = FALSE, cl = 0, group = "solitary")
 points(seq(0.02,0.14,0.01), t.seq, type = "l", lty="dotted")
 
-t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, H = 0.05, T_g = 30, S=500, k_d=0, u = 1, psi =60, evap = TRUE, cl = 0, group = "solitary")
+t.seq <- lapply(seq(0.02,0.14,0.01), FUN = Tb_mussel, T_a=25, h = 0.05, T_g = 30, S=500, k_d=0, u = 1, psi =60, evap = TRUE, cl = 0, group = "solitary")
 points(seq(0.02,0.14,0.01), t.seq, type = "l", col="red")
 
 legend("bottomright",title= expression("Wind speed, m/s"), legend=c(0.5,1,3), lty=c("solid", "dashed","dotted") )
@@ -1079,16 +1079,16 @@ heat loss.
 
 ```{r, fig.height=4, fig.width=6}
 
-t.seq <- lapply(20:40, FUN = Tbed_mussel, L = 0.1, S=500, k_d=0.2, u = 0.2, evap = FALSE)
+t.seq <- lapply(20:40, FUN = Tbed_mussel, l = 0.1, S=500, k_d=0.2, u = 0.2, evap = FALSE)
 plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(20, 50))
 
-t.seq <- lapply(20:40, FUN = Tbed_mussel, L = 0.1, S=500, k_d=0.2, u = 1, evap = FALSE)
+t.seq <- lapply(20:40, FUN = Tbed_mussel, l = 0.1, S=500, k_d=0.2, u = 1, evap = FALSE)
 points(20:40, t.seq, type = "l", lty = "dashed")
 
-t.seq <- lapply(20:40, FUN = Tbed_mussel, L = 0.1, S=500, k_d=0.2, u = 2, evap = FALSE)
+t.seq <- lapply(20:40, FUN = Tbed_mussel, l = 0.1, S=500, k_d=0.2, u = 2, evap = FALSE)
 points(20:40, t.seq, type = "l", lty = "dotted")
 
-t.seq <- lapply(20:40, FUN = Tbed_mussel, L = 0.1, S=500, k_d=0.2, u = 0.2, evap = TRUE)
+t.seq <- lapply(20:40, FUN = Tbed_mussel, l = 0.1, S=500, k_d=0.2, u = 0.2, evap = TRUE)
 points(20:40, t.seq, type = "l", lty = "solid", col="red")
 
 abline(a=0,b=1, col="gray")
@@ -1177,11 +1177,11 @@ $$W_{sw} \pm W_{lw} \pm W_{cd} \pm W_{cv} = 0$$
 We provide the operative temperature model as follows:
 
 ```{r, fig.height=4, fig.width=6}
-t.seq <- lapply(20:40, FUN = Tb_limpet, T_r = 30, L = 0.0176, H = 0.0122, I = 1000, u = 1, psi = 30, c = 1, position = "anterior")
+t.seq <- lapply(20:40, FUN = Tb_limpet, T_r = 30, l = 0.0176, h = 0.0122, I = 1000, u = 1, psi = 30, c = 1, position = "anterior")
 plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(25, 50))
-t.seq <- lapply(20:40, FUN = Tb_limpet, T_r = 30, L = 0.0176, H = 0.0122, I = 1300, u = 1, psi = 30, c = 1, position = "anterior")
+t.seq <- lapply(20:40, FUN = Tb_limpet, T_r = 30, l = 0.0176, h = 0.0122, I = 1300, u = 1, psi = 30, c = 1, position = "anterior")
 points(20:40, t.seq, type = "l", lty = "dashed")
-t.seq <- lapply(20:40, FUN = Tb_limpet, T_r = 30, L = 0.0176, H = 0.0122, I = 1600, u = 1, psi = 30, c = 1, position = "anterior")
+t.seq <- lapply(20:40, FUN = Tb_limpet, T_r = 30, l = 0.0176, h = 0.0122, I = 1600, u = 1, psi = 30, c = 1, position = "anterior")
 points(20:40, t.seq, type = "l", lty = "dotted")
 
 abline(a=0,b=1, col="gray")
@@ -1198,13 +1198,13 @@ We illustrate the functions below:
 
 ```{r, fig.height=4, fig.width=6}
 
-t.seq <- lapply(20:40, FUN = Tb_limpet, T_r = 30, L = 0.0176, H = 0.0122, I = 800, u = 1, psi = 30, c = 1, position = "anterior")
+t.seq <- lapply(20:40, FUN = Tb_limpet, T_r = 30, l = 0.0176, h = 0.0122, I = 800, u = 1, psi = 30, c = 1, position = "anterior")
 plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)", ylim = c(25, 50))
 
-t.seq <- lapply(20:40, FUN = Tb_limpetBH, T_r = 30, L = 0.0176, H = 0.0122, I = 800, u = 1, s_aspect = 90, s_slope=60, c = 1)
+t.seq <- lapply(20:40, FUN = Tb_limpetBH, T_r = 30, l = 0.0176, h = 0.0122, I = 800, u = 1, s_aspect = 90, s_slope=60, c = 1)
 points(20:40, t.seq, type = "l", lty = "dashed")
 
-t.seq <- lapply(20:40, FUN = Tb_snail, Len = 0.012, solar=800, WS=1, CC=0.5, WL=0, WSH=10)
+t.seq <- lapply(20:40, FUN = Tb_snail, l = 0.012, solar=800, WS=1, CC=0.5, WL=0, WSH=10)
 points(20:40, t.seq, type = "l", lty = "dotted")
 
 abline(a=0,b=1, col="gray")

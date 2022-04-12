@@ -4,22 +4,22 @@
 \alias{Tb_mussel}
 \title{Calculate Operative Environmental Temperature of a Mussel in C.}
 \usage{
-Tb_mussel(L, H, T_a, T_g, S, k_d, u, psi, cl, evap = FALSE, group = "solitary")
+Tb_mussel(l, h, T_a, T_g, S, k_d, u, psi, cl, evap = FALSE, group = "solitary")
 }
 \arguments{
-\item{L}{\code{numeric} mussel length (anterior/posterior axis) (m).}
+\item{l}{\code{numeric} mussel length (anterior/posterior axis) (m).}
 
-\item{H}{\code{numeric} mussel height (dorsal/ventral axis) (m). It is reasonable to assume \code{H = 0.5 * L}.}
+\item{h}{\code{numeric} mussel height (dorsal/ventral axis) (m). It is reasonable to assume \code{h = 0.5 * l}.}
 
 \item{T_a}{\code{numeric} air temperature (C).}
 
 \item{T_g}{\code{numeric} ground temperature (C).}
 
-\item{S}{\code{numeric} direct solar flux density (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
+\item{S}{\code{numeric} direct solar flux density (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
 
 \item{k_d}{\code{numeric} diffuse fraction, proportion of solar radiation that is diffuse.}
 
-\item{u}{\code{numeric} wind speed (m/s).}
+\item{u}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
 \item{psi}{\code{numeric} solar zenith angle (degrees): can be calculated from \code{\link{zenith_angle}}.}
 
@@ -40,8 +40,8 @@ Thermal radiative flux is calculated following \insertCite{Helmuth1998;textual}{
 }
 \examples{
 
-Tb_mussel(L     = 0.1, 
-          H     = 0.05, 
+Tb_mussel(l     = 0.1, 
+          h     = 0.05, 
           T_a   = 25, 
           T_g   = 30, 
           S     = 500, 

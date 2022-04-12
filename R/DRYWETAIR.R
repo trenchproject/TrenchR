@@ -157,7 +157,9 @@ WETAIR <- function (db,
                     dp = 999, 
                     bp = 101325) {
   
-  stopifnot(rh >= 0, rh <= 100, bp > 0)
+  stopifnot(rh >= 0, 
+            rh <= 100, 
+            bp > 0)
   
   tk <- db + 273.15
   esat <- VAPPRS(db)

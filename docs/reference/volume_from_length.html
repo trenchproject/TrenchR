@@ -143,15 +143,15 @@
 .</p>
     </div>
 
-    <pre class="usage"><span class='fu'>volume_from_length</span><span class='op'>(</span><span class='va'>L</span>, <span class='va'>taxon</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>volume_from_length</span><span class='op'>(</span><span class='va'>l</span>, <span class='va'>taxon</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>L</th>
+      <th>l</th>
       <td><p><code>numeric</code> length (m). 
-<br /> <br />
+<br />
 Snout-vent length for amphibians and reptiles is used, except for turtles (carapace length is used).</p></td>
     </tr>
     <tr>
@@ -199,11 +199,11 @@ ISSN 0006-3568, doi: <a href='https://doi.org/10.2307/1296267'>10.2307/1296267</
 <code><a href='surface_area_from_volume.html'>surface_area_from_volume</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='fu'>volume_from_length</span><span class='op'>(</span>L <span class='op'>=</span> <span class='fl'>0.05</span>,  
+    <pre class="examples"><div class='input'>  <span class='fu'>volume_from_length</span><span class='op'>(</span>l     <span class='op'>=</span> <span class='fl'>0.05</span>,  
                      taxon <span class='op'>=</span> <span class='st'>"lizard"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 3.478309e-06</div><div class='input'>  <span class='fu'>volume_from_length</span><span class='op'>(</span>L <span class='op'>=</span> <span class='fl'>0.05</span>,   
+</div><div class='output co'>#&gt; [1] 3.478309e-06</div><div class='input'>  <span class='fu'>volume_from_length</span><span class='op'>(</span>l     <span class='op'>=</span> <span class='fl'>0.05</span>,   
                      taxon <span class='op'>=</span> <span class='st'>"frog"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 1.068642e-05</div><div class='input'>  <span class='fu'>volume_from_length</span><span class='op'>(</span>L <span class='op'>=</span> <span class='fl'>0.05</span>,   
+</div><div class='output co'>#&gt; [1] 1.068642e-05</div><div class='input'>  <span class='fu'>volume_from_length</span><span class='op'>(</span>l     <span class='op'>=</span> <span class='fl'>0.05</span>,   
                      taxon <span class='op'>=</span> <span class='st'>"sphere"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 6.556091e-05</div><div class='input'>
 </div></pre>

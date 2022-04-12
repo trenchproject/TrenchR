@@ -4,11 +4,11 @@
 \alias{volume_from_length}
 \title{Organism Volume from Length}
 \usage{
-volume_from_length(L, taxon)
+volume_from_length(l, taxon)
 }
 \arguments{
-\item{L}{\code{numeric} length (m). 
-\cr \cr
+\item{l}{\code{numeric} length (m). 
+\cr
 Snout-vent length for amphibians and reptiles is used, except for turtles (carapace length is used).}
 
 \item{taxon}{\code{character} taxon of organism, current choices: \code{"lizard"}, \code{"frog"}, \code{"sphere"}.}
@@ -27,11 +27,11 @@ Relationships come from \itemize{
  }
 }
 \examples{
-  volume_from_length(L = 0.05,  
+  volume_from_length(l     = 0.05,  
                      taxon = "lizard")
-  volume_from_length(L = 0.05,   
+  volume_from_length(l     = 0.05,   
                      taxon = "frog")
-  volume_from_length(L = 0.05,   
+  volume_from_length(l     = 0.05,   
                      taxon = "sphere")
 
 }

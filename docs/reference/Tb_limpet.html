@@ -143,7 +143,7 @@
 .</p>
     </div>
 
-    <pre class="usage"><span class='fu'>Tb_limpet</span><span class='op'>(</span><span class='va'>T_a</span>, <span class='va'>T_r</span>, <span class='va'>L</span>, <span class='va'>H</span>, <span class='va'>I</span>, <span class='va'>u</span>, <span class='va'>psi</span>, <span class='va'>c</span>, position <span class='op'>=</span> <span class='st'>"anterior"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>Tb_limpet</span><span class='op'>(</span><span class='va'>T_a</span>, <span class='va'>T_r</span>, <span class='va'>l</span>, <span class='va'>h</span>, <span class='va'>I</span>, <span class='va'>u</span>, <span class='va'>psi</span>, <span class='va'>c</span>, position <span class='op'>=</span> <span class='st'>"anterior"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -157,20 +157,20 @@
       <td><p><code>numeric</code> rock surface temperature in C in the sunlight.</p></td>
     </tr>
     <tr>
-      <th>L</th>
+      <th>l</th>
       <td><p><code>numeric</code> limpet length (anterior/posterior axis) (m).</p></td>
     </tr>
     <tr>
-      <th>H</th>
+      <th>h</th>
       <td><p><code>numeric</code> limpet height (dorsal/ventral axis) (m).</p></td>
     </tr>
     <tr>
       <th>I</th>
-      <td><p><code>numeric</code> solar irradiance W / m<sup>2</sup>.</p></td>
+      <td><p><code>numeric</code> solar irradiance (W m<sup>-2</sup>).</p></td>
     </tr>
     <tr>
       <th>u</th>
-      <td><p><code>numeric</code> wind speed (m / s).</p></td>
+      <td><p><code>numeric</code> wind speed (m s<sup>-1</sup>).</p></td>
     </tr>
     <tr>
       <th>psi</th>
@@ -192,14 +192,14 @@
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The original equation uses a finite-difference approach where they divide the rock into series of chunks, and calculate the temperature at each node to derive the conductive heat. For simplification, here it takes the rock temperature as a parameter, and conductive heat is calculated by the product of the area, thermal conductivity of rock and the difference in temperatures of the rock and the body.
-  <br /> <br />
+  <br />
   Limpets are simulated as cones following and using solar emissivity values from Campbell and Norman (1998)
 .
-  <br /> <br />
+  <br />
   The area of the limpet's shell (m<sup>2</sup>) is projected in the direction at which sunlight strikes the organism Pennell and Deignan (1989)
 .
-  <br /> <br />
-  Air conductivity values (W / (m<sup>-1</sup> K<sup>-1</sup>)) are calculated following Denny and Harley (2006)
+  <br />
+  Air conductivity values (W m<sup>-1</sup> K<sup>-1</sup>) are calculated following Denny and Harley (2006)
 .</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -258,16 +258,15 @@ ISSN 0022-0949, doi: <a href='https://doi.org/10.1242/jeb.02356'>10.1242/jeb.023
 <code><a href='saturation_water_vapor_pressure.html'>saturation_water_vapor_pressure</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='fu'>Tb_limpet</span><span class='op'>(</span>
-    T_a <span class='op'>=</span> <span class='fl'>25</span>, 
-    T_r <span class='op'>=</span> <span class='fl'>30</span>, 
-    L <span class='op'>=</span> <span class='fl'>0.0176</span>, 
-    H <span class='op'>=</span> <span class='fl'>0.0122</span>, 
-    I <span class='op'>=</span> <span class='fl'>1300</span>, 
-    u <span class='op'>=</span> <span class='fl'>1</span>, 
-    psi <span class='op'>=</span> <span class='fl'>30</span>, 
-    c <span class='op'>=</span> <span class='fl'>1</span>, 
-    position <span class='op'>=</span> <span class='st'>"anterior"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>Tb_limpet</span><span class='op'>(</span>T_a      <span class='op'>=</span> <span class='fl'>25</span>, 
+            T_r      <span class='op'>=</span> <span class='fl'>30</span>, 
+            l        <span class='op'>=</span> <span class='fl'>0.0176</span>, 
+            h        <span class='op'>=</span> <span class='fl'>0.0122</span>, 
+            I        <span class='op'>=</span> <span class='fl'>1300</span>, 
+            u        <span class='op'>=</span> <span class='fl'>1</span>, 
+            psi      <span class='op'>=</span> <span class='fl'>30</span>, 
+            c        <span class='op'>=</span> <span class='fl'>1</span>, 
+            position <span class='op'>=</span> <span class='st'>"anterior"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] 32.51874</div><div class='input'>
 </div></pre>
   </div>

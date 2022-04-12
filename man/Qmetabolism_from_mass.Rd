@@ -18,7 +18,7 @@ Qmetabolism_from_mass(m, taxon = "reptile")
 Estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from \insertCite{Nagy2005}{TrenchR}.
 }
 \examples{
-  Qmetabolism_from_mass(m    = 12,
+  Qmetabolism_from_mass(m     = 12,
                         taxon = "reptile")
 
 }

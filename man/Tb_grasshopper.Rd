@@ -11,7 +11,7 @@ Tb_grasshopper(
   H,
   K_t,
   psi,
-  L,
+  l,
   Acondfact = 0.25,
   z = 0.001,
   abs = 0.7,
@@ -26,13 +26,13 @@ Tb_grasshopper(
 
 \item{u}{\code{numeric} wind speed in m / s.}
 
-\item{H}{\code{numeric} total (direct + diffuse) solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.}
+\item{H}{\code{numeric} total (direct + diffuse) solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}.}
 
 \item{K_t}{\code{numeric} clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.}
 
 \item{psi}{\code{numeric} solar zenith angle in degrees.}
 
-\item{L}{\code{numeric} grasshopper length in m.}
+\item{l}{\code{numeric} grasshopper length in m.}
 
 \item{Acondfact}{\code{numeric} the proportion of the grasshopper surface area that is in contact with the ground.}
 
@@ -66,7 +66,7 @@ Total radiative flux is calculated as thermal radiative heat flux plus convectiv
                  H         = 400, 
                  K_t       = 0.7, 
                  psi       = 30, 
-                 L         = 0.02, 
+                 l         = 0.02, 
                  Acondfact = 0.25, 
                  z         = 0.001, 
                  abs       = 0.7, 

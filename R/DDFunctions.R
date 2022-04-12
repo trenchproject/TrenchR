@@ -39,7 +39,8 @@ degree_days <- function (T_min,
                          UDT    = NA, 
                          method = "single.sine") {
   
-  stopifnot(T_max >= T_min, method %in% c("single.sine", "double.sine", "single.triangulation", "double.triangulation"))
+  stopifnot(T_max >= T_min, 
+            method %in% c("single.sine", "double.sine", "single.triangulation", "double.triangulation"))
   
   # Amplitude
   alpha <- (T_max - T_min) / 2 

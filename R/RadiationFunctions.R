@@ -34,7 +34,14 @@ estimate_radiation <- function (doy,
                                 elev, 
                                 rho = 0.7){
   
-  stopifnot(doy > 0, doy < 367, psi <= 2 * pi, tau >= 0, tau <= 1, elev > 0, rho >= 0, rho <= 1)
+  stopifnot(doy > 0, 
+            doy < 367, 
+            psi <= 2 * pi, 
+            tau >= 0, 
+            tau <= 1, 
+            elev > 0, 
+            rho >= 0, 
+            rho <= 1)
   
   sigma <- 5.67 * 10^-8 # Stefan-Boltzman constant, W m^-2 K^-4
   c_p <- 29.3 # Specific heat of air, J/mol degrees K or C
@@ -96,7 +103,15 @@ diurnal_radiation_variation <- function(doy,
                                         lon, 
                                         lat) { 
 
-  stopifnot(doy > 0, doy < 367, solrad > 0, hour >= 0, hour <= 24, lon >- 180, lon <= 180, lat >= -90, lat <= 90)
+  stopifnot(doy > 0, 
+            doy < 367, 
+            solrad > 0, 
+            hour >= 0, 
+            hour <= 24, 
+            lon >- 180, 
+            lon <= 180, 
+            lat >= -90, 
+            lat <= 90)
   
   # Calculate solar time
   rd <- 180 / pi  # factor to convert radians into degrees
@@ -171,7 +186,16 @@ monthly_solar_radiation <- function (lat,
                                      Hr, 
                                      P) {
 
-  stopifnot(lat >= -90, lat <= 90, lon > -180, lon <= 180, doy > 0, doy < 367, elev > 0, Hr >= 0, Hr <= 100, P > 0)
+  stopifnot(lat >= -90, 
+            lat <= 90, 
+            lon > -180, 
+            lon <= 180, 
+            doy > 0, 
+            doy < 367, 
+            elev > 0, 
+            Hr >= 0, 
+            Hr <= 100, 
+            P > 0)
   
   rd <- 180 / pi  # factor to convert radians into degrees
   
@@ -294,7 +318,15 @@ direct_solar_radiation <- function (lat,
                                     t0, 
                                     method = "Campbell 1977") {
 
-  stopifnot(lat >= -90, lat <= 90, doy > 0, doy < 367, elev > 0, t >= 0, t <= 24, t0 >= 0, t0 <= 24)
+  stopifnot(lat >= -90, 
+            lat <= 90, 
+            doy > 0, 
+            doy < 367, 
+            elev > 0, 
+            t >= 0, 
+            t <= 24, 
+            t0 >= 0, 
+            t0 <= 24)
   
   # estimate needed quantities
   # elliptical longitude

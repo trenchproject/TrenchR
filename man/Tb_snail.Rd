@@ -4,20 +4,20 @@
 \alias{Tb_snail}
 \title{Predict Body Temperature (Operative Environmental Temperature) of a Marine Snail in C}
 \usage{
-Tb_snail(temp, Len, solar, WS, CC, WL, WSH)
+Tb_snail(temp, l, solar, WS, CC, WL, WSH)
 }
 \arguments{
 \item{temp}{\code{numeric} air temperature (C).}
 
-\item{Len}{\code{numeric} snail length (m).}
+\item{l}{\code{numeric} snail length (m).}
 
-\item{solar}{\code{numeric} direct solar flux density (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).}
+\item{solar}{\code{numeric} direct solar flux density (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
 
-\item{WS}{\code{numeric} wind speed (m/s).}
+\item{WS}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
 \item{CC}{\code{numeric} fraction of the sky covered by cloud (0-1).}
 
-\item{WL}{\code{numeric} water loss rate (kg/s), 5 percent loss of body mass over one hour is a reasonable maximum level \insertCite{Helmuth1999}{TrenchR}.}
+\item{WL}{\code{numeric} water loss rate (\ifelse{html}{\out{kg s<sup>-1</sup>}}{\eqn{kg s^-1}{ASCII}}), 5 percent loss of body mass over one hour is a reasonable maximum level \insertCite{Helmuth1999}{TrenchR}.}
 
 \item{WSH}{\code{numeric} wind sensor height (m).}
 }
@@ -29,7 +29,7 @@ Predicts body temperature of a snail in C. Implements a steady-state model, whic
 }
 \examples{
   Tb_snail(temp  = 25, 
-           Len   = 0.012, 
+           l     = 0.012, 
            solar = 800, 
            WS    = 1, 
            CC    = 0.5, 

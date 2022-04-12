@@ -31,12 +31,12 @@ The function `mass_from_length()` encompasses empirically-derived relationships 
 
 ```{r, fig.height = 4, fig.width = 6}
 par(mar = c(5, 5, 2, 2))
-plot(seq(0.01, 0.25, 0.01), mass_from_length(seq(0.01, 0.25, 0.01), "lizard"), type = "l", xlab = "length (m)", ylab = "mass (g)", ylim = c(0, 200), xlim = c(0, 0.25), las = 1, bty = "L", lwd = 2)
-points(seq(0.01, 0.25, 0.01), mass_from_length(seq(0.01, 0.25, 0.01), "salamander"), type = "l", col = "blue", lwd = 2)
-points(seq(0.01, 0.25, 0.01), mass_from_length(seq(0.01, 0.25, 0.01), "frog"), type = "l", col = "red", lwd = 2)
-points(seq(0.01, 0.25, 0.01), mass_from_length(seq(0.01, 0.25, 0.01), "snake"), type = "l", col = "green", lwd = 2)
-points(seq(0.01, 0.25, 0.01), mass_from_length(seq(0.01, 0.25, 0.01), "turtle"), type = "l", col = "orange", lwd = 2)
-points(seq(0.01, 0.25, 0.01), mass_from_length(seq(0.01, 0.25, 0.01), "insect"), type = "l", col = "purple", lwd = 2)
+plot(seq(0.01, 0.25, 0.01), mass_from_length(seq(0.01, 0.25, 0.01), taxon = "lizard"), type = "l", xlab = "length (m)", ylab = "mass (g)", ylim = c(0, 200), xlim = c(0, 0.25), las = 1, bty = "L", lwd = 2)
+points(seq(0.01, 0.25, 0.01), mass_from_length(seq(0.01, 0.25, 0.01), taxon = "salamander"), type = "l", col = "blue", lwd = 2)
+points(seq(0.01, 0.25, 0.01), mass_from_length(seq(0.01, 0.25, 0.01), taxon = "frog"), type = "l", col = "red", lwd = 2)
+points(seq(0.01, 0.25, 0.01), mass_from_length(seq(0.01, 0.25, 0.01), taxon = "snake"), type = "l", col = "green", lwd = 2)
+points(seq(0.01, 0.25, 0.01), mass_from_length(seq(0.01, 0.25, 0.01), taxon = "turtle"), type = "l", col = "orange", lwd = 2)
+points(seq(0.01, 0.25, 0.01), mass_from_length(seq(0.01, 0.25, 0.01), taxon = "insect"), type = "l", col = "purple", lwd = 2)
 box(bty = "L", lwd = 2)
 ```
 
@@ -48,28 +48,28 @@ The function `surface_area_from_mass()` encompasses empirically-derived relation
 
 ```{r, fig.height = 4, fig.width = 6}
 par(mar = c(5, 5, 2, 2))
-plot(1:50, surface_area_from_mass(1:50, "lizard"), type = "l", xlab = "mass (g)", ylab = "", las = 1, bty = "L", lwd = 2)
+plot(1:50, surface_area_from_mass(1:50, taxon = "lizard"), type = "l", xlab = "mass (g)", ylab = "", las = 1, bty = "L", lwd = 2)
 mtext(expression("surface area" ~ (m^{2})), 2, line = 3.5)
-points(1:50, surface_area_from_mass(1:50, "frog"), type = "l", lty = "dashed", lwd = 2)
-points(1:50, surface_area_from_mass(1:50, "salamander"), type = "l", lty = "dotted", lwd = 2)
-points(seq(0.1, 5, 0.2), surface_area_from_mass(seq(0.1,5,0.2), "insect"), type = "l", lty = "dotdash", lwd = 2)
+points(1:50, surface_area_from_mass(1:50, taxon = "frog"), type = "l", lty = "dashed", lwd = 2)
+points(1:50, surface_area_from_mass(1:50, taxon = "salamander"), type = "l", lty = "dotted", lwd = 2)
+points(seq(0.1, 5, 0.2), surface_area_from_mass(seq(0.1,5,0.2), taxon = "insect"), type = "l", lty = "dotdash", lwd = 2)
 box(bty = "L", lwd = 2)
 ```
 
 We also provide empirical relationships estimating surface area as power law function of volume. The functions were developed by Mitchell [-@mitchell1976heat] for use in approximating convective heat transfer:
 
 ```{r, fig.height = 4, fig.width = 6}
-plot(seq(0.001, 0.01, 0.001), surface_area_from_volume(seq(0.001, 0.01, 0.001), "lizard"), type = "l", xlab = expression(volume ~ (m^{3})), ylab = expression("surface area" ~ (m^{2})))
-points(seq(0.001, 0.01, 0.001), surface_area_from_volume(seq(0.001, 0.01, 0.001), "frog"), type = "l", lty = "dashed")
-points(seq(0.001, 0.01, 0.001), surface_area_from_volume(seq(0.001, 0.01, 0.001), "sphere"), type = "l", lty = "dotted")
+plot(seq(0.001, 0.01, 0.001), surface_area_from_volume(seq(0.001, 0.01, 0.001), taxon = "lizard"), type = "l", xlab = expression(volume ~ (m^{3})), ylab = expression("surface area" ~ (m^{2})))
+points(seq(0.001, 0.01, 0.001), surface_area_from_volume(seq(0.001, 0.01, 0.001), taxon = "frog"), type = "l", lty = "dashed")
+points(seq(0.001, 0.01, 0.001), surface_area_from_volume(seq(0.001, 0.01, 0.001), taxon = "sphere"), type = "l", lty = "dotted")
 ```
 
 For the same study, we additionally provide a function to estimate volume from length for several taxa or by approximating the organism as a sphere. Finally, we provide a function for estimating surface area from length by approximating the animal's body as a rotational ellipsoid. The allometric functions are available in R as follows:
 
 ```{r, fig.height = 4, fig.width = 6}
-plot(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001), "lizard"), type = "l", xlab = "length (m)", ylab = expression(volume ~ (m^{3})))
-points(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001), "frog"), type = "l", lty = "dashed")
-points(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001), "sphere"), type = "l", lty = "dotted")
+plot(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001), taxon = "lizard"), type = "l", xlab = "length (m)", ylab = expression(volume ~ (m^{3})))
+points(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001), taxon = "frog"), type = "l", lty = "dashed")
+points(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001), taxon = "sphere"), type = "l", lty = "dotted")
 ```
 
 ```{r, fig.height = 4, fig.width = 6}
@@ -84,20 +84,20 @@ points(seq(0, 90, 10), proportion_silhouette_area(z = seq(0, 90, 10), taxon =  "
 points(seq(0, 90, 10), proportion_silhouette_area(z = seq(0, 90, 10), taxon =  "lizard", raz=0, posture="elevated"), type = "l", lty = "dotted")
 points(seq(0, 90, 10), proportion_silhouette_area(z = seq(0, 90, 10), taxon =  "grasshopper"), type = "l", lty = "dotdash")
 
-plot(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="spheroid", theta = seq(0, 90, 10), H = 0.4, D = 0.39), type = "l", xlab = "theta (°)", ylab = "proportion silhouette area", ylim=c(0,0.35), lty = "dashed")
-points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="spheroid", theta = seq(0, 90, 10), H = 0.4, D = 0.3), type = "l", lty = "dashed")
-points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="spheroid", theta = seq(0, 90, 10), H = 0.4, D = 0.2), type = "l", lty = "dotted")
-points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="spheroid", theta = seq(0, 90, 10), H = 0.4, D = 0.1), type = "l", lty = "dotdash")
+plot(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="spheroid", theta = seq(0, 90, 10), h = 0.4, d = 0.39), type = "l", xlab = "theta (°)", ylab = "proportion silhouette area", ylim=c(0,0.35), lty = "dashed")
+points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="spheroid", theta = seq(0, 90, 10), h = 0.4, d = 0.3), type = "l", lty = "dashed")
+points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="spheroid", theta = seq(0, 90, 10), h = 0.4, d = 0.2), type = "l", lty = "dotted")
+points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="spheroid", theta = seq(0, 90, 10), h = 0.4, d = 0.1), type = "l", lty = "dotdash")
 
-plot(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="cylinder flat ends", theta = seq(0, 90, 10), H = 0.4, D = 0.4), type = "l", lty = "dashed", xlab = "theta (°)", ylab = "proportion silhouette area", ylim=c(0,0.35))
-points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="cylinder flat ends", theta = seq(0, 90, 10), H = 0.4, D = 0.2), type = "l", lty = "dashed")
-points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="cylinder flat ends", theta = seq(0, 90, 10), H = 0.4, D = 0.1), type = "l", lty = "dotted")
-points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="cylinder flat ends", theta = seq(0, 90, 10), H = 0.4, D = 0.05), type = "l", lty = "dotdash")
+plot(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="cylinder flat ends", theta = seq(0, 90, 10), h = 0.4, d = 0.4), type = "l", lty = "dashed", xlab = "theta (°)", ylab = "proportion silhouette area", ylim=c(0,0.35))
+points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="cylinder flat ends", theta = seq(0, 90, 10), h = 0.4, d = 0.2), type = "l", lty = "dashed")
+points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="cylinder flat ends", theta = seq(0, 90, 10), h = 0.4, d = 0.1), type = "l", lty = "dotted")
+points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="cylinder flat ends", theta = seq(0, 90, 10), h = 0.4, d = 0.05), type = "l", lty = "dotdash")
 
-plot(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="cylinder hemisphere ends", theta = seq(0, 90, 10), H = 0.4, D = 0.4), type = "l", xlab = "theta (°)", ylab = "proportion silhouette area", ylim=c(0,0.35))
-points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="cylinder hemisphere ends", theta = seq(0, 90, 10), H = 0.4, D = 0.2), type = "l", lty = "dashed")
-points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="cylinder hemisphere ends", theta = seq(0, 90, 10), H = 0.4, D = 0.1), type = "l", lty = "dotted")
-points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="cylinder hemisphere ends", theta = seq(0, 90, 10), H = 0.4, D = 0.05), type = "l", lty = "dotdash")
+plot(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="cylinder hemisphere ends", theta = seq(0, 90, 10), h = 0.4, d = 0.4), type = "l", xlab = "theta (°)", ylab = "proportion silhouette area", ylim=c(0,0.35))
+points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="cylinder hemisphere ends", theta = seq(0, 90, 10), h = 0.4, d = 0.2), type = "l", lty = "dashed")
+points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="cylinder hemisphere ends", theta = seq(0, 90, 10), h = 0.4, d = 0.1), type = "l", lty = "dotted")
+points(seq(0, 90, 10), proportion_silhouette_area_shapes(shape="cylinder hemisphere ends", theta = seq(0, 90, 10), h = 0.4, d = 0.05), type = "l", lty = "dotdash")
 
 ```
 

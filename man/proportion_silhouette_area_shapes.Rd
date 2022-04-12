@@ -4,16 +4,16 @@
 \alias{proportion_silhouette_area_shapes}
 \title{Organism Silhouette Area using Shape Approximations}
 \usage{
-proportion_silhouette_area_shapes(shape, theta, H, D)
+proportion_silhouette_area_shapes(shape, theta, h, d)
 }
 \arguments{
 \item{shape}{\code{character} Which shape to approximate an organism. Shapes are assumed to be prolate or have the longest axis parallel with the ground. Current choices are \code{"spheroid"}, \code{"cylinder flat ends"}, and \code{"cylinder hemisphere ends"}.}
 
 \item{theta}{\code{numeric} angle between the solar beam and the longitudinal axis in degrees.}
 
-\item{H}{\code{numeric} height (long axis in m). Cross section length for spheroid.}
+\item{h}{\code{numeric} height (long axis in m). Cross section length for spheroid.}
 
-\item{D}{\code{numeric} diameter (short axis in m). Cross section length for spheroid.}
+\item{d}{\code{numeric} diameter (short axis in m). Cross section length for spheroid.}
 }
 \value{
 \code{numeric} silhouette area as a proportion.
@@ -24,16 +24,16 @@ Estimate the projected (silhouette) area as a portion of the surface area of the
 \examples{
   proportion_silhouette_area_shapes(shape = "spheroid", 
                                     theta = 60,  
-                                    H     = 0.01,  
-                                    D     = 0.001)
+                                    h     = 0.01,  
+                                    d     = 0.001)
   proportion_silhouette_area_shapes(shape = "cylinder flat ends",  
                                     theta = 60,  
-                                    H     = 0.01, 
-                                    D     = 0.001)
+                                    h     = 0.01, 
+                                    d     = 0.001)
   proportion_silhouette_area_shapes(shape = "cylinder hemisphere ends",  
                                     theta = 60,  
-                                    H     = 0.01, 
-                                    D     = 0.001)
+                                    h     = 0.01, 
+                                    d     = 0.001)
 
 }
 \references{

@@ -30,10 +30,12 @@ partition_solar_radiation <- function (method,
                                        lat = NA, 
                                        sol.elev = NA){  
  
-  stopifnot(method %in% c("Liu_Jordan", "Orgill_Hollands", "Erbs", "Olyphant", "Spencer", "Reindl-1", "Reindl-2", "Lam_Li"), kt >= 0, kt <= 1)
+  stopifnot(method %in% c("Liu_Jordan", "Orgill_Hollands", "Erbs", "Olyphant", "Spencer", "Reindl-1", "Reindl-2", "Lam_Li"), 
+            kt >= 0, 
+            kt <= 1)
   
   #6.1 Liu and Jordan 
-  if(method == "Liu_Jordan") {
+  if (method == "Liu_Jordan") {
     
     kd <- (0.271 - 0.294 * kt) / kt
     
@@ -42,7 +44,7 @@ partition_solar_radiation <- function (method,
   }
     
   #6.2 Orgill and Hollands
-  if(method == "Orgill_Hollands") {
+  if (method == "Orgill_Hollands") {
     
     if(kt < 0.35) kd <- 1 - 0.249 * kt
     
@@ -53,7 +55,7 @@ partition_solar_radiation <- function (method,
   }
   
   #6.3 Erbs et al.
-  if(method == "Erbs"){
+  if (method == "Erbs") {
     
     if(kt <= 0.22) kd <- 1 - 0.09 * kt
     
@@ -63,7 +65,8 @@ partition_solar_radiation <- function (method,
   
   }
   
-  if(method == "Olyphant") { # Correction for Colorado from Olyphant 1984
+  if(method == "Olyphant") { 
+    # Correction for Colorado from Olyphant 1984
     
     if(kt <= 0.22) kd <- 1 - 0.09 * kt
     
@@ -153,7 +156,11 @@ proportion_diffuse_solar_radiation <- function (psi,
                                                 p_a, 
                                                 A) {  
   
-  stopifnot(psi >= 0, psi <= 89.5, p_a > 0, A >= 0, A <= 1)
+  stopifnot(psi >= 0, 
+            psi <= 89.5, 
+            p_a > 0, 
+            A >= 0, 
+            A <= 1)
  
   if(psi <= 50) {
     
