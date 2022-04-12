@@ -52,7 +52,7 @@ Tb_snail <- function (temp,
             WL >= 0, 
             WSH >= 0)
   
-  SB <- 5.67E-08 # Stephan Boltzman constant
+  sigma <- stefan_boltzmann_constant() # Stephan Boltzman constant
   
   # Temperatures
   Ktemp <- temp + 273 # temperature in Kelvin
@@ -104,8 +104,8 @@ Tb_snail <- function (temp,
   # Steady-state heat balance model
   # Solve steady state energy balance equation:
   # T_b*mflux*c= Q_rad,sol +- Q_rad,sky +- Q_rad,ground +- Q_conduction +- Qconvection -Qevaporation
-  com1 <- Abs * solar + 4 * Emm * SB * esky * A1 *(Ktemp^4)  + (Gtemp^4) * 4 * Emm * SB * A3  + C * Ktemp + 0.6 * A2 * Gtemp / (l / 2) + 2.48 * WL
-  com2 <- 4180 * WL + (Ktemp^3) * 4 * Emm * SB *(esky^0.75) * A1 + 4 * Emm * SB * A3 *(Gtemp^3) + C + 0.6 * A2 / (0.5 * l)
+  com1 <- Abs * solar + 4 * Emm * sigma * esky * A1 *(Ktemp^4)  + (Gtemp^4) * 4 * Emm * sigma * A3  + C * Ktemp + 0.6 * A2 * Gtemp / (l / 2) + 2.48 * WL
+  com2 <- 4180 * WL + (Ktemp^3) * 4 * Emm * sigma *(esky^0.75) * A1 + 4 * Emm * sigma * A3 *(Gtemp^3) + C + 0.6 * A2 / (0.5 * l)
   T_b <- com1 / com2
   
   T_b - 273.15

@@ -114,7 +114,7 @@ Tb_lizard <- function (T_a,
   psi <- degree_to_radian(psi) # convert zenith degree angle to radians
   
   # constants
-  sigma <- 5.67 * 10^-8 # stefan-boltzman constant, W m^-2 K^-4
+  sigma <- stefan_boltzmann_constant() 
   c_p <- 29.3 # specific heat of air, J/mol C (p.279) Parentheses all from Campbell & Norman 1998
   tau <- 0.65 # atmospheric transmisivity
   S_p0 <- 1360 # extraterrestrial flux density, W/m^2 (p.159)

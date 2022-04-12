@@ -96,7 +96,7 @@ Tb_grasshopper <- function (T_a,
 
     # Stefan-Boltzmann constant (W m^-2 K^-4)
 
-      omega <- 5.66 * 10^-8 
+      sigma <- stefan_boltzmann_constant() 
 
     # IR emissivity of surface to longwave 
 
@@ -199,7 +199,7 @@ Tb_grasshopper <- function (T_a,
     T_sky <- 0.0552 * (T_a + 273.15)^1.5
                
 
-   #Qt = 0.5* A * epsilon * omega * (Tb^4 - Tsky^4) +0.5 * A * epsilon * omega * (Tb^4 - T_g^4) 
+   #Qt = 0.5* A * epsilon * sigma * (Tb^4 - Tsky^4) +0.5 * A * epsilon * sigma * (Tb^4 - T_g^4) 
    #Convective heat flux
    #Qc = hc_s * A * (Tb- (T_a+273)) 
    #Qs = Qt+ Qc
@@ -208,11 +208,11 @@ Tb_grasshopper <- function (T_a,
 
     # WITHOUT CONDUCTION
 
-      # a <- A * epsilon *omega
+      # a <- A * epsilon *sigma
       # b <- hc_s * A
-      # d <- hc_s * A * TaK + 0.5 * A * epsilon * omega * Tsky^4 +0.5 * A * epsilon * omega * T_g^4 + Qabs
+      # d <- hc_s * A * TaK + 0.5 * A * epsilon * sigma * Tsky^4 +0.5 * A * epsilon * sigma * T_g^4 + Qabs
 
-      # eb <- function(Tb){0.5 * A * epsilon * omega * (Tb^4 - Tsky^4) + 0.5 * A * epsilon * omega * (Tb^4 - T_g^4) + hc_s * A * (Tb - TaK) + hcut * Acond * (Tb - T_g) / Thick - Qabs }
+      # eb <- function(Tb){0.5 * A * epsilon * sigma * (Tb^4 - Tsky^4) + 0.5 * A * epsilon * sigma * (Tb^4 - T_g^4) + hc_s * A * (Tb - TaK) + hcut * Acond * (Tb - T_g) / Thick - Qabs }
       # r <- uniroot(eb, c(-1, 373), tol = 1e-5)
       # r$root - 273
 
@@ -220,9 +220,9 @@ Tb_grasshopper <- function (T_a,
     # WITH CONDUCTION
     # t solved in wolfram alpha #Solve[a t^4 +b t -d, t]
 
-      a <- A * epsilon * omega
+      a <- A * epsilon * sigma
       b <- hc_s * A + hcut * Acond / Thick
-      d <- hc_s * A * T_aK +0.5 * A * epsilon * omega * (T_sky^4 + T_g^4)+ hcut * Acond * T_g / Thick + Qabs
+      d <- hc_s * A * T_aK +0.5 * A * epsilon * sigma * (T_sky^4 + T_g^4)+ hcut * Acond * T_g / Thick + Qabs
 
    # in K
 

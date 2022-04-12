@@ -58,7 +58,7 @@ Tb_CampbellNorman <- function (T_a,
             D > 0, 
             V >= 0)
   
-  sigma <- 5.673*10^(-8) # W m^(-2) K^(-4), Stefan-Boltzmann constant
+  sigma <- stefan_boltzmann_constant()
   
   # solar and thermal radiation absorbed
   L_a <- sigma * T_a^4  # (10.7) long wave flux densities from atmosphere 
@@ -217,7 +217,7 @@ Tb_Gates <- function (A,
             K > 0)
   
   # Stefan-Boltzmann constant
-  sigma <- 5.673 * 10^(-8) #W m^(-2) K^(-4)
+  sigma <- stefan_boltzmann_constant()
   
   # Areas
   A_s <- A * psa_dir 
@@ -303,7 +303,7 @@ Tb_Gates2 <- function (A,
   
   A_air <- A
   
-  sigma <- 5.673 * 10^(-8) # W m^(-2) K^(-4) - Stefan-Boltzmann constant
+  sigma <- stefan_boltzmann_constant()
   
   # Convection coefficient from Gates (1980)
   H_L <- 3.49 * (V^0.5 / D^0.5)

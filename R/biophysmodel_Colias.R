@@ -10,9 +10,9 @@
 #'
 #' @param u \code{numeric} wind speed in m / s.
 #'
-#' @param H_sdir \code{numeric} direct solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.
+#' @param H_sdir \code{numeric} direct solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}.
 #'
-#' @param H_sdif \code{numeric} diffuse solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.
+#' @param H_sdif \code{numeric} diffuse solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}.
 #'
 #' @param z \code{numeric} solar zenith angle in degrees.
 #'
@@ -110,15 +110,13 @@ Tb_butterfly <- function (T_a,
 
       epsilon_s <- 0.97; 
 
-    # Stefan-Boltzman constant, mW cm^-2 K^04 or 5.67*10^-8 W m-2 K-4
-
-      sigma <- 5.67*10^-9 
+      sigma <- stefan_boltzmann_constant(units = "mW_cm-2_K-4") # note units
 
     # butterfly thermal emissivity
 
       Ep <- 1 
 
-    # k_e- thermal conductivity of the fur, 1.3mWcm^-1*K^-1
+    # k_e- thermal conductivity of the fur, 1.3 mW cm^-1*K^-1
 
       k_e <- 1.3; 
 

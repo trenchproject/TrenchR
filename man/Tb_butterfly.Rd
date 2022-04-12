@@ -28,9 +28,9 @@ Tb_butterfly(
 
 \item{u}{\code{numeric} wind speed in m / s.}
 
-\item{H_sdir}{\code{numeric} direct solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.}
+\item{H_sdir}{\code{numeric} direct solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}.}
 
-\item{H_sdif}{\code{numeric} diffuse solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.}
+\item{H_sdif}{\code{numeric} diffuse solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}.}
 
 \item{z}{\code{numeric} solar zenith angle in degrees.}
 

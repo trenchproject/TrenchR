@@ -98,9 +98,8 @@ Tb_Fei <- function(T_a,
 
       dt <- 120
 
-    # stefan-boltzmann constant (W m^-2 K^-4)
 
-      sigma <- 5.67*10.0^(-8) 
+      sigma <- stefan_boltzmann_constant() 
   
   # Convert mass to kg
 

@@ -90,13 +90,8 @@ Tb_mussel <- function (l,
   
   # constants
 
-    # stefan-boltzmann constant (W m^-2 K^-4)
-
-      sigma <- 5.67 * 10^-8  
-
-    # latent heat of vaporization of water (J/kg)
- 
-      lambda <- 2.48                   
+      sigma <- stefan_boltzmann_constant()  
+      lambda <- latent_heat_vaporization_h2o()                   
   
   #  Short-wave solar flux  
 

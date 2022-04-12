@@ -133,9 +133,7 @@ Tb_limpetBH <- function (T_a,
 
         eps_ws <- 0.97
 
-      # stefan-boltzmann constant (W m^-2 K^-4)
-
-        sigma <- 5.67 * 10^-8
+        sigma <- stefan_boltzmann_constant()
 
       # clear sky emissivity (Campbell and Norman 1998, 10.11)
 

@@ -268,7 +268,7 @@ soil_temperature_function <- function (j,
                                        T_so, 
                                        params) {
   
-  sigma <- 5.670373*10^(-8) # is the stefan-boltzmann constant (W/(m^2*K^4))
+  sigma <- stefan_boltzmann_constant()
   k <- 0.41 #is von Karman's constant
   Tsoil_deep <- 20+273.15
   
@@ -496,7 +496,7 @@ soil_temperature <- function (z_r.intervals = 12,
   c_a <- 1.006*1000 # specific heat of air (J/(kg*K))
   rho_a <- 1.177 # density of air (kg/m^3)
   epsilon_so <- 0.98
-  sigma <- 5.670373*10^(-8) # stefan-boltzmann constant (W/(m^2*K^4))
+  sigma <- stefan_boltzmann_constant()
   
   # thermal conductivity values (W/mK) along with functions for finding the conductivity based on temperature.
   lambda_clay <- 2.92 # DeVries (1963)
