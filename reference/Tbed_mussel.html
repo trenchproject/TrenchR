@@ -74,21 +74,21 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">Tbed_mussel</span><span class="op">(</span><span class="va">L</span>, <span class="va">T_a</span>, <span class="va">S</span>, <span class="va">k_d</span>, <span class="va">u</span>, evap <span class="op">=</span> <span class="cn">FALSE</span>, cl <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">Tbed_mussel</span><span class="op">(</span><span class="va">l</span>, <span class="va">T_a</span>, <span class="va">S</span>, <span class="va">k_d</span>, <span class="va">u</span>, evap <span class="op">=</span> <span class="cn">FALSE</span>, cl <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>L</dt>
+    <dl><dt>l</dt>
 <dd><p><code>numeric</code> mussel length (anterior/posterior axis) (m).</p></dd>
 <dt>T_a</dt>
 <dd><p><code>numeric</code> air temperature at 4 m above ground (C).</p></dd>
 <dt>S</dt>
-<dd><p><code>numeric</code> direct solar flux density (W / m<sup>2</sup>).</p></dd>
+<dd><p><code>numeric</code> direct solar flux density (W m<sup>-2</sup>).</p></dd>
 <dt>k_d</dt>
 <dd><p><code>numeric</code> diffuse fraction, proportion of solar radiation that is diffuse.</p></dd>
 <dt>u</dt>
-<dd><p><code>numeric</code> wind speed at 4 m above ground (m/s).</p></dd>
+<dd><p><code>numeric</code> wind speed at 4 m above ground (m s<sup>-1</sup>).</p></dd>
 <dt>evap</dt>
 <dd><p><code>logical</code> Are mussels gaping to evaporatively cool? If <code>TRUE</code>, assumes constant mass loss rate of 5 percent of initial body mass per hour.</p></dd>
 <dt>cl</dt>
@@ -152,7 +152,7 @@ doi: <a href="https://doi.org/10.1890/0012-9658(1999)080%5B0015:TBORIM%5D2.0.CO;
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="fu">Tbed_mussel</span><span class="op">(</span>L   <span class="op">=</span> <span class="fl">0.1</span>, </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="fu">Tbed_mussel</span><span class="op">(</span>l    <span class="op">=</span> <span class="fl">0.1</span>, </span>
 <span class="r-in">             T_a  <span class="op">=</span> <span class="fl">25</span>, </span>
 <span class="r-in">             S    <span class="op">=</span> <span class="fl">500</span>, </span>
 <span class="r-in">             k_d  <span class="op">=</span> <span class="fl">0.2</span>, </span>

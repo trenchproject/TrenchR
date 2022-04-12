@@ -72,25 +72,25 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">Tb_mussel</span><span class="op">(</span><span class="va">L</span>, <span class="va">H</span>, <span class="va">T_a</span>, <span class="va">T_g</span>, <span class="va">S</span>, <span class="va">k_d</span>, <span class="va">u</span>, <span class="va">psi</span>, <span class="va">cl</span>, evap <span class="op">=</span> <span class="cn">FALSE</span>, group <span class="op">=</span> <span class="st">"solitary"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">Tb_mussel</span><span class="op">(</span><span class="va">l</span>, <span class="va">h</span>, <span class="va">T_a</span>, <span class="va">T_g</span>, <span class="va">S</span>, <span class="va">k_d</span>, <span class="va">u</span>, <span class="va">psi</span>, <span class="va">cl</span>, evap <span class="op">=</span> <span class="cn">FALSE</span>, group <span class="op">=</span> <span class="st">"solitary"</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>L</dt>
+    <dl><dt>l</dt>
 <dd><p><code>numeric</code> mussel length (anterior/posterior axis) (m).</p></dd>
-<dt>H</dt>
-<dd><p><code>numeric</code> mussel height (dorsal/ventral axis) (m). It is reasonable to assume <code>H = 0.5 * L</code>.</p></dd>
+<dt>h</dt>
+<dd><p><code>numeric</code> mussel height (dorsal/ventral axis) (m). It is reasonable to assume <code>h = 0.5 * l</code>.</p></dd>
 <dt>T_a</dt>
 <dd><p><code>numeric</code> air temperature (C).</p></dd>
 <dt>T_g</dt>
 <dd><p><code>numeric</code> ground temperature (C).</p></dd>
 <dt>S</dt>
-<dd><p><code>numeric</code> direct solar flux density (W / m<sup>2</sup>).</p></dd>
+<dd><p><code>numeric</code> direct solar flux density (W m<sup>-2</sup>).</p></dd>
 <dt>k_d</dt>
 <dd><p><code>numeric</code> diffuse fraction, proportion of solar radiation that is diffuse.</p></dd>
 <dt>u</dt>
-<dd><p><code>numeric</code> wind speed (m/s).</p></dd>
+<dd><p><code>numeric</code> wind speed (m s<sup>-1</sup>).</p></dd>
 <dt>psi</dt>
 <dd><p><code>numeric</code> solar zenith angle (degrees): can be calculated from <code><a href="zenith_angle.html">zenith_angle</a></code>.</p></dd>
 <dt>cl</dt>
@@ -173,8 +173,8 @@ doi: <a href="https://doi.org/10.1029/JC074i023p05397" class="external-link">10.
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="fu">Tb_mussel</span><span class="op">(</span>L     <span class="op">=</span> <span class="fl">0.1</span>, </span>
-<span class="r-in">          H     <span class="op">=</span> <span class="fl">0.05</span>, </span>
+<span class="r-in"><span class="fu">Tb_mussel</span><span class="op">(</span>l     <span class="op">=</span> <span class="fl">0.1</span>, </span>
+<span class="r-in">          h     <span class="op">=</span> <span class="fl">0.05</span>, </span>
 <span class="r-in">          T_a   <span class="op">=</span> <span class="fl">25</span>, </span>
 <span class="r-in">          T_g   <span class="op">=</span> <span class="fl">30</span>, </span>
 <span class="r-in">          S     <span class="op">=</span> <span class="fl">500</span>, </span>

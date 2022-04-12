@@ -72,14 +72,14 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">mass_from_length</span><span class="op">(</span><span class="va">L</span>, <span class="va">taxon</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">mass_from_length</span><span class="op">(</span><span class="va">l</span>, <span class="va">taxon</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>L</dt>
+    <dl><dt>l</dt>
 <dd><p><code>numeric</code> vector of length (m). Can be 1 or more values.
-<br><br>
+<br>
 Snout-vent length is used for amphibians and reptiles, except turtles where length is carapace length.</p></dd>
 <dt>taxon</dt>
 <dd><p><code>character</code> taxon of organism, current choices: <code>"insect"</code>, <code>"lizard"</code>, <code>"salamander"</code>, <code>"frog"</code>, <code>"snake"</code>, <code>"turtle"</code>.</p></dd>
@@ -90,7 +90,7 @@ Snout-vent length is used for amphibians and reptiles, except turtles where leng
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>All models follow (M = a L<sup>b</sup>) with mass in grams and length in meters.</p><ul><li><p>Lizards: Meiri (2010)
+    <p>All models follow (m = a l<sup>b</sup>) with mass in grams and length in meters.</p><ul><li><p>Lizards: Meiri (2010)
 .
     <br><br> \(a = 16368.17\) 
     <br> \(b = 3.022\)</p></li>
@@ -142,22 +142,22 @@ ISSN 00030031, 19384238, <a href="http://www.jstor.org/stable/2426503" class="ex
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">mass_from_length</span><span class="op">(</span>L <span class="op">=</span> <span class="fl">0.04</span>,</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">mass_from_length</span><span class="op">(</span>l     <span class="op">=</span> <span class="fl">0.04</span>,</span>
 <span class="r-in">                   taxon <span class="op">=</span> <span class="st">"insect"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2629767</span>
-<span class="r-in">  <span class="fu">mass_from_length</span><span class="op">(</span>L <span class="op">=</span> <span class="fl">0.04</span>,</span>
+<span class="r-in">  <span class="fu">mass_from_length</span><span class="op">(</span>l     <span class="op">=</span> <span class="fl">0.04</span>,</span>
 <span class="r-in">                   taxon <span class="op">=</span> <span class="st">"lizard"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.9759452</span>
-<span class="r-in">  <span class="fu">mass_from_length</span><span class="op">(</span>L <span class="op">=</span> <span class="fl">0.04</span>,</span>
+<span class="r-in">  <span class="fu">mass_from_length</span><span class="op">(</span>l     <span class="op">=</span> <span class="fl">0.04</span>,</span>
 <span class="r-in">                   taxon <span class="op">=</span> <span class="st">"salamander"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.060056</span>
-<span class="r-in">  <span class="fu">mass_from_length</span><span class="op">(</span>L <span class="op">=</span> <span class="fl">0.04</span>,</span>
+<span class="r-in">  <span class="fu">mass_from_length</span><span class="op">(</span>l     <span class="op">=</span> <span class="fl">0.04</span>,</span>
 <span class="r-in">                   taxon <span class="op">=</span> <span class="st">"frog"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5.355816</span>
-<span class="r-in">  <span class="fu">mass_from_length</span><span class="op">(</span>L <span class="op">=</span> <span class="fl">0.04</span>, </span>
+<span class="r-in">  <span class="fu">mass_from_length</span><span class="op">(</span>l     <span class="op">=</span> <span class="fl">0.04</span>, </span>
 <span class="r-in">                   taxon <span class="op">=</span> <span class="st">"snake"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.04342753</span>
-<span class="r-in">  <span class="fu">mass_from_length</span><span class="op">(</span>L <span class="op">=</span> <span class="fl">0.04</span>, </span>
+<span class="r-in">  <span class="fu">mass_from_length</span><span class="op">(</span>l     <span class="op">=</span> <span class="fl">0.04</span>, </span>
 <span class="r-in">                   taxon <span class="op">=</span> <span class="st">"turtle"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 16.24075</span>
 <span class="r-in"></span>

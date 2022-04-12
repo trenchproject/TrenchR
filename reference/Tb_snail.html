@@ -74,23 +74,23 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">Tb_snail</span><span class="op">(</span><span class="va">temp</span>, <span class="va">Len</span>, <span class="va">solar</span>, <span class="va">WS</span>, <span class="va">CC</span>, <span class="va">WL</span>, <span class="va">WSH</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">Tb_snail</span><span class="op">(</span><span class="va">temp</span>, <span class="va">l</span>, <span class="va">solar</span>, <span class="va">WS</span>, <span class="va">CC</span>, <span class="va">WL</span>, <span class="va">WSH</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>temp</dt>
 <dd><p><code>numeric</code> air temperature (C).</p></dd>
-<dt>Len</dt>
+<dt>l</dt>
 <dd><p><code>numeric</code> snail length (m).</p></dd>
 <dt>solar</dt>
-<dd><p><code>numeric</code> direct solar flux density (W/m<sup>2</sup>).</p></dd>
+<dd><p><code>numeric</code> direct solar flux density (W m<sup>-2</sup>).</p></dd>
 <dt>WS</dt>
-<dd><p><code>numeric</code> wind speed (m/s).</p></dd>
+<dd><p><code>numeric</code> wind speed (m s<sup>-1</sup>).</p></dd>
 <dt>CC</dt>
 <dd><p><code>numeric</code> fraction of the sky covered by cloud (0-1).</p></dd>
 <dt>WL</dt>
-<dd><p><code>numeric</code> water loss rate (kg/s), 5 percent loss of body mass over one hour is a reasonable maximum level (Helmuth 1999)
+<dd><p><code>numeric</code> water loss rate (kg s<sup>-1</sup>), 5 percent loss of body mass over one hour is a reasonable maximum level (Helmuth 1999)
 .</p></dd>
 <dt>WSH</dt>
 <dd><p><code>numeric</code> wind sensor height (m).</p></dd>
@@ -162,7 +162,7 @@ doi: <a href="https://doi.org/10.1016/j.jtherbio.2011.10.003" class="external-li
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">Tb_snail</span><span class="op">(</span>temp  <span class="op">=</span> <span class="fl">25</span>, </span>
-<span class="r-in">           Len   <span class="op">=</span> <span class="fl">0.012</span>, </span>
+<span class="r-in">           l     <span class="op">=</span> <span class="fl">0.012</span>, </span>
 <span class="r-in">           solar <span class="op">=</span> <span class="fl">800</span>, </span>
 <span class="r-in">           WS    <span class="op">=</span> <span class="fl">1</span>, </span>
 <span class="r-in">           CC    <span class="op">=</span> <span class="fl">0.5</span>, </span>
