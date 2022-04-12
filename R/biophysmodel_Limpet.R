@@ -6,13 +6,13 @@
 #'
 #' @param T_r \code{numeric} rock surface temperature in C in the sunlight.
 #'
-#' @param L \code{numeric} limpet length (anterior/posterior axis) (m).
+#' @param l \code{numeric} limpet length (anterior/posterior axis) (m).
 #'
-#' @param H \code{numeric} limpet height (dorsal/ventral axis) (m).
+#' @param h \code{numeric} limpet height (dorsal/ventral axis) (m).
 #'
-#' @param I \code{numeric} solar irradiance W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.
+#' @param I \code{numeric} solar irradiance (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #'
-#' @param u \code{numeric} wind speed (m / s).
+#' @param u \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #'
 #' @param psi \code{numeric} solar zenith angle (degrees): can be calculated from zenith_angle function.
 #'
@@ -25,12 +25,12 @@
 #' @family biophysical models 
 #'
 #' @details The original equation uses a finite-difference approach where they divide the rock into series of chunks, and calculate the temperature at each node to derive the conductive heat. For simplification, here it takes the rock temperature as a parameter, and conductive heat is calculated by the product of the area, thermal conductivity of rock and the difference in temperatures of the rock and the body.
-#'   \cr \cr
+#'   \cr
 #'   Limpets are simulated as cones following and using solar emissivity values from \insertCite{Campbell1998;textual}{TrenchR}.
-#'   \cr \cr
+#'   \cr
 #'   The area of the limpet's shell (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) is projected in the direction at which sunlight strikes the organism \insertCite{Pennell1989;textual}{TrenchR}.
-#'   \cr \cr
-#'   Air conductivity values (W / (\ifelse{html}{\out{m<sup>-1</sup>}}{\eqn{m^-1}{ASCII}} \ifelse{html}{\out{K<sup>-1</sup>}}{\eqn{K^-1}{ASCII}})) are calculated following \insertCite{Denny2006;textual}{TrenchR}.
+#'   \cr
+#'   Air conductivity values (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) are calculated following \insertCite{Denny2006;textual}{TrenchR}.
 #'
 #' @export
 #'
@@ -38,20 +38,35 @@
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   Tb_limpet(
-#'     T_a = 25, 
-#'     T_r = 30, 
-#'     L = 0.0176, 
-#'     H = 0.0122, 
-#'     I = 1300, 
-#'     u = 1, 
-#'     psi = 30, 
-#'     c = 1, 
-#'     position = "anterior")
+#'   Tb_limpet(T_a      = 25, 
+#'             T_r      = 30, 
+#'             l        = 0.0176, 
+#'             h        = 0.0122, 
+#'             I        = 1300, 
+#'             u        = 1, 
+#'             psi      = 30, 
+#'             c        = 1, 
+#'             position = "anterior")
 #' 
-Tb_limpet <- function (T_a, T_r, L, H, I, u, psi, c, position = "anterior") {
+Tb_limpet <- function (T_a, 
+                       T_r, 
+                       l, 
+                       h, 
+                       I, 
+                       u, 
+                       psi, 
+                       c, 
+                       position = "anterior") {
   
-  stopifnot(L > 0, H > 0, I > 0, u >= 0, psi >= 0, psi <= 90, c >= 0, c <= 1, position %in% c("anterior", "posterior", "broadside"))
+  stopifnot(l > 0,
+            h > 0, 
+            I > 0, 
+            u >= 0, 
+            psi >= 0, 
+            psi <= 90, 
+            c >= 0, 
+            c <= 1, 
+            position %in% c("anterior", "posterior", "broadside"))
   
   # Conversions
 
@@ -63,7 +78,7 @@ Tb_limpet <- function (T_a, T_r, L, H, I, u, psi, c, position = "anterior") {
     # dgrees to radians
 
       psi <- psi * pi / 180 
-      r <- L / 2            
+      r <- l / 2            
   
   # Calculations
 
@@ -71,9 +86,9 @@ Tb_limpet <- function (T_a, T_r, L, H, I, u, psi, c, position = "anterior") {
   
       # Area of the limpet's shell (m^2) projected in the direction at which sunlight strikes the organism (Pennell and Deignan 1989)
 
-        if (tan(psi) < r / H) {
+        if (tan(psi) < r / h) {
 
-          Ap <- pi * r^2 * cos(psi) + H * r * sin(psi) - pi * r^2 / 2 * cos(psi)
+          Ap <- pi * r^2 * cos(psi) + h * r * sin(psi) - pi * r^2 / 2 * cos(psi)
 
         } else {
 
@@ -91,11 +106,11 @@ Tb_limpet <- function (T_a, T_r, L, H, I, u, psi, c, position = "anterior") {
   
       # View factor. (Campbell and Norman 1998) simulating limpets as a cone.
     
-        Vs <- cos(psi) * r / sqrt(r^2 + H^2)
+        Vs <- cos(psi) * r / sqrt(r^2 + h^2)
     
       # lateral area of a limpet shell (m^2)
 
-        Al <- pi * r * sqrt(H^2 + r^2) 
+        Al <- pi * r * sqrt(h^2 + r^2) 
 
       #  long-wave emissivity of the shell 
 
@@ -129,7 +144,7 @@ Tb_limpet <- function (T_a, T_r, L, H, I, u, psi, c, position = "anterior") {
   
       # Reynolds number
 
-        Re <- u * L / v
+        Re <- u * l / v
   
       if (position == "anterior") {
 
@@ -154,7 +169,7 @@ Tb_limpet <- function (T_a, T_r, L, H, I, u, psi, c, position = "anterior") {
 
       # Heat transfer coefficient (W m^-2 K^-1)
 
-        hc <- a*Ka*((u/v)^b)*(L^(b-1)) 
+        hc <- a*Ka*((u/v)^b)*(l^(b-1)) 
   
       # area of the shell in convective contact with the air (m^2)
 
@@ -176,4 +191,5 @@ Tb_limpet <- function (T_a, T_r, L, H, I, u, psi, c, position = "anterior") {
   T_b <- (q1 + q2 + (q3 + q4)* T_a + q5 * T_r) / (q3 + q4 + q5)
   
   T_b - 273.15
+
 }

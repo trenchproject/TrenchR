@@ -2,15 +2,15 @@
 #' 
 #' @description Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Helmuth1999;textual}{TrenchR}.
 #' 
-#' @param L \code{numeric} mussel length (anterior/posterior axis) (m).
+#' @param l \code{numeric} mussel length (anterior/posterior axis) (m).
 #' 
 #' @param T_a \code{numeric} air temperature at 4 m above ground (C).
 #' 
-#' @param S \code{numeric} direct solar flux density (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
+#' @param S \code{numeric} direct solar flux density (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #' 
 #' @param k_d \code{numeric} diffuse fraction, proportion of solar radiation that is diffuse.
 #' 
-#' @param u \code{numeric} wind speed at 4 m above ground (m/s).
+#' @param u \code{numeric} wind speed at 4 m above ground (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
 #' @param evap \code{logical} Are mussels gaping to evaporatively cool? If \code{TRUE}, assumes constant mass loss rate of 5 percent of initial body mass per hour. 
 #' 
@@ -26,14 +26,14 @@
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'  Tbed_mussel(L   = 0.1, 
+#'  Tbed_mussel(l    = 0.1, 
 #'              T_a  = 25, 
 #'              S    = 500, 
 #'              k_d  = 0.2, 
 #'              u    = 1, 
 #'              evap = FALSE)
 #' 
-Tbed_mussel <- function(L, 
+Tbed_mussel <- function(l, 
                         T_a, 
                         S, 
                         k_d, 
@@ -41,7 +41,12 @@ Tbed_mussel <- function(L,
                         evap = FALSE, 
                         cl   = NA) {
   
-  stopifnot(L >= 0, S >= 0, k_d >= 0, k_d <= 1, u > 0, is.logical(evap))
+  stopifnot(l >= 0,
+            S >= 0, 
+            k_d >= 0, 
+            k_d <= 1, 
+            u > 0, 
+            is.logical(evap))
   
   T_a <- T_a + 273.15   # convert to kelvin
   
@@ -51,7 +56,7 @@ Tbed_mussel <- function(L,
   c <- specific_heat_h2o()
   
   # Areas
-  A <- 1.08 * L^2 + 0.0461 * L - 0.0016   # total mussel shell surface area (m^2)
+  A <- 1.08 * l^2 + 0.0461 * l - 0.0016   # total mussel shell surface area (m^2)
   Ap <- 0.15 * A # projected area for tightly packed bed
   
   A_radSky <- 0.4 * A # Assume 40% exposed to ground

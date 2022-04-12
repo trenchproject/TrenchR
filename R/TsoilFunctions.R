@@ -28,7 +28,8 @@ soil_conductivity <- function (x,
                                lambda, 
                                g_a) {
   
-  stopifnot(g_a > 0, g_a < 1)
+  stopifnot(g_a > 0, 
+            g_a < 1)
   
   g_c <- 1 - 2 * g_a # Estimate ellipsoid axis g_c assuming g_a = g_b.
   
@@ -89,7 +90,13 @@ soil_specific_heat <- function (x_o,
                                 x_w, 
                                 rho_so) {
   
-  stopifnot(x_o >= 0, x_o <= 1, x_m >= 0, x_m <= 1, x_w >= 0, x_w <= 1, rho_so > 0)
+  stopifnot(x_o >= 0, 
+            x_o <= 1, 
+            x_m >= 0, 
+            x_m <= 1, 
+            x_w >= 0, 
+            x_w <= 1, 
+            rho_so > 0)
   
   # 4.184 converts from cal/K to J/K
   # 1000000 converts from cm^-3 to m^-3
@@ -190,7 +197,13 @@ soil_temperature_equation <- function (L,
                                        T_inst, 
                                        T_s) { 
   
-  stopifnot(rho_a > 0, c_a > 0, k > 0, T_inst > 200, T_inst < 400, z_r > 0, z0 > 0)
+  stopifnot(rho_a > 0, 
+            c_a > 0, 
+            k > 0, 
+            T_inst > 200, 
+            T_inst < 400, 
+            z_r > 0, 
+            z0 > 0)
   
   rho_a * c_a * k * (V_inst * k / log((exp((z_r + z0) / L) - 1) / (exp(z0 / L) - 1))) * (T_inst - T_s) / integrate(soil_temperature_integrand, lower = 0, upper=z_r / L, L, z0)$value - (V_inst * k / log((exp((z_r + z0) / L) - 1)/(exp(z0 / L) - 1)))^3 * T_inst * rho_a * c_a / (k * 9.81 * L)
   
@@ -438,7 +451,16 @@ soil_temperature <- function (z_r.intervals = 12,
                               rho_so        = 1620, 
                               shade         = FALSE) {
   
-  stopifnot(z_r.intervals > 0, z_r >= 0, z0 > 0, SSA >= 0, SSA <= 1, water_content >= 0, water_content <= 1, air_pressure > 0, rho_so > 0, shade %in% c(TRUE, FALSE))
+  stopifnot(z_r.intervals > 0, 
+            z_r >= 0, 
+            z0 > 0, 
+            SSA >= 0, 
+            SSA <= 1, 
+            water_content >= 0, 
+            water_content <= 1, 
+            air_pressure > 0, 
+            rho_so > 0, 
+            is.logical(shade))
   
   # account for NAs at beginning of data
   first.dat <- min(which(!is.na(T_a)))

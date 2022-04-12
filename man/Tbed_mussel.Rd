@@ -4,18 +4,18 @@
 \alias{Tbed_mussel}
 \title{Operative Environmental Temperature of a Mussel Bed}
 \usage{
-Tbed_mussel(L, T_a, S, k_d, u, evap = FALSE, cl = NA)
+Tbed_mussel(l, T_a, S, k_d, u, evap = FALSE, cl = NA)
 }
 \arguments{
-\item{L}{\code{numeric} mussel length (anterior/posterior axis) (m).}
+\item{l}{\code{numeric} mussel length (anterior/posterior axis) (m).}
 
 \item{T_a}{\code{numeric} air temperature at 4 m above ground (C).}
 
-\item{S}{\code{numeric} direct solar flux density (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
+\item{S}{\code{numeric} direct solar flux density (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
 
 \item{k_d}{\code{numeric} diffuse fraction, proportion of solar radiation that is diffuse.}
 
-\item{u}{\code{numeric} wind speed at 4 m above ground (m/s).}
+\item{u}{\code{numeric} wind speed at 4 m above ground (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
 \item{evap}{\code{logical} Are mussels gaping to evaporatively cool? If \code{TRUE}, assumes constant mass loss rate of 5 percent of initial body mass per hour.}
 
@@ -28,7 +28,7 @@ Tbed_mussel(L, T_a, S, k_d, u, evap = FALSE, cl = NA)
 Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Helmuth1999;textual}{TrenchR}.
 }
 \examples{
- Tbed_mussel(L   = 0.1, 
+ Tbed_mussel(l    = 0.1, 
              T_a  = 25, 
              S    = 500, 
              k_d  = 0.2, 

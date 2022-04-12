@@ -18,7 +18,7 @@ surface_area_from_volume(V, taxon)
 Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) for a variety of taxa following \insertCite{Mitchell1976;textual}{TrenchR}.
 }
 \details{
-All models follow (\ifelse{html}{\out{SA = Ka V<sup>2/3</sup>}}{\eqn{SA = Ka V^{2/3}}{ASCII}}) with mass in grams and length in meters.
+All models follow (\ifelse{html}{\out{SA = Ka V<sup>2/3</sup>}}{\eqn{SA = Ka * V^{2/3}}{ASCII}}) with mass in grams and length in meters.
  \itemize{
   \item Lizards: \insertCite{Norris1965;textual}{TrenchR}.
     \cr 
@@ -32,11 +32,11 @@ All models follow (\ifelse{html}{\out{SA = Ka V<sup>2/3</sup>}}{\eqn{SA = Ka V^{
  }
 }
 \examples{
-  surface_area_from_volume(V = 0.001, 
+  surface_area_from_volume(V     = 0.001, 
                            taxon = "lizard")
-  surface_area_from_volume(V = 0.001,  
+  surface_area_from_volume(V     = 0.001,  
                            taxon = "frog")
-  surface_area_from_volume(V = 0.001,  
+  surface_area_from_volume(V     = 0.001,  
                            taxon = "sphere")
 
 }

@@ -48,7 +48,8 @@ day_of_year <- function (day,
 #' 
 dec_angle <- function (doy) {
   
-  stopifnot(doy > 0, doy < 367)
+  stopifnot(doy > 0, 
+            doy < 367)
   
   RevAng <- 0.21631 + 2 * atan(0.967 * tan (0.0086 * (-186 + doy))) 
   asin(0.39795 * cos (RevAng)) 
@@ -79,7 +80,10 @@ dec_angle <- function (doy) {
 daylength <- function(lat,
                       doy){
   
-  stopifnot(lat >= -90, lat <= 90, doy > 0, doy < 367)
+  stopifnot(lat >= -90, 
+            lat <= 90, 
+            doy > 0, 
+            doy < 367)
   
   lat_rad <- degree_to_radian(lat)
   DecAng <- dec_angle(doy)
@@ -117,7 +121,10 @@ solar_noon <- function (lon,
                         doy, 
                         offset = NA){
   
-  stopifnot(lon >= -180, lon <= 180, doy > 0, doy < 367)
+  stopifnot(lon >= -180, 
+            lon <= 180, 
+            doy > 0, 
+            doy < 367)
   
   # Calculates the time of solar noon for each day using longitude correction (LC), equation of time (ET), and a conversion (f)
   f <- (279.575 + 0.9856 * doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
@@ -181,7 +188,14 @@ zenith_angle <- function (doy,
                           hour, 
                           offset = NA) {
 
-  stopifnot(doy > 0, doy < 367, lat >= -90, lat <= 90, lon >= -180, lon <= 180, hour >= 0, hour <= 24)
+  stopifnot(doy > 0, 
+            doy < 367, 
+            lat >= -90, 
+            lat <= 90, 
+            lon >= -180, 
+            lon <= 180, 
+            hour >= 0, 
+            hour <= 24)
   
   lat <- lat * pi / 180 # to radians
     
@@ -250,7 +264,14 @@ azimuth_angle <- function (doy,
                            hour, 
                            offset = NA) {
   
-  stopifnot(doy > 0, doy < 367, lat >= -90, lat <= 90, lon >= -180, lon <= 180, hour >= 0, hour <= 24)
+  stopifnot(doy > 0, 
+            doy < 367, 
+            lat >= -90, 
+            lat <= 90, 
+            lon >= -180, 
+            lon <= 180, 
+            hour >= 0, 
+            hour <= 24)
   
   lat <- lat * pi / 180 #to radians
   

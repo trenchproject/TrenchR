@@ -6,7 +6,7 @@
 #' 
 #' @param T_g \code{numeric} surface temperature (C).
 #' 
-#' @param u \code{numeric} wind speed (m/s).
+#' @param u \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
 #' @param svl \code{numeric} lizard snout vent length (mm).
 #' 
@@ -86,7 +86,30 @@ Tb_lizard <- function (T_a,
                        F_a       = 0.5, 
                        F_g       = 0.5) {
   
-  stopifnot(u >= 0, svl >= 0, m >= 0, rho_S >= 0, rho_S <= 1, elev >= 0, doy > 0, doy < 367, sun %in% c(TRUE, FALSE), surface %in% c(TRUE, FALSE), alpha_S >= 0, alpha_S <= 1, alpha_L >= 0, alpha_L <= 1, epsilon_s >= 0, epsilon_s <= 1, F_d >= 0, F_d <= 1, F_r >= 0, F_r <= 1, F_a >= 0, F_a <= 1, F_g >= 0, F_g <= 1)
+  stopifnot(u >= 0, 
+            svl >= 0, 
+            m >= 0, 
+            rho_S >= 0, 
+            rho_S <= 1, 
+            elev >= 0, 
+            doy > 0, 
+            doy < 367, 
+            is.logical(sun),
+            is.logical(surface),
+            alpha_S >= 0, 
+            alpha_S <= 1, 
+            alpha_L >= 0, 
+            alpha_L <= 1, 
+            epsilon_s >= 0, 
+            epsilon_s <= 1, 
+            F_d >= 0, 
+            F_d <= 1, 
+            F_r >= 0, 
+            F_r <= 1, 
+            F_a >= 0, 
+            F_a <= 1, 
+            F_g >= 0, 
+            F_g <= 1)
   
   psi <- degree_to_radian(psi) # convert zenith degree angle to radians
   

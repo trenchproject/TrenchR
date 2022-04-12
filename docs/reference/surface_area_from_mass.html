@@ -141,13 +141,13 @@
     <p>Estimate surface area (m<sup>2</sup>) from mass (g) for one of a variety of taxa.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>surface_area_from_mass</span><span class='op'>(</span><span class='va'>M</span>, <span class='va'>taxon</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>surface_area_from_mass</span><span class='op'>(</span><span class='va'>m</span>, <span class='va'>taxon</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>M</th>
+      <th>m</th>
       <td><p><code>numeric</code> vector of mass (g).</p></td>
     </tr>
     <tr>
@@ -230,7 +230,7 @@ doi: <a href='https://doi.org/10.1086/physzool.40.2.30152447'>10.1086/physzool.4
 <code><a href='volume_from_length.html'>volume_from_length</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='fu'>surface_area_from_mass</span><span class='op'>(</span>M     <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>50</span>, 
+    <pre class="examples"><div class='input'>  <span class='fu'>surface_area_from_mass</span><span class='op'>(</span>m     <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>50</span>, 
                          taxon <span class='op'>=</span> <span class='st'>"lizard"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] 0.0009864601 0.0015659078 0.0020519197 0.0024857237 0.0028844268
 #&gt;  [6] 0.0032572195 0.0036097591 0.0039458404 0.0042681649 0.0045787422
@@ -241,7 +241,7 @@ doi: <a href='https://doi.org/10.1086/physzool.40.2.30152447'>10.1086/physzool.4
 #&gt; [31] 0.0097346569 0.0099428947 0.0101489742 0.0103529822 0.0105549995
 #&gt; [36] 0.0107551017 0.0109533594 0.0111498387 0.0113446019 0.0115377072
 #&gt; [41] 0.0117292099 0.0119191618 0.0121076119 0.0122946066 0.0124801900
-#&gt; [46] 0.0126644036 0.0128472870 0.0130288778 0.0132092119 0.0133883233</div><div class='input'>  <span class='fu'>surface_area_from_mass</span><span class='op'>(</span>M <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>50</span>,  
+#&gt; [46] 0.0126644036 0.0128472870 0.0130288778 0.0132092119 0.0133883233</div><div class='input'>  <span class='fu'>surface_area_from_mass</span><span class='op'>(</span>m     <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>50</span>,  
                          taxon <span class='op'>=</span> <span class='st'>"salamander"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] 0.000842000 0.001362156 0.001804821 0.002203645 0.002572748 0.002919773
 #&gt;  [7] 0.003249452 0.003564975 0.003868623 0.004162096 0.004446708 0.004723500
@@ -251,7 +251,7 @@ doi: <a href='https://doi.org/10.1086/physzool.40.2.30152447'>10.1086/physzool.4
 #&gt; [31] 0.009126770 0.009330097 0.009531489 0.009731022 0.009928767 0.010124790
 #&gt; [37] 0.010319154 0.010511917 0.010703133 0.010892855 0.011081131 0.011268007
 #&gt; [43] 0.011453526 0.011637729 0.011820656 0.012002343 0.012182825 0.012362136
-#&gt; [49] 0.012540307 0.012717369</div><div class='input'>  <span class='fu'>surface_area_from_mass</span><span class='op'>(</span>M <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>50</span>,  
+#&gt; [49] 0.012540307 0.012717369</div><div class='input'>  <span class='fu'>surface_area_from_mass</span><span class='op'>(</span>m     <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>50</span>,  
                          taxon <span class='op'>=</span> <span class='st'>"frog"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] 0.000990000 0.001459527 0.001831568 0.002151735 0.002438139 0.002700225
 #&gt;  [7] 0.002943677 0.003172237 0.003388527 0.003594473 0.003791535 0.003980858
@@ -261,7 +261,7 @@ doi: <a href='https://doi.org/10.1086/physzool.40.2.30152447'>10.1086/physzool.4
 #&gt; [31] 0.006773260 0.006894760 0.007014601 0.007132855 0.007249588 0.007364862
 #&gt; [37] 0.007478735 0.007591262 0.007702494 0.007812478 0.007921258 0.008028877
 #&gt; [43] 0.008135374 0.008240787 0.008345151 0.008448499 0.008550864 0.008652274
-#&gt; [49] 0.008752760 0.008852346</div><div class='input'>  <span class='fu'>surface_area_from_mass</span><span class='op'>(</span>M <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0.1</span>, <span class='fl'>5</span>, <span class='fl'>0.1</span><span class='op'>)</span>,  
+#&gt; [49] 0.008752760 0.008852346</div><div class='input'>  <span class='fu'>surface_area_from_mass</span><span class='op'>(</span>m     <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0.1</span>, <span class='fl'>5</span>, <span class='fl'>0.1</span><span class='op'>)</span>,  
                          taxon <span class='op'>=</span> <span class='st'>"insect"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] 0.0002060361 0.0003587297 0.0004961813 0.0006245847 0.0007466539
 #&gt;  [6] 0.0008639017 0.0009772862 0.0010874651 0.0011949160 0.0013000000

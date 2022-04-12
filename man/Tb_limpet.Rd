@@ -4,20 +4,20 @@
 \alias{Tb_limpet}
 \title{Operative Environmental Temperature of a Limpet}
 \usage{
-Tb_limpet(T_a, T_r, L, H, I, u, psi, c, position = "anterior")
+Tb_limpet(T_a, T_r, l, h, I, u, psi, c, position = "anterior")
 }
 \arguments{
 \item{T_a}{\code{numeric} air temperature in C.}
 
 \item{T_r}{\code{numeric} rock surface temperature in C in the sunlight.}
 
-\item{L}{\code{numeric} limpet length (anterior/posterior axis) (m).}
+\item{l}{\code{numeric} limpet length (anterior/posterior axis) (m).}
 
-\item{H}{\code{numeric} limpet height (dorsal/ventral axis) (m).}
+\item{h}{\code{numeric} limpet height (dorsal/ventral axis) (m).}
 
-\item{I}{\code{numeric} solar irradiance W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.}
+\item{I}{\code{numeric} solar irradiance (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
 
-\item{u}{\code{numeric} wind speed (m / s).}
+\item{u}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
 \item{psi}{\code{numeric} solar zenith angle (degrees): can be calculated from zenith_angle function.}
 
@@ -33,24 +33,23 @@ Predict body temperatures (operative environmental temperatures) of a limpet in 
 }
 \details{
 The original equation uses a finite-difference approach where they divide the rock into series of chunks, and calculate the temperature at each node to derive the conductive heat. For simplification, here it takes the rock temperature as a parameter, and conductive heat is calculated by the product of the area, thermal conductivity of rock and the difference in temperatures of the rock and the body.
-  \cr \cr
+  \cr
   Limpets are simulated as cones following and using solar emissivity values from \insertCite{Campbell1998;textual}{TrenchR}.
-  \cr \cr
+  \cr
   The area of the limpet's shell (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) is projected in the direction at which sunlight strikes the organism \insertCite{Pennell1989;textual}{TrenchR}.
-  \cr \cr
-  Air conductivity values (W / (\ifelse{html}{\out{m<sup>-1</sup>}}{\eqn{m^-1}{ASCII}} \ifelse{html}{\out{K<sup>-1</sup>}}{\eqn{K^-1}{ASCII}})) are calculated following \insertCite{Denny2006;textual}{TrenchR}.
+  \cr
+  Air conductivity values (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) are calculated following \insertCite{Denny2006;textual}{TrenchR}.
 }
 \examples{
-  Tb_limpet(
-    T_a = 25, 
-    T_r = 30, 
-    L = 0.0176, 
-    H = 0.0122, 
-    I = 1300, 
-    u = 1, 
-    psi = 30, 
-    c = 1, 
-    position = "anterior")
+  Tb_limpet(T_a      = 25, 
+            T_r      = 30, 
+            l        = 0.0176, 
+            h        = 0.0122, 
+            I        = 1300, 
+            u        = 1, 
+            psi      = 30, 
+            c        = 1, 
+            position = "anterior")
 
 }
 \references{

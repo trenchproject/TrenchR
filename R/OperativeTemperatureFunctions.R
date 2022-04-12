@@ -50,7 +50,13 @@ Tb_CampbellNorman <- function (T_a,
                                D, 
                                V) {
     
-  stopifnot(T_a > 200, T_a < 400, epsilon >= 0.5, epsilon <= 1, c_p >= 0, D > 0, V >= 0)
+  stopifnot(T_a > 200, 
+            T_a < 400, 
+            epsilon >= 0.5, 
+            epsilon <= 1, 
+            c_p >= 0, 
+            D > 0, 
+            V >= 0)
   
   sigma <- 5.673*10^(-8) # W m^(-2) K^(-4), Stefan-Boltzmann constant
   
@@ -113,7 +119,9 @@ Qnet_Gates <- function (Qabs,
                         Qmet, 
                         Qevap) {
   
-  stopifnot(Qabs >= 0, Qmet >= 0, Qevap >= 0)
+  stopifnot(Qabs >= 0, 
+            Qmet >= 0, 
+            Qevap >= 0)
   
   Qabs - Qemit - Qconv - Qcond - Qmet - Qevap
   
@@ -188,7 +196,25 @@ Tb_Gates <- function (A,
                       ef = 1.3, 
                       K) {
 
-  stopifnot(A > 0, D > 0, psa_dir >= 0, psa_dir <= 1, psa_ref >= 0, psa_ref <= 1, psa_air >= 0, psa_air <= 1, psa_g >= 0, psa_g <= 1, T_g > 200, T_g < 400, T_a > 200, T_a < 400, Qabs >= 0, epsilon > 0.5, epsilon <= 1, H_L > 0, K > 0)
+  stopifnot(A > 0, 
+            D > 0, 
+            psa_dir >= 0, 
+            psa_dir <= 1, 
+            psa_ref >= 0, 
+            psa_ref <= 1, 
+            psa_air >= 0, 
+            psa_air <= 1, 
+            psa_g >= 0, 
+            psa_g <= 1, 
+            T_g > 200, 
+            T_g < 400, 
+            T_a > 200, 
+            T_a < 400, 
+            Qabs >= 0, 
+            epsilon > 0.5, 
+            epsilon <= 1, 
+            H_L > 0, 
+            K > 0)
   
   # Stefan-Boltzmann constant
   sigma <- 5.673 * 10^(-8) #W m^(-2) K^(-4)

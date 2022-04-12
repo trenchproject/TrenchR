@@ -4,11 +4,11 @@
 \alias{mass_from_length}
 \title{Mass from Length}
 \usage{
-mass_from_length(L, taxon)
+mass_from_length(l, taxon)
 }
 \arguments{
-\item{L}{\code{numeric} vector of length (m). Can be 1 or more values.
-\cr \cr
+\item{l}{\code{numeric} vector of length (m). Can be 1 or more values.
+\cr
 Snout-vent length is used for amphibians and reptiles, except turtles where length is carapace length.}
 
 \item{taxon}{\code{character} taxon of organism, current choices: \code{"insect"}, \code{"lizard"}, \code{"salamander"}, \code{"frog"}, \code{"snake"}, \code{"turtle"}.}
@@ -20,7 +20,7 @@ Snout-vent length is used for amphibians and reptiles, except turtles where leng
 Estimate mass (g) from length (m) for a variety of taxa.
 }
 \details{
-All models follow (\ifelse{html}{\out{M = a L<sup>b</sup>}}{\eqn{M = a L^b}{ASCII}}) with mass in grams and length in meters.
+All models follow (\ifelse{html}{\out{m = a l<sup>b</sup>}}{\eqn{m = a * l^b}{ASCII}}) with mass in grams and length in meters.
  \itemize{
   \item Lizards: \insertCite{Meiri2010;textual}{TrenchR}.
     \cr 
@@ -49,17 +49,17 @@ All models follow (\ifelse{html}{\out{M = a L<sup>b</sup>}}{\eqn{M = a L^b}{ASCI
  }
 }
 \examples{
-  mass_from_length(L = 0.04,
+  mass_from_length(l     = 0.04,
                    taxon = "insect")
-  mass_from_length(L = 0.04,
+  mass_from_length(l     = 0.04,
                    taxon = "lizard")
-  mass_from_length(L = 0.04,
+  mass_from_length(l     = 0.04,
                    taxon = "salamander")
-  mass_from_length(L = 0.04,
+  mass_from_length(l     = 0.04,
                    taxon = "frog")
-  mass_from_length(L = 0.04, 
+  mass_from_length(l     = 0.04, 
                    taxon = "snake")
-  mass_from_length(L = 0.04, 
+  mass_from_length(l     = 0.04, 
                    taxon = "turtle")
 
 }

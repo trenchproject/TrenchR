@@ -6,13 +6,13 @@
 #'
 #' @param T_r \code{numeric} rock surface temperature in C in the sunlight.
 #'
-#' @param L \code{numeric} limpet length (anterior/posterior axis) (m).
+#' @param l \code{numeric} limpet length (anterior/posterior axis) (m).
 #'
-#' @param H \code{numeric} limpet height (dorsal/ventral axis) (m).
+#' @param h \code{numeric} limpet height (dorsal/ventral axis) (m).
 #'
-#' @param I \code{numeric} solar irradiance W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.
+#' @param I \code{numeric} solar irradiance (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #'
-#' @param u \code{numeric} wind speed (m / s).
+#' @param u \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #'
 #' @param s_aspect \code{numeric} solar aspect angle (degree), the angle between the limpet's length dimension and the vector to the Sun. Between 70 and 110 degrees.
 #'
@@ -27,12 +27,12 @@
 #' @author Brian Helmuth lab
 #'
 #' @details The original equation uses a finite-difference approach where they divide the rock into series of chunks, and calculate the temperature at each node to derive the conductive heat. For simplification, here it takes the rock temperature as a parameter, and conductive heat is calculated by the product of the area, thermal conductivity of rock and the difference in temperatures of the rock and the body.
-#'   \cr \cr
+#'   \cr
 #'   Limpets are simulated as cones following and using solar emissivity values from \insertCite{Campbell1998;textual}{TrenchR}.
-#'   \cr \cr
+#'   \cr 
 #'   The area of the limpet's shell (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) is projected in the direction at which sunlight strikes the organism \insertCite{Pennell1989;textual}{TrenchR}.
-#'   \cr \cr
-#'   Air conductivity values (W / (\ifelse{html}{\out{m<sup>-1</sup>}}{\eqn{m^-1}{ASCII}} \ifelse{html}{\out{K<sup>-1</sup>}}{\eqn{K^-1}{ASCII}})) are calculated following \insertCite{Denny2006;textual}{TrenchR}.
+#'   \cr
+#'   Air conductivity values (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) are calculated following \insertCite{Denny2006;textual}{TrenchR}.
 #'
 #' @export
 #'
@@ -42,8 +42,8 @@
 #' @examples
 #'   Tb_limpetBH(T_a = 25,
 #'               T_r = 30,
-#'               L = 0.0176,
-#'               H = 0.0122,
+#'               l = 0.0176,
+#'               h = 0.0122,
 #'               I = 1300,
 #'               u = 1,
 #'               s_aspect = 90,
@@ -52,15 +52,24 @@
 #'
 Tb_limpetBH <- function (T_a,
                          T_r,
-                         L,
-                         H,
+                         l,
+                         h,
                          I,
                          u,
                          s_aspect,
                          s_slope,
                          c) {
 
-  stopifnot(L > 0, H > 0, I > 0, u >= 0, s_slope >= 0, s_slope <= 90, s_aspect >= 70, s_aspect <= 110, c >= 0, c <= 1)
+  stopifnot(l > 0, 
+            h > 0, 
+            I > 0, 
+            u >= 0, 
+            s_slope >= 0, 
+            s_slope <= 90, 
+            s_aspect >= 70, 
+            s_aspect <= 110, 
+            c >= 0, 
+            c <= 1)
 
   # Conversions
 
@@ -73,7 +82,7 @@ Tb_limpetBH <- function (T_a,
 
       s_aspect <- s_aspect * pi / 180 # covert to radians
       s_slope <- s_slope * pi / 180 # covert to radians
-      r <- L / 2
+      r <- l / 2
 
   # Calculations
 
@@ -82,7 +91,7 @@ Tb_limpetBH <- function (T_a,
       r_aspect <- 257* pi / 180
       r_slope <- 44.5* pi / 180
 
-      delta_i <- cos(r_slope)*cos(s_slope)*cos(s_aspect-r_aspect)+sin(r_slope)*sin(s_slope)
+      delta_i <- cos(r_slope) * cos(s_slope) * cos(s_aspect - r_aspect) + sin(r_slope) * sin(s_slope)
       I <- I*delta_i
 
     # Short wave heat transfer
@@ -94,11 +103,11 @@ Tb_limpetBH <- function (T_a,
       # short-wave absorptivity of the shell (the fraction of light energy that is absorbed)
       # Absorptivity from Luke Miller
 
-        if (L >= 0.037) {
+        if (l >= 0.037) {
 
           alpha_sw <- 0.615
 
-        } else if (L <= 0.02225) {
+        } else if (l <= 0.02225) {
 
           alpha_sw <-0.689
 
@@ -118,7 +127,7 @@ Tb_limpetBH <- function (T_a,
 
       # lateral area of a limpet shell (m^2)
 
-        Al <- pi * r * sqrt(H^2 + r^2)
+        Al <- pi * r * sqrt(h^2 + r^2)
 
       #  long-wave emissivity of the shell
 
@@ -152,16 +161,16 @@ Tb_limpetBH <- function (T_a,
 
       # Reynolds number
 
-        Re <- u * L / v
+        Re <- u * l / v
 
      # Absorptivity from Luke Miller
 
-      if (L >= 0.037) {
+      if (l >= 0.037) {
 
         a <- 0.447
         b <- 0.516
 
-      } else if (L <= 0.02225) {
+      } else if (l <= 0.02225) {
 
         a <-0.1515
         b <- 0.6184
@@ -179,7 +188,7 @@ Tb_limpetBH <- function (T_a,
 
       # Heat transfer coefficient (W m^-2 K^-1)
 
-        hc <- a * Ka * ((u / v)^b) * (L^(b - 1))
+        hc <- a * Ka * ((u / v)^b) * (l^(b - 1))
 
       # area of the shell in convective contact with the air (m^2)
 

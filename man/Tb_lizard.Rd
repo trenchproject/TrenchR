@@ -30,7 +30,7 @@ Tb_lizard(
 
 \item{T_g}{\code{numeric} surface temperature (C).}
 
-\item{u}{\code{numeric} wind speed (m/s).}
+\item{u}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
 \item{svl}{\code{numeric} lizard snout vent length (mm).}
 
