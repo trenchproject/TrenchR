@@ -21,10 +21,9 @@ Tb_grasshopper(
 \arguments{
 \item{T_a}{\code{numeric} air temperature in C.}
 
-\item{T_g}{\code{numeric} surface temperature in C. \cr 
-\insertCite{Kingsolver1983;textual}{TrenchR} assumes \code{T_g - T_a = 8.4}.}
+\item{T_g}{\code{numeric} surface temperature in C. \insertCite{Kingsolver1983;textual}{TrenchR} assumes \code{T_g - T_a = 8.4}.}
 
-\item{u}{\code{numeric} wind speed in m / s.}
+\item{u}{\code{numeric} wind speed in \ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}.}
 
 \item{H}{\code{numeric} total (direct + diffuse) solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}.}
 
@@ -36,7 +35,7 @@ Tb_grasshopper(
 
 \item{Acondfact}{\code{numeric} the proportion of the grasshopper surface area that is in contact with the ground.}
 
-\item{z}{\code{numeric} distance from the ground to the grasshopper in m}
+\item{z}{\code{numeric} distance from the ground to the grasshopper in m.}
 
 \item{abs}{\code{numeric} absorptivity of the grasshopper to solar radiation (proportion). See \insertCite{Anderson1979;textual}{TrenchR}.}
 

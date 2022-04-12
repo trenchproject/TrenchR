@@ -345,7 +345,7 @@ azimuth_angle <- function (doy,
 #' @description Calculate estimated air pressure (kPa) as a function of elevation \insertCite{engingeeringtoolbox}{TrenchR}.
 #' 
 #' @param elev \code{numeric} elevation (meters).
-#' .
+#' 
 #' @family utility functions
 #' 
 #' @return \code{numeric} air pressure (kPa).
@@ -366,23 +366,28 @@ airpressure_from_elev <- function (elev) {
 
 }
 
-#' @title Convert Fahrenheit to Kelvin
+#' @title Convert Among Temperature Scales 
 #' 
-#' @description Convert temperature from Fahrenheit to Kelvin \insertCite{Blischak}{TrenchR}.
+#' @description Convert temperatures among Celsisus, Fahrenheit, and Kelvin \insertCite{Blischak}{TrenchR}.
 #' 
-#' @param T \code{numeric} temperature (Fahrenheit).
+#' @param T \code{numeric} temperature (Celsisus, Fahrenheit, or Kelvin).
 #' 
 #' @family utility functions
 #' 
-#' @return \code{numeric} temperature (Kelvin).
+#' @return \code{numeric} temperature (Celsisus, Fahrenheit, or Kelvin).
 #' 
 #' @export
 #' 
 #' @references
 #'   \insertAllCited{}
 #' 
+#' @name temperature conversions
+#'
 #' @examples
+#'   kelvin_to_celsius(T = 270)
 #'   fahrenheit_to_kelvin(T = 85)
+#'   fahrenheit_to_celsius(T = 85)
+#'   celsius_to_kelvin(T = -10)
 #' 
 fahrenheit_to_kelvin <- function (T) {
   
@@ -390,23 +395,9 @@ fahrenheit_to_kelvin <- function (T) {
   
 }
 
-#' @title Convert Kelvin to Celsius
-#' 
-#' @description Convert temperature from Kelvin to Celsius \insertCite{Blischak}{TrenchR}.
-#' 
-#' @param T \code{numeric} temperature (Kelvin).
-#' 
-#' @family utility functions
-#' 
-#' @return \code{numeric} temperature (Celsius).
+#' @name temperature conversions
 #' 
 #' @export
-#' 
-#' @references
-#'   \insertAllCited{}
-#' 
-#' @examples
-#'   kelvin_to_celsius(T = 270)
 #' 
 kelvin_to_celsius <- function (T) {
   
@@ -414,23 +405,19 @@ kelvin_to_celsius <- function (T) {
   
 }
 
-#' @title Converts Fahrenheit to Celsius
-#' 
-#' @description Convert temperature from Fahrenheit to Celsius \insertCite{Blischak}{TrenchR}.
-#' 
-#' @param T \code{numeric} temperature (Fahrenheit).
-#' 
-#' @family utility functions
-#' 
-#' @return \code{numeric} temperature (Celsius).
+#' @name temperature conversions
 #' 
 #' @export
 #' 
-#' @references
-#'   \insertAllCited{}
+celsius_to_kelvin <- function (T) {
+  
+  T + 273.15
+  
+}
+
+#' @name temperature conversions
 #' 
-#' @examples
-#'   fahrenheit_to_celsius(T = 85)
+#' @export
 #' 
 fahrenheit_to_celsius <- function (T) {
   
@@ -438,6 +425,8 @@ fahrenheit_to_celsius <- function (T) {
   kelvin_to_celsius(temp_k)
   
 }
+
+
 
 #' @title Convert Angle in Radians to Degrees
 #' 

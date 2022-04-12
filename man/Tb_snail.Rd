@@ -27,6 +27,9 @@ Tb_snail(temp, l, solar, WS, CC, WL, WSH)
 \description{
 Predicts body temperature of a snail in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Iacarella2012}{TrenchR}. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication.
 }
+\details{
+Thermal radiative flux is calculated following \insertCite{Helmuth1998;textual}{TrenchR}, \insertCite{Helmuth1999;textual}{TrenchR}, and \insertCite{Idso1969;textual}{TrenchR}.
+}
 \examples{
   Tb_snail(temp  = 25, 
            l     = 0.012, 

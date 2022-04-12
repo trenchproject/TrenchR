@@ -32,10 +32,8 @@ Other utility functions:
 \code{\link{day_of_year}()},
 \code{\link{dec_angle}()},
 \code{\link{degree_to_radian}()},
-\code{\link{fahrenheit_to_celsius}()},
-\code{\link{fahrenheit_to_kelvin}()},
-\code{\link{kelvin_to_celsius}()},
 \code{\link{solar_noon}()},
+\code{\link{temperature conversions}},
 \code{\link{zenith_angle}()}
 }
 \concept{utility functions}

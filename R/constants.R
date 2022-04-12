@@ -3,7 +3,7 @@
 #' @description Basic functions for numerical constants for conversions.
 #'
 #' @param units \code{character} indicating units \itemize{
-#'    \item{specific_heat_h2o}: itemize{
+#'    \item{specific_heat_h2o}: \itemize{
 #'      \item{\code{"J_kg-1_K-1"}}: {\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}}
 #'    }
 #'    \item{latent_heat_vaporization_h2o}: \itemize{
@@ -12,6 +12,9 @@
 #'    \item{stefan_boltzmann_constant}: \itemize{
 #'      \item{\code{"W_m-2_K-4"}}: {\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-4</sup>}}{\eqn{W m^-2 K^-4}{ASCII}}}
 #'      \item{\code{"mW_cm-2_K-4"}}: {\ifelse{html}{\out{mW cm<sup>-2</sup> K<sup>-4</sup>}}{\eqn{mW cm^-2 K^-4}{ASCII}}}
+#'    }
+#'    \item{con_karman_constant}: \itemize{
+#'      \item{\code{""}}: dimensionless
 #'    }
 #'  }
 #'
@@ -66,3 +69,14 @@ stefan_boltzmann_constant <- function (units = "W_m-2_K-4") {
 
 }
 
+#' @rdname constants
+#'
+#' @export
+#'
+von_karman_constant <- function (units = "") {
+
+  stopifnot(units %in% c(""))
+
+  0.41
+
+}

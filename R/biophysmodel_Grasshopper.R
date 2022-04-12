@@ -4,10 +4,9 @@
 #' 
 #' @param T_a \code{numeric} air temperature in C.
 #'
-#' @param T_g  \code{numeric} surface temperature in C. \cr 
-#'             \insertCite{Kingsolver1983;textual}{TrenchR} assumes \code{T_g - T_a = 8.4}.
+#' @param T_g  \code{numeric} surface temperature in C. \insertCite{Kingsolver1983;textual}{TrenchR} assumes \code{T_g - T_a = 8.4}.
 #'
-#' @param u \code{numeric} wind speed in m / s.
+#' @param u \code{numeric} wind speed in \ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}.
 #'
 #' @param H \code{numeric} total (direct + diffuse) solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}.
 #'
@@ -19,7 +18,7 @@
 #'
 #' @param Acondfact \code{numeric} the proportion of the grasshopper surface area that is in contact with the ground.
 #'
-#' @param z \code{numeric} distance from the ground to the grasshopper in m
+#' @param z \code{numeric} distance from the ground to the grasshopper in m.
 #'
 #' @param abs \code{numeric} absorptivity of the grasshopper to solar radiation (proportion). See \insertCite{Anderson1979;textual}{TrenchR}.
 #'
@@ -159,8 +158,8 @@ Tb_grasshopper <- function (T_a,
       #   h_c: heat transfer coefficient, Wm^{-2}C^{-1} #reported in Lactin and Johnson 1998
       #   hc_s: heat transfer coefficient in turbulent air 
 
-        Nu <- 0.41* Re^0.5 
-        h_c <- Nu * Kf / l 
+        Nu   <- 0.41* Re^0.5 
+        h_c  <- Nu * Kf / l 
         hc_s <- h_c * (-0.007 * z / l + 1.71) 
 
 
@@ -170,7 +169,7 @@ Tb_grasshopper <- function (T_a,
     #   Qcond = hcut *Acond *(Tb- (T_a+273))/Thick
  
      Thick <- 6*10^(-5)
-     hcut <- 0.15
+     hcut  <- 0.15
      Acond <- A * Acondfact 
 
 

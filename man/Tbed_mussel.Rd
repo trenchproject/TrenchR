@@ -27,6 +27,11 @@ Tbed_mussel(l, T_a, S, k_d, u, evap = FALSE, cl = NA)
 \description{
 Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Helmuth1999;textual}{TrenchR}.
 }
+\details{
+Conduction is considered negligible due to small area of contact.
+  \cr \cr
+  Thermal radiative flux is calculated following \insertCite{Helmuth1998;textual}{TrenchR}, \insertCite{Helmuth1999;textual}{TrenchR}, and \insertCite{Idso1969;textual}{TrenchR}.
+}
 \examples{
  Tbed_mussel(l    = 0.1, 
              T_a  = 25, 

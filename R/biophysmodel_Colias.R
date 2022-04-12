@@ -80,10 +80,10 @@ Tb_butterfly <- function (T_a,
 
     # temperatures C to K
 
-      TaK <- T_a + 273.15
+      TaK    <- celsius_to_kelvin(T_a)
       TaK_sh <- TaK
-      Tg <- Tg + 273.15 
-      Tg_sh <- Tg_sh + 273 
+      Tg     <- celsius_to_kelvin(Tg)
+      Tg_sh  <- celsius_to_kelvin(Tg_sh)
 
     # wind speed m/s to cm/s
 
@@ -108,7 +108,7 @@ Tb_butterfly <- function (T_a,
 
     # surface emissivity, ranges from 0.95-1
 
-      epsilon_s <- 0.97; 
+      epsilon_s <- 0.97 
 
       sigma <- stefan_boltzmann_constant(units = "mW_cm-2_K-4") # note units
 
@@ -118,7 +118,7 @@ Tb_butterfly <- function (T_a,
 
     # k_e- thermal conductivity of the fur, 1.3 mW cm^-1*K^-1
 
-      k_e <- 1.3; 
+      k_e <- 1.3 
 
     # r_i- body radius from Kingsolver 1983
 
@@ -145,11 +145,11 @@ Tb_butterfly <- function (T_a,
       A_sdir <- A_sttl / 2
       A_sref <- A_sdir
 
-    # RADIATIVE HEAT FLUx, mW
+    # Radiative Heat Flux, mW
   
       Q_s <- alpha * A_sdir * H_sdir / cos(z * pi / 180) + alpha * A_sref * H_sdif + alpha * r_g * A_sref * H_sttl  
 
-    # THERMAL RADIATIVE FLUX in K
+    # Thermal Radiative Flux in K
 
     # black body sky temperature from Swinbank 1963
 
@@ -162,7 +162,7 @@ Tb_butterfly <- function (T_a,
       # Q_t <- 0.5* A_sttl * Ep * sigma * (Tb^4 - Tsky^4) +0.5* A_sttl * Ep * sigma * (Tb^4 - Tg^4)
 
 
-    # CONVECTIVE HEAT FLUX
+    # Convective Heat Flux
 
       # Reynolds number- ratio of interval viscous forces
 
@@ -177,7 +177,7 @@ Tb_butterfly <- function (T_a,
         # N_u <- 2.3 
 
 
-      h_c <- N_u * k_a / D;
+      h_c <- N_u * k_a / D
 
 
       # total convective heat transfer coefficient
@@ -199,7 +199,7 @@ Tb_butterfly <- function (T_a,
 
         A_sttl <- A_sttl / 2
 
-      # RADIATIVE HEAT FLUX IN SHADE, mW
+      # Radiative Heat Flux in Shade, mW
 
         A_sdir <- A_sttl/2
         A_sref <- A_sdir
@@ -230,7 +230,7 @@ Tb_butterfly <- function (T_a,
 
     # in C
 
-      Te - 273.15
+      kelvin_to_celsius(Te)
 
 } 
 

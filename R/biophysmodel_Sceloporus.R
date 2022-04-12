@@ -2,6 +2,10 @@
 #' 
 #' @description Predicts body temperature (operative environmental temperature) of a lizard in C based on \insertCite{Campbell1998}{TrenchR}. Designed for Sceloporus lizards and described in \insertCite{Buckley2008}{TrenchR}.
 #' 
+#' @details The proportion of radiation that is direct is determined following \insertCite{Sears2011;textual}{TrenchR}.
+#'   \cr \cr 
+#'   Boundary conductance uses a factor of 1.4 to account for increased convection \insertCite{Mitchell1976}{TrenchR}
+#'
 #' @param T_a \code{numeric} air temperature (C).
 #' 
 #' @param T_g \code{numeric} surface temperature (C).
@@ -111,81 +115,86 @@ Tb_lizard <- function (T_a,
             F_g >= 0, 
             F_g <= 1)
   
-  psi <- degree_to_radian(psi) # convert zenith degree angle to radians
+  psi <- degree_to_radian(psi) 
   
   # constants
-  sigma <- stefan_boltzmann_constant() 
-  c_p <- 29.3 # specific heat of air, J/mol C (p.279) Parentheses all from Campbell & Norman 1998
-  tau <- 0.65 # atmospheric transmisivity
-  S_p0 <- 1360 # extraterrestrial flux density, W/m^2 (p.159)
+
+    sigma <- stefan_boltzmann_constant() 
+    c_p   <- 29.3 # specific heat of air, J/mol C (p.279) Parentheses all from Campbell & Norman 1998
+    tau   <- 0.65 # atmospheric transmisivity
+    S_p0  <- 1360 # extraterrestrial flux density, W/m^2 (p.159)
   
   # Calculate radiation
   # view angles, parameterize for animal suspended above ground (p181), on ground- adjust F_e, F_r, and F_g
-  h <- svl / 1000 # length of svl in m
+
+    h <- svl / 1000 # length of svl in m
   
-  A <- 0.121 * m^0.688   # total lizard area, Roughgarden (1981)
-  A_p <- (-1.1756810^-4 * psi^2 - 9.2594 * 10^-2 * psi + 26.2409) * A / 100 # projected area
-  F_p <- A_p / A
+    A <- 0.121 * m^0.688   # total lizard area, Roughgarden (1981)
+    A_p <- (-1.1756810^-4 * psi^2 - 9.2594 * 10^-2 * psi + 26.2409) * A / 100 # projected area
+    F_p <- A_p / A
   
   # Radiation
-  p_a <- 101.3 * exp (-elev / 8200)  # atmospheric pressure
-  m_a <- p_a / (101.3 * cos(psi))  # (11.12) optical air mass
-  m_a[(psi > (80 * pi / 180))] <- 5.66
+
+    p_a <- 101.3 * exp (-elev / 8200)  # atmospheric pressure
+    m_a <- p_a / (101.3 * cos(psi))  # (11.12) optical air mass
+    m_a[(psi > (80 * pi / 180))] <- 5.66
   
   # Flux densities
-  epsilon_ac <- 9.2 * 10^-6 * (T_a + 273)^2 # (10.11) clear sky emissivity
-  L_a <- sigma * (T_a + 273)^4  # (10.7) long wave flux densities from atmosphere 
-  L_g <- sigma * (T_g + 273)^4  # (10.7) long wave flux densities from ground
+
+    epsilon_ac <- 9.2 * 10^-6 * (T_a + 273)^2 # (10.11) clear sky emissivity
+    L_a <- sigma * (T_a + 273)^4  # (10.7) long wave flux densities from atmosphere 
+    L_g <- sigma * (T_g + 273)^4  # (10.7) long wave flux densities from ground
   
-  S_d <- 0.3 * (1 - tau^m_a) * S_p0 * cos(psi)  # (11.13) diffuse radiation
+    S_d <- 0.3 * (1 - tau^m_a) * S_p0 * cos(psi)  # (11.13) diffuse radiation
   
-  dd2 <- 1 + 2 * 0.1675 * cos(2 * pi * doy / 365)
-  S_p <- S_p0 * tau^m_a * dd2 * cos(psi)  # Sears and Angilletta 2012 #dd is correction factor accounting for orbit
-  S_b <- S_p * cos(psi)
-  S_t <- S_b + S_d
-  S_r <- rho_S * S_t # (11.10) reflected radiation
+    dd2 <- 1 + 2 * 0.1675 * cos(2 * pi * doy / 365)
+    S_p <- S_p0 * tau^m_a * dd2 * cos(psi)  # Sears and Angilletta 2012 #dd is correction factor accounting for orbit
+    S_b <- S_p * cos(psi)
+    S_t <- S_b + S_d
+    S_r <- rho_S * S_t # (11.10) reflected radiation
   
-  #__________________conductance_____________________
+  # Conductance
   
-  dim <- svl / 1000 # characteristic dimension in meters
-  g_r <- 4 * epsilon_s * sigma * (T_a + 273)^3 / c_p # (12.7) radiative conductance
+    # characteristic dimension in meters
+
+      dim <- svl / 1000 
+
+      g_r <- 4 * epsilon_s * sigma * (T_a + 273)^3 / c_p # (12.7) radiative conductance
   
-  g_Ha <- 1.4 * 0.135 * sqrt(u / dim) # boundary conductance, factor of 1.4 to account for increased convection (Mitchell 1976)
+      g_Ha <- 1.4 * 0.135 * sqrt(u / dim) # boundary conductance, factor of 1.4 to account for increased convection (Mitchell 1976)
   
-  #______operative environmental temperature_________
+  # Operative environmental temperature
   
   # Calculate with both surface and air temp (on ground and in tree)
-  sprop <- 1 #proportion of radiation that is direct, Sears and Angilletta 2012
-  R_abs <- sprop * alpha_S * (F_p * S_p + F_d * S_d + F_r * S_r) + alpha_L * (F_a * L_a + F_g * L_g) # (11.14) Absorbed radiation
-  Te <- T_a + (R_abs - epsilon_s * sigma * (T_a + 273)^4) / (c_p * (g_r + g_Ha)) # (12.19) Operative temperature            
-  Te_surf <- T_g + (R_abs - epsilon_s * sigma * (T_g + 273)^4) / (c_p * (g_r + g_Ha))        
+
+    sprop <- 1 # proportion of radiation that is direct, Sears and Angilletta 2012
+    R_abs <- sprop * alpha_S * (F_p * S_p + F_d * S_d + F_r * S_r) + alpha_L * (F_a * L_a + F_g * L_g) # (11.14) Absorbed radiation
+
+    Te      <- T_a + (R_abs - epsilon_s * sigma * (T_a + 273)^4) / (c_p * (g_r + g_Ha)) # (12.19) Operative temperature            
+    Te_surf <- T_g + (R_abs - epsilon_s * sigma * (T_g + 273)^4) / (c_p * (g_r + g_Ha))        
   
   # Calculate in shade, no direct radiation
-  sprop <- 0 # proportion of radiation that is direct, Sears and Angilletta 2012
-  R_abs <- sprop * alpha_S * (F_p * S_p + F_d * S_d + F_r * S_r) + alpha_L * (F_a * L_a + F_g * L_g) # (11.14) Absorbed radiation
-  TeS <- T_a + (R_abs - epsilon_s * sigma * (T_a + 273)^4) / (c_p * (g_r + g_Ha)) # (12.19) Operative temperature                        
-  TeS_surf <- T_g + (R_abs - epsilon_s * sigma * (T_g + 273)^4) / (c_p * (g_r + g_Ha))  
+
+    sprop <- 0 # proportion of radiation that is direct, Sears and Angilletta 2012
+    R_abs <- sprop * alpha_S * (F_p * S_p + F_d * S_d + F_r * S_r) + alpha_L * (F_a * L_a + F_g * L_g) # (11.14) Absorbed radiation
+
+    TeS      <- T_a + (R_abs - epsilon_s * sigma * (T_a + 273)^4) / (c_p * (g_r + g_Ha)) # (12.19) Operative temperature                        
+    TeS_surf <- T_g + (R_abs - epsilon_s * sigma * (T_g + 273)^4) / (c_p * (g_r + g_Ha))  
   
-  # Select Te to return
-  if(sun == TRUE & surface == TRUE) {
+
+  if (sun & surface) {
     
     Te <- Te_surf
     
-  }
-  
-  if(sun == TRUE & surface == FALSE) {
+  } else if (sun & !surface) {
     
     Te <- Te
     
-  }
-  
-  if(sun == FALSE & surface == TRUE) {
+  } else if (!sun & surface) {
     
     Te <- TeS_surf
     
-  }
-  
-  if(sun==FALSE & surface==FALSE) {
+  } else if (!sun & !surface) {
     
     Te <- TeS
     
