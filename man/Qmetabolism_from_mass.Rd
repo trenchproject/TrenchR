@@ -4,12 +4,12 @@
 \alias{Qmetabolism_from_mass}
 \title{Calculate Metabolism as a Function of Mass}
 \usage{
-Qmetabolism_from_mass(m, taxa = "reptile")
+Qmetabolism_from_mass(m, taxon = "reptile")
 }
 \arguments{
 \item{m}{\code{numeric} mass (grams).}
 
-\item{taxa}{\code{character} taxa to use in calculate. Options: reptile, bird, mammal.}
+\item{taxon}{\code{character} taxon to use in calculatations. Options: \code{"reptile"}, \code{"bird"}, \code{"mammal"}.}
 }
 \value{
 \code{numeric} metabolism (W).
@@ -19,7 +19,7 @@ Estimate field metabolic rate (W) of various taxa as a function of mass(g). Does
 }
 \examples{
   Qmetabolism_from_mass(m    = 12,
-                        taxa = "reptile")
+                        taxon = "reptile")
 
 }
 \references{

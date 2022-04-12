@@ -4,12 +4,12 @@
 \alias{Nusselt_from_Reynolds}
 \title{Estimate the Nusselt Number from the Reynolds Number}
 \usage{
-Nusselt_from_Reynolds(Re, taxa = "cylinder")
+Nusselt_from_Reynolds(Re, taxon = "cylinder")
 }
 \arguments{
 \item{Re}{\code{numeric} Reynolds Number (dimensionless).}
 
-\item{taxa}{\code{character} which class of organism, current choices: sphere, cylinder, frog, lizard_traverse_to_air_flow, lizard_parallel_to_air_flow, lizard_surface, lizard_elevated, flyinginsect, spider.}
+\item{taxon}{\code{character} which class of organism. Current choices: \code{"sphere"}, \code{"cylinder"}, \code{"frog"}, \code{"lizard_traverse_to_air_flow"}, \code{"lizard_parallel_to_air_flow"}, \code{"lizard_surface"}, \code{"lizard_elevated"}, \code{"flyinginsect"}, \code{"spider"}.}
 }
 \value{
 \code{numeric} Nusselt number (dimensionless).
@@ -18,8 +18,8 @@ Nusselt_from_Reynolds(Re, taxa = "cylinder")
 Estimate the Nusselt number from the Reynolds number for various taxa \insertCite{Mitchell1976;textual}{TrenchR} Table 1 (Convective Heat Transfer Relations for Animal Shapes).
 }
 \examples{
-  Nusselt_from_Reynolds(Re   = 5,
-                        taxa = "cylinder")
+  Nusselt_from_Reynolds(Re    = 5,
+                        taxon = "cylinder")
 
 }
 \references{

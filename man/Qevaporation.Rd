@@ -4,14 +4,14 @@
 \alias{Qevaporation}
 \title{Calculate Heat Loss Associated with Evaporative Water Loss}
 \usage{
-Qevaporation(A, T_b, taxa, rho_s = NA, rho_a = NA, h = NA, H = NA, r_i = NA)
+Qevaporation(A, T_b, taxon, rho_s = NA, rho_a = NA, h = NA, H = NA, r_i = NA)
 }
 \arguments{
 \item{A}{\code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
 \item{T_b}{\code{numeric} body temperature (K).}
 
-\item{taxa}{\code{character} taxa current choices: lizard, amphibian_wetskin (fully wet skin), amphibian (not fully wet skin).}
+\item{taxon}{\code{character} organism type. Current choices: \code{"lizard"}, \code{"amphibian_wetskin"} (fully wet skin), \code{"amphibian"} (not fully wet skin).}
 
 \item{rho_s}{\code{numeric} saturation water vapor density at skin surface (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).}
 
@@ -30,17 +30,17 @@ Qevaporation(A, T_b, taxa, rho_s = NA, rho_a = NA, h = NA, H = NA, r_i = NA)
 estimate heat loss associated with evaporative water loss by an amphibian \insertCite{Spotila1992}{TrenchR} or lizard (based on empirical measurements in \insertCite{Porter1973}{TrenchR}).
 }
 \examples{
-  Qevaporation(A     = 0.1,
-               T_b   = 293,
-               taxa  = "amphibian",
+  Qevaporation(A      = 0.1,
+               T_b    = 293,
+               taxon = "amphibian",
                rho_s = 0.003,
                rho_a = 0.002,
                h     = 0.5,
                H     = 20,
                r_i   = 50)
-  Qevaporation(A    = 0.1,
-               T_b  = 293,
-               taxa = "lizard")
+  Qevaporation(A     = 0.1,
+               T_b   = 293,
+               taxon = "lizard")
 
 }
 \references{

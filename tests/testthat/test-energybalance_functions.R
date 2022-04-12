@@ -42,16 +42,16 @@ test_that("Qemitted_thermal_radiation function works as expected", {
 })
 
 test_that("Qevaporation function works as expected", {
-  expect_similar(Qevaporation(A=0.1, T_b=293, taxa="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50),4.612476)
-  expect_similar(Qevaporation(A=0.1, T_b=293, taxa="lizard"),1.043334)
+  expect_similar(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50),4.612476)
+  expect_similar(Qevaporation(A=0.1, T_b=293, taxon="lizard"),1.043334)
 })
 
 test_that("Qevaporation errors work as expected", {
-  expect_error(Qevaporation(A=0.1, T_b=293, taxa="amphibian", rho_a=0.002, h=0.5, H=20, r_i=50))
-  expect_error(Qevaporation(A=0.1, T_b=293, taxa="amphibian", rho_s=0.003, h=0.5, H=20, r_i=50))
-  expect_error(Qevaporation(A=0.1, T_b=293, taxa="amphibian", rho_s=0.003, rho_a=0.002, H=20, r_i=50))
-  expect_error(Qevaporation(A=0.1, T_b=293, taxa="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, r_i=50))
-  expect_error(Qevaporation(A=0.1, T_b=293, taxa="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=20))
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_a=0.002, h=0.5, H=20, r_i=50))
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, h=0.5, H=20, r_i=50))
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=0.002, H=20, r_i=50))
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, r_i=50))
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=20))
 
 })
 
@@ -66,7 +66,7 @@ test_that("external_resistance_to_water_vapor_transfer function works as expecte
 test_that("Qmetabolism_from_mass function expect_similar function works as expected", {
   expect_similar(Qmetabolism_from_mass(m=12,"reptile"), 0.02066024)
   expect_similar(Qmetabolism_from_mass(60000, taxa = "mammal"), 179.3483)
-  expect_similar(Qmetabolism_from_mass(200, taxa="bird"), 4.484128)
+  expect_similar(Qmetabolism_from_mass(200, taxon="bird"), 4.484128)
 })
 
 test_that("Qmetabolism_from_mass_temp function works as expected", {
@@ -122,9 +122,9 @@ test_that("Grashof_number_Gates function works as expected", {
 })
 
 test_that("Nusselt_from_Reynolds function works as expected", {
-  expect_similar(Nusselt_from_Reynolds(Re=5, taxa="cylinder"), 1.301952)
-  expect_similar(Nusselt_from_Reynolds(Re=5, taxa="frog"), 0.7548014)
-  expect_similar(Nusselt_from_Reynolds(Re=5, taxa="lizard_parallel_to_air_flow"), 0.3290317)
+  expect_similar(Nusselt_from_Reynolds(Re=5, taxon="cylinder"), 1.301952)
+  expect_similar(Nusselt_from_Reynolds(Re=5, taxon="frog"), 0.7548014)
+  expect_similar(Nusselt_from_Reynolds(Re=5, taxon="lizard_parallel_to_air_flow"), 0.3290317)
 })
 
 test_that("Nusselt_from_Grashof function works as expected", {

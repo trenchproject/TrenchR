@@ -11,7 +11,7 @@ heat_transfer_coefficient_simple(V, D, type)
 
 \item{D}{\code{numeric} characteristic dimension (e.g., diameter or snout-vent length) (m).}
 
-\item{type}{\code{character} choice between "Spotila" and "Gates" for equation to use.}
+\item{type}{\code{character} choice between \code{"Spotila"} and \code{"Gates"} for equation to use.}
 }
 \value{
 \code{numeric} heat transfer coefficient, H_L (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}).

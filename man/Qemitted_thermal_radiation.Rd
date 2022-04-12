@@ -33,7 +33,7 @@ Qemitted_thermal_radiation(
 \item{enclosed}{\code{logical} if the animal is an enclosed environment or not.}
 }
 \value{
-\code{numeric} emitted thermal radiation, Qemit (W)
+\code{numeric} emitted thermal radiation, \code{Qemit} (W).
 }
 \description{
 estimate thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
