@@ -137,7 +137,7 @@ diurnal_temp_variation_sine <- function (T_max,
 #' 
 #' @param t \code{numeric} hour or hours for temperature estimate.
 #' 
-#' @param tr,ts \code{numeric} sunrise and sunset hours (0-23).
+#' @param t_r,t_s \code{numeric} sunrise and sunset hours (0-23).
 #' 
 #' @param T_max,T_min \code{numeric} maximum and minimum temperatures of current day (C).
 #' 
@@ -155,30 +155,30 @@ diurnal_temp_variation_sine <- function (T_max,
 #' 
 #' @examples
 #'   diurnal_temp_variation_sinesqrt(t      = 8, 
-#'                                   tr     = 6, 
-#'                                   ts     = 18, 
+#'                                   t_r    = 6, 
+#'                                   t_s    = 18, 
 #'                                   T_max  = 30, 
 #'                                   T_min  = 10, 
 #'                                   T_minp = 12)
 #' 
 diurnal_temp_variation_sinesqrt <- function (t, 
-                                             tr, 
-                                             ts, 
+                                             t_r, 
+                                             t_s, 
                                              T_max, 
                                              T_min, 
                                              T_minp) {
  
   stopifnot(t >= 0, 
             t <= 24, 
-            tr >= 0, 
-            tr <= 24, 
-            ts >= 0, 
-            ts <= 24, 
+            t_r >= 0, 
+            t_r <= 24, 
+            t_s >= 0, 
+            t_s <= 24, 
             T_max >= T_min)
   
   # Time estimates
-  tp <- tr + 24 # sunrise time following day
-  tx <- ts - 4 # Assume time of maximum temperature 4h before sunset
+  t_p <- t_r + 24 # sunrise time following day
+  t_x <- t_s - 4 # Assume time of maximum temperature 4h before sunset
   
   # Temperature at sunset
   c <- 0.39 # empircally fitted parameter
@@ -186,36 +186,36 @@ diurnal_temp_variation_sinesqrt <- function (t,
   
   alpha <- T_max -T_min
   R <- T_max - To
-  b <- (T_minp - To) / sqrt(tp - ts)
+  b <- (T_minp - To) / sqrt(t_p - t_s)
   
   T <- rep(NA, length(t))
   
-  inds <- which(t <= tr) 
+  inds <- which(t <= t_r) 
 
-  if(length(inds>0))  {
-    
-    T[inds] <- To + b * sqrt(t[inds] - (ts - 24))
-    
-  }
-
-  inds <- which(t > tr & t <= tx) 
-  if(length(inds > 0)) {
-    
-    T[inds] <- T_min + alpha * sin(pi / 2 * (t[inds] - tr) / (tx - tr))
-    
-  }
-  
-  inds <- which(t > tx & t < ts) 
-  if(length(inds > 0)) {
-    
-    T[inds] <- To + R * sin(pi / 2 * (1 + (t[inds] - tx) / 4))
-    
-  }
-  
-  inds <- which(t >= ts) 
   if(length(inds > 0))  {
     
-    T[inds] <- To + b * sqrt(t[inds] - ts)
+    T[inds] <- To + b * sqrt(t[inds] - (t_s - 24))
+    
+  }
+
+  inds <- which(t > t_r & t <= t_x) 
+  if(length(inds > 0)) {
+    
+    T[inds] <- T_min + alpha * sin(pi / 2 * (t[inds] - t_r) / (t_x - t_r))
+    
+  }
+  
+  inds <- which(t > t_x & t < t_s) 
+  if(length(inds > 0)) {
+    
+    T[inds] <- To + R * sin(pi / 2 * (1 + (t[inds] - t_x) / 4))
+    
+  }
+  
+  inds <- which(t >= t_s) 
+  if(length(inds > 0))  {
+    
+    T[inds] <- To + b * sqrt(t[inds] - t_s)
     
   }
 

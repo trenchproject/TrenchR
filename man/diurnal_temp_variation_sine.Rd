@@ -7,9 +7,7 @@
 diurnal_temp_variation_sine(T_max, T_min, t)
 }
 \arguments{
-\item{T_max}{\code{numeric} maximum daily temperature (C).}
-
-\item{T_min}{\code{numeric} minimum daily temperature (C).}
+\item{T_max, T_min}{\code{numeric} maximum and minimum daily temperatures (C).}
 
 \item{t}{\code{numeric} time for temperature estimate (hour).}
 }

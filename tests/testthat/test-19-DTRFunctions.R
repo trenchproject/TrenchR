@@ -14,5 +14,5 @@ test_that("diurnal_temp_variation_sine function works as expected", {
 })
 
 test_that("diurnal_temp_variation_sinesqrt function works as expected", {
-  expect_similar(diurnal_temp_variation_sinesqrt(t=8, tr=6, ts=18, T_max=30, T_min=10, T_minp=12), 17.65367)
+  expect_similar(diurnal_temp_variation_sinesqrt(t=8, t_r=6, t_s=18, T_max=30, T_min=10, T_minp=12), 17.65367)
 })

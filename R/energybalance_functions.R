@@ -48,12 +48,13 @@ Qconduction_animal <- function (T_g,
             proportion >= 0, 
             proportion <= 1)
 
-  # Calculate the area of contact
+
   A_contact <- A * proportion
 
   # Conduction
-  # Calculating the heat loss (Difference between animal temperature and its environment)
+  # the heat loss (Difference between animal temperature and its environment)
   # m^2 * W K^-1 m^-1 * K / m
+
   A_contact * K * (T_b - T_g) / d
 
 }
@@ -109,7 +110,7 @@ Qconduction_substrate <- function (T_g,
             proportion >= 0, 
             proportion <= 1)
 
-  # Calculate the area of contact
+
   A_contact <- A * proportion
 
   #Thermal conductance between animal and substrate
