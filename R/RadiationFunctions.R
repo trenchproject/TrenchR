@@ -144,7 +144,7 @@ diurnal_radiation_variation <- function(doy,
 
 #' @title Estimate Average Monthly Solar Radiation
 #' 
-#' @description Estimate average monthly solar radiation ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per day) using basic topographic and climatic information as input. Based on \insertCite{Nikolov1992;textual}{TrenchR}.
+#' @description Estimate average monthly solar radiation ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per day) using basic topographic and climatic information as input. Cloudiness is stochastically modeled, so output will vary between functional calls. Based on \insertCite{Nikolov1992;textual}{TrenchR}.
 #' 
 #' @param lat \code{numeric} latitude (degrees).
 #' 
