@@ -7,15 +7,15 @@
 Qconduction_animal(T_g, T_b, d, K = 0.5, A, proportion)
 }
 \arguments{
-\item{T_g}{\code{numeric} Ground surface temperature (Kelvin).}
+\item{T_g}{\code{numeric} ground surface temperature (Kelvin).}
 
-\item{T_b}{\code{numeric} Body temperature (Kelvin).}
+\item{T_b}{\code{numeric} body temperature (Kelvin).}
 
-\item{d}{\code{numeric} Mean thickness of the animal skin (surface) in (meters), assumes well mixed interior.}
+\item{d}{\code{numeric} mean thickness of the animal skin (surface) in (meters), assumes well mixed interior.}
 
-\item{K}{\code{numeric} Thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), \code{K = 0.5} for naked skin, \code{K = 0.15} for insect cuticle \insertCite{Galushko2005}{TrenchR}; conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.}
+\item{K}{\code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), \code{K = 0.5} for naked skin, \code{K = 0.15} for insect cuticle \insertCite{Galushko2005}{TrenchR}; conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.}
 
-\item{A}{\code{numeric} Surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
+\item{A}{\code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
 \item{proportion}{\code{numeric} proportion of body in contact with the surface (0-1).}
 }

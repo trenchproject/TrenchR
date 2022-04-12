@@ -4,18 +4,18 @@
 \alias{heat_transfer_coefficient}
 \title{Heat Transfer Coefficient}
 \usage{
-heat_transfer_coefficient(V, D, K, nu, taxa = "cylinder")
+heat_transfer_coefficient(V, D, K, nu, taxon = "cylinder")
 }
 \arguments{
 \item{V}{\code{numeric} air velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
-\item{D}{\code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).}
+\item{D}{\code{numeric} characteristic dimension (e.g., diameter or snout-vent length) (meters).}
 
-\item{K}{\code{numeric} Thermal conductivity of air (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
+\item{K}{\code{numeric} thermal conductivity of air (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
 
-\item{nu}{\code{numeric} Kinematic viscosity of air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
+\item{nu}{\code{numeric} kinematic viscosity of air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
 
-\item{taxa}{\code{character} Which class of organism, current choices: sphere, cylinder, frog, lizard_surface, lizard_elevated, flyinginsect, spider. Notes: Cylinder assumes 40<Re<4000. lizard assumes prostrate on or elevated above surface, average for parallel and perpendicular to air flow.}
+\item{taxon}{\code{character} which class of organism, current choices: \code{"sphere"}, \code{"cylinder"}, \code{"frog"}, \code{"lizard_surface"}, \code{"lizard_elevated"}, \code{"flyinginsect"}, \code{"spider"}. Notes: \code{"cylinder"} assumes 40<Re<4000. \code{"lizard_surface"} and \code{"lizard_elevated"} assume prostrate on or elevated above surface, average for parallel and perpendicular to air flow.}
 }
 \value{
 \code{numeric} heat transfer coefficient, \code{H_L} (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).
@@ -24,11 +24,11 @@ heat_transfer_coefficient(V, D, K, nu, taxa = "cylinder")
 Estimate the heat transfer coefficient for various taxa based on empirical measurements \insertCite{Mitchell1976}{TrenchR}.
 }
 \examples{
-  heat_transfer_coefficient(V    = 0.5,
-                            D    = 0.05,
-                            K    = 25.7 * 10^(-3),
-                            nu   = 15.3 * 10^(-6),
-                            taxa = "cylinder")
+  heat_transfer_coefficient(V     = 0.5,
+                            D     = 0.05,
+                            K     = 25.7 * 10^(-3),
+                            nu    = 15.3 * 10^(-6),
+                            taxon = "cylinder")
 
 }
 \references{

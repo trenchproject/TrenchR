@@ -234,15 +234,15 @@ appropriate when $Gr \leq 16 Re^2$. For convenience, we provide the
 relationships as R functions:
 
 ```{r, fig.height=4, fig.width=8}
-plot(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="sphere"), type="l", xlab = "Re", ylab = "Nu", ylim=c(0,4))
-points(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="cylinder"), type="l", lty="dashed")
-points(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="frog"), type="l", lty="dotted")
-points(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="lizard_traverse_to_air_flow"), type="l", lty="dotdash")
-points(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="lizard_parallel_to_air_flow"), type="l", lty="dotdash", col="red")
-points(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="lizard_surface"), type="l", lty="dotdash", col="orange")
-points(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="lizard_elevated"), type="l", lty="dotdash", col="green")
-points(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="flyinginsect"), type="l", lty="longdash")
-points(1:10, Nusselt_from_Reynolds(Re=1:10, taxa="spider"), type="l", lty="twodash")
+plot(1:10, Nusselt_from_Reynolds(Re=1:10, taxon="sphere"), type="l", xlab = "Re", ylab = "Nu", ylim=c(0,4))
+points(1:10, Nusselt_from_Reynolds(Re=1:10, taxon="cylinder"), type="l", lty="dashed")
+points(1:10, Nusselt_from_Reynolds(Re=1:10, taxon="frog"), type="l", lty="dotted")
+points(1:10, Nusselt_from_Reynolds(Re=1:10, taxon="lizard_traverse_to_air_flow"), type="l", lty="dotdash")
+points(1:10, Nusselt_from_Reynolds(Re=1:10, taxon="lizard_parallel_to_air_flow"), type="l", lty="dotdash", col="red")
+points(1:10, Nusselt_from_Reynolds(Re=1:10, taxon="lizard_surface"), type="l", lty="dotdash", col="orange")
+points(1:10, Nusselt_from_Reynolds(Re=1:10, taxon="lizard_elevated"), type="l", lty="dotdash", col="green")
+points(1:10, Nusselt_from_Reynolds(Re=1:10, taxon="flyinginsect"), type="l", lty="longdash")
+points(1:10, Nusselt_from_Reynolds(Re=1:10, taxon="spider"), type="l", lty="twodash")
 
 legend("topright", title="taxa", legend=c("sphere","cylinder","frog","lizard_traverse_to_air_flow","lizard_parallel_to_air_flow","lizard_surface","lizard_elevated","flyinginsect","spider"), lty=c("solid","dashed","dotted","dotdash","dotdash","dotdash","dotdash","longdash","twodash"), col=c("black","black","black","black","red","orange","green","black","black" ) )
 ```
@@ -441,14 +441,14 @@ Qevaps= rep(NA,21)
 Qevaps_wet= rep(NA,21)
 
 for(ind in 1:21){
- Qevaps[ind]=Qevaporation(A=0.1, T_b=temps[ind], taxa="amphibian", rho_s=rho_s[ind], rho_a=rho_a[ind], h=0.5, H=20, r_i=50) 
-Qevaps_wet[ind]=Qevaporation(A=0.1, T_b=temps[ind], taxa="amphibian_wetskin", rho_s=rho_s[ind], rho_a=rho_a[ind], h=0.5, H=20, r_i=50) 
+ Qevaps[ind]=Qevaporation(A=0.1, T_b=temps[ind], taxon="amphibian", rho_s=rho_s[ind], rho_a=rho_a[ind], h=0.5, H=20, r_i=50) 
+Qevaps_wet[ind]=Qevaporation(A=0.1, T_b=temps[ind], taxon="amphibian_wetskin", rho_s=rho_s[ind], rho_a=rho_a[ind], h=0.5, H=20, r_i=50) 
  }
 
 plot(temps, Qevaps, type="l", xlab = "body temperature (K)", ylab = "evaporative heat loss (W)", lty="dashed", ylim=c(0,400))
 points(temps, Qevaps_wet, type="l", lty="dotted")
 
-Qevap= unlist(lapply(293:313, FUN=Qevaporation, A=0.1, taxa="lizard"))
+Qevap= unlist(lapply(293:313, FUN=Qevaporation, A=0.1, taxon="lizard"))
 points(293:313, Qevap, type="l")
 
 legend("right", title="taxa", legend=c("amphibian","amphibian_wetskin","lizard"), lty=c("dashed","dotted","solid") )
@@ -1430,10 +1430,10 @@ K= mean(K)
 nu=mean(nu)
 
 #Estimate the heat transfer coefficient using an empirical relationship for lizards
-H_L=heat_transfer_coefficient(V=V,D=svl,K= 25.7 * 10^(-3), nu= 15.3 * 10^(-6) , taxa="lizard_surface")
+H_L=heat_transfer_coefficient(V=V,D=svl,K= 25.7 * 10^(-3), nu= 15.3 * 10^(-6) , taxon="lizard_surface")
 
 #Also illustrate estimations using a spherical approximation and a simplified version of the approximation.
-heat_transfer_coefficient_approximation(V=V,D=svl,K= 25.7 * 10^(-3), nu= 15.3 * 10^(-6), taxa="lizard")
+heat_transfer_coefficient_approximation(V=V,D=svl,K= 25.7 * 10^(-3), nu= 15.3 * 10^(-6), taxon="lizard")
 heat_transfer_coefficient_simple(V=0.5,D=0.05, type = "Spotila")
 
 ```

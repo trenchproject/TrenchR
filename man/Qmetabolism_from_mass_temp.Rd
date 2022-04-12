@@ -4,14 +4,14 @@
 \alias{Qmetabolism_from_mass_temp}
 \title{Calculate Basal (Resting) Metabolism as a Function of Mass and Body Temperature}
 \usage{
-Qmetabolism_from_mass_temp(m, T_b, taxa)
+Qmetabolism_from_mass_temp(m, T_b, taxon)
 }
 \arguments{
 \item{m}{\code{numeric} mass (grams).}
 
 \item{T_b}{\code{numeric} body temperature (K).}
 
-\item{taxa}{\code{character} taxa to use. Options: bird, mammal, reptile, amphibian, invertebrate.}
+\item{taxon}{\code{character} organism type. Options: \code{"bird"}, \code{"mammal"}, \code{"reptile"}, \code{"amphibian"}, \code{"invertebrate"}.}
 }
 \value{
 \code{numeric} basal metabolism (W).
@@ -20,9 +20,9 @@ Qmetabolism_from_mass_temp(m, T_b, taxa)
 Estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent) \insertCite{Gillooly2001}{TrenchR}.
 }
 \examples{
-  Qmetabolism_from_mass_temp(m    = 100,
-                             T_b  = 303,
-                             taxa = "reptile")
+  Qmetabolism_from_mass_temp(m     = 100,
+                             T_b   = 303,
+                             taxon = "reptile")
 
 }
 \references{

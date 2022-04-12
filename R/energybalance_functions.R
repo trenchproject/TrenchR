@@ -2,15 +2,15 @@
 #'
 #' @description Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
 #'
-#' @param T_g \code{numeric} Ground surface temperature (Kelvin).
+#' @param T_g \code{numeric} ground surface temperature (Kelvin).
 #'
-#' @param T_b \code{numeric} Body temperature (Kelvin).
+#' @param T_b \code{numeric} body temperature (Kelvin).
 #'
-#' @param d \code{numeric} Mean thickness of the animal skin (surface) in (meters), assumes well mixed interior.
+#' @param d \code{numeric} mean thickness of the animal skin (surface) in (meters), assumes well mixed interior.
 #'
-#' @param K \code{numeric} Thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), \code{K = 0.5} for naked skin, \code{K = 0.15} for insect cuticle \insertCite{Galushko2005}{TrenchR}; conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.
+#' @param K \code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), \code{K = 0.5} for naked skin, \code{K = 0.15} for insect cuticle \insertCite{Galushko2005}{TrenchR}; conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.
 #'
-#' @param A \code{numeric} Surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
+#' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #'
 #' @param proportion \code{numeric} proportion of body in contact with the surface (0-1).
 #'
@@ -31,7 +31,6 @@
 #'                      A          = 10^-3,
 #'                      proportion = 0.2)
 #'
-
 Qconduction_animal <- function (T_g,
                                 T_b,
                                 d,
@@ -162,13 +161,13 @@ Qconvection <- function (T_a,
 #'
 #' @param V \code{numeric} air velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #'
-#' @param D \code{numeric} Characteristic dimension (e.g., diameter or snout-vent length) (meters).
+#' @param D \code{numeric} characteristic dimension (e.g., diameter or snout-vent length) (meters).
 #'
-#' @param K \code{numeric} Thermal conductivity of air (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
+#' @param K \code{numeric} thermal conductivity of air (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #'
-#' @param nu \code{numeric} Kinematic viscosity of air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
+#' @param nu \code{numeric} kinematic viscosity of air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #'
-#' @param taxa \code{character} Which class of organism, current choices: sphere, cylinder, frog, lizard_surface, lizard_elevated, flyinginsect, spider. Notes: Cylinder assumes 40<Re<4000. lizard assumes prostrate on or elevated above surface, average for parallel and perpendicular to air flow.
+#' @param taxon \code{character} which class of organism, current choices: \code{"sphere"}, \code{"cylinder"}, \code{"frog"}, \code{"lizard_surface"}, \code{"lizard_elevated"}, \code{"flyinginsect"}, \code{"spider"}. Notes: \code{"cylinder"} assumes 40<Re<4000. \code{"lizard_surface"} and \code{"lizard_elevated"} assume prostrate on or elevated above surface, average for parallel and perpendicular to air flow.
 #'
 #' @return \code{numeric} heat transfer coefficient, \code{H_L} (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).
 #'
@@ -180,28 +179,28 @@ Qconvection <- function (T_a,
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   heat_transfer_coefficient(V    = 0.5,
-#'                             D    = 0.05,
-#'                             K    = 25.7 * 10^(-3),
-#'                             nu   = 15.3 * 10^(-6),
-#'                             taxa = "cylinder")
+#'   heat_transfer_coefficient(V     = 0.5,
+#'                             D     = 0.05,
+#'                             K     = 25.7 * 10^(-3),
+#'                             nu    = 15.3 * 10^(-6),
+#'                             taxon = "cylinder")
 #'
 heat_transfer_coefficient <- function (V,
                                        D,
                                        K,
                                        nu,
-                                       taxa = "cylinder") {
+                                       taxon = "cylinder") {
 
-  stopifnot(V >= 0, D >= 0, K >= 0, nu >= 0, taxa %in% c("sphere", "cylinder", "frog", "lizard_surface", "lizard_elevated", "flyinginsect", "spider"))
+  taxa <- c("sphere", "cylinder", "frog", "lizard_surface", "lizard_elevated", "flyinginsect", "spider")
 
-  taxas <- c("sphere", "cylinder", "frog", "lizard_surface", "lizard_elevated", "flyinginsect", "spider")
+  stopifnot(V >= 0, D >= 0, K >= 0, nu >= 0, taxon %in% taxa)
 
   # Dimensionless constant (Cl)
   Cls <- c(0.37, 0.615, 0.258, 1.36, 1.91, 0.0749, 0.47)
   ns <- c(0.6, 0.466, 0.667, 0.39, 0.45, 0.78, 0.5)
 
   # Find index
-  ind <- match(taxa, taxas)
+  ind <- match(taxon, taxa)
 
   Re <- V * D / nu # Reynolds number
   Nu <- Cls[ind] * Re^ns[ind]  # Nusselt number
@@ -223,7 +222,7 @@ heat_transfer_coefficient <- function (V,
 #'
 #' @param nu \code{numeric} kinematic Viscosity of air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #'
-#' @param taxa \code{character} which class of organism, current choices: sphere, frog, lizard, flyinginsect, spider
+#' @param taxon \code{character} which class of organism, current choices: \code{"sphere"}, \code{"frog"}, \code{"lizard"}, \code{"flyinginsect"}, \code{"spider"}.
 #'
 #' @return \code{numeric} heat transfer coefficient, \code{H_L} (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}).
 #'
@@ -235,28 +234,29 @@ heat_transfer_coefficient <- function (V,
 #'   \insertAllCited{}
 #'
 #' @examples
-#'  heat_transfer_coefficient_approximation(V    = 3,
-#'                                          D    = 0.05,
-#'                                          K    = 25.7 * 10^(-3),
-#'                                          nu   = 15.3 * 10^(-6),
-#'                                          taxa = "sphere")
+#'  heat_transfer_coefficient_approximation(V     = 3,
+#'                                          D     = 0.05,
+#'                                          K     = 25.7 * 10^(-3),
+#'                                          nu    = 15.3 * 10^(-6),
+#'                                          taxon = "sphere")
 #'
 heat_transfer_coefficient_approximation <- function (V,
                                                      D,
                                                      K,
                                                      nu,
-                                                     taxa = "sphere") {
+                                                     taxon = "sphere") {
 
-  stopifnot(V >= 0, D >= 0, K >= 0, nu >= 0, taxa %in% c("sphere", "frog", "lizard", "flyinginsect", "spider"))
 
-  taxas <- c("sphere", "frog", "lizard", "flyinginsect", "spider")
+  taxa <- c("sphere", "frog", "lizard", "flyinginsect", "spider")
+
+  stopifnot(V >= 0, D >= 0, K >= 0, nu >= 0, taxon %in% taxa)
 
   # Dimensionless constant (Cl)
   Cls <- c(0.34, 0.196, 0.56, 0.0714, 0.52)
   ns <- c(0.6, 0.667, 0.6, 0.78, 0.5)
 
   # Find index
-  ind <- match(taxa, taxas)
+  ind <- match(taxon, taxa)
 
   Re <- V * D / nu # Reynolds number
   Nu <- Cls[ind] * Re^ns[ind]  # Nusselt number
@@ -274,7 +274,7 @@ heat_transfer_coefficient_approximation <- function (V,
 #'
 #' @param D \code{numeric} characteristic dimension (e.g., diameter or snout-vent length) (m).
 #'
-#' @param type \code{character} choice between "Spotila" and "Gates" for equation to use.
+#' @param type \code{character} choice between \code{"Spotila"} and \code{"Gates"} for equation to use.
 #'
 #' @return \code{numeric} heat transfer coefficient, H_L (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}).
 #'
@@ -399,7 +399,7 @@ Qradiation_absorbed <- function (a = 0.9,
 #'
 #' @param enclosed \code{logical} if the animal is an enclosed environment or not.
 #'
-#' @return \code{numeric} emitted thermal radiation, Qemit (W)
+#' @return \code{numeric} emitted thermal radiation, \code{Qemit} (W).
 #'
 #' @family biophysical models
 #'
@@ -462,7 +462,7 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 #'
 #' @param T_b \code{numeric} body temperature (K).
 #'
-#' @param taxa \code{character} taxa current choices: lizard, amphibian_wetskin (fully wet skin), amphibian (not fully wet skin).
+#' @param taxon \code{character} organism type. Current choices: \code{"lizard"}, \code{"amphibian_wetskin"} (fully wet skin), \code{"amphibian"} (not fully wet skin).
 #'
 #' @param rho_s \code{numeric} saturation water vapor density at skin surface (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).
 #'
@@ -484,37 +484,37 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   Qevaporation(A     = 0.1,
-#'                T_b   = 293,
-#'                taxa  = "amphibian",
+#'   Qevaporation(A      = 0.1,
+#'                T_b    = 293,
+#'                taxon = "amphibian",
 #'                rho_s = 0.003,
 #'                rho_a = 0.002,
 #'                h     = 0.5,
 #'                H     = 20,
 #'                r_i   = 50)
-#'   Qevaporation(A    = 0.1,
-#'                T_b  = 293,
-#'                taxa = "lizard")
+#'   Qevaporation(A     = 0.1,
+#'                T_b   = 293,
+#'                taxon = "lizard")
 #'
 Qevaporation <- function (A,
                           T_b,
-                          taxa,
+                          taxon,
                           rho_s = NA,
                           rho_a = NA,
                           h     = NA,
                           H     = NA,
                           r_i   = NA) {
 
-  stopifnot(A > 0, T_b > 200, T_b < 400, taxa %in% c("lizard", "amphibian_wetskin", "amphibian"))
+  stopifnot(A > 0, T_b > 200, T_b < 400, taxon %in% c("lizard", "amphibian_wetskin", "amphibian"))
 
-  if(taxa %in% c("amphibian_wetskin", "amphibian")) {
+  if(taxon %in% c("amphibian_wetskin", "amphibian")) {
 
     stopifnot(rho_s > 0, rho_a > 0, h >= 0, h <= 1, H > 0, r_i > 0)
 
   }
 
   # Porter et al. 1973 in Gates Biophysical ecology
-  if(taxa == "lizard") {
+  if(taxon == "lizard") {
     if(T_b < 293) {
 
       E_kg <- 0.27
@@ -548,14 +548,14 @@ Qevaporation <- function (A,
   # external (convective) resistance to water vapor transport (s/m), Lewis rule
   r_e <- 0.93 * rhocp / H
 
-  if(taxa == "amphibian_wetskin") {
+  if(taxon == "amphibian_wetskin") {
 
     Ec <- A * (rho_s - h * rho_a) / r_e # rate of water transport (kg/s)
     Qevap <- Ec * evap_heat #to W
 
   }
 
-  if(taxa == "amphibian") {
+  if(taxon == "amphibian") {
 
     Ec= A * (rho_s-h*rho_a)/(r_i+r_e) # rate of water transport (kg/s)
     Qevap= Ec*evap_heat # to W
@@ -628,7 +628,7 @@ external_resistance_to_water_vapor_transfer <- function (H,
 #'
 #' @param m \code{numeric} mass (grams).
 #'
-#' @param taxa \code{character} taxa to use in calculate. Options: reptile, bird, mammal.
+#' @param taxon \code{character} taxon to use in calculatations. Options: \code{"reptile"}, \code{"bird"}, \code{"mammal"}.
 #'
 #' @return \code{numeric} metabolism (W).
 #'
@@ -641,32 +641,32 @@ external_resistance_to_water_vapor_transfer <- function (H,
 #'
 #' @examples
 #'   Qmetabolism_from_mass(m    = 12,
-#'                         taxa = "reptile")
+#'                         taxon = "reptile")
 #'
 Qmetabolism_from_mass <- function(m,
-                                  taxa = "reptile") {
+                                  taxon = "reptile") {
 
-  stopifnot(m > 0, taxa %in% c("reptile", "bird", "mammal"))
+  stopifnot(m > 0, taxon %in% c("reptile", "bird", "mammal"))
 
   # FMR in W, M is mass in grams
   # Convert 1 kJ/day = 0.0115741 W
 
   # Reptile
-  if(taxa == "reptile") {
+  if(taxon == "reptile") {
 
     Qmet <- 0.196 * m^0.889 * 0.0115741
 
   }
 
   # Mammal
-  if(taxa == "mammal") {
+  if(taxon == "mammal") {
 
     Qmet <- 4.82 * m^0.734 * 0.0115741
 
   }
 
   # Bird
-  if(taxa == "bird") {
+  if(taxon == "bird") {
 
     Qmet <- 10.5 * m^0.681 * 0.0115741
 
@@ -685,7 +685,7 @@ Qmetabolism_from_mass <- function(m,
 #'
 #' @param T_b \code{numeric} body temperature (K).
 #'
-#' @param taxa \code{character} taxa to use. Options: bird, mammal, reptile, amphibian, invertebrate.
+#' @param taxon \code{character} organism type. Options: \code{"bird"}, \code{"mammal"}, \code{"reptile"}, \code{"amphibian"}, \code{"invertebrate"}.
 #'
 #' @return \code{numeric} basal metabolism (W).
 #'
@@ -697,35 +697,35 @@ Qmetabolism_from_mass <- function(m,
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   Qmetabolism_from_mass_temp(m    = 100,
-#'                              T_b  = 303,
-#'                              taxa = "reptile")
+#'   Qmetabolism_from_mass_temp(m     = 100,
+#'                              T_b   = 303,
+#'                              taxon = "reptile")
 #'
 Qmetabolism_from_mass_temp <- function (m,
                                         T_b,
-                                        taxa) {
+                                        taxon) {
 
-  stopifnot(m > 0, T_b > 200, T_b < 400, taxa %in% c("bird", "mammal", "reptile", "amphibian", "invertebrate"))
+  stopifnot(m > 0, T_b > 200, T_b < 400, taxon %in% c("bird", "mammal", "reptile", "amphibian", "invertebrate"))
 
-  if(taxa=="bird" | taxa=="mammal") {
+  if(taxon %in% c("bird", "mammal")) {
 
     Qmet <- exp(-9100 / T_b + 29.49) * m^0.75 / 60
 
   }
 
-  if(taxa=="reptile") {
+  if(taxon == "reptile") {
 
     Qmet <- exp(-8780 / T_b + 26.85) * m^0.75 / 60
 
   }
 
-  if(taxa=="amphibian") {
+  if(taxon == "amphibian") {
 
     Qmet <- exp(-5760 / T_b + 16.68) * m^0.75 / 60
 
   }
 
-  if(taxa=="invertebrate") {
+  if(taxon == "invertebrate") {
 
     Qmet <- exp(-9150 / T_b + 27.62) * m^0.75 / 60
 
@@ -1263,7 +1263,7 @@ Grashof_number_Gates <- function (Ta,
 #'
 #' @param Re \code{numeric} Reynolds Number (dimensionless).
 #'
-#' @param taxa \code{character} which class of organism, current choices: sphere, cylinder, frog, lizard_traverse_to_air_flow, lizard_parallel_to_air_flow, lizard_surface, lizard_elevated, flyinginsect, spider.
+#' @param taxon \code{character} which class of organism. Current choices: \code{"sphere"}, \code{"cylinder"}, \code{"frog"}, \code{"lizard_traverse_to_air_flow"}, \code{"lizard_parallel_to_air_flow"}, \code{"lizard_surface"}, \code{"lizard_elevated"}, \code{"flyinginsect"}, \code{"spider"}.
 #'
 #' @return \code{numeric} Nusselt number (dimensionless).
 #'
@@ -1275,21 +1275,21 @@ Grashof_number_Gates <- function (Ta,
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   Nusselt_from_Reynolds(Re   = 5,
-#'                         taxa = "cylinder")
+#'   Nusselt_from_Reynolds(Re    = 5,
+#'                         taxon = "cylinder")
 #'
 Nusselt_from_Reynolds <- function (Re,
-                                   taxa = "cylinder") {
+                                   taxon = "cylinder") {
 
-  taxas <- c("sphere", "cylinder", "frog", "lizard_traverse_to_air_flow", "lizard_parallel_to_air_flow", "lizard_surface", "lizard_elevated", "flyinginsect", "spider")
-  stopifnot(taxa %in% taxas)
+  taxa <- c("sphere", "cylinder", "frog", "lizard_traverse_to_air_flow", "lizard_parallel_to_air_flow", "lizard_surface", "lizard_elevated", "flyinginsect", "spider")
+  stopifnot(taxon %in% taxa)
 
   # Dimensionless constant (Cl)
   Cls <- c(0.37, 0.615, 0.258, 0.35, 0.1, 1.36, 1.91, 0.0749, 0.47)
   ns <- c(0.6, 0.466, 0.667, 0.6, 0.74, 0.39, 0.45, 0.78, 0.5)
 
   # find index
-  ind <- match(taxa, taxas)
+  ind <- match(taxon, taxa)
 
   Cls[ind] * Re^(ns[ind])
 
