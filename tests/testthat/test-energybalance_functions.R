@@ -65,7 +65,7 @@ test_that("external_resistance_to_water_vapor_transfer function works as expecte
 
 test_that("Qmetabolism_from_mass function expect_similar function works as expected", {
   expect_similar(Qmetabolism_from_mass(m=12,"reptile"), 0.02066024)
-  expect_similar(Qmetabolism_from_mass(60000, taxa = "mammal"), 179.3483)
+  expect_similar(Qmetabolism_from_mass(60000, taxon = "mammal"), 179.3483)
   expect_similar(Qmetabolism_from_mass(200, taxon="bird"), 4.484128)
 })
 
