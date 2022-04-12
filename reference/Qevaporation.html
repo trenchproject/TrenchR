@@ -76,7 +76,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">Qevaporation</span><span class="op">(</span><span class="va">A</span>, <span class="va">T_b</span>, <span class="va">taxa</span>, rho_s <span class="op">=</span> <span class="cn">NA</span>, rho_a <span class="op">=</span> <span class="cn">NA</span>, h <span class="op">=</span> <span class="cn">NA</span>, H <span class="op">=</span> <span class="cn">NA</span>, r_i <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">Qevaporation</span><span class="op">(</span><span class="va">A</span>, <span class="va">T_b</span>, <span class="va">taxon</span>, rho_s <span class="op">=</span> <span class="cn">NA</span>, rho_a <span class="op">=</span> <span class="cn">NA</span>, h <span class="op">=</span> <span class="cn">NA</span>, H <span class="op">=</span> <span class="cn">NA</span>, r_i <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -85,8 +85,8 @@
 <dd><p><code>numeric</code> surface area (m<sup>2</sup>).</p></dd>
 <dt>T_b</dt>
 <dd><p><code>numeric</code> body temperature (K).</p></dd>
-<dt>taxa</dt>
-<dd><p><code>character</code> taxa current choices: lizard, amphibian_wetskin (fully wet skin), amphibian (not fully wet skin).</p></dd>
+<dt>taxon</dt>
+<dd><p><code>character</code> organism type. Current choices: <code>"lizard"</code>, <code>"amphibian_wetskin"</code> (fully wet skin), <code>"amphibian"</code> (not fully wet skin).</p></dd>
 <dt>rho_s</dt>
 <dd><p><code>numeric</code> saturation water vapor density at skin surface (kg m<sup>-3</sup>) (needed if amphibian).</p></dd>
 <dt>rho_a</dt>
@@ -157,18 +157,18 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">Qevaporation</span><span class="op">(</span>A     <span class="op">=</span> <span class="fl">0.1</span>,</span>
-<span class="r-in">               T_b   <span class="op">=</span> <span class="fl">293</span>,</span>
-<span class="r-in">               taxa  <span class="op">=</span> <span class="st">"amphibian"</span>,</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">Qevaporation</span><span class="op">(</span>A      <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span class="r-in">               T_b    <span class="op">=</span> <span class="fl">293</span>,</span>
+<span class="r-in">               taxon <span class="op">=</span> <span class="st">"amphibian"</span>,</span>
 <span class="r-in">               rho_s <span class="op">=</span> <span class="fl">0.003</span>,</span>
 <span class="r-in">               rho_a <span class="op">=</span> <span class="fl">0.002</span>,</span>
 <span class="r-in">               h     <span class="op">=</span> <span class="fl">0.5</span>,</span>
 <span class="r-in">               H     <span class="op">=</span> <span class="fl">20</span>,</span>
 <span class="r-in">               r_i   <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4.612476</span>
-<span class="r-in">  <span class="fu">Qevaporation</span><span class="op">(</span>A    <span class="op">=</span> <span class="fl">0.1</span>,</span>
-<span class="r-in">               T_b  <span class="op">=</span> <span class="fl">293</span>,</span>
-<span class="r-in">               taxa <span class="op">=</span> <span class="st">"lizard"</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu">Qevaporation</span><span class="op">(</span>A     <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span class="r-in">               T_b   <span class="op">=</span> <span class="fl">293</span>,</span>
+<span class="r-in">               taxon <span class="op">=</span> <span class="st">"lizard"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.043334</span>
 <span class="r-in"></span>
 </code></pre></div>

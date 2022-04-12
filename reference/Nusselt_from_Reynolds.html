@@ -74,15 +74,15 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">Nusselt_from_Reynolds</span><span class="op">(</span><span class="va">Re</span>, taxa <span class="op">=</span> <span class="st">"cylinder"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">Nusselt_from_Reynolds</span><span class="op">(</span><span class="va">Re</span>, taxon <span class="op">=</span> <span class="st">"cylinder"</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>Re</dt>
 <dd><p><code>numeric</code> Reynolds Number (dimensionless).</p></dd>
-<dt>taxa</dt>
-<dd><p><code>character</code> which class of organism, current choices: sphere, cylinder, frog, lizard_traverse_to_air_flow, lizard_parallel_to_air_flow, lizard_surface, lizard_elevated, flyinginsect, spider.</p></dd>
+<dt>taxon</dt>
+<dd><p><code>character</code> which class of organism. Current choices: <code>"sphere"</code>, <code>"cylinder"</code>, <code>"frog"</code>, <code>"lizard_traverse_to_air_flow"</code>, <code>"lizard_parallel_to_air_flow"</code>, <code>"lizard_surface"</code>, <code>"lizard_elevated"</code>, <code>"flyinginsect"</code>, <code>"spider"</code>.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -142,8 +142,8 @@ ISSN 0006-3495, doi: <a href="https://doi.org/10.1016/S0006-3495(76)85711-6" cla
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">Nusselt_from_Reynolds</span><span class="op">(</span>Re   <span class="op">=</span> <span class="fl">5</span>,</span>
-<span class="r-in">                        taxa <span class="op">=</span> <span class="st">"cylinder"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">Nusselt_from_Reynolds</span><span class="op">(</span>Re    <span class="op">=</span> <span class="fl">5</span>,</span>
+<span class="r-in">                        taxon <span class="op">=</span> <span class="st">"cylinder"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.301952</span>
 <span class="r-in"></span>
 </code></pre></div>

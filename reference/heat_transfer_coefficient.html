@@ -74,7 +74,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">heat_transfer_coefficient</span><span class="op">(</span><span class="va">V</span>, <span class="va">D</span>, <span class="va">K</span>, <span class="va">nu</span>, taxa <span class="op">=</span> <span class="st">"cylinder"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">heat_transfer_coefficient</span><span class="op">(</span><span class="va">V</span>, <span class="va">D</span>, <span class="va">K</span>, <span class="va">nu</span>, taxon <span class="op">=</span> <span class="st">"cylinder"</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -82,13 +82,13 @@
     <dl><dt>V</dt>
 <dd><p><code>numeric</code> air velocity (m s<sup>-1</sup>).</p></dd>
 <dt>D</dt>
-<dd><p><code>numeric</code> Characteristic dimension (e.g., diameter or snout-vent length) (meters).</p></dd>
+<dd><p><code>numeric</code> characteristic dimension (e.g., diameter or snout-vent length) (meters).</p></dd>
 <dt>K</dt>
-<dd><p><code>numeric</code> Thermal conductivity of air (W K<sup>-1</sup> m<sup>-1</sup>), can calculate using <code><a href="DRYAIR.html">DRYAIR</a></code> or <code><a href="WETAIR.html">WETAIR</a></code>.</p></dd>
+<dd><p><code>numeric</code> thermal conductivity of air (W K<sup>-1</sup> m<sup>-1</sup>), can calculate using <code><a href="DRYAIR.html">DRYAIR</a></code> or <code><a href="WETAIR.html">WETAIR</a></code>.</p></dd>
 <dt>nu</dt>
-<dd><p><code>numeric</code> Kinematic viscosity of air (m<sup>2</sup> s<sup>-1</sup>), can calculate using <code><a href="DRYAIR.html">DRYAIR</a></code> or <code><a href="WETAIR.html">WETAIR</a></code>.</p></dd>
-<dt>taxa</dt>
-<dd><p><code>character</code> Which class of organism, current choices: sphere, cylinder, frog, lizard_surface, lizard_elevated, flyinginsect, spider. Notes: Cylinder assumes 40&lt;Re&lt;4000. lizard assumes prostrate on or elevated above surface, average for parallel and perpendicular to air flow.</p></dd>
+<dd><p><code>numeric</code> kinematic viscosity of air (m<sup>2</sup> s<sup>-1</sup>), can calculate using <code><a href="DRYAIR.html">DRYAIR</a></code> or <code><a href="WETAIR.html">WETAIR</a></code>.</p></dd>
+<dt>taxon</dt>
+<dd><p><code>character</code> which class of organism, current choices: <code>"sphere"</code>, <code>"cylinder"</code>, <code>"frog"</code>, <code>"lizard_surface"</code>, <code>"lizard_elevated"</code>, <code>"flyinginsect"</code>, <code>"spider"</code>. Notes: <code>"cylinder"</code> assumes 40&lt;Re&lt;4000. <code>"lizard_surface"</code> and <code>"lizard_elevated"</code> assume prostrate on or elevated above surface, average for parallel and perpendicular to air flow.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -148,11 +148,11 @@ ISSN 0006-3495, doi: <a href="https://doi.org/10.1016/S0006-3495(76)85711-6" cla
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">heat_transfer_coefficient</span><span class="op">(</span>V    <span class="op">=</span> <span class="fl">0.5</span>,</span>
-<span class="r-in">                            D    <span class="op">=</span> <span class="fl">0.05</span>,</span>
-<span class="r-in">                            K    <span class="op">=</span> <span class="fl">25.7</span> <span class="op">*</span> <span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">)</span>,</span>
-<span class="r-in">                            nu   <span class="op">=</span> <span class="fl">15.3</span> <span class="op">*</span> <span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">6</span><span class="op">)</span>,</span>
-<span class="r-in">                            taxa <span class="op">=</span> <span class="st">"cylinder"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">heat_transfer_coefficient</span><span class="op">(</span>V     <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span class="r-in">                            D     <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span class="r-in">                            K     <span class="op">=</span> <span class="fl">25.7</span> <span class="op">*</span> <span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">)</span>,</span>
+<span class="r-in">                            nu    <span class="op">=</span> <span class="fl">15.3</span> <span class="op">*</span> <span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">6</span><span class="op">)</span>,</span>
+<span class="r-in">                            taxon <span class="op">=</span> <span class="st">"cylinder"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 9.936011</span>
 <span class="r-in"></span>
 </code></pre></div>
