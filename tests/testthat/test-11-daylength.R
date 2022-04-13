@@ -1,4 +1,4 @@
-context("Utility Functions::Day length")
+context("Day length")
 test_that("daylength function works as expected", {
   # Day Length - Norway - Should be atleast 20 hours
   norway = day_of_year("2017-06-10", format= "%Y-%m-%d")

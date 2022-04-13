@@ -94,7 +94,7 @@
       <h1 data-toc-skip>Using energy balances to estimate body temperatures</h1>
                         <h4 class="author">Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington</h4>
             
-            <h4 class="date">2022-04-12</h4>
+            <h4 class="date">2022-04-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/trenchproject/TrenchR/blob/master/../../../../../Documents/vignettes/TeTutorial.Rmd"><code>../../../../../Documents/vignettes/TeTutorial.Rmd</code></a></small>
       <div class="hidden name"><code>TeTutorial.Rmd</code></div>
@@ -412,7 +412,7 @@ Big(\frac{bT}{T+c}\Big)\]</span> where <span class="math inline">\(a\)</span> is
 <p>While measured solar radiation is preferable if available, we can estimate hourly solar radiation by discounting incoming solar radiation as it moved through the atmosphere as follows:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">psi_deg</span><span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, FUN<span class="op">=</span><span class="va">zenith_angle</span>, doy<span class="op">=</span><span class="va">doy</span>, lat<span class="op">=</span><span class="va">lat</span>, lon<span class="op">=</span><span class="va">lon</span><span class="op">)</span> <span class="co">#estimate zenith angle (degrees)</span>
-<span class="va">psi_rad</span><span class="op">=</span> <span class="fu"><a href="../reference/degree_to_radian.html">degree_to_radian</a></span><span class="op">(</span><span class="va">psi_deg</span><span class="op">)</span> <span class="co">#convert to radians</span>
+<span class="va">psi_rad</span><span class="op">=</span> <span class="fu"><a href="../reference/degrees_to_radians.html">degrees_to_radians</a></span><span class="op">(</span><span class="va">psi_deg</span><span class="op">)</span>
 <span class="va">Srad</span><span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">psi_rad</span>, FUN<span class="op">=</span><span class="va">estimate_radiation</span>, doy<span class="op">=</span><span class="va">doy</span>, tau<span class="op">=</span><span class="va">tau</span>, elev<span class="op">=</span><span class="va">elev</span>, rho<span class="op">=</span><span class="va">rho</span><span class="op">)</span> <span class="co">#estimate radiation</span>
 <span class="co">#Separate into direct, diffuse, and reflected solar radiation</span>
 <span class="va">Sdir</span><span class="op">=</span> <span class="va">Srad</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span>

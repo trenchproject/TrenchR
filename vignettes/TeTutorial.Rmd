@@ -1361,7 +1361,7 @@ as it moved through the atmosphere as follows:
 
 ```{r, fig.height=4, fig.width=8}
 psi_deg= sapply(1:24, FUN=zenith_angle, doy=doy, lat=lat, lon=lon) #estimate zenith angle (degrees)
-psi_rad= degree_to_radian(psi_deg) #convert to radians
+psi_rad= degrees_to_radians(psi_deg)
 Srad= sapply(psi_rad, FUN=estimate_radiation, doy=doy, tau=tau, elev=elev, rho=rho) #estimate radiation
 #Separate into direct, diffuse, and reflected solar radiation
 Sdir= Srad[1,]

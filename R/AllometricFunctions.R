@@ -521,9 +521,7 @@ proportion_silhouette_area_shapes <- function(shape,
             h >= 0, 
             d >= 0)
   
-  # convert degree to radian
-
-  theta_r <- theta * (2 * pi) / 360
+  theta_r <- degrees_to_radians(theta)
   
 
   if (shape == "spheroid") {

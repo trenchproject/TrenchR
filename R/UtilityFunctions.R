@@ -85,7 +85,7 @@ daylength <- function(lat,
             doy > 0, 
             doy < 367)
   
-  lat_rad <- degree_to_radian(lat)
+  lat_rad <- degrees_to_radians(lat)
   DecAng <- dec_angle(doy)
   subset <- (sin (6 * pi / 180) + sin (lat_rad) * sin (DecAng)) / (cos (lat_rad) * cos (DecAng))
   subset[which(subset>1)] <- 1
@@ -439,9 +439,9 @@ fahrenheit_to_celsius <- function (T) {
 #' @export
 #' 
 #' @examples
-#'   radian_to_degree(0.831)
+#'   radians_to_degrees(0.831)
 #' 
-radian_to_degree <- function (rad) {
+radians_to_degrees <- function (rad) {
   
   rad * 180 / pi
   
@@ -460,9 +460,9 @@ radian_to_degree <- function (rad) {
 #' @export
 #' 
 #' @examples
-#'   degree_to_radian(47.608)
+#'   degrees_to_radians(47.608)
 #' 
-degree_to_radian <- function (deg) {
+degrees_to_radians <- function (deg) {
   
   deg * pi / 180
   
