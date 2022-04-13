@@ -147,8 +147,8 @@
 
     <pre class="usage"><span class='fu'>Tb_butterfly</span><span class='op'>(</span>
   <span class='va'>T_a</span>,
-  <span class='va'>Tg</span>,
-  <span class='va'>Tg_sh</span>,
+  <span class='va'>T_g</span>,
+  <span class='va'>T_sh</span>,
   <span class='va'>u</span>,
   <span class='va'>H_sdir</span>,
   <span class='va'>H_sdif</span>,
@@ -168,24 +168,24 @@
       <td><p><code>numeric</code> air temperature in C.</p></td>
     </tr>
     <tr>
-      <th>Tg</th>
+      <th>T_g</th>
       <td><p><code>numeric</code> surface temperature in C in the sunlight.</p></td>
     </tr>
     <tr>
-      <th>Tg_sh</th>
+      <th>T_sh</th>
       <td><p><code>numeric</code> surface temperature in C in the shade.</p></td>
     </tr>
     <tr>
       <th>u</th>
-      <td><p><code>numeric</code> wind speed in m / s.</p></td>
+      <td><p><code>numeric</code> wind speed in m s<sup>-1</sup>.</p></td>
     </tr>
     <tr>
       <th>H_sdir</th>
-      <td><p><code>numeric</code> direct solar radiation flux in W / m<sup>2</sup>.</p></td>
+      <td><p><code>numeric</code> direct solar radiation flux in W m<sup>-2</sup>.</p></td>
     </tr>
     <tr>
       <th>H_sdif</th>
-      <td><p><code>numeric</code> diffuse solar radiation flux in W / m<sup>2</sup>.</p></td>
+      <td><p><code>numeric</code> diffuse solar radiation flux in W m<sup>-2</sup>.</p></td>
     </tr>
     <tr>
       <th>z</th>
@@ -286,8 +286,8 @@ doi: <a href='https://doi.org/10.2307/1939973'>10.2307/1939973</a>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>  <span class='fu'>Tb_butterfly</span><span class='op'>(</span>T_a    <span class='op'>=</span> <span class='fl'>25</span>, 
-               Tg     <span class='op'>=</span> <span class='fl'>25</span>, 
-               Tg_sh  <span class='op'>=</span> <span class='fl'>20</span>, 
+               T_g    <span class='op'>=</span> <span class='fl'>25</span>, 
+               T_sh   <span class='op'>=</span> <span class='fl'>20</span>, 
                u      <span class='op'>=</span> <span class='fl'>0.4</span>, 
                H_sdir <span class='op'>=</span> <span class='fl'>300</span>, 
                H_sdif <span class='op'>=</span> <span class='fl'>100</span>, 
@@ -296,7 +296,7 @@ doi: <a href='https://doi.org/10.2307/1939973'>10.2307/1939973</a>
                delta  <span class='op'>=</span> <span class='fl'>1.46</span>, 
                alpha  <span class='op'>=</span> <span class='fl'>0.6</span>, 
                r_g    <span class='op'>=</span> <span class='fl'>0.3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 29.16614</div><div class='input'>
+</div><div class='output co'>#&gt; [1] 29.16499</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

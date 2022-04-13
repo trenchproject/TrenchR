@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Construct a thermal performance curve based on a beta function. — TPC.beta • TrenchR</title>
+<title>Construct a Beta FunctionThermal Performance Curve — TPC.beta • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Construct a thermal performance curve based on a beta function. — TPC.beta" />
+<meta property="og:title" content="Construct a Beta FunctionThermal Performance Curve — TPC.beta" />
 <meta property="og:description" content="Construct a thermal performance curve based on a beta function (Asbury and Angilletta 2010)
 ." />
 
@@ -133,7 +133,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Construct a thermal performance curve based on a beta function.</h1>
+    <h1>Construct a Beta FunctionThermal Performance Curve</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/TPCfunctions.R'><code>R/TPCfunctions.R</code></a></small>
     <div class="hidden name"><code>TPC.beta.Rd</code></div>
     </div>
@@ -162,7 +162,7 @@
     </tr>
     <tr>
       <th>aran</th>
-      <td><p><code>numeric</code> scale performance value. if aran=0, no scaling; if aran=1, include a thermodynamic effect on mean performance.</p></td>
+      <td><p><code>numeric</code> scale performance value. If <code>0</code>, no scaling; if <code>1</code>, include a thermodynamic effect on mean performance.</p></td>
     </tr>
     <tr>
       <th>tolerance</th>
@@ -186,7 +186,12 @@ doi: <a href='https://doi.org/10.1086/653659'>10.1086/653659</a>
 , <a href='https://www.journals.uchicago.edu/doi/full/10.1086/653659'>https://www.journals.uchicago.edu/doi/full/10.1086/653659</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>TPC.beta</span><span class='op'>(</span>T <span class='op'>=</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>60</span>, shift <span class='op'>=</span> <span class='op'>-</span><span class='fl'>1</span>, breadth <span class='op'>=</span> <span class='fl'>0.1</span>, aran <span class='op'>=</span> <span class='fl'>0</span>, tolerance <span class='op'>=</span> <span class='fl'>43</span>, skew <span class='op'>=</span> <span class='fl'>0.7</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>  <span class='fu'>TPC.beta</span><span class='op'>(</span>T         <span class='op'>=</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>60</span>, 
+           shift     <span class='op'>=</span> <span class='op'>-</span><span class='fl'>1</span>, 
+           breadth   <span class='op'>=</span> <span class='fl'>0.1</span>, 
+           aran      <span class='op'>=</span> <span class='fl'>0</span>, 
+           tolerance <span class='op'>=</span> <span class='fl'>43</span>, 
+           skew      <span class='op'>=</span> <span class='fl'>0.7</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] 3.803220e-08 2.319533e-06 2.514782e-05 1.343204e-04 4.864521e-04
 #&gt;  [6] 1.377095e-03 3.287351e-03 6.923551e-03 1.324542e-02 2.347906e-02
 #&gt; [11] 3.911190e-02 6.186767e-02 9.366029e-02 1.365265e-01 1.925380e-01
