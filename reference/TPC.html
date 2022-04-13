@@ -74,19 +74,17 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">TPC</span><span class="op">(</span><span class="cn">T</span>, <span class="va">Topt</span>, <span class="va">CTmin</span>, <span class="va">CTmax</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">TPC</span><span class="op">(</span><span class="cn">T</span>, <span class="va">T_opt</span>, <span class="va">CT_min</span>, <span class="va">CT_max</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>T</dt>
 <dd><p><code>numeric</code> vector of temperature range (C).</p></dd>
-<dt>Topt</dt>
+<dt>T_opt</dt>
 <dd><p><code>numeric</code> thermal optima (C), the temperature at which peak performance occurs.</p></dd>
-<dt>CTmin</dt>
-<dd><p><code>numeric</code> critical thermal minima (C), the lower temperature limit for performance.</p></dd>
-<dt>CTmax</dt>
-<dd><p><code>numeric</code> critical thermal maxima (C), the upper temperature limit for performance.</p></dd>
+<dt>CT_min, CT_max</dt>
+<dd><p><code>numeric</code> critical thermal minimum and maximum(C), the lower and upper temperature limits for performance.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -103,10 +101,10 @@ doi: <a href="https://doi.org/10.1073/pnas.0709472105" class="external-link">10.
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">TPC</span><span class="op">(</span>T     <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">60</span>, </span>
-<span class="r-in">      Topt  <span class="op">=</span> <span class="fl">30</span>, </span>
-<span class="r-in">      CTmin <span class="op">=</span> <span class="fl">10</span>, </span>
-<span class="r-in">      CTmax <span class="op">=</span> <span class="fl">40</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">TPC</span><span class="op">(</span>T      <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">60</span>, </span>
+<span class="r-in">      T_opt  <span class="op">=</span> <span class="fl">30</span>, </span>
+<span class="r-in">      CT_min <span class="op">=</span> <span class="fl">10</span>, </span>
+<span class="r-in">      CT_max <span class="op">=</span> <span class="fl">40</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.0001234098 0.0002226299 0.0003936690 0.0006823281 0.0011592292</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [6] 0.0019304541 0.0031511116 0.0050417603 0.0079070541 0.0121551783</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [11] 0.0183156389 0.0270518469 0.0391638951 0.0555762126 0.0773047404</span>

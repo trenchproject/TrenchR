@@ -92,7 +92,7 @@
 <dt>u</dt>
 <dd><p><code>numeric</code> wind speed (m s<sup>-1</sup>).</p></dd>
 <dt>psi</dt>
-<dd><p><code>numeric</code> solar zenith angle (degrees): can be calculated from zenith_angle function.</p></dd>
+<dd><p><code>numeric</code> solar zenith angle (degrees): can be calculated from <code><a href="zenith_angle.html">zenith_angle</a></code> function.</p></dd>
 <dt>c</dt>
 <dd><p><code>numeric</code> fraction of the sky covered by cloud.</p></dd>
 <dt>position</dt>
@@ -105,13 +105,13 @@
     <div id="details">
     <h2>Details</h2>
     <p>The original equation uses a finite-difference approach where they divide the rock into series of chunks, and calculate the temperature at each node to derive the conductive heat. For simplification, here it takes the rock temperature as a parameter, and conductive heat is calculated by the product of the area, thermal conductivity of rock and the difference in temperatures of the rock and the body.
-  <br>
+  <br><br>
   Limpets are simulated as cones following and using solar emissivity values from Campbell and Norman (1998)
 .
-  <br>
+  <br><br>
   The area of the limpet's shell (m<sup>2</sup>) is projected in the direction at which sunlight strikes the organism Pennell and Deignan (1989)
 .
-  <br>
+  <br><br>
   Air conductivity values (W m<sup>-1</sup> K<sup>-1</sup>) are calculated following Denny and Harley (2006)
 .</p>
     </div>
@@ -184,7 +184,7 @@ ISSN 0022-0949, doi: <a href="https://doi.org/10.1242/jeb.02356" class="external
 <span class="r-in">            psi      <span class="op">=</span> <span class="fl">30</span>, </span>
 <span class="r-in">            c        <span class="op">=</span> <span class="fl">1</span>, </span>
 <span class="r-in">            position <span class="op">=</span> <span class="st">"anterior"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 32.51874</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 32.51841</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>

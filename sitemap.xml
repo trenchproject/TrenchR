@@ -178,6 +178,9 @@
     <loc>https://trenchproject.github.io/TrenchR/reference/boundary_layer_resistance.html</loc>
   </url>
   <url>
+    <loc>https://trenchproject.github.io/TrenchR/reference/constants.html</loc>
+  </url>
+  <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/day_of_year.html</loc>
   </url>
   <url>
@@ -214,12 +217,6 @@
     <loc>https://trenchproject.github.io/TrenchR/reference/external_resistance_to_water_vapor_transfer.html</loc>
   </url>
   <url>
-    <loc>https://trenchproject.github.io/TrenchR/reference/fahrenheit_to_celsius.html</loc>
-  </url>
-  <url>
-    <loc>https://trenchproject.github.io/TrenchR/reference/fahrenheit_to_kelvin.html</loc>
-  </url>
-  <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/heat_transfer_coefficient.html</loc>
   </url>
   <url>
@@ -230,9 +227,6 @@
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://trenchproject.github.io/TrenchR/reference/kelvin_to_celsius.html</loc>
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/mass_from_length.html</loc>
@@ -293,6 +287,9 @@
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/surface_roughness.html</loc>
+  </url>
+  <url>
+    <loc>https://trenchproject.github.io/TrenchR/reference/temperature-conversions.html</loc>
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/volume_from_length.html</loc>

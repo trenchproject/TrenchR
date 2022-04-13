@@ -74,21 +74,17 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">diurnal_temp_variation_sinesqrt</span><span class="op">(</span><span class="va">t</span>, <span class="va">tr</span>, <span class="va">ts</span>, <span class="va">T_max</span>, <span class="va">T_min</span>, <span class="va">T_minp</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">diurnal_temp_variation_sinesqrt</span><span class="op">(</span><span class="va">t</span>, <span class="va">t_r</span>, <span class="va">t_s</span>, <span class="va">T_max</span>, <span class="va">T_min</span>, <span class="va">T_minp</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>t</dt>
 <dd><p><code>numeric</code> hour or hours for temperature estimate.</p></dd>
-<dt>tr</dt>
-<dd><p><code>numeric</code> sunrise hour (0-23).</p></dd>
-<dt>ts</dt>
-<dd><p><code>numeric</code> sunset hour (0-23).</p></dd>
-<dt>T_max</dt>
-<dd><p><code>numeric</code> maximum temperature of current day (C).</p></dd>
-<dt>T_min</dt>
-<dd><p><code>numeric</code> minimum temperature of current day (C).</p></dd>
+<dt>t_r, t_s</dt>
+<dd><p><code>numeric</code> sunrise and sunset hours (0-23).</p></dd>
+<dt>T_max, T_min</dt>
+<dd><p><code>numeric</code> maximum and minimum temperatures of current day (C).</p></dd>
 <dt>T_minp</dt>
 <dd><p><code>numeric</code> minimum temperature of following day (C).</p></dd>
 </dl></div>
@@ -131,8 +127,8 @@ doi: <a href="https://doi.org/10.1007/s004840100104" class="external-link">10.10
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu">diurnal_temp_variation_sinesqrt</span><span class="op">(</span>t      <span class="op">=</span> <span class="fl">8</span>, </span>
-<span class="r-in">                                  tr     <span class="op">=</span> <span class="fl">6</span>, </span>
-<span class="r-in">                                  ts     <span class="op">=</span> <span class="fl">18</span>, </span>
+<span class="r-in">                                  t_r    <span class="op">=</span> <span class="fl">6</span>, </span>
+<span class="r-in">                                  t_s    <span class="op">=</span> <span class="fl">18</span>, </span>
 <span class="r-in">                                  T_max  <span class="op">=</span> <span class="fl">30</span>, </span>
 <span class="r-in">                                  T_min  <span class="op">=</span> <span class="fl">10</span>, </span>
 <span class="r-in">                                  T_minp <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
