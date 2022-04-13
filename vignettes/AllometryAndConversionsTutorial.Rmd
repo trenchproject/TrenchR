@@ -19,7 +19,9 @@ knitr::opts_chunk$set(echo = TRUE)
 library(TrenchR)
 ```
 
-This tutorial reviews tools that use allometries to estimate the dimensions of organisms needed for energy balances and other analyses. The tutorial also documents convenience functions for converting units. Finally, we present functions that describe thermal performance curves.
+This tutorial reviews tools that use allometries to estimate the dimensions of organisms needed for energy balances and other analyses. 
+The tutorial also documents convenience functions for converting units. 
+Finally, we present functions that describe thermal performance curves.
 
 # Allometries
 
@@ -27,7 +29,8 @@ We provide tools for estimating additional dimensions of organisms from measured
 
 ### Mass
 
-The function `mass_from_length()` encompasses empirically-derived relationships to estimate mass as a power law function of mass for six taxonomic classifications. The relationships are derived by relating length to mass for specimens of numerous species. We use the `mass_from_length()` function to illustrate the allometries for different taxa:
+The function `mass_from_length()` encompasses empirically-derived relationships to estimate mass as a power law function of mass for six taxonomic classifications. 
+The relationships are derived by relating length to mass for specimens of numerous species. We use the `mass_from_length()` function to illustrate the allometries for different taxa:
 
 ```{r, fig.height = 4, fig.width = 6}
 par(mar = c(5, 5, 2, 2))
@@ -42,7 +45,8 @@ box(bty = "L", lwd = 2)
 
 ### Surface Area
 
-Surface area is needed for several aspects of biophysical models but is rarely measured. We provide functions to estimate surface area ($m^3$) from length, mass, or volume for a variety of taxa. 
+Surface area is needed for several aspects of biophysical models but is rarely measured. 
+We provide functions to estimate surface area ($m^3$) from length, mass, or volume for a variety of taxa. 
 
 The function `surface_area_from_mass()` encompasses empirically-derived relationship to estimate surface area as a power law function of mass for lizards, frogs, and insects. 
 
@@ -56,7 +60,8 @@ points(seq(0.1, 5, 0.2), surface_area_from_mass(seq(0.1,5,0.2), taxon = "insect"
 box(bty = "L", lwd = 2)
 ```
 
-We also provide empirical relationships estimating surface area as power law function of volume. The functions were developed by Mitchell [-@mitchell1976heat] for use in approximating convective heat transfer:
+We also provide empirical relationships estimating surface area as power law function of volume. 
+The functions were developed by Mitchell [-@mitchell1976heat] for use in approximating convective heat transfer:
 
 ```{r, fig.height = 4, fig.width = 6}
 plot(seq(0.001, 0.01, 0.001), surface_area_from_volume(seq(0.001, 0.01, 0.001), taxon = "lizard"), type = "l", xlab = expression(volume ~ (m^{3})), ylab = expression("surface area" ~ (m^{2})))
@@ -64,7 +69,9 @@ points(seq(0.001, 0.01, 0.001), surface_area_from_volume(seq(0.001, 0.01, 0.001)
 points(seq(0.001, 0.01, 0.001), surface_area_from_volume(seq(0.001, 0.01, 0.001), taxon = "sphere"), type = "l", lty = "dotted")
 ```
 
-For the same study, we additionally provide a function to estimate volume from length for several taxa or by approximating the organism as a sphere. Finally, we provide a function for estimating surface area from length by approximating the animal's body as a rotational ellipsoid. The allometric functions are available in R as follows:
+For the same study, we additionally provide a function to estimate volume from length for several taxa or by approximating the organism as a sphere. 
+Finally, we provide a function for estimating surface area from length by approximating the animal's body as a rotational ellipsoid. 
+The allometric functions are available in R as follows:
 
 ```{r, fig.height = 4, fig.width = 6}
 plot(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001), taxon = "lizard"), type = "l", xlab = "length (m)", ylab = expression(volume ~ (m^{3})))
@@ -76,7 +83,11 @@ points(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001), taxon 
 plot(seq(0.01, 0.05, 0.001), surface_area_from_length(seq(0.01, 0.05, 0.001)), type = "l", xlab = "length (m)", ylab = expression("surface area" ~ (m^{2})))
 ```
 
-Estimating the amount of solar radiation that an animal absorbs requires knowledge of the silhouette area, the proportion of an animal's surface area that is projected onto a horizontal surface. Silhouette area is a function of the sun's angle. We offer empirically-derived relationships to predict the proportional silhouette area for frogs, lizards, and grasshoppers as a polynomial function of zenith angle (`proportion_silhouette_area()`). We additionally offer a function (`proportion_silhouette_area_shapes()`) to estimate silhouette area by approximating the animal as a sphere or cylinder. The R functions are parameterized as follows:
+Estimating the amount of solar radiation that an animal absorbs requires knowledge of the silhouette area, the proportion of an animal's surface area that is projected onto a horizontal surface. 
+Silhouette area is a function of the sun's angle. 
+We offer empirically-derived relationships to predict the proportional silhouette area for frogs, lizards, and grasshoppers as a polynomial function of zenith angle (`proportion_silhouette_area()`). 
+We additionally offer a function (`proportion_silhouette_area_shapes()`) to estimate silhouette area by approximating the animal as a sphere or cylinder. 
+The R functions are parameterized as follows:
 
 ```{r, fig.height = 4, fig.width = 6}
 plot(seq(0, 90, 10), proportion_silhouette_area(z = seq(0, 90, 10), taxon =  "frog"), type = "l", xlab = "zenith angle (°)", ylab = "proportion silhouette area", ylim=range(0,0.5))
@@ -115,7 +126,12 @@ kelvin_to_celsius(270)
 
 # Thermal Performance Curve Functions
 
-Thermal performance curves (TPCs) describe the temperature dependence of organismal performance such as locomotion and digestion [@huey1989evolution]. They have become an important tool to understand organismal responses to environmental conditions, particularly responses to climate change [@sinclair2016can]. TrenchR includes two forms of TPCs. We include a function `TPC()` to describe a Gaussian-quadratic TPC as a function of thermal optima and critical thermal minima and maxima [@deutsch2008impacts]. The `TPC.beta()` function uses a beta function to define a TPC based on mode, breadth, and skew. A scale factor enables including a thermodynamic effect on mean performance [@asbury2010thermodynamic].
+Thermal performance curves (TPCs) describe the temperature dependence of organismal performance such as locomotion and digestion [@huey1989evolution]. 
+They have become an important tool to understand organismal responses to environmental conditions, particularly responses to climate change [@sinclair2016can]. 
+TrenchR includes two forms of TPCs. 
+We include a function `TPC()` to describe a Gaussian-quadratic TPC as a function of thermal optima and critical thermal minima and maxima [@deutsch2008impacts]. 
+The `TPC.beta()` function uses a beta function to define a TPC based on mode, breadth, and skew. 
+A scale factor enables including a thermodynamic effect on mean performance [@asbury2010thermodynamic].
 
 ```{r, fig.height=4, fig.width=6}
 plot(0:60, TPC(T=0:60, T_opt=30, CT_min=10, CT_max=40), type = "l", ylim=c(0,3), ylab="performance", xlab="temperature (°C)")

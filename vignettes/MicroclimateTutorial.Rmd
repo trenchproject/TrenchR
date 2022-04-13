@@ -22,13 +22,18 @@ knitr::opts_chunk$set(echo = TRUE)
 library(TrenchR)
 ```
 
-This tutorial covers approaches and functions for preparing environmental data for analyses such as examining organismal energy balances. The tutorial first covers estimating the intensity and partitioning of solar radiation, including estimating solar angles and day length. We then turn to estimating temperature and wind speed profiles that can scale weather station data to the conditions experienced by organisms. We review functions for modeling diurnal variation in temperature and solar radiation as well as heat accumulation (degree days). The tutorial concludes with a microclimate model for estimating soil temperatures.
+This tutorial covers approaches and functions for preparing environmental data for analyses such as examining organismal energy balances. 
+The tutorial first covers estimating the intensity and partitioning of solar radiation, including estimating solar angles and day length. 
+We then turn to estimating temperature and wind speed profiles that can scale weather station data to the conditions experienced by organisms. 
+We review functions for modeling diurnal variation in temperature and solar radiation as well as heat accumulation (degree days). 
+The tutorial concludes with a microclimate model for estimating soil temperatures.
 
 # Radiation
 
 ## Solar angles and day length
 
-Sun position and day length are often estimated based on the calendar date. We provide a function `day_of_year()` that facilitates translating a date into a calendar date.
+Sun position and day length are often estimated based on the calendar date. 
+We provide a function `day_of_year()` that facilitates translating a date into a calendar date.
 
 ```{r}
 
@@ -36,7 +41,8 @@ Sun position and day length are often estimated based on the calendar date. We p
 
 ```
 
-We next present functions to calculate sun angles. We use the calendar date (J) to estimate solar declination (radian), which is the angular distance of the sun north or south of the earth's equator, as follows (`dec_angle()`):
+We next present functions to calculate sun angles. 
+We use the calendar date (J) to estimate solar declination (radian), which is the angular distance of the sun north or south of the earth's equator, as follows (`dec_angle()`):
 
 $$ \delta= \arcsin[0.39795 \cos(0.21631+ 2 \arctan (0.967 \tan [0.0086(-186+J)]))].$$
 
@@ -48,7 +54,12 @@ The solar declination angle can be calculated in TrenchR as follows:
 
 ```
 
-Zenith angle $\psi$ (&deg;), the location of the sun as an angle measured from vertical, can be estimated as: $$\cos \psi = \sin( \delta) \sin( \phi) + \cos(\delta)\cos(\phi)\cos(\pi/12*(h-h_0)),$$ where $J$ is calendar date, $\phi$ is latitude (radians), $h$ is hour, and $h_0$ is the time of solar noon. We illustrate how zenith angles (&deg;) change over the day throughout the year in Seattle, WA, USA:
+Zenith angle $\psi$ (&deg;), the location of the sun as an angle measured from vertical, can be estimated as: 
+
+$$\cos \psi = \sin( \delta) \sin( \phi) + \cos(\delta)\cos(\phi)\cos(\pi/12*(h-h_0)),$$ 
+
+where $J$ is calendar date, $\phi$ is latitude (radians), $h$ is hour, and $h_0$ is the time of solar noon. 
+We illustrate how zenith angles (&deg;) change over the day throughout the year in Seattle, WA, USA:
 
 ```{r, fig.height=4, fig.width=6}
 
@@ -129,7 +140,8 @@ points(1:365, az, type="l", lty="dotted")
 legend("topright", title="hour", legend=c(6, 9, 12), lty=c("dotted","dashed", "solid") )
 ```
 
-These sun angles can be used to solve for day length. The equation for half day length $h_s$, which is the time (in degrees) from sunrise to solar noon, is used as the basis for our `daylength()` function:
+These sun angles can be used to solve for day length. 
+The equation for half day length $h_s$, which is the time (in degrees) from sunrise to solar noon, is used as the basis for our `daylength()` function:
 
 $$ h_s= \cos^{-1}\left( \frac{\cos \psi-sin \phi \sin \delta}{\cos \phi \cos \delta} \right).$$
 
