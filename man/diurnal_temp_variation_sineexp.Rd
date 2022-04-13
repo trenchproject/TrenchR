@@ -20,7 +20,7 @@ diurnal_temp_variation_sineexp(
 
 \item{t}{\code{numeric} time for temperature estimate (hour).}
 
-\item{t_r, t_w}{\code{numeric} times of sunrise and sunset (hour).}
+\item{t_r, t_s}{\code{numeric} times of sunrise and sunset (hour).}
 
 \item{alpha}{\code{numeric} time difference between \code{t_x} (time of maximum temperature) and noon (hour).}
 

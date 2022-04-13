@@ -6,7 +6,7 @@
 #' 
 #' @param T_g \code{numeric} ground temperature (K).
 #' 
-#' @param S \code{numeric} flux density of solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}), combining direct, diffuse, and reflected radiation accounting for view factors.
+#' @param S \code{numeric} flux density of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}), combining direct, diffuse, and reflected radiation accounting for view factors.
 #' 
 #' @param alpha_S \code{numeric} organismal solar absorptivity. 
 #' 
@@ -16,11 +16,13 @@
 #' 
 #' @param c_p \code{numeric} specific heat of air (\ifelse{html}{\out{J mol<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J mol^-1 K^-1}{ASCII}}). 
 #' 
-#' @param D \code{numeric} characteristic dimension of the animal (meters).
+#' @param D \code{numeric} characteristic dimension of the animal (m).
 #' 
-#' @param V \code{numeric} is wind speed (m/s).
+#' @param V \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
-#' @return \code{numeric} operative environmental temperature, T_e (K).
+#' @details Boundary conductance uses a factor of 1.4 to account for increased convection \insertCite{Mitchell1976}{TrenchR}, assumes forced conduction.
+#'
+#' @return \code{numeric} operative environmental temperature, \code{T_e} (K).
 #' 
 #' @family biophysical models
 #' 
@@ -61,39 +63,51 @@ Tb_CampbellNorman <- function (T_a,
   sigma <- stefan_boltzmann_constant()
   
   # solar and thermal radiation absorbed
-  L_a <- sigma * T_a^4  # (10.7) long wave flux densities from atmosphere 
-  L_g <- sigma * T_g^4  # (10.7) long wave flux densities from ground
-  F_a <- 0.5 # proportion of organism exposure to air
-  F_g <- 0.5 # proportion of organism exposure to ground
-  R_abs <- alpha_S * S + alpha_L * (F_a * L_a + F_g * L_g) # (11.14) Absorbed radiation
+  # (10.7) long wave flux densities from atmosphere, ground 
+
+    L_a <- sigma * T_a^4  
+    L_g <- sigma * T_g^4 
+
+  # proportion of organism exposure to air, ground
+
+    F_a <- 0.5 
+    F_g <- 0.5
+
+  # (11.14) Absorbed radiation
+
+    R_abs <- alpha_S * S + alpha_L * (F_a * L_a + F_g * L_g) 
   
   # thermal radiation emitted
-  Qemit <- epsilon * sigma * T_a^4
+
+    Qemit <- epsilon * sigma * T_a^4
   
-  # conductance
-  g_Ha <- 1.4 * 0.135 * sqrt(V / D) # boundary conductance, factor of 1.4 to account for increased convection (Mitchell 1976), assumes forced conduction
-  g_r <- 4 * epsilon * sigma * T_a^3 / c_p # (12.7) radiative conductance
+  # conductance: boundary, ground
+  #   boundary conductance, factor of 1.4 to account for increased convection (Mitchell 1976), assumes forced conduction
+
+    g_Ha <- 1.4 * 0.135 * sqrt(V / D) 
+    g_r <- 4 * epsilon * sigma * T_a^3 / c_p 
   
   # operative environmental temperature
-  T_a + (R_abs - Qemit) / (c_p * (g_r + g_Ha))
+
+    T_a + (R_abs - Qemit) / (c_p * (g_r + g_Ha))
   
 }
 
-#' @title Estimate Net Energy Exchange (W) Between an Animal and the Environment
+#' @title Net Energy Exchange Between an Animal and the Environment
 #' 
 #' @details Estimates net energy exchange between an animal and the environment in W. Follows \insertCite{Gates1980;textual}{TrenchR} and others.
 #' 
-#' @param Qabs \code{numeric} Solar radiation absorbed (W).
+#' @param Qabs \code{numeric} solar radiation absorbed (W).
 #' 
-#' @param Qemit \code{numeric} Thermal radiation emitted (W).
+#' @param Qemit \code{numeric} thermal radiation emitted (W).
 #' 
-#' @param Qconv \code{numeric} Energy exchange due to convection; Energy exchange from an animal to its surrounding environment (air or water) (W).
+#' @param Qconv \code{numeric} energy exchange due to convection; Energy exchange from an animal to its surrounding environment (air or water) (W).
 #' 
-#' @param Qcond \code{numeric} Energy exchange due to conduction; Energy exchange from animal to a surface if they are in contact  (W).
+#' @param Qcond \code{numeric} energy exchange due to conduction; Energy exchange from animal to a surface if they are in contact  (W).
 #' 
-#' @param Qmet \code{numeric} Energy emitted due to metabolism (W).
+#' @param Qmet \code{numeric} energy emitted due to metabolism (W).
 #' 
-#' @param Qevap \code{numeric} Energy emitted due to evaporative water loss (W).
+#' @param Qevap \code{numeric} energy emitted due to evaporative water loss (W).
 #' 
 #' @return \code{numeric} net energy exchange (W).
 #' 
@@ -128,9 +142,9 @@ Qnet_Gates <- function (Qabs,
 }
 
 
-#' @title Predict Body Temperature (Operative Environmental Temperature) of an ectotherm in K. 
+#' @title Predict Body Temperature (Operative Environmental Temperature) of an ectotherm in K 
 #' 
-#' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980;textual}{TrenchR}. Omits evaporative and metabolic heat loss \insertCite{Mitchell1976,Kingsolver1983}{TrenchR}.
+#' @description Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980;textual}{TrenchR}. Omits evaporative and metabolic heat loss \insertCite{Mitchell1976,Kingsolver1983}{TrenchR}.
 #' 
 #' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
@@ -158,7 +172,7 @@ Qnet_Gates <- function (Qabs,
 #' 
 #' @param K \code{numeric} Thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), K = 0.5 \ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}} for naked skin, K = 0.15 \ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}for insect cuticle \insertCite{Galushko2005;textual}{TrenchR}; conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step. 
 #' 
-#' @return \code{numeric} operative environmental temperature (K).
+#' @return \code{numeric} operative environmental temperature, \code{T_e} (K).
 #' 
 #' @family biophysical models
 #' 
@@ -216,50 +230,67 @@ Tb_Gates <- function (A,
             H_L > 0, 
             K > 0)
   
-  # Stefan-Boltzmann constant
   sigma <- stefan_boltzmann_constant()
   
   # Areas
-  A_s <- A * psa_dir 
-  A_r <- A * psa_ref 
-  
-  A_air <- A * psa_air # Calcualte skin area exposed to air
-  A_contact <- A * psa_g # Calculate the area of contact
-  
-  # estimate effective radiant temperature of sky
-  Tsky <- (1.22 * (T_a - 273.15) - 20.4) + 273.15 #K, Gates 1980 Biophysical ecology based on Swinback 1960, Kingsolver (1983) estimates using Brunt equation
-  
-  # solve energy balance for steady state conditions
-  # 0 = Qabs - Qemit - Qconv - Qcond
-  Qfn <- function(Tb, Qabs, epsilon, sigma, A_s, Tsky, A_r, T_g, H_L, A_air, T_a, A_contact, K, D) {
 
-    # Thermal radiation emitted
-    Qemit <- epsilon * sigma * (A_s * (Tb^4 - Tsky^4) + A_r * (Tb^4 - T_g^4))
-    
-    Qconv <- ef * H_L * A_air * (Tb - T_a) #Convection
-    Qcond <- A_contact * K * (Tb - T_g) / D #Conduction
-
-    Qabs - Qemit - Qconv - Qcond
-    
-  }
+    A_s <- A * psa_dir 
+    A_r <- A * psa_ref 
   
-  Te <- tryCatch(uniroot(Qfn, c(273, 353), Qabs=Qabs, epsilon=epsilon, sigma=sigma, A_s=A_s, Tsky=Tsky, A_r=A_r, T_g=T_g, H_L=H_L, A_air=A_air, T_a=T_a, A_contact=A_contact, K=K, D=D, tol=0.0001), 
-                 
-    error = function(e) {
+    # skin area exposed to air
+
+      A_air <- A * psa_air 
+
+    # area of contact
+
+      A_contact <- A * psa_g 
+  
+  # effective radiant temperature of sky
+  #  K, Gates 1980 Biophysical ecology based on Swinback 1960, Kingsolver (1983) estimates using Brunt equation
+
+    T_sky <- celsius_to_kelvin(1.22 * kelvin_to_celsius(T_a) - 20.4)
+  
+  # energy balance function for steady state conditions
+  #  0 = Qabs - Qemit - Qconv - Qcond
+
+    Qfn <- function(T_b, Qabs, epsilon, sigma, A_s, T_sky, A_r, T_g, H_L, A_air, T_a, A_contact, K, D) {
+
+      Qemit <- epsilon * sigma * (A_s * (T_b^4 - T_sky^4) + A_r * (T_b^4 - T_g^4))
+      Qconv <- ef * H_L * A_air * (T_b - T_a) 
+      Qcond <- A_contact * K * (T_b - T_g) / D 
+
+      Qabs - Qemit - Qconv - Qcond
     
-      print("Unable to balance energy budget. One issue to check is whether absorbed solar radiation exceeds energy potentially lost to thermal radiation, convection, and conduction.")
     }
-  )
   
-  Te.return <- NA
-  if(length(Te) > 1) Te.return <- Te$root
+  T_e <- tryCatch(expr = uniroot(f         = Qfn, 
+                                 interval  = c(273, 353), 
+                                 Qabs      = Qabs, 
+                                 epsilon   = epsilon, 
+                                 sigma     = sigma, 
+                                 A_s       = A_s, 
+                                 T_sky     = T_sky, 
+                                 A_r       = A_r, 
+                                 T_g       = T_g, 
+                                 H_L       = H_L, 
+                                 A_air     = A_air, 
+                                 T_a       = T_a, 
+                                 A_contact = A_contact, 
+                                 K         = K, 
+                                 D         = D, 
+                                 tol       = 0.0001)$root, 
+                 
+                  error = function(e) {
+                            message("Unable to balance energy budget. One issue to check is whether absorbed solar radiation exceeds energy potentially lost to thermal radiation, convection, and conduction.")
+                            NA})
   
-  Te.return
+   T_e
+
 }
 
 #' @title Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
 #' 
-#' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980;textual}{TrenchR}. Omits evaporative and metabolic heat loss.
+#' @description Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980;textual}{TrenchR}. Omits evaporative and metabolic heat loss.
 #' 
 #' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
@@ -301,47 +332,54 @@ Tb_Gates2 <- function (A,
                        V, 
                        epsilon) {
   
-  A_air <- A
-  
   sigma <- stefan_boltzmann_constant()
+
+
+  # skin area exposed to air
+
+    A_air <- A
   
   # Convection coefficient from Gates (1980)
-  H_L <- 3.49 * (V^0.5 / D^0.5)
+
+    H_L <- 3.49 * (V^0.5 / D^0.5)
   
-  # estimate effective radiant temperature of sky
-  Tsky <- (1.22 * (T_a - 273.15) - 20.4) + 273.15 #K, Gates 1980 Biophysical ecology based on Swinback 1960, Kingsolver (1983) estimates using Brunt equation
+  # effective radiant temperature of sky
+  #  K, Gates 1980 Biophysical ecology based on Swinback 1960, Kingsolver (1983) estimates using Brunt equation
+
+    T_sky <- celsius_to_kelvin(1.22 * kelvin_to_celsius(T_a - 20.4))
   
   # Thermal radiation absorbed 
-  QIR <- (A_air / 2) * (sigma * epsilon * (T_g)^4 + sigma * epsilon * (Tsky)^4)
-  
-  # estimate effective radiant temperature of sky
-  Tsky <- (1.22 * (T_a - 273.15) - 20.4) + 273.15 #K, Gates 1980 Biophysical ecology based on Swinback 1960, Kingsolver (1983) estimates using Brunt equation
-  
-  # solve energy balance for steady state conditions
-  # 0= Qabs -Qemit -Qconv -Qcond
-  Qfn <- function(T_b, Qabs, epsilon, sigma, Tsky, H_L, A_air, T_a) {
-    
-    # Thermal radiation emitted
-    Qemit <- A_air * sigma * epsilon * T_b^4
-    # Convection
-    Qconv <- H_L * A_air * (T_b - T_a)
-    
-    Qabs + QIR - Qemit - Qconv
 
-  }
+    QIR <- (A_air / 2) * (sigma * epsilon * T_g^4 + sigma * epsilon * T_sky^4)
   
-  Te <- tryCatch(uniroot(Qfn, c(273, 353),Qabs=Qabs, epsilon=epsilon, sigma=sigma, Tsky=Tsky, H_L=H_L, A_air=A_air, T_a=T_a, tol = 0.0001), 
-            error = function(e) {
-              
-              print("Unable to balance energy budget. One issue to check is whether absorbed solar radiation exceeds energy potentially lost to thermal radiation, convection, and conduction.")
-              
-            }
-  )
+  # energy balance function for steady state conditions
+  #   0 = Qabs - Qemit - Qconv - Qcond
+
+    Qfn <- function(T_b, Qabs, QIR, epsilon, sigma, T_sky, H_L, A_air, T_a) {
+    
+      Qemit <- A_air * sigma * epsilon * T_b^4
+      Qconv <- H_L * A_air * (T_b - T_a)
+    
+      Qabs + QIR - Qemit - Qconv
+
+    }
   
-  Te.return <- NA
-  if(length(Te) > 1) Te.return <- Te$root
+  T_e <- tryCatch(expr = uniroot(f        = Qfn,
+                                 interval = c(273, 353),
+                                 Qabs     = Qabs, 
+                                 QIR      = QIR, 
+                                 epsilon  = epsilon, 
+                                 sigma    = sigma, 
+                                 T_sky    = T_sky, 
+                                 H_L      = H_L, 
+                                 A_air    = A_air, 
+                                 T_a      = T_a, 
+                                 tol      = 0.0001)$root, 
+                  error = function(e) {
+                            message("Unable to balance energy budget. One issue to check is whether absorbed solar radiation exceeds energy potentially lost to thermal radiation, convection, and conduction.")
+                            NA})
   
-  Te.return
+  T_e
   
 }
 

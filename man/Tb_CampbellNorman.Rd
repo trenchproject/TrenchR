@@ -21,7 +21,7 @@ Tb_CampbellNorman(
 
 \item{T_g}{\code{numeric} ground temperature (K).}
 
-\item{S}{\code{numeric} flux density of solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}), combining direct, diffuse, and reflected radiation accounting for view factors.}
+\item{S}{\code{numeric} flux density of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}), combining direct, diffuse, and reflected radiation accounting for view factors.}
 
 \item{alpha_S}{\code{numeric} organismal solar absorptivity.}
 
@@ -31,18 +31,20 @@ Tb_CampbellNorman(
 
 \item{c_p}{\code{numeric} specific heat of air (\ifelse{html}{\out{J mol<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J mol^-1 K^-1}{ASCII}}).}
 
-\item{D}{\code{numeric} characteristic dimension of the animal (meters).}
+\item{D}{\code{numeric} characteristic dimension of the animal (m).}
 
-\item{V}{\code{numeric} is wind speed (m/s).}
+\item{V}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 }
 \value{
-\code{numeric} operative environmental temperature, T_e (K).
+\code{numeric} operative environmental temperature, \code{T_e} (K).
 }
 \description{
 Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
 }
 \details{
 Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
+
+Boundary conductance uses a factor of 1.4 to account for increased convection \insertCite{Mitchell1976}{TrenchR}, assumes forced conduction.
 }
 \examples{
 Tb_CampbellNorman (T_a     = 303, 

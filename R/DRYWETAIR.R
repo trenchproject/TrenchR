@@ -40,17 +40,17 @@ DRYAIR <- function(db,
   
   tstd <- 273.15
   
-  pstd <- 101325.
-  patmos <- pstd*((1-(0.0065*alt/288))^(1/0.190284))
+  pstd   <- 101325.
+  patmos <- pstd*((1 - (0.0065 * alt / 288))^(1 / 0.190284))
   
-  bp <- rep(bp,length(patmos))
+  bp          <- rep(bp, length(patmos))
   bp[bp <= 0] <- patmos[bp <= 0]
   
   density <- bp / (287.04 * (db + tstd))
   
   visnot <- 1.8325E-5
-  tnot <- 296.16
-  c <- 120.
+  tnot   <- 296.16
+  c      <- 120.
   
   visdyn <- (visnot * ((tnot + c) / (db + tstd + c))) * (((db + tstd) / tnot)^1.5)
   viskin <- visdyn / density
@@ -96,11 +96,11 @@ DRYAIR <- function(db,
 #' 
 VAPPRS <- function(db) {
   
-  t <- db + 273.16
+  t <- celsius_to_kelvin(db)
   
   loge <- t
   loge[t <= 273.16] <- -9.09718 * (273.16 / t[t <= 273.16] - 1.) - 3.56654 * log10(273.16 / t[t <= 273.16]) + 0.876793 * (1. - t[t <= 273.16] / 273.16) + log10(6.1071)
-  loge[t > 273.16] <- -7.90298 * (373.16 / t[t > 273.16] - 1.) + 5.02808 * log10(373.16 / t[t > 273.16]) - 1.3816E-07 * (10.^(11.344 * (1. - t[t > 273.16] / 373.16)) - 1.) + 8.1328E-03 * (10.^(-3.49149 * (373.16 / t[t > 273.16] - 1.)) - 1.) + log10(1013.246)
+  loge[t > 273.16]  <- -7.90298 * (373.16 / t[t > 273.16] - 1.) + 5.02808 * log10(373.16 / t[t > 273.16]) - 1.3816E-07 * (10.^(11.344 * (1. - t[t > 273.16] / 373.16)) - 1.) + 8.1328E-03 * (10.^(-3.49149 * (373.16 / t[t > 273.16] - 1.)) - 1.) + log10(1013.246)
   
   (10.^loge) * 100
   
@@ -161,11 +161,11 @@ WETAIR <- function (db,
             rh <= 100, 
             bp > 0)
   
-  tk <- db + 273.15
-  esat <- VAPPRS(db)
+  tk    <- celsius_to_kelvin(db)
+  esat  <- VAPPRS(db)
   if(dp < 999.0) {
     
-    e <- VAPPRS(dp)
+    e  <- VAPPRS(dp)
     rh <- (e / esat) * 100
     
   } else {
@@ -176,23 +176,23 @@ WETAIR <- function (db,
       
     } else{
       
-      wbd <- db - wb
+      wbd   <- db - wb
       wbsat <- VAPPRS(wb)
       dltae <- 0.000660 * (1.0 + 0.00115 * wb) * bp * wbd
-      e <- wbsat - dltae
-      rh <- (e / esat) * 100
+      e     <- wbsat - dltae
+      rh    <- (e / esat) * 100
       
     }
   }
   
-  rw <- ((0.62197 * 1.0053 * e) / (bp - 1.0053 * e))
-  vd <- e * 0.018016 / (0.998 * 8.31434 * tk)
-  tvir <- tk * ((1.0 + rw / (18.016 / 28.966)) / (1.0 + rw))
-  tvinc <- tvir - tk
+  rw     <- ((0.62197 * 1.0053 * e) / (bp - 1.0053 * e))
+  vd     <- e * 0.018016 / (0.998 * 8.31434 * tk)
+  tvir   <- tk * ((1.0 + rw / (18.016 / 28.966)) / (1.0 + rw))
+  tvinc  <- tvir - tk
   denair <- 0.0034838 * bp / (0.999 * tvir)
-  cp <- (1004.84 + (rw * 1846.40)) / (1.0 + rw)
+  cp     <- (1004.84 + (rw * 1846.40)) / (1.0 + rw)
   
-  if (min(rh)<=0.0){
+  if (min(rh) <= 0.0) {
     
     wtrpot <- -999
     

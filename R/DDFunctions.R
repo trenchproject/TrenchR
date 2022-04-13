@@ -47,7 +47,6 @@ degree_days <- function (T_min,
   alpha <- (T_max - T_min) / 2 
   dd <- 0
   
-  # Single sine calculation
   if (method == "single.sine") {
     
     if (T_min >= UDT && T_max >= UDT) { # entirely above both thresholds
@@ -90,10 +89,7 @@ degree_days <- function (T_min,
       
     }
     
-  }
-  
-  # double sine calculation
-  if (method == "double.sine") {
+  } else if (method == "double.sine") {
     
     if (T_min >= LDT && T_max >= UDT) { # entirely above both thresholds
       
@@ -126,10 +122,7 @@ degree_days <- function (T_min,
 
     dd <- dd*2
 
-    } 
-  
-  #Single triangulation - with simplified formula
-  if (method == "single.triangulation") {
+  } else if (method == "single.triangulation") {
     
     MT <- (T_max + T_min) / 2
     
@@ -158,10 +151,7 @@ degree_days <- function (T_min,
       dd <- 0
       
     }
-  }
-  
-  # Double triangulation - with simplified formula
-  if (method == "double.triangulation") {
+  } else if (method == "double.triangulation") {
     
     MT <- (T_max + T_min) / 2
     

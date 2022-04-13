@@ -4,7 +4,7 @@
 #' 
 #' @param T_max,T_min \code{numeric} maximum and minimum daily temperatures (C).
 #' 
-#' @param t_r,t_w \code{numeric} times of sunrise and sunset (hour).
+#' @param t_r,t_s \code{numeric} times of sunrise and sunset (hour).
 #' 
 #' @param t \code{numeric} time for temperature estimate (hour).
 #' 
@@ -56,34 +56,40 @@ diurnal_temp_variation_sineexp <- function (T_max,
             beta >= 0, 
             beta <= 24)
    
-  l <- t_s - t_r #daylength
-  
-  T_x <- 0.5 * (t_r + t_s) + alpha #time of maximum temperature
-  T_n <- t_r +  beta #time of minimum temperature
-  
-  if(!(t > (t_r + beta) & t < t_s)) { # nighttime hour
+  #daylength
 
-    T_sn <- T_min + (T_max - T_min) * sin((pi * (t_s - t_r - beta)) / (l + 2 * (alpha -beta)))
+    l <- t_s - t_r 
+  
+  # time of maximum, minimum temperatures
+
+   t_x <- 0.5 * (t_r + t_s) + alpha 
+   t_n <- t_r +  beta 
+  
+  # if night or day
+
+    if(!(t > (t_r + beta) & t < t_s)) { 
+
+      T_sn <- T_min + (T_max - T_min) * sin((pi * (t_s - t_r - beta)) / (l + 2 * (alpha - beta)))
     
-    if (t <= (t_r + beta)) {
+      if (t <= (t_r + beta)) {
       
-      Tas <- t + 24 - t_s
+        t_as <- t + 24 - t_s
       
-    }
+      }
       
-    if (t >= t_s) {
+      if (t >= t_s) {
       
-      Tas <- t - t_s  #time after sunset
+        t_as <- t - t_s  #time after sunset
       
-    }
+      }
     
-    T <- T_min + (T_sn - T_min) * exp(-(gamma * Tas) / (24 - l + beta))
+      T <- T_min + (T_sn - T_min) * exp(-(gamma * t_as) / (24 - l + beta))
     
-  } else { #daytime hour
+    } else {
    
-    T <- T_min + (T_max - T_min) * sin((pi * (t - t_r - beta)) / (l + 2 * (alpha - beta)))
+      T <- T_min + (T_max - T_min) * sin((pi * (t - t_r - beta)) / (l + 2 * (alpha - beta)))
     
-  }
+    }
   
   T
   
@@ -122,7 +128,7 @@ diurnal_temp_variation_sine <- function (T_max,
             T_max >= T_min)
   
   W <- pi / 12
-  gamma <- 0.44 - 0.46 * sin(0.9 + W * t) + 0.11 * sin(0.9 + 2 * W * t)   # (2.2) diurnal temperature function
+  gamma <- 0.44 - 0.46 * sin(0.9 + W * t) + 0.11 * sin(0.9 + 2 * W * t)   
     
   T_max * gamma + T_min * (1 - gamma)
   
@@ -144,7 +150,6 @@ diurnal_temp_variation_sine <- function (T_max,
 #' @param T_minp \code{numeric} minimum temperature of following day (C).
 #' 
 #' @return \code{numeric} temperature (C) at a specified hour. 
-#' 
 #' 
 #' @family microclimate functions
 #' 
@@ -177,21 +182,23 @@ diurnal_temp_variation_sinesqrt <- function (t,
             T_max >= T_min)
   
   # Time estimates
-  t_p <- t_r + 24 # sunrise time following day
-  t_x <- t_s - 4 # Assume time of maximum temperature 4h before sunset
+  # Assume time of maximum temperature 4h before sunset
+
+    t_p <- t_r + 24 
+    t_x <- t_s - 4 
   
   # Temperature at sunset
-  c <- 0.39 # empircally fitted parameter
-  To <- T_max - c * (T_max - T_minp)
+
+    c  <- 0.39 
+    To <- T_max - c * (T_max - T_minp)
   
-  alpha <- T_max -T_min
+  alpha <- T_max - T_min
   R <- T_max - To
   b <- (T_minp - To) / sqrt(t_p - t_s)
   
   T <- rep(NA, length(t))
   
   inds <- which(t <= t_r) 
-
   if(length(inds > 0))  {
     
     T[inds] <- To + b * sqrt(t[inds] - (t_s - 24))

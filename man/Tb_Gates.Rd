@@ -2,7 +2,7 @@
 % Please edit documentation in R/OperativeTemperatureFunctions.R
 \name{Tb_Gates}
 \alias{Tb_Gates}
-\title{Predict Body Temperature (Operative Environmental Temperature) of an ectotherm in K.}
+\title{Predict Body Temperature (Operative Environmental Temperature) of an ectotherm in K}
 \usage{
 Tb_Gates(
   A,
@@ -48,12 +48,9 @@ Tb_Gates(
 \item{K}{\code{numeric} Thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), K = 0.5 \ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}} for naked skin, K = 0.15 \ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}for insect cuticle \insertCite{Galushko2005;textual}{TrenchR}; conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step.}
 }
 \value{
-\code{numeric} operative environmental temperature (K).
+\code{numeric} operative environmental temperature, \code{T_e} (K).
 }
 \description{
-Predict Body Temperature (Operative Environmental Temperature) of an ectotherm in K.
-}
-\details{
 Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980;textual}{TrenchR}. Omits evaporative and metabolic heat loss \insertCite{Mitchell1976,Kingsolver1983}{TrenchR}.
 }
 \examples{
