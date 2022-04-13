@@ -41,6 +41,7 @@ degree_days <- function (T_min,
                          method = "single.sine") {
   
   stopifnot(T_max >= T_min, 
+            UDT   >= LDT, 
             length(method) == 1,
             method %in% c("single.sine", "double.sine", "single.triangulation", "double.triangulation"))
   
@@ -186,6 +187,6 @@ degree_days <- function (T_min,
     
   }
   
-  round(dd,2)
+  round(dd, 2)
   
 }

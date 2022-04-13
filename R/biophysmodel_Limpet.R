@@ -58,14 +58,15 @@ Tb_limpet <- function (T_a,
                        c, 
                        position = "anterior") {
   
-  stopifnot(l > 0,
-            h > 0, 
-            I > 0, 
-            u >= 0, 
+  stopifnot(l   >  0,
+            h   >  0, 
+            I   >  0, 
+            u   >= 0, 
             psi >= 0, 
             psi <= 90, 
-            c >= 0, 
-            c <= 1, 
+            c   >= 0, 
+            c   <= 1, 
+            length(position) == 1,
             position %in% c("anterior", "posterior", "broadside"))
   
   # Conversions

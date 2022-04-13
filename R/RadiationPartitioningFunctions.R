@@ -6,7 +6,7 @@
 #' 
 #' @param kt \code{numeric} the clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere. (0-1)
 #' 
-#' @param lat \code{numeric} latitude (degrees). Needed only if method is Spencer
+#' @param lat \code{numeric} latitude (degrees). Needed only if method is \code{"Spencer"}.
 #' 
 #' @param sol.elev \code{numeric} the solar elevation angles (degrees). Needed only if method is \code{"Reindl-2"}. 
 #' 
@@ -30,7 +30,8 @@ partition_solar_radiation <- function (method,
                                        lat = NA, 
                                        sol.elev = NA){  
  
-  stopifnot(method %in% c("Liu_Jordan", "Orgill_Hollands", "Erbs", "Olyphant", "Spencer", "Reindl-1", "Reindl-2", "Lam_Li"), 
+  stopifnot(length(method) == 1,
+            method %in% c("Liu_Jordan", "Orgill_Hollands", "Erbs", "Olyphant", "Spencer", "Reindl-1", "Reindl-2", "Lam_Li"), 
             kt >= 0, 
             kt <= 1)
   
@@ -158,9 +159,9 @@ proportion_diffuse_solar_radiation <- function (psi,
   
   stopifnot(psi >= 0, 
             psi <= 89.5, 
-            p_a > 0, 
-            A >= 0, 
-            A <= 1)
+            p_a >  0, 
+            A   >= 0, 
+            A   <= 1)
  
   if(psi <= 50) {
     

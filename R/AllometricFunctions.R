@@ -400,7 +400,7 @@ proportion_silhouette_area <- function (z,
   stopifnot(length(taxon) == 1, 
             taxon %in% c("frog", "lizard", "grasshopper"), 
             z >= 0, 
-            z < 360)
+            z <  360)
   
   if (taxon == "frog"){
 
@@ -517,9 +517,9 @@ proportion_silhouette_area_shapes <- function(shape,
   stopifnot(length(shape) == 1, 
             shape %in% c("spheroid", "cylinder flat ends", "cylinder hemisphere ends"), 
             theta >= 0, 
-            theta < 360, 
-            h >= 0, 
-            d >= 0)
+            theta <  360, 
+            h     >= 0, 
+            d     >= 0)
   
   theta_r <- degrees_to_radians(theta)
   

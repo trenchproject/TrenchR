@@ -168,11 +168,11 @@ legend("topleft", title="parameters", legend=c("D=0.001, nu=1","D=0.001, nu=1.5"
 ```
 
 ```{r, fig.height=4, fig.width=8}
-plot(seq(0,0.01,0.001), Grashof_number(Ta=30, Tg=35, D=seq(0,0.01,0.001), nu=1.0), type="l", xlab = "characteristic dimension (m)", ylab = "Grashof number")
-points(seq(0,0.01,0.001), Grashof_number_Gates(Ta=30, Tg=35, beta=0.00367, D=seq(0,0.01,0.001), nu=1.0), type="l", col="red")
+plot(seq(0,0.01,0.001), Grashof_number(T_a=30, T_g=35, D=seq(0,0.01,0.001), nu=1.0), type="l", xlab = "characteristic dimension (m)", ylab = "Grashof number")
+points(seq(0,0.01,0.001), Grashof_number_Gates(T_a=30, T_g=35, beta=0.00367, D=seq(0,0.01,0.001), nu=1.0), type="l", col="red")
 
-points(seq(0,0.01,0.001), Grashof_number(Ta=30, Tg=35, D=seq(0,0.01,0.001), nu=1.4), type="l",lty="dashed")
-points(seq(0,0.01,0.001), Grashof_number_Gates(Ta=30, Tg=35, beta=0.00367, D=seq(0,0.01,0.001), nu=1.4), type="l", col="red",lty="dashed")
+points(seq(0,0.01,0.001), Grashof_number(T_a=30, T_g=35, D=seq(0,0.01,0.001), nu=1.4), type="l",lty="dashed")
+points(seq(0,0.01,0.001), Grashof_number_Gates(T_a=30, T_g=35, beta=0.00367, D=seq(0,0.01,0.001), nu=1.4), type="l", col="red",lty="dashed")
 
 legend("topleft", title="parameters", legend=c("Grashof_number, nu=1","Grashof_number_Gates, nu=1","Grashof_number, nu=1.4","Grashof_number_Gates, nu=1.4"), lty=c("solid","dashed","dotted","dotdash") )
 ```
@@ -989,10 +989,10 @@ Functions estimate thermal radiation absorbed ('Qthermal_radiation_absorbed') an
 The functions also include a statistical approximation from [@campbell2012introduction] for estimating soil temperatures at specified depths.
 
 ```{r, fig.height=4, fig.width=8}
-plot(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=0), type="l", xlab = "hour", ylab = "soil temperature (°C)")
-points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=5), type="l", lty="dashed")
-points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=10), type="l", lty="dotted")
-points(1:24, Tsoil(Tg_max=30, Tg_min=15, hour=1:24, depth=20), type="l", lty="dotdash")
+plot(1:24, Tsoil(T_g_max=30, T_g_min=15, hour=1:24, depth=0), type="l", xlab = "hour", ylab = "soil temperature (°C)")
+points(1:24, Tsoil(T_g_max=30, T_g_min=15, hour=1:24, depth=5), type="l", lty="dashed")
+points(1:24, Tsoil(T_g_max=30, T_g_min=15, hour=1:24, depth=10), type="l", lty="dotted")
+points(1:24, Tsoil(T_g_max=30, T_g_min=15, hour=1:24, depth=20), type="l", lty="dotdash")
 
 legend("topleft",title="depth (cm)", legend=c(0,5,10,20), lty=c("solid","dashed","dotted","dotdash") )
 ```

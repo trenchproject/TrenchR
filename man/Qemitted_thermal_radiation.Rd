@@ -36,7 +36,7 @@ Qemitted_thermal_radiation(
 \code{numeric} emitted thermal radiation, \code{Qemit} (W).
 }
 \description{
-estimate thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
+Estimate thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
 }
 \examples{
   Qemitted_thermal_radiation(epsilon  = 0.96,

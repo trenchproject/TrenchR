@@ -60,16 +60,16 @@ Tb_limpetBH <- function (T_a,
                          s_slope,
                          c) {
 
-  stopifnot(l > 0, 
-            h > 0, 
-            I > 0, 
-            u >= 0, 
-            s_slope >= 0, 
-            s_slope <= 90, 
+  stopifnot(l        >  0, 
+            h        >  0, 
+            I        >  0, 
+            u        >= 0, 
+            s_slope  >= 0, 
+            s_slope  <= 90, 
             s_aspect >= 70, 
             s_aspect <= 110, 
-            c >= 0, 
-            c <= 1)
+            c        >= 0, 
+            c        <= 1)
 
   # Conversions
 

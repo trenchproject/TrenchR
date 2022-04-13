@@ -4,12 +4,12 @@
 \alias{Grashof_number_Gates}
 \title{Grashof Number in Gates}
 \usage{
-Grashof_number_Gates(Ta, Tg, beta, D, nu)
+Grashof_number_Gates(T_a, T_g, beta, D, nu)
 }
 \arguments{
-\item{Ta}{\code{numeric} Air temperature (C).}
+\item{T_a}{\code{numeric} Air temperature (C).}
 
-\item{Tg}{\code{numeric} Ground (surface) temperature (C).}
+\item{T_g}{\code{numeric} Ground (surface) temperature (C).}
 
 \item{beta}{\code{numeric} coefficient of volumetric thermal expansion, \code{beta} = 3.67 x \ifelse{html}{\out{10<sup>-3</sup> C<sup>-1</sup>}}{\eqn{10^-3 C^-1}{ASCII}}  in air and 41.9 x \ifelse{html}{\out{10<sup>-4</sup> C<sup>-1</sup>}}{\eqn{10^-4 C^-1}{ASCII}} in water.}
 
@@ -24,8 +24,8 @@ Grashof_number_Gates(Ta, Tg, beta, D, nu)
 Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity \insertCite{Gates1980}{TrenchR}. Ratio of a buoyant force times an inertial force to the square of a viscous force.
 }
 \examples{
-  Grashof_number_Gates(Ta   = 30,
-                       Tg   = 35,
+  Grashof_number_Gates(T_a   = 30,
+                       T_g   = 35,
                        beta = 0.00367,
                        D    = 0.001,
                        nu   = 1.2)

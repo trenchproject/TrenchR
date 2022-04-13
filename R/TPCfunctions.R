@@ -25,6 +25,8 @@ TPC <- function (T,
                  T_opt, 
                  CT_min, 
                  CT_max) {
+
+  stopifnot(CT_max >= CT_min)
   
   F   <- T
   F[] <- NA
@@ -77,11 +79,11 @@ TPC.beta <- function (T,
                       tolerance = 43, 
                       skew      = 0.7) { 
   
-  stopifnot(breadth > 0, 
-            aran %in% c(0, 1), 
+  stopifnot(breadth   > 0, 
             tolerance > 0, 
-            skew >= 0, 
-            skew <= 1)
+            skew      >= 0, 
+            skew      <= 1, 
+            aran %in% c(0, 1))
   
   T <- celsius_to_kelvin(T)
   shift <- celsius_to_kelvin(shift)

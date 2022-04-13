@@ -4,10 +4,10 @@
 \alias{actual_vapor_pressure}
 \title{Calculate Actual Vapor Pressure from Dewpoint Temperature}
 \usage{
-actual_vapor_pressure(Tdewpoint)
+actual_vapor_pressure(T_dewpoint)
 }
 \arguments{
-\item{Tdewpoint}{\code{numeric} dewpoint temperature (C).}
+\item{T_dewpoint}{\code{numeric} dewpoint temperature (C).}
 }
 \value{
 \code{numeric} actual vapor pressure (kPa).
@@ -16,7 +16,7 @@ actual_vapor_pressure(Tdewpoint)
 Calculate actual vapor pressure from dewpoint temperature based on \insertCite{Stull2000,Riddell2018;textual}{TrenchR}.
 }
 \examples{
-  actual_vapor_pressure(Tdewpoint = 20)
+  actual_vapor_pressure(T_dewpoint = 20)
 
 }
 \references{

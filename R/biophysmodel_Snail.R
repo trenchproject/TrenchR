@@ -46,13 +46,13 @@ Tb_snail <- function (temp,
                       WL,
                       WSH) {
   
-  stopifnot(l > 0, 
+  stopifnot(l     >  0, 
             solar >= 0, 
-            WS >= 0, 
-            CC >= 0, 
-            CC <= 1, 
-            WL >= 0, 
-            WSH >= 0)
+            WS    >= 0, 
+            CC    >= 0, 
+            CC    <= 1, 
+            WL    >= 0, 
+            WSH   >= 0)
   
   sigma <- stefan_boltzmann_constant()   
 

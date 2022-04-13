@@ -38,6 +38,9 @@ DRYAIR <- function(db,
                    bp = 0, 
                    alt = 0) {
   
+  stopifnot(alt >= 0, 
+            bp  >  0)
+
   tstd <- 273.15
   
   pstd   <- 101325.
@@ -159,7 +162,7 @@ WETAIR <- function (db,
   
   stopifnot(rh >= 0, 
             rh <= 100, 
-            bp > 0)
+            bp >  0)
   
   tk    <- celsius_to_kelvin(db)
   esat  <- VAPPRS(db)

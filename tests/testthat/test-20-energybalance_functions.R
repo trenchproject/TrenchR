@@ -76,7 +76,7 @@ test_that("Qmetabolism_from_mass_temp function works as expected", {
 })
 
 test_that("actual_vapor_pressure function works as expected", {
-  expect_similar(actual_vapor_pressure(Tdewpoint=20), 2.393477)
+  expect_similar(actual_vapor_pressure(T_dewpoint=20), 2.393477)
   expect_similar(actual_vapor_pressure(26), 3.468698)
 })
 
@@ -98,7 +98,7 @@ test_that("Qthermal_radiation_absorbed function works as expected", {
 })
 
 test_that("Tsoil function works as expected", {
-  expect_similar(Tsoil(Tg_max=30, Tg_min=15, hour=12, depth=5), 20.65027)
+  expect_similar(Tsoil(T_g_max=30, T_g_min=15, hour=12, depth=5), 20.65027)
 })
 
 test_that("Nusselt_number function works as expected", {
@@ -114,11 +114,11 @@ test_that("Reynolds_number function works as expected", {
 })
 
 test_that("Grashof_number function works as expected", {
-  expect_similar(Grashof_number(Ta=30, Tg=35, D=0.001, nu=1.2), 1.134259e-09)
+  expect_similar(Grashof_number(T_a=30, T_g=35, D=0.001, nu=1.2), 1.134259e-09)
 })
 
 test_that("Grashof_number_Gates function works as expected", {
-  expect_similar(Grashof_number_Gates(Ta=30, Tg=35, beta=0.00367, D=0.001, nu=1.2), 1.248819e-10)
+  expect_similar(Grashof_number_Gates(T_a=30, T_g=35, beta=0.00367, D=0.001, nu=1.2), 1.248819e-10)
 })
 
 test_that("Nusselt_from_Reynolds function works as expected", {

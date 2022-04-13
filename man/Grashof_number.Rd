@@ -4,12 +4,12 @@
 \alias{Grashof_number}
 \title{Grashof Number}
 \usage{
-Grashof_number(Ta, Tg, D, nu)
+Grashof_number(T_a, T_g, D, nu)
 }
 \arguments{
-\item{Ta}{\code{numeric} Air temperature (C).}
+\item{T_a}{\code{numeric} Air temperature (C).}
 
-\item{Tg}{\code{numeric} ground (surface) temperature (C).}
+\item{T_g}{\code{numeric} ground (surface) temperature (C).}
 
 \item{D}{\code{numeric} characteristic dimension (e.g., body diameter) (meters).}
 
@@ -22,8 +22,8 @@ Grashof_number(Ta, Tg, D, nu)
 Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
-  Grashof_number(Ta = 30,
-                 Tg = 35,
+  Grashof_number(T_a = 30,
+                 T_g = 35,
                  D  = 0.001,
                  nu = 1.2)
 
