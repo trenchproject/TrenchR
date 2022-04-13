@@ -4,7 +4,7 @@
 #' 
 #' @param T \code{numeric} vector of temperature range (C).
 #' 
-#' @param Topt \code{numeric} thermal optima (C), the temperature at which peak performance occurs.
+#' @param T_opt \code{numeric} thermal optima (C), the temperature at which peak performance occurs.
 #' 
 #' @param CT_min,CT_max \code{numeric} critical thermal minimum and maximum(C), the lower and upper temperature limits for performance.
 #' 

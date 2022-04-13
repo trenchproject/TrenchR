@@ -6,8 +6,8 @@
 \usage{
 Tb_butterfly(
   T_a,
-  Tg,
-  Tg_sh,
+  T_g,
+  T_sh,
   u,
   H_sdir,
   H_sdif,
@@ -22,11 +22,11 @@ Tb_butterfly(
 \arguments{
 \item{T_a}{\code{numeric} air temperature in C.}
 
-\item{Tg}{\code{numeric} surface temperature in C in the sunlight.}
+\item{T_g}{\code{numeric} surface temperature in C in the sunlight.}
 
-\item{Tg_sh}{\code{numeric} surface temperature in C in the shade.}
+\item{T_sh}{\code{numeric} surface temperature in C in the shade.}
 
-\item{u}{\code{numeric} wind speed in m / s.}
+\item{u}{\code{numeric} wind speed in \ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}.}
 
 \item{H_sdir}{\code{numeric} direct solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}.}
 
@@ -55,8 +55,8 @@ Thermal radiative flux is calculated following \insertCite{Gates1980;textual}{Tr
 }
 \examples{
   Tb_butterfly(T_a    = 25, 
-               Tg     = 25, 
-               Tg_sh  = 20, 
+               T_g    = 25, 
+               T_sh   = 20, 
                u      = 0.4, 
                H_sdir = 300, 
                H_sdif = 100, 

@@ -824,13 +824,13 @@ estimate the energy flux balance to estimate $T_b$.
 We provide the operative temperature model for butterflies as follows:
 
 ```{r, fig.height=4, fig.width=6}
-t.seq= lapply(20:40, FUN=Tb_butterfly, Tg=25, Tg_sh=20, u=0.4, H_sdir=300, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
+t.seq= lapply(20:40, FUN=Tb_butterfly, T_g=25, T_sh=20, u=0.4, H_sdir=300, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
 plot(20:40, t.seq, type = "l", xlab = "ambient temperature (°C)", ylab = "body temperature (°C)")
 abline(a=0,b=1, col="gray")
 
-t.seq= lapply(20:40, FUN=Tb_butterfly, Tg=25, Tg_sh=20, u=0.4, H_sdir=100, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
+t.seq= lapply(20:40, FUN=Tb_butterfly, T_g=25, T_sh=20, u=0.4, H_sdir=100, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
 points(20:40, t.seq, type = "l", lty="dashed")
-t.seq= lapply(20:40, FUN=Tb_butterfly, Tg=25, Tg_sh=20, u=0.4, H_sdir=500, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
+t.seq= lapply(20:40, FUN=Tb_butterfly, T_g=25, T_sh=20, u=0.4, H_sdir=500, H_sdif=100, z=30, D=0.36, delta=1.46, alpha=0.6, r_g=0.3)
 points(20:40, t.seq, type = "l", lty="dotted")
 
 legend("bottomright",title= expression("direct radiation," ~ H[sdif]), legend=c(100,300,500), lty=c("dashed","solid","dotted") )

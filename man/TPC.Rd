@@ -9,9 +9,9 @@ TPC(T, T_opt, CT_min, CT_max)
 \arguments{
 \item{T}{\code{numeric} vector of temperature range (C).}
 
-\item{CT_min, CT_max}{\code{numeric} critical thermal minimum and maximum(C), the lower and upper temperature limits for performance.}
+\item{T_opt}{\code{numeric} thermal optima (C), the temperature at which peak performance occurs.}
 
-\item{Topt}{\code{numeric} thermal optima (C), the temperature at which peak performance occurs.}
+\item{CT_min, CT_max}{\code{numeric} critical thermal minimum and maximum(C), the lower and upper temperature limits for performance.}
 }
 \value{
 performance

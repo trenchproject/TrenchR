@@ -88,14 +88,12 @@ Tb_grasshopper <- function (T_a,
 
     # temperatures C to K
 
-      T_aK <- T_a + 273.15
-      T_g <- T_g + 273.15 
+      T_a <- celsius_to_kelvin(T_a)
+      T_g <- celsius_to_kelvin(T_g)
 
   # Butterfly Parameters
 
-    # Stefan-Boltzmann constant (W m^-2 K^-4)
-
-      sigma <- stefan_boltzmann_constant() 
+    sigma <- stefan_boltzmann_constant() 
 
     # IR emissivity of surface to longwave 
 
@@ -140,9 +138,7 @@ Tb_grasshopper <- function (T_a,
       Hdir <- Httl * (1-kd)
       Hdif <- Httl * kd
 
-      # psi in radians
-
-      psi_r <- psi*pi/180 
+      psi_r <- degree_to_radian(psi)
 
     # Convection
 
@@ -166,7 +162,7 @@ Tb_grasshopper <- function (T_a,
     # Conduction 
     #   cuticle thickness (m)
     #   hcut: W m^-1 K^-1
-    #   Qcond = hcut *Acond *(Tb- (T_a+273))/Thick
+    #   Qcond = hcut * Acond * (Tb - (T_a)) / Thick
  
      Thick <- 6*10^(-5)
      hcut  <- 0.15
@@ -195,41 +191,19 @@ Tb_grasshopper <- function (T_a,
    # black body sky temperature in Kelvin
    #   from Swinbank (1963), Kingsolver 1983 estimates using Brunt equation
  
-    T_sky <- 0.0552 * (T_a + 273.15)^1.5
+    T_sky <- 0.0552 * (T_a)^1.5
                
 
-   #Qt = 0.5* A * epsilon * sigma * (Tb^4 - Tsky^4) +0.5 * A * epsilon * sigma * (Tb^4 - T_g^4) 
-   #Convective heat flux
-   #Qc = hc_s * A * (Tb- (T_a+273)) 
-   #Qs = Qt+ Qc
-
   # Solution
+  # t solved in wolfram alpha #Solve[a t^4 +b t -d, t]
 
-    # WITHOUT CONDUCTION
+    a <- A * epsilon * sigma
+    b <- hc_s * A + hcut * Acond / Thick
+    d <- hc_s * A * T_a + 0.5 * A * epsilon * sigma * (T_sky^4 + T_g^4)+ hcut * Acond * T_g / Thick + Qabs
 
-      # a <- A * epsilon *sigma
-      # b <- hc_s * A
-      # d <- hc_s * A * TaK + 0.5 * A * epsilon * sigma * Tsky^4 +0.5 * A * epsilon * sigma * T_g^4 + Qabs
+    T_b <- 1 / 2 * sqrt((2 * b) / (a * sqrt((sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) - (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3))) - (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) + (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3)) - 1 / 2 * sqrt((sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) - (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3)) 
+    T_b[which(is.na(T_b))] <- NA
 
-      # eb <- function(Tb){0.5 * A * epsilon * sigma * (Tb^4 - Tsky^4) + 0.5 * A * epsilon * sigma * (Tb^4 - T_g^4) + hc_s * A * (Tb - TaK) + hcut * Acond * (Tb - T_g) / Thick - Qabs }
-      # r <- uniroot(eb, c(-1, 373), tol = 1e-5)
-      # r$root - 273
-
-
-    # WITH CONDUCTION
-    # t solved in wolfram alpha #Solve[a t^4 +b t -d, t]
-
-      a <- A * epsilon * sigma
-      b <- hc_s * A + hcut * Acond / Thick
-      d <- hc_s * A * T_aK +0.5 * A * epsilon * sigma * (T_sky^4 + T_g^4)+ hcut * Acond * T_g / Thick + Qabs
-
-   # in K
-
-      tb <- 1 / 2 * sqrt((2 * b) / (a * sqrt((sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) - (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3))) - (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) + (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3)) - 1 / 2 * sqrt((sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) - (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3)) 
-      tb[which(is.na(tb))] <- NA
-
-    # in C
-
-      tb - 273.15
+  kelvin_to_celsius(T_b)
 
 }

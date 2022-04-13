@@ -4,11 +4,11 @@
 #' 
 #' @param T_a \code{numeric} air temperature in C.
 #'
-#' @param Tg  \code{numeric} surface temperature in C in the sunlight.
+#' @param T_g  \code{numeric} surface temperature in C in the sunlight.
 #'
-#' @param Tg_sh \code{numeric} surface temperature in C in the shade.
+#' @param T_sh \code{numeric} surface temperature in C in the shade.
 #'
-#' @param u \code{numeric} wind speed in m / s.
+#' @param u \code{numeric} wind speed in \ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}.
 #'
 #' @param H_sdir \code{numeric} direct solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}.
 #'
@@ -40,8 +40,8 @@
 #'
 #' @examples
 #'   Tb_butterfly(T_a    = 25, 
-#'                Tg     = 25, 
-#'                Tg_sh  = 20, 
+#'                T_g    = 25, 
+#'                T_sh   = 20, 
 #'                u      = 0.4, 
 #'                H_sdir = 300, 
 #'                H_sdif = 100, 
@@ -52,8 +52,8 @@
 #'                r_g    = 0.3)
 #'
 Tb_butterfly <- function (T_a, 
-                          Tg, 
-                          Tg_sh, 
+                          T_g, 
+                          T_sh, 
                           u, 
                           H_sdir, 
                           H_sdif, 
@@ -64,26 +64,24 @@ Tb_butterfly <- function (T_a,
                           r_g    = 0.3,
                           shade  = FALSE) {
 
-  stopifnot(u >= 0, 
+  stopifnot(u      >= 0, 
             H_sdir >= 0, 
             H_sdif >= 0, 
-            z >= -90, 
-            z <= 90, 
-            D > 0, 
-            delta >= 0, 
-            alpha >= 0, 
-            r_g >= 0, 
-            r_g <= 1, 
+            z      >= -90, 
+            z      <= 90, 
+            D      > 0, 
+            delta  >= 0, 
+            alpha  >= 0, 
+            r_g    >= 0, 
+            r_g    <= 1, 
             is.logical(shade))  
   
   # conversions
 
-    # temperatures C to K
-
-      TaK    <- celsius_to_kelvin(T_a)
-      TaK_sh <- TaK
-      Tg     <- celsius_to_kelvin(Tg)
-      Tg_sh  <- celsius_to_kelvin(Tg_sh)
+    T_a    <- celsius_to_kelvin(T_a)
+    T_a_sh <- T_a
+    T_g    <- celsius_to_kelvin(T_g)
+    T_g_sh <- celsius_to_kelvin(T_sh)
 
     # wind speed m/s to cm/s
 
@@ -97,7 +95,6 @@ Tb_butterfly <- function (T_a,
     # thoracic fur thickness mm to cm
 
       delta <- delta / 10     
-
 
   # Total solar radiation
 
@@ -151,15 +148,12 @@ Tb_butterfly <- function (T_a,
 
     # Thermal Radiative Flux in K
 
-    # black body sky temperature from Swinbank 1963
-
-      # Tsky <- 0.0552*(TaK)^1.5 
-
-    # Gates 1980 Biophysical ecology based on Swinbank 1960, Kingsolver (1983) estimates using Brunt equation
-
-      Tsky <- (1.22 * T_a - 20.4) + 273.15 
  
-      # Q_t <- 0.5* A_sttl * Ep * sigma * (Tb^4 - Tsky^4) +0.5* A_sttl * Ep * sigma * (Tb^4 - Tg^4)
+    # effective radiant temperature of sky
+    #  K, Gates 1980 Biophysical ecology based on Swinback 1960, Kingsolver (1983) estimates using Brunt equation
+
+       T_sky <- celsius_to_kelvin(1.22 * kelvin_to_celsius(T_a) - 20.4)
+
 
 
     # Convective Heat Flux
@@ -184,12 +178,6 @@ Tb_butterfly <- function (T_a,
 
         h_T <- (1 / h_c + (r_i + delta) * log((r_i + delta) / r_i) / k_e)^-1;  
 
-      # convective heat transfer surface area
-
-        # A_c <- A_sttl
-  
-      # Q_c <- h_T * A_c * (Tb-T_a)
-
  
   # Shade Adjustments
 
@@ -210,11 +198,11 @@ Tb_butterfly <- function (T_a,
           H_sdif_sh <- H_sdif
           H_sttl <- H_sdif + H_sdif_sh 
 
-        Q_s <- alpha * A_sdir * H_sdir_sh / cos(z * pi / 180) + alpha * A_sref * H_sdif_sh + alpha * r_g * A_sref * H_sttl; 
+        Q_s <- alpha * A_sdir * H_sdir_sh / cos(z * pi / 180) + alpha * A_sref * H_sdif_sh + alpha * r_g * A_sref * H_sttl 
 
       # Use shaded surface temperature
 
-        Tg< - Tg_sh
+        T_g < - T_sh
 
     }
                			
@@ -222,15 +210,15 @@ Tb_butterfly <- function (T_a,
 
     a <- A_sttl * Ep * sigma
     b <- h_T * A_sttl
-    d <- h_T * A_sttl * TaK +0.5 * A_sttl * Ep * sigma * Tsky^4 + 0.5 * A_sttl * Ep * sigma * (Tg)^4 + Q_s
+    d <- h_T * A_sttl * T_a +0.5 * A_sttl * Ep * sigma * T_sky^4 + 0.5 * A_sttl * Ep * sigma * (T_g)^4 + Q_s
 
     # in K
 
-      Te <- 1 / 2 * sqrt((2 * b) / (a * sqrt((sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) - (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3))) - (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) + (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3)) - 1 / 2 * sqrt((sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) - (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3)) 
+      T_e <- 1 / 2 * sqrt((2 * b) / (a * sqrt((sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) - (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3))) - (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) + (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3)) - 1 / 2 * sqrt((sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) - (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3)) 
 
     # in C
 
-      kelvin_to_celsius(Te)
+      kelvin_to_celsius(T_e)
 
 } 
 

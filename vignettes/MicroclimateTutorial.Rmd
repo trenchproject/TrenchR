@@ -399,7 +399,7 @@ TrenchR provides the functions as follows:
 plot(1:23, diurnal_temp_variation_sine(T_max=30, T_min=10, t=1:23), type = "l", xlab = "hour", ylab = "temperature (°C)")
 t.seq= lapply(1:23, FUN=diurnal_temp_variation_sineexp, T_max=30, T_min=10, t_r=6, t_s=18)
 points(1:23, t.seq, type = "l", lty="dotted")
-points(1:23, diurnal_temp_variation_sinesqrt(t=1:23, tr=6, ts=18, T_max=30, T_min=10, T_minp=12), type = "l", lty="dashed")
+points(1:23, diurnal_temp_variation_sinesqrt(t=1:23, t_r=6, t_s=18, T_max=30, T_min=10, T_minp=12), type = "l", lty="dashed")
 
 legend("topleft", title="function", legend=c("_sine", "_sineexp", "_sinesqrt"), lty=c("solid","dotted","dashed") )
 ```

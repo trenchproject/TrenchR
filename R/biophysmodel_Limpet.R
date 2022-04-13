@@ -96,7 +96,7 @@ Tb_limpet <- function (T_a,
 
         alpha_sw <- 0.68
   
-        q1 <- Ap * alpha_sw * I
+
   
     # Long-wave energy transfer
   
@@ -122,8 +122,6 @@ Tb_limpet <- function (T_a,
 
         eps_wa <- (1 - 0.84 * c) * eps_ac + 0.84 * c  
 
-      q2 <- Vs * Al * eps_ws * sigma * T_a^4 * (eps_wa - 1)
-      q3 <- 4 * Vs * Al* eps_ws * sigma * T_a^3
   
 
     # Convective heat transfer
@@ -168,7 +166,6 @@ Tb_limpet <- function (T_a,
       # area of the shell in convective contact with the air (m^2)
 
         A_cv <- Al  
-        q4   <- hc * A_cv
   
   # Conductive heat transfer
   
@@ -179,10 +176,15 @@ Tb_limpet <- function (T_a,
     # thermal conductivity of rock (W m^-1 K^-1)
 
       Kr <- 3.06
-      q5 <- A_cd * Kr
+
+
+  q1  <- Ap * alpha_sw * I
+  q2  <- Vs * Al * eps_ws * sigma * T_a^4 * (eps_wa - 1)
+  q3  <- 4 * Vs * Al* eps_ws * sigma * T_a^3
+  q4  <- hc * A_cv
+  q5  <- A_cd * Kr
   
-  
-  T_b <- (q1 + q2 + (q3 + q4)* T_a + q5 * T_r) / (q3 + q4 + q5)
+  T_b <- (q1 + q2 + (q3 + q4) * T_a + q5 * T_r) / (q3 + q4 + q5)
   
   kelvin_to_celsius(T_b)
 
