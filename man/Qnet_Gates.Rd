@@ -2,28 +2,28 @@
 % Please edit documentation in R/OperativeTemperatureFunctions.R
 \name{Qnet_Gates}
 \alias{Qnet_Gates}
-\title{Estimate Net Energy Exchange (W) Between an Animal and the Environment}
+\title{Net Energy Exchange Between an Animal and the Environment}
 \usage{
 Qnet_Gates(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap)
 }
 \arguments{
-\item{Qabs}{\code{numeric} Solar radiation absorbed (W).}
+\item{Qabs}{\code{numeric} solar radiation absorbed (W).}
 
-\item{Qemit}{\code{numeric} Thermal radiation emitted (W).}
+\item{Qemit}{\code{numeric} thermal radiation emitted (W).}
 
-\item{Qconv}{\code{numeric} Energy exchange due to convection; Energy exchange from an animal to its surrounding environment (air or water) (W).}
+\item{Qconv}{\code{numeric} energy exchange due to convection; Energy exchange from an animal to its surrounding environment (air or water) (W).}
 
-\item{Qcond}{\code{numeric} Energy exchange due to conduction; Energy exchange from animal to a surface if they are in contact  (W).}
+\item{Qcond}{\code{numeric} energy exchange due to conduction; Energy exchange from animal to a surface if they are in contact  (W).}
 
-\item{Qmet}{\code{numeric} Energy emitted due to metabolism (W).}
+\item{Qmet}{\code{numeric} energy emitted due to metabolism (W).}
 
-\item{Qevap}{\code{numeric} Energy emitted due to evaporative water loss (W).}
+\item{Qevap}{\code{numeric} energy emitted due to evaporative water loss (W).}
 }
 \value{
 \code{numeric} net energy exchange (W).
 }
 \description{
-Estimate Net Energy Exchange (W) Between an Animal and the Environment
+Net Energy Exchange Between an Animal and the Environment
 }
 \details{
 Estimates net energy exchange between an animal and the environment in W. Follows \insertCite{Gates1980;textual}{TrenchR} and others.

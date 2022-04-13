@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimate Temperature Across Hours Using a Diurnal Temperature Variation Function Incorporating Sine and Exponential Components — diurnal_temp_variation_sineexp • TrenchR</title>
+<title>Estimate Diurnal Temperatures — diurnal_temp_variation_sineexp • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Estimate Temperature Across Hours Using a Diurnal Temperature Variation Function Incorporating Sine and Exponential Components — diurnal_temp_variation_sineexp" />
+<meta property="og:title" content="Estimate Diurnal Temperatures — diurnal_temp_variation_sineexp" />
 <meta property="og:description" content="Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components (Parton and Logan 1981)
 . Default alpha, beta, gamma values are the average of 5 North Carolina sites  (M. Wann and Gold 1985)
 . Other alpha, beta, gamma parameterizations include values for Denver, Colorado from (Parton and Logan 1981)
@@ -135,7 +135,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimate Temperature Across Hours Using a Diurnal Temperature Variation Function Incorporating Sine and Exponential Components</h1>
+    <h1>Estimate Diurnal Temperatures</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/DTRFunctions.R'><code>R/DTRFunctions.R</code></a></small>
     <div class="hidden name"><code>diurnal_temp_variation_sineexp.Rd</code></div>
     </div>
@@ -162,24 +162,16 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>T_max</th>
-      <td><p><code>numeric</code> maximum daily temperature (C).</p></td>
-    </tr>
-    <tr>
-      <th>T_min</th>
-      <td><p><code>numeric</code> minimum daily temperature (C).</p></td>
+      <th>T_max, T_min</th>
+      <td><p><code>numeric</code> maximum and minimum daily temperatures (C).</p></td>
     </tr>
     <tr>
       <th>t</th>
       <td><p><code>numeric</code> time for temperature estimate (hour).</p></td>
     </tr>
     <tr>
-      <th>t_r</th>
-      <td><p><code>numeric</code> time of sunset (hour).</p></td>
-    </tr>
-    <tr>
-      <th>t_s</th>
-      <td><p><code>numeric</code> time of sunrise (hour).</p></td>
+      <th>t_r, t_s</th>
+      <td><p><code>numeric</code> times of sunrise and sunset (hour).</p></td>
     </tr>
     <tr>
       <th>alpha</th>

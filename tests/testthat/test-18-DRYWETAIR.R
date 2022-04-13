@@ -11,7 +11,7 @@ test_that("DRYAIR function works as expected", {
 })
 
 test_that("VAPRS function works as expected", {
-  expect_similar(VAPPRS(db=30), 4243.033)
+  expect_similar(VAPPRS(db=30), 4240.599)
 })
 
 test_that("WETAIR function works as expected", {

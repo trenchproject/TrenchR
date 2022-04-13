@@ -1,6 +1,7 @@
 #' @title Calculate Degree Days
 #' 
-#' @description Calculate degree days using single or double sine wave and single or double triangulation approximation \insertCite{ucipm}{TrenchR}. Double methods assume symmetry, that is that next day's thermal minimum is equal to previous day. Double Sine wave approximation of degree days from \insertCite{Allen1976}{TrenchR}.
+#' @description Calculate degree days using single or double sine wave and single or double triangulation approximation \insertCite{ucipm}{TrenchR}. \cr
+#'   Double methods assume symmetry, that is that next day's thermal minimum is equal to previous day. Double Sine wave approximation of degree days from \insertCite{Allen1976}{TrenchR}.
 #' 
 #' @param T_min \code{numeric} Minimum temperature of the day (C).
 #' 
@@ -46,7 +47,6 @@ degree_days <- function (T_min,
   alpha <- (T_max - T_min) / 2 
   dd <- 0
   
-  # Single sine calculation
   if (method == "single.sine") {
     
     if (T_min >= UDT && T_max >= UDT) { # entirely above both thresholds
@@ -61,8 +61,8 @@ degree_days <- function (T_min,
     
     } else  if (T_min <= LDT &&  T_max >= UDT ) {  #Intercepted by both thresholds
       
-      theta2 <- asin((UDT-(T_max+T_min)/2)/alpha)
-      theta1 <-asin((LDT-(T_max+T_min)/2)/alpha)
+      theta2 <- asin((UDT - (T_max + T_min) / 2) / alpha)
+      theta1 <- asin((LDT - (T_max + T_min) / 2) / alpha)
       
       dd <- 1 / pi * ((  ((T_max + T_min) / 2) - LDT) * (theta2 - theta1) + alpha * (cos(theta1) - cos(theta2)) + (UDT - LDT) * (pi / 2 - theta2))
       
@@ -89,37 +89,40 @@ degree_days <- function (T_min,
       
     }
     
-  }
-  
-  # double sine calculation
-  if (method == "double.sine") {
+  } else if (method == "double.sine") {
     
     if (T_min >= LDT && T_max >= UDT) { # entirely above both thresholds
       
-      dd = (UDT - LDT) / 2
+      dd <- (UDT - LDT) / 2
+
     } else if (T_min >= LDT  && T_max >= UDT) { #Intercepted by upper threshold
-      theta2=asin((UDT-(T_max+T_min)/2)/alpha)
-      dd = 1 / (2 * pi) * (((T_max + T_min) / 2 - LDT) * (theta2 + pi / 2) + (UDT -
-          LDT) * (pi / 2 - theta2) - alpha * cos(theta2))
+
+      theta2 <- asin((UDT - (T_max + T_min) / 2) / alpha)
+      dd     <- 1 / (2 * pi) * (((T_max + T_min) / 2 - LDT) * (theta2 + pi / 2) + (UDT - LDT) * (pi / 2 - theta2) - alpha * cos(theta2))
+
     } else if (T_min <= LDT &&  T_max >= UDT) { #Intercepted by both thresholds
-      theta2=asin((UDT-(T_max+T_min)/2)/alpha)
-      theta1=asin((LDT-(T_max+T_min)/2)/alpha)
-      dd = 1 / (2 * pi) * (((T_max + T_min) / 2 - LDT) * (theta2 - theta1) + alpha *
-                             (cos(theta1) - cos(theta2)) + (UDT - LDT) * (pi / 2 - theta2))
+
+      theta2 <- asin((UDT - (T_max + T_min) / 2) / alpha)
+      theta1 <- asin((LDT - (T_max + T_min) / 2) / alpha)
+      dd     <- 1 / (2 * pi) * (((T_max + T_min) / 2 - LDT) * (theta2 - theta1) + alpha * (cos(theta1) - cos(theta2)) + (UDT - LDT) * (pi / 2 - theta2))
+
     } else if (T_min >= LDT &&  T_max <= UDT) { #Entirely between both thresholds
-      dd = 0.5 * ((T_max + T_min) / 2 - LDT)
+
+      dd <- 0.5 * ((T_max + T_min) / 2 - LDT)
+
     } else if (T_min <= LDT && T_max >= LDT) { # intercepted by LDT
-      theta1= asin(pmax(-1,pmin(1,(LDT-(T_max+T_min)/2)/alpha)))
-      dd = 1 / (2 * pi) * (((T_max + T_min) / 2 - LDT) * (pi / 2 - theta1) + alpha *
-                             cos(theta1))
+
+      theta1 <- asin(pmax(-1, pmin(1, (LDT - (T_max + T_min) / 2) / alpha)))
+      dd     <- 1 / (2 * pi) * (((T_max + T_min) / 2 - LDT) * (pi / 2 - theta1) + alpha * cos(theta1))
+
     } else if (T_min <= LDT && T_max <= LDT) { # entirely below both thresholds
-      dd = 0
+
+      dd <- 0
     }
-  dd= dd*2
-    } #end double sine method
-  
-  #Single triangulation - with simplified formula
-  if (method == "single.triangulation") {
+
+    dd <- dd*2
+
+  } else if (method == "single.triangulation") {
     
     MT <- (T_max + T_min) / 2
     
@@ -148,10 +151,7 @@ degree_days <- function (T_min,
       dd <- 0
       
     }
-  }
-  
-  # Double triangulation - with simplified formula
-  if (method == "double.triangulation") {
+  } else if (method == "double.triangulation") {
     
     MT <- (T_max + T_min) / 2
     

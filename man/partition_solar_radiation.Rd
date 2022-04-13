@@ -16,7 +16,7 @@ partition_solar_radiation(method, kt, lat = NA, sol.elev = NA)
 \item{sol.elev}{\code{numeric} the solar elevation angles (degrees). Needed only if method is \code{"Reindl-2"}.}
 }
 \value{
-diffuse fraction
+\code{numeric} diffuse fraction.
 }
 \description{
 Partition solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in \insertCite{Wong2001;textual}{TrenchR}.

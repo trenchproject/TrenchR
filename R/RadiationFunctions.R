@@ -43,7 +43,7 @@ estimate_radiation <- function (doy,
             rho >= 0, 
             rho <= 1)
   
-  sigma <- 5.67 * 10^-8 # Stefan-Boltzman constant, W m^-2 K^-4
+  sigma <- stefan_boltzmann_constant()
   c_p <- 29.3 # Specific heat of air, J/mol degrees K or C
   S_p0 <- 1360 # extraterrestrial flux density, W/m^2 (p159)
   

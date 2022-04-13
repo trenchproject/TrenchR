@@ -14,7 +14,7 @@
 #'
 #' @param u \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #'
-#' @param psi \code{numeric} solar zenith angle (degrees): can be calculated from zenith_angle function.
+#' @param psi \code{numeric} solar zenith angle (degrees): can be calculated from \code{\link{zenith_angle}} function.
 #'
 #' @param c \code{numeric} fraction of the sky covered by cloud.
 #'
@@ -25,11 +25,11 @@
 #' @family biophysical models 
 #'
 #' @details The original equation uses a finite-difference approach where they divide the rock into series of chunks, and calculate the temperature at each node to derive the conductive heat. For simplification, here it takes the rock temperature as a parameter, and conductive heat is calculated by the product of the area, thermal conductivity of rock and the difference in temperatures of the rock and the body.
-#'   \cr
+#'   \cr \cr
 #'   Limpets are simulated as cones following and using solar emissivity values from \insertCite{Campbell1998;textual}{TrenchR}.
-#'   \cr
+#'   \cr \cr
 #'   The area of the limpet's shell (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) is projected in the direction at which sunlight strikes the organism \insertCite{Pennell1989;textual}{TrenchR}.
-#'   \cr
+#'   \cr \cr
 #'   Air conductivity values (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) are calculated following \insertCite{Denny2006;textual}{TrenchR}.
 #'
 #' @export
@@ -70,15 +70,11 @@ Tb_limpet <- function (T_a,
   
   # Conversions
 
-    # temperatures C to K
+    T_a <- celsius_to_kelvin(T_a)
+    T_r <- celsius_to_kelvin(T_r)
 
-      T_a <- T_a + 273.15   
-      T_r <- T_r + 273.15   
-
-    # dgrees to radians
-
-      psi <- psi * pi / 180 
-      r <- l / 2            
+    psi <- degree_to_radian(psi)
+    r   <- l / 2            
   
   # Calculations
 
@@ -100,7 +96,7 @@ Tb_limpet <- function (T_a,
 
         alpha_sw <- 0.68
   
-        q1 = Ap * alpha_sw * I
+
   
     # Long-wave energy transfer
   
@@ -116,9 +112,7 @@ Tb_limpet <- function (T_a,
 
         eps_ws <- 0.97  
 
-      # stefan-boltzmann constant (W m^-2 K^-4)
-
-        sigma <- 5.67 * 10^-8
+      sigma <- stefan_boltzmann_constant()
 
       # clear sky emissivity (Campbell and Norman 1998, 10.11)
 
@@ -128,8 +122,6 @@ Tb_limpet <- function (T_a,
 
         eps_wa <- (1 - 0.84 * c) * eps_ac + 0.84 * c  
 
-      q2 <- Vs * Al * eps_ws * sigma * T_a^4 * (eps_wa - 1)
-      q3 <- 4 * Vs * Al* eps_ws * sigma * T_a^3
   
 
     # Convective heat transfer
@@ -169,12 +161,11 @@ Tb_limpet <- function (T_a,
 
       # Heat transfer coefficient (W m^-2 K^-1)
 
-        hc <- a*Ka*((u/v)^b)*(l^(b-1)) 
+        hc <- a * Ka * ((u / v)^b)*(l^(b - 1)) 
   
       # area of the shell in convective contact with the air (m^2)
 
         A_cv <- Al  
-        q4 <- hc * A_cv
   
   # Conductive heat transfer
   
@@ -185,11 +176,16 @@ Tb_limpet <- function (T_a,
     # thermal conductivity of rock (W m^-1 K^-1)
 
       Kr <- 3.06
-      q5 <- A_cd * Kr
+
+
+  q1  <- Ap * alpha_sw * I
+  q2  <- Vs * Al * eps_ws * sigma * T_a^4 * (eps_wa - 1)
+  q3  <- 4 * Vs * Al* eps_ws * sigma * T_a^3
+  q4  <- hc * A_cv
+  q5  <- A_cd * Kr
   
+  T_b <- (q1 + q2 + (q3 + q4) * T_a + q5 * T_r) / (q3 + q4 + q5)
   
-  T_b <- (q1 + q2 + (q3 + q4)* T_a + q5 * T_r) / (q3 + q4 + q5)
-  
-  T_b - 273.15
+  kelvin_to_celsius(T_b)
 
 }

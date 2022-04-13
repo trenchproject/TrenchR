@@ -41,9 +41,7 @@ Other utility functions:
 \code{\link{daylength}()},
 \code{\link{dec_angle}()},
 \code{\link{degree_to_radian}()},
-\code{\link{fahrenheit_to_celsius}()},
-\code{\link{fahrenheit_to_kelvin}()},
-\code{\link{kelvin_to_celsius}()},
-\code{\link{solar_noon}()}
+\code{\link{solar_noon}()},
+\code{\link{temperature conversions}}
 }
 \concept{utility functions}

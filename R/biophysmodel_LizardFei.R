@@ -73,7 +73,7 @@ Tb_Fei <- function(T_a,
 
       alpha_L <- 0.965 
 
-    # convective heat transfer ceofficient (W m-2 K-1) (Fei et al. 2012, J Ther Biol, 37: 56-64, Porter et al. 1973)
+    # convective heat transfer ceofficient (W m-2 K-1) (Fei et al. 2012, Porter et al. 1973)
 
       h_L <- 10.45 
 
@@ -98,9 +98,8 @@ Tb_Fei <- function(T_a,
 
       dt <- 120
 
-    # stefan-boltzmann constant (W m^-2 K^-4)
 
-      sigma <- 5.67*10.0^(-8) 
+    sigma <- stefan_boltzmann_constant() 
   
   # Convert mass to kg
 
@@ -142,7 +141,7 @@ Tb_Fei <- function(T_a,
 
     # Proportion of surface area facing toward the sky
 
-      A_up <- 0.6*A_L 
+      A_up <- 0.6 * A_L 
 
     # (10.11) clear sky emissivity
 
@@ -163,7 +162,7 @@ Tb_Fei <- function(T_a,
 
       # Conduction
 
-        dQ_cond = A_contact*K_lizard*(T_g - T_o)/(lambda/2)
+        dQ_cond <- A_contact * K_lizard * (T_g - T_o) / (lambda / 2)
   
       # Convection, assuming no wind
 
@@ -174,7 +173,7 @@ Tb_Fei <- function(T_a,
   
       # Metabolism
 
-        TinC <- T_o - 273.15
+        TinC <- kelvin_to_celsius(T_o)
         dQ_meta <- 0.348 * exp(0.022 * TinC - 0.132) * mass_kg
 
         # alternative version

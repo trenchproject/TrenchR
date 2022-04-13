@@ -27,11 +27,11 @@
 #' @author Brian Helmuth lab
 #'
 #' @details The original equation uses a finite-difference approach where they divide the rock into series of chunks, and calculate the temperature at each node to derive the conductive heat. For simplification, here it takes the rock temperature as a parameter, and conductive heat is calculated by the product of the area, thermal conductivity of rock and the difference in temperatures of the rock and the body.
-#'   \cr
+#'   \cr \cr
 #'   Limpets are simulated as cones following and using solar emissivity values from \insertCite{Campbell1998;textual}{TrenchR}.
-#'   \cr 
+#'   \cr \cr
 #'   The area of the limpet's shell (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) is projected in the direction at which sunlight strikes the organism \insertCite{Pennell1989;textual}{TrenchR}.
-#'   \cr
+#'   \cr \cr
 #'   Air conductivity values (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) are calculated following \insertCite{Denny2006;textual}{TrenchR}.
 #'
 #' @export
@@ -73,16 +73,12 @@ Tb_limpetBH <- function (T_a,
 
   # Conversions
 
-    # temperatures C to K
+    T_a <- celsius_to_kelvin(T_a)
+    T_r <- celsius_to_kelvin(T_r)
 
-      T_a <- T_a + 273.15
-      T_r <- T_r + 273.15
-
-    # dgrees to radians
-
-      s_aspect <- s_aspect * pi / 180 # covert to radians
-      s_slope <- s_slope * pi / 180 # covert to radians
-      r <- l / 2
+    s_aspect <- degree_to_radian(s_aspect)
+    s_slope  <- degree_to_radian(s_slope)
+    r <- l / 2
 
   # Calculations
 
@@ -133,9 +129,7 @@ Tb_limpetBH <- function (T_a,
 
         eps_ws <- 0.97
 
-      # stefan-boltzmann constant (W m^-2 K^-4)
-
-        sigma <- 5.67 * 10^-8
+        sigma <- stefan_boltzmann_constant()
 
       # clear sky emissivity (Campbell and Norman 1998, 10.11)
 
@@ -209,5 +203,6 @@ Tb_limpetBH <- function (T_a,
 
   T_b <- (q1 + q2 + (q3 + q4) * T_a + q5 * T_r) / (q3 + q4 + q5)
 
-  T_b - 273.15
+  kelvin_to_celsius(T_b)
+
 }

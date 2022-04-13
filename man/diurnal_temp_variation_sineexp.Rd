@@ -2,7 +2,7 @@
 % Please edit documentation in R/DTRFunctions.R
 \name{diurnal_temp_variation_sineexp}
 \alias{diurnal_temp_variation_sineexp}
-\title{Estimate Temperature Across Hours Using a Diurnal Temperature Variation Function Incorporating Sine and Exponential Components}
+\title{Estimate Diurnal Temperatures}
 \usage{
 diurnal_temp_variation_sineexp(
   T_max,
@@ -16,15 +16,11 @@ diurnal_temp_variation_sineexp(
 )
 }
 \arguments{
-\item{T_max}{\code{numeric} maximum daily temperature (C).}
-
-\item{T_min}{\code{numeric} minimum daily temperature (C).}
+\item{T_max, T_min}{\code{numeric} maximum and minimum daily temperatures (C).}
 
 \item{t}{\code{numeric} time for temperature estimate (hour).}
 
-\item{t_r}{\code{numeric} time of sunset (hour).}
-
-\item{t_s}{\code{numeric} time of sunrise (hour).}
+\item{t_r, t_s}{\code{numeric} times of sunrise and sunset (hour).}
 
 \item{alpha}{\code{numeric} time difference between \code{t_x} (time of maximum temperature) and noon (hour).}
 

@@ -166,7 +166,7 @@
     </tr>
     <tr>
       <th>S</th>
-      <td><p><code>numeric</code> flux density of solar radiation (W/m<sup>2</sup>), combining direct, diffuse, and reflected radiation accounting for view factors.</p></td>
+      <td><p><code>numeric</code> flux density of solar radiation (W m<sup>-2</sup>), combining direct, diffuse, and reflected radiation accounting for view factors.</p></td>
     </tr>
     <tr>
       <th>alpha_S</th>
@@ -188,22 +188,24 @@
     </tr>
     <tr>
       <th>D</th>
-      <td><p><code>numeric</code> characteristic dimension of the animal (meters).</p></td>
+      <td><p><code>numeric</code> characteristic dimension of the animal (m).</p></td>
     </tr>
     <tr>
       <th>V</th>
-      <td><p><code>numeric</code> is wind speed (m/s).</p></td>
+      <td><p><code>numeric</code> wind speed (m s<sup>-1</sup>).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>numeric</code> operative environmental temperature, T_e (K).</p>
+    <p><code>numeric</code> operative environmental temperature, <code>T_e</code> (K).</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Campbell and Norman (1998)
  and Mitchell (1976)
 .</p>
+<p>Boundary conductance uses a factor of 1.4 to account for increased convection (Mitchell 1976)
+, assumes forced conduction.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Bartlett PN, Gates DM (1967).

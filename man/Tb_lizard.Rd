@@ -68,6 +68,11 @@ T_e \code{numeric} Operative temperature (C).
 \description{
 Predicts body temperature (operative environmental temperature) of a lizard in C based on \insertCite{Campbell1998}{TrenchR}. Designed for Sceloporus lizards and described in \insertCite{Buckley2008}{TrenchR}.
 }
+\details{
+The proportion of radiation that is direct is determined following \insertCite{Sears2011;textual}{TrenchR}.
+  \cr \cr 
+  Boundary conductance uses a factor of 1.4 to account for increased convection \insertCite{Mitchell1976}{TrenchR}
+}
 \examples{
   Tb_lizard(T_a       = 25, 
             T_g       = 30, 

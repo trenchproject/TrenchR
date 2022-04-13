@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K — Tb_Gates2" />
-<meta property="og:description" content="Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K" />
+<meta property="og:description" content="Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Gates (1980)
+. Omits evaporative and metabolic heat loss." />
 
 
 
@@ -138,7 +139,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K</p>
+    <p>Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Gates (1980)
+. Omits evaporative and metabolic heat loss.</p>
     </div>
 
     <pre class="usage"><span class='fu'>Tb_Gates2</span><span class='op'>(</span><span class='va'>A</span>, <span class='va'>D</span>, <span class='va'>T_g</span>, <span class='va'>T_a</span>, <span class='va'>Qabs</span>, <span class='va'>V</span>, <span class='va'>epsilon</span><span class='op'>)</span></pre>
@@ -180,10 +182,6 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>numeric</code> operative environmental temperature (K).</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Gates (1980)
-. Omits evaporative and metabolic heat loss.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Gates DM (1980).
@@ -240,7 +238,7 @@ Springer-Verlag, New York, NY, USA.</p>
             Qabs    <span class='op'>=</span> <span class='fl'>2</span>, 
             V       <span class='op'>=</span> <span class='fl'>0.1</span>, 
             epsilon <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> 
-</div><div class='output co'>#&gt; [1] 308.3333</div><div class='input'>
+</div><div class='output co'>#&gt; [1] 308.0171</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -31,7 +31,9 @@ soil_conductivity <- function (x,
   stopifnot(g_a > 0, 
             g_a < 1)
   
-  g_c <- 1 - 2 * g_a # Estimate ellipsoid axis g_c assuming g_a = g_b.
+  # Estimate ellipsoid axis g_c assuming g_a = g_b.
+
+    g_c <- 1 - 2 * g_a 
   
   k <- rep(NA, length(x))
   
@@ -153,8 +155,6 @@ soil_temperature_integrand <- function (x,
 #' 
 #' @param c_a \code{numeric} specific heat of air (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}).
 #' 
-#' @param k \code{numeric} von Karman's constant.
-#' 
 #' @param V_inst \code{numeric} instantaneous wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
 #' @param z_r \code{numeric} reference height (m).
@@ -165,7 +165,7 @@ soil_temperature_integrand <- function (x,
 #' 
 #' @param T_s \code{numeric} initial soil surface temperature (C). 
 #' 
-#' @return soil temperature function
+#' @return \code{numeric} soil temperature (C).
 #' 
 #' @family soil temperature functions
 #' 
@@ -180,7 +180,6 @@ soil_temperature_integrand <- function (x,
 #' soil_temperature_equation(L      = -10, 
 #'                           rho_a  = 1.177, 
 #'                           c_a    = 1006, 
-#'                           k      = 0.41, 
 #'                           V_inst = 0.3, 
 #'                           z_r    = 1.5, 
 #'                           z0     = 0.02, 
@@ -190,7 +189,6 @@ soil_temperature_integrand <- function (x,
 soil_temperature_equation <- function (L, 
                                        rho_a, 
                                        c_a, 
-                                       k, 
                                        V_inst, 
                                        z_r, 
                                        z0, 
@@ -199,13 +197,14 @@ soil_temperature_equation <- function (L,
   
   stopifnot(rho_a > 0, 
             c_a > 0, 
-            k > 0, 
             T_inst > 200, 
             T_inst < 400, 
             z_r > 0, 
             z0 > 0)
+
+  k <- von_karman_constant()
   
-  rho_a * c_a * k * (V_inst * k / log((exp((z_r + z0) / L) - 1) / (exp(z0 / L) - 1))) * (T_inst - T_s) / integrate(soil_temperature_integrand, lower = 0, upper=z_r / L, L, z0)$value - (V_inst * k / log((exp((z_r + z0) / L) - 1)/(exp(z0 / L) - 1)))^3 * T_inst * rho_a * c_a / (k * 9.81 * L)
+  rho_a * c_a * k * (V_inst * k / log((exp((z_r + z0) / L) - 1) / (exp(z0 / L) - 1))) * (T_inst - T_s) / integrate(soil_temperature_integrand, lower = 0, upper = z_r / L, L, z0)$value - (V_inst * k / log((exp((z_r + z0) / L) - 1)/(exp(z0 / L) - 1)))^3 * T_inst * rho_a * c_a / (k * 9.81 * L)
   
 }
 
@@ -268,8 +267,9 @@ soil_temperature_function <- function (j,
                                        T_so, 
                                        params) {
   
-  sigma <- 5.670373*10^(-8) # is the stefan-boltzmann constant (W/(m^2*K^4))
-  k <- 0.41 #is von Karman's constant
+  sigma <- stefan_boltzmann_constant()
+  k     <- von_karman_constant() 
+
   Tsoil_deep <- 20+273.15
   
   SSA <- params[[1]]
@@ -289,7 +289,7 @@ soil_temperature_function <- function (j,
   dt <- params[[15]]
   shade <- params[[16]]
   
-  T_so <- T_so + 273.15 # convert Tsoil to K
+  T_so <- celsius_to_kelvin(T_so)
   
   a <- 2 * dt / (rho_so * c_so * dz)  # eqn (12) in notes
   h_inst1 <- k^2 * c_a * rho_a / log(z_r / z0 + 1)^2 # eqn (1) in notes #calculate h at time t based on V_inst
@@ -297,22 +297,23 @@ soil_temperature_function <- function (j,
   
   # heat budget elements
   q_sun <- H[j]
-  if(shade==TRUE) {
+
+  if(shade == TRUE) {
     
     q_sun= q_sun*0.5 #ASSUME 50% reduction in incoming solar radiation in shade
     
   }
   
-  T_inst <- T_a[j]+273.15 # convert to K	
+  T_inst <- celsius_to_kelvin(T_a[j])
   V_inst <- u[j] 
   
-  h_inst <- h_inst1*V_inst #take V_inst out for easier passing to function
-  T_sky <- -0.0552 * T_inst^1.5 ##eqn (4) in notes
+  h_inst <- h_inst1 * V_inst #take V_inst out for easier passing to function
+  T_sky  <- -0.0552 * T_inst^1.5 ##eqn (4) in notes
   
   # energy balance for the surface temperature node
   # multiplying by 'a' gives the change in temperature related to that particular energy source
   
-  q_sol <- a * SSA * q_sun ##a*eqn(5) in notes #surface temperature change as a result of solar radiation during the time step.
+  q_sol   <- a * SSA * q_sun ##a*eqn(5) in notes #surface temperature change as a result of solar radiation during the time step.
   q_therm <- a * epsilon_so * sigma * ((T_sky)^4 - (T_so[1])^4) ## a*eqn(6) in notes #surface temperature change as a result of thermal radiation during the time step.
   
   # Beckman's method of calculating the convective heat transfer coefficient
@@ -328,14 +329,28 @@ soil_temperature_function <- function (j,
     
     if(T_inst < T_so[1]){
       
-      # When soil temp is near air temp, an error occurs because L approaches infinity as soil temp approaches air temp. tryCatch executes alternate command if an error occurs.
-      suppressWarnings(tryCatch({L <- uniroot(soil_temperature_equation, interval = c(-50, -.03), rho_a = 1.177, c_a = 1006, k = .41, V_inst = V_inst, z_r = z_r, z0 = z0, T_inst = T_inst, T_s = T_so)$root; #the function goes to infinity near zero. The upper bound on this interval was selected to avoid errors that result from numbers approaching infinity. The lower bound can be any large number.
-      q_conv<-a*(V_inst*k/log((exp((z_r+z0)/L)-1)/(exp(z0/L)-1)))^3*T_inst*rho_a*c_a/(k*9.81*L)}, 
-      error=function(e){ q_conv<<- a*h_inst*(T_inst-T_so[1])} #Assume neutral conditions if error occurs.
-      ) ) #end tryCatch
+      # When soil temp is near air temp, an error occurs because L approaches infinity as soil temp approaches air temp. 
+      # tryCatch executes alternate command if an error occurs.
+      # the function goes to infinity near zero. 
+      # The upper bound on this interval was selected to avoid errors that result from numbers approaching infinity. The lower bound can be any large number.
+      # Assume neutral conditions if error occurs.
+
+      suppressWarnings(tryCatch(expr  = {L <- uniroot(soil_temperature_equation, 
+                                                      interval = c(-50, -.03), 
+                                                      rho_a = 1.177, 
+                                                      c_a = 1006, 
+                                                      k = .41, 
+                                                      V_inst = V_inst, 
+                                                      z_r = z_r, 
+                                                      z0 = z0, 
+                                                      T_inst = T_inst, 
+                                                      T_s = T_so)$root; 
+                                        q_conv <- a * (V_inst * k / log((exp((z_r + z0) / L) - 1) / (exp(z0 / L) - 1)))^3 * T_inst * rho_a * c_a / (k * 9.81 * L)}, 
+                                error = function(e){
+                                          q_conv <<- a * h_inst * (T_inst - T_so[1])
+                                        })) 
       
-    }
-    else{
+    } else{
       
       q_conv <- a * h_inst * (T_inst - T_so[1])
       
@@ -344,12 +359,10 @@ soil_temperature_function <- function (j,
   
   q_cond <- a * k_so / dz * (T_so[2] - T_so[1]) ##a*eqn(8) in notes #surface temperature change as a result of conduction during the time step.
   
-  #SOIL TEMP PROFILE
   list(c(
     
     #surface temp
-    q_sol + q_therm + q_conv + q_cond, ##this is exactly eqn(13) in the notes ###
-    #rescaled to hours as dt is in a
+    q_sol + q_therm + q_conv + q_cond, ##this is exactly eqn(13) in the notes rescaled to hours as dt is in a
     
     #intermediate temps
     (alpha2 * dt / dz^2) * (T_so[3] + T_so[1] - 2 * T_so[2]),
@@ -478,8 +491,8 @@ soil_temperature <- function (z_r.intervals = 12,
   h <- 1 # relative humidity of air in the soil pores.
   
   rho_particle <- 2650 # average particle density of soil #kg/m^3
-  rho_quartz <- 2660 # density of quartz #kg/m^3 #Table 8.2 in Intro to Environmental Biophysics
-  rho_o <- 1300 # average density of organic matter in soil #kg/m^3
+  rho_quartz   <- 2660 # density of quartz #kg/m^3 #Table 8.2 in Intro to Environmental Biophysics
+  rho_o        <- 1300 # average density of organic matter in soil #kg/m^3
   
   # mineral fractions used here are from SCAN data at Nunn, CO
   f_clay <- 0.17277 
@@ -488,7 +501,7 @@ soil_temperature <- function (z_r.intervals = 12,
   fraction_other <- 1 - fraction_quartz # percentage of solid sand/silt that is minerals other than quartz
   
   # OrgC and the VanBemmelen factor are mainly useful when looking at data from SCAN (Soil Climate Analysis Network).
-  OrgC <- 0.0056 # organic carbon. this is a value available through SCAN or pedon soil reports. #.0117 corresponds to 2% organic matter.
+  OrgC        <- 0.0056 # organic carbon. this is a value available through SCAN or pedon soil reports. #.0117 corresponds to 2% organic matter.
   VanBemmelen <- 1.724 # VanBemmelen*OrgC is approximately the volume fraction of organic matter in soil. #The VanBemmelen factor is  based on the assumption that organic matter contains 58% organic C. Found information about this from the "Soil Survey Investigations Report No. 42".
   
   dz <- 0.6 / z_r.intervals # 60 cm/number of intervals #60cm= depth for which deep soil temp is measured
@@ -496,7 +509,7 @@ soil_temperature <- function (z_r.intervals = 12,
   c_a <- 1.006*1000 # specific heat of air (J/(kg*K))
   rho_a <- 1.177 # density of air (kg/m^3)
   epsilon_so <- 0.98
-  sigma <- 5.670373*10^(-8) # stefan-boltzmann constant (W/(m^2*K^4))
+  sigma <- stefan_boltzmann_constant()
   
   # thermal conductivity values (W/mK) along with functions for finding the conductivity based on temperature.
   lambda_clay <- 2.92 # DeVries (1963)

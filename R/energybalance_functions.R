@@ -48,12 +48,13 @@ Qconduction_animal <- function (T_g,
             proportion >= 0, 
             proportion <= 1)
 
-  # Calculate the area of contact
+
   A_contact <- A * proportion
 
   # Conduction
-  # Calculating the heat loss (Difference between animal temperature and its environment)
+  # the heat loss (Difference between animal temperature and its environment)
   # m^2 * W K^-1 m^-1 * K / m
+
   A_contact * K * (T_b - T_g) / d
 
 }
@@ -109,7 +110,7 @@ Qconduction_substrate <- function (T_g,
             proportion >= 0, 
             proportion <= 1)
 
-  # Calculate the area of contact
+
   A_contact <- A * proportion
 
   #Thermal conductance between animal and substrate
@@ -485,7 +486,7 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
             is.logical(enclosed))
 
   # Stefan-Boltzmann constant
-  sigma <- 5.673 * 10^(-8) # W m^(-2) K^(-4)
+  sigma <- stefan_boltzmann_constant()
 
   # Areas
   A_s <- A * psa_dir
@@ -1027,7 +1028,7 @@ Tb_salamander_humid <- function (r_i,
   }
 
   # Stefan-Boltzmann constant
-  sigma <- 5.673 * 10^(-8) # W m^(-2) K^(-4)
+  sigma <- stefan_boltzmann_constant()
 
   vpd <- e_s - e_a # vapor pressure deficit
 
@@ -1086,7 +1087,7 @@ Qthermal_radiation_absorbed <- function (T_a,
             a_longwave <= 1)
 
   # Stefan-Boltzmann constant
-  sigma <- 5.673 * 10^(-8) # W m^(-2) K^(-4)
+  sigma <- stefan_boltzmann_constant()
 
   # longwave radiation from sky function, Campbell and Norman 1998
   Slongwave_sky <- 53.1 * 10^-14 * (T_a + 273.15)^6.

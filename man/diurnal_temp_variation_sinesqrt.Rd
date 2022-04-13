@@ -4,18 +4,14 @@
 \alias{diurnal_temp_variation_sinesqrt}
 \title{Estimate Temperature Across Hours Using Sine and Square Root Functions}
 \usage{
-diurnal_temp_variation_sinesqrt(t, tr, ts, T_max, T_min, T_minp)
+diurnal_temp_variation_sinesqrt(t, t_r, t_s, T_max, T_min, T_minp)
 }
 \arguments{
 \item{t}{\code{numeric} hour or hours for temperature estimate.}
 
-\item{tr}{\code{numeric} sunrise hour (0-23).}
+\item{t_r, t_s}{\code{numeric} sunrise and sunset hours (0-23).}
 
-\item{ts}{\code{numeric} sunset hour (0-23).}
-
-\item{T_max}{\code{numeric} maximum temperature of current day (C).}
-
-\item{T_min}{\code{numeric} minimum temperature of current day (C).}
+\item{T_max, T_min}{\code{numeric} maximum and minimum temperatures of current day (C).}
 
 \item{T_minp}{\code{numeric} minimum temperature of following day (C).}
 }
@@ -30,8 +26,8 @@ Estimates temperature across hours using sine and square root functions
 }
 \examples{
   diurnal_temp_variation_sinesqrt(t      = 8, 
-                                  tr     = 6, 
-                                  ts     = 18, 
+                                  t_r    = 6, 
+                                  t_s    = 18, 
                                   T_max  = 30, 
                                   T_min  = 10, 
                                   T_minp = 12)

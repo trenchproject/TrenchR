@@ -25,9 +25,6 @@ Tb_Gates2(A, D, T_g, T_a, Qabs, V, epsilon)
 \code{numeric} operative environmental temperature (K).
 }
 \description{
-Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
-}
-\details{
 Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980;textual}{TrenchR}. Omits evaporative and metabolic heat loss.
 }
 \examples{

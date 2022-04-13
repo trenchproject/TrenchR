@@ -19,7 +19,6 @@
 #'   surface_roughness(u_r = c(0.01, 0.025, 0.05, 0.1, 0.2), 
 #'                     zr  = c(0.05, 0.25, 0.5, 0.75, 1))
 #' 
-
 surface_roughness <- function (u_r, 
                                zr) {
  
@@ -177,17 +176,28 @@ air_temp_profile <- function (T_r,
             z0 >= 0, 
             z >= 0)
   
+  k <- von_karman_constant()
+
   # friction velocity
-  u_star <- 0.4 * u_r / log(zr / z0 + 1)  #0.4 is von Karman constant
+
+    u_star <- k * u_r / log(zr / z0 + 1)  
+
   # sublayer stanton number
-  S_ts <- 0.62 / (z0 * u_star / 12)^0.45
+
+    S_ts <- 0.62 / (z0 * u_star / 12)^0.45
+
   # bulk Stanton number
-  S_tb <- 0.64 / log(zr / z0 + 1)
+
+    S_tb <- 0.64 / log(zr / z0 + 1)
+
   # Temperature at roughness height, z0
-  T_z0 <- (T_r * S_tb + T_s * S_ts) / (S_tb + S_ts)
+
+    T_z0 <- (T_r * S_tb + T_s * S_ts) / (S_tb + S_ts)
+
   # Temperature at local height
   # Inital from Ecography paper but fixed in vignette: T_z= T_z0 + (T_r - T_z0)*log(z/z0+1)
-  T_z0 + (T_r - T_z0) * log(z / z0 + 1) / log(zr / z0 + 1)
+
+    T_z0 + (T_r - T_z0) * log(z / z0 + 1) / log(zr / z0 + 1)
 
 }
 
@@ -233,40 +243,43 @@ air_temp_profile_segment <- function (T_r,
   
   stopifnot(z >= 0)
   
-  #order roughness and segment heights 
+  # order roughness and segment heights 
+
   zr.ord <- order(zr, decreasing = TRUE)
-  zr <- zr[zr.ord]
-  z0 <- z0[zr.ord]
-  u_r <- u_r[zr.ord]
-  T_r <- T_r[zr.ord]
+  zr     <- zr[zr.ord]
+  z0     <- z0[zr.ord]
+  u_r    <- u_r[zr.ord]
+  T_r    <- T_r[zr.ord]
   
   # friction velocity
-  u_star <- 0.4 * u_r / log(zr / z0 + 1) #0.4 is von Karman constant
+
+    u_star <- 0.4 * u_r / log(zr / z0 + 1) #0.4 is von Karman constant
+
   # sublayer stanton number
-  S_ts <- 0.62 / (z0[3] * u_star[2] / 12)^0.45
+
+    S_ts <- 0.62 / (z0[3] * u_star[2] / 12)^0.45
+
   # bulk Stanton number
-  S_tb <- 0.64 / log(zr[2] / z0[3] + 1)
+
+    S_tb <- 0.64 / log(zr[2] / z0[3] + 1)
   
   # estimate u_Zloc  
-  if(zr[1] <= z) {
+
+  if (zr[1] <= z) {
     
     us_star <- u_star[1]
     z0s <- z0[1]
     T_rs <- T_r[1]
     zrs <- zr[1]
     
-  }
-  
-  if(zr[1] > z & zr[2] <= z) {
+  } else if (zr[1] > z & zr[2] <= z) {
     
     us_star <- u_star[2]
     z0s <- z0[2]
     T_rs <- T_r[2]
     zrs <- zr[2]
     
-  }
-  
-  if(zr[1] > z & zr[2] > z) {
+  } else if (zr[1] > z & zr[2] > z) {
     
     us_star <- u_star[3]
     z0s <- z0[3]
@@ -276,13 +289,16 @@ air_temp_profile_segment <- function (T_r,
   }
   
   # Estimate windspeed
-  u_z <- 2.5 * us_star * log(z / z0s + 1)
+
+    u_z <- 2.5 * us_star * log(z / z0s + 1)
   
   # Temperature at roughness height, z0
-  T_z0 <- (T_rs * S_tb + T_s * S_ts) / (S_tb + S_ts)
+
+    T_z0 <- (T_rs * S_tb + T_s * S_ts) / (S_tb + S_ts)
   
   # Temperature ar local height
-  T_z0 + (T_rs - T_z0) * log(z / z0s + 1) / log(zrs / z0s + 1)
+
+    T_z0 + (T_rs - T_z0) * log(z / z0s + 1) / log(zrs / z0s + 1)
 
 }
 
@@ -324,41 +340,43 @@ wind_speed_profile_segment <- function (u_r,
             length(zr) == 3, 
             length(z0) == 3)
   
-  # order roughness and segment heights so that z1>z2>z0 
+  k <- von_karman_constant()
+
+  # order roughness and segment heights so that z1 > z2 > z0 
+
   zr.ord <- order(zr, decreasing = TRUE)
-  zr <- zr[zr.ord]
-  z0 <- z0[zr.ord]
-  u_r <- u_r[zr.ord]
+  zr    <- zr[zr.ord]
+  z0    <- z0[zr.ord]
+  u_r   <- u_r[zr.ord]
   
   # friction velocity
-  u_star <- 0.4 * u_r / log(zr / z0 + 1) #0.4 is von Karman constant
+
+  u_star <- k * u_r / log(zr / z0 + 1) 
   
   # estimate u_Zloc  
-  if(z <= zr[3]) {
+
+  if (z <= zr[3]) {
     
     us_star <- u_star[3]
-    z0s <- z0[3]
-    zrs <- zr[3]
+    z0s     <- z0[3]
+    zrs     <- zr[3]
     
-  }
-  
-  if(z > zr[3] & z < zr[2]) {
+  } else if (z > zr[3] & z < zr[2]) {
     
     us_star <- u_star[2]
-    z0s <- z0[2]
-    zrs <- zr[2]
+    z0s     <- z0[2]
+    zrs     <- zr[2]
     
-  }
-  
-  if(z >= zr[2]) {
+  } else if (z >= zr[2]) {
     
     us_star <- u_star[1]
-    z0s <- z0[1]
-    zrs <- zr[1]
-    
+    z0s     <- z0[1]
+    zrs     <- zr[1]
+       
   }
   
   #estimate windspeed
-  .5 * us_star * log(z / z0s + 1)
+
+    0.5 * us_star * log(z / z0s + 1)
 
 }

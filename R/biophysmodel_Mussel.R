@@ -71,10 +71,8 @@ Tb_mussel <- function (l,
             cl <= 1, 
             group %in% c("aggregated", "solitary", "solitary_valve"))
   
-  # conversion to kelvin
-
-    T_a <- T_a + 273.15   
-    T_g <- T_g + 273.15   
+  T_a <- celsius_to_kelvin(T_a)
+  T_g <- celsius_to_kelvin(T_g)
 
   # total mussel shell surface area (m^2)
 
@@ -84,19 +82,12 @@ Tb_mussel <- function (l,
   
     m <- 191 * l^3.53  
 
-  # conversion to radians
-
-    psi <- psi * pi / 180  
+  psi <- degree_to_radian(psi)
   
   # constants
 
-    # stefan-boltzmann constant (W m^-2 K^-4)
-
-      sigma <- 5.67 * 10^-8  
-
-    # latent heat of vaporization of water (J/kg)
- 
-      lambda <- 2.48                   
+    sigma <- stefan_boltzmann_constant()  
+    lambda <- latent_heat_vaporization_h2o()                   
   
   #  Short-wave solar flux  
 
@@ -235,9 +226,9 @@ Tb_mussel <- function (l,
 
   # T_b*mflux*c <- Q_rad,sol +- Q_rad,sky +- Q_rad,ground +- Q_conduction +- Qconvection -Qevaporation
   
-  T_b <- (k1 * (A_sol * S_p + A_d * S_d) + k2 * A_radSky * k3 * T_a^4 + k4 * A_radGround * T_g^4 + k5 * A_cond * T_g + 
-           hc * A_conv * T_a - lambda * mflux) / (k2 * A_radSky * T_a^3 + k4 * A_radGround * T_g^3 + k5 * A_cond + 
-                                                    hc * A_conv + mflux * specific_heat_h2o())
+  T_b <- (k1 * (A_sol * S_p + A_d * S_d) + k2 * A_radSky * k3 * T_a^4 + k4 * A_radGround * T_g^4 + k5 * A_cond * T_g + hc * A_conv * T_a - lambda * mflux) / 
+         (k2 * A_radSky * T_a^3 + k4 * A_radGround * T_g^3 + k5 * A_cond + hc * A_conv + mflux * specific_heat_h2o())
   
-  T_b - 273.15
+  kelvin_to_celsius(T_b)
+
 }
