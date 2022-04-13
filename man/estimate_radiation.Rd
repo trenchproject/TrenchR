@@ -24,11 +24,11 @@ estimate_radiation(doy, psi, tau, elev, rho = 0.7)
 Estimate direct, diffuse, and reflected components of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}) using the model in \insertCite{Campbell1998;textual}{TrenchR}.
 }
 \examples{
-  estimate_radiation(doy = 112, 
-                     psi = 1, 
-                     tau = 0.6, 
+  estimate_radiation(doy  = 112, 
+                     psi  = 1, 
+                     tau  = 0.6, 
                      elev = 1500, 
-                     rho = 0.7)
+                     rho  = 0.7)
 
 }
 \references{

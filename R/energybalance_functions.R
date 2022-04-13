@@ -38,13 +38,13 @@ Qconduction_animal <- function (T_g,
                                 A,
                                 proportion) {
 
-  stopifnot(T_g > 200, 
-            T_g < 400, 
-            T_b > 200, 
-            T_b < 400, 
-            d >= 0, 
-            K > 0, 
-            A > 0, 
+  stopifnot(T_g        >  200, 
+            T_g        <  400, 
+            T_b        >  200, 
+            T_b        <  400, 
+            d          >= 0, 
+            K          >  0, 
+            A          >  0, 
             proportion >= 0, 
             proportion <= 1)
 
@@ -100,20 +100,20 @@ Qconduction_substrate <- function (T_g,
                                    A,
                                    proportion) {
 
-  stopifnot(T_g > 200, 
-            T_g < 400, 
-            T_b > 200, 
-            T_b < 400, 
-            D >= 0, 
-            K_g > 0, 
-            A > 0, 
+  stopifnot(T_g        >  200, 
+            T_g        <  400, 
+            T_b        >  200, 
+            T_b        <  400, 
+            D          >= 0, 
+            K_g        >  0, 
+            A          >  0, 
             proportion >= 0, 
             proportion <= 1)
 
 
   A_contact <- A * proportion
 
-  #Thermal conductance between animal and substrate
+  # Thermal conductance between animal and substrate
   H_g <- 2.0 * K_g / D
 
   # Conduction,  m^2 * W K^-1 m^-1 * K / m
@@ -162,15 +162,15 @@ Qconvection <- function (T_a,
                          H_L         = 10.45,
                          ef          = 1.23) {
 
-  stopifnot(T_a > 200, 
-            T_a < 400, 
-            T_b > 200, 
-            T_b < 400, 
-            H_L > 0, 
-            A > 0, 
+  stopifnot(T_a        >  200, 
+            T_a        <  400, 
+            T_b        >  200, 
+            T_b        <  400, 
+            H_L        >  0, 
+            A          >  0, 
             proportion >= 0, 
             proportion <= 1, 
-            ef >= 1)
+            ef         >= 1)
 
   # Calculate skin area exposed to air
   A_air <- A * proportion
@@ -218,10 +218,11 @@ heat_transfer_coefficient <- function (V,
 
   taxa <- c("sphere", "cylinder", "frog", "lizard_surface", "lizard_elevated", "flyinginsect", "spider")
 
-  stopifnot(V >= 0, 
-            D >= 0, 
-            K >= 0, 
+  stopifnot(V  >= 0, 
+            D  >= 0, 
+            K  >= 0, 
             nu >= 0, 
+            length(taxon) == 1,
             taxon %in% taxa)
 
   # Dimensionless constant (Cl)
@@ -278,10 +279,11 @@ heat_transfer_coefficient_approximation <- function (V,
 
   taxa <- c("sphere", "frog", "lizard", "flyinginsect", "spider")
 
-  stopifnot(V >= 0, 
-            D >= 0, 
-            K >= 0, 
+  stopifnot(V  >= 0, 
+            D  >= 0, 
+            K  >= 0, 
             nu >= 0, 
+            length(taxon) == 1,
             taxon %in% taxa)
 
   # Dimensionless constant (Cl)
@@ -329,6 +331,7 @@ heat_transfer_coefficient_simple <- function(V,
 
   stopifnot(V >= 0, 
             D >= 0,
+            length(type) == 1,
             type %in% c("Spotila", "Gates"))
 
   if(type == "Spotila") {
@@ -394,15 +397,15 @@ Qradiation_absorbed <- function (a = 0.9,
                                  S_ref = NA,
                                  a_s   = NA) {
 
-  stopifnot(a >= 0, 
-            a <= 1, 
-            A > 0, 
+  stopifnot(a       >= 0, 
+            a       <= 1, 
+            A       >  0, 
             psa_dir >= 0, 
             psa_dir <= 1, 
             psa_ref >= 0, 
             psa_ref <= 1, 
-            S_dir > 0, 
-            S_dif > 0)
+            S_dir   >  0, 
+            S_dif   >  0)
 
   #Calculate S_ref if not provided
   if(is.na(S_ref)) {
@@ -424,7 +427,7 @@ Qradiation_absorbed <- function (a = 0.9,
 
 #' @title Calculate Emitted Thermal Radiation
 #'
-#' @description estimate thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
+#' @description Estimate thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
 #'
 #' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.
 #'
@@ -472,17 +475,17 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 
   stopifnot(epsilon >= 0, 
             epsilon <= 1, 
-            A > 0, 
+            A       >  0, 
             psa_dir >= 0, 
             psa_dir <= 1, 
             psa_ref >= 0, 
             psa_ref <= 1, 
-            T_b > 200, 
-            T_b < 400, 
-            T_g > 200, 
-            T_g < 400, 
-            T_a > 200, 
-            T_a < 400, 
+            T_b     >  200, 
+            T_b     <  400, 
+            T_g     >  200, 
+            T_g     <  400, 
+            T_a     >  200, 
+            T_a     <  400, 
             is.logical(enclosed))
 
   # Stefan-Boltzmann constant
@@ -561,19 +564,25 @@ Qevaporation <- function (A,
                           H     = NA,
                           r_i   = NA) {
 
-  stopifnot(A > 0, 
+  stopifnot(A   > 0, 
             T_b > 200, 
             T_b < 400, 
+            length(taxon) == 1,
             taxon %in% c("lizard", "amphibian_wetskin", "amphibian"))
 
   if(taxon %in% c("amphibian_wetskin", "amphibian")) {
 
-    stopifnot(rho_s > 0, rho_a > 0, h >= 0, h <= 1, H > 0, r_i > 0)
+    stopifnot(rho_s >  0,
+              rho_a >  0, 
+              h     >= 0, 
+              h     <= 1, 
+              H     >  0, 
+              r_i   >  0)
 
   }
 
   # Porter et al. 1973 in Gates Biophysical ecology
-  if(taxon == "lizard") {
+  if (taxon == "lizard") {
     if(T_b < 293) {
 
       E_kg <- 0.27
@@ -706,6 +715,7 @@ Qmetabolism_from_mass <- function(m,
                                   taxon = "reptile") {
 
   stopifnot(m > 0, 
+            length(taxon) == 1,
             taxon %in% c("reptile", "bird", "mammal"))
 
   # FMR in W, M is mass in grams
@@ -765,9 +775,10 @@ Qmetabolism_from_mass_temp <- function (m,
                                         T_b,
                                         taxon) {
 
-  stopifnot(m > 0, 
+  stopifnot(m   > 0, 
             T_b > 200, 
             T_b < 400, 
+            length(taxon) == 1,
             taxon %in% c("bird", "mammal", "reptile", "amphibian", "invertebrate"))
 
   if (taxon %in% c("bird", "mammal")) {
@@ -803,7 +814,7 @@ Qmetabolism_from_mass_temp <- function (m,
 #'
 #' @description Calculate actual vapor pressure from dewpoint temperature based on \insertCite{Stull2000,Riddell2018;textual}{TrenchR}.
 #'
-#' @param Tdewpoint \code{numeric} dewpoint temperature (C).
+#' @param T_dewpoint \code{numeric} dewpoint temperature (C).
 #'
 #' @return \code{numeric} actual vapor pressure (kPa).
 #'
@@ -817,11 +828,11 @@ Qmetabolism_from_mass_temp <- function (m,
 #' @author Eric Riddell
 #'
 #' @examples
-#'   actual_vapor_pressure(Tdewpoint = 20)
+#'   actual_vapor_pressure(T_dewpoint = 20)
 #'
-actual_vapor_pressure <- function (Tdewpoint) {
+actual_vapor_pressure <- function (T_dewpoint) {
 
-  0.611 * (2.71828182845904^(((1.0 / 273.0) - (1.0 / (Tdewpoint + 273.15))) * 5422.9939))
+  0.611 * (2.71828182845904^(((1.0 / 273.0) - (1.0 / celsius_to_kelvin(T_dewpoint))) * 5422.9939))
 
 }
 
@@ -902,12 +913,12 @@ boundary_layer_resistance <- function (T_a,
                                        D,
                                        u = NA) {
 
-  stopifnot(T_a > 200, 
-            T_a < 400, 
-            e_s > 0, 
-            e_a > 0, 
+  stopifnot(T_a  > 200, 
+            T_a  < 400, 
+            e_s  > 0, 
+            e_a  > 0, 
             elev > 0, 
-            D > 0)
+            D    > 0)
 
   if(e_s < e_a) {
 
@@ -1012,13 +1023,13 @@ Tb_salamander_humid <- function (r_i,
                                  Qabs,
                                  epsilon = 0.96) {
 
-  stopifnot(r_i > 0, 
-            r_b > 0, 
-            D > 0, 
-            elev > 0, 
-            e_s > 0, 
-            e_a > 0, 
-            epsilon > 0.5, 
+  stopifnot(r_i     >  0, 
+            r_b     >  0, 
+            D       >  0, 
+            elev    >  0, 
+            e_s     >  0, 
+            e_a     >  0, 
+            epsilon >  0.5, 
             epsilon <= 1)
 
   if(e_s < e_a) {
@@ -1083,8 +1094,8 @@ Qthermal_radiation_absorbed <- function (T_a,
 
   stopifnot(epsilon_ground >= 0, 
             epsilon_ground <= 1, 
-            a_longwave >= 0, 
-            a_longwave <= 1)
+            a_longwave     >= 0, 
+            a_longwave     <= 1)
 
   # Stefan-Boltzmann constant
   sigma <- stefan_boltzmann_constant()
@@ -1105,9 +1116,9 @@ Qthermal_radiation_absorbed <- function (T_a,
 #'
 #' @description Estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal; adapted from \insertCite{Campbell1998;textual}{TrenchR} \insertCite{Riddell2018}{TrenchR}.
 #'
-#' @param Tg_max \code{numeric} daily maximum soil surface temperature (C).
+#' @param T_g_max \code{numeric} daily maximum soil surface temperature (C).
 #'
-#' @param Tg_min \code{numeric} daily minimum soil surface temperature (C).
+#' @param T_g_min \code{numeric} daily minimum soil surface temperature (C).
 #'
 #' @param hour \code{numeric} hour of the day.
 #'
@@ -1125,22 +1136,24 @@ Qthermal_radiation_absorbed <- function (T_a,
 #' @author Eric Riddell
 #'
 #' @examples
-#'   Tsoil(Tg_max = 30,
-#'         Tg_min = 15,
-#'         hour   = 12,
-#'         depth  = 5)
+#'   Tsoil(T_g_max = 30,
+#'         T_g_min = 15,
+#'         hour    = 12,
+#'         depth   = 5)
 #'
-Tsoil <- function (Tg_max,
-                   Tg_min,
+Tsoil <- function (T_g_max,
+                   T_g_min,
                    hour,
                    depth) {
 
-  stopifnot(Tg_max > Tg_min, 
-            depth >= 0)
+  stopifnot(T_g_max > T_g_min, 
+            hour   >= 0,
+            hour   <= 24,
+            depth  >= 0)
 
   offset <- ifelse(hour %in% c(0, 1, 2, 3), -13, 11)
 
-  ((Tg_max + Tg_min) / 2.0) + ((Tg_max - Tg_min) / 2.0) * (2.71**(-depth / 5.238)) * sin((3.14 / 12.) * (hour - offset) - depth / 5.238)
+  ((T_g_max + T_g_min) / 2.0) + ((T_g_max - T_g_min) / 2.0) * (2.71^(-depth / 5.238)) * sin((3.14 / 12.) * (hour - offset) - depth / 5.238)
 
 }
 
@@ -1174,8 +1187,8 @@ Nusselt_number <- function(H_L,
                            K) {
 
   stopifnot(H_L > 0, 
-            D > 0, 
-            K > 0)
+            D   > 0, 
+            K   > 0)
 
   H_L * D / K #eq 9.24
 
@@ -1211,8 +1224,8 @@ Prandtl_number <- function (c_p,
                             K) {
 
   stopifnot(c_p > 0, 
-            mu > 0, 
-            K > 0)
+            mu  > 0, 
+            K   > 0)
 
   c_p * mu / K #eq 9.26
 
@@ -1247,8 +1260,8 @@ Reynolds_number <- function(u,
                             D,
                             nu) {
 
-  stopifnot(D >= 0, 
-            u >= 0, 
+  stopifnot(D  >= 0, 
+            u  >= 0, 
             nu >= 0)
 
   u * D / nu #eq 9.25
@@ -1260,9 +1273,9 @@ Reynolds_number <- function(u,
 #'
 #' @description Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force \insertCite{Campbell1998}{TrenchR}.
 #'
-#' @param Ta \code{numeric} Air temperature (C).
+#' @param T_a \code{numeric} Air temperature (C).
 #'
-#' @param Tg \code{numeric} ground (surface) temperature (C).
+#' @param T_g \code{numeric} ground (surface) temperature (C).
 #'
 #' @param D \code{numeric} characteristic dimension (e.g., body diameter) (meters).
 #'
@@ -1278,23 +1291,23 @@ Reynolds_number <- function(u,
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   Grashof_number(Ta = 30,
-#'                  Tg = 35,
+#'   Grashof_number(T_a = 30,
+#'                  T_g = 35,
 #'                  D  = 0.001,
 #'                  nu = 1.2)
 #'
-Grashof_number <- function (Ta,
-                            Tg,
+Grashof_number <- function (T_a,
+                            T_g,
                             D,
                             nu) {
 
-  stopifnot(D >= 0, 
+  stopifnot(D  >= 0, 
             nu >= 0)
 
   # constant
   gravity <- 9.8 # meters per second
 
-  gravity * D^3 * abs(Tg - Ta) / (Ta * nu^2)
+  gravity * D^3 * abs(T_g - T_a) / (T_a * nu^2)
 
 }
 
@@ -1303,9 +1316,9 @@ Grashof_number <- function (Ta,
 #'
 #' @description Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity \insertCite{Gates1980}{TrenchR}. Ratio of a buoyant force times an inertial force to the square of a viscous force.
 #'
-#' @param Ta \code{numeric} Air temperature (C).
+#' @param T_a \code{numeric} Air temperature (C).
 #'
-#' @param Tg \code{numeric} Ground (surface) temperature (C).
+#' @param T_g \code{numeric} Ground (surface) temperature (C).
 #'
 #' @param beta \code{numeric} coefficient of volumetric thermal expansion, \code{beta} = 3.67 x \ifelse{html}{\out{10<sup>-3</sup> C<sup>-1</sup>}}{\eqn{10^-3 C^-1}{ASCII}}  in air and 41.9 x \ifelse{html}{\out{10<sup>-4</sup> C<sup>-1</sup>}}{\eqn{10^-4 C^-1}{ASCII}} in water.
 #'
@@ -1323,25 +1336,25 @@ Grashof_number <- function (Ta,
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   Grashof_number_Gates(Ta   = 30,
-#'                        Tg   = 35,
+#'   Grashof_number_Gates(T_a   = 30,
+#'                        T_g   = 35,
 #'                        beta = 0.00367,
 #'                        D    = 0.001,
 #'                        nu   = 1.2)
 #'
-Grashof_number_Gates <- function (Ta,
-                                  Tg,
+Grashof_number_Gates <- function (T_a,
+                                  T_g,
                                   beta,
                                   D,
                                   nu) {
 
-  stopifnot(beta > 0, 
-            D >= 0, 
-            nu > 0)
+  stopifnot(beta >  0, 
+            D    >= 0, 
+            nu   >  0)
 
-  gravity <- 9.8 # m/s
+  gravity <- 9.8 
 
-  gravity * beta * D^3 * abs(Tg - Ta) / nu^2
+  gravity * beta * D^3 * abs(T_g - T_a) / nu^2
 
 }
 
@@ -1371,7 +1384,8 @@ Nusselt_from_Reynolds <- function (Re,
                                    taxon = "cylinder") {
 
   taxa <- c("sphere", "cylinder", "frog", "lizard_traverse_to_air_flow", "lizard_parallel_to_air_flow", "lizard_surface", "lizard_elevated", "flyinginsect", "spider")
-  stopifnot(taxon %in% taxa)
+  stopifnot(length(taxon) == 1,
+            taxon %in% taxa)
 
   # Dimensionless constant (Cl)
   Cls <- c(0.37, 0.615, 0.258, 0.35, 0.1, 1.36, 1.91, 0.0749, 0.47)

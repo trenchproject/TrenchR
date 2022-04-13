@@ -61,14 +61,18 @@ Tb_mussel <- function (l,
                        evap  = FALSE, 
                        group = "solitary") {
   
-  stopifnot(l > 0, 
-            h > 0, 
-            u >= 0, 
+  stopifnot(l   >  0, 
+            h   >  0, 
+            u   >= 0, 
+            S   >= 0, 
             psi >= 0, 
             psi <= 90, 
+            cl  >= 0, 
+            cl  <= 1, 
+            k_d >= 0, 
+            k_d <= 1, 
             is.logical(evap), 
-            cl >= 0, 
-            cl <= 1, 
+            length(group) == 1,
             group %in% c("aggregated", "solitary", "solitary_valve"))
   
   T_a <- celsius_to_kelvin(T_a)

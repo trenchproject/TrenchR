@@ -9,11 +9,11 @@ Tb_Fei(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact)
 \arguments{
 \item{T_a}{\code{numeric} air temperature at lizard height in K.}
 
-\item{T_g}{\code{numeric}surface temperature in K.}
+\item{T_g}{\code{numeric} surface temperature in K.}
 
-\item{H}{\code{numeric} total (direct + diffuse) solar radiation flux in W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}.}
+\item{H}{\code{numeric} total (direct + diffuse) solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m-^2}{ASCII}}.}
 
-\item{lw}{\code{numeric} downward flux of near-infrared radiation (W / \ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
+\item{lw}{\code{numeric} downward flux of near-infrared radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m-^2}{ASCII}}).}
 
 \item{shade}{\code{numeric} proportion of shade.}
 

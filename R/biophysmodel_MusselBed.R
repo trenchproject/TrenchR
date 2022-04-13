@@ -46,12 +46,18 @@ Tbed_mussel <- function(l,
                         evap = FALSE, 
                         cl   = NA) {
   
-  stopifnot(l >= 0,
-            S >= 0, 
+  stopifnot(l   >= 0,
+            S   >= 0, 
             k_d >= 0, 
             k_d <= 1, 
-            u > 0, 
+            u   >  0, 
             is.logical(evap))
+
+  if (!is.na(cl)) {
+
+    stopifnot(cl  >= 0, 
+              cl  <= 1)
+  }
   
   T_a <- celsius_to_kelvin(T_a)
   

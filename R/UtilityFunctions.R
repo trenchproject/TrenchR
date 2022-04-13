@@ -27,7 +27,7 @@ day_of_year <- function (day,
   
 }
 
-#' @title Calculate Solar Declination in Radians
+#' @title Solar Declination in Radians
 #' 
 #' @description Calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year \insertCite{Campbell1998}{TrenchR}.
 #' 
@@ -82,8 +82,8 @@ daylength <- function(lat,
   
   stopifnot(lat >= -90, 
             lat <= 90, 
-            doy > 0, 
-            doy < 367)
+            doy >  0, 
+            doy <  367)
   
   lat_rad <- degrees_to_radians(lat)
   DecAng <- dec_angle(doy)
@@ -123,8 +123,8 @@ solar_noon <- function (lon,
   
   stopifnot(lon >= -180, 
             lon <= 180, 
-            doy > 0, 
-            doy < 367)
+            doy >  0, 
+            doy <  367)
   
   # Calculates the time of solar noon for each day using longitude correction (LC), equation of time (ET), and a conversion (f)
   f <- (279.575 + 0.9856 * doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
@@ -188,12 +188,12 @@ zenith_angle <- function (doy,
                           hour, 
                           offset = NA) {
 
-  stopifnot(doy > 0, 
-            doy < 367, 
-            lat >= -90, 
-            lat <= 90, 
-            lon >= -180, 
-            lon <= 180, 
+  stopifnot(doy  >  0, 
+            doy  <  367, 
+            lat  >= -90, 
+            lat  <= 90, 
+            lon  >= -180, 
+            lon  <= 180, 
             hour >= 0, 
             hour <= 24)
   
@@ -264,12 +264,12 @@ azimuth_angle <- function (doy,
                            hour, 
                            offset = NA) {
   
-  stopifnot(doy > 0, 
-            doy < 367, 
-            lat >= -90, 
-            lat <= 90, 
-            lon >= -180, 
-            lon <= 180, 
+  stopifnot(doy  >  0, 
+            doy  <  367, 
+            lat  >= -90, 
+            lat  <= 90, 
+            lon  >= -180, 
+            lon  <= 180, 
             hour >= 0, 
             hour <= 24)
   

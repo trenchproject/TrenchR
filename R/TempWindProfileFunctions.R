@@ -22,7 +22,8 @@
 surface_roughness <- function (u_r, 
                                zr) {
  
- stopifnot(zr > 0)
+ stopifnot(zr  >  0,
+           u_r >= 0)
   
  mod1 <- lm(log(zr) ~ u_r)
  d <- exp(as.numeric(mod1$coefficients[1])) # Zero Plane displacement:height at which the wind speed is zero
@@ -78,9 +79,9 @@ wind_speed_profile_neutral <- function (u_r,
                                         z) {
 
   stopifnot(u_r >= 0, 
-            zr >= 0, 
-            z0 >= 0, 
-            z >= 0)
+            zr  >= 0, 
+            z0  >= 0, 
+            z   >= 0)
   
   u_r * log(z / z0 + 1) / log(zr / z0 + 1)
 
@@ -125,7 +126,7 @@ air_temp_profile_neutral <- function (T_r,
 
   stopifnot(zr >= 0, 
             z0 >= 0, 
-            z >= 0)
+            z  >= 0)
   
   (T_r - T_s) * log(z / z0 + 1) / log(zr / z0 + 1) + T_s 
 
@@ -172,9 +173,9 @@ air_temp_profile <- function (T_r,
                               T_s) {
   
   stopifnot(u_r >= 0, 
-            zr >= 0, 
-            z0 >= 0, 
-            z >= 0)
+            zr  >= 0, 
+            z0  >= 0, 
+            z   >= 0)
   
   k <- von_karman_constant()
 
@@ -241,7 +242,10 @@ air_temp_profile_segment <- function (T_r,
                                       z, 
                                       T_s){
   
-  stopifnot(z >= 0)
+  stopifnot(u_r >= 0, 
+            zr  >= 0, 
+            z0  >= 0, 
+            z   >= 0)
   
   # order roughness and segment heights 
 
@@ -335,10 +339,13 @@ wind_speed_profile_segment <- function (u_r,
                                         z0, 
                                         z) {
   
-  stopifnot(z >= 0, 
+  stopifnot(u_r >= 0, 
+            zr  >= 0, 
+            z0  >= 0, 
+            z   >= 0,
             length(u_r) == 3, 
-            length(zr) == 3, 
-            length(z0) == 3)
+            length(zr)  == 3, 
+            length(z0)  == 3)
   
   k <- von_karman_constant()
 

@@ -43,18 +43,18 @@ diurnal_temp_variation_sineexp <- function (T_max,
                                             gamma = 2.2) {
 
   stopifnot(T_max >= T_min, 
-            t_s >= 0, 
-            t_s <= 24,
-            t_r >= 0, 
-            t_r <= 24,
-            t >= 0, 
-            t <= 24, 
+            t_s   >= 0, 
+            t_s   <= 24,
+            t_r   >= 0, 
+            t_r   <= 24,
+            t     >= 0, 
+            t     <= 24, 
             alpha >= 0, 
             alpha <= 24,
             gamma >= 0, 
             gamma <= 24,
-            beta >= 0, 
-            beta <= 24)
+            beta  >= 0, 
+            beta  <= 24)
    
   # daylength
 
@@ -122,8 +122,8 @@ diurnal_temp_variation_sine <- function (T_max,
                                          T_min, 
                                          t) {
   
-  stopifnot(t >= 0, 
-            t <= 24, 
+  stopifnot(t     >= 0, 
+            t     <= 24, 
             T_max >= T_min)
   
   W <- pi / 12
@@ -172,12 +172,12 @@ diurnal_temp_variation_sinesqrt <- function (t,
                                              T_min, 
                                              T_minp) {
  
-  stopifnot(t >= 0, 
-            t <= 24, 
-            t_r >= 0, 
-            t_r <= 24, 
-            t_s >= 0, 
-            t_s <= 24, 
+  stopifnot(t     >= 0, 
+            t     <= 24, 
+            t_r   >= 0, 
+            t_r   <= 24, 
+            t_s   >= 0, 
+            t_s   <= 24, 
             T_max >= T_min)
   
   # Time estimates

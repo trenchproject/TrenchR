@@ -69,27 +69,25 @@ Tb_grasshopper <- function (T_a,
                             abs       = 0.7, 
                             r_g       = 0.3) {
 
-  stopifnot(u >= 0, 
-            H >= 0, 
-            K_t >= 0, 
-            K_t <= 1, 
-            psi >= -90, 
-            psi <= 90, 
-            l >= 0, 
+  stopifnot(u         >= 0, 
+            H         >= 0, 
+            K_t       >= 0, 
+            K_t       <= 1, 
+            psi       >= -90, 
+            psi       <= 90, 
+            l         >= 0, 
             Acondfact >= 0, 
             Acondfact <= 1, 
-            z >= 0, 
-            abs >= 0, 
-            abs <= 1, 
-            r_g >= 0, 
-            r_g <= 1)
+            z         >= 0, 
+            abs       >= 0, 
+            abs       <= 1, 
+            r_g       >= 0, 
+            r_g       <= 1)
     
   # conversions
 
-    # temperatures C to K
-
-      T_a <- celsius_to_kelvin(T_a)
-      T_g <- celsius_to_kelvin(T_g)
+    T_a <- celsius_to_kelvin(T_a)
+    T_g <- celsius_to_kelvin(T_g)
 
   # Butterfly Parameters
 
