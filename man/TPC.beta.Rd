@@ -2,7 +2,7 @@
 % Please edit documentation in R/TPCfunctions.R
 \name{TPC.beta}
 \alias{TPC.beta}
-\title{Construct a thermal performance curve based on a beta function.}
+\title{Construct a Beta FunctionThermal Performance Curve}
 \usage{
 TPC.beta(T, shift = -1, breadth = 0.1, aran = 0, tolerance = 43, skew = 0.7)
 }
@@ -13,7 +13,7 @@ TPC.beta(T, shift = -1, breadth = 0.1, aran = 0, tolerance = 43, skew = 0.7)
 
 \item{breadth}{\code{numeric} breadth of the thermal performance curve.}
 
-\item{aran}{\code{numeric} scale performance value. if aran=0, no scaling; if aran=1, include a thermodynamic effect on mean performance.}
+\item{aran}{\code{numeric} scale performance value. If \code{0}, no scaling; if \code{1}, include a thermodynamic effect on mean performance.}
 
 \item{tolerance}{\code{numeric} maximal breath (C) of the thermal performance curve.}
 
@@ -26,7 +26,12 @@ TPC.beta(T, shift = -1, breadth = 0.1, aran = 0, tolerance = 43, skew = 0.7)
 Construct a thermal performance curve based on a beta function \insertCite{Asbury2010}{TrenchR}.
 }
 \examples{
-TPC.beta(T = 0:60, shift = -1, breadth = 0.1, aran = 0, tolerance = 43, skew = 0.7)
+  TPC.beta(T         = 0:60, 
+           shift     = -1, 
+           breadth   = 0.1, 
+           aran      = 0, 
+           tolerance = 43, 
+           skew      = 0.7)
 
 }
 \references{

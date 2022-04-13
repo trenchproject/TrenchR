@@ -155,8 +155,6 @@ soil_temperature_integrand <- function (x,
 #' 
 #' @param c_a \code{numeric} specific heat of air (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}).
 #' 
-#' @param k \code{numeric} von Karman's constant.
-#' 
 #' @param V_inst \code{numeric} instantaneous wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
 #' @param z_r \code{numeric} reference height (m).
@@ -167,7 +165,7 @@ soil_temperature_integrand <- function (x,
 #' 
 #' @param T_s \code{numeric} initial soil surface temperature (C). 
 #' 
-#' @return soil temperature function
+#' @return \code{numeric} soil temperature (C).
 #' 
 #' @family soil temperature functions
 #' 
@@ -182,7 +180,6 @@ soil_temperature_integrand <- function (x,
 #' soil_temperature_equation(L      = -10, 
 #'                           rho_a  = 1.177, 
 #'                           c_a    = 1006, 
-#'                           k      = 0.41, 
 #'                           V_inst = 0.3, 
 #'                           z_r    = 1.5, 
 #'                           z0     = 0.02, 
@@ -192,7 +189,6 @@ soil_temperature_integrand <- function (x,
 soil_temperature_equation <- function (L, 
                                        rho_a, 
                                        c_a, 
-                                       k, 
                                        V_inst, 
                                        z_r, 
                                        z0, 
@@ -201,13 +197,14 @@ soil_temperature_equation <- function (L,
   
   stopifnot(rho_a > 0, 
             c_a > 0, 
-            k > 0, 
             T_inst > 200, 
             T_inst < 400, 
             z_r > 0, 
             z0 > 0)
+
+  k <- von_karman_constant()
   
-  rho_a * c_a * k * (V_inst * k / log((exp((z_r + z0) / L) - 1) / (exp(z0 / L) - 1))) * (T_inst - T_s) / integrate(soil_temperature_integrand, lower = 0, upper=z_r / L, L, z0)$value - (V_inst * k / log((exp((z_r + z0) / L) - 1)/(exp(z0 / L) - 1)))^3 * T_inst * rho_a * c_a / (k * 9.81 * L)
+  rho_a * c_a * k * (V_inst * k / log((exp((z_r + z0) / L) - 1) / (exp(z0 / L) - 1))) * (T_inst - T_s) / integrate(soil_temperature_integrand, lower = 0, upper = z_r / L, L, z0)$value - (V_inst * k / log((exp((z_r + z0) / L) - 1)/(exp(z0 / L) - 1)))^3 * T_inst * rho_a * c_a / (k * 9.81 * L)
   
 }
 
@@ -494,8 +491,8 @@ soil_temperature <- function (z_r.intervals = 12,
   h <- 1 # relative humidity of air in the soil pores.
   
   rho_particle <- 2650 # average particle density of soil #kg/m^3
-  rho_quartz <- 2660 # density of quartz #kg/m^3 #Table 8.2 in Intro to Environmental Biophysics
-  rho_o <- 1300 # average density of organic matter in soil #kg/m^3
+  rho_quartz   <- 2660 # density of quartz #kg/m^3 #Table 8.2 in Intro to Environmental Biophysics
+  rho_o        <- 1300 # average density of organic matter in soil #kg/m^3
   
   # mineral fractions used here are from SCAN data at Nunn, CO
   f_clay <- 0.17277 
@@ -504,7 +501,7 @@ soil_temperature <- function (z_r.intervals = 12,
   fraction_other <- 1 - fraction_quartz # percentage of solid sand/silt that is minerals other than quartz
   
   # OrgC and the VanBemmelen factor are mainly useful when looking at data from SCAN (Soil Climate Analysis Network).
-  OrgC <- 0.0056 # organic carbon. this is a value available through SCAN or pedon soil reports. #.0117 corresponds to 2% organic matter.
+  OrgC        <- 0.0056 # organic carbon. this is a value available through SCAN or pedon soil reports. #.0117 corresponds to 2% organic matter.
   VanBemmelen <- 1.724 # VanBemmelen*OrgC is approximately the volume fraction of organic matter in soil. #The VanBemmelen factor is  based on the assumption that organic matter contains 58% organic C. Found information about this from the "Soil Survey Investigations Report No. 42".
   
   dz <- 0.6 / z_r.intervals # 60 cm/number of intervals #60cm= depth for which deep soil temp is measured

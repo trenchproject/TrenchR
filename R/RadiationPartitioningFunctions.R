@@ -10,7 +10,7 @@
 #' 
 #' @param sol.elev \code{numeric} the solar elevation angles (degrees). Needed only if method is \code{"Reindl-2"}. 
 #' 
-#' @return diffuse fraction
+#' @return \code{numeric} diffuse fraction.
 #' 
 #' @family microclimate functions
 #' 
@@ -164,14 +164,15 @@ proportion_diffuse_solar_radiation <- function (psi,
  
   if(psi <= 50) {
     
-    prop <- (5.67 * 10^-2 + 1.698 * 10^-5 * psi + 1.917 * 10^-6 * psi^2 + 1.028 * 10^-7 * psi^3) * (1 + 0.01 * (p_a - 86.1) + 0.12 * (A - 0.25))
+    prop <- (5.67 * 10^-2 + 1.698 * 10^-5 * psi + 1.917 * 10^-6 * psi^2 + 1.028 * 10^-7 * psi^3) * 
+            (1 + 0.01 * (p_a - 86.1) + 0.12 * (A - 0.25))
     
   }
   
   if(psi > 50) {
     
     prop <- (5.83819968 - 0.390636004 * psi + 9.79200778 * 10^-3 * psi^2 - 1.0786077 * 10^-4 * psi^3 + 4.42915464 * 10^-7 * psi^4) * 
-      (1 + 0.009 * (p_a - 86.1) + (0.8 - 0.015 * psi) * (A - 0.25))
+            (1 + 0.009 * (p_a - 86.1) + (0.8 - 0.015 * psi) * (A - 0.25))
      
   }
     

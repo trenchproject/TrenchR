@@ -4,16 +4,14 @@
 \alias{TPC}
 \title{Construct a Gaussian-Quadratic Thermal Performance Curve}
 \usage{
-TPC(T, Topt, CTmin, CTmax)
+TPC(T, T_opt, CT_min, CT_max)
 }
 \arguments{
 \item{T}{\code{numeric} vector of temperature range (C).}
 
+\item{CT_min, CT_max}{\code{numeric} critical thermal minimum and maximum(C), the lower and upper temperature limits for performance.}
+
 \item{Topt}{\code{numeric} thermal optima (C), the temperature at which peak performance occurs.}
-
-\item{CTmin}{\code{numeric} critical thermal minima (C), the lower temperature limit for performance.}
-
-\item{CTmax}{\code{numeric} critical thermal maxima (C), the upper temperature limit for performance.}
 }
 \value{
 performance
@@ -22,10 +20,10 @@ performance
 Constructs a thermal performance curve by combining as a Gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures \insertCite{Deutsch2008}{TrenchR}.
 }
 \examples{
-  TPC(T     = 0:60, 
-      Topt  = 30, 
-      CTmin = 10, 
-      CTmax = 40)
+  TPC(T      = 0:60, 
+      T_opt  = 30, 
+      CT_min = 10, 
+      CT_max = 40)
 
 }
 \references{

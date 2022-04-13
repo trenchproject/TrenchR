@@ -4,7 +4,7 @@
 \alias{soil_temperature_equation}
 \title{Core Function Called to Solve Equation for Soil Temperature}
 \usage{
-soil_temperature_equation(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s)
+soil_temperature_equation(L, rho_a, c_a, V_inst, z_r, z0, T_inst, T_s)
 }
 \arguments{
 \item{L}{\code{numeric} Monin-Obukhov length, a measure of the instability of heat flow (see \insertCite{Beckman1973;textual}{TrenchR}).}
@@ -12,8 +12,6 @@ soil_temperature_equation(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s)
 \item{rho_a}{\code{numeric} density of air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}).}
 
 \item{c_a}{\code{numeric} specific heat of air (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}).}
-
-\item{k}{\code{numeric} von Karman's constant.}
 
 \item{V_inst}{\code{numeric} instantaneous wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
@@ -26,7 +24,7 @@ soil_temperature_equation(L, rho_a, c_a, k, V_inst, z_r, z0, T_inst, T_s)
 \item{T_s}{\code{numeric} initial soil surface temperature (C).}
 }
 \value{
-soil temperature function
+\code{numeric} soil temperature (C).
 }
 \description{
 Function called by \code{\link{soil_temperature_function}} to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}.
@@ -35,7 +33,6 @@ Function called by \code{\link{soil_temperature_function}} to solve equation for
 soil_temperature_equation(L      = -10, 
                           rho_a  = 1.177, 
                           c_a    = 1006, 
-                          k      = 0.41, 
                           V_inst = 0.3, 
                           z_r    = 1.5, 
                           z0     = 0.02, 
