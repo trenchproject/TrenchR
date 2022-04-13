@@ -41,6 +41,7 @@ degree_days <- function (T_min,
                          method = "single.sine") {
   
   stopifnot(T_max >= T_min, 
+            length(method) == 1,
             method %in% c("single.sine", "double.sine", "single.triangulation", "double.triangulation"))
   
   # Amplitude

@@ -138,7 +138,7 @@ Tb_grasshopper <- function (T_a,
       Hdir <- Httl * (1-kd)
       Hdif <- Httl * kd
 
-      psi_r <- degree_to_radian(psi)
+      psi_r <- degrees_to_radians(psi)
 
     # Convection
 

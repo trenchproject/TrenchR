@@ -115,7 +115,7 @@ Tb_lizard <- function (T_a,
             F_g >= 0, 
             F_g <= 1)
   
-  psi <- degree_to_radian(psi) 
+  psi <- degrees_to_radians(psi) 
   
   # constants
 

@@ -82,7 +82,7 @@ Tb_mussel <- function (l,
   
     m <- 191 * l^3.53  
 
-  psi <- degree_to_radian(psi)
+  psi <- degrees_to_radians(psi)
   
   # constants
 

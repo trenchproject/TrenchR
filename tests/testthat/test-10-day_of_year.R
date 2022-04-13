@@ -1,4 +1,4 @@
-context("Utility Functions::Day of the year")
+context("Day of the year")
 test_that("day_of_year function works as expected", {
   # First day of the year
   dayofyear = day_of_year("2017-01-01", format= "%Y-%m-%d")

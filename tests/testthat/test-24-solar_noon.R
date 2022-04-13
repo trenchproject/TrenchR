@@ -1,4 +1,4 @@
-context("Utility Functions::Solar noon")
+context("Solar noon")
 test_that("solar_noon function works as expected", {
   # Vancouver - Solar noon in the month of June
   june10 = day_of_year("2017-06-10", format= "%Y-%m-%d")

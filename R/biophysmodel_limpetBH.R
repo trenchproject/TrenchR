@@ -76,8 +76,8 @@ Tb_limpetBH <- function (T_a,
     T_a <- celsius_to_kelvin(T_a)
     T_r <- celsius_to_kelvin(T_r)
 
-    s_aspect <- degree_to_radian(s_aspect)
-    s_slope  <- degree_to_radian(s_slope)
+    s_aspect <- degrees_to_radians(s_aspect)
+    s_slope  <- degrees_to_radians(s_slope)
     r <- l / 2
 
   # Calculations

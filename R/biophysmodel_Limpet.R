@@ -73,7 +73,7 @@ Tb_limpet <- function (T_a,
     T_a <- celsius_to_kelvin(T_a)
     T_r <- celsius_to_kelvin(T_r)
 
-    psi <- degree_to_radian(psi)
+    psi <- degrees_to_radians(psi)
     r   <- l / 2            
   
   # Calculations

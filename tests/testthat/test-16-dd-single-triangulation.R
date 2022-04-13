@@ -1,4 +1,4 @@
-context("Degree Days::Single Triangulation")
+context("Single Triangulation")
 test_that("degree day function-single-triangulation work", {
 #fpath <-   test_path("degree-days-single-triangle.csv")
  # singletriang <- read.csv(fpath)

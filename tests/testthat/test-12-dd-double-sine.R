@@ -1,4 +1,4 @@
-context("Degree Days::Double Sine")
+context("Double Sine")
 test_that("degree day function-double-sine work", {
   #fpath <- test_path("degree-days-double-sine.csv")
   #doublesine <- read.csv(fpath)  

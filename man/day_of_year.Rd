@@ -31,7 +31,7 @@ Other utility functions:
 \code{\link{azimuth_angle}()},
 \code{\link{daylength}()},
 \code{\link{dec_angle}()},
-\code{\link{degree_to_radian}()},
+\code{\link{degrees_to_radians}()},
 \code{\link{solar_noon}()},
 \code{\link{temperature conversions}},
 \code{\link{zenith_angle}()}

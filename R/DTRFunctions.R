@@ -56,7 +56,7 @@ diurnal_temp_variation_sineexp <- function (T_max,
             beta >= 0, 
             beta <= 24)
    
-  #daylength
+  # daylength
 
     l <- t_s - t_r 
   
@@ -105,7 +105,6 @@ diurnal_temp_variation_sineexp <- function (T_max,
 #' @param t \code{numeric} time for temperature estimate (hour).
 #' 
 #' @return \code{numeric} temperature (C) at a specified hour. 
-#' 
 #' 
 #' @family microclimate functions
 #' 

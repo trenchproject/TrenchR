@@ -1,4 +1,4 @@
-context("Utility Functions::Azimuth Angle")
+context("Azimuth Angle")
 test_that("azimuth_angle function works as expected", {
   # Vancouver - Approx Solar Noon expect 6.08
   june10 = day_of_year("2017-06-10", format= "%Y-%m-%d")
