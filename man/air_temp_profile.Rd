@@ -23,7 +23,7 @@ air_temp_profile(T_r, u_r, zr, z0, z, T_s)
 \code{numeric} temperature (C).
 }
 \description{
-estimate temperature (C) at a specified height (m). Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR \insertCite{Kearney2017}{TrenchR}.
+Estimate temperature (C) at a specified height (m). Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR \insertCite{Kearney2017}{TrenchR}.
 }
 \examples{
   air_temp_profile(T_r = 20,

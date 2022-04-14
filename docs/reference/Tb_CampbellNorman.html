@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K — Tb_CampbellNorman • TrenchR</title>
+<title>Body Temperature (Operative Environmental Temperature) of an Ectotherm in K — Tb_CampbellNorman • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K — Tb_CampbellNorman" />
-<meta property="og:description" content="Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K" />
+<meta property="og:title" content="Body Temperature (Operative Environmental Temperature) of an Ectotherm in K — Tb_CampbellNorman" />
+<meta property="og:description" content="Predict body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Campbell and Norman (1998)
+ and Mitchell (1976)
+." />
 
 
 
@@ -132,13 +134,15 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K</h1>
+    <h1>Body Temperature (Operative Environmental Temperature) of an Ectotherm in K</h1>
     <small class="dont-index">Source: <a href='https://github.com/trenchproject/TrenchR/blob/master/R/OperativeTemperatureFunctions.R'><code>R/OperativeTemperatureFunctions.R</code></a></small>
     <div class="hidden name"><code>Tb_CampbellNorman.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K</p>
+    <p>Predict body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Campbell and Norman (1998)
+ and Mitchell (1976)
+.</p>
     </div>
 
     <pre class="usage"><span class='fu'>Tb_CampbellNorman</span><span class='op'>(</span>
@@ -201,10 +205,7 @@
     <p><code>numeric</code> operative environmental temperature, <code>T_e</code> (K).</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in Campbell and Norman (1998)
- and Mitchell (1976)
-.</p>
-<p>Boundary conductance uses a factor of 1.4 to account for increased convection (Mitchell 1976)
+    <p>Boundary conductance uses a factor of 1.4 to account for increased convection (Mitchell 1976)
 , assumes forced conduction.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 

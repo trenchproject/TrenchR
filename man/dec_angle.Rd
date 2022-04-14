@@ -7,7 +7,7 @@
 dec_angle(doy)
 }
 \arguments{
-\item{doy}{\code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)}
+\item{doy}{\code{numeric} day of year (1-366). This can be obtained from standard date via \code{\link{day_of_year}}.}
 }
 \value{
 \code{numeric} declination angle (radians).
@@ -29,7 +29,6 @@ Other utility functions:
 \code{\link{azimuth_angle}()},
 \code{\link{day_of_year}()},
 \code{\link{daylength}()},
-\code{\link{degrees_to_radians}()},
 \code{\link{solar_noon}()},
 \code{\link{temperature conversions}},
 \code{\link{zenith_angle}()}

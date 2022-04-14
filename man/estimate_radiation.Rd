@@ -18,7 +18,7 @@ estimate_radiation(doy, psi, tau, elev, rho = 0.7)
 \item{rho}{\code{numeric} albedo as a proportion (0-1).}
 }
 \value{
-\code{numeric} radiation components - direct, diffused and reflected (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).
+\code{numeric} radiation components - direct, diffused and reflected (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 }
 \description{
 Estimate direct, diffuse, and reflected components of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}) using the model in \insertCite{Campbell1998;textual}{TrenchR}.

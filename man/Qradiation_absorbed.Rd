@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Qradiation_absorbed}
 \alias{Qradiation_absorbed}
-\title{Calculate Absorbed Solar and Thermal Radiation}
+\title{Absorbed Solar and Thermal Radiation}
 \usage{
 Qradiation_absorbed(
   a = 0.9,
@@ -36,7 +36,7 @@ Qradiation_absorbed(
 \code{numeric} solar radiation absorbed (W)
 }
 \description{
-estimate solar and thermal radiation (W) absorbed by the surface of an animal. Follows \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
+Estimate solar and thermal radiation (W) absorbed by the surface of an animal. Follows \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
 }
 \examples{
   Qradiation_absorbed(a       = 0.9,

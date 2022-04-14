@@ -18,7 +18,7 @@ Qthermal_radiation_absorbed(
 
 \item{epsilon_ground}{\code{numeric} emissivity (proportion) for more soil types \insertCite{Campbell1998}{TrenchR}.}
 
-\item{a_longwave}{\code{numeric} absorptance (proportion) of organism to longwave radiation (\insertCite{Bartlett1967}{TrenchR} and Buckley 2008).}
+\item{a_longwave}{\code{numeric} absorptance (proportion) of organism to longwave radiation \insertCite{Bartlett1967,Buckley2008}{TrenchR}.}
 }
 \value{
 \code{numeric} thermal radiation absorbed (W).

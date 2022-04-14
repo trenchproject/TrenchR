@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Qemitted_thermal_radiation}
 \alias{Qemitted_thermal_radiation}
-\title{Calculate Emitted Thermal Radiation}
+\title{Emitted Thermal Radiation}
 \usage{
 Qemitted_thermal_radiation(
   epsilon = 0.96,
@@ -36,7 +36,7 @@ Qemitted_thermal_radiation(
 \code{numeric} emitted thermal radiation, \code{Qemit} (W).
 }
 \description{
-Estimate thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
+Estimate thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980,Spotila1992}{TrenchR}.
 }
 \examples{
   Qemitted_thermal_radiation(epsilon  = 0.96,

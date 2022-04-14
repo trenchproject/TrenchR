@@ -19,6 +19,9 @@
     <loc>https://trenchproject.github.io/TrenchR//reference/air_temp_profile_segment.html</loc>
   </url>
   <url>
+    <loc>https://trenchproject.github.io/TrenchR//reference/angle-conversions.html</loc>
+  </url>
+  <url>
     <loc>https://trenchproject.github.io/TrenchR//reference/azimuth_angle.html</loc>
   </url>
   <url>
@@ -35,9 +38,6 @@
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR//reference/dec_angle.html</loc>
-  </url>
-  <url>
-    <loc>https://trenchproject.github.io/TrenchR//reference/degrees_to_radians.html</loc>
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR//reference/degree_days.html</loc>
@@ -143,9 +143,6 @@
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR//reference/Qthermal_radiation_absorbed.html</loc>
-  </url>
-  <url>
-    <loc>https://trenchproject.github.io/TrenchR//reference/radians_to_degrees.html</loc>
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR//reference/Reynolds_number.html</loc>

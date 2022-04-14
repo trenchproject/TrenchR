@@ -25,7 +25,7 @@
 #'     \cr 
 #'     \cr \eqn{a = 0.00099} 
 #'     \cr \eqn{b = 0.56}
-#'   \item Insects \insertCite{Lactin1997}{TrenchR}.
+#'   \item Insects \insertCite{Lactin1997}{TrenchR}:
 #'     \cr 
 #'     \cr \eqn{a = 0.0013} 
 #'     \cr \eqn{b = 0.8}
@@ -96,27 +96,27 @@ surface_area_from_mass <- function (m,
 #' 
 #' @details All models follow (\ifelse{html}{\out{m = a l<sup>b</sup>}}{\eqn{m = a * l^b}{ASCII}}) with mass in grams and length in meters.
 #'  \itemize{
-#'   \item Lizards: \insertCite{Meiri2010;textual}{TrenchR}.
+#'   \item Lizards: \insertCite{Meiri2010;textual}{TrenchR}:
 #'     \cr 
 #'     \cr \eqn{a = 16368.17} 
 #'     \cr \eqn{b = 3.022}
-#'   \item Salamanders: \insertCite{Pough1980;textual}{TrenchR}.
+#'   \item Salamanders: \insertCite{Pough1980;textual}{TrenchR}:
 #'     \cr 
 #'     \cr \eqn{a = 13654.4} 
 #'     \cr \eqn{b = 2.94}
-#'   \item Frogs: \insertCite{Pough1980;textual}{TrenchR}.
+#'   \item Frogs: \insertCite{Pough1980;textual}{TrenchR}:
 #'     \cr 
 #'     \cr \eqn{a = 181197.1} 
 #'     \cr \eqn{b = 3.24}
-#'   \item Snakes: \insertCite{Pough1980;textual}{TrenchR}.
+#'   \item Snakes: \insertCite{Pough1980;textual}{TrenchR}:
 #'     \cr 
 #'     \cr \eqn{a = 723.6756} 
 #'     \cr \eqn{b = 3.02}
-#'   \item Turtles: \insertCite{Pough1980;textual}{TrenchR}.
+#'   \item Turtles: \insertCite{Pough1980;textual}{TrenchR}:
 #'     \cr 
 #'     \cr \eqn{a = 93554.48} 
 #'     \cr \eqn{b = 2.69}
-#'   \item Insects: \insertCite{Sample1993;textual}{TrenchR}.
+#'   \item Insects: \insertCite{Sample1993;textual}{TrenchR}:
 #'     \cr 
 #'     \cr \eqn{a = 806.0827} 
 #'     \cr \eqn{b = 2.494}
@@ -199,13 +199,13 @@ mass_from_length <- function (l,
 #' 
 #' @details All models follow (\ifelse{html}{\out{SA = Ka V<sup>2/3</sup>}}{\eqn{SA = Ka * V^{2/3}}{ASCII}}) with mass in grams and length in meters.
 #'  \itemize{
-#'   \item Lizards: \insertCite{Norris1965;textual}{TrenchR}.
+#'   \item Lizards: \insertCite{Norris1965;textual}{TrenchR}:
 #'     \cr 
 #'     \cr \eqn{Ka = 11.0} 
-#'   \item Frogs: \insertCite{Tracy1972;textual}{TrenchR}.
+#'   \item Frogs: \insertCite{Tracy1972;textual}{TrenchR}:
 #'     \cr 
 #'     \cr \eqn{Ka = 11.0} 
-#'   \item Sphere: \insertCite{Mitchell1976;textual}{TrenchR}.
+#'   \item Sphere: \insertCite{Mitchell1976;textual}{TrenchR}:
 #'     \cr 
 #'     \cr \eqn{Ka = 4.83} 
 #'  }   
@@ -263,9 +263,9 @@ surface_area_from_volume <- function (V,
 #' @family allometric functions
 #' 
 #' @details Relationships come from \itemize{
-#'   \item Lizards: \insertCite{Norris1965;textual}{TrenchR}.
-#'   \item Frogs: \insertCite{Tracy1972;textual}{TrenchR}.
-#'   \item Sphere: \insertCite{Mitchell1976;textual}{TrenchR}.
+#'   \item Lizards: \insertCite{Norris1965;textual}{TrenchR}
+#'   \item Frogs: \insertCite{Tracy1972;textual}{TrenchR}
+#'   \item Sphere: \insertCite{Mitchell1976;textual}{TrenchR}
 #'  }
 #'
 #' @references
@@ -353,11 +353,11 @@ surface_area_from_length <- function (l) {
 
 #' @title Organism Silhouette Area
 #' 
-#' @description Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of zenith angle.
+#' @description Estimate the projected (silhouette) area as a portion of the surface area of the organism as a function of zenith angle.
 #' 
 #' @param z \code{numeric} zenith angle in degrees between \code{0} and \code{360}.
 #' 
-#' @param taxon \code{character} Organism taxon. Current choices are \code{"lizard"}, \code{"frog"}, and \code{"grasshopper"}.
+#' @param taxon \code{character} organism name. Current choices are \code{"lizard"}, \code{"frog"}, and \code{"grasshopper"}.
 #' 
 #' @param raz \code{numeric} relative solar azimuth angle (in degrees). Required if \code{taxon = "lizard"}. This is the horizontal angle of the sun relative to the head and frontal plane of the lizard and options currently include \code{0} (in front), \code{90} (to side), and \code{180} (behind) degrees.
 #' 
@@ -368,9 +368,9 @@ surface_area_from_length <- function (l) {
 #' @family allometric functions
 #' 
 #' @details Relationships come from \itemize{
-#'   \item Lizards: \insertCite{Muth1977;textual}{TrenchR}.
-#'   \item Frogs: \insertCite{Tracy1976;textual}{TrenchR}.
-#'   \item Grasshoppers: \insertCite{Anderson1979;textual}{TrenchR}.
+#'   \item Lizards: \insertCite{Muth1977;textual}{TrenchR}
+#'   \item Frogs: \insertCite{Tracy1976;textual}{TrenchR}
+#'   \item Grasshoppers: \insertCite{Anderson1979;textual}{TrenchR}
 #'  }
 #'
 #' @references
@@ -476,7 +476,7 @@ proportion_silhouette_area <- function (z,
 
 #' @title Organism Silhouette Area using Shape Approximations
 #' 
-#' @description Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid, using Figure 11.6 in \insertCite{Campbell1998;textual}{TrenchR}. 
+#' @description Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimate the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid, using Figure 11.6 in \insertCite{Campbell1998;textual}{TrenchR}. 
 #' 
 #' @param shape \code{character} Which shape to approximate an organism. Shapes are assumed to be prolate or have the longest axis parallel with the ground. Current choices are \code{"spheroid"}, \code{"cylinder flat ends"}, and \code{"cylinder hemisphere ends"}.
 #' 

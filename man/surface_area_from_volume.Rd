@@ -20,13 +20,13 @@ Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) fro
 \details{
 All models follow (\ifelse{html}{\out{SA = Ka V<sup>2/3</sup>}}{\eqn{SA = Ka * V^{2/3}}{ASCII}}) with mass in grams and length in meters.
  \itemize{
-  \item Lizards: \insertCite{Norris1965;textual}{TrenchR}.
+  \item Lizards: \insertCite{Norris1965;textual}{TrenchR}:
     \cr 
     \cr \eqn{Ka = 11.0} 
-  \item Frogs: \insertCite{Tracy1972;textual}{TrenchR}.
+  \item Frogs: \insertCite{Tracy1972;textual}{TrenchR}:
     \cr 
     \cr \eqn{Ka = 11.0} 
-  \item Sphere: \insertCite{Mitchell1976;textual}{TrenchR}.
+  \item Sphere: \insertCite{Mitchell1976;textual}{TrenchR}:
     \cr 
     \cr \eqn{Ka = 4.83} 
  }

@@ -19,7 +19,7 @@ partition_solar_radiation(method, kt, lat = NA, sol.elev = NA)
 \code{numeric} diffuse fraction.
 }
 \description{
-Partition solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in \insertCite{Wong2001;textual}{TrenchR}.
+Partition solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in \insertCite{Wong2001;textual}{TrenchR}.
 }
 \examples{
   partition_solar_radiation(method   = "Erbs", 

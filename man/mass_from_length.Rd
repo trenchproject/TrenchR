@@ -22,27 +22,27 @@ Estimate mass (g) from length (m) for a variety of taxa.
 \details{
 All models follow (\ifelse{html}{\out{m = a l<sup>b</sup>}}{\eqn{m = a * l^b}{ASCII}}) with mass in grams and length in meters.
  \itemize{
-  \item Lizards: \insertCite{Meiri2010;textual}{TrenchR}.
+  \item Lizards: \insertCite{Meiri2010;textual}{TrenchR}:
     \cr 
     \cr \eqn{a = 16368.17} 
     \cr \eqn{b = 3.022}
-  \item Salamanders: \insertCite{Pough1980;textual}{TrenchR}.
+  \item Salamanders: \insertCite{Pough1980;textual}{TrenchR}:
     \cr 
     \cr \eqn{a = 13654.4} 
     \cr \eqn{b = 2.94}
-  \item Frogs: \insertCite{Pough1980;textual}{TrenchR}.
+  \item Frogs: \insertCite{Pough1980;textual}{TrenchR}:
     \cr 
     \cr \eqn{a = 181197.1} 
     \cr \eqn{b = 3.24}
-  \item Snakes: \insertCite{Pough1980;textual}{TrenchR}.
+  \item Snakes: \insertCite{Pough1980;textual}{TrenchR}:
     \cr 
     \cr \eqn{a = 723.6756} 
     \cr \eqn{b = 3.02}
-  \item Turtles: \insertCite{Pough1980;textual}{TrenchR}.
+  \item Turtles: \insertCite{Pough1980;textual}{TrenchR}:
     \cr 
     \cr \eqn{a = 93554.48} 
     \cr \eqn{b = 2.69}
-  \item Insects: \insertCite{Sample1993;textual}{TrenchR}.
+  \item Insects: \insertCite{Sample1993;textual}{TrenchR}:
     \cr 
     \cr \eqn{a = 806.0827} 
     \cr \eqn{b = 2.494}

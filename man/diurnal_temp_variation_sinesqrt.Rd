@@ -19,10 +19,7 @@ diurnal_temp_variation_sinesqrt(t, t_r, t_s, T_max, T_min, T_minp)
 \code{numeric} temperature (C) at a specified hour.
 }
 \description{
-estimate temperature for a specified hour using sine and square root functions \insertCite{Cesaraccio2001}{TrenchR}.
-}
-\details{
-Estimates temperature across hours using sine and square root functions
+Estimate temperature for a specified hour using sine and square root functions \insertCite{Cesaraccio2001}{TrenchR}.
 }
 \examples{
   diurnal_temp_variation_sinesqrt(t      = 8, 

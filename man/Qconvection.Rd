@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Qconvection}
 \alias{Qconvection}
-\title{Calculate Convection}
+\title{Organismal Convection}
 \usage{
 Qconvection(T_a, T_b, A, proportion, H_L = 10.45, ef = 1.23)
 }

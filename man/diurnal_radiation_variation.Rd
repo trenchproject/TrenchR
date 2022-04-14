@@ -7,21 +7,21 @@
 diurnal_radiation_variation(doy, solrad, hour, lon, lat)
 }
 \arguments{
-\item{doy}{\code{numeric} is the day of year.}
+\item{doy}{\code{numeric} the day of year.}
 
-\item{solrad}{\code{numeric} is solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per day.}
+\item{solrad}{\code{numeric} solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}).}
 
-\item{hour}{\code{numeric} is hour (0-24).}
+\item{hour}{\code{numeric} hour (0-24).}
 
 \item{lon}{\code{numeric} longitude (degrees).}
 
 \item{lat}{\code{numeric} latitude (degrees).}
 }
 \value{
-\code{numeric} hourly solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).
+\code{numeric} hourly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 }
 \description{
-Estimate hourly solar radiation ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per hour) as a function of daily global solar radiation (in (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per day). Based on \insertCite{Tham2010;textual}{TrenchR} and \insertCite{AlRawahi2011;textual}{TrenchR}.
+Estimate hourly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> hr<sup>-1</sup>}}{\eqn{W m^-2 hr^-1}{ASCII}}) as a function of daily global solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}). Based on \insertCite{Tham2010;textual}{TrenchR} and \insertCite{AlRawahi2011;textual}{TrenchR}.
 }
 \examples{
 diurnal_radiation_variation(doy    = 112, 

@@ -15,7 +15,7 @@ external_resistance_to_water_vapor_transfer(H, rhocp = 12000)
 \code{numeric} external resistance to water vapor transfer (\ifelse{html}{\out{s m<sup>-1</sup>}}{\eqn{s m^-1}{ASCII}}).
 }
 \description{
-estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport \insertCite{Spotila1992}{TrenchR}
+Estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport \insertCite{Spotila1992}{TrenchR}
 }
 \examples{
   external_resistance_to_water_vapor_transfer(H = 20)

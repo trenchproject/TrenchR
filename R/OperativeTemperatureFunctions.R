@@ -1,6 +1,6 @@
-#' @title Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
+#' @title Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
 #' 
-#' @details Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
+#' @description Predict body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
 #' 
 #' @param T_a \code{numeric} air temperature (K).
 #' 
@@ -97,7 +97,7 @@ Tb_CampbellNorman <- function (T_a,
 
 #' @title Net Energy Exchange Between an Animal and the Environment
 #' 
-#' @details Estimates net energy exchange between an animal and the environment in W. Follows \insertCite{Gates1980;textual}{TrenchR} and others.
+#' @description Estimate net energy exchange between an animal and the environment in W. Follows \insertCite{Gates1980;textual}{TrenchR} and others.
 #' 
 #' @param Qabs \code{numeric} solar radiation absorbed (W).
 #' 
@@ -169,7 +169,7 @@ Qnet_Gates <- function (Qabs,
 #' 
 #' @param H_L \code{numeric} Convective heat transfer coefficient (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}).
 #' 
-#' @param ef \code{numeric} enhancement factor used to adjust H_L to field conditions (using h_L approximation from \insertCite{Mitchell1976;textual}{TrenchR}).  Approximated as 1.23 by default, but see \insertCite{Mitchell1976;textual}{TrenchR} for relationship.
+#' @param ef \code{numeric} enhancement factor used to adjust H_L to field conditions using h_L approximation from \insertCite{Mitchell1976;textual}{TrenchR}.  Approximated as 1.23 by default, but see \insertCite{Mitchell1976;textual}{TrenchR} for relationship.
 #' 
 #' @param K \code{numeric} Thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), K = 0.5 \ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}} for naked skin, K = 0.15 \ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}for insect cuticle \insertCite{Galushko2005;textual}{TrenchR}; conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step. 
 #' 
@@ -303,7 +303,7 @@ Tb_Gates <- function (A,
 #' 
 #' @param Qabs \code{numeric} Solar radiation absorbed (W).
 #' 
-#' @param V \code{numeric} Wind speed (m/2).
+#' @param V \code{numeric} Wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
 #' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.
 #' 

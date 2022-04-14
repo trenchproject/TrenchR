@@ -4,7 +4,7 @@
 #'
 #' @param day \code{character} numerical date in standard format (e.g. \code{"2017-01-02"}, \code{"01-02"}, \code{"01/02/2017"} etc). 
 #'
-#' @param format \code{character} date format following \code{\link[base]{POSIXlt}} conventions. Default value = \code{"\%Y-\%m-\%d"}. 
+#' @param format \code{character} date format following \code{\link[base]{as.POSIXlt}} conventions. Default value = \code{"\%Y-\%m-\%d"}. 
 #'
 #' @return \code{numeric} Julian day number, 1-366 (e.g. 1 for January 1st).
 #' 
@@ -31,7 +31,7 @@ day_of_year <- function (day,
 #' 
 #' @description Calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)
+#' @param doy \code{numeric} day of year (1-366). This can be obtained from standard date via \code{\link{day_of_year}}.
 #' 
 #' @return \code{numeric} declination angle (radians).
 #' 
@@ -62,7 +62,7 @@ dec_angle <- function (doy) {
 #'
 #' @param lat \code{numeric} latitude (decimal degrees).
 #' 
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)
+#' @param doy \code{numeric} day of year (1-366). This can be obtained from standard date via \code{\link{day_of_year}}.
 #' 
 #' @return \code{numeric} day length (hours).
 #'
@@ -100,7 +100,7 @@ daylength <- function(lat,
 #'
 #' @param lon \code{numeric} longitude (decimal degrees)
 #'
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)
+#' @param doy \code{numeric} day of year (1-366). This can be obtained from standard date via \code{\link{day_of_year}}.
 #'
 #' @param offset \code{numeric} number of hours to add to UTC to get local time (improves accuracy but not always necessary). Defaults to NA.
 #'
@@ -155,9 +155,9 @@ solar_noon <- function (lon,
 
 #' @title Zenith Angle
 #' 
-#' @description  calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical \insertCite{Campbell1998}{TrenchR}.
+#' @description Calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)
+#' @param doy \code{numeric} day of year (1-366). This can be obtained from standard date via \code{\link{day_of_year}}.
 #' 
 #' @param lat \code{numeric} latitude (decimal degrees).
 #' 
@@ -230,9 +230,9 @@ zenith_angle <- function (doy,
 
 #' @title Azimuth Angle
 #'
-#' @description  calculate the azimuth angle, the angle (degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east \insertCite{Campbell1998}{TrenchR}.
+#' @description Calculate the azimuth angle, the angle (degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east \insertCite{Campbell1998}{TrenchR}.
 #' 
-#' @param doy \code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)
+#' @param doy \code{numeric} day of year (1-366). This can be obtained from standard date via \code{\link{day_of_year}}.
 #' 
 #' @param lat \code{numeric} latitude (decimal degrees).
 #' 
@@ -428,18 +428,23 @@ fahrenheit_to_celsius <- function (T) {
 
 
 
-#' @title Convert Angle in Radians to Degrees
+#' @title Convert Angles Between Radians and Degrees
 #' 
-#' @description Convert angle in radians to degrees.
+#' @description Convert angle in radians to degrees or degrees to radians.
 #' 
 #' @param rad \code{numeric} angle (radians).
 #' 
-#' @return \code{numeric} angle (degrees).
+#' @param deg \code{numeric} angle (degrees).
 #' 
+#' @return \code{numeric} angle (degrees or radians).
+#' 
+#' @name angle conversions
+#'
 #' @export
 #' 
 #' @examples
 #'   radians_to_degrees(0.831)
+#'   degrees_to_radians(47.608)
 #' 
 radians_to_degrees <- function (rad) {
   
@@ -447,20 +452,9 @@ radians_to_degrees <- function (rad) {
   
 }
 
-#' @title Convert Angle in Degrees to Radians
-#'
-#' @description Convert angle in degrees to radians.
-#' 
-#' @param deg \code{numeric} angle (degrees).
-#' 
-#' @family utility functions
-#' 
-#' @return \code{numeric} angle (radians).
+#' @name angle conversions
 #' 
 #' @export
-#' 
-#' @examples
-#'   degrees_to_radians(47.608)
 #' 
 degrees_to_radians <- function (deg) {
   

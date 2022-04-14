@@ -17,7 +17,7 @@ Tb_Gates2(A, D, T_g, T_a, Qabs, V, epsilon)
 
 \item{Qabs}{\code{numeric} Solar radiation absorbed (W).}
 
-\item{V}{\code{numeric} Wind speed (m/2).}
+\item{V}{\code{numeric} Wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
 \item{epsilon}{\code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.}
 }

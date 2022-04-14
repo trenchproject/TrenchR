@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Qmetabolism_from_mass_temp}
 \alias{Qmetabolism_from_mass_temp}
-\title{Calculate Basal (Resting) Metabolism as a Function of Mass and Body Temperature}
+\title{Basal (Resting) Metabolism as a Function of Mass and Body Temperature}
 \usage{
 Qmetabolism_from_mass_temp(m, T_b, taxon)
 }

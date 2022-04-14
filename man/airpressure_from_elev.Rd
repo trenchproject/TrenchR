@@ -28,7 +28,6 @@ Other utility functions:
 \code{\link{day_of_year}()},
 \code{\link{daylength}()},
 \code{\link{dec_angle}()},
-\code{\link{degrees_to_radians}()},
 \code{\link{solar_noon}()},
 \code{\link{temperature conversions}},
 \code{\link{zenith_angle}()}
