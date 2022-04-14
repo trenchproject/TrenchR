@@ -5,7 +5,7 @@ Allometries
 Allometry
 BodyTemp
 Boguslaw
-Boltzman
+Boltzmann
 CBM
 CMB
 CMD
@@ -46,6 +46,7 @@ Obukhov
 Olyphant
 Organismal
 Orgill
+Param
 Prandtl
 Psychrometric
 Qabs
@@ -65,6 +66,7 @@ SOLRAD
 Sceloporus
 Spartina
 Spotila
+Stefan
 Swinbank
 TPC
 TPCs
@@ -99,6 +101,7 @@ bT
 bbemit
 bce
 blackbody
+boltzmann
 bp
 cA
 cd
@@ -159,6 +162,7 @@ io
 ipm
 irradiance
 irrorata
+karman
 kPa
 kT
 ka
@@ -179,6 +183,7 @@ microclimates
 mol
 noint
 organismal
+param
 patmos
 prolate
 psa
@@ -199,6 +204,7 @@ skyT
 solrad
 sref
 standardly
+stefan
 sublayer
 surr
 svl

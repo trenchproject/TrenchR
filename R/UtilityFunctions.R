@@ -368,13 +368,13 @@ airpressure_from_elev <- function (elev) {
 
 #' @title Convert Among Temperature Scales 
 #' 
-#' @description Convert temperatures among Celsisus, Fahrenheit, and Kelvin \insertCite{Blischak}{TrenchR}.
+#' @description Convert temperatures among Celsius, Fahrenheit, and Kelvin \insertCite{Blischak}{TrenchR}.
 #' 
-#' @param T \code{numeric} temperature (Celsisus, Fahrenheit, or Kelvin).
+#' @param T \code{numeric} temperature (Celsius, Fahrenheit, or Kelvin).
 #' 
 #' @family utility functions
 #' 
-#' @return \code{numeric} temperature (Celsisus, Fahrenheit, or Kelvin).
+#' @return \code{numeric} temperature (Celsius, Fahrenheit, or Kelvin).
 #' 
 #' @export
 #' 
