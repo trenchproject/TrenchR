@@ -30,7 +30,7 @@ The package encompasses simple functions that can be combined to estimate enviro
 * Campbell GS and Norman JM. An introduction to environmental biophysics.
 
 ### Package Vignettes
-We introduce each function in categorically grouped tutorials.  A good place to start is the Allometry and conversions tutorial, which provides tools for preparing data such as estimating additional dimensions of organisms from measured dimensions. 
+We introduce functions in categorically grouped tutorials.  A good place to start is the Allometry and conversions tutorial, which provides tools for preparing data such as estimating additional dimensions of organisms from measured dimensions. 
 
 ```r
 vignette("AllometryAndConversionsTutorial.Rmd", package = "TrenchR")

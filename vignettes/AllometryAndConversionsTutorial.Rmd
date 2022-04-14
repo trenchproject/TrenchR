@@ -74,12 +74,14 @@ Finally, we provide a function for estimating surface area from length by approx
 The allometric functions are available in R as follows:
 
 ```{r, fig.height = 4, fig.width = 6}
+par(mar = c(5, 5, 2, 2))
 plot(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001), taxon = "lizard"), type = "l", xlab = "length (m)", ylab = expression(volume ~ (m^{3})))
 points(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001), taxon = "frog"), type = "l", lty = "dashed")
 points(seq(0.01, 0.05, 0.001), volume_from_length(seq(0.01, 0.05, 0.001), taxon = "sphere"), type = "l", lty = "dotted")
 ```
 
 ```{r, fig.height = 4, fig.width = 6}
+par(mar = c(5, 5, 2, 2))
 plot(seq(0.01, 0.05, 0.001), surface_area_from_length(seq(0.01, 0.05, 0.001)), type = "l", xlab = "length (m)", ylab = expression("surface area" ~ (m^{2})))
 ```
 
@@ -90,6 +92,7 @@ We additionally offer a function (`proportion_silhouette_area_shapes()`) to esti
 The R functions are parameterized as follows:
 
 ```{r, fig.height = 4, fig.width = 6}
+par(mar = c(5, 5, 2, 2))
 plot(seq(0, 90, 10), proportion_silhouette_area(z = seq(0, 90, 10), taxon =  "frog"), type = "l", xlab = "zenith angle (°)", ylab = "proportion silhouette area", ylim=range(0,0.5))
 points(seq(0, 90, 10), proportion_silhouette_area(z = seq(0, 90, 10), taxon =  "lizard", raz=0, posture="prostrate"), type = "l", lty = "dashed")
 points(seq(0, 90, 10), proportion_silhouette_area(z = seq(0, 90, 10), taxon =  "lizard", raz=0, posture="elevated"), type = "l", lty = "dotted")
