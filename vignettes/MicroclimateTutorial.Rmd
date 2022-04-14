@@ -37,7 +37,8 @@ We provide a function `day_of_year()` that facilitates translating a date into a
 
 ```{r}
 
-  day_of_year("2017-04-22", format= "%Y-%m-%d")
+day_of_year(day    = "2017-04-22", 
+            format = "%Y-%m-%d")
 
 ```
 
@@ -48,9 +49,13 @@ $$ \delta= \arcsin[0.39795 \cos(0.21631+ 2 \arctan (0.967 \tan [0.0086(-186+J)])
 
 The solar declination angle can be calculated in TrenchR as follows:
 
-```{r}
+```{r, fig.height = 4, fig.width = 6}
 
-  plot(1:365, dec_angle(1:365), type="l", xlab="day of year", ylab="declination angle (radian)")
+plot(x    = 1:365, 
+     y    = dec_angle(1:365), 
+     type = "l", 
+     xlab = "day of year", 
+     ylab = "declination angle (radian)")
 
 ```
 
@@ -63,47 +68,119 @@ We illustrate how zenith angles (&deg;) change over the day throughout the year 
 
 ```{r, fig.height=4, fig.width=6}
 
-  zenith <- unlist(lapply(1:24, FUN = zenith_angle, doy = 200, lat = 47.61, lon = -122.33))
-  plot(1:24, zenith, type = "l", ylab = "zenith angle (°)", xlab = "hour")
+zenith <- zenith_angle(hour = 1:24, 
+                       doy  = 200, 
+                       lat  = 47.61, 
+                       lon  = -122.33)
+plot(x    = 1:24, 
+     y    = zenith, 
+     type = "l", 
+     ylab = "zenith angle (°)", 
+     xlab = "hour")
 
-  zenith <- unlist(lapply(1:24, FUN = zenith_angle, doy = 1, lat = 47.61, lon = -122.33))
-  points(1:24, zenith, type = "l", lty = "dotted")
+zenith <- zenith_angle(hour = 1:24, 
+                       doy  = 1, 
+                       lat  = 47.61, 
+                       lon  = -122.33)  
+points(x    = 1:24, 
+       y    = zenith, 
+       type = "l", 
+       lty  = "dotted")
 
-  zenith <- unlist(lapply(1:24, FUN = zenith_angle, doy = 100, lat = 47.61, lon = -122.33))
-  points(1:24, zenith, type = "l", lty = "dotdash")
+zenith <- zenith_angle(hour = 1:24, 
+                       doy  = 100, 
+                       lat  = 47.61, 
+                       lon  = -122.33)
+points(x    = 1:24, 
+       y    = zenith, 
+       type = "l", 
+       lty  = "dotdash")
   
-  zenith <-  unlist(lapply(1:24, FUN = zenith_angle, doy = 300, lat = 47.61, lon = -122.33))
-  points(1:24, zenith, type = "l", lty = "dashed")
+zenith <- zenith_angle(hour = 1:24, 
+                       doy  = 300, 
+                       lat  = 47.61, 
+                       lon  = -122.33)
+points(x    = 1:24, 
+       y    = zenith, 
+       type = "l", 
+       lty  = "dashed")
 
-  legend("bottomleft", title = "day of year", legend = c(0, 100, 200, 300), lty = c("dotted", "dotdash", "solid", "dashed") )
+legend(x      = "bottomleft", 
+       title  = "day of year", 
+       legend = c(1, 100, 200, 300), 
+       lty    = c("dotted", "dotdash", "solid", "dashed"))
 
 ```
 
 We also examine how zenith angles (&deg;) at noon change over the course of the year for latitudes along the longitude of Seattle, WA USA:
 
 ```{r, fig.height=4, fig.width=6}
-zenith= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=60, lon=-122.33))
-plot(1:365, zenith, type="l", ylim=range(0,90), ylab="zenith angle (°)", xlab="day of year")
-zenith= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=40, lon=-122.33))
-points(1:365, zenith, type="l", lty="dotted")
-zenith= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=20, lon=-122.33))
-points(1:365, zenith, type="l", lty="dotdash")
-zenith= unlist(lapply(1:365, FUN=zenith_angle, hour=12, lat=0, lon=-122.33))
-points(1:365, zenith, type="l", lty="dashed")
+zenith <- zenith_angle(doy  = 1:365, 
+                       hour = 12, 
+                       lat  = 60, 
+                       lon  = -122.33)
+plot(x    = 1:365, 
+     y    = zenith, 
+     type = "l", 
+     ylim = range(0,90), 
+     ylab = "zenith angle (°)", 
+     xlab = "day of year")
+zenith <- zenith_angle(doy  = 1:365, 
+                       hour = 12, 
+                       lat  = 40, 
+                       lon  = -122.33)
+points(x    = 1:365, 
+       y    = zenith, 
+       type = "l", 
+       lty  = "dotted")
+zenith <- zenith_angle(doy  = 1:365, 
+                       hour = 12, 
+                       lat  = 20, 
+                       lon  = -122.33)
+points(x    = 1:365, 
+       y    = zenith, 
+       type = "l", 
+       lty  = "dotdash")
+zenith <- zenith_angle(doy  = 1:365, 
+                       hour = 12, 
+                       lat  = 0, 
+                       lon  = -122.33)
+points(x    = 1:365, 
+       y    = zenith, 
+       type = "l", 
+       lty  = "dashed")
 
-legend("top", title="latitude (°)", legend=c(0, 20, 40, 60), lty=c("dashed","dotdash","dotted","solid") )
+legend(x      = "top", 
+       title  = "latitude (°)", 
+       legend = c(0, 20, 40, 60), 
+       lty    = c("dashed", "dotdash", "dotted", "solid"))
 ```
 
 The time of solar noon (`solar_noon()`) can be estimated as $h_0= 12 - LC -ET$, where $LC$ in the longitude correction (+4 minutes for each degree east of the standard meridian and -4 minutes for each degree west of the standard meridian) and $ET$ is the equation of time. 
 The $ET$ is estimated as: $$ ET= \frac{-104.7\sin (f)+596.2\sin (2f)+4.3\sin (3f)-12.7\sin (4f)-429.3\cos (f)-2.0\cos (2f)+19.3\cos (3f)}{3600}, $$where $f=279.575 + 0.9856 J$, in degrees. The time of solar noon can be estimated across the year for several longitudes as follows:
 
 ```{r, fig.height=4, fig.width=6}
-plot(1:365, solar_noon(lon=150, doy=1:365), type="l", ylim=c(11.3,12.7), ylab="time of solar noon (hour)", xlab="day of year")
-points(1:365, solar_noon(lon=155, doy=1:365), type="l", lty="dotted")
-points(1:365, solar_noon(lon=145, doy=1:365), type="l", lty="dashed")
-abline(a=12,b=0)
+plot(x    = 1:365, 
+     y    = solar_noon(lon = 150, doy = 1:365), 
+     type = "l", 
+     ylim = c(11.3,12.7), 
+     ylab = "time of solar noon (hour)", 
+     xlab = "day of year")
+points(x    = 1:365, 
+       y    = solar_noon(lon = 155, doy = 1:365), 
+       type = "l", 
+       lty  = "dotted")
+points(x    = 1:365, 
+       y    = solar_noon(lon = 145, doy = 1:365), 
+       type = "l", 
+       lty  = "dashed")
+abline(a = 12,
+       b = 0)
 
-legend("topright", title="longitude (°)", legend=c(145, 150, 155), lty=c("dashed", "solid", "dotted") )
+legend(x      = "topright", 
+       title  = "longitude (°)", 
+       legend = c(145, 150, 155), 
+       lty    = c("dashed", "solid", "dotted"))
 ```
 
 The azimuth angle is the angle (in degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. 
@@ -117,27 +194,84 @@ TrenchR includes a function to estimate azimuth angle as follows:
 We first examine how azimuth angle varies across the day:
 
 ```{r, fig.height=4, fig.width=6}
-az= unlist(lapply(5:18, FUN=azimuth_angle, doy=173, lat=47.61, lon=-122.33))
-plot(5:18, az, type="l", xlab="hour", ylab="azimuth angle (°)")
-az= unlist(lapply(5:18, FUN=azimuth_angle, doy=356, lat=47.61, lon=-122.33))
-points(5:18, az, type="l",lty="dashed")
-az= unlist(lapply(5:18, FUN=azimuth_angle, doy=266, lat=47.61, lon=-122.33))
-points(5:18, az, type="l",lty="dotted")
-az= unlist(lapply(5:18, FUN=azimuth_angle, doy=228, lat=47.61, lon=-122.33))
-points(5:18, az, type="l",lty="dotdash")
-legend("top", title="day of year", legend=c(173, 228, 266, 356), lty=c("solid","dotdash","dotted","dashed") )
+az <- unlist(lapply(5:18, 
+                    FUN = azimuth_angle, 
+                    doy = 173, 
+                    lat = 47.61, 
+                    lon = -122.33))
+plot(x    = 5:18, 
+     y    = az, 
+     type = "l", 
+     xlab = "hour", 
+     ylab = "azimuth angle (°)")
+az <- unlist(lapply(5:18, 
+                    FUN = azimuth_angle, 
+                    doy = 356, 
+                    lat = 47.61, 
+                    lon = -122.33))
+points(x    = 5:18, 
+       y    = az, 
+       type = "l",
+       lty  = "dashed")
+az <- unlist(lapply(5:18, 
+                    FUN = azimuth_angle, 
+                    doy = 266, 
+                    lat = 47.61, 
+                    lon = -122.33))
+points(x    = 5:18, 
+       y    = az, 
+       type = "l",
+       lty  = "dotted")
+az <- unlist(lapply(5:18, 
+                    FUN = azimuth_angle, 
+                    doy = 228, 
+                    lat = 47.61, 
+                    lon = -122.33))
+points(x    = 5:18, 
+       y    = az, 
+       type = "l",
+       lty  = "dotdash")
+legend(x      = "top", 
+       title  = "day of year", 
+       legend = c(173, 228, 266, 356), 
+       lty    = c("solid", "dotdash", "dotted", "dashed"))
 ```
 
 We then examine how azimuth angle varies across the year:
 
 ```{r, fig.height=4, fig.width=6}
-az= unlist(lapply(1:365, FUN=azimuth_angle, hour=12, lat=47.61, lon=-122.33))
-plot(1:365, az, type="l", xlab="day of year", ylab="azimuth angle (°)", ylim=c(0,120))
-az= unlist(lapply(1:365, FUN=azimuth_angle, hour=9, lat=47.61, lon=-122.33))
-points(1:365, az, type="l", lty="dashed")
-az= unlist(lapply(1:365, FUN=azimuth_angle, hour=6, lat=47.61, lon=-122.33))
-points(1:365, az, type="l", lty="dotted")
-legend("topright", title="hour", legend=c(6, 9, 12), lty=c("dotted","dashed", "solid") )
+az <- unlist(lapply(1:365, 
+                    FUN = azimuth_angle, 
+                    hour = 12, 
+                    lat = 47.61, 
+                    lon = -122.33))
+plot(x    = 1:365, 
+     y    = az, 
+     type = "l", 
+     xlab = "hour", 
+     ylab = "azimuth angle (°)")
+az <- unlist(lapply(1:365, 
+                    FUN = azimuth_angle, 
+                    hour = 9, 
+                    lat = 47.61, 
+                    lon = -122.33))
+points(x    = 1:365, 
+       y    = az, 
+       type = "l",
+       lty  = "dashed")
+az <- unlist(lapply(1:365, 
+                    FUN = azimuth_angle, 
+                    hour = 6, 
+                    lat = 47.61, 
+                    lon = -122.33))
+points(x    = 1:365, 
+       y    = az, 
+       type = "l",
+       lty  = "dotted")
+legend(x      = "top", 
+       title  = "hour", 
+       legend = c(6, 9, 12), 
+       lty    = c("dotted", "dashed", "solid"))
 ```
 
 These sun angles can be used to solve for day length. 
@@ -148,10 +282,24 @@ $$ h_s= \cos^{-1}\left( \frac{\cos \psi-sin \phi \sin \delta}{\cos \phi \cos \de
 We examine how day length varies over the year for sites at several latitudes.
 
 ```{r, fig.height=4, fig.width=6}
-plot(1:365, daylength(lat=10, doy=1:365), type="l", ylim=c(8,22), xlab="day of year", ylab="day length (hour)")
-points(1:365, daylength(lat=35, doy=1:365), type="l", lty="dashed")
-points(1:365, daylength(lat=60, doy=1:365), type="l", lty="dotted")
-legend("topright", title="latitude (°)", legend=c(10, 35, 60), lty=c("solid","dashed","dotted") )
+plot(x    = 1:365,  
+     y    = daylength(lat = 10, doy = 1:365), 
+     type = "l", 
+     ylim = c(8, 22), 
+     xlab = "day of year",
+     ylab = "day length (hour)")
+points(x    = 1:365,  
+       y    = daylength(lat = 35, doy = 1:365),  
+       type = "l",  
+       lty  = "dashed")
+points(x    = 1:365, 
+       y    = daylength(lat = 60, doy = 1:365),  
+       type = "l",  
+       lty   = "dotted")
+legend(x      = "topright", 
+       title  = "latitude (°)", 
+       legend = c(10, 35, 60), 
+       lty    = c("solid", "dashed", "dotted"))
 ```
 
 ## Radiation components
@@ -168,8 +316,12 @@ The optical air mass number, $m_a$, is the ratio of slant path length through th
 The function `airpressure_from_elev()` estimates air pressure as $p_a (kPa)= 101.3 e ^{\frac{-E}{8200}}$, where $E$ is the elevation in meters above sea level. 
 TrenchR provides a function to estimate air pressure from elevation (m).
 
-```{r, fig.height=3, fig.width=5}
-plot(1:4000, airpressure_from_elev(1:4000), type="l", xlab="elevation (m)", ylab="air pressure (kPa)")
+```{r, fig.height = 4, fig.width = 6}
+plot(x    = 1:4000, 
+     y    = airpressure_from_elev(elev = 1:4000), 
+     type = "l", 
+     xlab = "elevation (m)", 
+     ylab = "air pressure (kPa)")
 ```
 
 Direct irradiance is a function of the distance a solar beam travels through the atmosphere; the transmittance of the atmosphere, $\tau$; and the incident flux density, $S_{p0}$: $S_p=S_{p0}\tau^{m_a}$. 
@@ -180,54 +332,138 @@ We estimate the direct, diffuse, and reflected components of solar radiation ($W
 We estimate how solar radiation components vary diurnally.
 
 ```{r, fig.height=4, fig.width=6}
-par(mar=c(5,5,3,2))
-zen= unlist(lapply(1:24, FUN=zenith_angle, doy=200, lat=47.61, lon=-122.33))
-zen= zen*2*pi/360
-rd= lapply(zen, FUN=estimate_radiation, doy=200, tau=0.6, elev=1500, rho=0.7)
-#unlist
-rd=matrix(unlist(rd), nrow=3, byrow=FALSE)
-plot(1:24, rd[1,], type="l", xlab = "hour", ylab = expression(radiation ~ (W/m^{2})), ylim=c(0,800))
-points(1:24, rd[2,], type="l", lty="dotted")
-points(1:24, rd[3,], type="l", lty="dashed")
-legend("topright", title="solar radiation flux", legend=c("direct", "diffuse", "reflected"), lty=c("solid","dotted","dashed") )
+par(mar=c(5, 5, 3, 2))
+
+zen <- unlist(lapply(1:24, 
+                     FUN = zenith_angle, 
+                     doy = 200, 
+                     lat = 47.61, 
+                     lon = -122.33))
+zen <- zen * 2 * pi / 360
+rd <- lapply(zen, 
+             FUN  = estimate_radiation, 
+             doy  = 200, 
+             tau  = 0.6, 
+             elev = 1500, 
+             rho  = 0.7)
+rd <- matrix(unlist(rd), 
+             nrow  = 3, 
+             byrow = FALSE)
+plot(x    = 1:24, 
+     y    = rd[1,], 
+     type = "l", 
+     xlab = "hour", 
+     ylab = expression(radiation ~ (W/m^{2})), 
+     ylim = c(0, 800))
+points(x    = 1:24, 
+       y    = rd[2,], 
+       type = "l", 
+       lty = "dotted")
+points(x    = 1:24, 
+       y    = rd[3,], 
+       type = "l", 
+       lty  = "dashed")
+legend(x      = "topright", 
+       title  = "solar radiation flux", 
+       legend = c("direct", "diffuse", "reflected"), 
+       lty    = c("solid", "dotted", "dashed"))
 ```
 
 We then examine how solar radiation components vary as a function of zenith angle.
 
 ```{r, fig.height=4, fig.width=6}
-par(mar=c(5,5,3,2))
-psi.seq <- seq(0, 90, by = 5)
-rd= lapply(psi.seq*2*pi/360, FUN=estimate_radiation, doy=200, tau=0.75, elev=1500, rho=0.7)
-#unlist
-rd=matrix(unlist(rd), nrow=3, byrow=FALSE)
-plot(psi.seq, rd[1,], type="l", xlab = "zenith angle (°)", ylab = expression(radiation ~ (W/m^{2})), ylim=c(0,1200))
-points(psi.seq, rd[2,], type="l", lty="dotted")
-points(psi.seq, rd[3,], type="l", lty="dashed")
-legend("topright", title="solar radiation flux", legend=c("direct", "diffuse", "reflected"), lty=c("solid","dotted","dashed") )
+par(mar = c(5, 5, 3, 2))
+
+psi.seq <- seq(from = 0, 
+               to   = 90, 
+               by   = 5)
+rd <- lapply(psi.seq * 2 * pi / 360, 
+             FUN  = estimate_radiation, 
+             doy  = 200, 
+             tau  = 0.75, 
+             elev = 1500, 
+             rho  = 0.7)
+rd <- matrix(unlist(rd), 
+             nrow  = 3, 
+             byrow = FALSE)
+
+plot(x    = psi.seq, 
+     y    = rd[1,], 
+     type = "l", 
+     xlab = "zenith angle (°)", 
+     ylab = expression(radiation ~ (W/m^{2})), 
+     ylim = c(0, 1200))
+points(x    = psi.seq, 
+       y    = rd[2,], 
+       type = "l", 
+       lty = "dotted")
+points(x    = psi.seq, 
+       y    = rd[3,], 
+       type = "l", 
+       lty  = "dashed")
+legend(x      = "topright", 
+       title  = "solar radiation flux", 
+       legend = c("direct", "diffuse", "reflected"), 
+       lty    = c("solid", "dotted", "dashed"))
 ```
+
 Similar but alternative algorithms for estimating hourly direct solar radiation ($W m^{-2}$) were adapted from a comparison of the methods by Tracy et al. [-@tracy1983estimating]. 
 Algorithms from earlier versions of Campbell and Norman [-@campbell2012introduction] and Gates [-@gates2012biophysical] are implemented. 
 Both estimate radiation as a function of latitude, day of year, elevation, and time.
 
-```{r, fig.height=3, fig.width=5}
-par(mar=c(5,5,3,2))
-r.seq= lapply(seq(4,20), FUN=direct_solar_radiation, lat=43.57,doy=112,elev=866,t0=12, method="Campbell 1977")
-r.seq=unlist(r.seq)
-plot(seq(4,20), r.seq, type = "l", xlab = "hour", ylab = expression(radiation ~ (W/m^{2})))
+```{r, fig.height = 4, fig.width = 6}
+par(mar = c(5, 5, 3, 2))
+r.seq <- lapply(seq(4, 20), 
+                FUN    = direct_solar_radiation, 
+                lat    = 43.57,
+                doy    = 112,
+                elev   = 866,
+                t0     = 12, 
+                method = "Campbell 1977")
+r.seq <- unlist(r.seq)
+plot(x    = seq(4, 20), 
+     y    = r.seq, 
+     type = "l", 
+     xlab = "hour", 
+     ylab = expression(radiation ~ (W/m^{2})))
 
-r.seq= lapply(seq(4,20), FUN=direct_solar_radiation, lat=43.57,doy=112,elev=866,t0=12, method="Gates 1962")
-points(seq(4,20), r.seq, type = "l", lty="dashed")
+r.seq <- lapply(seq(4, 20), 
+                FUN    = direct_solar_radiation, 
+                lat    = 43.57,
+                doy    = 112,
+                elev   = 866,
+                t0     = 12, 
+                method = "Gates 1962")
+points(x    = seq(4, 20), 
+       y    = r.seq,
+       type = "l", 
+       lty  = "dashed")
 
-legend("topright", title="Radiation algorithm", legend=c("Campbell 1977", "Gatesd 1962"), lty=c("solid","dashed") )
+legend(x      = "topright", 
+       title  = "Radiation algorithm", 
+       legend = c("Campbell 1977", "Gatesd 1962"), 
+       lty    = c("solid", "dashed"))
 ```
 
-We additionally provide a function (`monthly_solar_radiation()`) implementing an algorithm to estimate average monthly solar radiation ($W m^{-2}$ per day) using basic topographic and climatic information as input.
+We additionally provide a function (`monthly_solar_radiation()`) implementing an algorithm to estimate average monthly solar radiation ($W m^{-2} day^{-1}$) using basic topographic and climatic information as input.
 
-```{r, fig.height=3, fig.width=5}
-par(mar=c(5,5,3,2))
-r.seq= lapply(seq(1,365,31), FUN=monthly_solar_radiation, lat=43.57,lon=-116.22,elev=866,T=20,Hr=15,P=15)
-r.seq=unlist(r.seq)
-plot(seq(1,365,31), r.seq, type = "l", xlab = "day of year", ylab = expression(radiation ~ (W/m^{2})))
+```{r, fig.height = 4, fig.width = 6}
+par(mar = c(5, 5, 3, 2))
+
+r.seq <- lapply(seq(1, 365, 31), 
+                FUN  = monthly_solar_radiation, 
+                lat  = 43.57,
+                lon  = -116.22,
+                elev = 866,
+                T    = 20,
+                Hr   = 15,
+                P    = 15)
+r.seq <- unlist(r.seq)
+plot(x    = seq(1, 365, 31), 
+     y    = r.seq, 
+     type = "l", 
+     xlab = "day of year", 
+     ylab = expression(radiation ~ (W/m^{2})))
 ```
 
 We provide a function `partition_solar_radiation()` to estimate the diffuse fraction $k_d$ that can be used to partition measures of solar radiation into direct and diffuse components. 
@@ -235,25 +471,82 @@ The partitioning is based on empirically-derived relations estimated as a functi
 The relations are compiled in Wong and Chow [-@wong2001solar].
 
 ```{r, fig.height=4, fig.width=8}
-par(mar=c(5,5,3,2))
-r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Erbs", lat=40, sol.elev=60)
-plot(seq(0,1,0.1), r.seq, type = "l", xlab = expression("clearness index" ~ k[t]), ylab = "diffuse fraction", ylim=c(0,1))
-r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Liu_Jordan", lat=40, sol.elev=60)
-points(seq(0,1,0.1), r.seq, type = "l", lty="dashed")
-r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Orgill_Hollands", lat=40, sol.elev=60)
-points(seq(0,1,0.1), r.seq, type = "l", lty="dotted")
-r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Olyphant", lat=40, sol.elev=60)
-points(seq(0,1,0.1), r.seq, type = "l", lty="dotdash")
-r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Reindl-1", lat=40, sol.elev=60)
-points(seq(0,1,0.1), r.seq, type = "l", lty="longdash")
-r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Reindl-2", lat=40, sol.elev=60)
-points(seq(0,1,0.1), r.seq, type = "l", lty="longdash")
-r.seq= lapply(seq(0,1,0.1), FUN=partition_solar_radiation, method="Lam_Li", lat=40, sol.elev=60)
-points(seq(0,1,0.1), r.seq, type = "l", lty="twodash")
+par(mar=c(5, 5, 3, 2))
+r.seq <- lapply(seq(0, 1, 0.1), 
+                FUN      = partition_solar_radiation, 
+                method   = "Erbs", 
+                lat      = 40, 
+                sol.elev = 60)
+plot(x    = seq(0, 1, 0.1), 
+     y    = r.seq, 
+     type = "l", 
+     xlab = expression("clearness index" ~ k[t]), 
+     ylab = "diffuse fraction", 
+     ylim = c(0, 1))
 
-legend("topright", title="Partitioning method", legend=c("Erbs", "Liu_Jordan", "Orgill_Hollands", "Olyphant", "Reindl-1", "Reindl-2", "Lam_Li"), lty=c("solid","dashed","dotted","dotdash","longdash","longdash","twodash"))
+r.seq <- lapply(seq(0, 1, 0.1), 
+                FUN      = partition_solar_radiation, 
+                method   = "Liu_Jordan", 
+                lat      = 40, 
+                sol.elev = 60)
+points(x    = seq(0, 1, 0.1), 
+       y    = r.seq, 
+       type = "l",
+       lty  = "dashed")
+
+r.seq <- lapply(seq(0, 1, 0.1), 
+                FUN      = partition_solar_radiation, 
+                method   = "Orgill_Hollands", 
+                lat      = 40, 
+                sol.elev = 60)
+points(x    = seq(0, 1, 0.1), 
+       y    = r.seq, 
+       type = "l",
+       lty  = "dotted")
+r.seq <- lapply(seq(0, 1, 0.1), 
+                FUN      = partition_solar_radiation, 
+                method   = "Olyphant", 
+                lat      = 40, 
+                sol.elev = 60)
+points(x    = seq(0, 1, 0.1), 
+       y    = r.seq, 
+       type = "l",
+       lty  = "dotdash")
+r.seq <- lapply(seq(0, 1, 0.1), 
+                FUN      = partition_solar_radiation, 
+                method   = "Reindl-1", 
+                lat      = 40, 
+                sol.elev = 60)
+points(x    = seq(0, 1, 0.1), 
+       y    = r.seq, 
+       type = "l",
+       lty  = "longdash")
+r.seq <- lapply(seq(0, 1, 0.1), 
+                FUN      = partition_solar_radiation, 
+                method   = "Reindl-2", 
+                lat      = 40, 
+                sol.elev = 60)
+points(x    = seq(0, 1, 0.1), 
+       y    = r.seq, 
+       type = "l",
+       lty  = "longdash")
+r.seq <- lapply(seq(0, 1, 0.1), 
+                FUN      = partition_solar_radiation, 
+                method   = "Lam_Li", 
+                lat      = 40, 
+                sol.elev = 60)
+points(x    = seq(0, 1, 0.1), 
+       y    = r.seq, 
+       type = "l",
+       lty  = "twodash")
+
+legend(x      = "topright", 
+       title  = "Partitioning method", 
+       legend = c("Erbs", "Liu_Jordan", "Orgill_Hollands", "Olyphant", "Reindl-1", "Reindl-2", "Lam_Li"), 
+       lty    = c("solid", "dashed", "dotted", "dotdash", "longdash", "longdash", "twodash"))
 
 ```
+
 The functions above are fairly coarse approximations. 
 The SOLRAD routine by McCullough and Porter [-@mccullough1971computing] accounts for additional determinations of the diffuse fractions such as zenith angle, atmospheric pressure, and surface albedo. 
 The SOLRAD routine is implemented in  NicheMapR. 
@@ -261,26 +554,47 @@ TrenchR implements a numeric approximation to the SOLRAD routine from Tracy et a
 We illustrate how the diffuse proportion shifts as a function of zenith angle for several different levels of atmospheric pressure and note the function general estimates a lower fraction of diffuse radiation than the algorithms above.
 
 ```{r, fig.height=4, fig.width=8}
-par(mar=c(5,5,3,2))
-r.seq= lapply(seq(20,85), FUN=proportion_diffuse_solar_radiation, p_a=86.1, A=0.25)
-plot(seq(20,85), r.seq, type = "l", xlab = "zenith angle (°)", ylab = "diffuse fraction")
+par(mar = c(5, 5, 3, 2))
+r.seq <- lapply(seq(20, 85), 
+                FUN = proportion_diffuse_solar_radiation, 
+                p_a = 86.1, 
+                A   = 0.25)
+plot(x    = seq(20,85), 
+     y    = r.seq,
+     type = "l", 
+     xlab = "zenith angle (°)", 
+     ylab = "diffuse fraction")
 
-r.seq= lapply(seq(20,85), FUN=proportion_diffuse_solar_radiation, p_a=96.1, A=0.25)
-points(seq(20,85), r.seq, type = "l", lty="dashed")
+r.seq <- lapply(seq(20, 85), 
+                FUN = proportion_diffuse_solar_radiation, 
+                p_a = 96.1, 
+                A   = 0.25)
+points(seq(20,85), 
+       r.seq, 
+       type = "l", 
+       lty = "dashed")
 
-r.seq= lapply(seq(20,85), FUN=proportion_diffuse_solar_radiation, p_a=76.1, A=0.25)
-points(seq(20,85), r.seq, type = "l", lty="dotted")
+r.seq <- lapply(seq(20, 85), 
+                FUN = proportion_diffuse_solar_radiation, 
+                p_a = 76.1, 
+                A   = 0.25)
+points(seq(20,85), 
+       r.seq, 
+       type = "l", 
+       lty = "dotted")
 
 ```
 
 # Temperature and wind speed profiles
 
-Temperatures and wind speeds, standardly collected at a height of 2m, can differ dramatically from conditions near the ground where most organisms live. 
+Temperatures and wind speeds, standardly collected at a height of 2 m, can differ dramatically from conditions near the ground where most organisms live. 
 Turbulent airflow influenced by the ground surface roughness sets up temperature and wind speed profiles. 
 These profiles can be estimated to scale temperatures and wind speeds to organism height. 
 We scale across height by estimating a wind speed profile using the relationship: 
+
 $$u(z)= \frac{u^*}{0.41}ln \frac{z-d}{z_m} $$ 
-where $u(z)$ is the wind speed (m/s) at height $z$ (m), $u^*$ is the friction velocity (m/s), $d$ is the zero-plane displacement (m, the height at which wind speed is zero), and the constant 0.41 is the von Karman constant.
+
+where $u(z)$ is the wind speed ($m s^{-1}$) at height $z$ (m), $u^*$ is the friction velocity ($m s^{-1}$), $d$ is the zero-plane displacement (m, the height at which wind speed is zero), and the constant 0.41 is the von Karman constant.
 
 We provide a function to use this relationship to estimate surface roughness (`surface_roughness()`) from wind speed measurements at a vector of heights. 
 First, the zero-plane displacement is estimated as the intercept of the relationship between the wind velocities and the log of measurement height. 
@@ -289,17 +603,18 @@ $z_0$ is estimated as the exponential of the ratio of the intercept and slope of
 
 We illustrate estimating surface roughness.
 
-```{r, fig.height=3, fig.width=5}
-u_r= c(0.01,0.025,0.05,0.1,0.2)
-zr= c(0.1,0.25,0.5,0.75,1)
-surface_roughness(u_r, zr)
+```{r, fig.height = 4, fig.width = 6}
+u_r <- c(0.01, 0.025, 0.05, 0.1, 0.2)
+zr  <- c(0.1, 0.25, 0.5, 0.75, 1)
+surface_roughness(u_r = u_r, 
+                  zr  = zr)
 ```
 
 We use the following relationship to estimate air temperature and wind speed at height $z$ under neutral conditions (no buoyancy associated with differential density):
 
 $$\frac{u_z}{u_r}=\frac{ln(z/z_0+1)}{ln(z_r/z_0+1)}=\frac{T_z-T_0}{T_r-T_0} $$
 
-where $u_z$ and $u_r$ are the wind speeds (m/s) at height $z$ (m) and reference height $r$ (m), respectively. 
+where $u_z$ and $u_r$ are the wind speeds ($m s^{-1}$) at height $z$ (m) and reference height $r$ (m), respectively. 
 $T_z$, $T_r$, and $T_0$ are air and soil temperatures at heights $z$ and $r$ and soil surface temperature, respectively. 
 We provide this relationship in the `wind_speed_profile_neutral()` function, which estimates wind speed at a specified height. 
 We additionally provide this relationship in the `air_temp_profile_neutral()` function, which estimates temperature at a specified height.
@@ -307,27 +622,74 @@ We additionally provide this relationship in the `air_temp_profile_neutral()` fu
 We examine how the wind speed profiles varies with wind speed (m/s).
 
 ```{r, fig.height=4, fig.width=6}
-zs= seq(0,2,0.1) 
-us= wind_speed_profile_neutral(u_r=1, zr=2, z0=0.2, z=zs)
-plot(us,zs, type="l", xlab = "wind speed, u (m/s)", ylab = "height, z (m)")
-points(wind_speed_profile_neutral(u_r=0.5, zr=2, z0=0.2, z=zs), zs, type="l", lty="dashed")
-points(wind_speed_profile_neutral(u_r=0.25, zr=2, z0=0.2, z=zs), zs, type="l", lty="dotted")
+zs <- seq(0,2,0.1) 
+us <- wind_speed_profile_neutral(u_r = 1, 
+                                 zr  = 2, 
+                                 z0  = 0.2,
+                                 z   = zs)
+plot(x    = us,
+     y    = zs, 
+     type = "l", 
+     xlab = "wind speed, u (m/s)", 
+     ylab = "height, z (m)")
+points(x    = wind_speed_profile_neutral(u_r = 0.5,
+                                         zr  = 2, 
+                                         z0  = 0.2, 
+                                         z   = zs), 
+       y    = zs, 
+       type = "l", 
+       lty  = "dashed")
+points(x    = wind_speed_profile_neutral(u_r = 0.25, 
+                                         zr  = 2, 
+                                         z0  = 0.2, 
+                                         z   = zs), 
+       y    = zs, 
+       type = "l", 
+       lty  = "dotted")
 
-legend("bottomright", title="wind speed at 2m", legend=c(0.25, 5, 1), lty=c("dotted","dashed","solid") )
+legend(x      = "bottomright", 
+       title  = "wind speed at 2m", 
+       legend = c(0.25, 5, 1), 
+       lty    = c("dotted", "dashed", "solid"))
 ```
 
 We next illustrate the influence of surface roughness on air temperature profiles.
 
 ```{r, fig.height=4, fig.width=6}
 z.seq <- seq(0, 2, by = 0.1)
-t.seq <- air_temp_profile_neutral(T_r=20, zr=1, z0=0.02, z=z.seq, T_s=25)
-plot(t.seq, z.seq, type = "l", xlab = "Temperature (°C)", ylab = "z (height above ground in m)")
-t.seq <- air_temp_profile_neutral(T_r=20, zr=1, z0=0.05, z=z.seq, T_s=25)
-points(t.seq, z.seq, type = "l", lty="dotted")
-t.seq <- air_temp_profile_neutral(T_r=20, zr=1, z0=0.08, z=z.seq, T_s=25)
-points(t.seq, z.seq, type = "l", lty="dashed")
+t.seq <- air_temp_profile_neutral(T_r = 20, 
+                                  zr  = 1, 
+                                  z0  = 0.02, 
+                                  z   = z.seq, 
+                                  T_s = 25)
+plot(x    = t.seq, 
+     y    = z.seq, 
+     type = "l", 
+     xlab = "Temperature (°C)", 
+     ylab = "z (height above ground in m)")
+t.seq <- air_temp_profile_neutral(T_r = 20, 
+                                  zr  = 1, 
+                                  z0  = 0.05, 
+                                  z   = z.seq, 
+                                  T_s = 25)
+points(x    = t.seq, 
+       y    = z.seq, 
+       type = "l", 
+       lty  = "dotted")
+t.seq <- air_temp_profile_neutral(T_r = 20, 
+                                  zr  = 1, 
+                                  z0  = 0.08, 
+                                  z   = z.seq, 
+                                  T_s = 25)
+points(x    = t.seq, 
+       y    = z.seq, 
+       type = "l", 
+       lty  = "dashed")
 
-legend("topright", title="surface roughness", legend=c(0.02, 0.05, 0.08), lty=c("solid","dotted","dashed") )
+legend(x      = "topright", 
+       title  = "surface roughness", 
+       legend = c(0.02, 0.05, 0.08), 
+       lty    = c("solid", "dotted", "dashed"))
 ```
 
 Temperature at a given height is computed by the function `air_temp_profile()` by first estimating the temperature at roughness height: 
@@ -344,30 +706,75 @@ $$T_z= T_{z_0}+(T_r-T_{z_0})ln(\frac{z}{z_0}+1) .$$
 
 ```{r, fig.height=4, fig.width=6}
 z.seq <- seq(0, 2, by = 0.1)
-t.seq <- air_temp_profile(T_r = 20, u_r = 0.5, zr = 2, z0 = 0.02, z = z.seq, T_s = 25)
-plot(t.seq, z.seq, type = "l", xlab = "Temperature (°C)", ylab = "z (height above ground in m)")
-t.seq <- air_temp_profile(T_r = 20, u_r = 0.5, zr = 2, z0 = 0.05, z = z.seq, T_s = 25)
-points(t.seq, z.seq, type = "l", lty="dotted")
-t.seq <- air_temp_profile(T_r = 20, u_r = 0.5, zr = 2, z0 = 0.08, z = z.seq, T_s = 25)
-points(t.seq, z.seq, type = "l", lty="dashed")
+t.seq <- air_temp_profile(T_r = 20, 
+                          u_r = 0.5, 
+                          zr  = 2, 
+                          z0  = 0.02, 
+                          z   = z.seq, 
+                          T_s = 25)
+plot(x    = t.seq, 
+     y    = z.seq, 
+     type = "l", 
+     xlab = "Temperature (°C)", 
+     ylab = "z (height above ground in m)")
+t.seq <- air_temp_profile(T_r = 20, 
+                          u_r = 0.5, 
+                          zr  = 2, 
+                          z0  = 0.05, 
+                          z   = z.seq, 
+                          T_s = 25)
+points(x    = t.seq, 
+       y    = z.seq, 
+       type = "l", 
+       lty  = "dotted")
+t.seq <- air_temp_profile(T_r = 20, 
+                          u_r = 0.5, 
+                          zr  = 2, 
+                          z0  = 0.08, 
+                          z   = z.seq, 
+                          T_s = 25)
+points(t.seq, 
+       z.seq, 
+       type = "l", 
+       lty = "dashed")
 
-legend("topright", title="surface roughness", legend=c(0.02, 0.05, 0.08), lty=c("solid","dotted","dashed") )
+legend(x      = "topright", 
+       title  = "surface roughness", 
+       legend = c(0.02, 0.05, 0.08), 
+       lty    = c("solid", "dotted", "dashed"))
 ```
 
 TrenchR also adapts functions from NicheMapR [@Kearney2017] to refine wind speed and air temperature profiles by using multiple segments:
 
-```{r, fig.height=3, fig.width=5}
+```{r, fig.height = 4, fig.width = 6}
 z.seq <- seq(0, 2, by = 0.1)
-t.seq= lapply(z.seq, FUN=air_temp_profile_segment, T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.05,0.1), T_s=27)
-plot(t.seq, z.seq, type = "l", xlab = "Temperature (°C)", ylab = "z (height above ground in m)")
-points(c(27,25,22,20),c(0,0.05,0.25,0.5) )
+t.seq <- lapply(z.seq, 
+                FUN = air_temp_profile_segment, 
+                T_r = c(25, 22, 20),
+                u_r = c(0.01, 0.025, 0.05), 
+                zr  = c(0.05, 0.25, 0.5), 
+                z0  = c(0.01, 0.05, 0.1), 
+                T_s = 27)
+plot(t.seq, 
+     z.seq, type = "l", xlab = "Temperature (°C)", ylab = "z (height above ground in m)")
+points(x = c(27, 25, 22, 20),
+       y = c(0, 0.05, 0.25, 0.5))
 ```
 
-```{r, fig.height=3, fig.width=5}
+```{r, fig.height = 4, fig.width = 6}
 z.seq <- seq(0, 2, by = 0.1)
-u.seq= lapply(z.seq, FUN=wind_speed_profile_segment, u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.05,0.1))
-plot(u.seq, z.seq, type = "l", xlab = "Wind speed (m/s)", ylab = "z (height above ground in m)")
-points(c(0.01,0.025,0.05),c(0.05,0.25,0.5) )
+u.seq <- lapply(z.seq, 
+                FUN = wind_speed_profile_segment, 
+                u_r = c(0.01, 0.025, 0.05), 
+                zr  = c(0.05, 0.25, 0.5),
+                z0  = c(0.01, 0.05, 0.1))
+plot(x    = u.seq, 
+     y    = z.seq, 
+     type = "l", 
+     xlab = "Wind speed (m/s)", 
+     ylab = "z (height above ground in m)")
+points(x = c(0.01, 0.025, 0.05),
+       y = c(0.05, 0.25, 0.5))
 ```
 
 # Diurnal variation in temperature and radiation
@@ -385,16 +792,20 @@ For the sine exponential model (`diurnal_temp_variation_sineexp()`), hourly temp
 
 The time of maximum temperature can be calculated as $h_x=1/2(t_r+t_s)+\alpha$. 
 The time of minimum temperature can be calculated as $t_n=t_r+\beta$. 
-The model estimates temperature at time $h$ as follows: $$  T(h)=\left \{
+The model estimates temperature at time $h$ as follows:
+
+$$  T(h)=\left \{
                 \begin{array}{ll}
                   T_n+(T_x-T_n)\sin \frac{\pi(h-h_r-\beta)}{l +2(\alpha-\beta)}, h_n \leq h \leq h_s\\
                   T_n'+[T(h_s)-T'_n]\exp \frac{\gamma(h-h_s)}{24-l+\beta}, h_s \leq h \leq h'_n 
                 \end{array}
               \right. $$ 
+
 where $h'_n$ is the time of the minimum temperature, $T'_n$, for the next day. 
 Day length $l$ is calculated as $h_s-h_r$.
 
 The sine square root model (`diurnal_temp_variation_sinesqrt()`) estimates temperature assuming the time of maximum temperature $t_x$ occurs 4 hours before sunset ($t_x=t_s -4$): 
+
 $$  T(h)=\left \{
                 \begin{array}{ll}
                   T_n+\alpha \pi /2 \left \{ \frac{h-h_r}{h_x-h_r} \right \}, h_r < h \leq h_x\\
@@ -402,21 +813,45 @@ $$  T(h)=\left \{
                   T_r+b \sqrt{h-h_s}, h_s < h \leq h_p
                 \end{array}
               \right. $$ 
+
 where $\alpha=T_x-T_n$,$R=T_x-T_s$, and $b=\frac{T_p-T_s}{\sqrt{h_p - h_s}}$. 
 Sunset temperature is estimated as $T_s=T_x-c(T_x-T_p)$ where $c$ is an empirically estimated parameter ($c=0.39$).
 
 TrenchR provides the functions as follows:
 
 ```{r, fig.height=4, fig.width=6}
-plot(1:23, diurnal_temp_variation_sine(T_max=30, T_min=10, t=1:23), type = "l", xlab = "hour", ylab = "temperature (°C)")
-t.seq= lapply(1:23, FUN=diurnal_temp_variation_sineexp, T_max=30, T_min=10, t_r=6, t_s=18)
-points(1:23, t.seq, type = "l", lty="dotted")
-points(1:23, diurnal_temp_variation_sinesqrt(t=1:23, t_r=6, t_s=18, T_max=30, T_min=10, T_minp=12), type = "l", lty="dashed")
+plot(x    = 1:23, 
+     y    = diurnal_temp_variation_sine(T_max = 30, T_min = 10, t=1:23), 
+     type = "l", 
+     xlab = "hour", 
+     ylab = "temperature (°C)")
+t.seq <- lapply(1:23, 
+                FUN   = diurnal_temp_variation_sineexp, 
+                T_max = 30, 
+                T_min = 10, 
+                t_r   = 6, 
+                t_s   = 18)
+points(x    = 1:23, 
+       y    = t.seq, 
+       type = "l", 
+       lty  = "dotted")
+points(1:23, 
+       y = diurnal_temp_variation_sinesqrt(t      = 1:23, 
+                                           t_r    = 6, 
+                                           t_s    = 18, 
+                                           T_max  = 30, 
+                                           T_min  = 10, 
+                                           T_minp = 12), 
+       type = "l", 
+       lty = "dashed")
 
-legend("topleft", title="function", legend=c("_sine", "_sineexp", "_sinesqrt"), lty=c("solid","dotted","dashed") )
+legend(x      = "topleft", 
+       title  = "function", 
+       legend = c("_sine", "_sineexp", "_sinesqrt"),
+       lty    = c("solid", "dotted", "dashed"))
 ```
 
-We adapt equations from Tham et al. [-@tham2010estimation] to estimate hourly solar radiation ($W m^{-2}$ per hour) as a function of daily global solar radiation (in $W m^{-2}$ per day). 
+We adapt equations from Tham et al. [-@tham2010estimation] to estimate hourly solar radiation ($W m^{-2} hr^{-1}$) as a function of daily global solar radiation (in $W m^{-2} d^{-1}$). 
 The function `diurnal_radiation_variation()` partitions daily solar radiation $S$.
 The function estimates the ratio of hourly to daily global irradiation,$S_G$, as follows:
 
@@ -429,18 +864,55 @@ The function calculates these angles as a function of calendar date $J$ and loca
 We depict how the diurnal trends in radiation vary across the year (also assuming differences in total radiation).
 
 ```{r, fig.height=4, fig.width=6}
-par(mar=c(5,5,3,2))
-r.seq= lapply(1:24, FUN=diurnal_radiation_variation, doy=172, solrad=8000, lon=-112.07, lat=33.45)
-plot(1:24, r.seq, type = "l", xlab = "hour", ylab = expression(radiation ~ (W/m^{2})))
+par(mar=c(5, 5, 3, 2))
 
-r.seq= lapply(1:24, FUN=diurnal_radiation_variation, doy=356, solrad=4000, lon=-112.07, lat=33.45)
-points(1:24, r.seq, type = "l", lty="dotted")
-r.seq= lapply(1:24, FUN=diurnal_radiation_variation, doy=266, solrad=6000, lon=-112.07, lat=33.45)
-points(1:24, r.seq, type = "l", lty="dashed")
-r.seq= lapply(1:24, FUN=diurnal_radiation_variation, doy=228, solrad=6000, lon=-112.07, lat=33.45)
-points(1:24, r.seq, type = "l", lty="dotdash")
+r.seq <- lapply(1:24, 
+                FUN = diurnal_radiation_variation, 
+                doy = 172, 
+                solrad = 8000, 
+                lon = -112.07, 
+                lat = 33.45)
+plot(x    = 1:24, 
+     y    = r.seq, 
+     type = "l", 
+     xlab = "hour", 
+     ylab = expression(radiation ~ (W/m^{2})))
 
-legend("topright", title="day of year", legend=c(172,228,266,356), lty=c("solid","dotdash","dashed","dotted") )
+r.seq <- lapply(1:24, 
+                FUN = diurnal_radiation_variation, 
+                doy = 356, 
+                solrad = 4000, 
+                lon = -112.07, 
+                lat = 33.45)
+points(x    = 1:24, 
+       y    = r.seq, 
+       type = "l", 
+       lty = "dotted")
+r.seq <- lapply(1:24, 
+                FUN    = diurnal_radiation_variation, 
+                doy    = 266, 
+                solrad = 6000, 
+                lon    = -112.07, 
+                lat    = 33.45)
+points(x    = 1:24, 
+       y    = r.seq, 
+       type = "l", 
+       lty = "dashed")
+r.seq <- lapply(1:24, 
+                FUN    = diurnal_radiation_variation, 
+                doy    = 228, 
+                solrad = 6000, 
+                lon    = -112.07, 
+                lat    = 33.45)
+points(x    = 1:24, 
+       y    = r.seq, 
+       type = "l", 
+       lty = "dotdash")
+
+legend(x      = "topright", 
+       title  = "day of year", 
+       legend = c(172, 228, 266, 356), 
+       lty    = c("solid", "dotdash", "dashed", "dotted"))
 ```
 
 # Degree days
@@ -450,6 +922,7 @@ Accounting for temperature dependence allows translating calendar time into a mo
 Degree days indicate the accumulated heat available for processes such as development and are estimated as the accumulated product of time and temperature. 
 For the frequent application of estimating development, degree days are calculated within physiological bounds known as the lower and upper developmental temperatures, LDT and UDT, respectively.
 We provide four approaches for estimating degree days that differ in the complexity with which they aggregate heat: "single.sine", "double.sine", "single.triangulation" or "double.triangulation". 
+
 We implement the methods detailed here: <http://ipm.ucanr.edu/WEATHER/ddfigindex.html>.
 The methods account for whether the temperature time series is intercepted by the LDT and / or the UDT. 
 Briefly, we present the equations for each method for the case of the temperature time series being intercepted by the lower threshold. 
@@ -475,10 +948,26 @@ The methods are available in the following R function.
 Note the function calculates degree days for a full day assuming symmetry in minimum temperatures.
 
 ```{r}
-degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.sine")
-degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="double.sine")
-degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.triangulation")
-degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="double.triangulation")
+degree_days(T_min  = 7, 
+            T_max  = 14, 
+            LDT    = 12, 
+            UDT    = 33, 
+            method = "single.sine")
+degree_days(T_min  = 7, 
+            T_max  = 14, 
+            LDT    = 12, 
+            UDT    = 33, 
+            method = "double.sine")
+degree_days(T_min  = 7, 
+            T_max  = 14, 
+            LDT    = 12, 
+            UDT    = 33, 
+            method = "single.triangulation")
+degree_days(T_min  = 7, 
+            T_max  = 14, 
+            LDT    = 12, 
+            UDT    = 33, 
+            method = "double.triangulation")
 ```
 
 # Soil temperatures
@@ -486,10 +975,9 @@ degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="double.triangulation")
 TrenchR includes a microclimate model that uses finite-difference methods to solve heat balance equations describing soil temperatures at the surface and specified depths. 
 The function requires air temperature and radiation data as input. 
 Our approach follows Porter et al. [-@porter1973behavioral] and is similar to that described for the NicheMapR R package [@Kearney2017]. 
-The primary function to call to calculate soil temperature is `soil_temperature()`. 
-The function is a wrapper to solve the differential equations below for equilibrium conditions. 
-The called function `soil_temperature_function()` contains the majority of the soil temperature model and calls two helper functions. 
-The two functions implement an equation for calculating soil temperature adapted from Beckman et al. [-@beckman1973thermal]; `soil_temperature_integrand()` includes the integrand in the equation and is called by `soil_temperature_equation()`, which represents the full equation. 
+The primary function to call to calculate soil temperature is `soil_temperature()`, which is a wrapper to solve the differential equations below for equilibrium conditions. 
+`soil_temperature_function()` contains the majority of the soil temperature model and calls two helper functions that implement an equation for calculating soil temperature adapted from Beckman et al. [-@beckman1973thermal]: `soil_temperature_integrand()` includes the integrand in the equation and is called by `soil_temperature_equation()`, which represents the full equation. 
+
 Below we outline the soil temperature model encapsulated by the functions.
 
 The change in soil temperature ($T_s$) through time $t$ and depth $z$ can be approximated with a differential equation 
@@ -539,37 +1027,128 @@ $$T_0^{p+1}= a \alpha_s S + a \epsilon_S \sigma [(T^p_{sky})^4-(T^p_0)^4]+a h_s 
 Soil temperature can be estimated in TrenchR as follows. The solid line depicts air temperature (&deg;C).
 
 ```{r, fig.height=4, fig.width=6}
-library(deSolve)
 
-temp_vector= diurnal_temp_variation_sine(T_max=20, T_min=-10, t=rep(1:24,4))
-wind_speed_vector= runif(96, min=0, max=0.4)
-time_vector= rep(1:24,4)
-solrad_vector= unlist(lapply(1:24, FUN=diurnal_radiation_variation, doy=172, solrad=8000, lon=-112.07, lat=33.45))
-solrad_vector= rep(solrad_vector,4)
+temp_vector <- diurnal_temp_variation_sine(T_max = 20, 
+                                           T_min = -10, 
+                                           t     = rep(1:24,4))
+wind_speed_vector <- runif(n   = 96,
+                           min = 0, 
+                           max = 0.4)
+time_vector <- rep(1:24, 4)
+solrad_vector <- unlist(lapply(1:24, 
+                               FUN    = diurnal_radiation_variation,
+                               doy    = 172, 
+                               solrad = 8000, 
+                               lon    = -112.07, 
+                               lat    = 33.45))
+solrad_vector <- rep(solrad_vector, 4)
 
-params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0=0.02, H=solrad_vector, T_a=temp_vector, u=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=FALSE)
+params <- list(SSA        = 0.7, 
+               epsilon_so = 0.98, 
+               k_so       = 0.293, 
+               c_so       = 800, 
+               dz         = 0.05, 
+               z_r        = 1.5, 
+               z0         = 0.02, 
+               H          = solrad_vector, 
+               T_a        = temp_vector, 
+               u          = wind_speed_vector, 
+               rho_a      = 1.177,
+               rho_so     = 1620, 
+               c_a        = 1006, 
+               TimeIn     = time_vector, 
+               dt         = 60*60, 
+               shade      = FALSE)
 
-plot(1:96, temp_vector, type = "l", xlab = "hour", ylab="temperature (°C)", ylim=c(-10,50))
+plot(x    = 1:96, 
+     y    = temp_vector, 
+     type = "l", 
+     xlab = "hour", 
+     ylab = "temperature (°C)", 
+     ylim = c(-10,50))
 
-T_soil= soil_temperature(z_r.intervals=12,z_r=1.5, z=2, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
-points(1:96, T_soil, lty="dashed", type="l")
+T_soil <- soil_temperature(z_r.intervals = 12,
+                           z_r           = 1.5, 
+                           z             = 2, 
+                           T_a           = temp_vector, 
+                           u             = wind_speed_vector, 
+                           Tsoil0        = 20, 
+                           z0            = 0.02, 
+                           SSA           = 0.7, 
+                           TimeIn        = time_vector, 
+                           H             = solrad_vector, 
+                           water_content = 0.2, 
+                           air_pressure  = 85, 
+                           rho_so        = 1620, 
+                           shade         = FALSE)
+points(x    = 1:96, 
+       y    = T_soil, 
+       lty  = "dashed", 
+       type = "l")
 
-T_soil= soil_temperature(z_r.intervals=12,z_r=1.5, z=4, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
-points(1:96, T_soil, lty="dotted", type="l")
+T_soil <- soil_temperature(z_r.intervals = 12,
+                           z_r           = 1.5, 
+                           z             = 4, 
+                           T_a           = temp_vector, 
+                           u             = wind_speed_vector, 
+                           Tsoil0        = 20, 
+                           z0            = 0.02, 
+                           SSA           = 0.7, 
+                           TimeIn        = time_vector, 
+                           H             = solrad_vector, 
+                           water_content = 0.2, 
+                           air_pressure  = 85, 
+                           rho_so        = 1620, 
+                           shade         = FALSE)
+points(x    = 1:96, 
+       y    = T_soil, 
+       lty  = "dotted", 
+       type = "l")
 
-T_soil= soil_temperature(z_r.intervals=12,z_r=1.5, z=6, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
-points(1:96, T_soil, lty="dotdash", type="l")
+T_soil <- soil_temperature(z_r.intervals = 12,
+                           z_r           = 1.5, 
+                           z             = 6, 
+                           T_a           = temp_vector, 
+                           u             = wind_speed_vector, 
+                           Tsoil0        = 20, 
+                           z0            = 0.02, 
+                           SSA           = 0.7, 
+                           TimeIn        = time_vector, 
+                           H             = solrad_vector, 
+                           water_content = 0.2, 
+                           air_pressure  = 85, 
+                           rho_so        = 1620, 
+                           shade         = FALSE)
+points(x    = 1:96, 
+       y    = T_soil, 
+       lty  = "dotdash", 
+       type = "l")
 
-legend("topright", title="soil depth interval", legend=c(2,4,6), lty=c("dashed","dotted","dotdash") )
+legend(x      = "topright", 
+       title  = "soil depth interval", 
+       legend = c(2, 4, 6), 
+       lty    = c("dashed", "dotted", "dotdash"))
 ```
 
 ## Soil specific heat and conductivity
 
-We can approximate soil specific heat, $c_s$, as the weighted sum of the specific heats of soil constituents [@campbell2012introduction]: $\rho_s c_s= rho_m c_m x_m + rho_o c_o x_o + rho_w c_w x_w,$ where $\rho_s$ is the particle density of soil (bulk density), $x$ is the volume fraction, and the subscripts $m$, $o$,and $w$ stand for minerals, organic matter, and water, respectively. 
+We can approximate soil specific heat, $c_s$, as the weighted sum of the specific heats of soil constituents [@campbell2012introduction]: 
+
+$$\rho_s c_s= rho_m c_m x_m + rho_o c_o x_o + rho_w c_w x_w,$$
+
+where $\rho_s$ is the particle density of soil (bulk density), $x$ is the volume fraction, and the subscripts $m$, $o$,and $w$ stand for minerals, organic matter, and water, respectively. 
+
 We provide a function to calculate soil specific heat given the volume fractions and $\rho_s$:
 
-```{r, fig.height=3, fig.width=5}
-plot(seq(500,1700,100), soil_specific_heat(x_o=0.01, x_m=0.6, x_w=0.2, rho_so=seq(500,1700,100)), type="l", xlab = expression("bulk density" ~ (kg/m^{3})), ylab = expression("soil specific heat" ~ (J ~ kg^{-1} ~ K^{-1})))
+```{r, fig.height = 4, fig.width = 6}
+plot(x    = seq(500,1700,100), 
+     y    = soil_specific_heat(x_o    = 0.01, 
+                               x_m    = 0.6, 
+                               x_w    = 0.2, 
+                               rho_so = seq(500,1700,100)), 
+     type = "l", 
+     xlab = expression("bulk density" ~ (kg/m^{3})), 
+     ylab = expression("soil specific heat" ~ (J ~ kg^{-1} ~ K^{-1})))
 ```
 
 Various methods of approximating soil thermal conductivity $k_s$ are reviewed in Boguslaw and Lukasz [-@boguslaw2004thermal]. 
@@ -588,7 +1167,9 @@ de Vries [-@de1952nonstationary] suggests $g_a=g_b=0.125$.
 We provide the function as follows:
 
 ```{r}
-soil_conductivity(x=c(0.10,0.40,0.11,0.01,0.2, 0.18), lambda=c(0.10,0.40,0.11,0.01,0.2, 0.18), g_a=0.125)
+soil_conductivity(x      = c(0.10,0.40,0.11,0.01,0.2, 0.18), 
+                  lambda = c(0.10,0.40,0.11,0.01,0.2, 0.18), 
+                  g_a    = 0.125)
 ```
 
-#References
+# References

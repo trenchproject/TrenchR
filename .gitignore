@@ -5,7 +5,8 @@
 inst/doc
 doc
 Meta
-/doc/
 /Meta/
 /docs/
+docs/*
 
+/doc/

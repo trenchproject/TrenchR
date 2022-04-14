@@ -347,10 +347,10 @@ We only model conductance through the cuticle as we assume that the interior of 
 <p>We adapted a biophysical model for intertidal mussels that was developed by Helmuth <span class="citation">(1998)</span> to predict mussel body temperature <span class="math inline">\(T_b (K)\)</span> based on environmental conditions, body size (height and length), and whether the mussel is solitary or aggregated.<br>
 The amount of heat stored within a mussel body <span class="math inline">\(Q_{stored} (W)\)</span> can be described as</p>
 <p><span class="math display">\[Q_{stored} = Q_{sol} \pm Q_{rad,sky} \pm Q_{rad, ground} \pm Q_{cond} \pm Q_{conv} - Q_{evap} \tag{1}\]</span></p>
-<p>where <span class="math inline">\(Q_{sol} (W)\)</span> is the short-wave solar radiation to the mussel, <span class="math inline">\(Q_{rad,sky} (W)\)</span>, <span class="math inline">\(Q_{rad,ground} (W)\)</span> are the infrared radiation between the mussel and the sky, and between the mussel and the surroundings, <span class="math inline">\(Q_{conv} (W)\)</span> is the convective heat exchange, <span class="math inline">\(Q_{cond} (W)\)</span> is the conduction to and from the ground, and <span class="math inline">\(Q_{evap} (W)\)</span> is the evaporative cooling from water loss <span class="citation">(B. S. Helmuth 1998)</span>.<br>
+<p>where <span class="math inline">\(Q_{sol} (W)\)</span> is the short-wave solar radiation to the mussel, <span class="math inline">\(Q_{rad,sky} (W)\)</span>, <span class="math inline">\(Q_{rad,ground} (W)\)</span> are the infrared radiation between the mussel and the sky, and between the mussel and the surroundings, <span class="math inline">\(Q_{conv} (W)\)</span> is the convective heat exchange, <span class="math inline">\(Q_{cond} (W)\)</span> is the conduction to and from the ground, and <span class="math inline">\(Q_{evap} (W)\)</span> is the evaporative cooling from water loss <span class="citation">(B. S. T. Helmuth 1998)</span>.<br>
 Since <span class="math inline">\(Q_{stored} (W)\)</span> is a product of mass (<span class="math inline">\(m\)</span>), specific heat (<span class="math inline">\(c\)</span>), and body temperature (<span class="math inline">\(T_b\)</span>), the rate of change of stored heat can be expressed as <span class="math inline">\(Q_{stored} = d(mcT_b)/dt\)</span>.</p>
-<p>We calculate <span class="math inline">\(Q_{sol}\)</span> from <span class="math inline">\(Q_{sol} = \frac{\alpha}{\sin\theta} A_{sol}S\)</span> where <span class="math inline">\(\alpha\)</span> is the solar absorptivity, <span class="math inline">\(\theta\)</span> is the solar elevation angle (radian), <span class="math inline">\(A_{sol}\)</span> is the mussel area in direction of the sun (<span class="math inline">\(m^2\)</span>), <span class="math inline">\(S\)</span> is the direct solar flux density on the area <span class="citation">(B. S. Helmuth 1998)</span>.</p>
-<p><span class="math inline">\(Q_{rad,sky}\)</span> and <span class="math inline">\(Q_{rad,ground}\)</span> can be calculated as follows <span class="citation">(B. S. Helmuth 1998)</span>.</p>
+<p>We calculate <span class="math inline">\(Q_{sol}\)</span> from <span class="math inline">\(Q_{sol} = \frac{\alpha}{\sin\theta} A_{sol}S\)</span> where <span class="math inline">\(\alpha\)</span> is the solar absorptivity, <span class="math inline">\(\theta\)</span> is the solar elevation angle (radian), <span class="math inline">\(A_{sol}\)</span> is the mussel area in direction of the sun (<span class="math inline">\(m^2\)</span>), <span class="math inline">\(S\)</span> is the direct solar flux density on the area <span class="citation">(B. S. T. Helmuth 1998)</span>.</p>
+<p><span class="math inline">\(Q_{rad,sky}\)</span> and <span class="math inline">\(Q_{rad,ground}\)</span> can be calculated as follows <span class="citation">(B. S. T. Helmuth 1998)</span>.</p>
 <p><span class="math display">\[Q_{rad,sky} = \sigma A_{rad,sky}(\varepsilon_{org}T_b^4-\varepsilon_skyT_a^4) \tag{2}\]</span> <span class="math display">\[Q_{rad,ground} = \sigma A_{rad,ground}(\varepsilon_{org}T_b^4-\varepsilon_{surr}T_g^4) \tag{3}\]</span></p>
 <p>Here, <span class="math inline">\(\sigma\)</span> is the Stefan-Boltzmann constant (<span class="math inline">\(5.66 \times 10^{-8} W m^{-2} K^{-4}\)</span>), <span class="math inline">\(T_a\)</span> and <span class="math inline">\(T_g\)</span> are air and ground temperatures (<span class="math inline">\(K\)</span>), respectively, and <span class="math inline">\(A_{rad,sky}\)</span> and <span class="math inline">\(A_{rad,ground}\)</span> are surface area subject to long-wave radiation from sky and ground (<span class="math inline">\(m^2\)</span>) respectively, both of which are simplified as half of the total surface area due to the nature of mussels. <span class="math inline">\(\varepsilon_{org}\)</span> and <span class="math inline">\(\varepsilon_{surr}\)</span> are the longwave thermal emissivities of the organism and its surroundings, which are roughly 0.97.<br><span class="math inline">\(\varepsilon_{sky}\)</span> represents a functional infrared emissivity of the sky, which varies by air temperature and cloud cover.</p>
 <p>In Environmental Biophysics <span class="citation">(Campbell and Norman 2012)</span>, <span class="math inline">\(\varepsilon_{sky}\)</span> is given by <span class="math inline">\(\varepsilon_{sky}=(1 - 0.84 \times c)(9.2 \times 10^{-6} \times T_a^2) + 0.84 \times c\)</span> where <span class="math inline">\(c\)</span> represents the fraction of the sky covered by cloud.<br>
@@ -358,12 +358,12 @@ Using Taylor series approximation, equations (2) and (3) become</p>
 <p><span class="math display">\[Q_{rad,sky} = 4.0\varepsilon_{org}\varepsilon_{sky}^{3/4}\sigma A_{rad,sky}T_a^3(T_b-\varepsilon_{sky}^{1/4}T_a)\]</span> <span class="math display">\[Q_{rad,ground} = 4.0\varepsilon_{org}\sigma A_{rad,ground}T_g^3(T_b-T_g)\]</span></p>
 <p>Heat conduction <span class="math inline">\(Q_{cond}\)</span> can be calculated as <span class="math inline">\(Q_{cond} = \frac{k_b}{0.5H}A_{cond}(T_b-T_g)\)</span> where <span class="math inline">\(k_b\)</span> is the thermal conductivity of heat in the mussel body.<br>
 Because most of the body of a mussel is composed of water, we approximated conductivity as equal to that of water, <span class="math inline">\(0.60 W m^{-2} K^{-1}\)</span>.<br><span class="math inline">\(H\)</span> represents the height of the mussel and <span class="math inline">\(A_{cond}\)</span> is the mussel area that is touching the ground.</p>
-<p>Convective heat flux (<span class="math inline">\(Q_{conv}\)</span>) can be calculated from <span class="math inline">\(Q_{conv}=h_cA_{conv}(T_b-T_a)\)</span> where <span class="math inline">\(h_c\)</span> is the coefficient for forced convection and <span class="math inline">\(A_{conv}\)</span> is the total surface area exposed to convective heat loss <span class="citation">(B. S. Helmuth 1998)</span>.<br>
+<p>Convective heat flux (<span class="math inline">\(Q_{conv}\)</span>) can be calculated from <span class="math inline">\(Q_{conv}=h_cA_{conv}(T_b-T_a)\)</span> where <span class="math inline">\(h_c\)</span> is the coefficient for forced convection and <span class="math inline">\(A_{conv}\)</span> is the total surface area exposed to convective heat loss <span class="citation">(B. S. T. Helmuth 1998)</span>.<br>
 We calculate the value of <span class="math inline">\(h_c\)</span> using three empirical formulas relating Nusselt numbers and Reynolds numbers: <span class="math inline">\(Nu = \frac{h_c L}{K_a}\)</span>, <span class="math inline">\(Re = \frac{uL}{v}\)</span>, and <span class="math inline">\(Nu = aRe^b\)</span>, where <span class="math inline">\(L\)</span> is the length of the mussel, <span class="math inline">\(K_a\)</span> is the conductivity of air <span class="math inline">\(K_a = 0.00501 + 7.2 \times10^{–5}T_a (W·m^{–1}·K^{–1})\)</span>, <span class="math inline">\(u\)</span> is the wind speed (m/s), and <span class="math inline">\(v\)</span> is the kinematic viscosity of air <span class="math inline">\(v = -1.25 \times 10^{-5} + 9.2 \times 10^{-8} T_a\)</span> <span class="citation">(Denny and Harley 2006)</span>. <span class="math inline">\(A_{conv}\)</span> can be assumed equal to the total surface area.<br>
 The authors empirically acquired <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> in the formula to obtain <span class="math inline">\(Nu\)</span>, which varies depending on the position and the state of the mussels.<br>
 For solitary mussels, <span class="math inline">\(a = 0.38\)</span> and <span class="math inline">\(b = 0.51\)</span> if the anterior or posterior end are facing upwind, and <span class="math inline">\(a = 0.63\)</span> and <span class="math inline">\(b = 0.47\)</span> if the valve is facing upwind.<br>
-The values were measured to be <span class="math inline">\(a = 0.67\)</span>, <span class="math inline">\(b = 0.42\)</span> for aggregated mussels <span class="citation">(B. S. Helmuth 1998)</span>.</p>
-<p>Lastly, <span class="math inline">\(Q_{evap} = \lambda \dot{m}\)</span> where <span class="math inline">\(\lambda\)</span> is the latent heat of vaporization of water (<span class="math inline">\(J/kg\)</span>) and <span class="math inline">\(\dot{m}\)</span> is the rate of water loss <span class="citation">(B. S. Helmuth 1998)</span>.<br>
+The values were measured to be <span class="math inline">\(a = 0.67\)</span>, <span class="math inline">\(b = 0.42\)</span> for aggregated mussels <span class="citation">(B. S. T. Helmuth 1998)</span>.</p>
+<p>Lastly, <span class="math inline">\(Q_{evap} = \lambda \dot{m}\)</span> where <span class="math inline">\(\lambda\)</span> is the latent heat of vaporization of water (<span class="math inline">\(J/kg\)</span>) and <span class="math inline">\(\dot{m}\)</span> is the rate of water loss <span class="citation">(B. S. T. Helmuth 1998)</span>.<br>
 In this model, we assume the rate of water loss to be 5% of initial body mass per hour only when the mussels are gaping.</p>
 <p>For simplicity, <code>Tb_mussel</code> function examines the steady-state (equilibrium) body temperature of an organism exposed over long periods to constant environmental conditions.<br>
 See Helmuth <span class="citation">(1998)</span> for the transient model.<br>
@@ -756,88 +756,88 @@ We plot out the energy balance components.</p>
 <a href="#references" class="anchor"></a>References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-anderson1979habitat" class="csl-entry">
-Anderson, RV, CR Tracy, and Z Abramsky. 1979. <span>“Habitat Selection in Two Species of Short-Horned Grasshoppers.”</span> <em>Oecologia</em> 38 (3): 359–74.
+Anderson, R. V., C. R. Tracy, and Z. Abramsky. 1979. <span>“Habitat Selection in Two Species of Short-Horned Grasshoppers.”</span> <em>Oecologia</em> 38 (3): 359–74.
 </div>
 <div id="ref-bakken1992measurement" class="csl-entry">
-Bakken, George S. 1992. <span>“Measurement and Application of Operative and Standard Operative Temperatures in Ecology.”</span> <em>American Zoologist</em> 32 (2): 194–216.
+Bakken, G. S. 1992. <span>“Measurement and Application of Operative and Standard Operative Temperatures in Ecology.”</span> <em>American Zoologist</em> 32 (2): 194–216.
 </div>
 <div id="ref-barlett1967energy" class="csl-entry">
-Barlett, Peter N, and David M Gates. 1967. <span>“The Energy Budget of a Lizard on a Tree Trunk.”</span> <em>Ecology</em> 48 (2): 315–22.
+Barlett, P. N., and D. M. Gates. 1967. <span>“The Energy Budget of a Lizard on a Tree Trunk.”</span> <em>Ecology</em> 48 (2): 315–22.
 </div>
 <div id="ref-buckley2012demographic" class="csl-entry">
-Buckley, Lauren B, and Joel G Kingsolver. 2012. <span>“The Demographic Impacts of Shifts in Climate Means and Extremes on Alpine Butterflies.”</span> <em>Functional Ecology</em> 26 (4): 969–77.
+Buckley, L. B., and J. G. Kingsolver. 2012. <span>“The Demographic Impacts of Shifts in Climate Means and Extremes on Alpine Butterflies.”</span> <em>Functional Ecology</em> 26 (4): 969–77.
 </div>
 <div id="ref-buckley2014phenotypic" class="csl-entry">
-Buckley, Lauren B, Cesar R Nufio, and Joel G Kingsolver. 2014. <span>“Phenotypic Clines, Energy Balances and Ecological Responses to Climate Change.”</span> <em>Journal of Animal Ecology</em> 83 (1): 41–50.
+Buckley, L. B., C. R. Nufio, and J. G. Kingsolver. 2014. <span>“Phenotypic Clines, Energy Balances and Ecological Responses to Climate Change.”</span> <em>Journal of Animal Ecology</em> 83 (1): 41–50.
 </div>
 <div id="ref-campbell2012introduction" class="csl-entry">
-Campbell, Gaylon S, and John Norman. 2012. <em>An Introduction to Environmental Biophysics</em>. Springer Science &amp; Business Media.
+Campbell, G. S., and J. Norman. 2012. <em>An Introduction to Environmental Biophysics</em>. Springer Science &amp; Business Media.
 </div>
 <div id="ref-denny1993air" class="csl-entry">
-Denny, Mark W. 1993. <em>Air and Water: The Biology and Physics of Life’s Media</em>. Princeton University Press.
+Denny, M. W. 1993. <em>Air and Water: The Biology and Physics of Life’s Media</em>. Princeton University Press.
 </div>
 <div id="ref-denny2006hot" class="csl-entry">
-Denny, Mark W, and Christopher DG Harley. 2006. <span>“Hot Limpets: Predicting Body Temperature in a Conductance-Mediated Thermal System.”</span> <em>Journal of Experimental Biology</em> 209 (13): 2409–19.
+Denny, M. W., and C. D. G. Harley. 2006. <span>“Hot Limpets: Predicting Body Temperature in a Conductance-Mediated Thermal System.”</span> <em>Journal of Experimental Biology</em> 209 (13): 2409–19.
 </div>
 <div id="ref-erbs1982estimation" class="csl-entry">
-Erbs, DG, SA Klein, and JA Duffie. 1982. <span>“Estimation of the Diffuse Radiation Fraction for Hourly, Daily and Monthly-Average Global Radiation.”</span> <em>Solar Energy</em> 28 (4): 293–302.
+Erbs, D. G., S. A. Klein, and J. A. Duffie. 1982. <span>“Estimation of the Diffuse Radiation Fraction for Hourly, Daily and Monthly-Average Global Radiation.”</span> <em>Solar Energy</em> 28 (4): 293–302.
 </div>
 <div id="ref-fei2012body" class="csl-entry">
-Fei, Teng, Andrew K Skidmore, Valentijn Venus, Tiejun Wang, Martin Schlerf, Bert Toxopeus, Sjef Van Overjijk, Meng Bian, and Yaolin Liu. 2012. <span>“A Body Temperature Model for Lizards as Estimated from the Thermal Environment.”</span> <em>Journal of Thermal Biology</em> 37 (1): 56–64.
+Fei, T., A.w K. Skidmore, V. Venus, T. Wang, M. Schlerf, B. Toxopeus, S. Van Overjijk, M. Bian, and Y. Liu. 2012. <span>“A Body Temperature Model for Lizards as Estimated from the Thermal Environment.”</span> <em>Journal of Thermal Biology</em> 37 (1): 56–64.
 </div>
 <div id="ref-forsythe1995model" class="csl-entry">
-Forsythe, William C, Edward J Rykiel Jr, Randal S Stahl, Hsin-i Wu, and Robert M Schoolfield. 1995. <span>“A Model Comparison for Daylength as a Function of Latitude and Day of Year.”</span> <em>Ecological Modeling</em> 80 (1): 87–95.
+Forsythe, W. C., E. J. Rykiel Jr., R. S. Stahl, H. Wu, and R. M. Schoolfield. 1995. <span>“A Model Comparison for Daylength as a Function of Latitude and Day of Year.”</span> <em>Ecological Modeling</em> 80 (1): 87–95.
 </div>
 <div id="ref-galushko2005electrical" class="csl-entry">
-Galushko, D, N Ermakov, M Karpovski, A Palevski, JS Ishay, and DJ Bergman. 2005. <span>“Electrical, Thermoelectric and Thermophysical Properties of Hornet Cuticle.”</span> <em>Semiconductor Science and Technology</em> 20 (3): 286.
+Galushko, D., N. Ermakov, M. Karpovski, A. Palevski, J. S. Ishay, and D. J. Bergman. 2005. <span>“Electrical, Thermoelectric and Thermophysical Properties of Hornet Cuticle.”</span> <em>Semiconductor Science and Technology</em> 20 (3): 286.
 </div>
 <div id="ref-gates2012biophysical" class="csl-entry">
-Gates, David M. 2012. <em>Biophysical Ecology</em>. Courier Corporation.
+Gates, D. M. 2012. <em>Biophysical Ecology</em>. Courier Corporation.
 </div>
 <div id="ref-helmuth1999thermal" class="csl-entry">
-Helmuth, Brian. 1999. <span>“Thermal Biology of Rocky Intertidal Mussels: Quantifying Body Temperatures Using Climatological Data.”</span> <em>Ecology</em> 80 (1): 15–34.
+Helmuth, B. 1999. <span>“Thermal Biology of Rocky Intertidal Mussels: Quantifying Body Temperatures Using Climatological Data.”</span> <em>Ecology</em> 80 (1): 15–34.
 </div>
 <div id="ref-helmuth1998intertidal" class="csl-entry">
-Helmuth, Brian ST. 1998. <span>“Intertidal Mussel Microclimates: Predicting the Body Temperature of a Sessile Invertebrate.”</span> <em>Ecological Monographs</em> 68 (1): 51–74.
+Helmuth, B. S. T. 1998. <span>“Intertidal Mussel Microclimates: Predicting the Body Temperature of a Sessile Invertebrate.”</span> <em>Ecological Monographs</em> 68 (1): 51–74.
 </div>
 <div id="ref-kingsolver1983thermoregulation" class="csl-entry">
-Kingsolver, Joel G. 1983. <span>“Thermoregulation and Flight in Colias Butterflies: Elevational Patterns and Mechanistic Limitations.”</span> <em>Ecology</em> 64 (3): 534–45.
+Kingsolver, J. G. 1983. <span>“Thermoregulation and Flight in Colias Butterflies: Elevational Patterns and Mechanistic Limitations.”</span> <em>Ecology</em> 64 (3): 534–45.
 </div>
 <div id="ref-lactin1998environmental" class="csl-entry">
-Lactin, Derek J, and Dan L Johnson. 1998. <span>“Environmental, Physical, and Behavioural Determinants of Body Temperature in Grasshopper Nymphs (Orthoptera: Acrididae).”</span> <em>The Canadian Entomologist</em> 130 (5): 551–77.
+Lactin, D. J., and D. L. Johnson. 1998. <span>“Environmental, Physical, and Behavioural Determinants of Body Temperature in Grasshopper Nymphs (Orthoptera: Acrididae).”</span> <em>The Canadian Entomologist</em> 130 (5): 551–77.
 </div>
 <div id="ref-liu1960interrelationship" class="csl-entry">
-Liu, Benjamin YH, and Richard C Jordan. 1960. <span>“The Interrelationship and Characteristic Distribution of Direct, Diffuse and Total Solar Radiation.”</span> <em>Solar Energy</em> 4 (3): 1–19.
+Liu, B. Y. H., and R. C. Jordan. 1960. <span>“The Interrelationship and Characteristic Distribution of Direct, Diffuse and Total Solar Radiation.”</span> <em>Solar Energy</em> 4 (3): 1–19.
 </div>
 <div id="ref-mislan2015biophysical" class="csl-entry">
-Mislan, KAS, and David S Wethey. 2015. <span>“A Biophysical Basis for Patchy Mortality During Heat Waves.”</span> <em>Ecology</em> 96 (4): 902–7.
+Mislan, K. A. S., and D. S. Wethey. 2015. <span>“A Biophysical Basis for Patchy Mortality During Heat Waves.”</span> <em>Ecology</em> 96 (4): 902–7.
 </div>
 <div id="ref-mitchell1976heat" class="csl-entry">
 Mitchell, John W. 1976. <span>“Heat Transfer from Spheres and Other Animal Forms.”</span> <em>Biophysical Journal</em> 16 (6): 561–69.
 </div>
 <div id="ref-muth1977thermoregulatory" class="csl-entry">
-Muth, Allan. 1977. <span>“Thermoregulatory Postures and Orientation to the Sun: A Mechanistic Evaluation for the Zebra-Tailed Lizard, Callisaurus Draconoides.”</span> <em>Copeia</em>, 710–20.
+Muth, A. 1977. <span>“Thermoregulatory Postures and Orientation to the Sun: A Mechanistic Evaluation for the Zebra-Tailed Lizard, Callisaurus Draconoides.”</span> <em>Copeia</em>, 710–20.
 </div>
 <div id="ref-norris1967color" class="csl-entry">
-Norris, Kenneth S. 1967. <span>“Color Adaptation in Desert Reptiles and Its Thermal Relationships.”</span> In <em>Lizard Ecology: A Symposium</em>, 162–229. University of Missouri Press Columbia.
+Norris, K. S. 1967. <span>“Color Adaptation in Desert Reptiles and Its Thermal Relationships.”</span> In <em>Lizard Ecology: A Symposium</em>, 162–229. University of Missouri Press Columbia.
 </div>
 <div id="ref-pennell1989computing" class="csl-entry">
-Pennell, S, and J Deignan. 1989. <span>“Computing the Projected Area of a Cone.”</span> <em>SIAM Review</em> 31 (2): 299–302.
+Pennell, S., and J. Deignan. 1989. <span>“Computing the Projected Area of a Cone.”</span> <em>SIAM Review</em> 31 (2): 299–302.
 </div>
 <div id="ref-porter1979behavioral" class="csl-entry">
-Porter, WP, and FC James. 1979. <span>“Behavioral Implications of Mechanistic Ecology II: The African Rainbow Lizard, Agama Agama.”</span> <em>Copeia</em>, 594–619.
+Porter, W. P., and F. C. James. 1979. <span>“Behavioral Implications of Mechanistic Ecology II: The African Rainbow Lizard, Agama Agama.”</span> <em>Copeia</em>, 594–619.
 </div>
 <div id="ref-riddell2018resistance" class="csl-entry">
-Riddell, Eric A, Jonathan P Odom, Jason D Damm, and Michael W Sears. 2018. <span>“Plasticity Reveals Hidden Resistance to Extinction Under Climate Change in the Global Hotspot of Salamander Diversity.”</span> <em>Science Advances</em> 4 (7): eaar5471.
+Riddell, E. A., J. P. Odom, J. D. Damm, and M. W. Sears. 2018. <span>“Plasticity Reveals Hidden Resistance to Extinction Under Climate Change in the Global Hotspot of Salamander Diversity.”</span> <em>Science Advances</em> 4 (7): eaar5471.
 </div>
 <div id="ref-roughgarden1981resource" class="csl-entry">
-Roughgarden, Jonathan, Warren Porter, and David Heckel. 1981. <span>“Resource Partitioning of Space and Its Relationship to Body Temperature in Anolis Lizard Populations.”</span> <em>Oecologia</em> 50 (2): 256–64.
+Roughgarden, J., W. Porter, and D. Heckel. 1981. <span>“Resource Partitioning of Space and Its Relationship to Body Temperature in Anolis Lizard Populations.”</span> <em>Oecologia</em> 50 (2): 256–64.
 </div>
 <div id="ref-samietz2005altitudinal" class="csl-entry">
-Samietz, J, MA Salser, and H Dingle. 2005. <span>“Altitudinal Variation in Behavioural Thermoregulation: Local Adaptation Vs. Plasticity in California Grasshoppers.”</span> <em>Journal of Evolutionary Biology</em> 18 (4): 1087–96.
+Samietz, J., M. A. Salser, and H. Dingle. 2005. <span>“Altitudinal Variation in Behavioural Thermoregulation: Local Adaptation Vs. Plasticity in California Grasshoppers.”</span> <em>Journal of Evolutionary Biology</em> 18 (4): 1087–96.
 </div>
 <div id="ref-swinbank1963long" class="csl-entry">
-Swinbank, W CQJR. 1963. <span>“Long-Wave Radiation from Clear Skies.”</span> <em>Quarterly Journal of the Royal Meteorological Society</em> 89 (381): 339–48.
+Swinbank, W. C. 1963. <span>“Long-Wave Radiation from Clear Skies.”</span> <em>Quarterly Journal of the Royal Meteorological Society</em> 89 (381): 339–48.
 </div>
 </div>
 </div>
