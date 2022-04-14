@@ -43,31 +43,31 @@ As contributors and maintainers of this project, we pledge to respect all people
 
 ### TrenchR 
 
-TrenchR is an open source project &mdash; it's made up of over [10 modules](https://github.com/trenchproject/TrenchR/tree/master/R). If you are considering contributing to TrenchR, this section should help you with that.
+TrenchR is an open source project &mdash; it's made up of over [10 modules](https://github.com/trenchproject/TrenchR/tree/main/R). If you are considering contributing to TrenchR, this section should help you with that.
 
 TrenchR is modular. The R scripts cover a particular category (aka modules), and each have multiple function definitions.  
 
 Here's a partial list of modules:
 
 
-* [Utility functions](https://github.com/trenchproject/TrenchR/tree/master/R/UtilityFunctions.R) - Miscellaneous utility functions including zenith angle, declination angle, and day of year.
-    * [Degree days](https://github.com/trenchproject/TrenchR/tree/master/R/DDFunctions.R) - Functions to calculate degree days.
-    * [Diurnal temperature variation](https://github.com/trenchproject/TrenchR/tree/master/R/DTRFunctions.R) - Funtions to cestimate diurnal temperature variation.
+* [Utility functions](https://github.com/trenchproject/TrenchR/tree/main/R/UtilityFunctions.R) - Miscellaneous utility functions including zenith angle, declination angle, and day of year.
+    * [Degree days](https://github.com/trenchproject/TrenchR/tree/main/R/DDFunctions.R) - Functions to calculate degree days.
+    * [Diurnal temperature variation](https://github.com/trenchproject/TrenchR/tree/main/R/DTRFunctions.R) - Funtions to cestimate diurnal temperature variation.
 
-* [Microclimate functions](https://github.com/trenchproject/TrenchR/tree/master/R) - Separated into multiple files.
-    * [Radiation](https://github.com/trenchproject/TrenchR/tree/master/R/RadiationFunctions.R) - Functions to etimate the amount of incoming solar radiation.
-    * [Partition components of radiation](https://github.com/trenchproject/TrenchR/tree/master/R/RadiationPartitioningFunctions.R) - Functions to partition radiation into components.
-    * [Wind and Temp Profile](https://github.com/trenchproject/TrenchR/tree/master/R/TempWindProfileFunctions.R) - Temperature and wind profile functions.
-    * [Soil temperatures](https://github.com/trenchproject/TrenchR/tree/master/R/TsoilFunctions.R) - Functions to estimate soil temperatures.
+* [Microclimate functions](https://github.com/trenchproject/TrenchR/tree/main/R) - Separated into multiple files.
+    * [Radiation](https://github.com/trenchproject/TrenchR/tree/main/R/RadiationFunctions.R) - Functions to etimate the amount of incoming solar radiation.
+    * [Partition components of radiation](https://github.com/trenchproject/TrenchR/tree/main/R/RadiationPartitioningFunctions.R) - Functions to partition radiation into components.
+    * [Wind and Temp Profile](https://github.com/trenchproject/TrenchR/tree/main/R/TempWindProfileFunctions.R) - Temperature and wind profile functions.
+    * [Soil temperatures](https://github.com/trenchproject/TrenchR/tree/main/R/TsoilFunctions.R) - Functions to estimate soil temperatures.
 
-* [Energy Budgets](https://github.com/trenchproject/TrenchR/tree/master/R) - Separated into multiple files.
-    * [Energy budget components](https://github.com/trenchproject/TrenchR/tree/master/R/energybalance_functions.R) - General functions to estimate heat exchange including convection and conduction.
-    * [Operative temperatures](https://github.com/trenchproject/TrenchR/tree/master/R/OperativeTemperatureFunctions.R) - General functions to estimate operative environmental temperatures (potential body temperatures).
-    * [Butterfly biophysical model](https://github.com/trenchproject/TrenchR/tree/master/R/biophysmodel_Colias.R) - Energy budget model for predicting butterfly operative temperature.
-    * [Grasshopper biophysical model](https://github.com/trenchproject/TrenchR/tree/master/R/biophysmodel_Grasshopper.R) - Energy budget model for predicting grasshopper operative temperature.
-    * [Lizard biophysical model](https://github.com/trenchproject/TrenchR/tree/master/R/biophysmodel_Sceloporuss.R) - Energy budget model for predicting lizard operative temperature.
-* [Allometry](https://github.com/trenchproject/TrenchR/tree/master/R/AllometricFunctions.R) - Functions to convert among mass, volume and length functions.
-* [Intertidal biophysical model](https://github.com/trenchproject/TrenchR/blob/master/R/biophysmodel_Mussel.R) - Energy budget model for predicting operative temperatures of various intertidal organisms (limpets, mussels, snails).
+* [Energy Budgets](https://github.com/trenchproject/TrenchR/tree/main/R) - Separated into multiple files.
+    * [Energy budget components](https://github.com/trenchproject/TrenchR/tree/main/R/energybalance_functions.R) - General functions to estimate heat exchange including convection and conduction.
+    * [Operative temperatures](https://github.com/trenchproject/TrenchR/tree/main/R/OperativeTemperatureFunctions.R) - General functions to estimate operative environmental temperatures (potential body temperatures).
+    * [Butterfly biophysical model](https://github.com/trenchproject/TrenchR/tree/main/R/biophysmodel_Colias.R) - Energy budget model for predicting butterfly operative temperature.
+    * [Grasshopper biophysical model](https://github.com/trenchproject/TrenchR/tree/main/R/biophysmodel_Grasshopper.R) - Energy budget model for predicting grasshopper operative temperature.
+    * [Lizard biophysical model](https://github.com/trenchproject/TrenchR/tree/main/R/biophysmodel_Sceloporuss.R) - Energy budget model for predicting lizard operative temperature.
+* [Allometry](https://github.com/trenchproject/TrenchR/tree/main/R/AllometricFunctions.R) - Functions to convert among mass, volume and length functions.
+* [Intertidal biophysical model](https://github.com/trenchproject/TrenchR/blob/main/R/biophysmodel_Mussel.R) - Energy budget model for predicting operative temperatures of various intertidal organisms (limpets, mussels, snails).
 
 ## How Can I Contribute?
 
@@ -76,7 +76,7 @@ Here's a partial list of modules:
 *  Fork this repo to your Github account
 *  Clone your version on your account down to your machine from your account, e.g,. git clone 'https://github.com/yourgithubusername/TrenchR.git'
 *  Make sure to track progress upstream by doing git remote add upstream https://github.com/trenchproject/TrenchR.git. Before making changes make sure to pull changes in from upstream by doing either git fetch upstream then merge later or git pull upstream to fetch and merge in one step
-*  Make your changes (name your branch something other than 'master')
+*  Make your changes (name your branch something other than 'main')
 *  If you alter package functionality at all (e.g., the code itself, not just documentation) please do write some tests to cover the new functionality.
 * Push up to your account
 * Submit a pull request to home base at trenchproject/TrenchR
