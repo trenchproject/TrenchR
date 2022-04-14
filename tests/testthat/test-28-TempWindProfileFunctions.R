@@ -24,6 +24,7 @@ test_that("air_temp_profile_segment function works as expected", {
   expect_similar(air_temp_profile_segment(T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), z=0.01, T_s=27), 26.22427)
   expect_similar(air_temp_profile_segment(T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.75,0.5), z0=c(0.01,0.15,0.2), z=0.3, T_s=27), 23.16998)
   expect_similar(air_temp_profile_segment(T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), z=0.3, T_s=27), 21.40057)
+  expect_similar(air_temp_profile_segment(T_r=c(25,22,20),u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), z=0.8, T_s=27), 18.01032)
 })
 
 
