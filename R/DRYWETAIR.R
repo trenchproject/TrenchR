@@ -165,6 +165,7 @@ WETAIR <- function (db,
   
   tk    <- celsius_to_kelvin(db)
   esat  <- VAPPRS(db)
+
   if(dp < 999.0) {
     
     e  <- VAPPRS(dp)

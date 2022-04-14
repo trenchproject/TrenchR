@@ -19,7 +19,7 @@ test_that("degree_days function works as expected", {
   expect_similar(degree_days(T_min=7, T_max=10, LDT=12, UDT=33, method="double.sine"), 0)
   expect_similar(degree_days(T_min=13, T_max=14, LDT=12, UDT=33, method="double.sine"), 1.5)
   expect_similar(degree_days(T_min=35, T_max=40, LDT=12, UDT=33, method="double.sine"), 21)
-  expect_similar(degree_days(T_min=13, T_max=40, LDT=12, UDT=33, method="double.sine"), 21)
+  expect_similar(degree_days(T_min=13, T_max=40, LDT=12, UDT=33, method="double.sine"), 12.94)
   expect_similar(degree_days(T_min=7, T_max=40, LDT=12, UDT=33, method="double.sine"), 10.94)
 
   expect_similar(degree_days(T_min=7, T_max=14, LDT=12, UDT=33, method="single.triangulation"), 0.29)

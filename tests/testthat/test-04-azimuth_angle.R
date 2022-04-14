@@ -1,4 +1,9 @@
 context("Azimuth Angle")
+
+expect_similar <- function(input, expected) {
+  eval(bquote(expect_lt(abs(input - expected), 0.01)))
+}
+
 test_that("azimuth_angle function works as expected", {
   # Vancouver - Approx Solar Noon expect 6.08
   june10 = day_of_year("2017-06-10", format= "%Y-%m-%d")
@@ -30,4 +35,11 @@ test_that("azimuth_angle function works as expected", {
   
   expect_gt(aa_mad, 47)
   expect_lt(aa_mad, 48)
+
+   expect_similar(azimuth_angle(doy    = 112, 
+                 lat    = 47.61, 
+                 lon    = -122.33, 
+                 hour   = 0, 
+                 offset = -8), 107.8561)
+
 })

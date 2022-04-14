@@ -44,4 +44,9 @@ test_that("soil_temperature_function function words as expected", {
   expect_equal(length(soil_temperature_function(j=1,T_so= rep(20,13), params=params)[[1]]), 13)
   expect_gt(soil_temperature_function(j=1,T_so= rep(20,13), params=params)[[1]][1], -43)
   expect_lt(soil_temperature_function(j=1,T_so= rep(20,13), params=params)[[1]][1], -14)
+
+  params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0=0.02, H=solrad_vector, T_a=temp_vector, u=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=TRUE)
+  expect_similar(soil_temperature_function(j=1,T_so= rep(20,13), params=params)[[1]][1], -36.8273)
+
+
 })
