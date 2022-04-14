@@ -40,8 +40,8 @@
 
 
 <meta property="og:title" content="Calculate Soil Temperature in C using ODEs — soil_temperature" />
-<meta property="og:description" content="Function called to calculate soil temperature in C from W.A. Beckman and Porter (1973)
-. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from (deVries 1963)" />
+<meta property="og:description" content="Function called to calculate soil temperature in C from Beckman et al. (1973)
+. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from deVries (1963)" />
 
 
 
@@ -139,8 +139,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Function called to calculate soil temperature in C from W.A. Beckman and Porter (1973)
-. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from (deVries 1963)</p>
+    <p>Function called to calculate soil temperature in C from Beckman et al. (1973)
+. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from deVries (1963)</p>
     </div>
 
     <pre class="usage"><span class='fu'>soil_temperature</span><span class='op'>(</span>
@@ -173,7 +173,7 @@
     </tr>
     <tr>
       <th>z</th>
-      <td><p><code>numeric</code> interval of the soil profile to return (1 to z_r.intervals).</p></td>
+      <td><p><code>numeric</code> interval of the soil profile to return (1 to <code>z_r.intervals</code>).</p></td>
     </tr>
     <tr>
       <th>T_a</th>
@@ -181,7 +181,7 @@
     </tr>
     <tr>
       <th>u</th>
-      <td><p><code>numeric</code> vector of wind speed (m/s).</p></td>
+      <td><p><code>numeric</code> vector of wind speed (m s<sup>-1</sup>).</p></td>
     </tr>
     <tr>
       <th>Tsoil0</th>
@@ -201,7 +201,7 @@
     </tr>
     <tr>
       <th>H</th>
-      <td><p><code>numeric</code> vector of solar radiation (W/m<sup>2</sup>).</p></td>
+      <td><p><code>numeric</code> vector of solar radiation (W m<sup>-2</sup>).</p></td>
     </tr>
     <tr>
       <th>water_content</th>
@@ -226,15 +226,15 @@
     <p><code>numeric</code> soil temperature (C).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>deVries DA (1963).
-&#8220;Thermal Properties of Soils.&#8221;
-<em>W. R. Van Wijk's Physics of Plant Environment</em>, <b>Chapter 2</b>.
-ISSN 19640701041, doi: <a href='https://doi.org/10.1002/qj.49709038628'>10.1002/qj.49709038628</a>
-, <a href='https://doi.org/10.1002/qj.49709038628'>https://doi.org/10.1002/qj.49709038628</a>.<br /><br /> W.A. Beckman JWM, Porter WP (1973).
+    <p>Beckman WA, Mitchell JW, Porter WP (1973).
 &#8220;Thermal Model for Prediction of a Desert Iguana㤼㸲s Daily and Seasonal Behavior.&#8221;
 <em>J. Heat Transfer</em>, <b>95</b>(2), 257--262.
 doi: <a href='https://doi.org/10.1115/1.3450037'>10.1115/1.3450037</a>
-, <a href='https://asmedigitalcollection.asme.org/heattransfer/article-abstract/95/2/257/416609/Thermal-Model-for-Prediction-of-a-Desert-Iguana-s?redirectedFrom=fulltext'>https://asmedigitalcollection.asme.org/heattransfer/article-abstract/95/2/257/416609/Thermal-Model-for-Prediction-of-a-Desert-Iguana-s?redirectedFrom=fulltext</a>.</p>
+, <a href='https://asmedigitalcollection.asme.org/heattransfer/article-abstract/95/2/257/416609/Thermal-Model-for-Prediction-of-a-Desert-Iguana-s?redirectedFrom=fulltext'>https://asmedigitalcollection.asme.org/heattransfer/article-abstract/95/2/257/416609/Thermal-Model-for-Prediction-of-a-Desert-Iguana-s?redirectedFrom=fulltext</a>.<br /><br /> deVries DA (1963).
+&#8220;Thermal Properties of Soils.&#8221;
+<em>W. R. Van Wijk's Physics of Plant Environment</em>, <b>Chapter 2</b>.
+ISSN 19640701041, doi: <a href='https://doi.org/10.1002/qj.49709038628'>10.1002/qj.49709038628</a>
+, <a href='https://doi.org/10.1002/qj.49709038628'>https://doi.org/10.1002/qj.49709038628</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other soil temperature functions: 

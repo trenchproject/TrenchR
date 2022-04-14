@@ -7,7 +7,7 @@
 soil_conductivity(x, lambda, g_a)
 }
 \arguments{
-\item{x}{\code{numeric} vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.}
+\item{x}{\code{numeric} vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air). The volume fractions should sum to 1. Note that \code{x} and \code{lambda} values in the example correspond to these soil constituents.}
 
 \item{lambda}{\code{numeric} vector of the thermal conductivities (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) of the soil constituents.}
 

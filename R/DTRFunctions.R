@@ -1,7 +1,16 @@
 #' @title Estimate Diurnal Temperatures
 #'
-#' @description Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components \insertCite{Parton1981}{TrenchR}. Default alpha, beta, gamma values are the average of 5 North Carolina sites  \insertCite{Wann1985}{TrenchR}. Other alpha, beta, gamma parameterizations include values for Denver, Colorado from \insertCite{Parton1981}{TrenchR}: 150cm air temperature: alpha = 1.86, beta = 2.20, gamma = -0.17; 10cm air temperature: alpha = 1.52, beta = 2.00, gamma = -0.18; soil surface temperature: alpha = 0.50, beta = 1.81, gamma = 0.49; 10cm soil temperature: alpha = 0.45, beta = 2.28, gamma = 1.83.
-#' 
+#' @description Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components \insertCite{Parton1981}{TrenchR}. 
+#'
+#' @details Default \code{alpha}, \code{beta}, and \code{gamma} values are the average of 5 North Carolina sites \insertCite{Wann1985}{TrenchR}. 
+#'  \cr \cr
+#'  Other \code{alpha}, \code{beta}, and \code{gamma} parameterizations include values for Denver, Colorado from \insertCite{Parton1981;textual}{TrenchR}: \itemize{
+#'   \item{150 cm air temperature}{: \code{alpha} = 1.86, \code{beta} = 2.20, \code{gamma} = -0.17}
+#'   \item{10 cm air temperature}{: \code{alpha} = 1.52, \code{beta} = 2.00, \code{gamma} = -0.18}
+#'   \item{soil surface temperature}{: \code{alpha} = 0.50, \code{beta} = 1.81, \code{gamma} = 0.49}
+#'   \item{10cm soil temperature}{: \code{alpha} = 0.45, \code{beta} = 2.28, \code{gamma} = 1.83}
+#'  }
+#'
 #' @param T_max,T_min \code{numeric} maximum and minimum daily temperatures (C).
 #' 
 #' @param t_r,t_s \code{numeric} times of sunrise and sunset (hour).
@@ -98,7 +107,7 @@ diurnal_temp_variation_sineexp <- function (T_max,
 
 #' @title Diurnal Temperature Across Hours
 #'
-#' @description estimate temperature for a specified hour using the sine interpolation in \insertCite{Campbell1998}{TrenchR}.
+#' @description Estimate temperature for a specified hour using the sine interpolation in \insertCite{Campbell1998;textual}{TrenchR}.
 #' 
 #' @param T_max,T_min \code{numeric} maximum and minimum daily temperatures (C). 
 #' 
@@ -136,9 +145,7 @@ diurnal_temp_variation_sine <- function (T_max,
 
 #' @title Estimate Temperature Across Hours Using Sine and Square Root Functions
 #'
-#' @details  Estimates temperature across hours using sine and square root functions
-#' 
-#' @description  estimate temperature for a specified hour using sine and square root functions \insertCite{Cesaraccio2001}{TrenchR}.
+#' @description  Estimate temperature for a specified hour using sine and square root functions \insertCite{Cesaraccio2001}{TrenchR}.
 #' 
 #' @param t \code{numeric} hour or hours for temperature estimate.
 #' 

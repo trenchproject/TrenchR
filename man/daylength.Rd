@@ -9,7 +9,7 @@ daylength(lat, doy)
 \arguments{
 \item{lat}{\code{numeric} latitude (decimal degrees).}
 
-\item{doy}{\code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)}
+\item{doy}{\code{numeric} day of year (1-366). This can be obtained from standard date via \code{\link{day_of_year}}.}
 }
 \value{
 \code{numeric} day length (hours).
@@ -31,7 +31,6 @@ Other utility functions:
 \code{\link{azimuth_angle}()},
 \code{\link{day_of_year}()},
 \code{\link{dec_angle}()},
-\code{\link{degrees_to_radians}()},
 \code{\link{solar_noon}()},
 \code{\link{temperature conversions}},
 \code{\link{zenith_angle}()}

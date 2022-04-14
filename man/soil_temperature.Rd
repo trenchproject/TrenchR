@@ -26,11 +26,11 @@ soil_temperature(
 
 \item{z_r}{\code{numeric} reference height in0 (m).}
 
-\item{z}{\code{numeric} interval of the soil profile to return (1 to z_r.intervals).}
+\item{z}{\code{numeric} interval of the soil profile to return (1 to \code{z_r.intervals}).}
 
 \item{T_a}{\code{numeric} vector of air temperature (degrees C), Note: missing values will be linearly interpolated.}
 
-\item{u}{\code{numeric} vector of wind speed (m/s).}
+\item{u}{\code{numeric} vector of wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
 \item{Tsoil0}{\code{numeric} initial soil temperature (degrees C).}
 
@@ -40,7 +40,7 @@ soil_temperature(
 
 \item{TimeIn}{\code{numeric} vector of time periods for the model.}
 
-\item{H}{\code{numeric} vector of solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).}
+\item{H}{\code{numeric} vector of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
 
 \item{water_content}{\code{numeric} percent water content (percent).}
 
@@ -54,7 +54,7 @@ soil_temperature(
 \code{numeric} soil temperature (C).
 }
 \description{
-Function called to calculate soil temperature in C from \insertCite{Beckman1973;textual}{TrenchR}. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from \insertCite{deVries1963}{TrenchR}
+Function called to calculate soil temperature in C from \insertCite{Beckman1973;textual}{TrenchR}. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from \insertCite{deVries1963;textual}{TrenchR}
 }
 \examples{
   set.seed(123)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{actual_vapor_pressure}
 \alias{actual_vapor_pressure}
-\title{Calculate Actual Vapor Pressure from Dewpoint Temperature}
+\title{Actual Vapor Pressure from Dewpoint Temperature}
 \usage{
 actual_vapor_pressure(T_dewpoint)
 }

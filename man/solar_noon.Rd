@@ -9,7 +9,7 @@ solar_noon(lon, doy, offset = NA)
 \arguments{
 \item{lon}{\code{numeric} longitude (decimal degrees)}
 
-\item{doy}{\code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)}
+\item{doy}{\code{numeric} day of year (1-366). This can be obtained from standard date via \code{\link{day_of_year}}.}
 
 \item{offset}{\code{numeric} number of hours to add to UTC to get local time (improves accuracy but not always necessary). Defaults to NA.}
 }
@@ -34,7 +34,6 @@ Other utility functions:
 \code{\link{day_of_year}()},
 \code{\link{daylength}()},
 \code{\link{dec_angle}()},
-\code{\link{degrees_to_radians}()},
 \code{\link{temperature conversions}},
 \code{\link{zenith_angle}()}
 }

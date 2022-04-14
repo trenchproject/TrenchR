@@ -33,7 +33,7 @@ All models follow (\ifelse{html}{\out{SA = a M<sup>b</sup>}}{\eqn{SA = a M^b}{AS
     \cr 
     \cr \eqn{a = 0.00099} 
     \cr \eqn{b = 0.56}
-  \item Insects \insertCite{Lactin1997}{TrenchR}.
+  \item Insects \insertCite{Lactin1997}{TrenchR}:
     \cr 
     \cr \eqn{a = 0.0013} 
     \cr \eqn{b = 0.8}

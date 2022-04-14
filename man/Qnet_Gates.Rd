@@ -23,10 +23,7 @@ Qnet_Gates(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap)
 \code{numeric} net energy exchange (W).
 }
 \description{
-Net Energy Exchange Between an Animal and the Environment
-}
-\details{
-Estimates net energy exchange between an animal and the environment in W. Follows \insertCite{Gates1980;textual}{TrenchR} and others.
+Estimate net energy exchange between an animal and the environment in W. Follows \insertCite{Gates1980;textual}{TrenchR} and others.
 }
 \examples{
 Qnet_Gates(Qabs  = 500,

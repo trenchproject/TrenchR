@@ -23,7 +23,7 @@ boundary_layer_resistance(T_a, e_s, e_a, elev, D, u = NA)
 \code{numeric} boundary layer resistance (\ifelse{html}{\out{s cm<sup>-1</sup>}}{\eqn{s cm^-1}{ASCII}}).
 }
 \description{
-Estimate boundary layer resistance under free convection. Based on the function in \insertCite{Riddell2018}{TrenchR}.
+Estimate boundary layer resistance under free convection. Based on the function in \insertCite{Riddell2018;textual}{TrenchR}.
 }
 \examples{
   boundary_layer_resistance(T_a  = 293,

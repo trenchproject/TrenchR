@@ -2,7 +2,7 @@
 #' 
 #' @description Estimates soil thermal conductivity (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) using the methods of \insertCite{deVries1963;textual}{TrenchR}.
 #' 
-#' @param x \code{numeric} vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.
+#' @param x \code{numeric} vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air). The volume fractions should sum to 1. Note that \code{x} and \code{lambda} values in the example correspond to these soil constituents.
 #' 
 #' @param lambda \code{numeric} vector of the thermal conductivities (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) of the soil constituents.
 #' 
@@ -114,7 +114,7 @@ soil_specific_heat <- function (x_o,
 #' 
 #' @param x \code{numeric} vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.
 #' 
-#' @param L \code{numeric} Monin-Obukhov length, a measure of the instability of heat flow (see \insertCite{Beckman1973;textual}{TrenchR}).
+#' @param L \code{numeric} Monin-Obukhov length, a measure of the instability of heat flow \insertCite{Beckman1973}{TrenchR}.
 #' 
 #' @param z0 \code{numeric} surface roughness (m).
 #' 
@@ -212,13 +212,13 @@ soil_temperature_equation <- function (L,
 
 #' @title Core Calculate Soil Temperature Function
 #' 
-#' @description Function called to calculate soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. Param are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from \insertCite{Porter1973;textual}{TrenchR} and \insertCite{Kingsolver1979;textual}{TrenchR}
+#' @description Function called to calculate soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from \insertCite{Porter1973;textual}{TrenchR} and \insertCite{Kingsolver1979;textual}{TrenchR}
 #' 
-#' @param j \code{numeric} is the number of the iteration of running the model.
+#' @param j \code{numeric} the number of the iteration of running the model.
 #' 
-#' @param T_so \code{numeric} is the initial soil temperature profile in C. 
+#' @param T_so \code{numeric} the initial soil temperature profile in C. 
 #' 
-#' @param params is a list containing the following param, which are described or calculated in \code{\link{soil_temperature}}: \code{list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade)}.   
+#' @param params \code{list} containing the following param, which are described or calculated in \code{\link{soil_temperature}}: \code{SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade}.   
 #' 
 #' @return Soil temperature profile as a \code{list}.
 #' 
@@ -383,17 +383,17 @@ soil_temperature_function <- function (j,
 
 #' @title Calculate Soil Temperature in C using ODEs
 #' 
-#' @description Function called to calculate soil temperature in C from \insertCite{Beckman1973;textual}{TrenchR}. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from \insertCite{deVries1963}{TrenchR}
+#' @description Function called to calculate soil temperature in C from \insertCite{Beckman1973;textual}{TrenchR}. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from \insertCite{deVries1963;textual}{TrenchR}
 #' 
 #' @param z_r.intervals \code{numeric} the number of intervals in the soil profile to calculate, defaults to 12.
 #' 
 #' @param z_r \code{numeric} reference height in0 (m).
 #' 
-#' @param z \code{numeric} interval of the soil profile to return (1 to z_r.intervals).
+#' @param z \code{numeric} interval of the soil profile to return (1 to \code{z_r.intervals}).
 #' 
 #' @param T_a \code{numeric} vector of air temperature (degrees C), Note: missing values will be linearly interpolated.
 #' 
-#' @param u \code{numeric} vector of wind speed (m/s).
+#' @param u \code{numeric} vector of wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
 #' @param Tsoil0 \code{numeric} initial soil temperature (degrees C). 
 #' 
@@ -403,7 +403,7 @@ soil_temperature_function <- function (j,
 #' 
 #' @param TimeIn \code{numeric} vector of time periods for the model.
 #' 
-#' @param H \code{numeric} vector of solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).
+#' @param H \code{numeric} vector of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #' 
 #' @param water_content \code{numeric} percent water content (percent).
 #' 

@@ -7,7 +7,7 @@
 azimuth_angle(doy, lat, lon, hour, offset = NA)
 }
 \arguments{
-\item{doy}{\code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)}
+\item{doy}{\code{numeric} day of year (1-366). This can be obtained from standard date via \code{\link{day_of_year}}.}
 
 \item{lat}{\code{numeric} latitude (decimal degrees).}
 
@@ -21,7 +21,7 @@ azimuth_angle(doy, lat, lon, hour, offset = NA)
 \code{numeric} azimuth angle (degrees).
 }
 \description{
-calculate the azimuth angle, the angle (degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east \insertCite{Campbell1998}{TrenchR}.
+Calculate the azimuth angle, the angle (degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
   azimuth_angle(doy    = 112, 
@@ -40,7 +40,6 @@ Other utility functions:
 \code{\link{day_of_year}()},
 \code{\link{daylength}()},
 \code{\link{dec_angle}()},
-\code{\link{degrees_to_radians}()},
 \code{\link{solar_noon}()},
 \code{\link{temperature conversions}},
 \code{\link{zenith_angle}()}

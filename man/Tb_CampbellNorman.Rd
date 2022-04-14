@@ -2,7 +2,7 @@
 % Please edit documentation in R/OperativeTemperatureFunctions.R
 \name{Tb_CampbellNorman}
 \alias{Tb_CampbellNorman}
-\title{Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K}
+\title{Body Temperature (Operative Environmental Temperature) of an Ectotherm in K}
 \usage{
 Tb_CampbellNorman(
   T_a,
@@ -39,11 +39,9 @@ Tb_CampbellNorman(
 \code{numeric} operative environmental temperature, \code{T_e} (K).
 }
 \description{
-Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
+Predict body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
 }
 \details{
-Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
-
 Boundary conductance uses a factor of 1.4 to account for increased convection \insertCite{Mitchell1976}{TrenchR}, assumes forced conduction.
 }
 \examples{

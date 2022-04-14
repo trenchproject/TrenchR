@@ -27,7 +27,7 @@ Qevaporation(A, T_b, taxon, rho_s = NA, rho_a = NA, h = NA, H = NA, r_i = NA)
 \code{numeric} evaporative heat loss (W).
 }
 \description{
-estimate heat loss associated with evaporative water loss by an amphibian \insertCite{Spotila1992}{TrenchR} or lizard (based on empirical measurements in \insertCite{Porter1973}{TrenchR}).
+Estimate heat loss associated with evaporative water loss by an amphibian \insertCite{Spotila1992}{TrenchR} or lizard (based on empirical measurements in \insertCite{Porter1973;textual}{TrenchR}).
 }
 \examples{
   Qevaporation(A      = 0.1,

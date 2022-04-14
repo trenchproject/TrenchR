@@ -4,7 +4,7 @@
 #' 
 #' @details The proportion of radiation that is direct is determined following \insertCite{Sears2011;textual}{TrenchR}.
 #'   \cr \cr 
-#'   Boundary conductance uses a factor of 1.4 to account for increased convection \insertCite{Mitchell1976}{TrenchR}
+#'   Boundary conductance uses a factor of 1.4 to account for increased convection \insertCite{Mitchell1976}{TrenchR}.
 #'
 #' @param T_a \code{numeric} air temperature (C).
 #' 
@@ -14,7 +14,7 @@
 #' 
 #' @param svl \code{numeric} lizard snout vent length (mm).
 #' 
-#' @param m \code{numeric} lizard mass in g, note that it can be estimated as \code{\link{mass_from_length}}: \ifelse{html}{\out{3.55*10<sup>-5</sup>*length<sup>3</sup>}}{\eqn{3.55*10^-5 * length^3}{ASCII}}
+#' @param m \code{numeric} lizard mass in g, note that it can be estimated as \code{\link{mass_from_length}}: \ifelse{html}{\out{3.55 x 10<sup>-5</sup> x length<sup>3</sup>}}{\eqn{3.55*10^-5 * length^3}{ASCII}}
 #' 
 #' @param psi \code{numeric} solar zenith angle (degrees).
 #' 

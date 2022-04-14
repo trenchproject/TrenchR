@@ -9,7 +9,7 @@ proportion_silhouette_area(z, taxon, raz = 0, posture = "prostrate")
 \arguments{
 \item{z}{\code{numeric} zenith angle in degrees between \code{0} and \code{360}.}
 
-\item{taxon}{\code{character} Organism taxon. Current choices are \code{"lizard"}, \code{"frog"}, and \code{"grasshopper"}.}
+\item{taxon}{\code{character} organism name. Current choices are \code{"lizard"}, \code{"frog"}, and \code{"grasshopper"}.}
 
 \item{raz}{\code{numeric} relative solar azimuth angle (in degrees). Required if \code{taxon = "lizard"}. This is the horizontal angle of the sun relative to the head and frontal plane of the lizard and options currently include \code{0} (in front), \code{90} (to side), and \code{180} (behind) degrees.}
 
@@ -19,13 +19,13 @@ proportion_silhouette_area(z, taxon, raz = 0, posture = "prostrate")
 \code{numeric} silhouette area as a proportion.
 }
 \description{
-Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimates the projected area as a function of zenith angle.
+Estimate the projected (silhouette) area as a portion of the surface area of the organism as a function of zenith angle.
 }
 \details{
 Relationships come from \itemize{
-  \item Lizards: \insertCite{Muth1977;textual}{TrenchR}.
-  \item Frogs: \insertCite{Tracy1976;textual}{TrenchR}.
-  \item Grasshoppers: \insertCite{Anderson1979;textual}{TrenchR}.
+  \item Lizards: \insertCite{Muth1977;textual}{TrenchR}
+  \item Frogs: \insertCite{Tracy1976;textual}{TrenchR}
+  \item Grasshoppers: \insertCite{Anderson1979;textual}{TrenchR}
  }
 }
 \examples{

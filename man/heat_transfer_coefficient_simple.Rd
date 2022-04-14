@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{heat_transfer_coefficient_simple}
 \alias{heat_transfer_coefficient_simple}
-\title{Calculate Heat Transfer Coefficient}
+\title{Heat Transfer Coefficient}
 \usage{
 heat_transfer_coefficient_simple(V, D, type)
 }
@@ -17,7 +17,7 @@ heat_transfer_coefficient_simple(V, D, type)
 \code{numeric} heat transfer coefficient, H_L (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}).
 }
 \description{
-estimate the heat transfer coefficient \insertCite{Mitchell1976}{TrenchR} using either the relationship in \insertCite{Spotila1992}{TrenchR} or that in \insertCite{Gates1980}{TrenchR}.
+Estimate the heat transfer coefficient \insertCite{Mitchell1976}{TrenchR} using either the relationship in \insertCite{Spotila1992;textual}{TrenchR} or that in \insertCite{Gates1980;textual}{TrenchR}.
 }
 \examples{
   heat_transfer_coefficient_simple(V    = 0.5,

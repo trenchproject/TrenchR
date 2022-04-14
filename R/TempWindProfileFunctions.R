@@ -1,6 +1,6 @@
 #' @title Estimate Surface Roughness from Empirical Measurements
 #' 
-#' @description Estimate surface roughness (m) from empirical wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) data collected at a vector of heights (m). Estimates surface roughness from empirical measurements \insertCite{Kingsolver2015,Campbell1998,Porter1979}{TrenchR}.
+#' @description Estimate surface roughness (m) from empirical wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) data collected at a vector of heights (m) from empirical measurements \insertCite{Kingsolver2015,Campbell1998,Porter1979}{TrenchR}.
 #' 
 #' @param u_r \code{numeric} wind velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at a vector of reference heights.
 #' 
@@ -134,7 +134,7 @@ air_temp_profile_neutral <- function (T_r,
 
 #' @title Air Temperature Profile as in NicheMapR
 #' 
-#' @description  estimate temperature (C) at a specified height (m). Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR \insertCite{Kearney2017}{TrenchR}.
+#' @description  Estimate temperature (C) at a specified height (m). Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR \insertCite{Kearney2017}{TrenchR}.
 #' 
 #' @param T_r \code{numeric} temperature (C) at reference height.
 #' 
@@ -310,7 +310,7 @@ air_temp_profile_segment <- function (T_r,
 
 #' @title Windspeed at a Specified Height 
 #' 
-#' @description Calculate wind speed (m/s) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
+#' @description Calculate wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
 #' 
 #' @param u_r \code{numeric} a vector of wind speeds (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at the 3 reference heights.
 #' 

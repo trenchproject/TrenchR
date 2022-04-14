@@ -12,7 +12,7 @@
 #' 
 #' @param rho \code{numeric} albedo as a proportion (0-1). 
 #' 
-#' @return \code{numeric} radiation components - direct, diffused and reflected (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).
+#' @return \code{numeric} radiation components - direct, diffused and reflected (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #' 
 #' @family microclimate functions
 #' 
@@ -69,19 +69,19 @@ estimate_radiation <- function (doy,
 
 #' @title Estimate Diurnal Radiation 
 #' 
-#' @description Estimate hourly solar radiation ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per hour) as a function of daily global solar radiation (in (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per day). Based on \insertCite{Tham2010;textual}{TrenchR} and \insertCite{AlRawahi2011;textual}{TrenchR}.
+#' @description Estimate hourly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> hr<sup>-1</sup>}}{\eqn{W m^-2 hr^-1}{ASCII}}) as a function of daily global solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}). Based on \insertCite{Tham2010;textual}{TrenchR} and \insertCite{AlRawahi2011;textual}{TrenchR}.
 #' 
-#' @param doy \code{numeric} is the day of year.
+#' @param doy \code{numeric} the day of year.
 #' 
-#' @param solrad \code{numeric} is solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per day.
+#' @param solrad \code{numeric} solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}).
 #' 
-#' @param hour \code{numeric} is hour (0-24). 
+#' @param hour \code{numeric} hour (0-24). 
 #' 
 #' @param lon \code{numeric} longitude (degrees).
 #' 
 #' @param lat \code{numeric} latitude (degrees).
 #' 
-#' @return \code{numeric} hourly solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).
+#' @return \code{numeric} hourly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #' 
 #' @family microclimate functions
 #' 
@@ -148,7 +148,7 @@ diurnal_radiation_variation <- function(doy,
 
 #' @title Estimate Average Monthly Solar Radiation
 #' 
-#' @description Estimate average monthly solar radiation ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) per day) using basic topographic and climatic information as input. Cloudiness is stochastically modeled, so output will vary between functional calls. Based on \insertCite{Nikolov1992;textual}{TrenchR}.
+#' @description Estimate average monthly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}) using basic topographic and climatic information as input. Cloudiness is stochastically modeled, so output will vary between functional calls. Based on \insertCite{Nikolov1992;textual}{TrenchR}.
 #' 
 #' @param lat \code{numeric} latitude (degrees).
 #' 
@@ -164,7 +164,7 @@ diurnal_radiation_variation <- function(doy,
 #' 
 #' @param P \code{numeric} total monthly precipitation (mm).
 #' 
-#' @return \code{numeric} average monthly solar radiation ((\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}})).
+#' @return \code{numeric} average monthly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #' 
 #' @family microclimate functions
 #' 
@@ -279,7 +279,7 @@ monthly_solar_radiation <- function (lat,
 
 #' @title Estimate Direct Solar Radiation
 #' 
-#' @description Estimate direct solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) based on latitude, day of year, elevation, and time. Uses 2 methods compiled in \insertCite{Tracy1983;textual}{TrenchR} \insertCite{McCullough1971,Campbell1998}{TrenchR}.
+#' @description Estimate direct solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) based on latitude, day of year, elevation, and time. Uses two methods compiled in \insertCite{Tracy1983;textual}{TrenchR} \insertCite{McCullough1971,Campbell1998}{TrenchR}.
 #' 
 #' @param lat \code{numeric} latitude (degrees).
 #' 

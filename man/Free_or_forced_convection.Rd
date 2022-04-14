@@ -7,9 +7,9 @@
 free_or_forced_convection(Gr, Re)
 }
 \arguments{
-\item{Gr}{\code{numeric} is the Grashof Number (dimensionless).}
+\item{Gr}{\code{numeric} Grashof Number (dimensionless).}
 
-\item{Re}{\code{numeric} is the Reynolds Number (dimensionless).}
+\item{Re}{\code{numeric} Reynolds Number (dimensionless).}
 }
 \value{
 \code{character} \code{"free"}, \code{"forced"}, or \code{"intermediate"}.

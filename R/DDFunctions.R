@@ -1,7 +1,6 @@
 #' @title Calculate Degree Days
 #' 
-#' @description Calculate degree days using single or double sine wave and single or double triangulation approximation \insertCite{ucipm}{TrenchR}. \cr
-#'   Double methods assume symmetry, that is that next day's thermal minimum is equal to previous day. Double Sine wave approximation of degree days from \insertCite{Allen1976}{TrenchR}.
+#' @description Calculate degree days using single or double sine wave and single or double triangulation approximation \insertCite{ucipm}{TrenchR}. Double methods assume symmetry, that is that next day's thermal minimum is equal to previous day. Double Sine wave approximation of degree days from \insertCite{Allen1976;textual}{TrenchR}.
 #' 
 #' @param T_min \code{numeric} Minimum temperature of the day (C).
 #' 

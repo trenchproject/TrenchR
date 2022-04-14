@@ -21,9 +21,9 @@ Estimate volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) from leng
 }
 \details{
 Relationships come from \itemize{
-  \item Lizards: \insertCite{Norris1965;textual}{TrenchR}.
-  \item Frogs: \insertCite{Tracy1972;textual}{TrenchR}.
-  \item Sphere: \insertCite{Mitchell1976;textual}{TrenchR}.
+  \item Lizards: \insertCite{Norris1965;textual}{TrenchR}
+  \item Frogs: \insertCite{Tracy1972;textual}{TrenchR}
+  \item Sphere: \insertCite{Mitchell1976;textual}{TrenchR}
  }
 }
 \examples{

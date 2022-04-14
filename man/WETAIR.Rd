@@ -33,7 +33,7 @@ Named \code{list} with elements \itemize{
 \description{
 Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from \insertCite{Kearney2017,Kearney2020;textual}{TrenchR}.
  \cr 
- WETAIR must be used in conjunction with function VAPPRS. Input variables are shown below. See Details.
+ WETAIR must be used in conjunction with \code{\link{VAPPRS}}. Input variables are shown below. See Details.
 }
 \details{
 The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP): 

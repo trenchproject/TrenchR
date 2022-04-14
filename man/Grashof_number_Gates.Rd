@@ -18,7 +18,7 @@ Grashof_number_Gates(T_a, T_g, beta, D, nu)
 \item{nu}{\code{numeric} is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}); can calculate from \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
 }
 \value{
-\code{numeric} Grashof number
+\code{numeric} Grashof number.
 }
 \description{
 Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity \insertCite{Gates1980}{TrenchR}. Ratio of a buoyant force times an inertial force to the square of a viscous force.

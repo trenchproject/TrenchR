@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{saturation_vapor_pressure}
 \alias{saturation_vapor_pressure}
-\title{Calculate Saturation Vapor Pressure}
+\title{Saturation Vapor Pressure}
 \usage{
 saturation_vapor_pressure(T_a)
 }

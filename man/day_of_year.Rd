@@ -9,7 +9,7 @@ day_of_year(day, format = "\%Y-\%m-\%d")
 \arguments{
 \item{day}{\code{character} numerical date in standard format (e.g. \code{"2017-01-02"}, \code{"01-02"}, \code{"01/02/2017"} etc).}
 
-\item{format}{\code{character} date format following \code{\link[base]{POSIXlt}} conventions. Default value = \code{"\%Y-\%m-\%d"}.}
+\item{format}{\code{character} date format following \code{\link[base]{as.POSIXlt}} conventions. Default value = \code{"\%Y-\%m-\%d"}.}
 }
 \value{
 \code{numeric} Julian day number, 1-366 (e.g. 1 for January 1st).
@@ -31,7 +31,6 @@ Other utility functions:
 \code{\link{azimuth_angle}()},
 \code{\link{daylength}()},
 \code{\link{dec_angle}()},
-\code{\link{degrees_to_radians}()},
 \code{\link{solar_noon}()},
 \code{\link{temperature conversions}},
 \code{\link{zenith_angle}()}

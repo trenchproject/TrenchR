@@ -7,7 +7,7 @@
 zenith_angle(doy, lat, lon, hour, offset = NA)
 }
 \arguments{
-\item{doy}{\code{numeric} day of year (1-366). (This can be obtained from standard date via \code{\link{day_of_year}}.)}
+\item{doy}{\code{numeric} day of year (1-366). This can be obtained from standard date via \code{\link{day_of_year}}.}
 
 \item{lat}{\code{numeric} latitude (decimal degrees).}
 
@@ -21,7 +21,7 @@ zenith_angle(doy, lat, lon, hour, offset = NA)
 \code{numeric} zenith angle (degrees)
 }
 \description{
-calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical \insertCite{Campbell1998}{TrenchR}.
+Calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
   zenith_angle(doy  = 112, 
@@ -40,7 +40,6 @@ Other utility functions:
 \code{\link{day_of_year}()},
 \code{\link{daylength}()},
 \code{\link{dec_angle}()},
-\code{\link{degrees_to_radians}()},
 \code{\link{solar_noon}()},
 \code{\link{temperature conversions}}
 }

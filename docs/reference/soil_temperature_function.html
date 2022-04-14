@@ -40,8 +40,8 @@
 
 
 <meta property="og:title" content="Core Calculate Soil Temperature Function — soil_temperature_function" />
-<meta property="og:description" content="Function called to calculate soil temperature from W.A. Beckman and Porter (1973)
-. Param are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from Porter et al. (1973)
+<meta property="og:description" content="Function called to calculate soil temperature from Beckman et al. (1973)
+. Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from Porter et al. (1973)
  and Kingsolver (1979)" />
 
 
@@ -140,8 +140,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Function called to calculate soil temperature from W.A. Beckman and Porter (1973)
-. Param are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from Porter et al. (1973)
+    <p>Function called to calculate soil temperature from Beckman et al. (1973)
+. Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from Porter et al. (1973)
  and Kingsolver (1979)</p>
     </div>
 
@@ -152,15 +152,11 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>j</th>
-      <td><p><code>numeric</code> is the number of the iteration of running the model.</p></td>
+      <td><p><code>numeric</code> the number of the iteration of running the model.</p></td>
     </tr>
     <tr>
       <th>T_so</th>
-      <td><p><code>numeric</code> is the initial soil temperature profile in C.</p></td>
-    </tr>
-    <tr>
-      <th>params</th>
-      <td><p>is a list containing the following param, which are described or calculated in <code><a href='soil_temperature.html'>soil_temperature</a></code>: <code><a href='https://rdrr.io/r/base/list.html'>list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade)</a></code>.</p></td>
+      <td><p><code>numeric</code> the initial soil temperature profile in C.</p></td>
     </tr>
     </table>
 
@@ -169,15 +165,15 @@
     <p>Soil temperature profile as a <code>list</code>.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Kingsolver JG (1979).
-&#8220;Thermal and hydric aspects of environmental hetergeneity in the pitcher plant mosquito.&#8221;
-<em>Ecological Monographys</em>, <b>49</b>, 357--376.<br /><br /> Porter WP, Mitchell JW, Bekman A, DeWitt CB (1973).
-&#8220;Behavioral implications of mechanistic ecology: thermal and behavioral modeling of desert ectotherms and their microenvironments.&#8221;
-<em>Oecologia</em>, <b>13</b>, 1--54.<br /><br /> W.A. Beckman JWM, Porter WP (1973).
+    <p>Beckman WA, Mitchell JW, Porter WP (1973).
 &#8220;Thermal Model for Prediction of a Desert Iguana㤼㸲s Daily and Seasonal Behavior.&#8221;
 <em>J. Heat Transfer</em>, <b>95</b>(2), 257--262.
 doi: <a href='https://doi.org/10.1115/1.3450037'>10.1115/1.3450037</a>
-, <a href='https://asmedigitalcollection.asme.org/heattransfer/article-abstract/95/2/257/416609/Thermal-Model-for-Prediction-of-a-Desert-Iguana-s?redirectedFrom=fulltext'>https://asmedigitalcollection.asme.org/heattransfer/article-abstract/95/2/257/416609/Thermal-Model-for-Prediction-of-a-Desert-Iguana-s?redirectedFrom=fulltext</a>.</p>
+, <a href='https://asmedigitalcollection.asme.org/heattransfer/article-abstract/95/2/257/416609/Thermal-Model-for-Prediction-of-a-Desert-Iguana-s?redirectedFrom=fulltext'>https://asmedigitalcollection.asme.org/heattransfer/article-abstract/95/2/257/416609/Thermal-Model-for-Prediction-of-a-Desert-Iguana-s?redirectedFrom=fulltext</a>.<br /><br /> Kingsolver JG (1979).
+&#8220;Thermal and hydric aspects of environmental hetergeneity in the pitcher plant mosquito.&#8221;
+<em>Ecological Monographys</em>, <b>49</b>, 357--376.<br /><br /> Porter WP, Mitchell JW, Bekman A, DeWitt CB (1973).
+&#8220;Behavioral implications of mechanistic ecology: thermal and behavioral modeling of desert ectotherms and their microenvironments.&#8221;
+<em>Oecologia</em>, <b>13</b>, 1--54.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other soil temperature functions: 

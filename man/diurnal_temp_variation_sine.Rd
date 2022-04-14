@@ -15,7 +15,7 @@ diurnal_temp_variation_sine(T_max, T_min, t)
 \code{numeric} temperature (C) at a specified hour.
 }
 \description{
-estimate temperature for a specified hour using the sine interpolation in \insertCite{Campbell1998}{TrenchR}.
+Estimate temperature for a specified hour using the sine interpolation in \insertCite{Campbell1998;textual}{TrenchR}.
 }
 \examples{
   diurnal_temp_variation_sine(T_max = 30, 
