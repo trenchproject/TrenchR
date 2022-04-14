@@ -9,7 +9,7 @@ Qmetabolism_from_mass(m, taxon = "reptile")
 \arguments{
 \item{m}{\code{numeric} mass (grams).}
 
-\item{taxon}{\code{character} taxon to use in calculatations. Options: \code{"reptile"}, \code{"bird"}, \code{"mammal"}.}
+\item{taxon}{\code{character} taxon to use in calculations. Options: \code{"reptile"}, \code{"bird"}, \code{"mammal"}.}
 }
 \value{
 \code{numeric} metabolism (W).

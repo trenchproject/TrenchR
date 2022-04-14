@@ -17,13 +17,13 @@ celsius_to_kelvin(T)
 fahrenheit_to_celsius(T)
 }
 \arguments{
-\item{T}{\code{numeric} temperature (Celsisus, Fahrenheit, or Kelvin).}
+\item{T}{\code{numeric} temperature (Celsius, Fahrenheit, or Kelvin).}
 }
 \value{
-\code{numeric} temperature (Celsisus, Fahrenheit, or Kelvin).
+\code{numeric} temperature (Celsius, Fahrenheit, or Kelvin).
 }
 \description{
-Convert temperatures among Celsisus, Fahrenheit, and Kelvin \insertCite{Blischak}{TrenchR}.
+Convert temperatures among Celsius, Fahrenheit, and Kelvin \insertCite{Blischak}{TrenchR}.
 }
 \examples{
   kelvin_to_celsius(T = 270)

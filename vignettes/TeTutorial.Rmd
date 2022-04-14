@@ -612,7 +612,7 @@ Thermal radiative flux including both downward radiation and reflected solar rad
 
 $$Q_t=0.5A_t \epsilon \sigma (T_b^4-T_{sky}^4)+0.5A_t \epsilon \sigma (T_b^4-T_g^4),$$
 
-where $A_t$ is the thermal radiative heat transfer surface area ($m^2$), $T_b$ is the body temperature ($K$), $T_g$ is the ground surface temperature ($K$), $T_{sky}$ is the equivalent black body sky temperature ($K$), $\epsilon$ is butterfly thermal emissivity, and $\sigma$ is the Stefan-Boltzman constant ($5.67\times10^{-8} W m^{-2} K^{-4}$).
+where $A_t$ is the thermal radiative heat transfer surface area ($m^2$), $T_b$ is the body temperature ($K$), $T_g$ is the ground surface temperature ($K$), $T_{sky}$ is the equivalent black body sky temperature ($K$), $\epsilon$ is butterfly thermal emissivity, and $\sigma$ is the Stefan-Boltzmann constant ($5.67\times10^{-8} W m^{-2} K^{-4}$).
 
 The convective heat flux is given by: 
 
@@ -731,7 +731,7 @@ $Q_{rad,sky}$ and $Q_{rad,ground}$ can be calculated as follows [@helmuth1998int
 $$Q_{rad,sky} = \sigma A_{rad,sky}(\varepsilon_{org}T_b^4-\varepsilon_skyT_a^4) \tag{2}$$
 $$Q_{rad,ground} = \sigma A_{rad,ground}(\varepsilon_{org}T_b^4-\varepsilon_{surr}T_g^4) \tag{3}$$
 
-Here, $\sigma$ is the Stefan-Boltzman constant ($5.66 \times 10^{-8} W m^{-2} K^{-4}$), $T_a$ and $T_g$ are air and ground temperatures ($K$), respectively, and $A_{rad,sky}$ and $A_{rad,ground}$ are surface area subject to long-wave radiation from sky and ground ($m^2$) respectively, both of which are simplified as half of the total surface area due to the nature of mussels.
+Here, $\sigma$ is the Stefan-Boltzmann constant ($5.66 \times 10^{-8} W m^{-2} K^{-4}$), $T_a$ and $T_g$ are air and ground temperatures ($K$), respectively, and $A_{rad,sky}$ and $A_{rad,ground}$ are surface area subject to long-wave radiation from sky and ground ($m^2$) respectively, both of which are simplified as half of the total surface area due to the nature of mussels.
 $\varepsilon_{org}$ and $\varepsilon_{surr}$ are the longwave thermal emissivities of the organism and its surroundings, which are roughly 0.97.  
 $\varepsilon_{sky}$ represents a functional infrared emissivity of the sky, which varies by air temperature and cloud cover.
 

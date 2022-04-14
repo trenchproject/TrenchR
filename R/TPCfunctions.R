@@ -41,7 +41,7 @@ TPC <- function (T,
 }
 
 
-#' @title Construct a Beta FunctionThermal Performance Curve 
+#' @title Construct a Beta Function Thermal Performance Curve 
 #'  
 #' @description Construct a thermal performance curve based on a beta function \insertCite{Asbury2010}{TrenchR}.
 #' 

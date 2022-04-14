@@ -696,7 +696,7 @@ external_resistance_to_water_vapor_transfer <- function (H,
 #'
 #' @param m \code{numeric} mass (grams).
 #'
-#' @param taxon \code{character} taxon to use in calculatations. Options: \code{"reptile"}, \code{"bird"}, \code{"mammal"}.
+#' @param taxon \code{character} taxon to use in calculations. Options: \code{"reptile"}, \code{"bird"}, \code{"mammal"}.
 #'
 #' @return \code{numeric} metabolism (W).
 #'
