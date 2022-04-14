@@ -157,7 +157,7 @@
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(c\)</span></td>
-<td>specific heat capacity (subscripts: <span class="math inline">\(a\)</span>, air; <span class="math inline">\(p\)</span>, air at constant pressure; <span class="math inline">\(so\)</span>, soil) (<span class="math inline">\(J kg^{-1}°K^{-1}\)</span> or <span class="math inline">\(J kg^{-1}{°C}^{-1}\)</span>)</td>
+<td>specific heat capacity (subscripts: <span class="math inline">\(a\)</span>, air; <span class="math inline">\(p\)</span>, air at constant pressure; <span class="math inline">\(so\)</span>, soil) (<span class="math inline">\(J kg^{-1}K^{-1}\)</span> or <span class="math inline">\(J kg^{-1}{°C}^{-1}\)</span>)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
@@ -189,7 +189,7 @@
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(depth\)</span></td>
-<td>depth (<span class="math inline">\(cm\)</span>) |</td>
+<td>depth (<span class="math inline">\(cm\)</span>)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
@@ -226,7 +226,7 @@
 <td>
 <span class="math inline">\(H_L\)</span> or <span class="math inline">\(H\)</span>
 </td>
-<td>Convective heat transfer coefficient (<span class="math inline">\(W m^{-2}{°C}^{-1}\)</span> or <span class="math inline">\(W m^{-2}°K^{-1}\)</span>)</td>
+<td>Convective heat transfer coefficient (<span class="math inline">\(W m^{-2}{°C}^{-1}\)</span> or <span class="math inline">\(W m^{-2}K^{-1}\)</span>)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
@@ -256,7 +256,7 @@
 </tr>
 <tr class="even">
 <td><span class="math inline">\(k_{so}\)</span></td>
-<td>soil thermal conductivity (<span class="math inline">\(W m^{-1}°K^{-1}\)</span>)</td>
+<td>soil thermal conductivity (<span class="math inline">\(W m^{-1}K^{-1}\)</span>)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
@@ -268,7 +268,7 @@
 </tr>
 <tr class="even">
 <td><span class="math inline">\(L\)</span></td>
-<td>Monin-Obukhov length (<span class="math inline">\(m\)</span>), a measure of the instability of heat flow |</td>
+<td>Monin-Obukhov length (<span class="math inline">\(m\)</span>), a measure of the instability of heat flow</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
@@ -400,12 +400,12 @@
 </tr>
 <tr class="even">
 <td><span class="math inline">\(t\)</span></td>
-<td>time (<span class="math inline">\(hr\)</span> or <span class="math inline">\(s\)</span>) (subscripts: <span class="math inline">\(n\)</span>, time of minimum temperature; <span class="math inline">\(s\)</span>, sunrise; <span class="math inline">\(r\)</span>, sunset; <span class="math inline">\(x\)</span>, time of maximum temperature)</td>
+<td>time (<span class="math inline">\(hr\)</span> or <span class="math inline">\(s\)</span>) (subscripts: <span class="math inline">\(as\)</span>, after sunset; <span class="math inline">\(n\)</span>, time of minimum temperature; <span class="math inline">\(r\)</span>, sunrise; <span class="math inline">\(s\)</span>, sunset; <span class="math inline">\(p\)</span>, rise the following day; <span class="math inline">\(x\)</span>, time of maximum temperature)</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(T\)</span></td>
-<td>temperature (<span class="math inline">\(°C\)</span> or <span class="math inline">\(K\)</span> or <span class="math inline">\(°F\)</span>) (subscripts: <span class="math inline">\(a\)</span>, air; <span class="math inline">\(g\)</span>, ground; <span class="math inline">\(s\)</span>, surface; <span class="math inline">\(sh\)</span>, shade)</td>
+<td>temperature (<span class="math inline">\(°C\)</span> or <span class="math inline">\(K\)</span> or <span class="math inline">\(°F\)</span>) (subscripts: <span class="math inline">\(a\)</span>, air; <span class="math inline">\(g\)</span>, ground; <span class="math inline">\(s\)</span>, surface; <span class="math inline">\(sh\)</span>, shade; <span class="math inline">\(sky\)</span>, effective radiant temperature of the sky)</td>
 <td align="right"></td>
 </tr>
 <tr class="even">
@@ -414,76 +414,81 @@
 <td align="right"></td>
 </tr>
 <tr class="odd">
+<td><span class="math inline">\(T_{e}\)</span></td>
+<td>Operative environmental temperature (<span class="math inline">\(°C\)</span>)</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
 <td><span class="math inline">\(T_{max}\)</span></td>
 <td>maximum temperature of the day (<span class="math inline">\(°C\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(T_{min}\)</span></td>
 <td>minimum temperature of the day (<span class="math inline">\(°C\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(Tg_{max}\)</span></td>
 <td>maximum soil surface temperature of the day (<span class="math inline">\(°C\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(Tg_{min}\)</span></td>
 <td>minimum soil surface temperature of the day (<span class="math inline">\(°C\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(T_{opt}\)</span></td>
 <td>thermal optima, the temperature at which peak performance occurs (<span class="math inline">\(°C\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(T_{soil0}\)</span></td>
 <td>initial soil temperature (<span class="math inline">\(°C\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(tolerance\)</span></td>
 <td>maximal breath (<span class="math inline">\(°C\)</span>) of the thermal performance curve</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
-<td><span class="math inline">\(u\)</span></td>
-<td>wind speed (<span class="math inline">\(m/s\)</span>) (subscripts: <span class="math inline">\(r\)</span>, reference height or heights)</td>
-<td align="right"></td>
-</tr>
 <tr class="odd">
+<td><span class="math inline">\(u\)</span></td>
+<td>wind speed (<span class="math inline">\(m s^{-1}\)</span>) (subscripts: <span class="math inline">\(r\)</span>, reference height or heights)</td>
+<td align="right">|</td>
+</tr>
+<tr class="even">
 <td><span class="math inline">\(UDT\)</span></td>
 <td>upper developmental threshold (<span class="math inline">\(°C\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(V\)</span></td>
 <td>velocity (<span class="math inline">\(m s^{-1}\)</span>); volume (<span class="math inline">\(m^{3}\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(water_{content}\)</span></td>
-<td>water content (percent) |</td>
+<td>water content (percent)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(x\)</span></td>
 <td>vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(z\)</span></td>
 <td>distance, or height above a surface (<span class="math inline">\(m\)</span>); zenith angle (°)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(zr\)</span></td>
 <td>reference height (<span class="math inline">\(m\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(z0\)</span></td>
 <td>roughness height (<span class="math inline">\(m\)</span>)</td>
 <td align="right"></td>
