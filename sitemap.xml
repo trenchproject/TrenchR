@@ -172,6 +172,9 @@
     <loc>https://trenchproject.github.io/TrenchR/reference/airpressure_from_elev.html</loc>
   </url>
   <url>
+    <loc>https://trenchproject.github.io/TrenchR/reference/angle-conversions.html</loc>
+  </url>
+  <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/azimuth_angle.html</loc>
   </url>
   <url>
@@ -191,9 +194,6 @@
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/degree_days.html</loc>
-  </url>
-  <url>
-    <loc>https://trenchproject.github.io/TrenchR/reference/degrees_to_radians.html</loc>
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/direct_solar_radiation.html</loc>
@@ -245,9 +245,6 @@
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/proportion_silhouette_area_shapes.html</loc>
-  </url>
-  <url>
-    <loc>https://trenchproject.github.io/TrenchR/reference/radians_to_degrees.html</loc>
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/saturation_vapor_pressure.html</loc>
