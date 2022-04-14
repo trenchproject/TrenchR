@@ -18,5 +18,8 @@ test_that("WETAIR function works as expected", {
   expect_equal(length(WETAIR(db=30, wb=28, rh=60, bp=100*1000)), 9)
   expect_identical(class(WETAIR(db=30, wb=28, rh=60, bp=100*1000)), "list")
   expect_similar(WETAIR(db=30, wb=28, rh=60, bp=100*1000)[[5]], 2.961613)
+  expect_similar(WETAIR(db=30, wb=28, rh=60, dp = 9, bp=100*1000)[[5]], 1.32676)
+  expect_similar(WETAIR(db=30, wb=28, rh=-0.5, bp=100*1000)[[8]], -999)
+expect_similar(WETAIR(db=30, wb=28, rh=-1.1, bp=100*1000)[[5]], 4.2537)
 })
        

@@ -93,7 +93,7 @@ degree_days <- function (T_min,
     
   } else if (method == "double.sine") {
     
-    if (T_min >= LDT && T_max >= UDT) { # entirely above both thresholds
+    if (T_min >= UDT && T_max >= UDT) { # entirely above both thresholds
       
       dd <- (UDT - LDT) / 2
 

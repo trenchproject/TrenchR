@@ -321,7 +321,7 @@ azimuth_angle <- function (doy,
   
   cos.zenith <- sin(DecAng) * sin(lat) + cos(DecAng) * cos(lat) * cos(pi / 12 * (hour - t_0)) #cos of zenith angle in radians
   zenith <- acos(cos.zenith) # zenith angle in radians
-  
+
   if (zenith > pi / 2){
     
     zenith <- pi / 2 # if measured from the vertical psi can't be greater than pi/2 (90 degrees)
