@@ -269,22 +269,23 @@ air_temp_profile_segment <- function (T_r,
   
   # estimate u_Zloc  
 
+
   if (zr[1] <= z) {
-    
+
     us_star <- u_star[1]
     z0s <- z0[1]
     T_rs <- T_r[1]
     zrs <- zr[1]
     
   } else if (zr[1] > z & zr[2] <= z) {
-    
+
     us_star <- u_star[2]
     z0s <- z0[2]
     T_rs <- T_r[2]
     zrs <- zr[2]
     
   } else if (zr[1] > z & zr[2] > z) {
-    
+
     us_star <- u_star[3]
     z0s <- z0[3]
     T_rs <- T_r[3]
@@ -300,7 +301,7 @@ air_temp_profile_segment <- function (T_r,
 
     T_z0 <- (T_rs * S_tb + T_s * S_ts) / (S_tb + S_ts)
   
-  # Temperature ar local height
+  # Temperature at local height
 
     T_z0 + (T_rs - T_z0) * log(z / z0s + 1) / log(zrs / z0s + 1)
 
@@ -360,22 +361,21 @@ wind_speed_profile_segment <- function (u_r,
 
   u_star <- k * u_r / log(zr / z0 + 1) 
   
-  # estimate u_Zloc  
+  # estimate u_z loc  
 
   if (z <= zr[3]) {
-    
+
     us_star <- u_star[3]
     z0s     <- z0[3]
     zrs     <- zr[3]
     
   } else if (z > zr[3] & z < zr[2]) {
-    
+
     us_star <- u_star[2]
     z0s     <- z0[2]
     zrs     <- zr[2]
     
   } else if (z >= zr[2]) {
-    
     us_star <- u_star[1]
     z0s     <- z0[1]
     zrs     <- zr[1]

@@ -136,8 +136,12 @@ diurnal_radiation_variation <- function(doy,
   rG <- pi / 24 * (d + b * cos(W)) * (cos(W) - cos(Ws)) / (sin(Ws) - Ws * cos(Ws))   # (Liu and Jordan, Collares-Pereira and Rable 1979)
   # rG <- pi / 24 * (d + b * cos(W) - cos(Ws)) / (sin(Ws) - Ws * cos(Ws))           # Brock 1981
   
-  if(rG < 0) rG <- 0
-  
+  if (rG < 0) {
+
+    rG <- 0
+
+  }  
+
   rG * solrad # solradhour
   
 }
@@ -211,12 +215,7 @@ monthly_solar_radiation <- function (lat,
     sin(degrees_to_radians(deg))
     
   }
-  
-  tan.deg <- function(deg) { 
-    
-    tan(degrees_to_radians(deg))
-    
-  }
+
   
   # Sc is the solar constant (2.0 cal cm ^-2 min ^-1)
   S_c <- 2 # Cal cm^-2 min^-1  1367 #W/m2   #2 
