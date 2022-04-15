@@ -104,8 +104,9 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">##Load TrenchR package</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://trenchproject.github.io/trenchr/">TrenchR</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="co"># Load TrenchR package</span>
+
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://trenchproject.github.io/trenchr/">TrenchR</a></span><span class="op">)</span></code></pre></div>
 <p>This tutorial covers approaches and functions for preparing environmental data for analyses such as examining organismal energy balances. The tutorial first covers estimating the intensity and partitioning of solar radiation, including estimating solar angles and day length. We then turn to estimating temperature and wind speed profiles that can scale weather station data to the conditions experienced by organisms. We review functions for modeling diurnal variation in temperature and solar radiation as well as heat accumulation (degree days). The tutorial concludes with a microclimate model for estimating soil temperatures.</p>
 <div id="radiation" class="section level1">
 <h1 class="hasAnchor">
@@ -136,6 +137,7 @@
                        doy  <span class="op">=</span> <span class="fl">200</span>, 
                        lat  <span class="op">=</span> <span class="fl">47.61</span>, 
                        lon  <span class="op">=</span> <span class="op">-</span><span class="fl">122.33</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, 
      y    <span class="op">=</span> <span class="va">zenith</span>, 
      type <span class="op">=</span> <span class="st">"l"</span>, 
@@ -180,12 +182,14 @@
                        hour <span class="op">=</span> <span class="fl">12</span>, 
                        lat  <span class="op">=</span> <span class="fl">60</span>, 
                        lon  <span class="op">=</span> <span class="op">-</span><span class="fl">122.33</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span>, 
      y    <span class="op">=</span> <span class="va">zenith</span>, 
      type <span class="op">=</span> <span class="st">"l"</span>, 
      ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">90</span><span class="op">)</span>, 
      ylab <span class="op">=</span> <span class="st">"zenith angle (°)"</span>, 
      xlab <span class="op">=</span> <span class="st">"day of year"</span><span class="op">)</span>
+
 <span class="va">zenith</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/zenith_angle.html">zenith_angle</a></span><span class="op">(</span>doy  <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span>, 
                        hour <span class="op">=</span> <span class="fl">12</span>, 
                        lat  <span class="op">=</span> <span class="fl">40</span>, 
@@ -194,18 +198,22 @@
        y    <span class="op">=</span> <span class="va">zenith</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span>
+
 <span class="va">zenith</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/zenith_angle.html">zenith_angle</a></span><span class="op">(</span>doy  <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span>, 
                        hour <span class="op">=</span> <span class="fl">12</span>, 
                        lat  <span class="op">=</span> <span class="fl">20</span>, 
                        lon  <span class="op">=</span> <span class="op">-</span><span class="fl">122.33</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span>, 
        y    <span class="op">=</span> <span class="va">zenith</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dotdash"</span><span class="op">)</span>
+
 <span class="va">zenith</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/zenith_angle.html">zenith_angle</a></span><span class="op">(</span>doy  <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span>, 
                        hour <span class="op">=</span> <span class="fl">12</span>, 
                        lat  <span class="op">=</span> <span class="fl">0</span>, 
                        lon  <span class="op">=</span> <span class="op">-</span><span class="fl">122.33</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span>, 
        y    <span class="op">=</span> <span class="va">zenith</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
@@ -224,14 +232,17 @@
      ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11.3</span>,<span class="fl">12.7</span><span class="op">)</span>, 
      ylab <span class="op">=</span> <span class="st">"time of solar noon (hour)"</span>, 
      xlab <span class="op">=</span> <span class="st">"day of year"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/solar_noon.html">solar_noon</a></span><span class="op">(</span>lon <span class="op">=</span> <span class="fl">155</span>, doy <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span><span class="op">)</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/solar_noon.html">solar_noon</a></span><span class="op">(</span>lon <span class="op">=</span> <span class="fl">145</span>, doy <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span><span class="op">)</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">12</span>,
        b <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
 
@@ -250,38 +261,46 @@
                     doy <span class="op">=</span> <span class="fl">173</span>, 
                     lat <span class="op">=</span> <span class="fl">47.61</span>, 
                     lon <span class="op">=</span> <span class="op">-</span><span class="fl">122.33</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">5</span><span class="op">:</span><span class="fl">18</span>, 
      y    <span class="op">=</span> <span class="va">az</span>, 
      type <span class="op">=</span> <span class="st">"l"</span>, 
      xlab <span class="op">=</span> <span class="st">"hour"</span>, 
      ylab <span class="op">=</span> <span class="st">"azimuth angle (°)"</span><span class="op">)</span>
+
 <span class="va">az</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">18</span>, 
                     FUN <span class="op">=</span> <span class="va">azimuth_angle</span>, 
                     doy <span class="op">=</span> <span class="fl">356</span>, 
                     lat <span class="op">=</span> <span class="fl">47.61</span>, 
                     lon <span class="op">=</span> <span class="op">-</span><span class="fl">122.33</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">5</span><span class="op">:</span><span class="fl">18</span>, 
        y    <span class="op">=</span> <span class="va">az</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>,
        lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+
 <span class="va">az</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">18</span>, 
                     FUN <span class="op">=</span> <span class="va">azimuth_angle</span>, 
                     doy <span class="op">=</span> <span class="fl">266</span>, 
                     lat <span class="op">=</span> <span class="fl">47.61</span>, 
                     lon <span class="op">=</span> <span class="op">-</span><span class="fl">122.33</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">5</span><span class="op">:</span><span class="fl">18</span>, 
        y    <span class="op">=</span> <span class="va">az</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>,
        lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span>
+
 <span class="va">az</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">18</span>, 
                     FUN <span class="op">=</span> <span class="va">azimuth_angle</span>, 
                     doy <span class="op">=</span> <span class="fl">228</span>, 
                     lat <span class="op">=</span> <span class="fl">47.61</span>, 
                     lon <span class="op">=</span> <span class="op">-</span><span class="fl">122.33</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">5</span><span class="op">:</span><span class="fl">18</span>, 
        y    <span class="op">=</span> <span class="va">az</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>,
        lty  <span class="op">=</span> <span class="st">"dotdash"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span>x      <span class="op">=</span> <span class="st">"top"</span>, 
        title  <span class="op">=</span> <span class="st">"day of year"</span>, 
        legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">173</span>, <span class="fl">228</span>, <span class="fl">266</span>, <span class="fl">356</span><span class="op">)</span>, 
@@ -294,29 +313,35 @@
                     hour <span class="op">=</span> <span class="fl">12</span>, 
                     lat <span class="op">=</span> <span class="fl">47.61</span>, 
                     lon <span class="op">=</span> <span class="op">-</span><span class="fl">122.33</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span>, 
      y    <span class="op">=</span> <span class="va">az</span>, 
      type <span class="op">=</span> <span class="st">"l"</span>, 
      xlab <span class="op">=</span> <span class="st">"hour"</span>, 
      ylab <span class="op">=</span> <span class="st">"azimuth angle (°)"</span><span class="op">)</span>
+
 <span class="va">az</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">365</span>, 
                     FUN <span class="op">=</span> <span class="va">azimuth_angle</span>, 
                     hour <span class="op">=</span> <span class="fl">9</span>, 
                     lat <span class="op">=</span> <span class="fl">47.61</span>, 
                     lon <span class="op">=</span> <span class="op">-</span><span class="fl">122.33</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span>, 
        y    <span class="op">=</span> <span class="va">az</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>,
        lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+
 <span class="va">az</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">365</span>, 
                     FUN <span class="op">=</span> <span class="va">azimuth_angle</span>, 
                     hour <span class="op">=</span> <span class="fl">6</span>, 
                     lat <span class="op">=</span> <span class="fl">47.61</span>, 
                     lon <span class="op">=</span> <span class="op">-</span><span class="fl">122.33</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span>, 
        y    <span class="op">=</span> <span class="va">az</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>,
        lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span>x      <span class="op">=</span> <span class="st">"top"</span>, 
        title  <span class="op">=</span> <span class="st">"hour"</span>, 
        legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">9</span>, <span class="fl">12</span><span class="op">)</span>, 
@@ -332,14 +357,17 @@
      ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>, <span class="fl">22</span><span class="op">)</span>, 
      xlab <span class="op">=</span> <span class="st">"day of year"</span>,
      ylab <span class="op">=</span> <span class="st">"day length (hour)"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span>,  
        y    <span class="op">=</span> <span class="fu"><a href="../reference/daylength.html">daylength</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">35</span>, doy <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span><span class="op">)</span>,  
        type <span class="op">=</span> <span class="st">"l"</span>,  
        lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/daylength.html">daylength</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">60</span>, doy <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span><span class="op">)</span>,  
        type <span class="op">=</span> <span class="st">"l"</span>,  
        lty   <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span>x      <span class="op">=</span> <span class="st">"topright"</span>, 
        title  <span class="op">=</span> <span class="st">"latitude (°)"</span>, 
        legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">35</span>, <span class="fl">60</span><span class="op">)</span>, 
@@ -368,30 +396,37 @@
                      doy <span class="op">=</span> <span class="fl">200</span>, 
                      lat <span class="op">=</span> <span class="fl">47.61</span>, 
                      lon <span class="op">=</span> <span class="op">-</span><span class="fl">122.33</span><span class="op">)</span><span class="op">)</span>
+
 <span class="va">zen</span> <span class="op">&lt;-</span> <span class="va">zen</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span> <span class="op">/</span> <span class="fl">360</span>
+
 <span class="va">rd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">zen</span>, 
              FUN  <span class="op">=</span> <span class="va">estimate_radiation</span>, 
              doy  <span class="op">=</span> <span class="fl">200</span>, 
              tau  <span class="op">=</span> <span class="fl">0.6</span>, 
              elev <span class="op">=</span> <span class="fl">1500</span>, 
              rho  <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span>
+
 <span class="va">rd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">rd</span><span class="op">)</span>, 
              nrow  <span class="op">=</span> <span class="fl">3</span>, 
              byrow <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, 
      y    <span class="op">=</span> <span class="va">rd</span><span class="op">[</span><span class="fl">1</span>,<span class="op">]</span>, 
      type <span class="op">=</span> <span class="st">"l"</span>, 
      xlab <span class="op">=</span> <span class="st">"hour"</span>, 
      ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">radiation</span> <span class="op">~</span> <span class="op">(</span><span class="va">W</span><span class="op">/</span><span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>, 
      ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">800</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, 
        y    <span class="op">=</span> <span class="va">rd</span><span class="op">[</span><span class="fl">2</span>,<span class="op">]</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, 
        y    <span class="op">=</span> <span class="va">rd</span><span class="op">[</span><span class="fl">3</span>,<span class="op">]</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span>x      <span class="op">=</span> <span class="st">"topright"</span>, 
        title  <span class="op">=</span> <span class="st">"solar radiation flux"</span>, 
        legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"direct"</span>, <span class="st">"diffuse"</span>, <span class="st">"reflected"</span><span class="op">)</span>, 
@@ -404,12 +439,14 @@
 <span class="va">psi.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, 
                to   <span class="op">=</span> <span class="fl">90</span>, 
                by   <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
+
 <span class="va">rd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">psi.seq</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span> <span class="op">/</span> <span class="fl">360</span>, 
              FUN  <span class="op">=</span> <span class="va">estimate_radiation</span>, 
              doy  <span class="op">=</span> <span class="fl">200</span>, 
              tau  <span class="op">=</span> <span class="fl">0.75</span>, 
              elev <span class="op">=</span> <span class="fl">1500</span>, 
              rho  <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span>
+
 <span class="va">rd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">rd</span><span class="op">)</span>, 
              nrow  <span class="op">=</span> <span class="fl">3</span>, 
              byrow <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
@@ -420,14 +457,17 @@
      xlab <span class="op">=</span> <span class="st">"zenith angle (°)"</span>, 
      ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">radiation</span> <span class="op">~</span> <span class="op">(</span><span class="va">W</span><span class="op">/</span><span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>, 
      ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1200</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="va">psi.seq</span>, 
        y    <span class="op">=</span> <span class="va">rd</span><span class="op">[</span><span class="fl">2</span>,<span class="op">]</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="va">psi.seq</span>, 
        y    <span class="op">=</span> <span class="va">rd</span><span class="op">[</span><span class="fl">3</span>,<span class="op">]</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span>x      <span class="op">=</span> <span class="st">"topright"</span>, 
        title  <span class="op">=</span> <span class="st">"solar radiation flux"</span>, 
        legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"direct"</span>, <span class="st">"diffuse"</span>, <span class="st">"reflected"</span><span class="op">)</span>, 
@@ -436,6 +476,7 @@
 <p>Similar but alternative algorithms for estimating hourly direct solar radiation (<span class="math inline">\(W m^{-2}\)</span>) were adapted from a comparison of the methods by Tracy et al. <span class="citation">(1983)</span>. Algorithms from earlier versions of Campbell and Norman <span class="citation">(2012)</span> and Gates <span class="citation">(2012)</span> are implemented. Both estimate radiation as a function of latitude, day of year, elevation, and time.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+
 <span class="va">r.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">20</span><span class="op">)</span>, 
                 FUN    <span class="op">=</span> <span class="va">direct_solar_radiation</span>, 
                 lat    <span class="op">=</span> <span class="fl">43.57</span>,
@@ -443,7 +484,9 @@
                 elev   <span class="op">=</span> <span class="fl">866</span>,
                 t0     <span class="op">=</span> <span class="fl">12</span>, 
                 method <span class="op">=</span> <span class="st">"Campbell 1977"</span><span class="op">)</span>
+
 <span class="va">r.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">r.seq</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">20</span><span class="op">)</span>, 
      y    <span class="op">=</span> <span class="va">r.seq</span>, 
      type <span class="op">=</span> <span class="st">"l"</span>, 
@@ -457,6 +500,7 @@
                 elev   <span class="op">=</span> <span class="fl">866</span>,
                 t0     <span class="op">=</span> <span class="fl">12</span>, 
                 method <span class="op">=</span> <span class="st">"Gates 1962"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">20</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="va">r.seq</span>,
        type <span class="op">=</span> <span class="st">"l"</span>, 
@@ -479,7 +523,9 @@
                 T    <span class="op">=</span> <span class="fl">20</span>,
                 Hr   <span class="op">=</span> <span class="fl">15</span>,
                 P    <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>
+
 <span class="va">r.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">r.seq</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">365</span>, <span class="fl">31</span><span class="op">)</span>, 
      y    <span class="op">=</span> <span class="va">r.seq</span>, 
      type <span class="op">=</span> <span class="st">"l"</span>, 
@@ -489,11 +535,13 @@
 <p>We provide a function <code><a href="../reference/partition_solar_radiation.html">partition_solar_radiation()</a></code> to estimate the diffuse fraction <span class="math inline">\(k_d\)</span> that can be used to partition measures of solar radiation into direct and diffuse components. The partitioning is based on empirically-derived relations estimated as a function of the clearness index <span class="math inline">\(k_t\)</span>, which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere. The relations are compiled in Wong and Chow <span class="citation">(2001)</span>.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+
 <span class="va">r.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.1</span><span class="op">)</span>, 
                 FUN      <span class="op">=</span> <span class="va">partition_solar_radiation</span>, 
                 method   <span class="op">=</span> <span class="st">"Erbs"</span>, 
                 lat      <span class="op">=</span> <span class="fl">40</span>, 
                 sol.elev <span class="op">=</span> <span class="fl">60</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.1</span><span class="op">)</span>, 
      y    <span class="op">=</span> <span class="va">r.seq</span>, 
      type <span class="op">=</span> <span class="st">"l"</span>, 
@@ -506,6 +554,7 @@
                 method   <span class="op">=</span> <span class="st">"Liu_Jordan"</span>, 
                 lat      <span class="op">=</span> <span class="fl">40</span>, 
                 sol.elev <span class="op">=</span> <span class="fl">60</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.1</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="va">r.seq</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>,
@@ -516,42 +565,51 @@
                 method   <span class="op">=</span> <span class="st">"Orgill_Hollands"</span>, 
                 lat      <span class="op">=</span> <span class="fl">40</span>, 
                 sol.elev <span class="op">=</span> <span class="fl">60</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.1</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="va">r.seq</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>,
        lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span>
+
 <span class="va">r.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.1</span><span class="op">)</span>, 
                 FUN      <span class="op">=</span> <span class="va">partition_solar_radiation</span>, 
                 method   <span class="op">=</span> <span class="st">"Olyphant"</span>, 
                 lat      <span class="op">=</span> <span class="fl">40</span>, 
                 sol.elev <span class="op">=</span> <span class="fl">60</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.1</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="va">r.seq</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>,
        lty  <span class="op">=</span> <span class="st">"dotdash"</span><span class="op">)</span>
+
 <span class="va">r.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.1</span><span class="op">)</span>, 
                 FUN      <span class="op">=</span> <span class="va">partition_solar_radiation</span>, 
                 method   <span class="op">=</span> <span class="st">"Reindl-1"</span>, 
                 lat      <span class="op">=</span> <span class="fl">40</span>, 
                 sol.elev <span class="op">=</span> <span class="fl">60</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.1</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="va">r.seq</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>,
        lty  <span class="op">=</span> <span class="st">"longdash"</span><span class="op">)</span>
+
 <span class="va">r.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.1</span><span class="op">)</span>, 
                 FUN      <span class="op">=</span> <span class="va">partition_solar_radiation</span>, 
                 method   <span class="op">=</span> <span class="st">"Reindl-2"</span>, 
                 lat      <span class="op">=</span> <span class="fl">40</span>, 
                 sol.elev <span class="op">=</span> <span class="fl">60</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.1</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="va">r.seq</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>,
        lty  <span class="op">=</span> <span class="st">"longdash"</span><span class="op">)</span>
+
 <span class="va">r.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.1</span><span class="op">)</span>, 
                 FUN      <span class="op">=</span> <span class="va">partition_solar_radiation</span>, 
                 method   <span class="op">=</span> <span class="st">"Lam_Li"</span>, 
                 lat      <span class="op">=</span> <span class="fl">40</span>, 
                 sol.elev <span class="op">=</span> <span class="fl">60</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.1</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="va">r.seq</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>,
@@ -569,6 +627,7 @@
                 FUN <span class="op">=</span> <span class="va">proportion_diffuse_solar_radiation</span>, 
                 p_a <span class="op">=</span> <span class="fl">86.1</span>, 
                 A   <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">20</span>,<span class="fl">85</span><span class="op">)</span>, 
      y    <span class="op">=</span> <span class="va">r.seq</span>,
      type <span class="op">=</span> <span class="st">"l"</span>, 
@@ -579,17 +638,19 @@
                 FUN <span class="op">=</span> <span class="va">proportion_diffuse_solar_radiation</span>, 
                 p_a <span class="op">=</span> <span class="fl">96.1</span>, 
                 A   <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">20</span>,<span class="fl">85</span><span class="op">)</span>, 
-       <span class="va">r.seq</span>, 
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">20</span>,<span class="fl">85</span><span class="op">)</span>, 
+       y    <span class="op">=</span> <span class="va">r.seq</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
-       lty <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+       lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
 
 <span class="va">r.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">85</span><span class="op">)</span>, 
                 FUN <span class="op">=</span> <span class="va">proportion_diffuse_solar_radiation</span>, 
                 p_a <span class="op">=</span> <span class="fl">76.1</span>, 
                 A   <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">20</span>,<span class="fl">85</span><span class="op">)</span>, 
-       <span class="va">r.seq</span>, 
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">20</span>,<span class="fl">85</span><span class="op">)</span>, 
+       y    <span class="op">=</span> <span class="va">r.seq</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span></code></pre></div>
 <p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-16-1.png" width="768"></p>
@@ -606,6 +667,7 @@
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">u_r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.025</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span><span class="op">)</span>
 <span class="va">zr</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">1</span><span class="op">)</span>
+
 <span class="fu"><a href="../reference/surface_roughness.html">surface_roughness</a></span><span class="op">(</span>u_r <span class="op">=</span> <span class="va">u_r</span>, 
                   zr  <span class="op">=</span> <span class="va">zr</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 0.06485225</code></pre>
@@ -614,16 +676,19 @@
 <p>where <span class="math inline">\(u_z\)</span> and <span class="math inline">\(u_r\)</span> are the wind speeds (<span class="math inline">\(m s^{-1}\)</span>) at height <span class="math inline">\(z\)</span> (m) and reference height <span class="math inline">\(r\)</span> (m), respectively. <span class="math inline">\(T_z\)</span>, <span class="math inline">\(T_r\)</span>, and <span class="math inline">\(T_0\)</span> are air and soil temperatures at heights <span class="math inline">\(z\)</span> and <span class="math inline">\(r\)</span> and soil surface temperature, respectively. We provide this relationship in the <code><a href="../reference/wind_speed_profile_neutral.html">wind_speed_profile_neutral()</a></code> function, which estimates wind speed at a specified height. We additionally provide this relationship in the <code><a href="../reference/air_temp_profile_neutral.html">air_temp_profile_neutral()</a></code> function, which estimates temperature at a specified height.</p>
 <p>We examine how the wind speed profiles varies with wind speed (m/s).</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">zs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">2</span>,<span class="fl">0.1</span><span class="op">)</span> 
+<code class="sourceCode R"><span class="va">zs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, <span class="fl">0.1</span><span class="op">)</span> 
+
 <span class="va">us</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wind_speed_profile_neutral.html">wind_speed_profile_neutral</a></span><span class="op">(</span>u_r <span class="op">=</span> <span class="fl">1</span>, 
                                  zr  <span class="op">=</span> <span class="fl">2</span>, 
                                  z0  <span class="op">=</span> <span class="fl">0.2</span>,
                                  z   <span class="op">=</span> <span class="va">zs</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="va">us</span>,
      y    <span class="op">=</span> <span class="va">zs</span>, 
      type <span class="op">=</span> <span class="st">"l"</span>, 
      xlab <span class="op">=</span> <span class="st">"wind speed, u (m/s)"</span>, 
      ylab <span class="op">=</span> <span class="st">"height, z (m)"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="../reference/wind_speed_profile_neutral.html">wind_speed_profile_neutral</a></span><span class="op">(</span>u_r <span class="op">=</span> <span class="fl">0.5</span>,
                                          zr  <span class="op">=</span> <span class="fl">2</span>, 
                                          z0  <span class="op">=</span> <span class="fl">0.2</span>, 
@@ -631,6 +696,7 @@
        y    <span class="op">=</span> <span class="va">zs</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="../reference/wind_speed_profile_neutral.html">wind_speed_profile_neutral</a></span><span class="op">(</span>u_r <span class="op">=</span> <span class="fl">0.25</span>, 
                                          zr  <span class="op">=</span> <span class="fl">2</span>, 
                                          z0  <span class="op">=</span> <span class="fl">0.2</span>, 
@@ -652,20 +718,24 @@
                                   z0  <span class="op">=</span> <span class="fl">0.02</span>, 
                                   z   <span class="op">=</span> <span class="va">z.seq</span>, 
                                   T_s <span class="op">=</span> <span class="fl">25</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="va">t.seq</span>, 
      y    <span class="op">=</span> <span class="va">z.seq</span>, 
      type <span class="op">=</span> <span class="st">"l"</span>, 
      xlab <span class="op">=</span> <span class="st">"Temperature (°C)"</span>, 
      ylab <span class="op">=</span> <span class="st">"z (height above ground in m)"</span><span class="op">)</span>
+
 <span class="va">t.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/air_temp_profile_neutral.html">air_temp_profile_neutral</a></span><span class="op">(</span>T_r <span class="op">=</span> <span class="fl">20</span>, 
                                   zr  <span class="op">=</span> <span class="fl">1</span>, 
                                   z0  <span class="op">=</span> <span class="fl">0.05</span>, 
                                   z   <span class="op">=</span> <span class="va">z.seq</span>, 
                                   T_s <span class="op">=</span> <span class="fl">25</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="va">t.seq</span>, 
        y    <span class="op">=</span> <span class="va">z.seq</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span>
+
 <span class="va">t.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/air_temp_profile_neutral.html">air_temp_profile_neutral</a></span><span class="op">(</span>T_r <span class="op">=</span> <span class="fl">20</span>, 
                                   zr  <span class="op">=</span> <span class="fl">1</span>, 
                                   z0  <span class="op">=</span> <span class="fl">0.08</span>, 
@@ -688,33 +758,39 @@
 <p>We estimate air temperature profiles in TrenchR as:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">z.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>
+
 <span class="va">t.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/air_temp_profile.html">air_temp_profile</a></span><span class="op">(</span>T_r <span class="op">=</span> <span class="fl">20</span>, 
                           u_r <span class="op">=</span> <span class="fl">0.5</span>, 
                           zr  <span class="op">=</span> <span class="fl">2</span>, 
                           z0  <span class="op">=</span> <span class="fl">0.02</span>, 
                           z   <span class="op">=</span> <span class="va">z.seq</span>, 
                           T_s <span class="op">=</span> <span class="fl">25</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="va">t.seq</span>, 
      y    <span class="op">=</span> <span class="va">z.seq</span>, 
      type <span class="op">=</span> <span class="st">"l"</span>, 
      xlab <span class="op">=</span> <span class="st">"Temperature (°C)"</span>, 
      ylab <span class="op">=</span> <span class="st">"z (height above ground in m)"</span><span class="op">)</span>
+
 <span class="va">t.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/air_temp_profile.html">air_temp_profile</a></span><span class="op">(</span>T_r <span class="op">=</span> <span class="fl">20</span>, 
                           u_r <span class="op">=</span> <span class="fl">0.5</span>, 
                           zr  <span class="op">=</span> <span class="fl">2</span>, 
                           z0  <span class="op">=</span> <span class="fl">0.05</span>, 
                           z   <span class="op">=</span> <span class="va">z.seq</span>, 
                           T_s <span class="op">=</span> <span class="fl">25</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="va">t.seq</span>, 
        y    <span class="op">=</span> <span class="va">z.seq</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span>
+
 <span class="va">t.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/air_temp_profile.html">air_temp_profile</a></span><span class="op">(</span>T_r <span class="op">=</span> <span class="fl">20</span>, 
                           u_r <span class="op">=</span> <span class="fl">0.5</span>, 
                           zr  <span class="op">=</span> <span class="fl">2</span>, 
                           z0  <span class="op">=</span> <span class="fl">0.08</span>, 
                           z   <span class="op">=</span> <span class="va">z.seq</span>, 
                           T_s <span class="op">=</span> <span class="fl">25</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">t.seq</span>, 
        <span class="va">z.seq</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
@@ -735,8 +811,13 @@
                 zr  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span><span class="op">)</span>, 
                 z0  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span><span class="op">)</span>, 
                 T_s <span class="op">=</span> <span class="fl">27</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">t.seq</span>, 
-     <span class="va">z.seq</span>, type <span class="op">=</span> <span class="st">"l"</span>, xlab <span class="op">=</span> <span class="st">"Temperature (°C)"</span>, ylab <span class="op">=</span> <span class="st">"z (height above ground in m)"</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="va">t.seq</span>, 
+     y    <span class="op">=</span> <span class="va">z.seq</span>, 
+     type <span class="op">=</span> <span class="st">"l"</span>,  
+     xlab <span class="op">=</span> <span class="st">"Temperature (°C)"</span>,  
+     ylab <span class="op">=</span> <span class="st">"z (height above ground in m)"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">27</span>, <span class="fl">25</span>, <span class="fl">22</span>, <span class="fl">20</span><span class="op">)</span>,
        y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-21-1.png" width="576"></p>
@@ -747,11 +828,13 @@
                 u_r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.025</span>, <span class="fl">0.05</span><span class="op">)</span>, 
                 zr  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span><span class="op">)</span>,
                 z0  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="va">u.seq</span>, 
      y    <span class="op">=</span> <span class="va">z.seq</span>, 
      type <span class="op">=</span> <span class="st">"l"</span>, 
      xlab <span class="op">=</span> <span class="st">"Wind speed (m/s)"</span>, 
      ylab <span class="op">=</span> <span class="st">"z (height above ground in m)"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.025</span>, <span class="fl">0.05</span><span class="op">)</span>,
        y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-22-1.png" width="576"></p>
@@ -788,16 +871,19 @@
      type <span class="op">=</span> <span class="st">"l"</span>, 
      xlab <span class="op">=</span> <span class="st">"hour"</span>, 
      ylab <span class="op">=</span> <span class="st">"temperature (°C)"</span><span class="op">)</span>
+
 <span class="va">t.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">23</span>, 
                 FUN   <span class="op">=</span> <span class="va">diurnal_temp_variation_sineexp</span>, 
                 T_max <span class="op">=</span> <span class="fl">30</span>, 
                 T_min <span class="op">=</span> <span class="fl">10</span>, 
                 t_r   <span class="op">=</span> <span class="fl">6</span>, 
                 t_s   <span class="op">=</span> <span class="fl">18</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">23</span>, 
        y    <span class="op">=</span> <span class="va">t.seq</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">23</span>, 
        y <span class="op">=</span> <span class="fu"><a href="../reference/diurnal_temp_variation_sinesqrt.html">diurnal_temp_variation_sinesqrt</a></span><span class="op">(</span>t      <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">23</span>, 
                                            t_r    <span class="op">=</span> <span class="fl">6</span>, 
@@ -826,6 +912,7 @@
                 solrad <span class="op">=</span> <span class="fl">8000</span>, 
                 lon <span class="op">=</span> <span class="op">-</span><span class="fl">112.07</span>, 
                 lat <span class="op">=</span> <span class="fl">33.45</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, 
      y    <span class="op">=</span> <span class="va">r.seq</span>, 
      type <span class="op">=</span> <span class="st">"l"</span>, 
@@ -833,35 +920,40 @@
      ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">radiation</span> <span class="op">~</span> <span class="op">(</span><span class="va">W</span><span class="op">/</span><span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">r.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, 
-                FUN <span class="op">=</span> <span class="va">diurnal_radiation_variation</span>, 
-                doy <span class="op">=</span> <span class="fl">356</span>, 
+                FUN    <span class="op">=</span> <span class="va">diurnal_radiation_variation</span>, 
+                doy    <span class="op">=</span> <span class="fl">356</span>, 
                 solrad <span class="op">=</span> <span class="fl">4000</span>, 
-                lon <span class="op">=</span> <span class="op">-</span><span class="fl">112.07</span>, 
-                lat <span class="op">=</span> <span class="fl">33.45</span><span class="op">)</span>
+                lon    <span class="op">=</span> <span class="op">-</span><span class="fl">112.07</span>, 
+                lat    <span class="op">=</span> <span class="fl">33.45</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, 
        y    <span class="op">=</span> <span class="va">r.seq</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
-       lty <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span>
+       lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span>
+
 <span class="va">r.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, 
                 FUN    <span class="op">=</span> <span class="va">diurnal_radiation_variation</span>, 
                 doy    <span class="op">=</span> <span class="fl">266</span>, 
                 solrad <span class="op">=</span> <span class="fl">6000</span>, 
                 lon    <span class="op">=</span> <span class="op">-</span><span class="fl">112.07</span>, 
                 lat    <span class="op">=</span> <span class="fl">33.45</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, 
        y    <span class="op">=</span> <span class="va">r.seq</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
-       lty <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+       lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+
 <span class="va">r.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, 
                 FUN    <span class="op">=</span> <span class="va">diurnal_radiation_variation</span>, 
                 doy    <span class="op">=</span> <span class="fl">228</span>, 
                 solrad <span class="op">=</span> <span class="fl">6000</span>, 
                 lon    <span class="op">=</span> <span class="op">-</span><span class="fl">112.07</span>, 
                 lat    <span class="op">=</span> <span class="fl">33.45</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, 
        y    <span class="op">=</span> <span class="va">r.seq</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
-       lty <span class="op">=</span> <span class="st">"dotdash"</span><span class="op">)</span>
+       lty  <span class="op">=</span> <span class="st">"dotdash"</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span>x      <span class="op">=</span> <span class="st">"topright"</span>, 
        title  <span class="op">=</span> <span class="st">"day of year"</span>, 
@@ -942,9 +1034,11 @@
 <code class="sourceCode R"><span class="va">temp_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/diurnal_temp_variation_sine.html">diurnal_temp_variation_sine</a></span><span class="op">(</span>T_max <span class="op">=</span> <span class="fl">20</span>, 
                                            T_min <span class="op">=</span> <span class="op">-</span><span class="fl">10</span>, 
                                            t     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">24</span>,<span class="fl">4</span><span class="op">)</span><span class="op">)</span>
+
 <span class="va">wind_speed_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span>n   <span class="op">=</span> <span class="fl">96</span>,
                            min <span class="op">=</span> <span class="fl">0</span>, 
                            max <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span>
+
 <span class="va">time_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, <span class="fl">4</span><span class="op">)</span>
 <span class="va">solrad_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, 
                                FUN    <span class="op">=</span> <span class="va">diurnal_radiation_variation</span>,
@@ -952,6 +1046,7 @@
                                solrad <span class="op">=</span> <span class="fl">8000</span>, 
                                lon    <span class="op">=</span> <span class="op">-</span><span class="fl">112.07</span>, 
                                lat    <span class="op">=</span> <span class="fl">33.45</span><span class="op">)</span><span class="op">)</span>
+
 <span class="va">solrad_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">solrad_vector</span>, <span class="fl">4</span><span class="op">)</span>
 
 <span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>SSA        <span class="op">=</span> <span class="fl">0.7</span>, 
@@ -992,6 +1087,7 @@
                            air_pressure  <span class="op">=</span> <span class="fl">85</span>, 
                            rho_so        <span class="op">=</span> <span class="fl">1620</span>, 
                            shade         <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">96</span>, 
        y    <span class="op">=</span> <span class="va">T_soil</span>, 
        lty  <span class="op">=</span> <span class="st">"dashed"</span>, 
@@ -1011,6 +1107,7 @@
                            air_pressure  <span class="op">=</span> <span class="fl">85</span>, 
                            rho_so        <span class="op">=</span> <span class="fl">1620</span>, 
                            shade         <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">96</span>, 
        y    <span class="op">=</span> <span class="va">T_soil</span>, 
        lty  <span class="op">=</span> <span class="st">"dotted"</span>, 
@@ -1030,6 +1127,7 @@
                            air_pressure  <span class="op">=</span> <span class="fl">85</span>, 
                            rho_so        <span class="op">=</span> <span class="fl">1620</span>, 
                            shade         <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">96</span>, 
        y    <span class="op">=</span> <span class="va">T_soil</span>, 
        lty  <span class="op">=</span> <span class="st">"dotdash"</span>, 

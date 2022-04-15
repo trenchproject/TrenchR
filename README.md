@@ -14,7 +14,7 @@
 [Package website](https://trenchproject.github.io/TrenchR/)
 
 ### Description
-The [TrenchR package]((https://github.com/trenchproject/TrenchR)) aids in Translating Environmental Change into organismal responses. The package facilitates microclimate modeling to translate weather station data into the environmental conditions experienced by organisms and biophysical modeling to predict organismal body temperatures given the environmental conditions. The package aims to introduce and enable microclimate and biophysical modeling to improve ecological and evolutionary forecasting and includes tutorials and well as a series of educational modules introducing microclimate and biophysical modeling. The package complements and integrates with the [NicheMapR package](https://github.com/mrke/NicheMapR). 
+The [TrenchR package](https://github.com/trenchproject/TrenchR) aids in Translating Environmental Change into organismal responses. The package facilitates microclimate modeling to translate weather station data into the environmental conditions experienced by organisms and biophysical modeling to predict organismal body temperatures given the environmental conditions. The package aims to introduce and enable microclimate and biophysical modeling to improve ecological and evolutionary forecasting and includes tutorials and well as a series of educational modules introducing microclimate and biophysical modeling. The package complements and integrates with the [NicheMapR package](https://github.com/mrke/NicheMapR). 
 
 ### Installation
 You can install the package from the [github repository](https://github.com/trenchproject/TrenchR):
@@ -56,9 +56,6 @@ We welcome code contributions, fixes, and comments. Code (scripts and functions)
 
 ### Citation
 If you use this package, We would appreciate a citation. You can see an up to date citation information with `citation("TrenchR")`. You can cite either the package or the accompanying journal article.
-
-### Setup
-If you are using macOS, you might need to install R package "rgl" which indirectly would ask you to install XQuartz. The reason for it is that there is a dependency for package "ks".
 
 ### Developer notes
 Please see the [Contributor Notes](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md).

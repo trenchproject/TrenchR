@@ -104,8 +104,9 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">##Load TrenchR package</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://trenchproject.github.io/trenchr/">TrenchR</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="co"># Load TrenchR package</span>
+
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://trenchproject.github.io/trenchr/">TrenchR</a></span><span class="op">)</span></code></pre></div>
 <p>This tutorial reviews tools that use allometries to estimate the dimensions of organisms needed for energy balances and other analyses. The tutorial also documents convenience functions for converting units. Finally, we present functions that describe thermal performance curves.</p>
 <div id="allometries" class="section level1">
 <h1 class="hasAnchor">
@@ -117,6 +118,7 @@
 <p>The function <code><a href="../reference/mass_from_length.html">mass_from_length()</a></code> encompasses empirically-derived relationships to estimate mass as a power law function of mass for six taxonomic classifications. The relationships are derived by relating length to mass for specimens of numerous species. We use the <code><a href="../reference/mass_from_length.html">mass_from_length()</a></code> function to illustrate the allometries for different taxa:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.25</span>, <span class="fl">0.01</span><span class="op">)</span>, 
      y    <span class="op">=</span> <span class="fu"><a href="../reference/mass_from_length.html">mass_from_length</a></span><span class="op">(</span>l     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.25</span>, <span class="fl">0.01</span><span class="op">)</span>, 
                              taxon <span class="op">=</span> <span class="st">"lizard"</span><span class="op">)</span>, 
@@ -128,6 +130,7 @@
      las  <span class="op">=</span> <span class="fl">1</span>, 
      bty  <span class="op">=</span> <span class="st">"L"</span>, 
      lwd  <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.25</span>, <span class="fl">0.01</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/mass_from_length.html">mass_from_length</a></span><span class="op">(</span>l     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.25</span>, <span class="fl">0.01</span><span class="op">)</span>, 
                                taxon <span class="op">=</span> <span class="st">"salamander"</span><span class="op">)</span>, 
@@ -141,18 +144,21 @@
        type <span class="op">=</span> <span class="st">"l"</span>, 
        col  <span class="op">=</span> <span class="st">"red"</span>, 
        lwd  <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.25</span>, <span class="fl">0.01</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/mass_from_length.html">mass_from_length</a></span><span class="op">(</span>l     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.25</span>, <span class="fl">0.01</span><span class="op">)</span>, 
                                taxon <span class="op">=</span> <span class="st">"snake"</span><span class="op">)</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        col  <span class="op">=</span> <span class="st">"green"</span>, 
        lwd  <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.25</span>, <span class="fl">0.01</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/mass_from_length.html">mass_from_length</a></span><span class="op">(</span>l     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.25</span>, <span class="fl">0.01</span><span class="op">)</span>, 
                                taxon <span class="op">=</span> <span class="st">"turtle"</span><span class="op">)</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        col  <span class="op">=</span> <span class="st">"orange"</span>, 
        lwd  <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.25</span>, <span class="fl">0.01</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/mass_from_length.html">mass_from_length</a></span><span class="op">(</span>l     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.25</span>, <span class="fl">0.01</span><span class="op">)</span>, 
                                taxon <span class="op">=</span> <span class="st">"insect"</span><span class="op">)</span>, 
@@ -178,13 +184,18 @@
      las  <span class="op">=</span> <span class="fl">1</span>, 
      bty  <span class="op">=</span> <span class="st">"L"</span>, 
      lwd  <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/mtext.html">mtext</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="st">"surface area"</span> <span class="op">~</span> <span class="op">(</span><span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>, <span class="fl">2</span>, line <span class="op">=</span> <span class="fl">3.5</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/mtext.html">mtext</a></span><span class="op">(</span>text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="st">"surface area"</span> <span class="op">~</span> <span class="op">(</span><span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>, 
+      side <span class="op">=</span> <span class="fl">2</span>, 
+      line <span class="op">=</span> <span class="fl">3.5</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/surface_area_from_mass.html">surface_area_from_mass</a></span><span class="op">(</span>m     <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, 
                                      taxon <span class="op">=</span> <span class="st">"frog"</span><span class="op">)</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dashed"</span>, 
        lwd  <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/surface_area_from_mass.html">surface_area_from_mass</a></span><span class="op">(</span>m     <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">50</span>,  
                                      taxon <span class="op">=</span> <span class="st">"salamander"</span><span class="op">)</span>, 
@@ -197,6 +208,7 @@
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dotdash"</span>, 
        lwd   <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/box.html">box</a></span><span class="op">(</span>bty <span class="op">=</span> <span class="st">"L"</span>,
     lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-3-1.png" width="576"></p>
@@ -208,11 +220,13 @@
      type <span class="op">=</span> <span class="st">"l"</span>, 
      xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">volume</span> <span class="op">~</span> <span class="op">(</span><span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="fl">3</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>,
      ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="st">"surface area"</span> <span class="op">~</span> <span class="op">(</span><span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/surface_area_from_volume.html">surface_area_from_volume</a></span><span class="op">(</span>V     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span><span class="op">)</span>, 
                                        taxon <span class="op">=</span> <span class="st">"frog"</span><span class="op">)</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span><span class="op">)</span>,
        y    <span class="op">=</span> <span class="fu"><a href="../reference/surface_area_from_volume.html">surface_area_from_volume</a></span><span class="op">(</span>V     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span><span class="op">)</span>, 
                                        taxon <span class="op">=</span> <span class="st">"sphere"</span><span class="op">)</span>,
@@ -229,11 +243,13 @@
      type <span class="op">=</span> <span class="st">"l"</span>, 
      xlab <span class="op">=</span> <span class="st">"length (m)"</span>, 
      ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">volume</span> <span class="op">~</span> <span class="op">(</span><span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="fl">3</span><span class="op">}</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.001</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/volume_from_length.html">volume_from_length</a></span><span class="op">(</span>l     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.001</span><span class="op">)</span>, 
                                  taxon <span class="op">=</span> <span class="st">"frog"</span><span class="op">)</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.001</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/volume_from_length.html">volume_from_length</a></span><span class="op">(</span>l     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.001</span><span class="op">)</span>, 
                                  taxon <span class="op">=</span> <span class="st">"sphere"</span><span class="op">)</span>, 
@@ -259,7 +275,8 @@
      type <span class="op">=</span> <span class="st">"l"</span>, 
      xlab <span class="op">=</span> <span class="st">"zenith angle (°)"</span>, 
      ylab <span class="op">=</span> <span class="st">"proportion silhouette area"</span>, 
-     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0.5</span><span class="op">)</span><span class="op">)</span>
+     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/proportion_silhouette_area.html">proportion_silhouette_area</a></span><span class="op">(</span>z       <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
                                          taxon   <span class="op">=</span> <span class="st">"lizard"</span>, 
@@ -267,6 +284,7 @@
                                          posture <span class="op">=</span> <span class="st">"prostrate"</span><span class="op">)</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/proportion_silhouette_area.html">proportion_silhouette_area</a></span><span class="op">(</span>z       <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
                                          taxon   <span class="op">=</span> <span class="st">"lizard"</span>, 
@@ -289,8 +307,9 @@
      type <span class="op">=</span> <span class="st">"l"</span>, 
      xlab <span class="op">=</span> <span class="st">"theta (°)"</span>, 
      ylab <span class="op">=</span> <span class="st">"proportion silhouette area"</span>, 
-     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0.35</span><span class="op">)</span>, 
+     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.35</span><span class="op">)</span>, 
      lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/proportion_silhouette_area_shapes.html">proportion_silhouette_area_shapes</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"spheroid"</span>, 
                                                 theta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
@@ -298,6 +317,7 @@
                                                 d     <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/proportion_silhouette_area_shapes.html">proportion_silhouette_area_shapes</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"spheroid"</span>, 
                                                 theta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
@@ -305,6 +325,7 @@
                                                 d     <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/proportion_silhouette_area_shapes.html">proportion_silhouette_area_shapes</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"spheroid"</span>,
                                                 theta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
@@ -323,7 +344,8 @@
      lty  <span class="op">=</span> <span class="st">"dashed"</span>, 
      xlab <span class="op">=</span> <span class="st">"theta (°)"</span>, 
      ylab <span class="op">=</span> <span class="st">"proportion silhouette area"</span>, 
-     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0.35</span><span class="op">)</span><span class="op">)</span>
+     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.35</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/proportion_silhouette_area_shapes.html">proportion_silhouette_area_shapes</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"cylinder flat ends"</span>, 
                                                 theta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
@@ -331,6 +353,7 @@
                                                 d     <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/proportion_silhouette_area_shapes.html">proportion_silhouette_area_shapes</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"cylinder flat ends"</span>, 
                                                 theta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
@@ -338,6 +361,7 @@
                                                 d     <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/proportion_silhouette_area_shapes.html">proportion_silhouette_area_shapes</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"cylinder flat ends"</span>, 
                                                 theta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
@@ -355,7 +379,8 @@
      type <span class="op">=</span> <span class="st">"l"</span>, 
      xlab <span class="op">=</span> <span class="st">"theta (°)"</span>, 
      ylab <span class="op">=</span> <span class="st">"proportion silhouette area"</span>, 
-     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0.35</span><span class="op">)</span><span class="op">)</span>
+     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.35</span><span class="op">)</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/proportion_silhouette_area_shapes.html">proportion_silhouette_area_shapes</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"cylinder hemisphere ends"</span>, 
                                                 theta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
@@ -363,6 +388,7 @@
                                                 d     <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/proportion_silhouette_area_shapes.html">proportion_silhouette_area_shapes</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"cylinder hemisphere ends"</span>, 
                                                 theta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
@@ -370,6 +396,7 @@
                                                 d     <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>, 
        type <span class="op">=</span> <span class="st">"l"</span>, 
        lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/proportion_silhouette_area_shapes.html">proportion_silhouette_area_shapes</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"cylinder hemisphere ends"</span>, 
                                                 theta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, 
@@ -414,6 +441,7 @@
      ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">3</span><span class="op">)</span>, 
      ylab <span class="op">=</span> <span class="st">"performance"</span>, 
      xlab <span class="op">=</span> <span class="st">"temperature (°C)"</span><span class="op">)</span>
+
 <span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">60</span>, 
        y    <span class="op">=</span> <span class="fu"><a href="../reference/TPC.beta.html">TPC.beta</a></span><span class="op">(</span>T         <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">60</span>, 
                        shift     <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, 

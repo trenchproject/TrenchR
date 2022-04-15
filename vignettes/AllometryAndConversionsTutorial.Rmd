@@ -15,8 +15,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-##Load TrenchR package
-library(TrenchR)
+
+# Load TrenchR package
+
+  library(TrenchR)
+
 ```
 
 This tutorial reviews tools that use allometries to estimate the dimensions of organisms needed for energy balances and other analyses. 
@@ -33,7 +36,9 @@ The function `mass_from_length()` encompasses empirically-derived relationships 
 The relationships are derived by relating length to mass for specimens of numerous species. We use the `mass_from_length()` function to illustrate the allometries for different taxa:
 
 ```{r, fig.height = 4, fig.width = 6}
+
 par(mar = c(5, 5, 2, 2))
+
 plot(x    = seq(0.01, 0.25, 0.01), 
      y    = mass_from_length(l     = seq(0.01, 0.25, 0.01), 
                              taxon = "lizard"), 
@@ -45,6 +50,7 @@ plot(x    = seq(0.01, 0.25, 0.01),
      las  = 1, 
      bty  = "L", 
      lwd  = 2)
+
 points(x    = seq(0.01, 0.25, 0.01), 
        y    = mass_from_length(l     = seq(0.01, 0.25, 0.01), 
                                taxon = "salamander"), 
@@ -58,24 +64,28 @@ points(x    = seq(0.01, 0.25, 0.01),
        type = "l", 
        col  = "red", 
        lwd  = 2)
+
 points(x    = seq(0.01, 0.25, 0.01), 
        y    = mass_from_length(l     = seq(0.01, 0.25, 0.01), 
                                taxon = "snake"), 
        type = "l", 
        col  = "green", 
        lwd  = 2)
+
 points(x    = seq(0.01, 0.25, 0.01), 
        y    = mass_from_length(l     = seq(0.01, 0.25, 0.01), 
                                taxon = "turtle"), 
        type = "l", 
        col  = "orange", 
        lwd  = 2)
+
 points(x    = seq(0.01, 0.25, 0.01), 
        y    = mass_from_length(l     = seq(0.01, 0.25, 0.01), 
                                taxon = "insect"), 
        type = "l", 
        col  = "purple", 
        lwd  = 2)
+
 ```
 
 ### Surface Area
@@ -86,6 +96,7 @@ We provide functions to estimate surface area ($m^3$) from length, mass, or volu
 The function `surface_area_from_mass()` encompasses empirically-derived relationship to estimate surface area as a power law function of mass for lizards, frogs, and insects. 
 
 ```{r, fig.height = 4, fig.width = 6}
+
 par(mar = c(5, 5, 2, 2))
 
 plot(x    = 1:50, 
@@ -97,13 +108,18 @@ plot(x    = 1:50,
      las  = 1, 
      bty  = "L", 
      lwd  = 2)
-mtext(expression("surface area" ~ (m^{2})), 2, line = 3.5)
+
+mtext(text = expression("surface area" ~ (m^{2})), 
+      side = 2, 
+      line = 3.5)
+
 points(x    = 1:50, 
        y    = surface_area_from_mass(m     = 1:50, 
                                      taxon = "frog"), 
        type = "l", 
        lty  = "dashed", 
        lwd  = 2)
+
 points(x    = 1:50, 
        y    = surface_area_from_mass(m     = 1:50,  
                                      taxon = "salamander"), 
@@ -116,30 +132,36 @@ points(x    = seq(0.1, 5, 0.2),
        type = "l", 
        lty  = "dotdash", 
        lwd   = 2)
+
 box(bty = "L",
     lwd = 2)
+
 ```
 
 We also provide empirical relationships estimating surface area as power law function of volume. 
 The functions were developed by Mitchell [-@mitchell1976heat] for use in approximating convective heat transfer:
 
 ```{r, fig.height = 4, fig.width = 6}
+
 plot(x    = seq(0.001, 0.01, 0.001), 
      y    = surface_area_from_volume(V     = seq(0.001, 0.01, 0.001), 
                                      taxon = "lizard"), 
      type = "l", 
      xlab = expression(volume ~ (m^{3})),
      ylab = expression("surface area" ~ (m^{2})))
+
 points(x    = seq(0.001, 0.01, 0.001), 
        y    = surface_area_from_volume(V     = seq(0.001, 0.01, 0.001), 
                                        taxon = "frog"), 
        type = "l", 
        lty  = "dashed")
+
 points(x    = seq(0.001, 0.01, 0.001),
        y    = surface_area_from_volume(V     = seq(0.001, 0.01, 0.001), 
                                        taxon = "sphere"),
        type = "l", 
        lty  = "dotted")
+
 ```
 
 For the same study, we additionally provide a function to estimate volume from length for several taxa or by approximating the organism as a sphere. 
@@ -147,6 +169,7 @@ Finally, we provide a function for estimating surface area from length by approx
 The allometric functions are available in R as follows:
 
 ```{r, fig.height = 4, fig.width = 6}
+
 par(mar = c(5, 5, 2, 2))
 
 plot(x    = seq(0.01, 0.05, 0.001), 
@@ -155,19 +178,23 @@ plot(x    = seq(0.01, 0.05, 0.001),
      type = "l", 
      xlab = "length (m)", 
      ylab = expression(volume ~ (m^{3})))
+
 points(x    = seq(0.01, 0.05, 0.001), 
        y    = volume_from_length(l     = seq(0.01, 0.05, 0.001), 
                                  taxon = "frog"), 
        type = "l", 
        lty  = "dashed")
+
 points(x    = seq(0.01, 0.05, 0.001), 
        y    = volume_from_length(l     = seq(0.01, 0.05, 0.001), 
                                  taxon = "sphere"), 
        type = "l", 
        lty  = "dotted")
+
 ```
 
 ```{r, fig.height = 4, fig.width = 6}
+
 par(mar = c(5, 5, 2, 2))
 
 plot(x    = seq(0.01, 0.05, 0.001), 
@@ -175,6 +202,7 @@ plot(x    = seq(0.01, 0.05, 0.001),
      type = "l", 
      xlab = "length (m)", 
      ylab = expression("surface area" ~ (m^{2})))
+
 ```
 
 Estimating the amount of solar radiation that an animal absorbs requires knowledge of the silhouette area, the proportion of an animal's surface area that is projected onto a horizontal surface. 
@@ -184,6 +212,7 @@ We additionally offer a function (`proportion_silhouette_area_shapes()`) to esti
 The R functions are parameterized as follows:
 
 ```{r, fig.height = 4, fig.width = 6}
+
 par(mar = c(5, 5, 2, 2))
 
 plot(x    = seq(0, 90, 10), 
@@ -192,7 +221,8 @@ plot(x    = seq(0, 90, 10),
      type = "l", 
      xlab = "zenith angle (°)", 
      ylab = "proportion silhouette area", 
-     ylim = range(0,0.5))
+     ylim = range(0, 0.5))
+
 points(x    = seq(0, 90, 10), 
        y    = proportion_silhouette_area(z       = seq(0, 90, 10), 
                                          taxon   = "lizard", 
@@ -200,6 +230,7 @@ points(x    = seq(0, 90, 10),
                                          posture = "prostrate"), 
        type = "l", 
        lty  = "dashed")
+
 points(x    = seq(0, 90, 10), 
        y    = proportion_silhouette_area(z       = seq(0, 90, 10), 
                                          taxon   = "lizard", 
@@ -221,8 +252,9 @@ plot(x    = seq(0, 90, 10),
      type = "l", 
      xlab = "theta (°)", 
      ylab = "proportion silhouette area", 
-     ylim = c(0,0.35), 
+     ylim = c(0, 0.35), 
      lty  = "dashed")
+
 points(x    = seq(0, 90, 10), 
        y    = proportion_silhouette_area_shapes(shape = "spheroid", 
                                                 theta = seq(0, 90, 10), 
@@ -230,6 +262,7 @@ points(x    = seq(0, 90, 10),
                                                 d     = 0.3), 
        type = "l", 
        lty  = "dashed")
+
 points(x    = seq(0, 90, 10), 
        y    = proportion_silhouette_area_shapes(shape = "spheroid", 
                                                 theta = seq(0, 90, 10), 
@@ -237,6 +270,7 @@ points(x    = seq(0, 90, 10),
                                                 d     = 0.2), 
        type = "l", 
        lty  = "dotted")
+
 points(x    = seq(0, 90, 10), 
        y    = proportion_silhouette_area_shapes(shape = "spheroid",
                                                 theta = seq(0, 90, 10), 
@@ -254,7 +288,8 @@ plot(x    = seq(0, 90, 10),
      lty  = "dashed", 
      xlab = "theta (°)", 
      ylab = "proportion silhouette area", 
-     ylim = c(0,0.35))
+     ylim = c(0, 0.35))
+
 points(x    = seq(0, 90, 10), 
        y    = proportion_silhouette_area_shapes(shape = "cylinder flat ends", 
                                                 theta = seq(0, 90, 10), 
@@ -262,6 +297,7 @@ points(x    = seq(0, 90, 10),
                                                 d     = 0.2), 
        type = "l", 
        lty  = "dashed")
+
 points(x    = seq(0, 90, 10), 
        y    = proportion_silhouette_area_shapes(shape = "cylinder flat ends", 
                                                 theta = seq(0, 90, 10), 
@@ -269,6 +305,7 @@ points(x    = seq(0, 90, 10),
                                                 d     = 0.1), 
        type = "l", 
        lty  = "dotted")
+
 points(x    = seq(0, 90, 10), 
        y    = proportion_silhouette_area_shapes(shape = "cylinder flat ends", 
                                                 theta = seq(0, 90, 10), 
@@ -285,7 +322,8 @@ plot(x    = seq(0, 90, 10),
      type = "l", 
      xlab = "theta (°)", 
      ylab = "proportion silhouette area", 
-     ylim = c(0,0.35))
+     ylim = c(0, 0.35))
+
 points(x    = seq(0, 90, 10), 
        y    = proportion_silhouette_area_shapes(shape = "cylinder hemisphere ends", 
                                                 theta = seq(0, 90, 10), 
@@ -293,6 +331,7 @@ points(x    = seq(0, 90, 10),
                                                 d     = 0.2), 
        type = "l", 
        lty  = "dashed")
+
 points(x    = seq(0, 90, 10), 
        y    = proportion_silhouette_area_shapes(shape = "cylinder hemisphere ends", 
                                                 theta = seq(0, 90, 10), 
@@ -300,6 +339,7 @@ points(x    = seq(0, 90, 10),
                                                 d     = 0.1), 
        type = "l", 
        lty  = "dotted")
+
 points(x    = seq(0, 90, 10), 
        y    = proportion_silhouette_area_shapes(shape = "cylinder hemisphere ends", 
                                                 theta = seq(0, 90, 10), 
@@ -315,11 +355,13 @@ points(x    = seq(0, 90, 10),
 We offer convenience functions to convert among units for angles and temperatures:
 
 ```{r}
+
 degrees_to_radians(47.608)
 radians_to_degrees(0.831)
 fahrenheit_to_celsius(85)
 fahrenheit_to_kelvin(85)
 kelvin_to_celsius(270)
+
 ```
 
 # Thermal Performance Curve Functions
@@ -331,7 +373,8 @@ We include a function `TPC()` to describe a Gaussian-quadratic TPC as a function
 The `TPC.beta()` function uses a beta function to define a TPC based on mode, breadth, and skew. 
 A scale factor enables including a thermodynamic effect on mean performance [@asbury2010thermodynamic].
 
-```{r, fig.height=4, fig.width=6}
+```{r, fig.height = 4, fig.width = 6}
+
 plot(x    = 0:60, 
      y    = TPC(T      = 0:60, 
                 T_opt  = 30, 
@@ -341,6 +384,7 @@ plot(x    = 0:60,
      ylim = c(0,3), 
      ylab = "performance", 
      xlab = "temperature (°C)")
+
 points(x    = 0:60, 
        y    = TPC.beta(T         = 0:60, 
                        shift     = -1, 
@@ -350,6 +394,7 @@ points(x    = 0:60,
                        skew      = 0.7), 
        type = "l", 
        lty  = "dashed")
+
 ```
 
 # References

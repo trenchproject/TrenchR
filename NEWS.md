@@ -10,7 +10,6 @@ TrenchR 0.1.0
 
 ### Argument edits
 * Standardizing arguments across functions
-* Using capital letters for measures like `L` for length, `M` for mass, `SA` for surface area, etc. across all functions.
 * `taxon` replaces `taxa` in instances where only one value can be input at a time
 
 ### Function names

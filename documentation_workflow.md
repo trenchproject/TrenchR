@@ -1,4 +1,10 @@
-## Documentation Workflow
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+# Documentation Workflow
 
 We're using `Rdpack` and BiBTeX to manage citations in the documentation, which requires a little more work than a standard Roxygen documentation setup.
 
