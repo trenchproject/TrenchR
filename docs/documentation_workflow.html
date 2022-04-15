@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NA • TrenchR</title>
+<title>Documentation Workflow • TrenchR</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="NA" />
+<meta property="og:title" content="Documentation Workflow" />
 
 
 
@@ -131,13 +131,14 @@
 <div class="row">
   <div class="contents col-md-9">
     <div class="page-header">
-      <h1>NA</h1>
+      <h1>Documentation Workflow</h1>
     </div>
 
 
-<div id="documentation-workflow" class="section level2">
-<h2 class="hasAnchor">
-<a href="#documentation-workflow" class="anchor"></a>Documentation Workflow</h2>
+<hr>
+<p>output: html_document: default pdf_document: default —</p>
+<div id="documentation-workflow" class="section level1">
+
 <p>We’re using <code>Rdpack</code> and BiBTeX to manage citations in the documentation, which requires a little more work than a standard Roxygen documentation setup.</p>
 <p>To include a citation</p>
 <ol>
@@ -174,12 +175,12 @@
 <pre><code><a href="https://devtools.r-lib.org/reference/build.html">devtools::build()</a></code></pre>
 <p>and then installing the package from the built zip file and running</p>
 <pre><code>?TrenchR::functionname</code></pre>
-</div>
 <div id="all-the-help-files" class="section level2">
 <h2 class="hasAnchor">
 <a href="#all-the-help-files" class="anchor"></a>ALL the Help Files</h2>
 <p>To generate all of the help files in one line of code, run</p>
 <pre><code><a href="https://rdrr.io/r/base/mapply.html">mapply(Rdpack::viewRd, paste0("./man/", list.files("./man")[grepl(".Rd", list.files("./man"))]))</a></code></pre>
+</div>
 </div>
 
 
