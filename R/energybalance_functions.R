@@ -966,7 +966,7 @@ boundary_layer_resistance <- function (T_a,
   # calculate boundary layer resistance
   specific_heat <- (1004.84 + (1846.4 * mixing_ratio)) / (1 + mixing_ratio)
 
-  0.93 * ((specific_heat * air_density) / hc) / 100
+   ((specific_heat * air_density) / hc) / 100
 
 }
 
@@ -1049,14 +1049,13 @@ Tb_salamander_humid <- function (r_i,
   radiative_conductance <- (4 * (5.670373 * 10^-8) * (T_a + 273.15)^3) / 29.3
 
   gamma <- 0.000666
-  gvs <- 1 / ((r_i * 100.0) / 41.4)
-  gva <- 1 / ((r_b * 100) / 41.4)
-  gHa <- 1.4 * 0.135 * sqrt(.1 / D)
-  gamma_naut <- gamma * ((radiative_conductance + gHa) / ((gvs * gva) / (gvs + gva)))
+  gvs <- 1/((r_i*100.0)/41.4)
+  gva <- 1/(((r_b*0.93)*100)/41.4)
+  gHa <- 1/((r_b*100)/41.4)
+  gamma_naut <- gamma * (1 / gvs + 1 / gva) / (1 / gHa + 1 / radiative_conductance)
   s <- ((((17.502 * 240.97)) * 0.611 * exp((17.502 * T_a) / (T_a + 240.97))) / (240.97 + T_a)^2) / (101.3 * exp(-elev / 8200))
 
-  T_a + (gamma_naut / (gamma_naut + s)) * (((Qabs - (epsilon * sigma * ((T_a + 273.15)^4))) / (29.3 * (radiative_conductance + gHa))) - (vpd / (gamma_naut * (101.3 * exp(-elev / 8200)))))
-
+  T_a+(gamma_naut/(gamma_naut+s))*(((Qabs - (epsilon*(sigma)*((T_a+273.15)^4)))/(29.3*(radiative_conductance+gHa)))-(vpd/(gamma_naut*(101.3*exp(-elev/8200)))))
 }
 
 
