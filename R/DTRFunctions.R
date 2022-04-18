@@ -1,4 +1,4 @@
-#' @title Estimate Diurnal Temperatures
+#' @title Estimate Temperature Variation across Hours assuming Sine and Exponential Components
 #'
 #' @description Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components \insertCite{Parton1981}{TrenchR}. 
 #'
@@ -12,7 +12,7 @@
 #'  }
 #'
 #' @param T_max,T_min \code{numeric} maximum and minimum daily temperatures (C).
-#' 
+#'  
 #' @param t_r,t_s \code{numeric} times of sunrise and sunset (hour).
 #' 
 #' @param t \code{numeric} time for temperature estimate (hour).
@@ -105,7 +105,7 @@ diurnal_temp_variation_sineexp <- function (T_max,
 }
 
 
-#' @title Diurnal Temperature Across Hours
+#' @title Estimate Temperature Variation across Hours using a Sine Interpolation
 #'
 #' @description Estimate temperature for a specified hour using the sine interpolation in \insertCite{Campbell1998;textual}{TrenchR}.
 #' 
@@ -143,7 +143,7 @@ diurnal_temp_variation_sine <- function (T_max,
 }
 
 
-#' @title Estimate Temperature Across Hours Using Sine and Square Root Functions
+#' @title Estimate Temperature Variation across Hours using Sine and Square Root Functions
 #'
 #' @description  Estimate temperature for a specified hour using sine and square root functions \insertCite{Cesaraccio2001}{TrenchR}.
 #' 

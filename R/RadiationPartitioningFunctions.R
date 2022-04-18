@@ -1,4 +1,4 @@
-#' @title Estimate the Diffuse Fraction (k_d) for Partitioning Solar Radiation
+#' @title Estimate the Diffuse Fraction for Partitioning Solar Radiation
 #' 
 #' @description Partition solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in \insertCite{Wong2001;textual}{TrenchR}.
 #' 

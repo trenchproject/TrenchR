@@ -89,9 +89,9 @@ wind_speed_profile_neutral <- function (u_r,
 
 #' @title Air Temperature at a Specified Height Under Neutral Conditions
 #' 
-#' @description Calculate temperature (C) at a specified height (m) within a boundary layer near the surface.  The velocity profile is the neutral profile described by \insertCite{Sellers1965;textual}{TrenchR}. Function in equations (2) and (3) of \insertCite{Porter1973;textual}{TrenchR}.
+#' @description Calculate air temperature (C) at a specified height (m) within a boundary layer near the surface.  The velocity profile is the neutral profile described by \insertCite{Sellers1965;textual}{TrenchR}. Function is included as equations (2) and (3) of \insertCite{Porter1973;textual}{TrenchR}.
 #' 
-#' @param T_r \code{numeric} temperature (C) at reference height.
+#' @param T_r \code{numeric} air temperature (C) at reference height.
 #' 
 #' @param zr \code{numeric} initial reference height (m).
 #' 
@@ -101,7 +101,7 @@ wind_speed_profile_neutral <- function (u_r,
 #' 
 #' @param T_s \code{numeric} surface temperatures (C).
 #' 
-#' @return \code{numeric} temperature (C).
+#' @return \code{numeric} air temperature (C).
 #' 
 #' @references
 #'   \insertAllCited{}
@@ -134,9 +134,9 @@ air_temp_profile_neutral <- function (T_r,
 
 #' @title Air Temperature Profile as in NicheMapR
 #' 
-#' @description  Estimate temperature (C) at a specified height (m). Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR \insertCite{Kearney2017}{TrenchR}.
+#' @description  Estimate air temperature (C) at a specified height (m). Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR \insertCite{Kearney2017}{TrenchR}.
 #' 
-#' @param T_r \code{numeric} temperature (C) at reference height.
+#' @param T_r \code{numeric} air temperature (C) at reference height.
 #' 
 #' @param u_r \code{numeric} windspeed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at reference height.
 #' 
@@ -148,7 +148,7 @@ air_temp_profile_neutral <- function (T_r,
 #' 
 #' @param T_s \code{numeric} surface temperatures (C).
 #' 
-#' @return \code{numeric} temperature (C).
+#' @return \code{numeric} air temperature (C).
 #' 
 #' @family microclimate functions
 #' 
@@ -204,9 +204,9 @@ air_temp_profile <- function (T_r,
 
 #' @title Air Temperature at a Specified Height 
 #' 
-#' @description Calculate temperature (C) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
+#' @description Calculate air temperature (C) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
 #' 
-#' @param T_r \code{numeric} a vector of temperature (C) at the 3 reference heights.
+#' @param T_r \code{numeric} a vector of air temperatures (C) at the 3 reference heights.
 #' 
 #' @param u_r \code{numeric} a vector of wind speeds (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at the 3 reference heights.
 #' 
@@ -214,11 +214,11 @@ air_temp_profile <- function (T_r,
 #' 
 #' @param z0 \code{numeric} a vector of 3 experimentally determined roughness heights (meters).
 #' 
-#' @param z \code{numeric} height to scale to (meters).
+#' @param z \code{numeric} height for air temperature estimation (meters).
 #' 
 #' @param T_s \code{numeric} surface temperatures (C).
 #' 
-#' @return \code{numeric} temperature (C).
+#' @return \code{numeric} air temperature (C).
 #' 
 #' @family microclimate functions
 #' 
@@ -308,7 +308,7 @@ air_temp_profile_segment <- function (T_r,
 }
 
 
-#' @title Windspeed at a Specified Height 
+#' @title Wind Speed at a Specified Height 
 #' 
 #' @description Calculate wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
 #' 
@@ -320,7 +320,7 @@ air_temp_profile_segment <- function (T_r,
 #' 
 #' @param z \code{numeric} height to scale (m).
 #' 
-#' @return \code{numeric} temperature (C).
+#' @return \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
 #' @family microclimate functions
 #' 
@@ -382,7 +382,7 @@ wind_speed_profile_segment <- function (u_r,
        
   }
   
-  #estimate windspeed
+  #estimate wind speed
 
     0.5 * us_star * log(z / z0s + 1)
 

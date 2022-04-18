@@ -240,7 +240,7 @@ zenith_angle <- function (doy,
 #' 
 #' @param hour \code{numeric} hour of the day.
 #' 
-#' @param offset \code{numeric} number of hours to add to UTC to get local time (to improve accuracy but not always necessary). Optional. Defaults to NA.
+#' @param offset \code{numeric} number of hours to add to UTC (Coordinated Universal Time) to get local time (to improve accuracy but not always necessary). Optional. Defaults to NA.
 #' 
 #' @return \code{numeric} azimuth angle (degrees).
 #'
@@ -340,7 +340,7 @@ azimuth_angle <- function (doy,
   azimuth
 }
 
-#' @title Air Pressure in kPa 
+#' @title Air Pressure from Elevation 
 #'
 #' @description Calculate estimated air pressure (kPa) as a function of elevation \insertCite{engingeeringtoolbox}{TrenchR}.
 #' 

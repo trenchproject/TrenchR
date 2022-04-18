@@ -180,7 +180,7 @@ Qconvection <- function (T_a,
 }
 
 
-#' @title Heat Transfer Coefficient
+#' @title Estimate the Heat Transfer Coefficient Empirically
 #'
 #' @description Estimate the heat transfer coefficient for various taxa based on empirical measurements \insertCite{Mitchell1976}{TrenchR}.
 #'
@@ -194,7 +194,7 @@ Qconvection <- function (T_a,
 #'
 #' @param taxon \code{character} which class of organism, current choices: \code{"sphere"}, \code{"cylinder"}, \code{"frog"}, \code{"lizard_surface"}, \code{"lizard_elevated"}, \code{"flyinginsect"}, \code{"spider"}. 
 #'  \cr
-#'  \code{"cylinder"} assumes 40 < Re < 4000. \code{"lizard_surface"} and \code{"lizard_elevated"} assume prostrate on or elevated above surface, average for parallel and perpendicular to air flow.
+#'  \code{"cylinder"} assumes 40 < Re < 4000. \code{"lizard_surface"} and \code{"lizard_elevated"} assume the lizard is prostrate on and elevated above the surface, respectively. The values are the average for lizards parallel and perpendicular to the air flow.
 #'
 #' @return \code{numeric} heat transfer coefficient, \code{H_L} (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).
 #'
@@ -242,7 +242,7 @@ heat_transfer_coefficient <- function (V,
 }
 
 
-#' @title Calculate Heat Transfer Coefficient Using a Spherical Approximation
+#' @title Estimate the Heat Transfer Coefficient Using a Spherical Approximation
 #'
 #' @description Estimate the heat transfer coefficient for various taxa. Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere \insertCite{Mitchell1976}{TrenchR}.
 #'
@@ -303,7 +303,7 @@ heat_transfer_coefficient_approximation <- function (V,
 }
 
 
-#' @title Heat Transfer Coefficient
+#' @title Estimate the Heat Transfer Coefficient using Simple Relationships
 #'
 #' @description Estimate the heat transfer coefficient \insertCite{Mitchell1976}{TrenchR} using either the relationship in \insertCite{Spotila1992;textual}{TrenchR} or that in \insertCite{Gates1980;textual}{TrenchR}.
 #'
@@ -1270,9 +1270,9 @@ Reynolds_number <- function(u,
 }
 
 
-#' @title Grashof Number
+#' @title Estimate the Grashof Number
 #'
-#' @description Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force \insertCite{Campbell1998}{TrenchR}.
+#' @description Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Estimated as the ratio of a buoyant force times an inertial force to the square of a viscous force \insertCite{Campbell1998}{TrenchR}.
 #'
 #' @param T_a \code{numeric} Air temperature (C).
 #'
@@ -1313,7 +1313,7 @@ Grashof_number <- function (T_a,
 }
 
 
-#' @title Grashof Number in Gates
+#' @title Estimate the Grashof Number as in Gates (1980)
 #'
 #' @description Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity \insertCite{Gates1980}{TrenchR}. Ratio of a buoyant force times an inertial force to the square of a viscous force.
 #'
@@ -1325,7 +1325,7 @@ Grashof_number <- function (T_a,
 #'
 #' @param D \code{numeric} is characteristic dimension (e.g., body diameter) (m)
 #'
-#' @param nu \code{numeric} is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}); can calculate from \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
+#' @param nu \code{numeric} is the kinematic viscosity, the ratio of dynamic viscosity to density of the fluid (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}); can calculate from \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #'
 #' @return \code{numeric} Grashof number.
 #'

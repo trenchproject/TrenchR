@@ -1,6 +1,6 @@
-#' @title Estimate Radiation (Three Parts - Direct, Diffused and Reflected)
+#' @title Estimate Radiation (Three Components - Direct, Diffuse and Reflected)
 #' 
-#' @description Estimate direct, diffuse, and reflected components of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}) using the model in \insertCite{Campbell1998;textual}{TrenchR}. 
+#' @description Estimate direct, diffuse, and reflected components of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}) as a function of day of year using the model in \insertCite{Campbell1998;textual}{TrenchR}. 
 #' 
 #' @param doy \code{numeric} the day of year; \code{\link{day_of_year}}.
 #' 
@@ -67,7 +67,7 @@ estimate_radiation <- function (doy,
   
 }
 
-#' @title Estimate Diurnal Radiation 
+#' @title Estimate Variation in Solar Radiation across Hours
 #' 
 #' @description Estimate hourly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> hr<sup>-1</sup>}}{\eqn{W m^-2 hr^-1}{ASCII}}) as a function of daily global solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}). Based on \insertCite{Tham2010;textual}{TrenchR} and \insertCite{AlRawahi2011;textual}{TrenchR}.
 #' 
@@ -279,13 +279,13 @@ monthly_solar_radiation <- function (lat,
 
 #' @title Estimate Direct Solar Radiation
 #' 
-#' @description Estimate direct solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) based on latitude, day of year, elevation, and time. Uses two methods compiled in \insertCite{Tracy1983;textual}{TrenchR} \insertCite{McCullough1971,Campbell1998}{TrenchR}.
+#' @description Estimate direct solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) based on latitude, day of year, elevation, and time. The function uses two methods \insertCite{McCullough1971,Campbell1998}{TrenchR} compiled in \insertCite{Tracy1983;textual}{TrenchR}.
 #' 
 #' @param lat \code{numeric} latitude (degrees).
 #' 
 #' @param doy \code{numeric} day of year (1-366).
 #' 
-#' @param elev \code{numeric} elevation in m.
+#' @param elev \code{numeric} elevation (m).
 #' 
 #' @param t \code{numeric} local time (decimal hours).
 #' 

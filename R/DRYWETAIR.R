@@ -1,6 +1,6 @@
 #' @title Calculate Properties of Dry Air
 #'
-#' @description Calculates several properties of dry air and related characteristics shown as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from \insertCite{Kearney2017,Kearney2020;textual}{TrenchR}.
+#' @description The function calculates several properties of dry air and related characteristics shown as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from NicheMapR \insertCite{Kearney2017,Kearney2020}{TrenchR}.
 #'   \cr \cr
 #'  The user must supply values for the input variables \code{db}, \code{bp}, and \code{alt}. If \code{alt} is known (-1000 < alt < 20000) but not BP, then set \code{bp = 0}.
 #' 
@@ -83,7 +83,7 @@ DRYAIR <- function(db,
 
 #' @title Calculate Saturation Vapor Pressure
 #'
-#' @description Calculates saturation vapor pressure for a given air temperature.
+#' @description Calculates saturation vapor pressure for a given air temperature. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from NicheMapR \insertCite{Kearney2017,Kearney2020}{TrenchR}.
 #' 
 #' @param db \code{numeric} Dry bulb temperature (C)
 #' 
@@ -111,7 +111,7 @@ VAPPRS <- function(db) {
 
 #' @title Calculate Properties of Wet Air
 #'
-#' @description Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from \insertCite{Kearney2017,Kearney2020;textual}{TrenchR}.
+#' @description Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from NicheMapR \insertCite{Kearney2017,Kearney2020}{TrenchR}.
 #'  \cr 
 #'  WETAIR must be used in conjunction with \code{\link{VAPPRS}}. Input variables are shown below. See Details. 
 #'
