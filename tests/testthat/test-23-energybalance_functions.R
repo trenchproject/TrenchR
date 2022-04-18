@@ -51,12 +51,15 @@ test_that("Qevaporation function works as expected", {
 })
 
 test_that("Qevaporation errors work as expected", {
-  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_a=0.002, h=0.5, H=20, r_i=50))
-  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, h=0.5, H=20, r_i=50))
-  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=0.002, H=20, r_i=50))
-  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, r_i=50))
-  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=20))
-
+  expect_error(Qevaporation(A=-0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50))
+  expect_error(Qevaporation(A=0.1, T_b=410, taxon="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50))
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="frog", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50))
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon=c("frog","amphibian"), rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50))
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=-0.003, rho_a=0.002, h=0.5, H=20, r_i=50))
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=-0.002, h=0.5, H=20, r_i=50))   
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=0.002, h=50, H=20, r_i=50)) 
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=-20, r_i=50)) 
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=-50)) 
 })
 
 test_that("saturation_water_vapor_pressure function works as expected", {
@@ -97,7 +100,7 @@ test_that("expect_similar(boundary_layer_resistance function works as expected",
 })
 
 test_that("Tb_salamander_humid function works as expected", {
-  expect_similar(Tb_salamander_humid(r_i = 4, r_b = 1, D = 0.01, T_a = 20, elev = 500, e_a = 2.0, e_s = 2.5, Qabs = 400,epsilon=0.96), 19.25887)
+  expect_similar(Tb_salamander_humid(r_i = 4, r_b = 1, D = 0.01, T_a = 20, elev = 500, e_a = 2.0, e_s = 2.5, Qabs = 400,epsilon=0.96), 17.90782)
   expect_error(Tb_salamander_humid(r_i = 4, r_b = 1, D = 0.01, T_a = 20, elev = 500, e_a = 2.8, e_s = 2.5, Qabs = 400,epsilon=0.96))
 
 })
