@@ -2,7 +2,7 @@
 % Please edit documentation in R/DTRFunctions.R
 \name{diurnal_temp_variation_sine}
 \alias{diurnal_temp_variation_sine}
-\title{Diurnal Temperature Across Hours}
+\title{Estimate Temperature Variation across Hours using a Sine Interpolation}
 \usage{
 diurnal_temp_variation_sine(T_max, T_min, t)
 }

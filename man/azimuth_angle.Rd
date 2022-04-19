@@ -15,7 +15,7 @@ azimuth_angle(doy, lat, lon, hour, offset = NA)
 
 \item{hour}{\code{numeric} hour of the day.}
 
-\item{offset}{\code{numeric} number of hours to add to UTC to get local time (to improve accuracy but not always necessary). Optional. Defaults to NA.}
+\item{offset}{\code{numeric} number of hours to add to UTC (Coordinated Universal Time) to get local time (to improve accuracy but not always necessary). Optional. Defaults to NA.}
 }
 \value{
 \code{numeric} azimuth angle (degrees).

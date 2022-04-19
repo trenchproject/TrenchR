@@ -2,7 +2,7 @@
 % Please edit documentation in R/RadiationPartitioningFunctions.R
 \name{partition_solar_radiation}
 \alias{partition_solar_radiation}
-\title{Estimate the Diffuse Fraction (k_d) for Partitioning Solar Radiation}
+\title{Estimate the Diffuse Fraction for Partitioning Solar Radiation}
 \usage{
 partition_solar_radiation(method, kt, lat = NA, sol.elev = NA)
 }

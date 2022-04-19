@@ -31,7 +31,7 @@ Named \code{list} with elements \itemize{
   }
 }
 \description{
-Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from \insertCite{Kearney2017,Kearney2020;textual}{TrenchR}.
+Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from NicheMapR \insertCite{Kearney2017,Kearney2020}{TrenchR}.
  \cr 
  WETAIR must be used in conjunction with \code{\link{VAPPRS}}. Input variables are shown below. See Details.
 }

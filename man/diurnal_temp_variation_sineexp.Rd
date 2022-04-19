@@ -2,7 +2,7 @@
 % Please edit documentation in R/DTRFunctions.R
 \name{diurnal_temp_variation_sineexp}
 \alias{diurnal_temp_variation_sineexp}
-\title{Estimate Diurnal Temperatures}
+\title{Estimate Temperature Variation across Hours assuming Sine and Exponential Components}
 \usage{
 diurnal_temp_variation_sineexp(
   T_max,

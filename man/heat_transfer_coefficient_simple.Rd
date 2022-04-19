@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{heat_transfer_coefficient_simple}
 \alias{heat_transfer_coefficient_simple}
-\title{Heat Transfer Coefficient}
+\title{Estimate the Heat Transfer Coefficient using Simple Relationships}
 \usage{
 heat_transfer_coefficient_simple(V, D, type)
 }

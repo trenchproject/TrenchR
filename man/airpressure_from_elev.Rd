@@ -2,7 +2,7 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{airpressure_from_elev}
 \alias{airpressure_from_elev}
-\title{Air Pressure in kPa}
+\title{Air Pressure from Elevation}
 \usage{
 airpressure_from_elev(elev)
 }

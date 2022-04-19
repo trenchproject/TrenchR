@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{heat_transfer_coefficient}
 \alias{heat_transfer_coefficient}
-\title{Heat Transfer Coefficient}
+\title{Estimate the Heat Transfer Coefficient Empirically}
 \usage{
 heat_transfer_coefficient(V, D, K, nu, taxon = "cylinder")
 }
@@ -17,7 +17,7 @@ heat_transfer_coefficient(V, D, K, nu, taxon = "cylinder")
 
 \item{taxon}{\code{character} which class of organism, current choices: \code{"sphere"}, \code{"cylinder"}, \code{"frog"}, \code{"lizard_surface"}, \code{"lizard_elevated"}, \code{"flyinginsect"}, \code{"spider"}. 
 \cr
-\code{"cylinder"} assumes 40 < Re < 4000. \code{"lizard_surface"} and \code{"lizard_elevated"} assume prostrate on or elevated above surface, average for parallel and perpendicular to air flow.}
+\code{"cylinder"} assumes 40 < Re < 4000. \code{"lizard_surface"} and \code{"lizard_elevated"} assume the lizard is prostrate on and elevated above the surface, respectively. The values are the average for lizards parallel and perpendicular to the air flow.}
 }
 \value{
 \code{numeric} heat transfer coefficient, \code{H_L} (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).
