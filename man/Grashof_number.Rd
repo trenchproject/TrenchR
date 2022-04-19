@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Grashof_number}
 \alias{Grashof_number}
-\title{Grashof Number}
+\title{Estimate the Grashof Number}
 \usage{
 Grashof_number(T_a, T_g, D, nu)
 }
@@ -19,7 +19,7 @@ Grashof_number(T_a, T_g, D, nu)
 \code{numeric} Grashof number.
 }
 \description{
-Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Ratio of a buoyant force times an inertial force to the square of a viscous force \insertCite{Campbell1998}{TrenchR}.
+Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Estimated as the ratio of a buoyant force times an inertial force to the square of a viscous force \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
   Grashof_number(T_a = 30,

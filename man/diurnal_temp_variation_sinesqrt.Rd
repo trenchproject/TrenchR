@@ -2,7 +2,7 @@
 % Please edit documentation in R/DTRFunctions.R
 \name{diurnal_temp_variation_sinesqrt}
 \alias{diurnal_temp_variation_sinesqrt}
-\title{Estimate Temperature Across Hours Using Sine and Square Root Functions}
+\title{Estimate Temperature Variation across Hours using Sine and Square Root Functions}
 \usage{
 diurnal_temp_variation_sinesqrt(t, t_r, t_s, T_max, T_min, T_minp)
 }

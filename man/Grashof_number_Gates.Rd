@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Grashof_number_Gates}
 \alias{Grashof_number_Gates}
-\title{Grashof Number in Gates}
+\title{Estimate the Grashof Number as in Gates (1980)}
 \usage{
 Grashof_number_Gates(T_a, T_g, beta, D, nu)
 }
@@ -15,7 +15,7 @@ Grashof_number_Gates(T_a, T_g, beta, D, nu)
 
 \item{D}{\code{numeric} is characteristic dimension (e.g., body diameter) (m)}
 
-\item{nu}{\code{numeric} is the kinematic viscosity, ratio of dynamic viscosity to density of the fluid (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}); can calculate from \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
+\item{nu}{\code{numeric} is the kinematic viscosity, the ratio of dynamic viscosity to density of the fluid (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}); can calculate from \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
 }
 \value{
 \code{numeric} Grashof number.

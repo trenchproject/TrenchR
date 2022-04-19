@@ -7,7 +7,7 @@
 air_temp_profile_neutral(T_r, zr, z0, z, T_s)
 }
 \arguments{
-\item{T_r}{\code{numeric} temperature (C) at reference height.}
+\item{T_r}{\code{numeric} air temperature (C) at reference height.}
 
 \item{zr}{\code{numeric} initial reference height (m).}
 
@@ -18,10 +18,10 @@ air_temp_profile_neutral(T_r, zr, z0, z, T_s)
 \item{T_s}{\code{numeric} surface temperatures (C).}
 }
 \value{
-\code{numeric} temperature (C).
+\code{numeric} air temperature (C).
 }
 \description{
-Calculate temperature (C) at a specified height (m) within a boundary layer near the surface.  The velocity profile is the neutral profile described by \insertCite{Sellers1965;textual}{TrenchR}. Function in equations (2) and (3) of \insertCite{Porter1973;textual}{TrenchR}.
+Calculate air temperature (C) at a specified height (m) within a boundary layer near the surface.  The velocity profile is the neutral profile described by \insertCite{Sellers1965;textual}{TrenchR}. Function is included as equations (2) and (3) of \insertCite{Porter1973;textual}{TrenchR}.
 }
 \examples{
   air_temp_profile_neutral(T_r = 20, 

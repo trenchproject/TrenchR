@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{heat_transfer_coefficient_approximation}
 \alias{heat_transfer_coefficient_approximation}
-\title{Calculate Heat Transfer Coefficient Using a Spherical Approximation}
+\title{Estimate the Heat Transfer Coefficient Using a Spherical Approximation}
 \usage{
 heat_transfer_coefficient_approximation(V, D, K, nu, taxon = "sphere")
 }

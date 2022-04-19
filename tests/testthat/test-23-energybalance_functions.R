@@ -94,8 +94,8 @@ test_that("saturation_vapor_pressure function works as expected", {
 })
 
 test_that("expect_similar(boundary_layer_resistance function works as expected", {
-  expect_similar(boundary_layer_resistance(T_a=293, e_s=2.5, e_a=2.4, elev=500, D=0.007, u=2), 0.339402)
-  expect_similar(boundary_layer_resistance(T_a=293, e_s=2.5, e_a=2.4, elev=500, D=0.007),4.00009)
+  expect_similar(boundary_layer_resistance(T_a=293, e_s=2.5, e_a=2.4, elev=500, D=0.007, u=2), 0.3649484)
+  expect_similar(boundary_layer_resistance(T_a=293, e_s=2.5, e_a=2.4, elev=500, D=0.007),4.302272)
   expect_error(boundary_layer_resistance(T_a=293, e_s=2.3, e_a=2.4, elev=500, D=0.007))
 })
 

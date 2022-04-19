@@ -29,7 +29,7 @@ Named \code{list} with elements \itemize{
  }
 }
 \description{
-Calculates several properties of dry air and related characteristics shown as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from \insertCite{Kearney2017,Kearney2020;textual}{TrenchR}.
+The function calculates several properties of dry air and related characteristics shown as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from NicheMapR \insertCite{Kearney2017,Kearney2020}{TrenchR}.
   \cr \cr
  The user must supply values for the input variables \code{db}, \code{bp}, and \code{alt}. If \code{alt} is known (-1000 < alt < 20000) but not BP, then set \code{bp = 0}.
 }

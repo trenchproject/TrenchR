@@ -7,7 +7,7 @@
 air_temp_profile_segment(T_r, u_r, zr, z0, z, T_s)
 }
 \arguments{
-\item{T_r}{\code{numeric} a vector of temperature (C) at the 3 reference heights.}
+\item{T_r}{\code{numeric} a vector of air temperatures (C) at the 3 reference heights.}
 
 \item{u_r}{\code{numeric} a vector of wind speeds (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at the 3 reference heights.}
 
@@ -15,15 +15,15 @@ air_temp_profile_segment(T_r, u_r, zr, z0, z, T_s)
 
 \item{z0}{\code{numeric} a vector of 3 experimentally determined roughness heights (meters).}
 
-\item{z}{\code{numeric} height to scale to (meters).}
+\item{z}{\code{numeric} height for air temperature estimation (meters).}
 
 \item{T_s}{\code{numeric} surface temperatures (C).}
 }
 \value{
-\code{numeric} temperature (C).
+\code{numeric} air temperature (C).
 }
 \description{
-Calculate temperature (C) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
+Calculate air temperature (C) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
 }
 \examples{
   air_temp_profile_segment(T_r = c(25, 22, 20), 

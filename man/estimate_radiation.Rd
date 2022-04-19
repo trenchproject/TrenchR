@@ -2,7 +2,7 @@
 % Please edit documentation in R/RadiationFunctions.R
 \name{estimate_radiation}
 \alias{estimate_radiation}
-\title{Estimate Radiation (Three Parts - Direct, Diffused and Reflected)}
+\title{Estimate Radiation (Three Components - Direct, Diffuse and Reflected)}
 \usage{
 estimate_radiation(doy, psi, tau, elev, rho = 0.7)
 }
@@ -21,7 +21,7 @@ estimate_radiation(doy, psi, tau, elev, rho = 0.7)
 \code{numeric} radiation components - direct, diffused and reflected (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 }
 \description{
-Estimate direct, diffuse, and reflected components of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}) using the model in \insertCite{Campbell1998;textual}{TrenchR}.
+Estimate direct, diffuse, and reflected components of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}) as a function of day of year using the model in \insertCite{Campbell1998;textual}{TrenchR}.
 }
 \examples{
   estimate_radiation(doy  = 112, 

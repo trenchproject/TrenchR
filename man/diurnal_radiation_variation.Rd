@@ -2,7 +2,7 @@
 % Please edit documentation in R/RadiationFunctions.R
 \name{diurnal_radiation_variation}
 \alias{diurnal_radiation_variation}
-\title{Estimate Diurnal Radiation}
+\title{Estimate Variation in Solar Radiation across Hours}
 \usage{
 diurnal_radiation_variation(doy, solrad, hour, lon, lat)
 }
