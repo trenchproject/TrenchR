@@ -6,9 +6,9 @@
 #'
 #' @param T_b \code{numeric} body temperature (Kelvin).
 #'
-#' @param d \code{numeric} mean thickness of the animal skin (surface) in (meters), assumes well mixed interior.
+#' @param d \code{numeric} mean thickness of the animal skin (surface) in (meters). The function assumes a well mixed interior.
 #'
-#' @param K \code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), \code{K = 0.5} for naked skin, \code{K = 0.15} for insect cuticle \insertCite{Galushko2005}{TrenchR}; conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.
+#' @param K \code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}). \code{K = 0.5} for naked skin and \code{K = 0.15} for insect cuticle \insertCite{Galushko2005}{TrenchR}. The conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step.
 #'
 #' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #'
@@ -61,7 +61,7 @@ Qconduction_animal <- function (T_g,
 
 #' @title Conductance Assuming Substrate Thermal Conductivity is Rate Limiting
 #'
-#' @description Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
+#' @description Calculate conductance (W) of an ectothermic animal to its substrate. The method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
 #'
 #' @param T_g \code{numeric} surface temperature (K).
 #'
@@ -124,7 +124,7 @@ Qconduction_substrate <- function (T_g,
 
 #' @title Organismal Convection
 #'
-#' @description Calculate convection from an organism to its environment as in \insertCite{Mitchell1976}{TrenchR}. Includes an enhancement factor associated with outdoor environments.
+#' @description The function calculates convection from an organism to its environment as in \insertCite{Mitchell1976;textual}{TrenchR}. It includes an enhancement factor associated with outdoor environments.
 #'
 #' @param T_a \code{numeric} air temperature (K).
 #'
@@ -136,7 +136,7 @@ Qconduction_substrate <- function (T_g,
 #'
 #' @param proportion \code{numeric} proportion of surface area exposed to air.
 #'
-#' @param ef \code{numeric} is the enhancement factor, used to adjust H to field conditions.  Approximated as mean value of 1.23 by default, but see \insertCite{Mitchell1976}{TrenchR} for further information.
+#' @param ef \code{numeric} is the enhancement factor, used to adjust H to field conditions.  Approximated as mean value of 1.23 by default, but see \insertCite{Mitchell1976;textual}{TrenchR} for further information.
 #'
 #' @return \code{numeric} convection (W).
 #'
@@ -354,7 +354,7 @@ heat_transfer_coefficient_simple <- function(V,
 
 #' @title Absorbed Solar and Thermal Radiation
 #'
-#' @description Estimate solar and thermal radiation (W) absorbed by the surface of an animal. Follows \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
+#' @description The function estimates solar and thermal radiation (W) absorbed by the surface of an animal following \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
 #'
 #' @param a \code{numeric} solar absorptivity of animal surface (proportion), default value is for reptiles (0-1).
 #'
@@ -429,7 +429,7 @@ Qradiation_absorbed <- function (a = 0.9,
 
 #' @title Emitted Thermal Radiation
 #'
-#' @description Estimate thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980,Spotila1992}{TrenchR}.
+#' @description The function estimates thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980,Spotila1992}{TrenchR}.
 #'
 #' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.
 #'
@@ -443,9 +443,9 @@ Qradiation_absorbed <- function (a = 0.9,
 #'
 #' @param T_g \code{numeric} ground surface temperature (K).
 #'
-#' @param T_a \code{numeric} ambient air temperature (K), only required if animal is in enclosed environment.
+#' @param T_a \code{numeric} ambient air temperature (K), only required if the animal is in an enclosed environment.
 #'
-#' @param enclosed \code{logical} if the animal is an enclosed environment or not.
+#' @param enclosed \code{logical} whether the animal is an enclosed environment or not.
 #'
 #' @return \code{numeric} emitted thermal radiation, \code{Qemit} (W).
 #'
@@ -517,7 +517,7 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 
 #' @title Calculate Heat Loss Associated with Evaporative Water Loss
 #'
-#' @description Estimate heat loss associated with evaporative water loss by an amphibian \insertCite{Spotila1992}{TrenchR} or lizard (based on empirical measurements in \insertCite{Porter1973;textual}{TrenchR}).
+#' @description The function estimates heat loss associated with evaporative water loss for an amphibian \insertCite{Spotila1992}{TrenchR} or lizard. The lizard estimation is based on empirical measurements in \insertCite{Porter1973;textual}{TrenchR}).
 #'
 #' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #'
@@ -639,7 +639,7 @@ Qevaporation <- function (A,
 
 #' @title Approximate Saturation Water Vapor Pressure
 #'
-#' @description Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40 C using \insertCite{Rosenberg1974;textual}{TrenchR} in \insertCite{Spotila1992;textual}{TrenchR}. See also NicheMapR \code{\link{WETAIR}} and \code{\link{DRYAIR}} \insertCite{Kearney2020}{TrenchR}.
+#' @description The function approximates saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40 C using \insertCite{Rosenberg1974;textual}{TrenchR} in \insertCite{Spotila1992;textual}{TrenchR}. See also NicheMapR \code{\link{WETAIR}} and \code{\link{DRYAIR}} \insertCite{Kearney2020}{TrenchR}.
 #'
 #' @param T_a \code{numeric} air temperature (C).
 #'
@@ -694,11 +694,11 @@ external_resistance_to_water_vapor_transfer <- function (H,
 
 #' @title Metabolism as a Function of Mass
 #'
-#' @description Estimate field metabolic rate (W) of various taxa as a function of mass(g). Does not account for temperature. Uses empirical relationships from \insertCite{Nagy2005;textual}{TrenchR}.
+#' @description The function estimates the field metabolic rate (W) of various taxa as a function of mass (g). The function does not account for temperature and is based on empirical relationships from \insertCite{Nagy2005;textual}{TrenchR}.
 #'
 #' @param m \code{numeric} mass (grams).
 #'
-#' @param taxon \code{character} taxon to use in calculations. Options: \code{"reptile"}, \code{"bird"}, \code{"mammal"}.
+#' @param taxon \code{character} taxon for calculation. Options: \code{"reptile"}, \code{"bird"}, \code{"mammal"}.
 #'
 #' @return \code{numeric} metabolism (W).
 #'
@@ -749,9 +749,9 @@ Qmetabolism_from_mass <- function(m,
 }
 
 
-#' @title Basal (Resting) Metabolism as a Function of Mass and Body Temperature
+#' @title Metabolism as a Function of Mass and Body Temperature
 #'
-#' @description  Estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent) \insertCite{Gillooly2001}{TrenchR}.
+#' @description  The function estimates basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). The function is based on empirical data and the metabolic theory of ecology (assumes a 3/4 scaling exponent) \insertCite{Gillooly2001}{TrenchR}.
 #'
 #' @param m \code{numeric} mass (grams).
 #'
@@ -841,7 +841,7 @@ actual_vapor_pressure <- function (T_dewpoint) {
 
 #' @title Saturation Vapor Pressure
 #'
-#' @description Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation \insertCite{Stull2000,Riddell2018}{TrenchR}.
+#' @description The function calculates saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation \insertCite{Stull2000,Riddell2018}{TrenchR}.
 #'
 #' @param T_a \code{numeric} air temperature (K).
 #'
@@ -1061,7 +1061,7 @@ Tb_salamander_humid <- function (r_i,
 
 #' @title Absorbed Thermal Radiation
 #'
-#' @description Estimate longwave (thermal) radiation (W) absorbed from the sky and the ground \insertCite{Campbell1998,Riddell2018}{TrenchR}.
+#' @description The function estimates longwave (thermal) radiation (W) absorbed from the sky and the ground \insertCite{Campbell1998,Riddell2018}{TrenchR}.
 #'
 #' @param T_a \code{numeric} air temperature (C).
 #'
@@ -1235,7 +1235,7 @@ Prandtl_number <- function (c_p,
 
 #' @title Reynolds Number
 #'
-#' @description Estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces \insertCite{Gates1980}{TrenchR}.
+#' @description The function estimates the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces \insertCite{Gates1980}{TrenchR}.
 #'
 #' @param D \code{numeric} characteristic dimension (e.g., body diameter) (m)
 #'

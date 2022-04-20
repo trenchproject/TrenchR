@@ -212,7 +212,7 @@ partition_solar_radiation <- function (method,
 
 #' @title Estimate the Ratio of Diffuse to Direct Solar Radiation
 #' 
-#' @description Estimate the ratio of diffuse to direct solar radiation.  Based on the approximation of the \insertCite{McCullough1971;textual}{TrenchR} SOLRAD model described in \insertCite{Tracy1983;textual}{TrenchR}.
+#' @description Estimate the ratio of diffuse to direct solar radiation.  Based on the approximation of the SOLRAD model \insertCite{McCullough1971}{TrenchR} described in \insertCite{Tracy1983;textual}{TrenchR}.
 #' 
 #' @param psi \code{numeric} Zenith angle of the sun (degrees).
 #' 

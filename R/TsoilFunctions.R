@@ -1,6 +1,6 @@
 #' @title Soil Thermal Conductivity
 #' 
-#' @description Estimates soil thermal conductivity (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) using the methods of \insertCite{deVries1963;textual}{TrenchR}.
+#' @description The function estimates soil thermal conductivity (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) using the methods of \insertCite{deVries1963;textual}{TrenchR}.
 #' 
 #' @param x \code{numeric} vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air). The volume fractions should sum to 1. Note that \code{x} and \code{lambda} values in the example correspond to these soil constituents.
 #' 
@@ -60,13 +60,13 @@ soil_conductivity <- function (x,
 
 #' @title Soil Specific Heat
 #' 
-#' @description Estimates soil specific heat (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}) using the methods of \insertCite{deVries1963;textual}{TrenchR}. Uses the volume fraction of organic material, minerals, and water in soil.
+#' @description The function estimates soil specific heat (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}) using the methods of \insertCite{deVries1963;textual}{TrenchR}. The function incorporates the volume fraction of organic material, minerals, and water in soil.
 #' 
-#' @param x_o \code{numeric} volume fraction of organic material.
+#' @param x_o \code{numeric} volume fraction of organic material (0-1).
 #' 
-#' @param x_m \code{numeric} volume fraction of minerals.
+#' @param x_m \code{numeric} volume fraction of minerals (0-1).
 #' 
-#' @param x_w \code{numeric} volume fraction of water.
+#' @param x_w \code{numeric} volume fraction of water (0-1).
 #' 
 #' @param rho_so \code{numeric} particle density of soil in (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (bulk density).
 #' 
@@ -110,7 +110,7 @@ soil_specific_heat <- function (x_o,
 
 #' @title Solve Equation for Soil Temperature
 #' 
-#' @description Function called by soil_temp_noint to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. The function represents the integrand in the equation. It is not intended to be called directly.
+#' @description This function is called by \code{\link{soil_temp_noint}} to solve the equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. The function represents the integrand in the equation. It is not intended to be called directly.
 #' 
 #' @param x \code{numeric} vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.
 #' 
@@ -210,9 +210,9 @@ soil_temperature_equation <- function (L,
 }
 
 
-#' @title Core Calculate Soil Temperature Function
+#' @title Core Function for Calculating Soil Temperature
 #' 
-#' @description Function called to calculate soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from \insertCite{Porter1973;textual}{TrenchR} and \insertCite{Kingsolver1979;textual}{TrenchR}
+#' @description This function is called to calculate soil temperature as in \insertCite{Beckman1973;textual}{TrenchR}. Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly. The energy balance equations are from \insertCite{Porter1973;textual}{TrenchR} and \insertCite{Kingsolver1979;textual}{TrenchR}
 #' 
 #' @param j \code{numeric} the number of the iteration of running the model.
 #' 
@@ -381,19 +381,19 @@ soil_temperature_function <- function (j,
   )) 
 } 
 
-#' @title Calculate Soil Temperature in C using ODEs
+#' @title Calculate Soil Temperature using ODEs
 #' 
-#' @description Function called to calculate soil temperature in C from \insertCite{Beckman1973;textual}{TrenchR}. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from \insertCite{deVries1963;textual}{TrenchR}
+#' @description This function is called to calculate soil temperature (C) as in \insertCite{Beckman1973;textual}{TrenchR}. This function calls \code{\link{soil_temperature_function}}, which uses ODEs to calculate a soil profile using equations from \insertCite{deVries1963;textual}{TrenchR}
 #' 
 #' @param z_r.intervals \code{numeric} the number of intervals in the soil profile to calculate, defaults to 12.
 #' 
-#' @param z_r \code{numeric} reference height in0 (m).
+#' @param z_r \code{numeric} reference height (m).
 #' 
 #' @param z \code{numeric} interval of the soil profile to return (1 to \code{z_r.intervals}).
 #' 
 #' @param T_a \code{numeric} vector of air temperature (degrees C), Note: missing values will be linearly interpolated.
 #' 
-#' @param u \code{numeric} vector of wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
+#' @param u \code{numeric} vector of wind speeds (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
 #' @param Tsoil0 \code{numeric} initial soil temperature (degrees C). 
 #' 

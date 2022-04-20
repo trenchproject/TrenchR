@@ -1,28 +1,28 @@
 #' @title Operative Environmental Temperature of a Grasshopper
 #'
-#' @description Predict body temperatures (operative environmental temperatures) of a grasshopper in C. Based on \insertCite{Swinbank1963;textual}{TrenchR}, using the regression in  \insertCite{Lactin1998;textual}{TrenchR} following \insertCite{Gates1962;textual}{TrenchR} in \insertCite{Kingsolver1983;textual}{TrenchR}.
+#' @description The function estimates body temperatures (C, operative environmental temperatures) of a grasshopper based on \insertCite{Lactin1998;textual}{TrenchR}. Part of the model is based on \insertCite{Swinbank1963;textual}{TrenchR}, following \insertCite{Gates1962;textual}{TrenchR} in \insertCite{Kingsolver1983;textual}{TrenchR}.
 #' 
-#' @param T_a \code{numeric} air temperature in C.
+#' @param T_a \code{numeric} air temperature (C).
 #'
-#' @param T_g  \code{numeric} surface temperature in C. \insertCite{Kingsolver1983;textual}{TrenchR} assumes \code{T_g - T_a = 8.4}.
+#' @param T_g  \code{numeric} surface temperature (C). \insertCite{Kingsolver1983;textual}{TrenchR} assumes \code{T_g - T_a = 8.4}.
 #'
-#' @param u \code{numeric} wind speed in \ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}.
+#' @param u \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #'
-#' @param H \code{numeric} total (direct + diffuse) solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}.
+#' @param H \code{numeric} total (direct + diffuse) solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #'
 #' @param K_t \code{numeric} clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.
 #'
-#' @param psi \code{numeric} solar zenith angle in degrees.
+#' @param psi \code{numeric} solar zenith angle (degrees).
 #'
-#' @param l \code{numeric} grasshopper length in m.
+#' @param l \code{numeric} grasshopper length (m).
 #'
 #' @param Acondfact \code{numeric} the proportion of the grasshopper surface area that is in contact with the ground.
 #'
-#' @param z \code{numeric} distance from the ground to the grasshopper in m.
+#' @param z \code{numeric} distance from the ground to the grasshopper (m).
 #'
 #' @param abs \code{numeric} absorptivity of the grasshopper to solar radiation (proportion). See \insertCite{Anderson1979;textual}{TrenchR}.
 #'
-#' @param r_g \code{numeric} substrate solar reflectivity (proportion), see \insertCite{Kingsolver1983;textual}{TrenchR}.
+#' @param r_g \code{numeric} substrate solar reflectivity (proportion). See \insertCite{Kingsolver1983;textual}{TrenchR}.
 #'
 #' @return \code{numeric} predicted body (operative environmental) temperature (C).
 #'
@@ -31,7 +31,7 @@
 #'   \cr \cr
 #'   Energy balance is based on \insertCite{Kingsolver1983;textual}{TrenchR}.
 #'   \cr \cr
-#'   W is calculated without area dependence \insertCite{Anderson1979}{TrenchR}.
+#'   Radiation is calculated without area dependence \insertCite{Anderson1979}{TrenchR}.
 #'   \cr \cr
 #'   The body of a grasshopper female is approximated by a rotational ellipsoid with half the body length as the semi-major axis  \insertCite{Samietz2005}{TrenchR}.
 #'   \cr \cr

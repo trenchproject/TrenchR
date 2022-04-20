@@ -1,7 +1,7 @@
-#' @title Surface Area from Mass 
+#' @title Organism Surface Area from Mass 
 #' 
-#' @description Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from mass (g) for one of a variety of taxa. 
-#' 
+#' @description The function estimates surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from mass (g) for one of a variety of taxa. 
+#'
 #' @param m \code{numeric} vector of mass (g).
 #'
 #' @param taxon \code{character} taxonomic classification of organism, current choices: \code{"lizard"}, \code{"salamander"}, \code{"frog"}, \code{"insect"}.
@@ -80,7 +80,7 @@ surface_area_from_mass <- function (m,
 
 }
 
-#' @title Mass from Length 
+#' @title Organism Mass from Length 
 #' 
 #' @description Estimate mass (g) from length (m) for a variety of taxa.
 #'
@@ -185,9 +185,9 @@ mass_from_length <- function (l,
 }
 
 
-#' @title Surface Area from Volume 
+#' @title Organism Surface Area from Volume 
 #' 
-#' @description Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) for a variety of taxa following \insertCite{Mitchell1976;textual}{TrenchR}.
+#' @description The function estimates surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) for a variety of taxa following \insertCite{Mitchell1976;textual}{TrenchR}.
 #' 
 #' @param V \code{numeric} vector of volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}). Can be one or more values.
 #'
@@ -197,7 +197,7 @@ mass_from_length <- function (l,
 #'
 #' @family allometric functions
 #' 
-#' @details All models follow (\ifelse{html}{\out{SA = Ka V<sup>2/3</sup>}}{\eqn{SA = Ka * V^{2/3}}{ASCII}}) with mass in grams and length in meters.
+#' @details All models follow (\ifelse{html}{\out{SA = Ka V<sup>2/3</sup>}}{\eqn{SA = Ka * V^{2/3}}{ASCII}}) with surface area and volume in meters.
 #'  \itemize{
 #'   \item Lizards: \insertCite{Norris1965;textual}{TrenchR}:
 #'     \cr 
@@ -310,7 +310,7 @@ volume_from_length <- function (l,
 
 #' @title Organism Surface Area from Length
 #' 
-#' @description Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from length (m) by approximating the animal's body as a rotational ellipsoid with half the body length as the semi-major axis. 
+#' @description This function estimates surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from length (m) by approximating the animal's body as a rotational ellipsoid with half the body length as the semi-major axis. 
 #' 
 #' @param l \code{numeric} length (m).
 #'
@@ -353,7 +353,7 @@ surface_area_from_length <- function (l) {
 
 #' @title Organism Silhouette Area
 #' 
-#' @description Estimate the projected (silhouette) area as a portion of the surface area of the organism as a function of zenith angle.
+#' @description The function estimates the projected (silhouette) area as a portion of the surface area of the organism as a function of zenith angle. The function is useful for estimating absorbed solar radiation.
 #' 
 #' @param z \code{numeric} zenith angle in degrees between \code{0} and \code{360}.
 #' 
@@ -476,7 +476,7 @@ proportion_silhouette_area <- function (z,
 
 #' @title Organism Silhouette Area using Shape Approximations
 #' 
-#' @description Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimate the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid, using Figure 11.6 in \insertCite{Campbell1998;textual}{TrenchR}. 
+#' @description Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimate the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid, using Figure 11.6 in \insertCite{Campbell1998;textual}{TrenchR}. The function is useful for estimating absorbed solar radiation. 
 #' 
 #' @param shape \code{character} Which shape to approximate an organism. Shapes are assumed to be prolate or have the longest axis parallel with the ground. Current choices are \code{"spheroid"}, \code{"cylinder flat ends"}, and \code{"cylinder hemisphere ends"}.
 #' 

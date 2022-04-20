@@ -1,6 +1,6 @@
-#' @title Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
+#' @title Body Temperature (Operative Environmental Temperature) of an Ectotherm based on Campbell and Norman (1988)
 #' 
-#' @description Predict body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
+#' @description The function estimates body temperatures (operative environmental temperature, K) of an ectotherm using an approximation based on \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
 #' 
 #' @param T_a \code{numeric} air temperature (K).
 #' 
@@ -8,9 +8,9 @@
 #' 
 #' @param S \code{numeric} flux density of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}), combining direct, diffuse, and reflected radiation accounting for view factors.
 #' 
-#' @param alpha_S \code{numeric} organismal solar absorptivity. 
+#' @param alpha_S \code{numeric} organismal solar absorptivity (proportion). 
 #' 
-#' @param alpha_L \code{numeric} organismal thermal absorptivity; 0.965 for lizards \insertCite{Bartlett1967}{TrenchR}.
+#' @param alpha_L \code{numeric} organismal thermal absorptivity (proportion); 0.965 for lizards \insertCite{Bartlett1967}{TrenchR}.
 #' 
 #' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.
 #' 
@@ -20,7 +20,7 @@
 #' 
 #' @param V \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
-#' @details Boundary conductance uses a factor of 1.4 to account for increased convection \insertCite{Mitchell1976}{TrenchR}, assumes forced conduction.
+#' @details Boundary conductance uses a factor of 1.4 to account for increased convection \insertCite{Mitchell1976}{TrenchR}. The function assumes forced conduction.
 #'
 #' @return \code{numeric} operative environmental temperature, \code{T_e} (K).
 #' 
@@ -97,7 +97,7 @@ Tb_CampbellNorman <- function (T_a,
 
 #' @title Net Energy Exchange Between an Animal and the Environment
 #' 
-#' @description Estimate net energy exchange between an animal and the environment in W. Follows \insertCite{Gates1980;textual}{TrenchR} and others.
+#' @description The function estimates the net energy exchange (W) between an animal and the environment. The function follows \insertCite{Gates1980;textual}{TrenchR} and others.
 #' 
 #' @param Qabs \code{numeric} solar radiation absorbed (W).
 #' 
@@ -143,9 +143,9 @@ Qnet_Gates <- function (Qabs,
 }
 
 
-#' @title Predict Body Temperature (Operative Environmental Temperature) of an ectotherm in K 
+#' @title Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm Based on Gates (1980) 
 #' 
-#' @description Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980;textual}{TrenchR}. Omits evaporative and metabolic heat loss \insertCite{Mitchell1976,Kingsolver1983}{TrenchR}.
+#' @description Predicts body temperatures (K, operative environmental temperature) of an ectotherm using the approximation in \insertCite{Gates1980;textual}{TrenchR}. The functions omits evaporative and metabolic heat loss \insertCite{Mitchell1976,Kingsolver1983}{TrenchR}.
 #' 
 #' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
@@ -289,9 +289,9 @@ Tb_Gates <- function (A,
 
 }
 
-#' @title Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K
+#' @title Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm Based on a Variant of Gates (1980) 
 #' 
-#' @description Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980;textual}{TrenchR}. Omits evaporative and metabolic heat loss.
+#' @description Predicts body temperatures (K, operative environmental temperature) of an ectotherm using the approximation in \insertCite{Gates1980;textual}{TrenchR}. The function omits evaporative and metabolic heat loss.
 #' 
 #' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 

@@ -1,35 +1,35 @@
 #' @title Operative Environmental Temperature of a Butterfly
 #'
-#' @description Predicts body temperatures (operative environmental temperatures) of a butterfly in C. Based on \insertCite{Kingsolver1983;textual}{TrenchR} and \insertCite{Buckley2012;textual}{TrenchR}.
+#' @description Predicts body temperatures (operative environmental temperatures) of a butterfly (C) based on \insertCite{Kingsolver1983;textual}{TrenchR} and \insertCite{Buckley2012;textual}{TrenchR}. The function is designed for butterflies that bask with closed wings such as Colias.
 #' 
-#' @param T_a \code{numeric} air temperature in C.
+#' @param T_a \code{numeric} air temperature (C).
 #'
-#' @param T_g  \code{numeric} surface temperature in C in the sunlight.
+#' @param T_g  \code{numeric} surface temperature (C) in the sunlight.
 #'
-#' @param T_sh \code{numeric} surface temperature in C in the shade.
+#' @param T_sh \code{numeric} surface temperature (C) in the shade.
 #'
-#' @param u \code{numeric} wind speed in \ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}.
+#' @param u \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #'
-#' @param H_sdir \code{numeric} direct solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}.
+#' @param H_sdir \code{numeric} direct solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #'
-#' @param H_sdif \code{numeric} diffuse solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}.
+#' @param H_sdif \code{numeric} diffuse solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #'
-#' @param z \code{numeric} solar zenith angle in degrees.
+#' @param z \code{numeric} solar zenith angle (degrees).
 #'
-#' @param D \code{numeric} thoracic diameter in cm.
+#' @param D \code{numeric} thoracic diameter (cm).
 #'
-#' @param delta \code{numeric} thoracic fur thickness in mm.
+#' @param delta \code{numeric} thoracic fur thickness (mm).
 #'
-#' @param alpha \code{numeric} wing solar absorptivity as a proportion. Range for Colias is 0.4 to 0.7.
+#' @param alpha \code{numeric} wing solar absorptivity (proportion). The range for Colias butterflies is 0.4 to 0.7.
 #'
-#' @param r_g \code{numeric} substrate solar reflectivity (proportion), see \insertCite{Kingsolver1983;textual}{TrenchR}.
+#' @param r_g \code{numeric} substrate solar reflectivity (proportion). See \insertCite{Kingsolver1983;textual}{TrenchR}.
 #'
-#' @param shade \code{logical} indicator whether body temperature should be calculate in sun (\code{FALSE}) or shade (\code{TRUE}).
+#' @param shade \code{logical} whether body temperature should be calculated in sun (\code{FALSE}) or shade (\code{TRUE}).
 #'
 #' @return \code{numeric} predicted body (operative environmental) temperature (C).
 #'
 #' @details 
-#'  Thermal radiative flux is calculated following \insertCite{Gates1980;textual}{TrenchR} based on \insertCite{Swinbank1960;textual}{TrenchR} and \insertCite{Kingsolver1983;textual}{TrenchR} estimates using the Brunt equation with black body sky temperature from \insertCite{Swinbank1963;textual}{TrenchR}.
+#'  Thermal radiative flux is calculated following \insertCite{Gates1980;textual}{TrenchR} based on \insertCite{Swinbank1960;textual}{TrenchR}. \insertCite{Kingsolver1983;textual}{TrenchR} estimates using the Brunt equation with black body sky temperature from \insertCite{Swinbank1963;textual}{TrenchR}.
 #'
 #' @family biophysical models
 #'

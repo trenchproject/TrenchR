@@ -1,6 +1,6 @@
 #' @title Operative Environmental Temperature of a Mussel Bed
 #' 
-#' @description Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Helmuth1999;textual}{TrenchR}.
+#' @description The function predicts body temperature of a mussel (C). The function implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Helmuth1999;textual}{TrenchR}.
 #' 
 #' @param l \code{numeric} mussel length (anterior/posterior axis) (m).
 #' 
@@ -16,7 +16,7 @@
 #' 
 #' @param cl \code{numeric} fraction of the sky covered by cloud, optional.
 #' 
-#' @details Conduction is considered negligible due to small area of contact.
+#' @details Conduction is considered negligible due to a small area of contact.
 #'   \cr \cr
 #'   Thermal radiative flux is calculated following \insertCite{Helmuth1998;textual}{TrenchR}, \insertCite{Helmuth1999;textual}{TrenchR}, and \insertCite{Idso1969;textual}{TrenchR}.
 #'

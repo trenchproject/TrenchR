@@ -96,13 +96,13 @@ daylength <- function(lat,
 
 #' @title Time of Solar Noon
 #' 
-#' @description  Calculate the time of solar noon in hours as a function of the day of year and longitude  \insertCite{Campbell1998}{TrenchR}.
+#' @description  This function calculates the time of solar noon in hours as a function of the day of year and longitude \insertCite{Campbell1998}{TrenchR}.
 #'
-#' @param lon \code{numeric} longitude (decimal degrees)
+#' @param lon \code{numeric} longitude (decimal degrees).
 #'
-#' @param doy \code{numeric} day of year (1-366). This can be obtained from standard date via \code{\link{day_of_year}}.
+#' @param doy \code{numeric} day of year (1-366). This can be obtained from a standard date via \code{\link{day_of_year}}.
 #'
-#' @param offset \code{numeric} number of hours to add to UTC to get local time (improves accuracy but not always necessary). Defaults to NA.
+#' @param offset \code{numeric} number of hours to add to UTC (Coordinated Universal Time) to get local time (improves accuracy but not always necessary). Defaults to NA.
 #'
 #' @return \code{numeric} time of solar noon (hours).
 #'

@@ -1,6 +1,6 @@
 #' @title Estimate Surface Roughness from Empirical Measurements
 #' 
-#' @description Estimate surface roughness (m) from empirical wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) data collected at a vector of heights (m) from empirical measurements \insertCite{Kingsolver2015,Campbell1998,Porter1979}{TrenchR}.
+#' @description The function estimates surface roughness (m) from empirical wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) data collected at a vector of heights (m) \insertCite{Kingsolver2015,Campbell1998,Porter1979}{TrenchR}.
 #' 
 #' @param u_r \code{numeric} wind velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at a vector of reference heights.
 #' 

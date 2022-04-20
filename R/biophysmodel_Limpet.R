@@ -1,22 +1,22 @@
 #' @title Operative Environmental Temperature of a Limpet
 #'
-#' @description Predict body temperatures (operative environmental temperatures) of a limpet in C. Based on \insertCite{Denny2006;textual}{TrenchR}.
+#' @description Predict body temperatures (C, operative environmental temperatures) of a limpet based on \insertCite{Denny2006;textual}{TrenchR}.
 #' 
-#' @param T_a \code{numeric} air temperature in C.
+#' @param T_a \code{numeric} air temperature (C).
 #'
-#' @param T_r \code{numeric} rock surface temperature in C in the sunlight.
+#' @param T_r \code{numeric} rock surface temperature (C) in the sunlight.
 #'
-#' @param l \code{numeric} limpet length (anterior/posterior axis) (m).
+#' @param l \code{numeric} limpet length (anterior/posterior axis, m).
 #'
-#' @param h \code{numeric} limpet height (dorsal/ventral axis) (m).
+#' @param h \code{numeric} limpet height (dorsal/ventral axis, m).
 #'
 #' @param I \code{numeric} solar irradiance (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #'
 #' @param u \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #'
-#' @param psi \code{numeric} solar zenith angle (degrees): can be calculated from \code{\link{zenith_angle}} function.
+#' @param psi \code{numeric} solar zenith angle (degrees). Can be calculated from \code{\link{zenith_angle}} function.
 #'
-#' @param c \code{numeric} fraction of the sky covered by cloud.
+#' @param c \code{numeric} fraction of the sky covered by cloud (proportion).
 #'
 #' @param position \code{character} direction of the limpet that is facing upwind. Options are \code{"anterior"}, \code{"posterior"}, and \code{"broadside"}.
 #'
@@ -24,11 +24,11 @@
 #'
 #' @family biophysical models 
 #'
-#' @details The original equation uses a finite-difference approach where they divide the rock into series of chunks, and calculate the temperature at each node to derive the conductive heat. For simplification, here it takes the rock temperature as a parameter, and conductive heat is calculated by the product of the area, thermal conductivity of rock and the difference in temperatures of the rock and the body.
+#' @details The original equation uses a finite-difference approach where they divide the rock into series of chunks, and calculate the temperature at each node to derive the conductive heat. For simplification, here it takes the rock temperature as a parameter, and conductive heat is calculated as a product of the area, thermal conductivity of rock and the temperature difference between the rock and the body.
 #'   \cr \cr
 #'   Limpets are simulated as cones following and using solar emissivity values from \insertCite{Campbell1998;textual}{TrenchR}.
 #'   \cr \cr
-#'   The area of the limpet's shell (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) is projected in the direction at which sunlight strikes the organism \insertCite{Pennell1989;textual}{TrenchR}.
+#'   The area of the limpet's shell (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) is projected according to the direction at which sunlight strikes the organism \insertCite{Pennell1989}{TrenchR}.
 #'   \cr \cr
 #'   Air conductivity values (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) are calculated following \insertCite{Denny2006;textual}{TrenchR}.
 #'

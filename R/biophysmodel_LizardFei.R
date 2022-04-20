@@ -1,24 +1,24 @@
-#' @title Operative Temperature of Lizard Using model by Fei et al.
+#' @title Operative Temperature of a Lizard Using Fei et al. (2012)
 #' 
-#' @description Predict body temperature (operative environmental temperature) of a lizard in K based on \insertCite{Fei2012;textual}{TrenchR}.
+#' @description The function predicts body temperature (K, operative environmental temperature) of a lizard based on \insertCite{Fei2012;textual}{TrenchR}.
 #'
-#' @param T_a \code{numeric} air temperature at lizard height in K.
+#' @param T_a \code{numeric} air temperature at lizard height (K).
 #' 
-#' @param T_g \code{numeric} surface temperature in K.
+#' @param T_g \code{numeric} surface temperature (K).
 #' 
-#' @param H \code{numeric} total (direct + diffuse) solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m-^2}{ASCII}}.
+#' @param H \code{numeric} total (direct + diffuse) solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m-^2}{ASCII}}).
 #' 
 #' @param lw \code{numeric} downward flux of near-infrared radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m-^2}{ASCII}}).
 #' 
 #' @param shade \code{numeric} proportion of shade.
 #' 
-#' @param m \code{numeric} lizard mass in g.
+#' @param m \code{numeric} lizard mass (g).
 #' 
 #' @param Acondfact \code{numeric} proportion of the lizard projected area that is in contact with the ground. \code{Acondfact = 0.1} for standing and \code{Acondfact = 0.4} for lying on ground.
 #' 
 #' @param Agradfact \code{numeric} proportion of the lizard projected area exposed to radiation from the ground. \code{Agradfact = 0.3} for standing and \code{Agradfact = 0.0} for lying on ground.
 #' 
-#' @return \code{numeric} body temperature of a lizard in K.
+#' @return \code{numeric} body temperature of a lizard (K).
 #' 
 #' @family biophysical models
 #' 
