@@ -21,7 +21,7 @@
 #'   Thermal radiative flux is calculated following \insertCite{Helmuth1998;textual}{TrenchR}, \insertCite{Helmuth1999;textual}{TrenchR}, and \insertCite{Idso1969;textual}{TrenchR}.
 #'
 #' 
-#' @return \code{numeric} predicted body temperature (C).
+#' @return \code{numeric} predicted body (operative environmental) temperature (C).
 #' 
 #' @family biophysical models
 #' 

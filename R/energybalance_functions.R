@@ -971,15 +971,15 @@ boundary_layer_resistance <- function (T_a,
 }
 
 
-#' @title Humid Operative Temperature
+#' @title Humid Operative Environmental Temperature of a Salamander
 #'
-#' @description Calculate humid operative temperature, using adaptation of \insertCite{Campbell1998;textual}{TrenchR} \insertCite{Riddell2018}{TrenchR}.
+#' @description The function estimates the humid body temperature (C, operative environmental temperature) using an adaptation of \insertCite{Campbell1998;textual}{TrenchR} described in \insertCite{Riddell2018;textual}{TrenchR}.
 #'
 #' @param r_i \code{numeric} internal (skin) resistance (\ifelse{html}{\out{s cm<sup>-1</sup>}}{\eqn{s cm^-1}{ASCII}}).
 #'
 #' @param r_b \code{numeric} boundary layer resistance (\ifelse{html}{\out{s cm<sup>-1</sup>}}{\eqn{s cm^-1}{ASCII}}).
 #'
-#' @param D \code{numeric} body diameter (meters), (diameter = 0.0016*log(mass) + 0.0061 for mass(g)).
+#' @param D \code{numeric} body diameter (m); can estimate as diameter = 0.0016*log(mass) + 0.0061 for mass(g).
 #'
 #' @param T_a \code{numeric} ambient temperature (C).
 #'
@@ -991,7 +991,7 @@ boundary_layer_resistance <- function (T_a,
 #'
 #' @param Qabs \code{numeric} Solar and thermal radiation absorbed (W).
 #'
-#' @param epsilon \code{numeric} emissivity of salamander skin.
+#' @param epsilon \code{numeric} emissivity of salamander skin (proportion).
 #'
 #' @return \code{numeric} humid operative temperature (C).
 #'
@@ -1115,7 +1115,7 @@ Qthermal_radiation_absorbed <- function (T_a,
 
 #' @title Approximate Soil Temperature
 #'
-#' @description Estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal; adapted from \insertCite{Campbell1998;textual}{TrenchR} \insertCite{Riddell2018}{TrenchR}.
+#' @description The function estimates soil temperature (C) at a given depth and hour by approximating diurnal variation as sinusoidal. The function is adapted from \insertCite{Campbell1998;textual}{TrenchR} and described in \insertCite{Riddell2018;textual}{TrenchR}.
 #'
 #' @param T_g_max \code{numeric} daily maximum soil surface temperature (C).
 #'

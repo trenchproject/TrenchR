@@ -1,4 +1,4 @@
-#' @title Construct a Gaussian-Quadratic Thermal Performance Curve 
+#' @title Gaussian-Quadratic Function Thermal Performance Curve 
 #'     
 #' @description Constructs a thermal performance curve by combining as a Gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures \insertCite{Deutsch2008}{TrenchR}.
 #' 
@@ -6,7 +6,7 @@
 #' 
 #' @param T_opt \code{numeric} thermal optima (C), the temperature at which peak performance occurs.
 #' 
-#' @param CT_min,CT_max \code{numeric} critical thermal minimum and maximum(C), the lower and upper temperature limits for performance.
+#' @param CT_min,CT_max \code{numeric} critical thermal minimum and maximum (C), the lower and upper temperature limits for performance.
 #' 
 #' @return performance
 #' 
@@ -41,7 +41,7 @@ TPC <- function (T,
 }
 
 
-#' @title Construct a Beta Function Thermal Performance Curve 
+#' @title Beta Function Thermal Performance Curve 
 #'  
 #' @description Construct a thermal performance curve based on a beta function \insertCite{Asbury2010}{TrenchR}.
 #' 

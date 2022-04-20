@@ -18,7 +18,7 @@
 #' 
 #' @param Agradfact \code{numeric} proportion of the lizard projected area exposed to radiation from the ground. \code{Agradfact = 0.3} for standing and \code{Agradfact = 0.0} for lying on ground.
 #' 
-#' @return \code{numeric} body temperature of a lizard (K).
+#' @return \code{numeric} predicted body (operative environmental) temperature (K).
 #' 
 #' @family biophysical models
 #' 

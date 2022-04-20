@@ -1,10 +1,10 @@
 #' @title Operative Environmental Temperature of a Limpet Based on a Model by Helmuth  
 #'
-#' @description The function predicts body temperatures (C, operative environmental temperatures) of a limpet. The function was provided by Brian Helmuth -- although radiation and convection are altered from the original model -- based on \insertCite{Denny2006;textual}{TrenchR}.
+#' @description The function predicts body temperatures (C, operative environmental temperatures) of a limpet. The function was provided by Brian Helmuth -- although radiation and convection are altered from his original model -- and based on \insertCite{Denny2006;textual}{TrenchR}.
 #'
-#' @param T_a \code{numeric} air temperature in C.
+#' @param T_a \code{numeric} air temperature (C).
 #'
-#' @param T_r \code{numeric} rock surface temperature in C in the sunlight.
+#' @param T_r \code{numeric} rock surface temperature (C) in the sunlight.
 #'
 #' @param l \code{numeric} limpet length (anterior/posterior axis) (m).
 #'
@@ -14,17 +14,17 @@
 #'
 #' @param u \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #'
-#' @param s_aspect \code{numeric} solar aspect angle (degree), the angle between the limpet's length dimension and the vector to the Sun. Between 70 and 110 degrees.
+#' @param s_aspect \code{numeric} solar aspect angle (degree), the angle between the limpet's length dimension and the vector to the Sun. Generally between 70 and 110 degrees.
 #'
-#' @param s_slope \code{numeric} solar elevation angle (degree), the altitude of the Sun, which is the angle between the horizon and the sun.
+#' @param s_slope \code{numeric} solar elevation angle (degree), the altitude of the sun, which is the angle between the horizon and the sun.
 #'
-#' @param c \code{numeric} fraction of the sky covered by cloud.
+#' @param c \code{numeric} fraction of the sky covered by clouds.
 #'
 #' @return \code{numeric} predicted body (operative environmental) temperature (C).
 #'
 #' @family biophysical models
 #'
-#' @author Brian Helmuth lab
+#' @author Brian Helmuth et al.
 #'
 #' @details The original equation uses a finite-difference approach where they divide the rock into series of chunks, and calculate the temperature at each node to derive the conductive heat. For simplification, here it takes the rock temperature as a parameter, and conductive heat is calculated by the product of the area, thermal conductivity of rock and the difference in temperatures of the rock and the body.
 #'   \cr \cr

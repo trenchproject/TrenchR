@@ -1,6 +1,6 @@
-#' @title Predict Body Temperature (Operative Environmental Temperature) of a Lizard in C
+#' @title Predict Body Temperature (Operative Environmental Temperature) of a Lizard
 #' 
-#' @description Predicts body temperature (operative environmental temperature) of a lizard in C based on \insertCite{Campbell1998}{TrenchR}. Designed for Sceloporus lizards and described in \insertCite{Buckley2008}{TrenchR}.
+#' @description Predicts body temperature (C, operative environmental temperature) of a lizard based on \insertCite{Campbell1998;textual}{TrenchR}. Designed for Sceloporus lizards and described in \insertCite{Buckley2008;textual}{TrenchR}.
 #' 
 #' @details The proportion of radiation that is direct is determined following \insertCite{Sears2011;textual}{TrenchR}.
 #'   \cr \cr 
@@ -14,7 +14,7 @@
 #' 
 #' @param svl \code{numeric} lizard snout vent length (mm).
 #' 
-#' @param m \code{numeric} lizard mass in g, note that it can be estimated as \code{\link{mass_from_length}}: \ifelse{html}{\out{3.55 x 10<sup>-5</sup> x length<sup>3</sup>}}{\eqn{3.55*10^-5 * length^3}{ASCII}}
+#' @param m \code{numeric} lizard mass (g); note that it can be estimated as in \code{\link{mass_from_length}}: \ifelse{html}{\out{3.55 x 10<sup>-5</sup> x length<sup>3</sup>}}{\eqn{3.55*10^-5 * length^3}{ASCII}}
 #' 
 #' @param psi \code{numeric} solar zenith angle (degrees).
 #' 
@@ -28,21 +28,21 @@
 #' 
 #' @param surface \code{logical} indicates whether lizard is on ground surface (\code{TRUE}) or above the surface (\code{FALSE}, e.g. in a tree).
 #' 
-#' @param alpha_S \code{numeric} lizard solar absorptivity, \code{alpha_S = 0.9} \insertCite{Gates1980}{TrenchR} (Table 11.4).
+#' @param alpha_S \code{numeric} lizard solar absorptivity (proportion), \code{alpha_S = 0.9} \insertCite{Gates1980}{TrenchR} (Table 11.4).
 #' 
-#' @param alpha_L \code{numeric} lizard thermal absorptivity, \code{alpha_L = 0.965} \insertCite{Bartlett1967}{TrenchR}.
+#' @param alpha_L \code{numeric} lizard thermal absorptivity (proportion), \code{alpha_L = 0.965} \insertCite{Bartlett1967}{TrenchR}.
 #' 
-#' @param epsilon_s \code{numeric} surface emissivity of lizards, \code{epsilon_s = 0.965} \insertCite{Bartlett1967}{TrenchR}.
+#' @param epsilon_s \code{numeric} surface emissivity of lizards (proportion), \code{epsilon_s = 0.965} \insertCite{Bartlett1967}{TrenchR}.
 #' 
-#' @param F_d \code{numeric} the view factor between the surface of the lizard and diffuse solar radiation \insertCite{Bartlett1967}{TrenchR}.
+#' @param F_d \code{numeric} the view factor between the surface of the lizard and diffuse solar radiation (proportion). i.e., the portion of the lizard surface that is exposed to diffuse solar radiation \insertCite{Bartlett1967}{TrenchR}.
 #' 
-#' @param F_r \code{numeric} the view factor between the surface of the lizard and reflected solar radiation.
+#' @param F_r \code{numeric} the view factor between the surface of the lizard and reflected solar radiation (proportion).
 #' 
-#' @param F_a \code{numeric} the view factor between the surface of the lizard and atmospheric radiation.
+#' @param F_a \code{numeric} the view factor between the surface of the lizard and atmospheric radiation (proportion).
 #' 
-#' @param F_g \code{numeric} the view factor between the surface of the lizard and ground thermal radiation.
+#' @param F_g \code{numeric} the view factor between the surface of the lizard and ground thermal radiation (proportion).
 #' 
-#' @return T_e \code{numeric} Operative temperature (C).
+#' @return T_e \code{numeric} predicted body (operative environmental) temperature (C).
 #' 
 #' @family biophysical models
 #' 

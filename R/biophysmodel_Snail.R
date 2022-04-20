@@ -1,6 +1,6 @@
-#' @title Predict Body Temperature (Operative Environmental Temperature) of a Marine Snail in C
+#' @title Operative Environmental Temperature of a Marine Snail
 #' 
-#' @description Predicts body temperature of a snail in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Iacarella2012}{TrenchR}. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. Function was provided by the Helmuth lab and is a simplified version of model in publication. 
+#' @description The function estimates body temperature (C, operative environmental temperature) of a marine snail. The function implements a steady-state model, which assumes unchanging environmental conditions and is based on \insertCite{Iacarella2012}{TrenchR}. Body temperature and desiccation constrain the activity of Littoraria irrorata within the Spartina alterniflora canopy. The function was provided by Brian Helmuth and is a simplified version of the published model. 
 #' 
 #' @param temp \code{numeric} air temperature (C).
 #' 
@@ -16,7 +16,7 @@
 #' 
 #' @param WSH \code{numeric} wind sensor height (m).
 #' 
-#' @return \code{numeric} predicted body temperature (C).
+#' @return \code{numeric} predicted body (operative environmental) temperature (C).
 #'
 #' @details Thermal radiative flux is calculated following \insertCite{Helmuth1998;textual}{TrenchR}, \insertCite{Helmuth1999;textual}{TrenchR}, and \insertCite{Idso1969;textual}{TrenchR}.
 #' 
@@ -27,7 +27,7 @@
 #' @references
 #'   \insertAllCited{}
 #' 
-#' @author Brian Helmuth Lab
+#' @author Brian Helmuth et al.
 #' 
 #' @examples
 #'   Tb_snail(temp  = 25, 

@@ -83,7 +83,7 @@ DRYAIR <- function(db,
 
 #' @title Calculate Saturation Vapor Pressure
 #'
-#' @description Calculates saturation vapor pressure for a given air temperature. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from NicheMapR \insertCite{Kearney2017,Kearney2020}{TrenchR}.
+#' @description The function calculates saturation vapor pressure for a given air temperature. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from NicheMapR \insertCite{Kearney2017,Kearney2020}{TrenchR}.
 #' 
 #' @param db \code{numeric} Dry bulb temperature (C)
 #' 
@@ -111,7 +111,7 @@ VAPPRS <- function(db) {
 
 #' @title Calculate Properties of Wet Air
 #'
-#' @description Calculates several properties of humid air as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from NicheMapR \insertCite{Kearney2017,Kearney2020}{TrenchR}.
+#' @description The function calculates several properties of humid air described as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from NicheMapR \insertCite{Kearney2017,Kearney2020}{TrenchR}.
 #'  \cr 
 #'  WETAIR must be used in conjunction with \code{\link{VAPPRS}}. Input variables are shown below. See Details. 
 #'
@@ -134,10 +134,10 @@ VAPPRS <- function(db) {
 #' @return Named \code{list} with elements \itemize{
 #'   \item{\code{e}:}{ \code{numeric} saturation vapor pressure (Pa)}
 #'   \item{\code{vd}:}{ \code{numeric} vapor density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
-#'   \item{\code{rw}:}{ \code{numeric} mixing ration (\ifelse{html}{\out{kg kg<sup>-1</sup>}}{\eqn{kg kg^-1}{ASCII}})}
+#'   \item{\code{rw}:}{ \code{numeric} mixing ratio (\ifelse{html}{\out{kg kg<sup>-1</sup>}}{\eqn{kg kg^-1}{ASCII}})}
 #'   \item{\code{tvir}:}{ \code{numeric} virtual temperature (K)}
 #'   \item{\code{tvinc}:}{ \code{numeric} virtual temperature increment (K)}
-#'   \item{\code{denair}:}{ denair \code{numeric} hourly predictions of the soil moisture under the maximum specified shade}
+#'   \item{\code{denair}:}{ \code{numeric} density of the air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
 #'   \item{\code{cp}:}{ \code{numeric} specific heat of air at constant pressure (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}})}
 #'   \item{\code{wtrpot}:}{ \code{numeric} water potential (Pa)}
 #'   \item{\code{rh}:}{ \code{numeric} relative humidity (\%)}

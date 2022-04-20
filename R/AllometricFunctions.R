@@ -250,11 +250,11 @@ surface_area_from_volume <- function (V,
 
 #' @title Organism Volume from Length
 #' 
-#' @description Estimate volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) from length (m) for a variety of taxa following \insertCite{Mitchell1976;textual}{TrenchR}.
+#' @description The function estimate volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) from length (m) for a variety of taxa following \insertCite{Mitchell1976;textual}{TrenchR}.
 #' 
 #' @param l \code{numeric} length (m). 
 #'  \cr
-#'  Snout-vent length for amphibians and reptiles is used, except for turtles (carapace length is used).
+#'  Use snout-vent length for lizards and frogs.
 #'
 #' @param taxon \code{character} taxon of organism, current choices: \code{"lizard"}, \code{"frog"}, \code{"sphere"}.
 #' 

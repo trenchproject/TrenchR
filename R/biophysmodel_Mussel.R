@@ -1,10 +1,10 @@
-#' @title Calculate Operative Environmental Temperature of a Mussel in C.
+#' @title Operative Environmental Temperature of a Mussel.
 #' 
-#' @description Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions. 
+#' @description The function estimates body temperature (C, operative environmental temperature) of a mussel. The function implements a steady-state model, which assumes unchanging environmental conditions. 
 #' 
-#' @param l \code{numeric} mussel length (anterior/posterior axis) (m).
+#' @param l \code{numeric} mussel length (anterior/posterior axis, m).
 #' 
-#' @param h \code{numeric} mussel height (dorsal/ventral axis) (m). It is reasonable to assume \code{h = 0.5 * l}.
+#' @param h \code{numeric} mussel height (dorsal/ventral axis, m). It is reasonable to assume \code{h = 0.5 * l}.
 #' 
 #' @param T_a \code{numeric} air temperature (C).
 #' 
@@ -18,15 +18,15 @@
 #' 
 #' @param psi \code{numeric} solar zenith angle (degrees): can be calculated from \code{\link{zenith_angle}}.
 #' 
-#' @param evap \code{logical} if mussels gaping to evaporatively cool. If \code{TRUE}, assumes constant mass loss rate of 5 percent of initial body mass per hour. 
+#' @param evap \code{logical} Whether mussel is gaping to evaporatively cool. If \code{TRUE}, the function assumes a constant mass loss rate of 5 percent of the initial body mass per hour. 
 #' 
 #' @param cl \code{numeric} fraction of the sky covered by cloud. 
 #' 
-#' @param group \code{character}; options are \code{"aggregated"}: mussels living in beds; \code{"solitary"}: mussels individuals, anterior or posterior end facing upwind; and \code{"solitary_valve"}: solitary individuals, valve facing upwind.
+#' @param group \code{character}; options are \code{"aggregated"}: mussels living in beds; \code{"solitary"}: solitary individual, anterior or posterior end facing upwind; and \code{"solitary_valve"}: solitary individual, valve facing upwind.
 #'
 #' @details Thermal radiative flux is calculated following \insertCite{Helmuth1998;textual}{TrenchR}, \insertCite{Helmuth1999;textual}{TrenchR}, and \insertCite{Idso1969;textual}{TrenchR}.
 #'
-#' @return \code{numeric} predicted body temperature (C).
+#' @return \code{numeric} predicted body (operative environmental) temperature (C).
 #' 
 #' @family biophysical models
 #' 
