@@ -292,8 +292,8 @@ soil_temperature_function <- function (j,
   
   T_so <- celsius_to_kelvin(T_so)
   
-  a <- 2 * dt / (rho_so * c_so * dz)  # eqn (12) in notes
-  h_inst1 <- k^2 * c_a * rho_a / log(z_r / z0 + 1)^2 # eqn (1) in notes #calculate h at time t based on V_inst
+  a <- 2 * dt / (rho_so * c_so * dz)  # eqn (12)
+  h_inst1 <- k^2 * c_a * rho_a / log(z_r / z0 + 1)^2 # eqn (1) #calculate h at time t based on V_inst
   alpha2 <- k_so / (c_so * rho_so)
   
   # heat budget elements
@@ -309,13 +309,13 @@ soil_temperature_function <- function (j,
   V_inst <- u[j] 
   
   h_inst <- h_inst1 * V_inst #take V_inst out for easier passing to function
-  T_sky  <- -0.0552 * T_inst^1.5 ##eqn (4) in notes
+  T_sky  <- -0.0552 * T_inst^1.5 #eqn (4)
   
   # energy balance for the surface temperature node
   # multiplying by 'a' gives the change in temperature related to that particular energy source
   
-  q_sol   <- a * SSA * q_sun ##a*eqn(5) in notes #surface temperature change as a result of solar radiation during the time step.
-  q_therm <- a * epsilon_so * sigma * ((T_sky)^4 - (T_so[1])^4) ## a*eqn(6) in notes #surface temperature change as a result of thermal radiation during the time step.
+  q_sol   <- a * SSA * q_sun #a*eqn(5) #surface temperature change as a result of solar radiation during the time step.
+  q_therm <- a * epsilon_so * sigma * ((T_sky)^4 - (T_so[1])^4) # a*eqn(6) #surface temperature change as a result of thermal radiation during the time step.
   
   # Beckman's method of calculating the convective heat transfer coefficient
   V_shear <- V_inst * k / log(z_r / z0 + 1) #shear velocity
@@ -358,12 +358,12 @@ soil_temperature_function <- function (j,
     }
   } 
   
-  q_cond <- a * k_so / dz * (T_so[2] - T_so[1]) ##a*eqn(8) in notes #surface temperature change as a result of conduction during the time step.
+  q_cond <- a * k_so / dz * (T_so[2] - T_so[1]) #a*eqn(8) #surface temperature change as a result of conduction during the time step.
   
   list(c(
     
     #surface temp
-    q_sol + q_therm + q_conv + q_cond, ##this is exactly eqn(13) in the notes rescaled to hours as dt is in a
+    q_sol + q_therm + q_conv + q_cond, ##this is exactly eqn(13) rescaled to hours as dt is in a
     
     #intermediate temps
     (alpha2 * dt / dz^2) * (T_so[3] + T_so[1] - 2 * T_so[2]),

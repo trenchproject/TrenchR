@@ -53,7 +53,7 @@ estimate_radiation <- function (doy,
   m_a[which(psi > (80 * pi / 180))] <- 5.66
   
   # Flux densities
-  # S_p is direct radiation reaching earth's surface
+  # S_p is direct radiation reaching the earth's surface
   S_p <- S_p0 * tau^m_a * cos(psi)
   
   # S_d is diffuse radiation
@@ -120,7 +120,7 @@ diurnal_radiation_variation <- function(doy,
   
   f <- (279.575 + 0.9856 * doy) / rd  # f in radians
   ET <- (-104.7 * sin(f) + 596.2 * sin(2 * f) + 4.3 * sin(3 * f) - 12.7 * sin(4 * f) - 429.3 * cos(f) - 2.0 * cos(2 * f) + 19.3 * cos(3 * f)) / 3600   # (11.4) Equation of time
-  LC <- 1 / 15 * (15 - lon%%15) # longitude correction, 1/15h for each degree e of standard meridian
+  LC <- 1 / 15 * (15 - lon%%15) # longitude correction, 1/15h for each degree east of standard meridian
   hour_sol <- 12 + LC + ET
   
   # W: hour angle of the sun (in radians)
@@ -142,7 +142,7 @@ diurnal_radiation_variation <- function(doy,
 
   }  
 
-  rG * solrad # solradhour
+  rG * solrad 
   
 }
 
@@ -243,7 +243,7 @@ monthly_solar_radiation <- function (lat,
   # beta: clear-sky atmospheric transmittance
   beta <- 0.715 - 0.3183 * (1 - 1.3614 * cos.deg(lat))
   
-  # omega: light absoprtion effect of clouds
+  # omega: light absorption effect of clouds
   omega <- 0.03259
   
   # alpha: diffuse solar radiation
@@ -348,15 +348,15 @@ direct_solar_radiation <- function (lat,
   # geographical latitude
   geo.lat <- lat * pi / 180
   
-  # sin of sun's altitude angle
+  # sine of sun's altitude angle
   sin_alt_ang <- sin(geo.lat) * sin(DecAng) + cos(geo.lat) * cos(DecAng) * cos(0.2618 * (t - t0))
   
   m_a <- p_a / 101.3 / sin_alt_ang
   
-  a = 0.83 # transmissivity of atmosphere, between 0 and 1 "The atmospheric transmission coefficient. Varies from 0.9 for a very clear atmosphere to around 0.6 for a hazy or smoggy atmosphere. A typical value for a clear day would be around 0.84." (Campbell, 1977)
+  a = 0.83 # transmissivity of the atmosphere, between 0 and 1 "The atmospheric transmission coefficient. Varies from 0.9 for a very clear atmosphere to around 0.6 for a hazy or smoggy atmosphere. A typical value for a clear day would be around 0.84." (Campbell, 1977)
   
   # radius vector of the earth in atmospheric units (AU)
-  # sunr from insol
+  # sunr function from insol package
   T <- (doy - 2451545) / 36525
   epsilon <- (23 + 26 / 60 + 21.448 / 3600) - (46.815 / 3600) * T - (0.00059 / 3600) * T^2 + (0.001813 / 3600) * T^3
   M <- 357.5291 + 35999.0503 * T - 0.0001559 * T^2 - 4.8e-07 * T^3

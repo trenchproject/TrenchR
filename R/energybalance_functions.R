@@ -583,7 +583,7 @@ Qevaporation <- function (A,
 
   }
 
-  # Porter et al. 1973 in Gates Biophysical ecology
+  # Porter et al. 1973 in Gates 1980 Biophysical ecology
   if (taxon == "lizard") {
     if(T_b < 293) {
 
@@ -720,7 +720,7 @@ Qmetabolism_from_mass <- function(m,
             length(taxon) == 1,
             taxon %in% c("reptile", "bird", "mammal"))
 
-  # FMR in W, M is mass in grams
+  # FMR in W, M is mass (g)
   # Convert 1 kJ/day = 0.0115741 W
 
   # Reptile
@@ -934,7 +934,7 @@ boundary_layer_resistance <- function (T_a,
   air_density <- air_pressure / (287.04 * T_a)
   dynamic_viscosity <- (1.8325 * 10^-5) * ((296.16 + 120.) / (T_a + 120.)) * ((T_a / 296.16)^1.5) #Tracy et al. 2010
   kinematic_viscosity <- dynamic_viscosity / air_density
-  T_surface <- (T_a) * (1. + 0.38 * ((e_s * 1000.) / air_pressure)) #organism soil temperature in steady state heat balance
+  T_surface <- (T_a) * (1. + 0.38 * ((e_s * 1000.) / air_pressure)) #soil surface temperature in steady state heat balance
   T_air <- T_a * (1. + 0.38 * ((e_a * 1000.) / air_pressure)) #air temperature in steady state heat balance
   coef_thermal_expansion <- 1.0 / T_a
 

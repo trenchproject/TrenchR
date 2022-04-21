@@ -1,6 +1,6 @@
 #' @title Operative Environmental Temperature of a Butterfly
 #'
-#' @description Predicts body temperatures (operative environmental temperatures) of a butterfly (C) based on \insertCite{Kingsolver1983;textual}{TrenchR} and \insertCite{Buckley2012;textual}{TrenchR}. The function is designed for butterflies that bask with closed wings such as Colias.
+#' @description Predicts body temperatures (C, operative environmental temperatures) of a butterfly based on \insertCite{Kingsolver1983;textual}{TrenchR} and \insertCite{Buckley2012;textual}{TrenchR}. The function is designed for butterflies that bask with closed wings such as Colias.
 #' 
 #' @param T_a \code{numeric} air temperature (C).
 #'
@@ -103,7 +103,7 @@ Tb_butterfly <- function (T_a,
 
   # Butterfly Parameters
 
-    # surface emissivity, ranges from 0.95-1
+    # surface emissivity (proportion), ranges from 0.95-1
 
       epsilon_s <- 0.97 
 
@@ -137,7 +137,7 @@ Tb_butterfly <- function (T_a,
 
       A_sttl <- pi * D * 2 
 
-    # direct and reflected surface areas For butterflies basking with wings perpendicular to radiation 
+    # direct and reflected surface areas for butterflies basking with wings perpendicular to radiation 
 
       A_sdir <- A_sttl / 2
       A_sref <- A_sdir

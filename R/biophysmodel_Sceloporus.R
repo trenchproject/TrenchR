@@ -121,13 +121,13 @@ Tb_lizard <- function (T_a,
 
     sigma <- stefan_boltzmann_constant() 
     c_p   <- 29.3 # specific heat of air, J/mol C (p.279) Parentheses all from Campbell & Norman 1998
-    tau   <- 0.65 # atmospheric transmisivity
+    tau   <- 0.65 # atmospheric transmissivity
     S_p0  <- 1360 # extraterrestrial flux density, W/m^2 (p.159)
   
   # Calculate radiation
-  # view angles, parameterize for animal suspended above ground (p181), on ground- adjust F_e, F_r, and F_g
+  # view angles, parameterized for animal suspended above ground (p181), on ground- adjust F_e, F_r, and F_g
 
-    h <- svl / 1000 # length of svl in m
+    h <- svl / 1000 # convert snout vent length to m
   
     A <- 0.121 * m^0.688   # total lizard area, Roughgarden (1981)
     A_p <- (-1.1756810^-4 * psi^2 - 9.2594 * 10^-2 * psi + 26.2409) * A / 100 # projected area

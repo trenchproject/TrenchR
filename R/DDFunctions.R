@@ -44,6 +44,8 @@ degree_days <- function (T_min,
             length(method) == 1,
             method %in% c("single.sine", "double.sine", "single.triangulation", "double.triangulation"))
   
+  # See http://ipm.ucanr.edu/WEATHER/ddconcepts.html
+  
   # Amplitude
   alpha <- (T_max - T_min) / 2 
   dd <- 0

@@ -125,7 +125,7 @@ partition_solar_radiation <- function (method,
     
     b3 <- 1.185 + 0.0135 * abs(lat)
     
-    # method assumes constant kd if kt outside below range
+    # method assumes constant kd if kt outside the below range
     kd <- NA
     
     if(kt >= 0.35 & kt <= 0.75) {
@@ -204,7 +204,7 @@ partition_solar_radiation <- function (method,
 
   }
   
-  #direct and diffuse is c(rad*(1-kd),rad*(kd))
+  #direct and diffuse radiation is c(rad*(1-kd),rad*(kd))
   
   kd
 

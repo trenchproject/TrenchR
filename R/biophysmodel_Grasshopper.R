@@ -179,7 +179,7 @@ Tb_grasshopper <- function (T_a,
         Adir <- A*sa
         Aref <- Adir 
 
-    # Qabs as W
+    # Qabs (W)
 
       Qdir <- abs * Adir * Hdir / cos(psi_r)
       Qdif <- abs * Aref * Hdif

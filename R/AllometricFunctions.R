@@ -478,9 +478,9 @@ proportion_silhouette_area <- function (z,
 #' 
 #' @description Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimate the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid, using Figure 11.6 in \insertCite{Campbell1998;textual}{TrenchR}. The function is useful for estimating absorbed solar radiation. 
 #' 
-#' @param shape \code{character} Which shape to approximate an organism. Shapes are assumed to be prolate or have the longest axis parallel with the ground. Current choices are \code{"spheroid"}, \code{"cylinder flat ends"}, and \code{"cylinder hemisphere ends"}.
+#' @param shape \code{character} Shape to use to approximate an organism. Shapes are assumed to be prolate or have the longest axis parallel with the ground. Current choices are \code{"spheroid"}, \code{"cylinder flat ends"}, and \code{"cylinder hemisphere ends"}.
 #' 
-#' @param theta \code{numeric} angle between the solar beam and the longitudinal axis in degrees.
+#' @param theta \code{numeric} angle between the solar beam and the longitudinal axis (degrees).
 #' 
 #' @param h \code{numeric} height (long axis in m). Cross section length for spheroid.
 #' 
@@ -528,7 +528,7 @@ proportion_silhouette_area_shapes <- function(shape,
 
     x <- d / h
 
-    sqrt(1 + (x^2 - 1) * cos(theta_r)^2) / (2 * x+ (2 * asin(sqrt(1 - x^2)) / sqrt(1 - x^2))) #sin not converted to radians, check
+    sqrt(1 + (x^2 - 1) * cos(theta_r)^2) / (2 * x+ (2 * asin(sqrt(1 - x^2)) / sqrt(1 - x^2)))
 
   }
   

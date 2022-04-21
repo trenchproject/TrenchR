@@ -117,7 +117,7 @@ Tb_limpetBH <- function (T_a,
 
     # Long-wave energy transfer
 
-      # View factor. (Campbell and Norman 1998) simulating limpets as a cone.
+      # View factor simulating limpets as a cone (Campbell and Norman 1998).
 
         Vs <- 0.7
 

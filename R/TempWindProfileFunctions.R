@@ -183,7 +183,7 @@ air_temp_profile <- function (T_r,
 
     u_star <- k * u_r / log(zr / z0 + 1)  
 
-  # sublayer stanton number
+  # sublayer Stanton number
 
     S_ts <- 0.62 / (z0 * u_star / 12)^0.45
 
@@ -196,7 +196,7 @@ air_temp_profile <- function (T_r,
     T_z0 <- (T_r * S_tb + T_s * S_ts) / (S_tb + S_ts)
 
   # Temperature at local height
-  # Inital from Ecography paper but fixed in vignette: T_z= T_z0 + (T_r - T_z0)*log(z/z0+1)
+  # Initial from Ecography paper but fixed in vignette: T_z= T_z0 + (T_r - T_z0)*log(z/z0+1)
 
     T_z0 + (T_r - T_z0) * log(z / z0 + 1) / log(zr / z0 + 1)
 
@@ -259,7 +259,7 @@ air_temp_profile_segment <- function (T_r,
 
     u_star <- 0.4 * u_r / log(zr / z0 + 1) #0.4 is von Karman constant
 
-  # sublayer stanton number
+  # sublayer Stanton number
 
     S_ts <- 0.62 / (z0[3] * u_star[2] / 12)^0.45
 
@@ -310,7 +310,7 @@ air_temp_profile_segment <- function (T_r,
 
 #' @title Wind Speed at a Specified Height 
 #' 
-#' @description Calculate wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
+#' @description The functions calculates wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at a specified height (m). The function estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
 #' 
 #' @param u_r \code{numeric} a vector of wind speeds (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at the 3 reference heights.
 #' 

@@ -101,7 +101,7 @@ Tb_limpet <- function (T_a,
   
     # Long-wave energy transfer
   
-      # View factor. (Campbell and Norman 1998) simulating limpets as a cone.
+      # View factor simulating limpets as a cone (Campbell and Norman 1998). 
     
         Vs <- cos(psi) * r / sqrt(r^2 + h^2)
     
@@ -109,7 +109,7 @@ Tb_limpet <- function (T_a,
 
         Al <- pi * r * sqrt(h^2 + r^2) 
 
-      #  long-wave emissivity of the shell 
+      #  long-wave emissivity of the shell (proportion)
 
         eps_ws <- 0.97  
 

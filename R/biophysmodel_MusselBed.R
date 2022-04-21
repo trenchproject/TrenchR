@@ -114,7 +114,7 @@ Tbed_mussel <- function(l,
   
     C <- (Aconv / Ap) * (u_star * c_prho * k) / (log(z / z0))
   
-  # 
+   
   
   # Emissivities
 
@@ -122,7 +122,7 @@ Tbed_mussel <- function(l,
     eps_sky <- ifelse( is.na(cl), 0.9, eps_ac + cl * (1 - eps_ac - 8 / T_a))  # Helmuth 1999, assume 0.9 if no cloudiness data
     eps_org <- 1.0   # infrared emissivity of organism (same as above, p.163)
   
-  # Evaporation - assume constant mass loss rate of 5% initial body mass per hour, assuming a density of 700 mussels/m2, and L=0.075
+  # Evaporation - assume constant mass loss rate of 5% initial body mass per hour, assuming a density of 700 mussels/m2 and L=0.075
 
     mflux <- ifelse(evap == FALSE, 0, 1.99 * 10^{-4})  #kg/sm^2
   

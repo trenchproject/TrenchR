@@ -127,7 +127,7 @@ solar_noon <- function (lon,
             doy <  367)
   
   # Calculates the time of solar noon for each day using longitude correction (LC), equation of time (ET), and a conversion (f)
-  f <- (279.575 + 0.9856 * doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
+  f <- (279.575 + 0.9856 * doy)  # f in degrees as a function of day of year, p.169 Campbell & Norman 1998
   f[f > 360] = f[f > 360] - 360  # ensure 0 to 360 degrees
   f <- f * pi / 180              # convert f in degrees to radians
   
@@ -155,7 +155,7 @@ solar_noon <- function (lon,
 
 #' @title Zenith Angle
 #' 
-#' @description Calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical \insertCite{Campbell1998}{TrenchR}.
+#' @description The function calculates the zenith angle, the location of the sun as an angle (in degrees) measured from vertical \insertCite{Campbell1998}{TrenchR}.
 #' 
 #' @param doy \code{numeric} day of year (1-366). This can be obtained from standard date via \code{\link{day_of_year}}.
 #' 
@@ -165,7 +165,7 @@ solar_noon <- function (lon,
 #' 
 #' @param hour \code{numeric} hour of the day.
 #' 
-#' @param offset \code{numeric} the number of hours to add to UTC to get local time (improves accuracy but not always necessary). Optional. Defaults to NA.
+#' @param offset \code{numeric} the number of hours to add to UTC (Coordinated Universal Time) to get local time (improves accuracy but not always necessary). Optional. Defaults to NA.
 #' 
 #' @return \code{numeric} zenith angle (degrees)
 #' 
@@ -202,7 +202,7 @@ zenith_angle <- function (doy,
   RevAng <- 0.21631 + 2 * atan(0.967 * tan(0.0086 * (-186 + doy))) # Revolution angle in radians
   DecAng <- asin(0.39795 * cos(RevAng))                            # Declination angle in radians           
     
-  f <- 279.575 + 0.9856 * doy # f in degrees as a function of day of year, p.169 Campbell & Norman 2000
+  f <- 279.575 + 0.9856 * doy # f in degrees as a function of day of year, p.169 Campbell & Norman 1998
   f <- f * pi / 180 # convert f in degrees to radians
   
   # (11.4) Equation of time: ET is a 15-20 minute correction which depends on calendar day
@@ -285,7 +285,7 @@ azimuth_angle <- function (doy,
   ET <- (-104.7 * sin(f) + 596.2 * sin(2 * f) + 4.3 * sin(3 * f) - 12.7 * sin(4 * f) - 429.3 * cos(f) - 2.0 * cos(2 * f) + 19.3 * cos(3 * f)) / 3600  
   lon[lon < 0] <- 360 + lon[lon < 0] # convert to 0 to 360
 
-  # Set up two booleans on whether we need to apply a correction on azimuth angle at the end
+  # Set up two Booleans indicating whether we need to apply a correction on azimuth angle at the end
   azi_corr1 <- FALSE
   azi_corr2 <- TRUE
   
