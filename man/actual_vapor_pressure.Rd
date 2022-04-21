@@ -13,7 +13,7 @@ actual_vapor_pressure(T_dewpoint)
 \code{numeric} actual vapor pressure (kPa).
 }
 \description{
-Calculate actual vapor pressure from dewpoint temperature based on \insertCite{Stull2000,Riddell2018;textual}{TrenchR}.
+The function calculates actual vapor pressure from dewpoint temperature based on \insertCite{Stull2000,Riddell2018;textual}{TrenchR}.
 }
 \examples{
   actual_vapor_pressure(T_dewpoint = 20)
@@ -42,13 +42,13 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

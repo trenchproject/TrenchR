@@ -2,7 +2,7 @@
 % Please edit documentation in R/OperativeTemperatureFunctions.R
 \name{Tb_Gates2}
 \alias{Tb_Gates2}
-\title{Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm in K}
+\title{Operative Environmental Temperature of an Ectotherm Based on a Variant of Gates (1980)}
 \usage{
 Tb_Gates2(A, D, T_g, T_a, Qabs, V, epsilon)
 }
@@ -25,7 +25,7 @@ Tb_Gates2(A, D, T_g, T_a, Qabs, V, epsilon)
 \code{numeric} operative environmental temperature (K).
 }
 \description{
-Predicts body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Gates1980;textual}{TrenchR}. Omits evaporative and metabolic heat loss.
+The function predicts body temperatures (K, operative environmental temperature) of an ectotherm using the approximation in \insertCite{Gates1980;textual}{TrenchR}. The function omits evaporative and metabolic heat loss.
 }
 \examples{
   Tb_Gates2(A       = 1, 
@@ -60,12 +60,12 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Qmetabolism_from_mass_temp}
 \alias{Qmetabolism_from_mass_temp}
-\title{Basal (Resting) Metabolism as a Function of Mass and Body Temperature}
+\title{Metabolism as a Function of Mass and Body Temperature}
 \usage{
 Qmetabolism_from_mass_temp(m, T_b, taxon)
 }
@@ -17,7 +17,7 @@ Qmetabolism_from_mass_temp(m, T_b, taxon)
 \code{numeric} basal metabolism (W).
 }
 \description{
-Estimate basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). Based on empirical data and the metabolic theory of ecology (3/4 scaling exponent) \insertCite{Gillooly2001}{TrenchR}.
+The function estimates basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). The function is based on empirical data and the metabolic theory of ecology (assumes a 3/4 scaling exponent) \insertCite{Gillooly2001}{TrenchR}.
 }
 \examples{
   Qmetabolism_from_mass_temp(m     = 100,
@@ -47,13 +47,13 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

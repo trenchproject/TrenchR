@@ -24,7 +24,7 @@ Qthermal_radiation_absorbed(
 \code{numeric} thermal radiation absorbed (W).
 }
 \description{
-Estimate longwave (thermal) radiation (W) absorbed from the sky and the ground \insertCite{Campbell1998,Riddell2018}{TrenchR}.
+The function estimates longwave (thermal) radiation (W) absorbed from the sky and the ground \insertCite{Campbell1998,Riddell2018}{TrenchR}.
 }
 \examples{
   Qthermal_radiation_absorbed(T_a            = 20,
@@ -55,13 +55,13 @@ Other biophysical models:
 \code{\link{Qradiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

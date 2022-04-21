@@ -7,11 +7,11 @@
 soil_specific_heat(x_o, x_m, x_w, rho_so)
 }
 \arguments{
-\item{x_o}{\code{numeric} volume fraction of organic material.}
+\item{x_o}{\code{numeric} volume fraction of organic material (0-1).}
 
-\item{x_m}{\code{numeric} volume fraction of minerals.}
+\item{x_m}{\code{numeric} volume fraction of minerals (0-1).}
 
-\item{x_w}{\code{numeric} volume fraction of water.}
+\item{x_w}{\code{numeric} volume fraction of water (0-1).}
 
 \item{rho_so}{\code{numeric} particle density of soil in (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (bulk density).}
 }
@@ -19,7 +19,7 @@ soil_specific_heat(x_o, x_m, x_w, rho_so)
 \code{numeric} soil specific heat (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}).
 }
 \description{
-Estimates soil specific heat (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}) using the methods of \insertCite{deVries1963;textual}{TrenchR}. Uses the volume fraction of organic material, minerals, and water in soil.
+The function estimates soil specific heat (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}) using the methods of \insertCite{deVries1963;textual}{TrenchR}. The function incorporates the volume fraction of organic material, minerals, and water in soil.
 }
 \examples{
   soil_specific_heat(x_o    = 0.01, 

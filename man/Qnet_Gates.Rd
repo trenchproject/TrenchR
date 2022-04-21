@@ -23,7 +23,7 @@ Qnet_Gates(Qabs, Qemit, Qconv, Qcond, Qmet, Qevap)
 \code{numeric} net energy exchange (W).
 }
 \description{
-Estimate net energy exchange between an animal and the environment in W. Follows \insertCite{Gates1980;textual}{TrenchR} and others.
+The function estimates the net energy exchange (W) between an animal and the environment. The function follows \insertCite{Gates1980;textual}{TrenchR} and others.
 }
 \examples{
 Qnet_Gates(Qabs  = 500,
@@ -56,13 +56,13 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

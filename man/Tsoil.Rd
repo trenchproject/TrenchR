@@ -19,7 +19,7 @@ Tsoil(T_g_max, T_g_min, hour, depth)
 \code{numeric} soil temperature (C).
 }
 \description{
-Estimate soil temperature at a given depth and hour approximating diurnal variation as sinusoidal; adapted from \insertCite{Campbell1998;textual}{TrenchR} \insertCite{Riddell2018}{TrenchR}.
+The function estimates soil temperature (C) at a given depth and hour by approximating diurnal variation as sinusoidal. The function is adapted from \insertCite{Campbell1998;textual}{TrenchR} and described in \insertCite{Riddell2018;textual}{TrenchR}.
 }
 \examples{
   Tsoil(T_g_max = 30,
@@ -51,13 +51,13 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

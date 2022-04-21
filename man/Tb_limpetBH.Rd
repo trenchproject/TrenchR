@@ -2,14 +2,14 @@
 % Please edit documentation in R/biophysmodel_limpetBH.R
 \name{Tb_limpetBH}
 \alias{Tb_limpetBH}
-\title{Helmuth Lab Calculations for Operative Environmental Temperature of a Limpet}
+\title{Operative Environmental Temperature of a Limpet Based on a Model by Helmuth}
 \usage{
 Tb_limpetBH(T_a, T_r, l, h, I, u, s_aspect, s_slope, c)
 }
 \arguments{
-\item{T_a}{\code{numeric} air temperature in C.}
+\item{T_a}{\code{numeric} air temperature (C).}
 
-\item{T_r}{\code{numeric} rock surface temperature in C in the sunlight.}
+\item{T_r}{\code{numeric} rock surface temperature (C) in the sunlight.}
 
 \item{l}{\code{numeric} limpet length (anterior/posterior axis) (m).}
 
@@ -19,17 +19,17 @@ Tb_limpetBH(T_a, T_r, l, h, I, u, s_aspect, s_slope, c)
 
 \item{u}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
-\item{s_aspect}{\code{numeric} solar aspect angle (degree), the angle between the limpet's length dimension and the vector to the Sun. Between 70 and 110 degrees.}
+\item{s_aspect}{\code{numeric} solar aspect angle (degree), the angle between the limpet's length dimension and the vector to the Sun. Generally between 70 and 110 degrees.}
 
-\item{s_slope}{\code{numeric} solar elevation angle (degree), the altitude of the Sun, which is the angle between the horizon and the sun.}
+\item{s_slope}{\code{numeric} solar elevation angle (degree), the altitude of the sun, which is the angle between the horizon and the sun.}
 
-\item{c}{\code{numeric} fraction of the sky covered by cloud.}
+\item{c}{\code{numeric} fraction of the sky covered by clouds.}
 }
 \value{
 \code{numeric} predicted body (operative environmental) temperature (C).
 }
 \description{
-Predicts body temperatures (operative environmental temperatures) of a limpet in C. Calculations from Helmuth Lab -- although radiation and convection are altered from original model -- based on \insertCite{Denny2006;textual}{TrenchR}.
+The function predicts body temperatures (C, operative environmental temperatures) of a limpet. The function was provided by Brian Helmuth -- although radiation and convection are altered from his original model -- and based on \insertCite{Denny2006;textual}{TrenchR}.
 }
 \details{
 The original equation uses a finite-difference approach where they divide the rock into series of chunks, and calculate the temperature at each node to derive the conductive heat. For simplification, here it takes the rock temperature as a parameter, and conductive heat is calculated by the product of the area, thermal conductivity of rock and the difference in temperatures of the rock and the body.
@@ -75,12 +75,12 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},
@@ -98,6 +98,6 @@ Other biophysical models:
 \code{\link{saturation_water_vapor_pressure}()}
 }
 \author{
-Brian Helmuth lab
+Brian Helmuth et al.
 }
 \concept{biophysical models}

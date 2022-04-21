@@ -13,7 +13,7 @@ dec_angle(doy)
 \code{numeric} declination angle (radians).
 }
 \description{
-Calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year \insertCite{Campbell1998}{TrenchR}.
+The function calculates solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
   dec_angle(doy = 112)

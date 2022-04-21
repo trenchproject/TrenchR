@@ -19,7 +19,7 @@ wind_speed_profile_neutral(u_r, zr, z0, z)
 \code{numeric} windspeed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 }
 \description{
-Calculate wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at a specified height (m) within a boundary layer near the surface.  The profile assumes neutral conditions. The velocity profile is the neutral profile described by \insertCite{Sellers1965;textual}{TrenchR}. Function is equations (2) and (3) of \insertCite{Porter1973;textual}{TrenchR}.
+The function calculates wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at a specified height (m) within a boundary layer near the surface.  The profile assumes neutral conditions. The velocity profile is the neutral profile described by \insertCite{Sellers1965;textual}{TrenchR}. Function is equations (2) and (3) of \insertCite{Porter1973;textual}{TrenchR}.
 }
 \examples{
   wind_speed_profile_neutral(u_r = 0.1, 
@@ -42,10 +42,10 @@ Other microclimate functions:
 \code{\link{diurnal_temp_variation_sineexp}()},
 \code{\link{diurnal_temp_variation_sinesqrt}()},
 \code{\link{diurnal_temp_variation_sine}()},
-\code{\link{estimate_radiation}()},
 \code{\link{monthly_solar_radiation}()},
 \code{\link{partition_solar_radiation}()},
 \code{\link{proportion_diffuse_solar_radiation}()},
+\code{\link{solar_radiation}()},
 \code{\link{surface_roughness}()},
 \code{\link{wind_speed_profile_segment}()}
 }

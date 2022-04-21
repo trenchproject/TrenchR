@@ -19,7 +19,7 @@ wind_speed_profile_segment(u_r, zr, z0, z)
 \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 }
 \description{
-Calculate wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
+The function calculates wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at a specified height (m). The function estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
 }
 \examples{
   wind_speed_profile_segment(u_r = c(0.01, 0.025, 0.05), 
@@ -42,10 +42,10 @@ Other microclimate functions:
 \code{\link{diurnal_temp_variation_sineexp}()},
 \code{\link{diurnal_temp_variation_sinesqrt}()},
 \code{\link{diurnal_temp_variation_sine}()},
-\code{\link{estimate_radiation}()},
 \code{\link{monthly_solar_radiation}()},
 \code{\link{partition_solar_radiation}()},
 \code{\link{proportion_diffuse_solar_radiation}()},
+\code{\link{solar_radiation}()},
 \code{\link{surface_roughness}()},
 \code{\link{wind_speed_profile_neutral}()}
 }

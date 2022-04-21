@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{saturation_water_vapor_pressure}
 \alias{saturation_water_vapor_pressure}
-\title{Approximate Saturation Water Vapor Pressure}
+\title{Saturation Water Vapor Pressure}
 \usage{
 saturation_water_vapor_pressure(T_a)
 }
@@ -13,7 +13,7 @@ saturation_water_vapor_pressure(T_a)
 \code{numeric} Saturation water vapor pressure, \code{e_s} (Pa).
 }
 \description{
-Approximate saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40 C using \insertCite{Rosenberg1974;textual}{TrenchR} in \insertCite{Spotila1992;textual}{TrenchR}. See also NicheMapR \code{\link{WETAIR}} and \code{\link{DRYAIR}} \insertCite{Kearney2020}{TrenchR}.
+The function approximates saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40 C using \insertCite{Rosenberg1974;textual}{TrenchR} in \insertCite{Spotila1992;textual}{TrenchR}. See also NicheMapR \code{\link{WETAIR}} and \code{\link{DRYAIR}} \insertCite{Kearney2020}{TrenchR}.
 }
 \examples{
   saturation_water_vapor_pressure(T_a = 20)
@@ -42,13 +42,13 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

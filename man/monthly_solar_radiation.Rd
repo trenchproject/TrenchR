@@ -2,7 +2,7 @@
 % Please edit documentation in R/RadiationFunctions.R
 \name{monthly_solar_radiation}
 \alias{monthly_solar_radiation}
-\title{Estimate Average Monthly Solar Radiation}
+\title{Average Monthly Solar Radiation}
 \usage{
 monthly_solar_radiation(lat, lon, doy, elev, T, Hr, P)
 }
@@ -25,7 +25,7 @@ monthly_solar_radiation(lat, lon, doy, elev, T, Hr, P)
 \code{numeric} average monthly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 }
 \description{
-Estimate average monthly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}) using basic topographic and climatic information as input. Cloudiness is stochastically modeled, so output will vary between functional calls. Based on \insertCite{Nikolov1992;textual}{TrenchR}.
+The function estimates average monthly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}) using basic topographic and climatic information as input. Cloudiness is stochastically modeled, so output will vary between functional calls. Based on \insertCite{Nikolov1992;textual}{TrenchR}.
 }
 \examples{
   monthly_solar_radiation(lat  = 47.61, 
@@ -51,9 +51,9 @@ Other microclimate functions:
 \code{\link{diurnal_temp_variation_sineexp}()},
 \code{\link{diurnal_temp_variation_sinesqrt}()},
 \code{\link{diurnal_temp_variation_sine}()},
-\code{\link{estimate_radiation}()},
 \code{\link{partition_solar_radiation}()},
 \code{\link{proportion_diffuse_solar_radiation}()},
+\code{\link{solar_radiation}()},
 \code{\link{surface_roughness}()},
 \code{\link{wind_speed_profile_neutral}()},
 \code{\link{wind_speed_profile_segment}()}

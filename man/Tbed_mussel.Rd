@@ -22,13 +22,13 @@ Tbed_mussel(l, T_a, S, k_d, u, evap = FALSE, cl = NA)
 \item{cl}{\code{numeric} fraction of the sky covered by cloud, optional.}
 }
 \value{
-\code{numeric} predicted body temperature (C).
+\code{numeric} predicted body (operative environmental) temperature (C).
 }
 \description{
-Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Helmuth1999;textual}{TrenchR}.
+The function estimates body temperature of a mussel (C). The function implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Helmuth1999;textual}{TrenchR}.
 }
 \details{
-Conduction is considered negligible due to small area of contact.
+Conduction is considered negligible due to a small area of contact.
   \cr \cr
   Thermal radiative flux is calculated following \insertCite{Helmuth1998;textual}{TrenchR}, \insertCite{Helmuth1999;textual}{TrenchR}, and \insertCite{Idso1969;textual}{TrenchR}.
 }
@@ -64,13 +64,13 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

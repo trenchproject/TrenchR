@@ -7,21 +7,21 @@
 Tb_limpet(T_a, T_r, l, h, I, u, psi, c, position = "anterior")
 }
 \arguments{
-\item{T_a}{\code{numeric} air temperature in C.}
+\item{T_a}{\code{numeric} air temperature (C).}
 
-\item{T_r}{\code{numeric} rock surface temperature in C in the sunlight.}
+\item{T_r}{\code{numeric} rock surface temperature (C) in the sunlight.}
 
-\item{l}{\code{numeric} limpet length (anterior/posterior axis) (m).}
+\item{l}{\code{numeric} limpet length (anterior/posterior axis, m).}
 
-\item{h}{\code{numeric} limpet height (dorsal/ventral axis) (m).}
+\item{h}{\code{numeric} limpet height (dorsal/ventral axis, m).}
 
 \item{I}{\code{numeric} solar irradiance (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
 
 \item{u}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
-\item{psi}{\code{numeric} solar zenith angle (degrees): can be calculated from \code{\link{zenith_angle}} function.}
+\item{psi}{\code{numeric} solar zenith angle (degrees). Can be calculated from \code{\link{zenith_angle}} function.}
 
-\item{c}{\code{numeric} fraction of the sky covered by cloud.}
+\item{c}{\code{numeric} fraction of the sky covered by cloud (proportion).}
 
 \item{position}{\code{character} direction of the limpet that is facing upwind. Options are \code{"anterior"}, \code{"posterior"}, and \code{"broadside"}.}
 }
@@ -29,14 +29,14 @@ Tb_limpet(T_a, T_r, l, h, I, u, psi, c, position = "anterior")
 \code{numeric} predicted body (operative environmental) temperature (C).
 }
 \description{
-Predict body temperatures (operative environmental temperatures) of a limpet in C. Based on \insertCite{Denny2006;textual}{TrenchR}.
+The function estimates body temperatures (C, operative environmental temperatures) of a limpet based on \insertCite{Denny2006;textual}{TrenchR}.
 }
 \details{
-The original equation uses a finite-difference approach where they divide the rock into series of chunks, and calculate the temperature at each node to derive the conductive heat. For simplification, here it takes the rock temperature as a parameter, and conductive heat is calculated by the product of the area, thermal conductivity of rock and the difference in temperatures of the rock and the body.
+The original equation uses a finite-difference approach where they divide the rock into series of chunks, and calculate the temperature at each node to derive the conductive heat. For simplification, here it takes the rock temperature as a parameter, and conductive heat is calculated as a product of the area, thermal conductivity of rock and the temperature difference between the rock and the body.
   \cr \cr
   Limpets are simulated as cones following and using solar emissivity values from \insertCite{Campbell1998;textual}{TrenchR}.
   \cr \cr
-  The area of the limpet's shell (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) is projected in the direction at which sunlight strikes the organism \insertCite{Pennell1989;textual}{TrenchR}.
+  The area of the limpet's shell (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) is projected according to the direction at which sunlight strikes the organism \insertCite{Pennell1989}{TrenchR}.
   \cr \cr
   Air conductivity values (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) are calculated following \insertCite{Denny2006;textual}{TrenchR}.
 }
@@ -75,12 +75,12 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

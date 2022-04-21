@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{external_resistance_to_water_vapor_transfer}
 \alias{external_resistance_to_water_vapor_transfer}
-\title{Calculate External Resistance to Water Vapor Transfer}
+\title{External Resistance to Water Vapor Transfer}
 \usage{
 external_resistance_to_water_vapor_transfer(H, rhocp = 12000)
 }
@@ -15,7 +15,7 @@ external_resistance_to_water_vapor_transfer(H, rhocp = 12000)
 \code{numeric} external resistance to water vapor transfer (\ifelse{html}{\out{s m<sup>-1</sup>}}{\eqn{s m^-1}{ASCII}}).
 }
 \description{
-Estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport \insertCite{Spotila1992}{TrenchR}
+The function estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport \insertCite{Spotila1992}{TrenchR}
 }
 \examples{
   external_resistance_to_water_vapor_transfer(H = 20)
@@ -44,13 +44,13 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

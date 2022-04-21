@@ -15,7 +15,7 @@ day_of_year(day, format = "\%Y-\%m-\%d")
 \code{numeric} Julian day number, 1-366 (e.g. 1 for January 1st).
 }
 \description{
-Convert a date (day, month, year) to Julian Day (day of year).
+The function converts a date (day, month, year) to Julian Day (day of year).
 }
 \examples{
   day_of_year(day    = "2017-04-22", 

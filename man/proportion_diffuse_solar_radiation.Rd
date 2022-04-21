@@ -2,7 +2,7 @@
 % Please edit documentation in R/RadiationPartitioningFunctions.R
 \name{proportion_diffuse_solar_radiation}
 \alias{proportion_diffuse_solar_radiation}
-\title{Estimate the Ratio of Diffuse to Direct Solar Radiation}
+\title{Ratio of Diffuse to Direct Solar Radiation}
 \usage{
 proportion_diffuse_solar_radiation(psi, p_a, A)
 }
@@ -17,7 +17,7 @@ proportion_diffuse_solar_radiation(psi, p_a, A)
 \code{numeric} diffuse fraction.
 }
 \description{
-Estimate the ratio of diffuse to direct solar radiation.  Based on the approximation of the \insertCite{McCullough1971;textual}{TrenchR} SOLRAD model described in \insertCite{Tracy1983;textual}{TrenchR}.
+The function estimates the ratio of diffuse to direct solar radiation based on the approximation of the SOLRAD model \insertCite{McCullough1971}{TrenchR} described in \insertCite{Tracy1983;textual}{TrenchR}.
 }
 \examples{
   proportion_diffuse_solar_radiation(psi = 60, 
@@ -39,9 +39,9 @@ Other microclimate functions:
 \code{\link{diurnal_temp_variation_sineexp}()},
 \code{\link{diurnal_temp_variation_sinesqrt}()},
 \code{\link{diurnal_temp_variation_sine}()},
-\code{\link{estimate_radiation}()},
 \code{\link{monthly_solar_radiation}()},
 \code{\link{partition_solar_radiation}()},
+\code{\link{solar_radiation}()},
 \code{\link{surface_roughness}()},
 \code{\link{wind_speed_profile_neutral}()},
 \code{\link{wind_speed_profile_segment}()}

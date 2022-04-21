@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Tb_salamander_humid}
 \alias{Tb_salamander_humid}
-\title{Humid Operative Temperature}
+\title{Humid Operative Environmental Temperature of a Salamander}
 \usage{
 Tb_salamander_humid(r_i, r_b, D, T_a, elev, e_a, e_s, Qabs, epsilon = 0.96)
 }
@@ -11,7 +11,7 @@ Tb_salamander_humid(r_i, r_b, D, T_a, elev, e_a, e_s, Qabs, epsilon = 0.96)
 
 \item{r_b}{\code{numeric} boundary layer resistance (\ifelse{html}{\out{s cm<sup>-1</sup>}}{\eqn{s cm^-1}{ASCII}}).}
 
-\item{D}{\code{numeric} body diameter (meters), (diameter = 0.0016*log(mass) + 0.0061 for mass(g)).}
+\item{D}{\code{numeric} body diameter (m); can estimate as diameter = 0.0016*log(mass) + 0.0061 for mass(g).}
 
 \item{T_a}{\code{numeric} ambient temperature (C).}
 
@@ -23,13 +23,13 @@ Tb_salamander_humid(r_i, r_b, D, T_a, elev, e_a, e_s, Qabs, epsilon = 0.96)
 
 \item{Qabs}{\code{numeric} Solar and thermal radiation absorbed (W).}
 
-\item{epsilon}{\code{numeric} emissivity of salamander skin.}
+\item{epsilon}{\code{numeric} emissivity of salamander skin (proportion).}
 }
 \value{
 \code{numeric} humid operative temperature (C).
 }
 \description{
-Calculate humid operative temperature, using adaptation of \insertCite{Campbell1998;textual}{TrenchR} \insertCite{Riddell2018}{TrenchR}.
+The function estimates the humid body temperature (C, operative environmental temperature) using an adaptation of \insertCite{Campbell1998;textual}{TrenchR} described in \insertCite{Riddell2018;textual}{TrenchR}.
 }
 \examples{
   Tb_salamander_humid(r_i     = 4,
@@ -66,13 +66,13 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_snail}()},

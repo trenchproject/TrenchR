@@ -2,7 +2,7 @@
 % Please edit documentation in R/DTRFunctions.R
 \name{diurnal_temp_variation_sinesqrt}
 \alias{diurnal_temp_variation_sinesqrt}
-\title{Estimate Temperature Variation across Hours using Sine and Square Root Functions}
+\title{Hourly Temperature Variation using Sine and Square Root Functions}
 \usage{
 diurnal_temp_variation_sinesqrt(t, t_r, t_s, T_max, T_min, T_minp)
 }
@@ -19,7 +19,7 @@ diurnal_temp_variation_sinesqrt(t, t_r, t_s, T_max, T_min, T_minp)
 \code{numeric} temperature (C) at a specified hour.
 }
 \description{
-Estimate temperature for a specified hour using sine and square root functions \insertCite{Cesaraccio2001}{TrenchR}.
+The function estimates temperature for a specified hour using sine and square root functions \insertCite{Cesaraccio2001}{TrenchR}.
 }
 \examples{
   diurnal_temp_variation_sinesqrt(t      = 8, 
@@ -43,10 +43,10 @@ Other microclimate functions:
 \code{\link{diurnal_radiation_variation}()},
 \code{\link{diurnal_temp_variation_sineexp}()},
 \code{\link{diurnal_temp_variation_sine}()},
-\code{\link{estimate_radiation}()},
 \code{\link{monthly_solar_radiation}()},
 \code{\link{partition_solar_radiation}()},
 \code{\link{proportion_diffuse_solar_radiation}()},
+\code{\link{solar_radiation}()},
 \code{\link{surface_roughness}()},
 \code{\link{wind_speed_profile_neutral}()},
 \code{\link{wind_speed_profile_segment}()}

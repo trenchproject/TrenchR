@@ -23,7 +23,7 @@ air_temp_profile_segment(T_r, u_r, zr, z0, z, T_s)
 \code{numeric} air temperature (C).
 }
 \description{
-Calculate air temperature (C) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
+The function calculates air temperature (C) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
 }
 \examples{
   air_temp_profile_segment(T_r = c(25, 22, 20), 
@@ -47,10 +47,10 @@ Other microclimate functions:
 \code{\link{diurnal_temp_variation_sineexp}()},
 \code{\link{diurnal_temp_variation_sinesqrt}()},
 \code{\link{diurnal_temp_variation_sine}()},
-\code{\link{estimate_radiation}()},
 \code{\link{monthly_solar_radiation}()},
 \code{\link{partition_solar_radiation}()},
 \code{\link{proportion_diffuse_solar_radiation}()},
+\code{\link{solar_radiation}()},
 \code{\link{surface_roughness}()},
 \code{\link{wind_speed_profile_neutral}()},
 \code{\link{wind_speed_profile_segment}()}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_temperature_function}
 \alias{soil_temperature_function}
-\title{Core Calculate Soil Temperature Function}
+\title{Core Function for Calculating Soil Temperature}
 \usage{
 soil_temperature_function(j, T_so, params)
 }
@@ -17,7 +17,7 @@ soil_temperature_function(j, T_so, params)
 Soil temperature profile as a \code{list}.
 }
 \description{
-Function called to calculate soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly. Energy balance equations from \insertCite{Porter1973;textual}{TrenchR} and \insertCite{Kingsolver1979;textual}{TrenchR}
+This function is called to calculate soil temperature as in \insertCite{Beckman1973;textual}{TrenchR}. Parameters are passed as a list to facilitating solving the equations. This function is not intended to be called directly. The energy balance equations are from \insertCite{Porter1973;textual}{TrenchR} and \insertCite{Kingsolver1979;textual}{TrenchR}
 }
 \examples{
   set.seed(123)

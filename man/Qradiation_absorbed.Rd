@@ -36,7 +36,7 @@ Qradiation_absorbed(
 \code{numeric} solar radiation absorbed (W)
 }
 \description{
-Estimate solar and thermal radiation (W) absorbed by the surface of an animal. Follows \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
+The function estimates solar and thermal radiation (W) absorbed by the surface of an animal following \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
 }
 \examples{
   Qradiation_absorbed(a       = 0.9,
@@ -70,13 +70,13 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

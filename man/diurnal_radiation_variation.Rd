@@ -2,7 +2,7 @@
 % Please edit documentation in R/RadiationFunctions.R
 \name{diurnal_radiation_variation}
 \alias{diurnal_radiation_variation}
-\title{Estimate Variation in Solar Radiation across Hours}
+\title{Hourly Solar Radiation}
 \usage{
 diurnal_radiation_variation(doy, solrad, hour, lon, lat)
 }
@@ -21,7 +21,7 @@ diurnal_radiation_variation(doy, solrad, hour, lon, lat)
 \code{numeric} hourly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 }
 \description{
-Estimate hourly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> hr<sup>-1</sup>}}{\eqn{W m^-2 hr^-1}{ASCII}}) as a function of daily global solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}). Based on \insertCite{Tham2010;textual}{TrenchR} and \insertCite{AlRawahi2011;textual}{TrenchR}.
+The function estimates hourly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> hr<sup>-1</sup>}}{\eqn{W m^-2 hr^-1}{ASCII}}) as a function of daily global solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}). Based on \insertCite{Tham2010;textual}{TrenchR} and \insertCite{AlRawahi2011;textual}{TrenchR}.
 }
 \examples{
 diurnal_radiation_variation(doy    = 112, 
@@ -44,10 +44,10 @@ Other microclimate functions:
 \code{\link{diurnal_temp_variation_sineexp}()},
 \code{\link{diurnal_temp_variation_sinesqrt}()},
 \code{\link{diurnal_temp_variation_sine}()},
-\code{\link{estimate_radiation}()},
 \code{\link{monthly_solar_radiation}()},
 \code{\link{partition_solar_radiation}()},
 \code{\link{proportion_diffuse_solar_radiation}()},
+\code{\link{solar_radiation}()},
 \code{\link{surface_roughness}()},
 \code{\link{wind_speed_profile_neutral}()},
 \code{\link{wind_speed_profile_segment}()}

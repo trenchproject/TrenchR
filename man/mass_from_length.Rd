@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{mass_from_length}
 \alias{mass_from_length}
-\title{Mass from Length}
+\title{Organism Mass from Length}
 \usage{
 mass_from_length(l, taxon)
 }
@@ -17,7 +17,7 @@ Snout-vent length is used for amphibians and reptiles, except turtles where leng
 \code{numeric} mass (g).
 }
 \description{
-Estimate mass (g) from length (m) for a variety of taxa.
+The function estimates mass (g) from length (m) for a variety of taxa.
 }
 \details{
 All models follow (\ifelse{html}{\out{m = a l<sup>b</sup>}}{\eqn{m = a * l^b}{ASCII}}) with mass in grams and length in meters.

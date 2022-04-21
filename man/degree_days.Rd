@@ -2,7 +2,7 @@
 % Please edit documentation in R/DDFunctions.R
 \name{degree_days}
 \alias{degree_days}
-\title{Calculate Degree Days}
+\title{Degree Days}
 \usage{
 degree_days(T_min, T_max, LDT = NA, UDT = NA, method = "single.sine")
 }
@@ -21,7 +21,7 @@ degree_days(T_min, T_max, LDT = NA, UDT = NA, method = "single.sine")
 \code{numeric} degree days (C).
 }
 \description{
-Calculate degree days using the following approximations: single or double sine wave, single or double triangulation \insertCite{ucipm}{TrenchR}. Double approximation methods assume symmetry, such that a day's thermal minimum is equal to that of the previous day. Double sine wave approximation of degree days from \insertCite{Allen1976;textual}{TrenchR}.
+The function calculates degree days using the following approximations: single or double sine wave, single or double triangulation \insertCite{ucipm}{TrenchR}. Double approximation methods assume symmetry, such that a day's thermal minimum is equal to that of the previous day. Double sine wave approximation of degree days from \insertCite{Allen1976;textual}{TrenchR}.
 }
 \examples{
   degree_days(T_min  = 7, 
@@ -49,10 +49,10 @@ Other microclimate functions:
 \code{\link{diurnal_temp_variation_sineexp}()},
 \code{\link{diurnal_temp_variation_sinesqrt}()},
 \code{\link{diurnal_temp_variation_sine}()},
-\code{\link{estimate_radiation}()},
 \code{\link{monthly_solar_radiation}()},
 \code{\link{partition_solar_radiation}()},
 \code{\link{proportion_diffuse_solar_radiation}()},
+\code{\link{solar_radiation}()},
 \code{\link{surface_roughness}()},
 \code{\link{wind_speed_profile_neutral}()},
 \code{\link{wind_speed_profile_segment}()}

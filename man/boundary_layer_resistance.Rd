@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{boundary_layer_resistance}
 \alias{boundary_layer_resistance}
-\title{Estimate the Boundary Layer Resistance}
+\title{Boundary Layer Resistance}
 \usage{
 boundary_layer_resistance(T_a, e_s, e_a, elev, D, u = NA)
 }
@@ -23,7 +23,7 @@ boundary_layer_resistance(T_a, e_s, e_a, elev, D, u = NA)
 \code{numeric} boundary layer resistance (\ifelse{html}{\out{s cm<sup>-1</sup>}}{\eqn{s cm^-1}{ASCII}}).
 }
 \description{
-Estimate boundary layer resistance under free convection. Based on the function in \insertCite{Riddell2018;textual}{TrenchR}.
+The function estimates boundary layer resistance under free convection based on the function in \insertCite{Riddell2018;textual}{TrenchR}.
 }
 \examples{
   boundary_layer_resistance(T_a  = 293,
@@ -57,13 +57,13 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

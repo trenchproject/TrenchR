@@ -2,7 +2,7 @@
 % Please edit documentation in R/DTRFunctions.R
 \name{diurnal_temp_variation_sine}
 \alias{diurnal_temp_variation_sine}
-\title{Estimate Temperature Variation across Hours using a Sine Interpolation}
+\title{Hourly Temperature Variation assuming a Sine Interpolation}
 \usage{
 diurnal_temp_variation_sine(T_max, T_min, t)
 }
@@ -15,7 +15,7 @@ diurnal_temp_variation_sine(T_max, T_min, t)
 \code{numeric} temperature (C) at a specified hour.
 }
 \description{
-Estimate temperature for a specified hour using the sine interpolation in \insertCite{Campbell1998;textual}{TrenchR}.
+The function estimates temperature for a specified hour using the sine interpolation in \insertCite{Campbell1998;textual}{TrenchR}.
 }
 \examples{
   diurnal_temp_variation_sine(T_max = 30, 
@@ -36,10 +36,10 @@ Other microclimate functions:
 \code{\link{diurnal_radiation_variation}()},
 \code{\link{diurnal_temp_variation_sineexp}()},
 \code{\link{diurnal_temp_variation_sinesqrt}()},
-\code{\link{estimate_radiation}()},
 \code{\link{monthly_solar_radiation}()},
 \code{\link{partition_solar_radiation}()},
 \code{\link{proportion_diffuse_solar_radiation}()},
+\code{\link{solar_radiation}()},
 \code{\link{surface_roughness}()},
 \code{\link{wind_speed_profile_neutral}()},
 \code{\link{wind_speed_profile_segment}()}

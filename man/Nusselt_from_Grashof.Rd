@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Nusselt_from_Grashof}
 \alias{Nusselt_from_Grashof}
-\title{Estimate the Nusselt Number from the Grashof Number}
+\title{Nusselt Number from the Grashof Number}
 \usage{
 Nusselt_from_Grashof(Gr)
 }
@@ -13,7 +13,7 @@ Nusselt_from_Grashof(Gr)
 \code{numeric} Nusselt number (dimensionless).
 }
 \description{
-Estimate the Nusselt number from the Grashof Number \insertCite{Gates1980}{TrenchR}.
+The function estimates the Nusselt number from the Grashof Number \insertCite{Gates1980}{TrenchR}.
 }
 \examples{
   Nusselt_from_Grashof(Gr = 5)
@@ -41,13 +41,13 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

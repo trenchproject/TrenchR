@@ -27,7 +27,7 @@ soil_temperature_equation(L, rho_a, c_a, V_inst, z_r, z0, T_inst, T_s)
 \code{numeric} soil temperature (C).
 }
 \description{
-Function called by \code{\link{soil_temperature_function}} to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}.
+The function called by \code{\link{soil_temperature_function}} to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}.
 }
 \examples{
 soil_temperature_equation(L      = -10, 

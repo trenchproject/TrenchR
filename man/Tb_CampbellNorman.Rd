@@ -2,7 +2,7 @@
 % Please edit documentation in R/OperativeTemperatureFunctions.R
 \name{Tb_CampbellNorman}
 \alias{Tb_CampbellNorman}
-\title{Body Temperature (Operative Environmental Temperature) of an Ectotherm in K}
+\title{Operative Environmental Temperature of an Ectotherm based on Campbell and Norman (1988)}
 \usage{
 Tb_CampbellNorman(
   T_a,
@@ -23,9 +23,9 @@ Tb_CampbellNorman(
 
 \item{S}{\code{numeric} flux density of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}), combining direct, diffuse, and reflected radiation accounting for view factors.}
 
-\item{alpha_S}{\code{numeric} organismal solar absorptivity.}
+\item{alpha_S}{\code{numeric} organismal solar absorptivity (proportion).}
 
-\item{alpha_L}{\code{numeric} organismal thermal absorptivity; 0.965 for lizards \insertCite{Bartlett1967}{TrenchR}.}
+\item{alpha_L}{\code{numeric} organismal thermal absorptivity (proportion); 0.965 for lizards \insertCite{Bartlett1967}{TrenchR}.}
 
 \item{epsilon}{\code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.}
 
@@ -39,10 +39,10 @@ Tb_CampbellNorman(
 \code{numeric} operative environmental temperature, \code{T_e} (K).
 }
 \description{
-Predict body temperatures (operative environmental temperature) of an ectotherm in K. Uses approximation in \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
+The function estimates body temperatures (K, operative environmental temperature) of an ectotherm using an approximation based on \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
 }
 \details{
-Boundary conductance uses a factor of 1.4 to account for increased convection \insertCite{Mitchell1976}{TrenchR}, assumes forced conduction.
+Boundary conductance uses a factor of 1.4 to account for increased convection \insertCite{Mitchell1976}{TrenchR}. The function assumes forced conduction.
 }
 \examples{
 Tb_CampbellNorman (T_a     = 303, 
@@ -78,13 +78,13 @@ Other biophysical models:
 \code{\link{Qradiation_absorbed}()},
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

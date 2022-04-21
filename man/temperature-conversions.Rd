@@ -23,7 +23,7 @@ fahrenheit_to_celsius(T)
 \code{numeric} temperature (Celsius, Fahrenheit, or Kelvin).
 }
 \description{
-Convert temperatures among Celsius, Fahrenheit, and Kelvin \insertCite{Blischak}{TrenchR}.
+The function converts temperatures among Celsius, Fahrenheit, and Kelvin \insertCite{Blischak}{TrenchR}.
 }
 \examples{
   kelvin_to_celsius(T = 270)

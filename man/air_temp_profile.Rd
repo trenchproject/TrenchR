@@ -2,7 +2,7 @@
 % Please edit documentation in R/TempWindProfileFunctions.R
 \name{air_temp_profile}
 \alias{air_temp_profile}
-\title{Air Temperature Profile as in NicheMapR}
+\title{Air Temperature Profile using MICRO Routine}
 \usage{
 air_temp_profile(T_r, u_r, zr, z0, z, T_s)
 }
@@ -23,7 +23,7 @@ air_temp_profile(T_r, u_r, zr, z0, z, T_s)
 \code{numeric} air temperature (C).
 }
 \description{
-Estimate air temperature (C) at a specified height (m). Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR \insertCite{Kearney2017}{TrenchR}.
+The function estimates air temperature (C) at a specified height (m). Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR \insertCite{Kearney2017}{TrenchR}.
 }
 \examples{
   air_temp_profile(T_r = 20,
@@ -47,10 +47,10 @@ Other microclimate functions:
 \code{\link{diurnal_temp_variation_sineexp}()},
 \code{\link{diurnal_temp_variation_sinesqrt}()},
 \code{\link{diurnal_temp_variation_sine}()},
-\code{\link{estimate_radiation}()},
 \code{\link{monthly_solar_radiation}()},
 \code{\link{partition_solar_radiation}()},
 \code{\link{proportion_diffuse_solar_radiation}()},
+\code{\link{solar_radiation}()},
 \code{\link{surface_roughness}()},
 \code{\link{wind_speed_profile_neutral}()},
 \code{\link{wind_speed_profile_segment}()}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{surface_area_from_mass}
 \alias{surface_area_from_mass}
-\title{Surface Area from Mass}
+\title{Organism Surface Area from Mass}
 \usage{
 surface_area_from_mass(m, taxon)
 }
@@ -15,7 +15,7 @@ surface_area_from_mass(m, taxon)
 \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 }
 \description{
-Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from mass (g) for one of a variety of taxa.
+The function estimates surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from mass (g) for one of a variety of taxa.
 }
 \details{
 All models follow (\ifelse{html}{\out{SA = a M<sup>b</sup>}}{\eqn{SA = a M^b}{ASCII}}) with mass in grams and surface area in \ifelse{html}{\out{meters<sup>2</sup>}}{\eqn{meters^2}{ASCII}}.

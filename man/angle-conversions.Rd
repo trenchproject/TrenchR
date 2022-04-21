@@ -19,7 +19,7 @@ degrees_to_radians(deg)
 \code{numeric} angle (degrees or radians).
 }
 \description{
-Convert angle in radians to degrees or degrees to radians.
+The function converts angles in radians to degrees or degrees to radians.
 }
 \examples{
   radians_to_degrees(0.831)

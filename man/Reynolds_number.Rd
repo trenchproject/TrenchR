@@ -17,7 +17,7 @@ Reynolds_number(u, D, nu)
 \code{numeric} Reynolds number.
 }
 \description{
-Estimate the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces \insertCite{Gates1980}{TrenchR}.
+The function estimates the Reynolds Number, which describes the dynamic properties of the fluid surrounding the animal as the ratio of internal viscous forces \insertCite{Gates1980}{TrenchR}.
 }
 \examples{
   Reynolds_number(u  = 1,
@@ -47,13 +47,13 @@ Other biophysical models:
 \code{\link{Qradiation_absorbed}()},
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

@@ -2,7 +2,7 @@
 % Please edit documentation in R/RadiationFunctions.R
 \name{direct_solar_radiation}
 \alias{direct_solar_radiation}
-\title{Estimate Direct Solar Radiation}
+\title{Direct Solar Radiation}
 \usage{
 direct_solar_radiation(lat, doy, elev, t, t0, method = "Campbell 1977")
 }
@@ -23,7 +23,7 @@ direct_solar_radiation(lat, doy, elev, t, t0, method = "Campbell 1977")
 \code{numeric} direct solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}).
 }
 \description{
-Estimate direct solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) based on latitude, day of year, elevation, and time. The function uses two methods \insertCite{McCullough1971,Campbell1998}{TrenchR} compiled in \insertCite{Tracy1983;textual}{TrenchR}.
+The function estimates direct solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) based on latitude, day of year, elevation, and time. The function uses two methods \insertCite{McCullough1971,Campbell1998}{TrenchR} compiled in \insertCite{Tracy1983;textual}{TrenchR}.
 }
 \examples{
   direct_solar_radiation(lat    = 47.61, 
@@ -47,10 +47,10 @@ Other microclimate functions:
 \code{\link{diurnal_temp_variation_sineexp}()},
 \code{\link{diurnal_temp_variation_sinesqrt}()},
 \code{\link{diurnal_temp_variation_sine}()},
-\code{\link{estimate_radiation}()},
 \code{\link{monthly_solar_radiation}()},
 \code{\link{partition_solar_radiation}()},
 \code{\link{proportion_diffuse_solar_radiation}()},
+\code{\link{solar_radiation}()},
 \code{\link{surface_roughness}()},
 \code{\link{wind_speed_profile_neutral}()},
 \code{\link{wind_speed_profile_segment}()}

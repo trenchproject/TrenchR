@@ -17,13 +17,13 @@ Qconvection(T_a, T_b, A, proportion, H_L = 10.45, ef = 1.23)
 
 \item{H_L}{\code{numeric} convective heat transfer coefficient (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).}
 
-\item{ef}{\code{numeric} is the enhancement factor, used to adjust H to field conditions.  Approximated as mean value of 1.23 by default, but see \insertCite{Mitchell1976}{TrenchR} for further information.}
+\item{ef}{\code{numeric} is the enhancement factor, used to adjust H to field conditions.  Approximated as mean value of 1.23 by default, but see \insertCite{Mitchell1976;textual}{TrenchR} for further information.}
 }
 \value{
 \code{numeric} convection (W).
 }
 \description{
-Calculate convection from an organism to its environment as in \insertCite{Mitchell1976}{TrenchR}. Includes an enhancement factor associated with outdoor environments.
+The function calculates convection from an organism to its environment as in \insertCite{Mitchell1976;textual}{TrenchR}. It includes an enhancement factor associated with outdoor environments.
 }
 \examples{
   Qconvection(T_a        = 293,
@@ -56,13 +56,13 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

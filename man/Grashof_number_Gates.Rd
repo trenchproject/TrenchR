@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Grashof_number_Gates}
 \alias{Grashof_number_Gates}
-\title{Estimate the Grashof Number as in Gates (1980)}
+\title{Grashof Number as in Gates (1980)}
 \usage{
 Grashof_number_Gates(T_a, T_g, beta, D, nu)
 }
@@ -21,7 +21,7 @@ Grashof_number_Gates(T_a, T_g, beta, D, nu)
 \code{numeric} Grashof number.
 }
 \description{
-Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity \insertCite{Gates1980}{TrenchR}. Ratio of a buoyant force times an inertial force to the square of a viscous force.
+The function estimates the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity \insertCite{Gates1980}{TrenchR}. The Grashof Number is estimated as the ratio of a buoyant force times an inertial force to the square of a viscous force.
 }
 \examples{
   Grashof_number_Gates(T_a   = 30,
@@ -53,13 +53,13 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

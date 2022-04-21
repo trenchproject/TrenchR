@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Nusselt_from_Reynolds}
 \alias{Nusselt_from_Reynolds}
-\title{Estimate the Nusselt Number from the Reynolds Number}
+\title{Nusselt Number from the Reynolds Number}
 \usage{
 Nusselt_from_Reynolds(Re, taxon = "cylinder")
 }
@@ -15,7 +15,7 @@ Nusselt_from_Reynolds(Re, taxon = "cylinder")
 \code{numeric} Nusselt number (dimensionless).
 }
 \description{
-Estimate the Nusselt number from the Reynolds number for various taxa using \insertCite{Mitchell1976;textual}{TrenchR} (Table 1: Convective Heat Transfer Relations for Animal Shapes).
+The function estimates the Nusselt number from the Reynolds number for various taxa using \insertCite{Mitchell1976;textual}{TrenchR} (Table 1: Convective Heat Transfer Relations for Animal Shapes).
 }
 \examples{
   Nusselt_from_Reynolds(Re    = 5,
@@ -44,13 +44,13 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

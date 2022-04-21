@@ -2,7 +2,7 @@
 % Please edit documentation in R/DRYWETAIR.R
 \name{DRYAIR}
 \alias{DRYAIR}
-\title{Calculate Properties of Dry Air}
+\title{Properties of Dry Air}
 \usage{
 DRYAIR(db, bp = 0, alt = 0)
 }

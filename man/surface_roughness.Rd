@@ -2,7 +2,7 @@
 % Please edit documentation in R/TempWindProfileFunctions.R
 \name{surface_roughness}
 \alias{surface_roughness}
-\title{Estimate Surface Roughness from Empirical Measurements}
+\title{Surface Roughness from Empirical Measurements}
 \usage{
 surface_roughness(u_r, zr)
 }
@@ -15,7 +15,7 @@ surface_roughness(u_r, zr)
 \code{numeric} surface roughness (m).
 }
 \description{
-Estimate surface roughness (m) from empirical wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) data collected at a vector of heights (m) from empirical measurements \insertCite{Kingsolver2015,Campbell1998,Porter1979}{TrenchR}.
+The function estimates surface roughness (m) from empirical wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) data collected at a vector of heights (m) \insertCite{Kingsolver2015,Campbell1998,Porter1979}{TrenchR}.
 }
 \examples{
   surface_roughness(u_r = c(0.01, 0.025, 0.05, 0.1, 0.2), 
@@ -36,10 +36,10 @@ Other microclimate functions:
 \code{\link{diurnal_temp_variation_sineexp}()},
 \code{\link{diurnal_temp_variation_sinesqrt}()},
 \code{\link{diurnal_temp_variation_sine}()},
-\code{\link{estimate_radiation}()},
 \code{\link{monthly_solar_radiation}()},
 \code{\link{partition_solar_radiation}()},
 \code{\link{proportion_diffuse_solar_radiation}()},
+\code{\link{solar_radiation}()},
 \code{\link{wind_speed_profile_neutral}()},
 \code{\link{wind_speed_profile_segment}()}
 }

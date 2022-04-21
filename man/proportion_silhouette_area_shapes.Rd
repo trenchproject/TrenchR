@@ -7,9 +7,9 @@
 proportion_silhouette_area_shapes(shape, theta, h, d)
 }
 \arguments{
-\item{shape}{\code{character} Which shape to approximate an organism. Shapes are assumed to be prolate or have the longest axis parallel with the ground. Current choices are \code{"spheroid"}, \code{"cylinder flat ends"}, and \code{"cylinder hemisphere ends"}.}
+\item{shape}{\code{character} Shape to use to approximate an organism. Shapes are assumed to be prolate or have the longest axis parallel with the ground. Current choices are \code{"spheroid"}, \code{"cylinder flat ends"}, and \code{"cylinder hemisphere ends"}.}
 
-\item{theta}{\code{numeric} angle between the solar beam and the longitudinal axis in degrees.}
+\item{theta}{\code{numeric} angle between the solar beam and the longitudinal axis (degrees).}
 
 \item{h}{\code{numeric} height (long axis in m). Cross section length for spheroid.}
 
@@ -19,7 +19,7 @@ proportion_silhouette_area_shapes(shape, theta, h, d)
 \code{numeric} silhouette area as a proportion.
 }
 \description{
-Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimate the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid, using Figure 11.6 in \insertCite{Campbell1998;textual}{TrenchR}.
+The function estimates the projected (silhouette) area as a portion of the surface area of the organism. The function estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid, using Figure 11.6 in \insertCite{Campbell1998;textual}{TrenchR}. The function is useful for estimating absorbed solar radiation.
 }
 \examples{
   proportion_silhouette_area_shapes(shape = "spheroid", 

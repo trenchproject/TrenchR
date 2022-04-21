@@ -2,7 +2,7 @@
 % Please edit documentation in R/RadiationPartitioningFunctions.R
 \name{partition_solar_radiation}
 \alias{partition_solar_radiation}
-\title{Estimate the Diffuse Fraction for Partitioning Solar Radiation}
+\title{Diffuse Fraction for Partitioning Solar Radiation}
 \usage{
 partition_solar_radiation(method, kt, lat = NA, sol.elev = NA)
 }
@@ -19,7 +19,7 @@ partition_solar_radiation(method, kt, lat = NA, sol.elev = NA)
 \code{numeric} diffuse fraction.
 }
 \description{
-Partition solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in \insertCite{Wong2001;textual}{TrenchR}.
+The function partitions solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}) into direct and diffuse components by estimating the diffuse fraction (k_d). The function uses the models presented in \insertCite{Wong2001;textual}{TrenchR}.
 }
 \examples{
   partition_solar_radiation(method   = "Erbs", 
@@ -42,9 +42,9 @@ Other microclimate functions:
 \code{\link{diurnal_temp_variation_sineexp}()},
 \code{\link{diurnal_temp_variation_sinesqrt}()},
 \code{\link{diurnal_temp_variation_sine}()},
-\code{\link{estimate_radiation}()},
 \code{\link{monthly_solar_radiation}()},
 \code{\link{proportion_diffuse_solar_radiation}()},
+\code{\link{solar_radiation}()},
 \code{\link{surface_roughness}()},
 \code{\link{wind_speed_profile_neutral}()},
 \code{\link{wind_speed_profile_segment}()}

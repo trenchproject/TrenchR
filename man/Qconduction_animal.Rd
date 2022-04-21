@@ -11,9 +11,9 @@ Qconduction_animal(T_g, T_b, d, K = 0.5, A, proportion)
 
 \item{T_b}{\code{numeric} body temperature (Kelvin).}
 
-\item{d}{\code{numeric} mean thickness of the animal skin (surface) in (meters), assumes well mixed interior.}
+\item{d}{\code{numeric} mean thickness of the animal skin (surface) in (meters). The function assumes a well mixed interior.}
 
-\item{K}{\code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), \code{K = 0.5} for naked skin, \code{K = 0.15} for insect cuticle \insertCite{Galushko2005}{TrenchR}; conductivity of ground is generally greater than that of animal tissues, so animal thermal conductivity is generally rate limiting step.}
+\item{K}{\code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}). \code{K = 0.5} for naked skin and \code{K = 0.15} for insect cuticle \insertCite{Galushko2005}{TrenchR}. The conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step.}
 
 \item{A}{\code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
@@ -23,7 +23,7 @@ Qconduction_animal(T_g, T_b, d, K = 0.5, A, proportion)
 \code{numeric} conductance (W).
 }
 \description{
-Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
+The function calculates conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
 }
 \examples{
   Qconduction_animal(T_g        = 293,
@@ -56,13 +56,13 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

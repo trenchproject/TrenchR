@@ -2,7 +2,7 @@
 % Please edit documentation in R/energybalance_functions.R
 \name{Qevaporation}
 \alias{Qevaporation}
-\title{Calculate Heat Loss Associated with Evaporative Water Loss}
+\title{Heat Loss Associated with Evaporative Water Loss}
 \usage{
 Qevaporation(A, T_b, taxon, rho_s = NA, rho_a = NA, h = NA, H = NA, r_i = NA)
 }
@@ -27,7 +27,7 @@ Qevaporation(A, T_b, taxon, rho_s = NA, rho_a = NA, h = NA, H = NA, r_i = NA)
 \code{numeric} evaporative heat loss (W).
 }
 \description{
-Estimate heat loss associated with evaporative water loss by an amphibian \insertCite{Spotila1992}{TrenchR} or lizard (based on empirical measurements in \insertCite{Porter1973;textual}{TrenchR}).
+The function estimates heat loss associated with evaporative water loss for an amphibian \insertCite{Spotila1992}{TrenchR} or lizard. The lizard estimation is based on empirical measurements in \insertCite{Porter1973;textual}{TrenchR}).
 }
 \examples{
   Qevaporation(A      = 0.1,
@@ -65,13 +65,13 @@ Other biophysical models:
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
 \code{\link{Tb_CampbellNorman}()},
-\code{\link{Tb_Fei}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},
 \code{\link{Tb_butterfly}()},
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
+\code{\link{Tb_lizardFei}()},
 \code{\link{Tb_lizard}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},

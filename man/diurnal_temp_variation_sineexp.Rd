@@ -2,7 +2,7 @@
 % Please edit documentation in R/DTRFunctions.R
 \name{diurnal_temp_variation_sineexp}
 \alias{diurnal_temp_variation_sineexp}
-\title{Estimate Temperature Variation across Hours assuming Sine and Exponential Components}
+\title{Hourly Temperature Variation assuming Sine and Exponential Components}
 \usage{
 diurnal_temp_variation_sineexp(
   T_max,
@@ -32,7 +32,7 @@ diurnal_temp_variation_sineexp(
 \code{numeric} temperature (C) at a specified hour.
 }
 \description{
-Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components \insertCite{Parton1981}{TrenchR}.
+The function estimates temperature across hours using a diurnal temperature variation function incorporating sine and exponential components \insertCite{Parton1981}{TrenchR}.
 }
 \details{
 Default \code{alpha}, \code{beta}, and \code{gamma} values are the average of 5 North Carolina sites \insertCite{Wann1985}{TrenchR}. 
@@ -68,10 +68,10 @@ Other microclimate functions:
 \code{\link{diurnal_radiation_variation}()},
 \code{\link{diurnal_temp_variation_sinesqrt}()},
 \code{\link{diurnal_temp_variation_sine}()},
-\code{\link{estimate_radiation}()},
 \code{\link{monthly_solar_radiation}()},
 \code{\link{partition_solar_radiation}()},
 \code{\link{proportion_diffuse_solar_radiation}()},
+\code{\link{solar_radiation}()},
 \code{\link{surface_roughness}()},
 \code{\link{wind_speed_profile_neutral}()},
 \code{\link{wind_speed_profile_segment}()}

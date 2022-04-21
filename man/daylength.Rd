@@ -15,7 +15,7 @@ daylength(lat, doy)
 \code{numeric} day length (hours).
 }
 \description{
-Calculate daylength in hours as a function of latitude and day of year. Uses the CMB model \insertCite{Campbell1998}{TrenchR}.
+The function calculates daylength in hours as a function of latitude and day of year. Uses the CMB model \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
   daylength(lat = 47.61, 

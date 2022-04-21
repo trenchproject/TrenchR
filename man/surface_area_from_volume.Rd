@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{surface_area_from_volume}
 \alias{surface_area_from_volume}
-\title{Surface Area from Volume}
+\title{Organism Surface Area from Volume}
 \usage{
 surface_area_from_volume(V, taxon)
 }
@@ -15,10 +15,10 @@ surface_area_from_volume(V, taxon)
 \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 }
 \description{
-Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) for a variety of taxa following \insertCite{Mitchell1976;textual}{TrenchR}.
+The function estimates surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) for a variety of taxa following \insertCite{Mitchell1976;textual}{TrenchR}.
 }
 \details{
-All models follow (\ifelse{html}{\out{SA = Ka V<sup>2/3</sup>}}{\eqn{SA = Ka * V^{2/3}}{ASCII}}) with mass in grams and length in meters.
+All models follow (\ifelse{html}{\out{SA = Ka V<sup>2/3</sup>}}{\eqn{SA = Ka * V^{2/3}}{ASCII}}) with surface area and volume in meters.
  \itemize{
   \item Lizards: \insertCite{Norris1965;textual}{TrenchR}:
     \cr 
