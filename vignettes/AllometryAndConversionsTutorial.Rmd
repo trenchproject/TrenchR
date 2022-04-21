@@ -208,7 +208,7 @@ plot(x    = seq(0.01, 0.05, 0.001),
 Estimating the amount of solar radiation that an animal absorbs requires knowledge of the silhouette area, the proportion of an animal's surface area that is projected onto a horizontal surface. 
 Silhouette area is a function of the sun's angle. 
 We offer empirically-derived relationships to predict the proportional silhouette area for frogs, lizards, and grasshoppers as a polynomial function of zenith angle (`proportion_silhouette_area()`). 
-We additionally offer a function (`proportion_silhouette_area_shapes()`) to estimate silhouette area by approximating the animal as a sphere or cylinder. 
+We additionally offer a function (`proportion_silhouette_area_shapes()`) to estimate silhouette area by approximating the animal as a sphere or cylinder as a function of theta, the angle between the solar beam and the longitudinal axis. 
 The R functions are parameterized as follows:
 
 ```{r, fig.height = 4, fig.width = 6}
@@ -370,8 +370,10 @@ Thermal performance curves (TPCs) describe the temperature dependence of organis
 They have become an important tool to understand organismal responses to environmental conditions, particularly responses to climate change [@sinclair2016can]. 
 TrenchR includes two forms of TPCs. 
 We include a function `TPC()` to describe a Gaussian-quadratic TPC as a function of thermal optima and critical thermal minima and maxima [@deutsch2008impacts]. 
-The `TPC.beta()` function uses a beta function to define a TPC based on mode, breadth, and skew. 
-A scale factor enables including a thermodynamic effect on mean performance [@asbury2010thermodynamic].
+The `TPC_beta()` function uses a beta function to define a TPC based on mode, breadth, and skew. 
+A scale factor enables including a thermodynamic effect on mean performance [@asbury2010thermodynamic]. Additional TPC resources are available in the R packages rTPC and thermPref.
+
+
 
 ```{r, fig.height = 4, fig.width = 6}
 
@@ -386,7 +388,7 @@ plot(x    = 0:60,
      xlab = "temperature (°C)")
 
 points(x    = 0:60, 
-       y    = TPC.beta(T         = 0:60, 
+       y    = TPC_beta(T         = 0:60, 
                        shift     = -1, 
                        breadth   = 0.1, 
                        aran      = 0, 

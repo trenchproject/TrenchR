@@ -29,7 +29,7 @@ This tutorial covers approaches and functions for preparing environmental data f
 The tutorial first covers estimating the intensity and partitioning of solar radiation, including estimating solar angles and day length. 
 We then turn to estimating temperature and wind speed profiles that can scale weather station data to the conditions experienced by organisms. 
 We review functions for modeling diurnal variation in temperature and solar radiation as well as heat accumulation (degree days). 
-The tutorial concludes with a microclimate model for estimating soil temperatures.
+The tutorial concludes with a microclimate model for estimating soil temperatures. Additional resources are available in R packages including NicheMapR, microclima, and microclimc.
 
 # Radiation
 
@@ -200,15 +200,13 @@ legend(x      = "topright",
 
 ```
 
-The azimuth angle is the angle (in degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. 
-The azimuth angle ($AZ$ in degrees) is estimated with respect to due south, increasing in the counter-clockwise direction such that $90^\circ$ is east. 
+The azimuth angle is the angle (&deg;) from which the sunlight is coming measured from true north or south measured in the horizontal plane. 
+The azimuth angle ($AZ$, &deg;) is estimated with respect to due south, increasing in the counter-clockwise direction such that $90^\circ$ is east. 
 $AZ$ can be calculated as a function of declination angle $\delta$ (&deg;), zenith angle $\psi$ (&deg;), and latitude $\phi$ (&deg;) as follows:
 
 $$\cos AZ= \frac{-(\sin \delta - \cos \psi \sin \phi)}{\cos \phi \sin \psi}.$$
 
-TrenchR includes a function to estimate azimuth angle as follows:
-
-We first examine how azimuth angle varies across the day:
+TrenchR includes a function to estimate azimuth angle as follows. We first examine how azimuth angle varies across the day:
 
 ```{r, fig.height = 4, fig.width = 6}
 
@@ -277,8 +275,8 @@ az <- unlist(lapply(1:365,
 plot(x    = 1:365, 
      y    = az, 
      type = "l", 
-     xlab = "hour", 
-     ylab = "azimuth angle (°)")
+     xlab = "day of year", 
+     ylab = "azimuth angle (°)", ylim=c(0,120))
 
 az <- unlist(lapply(1:365, 
                     FUN = azimuth_angle, 
@@ -302,7 +300,7 @@ points(x    = 1:365,
        type = "l",
        lty  = "dotted")
 
-legend(x      = "top", 
+legend(x      = "topright", 
        title  = "hour", 
        legend = c(6, 9, 12), 
        lty    = c("dotted", "dashed", "solid"))
@@ -310,7 +308,7 @@ legend(x      = "top",
 ```
 
 These sun angles can be used to solve for day length. 
-The equation for half day length $h_s$, which is the time (in degrees) from sunrise to solar noon, is used as the basis for our `daylength()` function:
+The equation for half day length $h_s$, which is the time (&deg;) from sunrise to solar noon, is used as the basis for our `daylength()` function:
 
 $$ h_s= \cos^{-1}\left( \frac{\cos \psi-sin \phi \sin \delta}{\cos \phi \cos \delta} \right).$$
 
@@ -345,7 +343,7 @@ legend(x      = "topright",
 ## Radiation components
 
 We provide functions to estimate solar (shortwave) radiation by discounting incoming solar radiation due to scattering as the radiation travels through the atmosphere. 
-The primary function `estimate_radiation()` returns estimates of the direct, diffuse, and reflected components of solar radiation ($W m^{-2}$). 
+The primary function `solar_radiation()` returns estimates of the direct, diffuse, and reflected components of solar radiation ($W m^{-2}$). 
 The radiation streams are the direct irradiance on a surface perpendicular to the beam $S_p$, the diffuse sky irradiance on a horizontal plane $S_d$ ($W m^{-2}$), and the reflected radiation from the ground $S_r$. 
 The sum of these three streams represents the total irradiance of a horizontal surface $S_t$.
 
@@ -386,7 +384,7 @@ zen <- unlist(lapply(1:24,
 zen <- zen * 2 * pi / 360
 
 rd <- lapply(zen, 
-             FUN  = estimate_radiation, 
+             FUN  = solar_radiation, 
              doy  = 200, 
              tau  = 0.6, 
              elev = 1500, 
@@ -431,7 +429,7 @@ psi.seq <- seq(from = 0,
                by   = 5)
 
 rd <- lapply(psi.seq * 2 * pi / 360, 
-             FUN  = estimate_radiation, 
+             FUN  = solar_radiation, 
              doy  = 200, 
              tau  = 0.75, 
              elev = 1500, 
@@ -504,12 +502,12 @@ points(x    = seq(4, 20),
 
 legend(x      = "topright", 
        title  = "Radiation algorithm", 
-       legend = c("Campbell 1977", "Gatesd 1962"), 
+       legend = c("Campbell 1977", "Gates 1962"), 
        lty    = c("solid", "dashed"))
 
 ```
 
-We additionally provide a function (`monthly_solar_radiation()`) implementing an algorithm to estimate average monthly solar radiation ($W m^{-2} day^{-1}$) using basic topographic and climatic information as input.
+We additionally provide a function (`monthly_solar_radiation()`) implementing an algorithm to estimate average monthly solar radiation ($W m^{-2} day^{-1}$) using basic topographic and climatic information as input. Cloudiness is stochastically modeled, so output will vary between functional calls and the relationship in the plot deviates from a smooth curve.
 
 ```{r, fig.height = 4, fig.width = 6}
 
@@ -681,7 +679,7 @@ $$u(z)= \frac{u^*}{0.41}ln \frac{z-d}{z_m} $$
 
 where $u(z)$ is the wind speed ($m s^{-1}$) at height $z$ (m), $u^*$ is the friction velocity ($m s^{-1}$), $d$ is the zero-plane displacement (m, the height at which wind speed is zero), and the constant 0.41 is the von Karman constant.
 
-We provide a function to use this relationship to estimate surface roughness (`surface_roughness()`) from wind speed measurements at a vector of heights. 
+We provide a function to use this relationship to estimate surface roughness from wind speed measurements at a vector of heights  (`surface_roughness()`). 
 First, the zero-plane displacement is estimated as the intercept of the relationship between the wind velocities and the log of measurement height. 
 Surface roughness $z_0$ can then be estimated by repeating the regression accounting for the zero-plane displacement (by subtracting the zero-plane displacement from the measurement heights). 
 $z_0$ is estimated as the exponential of the ratio of the intercept and slope of the regression relationship as follows.
@@ -889,7 +887,8 @@ plot(x    = u.seq,
      y    = z.seq, 
      type = "l", 
      xlab = "Wind speed (m/s)", 
-     ylab = "z (height above ground in m)")
+     ylab = "z (height above ground in m)",
+     xlim=c(0,0.05))
 
 points(x = c(0.01, 0.025, 0.05),
        y = c(0.05, 0.25, 0.5))
