@@ -1,6 +1,6 @@
 #' @title Operative Environmental Temperature of a Butterfly
 #'
-#' @description Predicts body temperatures (C, operative environmental temperatures) of a butterfly based on \insertCite{Kingsolver1983;textual}{TrenchR} and \insertCite{Buckley2012;textual}{TrenchR}. The function is designed for butterflies that bask with closed wings such as Colias.
+#' @description The function estimates body temperatures (C, operative environmental temperatures) of a butterfly based on \insertCite{Kingsolver1983;textual}{TrenchR} and \insertCite{Buckley2012;textual}{TrenchR}. The function is designed for butterflies that bask with closed wings such as Colias.
 #' 
 #' @param T_a \code{numeric} air temperature (C).
 #'

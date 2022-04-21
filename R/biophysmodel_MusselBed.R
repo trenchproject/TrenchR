@@ -1,6 +1,6 @@
 #' @title Operative Environmental Temperature of a Mussel Bed
 #' 
-#' @description The function predicts body temperature of a mussel (C). The function implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Helmuth1999;textual}{TrenchR}.
+#' @description The function estimates body temperature of a mussel (C). The function implements a steady-state model, which assumes unchanging environmental conditions. Based on \insertCite{Helmuth1999;textual}{TrenchR}.
 #' 
 #' @param l \code{numeric} mussel length (anterior/posterior axis) (m).
 #' 

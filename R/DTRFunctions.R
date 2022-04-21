@@ -1,6 +1,6 @@
-#' @title Estimate Temperature Variation across Hours assuming Sine and Exponential Components
+#' @title Hourly Temperature Variation assuming Sine and Exponential Components
 #'
-#' @description Estimate temperature across hours using a diurnal temperature variation function incorporating sine and exponential components \insertCite{Parton1981}{TrenchR}. 
+#' @description The function estimates temperature across hours using a diurnal temperature variation function incorporating sine and exponential components \insertCite{Parton1981}{TrenchR}. 
 #'
 #' @details Default \code{alpha}, \code{beta}, and \code{gamma} values are the average of 5 North Carolina sites \insertCite{Wann1985}{TrenchR}. 
 #'  \cr \cr
@@ -105,9 +105,9 @@ diurnal_temp_variation_sineexp <- function (T_max,
 }
 
 
-#' @title Estimate Temperature Variation across Hours using a Sine Interpolation
+#' @title Hourly Temperature Variation assuming a Sine Interpolation
 #'
-#' @description Estimate temperature for a specified hour using the sine interpolation in \insertCite{Campbell1998;textual}{TrenchR}.
+#' @description The function estimates temperature for a specified hour using the sine interpolation in \insertCite{Campbell1998;textual}{TrenchR}.
 #' 
 #' @param T_max,T_min \code{numeric} maximum and minimum daily temperatures (C). 
 #' 
@@ -143,9 +143,9 @@ diurnal_temp_variation_sine <- function (T_max,
 }
 
 
-#' @title Estimate Temperature Variation across Hours using Sine and Square Root Functions
+#' @title Hourly Temperature Variation using Sine and Square Root Functions
 #'
-#' @description  Estimate temperature for a specified hour using sine and square root functions \insertCite{Cesaraccio2001}{TrenchR}.
+#' @description  The function estimates temperature for a specified hour using sine and square root functions \insertCite{Cesaraccio2001}{TrenchR}.
 #' 
 #' @param t \code{numeric} hour or hours for temperature estimate.
 #' 
