@@ -24,7 +24,7 @@ Qthermal_radiation_absorbed(
 \code{numeric} thermal radiation absorbed (W).
 }
 \description{
-Estimate longwave (thermal) radiation (W) absorbed from the sky and the ground \insertCite{Campbell1998,Riddell2018}{TrenchR}.
+The function estimates longwave (thermal) radiation (W) absorbed from the sky and the ground \insertCite{Campbell1998,Riddell2018}{TrenchR}.
 }
 \examples{
   Qthermal_radiation_absorbed(T_a            = 20,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/TsoilFunctions.R
 \name{soil_temperature}
 \alias{soil_temperature}
-\title{Calculate Soil Temperature in C using ODEs}
+\title{Calculate Soil Temperature using ODEs}
 \usage{
 soil_temperature(
   z_r.intervals = 12,
@@ -24,13 +24,13 @@ soil_temperature(
 \arguments{
 \item{z_r.intervals}{\code{numeric} the number of intervals in the soil profile to calculate, defaults to 12.}
 
-\item{z_r}{\code{numeric} reference height in0 (m).}
+\item{z_r}{\code{numeric} reference height (m).}
 
 \item{z}{\code{numeric} interval of the soil profile to return (1 to \code{z_r.intervals}).}
 
 \item{T_a}{\code{numeric} vector of air temperature (degrees C), Note: missing values will be linearly interpolated.}
 
-\item{u}{\code{numeric} vector of wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
+\item{u}{\code{numeric} vector of wind speeds (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
 \item{Tsoil0}{\code{numeric} initial soil temperature (degrees C).}
 
@@ -54,7 +54,7 @@ soil_temperature(
 \code{numeric} soil temperature (C).
 }
 \description{
-Function called to calculate soil temperature in C from \insertCite{Beckman1973;textual}{TrenchR}. Calls soil_temperature_function, which uses ODE to calculate soil profile. This is the primary function to call to estimate soil temperature. Uses equations from \insertCite{deVries1963;textual}{TrenchR}
+This function is called to calculate soil temperature (C) as in \insertCite{Beckman1973;textual}{TrenchR}. This function calls \code{\link{soil_temperature_function}}, which uses ODEs to calculate a soil profile using equations from \insertCite{deVries1963;textual}{TrenchR}
 }
 \examples{
   set.seed(123)

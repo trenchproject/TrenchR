@@ -17,7 +17,7 @@ soil_conductivity(x, lambda, g_a)
 \code{numeric} soil thermal conductivity (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}).
 }
 \description{
-Estimates soil thermal conductivity (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) using the methods of \insertCite{deVries1963;textual}{TrenchR}.
+The function estimates soil thermal conductivity (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) using the methods of \insertCite{deVries1963;textual}{TrenchR}.
 }
 \examples{
   soil_conductivity(x      = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), 

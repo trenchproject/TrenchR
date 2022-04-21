@@ -13,7 +13,7 @@ saturation_vapor_pressure(T_a)
 \code{numeric} saturation vapor pressure, \code{e_s} (kPa).
 }
 \description{
-Calculate saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation \insertCite{Stull2000,Riddell2018}{TrenchR}.
+The function calculates saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation \insertCite{Stull2000,Riddell2018}{TrenchR}.
 }
 \examples{
   saturation_vapor_pressure(T_a = 293)

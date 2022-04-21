@@ -20,38 +20,38 @@ Tb_butterfly(
 )
 }
 \arguments{
-\item{T_a}{\code{numeric} air temperature in C.}
+\item{T_a}{\code{numeric} air temperature (C).}
 
-\item{T_g}{\code{numeric} surface temperature in C in the sunlight.}
+\item{T_g}{\code{numeric} surface temperature (C) in the sunlight.}
 
-\item{T_sh}{\code{numeric} surface temperature in C in the shade.}
+\item{T_sh}{\code{numeric} surface temperature (C) in the shade.}
 
-\item{u}{\code{numeric} wind speed in \ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}.}
+\item{u}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
-\item{H_sdir}{\code{numeric} direct solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}.}
+\item{H_sdir}{\code{numeric} direct solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
 
-\item{H_sdif}{\code{numeric} diffuse solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}.}
+\item{H_sdif}{\code{numeric} diffuse solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
 
-\item{z}{\code{numeric} solar zenith angle in degrees.}
+\item{z}{\code{numeric} solar zenith angle (degrees).}
 
-\item{D}{\code{numeric} thoracic diameter in cm.}
+\item{D}{\code{numeric} thoracic diameter (cm).}
 
-\item{delta}{\code{numeric} thoracic fur thickness in mm.}
+\item{delta}{\code{numeric} thoracic fur thickness (mm).}
 
-\item{alpha}{\code{numeric} wing solar absorptivity as a proportion. Range for Colias is 0.4 to 0.7.}
+\item{alpha}{\code{numeric} wing solar absorptivity (proportion). The range for Colias butterflies is 0.4 to 0.7.}
 
-\item{r_g}{\code{numeric} substrate solar reflectivity (proportion), see \insertCite{Kingsolver1983;textual}{TrenchR}.}
+\item{r_g}{\code{numeric} substrate solar reflectivity (proportion). See \insertCite{Kingsolver1983;textual}{TrenchR}.}
 
-\item{shade}{\code{logical} indicator whether body temperature should be calculate in sun (\code{FALSE}) or shade (\code{TRUE}).}
+\item{shade}{\code{logical} whether body temperature should be calculated in sun (\code{FALSE}) or shade (\code{TRUE}).}
 }
 \value{
 \code{numeric} predicted body (operative environmental) temperature (C).
 }
 \description{
-Predicts body temperatures (operative environmental temperatures) of a butterfly in C. Based on \insertCite{Kingsolver1983;textual}{TrenchR} and \insertCite{Buckley2012;textual}{TrenchR}.
+Predicts body temperatures (C, operative environmental temperatures) of a butterfly based on \insertCite{Kingsolver1983;textual}{TrenchR} and \insertCite{Buckley2012;textual}{TrenchR}. The function is designed for butterflies that bask with closed wings such as Colias.
 }
 \details{
-Thermal radiative flux is calculated following \insertCite{Gates1980;textual}{TrenchR} based on \insertCite{Swinbank1960;textual}{TrenchR} and \insertCite{Kingsolver1983;textual}{TrenchR} estimates using the Brunt equation with black body sky temperature from \insertCite{Swinbank1963;textual}{TrenchR}.
+Thermal radiative flux is calculated following \insertCite{Gates1980;textual}{TrenchR} based on \insertCite{Swinbank1960;textual}{TrenchR}. \insertCite{Kingsolver1983;textual}{TrenchR} estimates using the Brunt equation with black body sky temperature from \insertCite{Swinbank1963;textual}{TrenchR}.
 }
 \examples{
   Tb_butterfly(T_a    = 25, 

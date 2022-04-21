@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllometricFunctions.R
 \name{mass_from_length}
 \alias{mass_from_length}
-\title{Mass from Length}
+\title{Organism Mass from Length}
 \usage{
 mass_from_length(l, taxon)
 }

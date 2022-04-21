@@ -36,7 +36,7 @@ Qradiation_absorbed(
 \code{numeric} solar radiation absorbed (W)
 }
 \description{
-Estimate solar and thermal radiation (W) absorbed by the surface of an animal. Follows \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
+The function estimates solar and thermal radiation (W) absorbed by the surface of an animal following \insertCite{Gates1980}{TrenchR} and \insertCite{Spotila1992}{TrenchR}.
 }
 \examples{
   Qradiation_absorbed(a       = 0.9,

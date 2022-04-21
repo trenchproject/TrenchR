@@ -28,15 +28,15 @@ Qemitted_thermal_radiation(
 
 \item{T_g}{\code{numeric} ground surface temperature (K).}
 
-\item{T_a}{\code{numeric} ambient air temperature (K), only required if animal is in enclosed environment.}
+\item{T_a}{\code{numeric} ambient air temperature (K), only required if the animal is in an enclosed environment.}
 
-\item{enclosed}{\code{logical} if the animal is an enclosed environment or not.}
+\item{enclosed}{\code{logical} whether the animal is an enclosed environment or not.}
 }
 \value{
 \code{numeric} emitted thermal radiation, \code{Qemit} (W).
 }
 \description{
-Estimate thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980,Spotila1992}{TrenchR}.
+The function estimates thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980,Spotila1992}{TrenchR}.
 }
 \examples{
   Qemitted_thermal_radiation(epsilon  = 0.96,

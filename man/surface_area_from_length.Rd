@@ -13,7 +13,7 @@ surface_area_from_length(l)
 \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 }
 \description{
-Estimate surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from length (m) by approximating the animal's body as a rotational ellipsoid with half the body length as the semi-major axis.
+This function estimates surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from length (m) by approximating the animal's body as a rotational ellipsoid with half the body length as the semi-major axis.
 }
 \details{
 Following \insertCite{Samietz2005;textual}{TrenchR} and \insertCite{Lactin1998;textual}{TrenchR}.

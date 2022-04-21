@@ -19,7 +19,7 @@ proportion_silhouette_area(z, taxon, raz = 0, posture = "prostrate")
 \code{numeric} silhouette area as a proportion.
 }
 \description{
-Estimate the projected (silhouette) area as a portion of the surface area of the organism as a function of zenith angle.
+The function estimates the projected (silhouette) area as a portion of the surface area of the organism as a function of zenith angle. The function is useful for estimating absorbed solar radiation.
 }
 \details{
 Relationships come from \itemize{

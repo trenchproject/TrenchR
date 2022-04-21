@@ -2,32 +2,32 @@
 % Please edit documentation in R/biophysmodel_LizardFei.R
 \name{Tb_Fei}
 \alias{Tb_Fei}
-\title{Operative Temperature of Lizard Using model by Fei et al.}
+\title{Operative Temperature of a Lizard Using Fei et al. (2012)}
 \usage{
 Tb_Fei(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact)
 }
 \arguments{
-\item{T_a}{\code{numeric} air temperature at lizard height in K.}
+\item{T_a}{\code{numeric} air temperature at lizard height (K).}
 
-\item{T_g}{\code{numeric} surface temperature in K.}
+\item{T_g}{\code{numeric} surface temperature (K).}
 
-\item{H}{\code{numeric} total (direct + diffuse) solar radiation flux in \ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m-^2}{ASCII}}.}
+\item{H}{\code{numeric} total (direct + diffuse) solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m-^2}{ASCII}}).}
 
 \item{lw}{\code{numeric} downward flux of near-infrared radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m-^2}{ASCII}}).}
 
 \item{shade}{\code{numeric} proportion of shade.}
 
-\item{m}{\code{numeric} lizard mass in g.}
+\item{m}{\code{numeric} lizard mass (g).}
 
 \item{Acondfact}{\code{numeric} proportion of the lizard projected area that is in contact with the ground. \code{Acondfact = 0.1} for standing and \code{Acondfact = 0.4} for lying on ground.}
 
 \item{Agradfact}{\code{numeric} proportion of the lizard projected area exposed to radiation from the ground. \code{Agradfact = 0.3} for standing and \code{Agradfact = 0.0} for lying on ground.}
 }
 \value{
-\code{numeric} body temperature of a lizard in K.
+\code{numeric} predicted body (operative environmental) temperature (K).
 }
 \description{
-Predict body temperature (operative environmental temperature) of a lizard in K based on \insertCite{Fei2012;textual}{TrenchR}.
+The function predicts body temperature (K, operative environmental temperature) of a lizard based on \insertCite{Fei2012;textual}{TrenchR}.
 }
 \details{
 Thermal radiative flux is calculated following \insertCite{Fei2012;textual}{TrenchR} based on \insertCite{Bartlett1967;textual}{TrenchR} and \insertCite{Porter1973;textual}{TrenchR}.

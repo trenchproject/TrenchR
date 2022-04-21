@@ -2,7 +2,7 @@
 % Please edit documentation in R/TPCfunctions.R
 \name{TPC}
 \alias{TPC}
-\title{Construct a Gaussian-Quadratic Thermal Performance Curve}
+\title{Gaussian-Quadratic Function Thermal Performance Curve}
 \usage{
 TPC(T, T_opt, CT_min, CT_max)
 }
@@ -11,7 +11,7 @@ TPC(T, T_opt, CT_min, CT_max)
 
 \item{T_opt}{\code{numeric} thermal optima (C), the temperature at which peak performance occurs.}
 
-\item{CT_min, CT_max}{\code{numeric} critical thermal minimum and maximum(C), the lower and upper temperature limits for performance.}
+\item{CT_min, CT_max}{\code{numeric} critical thermal minimum and maximum (C), the lower and upper temperature limits for performance.}
 }
 \value{
 performance

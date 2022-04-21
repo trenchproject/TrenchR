@@ -17,13 +17,13 @@ Qconvection(T_a, T_b, A, proportion, H_L = 10.45, ef = 1.23)
 
 \item{H_L}{\code{numeric} convective heat transfer coefficient (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).}
 
-\item{ef}{\code{numeric} is the enhancement factor, used to adjust H to field conditions.  Approximated as mean value of 1.23 by default, but see \insertCite{Mitchell1976}{TrenchR} for further information.}
+\item{ef}{\code{numeric} is the enhancement factor, used to adjust H to field conditions.  Approximated as mean value of 1.23 by default, but see \insertCite{Mitchell1976;textual}{TrenchR} for further information.}
 }
 \value{
 \code{numeric} convection (W).
 }
 \description{
-Calculate convection from an organism to its environment as in \insertCite{Mitchell1976}{TrenchR}. Includes an enhancement factor associated with outdoor environments.
+The function calculates convection from an organism to its environment as in \insertCite{Mitchell1976;textual}{TrenchR}. It includes an enhancement factor associated with outdoor environments.
 }
 \examples{
   Qconvection(T_a        = 293,

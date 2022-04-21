@@ -15,7 +15,7 @@ surface_roughness(u_r, zr)
 \code{numeric} surface roughness (m).
 }
 \description{
-Estimate surface roughness (m) from empirical wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) data collected at a vector of heights (m) from empirical measurements \insertCite{Kingsolver2015,Campbell1998,Porter1979}{TrenchR}.
+The function estimates surface roughness (m) from empirical wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) data collected at a vector of heights (m) \insertCite{Kingsolver2015,Campbell1998,Porter1979}{TrenchR}.
 }
 \examples{
   surface_roughness(u_r = c(0.01, 0.025, 0.05, 0.1, 0.2), 

@@ -13,7 +13,7 @@ VAPPRS(db)
 esat \code{numeric} Saturation vapor pressure (Pa)
 }
 \description{
-Calculates saturation vapor pressure for a given air temperature. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from NicheMapR \insertCite{Kearney2017,Kearney2020}{TrenchR}.
+The function calculates saturation vapor pressure for a given air temperature. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from NicheMapR \insertCite{Kearney2017,Kearney2020}{TrenchR}.
 }
 \examples{
   VAPPRS(db = 30)

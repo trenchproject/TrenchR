@@ -17,7 +17,7 @@ proportion_diffuse_solar_radiation(psi, p_a, A)
 \code{numeric} diffuse fraction.
 }
 \description{
-Estimate the ratio of diffuse to direct solar radiation.  Based on the approximation of the \insertCite{McCullough1971;textual}{TrenchR} SOLRAD model described in \insertCite{Tracy1983;textual}{TrenchR}.
+Estimate the ratio of diffuse to direct solar radiation.  Based on the approximation of the SOLRAD model \insertCite{McCullough1971}{TrenchR} described in \insertCite{Tracy1983;textual}{TrenchR}.
 }
 \examples{
   proportion_diffuse_solar_radiation(psi = 60, 

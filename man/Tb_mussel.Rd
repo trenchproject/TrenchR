@@ -2,14 +2,14 @@
 % Please edit documentation in R/biophysmodel_Mussel.R
 \name{Tb_mussel}
 \alias{Tb_mussel}
-\title{Calculate Operative Environmental Temperature of a Mussel in C.}
+\title{Operative Environmental Temperature of a Mussel.}
 \usage{
 Tb_mussel(l, h, T_a, T_g, S, k_d, u, psi, cl, evap = FALSE, group = "solitary")
 }
 \arguments{
-\item{l}{\code{numeric} mussel length (anterior/posterior axis) (m).}
+\item{l}{\code{numeric} mussel length (anterior/posterior axis, m).}
 
-\item{h}{\code{numeric} mussel height (dorsal/ventral axis) (m). It is reasonable to assume \code{h = 0.5 * l}.}
+\item{h}{\code{numeric} mussel height (dorsal/ventral axis, m). It is reasonable to assume \code{h = 0.5 * l}.}
 
 \item{T_a}{\code{numeric} air temperature (C).}
 
@@ -25,15 +25,15 @@ Tb_mussel(l, h, T_a, T_g, S, k_d, u, psi, cl, evap = FALSE, group = "solitary")
 
 \item{cl}{\code{numeric} fraction of the sky covered by cloud.}
 
-\item{evap}{\code{logical} if mussels gaping to evaporatively cool. If \code{TRUE}, assumes constant mass loss rate of 5 percent of initial body mass per hour.}
+\item{evap}{\code{logical} Whether mussel is gaping to evaporatively cool. If \code{TRUE}, the function assumes a constant mass loss rate of 5 percent of the initial body mass per hour.}
 
-\item{group}{\code{character}; options are \code{"aggregated"}: mussels living in beds; \code{"solitary"}: mussels individuals, anterior or posterior end facing upwind; and \code{"solitary_valve"}: solitary individuals, valve facing upwind.}
+\item{group}{\code{character}; options are \code{"aggregated"}: mussels living in beds; \code{"solitary"}: solitary individual, anterior or posterior end facing upwind; and \code{"solitary_valve"}: solitary individual, valve facing upwind.}
 }
 \value{
-\code{numeric} predicted body temperature (C).
+\code{numeric} predicted body (operative environmental) temperature (C).
 }
 \description{
-Predicts body temperature of a mussel in C. Implements a steady-state model, which assumes unchanging environmental conditions.
+The function estimates body temperature (C, operative environmental temperature) of a mussel. The function implements a steady-state model, which assumes unchanging environmental conditions.
 }
 \details{
 Thermal radiative flux is calculated following \insertCite{Helmuth1998;textual}{TrenchR}, \insertCite{Helmuth1999;textual}{TrenchR}, and \insertCite{Idso1969;textual}{TrenchR}.

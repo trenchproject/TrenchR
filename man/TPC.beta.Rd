@@ -2,7 +2,7 @@
 % Please edit documentation in R/TPCfunctions.R
 \name{TPC.beta}
 \alias{TPC.beta}
-\title{Construct a Beta Function Thermal Performance Curve}
+\title{Beta Function Thermal Performance Curve}
 \usage{
 TPC.beta(T, shift = -1, breadth = 0.1, aran = 0, tolerance = 43, skew = 0.7)
 }

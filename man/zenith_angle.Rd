@@ -15,13 +15,13 @@ zenith_angle(doy, lat, lon, hour, offset = NA)
 
 \item{hour}{\code{numeric} hour of the day.}
 
-\item{offset}{\code{numeric} the number of hours to add to UTC to get local time (improves accuracy but not always necessary). Optional. Defaults to NA.}
+\item{offset}{\code{numeric} the number of hours to add to UTC (Coordinated Universal Time) to get local time (improves accuracy but not always necessary). Optional. Defaults to NA.}
 }
 \value{
 \code{numeric} zenith angle (degrees)
 }
 \description{
-Calculate the zenith angle, the location of the sun as an angle (in degrees) measured from vertical \insertCite{Campbell1998}{TrenchR}.
+The function calculates the zenith angle, the location of the sun as an angle (in degrees) measured from vertical \insertCite{Campbell1998}{TrenchR}.
 }
 \examples{
   zenith_angle(doy  = 112, 

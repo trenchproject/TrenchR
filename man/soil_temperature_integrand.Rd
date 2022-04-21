@@ -17,7 +17,7 @@ soil_temperature_integrand(x, L, z0)
 \code{numeric} integrand for soil temperature function.
 }
 \description{
-Function called by soil_temp_noint to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. The function represents the integrand in the equation. It is not intended to be called directly.
+This function is called by \code{\link{soil_temp_noint}} to solve the equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. The function represents the integrand in the equation. It is not intended to be called directly.
 }
 \examples{
   soil_temperature_integrand(x  = c(0.10, 0.40, 0.11, 0.01, 0.2, 0.18), 
