@@ -1,4 +1,4 @@
-#' @title Operative Environmental Temperature of a Mussel.
+#' @title Operative Environmental Temperature of a Mussel
 #' 
 #' @description The function estimates body temperature (C, operative environmental temperature) of a mussel. The function implements a steady-state model, which assumes unchanging environmental conditions. 
 #' 

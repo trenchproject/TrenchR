@@ -1,6 +1,6 @@
-#' @title Estimate Radiation (Three Components - Direct, Diffuse and Reflected)
+#' @title Estimate the Three Components of Solar Radiation (Direct, Diffuse and Reflected)
 #' 
-#' @description Estimate direct, diffuse, and reflected components of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}) as a function of day of year using the model in \insertCite{Campbell1998;textual}{TrenchR}. 
+#' @description The function estimate direct, diffuse, and reflected components of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}) as a function of day of year using the model in \insertCite{Campbell1998;textual}{TrenchR}. 
 #' 
 #' @param doy \code{numeric} the day of year; \code{\link{day_of_year}}.
 #' 
@@ -22,13 +22,13 @@
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   estimate_radiation(doy  = 112, 
+#'   solar_radiation(doy  = 112, 
 #'                      psi  = 1, 
 #'                      tau  = 0.6, 
 #'                      elev = 1500, 
 #'                      rho  = 0.7)
 #'
-estimate_radiation <- function (doy, 
+solar_radiation <- function (doy, 
                                 psi, 
                                 tau, 
                                 elev, 
@@ -67,9 +67,9 @@ estimate_radiation <- function (doy,
   
 }
 
-#' @title Estimate Variation in Solar Radiation across Hours
+#' @title Hourly Solar Radiation
 #' 
-#' @description Estimate hourly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> hr<sup>-1</sup>}}{\eqn{W m^-2 hr^-1}{ASCII}}) as a function of daily global solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}). Based on \insertCite{Tham2010;textual}{TrenchR} and \insertCite{AlRawahi2011;textual}{TrenchR}.
+#' @description The function estimates hourly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> hr<sup>-1</sup>}}{\eqn{W m^-2 hr^-1}{ASCII}}) as a function of daily global solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}). Based on \insertCite{Tham2010;textual}{TrenchR} and \insertCite{AlRawahi2011;textual}{TrenchR}.
 #' 
 #' @param doy \code{numeric} the day of year.
 #' 
@@ -146,9 +146,9 @@ diurnal_radiation_variation <- function(doy,
   
 }
 
-#' @title Estimate Average Monthly Solar Radiation
+#' @title Average Monthly Solar Radiation
 #' 
-#' @description Estimate average monthly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}) using basic topographic and climatic information as input. Cloudiness is stochastically modeled, so output will vary between functional calls. Based on \insertCite{Nikolov1992;textual}{TrenchR}.
+#' @description The function estimates average monthly solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}) using basic topographic and climatic information as input. Cloudiness is stochastically modeled, so output will vary between functional calls. Based on \insertCite{Nikolov1992;textual}{TrenchR}.
 #' 
 #' @param lat \code{numeric} latitude (degrees).
 #' 
@@ -277,9 +277,9 @@ monthly_solar_radiation <- function (lat,
 }
 
 
-#' @title Estimate Direct Solar Radiation
+#' @title Direct Solar Radiation
 #' 
-#' @description Estimate direct solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) based on latitude, day of year, elevation, and time. The function uses two methods \insertCite{McCullough1971,Campbell1998}{TrenchR} compiled in \insertCite{Tracy1983;textual}{TrenchR}.
+#' @description The function estimates direct solar radiation (\ifelse{html}{\out{W/m<sup>2</sup>}}{\eqn{W/m^2}{ASCII}}) based on latitude, day of year, elevation, and time. The function uses two methods \insertCite{McCullough1971,Campbell1998}{TrenchR} compiled in \insertCite{Tracy1983;textual}{TrenchR}.
 #' 
 #' @param lat \code{numeric} latitude (degrees).
 #' 

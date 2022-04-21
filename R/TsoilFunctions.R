@@ -148,7 +148,7 @@ soil_temperature_integrand <- function (x,
 
 #' @title Core Function Called to Solve Equation for Soil Temperature
 #'
-#' @description Function called by \code{\link{soil_temperature_function}} to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}.
+#' @description The function called by \code{\link{soil_temperature_function}} to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}.
 #' 
 #' @param L \code{numeric} Monin-Obukhov length, a measure of the instability of heat flow (see \insertCite{Beckman1973;textual}{TrenchR}).
 #' 

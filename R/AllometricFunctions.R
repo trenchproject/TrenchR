@@ -82,7 +82,7 @@ surface_area_from_mass <- function (m,
 
 #' @title Organism Mass from Length 
 #' 
-#' @description Estimate mass (g) from length (m) for a variety of taxa.
+#' @description The function estimates mass (g) from length (m) for a variety of taxa.
 #'
 #' @param l \code{numeric} vector of length (m). Can be 1 or more values.
 #'  \cr
@@ -250,7 +250,7 @@ surface_area_from_volume <- function (V,
 
 #' @title Organism Volume from Length
 #' 
-#' @description The function estimate volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) from length (m) for a variety of taxa following \insertCite{Mitchell1976;textual}{TrenchR}.
+#' @description The function estimates volume (\ifelse{html}{\out{m<sup>3</sup>}}{\eqn{m^3}{ASCII}}) from length (m) for a variety of taxa following \insertCite{Mitchell1976;textual}{TrenchR}.
 #' 
 #' @param l \code{numeric} length (m). 
 #'  \cr
@@ -476,7 +476,7 @@ proportion_silhouette_area <- function (z,
 
 #' @title Organism Silhouette Area using Shape Approximations
 #' 
-#' @description Estimate the projected (silhouette) area as a portion of the surface area of the organism. Estimate the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid, using Figure 11.6 in \insertCite{Campbell1998;textual}{TrenchR}. The function is useful for estimating absorbed solar radiation. 
+#' @description The function estimates the projected (silhouette) area as a portion of the surface area of the organism. The function estimates the projected area as a function of the dimensions and the angle between the solar beam and the longitudinal axis of the solid, using Figure 11.6 in \insertCite{Campbell1998;textual}{TrenchR}. The function is useful for estimating absorbed solar radiation. 
 #' 
 #' @param shape \code{character} Shape to use to approximate an organism. Shapes are assumed to be prolate or have the longest axis parallel with the ground. Current choices are \code{"spheroid"}, \code{"cylinder flat ends"}, and \code{"cylinder hemisphere ends"}.
 #' 

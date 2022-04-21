@@ -1,6 +1,6 @@
-#' @title Predict Body Temperature (Operative Environmental Temperature) of a Lizard
+#' @title Operative Environmental Temperature of a Lizard
 #' 
-#' @description Predicts body temperature (C, operative environmental temperature) of a lizard based on \insertCite{Campbell1998;textual}{TrenchR}. Designed for Sceloporus lizards and described in \insertCite{Buckley2008;textual}{TrenchR}.
+#' @description The function estimates body temperature (C, operative environmental temperature) of a lizard based on \insertCite{Campbell1998;textual}{TrenchR}. The function was designed for Sceloporus lizards and described in \insertCite{Buckley2008;textual}{TrenchR}.
 #' 
 #' @details The proportion of radiation that is direct is determined following \insertCite{Sears2011;textual}{TrenchR}.
 #'   \cr \cr 

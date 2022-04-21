@@ -1,6 +1,6 @@
-#' @title Body Temperature (Operative Environmental Temperature) of an Ectotherm based on Campbell and Norman (1988)
+#' @title Operative Environmental Temperature of an Ectotherm based on Campbell and Norman (1988)
 #' 
-#' @description The function estimates body temperatures (operative environmental temperature, K) of an ectotherm using an approximation based on \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
+#' @description The function estimates body temperatures (K, operative environmental temperature) of an ectotherm using an approximation based on \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
 #' 
 #' @param T_a \code{numeric} air temperature (K).
 #' 
@@ -143,9 +143,9 @@ Qnet_Gates <- function (Qabs,
 }
 
 
-#' @title Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm Based on Gates (1980) 
+#' @title Operative Environmental Temperature of an Ectotherm Based on Gates (1980) 
 #' 
-#' @description Predicts body temperatures (K, operative environmental temperature) of an ectotherm using the approximation in \insertCite{Gates1980;textual}{TrenchR}. The functions omits evaporative and metabolic heat loss \insertCite{Mitchell1976,Kingsolver1983}{TrenchR}.
+#' @description The function predicts body temperatures (K, operative environmental temperature) of an ectotherm using the approximation in \insertCite{Gates1980;textual}{TrenchR}. The functions omits evaporative and metabolic heat loss \insertCite{Mitchell1976,Kingsolver1983}{TrenchR}.
 #' 
 #' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
@@ -289,9 +289,9 @@ Tb_Gates <- function (A,
 
 }
 
-#' @title Predict Body Temperature (Operative Environmental Temperature) of an Ectotherm Based on a Variant of Gates (1980) 
+#' @title Operative Environmental Temperature of an Ectotherm Based on a Variant of Gates (1980) 
 #' 
-#' @description Predicts body temperatures (K, operative environmental temperature) of an ectotherm using the approximation in \insertCite{Gates1980;textual}{TrenchR}. The function omits evaporative and metabolic heat loss.
+#' @description The function predicts body temperatures (K, operative environmental temperature) of an ectotherm using the approximation in \insertCite{Gates1980;textual}{TrenchR}. The function omits evaporative and metabolic heat loss.
 #' 
 #' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 

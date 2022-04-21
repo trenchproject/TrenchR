@@ -1,4 +1,4 @@
-#' @title Estimate Surface Roughness from Empirical Measurements
+#' @title Surface Roughness from Empirical Measurements
 #' 
 #' @description The function estimates surface roughness (m) from empirical wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) data collected at a vector of heights (m) \insertCite{Kingsolver2015,Campbell1998,Porter1979}{TrenchR}.
 #' 
@@ -47,7 +47,7 @@ surface_roughness <- function (u_r,
 
 #' @title Wind Speed at a Specific Height Under Neutral Conditions
 #' 
-#' @description Calculate wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at a specified height (m) within a boundary layer near the surface.  The profile assumes neutral conditions. The velocity profile is the neutral profile described by \insertCite{Sellers1965;textual}{TrenchR}. Function is equations (2) and (3) of \insertCite{Porter1973;textual}{TrenchR}. 
+#' @description The function calculates wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at a specified height (m) within a boundary layer near the surface.  The profile assumes neutral conditions. The velocity profile is the neutral profile described by \insertCite{Sellers1965;textual}{TrenchR}. Function is equations (2) and (3) of \insertCite{Porter1973;textual}{TrenchR}. 
 #' 
 #' @param u_r \code{numeric} wind velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at reference height.
 #' 
@@ -89,7 +89,7 @@ wind_speed_profile_neutral <- function (u_r,
 
 #' @title Air Temperature at a Specified Height Under Neutral Conditions
 #' 
-#' @description Calculate air temperature (C) at a specified height (m) within a boundary layer near the surface.  The velocity profile is the neutral profile described by \insertCite{Sellers1965;textual}{TrenchR}. Function is included as equations (2) and (3) of \insertCite{Porter1973;textual}{TrenchR}.
+#' @description The function calculates air temperature (C) at a specified height (m) within a boundary layer near the surface.  The velocity profile is the neutral profile described by \insertCite{Sellers1965;textual}{TrenchR}. Function is included as equations (2) and (3) of \insertCite{Porter1973;textual}{TrenchR}.
 #' 
 #' @param T_r \code{numeric} air temperature (C) at reference height.
 #' 
@@ -132,9 +132,9 @@ air_temp_profile_neutral <- function (T_r,
 
 }
 
-#' @title Air Temperature Profile as in NicheMapR
+#' @title Air Temperature Profile using MICRO Routine
 #' 
-#' @description  Estimate air temperature (C) at a specified height (m). Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR \insertCite{Kearney2017}{TrenchR}.
+#' @description  The function estimates air temperature (C) at a specified height (m). Estimates a single, unsegmented temperature profile using the MICRO routine from NicheMapR \insertCite{Kearney2017}{TrenchR}.
 #' 
 #' @param T_r \code{numeric} air temperature (C) at reference height.
 #' 
@@ -204,7 +204,7 @@ air_temp_profile <- function (T_r,
 
 #' @title Air Temperature at a Specified Height 
 #' 
-#' @description Calculate air temperature (C) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
+#' @description The function calculates air temperature (C) at a specified height (m). Estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
 #' 
 #' @param T_r \code{numeric} a vector of air temperatures (C) at the 3 reference heights.
 #' 
@@ -310,7 +310,7 @@ air_temp_profile_segment <- function (T_r,
 
 #' @title Wind Speed at a Specified Height 
 #' 
-#' @description The functions calculates wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at a specified height (m). The function estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
+#' @description The function calculates wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at a specified height (m). The function estimates a three segment velocity and temperature profile based on user-specified, experimentally determined values for 3 roughness heights and reference heights. Multiple heights are appropriate in heterogenous areas with, for example, a meadow, bushes, and rocks. Implements the MICROSEGMT routine from NicheMapR as described in \insertCite{Kearney2017;textual}{TrenchR}.
 #' 
 #' @param u_r \code{numeric} a vector of wind speeds (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}) at the 3 reference heights.
 #' 

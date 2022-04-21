@@ -1,6 +1,6 @@
 #' @title Gaussian-Quadratic Function Thermal Performance Curve 
 #'     
-#' @description Constructs a thermal performance curve by combining as a Gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures \insertCite{Deutsch2008}{TrenchR}.
+#' @description The function constructs a thermal performance curve by combining as a Gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures \insertCite{Deutsch2008}{TrenchR}.
 #' 
 #' @param T \code{numeric} vector of temperature range (C).
 #' 
@@ -43,7 +43,7 @@ TPC <- function (T,
 
 #' @title Beta Function Thermal Performance Curve 
 #'  
-#' @description Construct a thermal performance curve based on a beta function \insertCite{Asbury2010}{TrenchR}.
+#' @description The function constructs a thermal performance curve based on a beta function \insertCite{Asbury2010}{TrenchR}.
 #' 
 #' @param T \code{numeric} temperature (C).
 #' 
@@ -65,14 +65,14 @@ TPC <- function (T,
 #' @export
 #' 
 #' @examples
-#'   TPC.beta(T         = 0:60, 
+#'   TPC_beta(T         = 0:60, 
 #'            shift     = -1, 
 #'            breadth   = 0.1, 
 #'            aran      = 0, 
 #'            tolerance = 43, 
 #'            skew      = 0.7)
 #'
-TPC.beta <- function (T, 
+TPC_beta <- function (T, 
                       shift     = -1, 
                       breadth   = 0.1, 
                       aran      = 0, 

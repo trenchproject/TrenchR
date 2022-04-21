@@ -33,7 +33,7 @@
 #'  \insertAllCited{}
 #'  
 #' @examples
-#'   Tb_Fei(T_a       = 293,
+#'   Tb_lizardFei(T_a       = 293,
 #'          T_g       = 300,
 #'          H         = 1300, 
 #'          lw        = 60, 
@@ -43,7 +43,7 @@
 #'          Agradfact = 0.3)
 #' 
 #' 
-Tb_Fei <- function(T_a, 
+Tb_lizardFei <- function(T_a, 
                    T_g, 
                    H, 
                    lw, 

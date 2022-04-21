@@ -1,6 +1,6 @@
 #' @title Conductance Assuming Animal Thermal Conductivity is Rate Limiting
 #'
-#' @description Calculate conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
+#' @description The function calculates conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
 #'
 #' @param T_g \code{numeric} ground surface temperature (Kelvin).
 #'
@@ -61,7 +61,7 @@ Qconduction_animal <- function (T_g,
 
 #' @title Conductance Assuming Substrate Thermal Conductivity is Rate Limiting
 #'
-#' @description Calculate conductance (W) of an ectothermic animal to its substrate. The method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
+#' @description The function calculates conductance (W) of an ectothermic animal to its substrate. The method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
 #'
 #' @param T_g \code{numeric} surface temperature (K).
 #'
@@ -182,7 +182,7 @@ Qconvection <- function (T_a,
 
 #' @title Estimate the Heat Transfer Coefficient Empirically
 #'
-#' @description Estimate the heat transfer coefficient for various taxa based on empirical measurements \insertCite{Mitchell1976}{TrenchR}.
+#' @description The function estimates the heat transfer coefficient for various taxa based on empirical measurements \insertCite{Mitchell1976}{TrenchR}.
 #'
 #' @param V \code{numeric} air velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #'
@@ -244,7 +244,7 @@ heat_transfer_coefficient <- function (V,
 
 #' @title Estimate the Heat Transfer Coefficient Using a Spherical Approximation
 #'
-#' @description Estimate the heat transfer coefficient for various taxa. Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere \insertCite{Mitchell1976}{TrenchR}.
+#' @description The function estimates the heat transfer coefficient for various taxa. Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere \insertCite{Mitchell1976}{TrenchR}.
 #'
 #' @param V \code{numeric} air velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #'
@@ -305,7 +305,7 @@ heat_transfer_coefficient_approximation <- function (V,
 
 #' @title Estimate the Heat Transfer Coefficient using Simple Relationships
 #'
-#' @description Estimate the heat transfer coefficient \insertCite{Mitchell1976}{TrenchR} using either the relationship in \insertCite{Spotila1992;textual}{TrenchR} or that in \insertCite{Gates1980;textual}{TrenchR}.
+#' @description The function estimates the heat transfer coefficient \insertCite{Mitchell1976}{TrenchR} using either the relationship in \insertCite{Spotila1992;textual}{TrenchR} or that in \insertCite{Gates1980;textual}{TrenchR}.
 #'
 #' @param V \code{numeric} air velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #'
@@ -515,7 +515,7 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 }
 
 
-#' @title Calculate Heat Loss Associated with Evaporative Water Loss
+#' @title Heat Loss Associated with Evaporative Water Loss
 #'
 #' @description The function estimates heat loss associated with evaporative water loss for an amphibian \insertCite{Spotila1992}{TrenchR} or lizard. The lizard estimation is based on empirical measurements in \insertCite{Porter1973;textual}{TrenchR}).
 #'
@@ -637,7 +637,7 @@ Qevaporation <- function (A,
 }
 
 
-#' @title Approximate Saturation Water Vapor Pressure
+#' @title Saturation Water Vapor Pressure
 #'
 #' @description The function approximates saturation water vapor pressure as a function of ambient temperature for temperatures from 0 to 40 C using \insertCite{Rosenberg1974;textual}{TrenchR} in \insertCite{Spotila1992;textual}{TrenchR}. See also NicheMapR \code{\link{WETAIR}} and \code{\link{DRYAIR}} \insertCite{Kearney2020}{TrenchR}.
 #'
@@ -662,9 +662,9 @@ saturation_water_vapor_pressure <- function (T_a) {
 }
 
 
-#' @title Calculate External Resistance to Water Vapor Transfer
+#' @title External Resistance to Water Vapor Transfer
 #'
-#' @description Estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport \insertCite{Spotila1992}{TrenchR}
+#' @description The function estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport \insertCite{Spotila1992}{TrenchR}
 #'
 #' @param H \code{numeric} heat transfer (convection) coefficient (\ifelse{html}{\out{W m<sup>-2</sup> C<sup>-1</sup>}}{\eqn{W m^-2 C^-1}{ASCII}}).
 #'
@@ -751,7 +751,7 @@ Qmetabolism_from_mass <- function(m,
 
 #' @title Metabolism as a Function of Mass and Body Temperature
 #'
-#' @description  The function estimates basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). The function is based on empirical data and the metabolic theory of ecology (assumes a 3/4 scaling exponent) \insertCite{Gillooly2001}{TrenchR}.
+#' @description The function estimates basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). The function is based on empirical data and the metabolic theory of ecology (assumes a 3/4 scaling exponent) \insertCite{Gillooly2001}{TrenchR}.
 #'
 #' @param m \code{numeric} mass (grams).
 #'
@@ -814,7 +814,7 @@ Qmetabolism_from_mass_temp <- function (m,
 
 #' @title Actual Vapor Pressure from Dewpoint Temperature
 #'
-#' @description Calculate actual vapor pressure from dewpoint temperature based on \insertCite{Stull2000,Riddell2018;textual}{TrenchR}.
+#' @description The function calculates actual vapor pressure from dewpoint temperature based on \insertCite{Stull2000,Riddell2018;textual}{TrenchR}.
 #'
 #' @param T_dewpoint \code{numeric} dewpoint temperature (C).
 #'
@@ -873,9 +873,9 @@ saturation_vapor_pressure <- function (T_a) {
 }
 
 
-#' @title Estimate the Boundary Layer Resistance
+#' @title Boundary Layer Resistance
 #'
-#' @description Estimate boundary layer resistance under free convection. Based on the function in \insertCite{Riddell2018;textual}{TrenchR}.
+#' @description The function estimates boundary layer resistance under free convection based on the function in \insertCite{Riddell2018;textual}{TrenchR}.
 #'
 #' @param T_a \code{numeric} air temperature (K).
 #'
@@ -1161,7 +1161,7 @@ Tsoil <- function (T_g_max,
 
 #' @title Nusselt Number
 #'
-#' @description Estimate the Nusselt Number, which describes dimensionless conductance \insertCite{Gates1980}{TrenchR}.
+#' @description The function estimates the Nusselt Number, which describes dimensionless conductance \insertCite{Gates1980}{TrenchR}.
 #'
 #' @param H_L \code{numeric} convective heat transfer coefficient (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}).
 #'
@@ -1198,7 +1198,7 @@ Nusselt_number <- function(H_L,
 
 #' @title Prandtl Number
 #'
-#' @description Estimate the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity \insertCite{Gates1980}{TrenchR}.
+#' @description The function estimates the Prandtl Number, which describes the ratio of kinematic viscosity to thermal diffusivity \insertCite{Gates1980}{TrenchR}.
 #'
 #' @param c_p \code{numeric} specific heat at constant pressure (\ifelse{html}{\out{J mol<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J mol^-1 K^-1}{ASCII}}).
 #'
@@ -1270,9 +1270,9 @@ Reynolds_number <- function(u,
 }
 
 
-#' @title Estimate the Grashof Number
+#' @title Grashof Number
 #'
-#' @description Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. Estimated as the ratio of a buoyant force times an inertial force to the square of a viscous force \insertCite{Campbell1998}{TrenchR}.
+#' @description The function estimates the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. The Grashof Number is estimated as the ratio of a buoyant force times an inertial force to the square of a viscous force \insertCite{Campbell1998}{TrenchR}.
 #'
 #' @param T_a \code{numeric} Air temperature (C).
 #'
@@ -1313,9 +1313,9 @@ Grashof_number <- function (T_a,
 }
 
 
-#' @title Estimate the Grashof Number as in Gates (1980)
+#' @title Grashof Number as in Gates (1980)
 #'
-#' @description Estimate the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity \insertCite{Gates1980}{TrenchR}. Ratio of a buoyant force times an inertial force to the square of a viscous force.
+#' @description The function estimates the Grashof Number, which describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity \insertCite{Gates1980}{TrenchR}. The Grashof Number is estimated as the ratio of a buoyant force times an inertial force to the square of a viscous force.
 #'
 #' @param T_a \code{numeric} Air temperature (C).
 #'
@@ -1360,9 +1360,9 @@ Grashof_number_Gates <- function (T_a,
 }
 
 
-#' @title Estimate the Nusselt Number from the Reynolds Number
+#' @title Nusselt Number from the Reynolds Number
 #'
-#' @description Estimate the Nusselt number from the Reynolds number for various taxa using \insertCite{Mitchell1976;textual}{TrenchR} (Table 1: Convective Heat Transfer Relations for Animal Shapes).
+#' @description The function estimates the Nusselt number from the Reynolds number for various taxa using \insertCite{Mitchell1976;textual}{TrenchR} (Table 1: Convective Heat Transfer Relations for Animal Shapes).
 #'
 #' @param Re \code{numeric} Reynolds Number (dimensionless).
 #'
@@ -1400,9 +1400,9 @@ Nusselt_from_Reynolds <- function (Re,
 }
 
 
-#' @title Estimate the Nusselt Number from the Grashof Number
+#' @title Nusselt Number from the Grashof Number
 #'
-#' @description Estimate the Nusselt number from the Grashof Number \insertCite{Gates1980}{TrenchR}.
+#' @description The function estimates the Nusselt number from the Grashof Number \insertCite{Gates1980}{TrenchR}.
 #'
 #' @param Gr \code{numeric} Grashof Number (dimensionless).
 #'
@@ -1425,9 +1425,9 @@ Nusselt_from_Grashof <- function (Gr) {
 }
 
 
-#' @title Determine If Convection is Free or Forced
+#' @title Determine if Convection is Free or Forced
 #'
-#' @description Compare the Grashof and Reynolds numbers to determine whether convection is free or forced \insertCite{Gates1980}{TrenchR}.
+#' @description The function compares the Grashof and Reynolds numbers to determine whether convection is free or forced \insertCite{Gates1980}{TrenchR}.
 #'
 #' @param Gr \code{numeric} Grashof Number (dimensionless).
 #'

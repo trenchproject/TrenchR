@@ -12,7 +12,7 @@ test_that("TPC function works as expected", {
 })
 
 test_that("TPC.beta function works as expected", {
-  expect_equal(length(TPC.beta(T = 0:60, shift = -1, breadth = 0.1, aran = 0, tolerance = 43, skew = 0.7)), 61)
-  expect_similar(TPC.beta(T = 0:60, shift = -1, breadth = 0.1, aran = 0, tolerance = 43, skew = 0.7)[1], 3.80322e-08)
-  expect_similar(TPC.beta(T = 0:60, shift = -1, breadth = 0.1, aran = 1, tolerance = 43, skew = 0.7)[1], 3.2345e-09)
+  expect_equal(length(TPC_beta(T = 0:60, shift = -1, breadth = 0.1, aran = 0, tolerance = 43, skew = 0.7)), 61)
+  expect_similar(TPC_beta(T = 0:60, shift = -1, breadth = 0.1, aran = 0, tolerance = 43, skew = 0.7)[1], 3.80322e-08)
+  expect_similar(TPC_beta(T = 0:60, shift = -1, breadth = 0.1, aran = 1, tolerance = 43, skew = 0.7)[1], 3.2345e-09)
 })

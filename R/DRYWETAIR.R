@@ -1,4 +1,4 @@
-#' @title Calculate Properties of Dry Air
+#' @title Properties of Dry Air
 #'
 #' @description The function calculates several properties of dry air and related characteristics shown as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from NicheMapR \insertCite{Kearney2017,Kearney2020}{TrenchR}.
 #'   \cr \cr
@@ -81,7 +81,7 @@ DRYAIR <- function(db,
 }
 
 
-#' @title Calculate Saturation Vapor Pressure
+#' @title Saturation Vapor Pressure
 #'
 #' @description The function calculates saturation vapor pressure for a given air temperature. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from NicheMapR \insertCite{Kearney2017,Kearney2020}{TrenchR}.
 #' 
@@ -109,7 +109,7 @@ VAPPRS <- function(db) {
   
 }
 
-#' @title Calculate Properties of Wet Air
+#' @title Properties of Wet Air
 #'
 #' @description The function calculates several properties of humid air described as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from NicheMapR \insertCite{Kearney2017,Kearney2020}{TrenchR}.
 #'  \cr 

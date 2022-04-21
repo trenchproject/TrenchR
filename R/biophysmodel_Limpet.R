@@ -1,6 +1,6 @@
 #' @title Operative Environmental Temperature of a Limpet
 #'
-#' @description Predict body temperatures (C, operative environmental temperatures) of a limpet based on \insertCite{Denny2006;textual}{TrenchR}.
+#' @description The function estimates body temperatures (C, operative environmental temperatures) of a limpet based on \insertCite{Denny2006;textual}{TrenchR}.
 #' 
 #' @param T_a \code{numeric} air temperature (C).
 #'

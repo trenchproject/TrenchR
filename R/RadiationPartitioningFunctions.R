@@ -1,6 +1,6 @@
-#' @title Estimate the Diffuse Fraction for Partitioning Solar Radiation
+#' @title Diffuse Fraction for Partitioning Solar Radiation
 #' 
-#' @description Partition solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}) into direct and diffuse components by estimating the diffuse fraction (k_d) using the models presented in \insertCite{Wong2001;textual}{TrenchR}.
+#' @description The function partitions solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}) into direct and diffuse components by estimating the diffuse fraction (k_d). The function uses the models presented in \insertCite{Wong2001;textual}{TrenchR}.
 #' 
 #' @param method \code{character} method to use for estimating the diffuse fraction, currently available: \code{"Liu_Jordan"}, \code{"Orgill_Hollands"}, \code{"Erbs"}, \code{"Olyphant"}, \code{"Spencer"}, \code{"Reindl-1"}, \code{"Reindl-2"}, \code{"Lam_Li"}.
 #' 
@@ -210,9 +210,9 @@ partition_solar_radiation <- function (method,
 
 }  
 
-#' @title Estimate the Ratio of Diffuse to Direct Solar Radiation
+#' @title Ratio of Diffuse to Direct Solar Radiation
 #' 
-#' @description Estimate the ratio of diffuse to direct solar radiation.  Based on the approximation of the SOLRAD model \insertCite{McCullough1971}{TrenchR} described in \insertCite{Tracy1983;textual}{TrenchR}.
+#' @description The function estimates the ratio of diffuse to direct solar radiation based on the approximation of the SOLRAD model \insertCite{McCullough1971}{TrenchR} described in \insertCite{Tracy1983;textual}{TrenchR}.
 #' 
 #' @param psi \code{numeric} Zenith angle of the sun (degrees).
 #' 

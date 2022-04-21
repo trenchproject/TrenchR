@@ -1,6 +1,6 @@
 #' @title Julian Day from Date
 #' 
-#' @description Convert a date (day, month, year) to Julian Day (day of year).
+#' @description The function converts a date (day, month, year) to Julian Day (day of year).
 #'
 #' @param day \code{character} numerical date in standard format (e.g. \code{"2017-01-02"}, \code{"01-02"}, \code{"01/02/2017"} etc). 
 #'
@@ -29,7 +29,7 @@ day_of_year <- function (day,
 
 #' @title Solar Declination in Radians
 #' 
-#' @description Calculate solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year \insertCite{Campbell1998}{TrenchR}.
+#' @description The function calculates solar declination, which is the angular distance of the sun north or south of the earth’s equator, based on the day of year \insertCite{Campbell1998}{TrenchR}.
 #' 
 #' @param doy \code{numeric} day of year (1-366). This can be obtained from standard date via \code{\link{day_of_year}}.
 #' 
@@ -58,7 +58,7 @@ dec_angle <- function (doy) {
 
 #' @title Day Length
 #' 
-#' @description Calculate daylength in hours as a function of latitude and day of year. Uses the CMB model \insertCite{Campbell1998}{TrenchR}.
+#' @description The function calculates daylength in hours as a function of latitude and day of year. Uses the CMB model \insertCite{Campbell1998}{TrenchR}.
 #'
 #' @param lat \code{numeric} latitude (decimal degrees).
 #' 
@@ -96,7 +96,7 @@ daylength <- function(lat,
 
 #' @title Time of Solar Noon
 #' 
-#' @description  This function calculates the time of solar noon in hours as a function of the day of year and longitude \insertCite{Campbell1998}{TrenchR}.
+#' @description The function calculates the time of solar noon in hours as a function of the day of year and longitude \insertCite{Campbell1998}{TrenchR}.
 #'
 #' @param lon \code{numeric} longitude (decimal degrees).
 #'
@@ -230,7 +230,7 @@ zenith_angle <- function (doy,
 
 #' @title Azimuth Angle
 #'
-#' @description Calculate the azimuth angle, the angle (degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east \insertCite{Campbell1998}{TrenchR}.
+#' @description The function calculates the azimuth angle, the angle (degrees) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle is measured with respect to due south, increasing in the counter clockwise direction so 90 degrees is east \insertCite{Campbell1998}{TrenchR}.
 #' 
 #' @param doy \code{numeric} day of year (1-366). This can be obtained from standard date via \code{\link{day_of_year}}.
 #' 
@@ -342,7 +342,7 @@ azimuth_angle <- function (doy,
 
 #' @title Air Pressure from Elevation 
 #'
-#' @description Calculate estimated air pressure (kPa) as a function of elevation \insertCite{engingeeringtoolbox}{TrenchR}.
+#' @description The function estimates air pressure (kPa) as a function of elevation \insertCite{engingeeringtoolbox}{TrenchR}.
 #' 
 #' @param elev \code{numeric} elevation (meters).
 #' 
@@ -368,7 +368,7 @@ airpressure_from_elev <- function (elev) {
 
 #' @title Convert Among Temperature Scales 
 #' 
-#' @description Convert temperatures among Celsius, Fahrenheit, and Kelvin \insertCite{Blischak}{TrenchR}.
+#' @description The function converts temperatures among Celsius, Fahrenheit, and Kelvin \insertCite{Blischak}{TrenchR}.
 #' 
 #' @param T \code{numeric} temperature (Celsius, Fahrenheit, or Kelvin).
 #' 
@@ -430,7 +430,7 @@ fahrenheit_to_celsius <- function (T) {
 
 #' @title Convert Angles Between Radians and Degrees
 #' 
-#' @description Convert angle in radians to degrees or degrees to radians.
+#' @description The function converts angles in radians to degrees or degrees to radians.
 #' 
 #' @param rad \code{numeric} angle (radians).
 #' 
