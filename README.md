@@ -9,7 +9,7 @@
 <!-- badges: end -->
 
 
-**Author:** [TrEnCh project, Buckley Lab, Department of Biology, University of Washington](https://trenchproject.github.io)<br>
+**Author:** [TrEnCh project, Buckley Lab, Department of Biology, University of Washington](https://www.trenchproject.com/)<br>
 
 [Package website](https://trenchproject.github.io/TrenchR/)
 
