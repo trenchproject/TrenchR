@@ -1463,7 +1463,7 @@ R code for another transient model of lizard body temperature is available in th
 ```{r, fig.height = 4, fig.width = 6}
 
 t.seq <- lapply(293:313, 
-                FUN       = Tb_Fei,  
+                FUN       = Tb_lizard_Fei,  
                 T_g       = 300,  
                 H         = 800,  
                 lw        = 30,  
@@ -1483,7 +1483,7 @@ abline(a   = 0,
        col = "gray")
 
 t.seq <- lapply(293:313,  
-                FUN       = Tb_Fei,  
+                FUN       = Tb_lizard_Fei,  
                 T_g       = 300,  
                 H         = 800,  
                 lw        = 30,  
@@ -1498,7 +1498,7 @@ points(x    = 293:313,
        lty  = "dashed")
 
 t.seq <- lapply(293:313,  
-                FUN       = Tb_Fei,  
+                FUN       = Tb_lizard_Fei,  
                 T_g       = 300,  
                 H         = 800,  
                 lw        = 30,  
@@ -2487,7 +2487,7 @@ psi_deg <- sapply(1:24,
 psi_rad <- degrees_to_radians(psi_deg)
 
 Srad <- sapply(psi_rad, 
-               FUN  = estimate_radiation, 
+               FUN  = solar_radiation, 
                doy  = doy, 
                tau  = tau, 
                elev = elev, 
@@ -2715,14 +2715,14 @@ for (hr in 1:24) {
 TeFei <- rep(NA, 24)
 
 for (hr in 1:24) {
-  TeFei[hr] <- Tb_Fei(T_a       = Ta[hr] + 273, 
-                      T_g       = Ts[hr] + 273, 
-                      H         = Qabs[hr], 
-                      lw        = 30, 
-                      shade     = 0.0, 
-                      m         = 10.5,
-                      Acondfact = 0.05,
-                      Agradfact = 0.4)
+  TeFei[hr] <- Tb_lizard_Fei(T_a       = Ta[hr] + 273, 
+                             T_g       = Ts[hr] + 273, 
+                             H         = Qabs[hr], 
+                             lw        = 30, 
+                             shade     = 0.0, 
+                             m         = 10.5,
+                             Acondfact = 0.05,
+                             Agradfact = 0.4)
 }
 
 ```
@@ -2800,7 +2800,7 @@ points(x    = 1:24,
         col  = "green")
 
 legend(x      = "topleft",
-       legend = c("Ta", "Ts", "Tb_Gates", "Tb_CampbellNorman", "Tb_lizard", "Tb_Fei"),
+       legend = c("Ta", "Ts", "Tb_Gates", "Tb_CampbellNorman", "Tb_lizard", "Tb_lizard_Fei"),
        lty    = c("solid", "solid", "solid", "dotted", "dashed", "dotdash"), 
        pch    = NA, 
        col    = c("orange", "purple", "blue", "blue", "blue", "blue"))
