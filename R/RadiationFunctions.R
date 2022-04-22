@@ -23,16 +23,16 @@
 #' 
 #' @examples
 #'   solar_radiation(doy  = 112, 
-#'                      psi  = 1, 
-#'                      tau  = 0.6, 
-#'                      elev = 1500, 
-#'                      rho  = 0.7)
+#'                   psi  = 1, 
+#'                   tau  = 0.6, 
+#'                   elev = 1500, 
+#'                   rho  = 0.7)
 #'
 solar_radiation <- function (doy, 
-                                psi, 
-                                tau, 
-                                elev, 
-                                rho = 0.7){
+                             psi, 
+                             tau, 
+                             elev, 
+                             rho = 0.7){
   
   stopifnot(doy >  0, 
             doy <  367, 

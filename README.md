@@ -9,7 +9,7 @@
 <!-- badges: end -->
 
 
-**Author:** [TrEnCh project, Buckley Lab, Department of Biology, University of Washington](https://trenchproject.github.io)<br>
+**Author:** [TrEnCh project, Buckley Lab, Department of Biology, University of Washington](https://www.trenchproject.com/)<br>
 
 [Package website](https://trenchproject.github.io/TrenchR/)
 
@@ -25,9 +25,11 @@ devtools::install_github("trenchproject/TrenchR")
 ```
 
 ### Using the package
-The package encompasses simple functions that can be combined to estimate environmental conditions and their impacts on organisms. Many of the functions are adapted from biophysical ecology texts including the following:
-* Gates DM. Biophysical Ecology.
-* Campbell GS and Norman JM. An introduction to environmental biophysics.
+The package encompasses simple functions that can be combined to estimate environmental conditions and their impacts on organisms. 
+Many of the functions are adapted from biophysical ecology texts including the following:  
+
+* Gates DM. 1980. Biophysical Ecology.  
+* Campbell GS and Norman JM. 2000. An introduction to environmental biophysics.
 
 ### Package Vignettes
 We introduce functions in categorically grouped tutorials.  A good place to start is the Allometry and conversions tutorial, which provides tools for preparing data such as estimating additional dimensions of organisms from measured dimensions. 
