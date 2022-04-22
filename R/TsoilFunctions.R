@@ -110,7 +110,7 @@ soil_specific_heat <- function (x_o,
 
 #' @title Solve Equation for Soil Temperature
 #' 
-#' @description This function is called by \code{\link{soil_temp_noint}} to solve the equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. The function represents the integrand in the equation. It is not intended to be called directly.
+#' @description This function is called by \code{\link{soil_temperature_equation}} to solve the equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}. The function represents the integrand in the equation. It is not intended to be called directly.
 #' 
 #' @param x \code{numeric} vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air).  The volume fractions should sum to 1. Note that x and lambda values in the example correspond to these soil constituents.
 #' 

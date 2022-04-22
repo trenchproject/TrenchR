@@ -123,7 +123,7 @@ Other biophysical models:
 \code{\link{Tb_grasshopper}()},
 \code{\link{Tb_limpetBH}()},
 \code{\link{Tb_limpet}()},
-\code{\link{Tb_lizardFei}()},
+\code{\link{Tb_lizard_Fei}()},
 \code{\link{Tb_mussel}()},
 \code{\link{Tb_salamander_humid}()},
 \code{\link{Tb_snail}()},

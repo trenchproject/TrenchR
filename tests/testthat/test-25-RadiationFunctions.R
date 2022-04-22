@@ -4,8 +4,8 @@ expect_similar <- function(input, expected) {
   eval(bquote(expect_lt(abs(input - expected), 0.01)))
 }
 
-test_that("estimate_radiation function works as expected", {
-  expect_equal(length(estimate_radiation(doy=112, psi=1, tau=0.6, elev=1500, rho=0.7)),3)
+test_that("solar_radiation function works as expected", {
+  expect_equal(length(solar_radiation(doy=112, psi=1, tau=0.6, elev=1500, rho=0.7)),3)
   expect_similar(solar_radiation(doy=112, psi=1, tau=0.6, elev=1500, rho=0.7)[1], 334.3606)
   expect_similar(solar_radiation(doy=112, psi=1, tau=0.6, elev=1500, rho=0.7)[2], 120.1351)
   expect_similar(solar_radiation(doy=112, psi=1, tau=0.6, elev=1500, rho=0.7)[3], 318.1471)

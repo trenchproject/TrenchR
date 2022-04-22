@@ -25,10 +25,10 @@ The function estimate direct, diffuse, and reflected components of solar radiati
 }
 \examples{
   solar_radiation(doy  = 112, 
-                     psi  = 1, 
-                     tau  = 0.6, 
-                     elev = 1500, 
-                     rho  = 0.7)
+                  psi  = 1, 
+                  tau  = 0.6, 
+                  elev = 1500, 
+                  rho  = 0.7)
 
 }
 \references{
