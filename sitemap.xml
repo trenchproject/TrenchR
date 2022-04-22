@@ -46,9 +46,6 @@
     <loc>https://trenchproject.github.io/TrenchR/reference/DRYAIR.html</loc>
   </url>
   <url>
-    <loc>https://trenchproject.github.io/TrenchR/reference/Free_or_forced_convection.html</loc>
-  </url>
-  <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/Grashof_number.html</loc>
   </url>
   <url>
@@ -100,16 +97,13 @@
     <loc>https://trenchproject.github.io/TrenchR/reference/Reynolds_number.html</loc>
   </url>
   <url>
-    <loc>https://trenchproject.github.io/TrenchR/reference/TPC.beta.html</loc>
-  </url>
-  <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/TPC.html</loc>
   </url>
   <url>
-    <loc>https://trenchproject.github.io/TrenchR/reference/Tb_CampbellNorman.html</loc>
+    <loc>https://trenchproject.github.io/TrenchR/reference/TPC_beta.html</loc>
   </url>
   <url>
-    <loc>https://trenchproject.github.io/TrenchR/reference/Tb_Fei.html</loc>
+    <loc>https://trenchproject.github.io/TrenchR/reference/Tb_CampbellNorman.html</loc>
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/Tb_Gates.html</loc>
@@ -131,6 +125,9 @@
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/Tb_lizard.html</loc>
+  </url>
+  <url>
+    <loc>https://trenchproject.github.io/TrenchR/reference/Tb_lizard_Fei.html</loc>
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/Tb_mussel.html</loc>
@@ -211,10 +208,10 @@
     <loc>https://trenchproject.github.io/TrenchR/reference/diurnal_temp_variation_sinesqrt.html</loc>
   </url>
   <url>
-    <loc>https://trenchproject.github.io/TrenchR/reference/estimate_radiation.html</loc>
+    <loc>https://trenchproject.github.io/TrenchR/reference/external_resistance_to_water_vapor_transfer.html</loc>
   </url>
   <url>
-    <loc>https://trenchproject.github.io/TrenchR/reference/external_resistance_to_water_vapor_transfer.html</loc>
+    <loc>https://trenchproject.github.io/TrenchR/reference/free_or_forced_convection.html</loc>
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/heat_transfer_coefficient.html</loc>
@@ -272,6 +269,9 @@
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/solar_noon.html</loc>
+  </url>
+  <url>
+    <loc>https://trenchproject.github.io/TrenchR/reference/solar_radiation.html</loc>
   </url>
   <url>
     <loc>https://trenchproject.github.io/TrenchR/reference/surface_area_from_length.html</loc>

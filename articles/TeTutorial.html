@@ -90,7 +90,7 @@
       <h1 data-toc-skip>Using energy balances to estimate body temperatures</h1>
                         <h4 data-toc-skip class="author">Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington</h4>
             
-            <h4 data-toc-skip class="date">2022-04-21</h4>
+            <h4 data-toc-skip class="date">2022-04-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/trenchproject/TrenchR/blob/HEAD/vignettes/TeTutorial.Rmd" class="external-link"><code>vignettes/TeTutorial.Rmd</code></a></small>
       <div class="hidden name"><code>TeTutorial.Rmd</code></div>
@@ -520,15 +520,15 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <code class="sourceCode R"><span class="fu"><a href="../reference/Nusselt_from_Grashof.html">Nusselt_from_Grashof</a></span><span class="op">(</span>Gr <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] 0.7177674</span></code></pre>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/Free_or_forced_convection.html">free_or_forced_convection</a></span><span class="op">(</span>Gr <span class="op">=</span> <span class="fl">100</span>,  
+<code class="sourceCode R"><span class="fu"><a href="../reference/free_or_forced_convection.html">free_or_forced_convection</a></span><span class="op">(</span>Gr <span class="op">=</span> <span class="fl">100</span>,  
                           Re <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] "intermediate condition, mixed convection based on Nusselt numbers is appropriate"</span></code></pre>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/Free_or_forced_convection.html">free_or_forced_convection</a></span><span class="op">(</span>Gr <span class="op">=</span> <span class="fl">1</span>, 
+<code class="sourceCode R"><span class="fu"><a href="../reference/free_or_forced_convection.html">free_or_forced_convection</a></span><span class="op">(</span>Gr <span class="op">=</span> <span class="fl">1</span>, 
                           Re <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] "forced convection"</span></code></pre>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/Free_or_forced_convection.html">free_or_forced_convection</a></span><span class="op">(</span>Gr <span class="op">=</span> <span class="fl">1000</span>, 
+<code class="sourceCode R"><span class="fu"><a href="../reference/free_or_forced_convection.html">free_or_forced_convection</a></span><span class="op">(</span>Gr <span class="op">=</span> <span class="fl">1000</span>, 
                           Re <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## [1] "free convection"</span></code></pre>
 <p>We offer methods to estimate the convective heat transfer coefficient based on either empirical measurements (<code><a href="../reference/heat_transfer_coefficient.html">heat_transfer_coefficient()</a></code>) or approximating the animal shape as a sphere (<code><a href="../reference/heat_transfer_coefficient_approximation.html">heat_transfer_coefficient_approximation()</a></code>). Approximating the animal shape as a sphere enables simplification while also producing a reasonable approximation <span class="citation">(Mitchell 1976)</span>. The functions approximate forced convective heat transfer as a function of windspeed <span class="math inline">\(V (m/s)\)</span>, the characteristic dimension <span class="math inline">\(D (m)\)</span>, the thermal conductivity of the air <span class="math inline">\(K (W m^{-1} K^{-1})\)</span>, the kinematic viscosity of the air <span class="math inline">\(\nu (m^2 s^{-1})\)</span>, and the taxa or a generic shape. An additional, simplified function (<code><a href="../reference/heat_transfer_coefficient_simple.html">heat_transfer_coefficient_simple()</a></code>) provides a reasonable approximation based on <span class="math inline">\(V\)</span> and <span class="math inline">\(D\)</span> for most environmental conditions.</p>
@@ -1361,7 +1361,7 @@ Please refer to the initial publication for the model details.<br>
 R code for another transient model of lizard body temperature is available in the following repository: <a href="https://github.com/JRubalcaba/BodyTemp" class="external-link uri">https://github.com/JRubalcaba/BodyTemp</a>.</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, 
-                FUN       <span class="op">=</span> <span class="va">Tb_Fei</span>,  
+                FUN       <span class="op">=</span> <span class="va">Tb_lizard_Fei</span>,  
                 T_g       <span class="op">=</span> <span class="fl">300</span>,  
                 H         <span class="op">=</span> <span class="fl">800</span>,  
                 lw        <span class="op">=</span> <span class="fl">30</span>,  
@@ -1381,7 +1381,7 @@ R code for another transient model of lizard body temperature is available in th
        col <span class="op">=</span> <span class="st">"gray"</span><span class="op">)</span>
 
 <span class="va">t.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fl">293</span><span class="op">:</span><span class="fl">313</span>,  
-                FUN       <span class="op">=</span> <span class="va">Tb_Fei</span>,  
+                FUN       <span class="op">=</span> <span class="va">Tb_lizard_Fei</span>,  
                 T_g       <span class="op">=</span> <span class="fl">300</span>,  
                 H         <span class="op">=</span> <span class="fl">800</span>,  
                 lw        <span class="op">=</span> <span class="fl">30</span>,  
@@ -1396,7 +1396,7 @@ R code for another transient model of lizard body temperature is available in th
        lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span>
 
 <span class="va">t.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fl">293</span><span class="op">:</span><span class="fl">313</span>,  
-                FUN       <span class="op">=</span> <span class="va">Tb_Fei</span>,  
+                FUN       <span class="op">=</span> <span class="va">Tb_lizard_Fei</span>,  
                 T_g       <span class="op">=</span> <span class="fl">300</span>,  
                 H         <span class="op">=</span> <span class="fl">800</span>,  
                 lw        <span class="op">=</span> <span class="fl">30</span>,  
@@ -2245,7 +2245,7 @@ We start by estimating day of year and the timing of sunrise and sunset:</p>
 <span class="va">psi_rad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/angle-conversions.html">degrees_to_radians</a></span><span class="op">(</span><span class="va">psi_deg</span><span class="op">)</span>
 
 <span class="va">Srad</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">psi_rad</span>, 
-               FUN  <span class="op">=</span> <span class="va">estimate_radiation</span>, 
+               FUN  <span class="op">=</span> <span class="va">solar_radiation</span>, 
                doy  <span class="op">=</span> <span class="va">doy</span>, 
                tau  <span class="op">=</span> <span class="va">tau</span>, 
                elev <span class="op">=</span> <span class="va">elev</span>, 
@@ -2444,14 +2444,14 @@ The energy balance omits conduction with the ground and thus underestimates temp
 <span class="va">TeFei</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">24</span><span class="op">)</span>
 
 <span class="kw">for</span> <span class="op">(</span><span class="va">hr</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">TeFei</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Tb_Fei.html">Tb_Fei</a></span><span class="op">(</span>T_a       <span class="op">=</span> <span class="va">Ta</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">+</span> <span class="fl">273</span>, 
-                      T_g       <span class="op">=</span> <span class="va">Ts</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">+</span> <span class="fl">273</span>, 
-                      H         <span class="op">=</span> <span class="va">Qabs</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>, 
-                      lw        <span class="op">=</span> <span class="fl">30</span>, 
-                      shade     <span class="op">=</span> <span class="fl">0.0</span>, 
-                      m         <span class="op">=</span> <span class="fl">10.5</span>,
-                      Acondfact <span class="op">=</span> <span class="fl">0.05</span>,
-                      Agradfact <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span>
+  <span class="va">TeFei</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Tb_lizard_Fei.html">Tb_lizard_Fei</a></span><span class="op">(</span>T_a       <span class="op">=</span> <span class="va">Ta</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">+</span> <span class="fl">273</span>, 
+                             T_g       <span class="op">=</span> <span class="va">Ts</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">+</span> <span class="fl">273</span>, 
+                             H         <span class="op">=</span> <span class="va">Qabs</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>, 
+                             lw        <span class="op">=</span> <span class="fl">30</span>, 
+                             shade     <span class="op">=</span> <span class="fl">0.0</span>, 
+                             m         <span class="op">=</span> <span class="fl">10.5</span>,
+                             Acondfact <span class="op">=</span> <span class="fl">0.05</span>,
+                             Agradfact <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>We next plot the diurnal trends in environmental data and the operative data.</p>
 <div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
@@ -2524,7 +2524,7 @@ The energy balance omits conduction with the ground and thus underestimates temp
         col  <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span>x      <span class="op">=</span> <span class="st">"topleft"</span>,
-       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ta"</span>, <span class="st">"Ts"</span>, <span class="st">"Tb_Gates"</span>, <span class="st">"Tb_CampbellNorman"</span>, <span class="st">"Tb_lizard"</span>, <span class="st">"Tb_Fei"</span><span class="op">)</span>,
+       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Ta"</span>, <span class="st">"Ts"</span>, <span class="st">"Tb_Gates"</span>, <span class="st">"Tb_CampbellNorman"</span>, <span class="st">"Tb_lizard"</span>, <span class="st">"Tb_lizard_Fei"</span><span class="op">)</span>,
        lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"solid"</span>, <span class="st">"solid"</span>, <span class="st">"dotted"</span>, <span class="st">"dashed"</span>, <span class="st">"dotdash"</span><span class="op">)</span>, 
        pch    <span class="op">=</span> <span class="cn">NA</span>, 
        col    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"orange"</span>, <span class="st">"purple"</span>, <span class="st">"blue"</span>, <span class="st">"blue"</span>, <span class="st">"blue"</span>, <span class="st">"blue"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
