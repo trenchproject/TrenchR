@@ -1463,7 +1463,7 @@ R code for another transient model of lizard body temperature is available in th
 ```{r, fig.height = 4, fig.width = 6}
 
 t.seq <- lapply(293:313, 
-                FUN       = Tb_Fei,  
+                FUN       = Tb_lizardFei,  
                 T_g       = 300,  
                 H         = 800,  
                 lw        = 30,  
@@ -1483,7 +1483,7 @@ abline(a   = 0,
        col = "gray")
 
 t.seq <- lapply(293:313,  
-                FUN       = Tb_Fei,  
+                FUN       = Tb_lizardFei,  
                 T_g       = 300,  
                 H         = 800,  
                 lw        = 30,  
@@ -1498,7 +1498,7 @@ points(x    = 293:313,
        lty  = "dashed")
 
 t.seq <- lapply(293:313,  
-                FUN       = Tb_Fei,  
+                FUN       = Tb_lizardFei,  
                 T_g       = 300,  
                 H         = 800,  
                 lw        = 30,  
@@ -2800,7 +2800,7 @@ points(x    = 1:24,
         col  = "green")
 
 legend(x      = "topleft",
-       legend = c("Ta", "Ts", "Tb_Gates", "Tb_CampbellNorman", "Tb_lizard", "Tb_Fei"),
+       legend = c("Ta", "Ts", "Tb_Gates", "Tb_CampbellNorman", "Tb_lizard", "Tb_lizardFei"),
        lty    = c("solid", "solid", "solid", "dotted", "dashed", "dotdash"), 
        pch    = NA, 
        col    = c("orange", "purple", "blue", "blue", "blue", "blue"))

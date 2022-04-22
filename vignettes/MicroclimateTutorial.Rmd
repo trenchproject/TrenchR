@@ -897,7 +897,7 @@ points(x = c(0.01, 0.025, 0.05),
 
 # Diurnal variation in temperature and radiation
 
-We provide three forms of equations to estimate diurnal temperature radiation: a sine model, a sine exponential model, and a sine square root model. 
+We provide three forms of equations to estimate diurnal temperature variation: a sine model, a sine exponential model, and a sine square root model. 
 The models assume that maximum temperature $T_x$ will occur sometime between sunrise $t_r$ and sunset $t_s$ and that the minimum temperature $T_n$ will occur in the early morning.
 
 The sine model (`diurnal_temp_variation_sine()`) estimates temperature $T$ at hour $h$ as a function of minimum and maximum temperature 
@@ -906,7 +906,7 @@ $$T(h)= T_x -T_n(1-\gamma), $$
 
 where $\gamma=0.44-0.46 \sin (0.9+WH_r)+0.11 \sin(0.9+2WH_r)$ and $W=\pi/12$.
 
-For the sine exponential model (`diurnal_temp_variation_sineexp()`), hourly temperature is estimated as a function of three empirically determined parameters: $\alpha$ is the time difference between the hour of maximum temperature $h_x$ and midday; $\beta$ is the time difference between the hour of minimum temperature $h_n$ and sunrise; and $\gamma$ is a decay parameter that determines the rate of temperature change from sunset to $h'_n$ of the next day.
+For the sine exponential model (`diurnal_temp_variation_sineexp()`), hourly temperatures are estimated as a function of three empirically determined parameters: $\alpha$ is the time difference between the hour of maximum temperature $h_x$ and midday; $\beta$ is the time difference between the hour of minimum temperature $h_n$ and sunrise; and $\gamma$ is a decay parameter that determines the rate of temperature change from sunset to $h'_n$ of the next day.
 
 The time of maximum temperature can be calculated as $h_x=1/2(t_r+t_s)+\alpha$. 
 The time of minimum temperature can be calculated as $t_n=t_r+\beta$. 
@@ -969,12 +969,12 @@ points(1:23,
 
 legend(x      = "topleft", 
        title  = "function", 
-       legend = c("_sine", "_sineexp", "_sinesqrt"),
+       legend = c("sine", "sine-exp", "sine-sqrt"),
        lty    = c("solid", "dotted", "dashed"))
 
 ```
 
-We adapt equations from Tham et al. [-@tham2010estimation] to estimate hourly solar radiation ($W m^{-2} hr^{-1}$) as a function of daily global solar radiation (in $W m^{-2} d^{-1}$). 
+We adapted equations from Tham et al. [-@tham2010estimation] to estimate hourly solar radiation ($W m^{-2} hr^{-1}$) as a function of daily global solar radiation (in $W m^{-2} d^{-1}$). 
 The function `diurnal_radiation_variation()` partitions daily solar radiation $S$.
 The function estimates the ratio of hourly to daily global irradiation,$S_G$, as follows:
 
@@ -1121,7 +1121,7 @@ The change in soil temperature ($T_s$) through time $t$ and depth $z$ can be app
 $$\frac{dT_s}{dt}= \frac{k_s}{\rho_s c_s} \frac{\delta^2T_s}{\delta z^2}$$
 
 where $k_s$ is the thermal conductivity of soil (W/m·K), $\rho_s$ is the density of soil, and $c_s$ is the specific heat of soil (J/kg·K). 
-We solve the differential equation by breaking the soil profile into depth nodes, exchanging heat. 
+We solve the differential equation by breaking the soil profile into depth nodes exchanging heat. 
 We estimate the steady-state temperature profile, which is independent of initial conditions. 
 The choice of initial conditions only affects the rate of convergence to the steady-state solution. 
 A finite difference approximation of the differential equation yields a transient equation for the temperature at depth $i$ and time $p$ where we let $a= \frac{k_s}{\rho_s c_s}$:
