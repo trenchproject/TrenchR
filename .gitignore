@@ -10,3 +10,4 @@ Meta
 docs/*
 
 /doc/
+*.bak
