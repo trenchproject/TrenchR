@@ -66,27 +66,19 @@
     </div>
 
 <div id="documentation-workflow" class="section level1">
-
 <p>We’re using <code>Rdpack</code> and BiBTeX to manage citations in the documentation, which requires a little more work than a standard Roxygen documentation setup.</p>
 <p>To include a citation</p>
 <ol style="list-style-type: decimal"><li>check if it is in <code>inst/REFERENCES.bib</code>
-</li>
-</ol><ul><li>if not, create an entry it, save the bib file, and open a <em>fresh</em> <code>R</code> session (this is important, as Rdpack sets environments that prevent updating in one session)</li>
-</ul><ol start="2" style="list-style-type: decimal"><li>wherever you would like to include the citation in the roxygen documentation use</li>
-</ol><pre><code>  \insertCite{&lt; citation key &gt;}{TrenchR}</code></pre>
+</li></ol><ul><li>if not, create an entry it, save the bib file, and open a <em>fresh</em> <code>R</code> session (this is important, as Rdpack sets environments that prevent updating in one session)</li></ul><ol start="2" style="list-style-type: decimal"><li>wherever you would like to include the citation in the roxygen documentation use</li></ol><pre><code>  \insertCite{&lt; citation key &gt;}{TrenchR}</code></pre>
 <p>if you want it to be like Name (Year) instead of (Name Year), use</p>
 <pre><code>  \insertCite{&lt; citation key &gt;;textual}{TrenchR}</code></pre>
 <p>Other formatting, etc. is available, see <a href="https://github.com/GeoBosh/Rdpack" class="external-link uri">https://github.com/GeoBosh/Rdpack</a>.</p>
-<ol start="3" style="list-style-type: decimal"><li>then add the references section to the roxygen documentation</li>
-</ol><pre><code><span class="co">#'</span>
+<ol start="3" style="list-style-type: decimal"><li>then add the references section to the roxygen documentation</li></ol><pre><code><span class="co">#'</span>
 <span class="co">#' @references</span>
 <span class="co">#'   \insertAllCited{}</span></code></pre>
-<ol start="4" style="list-style-type: decimal"><li>build the documentation at the command line</li>
-</ol><pre><code><span class="fu">devtools</span><span class="fu">::</span><span class="fu">document</span><span class="op">(</span><span class="op">)</span></code></pre>
-<ol start="5" style="list-style-type: decimal"><li>if you run a standard help look up (<code>"?functionname"</code>), you’ll notice that the BibTex isn’t actually rendered. To see it, you need to use <code>viewRd</code>:</li>
-</ol><pre><code><span class="fu">Rdpack</span><span class="fu">::</span><span class="fu"><a href="https://geobosh.github.io/Rdpack/reference/viewRd.html" class="external-link">viewRd</a></span><span class="op">(</span><span class="st">"./man/&lt;functionname&gt;.Rd"</span><span class="op">)</span></code></pre>
-<ol start="6" style="list-style-type: decimal"><li>You can check to verify that the documentation will render fully properly by running</li>
-</ol><pre><code><span class="fu">devtools</span><span class="fu">::</span><span class="fu">build</span><span class="op">(</span><span class="op">)</span></code></pre>
+<ol start="4" style="list-style-type: decimal"><li>build the documentation at the command line</li></ol><pre><code><span class="fu">devtools</span><span class="fu">::</span><span class="fu">document</span><span class="op">(</span><span class="op">)</span></code></pre>
+<ol start="5" style="list-style-type: decimal"><li>if you run a standard help look up (<code>"?functionname"</code>), you’ll notice that the BibTex isn’t actually rendered. To see it, you need to use <code>viewRd</code>:</li></ol><pre><code><span class="fu">Rdpack</span><span class="fu">::</span><span class="fu"><a href="https://geobosh.github.io/Rdpack/reference/viewRd.html" class="external-link">viewRd</a></span><span class="op">(</span><span class="st">"./man/&lt;functionname&gt;.Rd"</span><span class="op">)</span></code></pre>
+<ol start="6" style="list-style-type: decimal"><li>You can check to verify that the documentation will render fully properly by running</li></ol><pre><code><span class="fu">devtools</span><span class="fu">::</span><span class="fu">build</span><span class="op">(</span><span class="op">)</span></code></pre>
 <p>and then installing the package from the built zip file and running</p>
 <pre><code><span class="op">?</span><span class="fu">TrenchR</span><span class="fu">::</span><span class="va">functionname</span></code></pre>
 <div class="section level2">
@@ -111,7 +103,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer></div>
