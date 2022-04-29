@@ -3,11 +3,7 @@
 .RData
 .Ruserdata
 inst/doc
-doc
 Meta
 /Meta/
-/docs/
-docs/*
 
-/doc/
 *.bak
