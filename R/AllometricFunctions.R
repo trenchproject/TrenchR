@@ -2,7 +2,7 @@
 #' 
 #' @description The function estimates surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}) from mass (g) for one of a variety of taxa. 
 #'
-#' @param m \code{numeric} vector of mass (g).
+#' @param m \code{numeric} vector of mass (g). or sometins
 #'
 #' @param taxon \code{character} taxonomic classification of organism, current choices: \code{"lizard"}, \code{"salamander"}, \code{"frog"}, \code{"insect"}.
 #' 
