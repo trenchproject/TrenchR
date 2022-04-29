@@ -1173,7 +1173,7 @@ In addition to providing general functions that can be used to build heat budget
 
 ## Lizards
 
-We adapted a biophysical model (`Tb_lizard()`) to estimate body temperatures, $T_b (K)$, for lizards from Buckley [-@buckley2007linking]. The function follows the modeling approach contained Campbell and Norman [-@campbell2012introduction].
+We adapted a biophysical model (`Tb_lizard()`) to estimate body temperatures, $T_b (K)$, for lizards from Buckley [-@buckley2007linking]. The function follows the modeling approach contained in Campbell and Norman [-@campbell2012introduction].
 
 ### Day Length and Sun Angles
 
@@ -1535,7 +1535,7 @@ The solar radiative heat flux is estimated as the sum of direct ($Q_{s,dir}$), d
 
 $$ Q_s= Q_{s,dir}+Q_{s,dif}+Q_{s,ref},\\ Q_s= \alpha A_{s,dir}H_{s,dir}/cos(z) +\alpha A_{s,ref}H_{s,dif}+\alpha r_g A_{s,ref}H_{s,ttl}. $$
 
-Each component is calculated as the product of the solar absorptivity of the grasshopper (we assume $\alpha = 0.7$, [@anderson1979habitat]), the horizontal flux of solar radiation ($H_{s,dir}$, $H_{s,dif}$, and $H_{s,ttl}$ for the direct, diffuse, and total fluxes, respectively), and the silhouette area of the grasshopper exposed to solar radiation ($A_{s,dir}$, $A_{s,dif}$, and $A_{s,ttl}$ for the direct, diffuse, and total surface areas, respectively). The direct radiation is adjusted for the zenith angle ($z$, degrees), which is the angle of the sun away from the vertical.
+Each component is calculated as the product of the solar absorptivity of the grasshopper [we assume $\alpha = 0.7$, [@anderson1979habitat]], the horizontal flux of solar radiation ($H_{s,dir}$, $H_{s,dif}$, and $H_{s,ttl}$ for the direct, diffuse, and total fluxes, respectively), and the silhouette area of the grasshopper exposed to solar radiation ($A_{s,dir}$, $A_{s,dif}$, and $A_{s,ttl}$ for the direct, diffuse, and total surface areas, respectively). The direct radiation is adjusted for the zenith angle ($z$, degrees), which is the angle of the sun away from the vertical.
 
 We calculate the surface area by approximating the body of a female grasshopper as a rotational ellipsoid [@samietz2005altitudinal]. The major axis is equal to the grasshopper's length. We calculate the semi-minor axis (half of the grasshopper's width) as $a = (0.365+0.241\times1000 L)/1000 m$ using a regression from Lactin and Johnson [-@lactin1998environmental]. If $e=\sqrt{1-a^2/c^2}$, the surface area can be calculated as follows:
 
@@ -1551,7 +1551,7 @@ $$Q_c= h_{hc} A_c (T_b-T_a).$$
 
 We calculate $h_{cs}$ from the convective heat transfer coefficient as $h_{cs}=h_c(-0.007z/L+1.71)$ where $z$= 0.001m is the height above the ground. We use an empirically-derived relationship for grasshoppers to estimate the heat transfer coefficient, $h_c (Wm^{-2}K^{-1})$ [@lactin1998environmental]: $h_c = Nu K_f/L$, where the thermal conductivity of fluid, $K_f(Wm^{-1}K^{-1})= 0.024+0.00007(T_a+273)$.
 
-We use an empirical relationship from Anderson et al. [-@lactin1998environmental] to estimate the Nusselt number, $Nu$, as $nu = 0.41 Re^{0.5}$ where $Re$ is the Reynolds number, $Re =u L/v$, where $u$ is wind speed ($m/s$) and $v$ is the kinematic viscosity of air ($m^2/s$) ($V = 15.68 \times 10^{-6}$ at $300K$). The rate of conduction is a function of the body area in contact with the substrate and the temperature differential between the body and the surface: $$Q_{cond}= h_{cut} A_{cond} (T_b-T_g)/T, $$ where $h_{cut}$ is the thermal conductivity of the grasshopper cuticle (approximated as $0.15 W m^{-1} K^{-1}$; value for hornets; [@galushko2005electrical]); $A_{cond}$ is the surface area of the grasshopper in contact with the substrate; and $T$ is the cuticle thickness [approximated as $6 \times 10^{-5}m$; [@galushko2005electrical]]. We only model conductance through the cuticle as we assume that the interior of the grasshopper is well mixed.
+We use an empirical relationship from Anderson et al. [-@lactin1998environmental] to estimate the Nusselt number, $Nu$, as $nu = 0.41 Re^{0.5}$ where $Re$ is the Reynolds number, $Re =u L/v$, where $u$ is wind speed ($m/s$) and $v$ is the kinematic viscosity of air ($m^2/s$) ($V = 15.68 \times 10^{-6}$ at $300K$). The rate of conduction is a function of the body area in contact with the substrate and the temperature differential between the body and the surface: $$Q_{cond}= h_{cut} A_{cond} (T_b-T_g)/T, $$ where $h_{cut}$ is the thermal conductivity of the grasshopper cuticle [approximated as $0.15 W m^{-1} K^{-1}$; value for hornets; [@galushko2005electrical]]; $A_{cond}$ is the surface area of the grasshopper in contact with the substrate; and $T$ is the cuticle thickness [approximated as $6 \times 10^{-5}m$; [@galushko2005electrical]]. We only model conductance through the cuticle as we assume that the interior of the grasshopper is well mixed.
 
 We provide the operative temperature model for grasshoppers as follows:
 
@@ -2102,7 +2102,7 @@ plot(x    = 293:313,
      ylab = expression("boundary layer resistance" ~ (s ~ cm^{-1})))
 ```
 
-TrenchR includes several support functions, often adapted from [@campbell2012introduction], used for estimating humid operative temperatures. Functions estimate thermal radiation absorbed (`thermal_radiation_absorbed`) and emitted (`Qemitted_thermal_radiation`) as well as actual ("actual_vapor_pressure") and saturation (`saturation_vapor_pressure`) vapor pressure. The functions also include a statistical approximation from [@campbell2012introduction] for estimating soil temperatures at specified depths.
+TrenchR includes several support functions, often adapted from Campbell and Norman  [-@campbell2012introduction], used for estimating humid operative temperatures. Functions estimate thermal radiation absorbed (`thermal_radiation_absorbed`) and emitted (`Qemitted_thermal_radiation`) as well as actual (`actual_vapor_pressure`) and saturation (`saturation_vapor_pressure`) vapor pressure. The functions also include a statistical approximation from Campbell and Norman [-@campbell2012introduction] for estimating soil temperatures at specified depths.
 
 ```{r, fig.height = 4, fig.width = 8}
 
@@ -2220,7 +2220,7 @@ legend(x      = "topleft",
 
 # Example operative environmental temperature calculations
 
-Suppose we want to estimate the hourly body temperature (operative environmental temperature, $T_e$) of a *Sceloporus* lizard on June 1, 2020, in Santa Fe, New Mexico, USA (35.69, -105.944, elevation: 2121m). Let's assume the lizard is in an unshaded location where the daily air temperature varies from a minimum of 10°C to a maximum of 25°C, the soil surface temperature varies from a minimum of 15°C to a maximum of 30°C, and the windspeed is 0.5 m/s. We assume that atmospheric transmissivity $\tau = 0.7$ and albedo $\rho= 0.6$.
+Suppose we want to estimate the hourly body temperature (operative environmental temperature, $T_e$) of a *Sceloporus* lizard on June 1, 2021, in Santa Fe, New Mexico, USA (35.69, -105.944, elevation: 2121m). Let's assume the lizard is in an unshaded location where the daily air temperature varies from a minimum of 10°C to a maximum of 25°C, the soil surface temperature varies from a minimum of 15°C to a maximum of 30°C, and the windspeed is 0.5 m/s. We assume that atmospheric transmissivity $\tau = 0.7$ and albedo $\rho= 0.6$.
 
 We will initially estimate $T_b$ by balancing an energy balance for steady-state conditions. We then use the $T_b$ estimates to explore the components of an energy balance.
 
@@ -2258,7 +2258,7 @@ Let us first prepare the environmental data for analysis. We will need to estima
 
   Tb0 <- 25
 
-  doy   <- day_of_year("2020-06-01", 
+  doy   <- day_of_year("2021-06-01", 
                        format= "%Y-%m-%d") 
   snoon <- solar_noon(lon = lon, 
                       doy = doy) 
@@ -2384,7 +2384,7 @@ We then estimate the lizard's heat transfer coefficient, $H_L$ using an empirica
 
 ```{r}
 
-# Use DRYAIR in NicheMapR to estimate the thermal conductivity of air and kinematic viscosity
+# Use DRYAIR from NicheMapR to estimate the thermal conductivity of air and kinematic viscosity
 # estimate Barometric pressure (pascal)
 
   ap <- airpressure_from_elev(elev) * 1000 
