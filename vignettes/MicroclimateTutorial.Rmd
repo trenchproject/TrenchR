@@ -29,7 +29,8 @@ This tutorial covers approaches and functions for preparing environmental data f
 The tutorial first covers estimating the intensity and partitioning of solar radiation, including estimating solar angles and day length. 
 We then turn to estimating temperature and wind speed profiles that can scale weather station data to the conditions experienced by organisms. 
 We review functions for modeling diurnal variation in temperature and solar radiation as well as heat accumulation (degree days). 
-The tutorial concludes with a microclimate model for estimating soil temperatures. Additional resources are available in R packages including NicheMapR, microclima, and microclimc.
+The tutorial concludes with a microclimate model for estimating soil temperatures. 
+Additional resources are available in R packages including NicheMapR, microclima, and microclimc.
 
 # Radiation
 
