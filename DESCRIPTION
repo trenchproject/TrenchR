@@ -2,9 +2,9 @@ Package: TrenchR
 Title: Microclimate and Biophysical Models for Translating Environmental Change into Organismal Responses
 Description: The TrenchR package aids in translating environmental change into organismal responses. The package includes microclimate models to vertically scale weather station data to organismal heights. The biophysical modeling tools include both general models for heat flows and specific models to predict body temperatures for a variety of ectothermic taxa. Additional functions model and temporally partition air and soil temperatures and solar radiation. We offer utility functions to aid in estimating the organismal and environmental parameters needed for biophysical ecology. TrenchR focuses on relatively simple and modular functions so users can create transparent and flexible biophysical models. Many functions are derived from Gates (1980) <doi:10.1007/978-1-4612-6024-0> and Campbell and Norman (1988) <isbn:9780387949376>. 
 Version: 0.1.0
-Maintainer: Lauren Buckley <simonis@dapperstats.com>
+Maintainer: Lauren Buckley <lbuckley@uw.edu>
 Authors@R: c(
-    person("Lauren", "Buckley", role = c("aut", "cre"), email = "simonis@dapperstats.com", comment = c(ORCID = "0000-0003-1315-3818")),
+    person("Lauren", "Buckley", role = c("aut", "cre"), email = "lbuckley@uw.edu", comment = c(ORCID = "0000-0003-1315-3818")),
     person("Bryan", "Briones Ortiz", role = c("aut")),
     person("Isaac", "Caruso", role = c("aut")),
     person("Aji", "John", role = c("aut"), comment = c(ORCID = "0000-0002-4401-1401")),
