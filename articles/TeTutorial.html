@@ -90,7 +90,7 @@
       <h1 data-toc-skip>Using energy balances to estimate body temperatures</h1>
                         <h4 data-toc-skip class="author">Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington</h4>
             
-            <h4 data-toc-skip class="date">2022-04-29</h4>
+            <h4 data-toc-skip class="date">2022-04-30</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/trenchproject/TrenchR/blob/HEAD/vignettes/TeTutorial.Rmd" class="external-link"><code>vignettes/TeTutorial.Rmd</code></a></small>
       <div class="hidden name"><code>TeTutorial.Rmd</code></div>
@@ -102,7 +102,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Load TrenchR package</span>
 
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://trenchproject.github.io/trenchr/" class="external-link">TrenchR</a></span><span class="op">)</span></code></pre></div>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://trenchproject.github.io/" class="external-link">TrenchR</a></span><span class="op">)</span></code></pre></div>
 <p>This tutorial covers how to construct energy balances for applications such as estimating the body temperature of organisms. The tutorial first reviews general functions to estimate forms of heat exchange and balance the exchanges. Finally, we present functions to implement specialized energy balances for particular organisms.</p>
 <div class="section level2">
 <h2 id="operative-environmental-temperatures">Operative environmental temperatures<a class="anchor" aria-label="anchor" href="#operative-environmental-temperatures"></a>
@@ -890,7 +890,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <div class="section level2">
 <h2 id="evaporation-qevap">Evaporation, Qevap<a class="anchor" aria-label="anchor" href="#evaporation-qevap"></a>
 </h2>
-<p>We provide functions to estimate heat loss associated with evaporative water loss. We offer an empirically-derived relationship for a lizard <span class="citation">(Porter et al. 1973; in Gates 2012)</span> and a function based on resistances for amphibians <span class="citation">(Spotila, O’connor, and Bakken 1992)</span>. The function for amphibians is based on the latent heat of vaporization of water: evaporation of water results in heat loss at a rate of <span class="math inline">\(2.44 \times 10^6 J kg^{-1}\)</span> at biological temperatures. The rate of water loss for an amphibian with fully wetted skin can be expressed as</p>
+<p>We provide functions to estimate heat loss associated with evaporative water loss. We offer an empirically-derived relationship for a lizard <span class="citation">(Porter et al. 1973; in Gates 2012)</span> and a function based on resistances for amphibians <span class="citation">(Spotila, O’Connor, and Bakken 1992)</span>. The function for amphibians is based on the latent heat of vaporization of water: evaporation of water results in heat loss at a rate of <span class="math inline">\(2.44 \times 10^6 J kg^{-1}\)</span> at biological temperatures. The rate of water loss for an amphibian with fully wetted skin can be expressed as</p>
 <p><span class="math display">\[ E_c= A (\rho_s-h \rho_a)/r_e,\]</span></p>
 <p>where <span class="math inline">\(A\)</span> is surface area (<span class="math inline">\(m^2\)</span>), <span class="math inline">\(r_e\)</span> is the external (convective) resistance to water vapor transport (<span class="math inline">\(s/m\)</span>), <span class="math inline">\(\rho_s\)</span> is the saturation water vapor density at skin surface (<span class="math inline">\(kg/m^3\)</span>), <span class="math inline">\(h\)</span> is relative humidity (between 0 and 1), and <span class="math inline">\(\rho_a\)</span> is the saturation water vapor density in ambient air (<span class="math inline">\(kg/m^3\)</span>).</p>
 <p>The rate of water loss for an amphibian without fully wetted skin can be expressed as <span class="math display">\[E_c= A (\rho_s-h\rho_a)/(r_i+r_e),\]</span> where <span class="math inline">\(r_i\)</span> is the internal (cutaneous) resistance to vapor transport (<span class="math inline">\(s/m\)</span>). We provide R functions for heat loss through evaporation as the product of <span class="math inline">\(E_c\)</span> and the latent heat of vaporization of water:</p>
@@ -963,7 +963,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
        legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"amphibian"</span>, <span class="st">"amphibian_wetskin"</span>, <span class="st">"lizard"</span><span class="op">)</span>, 
        lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"solid"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="TeTutorial_files/figure-html/unnamed-chunk-20-1.png" width="576"></p>
-<p>We estimate external resistance to water vapor transport, <span class="math inline">\(r_e\)</span>, using the Lewis rule describing the relationships among the coefficients for heat and mass transport: <span class="math inline">\(r_e= 0.93 \rho c_p/H_L\)</span>, where <span class="math inline">\(\rho\)</span> is the density of air (<span class="math inline">\(kg m^{-3}\)</span>), <span class="math inline">\(c_p\)</span> is the specific heat of air at constant pressure (<span class="math inline">\(J kg^{-1}°C^{-1}\)</span>), and <span class="math inline">\(H_L\)</span> is the convective heat transfer coefficient (<span class="math inline">\(W m^{-2} °C^{-1}\)</span>). We approximate <span class="math inline">\(\rho c_p\)</span>as 1,200 <span class="math inline">\(J m^{-3}°C^{-1}\)</span> as commonly done in biological applications <span class="citation">(Spotila, O’connor, and Bakken 1992)</span>. We provide the relationship for <span class="math inline">\(r_e\)</span> as a function:</p>
+<p>We estimate external resistance to water vapor transport, <span class="math inline">\(r_e\)</span>, using the Lewis rule describing the relationships among the coefficients for heat and mass transport: <span class="math inline">\(r_e= 0.93 \rho c_p/H_L\)</span>, where <span class="math inline">\(\rho\)</span> is the density of air (<span class="math inline">\(kg m^{-3}\)</span>), <span class="math inline">\(c_p\)</span> is the specific heat of air at constant pressure (<span class="math inline">\(J kg^{-1}°C^{-1}\)</span>), and <span class="math inline">\(H_L\)</span> is the convective heat transfer coefficient (<span class="math inline">\(W m^{-2} °C^{-1}\)</span>). We approximate <span class="math inline">\(\rho c_p\)</span>as 1,200 <span class="math inline">\(J m^{-3}°C^{-1}\)</span> as commonly done in biological applications <span class="citation">(Spotila, O’Connor, and Bakken 1992)</span>. We provide the relationship for <span class="math inline">\(r_e\)</span> as a function:</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
 
@@ -2585,7 +2585,7 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <p>Samietz, J., M. A. Salser, and H. Dingle. 2005. “Altitudinal Variation in Behavioural Thermoregulation: Local Adaptation Vs. Plasticity in California Grasshoppers.” <em>Journal of Evolutionary Biology</em> 18 (4): 1087–96.</p>
 </div>
 <div id="ref-spotila1992biophysics">
-<p>Spotila, J. R., M. P. O’connor, and G. S. Bakken. 1992. “Biophysics of Heat and Mass Transfer.” <em>Environmental Physiology of the Amphibians. University of Chicago Press, Chicago</em>, 59–80.</p>
+<p>Spotila, J. R., M. P. O’Connor, and G. S. Bakken. 1992. “Biophysics of Heat and Mass Transfer.” <em>Environmental Physiology of the Amphibians. University of Chicago Press, Chicago</em>, 59–80.</p>
 </div>
 <div id="ref-swinbank1963long">
 <p>Swinbank, W. C. 1963. “Long-Wave Radiation from Clear Skies.” <em>Quarterly Journal of the Royal Meteorological Society</em> 89 (381): 339–48.</p>
