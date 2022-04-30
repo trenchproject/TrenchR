@@ -49,3 +49,10 @@ Found the following files/directories:
 ```
 
 This NOTE appears to be isolated to R-hub Windows R-devel, and a github search suggests it is not an issue.
+
+
+## Dependencies
+
+This is a new release, so there are no reverse dependencies.
+
+There are no downstream dependencies.
