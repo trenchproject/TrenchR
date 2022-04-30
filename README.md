@@ -60,7 +60,7 @@ We welcome code contributions, fixes, and comments. Code (scripts and functions)
 If you use this package, We would appreciate a citation. You can see an up to date citation information with `citation("TrenchR")`. You can cite either the package or the accompanying journal article.
 
 ### Developer notes
-Please see the [Contributor Notes](https://github.com/trenchproject/TrenchR/blob/main/CONTRIBUTING.mdd) and [Code of Conduct](https://github.com/trenchproject/TrenchR/blob/main/CODE_OF_CONDUCT.md).
+Please see the [Contributor Notes](https://github.com/trenchproject/TrenchR/blob/main/CONTRIBUTING.md) and [Code of Conduct](https://github.com/trenchproject/TrenchR/blob/main/CODE_OF_CONDUCT.md).
 
-We use [Rdpack](https://cran.r-project.org/package=Rdpack) to facilitate package documentation with [BibTeX](https://www.bibtex.org) citations. See the [documentation workflow document](https://github.com/trenchproject/TrenchR/blob/main/documentation_workflow.md) for more details about building package manual components.
+We use [Rdpack](https://cran.r-project.org/package=Rdpack) to facilitate package documentation with [BibTeX](http://www.bibtex.org) citations. See the [documentation workflow document](https://github.com/trenchproject/TrenchR/blob/main/documentation_workflow.md) for more details about building package manual components.
 
