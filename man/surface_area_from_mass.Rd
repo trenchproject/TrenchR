@@ -7,7 +7,7 @@
 surface_area_from_mass(m, taxon)
 }
 \arguments{
-\item{m}{\code{numeric} vector of mass (g).}
+\item{m}{\code{numeric} vector of mass (g). or sometins}
 
 \item{taxon}{\code{character} taxonomic classification of organism, current choices: \code{"lizard"}, \code{"salamander"}, \code{"frog"}, \code{"insect"}.}
 }

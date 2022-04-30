@@ -1,8 +1,4 @@
----
-output:
-  html_document: default
-  pdf_document: default
----
+
 # Contributing to TrenchR
 
 Thanks for taking the time to contribute! 
