@@ -57,13 +57,18 @@ Here's a partial list of modules:
     * [Soil temperatures](https://github.com/trenchproject/TrenchR/tree/main/R/TsoilFunctions.R) - Functions to estimate soil temperatures.
 
 * [Energy Budgets](https://github.com/trenchproject/TrenchR/tree/main/R) - Separated into multiple files.
-    * [Energy budget components](https://github.com/trenchproject/TrenchR/tree/main/R/energybalance_functions.R) - General functions to estimate heat exchange including convection and conduction.
+    * [Energy budget components](https://github.com/trenchproject/TrenchR/tree/main/R/energybalance_functions.R) - General functions to estimate heat exchange including convection and conduction. Also includes functions to estimate the humid operative environmental temperatures of a salamnder.
     * [Operative temperatures](https://github.com/trenchproject/TrenchR/tree/main/R/OperativeTemperatureFunctions.R) - General functions to estimate operative environmental temperatures (potential body temperatures).
     * [Butterfly biophysical model](https://github.com/trenchproject/TrenchR/tree/main/R/biophysmodel_Colias.R) - Energy budget model for predicting butterfly operative temperature.
     * [Grasshopper biophysical model](https://github.com/trenchproject/TrenchR/tree/main/R/biophysmodel_Grasshopper.R) - Energy budget model for predicting grasshopper operative temperature.
-    * [Lizard biophysical model](https://github.com/trenchproject/TrenchR/tree/main/R/biophysmodel_Sceloporuss.R) - Energy budget model for predicting lizard operative temperature.
+    * [Lizard biophysical model](https://github.com/trenchproject/TrenchR/tree/main/R/biophysmodel_Sceloporus.R) - Energy budget model for predicting lizard operative temperature. 
+    * [Another lizard biophysical model](https://github.com/trenchproject/TrenchR/tree/main/R/biophysmodel_LizardFei.R) - Energy budget model for predicting lizard operative temperature.  
+    * [Intertidal mussel biophysical model](https://github.com/trenchproject/TrenchR/tree/main/R/biophysmodel_Mussel.R) - Energy budget model for predicting operative temperatures of various intertidal organisms (limpets, mussels, mussel beds, snails).
+    * [Intertidal mussel bed biophysical model](https://github.com/trenchproject/TrenchR/tree/main/R/biophysmodel_MusselBed.R) - Energy budget model for predicting operative temperatures of various intertidal organisms (limpets, mussels, mussel beds, snails).
+    * [Intertidal limpet biophysical model](https://github.com/trenchproject/TrenchR/tree/main/R/biophysmodel_Limpet.R) - Energy budget model for predicting operative temperatures of various intertidal organisms (limpets, mussels, mussel beds, snails).
+    * [Intertidal snail biophysical model](https://github.com/trenchproject/TrenchR/tree/main/R/biophysmodel_Snail.R) - Energy budget model for predicting operative temperatures of various intertidal organisms (limpets, mussels, mussel beds, snails).
 * [Allometry](https://github.com/trenchproject/TrenchR/tree/main/R/AllometricFunctions.R) - Functions to convert among mass, volume and length functions.
-* [Intertidal biophysical model](https://github.com/trenchproject/TrenchR/blob/main/R/biophysmodel_Mussel.R) - Energy budget model for predicting operative temperatures of various intertidal organisms (limpets, mussels, snails).
+
 
 ## How Can I Contribute?
 
@@ -123,7 +128,7 @@ Unsure where to begin contributing to TrenchR? You can start by looking through 
 
 Both issue lists are sorted by total number of comments. While not perfect, number of comments is a reasonable proxy for impact a given change will have.
 
-If you want to read about using TrenchR or developing functions for TrenchR, the [TrenchR Manual](https://trenchproject.github.io) is available online. 
+Additional project information is available on the [TrEnCh Project website](https://www.trenchproject.com/). 
 
 #### Local development
 
