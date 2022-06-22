@@ -81,15 +81,22 @@
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p><code>numeric</code> vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air). The volume fractions should sum to 1. Note that <code>x</code> and <code>lambda</code> values in the example correspond to these soil constituents.</p></dd>
+
+
 <dt>lambda</dt>
 <dd><p><code>numeric</code> vector of the thermal conductivities (W m<sup>-1</sup> K<sup>-1</sup>) of the soil constituents.</p></dd>
+
+
 <dt>g_a</dt>
 <dd><p><code>numeric</code> shape factor on soil particles. The soil particles are assumed to be ellipsoids with axes <code>g_a</code>, <code>g_b</code>, and <code>g_c</code>, where <code>g_a + g_b + g_c = 1</code> and <code>g_a = g_b</code>. deVries (1952)
  suggests <code>g_a = g_b = 0.125</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>numeric</code> soil thermal conductivity (W m<sup>-1</sup> K<sup>-1</sup>).</p>
+    
+
+<p><code>numeric</code> soil thermal conductivity (W m<sup>-1</sup> K<sup>-1</sup>).</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -139,7 +146,7 @@ North Holland Publishing Company.
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>
