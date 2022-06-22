@@ -10,6 +10,8 @@ This is a resubmission after addressing NOTES found on the first submission.
   - Added R-devel local and win-builder build test environments to facilitate URL checking
     - None of these runs reproduce any URL NOTEs
 
+- Date was updated.
+
 ## Release Summary
 
 This is the first release of TrenchR.
