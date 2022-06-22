@@ -3,7 +3,7 @@
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
 TrenchR 0.1.0
-*2022-04-09*
+*2022-06-22*
 
 ### First release
 * Major edits and formats throughout the package
