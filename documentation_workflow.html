@@ -73,18 +73,18 @@
 <p>if you want it to be like Name (Year) instead of (Name Year), use</p>
 <pre><code>  \insertCite{&lt; citation key &gt;;textual}{TrenchR}</code></pre>
 <p>Other formatting, etc. is available, see <a href="https://github.com/GeoBosh/Rdpack" class="external-link uri">https://github.com/GeoBosh/Rdpack</a>.</p>
-<ol start="3" style="list-style-type: decimal"><li>then add the references section to the roxygen documentation</li></ol><pre><code><span class="co">#'</span>
-<span class="co">#' @references</span>
-<span class="co">#'   \insertAllCited{}</span></code></pre>
-<ol start="4" style="list-style-type: decimal"><li>build the documentation at the command line</li></ol><pre><code><span class="fu">devtools</span><span class="fu">::</span><span class="fu">document</span><span class="op">(</span><span class="op">)</span></code></pre>
-<ol start="5" style="list-style-type: decimal"><li>if you run a standard help look up (<code>"?functionname"</code>), you’ll notice that the BibTex isn’t actually rendered. To see it, you need to use <code>viewRd</code>:</li></ol><pre><code><span class="fu">Rdpack</span><span class="fu">::</span><span class="fu"><a href="https://geobosh.github.io/Rdpack/reference/viewRd.html" class="external-link">viewRd</a></span><span class="op">(</span><span class="st">"./man/&lt;functionname&gt;.Rd"</span><span class="op">)</span></code></pre>
-<ol start="6" style="list-style-type: decimal"><li>You can check to verify that the documentation will render fully properly by running</li></ol><pre><code><span class="fu">devtools</span><span class="fu">::</span><span class="fu">build</span><span class="op">(</span><span class="op">)</span></code></pre>
+<ol start="3" style="list-style-type: decimal"><li>then add the references section to the roxygen documentation</li></ol><pre><code><span><span class="co">#'</span></span>
+<span><span class="co">#' @references</span></span>
+<span><span class="co">#'   \insertAllCited{}</span></span></code></pre>
+<ol start="4" style="list-style-type: decimal"><li>build the documentation at the command line</li></ol><pre><code><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">document</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+<ol start="5" style="list-style-type: decimal"><li>if you run a standard help look up (<code>"?functionname"</code>), you’ll notice that the BibTex isn’t actually rendered. To see it, you need to use <code>viewRd</code>:</li></ol><pre><code><span><span class="fu">Rdpack</span><span class="fu">::</span><span class="fu"><a href="https://geobosh.github.io/Rdpack/reference/viewRd.html" class="external-link">viewRd</a></span><span class="op">(</span><span class="st">"./man/&lt;functionname&gt;.Rd"</span><span class="op">)</span></span></code></pre>
+<ol start="6" style="list-style-type: decimal"><li>You can check to verify that the documentation will render fully properly by running</li></ol><pre><code><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">build</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 <p>and then installing the package from the built zip file and running</p>
-<pre><code><span class="op">?</span><span class="fu">TrenchR</span><span class="fu">::</span><span class="va">functionname</span></code></pre>
+<pre><code><span><span class="op">?</span><span class="fu">TrenchR</span><span class="fu">::</span><span class="va">functionname</span></span></code></pre>
 <div class="section level2">
 <h2 id="all-the-help-files">ALL the Help Files<a class="anchor" aria-label="anchor" href="#all-the-help-files"></a></h2>
 <p>To generate all of the help files in one line of code, run</p>
-<pre><code><span class="fu"><a href="https://rdrr.io/r/base/mapply.html" class="external-link">mapply</a></span><span class="op">(</span><span class="fu">Rdpack</span><span class="fu">::</span><span class="va"><a href="https://geobosh.github.io/Rdpack/reference/viewRd.html" class="external-link">viewRd</a></span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"./man/"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="st">"./man"</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">".Rd"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="st">"./man"</span><span class="op">)</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></code></pre>
+<pre><code><span><span class="fu"><a href="https://rdrr.io/r/base/mapply.html" class="external-link">mapply</a></span><span class="op">(</span><span class="fu">Rdpack</span><span class="fu">::</span><span class="va"><a href="https://geobosh.github.io/Rdpack/reference/viewRd.html" class="external-link">viewRd</a></span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"./man/"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="st">"./man"</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">".Rd"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="st">"./man"</span><span class="op">)</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 </div>
 
@@ -103,7 +103,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

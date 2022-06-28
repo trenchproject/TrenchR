@@ -74,22 +74,22 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">soil_temperature</span><span class="op">(</span>
-  z_r.intervals <span class="op">=</span> <span class="fl">12</span>,
-  <span class="va">z_r</span>,
-  <span class="va">z</span>,
-  <span class="va">T_a</span>,
-  <span class="va">u</span>,
-  <span class="va">Tsoil0</span>,
-  <span class="va">z0</span>,
-  <span class="va">SSA</span>,
-  <span class="va">TimeIn</span>,
-  <span class="va">H</span>,
-  water_content <span class="op">=</span> <span class="fl">0.2</span>,
-  <span class="va">air_pressure</span>,
-  rho_so <span class="op">=</span> <span class="fl">1620</span>,
-  shade <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">soil_temperature</span><span class="op">(</span></span>
+<span>  z_r.intervals <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>  <span class="va">z_r</span>,</span>
+<span>  <span class="va">z</span>,</span>
+<span>  <span class="va">T_a</span>,</span>
+<span>  <span class="va">u</span>,</span>
+<span>  <span class="va">Tsoil0</span>,</span>
+<span>  <span class="va">z0</span>,</span>
+<span>  <span class="va">SSA</span>,</span>
+<span>  <span class="va">TimeIn</span>,</span>
+<span>  <span class="va">H</span>,</span>
+<span>  water_content <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>  <span class="va">air_pressure</span>,</span>
+<span>  rho_so <span class="op">=</span> <span class="fl">1620</span>,</span>
+<span>  shade <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -185,30 +185,30 @@ North Holland Publishing Company.
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">temp_vector</span>       <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">48</span>, min <span class="op">=</span> <span class="op">-</span><span class="fl">10</span>, max <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">wind_speed_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">48</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">time_vector</span>       <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">solrad_vector</span>     <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">6</span><span class="op">)</span>, </span>
-<span class="r-in">                             <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">700</span>, length.out <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>, </span>
-<span class="r-in">                             <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">700</span>, <span class="fl">10</span>, length.out <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>, </span>
-<span class="r-in">                             <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">                           <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="fu">soil_temperature</span><span class="op">(</span>z_r.intervals <span class="op">=</span> <span class="fl">12</span>, </span>
-<span class="r-in">                   z_r           <span class="op">=</span> <span class="fl">1.5</span>, </span>
-<span class="r-in">                   z             <span class="op">=</span> <span class="fl">2</span>, </span>
-<span class="r-in">                   T_a           <span class="op">=</span> <span class="va">temp_vector</span>, </span>
-<span class="r-in">                   u             <span class="op">=</span> <span class="va">wind_speed_vector</span>, </span>
-<span class="r-in">                   Tsoil0        <span class="op">=</span> <span class="fl">20</span>, </span>
-<span class="r-in">                   z0            <span class="op">=</span> <span class="fl">0.02</span>, </span>
-<span class="r-in">                   SSA           <span class="op">=</span> <span class="fl">0.7</span>, </span>
-<span class="r-in">                   TimeIn        <span class="op">=</span> <span class="va">time_vector</span>, </span>
-<span class="r-in">                   H             <span class="op">=</span> <span class="va">solrad_vector</span>, </span>
-<span class="r-in">                   water_content <span class="op">=</span> <span class="fl">0.2</span>, </span>
-<span class="r-in">                   air_pressure  <span class="op">=</span> <span class="fl">85</span>, </span>
-<span class="r-in">                   rho_so        <span class="op">=</span> <span class="fl">1620</span>, </span>
-<span class="r-in">                   shade         <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">temp_vector</span>       <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">48</span>, min <span class="op">=</span> <span class="op">-</span><span class="fl">10</span>, max <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">wind_speed_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">48</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">time_vector</span>       <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">solrad_vector</span>     <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">6</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>                             <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">700</span>, length.out <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>                             <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">700</span>, <span class="fl">10</span>, length.out <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>                             <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                           <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="fu">soil_temperature</span><span class="op">(</span>z_r.intervals <span class="op">=</span> <span class="fl">12</span>, </span></span>
+<span class="r-in"><span>                   z_r           <span class="op">=</span> <span class="fl">1.5</span>, </span></span>
+<span class="r-in"><span>                   z             <span class="op">=</span> <span class="fl">2</span>, </span></span>
+<span class="r-in"><span>                   T_a           <span class="op">=</span> <span class="va">temp_vector</span>, </span></span>
+<span class="r-in"><span>                   u             <span class="op">=</span> <span class="va">wind_speed_vector</span>, </span></span>
+<span class="r-in"><span>                   Tsoil0        <span class="op">=</span> <span class="fl">20</span>, </span></span>
+<span class="r-in"><span>                   z0            <span class="op">=</span> <span class="fl">0.02</span>, </span></span>
+<span class="r-in"><span>                   SSA           <span class="op">=</span> <span class="fl">0.7</span>, </span></span>
+<span class="r-in"><span>                   TimeIn        <span class="op">=</span> <span class="va">time_vector</span>, </span></span>
+<span class="r-in"><span>                   H             <span class="op">=</span> <span class="va">solrad_vector</span>, </span></span>
+<span class="r-in"><span>                   water_content <span class="op">=</span> <span class="fl">0.2</span>, </span></span>
+<span class="r-in"><span>                   air_pressure  <span class="op">=</span> <span class="fl">85</span>, </span></span>
+<span class="r-in"><span>                   rho_so        <span class="op">=</span> <span class="fl">1620</span>, </span></span>
+<span class="r-in"><span>                   shade         <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 20.000000 12.337271 11.177472  9.282924  9.515928  9.273568  5.871879</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [8]  5.846617 10.016769 12.986571 15.659899 22.008877 26.224605 28.457155</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [15] 28.642127 23.760024 23.084324 15.599727 10.396339  8.164182  9.717859</span>
@@ -216,7 +216,7 @@ North Holland Publishing Company.
 <span class="r-out co"><span class="r-pr">#&gt;</span> [29]  4.296691  2.627543  1.032975  3.941641  7.261893 10.726785 15.266850</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [36] 17.520869 22.642117 28.046496 24.642633 20.342835 16.389316 11.765335</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [43]  9.446022  7.772388  5.767417  4.131153  2.547758  2.282975</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -231,7 +231,7 @@ North Holland Publishing Company.
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
