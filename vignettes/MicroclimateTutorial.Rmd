@@ -374,6 +374,8 @@ We estimate how solar radiation components vary diurnally.
 
 ```{r, fig.height = 4, fig.width = 6}
 
+oldpar<-par()
+
 par(mar=c(5, 5, 3, 2))
 
 zen <- unlist(lapply(1:24, 
@@ -1294,6 +1296,8 @@ plot(x    = seq(500,1700,100),
      type = "l", 
      xlab = expression("bulk density" ~ (kg/m^{3})), 
      ylab = expression("soil specific heat" ~ (J ~ kg^{-1} ~ K^{-1})))
+
+par(oldpar$mar)
 
 ```
 

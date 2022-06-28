@@ -12,6 +12,13 @@ This is a resubmission after addressing NOTES found on the first submission.
 
 - Date was updated.
 
+- The following changes were implemented following review:
+  - Shorten title.
+  - Edit start of description.
+  - Use single quotes for package name in description.
+  - Check that DOI works.
+  - Replace "T" and "F" as vector names.
+
 ## Release Summary
 
 This is the first release of TrenchR.

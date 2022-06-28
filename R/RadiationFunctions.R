@@ -158,7 +158,7 @@ diurnal_radiation_variation <- function(doy,
 #' 
 #' @param elev \code{numeric} elevation (meters).
 #' 
-#' @param T \code{numeric} mean monthly temperature (C).
+#' @param T_a \code{numeric} mean monthly air temperature (C).
 #' 
 #' @param Hr \code{numeric} mean month relative humidity (percentage).
 #' 
@@ -178,7 +178,7 @@ diurnal_radiation_variation <- function(doy,
 #'                           lon  = -122.33, 
 #'                           doy  = 112, 
 #'                           elev = 1500, 
-#'                           T    = 15, 
+#'                           T_a    = 15, 
 #'                           Hr   = 50, 
 #'                           P   = 50)
 #'
@@ -186,7 +186,7 @@ monthly_solar_radiation <- function (lat,
                                      lon, 
                                      doy, 
                                      elev, 
-                                     T, 
+                                     T_a, 
                                      Hr, 
                                      P) {
 
@@ -235,7 +235,7 @@ monthly_solar_radiation <- function (lat,
   
   # Assume relationships to translate to surface
   # ev: mean monthly water vapor pressure in the atmosphere (Pa)
-  ev <- Hr * 6.1078 * exp(17.269 * T/(T + 237.3))
+  ev <- Hr * 6.1078 * exp(17.269 * T_a/(T_a + 237.3))
   
   # C is the mean monthly cloudiness (tenths)
   C <- 10 - 1.155 * (ev / P)^0.5

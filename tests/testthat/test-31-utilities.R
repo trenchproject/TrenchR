@@ -7,10 +7,10 @@ expect_similar <- function(input, expected) {
 
 test_that("Temperature conversion functions work as expected", {
 
-  expect_similar(kelvin_to_celsius(T = 270), -3.15)
-  expect_similar(fahrenheit_to_kelvin(T = 85), 302.5944)
-  expect_similar(fahrenheit_to_celsius(T = 85), 29.44444)
-  expect_similar(celsius_to_kelvin(T = -10), 263.15)
+  expect_similar(kelvin_to_celsius(temperature = 270), -3.15)
+  expect_similar(fahrenheit_to_kelvin(temperature = 85), 302.5944)
+  expect_similar(fahrenheit_to_celsius(temperature = 85), 29.44444)
+  expect_similar(celsius_to_kelvin(temperature = -10), 263.15)
 })
 
 

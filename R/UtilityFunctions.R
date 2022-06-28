@@ -370,7 +370,7 @@ airpressure_from_elev <- function (elev) {
 #' 
 #' @description The function converts temperatures among Celsius, Fahrenheit, and Kelvin \insertCite{Blischak}{TrenchR}.
 #' 
-#' @param T \code{numeric} temperature (Celsius, Fahrenheit, or Kelvin).
+#' @param temperature \code{numeric} temperature (Celsius, Fahrenheit, or Kelvin).
 #' 
 #' @family utility functions
 #' 
@@ -384,24 +384,14 @@ airpressure_from_elev <- function (elev) {
 #' @name temperature conversions
 #'
 #' @examples
-#'   kelvin_to_celsius(T = 270)
-#'   fahrenheit_to_kelvin(T = 85)
-#'   fahrenheit_to_celsius(T = 85)
-#'   celsius_to_kelvin(T = -10)
+#'   kelvin_to_celsius(temperature = 270)
+#'   fahrenheit_to_kelvin(temperature = 85)
+#'   fahrenheit_to_celsius(temperature = 85)
+#'   celsius_to_kelvin(temperature = -10)
 #' 
-fahrenheit_to_kelvin <- function (T) {
+fahrenheit_to_kelvin <- function (temperature) {
   
-  ((T - 32) * (5 / 9)) + 273.15
-  
-}
-
-#' @name temperature conversions
-#' 
-#' @export
-#' 
-kelvin_to_celsius <- function (T) {
-  
-  T - 273.15
+  ((temperature - 32) * (5 / 9)) + 273.15
   
 }
 
@@ -409,9 +399,9 @@ kelvin_to_celsius <- function (T) {
 #' 
 #' @export
 #' 
-celsius_to_kelvin <- function (T) {
+kelvin_to_celsius <- function (temperature) {
   
-  T + 273.15
+  temperature - 273.15
   
 }
 
@@ -419,9 +409,19 @@ celsius_to_kelvin <- function (T) {
 #' 
 #' @export
 #' 
-fahrenheit_to_celsius <- function (T) {
+celsius_to_kelvin <- function (temperature) {
   
-  temp_k <- fahrenheit_to_kelvin(T)
+  temperature + 273.15
+  
+}
+
+#' @name temperature conversions
+#' 
+#' @export
+#' 
+fahrenheit_to_celsius <- function (temperature) {
+  
+  temp_k <- fahrenheit_to_kelvin(temperature)
   kelvin_to_celsius(temp_k)
   
 }
