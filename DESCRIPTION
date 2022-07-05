@@ -16,7 +16,7 @@ Authors@R: c(
     person("Brian", "Helmuth", role = c("ctb"), comment = c(ORCID = "0000-0003-0180-3414"))
   )
 License: MIT + file LICENSE
-Date: 2022-06-26
+Date: 2022-07-05
 URL: https://trenchproject.github.io/, https://github.com/trenchproject/TrenchR
 BugReports: https://github.com/trenchproject/TrenchR/issues
 VignetteBuilder: knitr
