@@ -2748,7 +2748,7 @@ legend(x      = "topright",
        legend = c("net radition, Qnet", "solar radiation, Qabs", "thermal radiation, Qemit", "convection, Qconv", "conduction, Qcond"), 
        lty    = c("solid", "dotted", "dashed", "dotdash", "twodash"))
 
-par(oldpar$mar)
+par(oldpar)
 
 ```
 

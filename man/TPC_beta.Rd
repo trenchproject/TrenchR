@@ -4,10 +4,10 @@
 \alias{TPC_beta}
 \title{Beta Function Thermal Performance Curve}
 \usage{
-TPC_beta(T, shift = -1, breadth = 0.1, aran = 0, tolerance = 43, skew = 0.7)
+TPC_beta(T_b, shift = -1, breadth = 0.1, aran = 0, tolerance = 43, skew = 0.7)
 }
 \arguments{
-\item{T}{\code{numeric} temperature (C).}
+\item{T_b}{\code{numeric} temperature (C).}
 
 \item{shift}{\code{numeric} mode of the thermal performance curve.}
 
@@ -26,7 +26,7 @@ TPC_beta(T, shift = -1, breadth = 0.1, aran = 0, tolerance = 43, skew = 0.7)
 The function constructs a thermal performance curve based on a beta function \insertCite{Asbury2010}{TrenchR}.
 }
 \examples{
-  TPC_beta(T         = 0:60, 
+  TPC_beta(T_b       = 0:60, 
            shift     = -1, 
            breadth   = 0.1, 
            aran      = 0, 

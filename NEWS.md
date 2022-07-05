@@ -3,7 +3,7 @@
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
 TrenchR 0.1.0
-*2022-06-22*
+*2022-07-05*
 
 ### First release
 * Major edits and formats throughout the package
@@ -14,7 +14,7 @@ TrenchR 0.1.0
 * Includes package build and check across platforms, test coverage, pkgdown site build
 
 ### Website auto-build
-* No need to render loaclly and push
+* No need to render locally and push
 
 ### Extensive unit testing
 * Virtually 100 percent coverage

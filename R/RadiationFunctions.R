@@ -178,7 +178,7 @@ diurnal_radiation_variation <- function(doy,
 #'                           lon  = -122.33, 
 #'                           doy  = 112, 
 #'                           elev = 1500, 
-#'                           T_a    = 15, 
+#'                           T_a  = 15, 
 #'                           Hr   = 50, 
 #'                           P   = 50)
 #'
@@ -353,17 +353,17 @@ direct_solar_radiation <- function (lat,
   
   m_a <- p_a / 101.3 / sin_alt_ang
   
-  a = 0.83 # transmissivity of the atmosphere, between 0 and 1 "The atmospheric transmission coefficient. Varies from 0.9 for a very clear atmosphere to around 0.6 for a hazy or smoggy atmosphere. A typical value for a clear day would be around 0.84." (Campbell, 1977)
+  a <- 0.83 # transmissivity of the atmosphere, between 0 and 1 "The atmospheric transmission coefficient. Varies from 0.9 for a very clear atmosphere to around 0.6 for a hazy or smoggy atmosphere. A typical value for a clear day would be around 0.84." (Campbell, 1977)
   
   # radius vector of the earth in atmospheric units (AU)
   # sunr function from insol package
-  T <- (doy - 2451545) / 36525
-  epsilon <- (23 + 26 / 60 + 21.448 / 3600) - (46.815 / 3600) * T - (0.00059 / 3600) * T^2 + (0.001813 / 3600) * T^3
-  M <- 357.5291 + 35999.0503 * T - 0.0001559 * T^2 - 4.8e-07 * T^3
-  e <- 0.016708617 - 4.2037e-05 * T - 1.236e-07 * T^2
-  C <- (1.9146 - 0.004817 * T - 1.4e-05 * T^2) * sin(degrees_to_radians(M)) + (0.019993 - 0.000101 * T) * sin(2 * degrees_to_radians(M)) + 0.00029 * sin(3 * degrees_to_radians(M))
-  v <- M + C
-  r <- (1.000001018 * (1 - e^2)) / (1 + e * cos(degrees_to_radians(v)))
+  Temp    <- (doy - 2451545) / 36525
+  epsilon <- (23 + 26 / 60 + 21.448 / 3600) - (46.815 / 3600) * Temp - (0.00059 / 3600) * Temp^2 + (0.001813 / 3600) * Temp^3
+  M       <- 357.5291 + 35999.0503 * Temp - 0.0001559 * Temp^2 - 4.8e-07 * Temp^3
+  e       <- 0.016708617 - 4.2037e-05 * Temp - 1.236e-07 * Temp^2
+  C       <- (1.9146 - 0.004817 * Temp - 1.4e-05 * Temp^2) * sin(degrees_to_radians(M)) + (0.019993 - 0.000101 * Temp) * sin(2 * degrees_to_radians(M)) + 0.00029 * sin(3 * degrees_to_radians(M))
+  v       <- M + C
+  r       <- (1.000001018 * (1 - e^2)) / (1 + e * cos(degrees_to_radians(v)))
   
   #-------
   #Campbell 1977 - direct radiation

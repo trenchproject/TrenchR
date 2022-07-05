@@ -4,10 +4,10 @@
 \alias{TPC}
 \title{Gaussian-Quadratic Function Thermal Performance Curve}
 \usage{
-TPC(T, T_opt, CT_min, CT_max)
+TPC(T_b, T_opt, CT_min, CT_max)
 }
 \arguments{
-\item{T}{\code{numeric} vector of temperature range (C).}
+\item{T_b}{\code{numeric} vector of temperature range (C).}
 
 \item{T_opt}{\code{numeric} thermal optima (C), the temperature at which peak performance occurs.}
 
@@ -20,7 +20,7 @@ performance
 The function constructs a thermal performance curve by combining as a Gaussian function to describe the rise in performance up to the optimal temperature and a quadratic decline to zero performance at critical thermal maxima and higher temperatures \insertCite{Deutsch2008}{TrenchR}.
 }
 \examples{
-  TPC(T      = 0:60, 
+  TPC(T_b    = 0:60, 
       T_opt  = 30, 
       CT_min = 10, 
       CT_max = 40)

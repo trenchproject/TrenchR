@@ -82,6 +82,7 @@ arcsin
 arctan
 bT
 bce
+bibTeX
 blackbody
 boltzmann
 cA
@@ -154,6 +155,7 @@ microclimc
 mol
 organismal
 param
+pkgdown
 prolate
 psa
 psychrometer

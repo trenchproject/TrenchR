@@ -8,16 +8,16 @@
 \alias{fahrenheit_to_celsius}
 \title{Convert Among Temperature Scales}
 \usage{
-fahrenheit_to_kelvin(T)
+fahrenheit_to_kelvin(temperature)
 
-kelvin_to_celsius(T)
+kelvin_to_celsius(temperature)
 
-celsius_to_kelvin(T)
+celsius_to_kelvin(temperature)
 
-fahrenheit_to_celsius(T)
+fahrenheit_to_celsius(temperature)
 }
 \arguments{
-\item{T}{\code{numeric} temperature (Celsius, Fahrenheit, or Kelvin).}
+\item{temperature}{\code{numeric} temperature (Celsius, Fahrenheit, or Kelvin).}
 }
 \value{
 \code{numeric} temperature (Celsius, Fahrenheit, or Kelvin).
@@ -26,10 +26,10 @@ fahrenheit_to_celsius(T)
 The function converts temperatures among Celsius, Fahrenheit, and Kelvin \insertCite{Blischak}{TrenchR}.
 }
 \examples{
-  kelvin_to_celsius(T = 270)
-  fahrenheit_to_kelvin(T = 85)
-  fahrenheit_to_celsius(T = 85)
-  celsius_to_kelvin(T = -10)
+  kelvin_to_celsius(temperature = 270)
+  fahrenheit_to_kelvin(temperature = 85)
+  fahrenheit_to_celsius(temperature = 85)
+  celsius_to_kelvin(temperature = -10)
 
 }
 \references{
