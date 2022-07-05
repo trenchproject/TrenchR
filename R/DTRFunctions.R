@@ -92,15 +92,15 @@ diurnal_temp_variation_sineexp <- function (T_max,
       
       }
     
-      T <- T_min + (T_sn - T_min) * exp(-(gamma * t_as) / (24 - l + beta))
+      Temp <- T_min + (T_sn - T_min) * exp(-(gamma * t_as) / (24 - l + beta))
     
     } else {
    
-      T <- T_min + (T_max - T_min) * sin((pi * (t - t_r - beta)) / (l + 2 * (alpha - beta)))
+      Temp <- T_min + (T_max - T_min) * sin((pi * (t - t_r - beta)) / (l + 2 * (alpha - beta)))
     
     }
   
-  T
+  Temp
   
 }
 
@@ -202,36 +202,36 @@ diurnal_temp_variation_sinesqrt <- function (t,
   R <- T_max - To
   b <- (T_minp - To) / sqrt(t_p - t_s)
   
-  T <- rep(NA, length(t))
+  Temp <- rep(NA, length(t))
   
   inds <- which(t <= t_r) 
   if(length(inds > 0))  {
     
-    T[inds] <- To + b * sqrt(t[inds] - (t_s - 24))
+    Temp[inds] <- To + b * sqrt(t[inds] - (t_s - 24))
     
   }
 
   inds <- which(t > t_r & t <= t_x) 
   if(length(inds > 0)) {
     
-    T[inds] <- T_min + alpha * sin(pi / 2 * (t[inds] - t_r) / (t_x - t_r))
+    Temp[inds] <- T_min + alpha * sin(pi / 2 * (t[inds] - t_r) / (t_x - t_r))
     
   }
   
   inds <- which(t > t_x & t < t_s) 
   if(length(inds > 0)) {
     
-    T[inds] <- To + R * sin(pi / 2 * (1 + (t[inds] - t_x) / 4))
+    Temp[inds] <- To + R * sin(pi / 2 * (1 + (t[inds] - t_x) / 4))
     
   }
   
   inds <- which(t >= t_s) 
   if(length(inds > 0))  {
     
-    T[inds] <- To + b * sqrt(t[inds] - t_s)
+    Temp[inds] <- To + b * sqrt(t[inds] - t_s)
     
   }
 
-  T
+  Temp
   
 }

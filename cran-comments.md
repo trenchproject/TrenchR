@@ -13,11 +13,16 @@ This is a resubmission after addressing NOTES found on the first submission.
 - Date was updated.
 
 - The following changes were implemented following review:
-  - Shorten title.
-  - Edit start of description.
-  - Use single quotes for package name in description.
-  - Check that DOI works.
-  - Replace "T" and "F" as vector names.
+  - Shorten title
+    - Title is now 46 characters
+  - Edit start of description
+    - Description no longer starts with "The TrenchR package..."
+  - Use single quotes for package name in description
+    - Package name is single quoted in description
+  - Check that DOI works
+    - The DOI does work as shown (https://doi.org/10.1890/0012-9658(1999)080[0015:TBORIM]2.0.CO;2) 
+  - Replace "T" and "F" as vector names
+    - All arguments and vector names of `T` and `F` have been replaced
 
 ## Release Summary
 
