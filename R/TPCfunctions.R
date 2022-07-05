@@ -16,7 +16,7 @@
 #' @export
 #' 
 #' @examples
-#'   TPC(T_b      = 0:60, 
+#'   TPC(T_b    = 0:60, 
 #'       T_opt  = 30, 
 #'       CT_min = 10, 
 #'       CT_max = 40)
@@ -65,7 +65,7 @@ TPC <- function (T_b,
 #' @export
 #' 
 #' @examples
-#'   TPC_beta(T_b         = 0:60, 
+#'   TPC_beta(T_b       = 0:60, 
 #'            shift     = -1, 
 #'            breadth   = 0.1, 
 #'            aran      = 0, 

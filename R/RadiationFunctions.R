@@ -178,7 +178,7 @@ diurnal_radiation_variation <- function(doy,
 #'                           lon  = -122.33, 
 #'                           doy  = 112, 
 #'                           elev = 1500, 
-#'                           T_a    = 15, 
+#'                           T_a  = 15, 
 #'                           Hr   = 50, 
 #'                           P   = 50)
 #'
