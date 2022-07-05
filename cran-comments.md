@@ -23,6 +23,8 @@ This is a resubmission after addressing NOTES found on the first submission.
     - The DOI does work as shown (https://doi.org/10.1890/0012-9658(1999)080[0015:TBORIM]2.0.CO;2) 
   - Replace "T" and "F" as vector names
     - All arguments and vector names of `T` and `F` have been replaced
+  - Reset user `options()` when changed
+    - User `options()` are re-set at the end of vignettes
 
 ## Release Summary
 

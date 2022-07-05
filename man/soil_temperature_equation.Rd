@@ -30,14 +30,14 @@ soil_temperature_equation(L, rho_a, c_a, V_inst, z_r, z0, T_inst, T_s)
 The function called by \code{\link{soil_temperature_function}} to solve equation for soil temperature from \insertCite{Beckman1973;textual}{TrenchR}.
 }
 \examples{
-soil_temperature_equation(L      = -10, 
-                          rho_a  = 1.177, 
-                          c_a    = 1006, 
-                          V_inst = 0.3, 
-                          z_r    = 1.5, 
-                          z0     = 0.02, 
-                          T_inst = 265, 
-                          T_s    = 20)
+  soil_temperature_equation(L      = -10, 
+                            rho_a  = 1.177, 
+                            c_a    = 1006, 
+                            V_inst = 0.3, 
+                            z_r    = 1.5, 
+                            z0     = 0.02, 
+                            T_inst = 265, 
+                            T_s    = 20)
 
 }
 \references{

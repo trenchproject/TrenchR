@@ -399,7 +399,7 @@ points(x    = 0:60,
        type = "l", 
        lty  = "dashed")
 
-par(oldpar$mar)
+par(oldpar)
 
 ```
 

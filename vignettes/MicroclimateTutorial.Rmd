@@ -1297,7 +1297,7 @@ plot(x    = seq(500,1700,100),
      xlab = expression("bulk density" ~ (kg/m^{3})), 
      ylab = expression("soil specific heat" ~ (J ~ kg^{-1} ~ K^{-1})))
 
-par(oldpar$mar)
+par(oldpar)
 
 ```
 
