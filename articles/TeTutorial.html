@@ -90,7 +90,7 @@
       <h1 data-toc-skip>Using energy balances to estimate body temperatures</h1>
                         <h4 data-toc-skip class="author">Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington</h4>
             
-            <h4 data-toc-skip class="date">2022-06-28</h4>
+            <h4 data-toc-skip class="date">2022-07-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/trenchproject/TrenchR/blob/HEAD/vignettes/TeTutorial.Rmd" class="external-link"><code>vignettes/TeTutorial.Rmd</code></a></small>
       <div class="hidden name"><code>TeTutorial.Rmd</code></div>
@@ -2491,9 +2491,13 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotted"</span>, <span class="st">"dashed"</span>, <span class="st">"dotdash"</span>, <span class="st">"twodash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="TeTutorial_files/figure-html/unnamed-chunk-51-1.png" width="768"></p>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">oldpar</span><span class="op">$</span><span class="va">mar</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Warning in par(oldpar$mar): argument 1 does not name a graphical parameter</span></span></code></pre>
-<pre><code><span><span class="co">## NULL</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">oldpar</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Warning in par(oldpar): graphical parameter "cin" cannot be set</span></span></code></pre>
+<pre><code><span><span class="co">## Warning in par(oldpar): graphical parameter "cra" cannot be set</span></span></code></pre>
+<pre><code><span><span class="co">## Warning in par(oldpar): graphical parameter "csi" cannot be set</span></span></code></pre>
+<pre><code><span><span class="co">## Warning in par(oldpar): graphical parameter "cxy" cannot be set</span></span></code></pre>
+<pre><code><span><span class="co">## Warning in par(oldpar): graphical parameter "din" cannot be set</span></span></code></pre>
+<pre><code><span><span class="co">## Warning in par(oldpar): graphical parameter "page" cannot be set</span></span></code></pre>
 </div>
 </div>
 <div class="section level2">
