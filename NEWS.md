@@ -3,7 +3,7 @@
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
 TrenchR 0.1.0
-*2022-07-05*
+*2022-07-07*
 
 ### First release
 * Major edits and formats throughout the package
@@ -24,6 +24,7 @@ TrenchR 0.1.0
 
 ### Package preparation
 * significant codebase edits for tidying and streamlining in advance of CRAN submission.
+* edits in response to CRAN comments including shortening title, editing description, and updating variable names.
 
 ### Argument edits
 * Standardizing arguments across functions
