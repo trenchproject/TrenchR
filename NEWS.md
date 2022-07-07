@@ -24,7 +24,9 @@ TrenchR 0.1.0
 
 ### Package preparation
 * significant codebase edits for tidying and streamlining in advance of CRAN submission.
-* edits in response to CRAN comments including shortening title, editing description, and updating variable names.
+
+### Edits is response to CRAN review
+* including shortening title, editing description, and updating variable names.
 
 ### Argument edits
 * Standardizing arguments across functions
