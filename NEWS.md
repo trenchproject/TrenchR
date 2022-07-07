@@ -2,37 +2,37 @@
 
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
-TrenchR 0.1.0
+# TrenchR 0.1.0
 *2022-07-07*
 
-### First release
+## First release
 * Major edits and formats throughout the package
 * No backwards compatibility is ensured 
 
-### GitHub Actions
+## GitHub Actions
 * Builds now occur on GitHub, off of Travis
 * Includes package build and check across platforms, test coverage, pkgdown site build
 
-### Website auto-build
+## Website auto-build
 * No need to render locally and push
 
-### Extensive unit testing
+## Extensive unit testing
 * Virtually 100 percent coverage
 
-### Documentation via bibTeX and `Rdpack`
+## Documentation via bibTeX and `Rdpack`
 * To allow for significant amount of citations and cross-references
 
-### Package preparation
+## Package preparation
 * significant codebase edits for tidying and streamlining in advance of CRAN submission.
 
-### Edits is response to CRAN review
+## Edits is response to CRAN review
 * including shortening title, editing description, and updating variable names.
 
-### Argument edits
+## Argument edits
 * Standardizing arguments across functions
 * For example `taxon` replaces `taxa` in instances where only one value can be input at a time
 
-### Function names
+## Function names
 * Articulated function names
 * For example,
   * `surface_area_from_mass` replaces `sa_from_mass` to align with spelled out names across other functions
