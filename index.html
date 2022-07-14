@@ -100,8 +100,12 @@
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
-<p>You can install the package from the <a href="https://github.com/trenchproject/TrenchR" class="external-link">github repository</a>:</p>
+<p>You can install the package from <a href="">CRAN</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"TrenchR"</span><span class="op">)</span>  </span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"trenchproject/TrenchR"</span><span class="op">)</span></span></code></pre></div>
+<p>The latest version of the package can be installed from the <a href="https://github.com/trenchproject/TrenchR" class="external-link">github repository</a>:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>   </span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"trenchproject/TrenchR"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -119,13 +123,13 @@
 <h3 id="package-vignettes">Package Vignettes<a class="anchor" aria-label="anchor" href="#package-vignettes"></a>
 </h3>
 <p>We introduce functions in categorically grouped tutorials. A good place to start is the Allometry and conversions tutorial, which provides tools for preparing data such as estimating additional dimensions of organisms from measured dimensions.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"AllometryAndConversionsTutorial.Rmd"</span>, package <span class="op">=</span> <span class="st">"TrenchR"</span><span class="op">)</span></span></code></pre></div>
 <p>The Estimating microclimates tutorial provides resources for estimating the environmental conditions experienced by organisms. This includes estimating solar radiation and its components, diurnal variation in temperature and radiation, temperature and wind speed profiles, and soil temperatures and profiles.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"MicroclimateTutorial"</span>, package <span class="op">=</span> <span class="st">"TrenchR"</span><span class="op">)</span></span></code></pre></div>
 <p>Finally, the core biophysical modeling functions are described in a tutorial on Using energy balances to estimate body temperatures. Components of an energy budget can be estimated using individual functions and then operative environmental temperatures, Te, can be solved for using either a generic energy balance or taxa specific biophysical models.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"TeTutorial"</span>, package <span class="op">=</span> <span class="st">"TrenchR"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -151,6 +155,7 @@
     <div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
+<li><a href="https://cloud.r-project.org/package=TrenchR" class="external-link">View on CRAN</a></li>
 <li><a href="https://github.com/trenchproject/TrenchR/" class="external-link">Browse source code</a></li>
 <li><a href="https://github.com/trenchproject/TrenchR/issues" class="external-link">Report a bug</a></li>
 </ul>
