@@ -17,7 +17,7 @@
 The [TrenchR package](https://github.com/trenchproject/TrenchR) aids in Translating Environmental Change into organismal responses. The package facilitates microclimate modeling to translate weather station data into the environmental conditions experienced by organisms and biophysical modeling to predict organismal body temperatures given the environmental conditions. The package aims to introduce and enable microclimate and biophysical modeling to improve ecological and evolutionary forecasting and includes tutorials and well as a series of educational modules introducing microclimate and biophysical modeling. The package focuses on transparent and modular functions but also includes some biophysical models for particular organisms. The package complements and integrates with the [NicheMapR package](https://github.com/mrke/NicheMapR), which contains more complex functions that are generally not intended for modular use. 
 
 ### Installation
-You can install the package from [CRAN]():
+You can install the package from [CRAN](https://cran.r-project.org/):
 ```r
 install.packages("TrenchR")  
 ```
