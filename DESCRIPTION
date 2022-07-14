@@ -17,7 +17,7 @@ Authors@R: c(
   )
 License: MIT + file LICENSE
 Date: 2022-07-07
-URL: https://trenchproject.github.io/, https://github.com/trenchproject/TrenchR
+URL: https://trenchproject.github.io/TrenchR/, https://github.com/trenchproject/TrenchR
 BugReports: https://github.com/trenchproject/TrenchR/issues
 VignetteBuilder: knitr
 Depends: R (>= 3.3.1)
