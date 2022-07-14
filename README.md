@@ -20,7 +20,6 @@ The [TrenchR package](https://github.com/trenchproject/TrenchR) aids in Translat
 You can install the package from [CRAN]():
 ```r
 install.packages("TrenchR")  
-devtools::install_github("trenchproject/TrenchR")
 ```
 
 The latest version of the package can be installed from the [github repository](https://github.com/trenchproject/TrenchR):
