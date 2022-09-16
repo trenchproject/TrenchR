@@ -21,6 +21,7 @@ This is a resubmission after addressing NOTES found on the first submission.
     - Package name is single quoted in description
   - Check that DOI works
     - The DOI does work as shown (https://doi.org/10.1890/0012-9658(1999)080[0015:TBORIM]2.0.CO;2) 
+    - updated the references file to use a URL instead of the DOI due to strange character in DOI
   - Replace "T" and "F" as vector names
     - All arguments and vector names of `T` and `F` have been replaced
   - Reset user `options()` when changed
