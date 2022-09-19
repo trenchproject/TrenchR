@@ -27,28 +27,8 @@ This is the second release of TrenchR with minor changes.
 * R-hub builder: Ubuntu Linux 20.04.1 LTS, GCC, R 4.2.0 (2022-04-22) 
 * R-hub builder: Windows Server 2022, x86_64-w64-mingw32 (64-bit), R-devel (2022-03-23 r81968 ucrt)
 
-## R CMD check results
-
-There is 1 NOTE regarding incoming feasibility indicating that this is a new submission and that there may be mis-spelled words in the DESCRIPTION.
-
-```
-0 errors | 0 warnings | 1 note
-
-* checking CRAN incoming feasibility ... NOTE
-Maintainer: 'Lauren Buckley <lbuckley@uw.edu>'
-
-New submission
-
-Possibly mis-spelled words in DESCRIPTION:
-  Microclimate (2:8)
-  Organismal (3:35)
-  TrenchR (4:18, 4:588)
-  ectothermic (4:347)
-  isbn (4:821)
-  microclimate (4:123)
-  organismal (4:80, 4:187, 4:516)
-```
-
+## check results
+The checks return several notes regarding references. We have worked to provide the most robust references possible.
 
 ## Dependencies
 
