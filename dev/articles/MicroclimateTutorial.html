@@ -91,7 +91,7 @@
       <h1 data-toc-skip>Estimating microclimates</h1>
                         <h4 data-toc-skip class="author">Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington</h4>
             
-            <h4 data-toc-skip class="date">2022-09-16</h4>
+            <h4 data-toc-skip class="date">2022-09-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/trenchproject/TrenchR/blob/HEAD/vignettes/MicroclimateTutorial.Rmd" class="external-link"><code>vignettes/MicroclimateTutorial.Rmd</code></a></small>
       <div class="hidden name"><code>MicroclimateTutorial.Rmd</code></div>
@@ -125,7 +125,7 @@
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="st">"day of year"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="st">"declination angle (radian)"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-3-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-3-1.png" width="384"></p>
 <p>Zenith angle <span class="math inline">\(\psi\)</span> (°), the location of the sun as an angle measured from vertical, can be estimated as:</p>
 <p><span class="math display">\[\cos \psi = \sin( \delta) \sin( \phi) + \cos(\delta)\cos(\phi)\cos(\pi/12*(h-h_0)),\]</span></p>
 <p>where <span class="math inline">\(J\)</span> is calendar date, <span class="math inline">\(\phi\)</span> is latitude (radians), <span class="math inline">\(h\)</span> is hour, and <span class="math inline">\(h_0\)</span> is the time of solar noon. We illustrate how zenith angles (°) change over the day throughout the year in Seattle, WA, USA:</p>
@@ -216,7 +216,7 @@
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span>x      <span class="op">=</span> <span class="st">"top"</span>, </span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span>x      <span class="op">=</span> <span class="st">"topleft"</span>, </span>
 <span>       title  <span class="op">=</span> <span class="st">"latitude (°)"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">20</span>, <span class="fl">40</span>, <span class="fl">60</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dashed"</span>, <span class="st">"dotdash"</span>, <span class="st">"dotted"</span>, <span class="st">"solid"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -247,7 +247,7 @@
 <span>       title  <span class="op">=</span> <span class="st">"longitude (°)"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">145</span>, <span class="fl">150</span>, <span class="fl">155</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dashed"</span>, <span class="st">"solid"</span>, <span class="st">"dotted"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-6-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-6-1.png" width="384"></p>
 <p>The azimuth angle is the angle (°) from which the sunlight is coming measured from true north or south measured in the horizontal plane. The azimuth angle (<span class="math inline">\(AZ\)</span>, °) is estimated with respect to due south, increasing in the counter-clockwise direction such that <span class="math inline">\(90^\circ\)</span> is east. <span class="math inline">\(AZ\)</span> can be calculated as a function of declination angle <span class="math inline">\(\delta\)</span> (°), zenith angle <span class="math inline">\(\psi\)</span> (°), and latitude <span class="math inline">\(\phi\)</span> (°) as follows:</p>
 <p><span class="math display">\[\cos AZ= \frac{-(\sin \delta - \cos \psi \sin \phi)}{\cos \phi \sin \psi}.\]</span></p>
 <p>TrenchR includes a function to estimate azimuth angle as follows. We first examine how azimuth angle varies across the day:</p>
@@ -297,7 +297,7 @@
 <span>       type <span class="op">=</span> <span class="st">"l"</span>,</span>
 <span>       lty  <span class="op">=</span> <span class="st">"dotdash"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span>x      <span class="op">=</span> <span class="st">"top"</span>, </span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span>x      <span class="op">=</span> <span class="st">"topleft"</span>, </span>
 <span>       title  <span class="op">=</span> <span class="st">"day of year"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">173</span>, <span class="fl">228</span>, <span class="fl">266</span>, <span class="fl">356</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotdash"</span>, <span class="st">"dotted"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -342,7 +342,7 @@
 <span>       title  <span class="op">=</span> <span class="st">"hour"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">9</span>, <span class="fl">12</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dotted"</span>, <span class="st">"dashed"</span>, <span class="st">"solid"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-8-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-8-1.png" width="384"></p>
 <p>These sun angles can be used to solve for day length. The equation for half day length <span class="math inline">\(h_s\)</span>, which is the time (°) from sunrise to solar noon, is used as the basis for our <code><a href="../reference/daylength.html">daylength()</a></code> function:</p>
 <p><span class="math display">\[ h_s= \cos^{-1}\left( \frac{\cos \psi-sin \phi \sin \delta}{\cos \phi \cos \delta} \right).\]</span></p>
 <p>We examine how day length varies over the year for sites at several latitudes.</p>
@@ -368,7 +368,7 @@
 <span>       title  <span class="op">=</span> <span class="st">"latitude (°)"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">35</span>, <span class="fl">60</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-9-1.png" width="384"></p>
 </div>
 <div class="section level3">
 <h3 id="radiation-components">Radiation components<a class="anchor" aria-label="anchor" href="#radiation-components"></a>
@@ -381,7 +381,7 @@
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="st">"elevation (m)"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="st">"air pressure (kPa)"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-10-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-10-1.png" width="384"></p>
 <p>Direct irradiance is a function of the distance a solar beam travels through the atmosphere; the transmittance of the atmosphere, <span class="math inline">\(\tau\)</span>; and the incident flux density, <span class="math inline">\(S_{p0}\)</span>: <span class="math inline">\(S_p=S_{p0}\tau^{m_a}\)</span>. We approximate diffuse radiation using an empirical relation <span class="citation">(Liu and Jordan 1960)</span>, <span class="math inline">\(S_d=0.3(1-\tau^{m_a}) S_{p0}\cos\psi\)</span>. Finally, reflected radiation is the product of albedo, <span class="math inline">\(\rho_S\)</span>, and the sum of direct and diffuse radiation: <span class="math inline">\(S_r= \rho_S (S_p+S_d)\)</span>. We estimate the direct, diffuse, and reflected components of solar radiation (<span class="math inline">\(W m^{-2}\)</span>) as follows.</p>
 <p>We estimate how solar radiation components vary diurnally.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
@@ -470,7 +470,7 @@
 <span>       title  <span class="op">=</span> <span class="st">"solar radiation flux"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"direct"</span>, <span class="st">"diffuse"</span>, <span class="st">"reflected"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotted"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-12-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-12-1.png" width="384"></p>
 <p>Similar but alternative algorithms for estimating hourly direct solar radiation (<span class="math inline">\(W m^{-2}\)</span>) were adapted from a comparison of the methods by Tracy et al. <span class="citation">(1983)</span>. Algorithms from earlier versions of Campbell and Norman <span class="citation">(2012)</span> and Gates <span class="citation">(2012)</span> are implemented. Both estimate radiation as a function of latitude, day of year, elevation, and time.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
@@ -529,7 +529,7 @@
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="st">"day of year"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="va">radiation</span> <span class="op">~</span> <span class="op">(</span><span class="va">W</span><span class="op">/</span><span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-14-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-14-1.png" width="384"></p>
 <p>We provide a function <code><a href="../reference/partition_solar_radiation.html">partition_solar_radiation()</a></code> to estimate the diffuse fraction <span class="math inline">\(k_d\)</span> that can be used to partition measures of solar radiation into direct and diffuse components. The partitioning is based on empirically-derived relations estimated as a function of the clearness index <span class="math inline">\(k_t\)</span>, which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere. The relations are compiled in Wong and Chow <span class="citation">(2001)</span>.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
@@ -617,7 +617,7 @@
 <span>       title  <span class="op">=</span> <span class="st">"Partitioning method"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Erbs"</span>, <span class="st">"Liu_Jordan"</span>, <span class="st">"Orgill_Hollands"</span>, <span class="st">"Olyphant"</span>, <span class="st">"Reindl-1"</span>, <span class="st">"Reindl-2"</span>, <span class="st">"Lam_Li"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span>, <span class="st">"longdash"</span>, <span class="st">"longdash"</span>, <span class="st">"twodash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-15-1.png" width="768"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-15-1.png" width="576"></p>
 <p>The functions above are fairly coarse approximations. The SOLRAD routine by McCullough and Porter <span class="citation">(1971)</span> accounts for additional determinations of the diffuse fractions such as zenith angle, atmospheric pressure, and surface albedo. The SOLRAD routine is implemented in NicheMapR. TrenchR implements a numeric approximation to the SOLRAD routine from Tracy et al. <span class="citation">(1983)</span>. We illustrate how the diffuse proportion shifts as a function of zenith angle for several different levels of atmospheric pressure and note the function general estimates a lower fraction of diffuse radiation than the algorithms above.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
@@ -651,7 +651,7 @@
 <span>       y    <span class="op">=</span> <span class="va">r.seq</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-16-1.png" width="768"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-16-1.png" width="576"></p>
 </div>
 </div>
 <div class="section level2">
@@ -707,7 +707,7 @@
 <span>       title  <span class="op">=</span> <span class="st">"wind speed at 2m"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.25</span>, <span class="fl">5</span>, <span class="fl">1</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dotted"</span>, <span class="st">"dashed"</span>, <span class="st">"solid"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-18-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-18-1.png" width="384"></p>
 <p>We next illustrate the influence of surface roughness on air temperature profiles.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">z.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
@@ -748,7 +748,7 @@
 <span>       title  <span class="op">=</span> <span class="st">"surface roughness"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.05</span>, <span class="fl">0.08</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotted"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-19-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-19-1.png" width="384"></p>
 <p>Temperature at a given height is computed by the function <code><a href="../reference/air_temp_profile.html">air_temp_profile()</a></code> by first estimating the temperature at roughness height:</p>
 <p><span class="math display">\[T_{z_0}= \frac{T_r S_{t_b}-T_0 S_{t_s}}{S_{t_b}-S_{t_s}}. \]</span></p>
 <p>Where <span class="math inline">\(S_{t_s}\)</span> is the sublayer Stanton Number <span class="math inline">\(S_{t_s}=0.62/ (\frac{z_0u^*}{12})^{0.45}\)</span> and <span class="math inline">\(S_{t_b}\)</span> is the bulk Stanton Number <span class="math inline">\(S_{t_b}=0.64/ (\frac{z}{z_0}+1)\)</span>. The Stanton numbers are dimensionless numbers that measures the ratio of the heat transferred in and the thermal capacity. The temperature at height <span class="math inline">\(z\)</span> can then be estimated as:</p>
@@ -798,7 +798,7 @@
 <span>       title  <span class="op">=</span> <span class="st">"surface roughness"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.05</span>, <span class="fl">0.08</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotted"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-20-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-20-1.png" width="384"></p>
 <p>TrenchR also adapts functions from NicheMapR <span class="citation">(Kearney and Porter 2017)</span> to refine wind speed and air temperature profiles by using multiple segments:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">z.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
@@ -818,7 +818,7 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">27</span>, <span class="fl">25</span>, <span class="fl">22</span>, <span class="fl">20</span><span class="op">)</span>,</span>
 <span>       y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-21-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-21-1.png" width="384"></p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">z.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
 <span><span class="va">u.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">z.seq</span>, </span>
@@ -836,7 +836,7 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.025</span>, <span class="fl">0.05</span><span class="op">)</span>,</span>
 <span>       y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-22-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-22-1.png" width="384"></p>
 </div>
 <div class="section level2">
 <h2 id="diurnal-variation-in-temperature-and-radiation">Diurnal variation in temperature and radiation<a class="anchor" aria-label="anchor" href="#diurnal-variation-in-temperature-and-radiation"></a>
@@ -958,7 +958,7 @@
 <span>       title  <span class="op">=</span> <span class="st">"day of year"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">172</span>, <span class="fl">228</span>, <span class="fl">266</span>, <span class="fl">356</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotdash"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-24-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-24-1.png" width="384"></p>
 </div>
 <div class="section level2">
 <h2 id="degree-days">Degree days<a class="anchor" aria-label="anchor" href="#degree-days"></a>
@@ -1136,7 +1136,7 @@
 <span>       title  <span class="op">=</span> <span class="st">"soil depth interval"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">6</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-26-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-26-1.png" width="384"></p>
 </div>
 <div class="section level3">
 <h3 id="soil-specific-heat-and-conductivity">Soil specific heat and conductivity<a class="anchor" aria-label="anchor" href="#soil-specific-heat-and-conductivity"></a>
@@ -1154,7 +1154,7 @@
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"bulk density"</span> <span class="op">~</span> <span class="op">(</span><span class="va">kg</span><span class="op">/</span><span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="fl">3</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"soil specific heat"</span> <span class="op">~</span> <span class="op">(</span><span class="va">J</span> <span class="op">~</span> <span class="va">kg</span><span class="op">^</span><span class="op">{</span><span class="op">-</span><span class="fl">1</span><span class="op">}</span> <span class="op">~</span> <span class="va">K</span><span class="op">^</span><span class="op">{</span><span class="op">-</span><span class="fl">1</span><span class="op">}</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-27-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-27-1.png" width="384"></p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">oldpar</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Warning in par(oldpar): graphical parameter "cin" cannot be set</span></span></code></pre>
