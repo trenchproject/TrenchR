@@ -1,35 +1,16 @@
 ## Resubmission Notes
 
-This is a resubmission after addressing NOTES found on the first submission.
+This is a resubmission after addressing NOTES found on the previous submission.
 
-- The entry for the `cran-comments.md` file in the `.Rbuildignore` file has been appropriately edited to `^cran-comments\.md$`
+- Changed reference handling to avoid a problematic DOI.
 
-- The URL NOTEs are not reliable across runs and generally appear to indicate DOI re-directing, which is an acceptable built-in standard for their usage.
-  - Potentially problematic DOI updated in the `REFERENCES.bib`:
-    - `eres.qnl.qa/10.1093/ee/5.3.388` to `10.1093/ee/5.3.388`
-  - Added R-devel local and win-builder build test environments to facilitate URL checking
-    - None of these runs reproduce any URL NOTEs
+- Reduce figure size in vignettes to reduce size.
 
 - Date was updated.
 
-- The following changes were implemented following review:
-  - Shorten title
-    - Title is now 46 characters
-  - Edit start of description
-    - Description no longer starts with "The TrenchR package..."
-  - Use single quotes for package name in description
-    - Package name is single quoted in description
-  - Check that DOI works
-    - The DOI does work as shown (https://doi.org/10.1890/0012-9658(1999)080[0015:TBORIM]2.0.CO;2) 
-    - updated the references file to use a URL instead of the DOI due to strange character in DOI
-  - Replace "T" and "F" as vector names
-    - All arguments and vector names of `T` and `F` have been replaced
-  - Reset user `options()` when changed
-    - User `options()` are re-set at the end of vignettes
-
 ## Release Summary
 
-This is the first release of TrenchR.
+This is the second release of TrenchR with minor changes.
 
 ## Test environments 
 * Local: Windows 10 home install (build 19043), 64-bit R 4.2.0 (2022-04-22 ucrt)

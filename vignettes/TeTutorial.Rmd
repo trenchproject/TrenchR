@@ -71,7 +71,7 @@ where $A_{dir}$, $A_{dif}$, and $A_{ref}$ are the surface areas exposed to direc
 
 The summation is available in R as follows:
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 4, fig.width = 6}
 
 plot(x    = seq(100, 1000, 100), 
      y    = Qradiation_absorbed(a       = 0.9, 
@@ -144,7 +144,7 @@ where $A_s$ and $A_r$ are the areas ($m^2$) exposed to the sky (or enclosure) an
 
 The function is available in R as follows:
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 4, fig.width = 6}
 
 plot(x    = 293:313, 
      y    = Qemitted_thermal_radiation(epsilon  = 0.96, 
@@ -212,7 +212,7 @@ $$Q_{conv}= ef\cdot H_L(A\cdot \mbox{proportion})(T_a-T_b).$$
 
 The function is available in R:
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 4, fig.width = 6}
 
 plot(x    = 293:313, 
      y    = Qconvection(T_a        = 303,
@@ -272,7 +272,7 @@ It is estimated as the ratio of a buoyant force times an inertial force to the s
 
 The dimensionless groups are available in R as follows:
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 4, fig.width = 6}
 
 plot(x    = 1:30, 
      y    = Nusselt_number(H_L = 1:30, 
@@ -310,7 +310,7 @@ legend(x      = "topleft",
 
 ```
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 4, fig.width = 6}
 
 plot(x    = 1:30, 
      y    = Prandtl_number(c_p = 1:30,
@@ -348,7 +348,7 @@ legend(x      = "topleft",
 
 ```
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 4, fig.width = 6}
 
 plot(x    = seq(0, 5, 0.2), 
      y    = Reynolds_number(u  = seq(0, 5, 0.2), 
@@ -387,7 +387,7 @@ legend(x      = "topleft",
 
 ```
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 4, fig.width = 6}
 
 plot(x    = seq(0, 0.01, 0.001), 
      y    = Grashof_number(T_a = 30, 
@@ -434,7 +434,7 @@ legend(x      = "topleft",
 
 Relations among the dimensionless groups can also be used for estimation. Empirically-derived relationships can be used to estimate the Nusselt number $Nu$ from the Reynolds number $Re$ or the Grashof number $Gr$. Comparisons of $Gr$ and $Re$ allow determining whether modeling free or forced convection is appropriate. Forced convection is appropriate when $Gr \leq 16 Re^2$. For convenience, we provide the relationships as R functions:
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 4, fig.width = 6}
 
 plot(x    = 1:10, 
      y    = Nusselt_from_Reynolds(Re    = 1:10,  
@@ -518,7 +518,7 @@ free_or_forced_convection(Gr = 100,
 
 We offer methods to estimate the convective heat transfer coefficient based on either empirical measurements (`heat_transfer_coefficient()`) or approximating the animal shape as a sphere (`heat_transfer_coefficient_approximation()`). Approximating the animal shape as a sphere enables simplification while also producing a reasonable approximation [@mitchell1976heat]. The functions approximate forced convective heat transfer as a function of windspeed $V (m/s)$, the characteristic dimension $D (m)$, the thermal conductivity of the air $K (W m^{-1} K^{-1})$, the kinematic viscosity of the air $\nu (m^2 s^{-1})$, and the taxa or a generic shape. An additional, simplified function (`heat_transfer_coefficient_simple()`) provides a reasonable approximation based on $V$ and $D$ for most environmental conditions.
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 4, fig.width = 6}
 
 oldpar <- par()
 
@@ -595,7 +595,7 @@ legend(x      = "bottomright",
 
 ```
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 3, fig.width = 6}
 
 par(mar = c(5,  5, 3, 2))
 
@@ -652,7 +652,7 @@ legend(x      = "bottomright",
 
 ```
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 3, fig.width = 5}
 
 plot(x    = seq(0, 3, 0.25), 
      y    = heat_transfer_coefficient_simple(V    = seq(0, 3, 0.25),
@@ -701,7 +701,7 @@ $$Q_{cond} = A\cdot \mbox{proportion} \cdot (2K_g/D)(T_b-T_g),$$
 
 where $K_g$ is the thermal conductivity of substrate ($W K^{-1} m^{-1}$) and $D$ is the characteristic dimension of the animal ($m$). The functions are available in R:
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 4, fig.width = 6}
 
 plot(x    = 293:313, 
      y    = Qconduction_animal(T_g        = 293:313,
@@ -750,7 +750,7 @@ legend(x      = "topright",
 
 ```
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 4, fig.width = 6}
 
 plot(x    = 293:313, 
      y    = Qconduction_substrate(T_g        = 293:313,
@@ -804,7 +804,7 @@ legend(x      = "topright",
 
 Rates of heat production associated with metabolism are generally estimated using scaling relationships based on generalizing empirical data. Metabolic rates scale as a power law function of mass with an exponent less than 1 such that the per-mass metabolic rate declines with increasing mass. Metabolic rates also increase exponentially with temperature.  The general form of the relationship is $B=M^x \exp(-E_i/{kT})$, where $M$ is mass, $x$ is an exponent approximating 0.75, $E_i$ is the average activation energy for the rate-limiting enzyme-catalyzed biochemical reactions of metabolism, $k$ is the Boltzmann constant, and $T$ is body temperature [@gillooly2001effects]. We offer functions that both do not [`Qmetabolism_from_mass()`] and do [`Qmetabolism_from_mass_temp()`] include temperature dependence for a variety of taxa.
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 4, fig.width = 4}
 
 plot(x    = 1:100, 
      y    = Qmetabolism_from_mass(m     = 1:100,
@@ -834,7 +834,7 @@ legend(x      = "topleft",
 
 ```
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 4, fig.width = 4}
 
 plot(x    = 1:100, 
      y    = Qmetabolism_from_mass_temp(m     = 1:100, 
@@ -918,7 +918,7 @@ where $A$ is surface area ($m^2$), $r_e$ is the external (convective) resistance
 
 The rate of water loss for an amphibian without fully wetted skin can be expressed as $$E_c= A (\rho_s-h\rho_a)/(r_i+r_e),$$ where $r_i$ is the internal (cutaneous) resistance to vapor transport ($s/m$). We provide R functions for heat loss through evaporation as the product of $E_c$ and the latent heat of vaporization of water:
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 4, fig.width = 4}
 
 # kPa
 
@@ -992,7 +992,7 @@ legend(x      = "right",
 
 We estimate external resistance to water vapor transport, $r_e$, using the Lewis rule describing the relationships among the coefficients for heat and mass transport: $r_e= 0.93 \rho c_p/H_L$, where $\rho$ is the density of air ($kg m^{-3}$), $c_p$ is the specific heat of air at constant pressure ($J kg^{-1}°C^{-1}$), and $H_L$ is the convective heat transfer coefficient ($W m^{-2} °C^{-1}$). We approximate $\rho c_p$as 1,200 $J m^{-3}°C^{-1}$ as commonly done in biological applications [@spotila1992biophysics]. We provide the relationship for $r_e$ as a function:
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 3, fig.width = 4}
 
 par(mar = c(5, 5, 3, 2))
 
@@ -1006,7 +1006,7 @@ plot(x    = 10:30,
 
 At constant temperatures, the relationship between vapor pressure and vapor density is linear and vapor pressure can be approximated at temperatures between $0°C$ and $40°C$ as $e_s= 10^{0.02604 T_a+2.82488}$, where $T_a$ is air temperature ($°C$). We provide the approximation as a function:
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 3, fig.width = 4}
 
 plot(x    = 10:30, 
      y    = saturation_water_vapor_pressure(T_a = 10:30), 
@@ -1020,7 +1020,7 @@ plot(x    = 10:30,
 
 TrenchR primarily includes models for estimating the body temperatures (generally the operative temperatures, $T_e$) of organisms that have reached an equilibrium with their environment ("steady-state", no heat retention). The following function uses the relationships above to solve the energy balance for $Tb (K)$.
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 4, fig.width = 4}
 
 t.seq <- lapply(293:313, 
                 FUN     = Tb_Gates, 
@@ -1114,7 +1114,7 @@ where 1.4 is a factor to account for increased convection in natural environment
 
 The function to estimate $T_b$ (also $T_e$) is available in R as follows (including the above calculations of $Q_{emit}$, $g_r$, and $g_{Ha}$):
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 4, fig.width = 4}
 
 plot(x    = 293:313, 
      y    = Tb_CampbellNorman(T_a     = 293:313, 
@@ -1248,7 +1248,7 @@ $$Te=Ta+\frac{Rabs-\epsilon_s \sigma (T_a+273)^4}{c_p(g_r+g_{Ha})}$$.
 
 We implement the model in TrenchR as follows:
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 4, fig.width = 6}
 
 # sun, surface
 
@@ -1363,7 +1363,7 @@ We implement the model in TrenchR as follows:
          type = "l", 
          lty  = "dotdash")
 
-legend(x      = "bottomright",
+legend(x      = "topright",
        title  = "parameters", 
        legend = c("sun, surface", "shade, surface", "sun, above surface", "shade, above surface"), 
        lty    = c("solid", "dashed", "dotted", "dotdash"))
@@ -1372,7 +1372,7 @@ legend(x      = "bottomright",
 
 There are several transient energy budget models available to predict lizard body temperatures. We include a transient model from Fei at al. [-@fei2012body] that can be implemented as demonstrated below. Please refer to the initial publication for the model details. R code for another transient model of lizard body temperature is available in the following repository: <https://github.com/JRubalcaba/BodyTemp>.
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 4, fig.width = 4}
 
 t.seq <- lapply(293:313, 
                 FUN       = Tb_lizard_Fei,  
@@ -1461,7 +1461,7 @@ The boundary layer conductance, $h_c$, can be estimated using the relationship b
 
 We provide the operative temperature model for butterflies as follows:
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 4, fig.width = 4}
 
 t.seq <- lapply(20:40, 
                 FUN    = Tb_butterfly,  
@@ -1557,7 +1557,7 @@ We use an empirical relationship from Anderson et al. [-@lactin1998environmental
 
 We provide the operative temperature model for grasshoppers as follows:
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 4, fig.width = 4}
 
 t.seq <- lapply(20:40, 
                 FUN       = Tb_grasshopper,  
@@ -1660,7 +1660,7 @@ $$(k_2 A_{rad,sky} T_a^3 + k_4 A_{rad, ground} T_g^3 + k_5 A_{cond} + h_c A_{con
 
 Here, $k_1$ to $k_5$ are physical constants and measured coefficients. We provide the operative temperature model as follows.
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 4, fig.width = 4}
 
 t.seq <- lapply(20:40, 
                 FUN   = Tb_mussel,  
@@ -1731,7 +1731,7 @@ legend(x      = "bottomright",
 
 We also illustrate how the model can be applied to investigate the effect of mussel size and evaporation as in Helmuth [-@helmuth1998intertidal]. The red line indicates the effect of evaporative heat loss.
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 4, fig.width = 4}
 
 t.seq <- lapply(seq(0.02, 0.14, 0.01), 
                 FUN   = Tb_mussel,  
@@ -1815,7 +1815,7 @@ legend(x      = "bottomright",
 
 TrenchR also provides a version of the model modified for mussel beds [@helmuth1999thermal]. The red line indicates the effect of evaporative heat loss.
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 4, fig.width = 4}
 
 t.seq <- lapply(20:40,  
                 FUN  = Tbed_mussel,  
@@ -1941,7 +1941,7 @@ $$W_{sw} \pm W_{lw} \pm W_{cd} \pm W_{cv} = 0.$$
 
 We provide the operative temperature model as follows:
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 4, fig.width = 4}
 
 t.seq <- lapply(20:40,  
                 FUN      = Tb_limpet,  
@@ -2006,7 +2006,7 @@ legend(x      = "bottomright",
 
 TrenchR also provides two other versions of the limpet model modified by the Helmuth Lab. The first modifies radiation and convection in the function for limpets: `Tb_limpetBH`. The second modifies the function to predict snail body temperatures `Tb_snail`. We illustrate the functions below:
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 4, fig.width = 4}
 
 t.seq <- lapply(20:40, 
                 FUN      = Tb_limpet,  
@@ -2094,7 +2094,7 @@ $$g_{v}=\frac{g_{vs} g_{va}}{g_{vs}+g_{va}}.$$
 
 We convert skin and boundary layer resistance for vapor to conductance by multiplying the values by 100 to convert to $s\:m^{-2}$ and then dividing by 41.1 $mol\:m^{-3}$. The boundary layer conductance for heat is calculated as $g_{Ha}= 1.4*0.135*sqrt(u/d)$, where $u$ is the wind speed $(m/s)$ and $d$ is the characteristic dimension $(m)$. We use a wind speed 0.1 m/s in our calculations of $g_{Ha}$ to mimic still air near the ground [@campbell2012introduction], and for $D$ the cross-sectional diameter of a cylinder approximating the size of a salamander. Boundary layer resistance can be estimated as follows.
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 4, fig.width = 4}
 par(mar = c(5,  5, 3, 2))
 blr.seq= lapply(293:313, FUN=boundary_layer_resistance, e_s= 2.5, e_a = 2.3, elev = 500, D = 0.007, u = 2)
 plot(x    = 293:313, 
@@ -2106,7 +2106,7 @@ plot(x    = 293:313,
 
 TrenchR includes several support functions, often adapted from Campbell and Norman  [-@campbell2012introduction], used for estimating humid operative temperatures. Functions estimate thermal radiation absorbed (`thermal_radiation_absorbed`) and emitted (`Qemitted_thermal_radiation`) as well as actual (`actual_vapor_pressure`) and saturation (`saturation_vapor_pressure`) vapor pressure. The functions also include a statistical approximation from Campbell and Norman [-@campbell2012introduction] for estimating soil temperatures at specified depths.
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 4, fig.width = 6}
 
 plot(x    = 1:24, 
      y    = Tsoil(T_g_max = 30, 
@@ -2150,7 +2150,7 @@ legend(x      = "topleft",
 
 We illustrate the humid operative temperature model by comparing an example parameterization (solid lines) to a 1:1 line (dotted line) indicating when humid operative temperatures equal air temperatures. Evaporative cooling lowers humid operative temperatures below air temperatures for the nocturnal salamander. Higher skin resistance to evaporation reduced cooling (red) whereas higher vapor pressure deficit augments cooling (blue).  
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 4, fig.width = 4}
 
 rad.seq <- sapply(20:40, 
                   FUN            = Qthermal_radiation_absorbed,  
@@ -2279,7 +2279,7 @@ Let us first prepare the environmental data for analysis. We will need to estima
 
 While measured solar radiation is preferable if available, we can estimate hourly solar radiation by discounting incoming solar radiation as it moved through the atmosphere as follows:
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 4, fig.width = 6}
 
 psi_deg <- sapply(1:24, 
                   FUN = zenith_angle, 
@@ -2525,7 +2525,7 @@ for (hr in 1:24) {
 
 We next plot the diurnal trends in environmental data and the operative data.
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 4, fig.width = 6}
 
 par(mar = c(4, 4, 1, 4), 
     mgp = c(2, 1, 0), 
@@ -2705,7 +2705,7 @@ Qevap <- 0
 
 The full heat budget can be calculated as follows. We plot out the energy balance components.
 
-```{r, fig.height = 4, fig.width = 8}
+```{r, fig.height = 4, fig.width = 7}
 
 Qnet <- Qnet_Gates(Qabs  = Qabs, 
                    Qemit = Qemit, 

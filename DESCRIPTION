@@ -15,18 +15,6 @@ Authors@R: c(
     person("Juniper", "Simonis", role = c("aut"), comment = c(ORCID = "0000-0001-9798-0460")),
     person("Brian", "Helmuth", role = c("ctb"), comment = c(ORCID = "0000-0003-0180-3414"))
   )
-Author: c(
-    person("Lauren", "Buckley", role = c("aut", "cre"), email = "lbuckley@uw.edu", comment = c(ORCID = "0000-0003-1315-3818")),
-    person("Bryan", "Briones Ortiz", role = c("aut")),
-    person("Isaac", "Caruso", role = c("aut")),
-    person("Aji", "John", role = c("aut"), comment = c(ORCID = "0000-0002-4401-1401")),
-    person("Ofir", "Levy", role = c("aut"), comment = c(ORCID = "0000-0003-0920-1207")),
-    person("Abigail", "Meyer", role = c("aut")),
-    person("Eric", "Riddell", role = c("aut"), comment = c(ORCID = "0000-0002-4229-4911")),
-    person("Yutaro", "Sakairi", role = c("aut")),
-    person("Juniper", "Simonis", role = c("aut"), comment = c(ORCID = "0000-0001-9798-0460")),
-    person("Brian", "Helmuth", role = c("ctb"), comment = c(ORCID = "0000-0003-0180-3414"))
-  )
 License: MIT + file LICENSE
 Date: 2022-09-15
 URL: https://trenchproject.github.io/TrenchR/, https://github.com/trenchproject/TrenchR

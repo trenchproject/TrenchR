@@ -27,6 +27,8 @@ Version numbers follow [Semantic Versioning](https://semver.org/).
 
 ## Edits is response to CRAN review
 * including shortening title, editing description, and updating variable names.
+* change reference handling.
+* reduce figure size in vignettes to reduce size.
 
 ## Argument edits
 * Standardizing arguments across functions

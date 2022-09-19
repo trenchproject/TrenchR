@@ -29,13 +29,12 @@ Finally, we present functions that describe thermal performance curves.
 # Allometries
 
 We provide tools for estimating additional dimensions of organisms from measured dimensions. 
-
 ### Mass
 
 The function `mass_from_length()` encompasses empirically-derived relationships to estimate mass as a power law function of mass for six taxonomic classifications. 
 The relationships are derived by relating length to mass for specimens of numerous species. We use the `mass_from_length()` function to illustrate the allometries for different taxa:
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 3, fig.width = 4}
 
 oldpar<- par()
 
@@ -97,7 +96,7 @@ We provide functions to estimate surface area ($m^3$) from length, mass, or volu
 
 The function `surface_area_from_mass()` encompasses empirically-derived relationship to estimate surface area as a power law function of mass for lizards, frogs, and insects. 
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 3, fig.width = 4}
 
 par(mar = c(5, 5, 2, 2))
 
@@ -143,7 +142,7 @@ box(bty = "L",
 We also provide empirical relationships estimating surface area as power law function of volume. 
 The functions were developed by Mitchell [-@mitchell1976heat] for use in approximating convective heat transfer:
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 3, fig.width = 4}
 
 plot(x    = seq(0.001, 0.01, 0.001), 
      y    = surface_area_from_volume(V     = seq(0.001, 0.01, 0.001), 
@@ -170,7 +169,7 @@ For the same study, we additionally provide a function to estimate volume from l
 Finally, we provide a function for estimating surface area from length by approximating the animal's body as a rotational ellipsoid. 
 The allometric functions are available in R as follows:
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 3, fig.width = 4}
 
 par(mar = c(5, 5, 2, 2))
 
@@ -195,7 +194,7 @@ points(x    = seq(0.01, 0.05, 0.001),
 
 ```
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 3, fig.width = 4}
 
 par(mar = c(5, 5, 2, 2))
 
@@ -213,7 +212,7 @@ We offer empirically-derived relationships to predict the proportional silhouett
 We additionally offer a function (`proportion_silhouette_area_shapes()`) to estimate silhouette area by approximating the animal as a sphere or cylinder as a function of theta, the angle between the solar beam and the longitudinal axis. 
 The R functions are parameterized as follows:
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 3, fig.width = 4}
 
 par(mar = c(5, 5, 2, 2))
 
@@ -377,7 +376,7 @@ A scale factor enables including a thermodynamic effect on mean performance [@as
 
 
 
-```{r, fig.height = 4, fig.width = 6}
+```{r, fig.height = 3, fig.width = 4}
 
 plot(x    = 0:60, 
      y    = TPC(T      = 0:60, 
