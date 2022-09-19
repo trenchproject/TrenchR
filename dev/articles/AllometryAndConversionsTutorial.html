@@ -108,7 +108,10 @@
 <div class="section level2">
 <h2 id="allometries">Allometries<a class="anchor" aria-label="anchor" href="#allometries"></a>
 </h2>
-<p>We provide tools for estimating additional dimensions of organisms from measured dimensions. ### Mass</p>
+<p>We provide tools for estimating additional dimensions of organisms from measured dimensions.</p>
+<div class="section level4">
+<h4 id="mass">Mass<a class="anchor" aria-label="anchor" href="#mass"></a>
+</h4>
 <p>The function <code><a href="../reference/mass_from_length.html">mass_from_length()</a></code> encompasses empirically-derived relationships to estimate mass as a power law function of mass for six taxonomic classifications. The relationships are derived by relating length to mass for specimens of numerous species. We use the <code><a href="../reference/mass_from_length.html">mass_from_length()</a></code> function to illustrate the allometries for different taxa:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">oldpar</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -161,7 +164,8 @@
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       col  <span class="op">=</span> <span class="st">"purple"</span>, </span>
 <span>       lwd  <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-2-1.png" width="384"></p>
+<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-2-1.png" width="576"></p>
+</div>
 <div class="section level4">
 <h4 id="surface-area">Surface Area<a class="anchor" aria-label="anchor" href="#surface-area"></a>
 </h4>
@@ -206,7 +210,7 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/box.html" class="external-link">box</a></span><span class="op">(</span>bty <span class="op">=</span> <span class="st">"L"</span>,</span>
 <span>    lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-3-1.png" width="384"></p>
+<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-3-1.png" width="576"></p>
 <p>We also provide empirical relationships estimating surface area as power law function of volume. The functions were developed by Mitchell <span class="citation">(1976)</span> for use in approximating convective heat transfer:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span><span class="op">)</span>, </span>
@@ -227,7 +231,7 @@
 <span>                                       taxon <span class="op">=</span> <span class="st">"sphere"</span><span class="op">)</span>,</span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-4-1.png" width="384"></p>
+<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
 <p>For the same study, we additionally provide a function to estimate volume from length for several taxa or by approximating the organism as a sphere. Finally, we provide a function for estimating surface area from length by approximating the animal’s body as a rotational ellipsoid. The allometric functions are available in R as follows:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
@@ -250,7 +254,7 @@
 <span>                                 taxon <span class="op">=</span> <span class="st">"sphere"</span><span class="op">)</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-5-1.png" width="384"></p>
+<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-5-1.png" width="576"></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -259,7 +263,7 @@
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="st">"length (m)"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"surface area"</span> <span class="op">~</span> <span class="op">(</span><span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-6-1.png" width="384"></p>
+<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-6-1.png" width="576"></p>
 <p>Estimating the amount of solar radiation that an animal absorbs requires knowledge of the silhouette area, the proportion of an animal’s surface area that is projected onto a horizontal surface. Silhouette area is a function of the sun’s angle. We offer empirically-derived relationships to predict the proportional silhouette area for frogs, lizards, and grasshoppers as a polynomial function of zenith angle (<code><a href="../reference/proportion_silhouette_area.html">proportion_silhouette_area()</a></code>). We additionally offer a function (<code><a href="../reference/proportion_silhouette_area_shapes.html">proportion_silhouette_area_shapes()</a></code>) to estimate silhouette area by approximating the animal as a sphere or cylinder as a function of theta, the angle between the solar beam and the longitudinal axis. The R functions are parameterized as follows:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
@@ -292,7 +296,7 @@
 <span>                                         taxon <span class="op">=</span>  <span class="st">"grasshopper"</span><span class="op">)</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dotdash"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-7-1.png" width="384"></p>
+<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, </span>
 <span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/proportion_silhouette_area_shapes.html">proportion_silhouette_area_shapes</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"spheroid"</span>, </span>
@@ -328,7 +332,7 @@
 <span>                                                d     <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dotdash"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-7-2.png" width="384"></p>
+<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-7-2.png" width="576"></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, </span>
 <span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/proportion_silhouette_area_shapes.html">proportion_silhouette_area_shapes</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"cylinder flat ends"</span>, </span>
@@ -364,7 +368,7 @@
 <span>                                                d     <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dotdash"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-7-3.png" width="384"></p>
+<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-7-3.png" width="576"></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span>, <span class="fl">10</span><span class="op">)</span>, </span>
 <span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/proportion_silhouette_area_shapes.html">proportion_silhouette_area_shapes</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"cylinder hemisphere ends"</span>, </span>
@@ -399,7 +403,7 @@
 <span>                                                d     <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dotdash"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-7-4.png" width="384"></p>
+<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-7-4.png" width="576"></p>
 </div>
 </div>
 <div class="section level2">
@@ -446,7 +450,7 @@
 <span>                       skew      <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-9-1.png" width="384"></p>
+<p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">oldpar</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Warning in par(oldpar): graphical parameter "cin" cannot be set</span></span></code></pre>

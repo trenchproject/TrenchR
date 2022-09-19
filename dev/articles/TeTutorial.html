@@ -180,7 +180,7 @@
 <span>       title  <span class="op">=</span> <span class="st">"parameters"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a = 0.9, psa_dir = 0.4, a_s = 0.5"</span>, <span class="st">"a = 0.9, sa_dir = 0.2, a_s = 0.5"</span>, <span class="st">"a = 0.45, psa_dir = 0.4, a_s = 0.5"</span>, <span class="st">"a = 0.9, psa_dir = 0.4, a_s = 0.2"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-3-1.png" width="576"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-3-1.png" width="768"></p>
 <p>In the functions, <code>psa_dir</code> and <code>psa_ref</code> are the proportions of surface area exposed to direct and reflected solar radiation, respectively. We assume <code>psa_dif = psa_dir</code>. The functions <code><a href="../reference/proportion_silhouette_area.html">proportion_silhouette_area()</a></code> and <code><a href="../reference/proportion_silhouette_area_shapes.html">proportion_silhouette_area_shapes()</a></code> provide assistance calculating the proportional of surface area exposed via estimating silhouette area. Additionally, see the microclimate tutorial for tools for estimating incoming solar radiation.</p>
 </div>
 <div class="section level2">
@@ -246,7 +246,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       title  <span class="op">=</span> <span class="st">"parameters"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"psa_dir= 0.4, T_g = 293"</span>, <span class="st">"psa_dir= 0.2, T_g = 293"</span>, <span class="st">"psa_dir= 0.4, T_g = 283"</span>, <span class="st">"psa_dir= 0.2, T_g = 283"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-4-1.png" width="768"></p>
 </div>
 <div class="section level2">
 <h2 id="convection-qconv">Convection, Qconv<a class="anchor" aria-label="anchor" href="#convection-qconv"></a>
@@ -296,7 +296,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       title  <span class="op">=</span> <span class="st">"parameters"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"H = 5, proportion = 0.6"</span>, <span class="st">"H = 15, proportion = 0.6"</span>, <span class="st">"H = 5, proportion = 0.3"</span>, <span class="st">"H = 15, proportion = 0.3"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-5-1.png" width="576"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-5-1.png" width="768"></p>
 <p>The convective heat transfer coefficient depends on whether the heat exchange is free or forced (due to fluid flow). The variables involved in heat transfer can be combined into dimensionless groups that are used to compare the scales of heat exchange processes and thus whether modeling free or forced convection is more appropriate. We provide the primary dimensionless numbers.</p>
 <p>The Nusselt number provides a dimensionless estimate of conductance and is estimated as <span class="math inline">\(Nu = H_L \cdot D / K\)</span>, where <span class="math inline">\(H_L\)</span> is the convective heat transfer coefficient (<span class="math inline">\(W m^{-2} K^{-1}\)</span>), <span class="math inline">\(D\)</span> is the characteristic dimension (<span class="math inline">\(m\)</span>), and <span class="math inline">\(K\)</span> is thermal conductivity (<span class="math inline">\(W K^{-1}m^{-1}\)</span>).</p>
 <p>The Prandtl number describes the ratio of kinematic viscosity to thermal diffusivity as <span class="math inline">\(Pr= c_p \mu /K\)</span>, where <span class="math inline">\(c_p\)</span> is the specific heat at constant pressure (<span class="math inline">\(J mol^{-1} K^{-1}\)</span>) and <span class="math inline">\(\mu\)</span> is dynamic viscosity (<span class="math inline">\(mol \:s^{-1}m^{-1}\)</span>).</p>
@@ -337,7 +337,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>      title  <span class="op">=</span> <span class="st">"parameters"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"D = 0.01, K = 0.5"</span>, <span class="st">"D = 0.01, K = 1.5"</span>, <span class="st">"D = 0.05, K = 0.5"</span>, <span class="st">"D = 0.05, K = 1.5"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-6-1.png" width="576"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-6-1.png" width="768"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">30</span>, </span>
 <span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/Prandtl_number.html">Prandtl_number</a></span><span class="op">(</span>c_p <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">30</span>,</span>
@@ -372,7 +372,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>      title  <span class="op">=</span> <span class="st">"parameters"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mu = 0.00001, K = 0.5"</span>, <span class="st">"mu = 0.00002, K = 0.5"</span>, <span class="st">"mu = 0.00001, K = 1.5"</span>, <span class="st">"mu = 0.00002, K = 1.5"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-7-1.png" width="768"></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0.2</span><span class="op">)</span>, </span>
 <span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/Reynolds_number.html">Reynolds_number</a></span><span class="op">(</span>u  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">0.2</span><span class="op">)</span>, </span>
@@ -407,7 +407,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       title  <span class="op">=</span> <span class="st">"parameters"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"D = 0.001, nu = 1"</span>, <span class="st">"D = 0.001, nu = 1.5"</span>, <span class="st">"D = 0.002, nu = 1"</span>, <span class="st">"D = 0.002, nu = 1.5"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-8-1.png" width="576"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-8-1.png" width="768"></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span><span class="op">)</span>, </span>
 <span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/Grashof_number.html">Grashof_number</a></span><span class="op">(</span>T_a <span class="op">=</span> <span class="fl">30</span>, </span>
@@ -449,7 +449,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       title  <span class="op">=</span> <span class="st">"parameters"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Grashof_number, nu = 1"</span>, <span class="st">"Grashof_number_Gates, nu = 1"</span>, <span class="st">"Grashof_number, nu = 1.4"</span>, <span class="st">"Grashof_number_Gates, nu = 1.4"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-9-1.png" width="768"></p>
 <p>Relations among the dimensionless groups can also be used for estimation. Empirically-derived relationships can be used to estimate the Nusselt number <span class="math inline">\(Nu\)</span> from the Reynolds number <span class="math inline">\(Re\)</span> or the Grashof number <span class="math inline">\(Gr\)</span>. Comparisons of <span class="math inline">\(Gr\)</span> and <span class="math inline">\(Re\)</span> allow determining whether modeling free or forced convection is appropriate. Forced convection is appropriate when <span class="math inline">\(Gr \leq 16 Re^2\)</span>. For convenience, we provide the relationships as R functions:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, </span>
@@ -516,7 +516,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sphere"</span>, <span class="st">"cylinder"</span>, <span class="st">"frog"</span>, <span class="st">"lizard_traverse_to_air_flow"</span>, <span class="st">"lizard_parallel_to_air_flow"</span>, <span class="st">"lizard_surface"</span>, <span class="st">"lizard_elevated"</span>, <span class="st">"flyinginsect"</span>, <span class="st">"spider"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span>, <span class="st">"dotdash"</span>, <span class="st">"dotdash"</span>, <span class="st">"dotdash"</span>, <span class="st">"longdash"</span>, <span class="st">"twodash"</span><span class="op">)</span>, </span>
 <span>       col    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="st">"black"</span>, <span class="st">"black"</span>, <span class="st">"black"</span>, <span class="st">"red"</span>, <span class="st">"orange"</span>, <span class="st">"green"</span>, <span class="st">"black"</span>, <span class="st">"black"</span> <span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-10-1.png" width="576"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-10-1.png" width="768"></p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/Nusselt_from_Grashof.html">Nusselt_from_Grashof</a></span><span class="op">(</span>Gr <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 0.7177674</span></span></code></pre>
@@ -598,7 +598,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       title  <span class="op">=</span> <span class="st">"taxa"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sphere"</span>, <span class="st">"cylinder"</span>, <span class="st">"frog"</span>, <span class="st">"lizard_surface"</span>, <span class="st">"lizard_elevated"</span>, <span class="st">"flyinginsect"</span>, <span class="st">"spider"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span>, <span class="st">"dotdash"</span>, <span class="st">"dotdash"</span>, <span class="st">"dotdash"</span>, <span class="st">"longdash"</span>, <span class="st">"twodash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-13-1.png" width="576"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-13-1.png" width="768"></p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>,  <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -652,7 +652,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       title  <span class="op">=</span> <span class="st">"taxa"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sphere"</span>, <span class="st">"frog"</span>, <span class="st">"lizard"</span>, <span class="st">"flyinginsect"</span>, <span class="st">"spider"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span>, <span class="st">"longdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-14-1.png" width="576"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-14-1.png" width="768"></p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span>, <span class="fl">0.25</span><span class="op">)</span>, </span>
 <span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/heat_transfer_coefficient_simple.html">heat_transfer_coefficient_simple</a></span><span class="op">(</span>V    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span>, <span class="fl">0.25</span><span class="op">)</span>,</span>
@@ -680,7 +680,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       title  <span class="op">=</span> <span class="st">"characteristic dimension (m)"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.03</span>, <span class="fl">0.05</span>, <span class="fl">0.07</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dashed"</span>, <span class="st">"solid"</span>, <span class="st">"dotted"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-15-1.png" width="480"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-15-1.png" width="576"></p>
 </div>
 <div class="section level2">
 <h2 id="conduction-qcond">Conduction, Qcond<a class="anchor" aria-label="anchor" href="#conduction-qcond"></a>
@@ -737,7 +737,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       title  <span class="op">=</span> <span class="st">"parameters"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"K = 0.3, proportion = 0.2"</span>, <span class="st">"K = 0.5, proportion = 0.2"</span>, <span class="st">"K = 0.3, proportion = 0.4"</span>, <span class="st">"K = 0.5, proportion = 0.4"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-16-1.png" width="576"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-16-1.png" width="768"></p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
 <span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_substrate.html">Qconduction_substrate</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>,</span>
@@ -784,7 +784,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       title  <span class="op">=</span> <span class="st">"parameters"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"K = 0.3, proportion = 0.2"</span>, <span class="st">"K = 0.5, proportion = 0.2"</span>, <span class="st">"K = 0.3, proportion = 0.4"</span>, <span class="st">"K = 0.5, proportion = 0.4"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-17-1.png" width="576"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-17-1.png" width="768"></p>
 </div>
 <div class="section level2">
 <h2 id="metabolism-qmet">Metabolism, Qmet<a class="anchor" aria-label="anchor" href="#metabolism-qmet"></a>
@@ -816,7 +816,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       title  <span class="op">=</span> <span class="st">"taxa"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"bird"</span>, <span class="st">"mammal"</span>, <span class="st">"reptile"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-18-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-18-1.png" width="576"></p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, </span>
 <span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/Qmetabolism_from_mass_temp.html">Qmetabolism_from_mass_temp</a></span><span class="op">(</span>m     <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, </span>
@@ -852,7 +852,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       title  <span class="op">=</span> <span class="st">"taxa"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"bird,mammal"</span>, <span class="st">"reptile"</span>, <span class="st">"amphibian"</span>, <span class="st">"invertebrate"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span>, <span class="st">"twodash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-19-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-19-1.png" width="576"></p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
 <span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/Qmetabolism_from_mass_temp.html">Qmetabolism_from_mass_temp</a></span><span class="op">(</span>m     <span class="op">=</span> <span class="fl">5</span>, </span>
@@ -888,7 +888,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       title  <span class="op">=</span> <span class="st">"taxa"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"bird,mammal"</span>, <span class="st">"reptile"</span>, <span class="st">"amphibian"</span>, <span class="st">"invertebrate"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span>, <span class="st">"twodash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-19-2.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-19-2.png" width="576"></p>
 </div>
 <div class="section level2">
 <h2 id="evaporation-qevap">Evaporation, Qevap<a class="anchor" aria-label="anchor" href="#evaporation-qevap"></a>
@@ -965,7 +965,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       title  <span class="op">=</span> <span class="st">"taxa"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"amphibian"</span>, <span class="st">"amphibian_wetskin"</span>, <span class="st">"lizard"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"solid"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-20-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-20-1.png" width="576"></p>
 <p>We estimate external resistance to water vapor transport, <span class="math inline">\(r_e\)</span>, using the Lewis rule describing the relationships among the coefficients for heat and mass transport: <span class="math inline">\(r_e= 0.93 \rho c_p/H_L\)</span>, where <span class="math inline">\(\rho\)</span> is the density of air (<span class="math inline">\(kg m^{-3}\)</span>), <span class="math inline">\(c_p\)</span> is the specific heat of air at constant pressure (<span class="math inline">\(J kg^{-1}°C^{-1}\)</span>), and <span class="math inline">\(H_L\)</span> is the convective heat transfer coefficient (<span class="math inline">\(W m^{-2} °C^{-1}\)</span>). We approximate <span class="math inline">\(\rho c_p\)</span>as 1,200 <span class="math inline">\(J m^{-3}°C^{-1}\)</span> as commonly done in biological applications <span class="citation">(Spotila, O’Connor, and Bakken 1992)</span>. We provide the relationship for <span class="math inline">\(r_e\)</span> as a function:</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
@@ -975,7 +975,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"heat transfer coefficient"</span> <span class="op">~</span> <span class="op">(</span><span class="va">W</span> <span class="op">~</span> <span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="op">-</span><span class="fl">2</span><span class="op">}</span> <span class="op">~</span> <span class="st">"°"</span> <span class="op">~</span> <span class="va">C</span><span class="op">^</span><span class="op">{</span><span class="op">-</span><span class="fl">1</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"external resistance, "</span> <span class="op">~</span> <span class="va">r</span><span class="op">[</span><span class="va">e</span><span class="op">]</span> <span class="op">~</span> <span class="op">(</span><span class="va">sm</span><span class="op">^</span><span class="op">{</span><span class="op">-</span><span class="fl">1</span><span class="op">}</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-21-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-21-1.png" width="576"></p>
 <p>At constant temperatures, the relationship between vapor pressure and vapor density is linear and vapor pressure can be approximated at temperatures between <span class="math inline">\(0°C\)</span> and <span class="math inline">\(40°C\)</span> as <span class="math inline">\(e_s= 10^{0.02604 T_a+2.82488}\)</span>, where <span class="math inline">\(T_a\)</span> is air temperature (<span class="math inline">\(°C\)</span>). We provide the approximation as a function:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">10</span><span class="op">:</span><span class="fl">30</span>, </span>
@@ -983,7 +983,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="st">"temperature (°C)"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="st">"saturation water vapor pressure (Pa)"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-22-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-22-1.png" width="576"></p>
 </div>
 <div class="section level2">
 <h2 id="estimating-body-temperatures-tb">Estimating body temperatures, Tb<a class="anchor" aria-label="anchor" href="#estimating-body-temperatures-tb"></a>
@@ -1061,7 +1061,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       title  <span class="op">=</span> <span class="st">"Radiation, Qabs"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dashed"</span>, <span class="st">"solid"</span>, <span class="st">"dotted"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-23-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-23-1.png" width="576"></p>
 <p>Campbell and Norman <span class="citation">(2012)</span> use a somewhat simplified energy balance to express <span class="math inline">\(Tb\)</span> as a function of <span class="math inline">\(Ta\)</span> plus or minus a temperature increment determined by absorbed radiation, wind speed, and animal morphology:</p>
 <p><span class="math display">\[ T_b=T_a+(S_{abs}-Q_{emit})/(c_p(g_r+g_{Ha})),\]</span></p>
 <p>where <span class="math inline">\(Ta\)</span> is air temperature <span class="math inline">\((K)\)</span>, <span class="math inline">\(S_{abs}\)</span> is the solar and thermal radiation absorbed (<span class="math inline">\(W m^{-2}\)</span>), <span class="math inline">\(Qemit\)</span> is emitted thermal radiation (<span class="math inline">\(W m^{-2}\)</span>), <span class="math inline">\(c_p\)</span> is the specific heat of air (<span class="math inline">\(J mol^{-1} K^{-1}\)</span>), <span class="math inline">\(g_{r}\)</span> is radiative conductance <span class="math inline">\((mol\:m^{-2} s^{-1})\)</span>, and <span class="math inline">\(g_{Ha}\)</span> is the boundary conductance <span class="math inline">\((mol\:m^{-2} s^{-1})\)</span>. The model is based on estimating <span class="math inline">\(T_b\)</span> for a blackbody (perfectly absorbing) cavity with air temperatures equal to surface temperatures (<span class="math inline">\(T_a = T_s\)</span>). The model assumes that the cavity provides the same heat load as the natural environment and thus equates metabolic heat production and evaporative cooling in the two environments. The formulation assumes a well-mixed interior of the animal and also omits conduction with the substrate. In this scenario, organisms emit thermal radiation from their surface proportional to the fourth power of <span class="math inline">\(T_a\)</span>:</p>
@@ -1122,7 +1122,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       title  <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Radiation, Sabs"</span> <span class="op">~</span> <span class="op">(</span><span class="va">W</span> <span class="op">~</span> <span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="op">-</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200</span>,<span class="fl">400</span>,<span class="fl">600</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"solid"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-24-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-24-1.png" width="576"></p>
 </div>
 <div class="section level2">
 <h2 id="specialized-energy-balance-models-and-functions">Specialized energy balance models and functions<a class="anchor" aria-label="anchor" href="#specialized-energy-balance-models-and-functions"></a>
@@ -1287,11 +1287,11 @@ The boundary conductance of air (<span class="math inline">\(mol \: m^{−2} s^{
 <span>         type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>         lty  <span class="op">=</span> <span class="st">"dotdash"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span>x      <span class="op">=</span> <span class="st">"topright"</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span>x      <span class="op">=</span> <span class="st">"bottomright"</span>,</span>
 <span>       title  <span class="op">=</span> <span class="st">"parameters"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sun, surface"</span>, <span class="st">"shade, surface"</span>, <span class="st">"sun, above surface"</span>, <span class="st">"shade, above surface"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-25-1.png" width="576"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-25-1.png" width="768"></p>
 <p>There are several transient energy budget models available to predict lizard body temperatures. We include a transient model from Fei at al. <span class="citation">(2012)</span> that can be implemented as demonstrated below. Please refer to the initial publication for the model details. R code for another transient model of lizard body temperature is available in the following repository: <a href="https://github.com/JRubalcaba/BodyTemp" class="external-link uri">https://github.com/JRubalcaba/BodyTemp</a>.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
@@ -1348,7 +1348,7 @@ The boundary conductance of air (<span class="math inline">\(mol \: m^{−2} s^{
 <span>       title  <span class="op">=</span> <span class="st">"proportion shade"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.0</span>,<span class="fl">0.5</span>,<span class="fl">1.0</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dashed"</span>, <span class="st">"solid"</span>, <span class="st">"dotted"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-26-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-26-1.png" width="576"></p>
 </div>
 </div>
 <div class="section level3">
@@ -1432,7 +1432,7 @@ The boundary conductance of air (<span class="math inline">\(mol \: m^{−2} s^{
 <span>       title<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"direct radiation,"</span> <span class="op">~</span> <span class="va">H</span><span class="op">[</span><span class="va">sdif</span><span class="op">]</span><span class="op">)</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">100</span>,<span class="fl">300</span>,<span class="fl">500</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dashed"</span>, <span class="st">"solid"</span>, <span class="st">"dotted"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-27-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-27-1.png" width="576"></p>
 </div>
 <div class="section level3">
 <h3 id="grasshoppers">Grasshoppers<a class="anchor" aria-label="anchor" href="#grasshoppers"></a>
@@ -1516,7 +1516,7 @@ The boundary conductance of air (<span class="math inline">\(mol \: m^{−2} s^{
 <span>       title  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"direct radiation, H"</span><span class="op">)</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">400</span>, <span class="fl">600</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"solid"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-28-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-28-1.png" width="576"></p>
 </div>
 <div class="section level3">
 <h3 id="mussels">Mussels<a class="anchor" aria-label="anchor" href="#mussels"></a>
@@ -1600,7 +1600,7 @@ The boundary conductance of air (<span class="math inline">\(mol \: m^{−2} s^{
 <span>       title  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Wind speed, m/s"</span><span class="op">)</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.2</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-29-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-29-1.png" width="576"></p>
 <p>We also illustrate how the model can be applied to investigate the effect of mussel size and evaporation as in Helmuth <span class="citation">(1998)</span>. The red line indicates the effect of evaporative heat loss.</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.14</span>, <span class="fl">0.01</span><span class="op">)</span>, </span>
@@ -1681,7 +1681,7 @@ The boundary conductance of air (<span class="math inline">\(mol \: m^{−2} s^{
 <span>       title  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Wind speed, m/s"</span><span class="op">)</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>,<span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-30-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-30-1.png" width="576"></p>
 <p>TrenchR also provides a version of the model modified for mussel beds <span class="citation">(Helmuth 1999)</span>. The red line indicates the effect of evaporative heat loss.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fl">20</span><span class="op">:</span><span class="fl">40</span>,  </span>
@@ -1747,7 +1747,7 @@ The boundary conductance of air (<span class="math inline">\(mol \: m^{−2} s^{
 <span>       title  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Wind speed, m/s"</span><span class="op">)</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.2</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-31-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-31-1.png" width="576"></p>
 <p>Additionally, land surface models have been modified to predict mussel bed temperatures <span class="citation">(Mislan and Wethey 2015)</span>. We do not include these more complex models in TrenchR because they are available elsewhere (Mislan and Wethey 2014: <a href="https://zenodo.org/record/13380#.XpidHJNKjm0" class="external-link uri">https://zenodo.org/record/13380#.XpidHJNKjm0</a>)</p>
 </div>
 <div class="section level3">
@@ -1839,7 +1839,7 @@ The boundary conductance of air (<span class="math inline">\(mol \: m^{−2} s^{
 <span>       title  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Solar irradiance, W/m^2"</span><span class="op">)</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fl">1300</span>, <span class="fl">1600</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-32-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-32-1.png" width="576"></p>
 <p>TrenchR also provides two other versions of the limpet model modified by the Helmuth Lab. The first modifies radiation and convection in the function for limpets: <code>Tb_limpetBH</code>. The second modifies the function to predict snail body temperatures <code>Tb_snail</code>. We illustrate the functions below:</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
@@ -1898,7 +1898,7 @@ The boundary conductance of air (<span class="math inline">\(mol \: m^{−2} s^{
 <span>       title  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"function"</span><span class="op">)</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Tb_limpet"</span>, <span class="st">"Tb_limpetBH"</span>, <span class="st">"Tb_Snail"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-33-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-33-1.png" width="576"></p>
 </div>
 <div class="section level3">
 <h3 id="nocturnal-salamanders-humid-operative-temperatures">Nocturnal Salamanders (humid operative temperatures)<a class="anchor" aria-label="anchor" href="#nocturnal-salamanders-humid-operative-temperatures"></a>
@@ -1924,7 +1924,7 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="st">"air temperature (K)"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"boundary layer resistance"</span> <span class="op">~</span> <span class="op">(</span><span class="va">s</span> <span class="op">~</span> <span class="va">cm</span><span class="op">^</span><span class="op">{</span><span class="op">-</span><span class="fl">1</span><span class="op">}</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-34-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-34-1.png" width="576"></p>
 <p>TrenchR includes several support functions, often adapted from Campbell and Norman <span class="citation">(2012)</span>, used for estimating humid operative temperatures. Functions estimate thermal radiation absorbed (<code>thermal_radiation_absorbed</code>) and emitted (<code>Qemitted_thermal_radiation</code>) as well as actual (<code>actual_vapor_pressure</code>) and saturation (<code>saturation_vapor_pressure</code>) vapor pressure. The functions also include a statistical approximation from Campbell and Norman <span class="citation">(2012)</span> for estimating soil temperatures at specified depths.</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, </span>
@@ -1964,7 +1964,7 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span>       title  <span class="op">=</span> <span class="st">"depth (cm)"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">5</span>,<span class="fl">10</span>,<span class="fl">20</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-35-1.png" width="576"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-35-1.png" width="768"></p>
 <p>We illustrate the humid operative temperature model by comparing an example parameterization (solid lines) to a 1:1 line (dotted line) indicating when humid operative temperatures equal air temperatures. Evaporative cooling lowers humid operative temperatures below air temperatures for the nocturnal salamander. Higher skin resistance to evaporation reduced cooling (red) whereas higher vapor pressure deficit augments cooling (blue).</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rad.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
@@ -2032,7 +2032,7 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"base scenario"</span>, <span class="st">"higher skin resistance"</span>, <span class="st">"higher vpd"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span><span class="op">)</span>, </span>
 <span>       col    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="st">"red"</span>, <span class="st">"blue"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-36-1.png" width="384"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-36-1.png" width="576"></p>
 </div>
 </div>
 <div class="section level2">
@@ -2131,7 +2131,7 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span>       title  <span class="op">=</span> <span class="st">"Solar radiation component"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"direct"</span>, <span class="st">"diffuse"</span>, <span class="st">"reflected"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotted"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-38-1.png" width="576"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-38-1.png" width="768"></p>
 <p>We can then calculate hourly air and soil temperatures. We use the sine-exponential model for air temperature and the sine model for surface temperature:</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Ta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, </span>
@@ -2377,7 +2377,7 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"solid"</span>, <span class="st">"solid"</span>, <span class="st">"dotted"</span>, <span class="st">"dashed"</span>, <span class="st">"dotdash"</span><span class="op">)</span>, </span>
 <span>       pch    <span class="op">=</span> <span class="cn">NA</span>, </span>
 <span>       col    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"orange"</span>, <span class="st">"purple"</span>, <span class="st">"blue"</span>, <span class="st">"blue"</span>, <span class="st">"blue"</span>, <span class="st">"blue"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-45-1.png" width="576"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-45-1.png" width="768"></p>
 </div>
 <div class="section level3">
 <h3 id="energy-balance">Energy balance<a class="anchor" aria-label="anchor" href="#energy-balance"></a>
@@ -2490,7 +2490,7 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span>       title  <span class="op">=</span> <span class="st">"component"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"net radition, Qnet"</span>, <span class="st">"solar radiation, Qabs"</span>, <span class="st">"thermal radiation, Qemit"</span>, <span class="st">"convection, Qconv"</span>, <span class="st">"conduction, Qcond"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotted"</span>, <span class="st">"dashed"</span>, <span class="st">"dotdash"</span>, <span class="st">"twodash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="TeTutorial_files/figure-html/unnamed-chunk-51-1.png" width="672"></p>
+<p><img src="TeTutorial_files/figure-html/unnamed-chunk-51-1.png" width="768"></p>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">oldpar</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Warning in par(oldpar): graphical parameter "cin" cannot be set</span></span></code></pre>
