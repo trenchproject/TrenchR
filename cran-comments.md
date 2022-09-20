@@ -1,6 +1,9 @@
 ## Resubmission Notes
 
 This is a resubmission after addressing NOTES found on the previous submission.
+- Updated version number
+
+- Updeted CRAN link to canonical form.
 
 - Changed reference handling to avoid a problematic DOI.
 

@@ -2,8 +2,8 @@
 
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
-# [TrenchR 0.1.1.0000](https://github.com/trenchproject/TrenchR/releases/tag/v0.1.1.0000)
-*2022-09-15*
+# [TrenchR 0.1.1](https://github.com/trenchproject/TrenchR/releases/tag/v0.1.1)
+*2022-09-20*
 
 ## First release
 * Major edits and formats throughout the package
