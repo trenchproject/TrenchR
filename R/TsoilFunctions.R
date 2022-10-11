@@ -4,7 +4,7 @@
 #' 
 #' @param x \code{numeric} vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air). The volume fractions should sum to 1. Note that \code{x} and \code{lambda} values in the example correspond to these soil constituents.
 #' 
-#' @param lambda \code{numeric} vector of the thermal conductivities (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) of the soil constituents.
+#' @param lambda \code{numeric} vector of the thermal conductivities (\ifelse{html}{\out{W m<sup>-1</sup> C<sup>-1</sup>}}{\eqn{W m^-1 C^-1}{ASCII}}) of the soil constituents.
 #' 
 #' @param g_a \code{numeric} shape factor on soil particles. The soil particles are assumed to be ellipsoids with axes \code{g_a}, \code{g_b}, and \code{g_c}, where \code{g_a + g_b + g_c = 1} and \code{g_a = g_b}. \insertCite{deVries1952;textual}{TrenchR} suggests \code{g_a = g_b = 0.125}.
 #' 
@@ -154,15 +154,15 @@ soil_temperature_integrand <- function (x,
 #' 
 #' @param rho_a \code{numeric} density of air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}).
 #' 
-#' @param c_a \code{numeric} specific heat of air (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}).
+#' @param c_a \code{numeric} specific heat of air (\ifelse{html}{\out{J kg<sup>-1</sup> C<sup>-1</sup>}}{\eqn{J kg^-1 C^-1}{ASCII}}).
 #' 
-#' @param V_inst \code{numeric} instantaneous wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
+#' @param u_inst \code{numeric} instantaneous wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
 #' @param z_r \code{numeric} reference height (m).
 #' 
 #' @param z0 \code{numeric} surface roughness (m).
 #' 
-#' @param T_inst \code{numeric} instantaneous air temperature (K).
+#' @param T_inst \code{numeric} instantaneous air temperature (C).
 #' 
 #' @param T_s \code{numeric} initial soil surface temperature (C). 
 #' 
@@ -181,16 +181,16 @@ soil_temperature_integrand <- function (x,
 #'   soil_temperature_equation(L      = -10, 
 #'                             rho_a  = 1.177, 
 #'                             c_a    = 1006, 
-#'                             V_inst = 0.3, 
+#'                             u_inst = 0.3, 
 #'                             z_r    = 1.5, 
 #'                             z0     = 0.02, 
-#'                             T_inst = 265, 
+#'                             T_inst = 8, 
 #'                             T_s    = 20)
 #'
 soil_temperature_equation <- function (L, 
                                        rho_a, 
                                        c_a, 
-                                       V_inst, 
+                                       u_inst, 
                                        z_r, 
                                        z0, 
                                        T_inst, 
@@ -198,14 +198,18 @@ soil_temperature_equation <- function (L,
   
   stopifnot(rho_a  > 0, 
             c_a    > 0, 
-            T_inst > 200, 
-            T_inst < 400, 
+            T_inst > -50, 
+            T_inst < 100, 
             z_r    > 0, 
             z0     > 0)
 
   k <- von_karman_constant()
   
-  rho_a * c_a * k * (V_inst * k / log((exp((z_r + z0) / L) - 1) / (exp(z0 / L) - 1))) * (T_inst - T_s) / integrate(soil_temperature_integrand, lower = 0, upper = z_r / L, L, z0)$value - (V_inst * k / log((exp((z_r + z0) / L) - 1)/(exp(z0 / L) - 1)))^3 * T_inst * rho_a * c_a / (k * 9.81 * L)
+  #convert to kelvin
+  T_inst= celsius_to_kelvin(T_inst)
+  ### check T_s
+  
+  rho_a * c_a * k * (u_inst * k / log((exp((z_r + z0) / L) - 1) / (exp(z0 / L) - 1))) * (T_inst - T_s) / integrate(soil_temperature_integrand, lower = 0, upper = z_r / L, L, z0)$value - (u_inst * k / log((exp((z_r + z0) / L) - 1)/(exp(z0 / L) - 1)))^3 * T_inst * rho_a * c_a / (k * 9.81 * L)
   
 }
 
@@ -293,7 +297,7 @@ soil_temperature_function <- function (j,
   T_so <- celsius_to_kelvin(T_so)
   
   a <- 2 * dt / (rho_so * c_so * dz)  # eqn (12)
-  h_inst1 <- k^2 * c_a * rho_a / log(z_r / z0 + 1)^2 # eqn (1) #calculate h at time t based on V_inst
+  h_inst1 <- k^2 * c_a * rho_a / log(z_r / z0 + 1)^2 # eqn (1) #calculate h at time t based on u_inst
   alpha2 <- k_so / (c_so * rho_so)
   
   # heat budget elements
@@ -306,9 +310,9 @@ soil_temperature_function <- function (j,
   }
   
   T_inst <- celsius_to_kelvin(T_a[j])
-  V_inst <- u[j] 
+  u_inst <- u[j] 
   
-  h_inst <- h_inst1 * V_inst #take V_inst out for easier passing to function
+  h_inst <- h_inst1 * u_inst #take u_inst out for easier passing to function
   T_sky  <- -0.0552 * T_inst^1.5 #eqn (4)
   
   # energy balance for the surface temperature node
@@ -318,7 +322,7 @@ soil_temperature_function <- function (j,
   q_therm <- a * epsilon_so * sigma * ((T_sky)^4 - (T_so[1])^4) # a*eqn(6) #surface temperature change as a result of thermal radiation during the time step.
   
   # Beckman's method of calculating the convective heat transfer coefficient
-  V_shear <- V_inst * k / log(z_r / z0 + 1) #shear velocity
+  u_shear <- u_inst * k / log(z_r / z0 + 1) #shear velocity
   
   if(j == 1){  # Cannot use Beckman's method for the first time step. Assumed neutral conditions instead. q_conv<-a*h_inst*(T_inst-T_vector[1]) is a*eqn(7) in notes
     
@@ -341,12 +345,12 @@ soil_temperature_function <- function (j,
                                                       rho_a = 1.177, 
                                                       c_a = 1006, 
                                                       k = .41, 
-                                                      V_inst = V_inst, 
+                                                      u_inst = u_inst, 
                                                       z_r = z_r, 
                                                       z0 = z0, 
                                                       T_inst = T_inst, 
                                                       T_s = T_so)$root; 
-                                        q_conv <- a * (V_inst * k / log((exp((z_r + z0) / L) - 1) / (exp(z0 / L) - 1)))^3 * T_inst * rho_a * c_a / (k * 9.81 * L)}, 
+                                        q_conv <- a * (u_inst * k / log((exp((z_r + z0) / L) - 1) / (exp(z0 / L) - 1)))^3 * T_inst * rho_a * c_a / (k * 9.81 * L)}, 
                                 error = function(e){
                                           q_conv <<- a * h_inst * (T_inst - T_so[1])
                                         })) 

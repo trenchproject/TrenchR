@@ -355,7 +355,7 @@ surface_area_from_length <- function (l) {
 #' 
 #' @description The function estimates the projected (silhouette) area as a portion of the surface area of the organism as a function of zenith angle. The function is useful for estimating absorbed solar radiation.
 #' 
-#' @param z \code{numeric} zenith angle in degrees between \code{0} and \code{360}.
+#' @param psi \code{numeric} zenith angle in degrees between \code{0} and \code{360}.
 #' 
 #' @param taxon \code{character} organism name. Current choices are \code{"lizard"}, \code{"frog"}, and \code{"grasshopper"}.
 #' 
@@ -379,36 +379,36 @@ surface_area_from_length <- function (l) {
 #' @export
 #' 
 #' @examples
-#'   proportion_silhouette_area(z     = 60,   
+#'   proportion_silhouette_area(psi     = 60,   
 #'                              taxon = "frog")
-#'   proportion_silhouette_area(z     = 60, 
+#'   proportion_silhouette_area(psi     = 60, 
 #'                              taxon = "grasshopper")
-#'   proportion_silhouette_area(z       = 60, 
+#'   proportion_silhouette_area(psi       = 60, 
 #'                              taxon   = "lizard", 
 #'                              posture = "prostrate", 
 #'                              raz     = 90)
-#'   proportion_silhouette_area(z       = 60, 
+#'   proportion_silhouette_area(psi       = 60, 
 #'                              taxon   = "lizard", 
 #'                              posture = "elevated", 
 #'                              raz     = 180)
 #' 
-proportion_silhouette_area <- function (z,
+proportion_silhouette_area <- function (psi,
                                         taxon, 
                                         raz     = 0, 
                                         posture = "prostrate") {
   
   stopifnot(length(taxon) == 1, 
             taxon %in% c("frog", "lizard", "grasshopper"), 
-            z >= 0, 
-            z <  360)
+            psi >= 0, 
+            psi <  360)
   
   if (taxon == "frog"){
 
-    (1.38171e-6 * z^4 - 1.93335e-4 * z^3 + 4.75761e-3 * z^2 - 0.167912 * z + 45.8228) / 100
+    (1.38171e-6 * psi^4 - 1.93335e-4 * psi^3 + 4.75761e-3 * psi^2 - 0.167912 * psi + 45.8228) / 100
   
   } else if (taxon == "grasshopper") {
 
-    0.19 - 0.00173 * z 
+    0.19 - 0.00173 * psi 
 
   } else if (taxon == "lizard") {
 
@@ -466,7 +466,7 @@ proportion_silhouette_area <- function (z,
 
     }
 
-    (A * z^3 + B * z^2 + C * z + D) / 100 
+    (A * psi^3 + B * psi^2 + C * psi + D) / 100 
   
   }
 

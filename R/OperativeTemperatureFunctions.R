@@ -1,28 +1,28 @@
 #' @title Operative Environmental Temperature of an Ectotherm based on Campbell and Norman (1988)
 #' 
-#' @description The function estimates body temperatures (K, operative environmental temperature) of an ectotherm using an approximation based on \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
+#' @description The function estimates body temperatures (C, operative environmental temperature) of an ectotherm using an approximation based on \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
 #' 
-#' @param T_a \code{numeric} air temperature (K).
+#' @param T_a \code{numeric} air temperature (C).
 #' 
-#' @param T_g \code{numeric} ground temperature (K).
+#' @param T_g \code{numeric} ground temperature (C).
 #' 
 #' @param S \code{numeric} flux density of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}), combining direct, diffuse, and reflected radiation accounting for view factors.
 #' 
-#' @param alpha_S \code{numeric} organismal solar absorptivity (proportion). 
+#' @param a_s \code{numeric} organismal solar absorptivity (proportion). 
 #' 
-#' @param alpha_L \code{numeric} organismal thermal absorptivity (proportion); 0.965 for lizards \insertCite{Bartlett1967}{TrenchR}.
+#' @param a_l \code{numeric} organismal thermal absorptivity (proportion); 0.965 for lizards \insertCite{Bartlett1967}{TrenchR}.
 #' 
 #' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.
 #' 
-#' @param c_p \code{numeric} specific heat of air (\ifelse{html}{\out{J mol<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J mol^-1 K^-1}{ASCII}}). 
+#' @param c_p \code{numeric} specific heat of air (\ifelse{html}{\out{J mol<sup>-1</sup> C<sup>-1</sup>}}{\eqn{J mol^-1 C^-1}{ASCII}}). 
 #' 
 #' @param D \code{numeric} characteristic dimension of the animal (m).
 #' 
-#' @param V \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
+#' @param u \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
 #' @details Boundary conductance uses a factor of 1.4 to account for increased convection \insertCite{Mitchell1976}{TrenchR}. The function assumes forced conduction.
 #'
-#' @return \code{numeric} operative environmental temperature, \code{T_e} (K).
+#' @return \code{numeric} operative environmental temperature, \code{T_e} (C).
 #' 
 #' @family biophysical models
 #' 
@@ -32,37 +32,41 @@
 #'   \insertAllCited{}
 #' 
 #' @examples 
-#' Tb_CampbellNorman (T_a     = 303, 
-#'                    T_g     = 303, 
+#' Tb_CampbellNorman (T_a     = 30, 
+#'                    T_g     = 30, 
 #'                    S       = 823, 
-#'                    alpha_S = 0.7, 
-#'                    alpha_L = 0.96, 
+#'                    a_s = 0.7, 
+#'                    a_l = 0.96, 
 #'                    epsilon = 0.96, 
 #'                    c_p     = 29.3, 
 #'                    D       = 0.17, 
-#'                    V       = 1)
+#'                    u       = 1)
 #'
 Tb_CampbellNorman <- function (T_a, 
                                T_g, 
                                S, 
-                               alpha_S = 0.7, 
-                               alpha_L = 0.96, 
+                               a_s = 0.7, 
+                               a_l = 0.96, 
                                epsilon = 0.96, 
                                c_p = 29.3, 
                                D, 
-                               V) {
+                               u) {
     
-  stopifnot(T_a     >  200, 
-            T_a     <  400, 
+  stopifnot(T_a     >  -50, 
+            T_a     <  100, 
             epsilon >= 0.5, 
             epsilon <= 1, 
-            alpha_S >= 0, 
-            alpha_L >= 0, 
+            a_s >= 0, 
+            a_l >= 0, 
             c_p     >= 0, 
             D       >  0, 
-            V       >= 0)
+            u       >= 0)
   
   sigma <- stefan_boltzmann_constant()
+  
+  #convert temperatures to Kelvin
+    T_a = T_a +273.15
+    T_g = T_g +273.15
   
   # solar and thermal radiation absorbed
   # (10.7) long wave flux densities from atmosphere, ground 
@@ -77,7 +81,7 @@ Tb_CampbellNorman <- function (T_a,
 
   # (11.14) Absorbed radiation
 
-    R_abs <- alpha_S * S + alpha_L * (F_a * L_a + F_g * L_g) 
+    R_abs <- a_s * S + a_l * (F_a * L_a + F_g * L_g) 
   
   # thermal radiation emitted
 
@@ -86,12 +90,12 @@ Tb_CampbellNorman <- function (T_a,
   # conductance: boundary, ground
   #   boundary conductance, factor of 1.4 to account for increased convection (Mitchell 1976), assumes forced conduction
 
-    g_Ha <- 1.4 * 0.135 * sqrt(V / D) 
+    g_Ha <- 1.4 * 0.135 * sqrt(u / D) 
     g_r <- 4 * epsilon * sigma * T_a^3 / c_p 
   
-  # operative environmental temperature
+  # operative environmental temperature in C
 
-    T_a + (R_abs - Qemit) / (c_p * (g_r + g_Ha))
+    T_a + (R_abs - Qemit) / (c_p * (g_r + g_Ha)) -273.15
   
 }
 
@@ -145,7 +149,7 @@ Qnet_Gates <- function (Qabs,
 
 #' @title Operative Environmental Temperature of an Ectotherm Based on Gates (1980) 
 #' 
-#' @description The function predicts body temperatures (K, operative environmental temperature) of an ectotherm using the approximation in \insertCite{Gates1980;textual}{TrenchR}. The functions omits evaporative and metabolic heat loss \insertCite{Mitchell1976,Kingsolver1983}{TrenchR}.
+#' @description The function predicts body temperatures (C, operative environmental temperature) of an ectotherm using the approximation in \insertCite{Gates1980;textual}{TrenchR}. The functions omits evaporative and metabolic heat loss \insertCite{Mitchell1976,Kingsolver1983}{TrenchR}.
 #' 
 #' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
@@ -159,9 +163,9 @@ Qnet_Gates <- function (Qabs,
 #' 
 #' @param psa_g \code{numeric} proportion surface area in contact with substrate (0-1).
 #' 
-#' @param T_g \code{numeric} ground surface temperature (K).
+#' @param T_g \code{numeric} ground surface temperature (C).
 #' 
-#' @param T_a \code{numeric} ambient air temperature (K).
+#' @param T_a \code{numeric} ambient air temperature (C).
 #' 
 #' @param Qabs \code{numeric} Solar radiation absorbed (W).
 #' 
@@ -173,7 +177,7 @@ Qnet_Gates <- function (Qabs,
 #' 
 #' @param K \code{numeric} Thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), K = 0.5 \ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}} for naked skin, K = 0.15 \ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}for insect cuticle \insertCite{Galushko2005;textual}{TrenchR}; conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step. 
 #' 
-#' @return \code{numeric} operative environmental temperature, \code{T_e} (K).
+#' @return \code{numeric} operative environmental temperature, \code{T_e} (C).
 #' 
 #' @family biophysical models
 #' 
@@ -189,8 +193,8 @@ Qnet_Gates <- function (Qabs,
 #'            psa_ref = 0.4, 
 #'            psa_air = 0.6, 
 #'            psa_g   = 0.2, 
-#'            T_g     = 303, 
-#'            T_a     = 310, 
+#'            T_g     = 30, 
+#'            T_a     = 37, 
 #'            Qabs    = 2, 
 #'            epsilon = 0.95, 
 #'            H_L     = 10, 
@@ -221,10 +225,10 @@ Tb_Gates <- function (A,
             psa_air <= 1, 
             psa_g   >= 0, 
             psa_g   <= 1, 
-            T_g     >  200, 
-            T_g     <  400, 
-            T_a     >  200, 
-            T_a     <  400, 
+            T_g     >  -50, 
+            T_g     <  100, 
+            T_a     >  -50, 
+            T_a     <  100, 
             Qabs    >= 0, 
             epsilon >  0.5, 
             epsilon <= 1, 
@@ -249,8 +253,12 @@ Tb_Gates <- function (A,
   # effective radiant temperature of sky
   #  K, Gates 1980 Biophysical ecology based on Swinback 1960, Kingsolver (1983) estimates using Brunt equation
 
-    T_sky <- celsius_to_kelvin(1.22 * kelvin_to_celsius(T_a) - 20.4)
+    T_sky <- celsius_to_kelvin(1.22 * T_a - 20.4)
   
+  #convert to Kelvin
+    T_a= celsius_to_kelvin(T_a)
+    T_g= celsius_to_kelvin(T_g)
+    
   # energy balance function for steady state conditions
   #  0 = Qabs - Qemit - Qconv - Qcond
 
@@ -285,29 +293,29 @@ Tb_Gates <- function (A,
                             message("Unable to balance energy budget. One issue to check is whether absorbed solar radiation exceeds energy potentially lost to thermal radiation, convection, and conduction.")
                             NA})
   
-   T_e
+  kelvin_to_celcius(T_e)
 
 }
 
 #' @title Operative Environmental Temperature of an Ectotherm Based on a Variant of Gates (1980) 
 #' 
-#' @description The function predicts body temperatures (K, operative environmental temperature) of an ectotherm using the approximation in \insertCite{Gates1980;textual}{TrenchR}. The function omits evaporative and metabolic heat loss.
+#' @description The function predicts body temperatures (C, operative environmental temperature) of an ectotherm using the approximation in \insertCite{Gates1980;textual}{TrenchR}. The function omits evaporative and metabolic heat loss.
 #' 
 #' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #' 
 #' @param D \code{numeric} characteristic dimension for conduction (meters).
 #' 
-#' @param T_g \code{numeric} ground surface temperature (K).
+#' @param T_g \code{numeric} ground surface temperature (C).
 #' 
-#' @param T_a \code{numeric} ambient air temperature (K).
+#' @param T_a \code{numeric} ambient air temperature (C).
 #' 
 #' @param Qabs \code{numeric} Solar radiation absorbed (W).
 #' 
-#' @param V \code{numeric} Wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
+#' @param u \code{numeric} Wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
 #' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.
 #' 
-#' @return \code{numeric} operative environmental temperature (K). 
+#' @return \code{numeric} operative environmental temperature (C). 
 #' 
 #' @family biophysical models
 #' 
@@ -319,10 +327,10 @@ Tb_Gates <- function (A,
 #' @examples 
 #'   Tb_Gates2(A       = 1, 
 #'             D       = 0.001, 
-#'             T_g     = 300, 
-#'             T_a     = 310, 
+#'             T_g     = 27, 
+#'             T_a     = 37, 
 #'             Qabs    = 2, 
-#'             V       = 0.1, 
+#'             u       = 0.1, 
 #'             epsilon = 1) 
 #' 
 Tb_Gates2 <- function (A, 
@@ -330,21 +338,21 @@ Tb_Gates2 <- function (A,
                        T_g, 
                        T_a, 
                        Qabs, 
-                       V, 
+                       u, 
                        epsilon) {
   
   sigma <- stefan_boltzmann_constant()
 
   stopifnot(A       >  0, 
             D       >  0, 
-            T_g     >  200, 
-            T_g     <  400, 
-            T_a     >  200, 
-            T_a     <  400, 
+            T_g     >  -50, 
+            T_g     <  100, 
+            T_a     >  -50, 
+            T_a     <  100, 
             Qabs    >= 0, 
             epsilon >  0.5, 
             epsilon <= 1, 
-            V       >  0)
+            u       >  0)
 
 
   # skin area exposed to air
@@ -353,13 +361,17 @@ Tb_Gates2 <- function (A,
   
   # Convection coefficient from Gates (1980)
 
-    H_L <- 3.49 * (V^0.5 / D^0.5)
+    H_L <- 3.49 * (u^0.5 / D^0.5)
   
   # effective radiant temperature of sky
   #  K, Gates 1980 Biophysical ecology based on Swinback 1960, Kingsolver (1983) estimates using Brunt equation
 
-    T_sky <- celsius_to_kelvin(1.22 * kelvin_to_celsius(T_a - 20.4))
-  
+    T_sky <- celsius_to_kelvin
+    
+    #convert to Kelvin
+    T_a= celsius_to_kelvin(T_a)
+    T_g= celsius_to_kelvin(T_g)
+    
   # Thermal radiation absorbed 
 
     QIR <- (A_air / 2) * (sigma * epsilon * T_g^4 + sigma * epsilon * T_sky^4)
@@ -391,7 +403,7 @@ Tb_Gates2 <- function (A,
                             message("Unable to balance energy budget. One issue to check is whether absorbed solar radiation exceeds energy potentially lost to thermal radiation, convection, and conduction.")
                             NA})
   
-  T_e
+  kelvin_to_celcius(T_e)
   
 }
 

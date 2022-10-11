@@ -28,9 +28,9 @@
 #' 
 #' @param surface \code{logical} indicates whether lizard is on ground surface (\code{TRUE}) or above the surface (\code{FALSE}, e.g. in a tree).
 #' 
-#' @param alpha_S \code{numeric} lizard solar absorptivity (proportion), \code{alpha_S = 0.9} \insertCite{Gates1980}{TrenchR} (Table 11.4).
+#' @param a_S \code{numeric} lizard solar absorptivity (proportion), \code{a_S = 0.9} \insertCite{Gates1980}{TrenchR} (Table 11.4).
 #' 
-#' @param alpha_L \code{numeric} lizard thermal absorptivity (proportion), \code{alpha_L = 0.965} \insertCite{Bartlett1967}{TrenchR}.
+#' @param a_L \code{numeric} lizard thermal absorptivity (proportion), \code{a_L = 0.965} \insertCite{Bartlett1967}{TrenchR}.
 #' 
 #' @param epsilon_s \code{numeric} surface emissivity of lizards (proportion), \code{epsilon_s = 0.965} \insertCite{Bartlett1967}{TrenchR}.
 #' 
@@ -63,8 +63,8 @@
 #'             doy       = 200, 
 #'             sun       = TRUE, 
 #'             surface   = TRUE, 
-#'             alpha_S   = 0.9, 
-#'             alpha_L   = 0.965, 
+#'             a_S   = 0.9, 
+#'             a_L   = 0.965, 
 #'             epsilon_s = 0.965, 
 #'             F_d       = 0.8, 
 #'             F_r       = 0.5, 
@@ -82,8 +82,8 @@ Tb_lizard <- function (T_a,
                        doy, 
                        sun       = TRUE, 
                        surface   = TRUE, 
-                       alpha_S   = 0.9, 
-                       alpha_L   = 0.965, 
+                       a_S   = 0.9, 
+                       a_L   = 0.965, 
                        epsilon_s = 0.965, 
                        F_d       = 0.8, 
                        F_r       = 0.5, 
@@ -98,10 +98,10 @@ Tb_lizard <- function (T_a,
             elev      >= 0, 
             doy       >  0, 
             doy       <  367, 
-            alpha_S   >= 0, 
-            alpha_S   <= 1, 
-            alpha_L   >= 0, 
-            alpha_L   <= 1, 
+            a_S   >= 0, 
+            a_S   <= 1, 
+            a_L   >= 0, 
+            a_L   <= 1, 
             epsilon_s >= 0, 
             epsilon_s <= 1, 
             F_d       >= 0, 
@@ -168,7 +168,7 @@ Tb_lizard <- function (T_a,
   # Calculate with both surface and air temp (on ground and in tree)
 
     sprop <- 1 # proportion of radiation that is direct, Sears and Angilletta 2012
-    R_abs <- sprop * alpha_S * (F_p * S_p + F_d * S_d + F_r * S_r) + alpha_L * (F_a * L_a + F_g * L_g) # (11.14) Absorbed radiation
+    R_abs <- sprop * a_S * (F_p * S_p + F_d * S_d + F_r * S_r) + a_L * (F_a * L_a + F_g * L_g) # (11.14) Absorbed radiation
 
     Te      <- T_a + (R_abs - epsilon_s * sigma * (T_a + 273)^4) / (c_p * (g_r + g_Ha)) # (12.19) Operative temperature            
     Te_surf <- T_g + (R_abs - epsilon_s * sigma * (T_g + 273)^4) / (c_p * (g_r + g_Ha))        
@@ -176,7 +176,7 @@ Tb_lizard <- function (T_a,
   # Calculate in shade, no direct radiation
 
     sprop <- 0 # proportion of radiation that is direct, Sears and Angilletta 2012
-    R_abs <- sprop * alpha_S * (F_p * S_p + F_d * S_d + F_r * S_r) + alpha_L * (F_a * L_a + F_g * L_g) # (11.14) Absorbed radiation
+    R_abs <- sprop * a_S * (F_p * S_p + F_d * S_d + F_r * S_r) + a_L * (F_a * L_a + F_g * L_g) # (11.14) Absorbed radiation
 
     TeS      <- T_a + (R_abs - epsilon_s * sigma * (T_a + 273)^4) / (c_p * (g_r + g_Ha)) # (12.19) Operative temperature                        
     TeS_surf <- T_g + (R_abs - epsilon_s * sigma * (T_g + 273)^4) / (c_p * (g_r + g_Ha))  

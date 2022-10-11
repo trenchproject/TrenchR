@@ -1,12 +1,12 @@
 #' @title Operative Temperature of a Lizard Using Fei et al. (2012)
 #' 
-#' @description The function predicts body temperature (K, operative environmental temperature) of a lizard based on \insertCite{Fei2012;textual}{TrenchR}.
+#' @description The function predicts body temperature (C, operative environmental temperature) of a lizard based on \insertCite{Fei2012;textual}{TrenchR}.
 #'
-#' @param T_a \code{numeric} air temperature at lizard height (K).
+#' @param T_a \code{numeric} air temperature at lizard height (C).
 #' 
-#' @param T_g \code{numeric} surface temperature (K).
+#' @param T_g \code{numeric} surface temperature (C).
 #' 
-#' @param H \code{numeric} total (direct + diffuse) solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m-^2}{ASCII}}).
+#' @param S \code{numeric} total (direct + diffuse) solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m-^2}{ASCII}}).
 #' 
 #' @param lw \code{numeric} downward flux of near-infrared radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m-^2}{ASCII}}).
 #' 
@@ -33,9 +33,9 @@
 #'  \insertAllCited{}
 #'  
 #' @examples
-#'   Tb_lizard_Fei(T_a       = 293,
-#'                 T_g       = 300,
-#'                 H         = 1300, 
+#'   Tb_lizard_Fei(T_a       = 20,
+#'                 T_g       = 27,
+#'                 S         = 1300, 
 #'                 lw        = 60, 
 #'                 shade     = 0.5, 
 #'                 m         = 10.5, 
@@ -45,18 +45,18 @@
 #' 
 Tb_lizard_Fei <- function(T_a, 
                           T_g, 
-                          H, 
+                          S, 
                           lw, 
                           shade, 
                           m, 
                           Acondfact, 
                           Agradfact) {
   
-  stopifnot(T_a       >  200, 
-            T_a       <  400, 
-            T_g       >  200, 
-            T_g       <  400,
-            H         >= 0, 
+  stopifnot(T_a       >  -50, 
+            T_a       <  100, 
+            T_g       >  -50, 
+            T_g       <  100,
+            S         >= 0, 
             lw        >= 0, 
             shade     >= 0, 
             shade     <= 1, 
@@ -72,7 +72,7 @@ Tb_lizard_Fei <- function(T_a,
 
       alpha_L <- 0.965 
 
-    # convective heat transfer ceofficient (W m-2 K-1) (Fei et al. 2012, Porter et al. 1973)
+    # convective heat transfer ceofficient (W m-2 C-1) (Fei et al. 2012, Porter et al. 1973)
 
       h_L <- 10.45 
 
@@ -81,7 +81,7 @@ Tb_lizard_Fei <- function(T_a,
       epsilon_lizard <- 0.95 
 
 
-    # thermal conductivity (W K-1 m-1)
+    # thermal conductivity (W C-1 m-1)
 
       K_lizard <- 0.5 
 
@@ -89,7 +89,7 @@ Tb_lizard_Fei <- function(T_a,
 
       lambda <- 0.015
 
-    # specific heat capacity (J kg-1 K-1)
+    # specific heat capacity (J kg-1 C-1)
 
       c_lizard <- 3762
 
@@ -118,7 +118,10 @@ Tb_lizard_Fei <- function(T_a,
   
       A_contact <- Acondfact * A_L 
 
-  
+    # convert to Kelvin
+      T_a= celsius_to_kelvin(T_a)
+      T_g= celsius_to_kelvin(T_g)
+      
   # Initial operative environmental temperature
 
     # Initial body temperature in kelvin, assume Ta 
@@ -133,7 +136,7 @@ Tb_lizard_Fei <- function(T_a,
   
   # Check
 
-    dQ_solar <- (1 - shade) * alpha_L * A_p * H
+    dQ_solar <- (1 - shade) * alpha_L * A_p * S
   
 
   # Net longwave radiation
@@ -204,6 +207,6 @@ Tb_lizard_Fei <- function(T_a,
     
     }
   
-  T_o
+    kelvin_to_celcius(T_o)
 
 }

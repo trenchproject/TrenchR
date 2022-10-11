@@ -8,7 +8,7 @@
 #'
 #' @param u \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #'
-#' @param H \code{numeric} total (direct + diffuse) solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
+#' @param S \code{numeric} total (direct + diffuse) solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #'
 #' @param K_t \code{numeric} clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.
 #'
@@ -48,7 +48,7 @@
 #'   Tb_grasshopper(T_a       = 25, 
 #'                  T_g       = 25,      
 #'                  u         = 0.4, 
-#'                  H         = 400, 
+#'                  S         = 400, 
 #'                  K_t       = 0.7, 
 #'                  psi       = 30, 
 #'                  l         = 0.02, 
@@ -60,7 +60,7 @@
 Tb_grasshopper <- function (T_a, 
                             T_g, 
                             u, 
-                            H, 
+                            S, 
                             K_t, 
                             psi, 
                             l, 
@@ -70,7 +70,7 @@ Tb_grasshopper <- function (T_a,
                             r_g       = 0.3) {
 
   stopifnot(u         >= 0, 
-            H         >= 0, 
+            S         >= 0, 
             K_t       >= 0, 
             K_t       <= 1, 
             psi       >= -90, 
@@ -132,9 +132,9 @@ Tb_grasshopper <- function (T_a,
       kd[K_t > 0.22 & K_t <= 0.8] <- 0.9511 - 0.1604 * K_t + 4.388 * K_t^2 - 16.638 * K_t^3 + 12.336 * K_t^4
       kd[K_t > 0.8] <- 0.165 
 
-      Httl <- H
-      Hdir <- Httl * (1-kd)
-      Hdif <- Httl * kd
+      Sttl <- S
+      Sdir <- Sttl * (1-kd)
+      Sdif <- Sttl * kd
 
       psi_r <- degrees_to_radians(psi)
 
@@ -181,9 +181,9 @@ Tb_grasshopper <- function (T_a,
 
     # Qabs (W)
 
-      Qdir <- abs * Adir * Hdir / cos(psi_r)
-      Qdif <- abs * Aref * Hdif
-      Qref <- r_g * Aref *Httl
+      Qdir <- abs * Adir * Sdir / cos(psi_r)
+      Qdif <- abs * Aref * Sdif
+      Qref <- r_g * Aref *Sttl
       Qabs <- Qdir + Qdif + Qref  
 
    # black body sky temperature in Kelvin

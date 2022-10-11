@@ -73,7 +73,7 @@ solar_radiation <- function (doy,
 #' 
 #' @param doy \code{numeric} the day of year.
 #' 
-#' @param solrad \code{numeric} solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}).
+#' @param S \code{numeric} solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}).
 #' 
 #' @param hour \code{numeric} hour (0-24). 
 #' 
@@ -92,20 +92,20 @@ solar_radiation <- function (doy,
 #' 
 #' @examples
 #' diurnal_radiation_variation(doy    = 112, 
-#'                             solrad = 8000, 
+#'                             S = 8000, 
 #'                             hour   = 12, 
 #'                             lon    = -122.33, 
 #'                             lat    = 47.61)
 #'
 diurnal_radiation_variation <- function(doy, 
-                                        solrad, 
+                                        S, 
                                         hour, 
                                         lon, 
                                         lat) { 
 
   stopifnot(doy    >  0, 
             doy    <  367, 
-            solrad >  0, 
+            S >  0, 
             hour   >= 0, 
             hour   <= 24, 
             lon    >- 180, 
@@ -142,7 +142,7 @@ diurnal_radiation_variation <- function(doy,
 
   }  
 
-  rG * solrad 
+  rG * S 
   
 }
 
@@ -160,7 +160,7 @@ diurnal_radiation_variation <- function(doy,
 #' 
 #' @param T_a \code{numeric} mean monthly air temperature (C).
 #' 
-#' @param Hr \code{numeric} mean month relative humidity (percentage).
+#' @param hp \code{numeric} mean month relative humidity (percentage).
 #' 
 #' @param P \code{numeric} total monthly precipitation (mm).
 #' 
@@ -179,7 +179,7 @@ diurnal_radiation_variation <- function(doy,
 #'                           doy  = 112, 
 #'                           elev = 1500, 
 #'                           T_a  = 15, 
-#'                           Hr   = 50, 
+#'                           hp   = 50, 
 #'                           P   = 50)
 #'
 monthly_solar_radiation <- function (lat,
@@ -187,7 +187,7 @@ monthly_solar_radiation <- function (lat,
                                      doy, 
                                      elev, 
                                      T_a, 
-                                     Hr, 
+                                     hp, 
                                      P) {
 
   stopifnot(lat  >= -90, 
@@ -197,8 +197,8 @@ monthly_solar_radiation <- function (lat,
             doy  >  0, 
             doy  <  367, 
             elev >  0, 
-            Hr   >= 0, 
-            Hr   <= 100, 
+            hp   >= 0, 
+            hp   <= 100, 
             P    >  0)
   
   rd <- 180 / pi  # factor to convert radians into degrees
@@ -235,7 +235,7 @@ monthly_solar_radiation <- function (lat,
   
   # Assume relationships to translate to surface
   # ev: mean monthly water vapor pressure in the atmosphere (Pa)
-  ev <- Hr * 6.1078 * exp(17.269 * T_a/(T_a + 237.3))
+  ev <- hp * 6.1078 * exp(17.269 * T_a/(T_a + 237.3))
   
   # C is the mean monthly cloudiness (tenths)
   C <- 10 - 1.155 * (ev / P)^0.5

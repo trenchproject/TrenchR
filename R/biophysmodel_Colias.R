@@ -10,9 +10,9 @@
 #'
 #' @param u \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #'
-#' @param H_sdir \code{numeric} direct solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
+#' @param S_sdir \code{numeric} direct solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #'
-#' @param H_sdif \code{numeric} diffuse solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
+#' @param S_sdif \code{numeric} diffuse solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #'
 #' @param z \code{numeric} solar zenith angle (degrees).
 #'
@@ -43,8 +43,8 @@
 #'                T_g    = 25, 
 #'                T_sh   = 20, 
 #'                u      = 0.4, 
-#'                H_sdir = 300, 
-#'                H_sdif = 100, 
+#'                S_sdir = 300, 
+#'                S_sdif = 100, 
 #'                z      = 30, 
 #'                D      = 0.36, 
 #'                delta  = 1.46, 
@@ -55,8 +55,8 @@ Tb_butterfly <- function (T_a,
                           T_g, 
                           T_sh, 
                           u, 
-                          H_sdir, 
-                          H_sdif, 
+                          S_sdir, 
+                          S_sdif, 
                           z, 
                           D, 
                           delta, 
@@ -65,8 +65,8 @@ Tb_butterfly <- function (T_a,
                           shade  = FALSE) {
 
   stopifnot(u      >= 0, 
-            H_sdir >= 0, 
-            H_sdif >= 0, 
+            S_sdir >= 0, 
+            S_sdif >= 0, 
             z      >= -90, 
             z      <= 90, 
             D      > 0, 
@@ -89,8 +89,8 @@ Tb_butterfly <- function (T_a,
 
     # solar flux W/m2 to mW/cm2
 
-      H_sdir <- H_sdir / 10 
-      H_sdif <- H_sdif / 10
+      S_sdir <- S_sdir / 10 
+      S_sdif <- S_sdif / 10
 
     # thoracic fur thickness mm to cm
 
@@ -98,7 +98,7 @@ Tb_butterfly <- function (T_a,
 
   # Total solar radiation
 
-    H_sttl <- H_sdir + H_sdif
+    S_sttl <- S_sdir + S_sdif
 
 
   # Butterfly Parameters
@@ -144,7 +144,7 @@ Tb_butterfly <- function (T_a,
 
     # Radiative Heat Flux, mW
   
-      Q_s <- alpha * A_sdir * H_sdir / cos(z * pi / 180) + alpha * A_sref * H_sdif + alpha * r_g * A_sref * H_sttl  
+      Q_s <- alpha * A_sdir * S_sdir / cos(z * pi / 180) + alpha * A_sref * S_sdif + alpha * r_g * A_sref * S_sttl  
 
     # Thermal Radiative Flux in K
 
@@ -194,11 +194,11 @@ Tb_butterfly <- function (T_a,
 
         # No direct radiation, only diffuse and reflected
   
-          H_sdir_sh <- 0
-          H_sdif_sh <- H_sdif
-          H_sttl <- H_sdif + H_sdif_sh 
+          S_sdir_sh <- 0
+          S_sdif_sh <- S_sdif
+          S_sttl <- S_sdif + S_sdif_sh 
 
-        Q_s <- alpha * A_sdir * H_sdir_sh / cos(z * pi / 180) + alpha * A_sref * H_sdif_sh + alpha * r_g * A_sref * H_sttl 
+        Q_s <- alpha * A_sdir * S_sdir_sh / cos(z * pi / 180) + alpha * A_sref * S_sdif_sh + alpha * r_g * A_sref * S_sttl 
 
       # Use shaded surface temperature
 

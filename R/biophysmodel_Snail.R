@@ -6,9 +6,9 @@
 #' 
 #' @param l \code{numeric} snail length (m).
 #' 
-#' @param solar \code{numeric} direct solar flux density (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
+#' @param S \code{numeric} direct solar flux density (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #' 
-#' @param WS \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
+#' @param u \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #' 
 #' @param CC \code{numeric} fraction of the sky covered by cloud (0-1).
 #' 
@@ -32,23 +32,23 @@
 #' @examples
 #'   Tb_snail(temp  = 25, 
 #'            l     = 0.012, 
-#'            solar = 800, 
-#'            WS    = 1, 
+#'            S = 800, 
+#'            u    = 1, 
 #'            CC    = 0.5, 
 #'            WL    = 0, 
 #'            WSH   = 10)
 #' 
 Tb_snail <- function (temp, 
                       l, 
-                      solar, 
-                      WS, 
+                      S, 
+                      u, 
                       CC, 
                       WL,
                       WSH) {
   
   stopifnot(l     >  0, 
-            solar >= 0, 
-            WS    >= 0, 
+            S >= 0, 
+            u    >= 0, 
             CC    >= 0, 
             CC    <= 1, 
             WL    >= 0, 
@@ -74,11 +74,11 @@ Tb_snail <- function (temp,
   A3 <- (SA / 2) / PSA # Aradground/Aproj
   
   # Convection
-  u      <- WS * 0.03 # U * m/s, shear velocity
+  U      <- u * 0.03 # U * m/s, shear velocity
   c_prho <- 1200      # c_p * rho = 1200 J m^{-3}*K^{-1}
   k      <-von_karman_constant()
   z0 <- 0.0017       # m, roughness height
-  C <- (A1 * 2 * u * c_prho * k) / (log(WSH / z0))
+  C <- (A1 * 2 * U * c_prho * k) / (log(WSH / z0))
   
   # Absorptivities
 
@@ -110,7 +110,7 @@ Tb_snail <- function (temp,
   # Solve steady state energy balance equation:
   # T_b*mflux*c= Q_rad,sol +- Q_rad,sky +- Q_rad,ground +- Q_conduction +- Qconvection -Qevaporation
 
-    com1 <- Abs * solar + 4 * Emm * sigma * esky * A1 *(Ktemp^4)  + (Gtemp^4) * 4 * Emm * sigma * A3  + C * Ktemp + 0.6 * A2 * Gtemp / (l / 2) + 2.48 * WL
+    com1 <- Abs * S + 4 * Emm * sigma * esky * A1 *(Ktemp^4)  + (Gtemp^4) * 4 * Emm * sigma * A3  + C * Ktemp + 0.6 * A2 * Gtemp / (l / 2) + 2.48 * WL
     com2 <- 4180 * WL + (Ktemp^3) * 4 * Emm * sigma *(esky^0.75) * A1 + 4 * Emm * sigma * A3 *(Gtemp^3) + C + 0.6 * A2 / (0.5 * l)
     T_b  <- com1 / com2
   
