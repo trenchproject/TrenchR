@@ -19,7 +19,7 @@ test_that("soil_temperature_integrand function works as expected", {
 })
 
 test_that("soil_temperature_equation function works as expected", {
-  expect_similar(soil_temperature_equation(L=-10, rho_a=1.177, c_a=1006, V_inst=0.3, z_r=1.5, z0=0.02, T_inst=265, T_s=20), 1340.707)
+  expect_similar(soil_temperature_equation(L=-10, rho_a=1.177, c_a=1006, u_inst=0.3, z_r=1.5, z0=0.02, T_inst= -8, T_s=20), 1340.707)
 })
 
 
@@ -29,7 +29,7 @@ set.seed(123)
   wind_speed_vector= runif(96, min=0, max=0.4)
   time_vector= rep(1:24,4)
   solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
-  results <- soil_temperature(z_r.intervals=12,z_r=1.5, z=2, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, H= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
+  results <- soil_temperature(z_r.intervals=12,z_r=1.5, z=2, T_a=temp_vector, u=wind_speed_vector, Tsoil0= 20, z0=0.02, SSA=0.7, TimeIn=time_vector, S= solrad_vector, water_content=0.2, air_pressure=85, rho_so=1620, shade=FALSE)
   expect_equal(length(results), 96)
   expect_identical(class(results), "numeric")
   expect_equal(results[1], 20)
@@ -41,7 +41,7 @@ set.seed(123)
   wind_speed_vector= runif(96, min=0, max=0.4)
   time_vector= rep(1:24,4)
   solrad_vector= rep(c(rep(0,6),seq(10,700,length.out=6), seq(700,10,length.out=6),rep(0,6)),4)
-  params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0=0.02, H=solrad_vector, T_a=temp_vector, u=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=FALSE)
+  params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0=0.02, S=solrad_vector, T_a=temp_vector, u=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=FALSE)
   expect_identical(class(soil_temperature_function(j=1,T_so= rep(20,13), params=params)), "list")
   expect_equal(length(soil_temperature_function(j=1,T_so= rep(20,13), params=params)[[1]]), 13)
   expect_gt(soil_temperature_function(j=1,T_so= rep(20,13), params=params)[[1]][1], -43)
@@ -50,7 +50,7 @@ set.seed(123)
   expect_gt(soil_temperature_function(j=2,T_so= rep(20,13), params=params)[[1]][1], -43)
   expect_lt(soil_temperature_function(j=2,T_so= rep(20,13), params=params)[[1]][1], -14)
 
-  params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0=0.02, H=solrad_vector, T_a=temp_vector, u=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=TRUE)
+  params=list(SSA=0.7, epsilon_so=0.98, k_so=0.293, c_so=800, dz=0.05, z_r=1.5, z0=0.02, S=solrad_vector, T_a=temp_vector, u=wind_speed_vector, rho_a=1.177,rho_so=1620, c_a=1006, TimeIn=time_vector, dt=60*60, shade=TRUE)
   expect_gt(soil_temperature_function(j=1,T_so= rep(20,13), params=params)[[1]][1], -43)
   expect_lt(soil_temperature_function(j=1,T_so= rep(20,13), params=params)[[1]][1], -14)
 

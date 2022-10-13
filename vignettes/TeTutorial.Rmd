@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
-  markdown: 
+  markdown:  
     wrap: 72
 ---
 
@@ -146,58 +146,58 @@ The function is available in R as follows:
 
 ```{r, fig.height = 4, fig.width = 6}
 
-plot(x    = 293:313, 
+plot(x    = 20:40, 
      y    = Qemitted_thermal_radiation(epsilon  = 0.96, 
                                        A        = 1, 
                                        psa_dir  = 0.4, 
                                        psa_ref  = 0.6,  
-                                       T_b      = 293:313,  
-                                       T_g      = 293,  
-                                       T_a      = 298,  
+                                       T_b      = 20:40,  
+                                       T_g      = 20,  
+                                       T_a      = 25,  
                                        enclosed = FALSE), 
      type = "l", 
      xlab = "body surface temperature, Tb (K)", 
      ylab = "emitted thermal radiation, Qemit (W)")
 
-points(x    = 293:313, 
+points(x    = 20:40, 
        y    = Qemitted_thermal_radiation(epsilon  = 0.96, 
                                          A        = 1, 
                                          psa_dir  = 0.2, 
                                          psa_ref  = 0.8, 
-                                         T_b      = 293:313, 
-                                         T_g      = 293, 
-                                         T_a      = 298, 
+                                         T_b      = 20:40, 
+                                         T_g      = 20, 
+                                         T_a      = 25, 
                                          enclosed = TRUE), 
        type = "l", 
        lty  = "dashed")
 
-points(x    = 293:313, 
+points(x    = 20:40, 
        y    = Qemitted_thermal_radiation(epsilon  = 0.96,
                                          A        = 1,
                                          psa_dir  = 0.4, 
                                          psa_ref  = 0.8, 
-                                         T_b      = 293:313, 
-                                         T_g      = 283, 
-                                         T_a      = 298, 
+                                         T_b      = 20:40, 
+                                         T_g      = 20, 
+                                         T_a      = 25, 
                                          enclosed = FALSE), 
        type = "l", 
        lty  = "dotted")
 
-points(x    = 293:313, 
+points(x    = 20:40, 
        y    = Qemitted_thermal_radiation(epsilon= 0.96, 
                                          A = 1, 
                                          psa_dir = 0.2, 
                                          psa_ref = 0.6, 
-                                         T_b      = 293:313, 
-                                         T_g      = 283, 
-                                         T_a      = 298, 
+                                         T_b      = 20:40, 
+                                         T_g      = 20, 
+                                         T_a      = 25, 
                                          enclosed = FALSE), 
        type = "l", 
        lty  = "dotdash")
 
 legend(x      = "topleft", 
        title  = "parameters", 
-       legend = c("psa_dir= 0.4, T_g = 293", "psa_dir= 0.2, T_g = 293", "psa_dir= 0.4, T_g = 283", "psa_dir= 0.2, T_g = 283"), 
+       legend = c("psa_dir= 0.4, T_g = 20", "psa_dir= 0.2, T_g = 20", "psa_dir= 0.4, T_g = 10", "psa_dir= 0.2, T_g = 10"), 
        lty    = c("solid", "dashed", "dotted", "dotdash"))
 
 ```
@@ -214,9 +214,9 @@ The function is available in R:
 
 ```{r, fig.height = 4, fig.width = 6}
 
-plot(x    = 293:313, 
-     y    = Qconvection(T_a        = 303,
-                        T_b        = 293:313,
+plot(x    = 20:40, 
+     y    = Qconvection(T_a        = 30,
+                        T_b        = 20:40,
                         H          = 5,
                         A          = 0.0025, 
                         proportion = 0.6), 
@@ -225,7 +225,7 @@ plot(x    = 293:313,
      ylab = "Q convection (W)")
 
 points(x    = 293:313, 
-       y    = Qconvection(T_a        = 303,
+       y    = Qconvection(T_a        = 30,
                           T_b        = 293:313,
                           H          = 15,
                           A          = 0.0025,
@@ -233,18 +233,18 @@ points(x    = 293:313,
        type = "l",
        lty  = "dashed")
 
-points(x    = 293:313, 
-       y    = Qconvection(T_a        = 303,
-                          T_b        = 293:313,
+points(x    = 20:40, 
+       y    = Qconvection(T_a        = 30,
+                          T_b        = 20:40,
                           H          = 5,
                           A          = 0.0025,
                           proportion = 0.3), 
        type = "l",
        lty  = "dotted")
 
-points(x    = 293:313, 
-       y    = Qconvection(T_a        = 303,
-                          T_b        = 293:313,
+points(x    = 20:40, 
+       y    = Qconvection(T_a        = 30,
+                          T_b        = 20:40,
                           H          = 15,
                           A          = 0.0025,
                           proportion = 0.3), 
@@ -525,17 +525,17 @@ oldpar <- par()
 par(mar = c(5,  5, 3, 2))
 
 plot(x    = seq(0, 3, 0.25), 
-     y    = heat_transfer_coefficient(V     = seq(0, 3, 0.25),
+     y    = heat_transfer_coefficient(u     = seq(0, 3, 0.25),
                                       D     = 0.05,
                                       K     =  25.7 * 10^(-3),
                                       nu    =  15.3 * 10^(-6), 
                                       taxon = "sphere"), 
      type = "l", 
      xlab = "Air velocity (m/s)", 
-     ylab = expression("heat transfer coefficient," ~ H[L] ~ (W ~ m^{-2} ~ K^{-1})))
+     ylab = expression("heat transfer coefficient," ~ H[L] ~ (W ~ m^{-2} ~ C^{-1})))
 
 points(x    = seq(0, 3, 0.25), 
-       y    = heat_transfer_coefficient(V     = seq(0, 3, 0.25),
+       y    = heat_transfer_coefficient(u     = seq(0, 3, 0.25),
                                         D     = 0.05,
                                         K     =  25.7 * 10^(-3),
                                         nu    =  15.3 * 10^(-6), 
@@ -544,7 +544,7 @@ points(x    = seq(0, 3, 0.25),
        lty  = "dashed")
 
 points(x    = seq(0, 3, 0.25), 
-       y    = heat_transfer_coefficient(V     = seq(0, 3, 0.25),
+       y    = heat_transfer_coefficient(u     = seq(0, 3, 0.25),
                                         D     = 0.05,
                                         K     =  25.7 * 10^(-3),
                                         nu    =  15.3 * 10^(-6), 
@@ -553,7 +553,7 @@ points(x    = seq(0, 3, 0.25),
        lty  = "dotted")
 
 points(x    = seq(0, 3, 0.25), 
-       y    = heat_transfer_coefficient(V     = seq(0, 3, 0.25),
+       y    = heat_transfer_coefficient(u     = seq(0, 3, 0.25),
                                         D     = 0.05,
                                         K     =  25.7 * 10^(-3),
                                         nu    =  15.3 * 10^(-6), 
@@ -562,7 +562,7 @@ points(x    = seq(0, 3, 0.25),
        lty  = "dotdash")
 
 points(x    = seq(0, 3, 0.25), 
-       y    = heat_transfer_coefficient(V     = seq(0, 3, 0.25),
+       y    = heat_transfer_coefficient(u     = seq(0, 3, 0.25),
                                         D     = 0.05,
                                         K     =  25.7 * 10^(-3),
                                         nu    =  15.3 * 10^(-6), 
@@ -571,7 +571,7 @@ points(x    = seq(0, 3, 0.25),
        lty  = "dotdash")
 
 points(x    = seq(0, 3, 0.25), 
-       y    = heat_transfer_coefficient(V     = seq(0, 3, 0.25),
+       y    = heat_transfer_coefficient(u     = seq(0, 3, 0.25),
                                         D     = 0.05,
                                         K     =  25.7 * 10^(-3),
                                         nu    =  15.3 * 10^(-6), 
@@ -580,7 +580,7 @@ points(x    = seq(0, 3, 0.25),
        lty  = "longdash")
 
 points(x    = seq(0, 3, 0.25), 
-       y    = heat_transfer_coefficient(V     = seq(0, 3, 0.25),
+       y    = heat_transfer_coefficient(u     = seq(0, 3, 0.25),
                                         D     = 0.05,
                                         K     =  25.7 * 10^(-3),
                                         nu    =  15.3 * 10^(-6), 
@@ -600,7 +600,7 @@ legend(x      = "bottomright",
 par(mar = c(5,  5, 3, 2))
 
 plot(x    = seq(0, 3, 0.25), 
-     y    = heat_transfer_coefficient_approximation(V     = seq(0, 3, 0.25),
+     y    = heat_transfer_coefficient_approximation(u     = seq(0, 3, 0.25),
                                                     D     = 0.05,
                                                     K     =  25.7 * 10^(-3),
                                                     nu    =  15.3 * 10^(-6), 
@@ -610,7 +610,7 @@ plot(x    = seq(0, 3, 0.25),
      ylab = expression("heat transfer coefficient," ~ H[L] ~ (W ~ m^{-2} ~ K^{-1})))
 
 points(x    = seq(0, 3, 0.25), 
-       y    = heat_transfer_coefficient_approximation(V     = seq(0, 3, 0.25),
+       y    = heat_transfer_coefficient_approximation(u     = seq(0, 3, 0.25),
                                                       D     = 0.05,
                                                       K     =  25.7 * 10^(-3),
                                                       nu    =  15.3 * 10^(-6), 
@@ -619,7 +619,7 @@ points(x    = seq(0, 3, 0.25),
        lty  = "dashed")
 
 points(x    = seq(0, 3, 0.25), 
-       y    = heat_transfer_coefficient_approximation(V     = seq(0, 3, 0.25),
+       y    = heat_transfer_coefficient_approximation(u     = seq(0, 3, 0.25),
                                                       D     = 0.05,
                                                       K     =  25.7 * 10^(-3),
                                                       nu    =  15.3 * 10^(-6), 
@@ -628,7 +628,7 @@ points(x    = seq(0, 3, 0.25),
        lty  = "dotted")
 
 points(x    = seq(0, 3, 0.25), 
-       y    = heat_transfer_coefficient_approximation(V     = seq(0, 3, 0.25),
+       y    = heat_transfer_coefficient_approximation(u     = seq(0, 3, 0.25),
                                                       D     = 0.05,
                                                       K     =  25.7 * 10^(-3),
                                                       nu    =  15.3 * 10^(-6), 
@@ -637,7 +637,7 @@ points(x    = seq(0, 3, 0.25),
        lty  = "dotdash")
 
 points(x    = seq(0, 3, 0.25), 
-       y    = heat_transfer_coefficient_approximation(V     = seq(0, 3, 0.25),
+       y    = heat_transfer_coefficient_approximation(u     = seq(0, 3, 0.25),
                                                       D     = 0.05,
                                                       K     =  25.7 * 10^(-3),
                                                       nu    =  15.3 * 10^(-6), 
@@ -655,7 +655,7 @@ legend(x      = "bottomright",
 ```{r, fig.height = 3, fig.width = 5}
 
 plot(x    = seq(0, 3, 0.25), 
-     y    = heat_transfer_coefficient_simple(V    = seq(0, 3, 0.25),
+     y    = heat_transfer_coefficient_simple(u    = seq(0, 3, 0.25),
                                              D    = 0.05, 
                                              type = "Spotila"), 
      type = "l", 
@@ -663,14 +663,14 @@ plot(x    = seq(0, 3, 0.25),
      ylab = expression("heat transfer coefficient," ~ H[L] ~ (W ~ m^{-2} ~ K^{-1})))
 
 points(x    = seq(0, 3, 0.25), 
-       y    = heat_transfer_coefficient_simple(V    = seq(0, 3, 0.25),
+       y    = heat_transfer_coefficient_simple(u    = seq(0, 3, 0.25),
                                                D    = 0.03, 
                                                type = "Spotila"), 
        type = "l", 
        lty  = "dashed")
 
 points(x    = seq(0, 3, 0.25), 
-       y    = heat_transfer_coefficient_simple(V    = seq(0, 3, 0.25),
+       y    = heat_transfer_coefficient_simple(u    = seq(0, 3, 0.25),
                                                D    = 0.07, 
                                                type = "Spotila"), 
        type = "l", 
@@ -703,9 +703,9 @@ where $K_g$ is the thermal conductivity of substrate ($W K^{-1} m^{-1}$) and $D$
 
 ```{r, fig.height = 4, fig.width = 6}
 
-plot(x    = 293:313, 
-     y    = Qconduction_animal(T_g        = 293:313,
-                               T_b        = 303,
+plot(x    = 20:40, 
+     y    = Qconduction_animal(T_g        = 20:40,
+                               T_b        = 30,
                                d          = 10^-6,
                                K          = 0.3,
                                A          = 10^-3,
@@ -713,9 +713,9 @@ plot(x    = 293:313,
      type = "l", 
      xlab = "ground temperature (K)", ylab = "Q conductance (W)")
 
-points(x    = 293:313, 
-       y    = Qconduction_animal(T_g        = 293:313,
-                                 T_b        = 303,
+points(x    = 20:40, 
+       y    = Qconduction_animal(T_g        = 20:40,
+                                 T_b        = 30,
                                  d          = 10^-6,
                                  K          = 0.5,
                                  A          = 10^-3,
@@ -723,9 +723,9 @@ points(x    = 293:313,
        type = "l", 
        lty  = "dashed")
 
-points(x    = 293:313, 
-       y    = Qconduction_animal(T_g        = 293:313,
-                                 T_b        = 303,
+points(x    = 20:40, 
+       y    = Qconduction_animal(T_g        = 20:40,
+                                 T_b        = 30,
                                  d          = 10^-6,
                                  K          = 0.3,
                                  A          = 10^-3,
@@ -733,9 +733,9 @@ points(x    = 293:313,
        type = "l", 
        lty  = "dotted")
 
-points(x    = 293:313, 
-       y    = Qconduction_animal(T_g        = 293:313,
-                                 T_b        = 303,
+points(x    = 20:40, 
+       y    = Qconduction_animal(T_g        = 20:40,
+                                 T_b        = 30,
                                  d          = 10^-6,
                                  K          = 0.5,
                                  A          = 10^-3,
@@ -752,9 +752,9 @@ legend(x      = "topright",
 
 ```{r, fig.height = 4, fig.width = 6}
 
-plot(x    = 293:313, 
-     y    = Qconduction_substrate(T_g        = 293:313,
-                                  T_b        = 303,
+plot(x    = 20:40, 
+     y    = Qconduction_substrate(T_g        = 20:40,
+                                  T_b        = 30,
                                   D          = 0.01,
                                   K_g        = 0.3,
                                   A          = 10^-2,
@@ -763,9 +763,9 @@ plot(x    = 293:313,
      xlab = "ground temperature (K)", 
      ylab = "Q conductance (W)")
 
-points(x    = 293:313, 
-       y    = Qconduction_substrate(T_g        = 293:313,
-                                    T_b        = 303,
+points(x    = 20:40, 
+       y    = Qconduction_substrate(T_g        = 20:40,
+                                    T_b        = 30,
                                     D          = 0.01,
                                     K_g        = 0.5,
                                     A          = 10^-2,
@@ -773,9 +773,9 @@ points(x    = 293:313,
        type = "l", 
        lty  = "dashed")
 
-points(x    = 293:313, 
-       y    = Qconduction_substrate(T_g        = 293:313,
-                                    T_b        = 303,
+points(x    = 20:40, 
+       y    = Qconduction_substrate(T_g        = 20:40,
+                                    T_b        = 30,
                                     D          = 0.01,
                                     K_g        = 0.3,
                                     A          = 10^-2,
@@ -783,9 +783,9 @@ points(x    = 293:313,
        type = "l", 
        lty  = "dotted")
 
-points(x    = 293:313, 
-       y    = Qconduction_substrate(T_g        = 293:313,
-                                    T_b        = 303,
+points(x    = 20:40, 
+       y    = Qconduction_substrate(T_g        = 20:40,
+                                    T_b        = 30,
                                     D          = 0.01,
                                     K_g        = 0.5,
                                     A          = 10^-2,
@@ -838,7 +838,7 @@ legend(x      = "topleft",
 
 plot(x    = 1:100, 
      y    = Qmetabolism_from_mass_temp(m     = 1:100, 
-                                       T_b   = 303,
+                                       T_b   = 30,
                                        taxon = "bird"), 
      type = "l", 
      xlab = "mass (g)", 
@@ -847,21 +847,21 @@ plot(x    = 1:100,
 
 points(x    = 1:100, 
        y    = Qmetabolism_from_mass_temp(m     = 1:100, 
-                                         T_b   = 303,
+                                         T_b   = 30,
                                          taxon = "reptile"), 
        type = "l", 
        lty  = "dotted")
 
 points(x    = 1:100, 
        y    = Qmetabolism_from_mass_temp(m     = 1:100, 
-                                         T_b   = 303,
+                                         T_b   = 30,
                                          taxon = "amphibian"), 
        type = "l", 
        lty  = "dotdash")
 
 points(x    = 1:100, 
        y    = Qmetabolism_from_mass_temp(m     = 1:100,
-                                         T_b   = 303,
+                                         T_b   = 30,
                                          taxon = "invertebrate"), 
        type = "l", 
        lty  = "twodash")
@@ -871,32 +871,32 @@ legend(x      = "top",
        legend = c("bird,mammal", "reptile", "amphibian", "invertebrate"), 
        lty    = c("solid", "dotted", "dotdash", "twodash"))
 
-plot(x    = 293:313, 
+plot(x    = 20:40, 
      y    = Qmetabolism_from_mass_temp(m     = 5, 
-                                       T_b   = 293:313,
+                                       T_b   = 20:40,
                                        taxon = "bird"), 
      type = "l", 
      xlab = "temperature (K)", 
      ylab = "metabolism (W)", 
      ylim = c(0,0.1))
 
-points(x    = 293:313, 
+points(x    = 20:40, 
        y    = Qmetabolism_from_mass_temp(m     = 5, 
-                                         T_b   = 293:313,
+                                         T_b   = 20:40,
                                          taxon = "reptile"), 
        type = "l", 
        lty  = "dotted")
 
-points(x    = 293:313, 
+points(x    = 20:40, 
        y    = Qmetabolism_from_mass_temp(m     = 5, 
-                                         T_b   = 293:313,
+                                         T_b   = 20:40,
                                          taxon = "amphibian"), 
        type = "l", 
        lty  = "dotdash")
 
-points(x    = 293:313, 
+points(x    = 20:40, 
        y    = Qmetabolism_from_mass_temp(m     = 5, 
-                                         T_b   = 293:313,
+                                         T_b   = 20:40,
                                          taxon = "invertebrate"), 
        type = "l", 
        lty  = "twodash")
@@ -922,22 +922,22 @@ The rate of water loss for an amphibian without fully wetted skin can be express
 
 # kPa
 
-  vp <- saturation_vapor_pressure(293:313)
+  vp <- saturation_vapor_pressure(20:40)
 
 # convert to kg/m^3
 
-  rho_s <- vp * 0.032 
+  e_s <- vp * 0.032 
 
 # kPa
 
-  vp <- saturation_vapor_pressure(293:313-10)
+  vp <- saturation_vapor_pressure(20:40-10)
 
 # convert to kg/m^3
 
-  rho_a <-  vp * 0.032 
+  e_a <-  vp * 0.032 
 
 
-temps      <- 293:313
+temps      <- 20:40
 Qevaps     <- rep(NA,21)
 Qevaps_wet <- rep(NA,21)
 
@@ -945,18 +945,18 @@ for (ind in 1:21) {
   Qevaps[ind]     <- Qevaporation(A     = 0.1, 
                                   T_b   = temps[ind],  
                                   taxon = "amphibian",  
-                                  rho_s = rho_s[ind],  
-                                  rho_a = rho_a[ind],  
-                                  h     = 0.5,  
+                                  e_s = rho_s[ind],  
+                                  e_a = rho_a[ind],  
+                                  hp     = 0.5,  
                                   H     = 20,  
                                   r_i   = 50) 
 
   Qevaps_wet[ind] <- Qevaporation(A     = 0.1,  
                                   T_b   = temps[ind],  
                                   taxon = "amphibian_wetskin",  
-                                  rho_s = rho_s[ind],  
-                                  rho_a = rho_a[ind],  
-                                  h     = 0.5,  
+                                  e_s = rho_s[ind],  
+                                  e_a = rho_a[ind],  
+                                  hp     = 0.5,  
                                   H     = 20,  
                                   r_i   = 50) 
 }
@@ -964,7 +964,7 @@ for (ind in 1:21) {
 plot(x    = temps, 
      y    = Qevaps, 
      type = "l", 
-     xlab = "body temperature (K)", 
+     xlab = "body temperature (C)", 
      ylab = "evaporative heat loss (W)", 
      lty  = "dashed", 
      ylim = c(0, 400))
@@ -974,12 +974,12 @@ points(x    = temps,
        type = "l", 
        lty  = "dotted")
 
-Qevap <- unlist(lapply(293:313, 
+Qevap <- unlist(lapply(20:40, 
                        FUN  = Qevaporation, 
                        A = 0.1,  
                        taxon = "lizard"))
 
-points(x    = 293:313, 
+points(x    = 20:40, 
        y    = Qevap, 
        type = "l" )
 
@@ -1018,11 +1018,11 @@ plot(x    = 10:30,
 
 # Estimating body temperatures, Tb
 
-TrenchR primarily includes models for estimating the body temperatures (generally the operative temperatures, $T_e$) of organisms that have reached an equilibrium with their environment ("steady-state", no heat retention). The following function uses the relationships above to solve the energy balance for $Tb (K)$.
+TrenchR primarily includes models for estimating the body temperatures (generally the operative temperatures, $T_e$) of organisms that have reached an equilibrium with their environment ("steady-state", no heat retention). The following function uses the relationships above to solve the energy balance for $Tb (C)$.
 
 ```{r, fig.height = 4, fig.width = 4}
 
-t.seq <- lapply(293:313, 
+t.seq <- lapply(20:40, 
                 FUN     = Tb_Gates, 
                 A       = 0.1, 
                 D       = 0.001, 
@@ -1030,26 +1030,26 @@ t.seq <- lapply(293:313,
                 psa_ref = 0.4, 
                 psa_air = 0.6, 
                 psa_g   = 0.0, 
-                T_g     = 303, 
+                T_g     = 30, 
                 Qabs    = 10, 
                 epsilon = 0.95, 
                 H_L     = 10, 
                 ef      = 1.3, 
                 K       = 0.5)
 
-plot(x    = 293:313, 
+plot(x    = 20:40, 
      y    = t.seq, 
      type = "l", 
      xlab = "ambient temperature, Ta (K)", 
      ylab = "body temperature, Tb (K)", 
-     xlim = c(295, 315), 
-     ylim = c(295, 315))
+     xlim = c(22, 42), 
+     ylim = c(22, 42))
 
 abline(a   = 0,
        b   = 1, 
        col = "gray")
 
-t.seq <- lapply(293:313, 
+t.seq <- lapply(20:40, 
                 FUN     = Tb_Gates, 
                 A       = 0.1, 
                 D       = 0.001, 
@@ -1057,19 +1057,19 @@ t.seq <- lapply(293:313,
                 psa_ref = 0.4, 
                 psa_air = 0.6, 
                 psa_g   = 0.0, 
-                T_g     = 303, 
+                T_g     = 30, 
                 Qabs    = 0, 
                 epsilon = 0.95, 
                 H_L     = 10, 
                 ef      = 1.3, 
                 K       = 0.5)
 
-points(x    = 293:313, 
+points(x    = 20:40, 
        y    = t.seq, 
        type = "l", 
        lty  = "dashed")
 
-t.seq <- lapply(293:313, 
+t.seq <- lapply(20:40, 
                 FUN     = Tb_Gates, 
                 A       = 0.1, 
                 D       = 0.001, 
@@ -1077,14 +1077,14 @@ t.seq <- lapply(293:313,
                 psa_ref = 0.4, 
                 psa_air = 0.6, 
                 psa_g   = 0.0, 
-                T_g     = 303, 
+                T_g     = 30, 
                 Qabs    = 20, 
                 epsilon = 0.95, 
                 H_L     = 10, 
                 ef      = 1.3, 
                 K       = 0.5)
 
-points(x    = 293:313, 
+points(x    = 20:40, 
        y    = t.seq, 
        type = "l", 
        lty  = "dotted")
@@ -1100,7 +1100,7 @@ Campbell and Norman [-@campbell2012introduction] use a somewhat simplified energ
 
 $$ T_b=T_a+(S_{abs}-Q_{emit})/(c_p(g_r+g_{Ha})),$$ 
 
-where $Ta$ is air temperature $(K)$, $S_{abs}$ is the solar and thermal radiation absorbed ($W m^{-2}$), $Qemit$ is emitted thermal radiation ($W m^{-2}$), $c_p$ is the specific heat of air ($J mol^{-1} K^{-1}$), $g_{r}$ is radiative conductance $(mol\:m^{-2} s^{-1})$, and $g_{Ha}$ is the boundary conductance $(mol\:m^{-2} s^{-1})$. The model is based on estimating $T_b$ for a blackbody (perfectly absorbing) cavity with air temperatures equal to surface temperatures ($T_a = T_s$).  The model assumes that the cavity provides the same heat load as the natural environment and thus equates metabolic heat production and evaporative cooling in the two environments. The formulation assumes a well-mixed interior of the animal and also omits conduction with the substrate. In this scenario, organisms emit thermal radiation from their surface proportional to the fourth power of $T_a$: 
+where $Ta$ is air temperature $(C)$, $S_{abs}$ is the solar and thermal radiation absorbed ($W m^{-2}$), $Qemit$ is emitted thermal radiation ($W m^{-2}$), $c_p$ is the specific heat of air ($J mol^{-1} K^{-1}$), $g_{r}$ is radiative conductance $(mol\:m^{-2} s^{-1})$, and $g_{Ha}$ is the boundary conductance $(mol\:m^{-2} s^{-1})$. The model is based on estimating $T_b$ for a blackbody (perfectly absorbing) cavity with air temperatures equal to surface temperatures ($T_a = T_s$).  The model assumes that the cavity provides the same heat load as the natural environment and thus equates metabolic heat production and evaporative cooling in the two environments. The formulation assumes a well-mixed interior of the animal and also omits conduction with the substrate. In this scenario, organisms emit thermal radiation from their surface proportional to the fourth power of $T_a$: 
 
 $$Q_{emit}= \epsilon \sigma T_a^4 ,$$ 
 
@@ -1108,57 +1108,57 @@ where $\epsilon$ is the proportional longwave infrared emissivity of skin [0.95-
 
 The thermal radiation exchanged between the animals and the walls of the cavity is proportional to the temperature differences and the radiative conductance.  Campbell and Norman [-@campbell2012introduction] thus use a denominator term that combines thermal radiative exchange with convective heat exchange. The radiative conductance describing the heat exchange between the core of the animal and the environment is estimated as $g_r= 4 \sigma Ta^3/c_p(mol\:m^{-2} s^{-1})$. The boundary conductance (heat exchange with the air via convection) is estimated assuming forced convection driven by naturally turbulent wind and an empirical approximation of animal shapes [@mitchell1976heat]:
 
-$$g_{Ha}(mol \:m^{-2} s^{-1})= 1.4 \times 0.135 \sqrt{(V/D)},$$ 
+$$g_{Ha}(mol \:m^{-2} s^{-1})= 1.4 \times 0.135 \sqrt{(u/D)},$$ 
 
-where 1.4 is a factor to account for increased convection in natural environments, $V$ is wind speed ($m/s$), and $D$ is the characteristic dimension of the animal ($m$).
+where 1.4 is a factor to account for increased convection in natural environments, $u$ is wind speed ($m/s$), and $D$ is the characteristic dimension of the animal ($m$).
 
 The function to estimate $T_b$ (also $T_e$) is available in R as follows (including the above calculations of $Q_{emit}$, $g_r$, and $g_{Ha}$):
 
 ```{r, fig.height = 4, fig.width = 4}
 
-plot(x    = 293:313, 
-     y    = Tb_CampbellNorman(T_a     = 293:313, 
-                              T_g     = 303, 
+plot(x    = 20:40, 
+     y    = Tb_CampbellNorman(T_a     = 20:40, 
+                              T_g     = 30, 
                               S       = 600, 
-                              alpha_S = 0.7, 
-                              alpha_L = 0.96, 
+                              a_S     = 0.7, 
+                              a_L     = 0.96, 
                               epsilon = 0.96, 
                               c_p     = 29.3, 
                               D       = 0.17, 
-                              V       = 1), 
+                              u       = 1), 
      type = "l", 
      xlab = "air temperature (K)", 
      ylab = "body temperature (K)", 
-     xlim = c(295,310), 
-     ylim = c(290,340))
+     xlim = c(23,37), 
+     ylim = c(17,67))
 
 abline(a   = 0, 
        b   = 1, 
        col = "gray")
 
-points(x    = 293:313, 
-       y    = Tb_CampbellNorman(T_a     = 293:313,
-                                T_g     = 303, 
+points(x    = 20:40, 
+       y    = Tb_CampbellNorman(T_a     = 20:40,
+                                T_g     = 30, 
                                 S       = 200, 
-                                alpha_S = 0.7, 
-                                alpha_L = 0.96, 
+                                a_S     = 0.7, 
+                                a_L     = 0.96, 
                                 epsilon = 0.96, 
                                 c_p     = 29.3, 
                                 D       = 0.17, 
-                                V       = 1), 
+                                u       = 1), 
        type = "l", 
        lty  = "dashed")
 
-points(x    = 293:313, 
-       y    = Tb_CampbellNorman(T_a     = 293:313, 
-                                T_g     = 303, 
+points(x    = 20:40, 
+       y    = Tb_CampbellNorman(T_a     = 20:40, 
+                                T_g     = 30, 
                                 S       = 400, 
-                                alpha_S = 0.7, 
-                                alpha_L = 0.96, 
+                                a_S     = 0.7, 
+                                a_L     = 0.96, 
                                 epsilon = 0.96, 
                                 c_p     = 29.3, 
                                 D       = 0.17, 
-                                V       = 1), 
+                                u       = 1), 
        type = "l", 
        lty  = "dotted")
 
@@ -1264,8 +1264,8 @@ We implement the model in TrenchR as follows:
                   doy       = 200, 
                   sun       = TRUE, 
                   surface   = TRUE, 
-                  alpha_S   = 0.9, 
-                  alpha_L   = 0.965, 
+                  a_S       = 0.9, 
+                  a_L       = 0.965, 
                   epsilon_s = 0.965, 
                   F_d       = 0.8, 
                   F_r       = 0.5, 
@@ -1297,8 +1297,8 @@ We implement the model in TrenchR as follows:
                   doy       = 200, 
                   sun       = FALSE, 
                   surface   = TRUE, 
-                  alpha_S   = 0.9, 
-                  alpha_L   = 0.965,
+                  a_S       = 0.9, 
+                  a_L       = 0.965,
                   epsilon_s = 0.965, 
                   F_d       = 0.8, 
                   F_r       = 0.5, 
@@ -1324,8 +1324,8 @@ We implement the model in TrenchR as follows:
                   doy       = 200, 
                   sun       = TRUE, 
                   surface   = FALSE, 
-                  alpha_S   = 0.9, 
-                  alpha_L   = 0.965, 
+                  a_S       = 0.9, 
+                  a_L       = 0.965, 
                   epsilon_s = 0.965, 
                   F_d       = 0.8, 
                   F_r       = 0.5, 
@@ -1351,8 +1351,8 @@ We implement the model in TrenchR as follows:
                   doy       = 200, 
                   sun       = FALSE, 
                   surface   = FALSE, 
-                  alpha_S   = 0.9, 
-                  alpha_L   = 0.965, 
+                  a_S       = 0.9, 
+                  a_L       = 0.965, 
                   epsilon_s = 0.965, 
                   F_d       = 0.8, 
                   F_r       = 0.5, 
@@ -1374,17 +1374,17 @@ There are several transient energy budget models available to predict lizard bod
 
 ```{r, fig.height = 4, fig.width = 4}
 
-t.seq <- lapply(293:313, 
+t.seq <- lapply(20:40, 
                 FUN       = Tb_lizard_Fei,  
-                T_g       = 300,  
-                H         = 800,  
+                T_g       = 27,  
+                S         = 800,  
                 lw        = 30,  
                 shade     = 0.5,  
                 m         = 10.5,  
                 Acondfact = 0.05,  
                 Agradfact = 0.4)
 
-plot(x    = 293:313, 
+plot(x    = 20:40, 
      y    = t.seq, 
      type = "l", 
      xlab = "ambient temperature (°C)", 
@@ -1394,32 +1394,32 @@ abline(a   = 0,
        b   = 1, 
        col = "gray")
 
-t.seq <- lapply(293:313,  
+t.seq <- lapply(20:40,  
                 FUN       = Tb_lizard_Fei,  
-                T_g       = 300,  
-                H         = 800,  
+                T_g       = 27,  
+                S         = 800,  
                 lw        = 30,  
                 shade     = 0.0,  
                 m         = 10.5,  
                 Acondfact = 0.05,  
                 Agradfact = 0.4)
 
-points(x    = 293:313, 
+points(x    = 20:40, 
        y    = t.seq, 
        type = "l", 
        lty  = "dashed")
 
-t.seq <- lapply(293:313,  
+t.seq <- lapply(20:40,  
                 FUN       = Tb_lizard_Fei,  
-                T_g       = 300,  
-                H         = 800,  
+                T_g       = 27,  
+                S         = 800,  
                 lw        = 30,  
                 shade     = 1.0,  
                 m         = 10.5,  
                 Acondfact = 0.05,  
                 Agradfact = 0.4)
 
-points(x    = 293:313, 
+points(x    = 20:40, 
        y    = t.seq, 
        type = "l", 
        lty  = "dotted")
@@ -1451,11 +1451,11 @@ The convective heat flux is given by:
 
 $$Q_c= h_T A_c (T_b-T_a), $$ 
 
-where $A_c$ is the convective heat transfer surface area and $T_a$ is the air temperature ($K$). We assume $A_c=A_t= A_{s,ttl}$. The total convective heat transfer coefficient, $h_T Wm^{-2}K^{-1}$, is calculated as the boundary layer conductance $h_c Wm^{-2}K^{-1}$ and the fur layer conduction in series:
+where $A_c$ is the convective heat transfer surface area and $T_a$ is the air temperature ($C$). We assume $A_c=A_t= A_{s,ttl}$. The total convective heat transfer coefficient, $h_T Wm^{-2}K^{-1}$, is calculated as the boundary layer conductance $h_c Wm^{-2}C^{-1}$ and the fur layer conduction in series:
 
 $$1/h_T= 1/h_c+\frac{(r_i+\delta)ln[(r_i+\delta)/r_i]}{k_e} ,$$ 
 
-where $\delta$ is the thoracic fur thickness ($m$) and $k_e$ is the thermal conductivity of the fur ($Wm^{-1}K^{-1}$).
+where $\delta$ is the thoracic fur thickness ($m$) and $k_e$ is the thermal conductivity of the fur ($Wm^{-1}C^{-1}$).
   
 The boundary layer conductance, $h_c$, can be estimated using the relationship between two non-dimensional numbers. The Nusselt number, $nu =h_c D/ka$, is the ratio of convective to conductive heat transfer, where $k_a$ is the thermal conductivity of air ($Wm^{-1}K^{-1}$). We used the maximum width of the mesothorax as the characteristic dimension of the butterfly, $D (m)$. The Reynolds number, $Re =uD/v$, is the ratio of inertial forces to viscous forces, where $u$ is wind speed ($m/s$) and $v$ is kinematic viscosity ($m^2/s$). We used the Nu-Re relation for a cylinder, $nu = 0.6Re^{0.5}$, which is a reasonable approximation for *Colias*. We estimate the energy flux balance to estimate $T_b$.
 

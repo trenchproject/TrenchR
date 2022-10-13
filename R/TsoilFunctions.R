@@ -222,7 +222,7 @@ soil_temperature_equation <- function (L,
 #' 
 #' @param T_so \code{numeric} the initial soil temperature profile in C. 
 #' 
-#' @param params \code{list} containing the following param, which are described or calculated in \code{\link{soil_temperature}}: \code{SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade}.   
+#' @param params \code{list} containing the following param, which are described or calculated in \code{\link{soil_temperature}}: \code{SSA, epsilon_so, k_so, c_so, dz, z_r, z0, S, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade}.   
 #' 
 #' @return Soil temperature profile as a \code{list}.
 #' 
@@ -252,7 +252,7 @@ soil_temperature_equation <- function (L,
 #'                             dz         = 0.05, 
 #'                             z_r        = 1.5, 
 #'                             z0         = 0.02, 
-#'                             H          = solrad_vector, 
+#'                             S          = solrad_vector, 
 #'                             T_a        = temp_vector, 
 #'                             u          = wind_speed_vector, 
 #'                             rho_a      = 1.177, 
@@ -284,7 +284,7 @@ soil_temperature_function <- function (j,
   dz <- params[[5]]
   z_r <- params[[6]]
   z0 <- params[[7]]
-  H <- params[[8]]
+  S <- params[[8]]
   T_a <- params[[9]]
   u <- params[[10]]
   rho_a <- params[[11]]
@@ -301,7 +301,7 @@ soil_temperature_function <- function (j,
   alpha2 <- k_so / (c_so * rho_so)
   
   # heat budget elements
-  q_sun <- H[j]
+  q_sun <- S[j]
 
   if(shade == TRUE) {
     
@@ -407,7 +407,7 @@ soil_temperature_function <- function (j,
 #' 
 #' @param TimeIn \code{numeric} vector of time periods for the model.
 #' 
-#' @param H \code{numeric} vector of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
+#' @param S \code{numeric} vector of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #' 
 #' @param water_content \code{numeric} percent water content (percent).
 #' 
@@ -448,7 +448,7 @@ soil_temperature_function <- function (j,
 #'                    z0            = 0.02, 
 #'                    SSA           = 0.7, 
 #'                    TimeIn        = time_vector, 
-#'                    H             = solrad_vector, 
+#'                    S             = solrad_vector, 
 #'                    water_content = 0.2, 
 #'                    air_pressure  = 85, 
 #'                    rho_so        = 1620, 
@@ -463,7 +463,7 @@ soil_temperature <- function (z_r.intervals = 12,
                               z0, 
                               SSA, 
                               TimeIn, 
-                              H, 
+                              S, 
                               water_content = 0.2, 
                               air_pressure, 
                               rho_so        = 1620, 
@@ -561,9 +561,9 @@ soil_temperature <- function (z_r.intervals = 12,
   #------------------
   
   # SOLVE ODE
-  params <- list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade)
+  params <- list(SSA, epsilon_so, k_so, c_so, dz, z_r, z0, S, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade)
   
-  Tsoil <- suppressWarnings(ode(y = rep(Tsoil0, z_r.intervals + 1), func = soil_temperature_function, times = 1:length(H), params))
+  Tsoil <- suppressWarnings(ode(y = rep(Tsoil0, z_r.intervals + 1), func = soil_temperature_function, times = 1:length(S), params))
   
   return(Tsoil[, z])
   
