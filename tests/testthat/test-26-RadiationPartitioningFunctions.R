@@ -5,7 +5,6 @@ expect_similar <- function(input, expected) {
 }
 
 test_that("partition_solar_radiation function works as expected", {
-
   expect_similar(partition_solar_radiation(method="Liu_Jordan", kt=0.5, lat=40, sol.elev=60),0.248)
   expect_similar(partition_solar_radiation(method="Liu_Jordan", kt=0.1, lat=40, sol.elev=60),1)
   expect_similar(partition_solar_radiation(method="Orgill_Hollands", kt=0.05, lat=40, sol.elev=60),0.98755)
@@ -29,8 +28,7 @@ test_that("partition_solar_radiation function works as expected", {
   expect_similar(partition_solar_radiation(method="Lam_Li", kt=0.8, lat=40, sol.elev=60),0.273)
 })
 
-
 test_that("proportion_diffuse_solar_radiation function works as expected", {
-  expect_similar(proportion_diffuse_solar_radiation(psi = 60, p_a = 86.1, A = 0.25),0.09352554)
-  expect_similar(proportion_diffuse_solar_radiation(psi = 10, p_a = 86.1, A = 0.25),0.0571643)
+  expect_similar(proportion_diffuse_solar_radiation(psi = 60, p_a = 86.1, rho = 0.25),0.09352554)
+  expect_similar(proportion_diffuse_solar_radiation(psi = 10, p_a = 86.1, rho = 0.25),0.0571643)
 })

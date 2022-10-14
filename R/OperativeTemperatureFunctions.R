@@ -293,7 +293,7 @@ Tb_Gates <- function (A,
                             message("Unable to balance energy budget. One issue to check is whether absorbed solar radiation exceeds energy potentially lost to thermal radiation, convection, and conduction.")
                             NA})
   
-  kelvin_to_celcius(T_e)
+  kelvin_to_celsius(T_e)
 
 }
 
@@ -366,7 +366,7 @@ Tb_Gates2 <- function (A,
   # effective radiant temperature of sky
   #  K, Gates 1980 Biophysical ecology based on Swinback 1960, Kingsolver (1983) estimates using Brunt equation
 
-    T_sky <- celsius_to_kelvin
+    T_sky <- celsius_to_kelvin(1.22 * (T_a - 20.4))
     
     #convert to Kelvin
     T_a= celsius_to_kelvin(T_a)
@@ -403,7 +403,7 @@ Tb_Gates2 <- function (A,
                             message("Unable to balance energy budget. One issue to check is whether absorbed solar radiation exceeds energy potentially lost to thermal radiation, convection, and conduction.")
                             NA})
   
-  kelvin_to_celcius(T_e)
+  kelvin_to_celsius(T_e)
   
 }
 

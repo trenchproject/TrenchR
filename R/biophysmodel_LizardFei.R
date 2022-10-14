@@ -207,6 +207,6 @@ Tb_lizard_Fei <- function(T_a,
     
     }
   
-    kelvin_to_celcius(T_o)
+    kelvin_to_celsius(T_o)
 
 }

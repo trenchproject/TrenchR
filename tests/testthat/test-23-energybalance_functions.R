@@ -33,21 +33,20 @@ test_that("heat_transfer_coefficient_simple function works as expected", {
 })
 
 test_that("Qradiation_absorbed function works as expected", {
-  expect_equal(Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=1000, S_dif=200, a_s=0.5), 612)
+  expect_equal(Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=1000, S_dif=200, rho=0.5), 612)
 })
 
 test_that("Qemitted_thermal_radiation function works as expected", {
-  expect_similar(Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=30, T_g=20, T_a=25, enclosed=FALSE),78.35451)
-  expect_similar(Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=30, T_g=20, T_a=25, enclosed=TRUE),17.7349)
-  
+  expect_similar(Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=30, T_g=20, T_a=25, enclosed=FALSE),78.40861)
+  expect_similar(Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=30, T_g=20, T_a=25, enclosed=TRUE),17.76147)
 })
 
 test_that("Qevaporation function works as expected", {
-  expect_similar(Qevaporation(A=0.1, T_b=20, taxon="amphibian", e_s=0.003, e_a=0.002, hp=0.5, H=20, r_i=50),4.612476)
-  expect_similar(Qevaporation(A=0.1, T_b=20, taxon="amphibian_wetskin", e_s=0.003, e_a=0.002, hp=0.5, H=20, r_i=50),8.74552)
-  expect_similar(Qevaporation(A=0.1, T_b=20, taxon="lizard"),1.043334)
-  expect_similar(Qevaporation(A=0.1, T_b=17, taxon="lizard"),0.1005)
-  expect_similar(Qevaporation(A=0.1, T_b=37, taxon="lizard"), 0.04695595)
+  expect_similar(Qevaporation(A=0.1, T_b=20, taxon="amphibian", e_s=0.003, e_a=0.002, hp=0.5, H=20, r_i=50), 4.612476)
+  expect_similar(Qevaporation(A=0.1, T_b=20, taxon="amphibian_wetskin", e_s=0.003, e_a=0.002, hp=0.5, H=20, r_i=50), 8.74552)
+  expect_similar(Qevaporation(A=0.1, T_b=20, taxon="lizard"), 1.070086)
+  expect_similar(Qevaporation(A=0.1, T_b=17, taxon="lizard"), 0.1005)
+  expect_similar(Qevaporation(A=0.1, T_b=37, taxon="lizard"), 0.04759918)
 })
 
 test_that("Qevaporation errors work as expected", {
@@ -90,12 +89,12 @@ test_that("actual_vapor_pressure function works as expected", {
 })
 
 test_that("saturation_vapor_pressure function works as expected", {
-  expect_similar(saturation_vapor_pressure(T_a=20), 2.341779)
+  expect_similar(saturation_vapor_pressure(T_a=20), 2.364037)
 })
 
 test_that("expect_similar(boundary_layer_resistance function works as expected", {
-  expect_similar(boundary_layer_resistance(T_a=20, e_s=2.5, e_a=2.4, elev=500, D=0.007, u=2), 0.3649484)
-  expect_similar(boundary_layer_resistance(T_a=20, e_s=2.5, e_a=2.4, elev=500, D=0.007),4.302272)
+  expect_similar(boundary_layer_resistance(T_a=20, e_s=2.5, e_a=2.4, elev=500, D=0.007, u=2), 0.3647617)
+  expect_similar(boundary_layer_resistance(T_a=20, e_s=2.5, e_a=2.4, elev=500, D=0.007), 4.299191)
   expect_error(boundary_layer_resistance(T_a=20, e_s=2.3, e_a=2.4, elev=500, D=0.007))
 })
 

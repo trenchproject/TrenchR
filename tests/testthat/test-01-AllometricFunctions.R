@@ -44,15 +44,15 @@ test_that("surface_area_from_length function works as expected", {
 
 test_that("proportion_silhouette_area function works as expected", {
 
-  expect_equal(proportion_silhouette_area(z = 60, taxon = "frog"), 0.2902208, tolerance = 1e-4)
-  expect_equal(proportion_silhouette_area(z = 30, taxon = "grasshopper"), 0.1381, tolerance = 1e-4)
-  expect_equal(proportion_silhouette_area(z = 30, taxon = "lizard"), 0.2739208, tolerance = 1e-4)
-  expect_equal(proportion_silhouette_area(z = 30, taxon= "lizard", raz = 0, posture = "prostrate"), 0.2739208, tolerance = 1e-4)
-  expect_equal(proportion_silhouette_area(z = 30, taxon= "lizard", raz = 90, posture = "prostrate"), 0.3153245, tolerance = 1e-4)
-  expect_equal(proportion_silhouette_area(z = 30, taxon= "lizard", raz = 180, posture = "prostrate"), 0.254965, tolerance = 1e-4)
-  expect_equal(proportion_silhouette_area(z = 30, taxon= "lizard", raz = 0, posture = "elevated"), 0.2106307, tolerance = 1e-4)
-  expect_equal(proportion_silhouette_area(z = 30, taxon= "lizard", raz = 90, posture = "elevated"), 0.2335728, tolerance = 1e-4)
-  expect_equal(proportion_silhouette_area(z = 30, taxon= "lizard", raz = 180, posture = "elevated"), 0.2358103, tolerance = 1e-4)
+  expect_equal(proportion_silhouette_area(psi = 60, taxon = "frog"), 0.2902208, tolerance = 1e-4)
+  expect_equal(proportion_silhouette_area(psi = 30, taxon = "grasshopper"), 0.1381, tolerance = 1e-4)
+  expect_equal(proportion_silhouette_area(psi = 30, taxon = "lizard"), 0.2739208, tolerance = 1e-4)
+  expect_equal(proportion_silhouette_area(psi = 30, taxon= "lizard", raz = 0, posture = "prostrate"), 0.2739208, tolerance = 1e-4)
+  expect_equal(proportion_silhouette_area(psi = 30, taxon= "lizard", raz = 90, posture = "prostrate"), 0.3153245, tolerance = 1e-4)
+  expect_equal(proportion_silhouette_area(psi = 30, taxon= "lizard", raz = 180, posture = "prostrate"), 0.254965, tolerance = 1e-4)
+  expect_equal(proportion_silhouette_area(psi = 30, taxon= "lizard", raz = 0, posture = "elevated"), 0.2106307, tolerance = 1e-4)
+  expect_equal(proportion_silhouette_area(psi = 30, taxon= "lizard", raz = 90, posture = "elevated"), 0.2335728, tolerance = 1e-4)
+  expect_equal(proportion_silhouette_area(psi = 30, taxon= "lizard", raz = 180, posture = "elevated"), 0.2358103, tolerance = 1e-4)
 
 })
 

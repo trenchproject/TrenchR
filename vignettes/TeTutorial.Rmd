@@ -80,7 +80,7 @@ plot(x    = seq(100, 1000, 100),
                                 psa_ref = 0.4, 
                                 S_dir   = seq(100, 1000, 100), 
                                 S_dif   = 200, 
-                                a_s     = 0.5), 
+                                rho     = 0.5), 
      type = "l", 
      xlab = expression("direct solar radiation" ~ (W/m^{2})), 
      ylab = "solar radiation absorbed (W)")
@@ -92,7 +92,7 @@ points(x    = seq(100, 1000, 100),
                                   psa_ref = 0.4, 
                                   S_dir   = seq(100, 1000, 100), 
                                   S_dif   = 200, 
-                                  a_s     = 0.5), 
+                                  rho     = 0.5), 
        type = "l", 
        lty  = "dashed")
 
@@ -103,7 +103,7 @@ points(x    = seq(100, 1000, 100),
                                   psa_ref = 0.4, 
                                   S_dir   = seq(100, 1000, 100), 
                                   S_dif   = 200, 
-                                  a_s     = 0.5), 
+                                  rho     = 0.5), 
        type = "l", 
        lty  = "dotted")
 
@@ -114,13 +114,13 @@ points(x    = seq(100, 1000, 100),
                                   psa_ref = 0.4, 
                                   S_dir = seq(100, 1000, 100), 
                                   S_dif = 200, 
-                                  a_s = 0.2), 
+                                  rho = 0.2), 
        type = "l", 
        lty  = "dotdash")
 
 legend(x      = "topleft", 
        title  = "parameters", 
-       legend = c("a = 0.9, psa_dir = 0.4, a_s = 0.5", "a = 0.9, sa_dir = 0.2, a_s = 0.5", "a = 0.45, psa_dir = 0.4, a_s = 0.5", "a = 0.9, psa_dir = 0.4, a_s = 0.2"), 
+       legend = c("a = 0.9, psa_dir = 0.4, rho = 0.5", "a = 0.9, sa_dir = 0.2, rho = 0.5", "a = 0.45, psa_dir = 0.4, rho = 0.5", "a = 0.9, psa_dir = 0.4, rho = 0.2"), 
        lty    = c("solid", "dashed", "dotted", "dotdash"))
 
 ```
@@ -226,7 +226,7 @@ plot(x    = 20:40,
 
 points(x    = 293:313, 
        y    = Qconvection(T_a        = 30,
-                          T_b        = 293:313,
+                          T_b        = 20:40,
                           H          = 15,
                           A          = 0.0025,
                           proportion = 0.6), 
@@ -945,8 +945,8 @@ for (ind in 1:21) {
   Qevaps[ind]     <- Qevaporation(A     = 0.1, 
                                   T_b   = temps[ind],  
                                   taxon = "amphibian",  
-                                  e_s = rho_s[ind],  
-                                  e_a = rho_a[ind],  
+                                  e_s = e_s[ind],  
+                                  e_a = e_a[ind],  
                                   hp     = 0.5,  
                                   H     = 20,  
                                   r_i   = 50) 
@@ -954,8 +954,8 @@ for (ind in 1:21) {
   Qevaps_wet[ind] <- Qevaporation(A     = 0.1,  
                                   T_b   = temps[ind],  
                                   taxon = "amphibian_wetskin",  
-                                  e_s = rho_s[ind],  
-                                  e_a = rho_a[ind],  
+                                  e_s = e_s[ind],  
+                                  e_a = e_a[ind],  
                                   hp     = 0.5,  
                                   H     = 20,  
                                   r_i   = 50) 

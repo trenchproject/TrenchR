@@ -10,7 +10,7 @@
 #'
 #' @param h \code{numeric} limpet height (dorsal/ventral axis, m).
 #'
-#' @param I \code{numeric} solar irradiance (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
+#' @param S \code{numeric} solar irradiance (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).
 #'
 #' @param u \code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).
 #'
@@ -42,7 +42,7 @@
 #'             T_r      = 30, 
 #'             l        = 0.0176, 
 #'             h        = 0.0122, 
-#'             I        = 1300, 
+#'             S        = 1300, 
 #'             u        = 1, 
 #'             psi      = 30, 
 #'             c        = 1, 
@@ -52,7 +52,7 @@ Tb_limpet <- function (T_a,
                        T_r, 
                        l, 
                        h, 
-                       I, 
+                       S, 
                        u, 
                        psi, 
                        c, 
@@ -60,7 +60,7 @@ Tb_limpet <- function (T_a,
   
   stopifnot(l   >  0,
             h   >  0, 
-            I   >  0, 
+            S   >  0, 
             u   >= 0, 
             psi >= 0, 
             psi <= 90, 
@@ -179,7 +179,7 @@ Tb_limpet <- function (T_a,
       Kr <- 3.06
 
 
-  q1  <- Ap * alpha_sw * I
+  q1  <- Ap * alpha_sw * S
   q2  <- Vs * Al * eps_ws * sigma * T_a^4 * (eps_wa - 1)
   q3  <- 4 * Vs * Al* eps_ws * sigma * T_a^3
   q4  <- hc * A_cv
