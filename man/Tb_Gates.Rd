@@ -33,9 +33,9 @@ Tb_Gates(
 
 \item{psa_g}{\code{numeric} proportion surface area in contact with substrate (0-1).}
 
-\item{T_g}{\code{numeric} ground surface temperature (K).}
+\item{T_g}{\code{numeric} ground surface temperature (C).}
 
-\item{T_a}{\code{numeric} ambient air temperature (K).}
+\item{T_a}{\code{numeric} ambient air temperature (C).}
 
 \item{Qabs}{\code{numeric} Solar radiation absorbed (W).}
 
@@ -48,10 +48,10 @@ Tb_Gates(
 \item{K}{\code{numeric} Thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), K = 0.5 \ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}} for naked skin, K = 0.15 \ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}for insect cuticle \insertCite{Galushko2005;textual}{TrenchR}; conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step.}
 }
 \value{
-\code{numeric} operative environmental temperature, \code{T_e} (K).
+\code{numeric} operative environmental temperature, \code{T_e} (C).
 }
 \description{
-The function predicts body temperatures (K, operative environmental temperature) of an ectotherm using the approximation in \insertCite{Gates1980;textual}{TrenchR}. The functions omits evaporative and metabolic heat loss \insertCite{Mitchell1976,Kingsolver1983}{TrenchR}.
+The function predicts body temperatures (C, operative environmental temperature) of an ectotherm using the approximation in \insertCite{Gates1980;textual}{TrenchR}. The functions omits evaporative and metabolic heat loss \insertCite{Mitchell1976,Kingsolver1983}{TrenchR}.
 }
 \examples{
  Tb_Gates (A       = 1, 
@@ -60,8 +60,8 @@ The function predicts body temperatures (K, operative environmental temperature)
            psa_ref = 0.4, 
            psa_air = 0.6, 
            psa_g   = 0.2, 
-           T_g     = 303, 
-           T_a     = 310, 
+           T_g     = 30, 
+           T_a     = 37, 
            Qabs    = 2, 
            epsilon = 0.95, 
            H_L     = 10, 

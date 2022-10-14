@@ -24,11 +24,11 @@ Qemitted_thermal_radiation(
 
 \item{psa_ref}{\code{numeric} proportion surface area exposed to ground (0-1).}
 
-\item{T_b}{\code{numeric} body surface temperature (K).}
+\item{T_b}{\code{numeric} body surface temperature (C).}
 
-\item{T_g}{\code{numeric} ground surface temperature (K).}
+\item{T_g}{\code{numeric} ground surface temperature (C).}
 
-\item{T_a}{\code{numeric} ambient air temperature (K), only required if the animal is in an enclosed environment.}
+\item{T_a}{\code{numeric} ambient air temperature (C), only required if the animal is in an enclosed environment.}
 
 \item{enclosed}{\code{logical} whether the animal is an enclosed environment or not.}
 }
@@ -43,9 +43,9 @@ The function estimates thermal radiation (W) emitted by the surface of an animal
                              A        = 1,
                              psa_dir  = 0.4,
                              psa_ref  = 0.6,
-                             T_b      = 303,
-                             T_g      = 293,
-                             T_a      = 298,
+                             T_b      = 30,
+                             T_g      = 20,
+                             T_a      = 25,
                              enclosed = FALSE)
 
 }

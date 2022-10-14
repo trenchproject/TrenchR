@@ -9,7 +9,7 @@ soil_conductivity(x, lambda, g_a)
 \arguments{
 \item{x}{\code{numeric} vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air). The volume fractions should sum to 1. Note that \code{x} and \code{lambda} values in the example correspond to these soil constituents.}
 
-\item{lambda}{\code{numeric} vector of the thermal conductivities (\ifelse{html}{\out{W m<sup>-1</sup> K<sup>-1</sup>}}{\eqn{W m^-1 K^-1}{ASCII}}) of the soil constituents.}
+\item{lambda}{\code{numeric} vector of the thermal conductivities (\ifelse{html}{\out{W m<sup>-1</sup> C<sup>-1</sup>}}{\eqn{W m^-1 C^-1}{ASCII}}) of the soil constituents.}
 
 \item{g_a}{\code{numeric} shape factor on soil particles. The soil particles are assumed to be ellipsoids with axes \code{g_a}, \code{g_b}, and \code{g_c}, where \code{g_a + g_b + g_c = 1} and \code{g_a = g_b}. \insertCite{deVries1952;textual}{TrenchR} suggests \code{g_a = g_b = 0.125}.}
 }

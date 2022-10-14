@@ -4,10 +4,10 @@
 \alias{proportion_silhouette_area}
 \title{Organism Silhouette Area}
 \usage{
-proportion_silhouette_area(z, taxon, raz = 0, posture = "prostrate")
+proportion_silhouette_area(psi, taxon, raz = 0, posture = "prostrate")
 }
 \arguments{
-\item{z}{\code{numeric} zenith angle in degrees between \code{0} and \code{360}.}
+\item{psi}{\code{numeric} zenith angle in degrees between \code{0} and \code{360}.}
 
 \item{taxon}{\code{character} organism name. Current choices are \code{"lizard"}, \code{"frog"}, and \code{"grasshopper"}.}
 
@@ -29,15 +29,15 @@ Relationships come from \itemize{
  }
 }
 \examples{
-  proportion_silhouette_area(z     = 60,   
+  proportion_silhouette_area(psi     = 60,   
                              taxon = "frog")
-  proportion_silhouette_area(z     = 60, 
+  proportion_silhouette_area(psi     = 60, 
                              taxon = "grasshopper")
-  proportion_silhouette_area(z       = 60, 
+  proportion_silhouette_area(psi       = 60, 
                              taxon   = "lizard", 
                              posture = "prostrate", 
                              raz     = 90)
-  proportion_silhouette_area(z       = 60, 
+  proportion_silhouette_area(psi       = 60, 
                              taxon   = "lizard", 
                              posture = "elevated", 
                              raz     = 180)

@@ -11,7 +11,7 @@ soil_temperature_function(j, T_so, params)
 
 \item{T_so}{\code{numeric} the initial soil temperature profile in C.}
 
-\item{params}{\code{list} containing the following param, which are described or calculated in \code{\link{soil_temperature}}: \code{SSA, epsilon_so, k_so, c_so, dz, z_r, z0, H, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade}.}
+\item{params}{\code{list} containing the following param, which are described or calculated in \code{\link{soil_temperature}}: \code{SSA, epsilon_so, k_so, c_so, dz, z_r, z0, S, T_a, u, rho_a, rho_so, c_a, TimeIn, dt, shade}.}
 }
 \value{
 Soil temperature profile as a \code{list}.
@@ -36,7 +36,7 @@ This function is called to calculate soil temperature as in \insertCite{Beckman1
                             dz         = 0.05, 
                             z_r        = 1.5, 
                             z0         = 0.02, 
-                            H          = solrad_vector, 
+                            S          = solrad_vector, 
                             T_a        = temp_vector, 
                             u          = wind_speed_vector, 
                             rho_a      = 1.177, 

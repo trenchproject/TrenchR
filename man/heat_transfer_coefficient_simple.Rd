@@ -4,10 +4,10 @@
 \alias{heat_transfer_coefficient_simple}
 \title{Estimate the Heat Transfer Coefficient using Simple Relationships}
 \usage{
-heat_transfer_coefficient_simple(V, D, type)
+heat_transfer_coefficient_simple(u, D, type)
 }
 \arguments{
-\item{V}{\code{numeric} air velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
+\item{u}{\code{numeric} air velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
 \item{D}{\code{numeric} characteristic dimension (e.g., diameter or snout-vent length) (m).}
 
@@ -20,7 +20,7 @@ heat_transfer_coefficient_simple(V, D, type)
 The function estimates the heat transfer coefficient \insertCite{Mitchell1976}{TrenchR} using either the relationship in \insertCite{Spotila1992;textual}{TrenchR} or that in \insertCite{Gates1980;textual}{TrenchR}.
 }
 \examples{
-  heat_transfer_coefficient_simple(V    = 0.5,
+  heat_transfer_coefficient_simple(u    = 0.5,
                                    D    = 0.05,
                                    type = "Gates")
 

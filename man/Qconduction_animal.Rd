@@ -7,13 +7,13 @@
 Qconduction_animal(T_g, T_b, d, K = 0.5, A, proportion)
 }
 \arguments{
-\item{T_g}{\code{numeric} ground surface temperature (Kelvin).}
+\item{T_g}{\code{numeric} ground surface temperature (C).}
 
-\item{T_b}{\code{numeric} body temperature (Kelvin).}
+\item{T_b}{\code{numeric} body temperature (C).}
 
 \item{d}{\code{numeric} mean thickness of the animal skin (surface) in (meters). The function assumes a well mixed interior.}
 
-\item{K}{\code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}). \code{K = 0.5} for naked skin and \code{K = 0.15} for insect cuticle \insertCite{Galushko2005}{TrenchR}. The conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step.}
+\item{K}{\code{numeric} thermal conductivity (\ifelse{html}{\out{W C<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}). \code{K = 0.5} for naked skin and \code{K = 0.15} for insect cuticle \insertCite{Galushko2005}{TrenchR}. The conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step.}
 
 \item{A}{\code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
@@ -26,8 +26,8 @@ Qconduction_animal(T_g, T_b, d, K = 0.5, A, proportion)
 The function calculates conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
 }
 \examples{
-  Qconduction_animal(T_g        = 293,
-                     T_b        = 303,
+  Qconduction_animal(T_g        = 20,
+                     T_b        = 30,
                      d          = 10^-6,
                      K          = 0.5,
                      A          = 10^-3,

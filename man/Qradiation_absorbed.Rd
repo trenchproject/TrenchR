@@ -12,13 +12,13 @@ Qradiation_absorbed(
   S_dir,
   S_dif,
   S_ref = NA,
-  a_s = NA
+  rho = NA
 )
 }
 \arguments{
 \item{a}{\code{numeric} solar absorptivity of animal surface (proportion), default value is for reptiles (0-1).}
 
-\item{A}{\code{numeric} surface area ((\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
+\item{A}{\code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
 \item{psa_dir}{\code{numeric} proportion surface area exposed to solar radiation (0-1).}
 
@@ -30,7 +30,7 @@ Qradiation_absorbed(
 
 \item{S_ref}{\code{numeric} reflected solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}), either provided or estimated if surface albedo is provided instead}
 
-\item{a_s}{\code{numeric} is surface albedo (proportion), optional (not used) if reflected radiation is provided. Values available in \insertCite{Gates1980}{TrenchR} Table 8.2.}
+\item{rho}{\code{numeric} is surface albedo (proportion), optional (not used) if reflected radiation is provided. Values available in \insertCite{Gates1980}{TrenchR} Table 8.2.}
 }
 \value{
 \code{numeric} solar radiation absorbed (W)
@@ -45,7 +45,7 @@ The function estimates solar and thermal radiation (W) absorbed by the surface o
                       psa_ref = 0.4,
                       S_dir   = 1000,
                       S_dif   = 200,
-                      a_s     = 0.5)
+                      rho     = 0.5)
 
 }
 \references{

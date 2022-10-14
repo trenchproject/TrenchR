@@ -4,14 +4,14 @@
 \alias{Tb_lizard_Fei}
 \title{Operative Temperature of a Lizard Using Fei et al. (2012)}
 \usage{
-Tb_lizard_Fei(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact)
+Tb_lizard_Fei(T_a, T_g, S, lw, shade, m, Acondfact, Agradfact)
 }
 \arguments{
-\item{T_a}{\code{numeric} air temperature at lizard height (K).}
+\item{T_a}{\code{numeric} air temperature at lizard height (C).}
 
-\item{T_g}{\code{numeric} surface temperature (K).}
+\item{T_g}{\code{numeric} surface temperature (C).}
 
-\item{H}{\code{numeric} total (direct + diffuse) solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m-^2}{ASCII}}).}
+\item{S}{\code{numeric} total (direct + diffuse) solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m-^2}{ASCII}}).}
 
 \item{lw}{\code{numeric} downward flux of near-infrared radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m-^2}{ASCII}}).}
 
@@ -27,15 +27,15 @@ Tb_lizard_Fei(T_a, T_g, H, lw, shade, m, Acondfact, Agradfact)
 \code{numeric} predicted body (operative environmental) temperature (K).
 }
 \description{
-The function predicts body temperature (K, operative environmental temperature) of a lizard based on \insertCite{Fei2012;textual}{TrenchR}.
+The function predicts body temperature (C, operative environmental temperature) of a lizard based on \insertCite{Fei2012;textual}{TrenchR}.
 }
 \details{
 Thermal radiative flux is calculated following \insertCite{Fei2012;textual}{TrenchR} based on \insertCite{Bartlett1967;textual}{TrenchR} and \insertCite{Porter1973;textual}{TrenchR}.
 }
 \examples{
-  Tb_lizard_Fei(T_a       = 293,
-                T_g       = 300,
-                H         = 1300, 
+  Tb_lizard_Fei(T_a       = 20,
+                T_g       = 27,
+                S         = 1300, 
                 lw        = 60, 
                 shade     = 0.5, 
                 m         = 10.5, 

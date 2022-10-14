@@ -53,7 +53,7 @@ Qconduction_animal <- function (T_g,
 
   # Conduction
   # the heat loss (Difference between animal temperature and its environment)
-  # m^2 * W C^-1 m^-1 * C / m
+  # m^2 * W K^-1 m^-1 * K / m
 
   A_contact * K * (T_b - T_g) / d
 
@@ -130,7 +130,7 @@ Qconduction_substrate <- function (T_g,
 #'
 #' @param T_b \code{numeric} initial body temperature (C).
 #'
-#' @param H_L \code{numeric} convective heat transfer coefficient (\ifelse{html}{\out{W C<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W C^-1 m^-2}{ASCII}}).
+#' @param H_L \code{numeric} convective heat transfer coefficient (\ifelse{html}{\out{W C<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).
 #'
 #' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #'
@@ -196,7 +196,7 @@ Qconvection <- function (T_a,
 #'  \cr
 #'  \code{"cylinder"} assumes 40 < Re < 4000. \code{"lizard_surface"} and \code{"lizard_elevated"} assume the lizard is prostrate on and elevated above the surface, respectively. The values are the average for lizards parallel and perpendicular to the air flow.
 #'
-#' @return \code{numeric} heat transfer coefficient, \code{H_L} (\ifelse{html}{\out{W C<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W C^-1 m^-2}{ASCII}}).
+#' @return \code{numeric} heat transfer coefficient, \code{H_L} (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).
 #'
 #' @family biophysical models
 #'
@@ -250,13 +250,13 @@ heat_transfer_coefficient <- function (u,
 #'
 #' @param D \code{numeric} characteristic dimension (e.g., diameter or snout-vent length) (meters).
 #'
-#' @param K \code{numeric} thermal conductivity of air (\ifelse{html}{\out{W m<sup>-2</sup> C<sup>-1</sup>}}{\eqn{W m^-2 C^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
+#' @param K \code{numeric} thermal conductivity of air (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #'
 #' @param nu \code{numeric} kinematic Viscosity of air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #'
 #' @param taxon \code{character} of which class of organism, current choices: \code{"sphere"}, \code{"frog"}, \code{"lizard"}, \code{"flyinginsect"}, \code{"spider"}.
 #'
-#' @return \code{numeric} heat transfer coefficient, \code{H_L} (\ifelse{html}{\out{W m<sup>-2</sup> C<sup>-1</sup>}}{\eqn{W m^-2 C^-1}{ASCII}}).
+#' @return \code{numeric} heat transfer coefficient, \code{H_L} (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 C^-1}{ASCII}}).
 #'
 #' @family biophysical models
 #'
@@ -619,7 +619,7 @@ Qevaporation <- function (A,
   # Spotila et al. 1992
   evap_heat <- 2.44 * 10^(6) # J/kg at most temperatures
 
-  ecp <- 1200 # J*m^(-3)*C^(-1)
+  ecp <- 1200 # J*m^(-3)*K^(-1)
   # external (convective) resistance to water vapor transport (s/m), Lewis rule
   r_e <- 0.93 * ecp / H
 
@@ -671,9 +671,9 @@ saturation_water_vapor_pressure <- function (T_a) {
 #'
 #' @description The function estimate external resistance to water vapor transfer using the Lewis rule relating heat and mass transport \insertCite{Spotila1992}{TrenchR}
 #'
-#' @param H \code{numeric} heat transfer (convection) coefficient (\ifelse{html}{\out{W m<sup>-2</sup> C<sup>-1</sup>}}{\eqn{W m^-2 C^-1}{ASCII}}).
+#' @param H \code{numeric} heat transfer (convection) coefficient (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}).
 #'
-#' @param ecp \code{numeric} aggregate parameter (\ifelse{html}{\out{J m<sup>-3</sup> C<sup>-1</sup>}}{\eqn{J m^-3 C^-1}{ASCII}}) that is the product of the density of air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) and the specific heat of air at constant pressure (\ifelse{html}{\out{J kg<sup>-1</sup> C<sup>-1</sup>}}{\eqn{J kg^-1 C^-1}{ASCII}}). Default of 12000 (\ifelse{html}{\out{J m<sup>-3</sup> C<sup>-1</sup>}}{\eqn{J m^-3 C^-1}{ASCII}}) commonly assumed.
+#' @param ecp \code{numeric} aggregate parameter (\ifelse{html}{\out{J m<sup>-3</sup> K<sup>-1</sup>}}{\eqn{J m^-3 K^-1}{ASCII}}) that is the product of the density of air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) and the specific heat of air at constant pressure (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}). Default of 12000 (\ifelse{html}{\out{J m<sup>-3</sup> K<sup>-1</sup>}}{\eqn{J m^-3 K^-1}{ASCII}}) commonly assumed.
 #'
 #' @return \code{numeric} external resistance to water vapor transfer (\ifelse{html}{\out{s m<sup>-1</sup>}}{\eqn{s m^-1}{ASCII}}).
 #'
@@ -756,11 +756,11 @@ Qmetabolism_from_mass <- function(m,
 
 #' @title Metabolism as a Function of Mass and Body Temperature
 #'
-#' @description The function estimates basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (K). The function is based on empirical data and the metabolic theory of ecology (assumes a 3/4 scaling exponent) \insertCite{Gillooly2001}{TrenchR}.
+#' @description The function estimates basal (or resting) metabolic rate (W) as a function of mass (g) and temperature (C). The function is based on empirical data and the metabolic theory of ecology (assumes a 3/4 scaling exponent) \insertCite{Gillooly2001}{TrenchR}.
 #'
 #' @param m \code{numeric} mass (grams).
 #'
-#' @param T_b \code{numeric} body temperature (K).
+#' @param T_b \code{numeric} body temperature (C).
 #'
 #' @param taxon \code{character} organism type. Options: \code{"bird"}, \code{"mammal"}, \code{"reptile"}, \code{"amphibian"}, \code{"invertebrate"}.
 #'
@@ -775,7 +775,7 @@ Qmetabolism_from_mass <- function(m,
 #'
 #' @examples
 #'   Qmetabolism_from_mass_temp(m     = 100,
-#'                              T_b   = 303,
+#'                              T_b   = 30,
 #'                              taxon = "reptile")
 #'
 Qmetabolism_from_mass_temp <- function (m,
@@ -783,11 +783,14 @@ Qmetabolism_from_mass_temp <- function (m,
                                         taxon) {
 
   stopifnot(m   > 0, 
-            T_b > 200, 
-            T_b < 400, 
+            T_b > -50, 
+            T_b < 100, 
             length(taxon) == 1,
             taxon %in% c("bird", "mammal", "reptile", "amphibian", "invertebrate"))
 
+  #Convert to K
+  T_b= celsius_to_kelvin(T_b)
+  
   if (taxon %in% c("bird", "mammal")) {
 
     Qmet <- exp(-9100 / T_b + 29.49) * m^0.75 / 60
@@ -906,7 +909,7 @@ saturation_vapor_pressure <- function (T_a) {
 #' @author Eric Riddell
 #'
 #' @examples
-#'   boundary_layer_resistance(T_a  = 273,
+#'   boundary_layer_resistance(T_a  = 0,
 #'                             e_s  = 2.5,
 #'                             e_a  = 2.0,
 #'                             elev = 500,
@@ -935,13 +938,13 @@ boundary_layer_resistance <- function (T_a,
 
   gravity = 9.8 # m/s
 
+  #convert T_a to Kelvin
+  T_a= celsius_to_kelvin(T_a)
+  
   air_pressure <- 101325. * (1. - (2.2569 * 10^-5) * elev)^5.2553
   air_density <- air_pressure / (287.04 * T_a)
   dynamic_viscosity <- (1.8325 * 10^-5) * ((296.16 + 120.) / (T_a + 120.)) * ((T_a / 296.16)^1.5) #Tracy et al. 2010
   kinematic_viscosity <- dynamic_viscosity / air_density
-  
-  #convert T_a to Kelvin
-  T_a= celsius_to_kelvin(T_a)
   
   T_surface <- (T_a) * (1. + 0.38 * ((e_s * 1000.) / air_pressure)) #soil surface temperature in steady state heat balance
   T_air <- T_a * (1. + 0.38 * ((e_a * 1000.) / air_pressure)) #air temperature in steady state heat balance

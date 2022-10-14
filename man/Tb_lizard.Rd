@@ -16,8 +16,8 @@ Tb_lizard(
   doy,
   sun = TRUE,
   surface = TRUE,
-  alpha_S = 0.9,
-  alpha_L = 0.965,
+  a_S = 0.9,
+  a_L = 0.965,
   epsilon_s = 0.965,
   F_d = 0.8,
   F_r = 0.5,
@@ -48,9 +48,9 @@ Tb_lizard(
 
 \item{surface}{\code{logical} indicates whether lizard is on ground surface (\code{TRUE}) or above the surface (\code{FALSE}, e.g. in a tree).}
 
-\item{alpha_S}{\code{numeric} lizard solar absorptivity (proportion), \code{alpha_S = 0.9} \insertCite{Gates1980}{TrenchR} (Table 11.4).}
+\item{a_S}{\code{numeric} lizard solar absorptivity (proportion), \code{a_S = 0.9} \insertCite{Gates1980}{TrenchR} (Table 11.4).}
 
-\item{alpha_L}{\code{numeric} lizard thermal absorptivity (proportion), \code{alpha_L = 0.965} \insertCite{Bartlett1967}{TrenchR}.}
+\item{a_L}{\code{numeric} lizard thermal absorptivity (proportion), \code{a_L = 0.965} \insertCite{Bartlett1967}{TrenchR}.}
 
 \item{epsilon_s}{\code{numeric} surface emissivity of lizards (proportion), \code{epsilon_s = 0.965} \insertCite{Bartlett1967}{TrenchR}.}
 
@@ -85,8 +85,8 @@ The proportion of radiation that is direct is determined following \insertCite{S
             doy       = 200, 
             sun       = TRUE, 
             surface   = TRUE, 
-            alpha_S   = 0.9, 
-            alpha_L   = 0.965, 
+            a_S   = 0.9, 
+            a_L   = 0.965, 
             epsilon_s = 0.965, 
             F_d       = 0.8, 
             F_r       = 0.5, 

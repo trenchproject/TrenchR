@@ -14,7 +14,7 @@ soil_temperature(
   z0,
   SSA,
   TimeIn,
-  H,
+  S,
   water_content = 0.2,
   air_pressure,
   rho_so = 1620,
@@ -40,7 +40,7 @@ soil_temperature(
 
 \item{TimeIn}{\code{numeric} vector of time periods for the model.}
 
-\item{H}{\code{numeric} vector of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
+\item{S}{\code{numeric} vector of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
 
 \item{water_content}{\code{numeric} percent water content (percent).}
 
@@ -76,7 +76,7 @@ This function is called to calculate soil temperature (C) as in \insertCite{Beck
                    z0            = 0.02, 
                    SSA           = 0.7, 
                    TimeIn        = time_vector, 
-                   H             = solrad_vector, 
+                   S             = solrad_vector, 
                    water_content = 0.2, 
                    air_pressure  = 85, 
                    rho_so        = 1620, 

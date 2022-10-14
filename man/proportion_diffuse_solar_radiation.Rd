@@ -4,14 +4,14 @@
 \alias{proportion_diffuse_solar_radiation}
 \title{Ratio of Diffuse to Direct Solar Radiation}
 \usage{
-proportion_diffuse_solar_radiation(psi, p_a, A)
+proportion_diffuse_solar_radiation(psi, p_a, rho)
 }
 \arguments{
 \item{psi}{\code{numeric} Zenith angle of the sun (degrees).}
 
 \item{p_a}{\code{numeric} Atmospheric pressure (kPa).}
 
-\item{A}{\code{numeric} albedo of the substrate (fraction of 1).}
+\item{rho}{\code{numeric} albedo of the substrate (fraction of 1).}
 }
 \value{
 \code{numeric} diffuse fraction.
@@ -22,7 +22,7 @@ The function estimates the ratio of diffuse to direct solar radiation based on t
 \examples{
   proportion_diffuse_solar_radiation(psi = 60, 
                                      p_a = 86.1, 
-                                     A   = 0.25)
+                                     rho   = 0.25)
 
 }
 \references{

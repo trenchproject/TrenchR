@@ -4,20 +4,20 @@
 \alias{Qevaporation}
 \title{Heat Loss Associated with Evaporative Water Loss}
 \usage{
-Qevaporation(A, T_b, taxon, rho_s = NA, rho_a = NA, h = NA, H = NA, r_i = NA)
+Qevaporation(A, T_b, taxon, e_s = NA, e_a = NA, hp = NA, H = NA, r_i = NA)
 }
 \arguments{
 \item{A}{\code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
-\item{T_b}{\code{numeric} body temperature (K).}
+\item{T_b}{\code{numeric} body temperature (C).}
 
 \item{taxon}{\code{character} organism type. Current choices: \code{"lizard"}, \code{"amphibian_wetskin"} (fully wet skin), \code{"amphibian"} (not fully wet skin).}
 
-\item{rho_s}{\code{numeric} saturation water vapor density at skin surface (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).}
+\item{e_s}{\code{numeric} saturation water vapor density at skin surface (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).}
 
-\item{rho_a}{\code{numeric} saturation water vapor density in ambient air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).}
+\item{e_a}{\code{numeric} saturation water vapor density in ambient air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).}
 
-\item{h}{\code{numeric} relative humidity (0-1) (needed if amphibian).}
+\item{hp}{\code{numeric} relative humidity (0-1) (needed if amphibian).}
 
 \item{H}{\code{numeric} convective heat transfer coefficient (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}) (needed if amphibian).}
 
@@ -31,15 +31,15 @@ The function estimates heat loss associated with evaporative water loss for an a
 }
 \examples{
   Qevaporation(A      = 0.1,
-               T_b    = 293,
+               T_b    = 20,
                taxon = "amphibian",
-               rho_s = 0.003,
-               rho_a = 0.002,
-               h     = 0.5,
+               e_s = 0.003,
+               e_a = 0.002,
+               hp     = 0.5,
                H     = 20,
                r_i   = 50)
   Qevaporation(A     = 0.1,
-               T_b   = 293,
+               T_b   = 20,
                taxon = "lizard")
 
 }

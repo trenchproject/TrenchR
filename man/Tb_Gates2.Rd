@@ -4,36 +4,36 @@
 \alias{Tb_Gates2}
 \title{Operative Environmental Temperature of an Ectotherm Based on a Variant of Gates (1980)}
 \usage{
-Tb_Gates2(A, D, T_g, T_a, Qabs, V, epsilon)
+Tb_Gates2(A, D, T_g, T_a, Qabs, u, epsilon)
 }
 \arguments{
 \item{A}{\code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
 \item{D}{\code{numeric} characteristic dimension for conduction (meters).}
 
-\item{T_g}{\code{numeric} ground surface temperature (K).}
+\item{T_g}{\code{numeric} ground surface temperature (C).}
 
-\item{T_a}{\code{numeric} ambient air temperature (K).}
+\item{T_a}{\code{numeric} ambient air temperature (C).}
 
 \item{Qabs}{\code{numeric} Solar radiation absorbed (W).}
 
-\item{V}{\code{numeric} Wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
+\item{u}{\code{numeric} Wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
 \item{epsilon}{\code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.}
 }
 \value{
-\code{numeric} operative environmental temperature (K).
+\code{numeric} operative environmental temperature (C).
 }
 \description{
-The function predicts body temperatures (K, operative environmental temperature) of an ectotherm using the approximation in \insertCite{Gates1980;textual}{TrenchR}. The function omits evaporative and metabolic heat loss.
+The function predicts body temperatures (C, operative environmental temperature) of an ectotherm using the approximation in \insertCite{Gates1980;textual}{TrenchR}. The function omits evaporative and metabolic heat loss.
 }
 \examples{
   Tb_Gates2(A       = 1, 
             D       = 0.001, 
-            T_g     = 300, 
-            T_a     = 310, 
+            T_g     = 27, 
+            T_a     = 37, 
             Qabs    = 2, 
-            V       = 0.1, 
+            u       = 0.1, 
             epsilon = 1) 
 
 }

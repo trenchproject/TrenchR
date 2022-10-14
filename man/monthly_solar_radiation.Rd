@@ -4,7 +4,7 @@
 \alias{monthly_solar_radiation}
 \title{Average Monthly Solar Radiation}
 \usage{
-monthly_solar_radiation(lat, lon, doy, elev, T_a, Hr, P)
+monthly_solar_radiation(lat, lon, doy, elev, T_a, hp, P)
 }
 \arguments{
 \item{lat}{\code{numeric} latitude (degrees).}
@@ -17,7 +17,7 @@ monthly_solar_radiation(lat, lon, doy, elev, T_a, Hr, P)
 
 \item{T_a}{\code{numeric} mean monthly air temperature (C).}
 
-\item{Hr}{\code{numeric} mean month relative humidity (percentage).}
+\item{hp}{\code{numeric} mean month relative humidity (percentage).}
 
 \item{P}{\code{numeric} total monthly precipitation (mm).}
 }
@@ -33,7 +33,7 @@ The function estimates average monthly solar radiation (\ifelse{html}{\out{W m<s
                           doy  = 112, 
                           elev = 1500, 
                           T_a  = 15, 
-                          Hr   = 50, 
+                          hp   = 50, 
                           P   = 50)
 
 }

@@ -8,7 +8,7 @@ Tb_grasshopper(
   T_a,
   T_g,
   u,
-  H,
+  S,
   K_t,
   psi,
   l,
@@ -25,7 +25,7 @@ Tb_grasshopper(
 
 \item{u}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
-\item{H}{\code{numeric} total (direct + diffuse) solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
+\item{S}{\code{numeric} total (direct + diffuse) solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
 
 \item{K_t}{\code{numeric} clearness index (dimensionless), which is the ratio of the global solar radiation measured at the surface to the total solar radiation at the top of the atmosphere.}
 
@@ -62,7 +62,7 @@ Total radiative flux is calculated as thermal radiative heat flux plus convectiv
   Tb_grasshopper(T_a       = 25, 
                  T_g       = 25,      
                  u         = 0.4, 
-                 H         = 400, 
+                 S         = 400, 
                  K_t       = 0.7, 
                  psi       = 30, 
                  l         = 0.02, 

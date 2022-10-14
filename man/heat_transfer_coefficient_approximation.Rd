@@ -4,10 +4,10 @@
 \alias{heat_transfer_coefficient_approximation}
 \title{Estimate the Heat Transfer Coefficient Using a Spherical Approximation}
 \usage{
-heat_transfer_coefficient_approximation(V, D, K, nu, taxon = "sphere")
+heat_transfer_coefficient_approximation(u, D, K, nu, taxon = "sphere")
 }
 \arguments{
-\item{V}{\code{numeric} air velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
+\item{u}{\code{numeric} air velocity (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
 \item{D}{\code{numeric} characteristic dimension (e.g., diameter or snout-vent length) (meters).}
 
@@ -18,13 +18,13 @@ heat_transfer_coefficient_approximation(V, D, K, nu, taxon = "sphere")
 \item{taxon}{\code{character} of which class of organism, current choices: \code{"sphere"}, \code{"frog"}, \code{"lizard"}, \code{"flyinginsect"}, \code{"spider"}.}
 }
 \value{
-\code{numeric} heat transfer coefficient, \code{H_L} (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}).
+\code{numeric} heat transfer coefficient, \code{H_L} (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 C^-1}{ASCII}}).
 }
 \description{
 The function estimates the heat transfer coefficient for various taxa. Approximates forced convective heat transfer for animal shapes using the convective relationship for a sphere \insertCite{Mitchell1976}{TrenchR}.
 }
 \examples{
- heat_transfer_coefficient_approximation(V     = 3,
+ heat_transfer_coefficient_approximation(u     = 3,
                                          D     = 0.05,
                                          K     = 25.7 * 10^(-3),
                                          nu    = 15.3 * 10^(-6),

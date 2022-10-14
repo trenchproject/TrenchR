@@ -8,52 +8,52 @@ Tb_CampbellNorman(
   T_a,
   T_g,
   S,
-  alpha_S = 0.7,
-  alpha_L = 0.96,
+  a_s = 0.7,
+  a_l = 0.96,
   epsilon = 0.96,
   c_p = 29.3,
   D,
-  V
+  u
 )
 }
 \arguments{
-\item{T_a}{\code{numeric} air temperature (K).}
+\item{T_a}{\code{numeric} air temperature (C).}
 
-\item{T_g}{\code{numeric} ground temperature (K).}
+\item{T_g}{\code{numeric} ground temperature (C).}
 
 \item{S}{\code{numeric} flux density of solar radiation (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}), combining direct, diffuse, and reflected radiation accounting for view factors.}
 
-\item{alpha_S}{\code{numeric} organismal solar absorptivity (proportion).}
+\item{a_s}{\code{numeric} organismal solar absorptivity (proportion).}
 
-\item{alpha_L}{\code{numeric} organismal thermal absorptivity (proportion); 0.965 for lizards \insertCite{Bartlett1967}{TrenchR}.}
+\item{a_l}{\code{numeric} organismal thermal absorptivity (proportion); 0.965 for lizards \insertCite{Bartlett1967}{TrenchR}.}
 
 \item{epsilon}{\code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.}
 
-\item{c_p}{\code{numeric} specific heat of air (\ifelse{html}{\out{J mol<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J mol^-1 K^-1}{ASCII}}).}
+\item{c_p}{\code{numeric} specific heat of air (\ifelse{html}{\out{J mol<sup>-1</sup> C<sup>-1</sup>}}{\eqn{J mol^-1 C^-1}{ASCII}}).}
 
 \item{D}{\code{numeric} characteristic dimension of the animal (m).}
 
-\item{V}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
+\item{u}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 }
 \value{
-\code{numeric} operative environmental temperature, \code{T_e} (K).
+\code{numeric} operative environmental temperature, \code{T_e} (C).
 }
 \description{
-The function estimates body temperatures (K, operative environmental temperature) of an ectotherm using an approximation based on \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
+The function estimates body temperatures (C, operative environmental temperature) of an ectotherm using an approximation based on \insertCite{Campbell1998;textual}{TrenchR} and \insertCite{Mitchell1976;textual}{TrenchR}.
 }
 \details{
 Boundary conductance uses a factor of 1.4 to account for increased convection \insertCite{Mitchell1976}{TrenchR}. The function assumes forced conduction.
 }
 \examples{
-Tb_CampbellNorman (T_a     = 303, 
-                   T_g     = 303, 
+Tb_CampbellNorman (T_a     = 30, 
+                   T_g     = 30, 
                    S       = 823, 
-                   alpha_S = 0.7, 
-                   alpha_L = 0.96, 
+                   a_s = 0.7, 
+                   a_l = 0.96, 
                    epsilon = 0.96, 
                    c_p     = 29.3, 
                    D       = 0.17, 
-                   V       = 1)
+                   u       = 1)
 
 }
 \references{

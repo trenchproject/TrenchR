@@ -4,12 +4,12 @@
 \alias{diurnal_radiation_variation}
 \title{Hourly Solar Radiation}
 \usage{
-diurnal_radiation_variation(doy, solrad, hour, lon, lat)
+diurnal_radiation_variation(doy, S, hour, lon, lat)
 }
 \arguments{
 \item{doy}{\code{numeric} the day of year.}
 
-\item{solrad}{\code{numeric} solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}).}
+\item{S}{\code{numeric} solar radiation (\ifelse{html}{\out{W m<sup>-2</sup> d<sup>-1</sup>}}{\eqn{W m^-2 d^-1}{ASCII}}).}
 
 \item{hour}{\code{numeric} hour (0-24).}
 
@@ -25,7 +25,7 @@ The function estimates hourly solar radiation (\ifelse{html}{\out{W m<sup>-2</su
 }
 \examples{
 diurnal_radiation_variation(doy    = 112, 
-                            solrad = 8000, 
+                            S = 8000, 
                             hour   = 12, 
                             lon    = -122.33, 
                             lat    = 47.61)

@@ -9,8 +9,8 @@ Tb_butterfly(
   T_g,
   T_sh,
   u,
-  H_sdir,
-  H_sdif,
+  S_sdir,
+  S_sdif,
   z,
   D,
   delta,
@@ -28,9 +28,9 @@ Tb_butterfly(
 
 \item{u}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
-\item{H_sdir}{\code{numeric} direct solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
+\item{S_sdir}{\code{numeric} direct solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
 
-\item{H_sdif}{\code{numeric} diffuse solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
+\item{S_sdif}{\code{numeric} diffuse solar radiation flux (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
 
 \item{z}{\code{numeric} solar zenith angle (degrees).}
 
@@ -58,8 +58,8 @@ Thermal radiative flux is calculated following \insertCite{Gates1980;textual}{Tr
                T_g    = 25, 
                T_sh   = 20, 
                u      = 0.4, 
-               H_sdir = 300, 
-               H_sdif = 100, 
+               S_sdir = 300, 
+               S_sdif = 100, 
                z      = 30, 
                D      = 0.36, 
                delta  = 1.46, 

@@ -4,12 +4,12 @@
 \alias{external_resistance_to_water_vapor_transfer}
 \title{External Resistance to Water Vapor Transfer}
 \usage{
-external_resistance_to_water_vapor_transfer(H, rhocp = 12000)
+external_resistance_to_water_vapor_transfer(H, ecp = 12000)
 }
 \arguments{
-\item{H}{\code{numeric} heat transfer (convection) coefficient (\ifelse{html}{\out{W m<sup>-2</sup> C<sup>-1</sup>}}{\eqn{W m^-2 C^-1}{ASCII}}).}
+\item{H}{\code{numeric} heat transfer (convection) coefficient (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}).}
 
-\item{rhocp}{\code{numeric} aggregate parameter (\ifelse{html}{\out{J m<sup>-3</sup> C<sup>-1</sup>}}{\eqn{J m^-3 C^-1}{ASCII}}) that is the product of the density of air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) and the specific heat of air at constant pressure (\ifelse{html}{\out{J kg<sup>-1</sup> C<sup>-1</sup>}}{\eqn{J kg^-1 C^-1}{ASCII}}). Default of 12000 (\ifelse{html}{\out{J m<sup>-3</sup> C<sup>-1</sup>}}{\eqn{J m^-3 C^-1}{ASCII}}) commonly assumed.}
+\item{ecp}{\code{numeric} aggregate parameter (\ifelse{html}{\out{J m<sup>-3</sup> K<sup>-1</sup>}}{\eqn{J m^-3 K^-1}{ASCII}}) that is the product of the density of air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) and the specific heat of air at constant pressure (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}}). Default of 12000 (\ifelse{html}{\out{J m<sup>-3</sup> K<sup>-1</sup>}}{\eqn{J m^-3 K^-1}{ASCII}}) commonly assumed.}
 }
 \value{
 \code{numeric} external resistance to water vapor transfer (\ifelse{html}{\out{s m<sup>-1</sup>}}{\eqn{s m^-1}{ASCII}}).

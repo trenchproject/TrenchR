@@ -4,7 +4,7 @@
 \alias{Tb_limpetBH}
 \title{Operative Environmental Temperature of a Limpet Based on a Model by Helmuth}
 \usage{
-Tb_limpetBH(T_a, T_r, l, h, I, u, s_aspect, s_slope, c)
+Tb_limpetBH(T_a, T_r, l, h, S, u, s_aspect, s_slope, c)
 }
 \arguments{
 \item{T_a}{\code{numeric} air temperature (C).}
@@ -15,7 +15,7 @@ Tb_limpetBH(T_a, T_r, l, h, I, u, s_aspect, s_slope, c)
 
 \item{h}{\code{numeric} limpet height (dorsal/ventral axis) (m).}
 
-\item{I}{\code{numeric} solar irradiance (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
+\item{S}{\code{numeric} solar irradiance (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
 
 \item{u}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
@@ -45,7 +45,7 @@ The original equation uses a finite-difference approach where they divide the ro
               T_r = 30,
               l = 0.0176,
               h = 0.0122,
-              I = 1300,
+              S = 1300,
               u = 1,
               s_aspect = 90,
               s_slope = 60,

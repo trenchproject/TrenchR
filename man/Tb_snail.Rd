@@ -4,16 +4,16 @@
 \alias{Tb_snail}
 \title{Operative Environmental Temperature of a Marine Snail}
 \usage{
-Tb_snail(temp, l, solar, WS, CC, WL, WSH)
+Tb_snail(temp, l, S, u, CC, WL, WSH)
 }
 \arguments{
 \item{temp}{\code{numeric} air temperature (C).}
 
 \item{l}{\code{numeric} snail length (m).}
 
-\item{solar}{\code{numeric} direct solar flux density (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
+\item{S}{\code{numeric} direct solar flux density (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}}).}
 
-\item{WS}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
+\item{u}{\code{numeric} wind speed (\ifelse{html}{\out{m s<sup>-1</sup>}}{\eqn{m s^-1}{ASCII}}).}
 
 \item{CC}{\code{numeric} fraction of the sky covered by cloud (0-1).}
 
@@ -33,8 +33,8 @@ Thermal radiative flux is calculated following \insertCite{Helmuth1998;textual}{
 \examples{
   Tb_snail(temp  = 25, 
            l     = 0.012, 
-           solar = 800, 
-           WS    = 1, 
+           S = 800, 
+           u    = 1, 
            CC    = 0.5, 
            WL    = 0, 
            WSH   = 10)
