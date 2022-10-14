@@ -1120,15 +1120,15 @@ plot(x    = 20:40,
      y    = Tb_CampbellNorman(T_a     = 20:40, 
                               T_g     = 30, 
                               S       = 600, 
-                              a_S     = 0.7, 
-                              a_L     = 0.96, 
+                              a_s     = 0.7, 
+                              a_l     = 0.96, 
                               epsilon = 0.96, 
                               c_p     = 29.3, 
                               D       = 0.17, 
                               u       = 1), 
      type = "l", 
-     xlab = "air temperature (K)", 
-     ylab = "body temperature (K)", 
+     xlab = "air temperature (C)", 
+     ylab = "body temperature (C)", 
      xlim = c(23,37), 
      ylim = c(17,67))
 
@@ -1140,8 +1140,8 @@ points(x    = 20:40,
        y    = Tb_CampbellNorman(T_a     = 20:40,
                                 T_g     = 30, 
                                 S       = 200, 
-                                a_S     = 0.7, 
-                                a_L     = 0.96, 
+                                a_s     = 0.7, 
+                                a_l     = 0.96, 
                                 epsilon = 0.96, 
                                 c_p     = 29.3, 
                                 D       = 0.17, 
@@ -1153,8 +1153,8 @@ points(x    = 20:40,
        y    = Tb_CampbellNorman(T_a     = 20:40, 
                                 T_g     = 30, 
                                 S       = 400, 
-                                a_S     = 0.7, 
-                                a_L     = 0.96, 
+                                a_s     = 0.7, 
+                                a_l     = 0.96, 
                                 epsilon = 0.96, 
                                 c_p     = 29.3, 
                                 D       = 0.17, 
@@ -1259,13 +1259,13 @@ We implement the model in TrenchR as follows:
                   svl       = 60, 
                   m         = 10, 
                   psi       = 34, 
-                  rho_S     = 0.7, 
+                  rho_s     = 0.7, 
                   elev      = 500, 
                   doy       = 200, 
                   sun       = TRUE, 
                   surface   = TRUE, 
-                  a_S       = 0.9, 
-                  a_L       = 0.965, 
+                  a_s       = 0.9, 
+                  a_l       = 0.965, 
                   epsilon_s = 0.965, 
                   F_d       = 0.8, 
                   F_r       = 0.5, 
@@ -1292,13 +1292,13 @@ We implement the model in TrenchR as follows:
                   svl       = 60, 
                   m         = 10, 
                   psi       = 34, 
-                  rho_S     = 0.7, 
+                  rho_s     = 0.7, 
                   elev      = 500, 
                   doy       = 200, 
                   sun       = FALSE, 
                   surface   = TRUE, 
-                  a_S       = 0.9, 
-                  a_L       = 0.965,
+                  a_s       = 0.9, 
+                  a_l       = 0.965,
                   epsilon_s = 0.965, 
                   F_d       = 0.8, 
                   F_r       = 0.5, 
@@ -1319,13 +1319,13 @@ We implement the model in TrenchR as follows:
                   svl       = 60, 
                   m         = 10, 
                   psi       = 34, 
-                  rho_S     = 0.7, 
+                  rho_s     = 0.7, 
                   elev      = 500, 
                   doy       = 200, 
                   sun       = TRUE, 
                   surface   = FALSE, 
-                  a_S       = 0.9, 
-                  a_L       = 0.965, 
+                  a_s       = 0.9, 
+                  a_l       = 0.965, 
                   epsilon_s = 0.965, 
                   F_d       = 0.8, 
                   F_r       = 0.5, 
@@ -1346,13 +1346,13 @@ We implement the model in TrenchR as follows:
                   svl       = 60, 
                   m         = 10, 
                   psi       = 34, 
-                  rho_S     = 0.7, 
+                  rho_s     = 0.7, 
                   elev      = 500, 
                   doy       = 200, 
                   sun       = FALSE, 
                   surface   = FALSE, 
-                  a_S       = 0.9, 
-                  a_L       = 0.965, 
+                  a_s       = 0.9, 
+                  a_l       = 0.965, 
                   epsilon_s = 0.965, 
                   F_d       = 0.8, 
                   F_r       = 0.5, 
@@ -2100,7 +2100,7 @@ blr.seq= lapply(20:40, FUN=boundary_layer_resistance, e_s= 2.5, e_a = 2.3, elev 
 plot(x    = 20:40, 
      y    = blr.seq, 
      type = "l", 
-     xlab = "air temperature (K)", 
+     xlab = "air temperature (C)", 
      ylab = expression("boundary layer resistance" ~ (s ~ cm^{-1})))
 ```
 
@@ -2248,7 +2248,7 @@ Let us first prepare the environmental data for analysis. We will need to estima
 
 # wind speed (m/s)
 
-  V <- 0.5 
+  u <- 0.5 
 
 # assumptions
 #  atmospheric transmissivity and albedo
@@ -2470,7 +2470,7 @@ for (hr in 1:24) {
   TeCN[hr] <- Tb_CampbellNorman(T_a     = Ta[hr], 
                                 T_g     = Ts[hr], 
                                 S       = Qabs[hr], 
-                                a_L = 0.96, 
+                                a_l     = 0.96, 
                                 epsilon = epsilon_s, 
                                 c_p     = 29.3, 
                                 D       = svl, 
@@ -2494,13 +2494,13 @@ for (hr in 1:24) {
                          svl       = svl * 1000, 
                          m         = mass, 
                          psi       = psi_deg[hr], 
-                         rho_S     = rho, 
+                         rho_s     = rho, 
                          elev      = elev, 
                          doy       = doy, 
                          sun       = TRUE, 
                          surface   = TRUE, 
-                         a_S   = a, 
-                         a_L   = 0.965, 
+                         a_s       = a, 
+                         a_l       = 0.965, 
                          epsilon_s = epsilon_s, 
                          F_d       = 0.8, 
                          F_r       = 0.5, 
@@ -2513,7 +2513,7 @@ TeFei <- rep(NA, 24)
 for (hr in 1:24) {
   TeFei[hr] <- Tb_lizard_Fei(T_a       = Ta[hr], 
                              T_g       = Ts[hr], 
-                             H         = Qabs[hr], 
+                             S         = Qabs[hr], 
                              lw        = 30, 
                              shade     = 0.0, 
                              m         = 10.5,
@@ -2622,7 +2622,7 @@ for (hr in 1:24) {
                                   psa_ref = 1-psa[hr], 
                                   S_dir   = Sdir[hr], 
                                   S_dif   = Sdif[hr], 
-                                  a_s     = rho)
+                                  rho     = rho)
 }
 
 ```
@@ -2633,7 +2633,7 @@ We estimate thermal radiation $Q_{emit}$ for the lizard outdoors. We assume the 
 
 # Use Gates model as Te estimate
 
-  Te <- TeGates - 273
+  Te <- TeGates
 
 Qemit <- rep(NA, 24)
 
@@ -2748,7 +2748,7 @@ legend(x      = "topright",
        legend = c("net radition, Qnet", "solar radiation, Qabs", "thermal radiation, Qemit", "convection, Qconv", "conduction, Qcond"), 
        lty    = c("solid", "dotted", "dashed", "dotdash", "twodash"))
 
-par(oldpar)
+suppressWarnings(par(oldpar))
 
 ```
 
