@@ -90,7 +90,7 @@
       <h1 data-toc-skip>List of symbols</h1>
                         <h4 data-toc-skip class="author">TrEnCh project, Buckley Lab, Department of Biology, University of Washington</h4>
             
-            <h4 data-toc-skip class="date">2022-09-20</h4>
+            <h4 data-toc-skip class="date">2022-10-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/trenchproject/TrenchR/blob/HEAD/vignettes/Symbols.Rmd" class="external-link"><code>vignettes/Symbols.Rmd</code></a></small>
       <div class="hidden name"><code>Symbols.Rmd</code></div>
@@ -122,8 +122,8 @@
 </tr>
 <tr class="even">
 <td><span class="math inline">\(a\)</span></td>
-<td>altitude angle of the sun (degrees) (subscripts: s, for normal to a slope; c ,for the axis of a cylinder); albedo (subscript: s, surface)</td>
-<td align="right"></td>
+<td>altitude angle of the sun (degrees) (subscripts: s, for normal to a slope; c ,for the axis of a cylinder); solar absorptivity (proportion) (subscripts: <span class="math inline">\(l\)</span>, lizard thermal absorptivity; <span class="math inline">\(s\)</span>, lizard solar absorptivity)</td>
+<td align="right"><pre><code>                                                                         |</code></pre></td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(Acondfact\)</span></td>
@@ -136,108 +136,98 @@
 <td align="right"></td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(abs\)</span></td>
-<td>absorptivity to solar radiation (proportion)</td>
-<td align="right"></td>
-</tr>
-<tr class="even">
 <td><span class="math inline">\(air_{pressure}\)</span></td>
 <td>air pressure (kPa)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(aran\)</span></td>
 <td>scale performance value for performance curve? if aran = 0, no scaling; if aran = 1, includes a thermodynamic effect on mean performance</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(breadth\)</span></td>
 <td>breadth of the thermal performance curve</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(c\)</span></td>
 <td>specific heat capacity (subscripts: <span class="math inline">\(a\)</span>, air; <span class="math inline">\(p\)</span>, air at constant pressure; <span class="math inline">\(so\)</span>, soil) (<span class="math inline">\(J kg^{-1}K^{-1}\)</span> or <span class="math inline">\(J kg^{-1}{°C}^{-1}\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(CT\)</span></td>
 <td>critical thermal limit (<span class="math inline">\(°C\)</span>) (subscripts: min, minima; max, maxima), the lower and upper temperature limit for performance</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(D\)</span></td>
 <td>characteristic dimension (<span class="math inline">\(m\)</span>); thoracic diameter (<span class="math inline">\(cm\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(d\)</span></td>
 <td>thickness of material (<span class="math inline">\(m\)</span>); diameter of a cylinder (<span class="math inline">\(m\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>
 <span class="math inline">\(day\)</span> or <span class="math inline">\(doy\)</span>
 </td>
 <td>day of year</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(deg\)</span></td>
 <td>angle (degrees)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(depth\)</span></td>
 <td>depth (<span class="math inline">\(cm\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(e\)</span></td>
 <td>water vapor pressure (<span class="math inline">\(N m^{-2}, mbar\)</span>) (subscripts: <span class="math inline">\(a\)</span>, of the air; <span class="math inline">\(s\)</span>, at saturation)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(ef\)</span></td>
 <td>enhancement factor, used to adjust convective heat transfer coefficient to field conditions</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(elev\)</span></td>
 <td>elevation above mean sea level (<span class="math inline">\(m\)</span>).</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(F\)</span></td>
 <td>view factor between the animal and radiation stream (dimensionless) (subscripts: <span class="math inline">\(a\)</span>, atmospheric radiation; <span class="math inline">\(d\)</span>, diffuse solar radiation; <span class="math inline">\(g\)</span>, ground thermal radiation; <span class="math inline">\(r\)</span>, reflected solar radiation)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(g_{a}\)</span></td>
 <td>a shape factor for soil particles</td>
-<td align="right"></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(H\)</span></td>
-<td>solar radiation (<span class="math inline">\(W m^{-2}\)</span>) (subscripts: <span class="math inline">\(sdir\)</span>, for direct flux; <span class="math inline">\(sdif\)</span>, for diffuse flux; <span class="math inline">\(sref\)</span>, for reflected flux)</td>
-<td align="right"></td>
+<td align="right">|</td>
 </tr>
 <tr class="even">
 <td>
 <span class="math inline">\(H_L\)</span> or <span class="math inline">\(H\)</span>
 </td>
-<td>convective heat transfer coefficient (<span class="math inline">\(W m^{-2}{°C}^{-1}\)</span> or <span class="math inline">\(W m^{-2}K^{-1}\)</span>)</td>
+<td>convective heat transfer coefficient (<span class="math inline">\(W m^{-2}{°C}^{-1}\)</span> or <span class="math inline">\(W m^{-2}K^{-1}\)</span>) |</td>
 <td align="right"></td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(Hr\)</span></td>
-<td>mean month relative humidity (percentage)</td>
-<td align="right"></td>
-</tr>
-<tr class="even">
 <td><span class="math inline">\(h\)</span></td>
 <td>height (<span class="math inline">\(m\)</span>); length of a cylinder (<span class="math inline">\(m\)</span>); relative humidity (decimal fraction); Planck’s constant (<span class="math inline">\(J s\)</span>); hour angle (rad)</td>
-<td align="right"></td>
+<td align="right">|</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(hp\)</span></td>
+<td>mean month relative humidity (percentage)</td>
+<td align="right"><pre><code> |</code></pre></td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(hour\)</span></td>
@@ -256,8 +246,8 @@
 </tr>
 <tr class="even">
 <td><span class="math inline">\(k_{so}\)</span></td>
-<td>soil thermal conductivity (<span class="math inline">\(W m^{-1}K^{-1}\)</span>)</td>
-<td align="right"></td>
+<td>soil thermal conductivity (<span class="math inline">\(W m^{-1}K^{-1}\)</span> or <span class="math inline">\(W m^{-1}C^{-1}\)</span>)</td>
+<td align="right"><pre><code>              |</code></pre></td>
 </tr>
 <tr class="odd">
 <td>
@@ -384,111 +374,106 @@
 <td align="right"></td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(solrad\)</span></td>
-<td>solar radiation (<span class="math inline">\(W m^{-2}\)</span> per day)</td>
-<td align="right"></td>
-</tr>
-<tr class="even">
 <td><span class="math inline">\(SSA\)</span></td>
 <td>solar absorptivity of soil surface (proportion)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(svl\)</span></td>
 <td>lizard snout vent length (<span class="math inline">\(mm\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(t\)</span></td>
 <td>time (<span class="math inline">\(hr\)</span> or <span class="math inline">\(s\)</span>) (subscripts: <span class="math inline">\(as\)</span>, after sunset; <span class="math inline">\(n\)</span>, time of minimum temperature; <span class="math inline">\(r\)</span>, sunrise; <span class="math inline">\(s\)</span>, sunset; <span class="math inline">\(p\)</span>, rise the following day; <span class="math inline">\(x\)</span>, time of maximum temperature)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(T\)</span></td>
 <td>temperature (<span class="math inline">\(°C\)</span> or <span class="math inline">\(K\)</span> or <span class="math inline">\(°F\)</span>) (subscripts: <span class="math inline">\(a\)</span>, air; <span class="math inline">\(g\)</span>, ground; <span class="math inline">\(s\)</span>, surface; <span class="math inline">\(sh\)</span>, shade; <span class="math inline">\(sky\)</span>, effective radiant temperature of the sky)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(T_{dewpoint}\)</span></td>
 <td>dewpoint temperature (<span class="math inline">\(°C\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(T_{e}\)</span></td>
 <td>Operative environmental temperature (<span class="math inline">\(°C\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(T_{max}\)</span></td>
 <td>maximum temperature of the day (<span class="math inline">\(°C\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(T_{min}\)</span></td>
 <td>minimum temperature of the day (<span class="math inline">\(°C\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(Tg_{max}\)</span></td>
 <td>maximum soil surface temperature of the day (<span class="math inline">\(°C\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(Tg_{min}\)</span></td>
 <td>minimum soil surface temperature of the day (<span class="math inline">\(°C\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(T_{opt}\)</span></td>
 <td>thermal optima, the temperature at which peak performance occurs (<span class="math inline">\(°C\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(T_{soil0}\)</span></td>
 <td>initial soil temperature (<span class="math inline">\(°C\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(tolerance\)</span></td>
 <td>maximal breath (<span class="math inline">\(°C\)</span>) of the thermal performance curve</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(u\)</span></td>
 <td>wind speed (<span class="math inline">\(m s^{-1}\)</span>) (subscripts: <span class="math inline">\(r\)</span>, reference height or heights)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(UDT\)</span></td>
 <td>upper developmental threshold (<span class="math inline">\(°C\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(V\)</span></td>
-<td>velocity (<span class="math inline">\(m s^{-1}\)</span>); volume (<span class="math inline">\(m^{3}\)</span>)</td>
+<td>volume (<span class="math inline">\(m^{3}\)</span>) |</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(water_{content}\)</span></td>
 <td>water content (percent)</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(x\)</span></td>
 <td>vector of volume fractions of soil constituents (e.g., clay, quartz, minerals other than quartz, organic matter, water, air)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(z\)</span></td>
-<td>distance, or height above a surface (<span class="math inline">\(m\)</span>); zenith angle (°)</td>
+<td>distance, or height above a surface (<span class="math inline">\(m\)</span>) |</td>
 <td align="right"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><span class="math inline">\(zr\)</span></td>
 <td>reference height (<span class="math inline">\(m\)</span>)</td>
 <td align="right"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(z0\)</span></td>
 <td>roughness height (<span class="math inline">\(m\)</span>)</td>
 <td align="right"></td>
@@ -513,7 +498,7 @@
 <tbody>
 <tr class="odd">
 <td><span class="math inline">\(\alpha\)</span></td>
-<td>angle (rad or degrees); azimuth angle of the sun (degrees); solar absorptivity (proportion) (subscripts: <span class="math inline">\(L\)</span>, lizard thermal absorptivity; <span class="math inline">\(S\)</span>, lizard solar absorptivity); time difference between time of maximum temperature and noon (<span class="math inline">\(hr\)</span>)</td>
+<td>angle (rad or degrees); azimuth angle of the sun (degrees); time difference between time of maximum temperature and noon (<span class="math inline">\(hr\)</span>) |</td>
 <td align="right"></td>
 </tr>
 <tr class="even">

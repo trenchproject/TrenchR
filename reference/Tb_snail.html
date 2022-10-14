@@ -74,7 +74,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">Tb_snail</span><span class="op">(</span><span class="va">temp</span>, <span class="va">l</span>, <span class="va">solar</span>, <span class="va">WS</span>, <span class="va">CC</span>, <span class="va">WL</span>, <span class="va">WSH</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">Tb_snail</span><span class="op">(</span><span class="va">temp</span>, <span class="va">l</span>, <span class="va">S</span>, <span class="va">u</span>, <span class="va">CC</span>, <span class="va">WL</span>, <span class="va">WSH</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -87,11 +87,11 @@
 <dd><p><code>numeric</code> snail length (m).</p></dd>
 
 
-<dt>solar</dt>
+<dt>S</dt>
 <dd><p><code>numeric</code> direct solar flux density (W m<sup>-2</sup>).</p></dd>
 
 
-<dt>WS</dt>
+<dt>u</dt>
 <dd><p><code>numeric</code> wind speed (m s<sup>-1</sup>).</p></dd>
 
 
@@ -192,8 +192,8 @@ ISSN 00129615, <a href="https://doi.org/10.2307/2657143" class="external-link">d
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="fu">Tb_snail</span><span class="op">(</span>temp  <span class="op">=</span> <span class="fl">25</span>, </span></span>
 <span class="r-in"><span>           l     <span class="op">=</span> <span class="fl">0.012</span>, </span></span>
-<span class="r-in"><span>           solar <span class="op">=</span> <span class="fl">800</span>, </span></span>
-<span class="r-in"><span>           WS    <span class="op">=</span> <span class="fl">1</span>, </span></span>
+<span class="r-in"><span>           S <span class="op">=</span> <span class="fl">800</span>, </span></span>
+<span class="r-in"><span>           u    <span class="op">=</span> <span class="fl">1</span>, </span></span>
 <span class="r-in"><span>           CC    <span class="op">=</span> <span class="fl">0.5</span>, </span></span>
 <span class="r-in"><span>           WL    <span class="op">=</span> <span class="fl">0</span>, </span></span>
 <span class="r-in"><span>           WSH   <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>

@@ -80,11 +80,11 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>T_a</dt>
-<dd><p><code>numeric</code> air temperature (K).</p></dd>
+<dd><p><code>numeric</code> air temperature (C).</p></dd>
 
 
 <dt>T_b</dt>
-<dd><p><code>numeric</code> initial body temperature (K).</p></dd>
+<dd><p><code>numeric</code> initial body temperature (C).</p></dd>
 
 
 <dt>A</dt>
@@ -96,7 +96,7 @@
 
 
 <dt>H_L</dt>
-<dd><p><code>numeric</code> convective heat transfer coefficient (W K<sup>-1</sup> m<sup>-2</sup>).</p></dd>
+<dd><p><code>numeric</code> convective heat transfer coefficient (W C<sup>-1</sup> m<sup>-2</sup>).</p></dd>
 
 
 <dt>ef</dt>
@@ -164,8 +164,8 @@ ISSN 0006-3495, <a href="https://doi.org/10.1016/S0006-3495%2876%2985711-6" clas
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="fu">Qconvection</span><span class="op">(</span>T_a        <span class="op">=</span> <span class="fl">293</span>,</span></span>
-<span class="r-in"><span>              T_b        <span class="op">=</span> <span class="fl">303</span>,</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="fu">Qconvection</span><span class="op">(</span>T_a        <span class="op">=</span> <span class="fl">20</span>,</span></span>
+<span class="r-in"><span>              T_b        <span class="op">=</span> <span class="fl">30</span>,</span></span>
 <span class="r-in"><span>              H_L        <span class="op">=</span> <span class="fl">10.45</span>,</span></span>
 <span class="r-in"><span>              A          <span class="op">=</span> <span class="fl">0.0025</span>,</span></span>
 <span class="r-in"><span>              proportion <span class="op">=</span> <span class="fl">0.85</span><span class="op">)</span></span></span>

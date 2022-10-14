@@ -76,7 +76,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">proportion_diffuse_solar_radiation</span><span class="op">(</span><span class="va">psi</span>, <span class="va">p_a</span>, <span class="va">A</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">proportion_diffuse_solar_radiation</span><span class="op">(</span><span class="va">psi</span>, <span class="va">p_a</span>, <span class="va">rho</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -89,7 +89,7 @@
 <dd><p><code>numeric</code> Atmospheric pressure (kPa).</p></dd>
 
 
-<dt>A</dt>
+<dt>rho</dt>
 <dd><p><code>numeric</code> albedo of the substrate (fraction of 1).</p></dd>
 
 </dl></div>
@@ -135,7 +135,7 @@
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="fu">proportion_diffuse_solar_radiation</span><span class="op">(</span>psi <span class="op">=</span> <span class="fl">60</span>, </span></span>
 <span class="r-in"><span>                                     p_a <span class="op">=</span> <span class="fl">86.1</span>, </span></span>
-<span class="r-in"><span>                                     A   <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span></span></span>
+<span class="r-in"><span>                                     rho   <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.09352554</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

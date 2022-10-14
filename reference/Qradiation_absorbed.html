@@ -84,7 +84,7 @@
 <span>  <span class="va">S_dir</span>,</span>
 <span>  <span class="va">S_dif</span>,</span>
 <span>  S_ref <span class="op">=</span> <span class="cn">NA</span>,</span>
-<span>  a_s <span class="op">=</span> <span class="cn">NA</span></span>
+<span>  rho <span class="op">=</span> <span class="cn">NA</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -95,7 +95,7 @@
 
 
 <dt>A</dt>
-<dd><p><code>numeric</code> surface area ((m<sup>2</sup>).</p></dd>
+<dd><p><code>numeric</code> surface area (m<sup>2</sup>).</p></dd>
 
 
 <dt>psa_dir</dt>
@@ -118,7 +118,7 @@
 <dd><p><code>numeric</code> reflected solar radiation (W m<sup>-2</sup>), either provided or estimated if surface albedo is provided instead</p></dd>
 
 
-<dt>a_s</dt>
+<dt>rho</dt>
 <dd><p><code>numeric</code> is surface albedo (proportion), optional (not used) if reflected radiation is provided. Values available in (Gates 1980)
  Table 8.2.</p></dd>
 
@@ -190,7 +190,7 @@ Springer-Verlag, New York, NY, USA.<br><br> Spotila JR, Feder ME, Burggren WW (1
 <span class="r-in"><span>                      psa_ref <span class="op">=</span> <span class="fl">0.4</span>,</span></span>
 <span class="r-in"><span>                      S_dir   <span class="op">=</span> <span class="fl">1000</span>,</span></span>
 <span class="r-in"><span>                      S_dif   <span class="op">=</span> <span class="fl">200</span>,</span></span>
-<span class="r-in"><span>                      a_s     <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span>                      rho     <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 612</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
