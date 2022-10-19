@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Load TrenchR package
 
-  library(TrenchR)
+ library(TrenchR)
 
 ```
 
@@ -210,37 +210,34 @@ The function is available in R:
 
 ```{r, fig.height = 4, fig.width = 6}
 
-plot(x    = 20:40, 
-     y    = Qconvection(T_a        = 30,
-                        T_b        = 20:40,
+plot(x    = 293:313, 
+     y    = Qconvection(T_a        = 303,
+                        T_b        = 293:313,
                         H          = 5,
                         A          = 0.0025, 
                         proportion = 0.6), 
      type = "l", 
-     xlab = "ground temperature (C)", 
+     xlab = "ground temperature (K)", 
      ylab = "Q convection (W)")
-
 points(x    = 293:313, 
-       y    = Qconvection(T_a        = 30,
-                          T_b        = 20:40,
+       y    = Qconvection(T_a        = 303,
+                          T_b        = 293:313,
                           H          = 15,
                           A          = 0.0025,
                           proportion = 0.6), 
        type = "l",
        lty  = "dashed")
-
-points(x    = 20:40, 
-       y    = Qconvection(T_a        = 30,
-                          T_b        = 20:40,
+points(x    = 293:313, 
+       y    = Qconvection(T_a        = 303,
+                          T_b        = 293:313,
                           H          = 5,
                           A          = 0.0025,
                           proportion = 0.3), 
        type = "l",
        lty  = "dotted")
-
-points(x    = 20:40, 
-       y    = Qconvection(T_a        = 30,
-                          T_b        = 20:40,
+points(x    = 293:313, 
+       y    = Qconvection(T_a        = 303,
+                          T_b        = 293:313,
                           H          = 15,
                           A          = 0.0025,
                           proportion = 0.3), 

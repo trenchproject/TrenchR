@@ -525,9 +525,9 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 #'
 #' @param taxon \code{character} organism type. Current choices: \code{"lizard"}, \code{"amphibian_wetskin"} (fully wet skin), \code{"amphibian"} (not fully wet skin).
 #'
-#' @param rho_s \code{numeric} saturation water vapor density at skin surface (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).
+#' @param e_s \code{numeric} saturation water vapor density at skin surface (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).
 #'
-#' @param rho_a \code{numeric} saturation water vapor density in ambient air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).
+#' @param e_a \code{numeric} saturation water vapor density in ambient air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).
 #'
 #' @param h \code{numeric} relative humidity (0-1) (needed if amphibian).
 #'
@@ -548,8 +548,8 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 #'   Qevaporation(A      = 0.1,
 #'                T_b    = 293,
 #'                taxon = "amphibian",
-#'                rho_s = 0.003,
-#'                rho_a = 0.002,
+#'                e_s = 0.003,
+#'                e_a = 0.002,
 #'                h     = 0.5,
 #'                H     = 20,
 #'                r_i   = 50)
@@ -560,8 +560,8 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 Qevaporation <- function (A,
                           T_b,
                           taxon,
-                          rho_s = NA,
-                          rho_a = NA,
+                          e_s = NA,
+                          e_a = NA,
                           h     = NA,
                           H     = NA,
                           r_i   = NA) {
@@ -574,8 +574,8 @@ Qevaporation <- function (A,
   
   if(taxon %in% c("amphibian_wetskin", "amphibian")) {
     
-    stopifnot(rho_s >  0,
-              rho_a >  0, 
+    stopifnot(e_s >  0,
+              e_a >  0, 
               h     >= 0, 
               h     <= 1, 
               H     >  0, 
@@ -620,14 +620,14 @@ Qevaporation <- function (A,
   
   if(taxon == "amphibian_wetskin") {
     
-    Ec <- A * (rho_s - h * rho_a) / r_e # rate of water transport (kg/s)
+    Ec <- A * (e_s - h * e_a) / r_e # rate of water transport (kg/s)
     Qevap <- Ec * evap_heat #to W
     
   }
   
   if(taxon == "amphibian") {
     
-    Ec= A * (rho_s-h*rho_a)/(r_i+r_e) # rate of water transport (kg/s)
+    Ec= A * (e_s-h*e_a)/(r_i+r_e) # rate of water transport (kg/s)
     Qevap= Ec*evap_heat # to W
     
   }
