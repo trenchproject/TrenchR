@@ -909,7 +909,7 @@ The rate of water loss for an amphibian without fully wetted skin can be express
 
 # kPa
 
-  vp <- saturation_vapor_pressure(20:40)
+  vp <- saturation_vapor_pressure(293:313)
 
 # convert to kg/m^3
 
@@ -917,7 +917,7 @@ The rate of water loss for an amphibian without fully wetted skin can be express
 
 # kPa
 
-  vp <- saturation_vapor_pressure(20:40-10)
+  vp <- saturation_vapor_pressure(293:313-10)
 
 # convert to kg/m^3
 
@@ -961,12 +961,12 @@ points(x    = temps,
        type = "l", 
        lty  = "dotted")
 
-Qevap <- unlist(lapply(20:40, 
+Qevap <- unlist(lapply(293:313, 
                        FUN  = Qevaporation, 
                        A = 0.1,  
                        taxon = "lizard"))
 
-points(x    = 20:40, 
+points(x    = 293:313, 
        y    = Qevap, 
        type = "l" )
 

@@ -529,7 +529,7 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 #'
 #' @param e_a \code{numeric} saturation water vapor density in ambient air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).
 #'
-#' @param h \code{numeric} relative humidity (0-1) (needed if amphibian).
+#' @param hp \code{numeric} relative humidity (0-1) (needed if amphibian).
 #'
 #' @param H \code{numeric} convective heat transfer coefficient (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}) (needed if amphibian).
 #'
@@ -550,7 +550,7 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 #'                taxon = "amphibian",
 #'                e_s = 0.003,
 #'                e_a = 0.002,
-#'                h     = 0.5,
+#'                hp     = 0.5,
 #'                H     = 20,
 #'                r_i   = 50)
 #'   Qevaporation(A     = 0.1,
@@ -562,7 +562,7 @@ Qevaporation <- function (A,
                           taxon,
                           e_s = NA,
                           e_a = NA,
-                          h     = NA,
+                          hp     = NA,
                           H     = NA,
                           r_i   = NA) {
   
@@ -576,8 +576,8 @@ Qevaporation <- function (A,
     
     stopifnot(e_s >  0,
               e_a >  0, 
-              h     >= 0, 
-              h     <= 1, 
+              hp     >= 0, 
+              hp     <= 1, 
               H     >  0, 
               r_i   >  0)
     
@@ -620,14 +620,14 @@ Qevaporation <- function (A,
   
   if(taxon == "amphibian_wetskin") {
     
-    Ec <- A * (e_s - h * e_a) / r_e # rate of water transport (kg/s)
+    Ec <- A * (e_s - hp * e_a) / r_e # rate of water transport (kg/s)
     Qevap <- Ec * evap_heat #to W
     
   }
   
   if(taxon == "amphibian") {
     
-    Ec= A * (e_s-h*e_a)/(r_i+r_e) # rate of water transport (kg/s)
+    Ec= A * (e_s-hp*e_a)/(r_i+r_e) # rate of water transport (kg/s)
     Qevap= Ec*evap_heat # to W
     
   }
@@ -818,7 +818,7 @@ Qmetabolism_from_mass_temp <- function (m,
 #'
 #' @description The function calculates actual vapor pressure from dewpoint temperature based on \insertCite{Stull2000,Riddell2018;textual}{TrenchR}.
 #'
-#' @param T_dewpoint \code{numeric} dewpoint temperature (C).
+#' @param T_dewpoint \code{numeric} dewpoint temperature (K).
 #'
 #' @return \code{numeric} actual vapor pressure (kPa).
 #'
@@ -832,11 +832,11 @@ Qmetabolism_from_mass_temp <- function (m,
 #' @author Eric Riddell
 #'
 #' @examples
-#'   actual_vapor_pressure(T_dewpoint = 20)
+#'   actual_vapor_pressure(T_dewpoint = 293)
 #'
 actual_vapor_pressure <- function (T_dewpoint) {
 
-  0.611 * (2.71828182845904^(((1.0 / 273.0) - (1.0 / celsius_to_kelvin(T_dewpoint))) * 5422.9939))
+  0.611 * (2.71828182845904^(((1.0 / 273.0) - (1.0 / T_dewpoint)) * 5422.9939))
 
 }
 
@@ -845,7 +845,7 @@ actual_vapor_pressure <- function (T_dewpoint) {
 #'
 #' @description The function calculates saturation vapor pressure (kPa) based on the Clausius-Clapeyron equation \insertCite{Stull2000,Riddell2018}{TrenchR}.
 #'
-#' @param T_a \code{numeric} air temperature (C).
+#' @param T_a \code{numeric} air temperature (K).
 #'
 #' @return \code{numeric} saturation vapor pressure, \code{e_s} (kPa).
 #'
@@ -859,18 +859,18 @@ actual_vapor_pressure <- function (T_dewpoint) {
 #' @author Eric Riddell
 #'
 #' @examples
-#'   saturation_vapor_pressure(T_a = 273)
+#'   saturation_vapor_pressure(T_a = 293)
 #'
 saturation_vapor_pressure <- function (T_a) {
 
-  stopifnot(T_a > -50, 
-            T_a < 100)
+  stopifnot(T_a > 200, 
+            T_a < 400)
 
   Rv <- 461.5     # J*K^-1*kg^-1, ideal gas constant for water vapor
   L <- 2.5 * 10^6 # J per kg, latent heat of vaporization
   e_o <- 0.611    # kPa
 
-  e_o * exp((L / Rv) * ((1. / 273.15) - (1. / celsius_to_kelvin(T_a))))
+  e_o * exp((L / Rv) * ((1. / 273.15) - (1. / T_a)))
 
 }
 
