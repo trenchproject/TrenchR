@@ -2,13 +2,13 @@
 #'
 #' @description The function calculates conductance (W) of an ectothermic animal to its substrate. Method assumes the major resistance to conduction is within surface layers of the animal and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
 #'
-#' @param T_g \code{numeric} ground surface temperature (C).
+#' @param T_g \code{numeric} ground surface temperature (K).
 #'
-#' @param T_b \code{numeric} body temperature (C).
+#' @param T_b \code{numeric} body temperature (K).
 #'
 #' @param d \code{numeric} mean thickness of the animal skin (surface) in (meters). The function assumes a well mixed interior.
 #'
-#' @param K \code{numeric} thermal conductivity (\ifelse{html}{\out{W C<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}). \code{K = 0.5} for naked skin and \code{K = 0.15} for insect cuticle \insertCite{Galushko2005}{TrenchR}. The conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step.
+#' @param K \code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}). \code{K = 0.5} for naked skin and \code{K = 0.15} for insect cuticle \insertCite{Galushko2005}{TrenchR}. The conductivity of the ground is generally greater than that of animal tissues, so animal thermal conductivity is generally the rate limiting step.
 #'
 #' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #'
@@ -24,8 +24,8 @@
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   Qconduction_animal(T_g        = 20,
-#'                      T_b        = 30,
+#'   Qconduction_animal(T_g        = 293,
+#'                      T_b        = 303,
 #'                      d          = 10^-6,
 #'                      K          = 0.5,
 #'                      A          = 10^-3,
@@ -38,10 +38,10 @@ Qconduction_animal <- function (T_g,
                                 A,
                                 proportion) {
 
-  stopifnot(T_g        >  -50, 
-            T_g        <  100,
-            T_b        >  -50, 
-            T_b        <  100, 
+  stopifnot(T_g        >  200, 
+            T_g        <  400,
+            T_b        >  200, 
+            T_b        <  400, 
             d          >= 0, 
             K          >  0, 
             A          >  0, 
@@ -63,13 +63,13 @@ Qconduction_animal <- function (T_g,
 #'
 #' @description The function calculates conductance (W) of an ectothermic animal to its substrate. The method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
 #'
-#' @param T_g \code{numeric} surface temperature (C).
+#' @param T_g \code{numeric} surface temperature (K).
 #'
-#' @param T_b \code{numeric} body temperature (C).
+#' @param T_b \code{numeric} body temperature (K).
 #'
 #' @param D \code{numeric} characteristic dimension of the animal (m).
 #'
-#' @param K_g \code{numeric} thermal conductivity of substrate (\ifelse{html}{\out{W C<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W C^-1 m^-1}{ASCII}}).
+#' @param K_g \code{numeric} thermal conductivity of substrate (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}).
 #'
 #' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #'
@@ -85,8 +85,8 @@ Qconduction_animal <- function (T_g,
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   Qconduction_substrate(T_g        = 20,
-#'                         T_b        = 30,
+#'   Qconduction_substrate(T_g        = 293,
+#'                         T_b        = 303,
 #'                         D          = 0.01,
 #'                         K_g        = 0.3,
 #'                         A          = 10^-2,
@@ -100,10 +100,10 @@ Qconduction_substrate <- function (T_g,
                                    A,
                                    proportion) {
 
-  stopifnot(T_g        >  -50, 
-            T_g        <  100, 
-            T_b        >  -50, 
-            T_b        <  100, 
+  stopifnot(T_g        >  200, 
+            T_g        <  400, 
+            T_b        >  200, 
+            T_b        <  400, 
             D          >= 0, 
             K_g        >  0, 
             A          >  0, 
@@ -126,11 +126,11 @@ Qconduction_substrate <- function (T_g,
 #'
 #' @description The function calculates convection from an organism to its environment as in \insertCite{Mitchell1976;textual}{TrenchR}. It includes an enhancement factor associated with outdoor environments.
 #'
-#' @param T_a \code{numeric} air temperature (C).
+#' @param T_a \code{numeric} air temperature (K).
 #'
-#' @param T_b \code{numeric} initial body temperature (C).
+#' @param T_b \code{numeric} initial body temperature (K).
 #'
-#' @param H_L \code{numeric} convective heat transfer coefficient (\ifelse{html}{\out{W C<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).
+#' @param H_L \code{numeric} convective heat transfer coefficient (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-2</sup>}}{\eqn{W K^-1 m^-2}{ASCII}}).
 #'
 #' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #'
@@ -148,8 +148,8 @@ Qconduction_substrate <- function (T_g,
 #'   \insertAllCited{}
 #'
 #' @examples
-#'   Qconvection(T_a        = 20,
-#'               T_b        = 30,
+#'   Qconvection(T_a        = 293,
+#'               T_b        = 303,
 #'               H_L        = 10.45,
 #'               A          = 0.0025,
 #'               proportion = 0.85)
@@ -162,10 +162,10 @@ Qconvection <- function (T_a,
                          H_L         = 10.45,
                          ef          = 1.23) {
 
-  stopifnot(T_a        >  -50, 
-            T_a        <  100, 
-            T_b        >  -50, 
-            T_b        <  100, 
+  stopifnot(T_a        >  200, 
+            T_a        <  400, 
+            T_b        >  200, 
+            T_b        <  400, 
             H_L        >  0, 
             A          >  0, 
             proportion >= 0, 
@@ -188,7 +188,7 @@ Qconvection <- function (T_a,
 #'
 #' @param D \code{numeric} characteristic dimension (e.g., diameter or snout-vent length) (meters).
 #'
-#' @param K \code{numeric} thermal conductivity of air (\ifelse{html}{\out{W C<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W C^-1 m^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
+#' @param K \code{numeric} thermal conductivity of air (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #'
 #' @param nu \code{numeric} kinematic viscosity of air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.
 #'
@@ -439,11 +439,11 @@ Qradiation_absorbed <- function (a = 0.9,
 #'
 #' @param psa_ref \code{numeric} proportion surface area exposed to ground (0-1).
 #'
-#' @param T_b \code{numeric} body surface temperature (C).
+#' @param T_b \code{numeric} body surface temperature (K).
 #'
-#' @param T_g \code{numeric} ground surface temperature (C).
+#' @param T_g \code{numeric} ground surface temperature (K).
 #'
-#' @param T_a \code{numeric} ambient air temperature (C), only required if the animal is in an enclosed environment.
+#' @param T_a \code{numeric} ambient air temperature (K), only required if the animal is in an enclosed environment.
 #'
 #' @param enclosed \code{logical} whether the animal is an enclosed environment or not.
 #'
@@ -461,9 +461,9 @@ Qradiation_absorbed <- function (a = 0.9,
 #'                              A        = 1,
 #'                              psa_dir  = 0.4,
 #'                              psa_ref  = 0.6,
-#'                              T_b      = 30,
-#'                              T_g      = 20,
-#'                              T_a      = 25,
+#'                              T_b      = 303,
+#'                              T_g      = 293,
+#'                              T_a      = 298,
 #'                              enclosed = FALSE)
 #'
 Qemitted_thermal_radiation <- function (epsilon  = 0.96,
@@ -482,12 +482,12 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
             psa_dir <= 1, 
             psa_ref >= 0, 
             psa_ref <= 1, 
-            T_b     >  -50, 
-            T_b     <  100, 
-            T_g     >  -50, 
-            T_g     <  100, 
-            T_a     >  -50, 
-            T_a     <  100, 
+            T_b     >  200, 
+            T_b     <  400, 
+            T_g     >  200, 
+            T_g     <  400, 
+            T_a     >  200, 
+            T_a     <  400, 
             is.logical(enclosed))
 
   # Stefan-Boltzmann constant
@@ -498,13 +498,8 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
   A_r <- A * psa_ref
 
   # Estimate effective radiant temperature of sky
-  Tsky <- (1.22 * T_a - 20.4) + 273.15 # K
+  Tsky <- (1.22 * (T_a-273.15) - 20.4) + 273.15 # K
 
-  #convert to Kelvin
-  T_a= T_a +273.15
-  T_b= T_b +273.15
-  T_g= T_g +273.15
-  
   if(enclosed){
 
     Qemit <- A_r * epsilon * sigma * (T_b^4 - T_a^4)
@@ -526,15 +521,15 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 #'
 #' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #'
-#' @param T_b \code{numeric} body temperature (C).
+#' @param T_b \code{numeric} body temperature (K).
 #'
 #' @param taxon \code{character} organism type. Current choices: \code{"lizard"}, \code{"amphibian_wetskin"} (fully wet skin), \code{"amphibian"} (not fully wet skin).
 #'
-#' @param e_s \code{numeric} saturation water vapor density at skin surface (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).
+#' @param rho_s \code{numeric} saturation water vapor density at skin surface (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).
 #'
-#' @param e_a \code{numeric} saturation water vapor density in ambient air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).
+#' @param rho_a \code{numeric} saturation water vapor density in ambient air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}}) (needed if amphibian).
 #'
-#' @param hp \code{numeric} relative humidity (0-1) (needed if amphibian).
+#' @param h \code{numeric} relative humidity (0-1) (needed if amphibian).
 #'
 #' @param H \code{numeric} convective heat transfer coefficient (\ifelse{html}{\out{W m<sup>-2</sup> K<sup>-1</sup>}}{\eqn{W m^-2 K^-1}{ASCII}}) (needed if amphibian).
 #'
@@ -551,96 +546,95 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 #'
 #' @examples
 #'   Qevaporation(A      = 0.1,
-#'                T_b    = 20,
+#'                T_b    = 293,
 #'                taxon = "amphibian",
-#'                e_s = 0.003,
-#'                e_a = 0.002,
-#'                hp     = 0.5,
+#'                rho_s = 0.003,
+#'                rho_a = 0.002,
+#'                h     = 0.5,
 #'                H     = 20,
 #'                r_i   = 50)
 #'   Qevaporation(A     = 0.1,
-#'                T_b   = 20,
+#'                T_b   = 293,
 #'                taxon = "lizard")
 #'
 Qevaporation <- function (A,
                           T_b,
                           taxon,
-                          e_s = NA,
-                          e_a = NA,
-                          hp     = NA,
+                          rho_s = NA,
+                          rho_a = NA,
+                          h     = NA,
                           H     = NA,
                           r_i   = NA) {
-
+  
   stopifnot(A   > 0, 
-            T_b > -50, 
-            T_b < 100, 
+            T_b > 200, 
+            T_b < 400, 
             length(taxon) == 1,
             taxon %in% c("lizard", "amphibian_wetskin", "amphibian"))
-
+  
   if(taxon %in% c("amphibian_wetskin", "amphibian")) {
-
-    stopifnot(e_s >  0,
-              e_a >  0, 
-              hp     >= 0, 
-              hp     <= 1, 
+    
+    stopifnot(rho_s >  0,
+              rho_a >  0, 
+              h     >= 0, 
+              h     <= 1, 
               H     >  0, 
               r_i   >  0)
-
+    
   }
-
+  
   # Porter et al. 1973 in Gates 1980 Biophysical ecology
   if (taxon == "lizard") {
-    if(T_b < 20) {
-
+    if(T_b < 293) {
+      
       E_kg <- 0.27
-
+      
     }
-
-    if(T_b >= 20 & T_b <= 36) {
-
-      E_kg <- 0.08 * exp(0.586) * T_b
-
+    
+    if(T_b >= 293 & T_b <= 309) {
+      
+      E_kg <- 0.08 * exp(0.586) * (T_b - 273.5)
+      
     }
-
-    if(T_b > 36) {
-
-      E_kg <- 2.97 * 10^(-3) * exp(0.1516) * T_b
-
+    
+    if(T_b > 309) {
+      
+      E_kg <- 2.97 * 10^(-3) * exp(0.1516) * (T_b - 273.5)
+      
     }
-
+    
     # convert from W/kg to W/m2
     E <- E_kg * 0.067 / 0.018 #for 0.067kg lizard with 0.018m^2 surface area
-
+    
     # multiply by surface area
     Qevap <- E * A
-
+    
   }
-
+  
   # Spotila et al. 1992
   evap_heat <- 2.44 * 10^(6) # J/kg at most temperatures
-
-  ecp <- 1200 # J*m^(-3)*K^(-1)
+  
+  rhocp <- 1200 # J*m^(-3)*K^(-1)
   # external (convective) resistance to water vapor transport (s/m), Lewis rule
-  r_e <- 0.93 * ecp / H
-
+  r_e <- 0.93 * rhocp / H
+  
   if(taxon == "amphibian_wetskin") {
-
-    Ec <- A * (e_s - hp * e_a) / r_e # rate of water transport (kg/s)
+    
+    Ec <- A * (rho_s - h * rho_a) / r_e # rate of water transport (kg/s)
     Qevap <- Ec * evap_heat #to W
-
+    
   }
-
+  
   if(taxon == "amphibian") {
-
-    Ec= A * (e_s-hp*e_a)/(r_i+r_e) # rate of water transport (kg/s)
+    
+    Ec= A * (rho_s-h*rho_a)/(r_i+r_e) # rate of water transport (kg/s)
     Qevap= Ec*evap_heat # to W
-
+    
   }
-
+  
   Qevap
-
+  
 }
-
 
 #' @title Saturation Water Vapor Pressure
 #'
@@ -885,7 +879,7 @@ saturation_vapor_pressure <- function (T_a) {
 #'
 #' @description The function estimates boundary layer resistance under free convection based on the function in \insertCite{Riddell2018;textual}{TrenchR}.
 #'
-#' @param T_a \code{numeric} air temperature (C).
+#' @param T_a \code{numeric} air temperature (K).
 #'
 #' @param e_s \code{numeric} saturation vapor pressure (kPa).
 #'
@@ -909,7 +903,7 @@ saturation_vapor_pressure <- function (T_a) {
 #' @author Eric Riddell
 #'
 #' @examples
-#'   boundary_layer_resistance(T_a  = 0,
+#'   boundary_layer_resistance(T_a  = 293,
 #'                             e_s  = 2.5,
 #'                             e_a  = 2.0,
 #'                             elev = 500,
@@ -922,66 +916,61 @@ boundary_layer_resistance <- function (T_a,
                                        elev,
                                        D,
                                        u = NA) {
-
-  stopifnot(T_a  > -50, 
-            T_a  < 100, 
+  
+  stopifnot(T_a  > 200, 
+            T_a  < 400, 
             e_s  > 0, 
             e_a  > 0, 
             elev > 0, 
             D    > 0)
-
+  
   if(e_s < e_a) {
-
+    
     stop("Actual vapor pressure, e_a, must be lower that saturation vapor pressure, e_s")
-
+    
   }
-
+  
   gravity = 9.8 # m/s
-
-  #convert T_a to Kelvin
-  T_a= celsius_to_kelvin(T_a)
   
   air_pressure <- 101325. * (1. - (2.2569 * 10^-5) * elev)^5.2553
   air_density <- air_pressure / (287.04 * T_a)
   dynamic_viscosity <- (1.8325 * 10^-5) * ((296.16 + 120.) / (T_a + 120.)) * ((T_a / 296.16)^1.5) #Tracy et al. 2010
   kinematic_viscosity <- dynamic_viscosity / air_density
-  
   T_surface <- (T_a) * (1. + 0.38 * ((e_s * 1000.) / air_pressure)) #soil surface temperature in steady state heat balance
   T_air <- T_a * (1. + 0.38 * ((e_a * 1000.) / air_pressure)) #air temperature in steady state heat balance
   coef_thermal_expansion <- 1.0 / T_a
-
+  
   # Grashof and Nusselt numbers
   Grashof <- (coef_thermal_expansion * gravity * (D^3) * (abs(T_surface - T_air))) / (kinematic_viscosity^2)
   Nusselt <- 0.48 * (Grashof)^0.25
-
+  
   thermal_conductivity <- (2.4525*10^-2) + ((7.038 * 10^-5) * (T_a - 273.15))
   mixing_ratio <- (0.6257 * (e_a * 1000)) / (air_pressure - (1.006 * (e_a * 1000)))
-
+  
   # free convection
   hc <- (Nusselt * thermal_conductivity) / D #free convective heat transfer coefficient
-
+  
   if(!is.na(u)){ #check if wind speed is provided
-
+    
     # estimate Reynolds number- ratio of interval viscous forces
     Re <- u * D / kinematic_viscosity
-
+    
     # forced convection
     # use if Gr< 16 * Re^2
     if(Grashof <= 16 * Re^2) {
-
+      
       hc <- 0.923 * (u^0.333 * D^(-0.666))
-
+      
     }
-
+    
   }
-
+  
   # calculate boundary layer resistance
   specific_heat <- (1004.84 + (1846.4 * mixing_ratio)) / (1 + mixing_ratio)
-
-   ((specific_heat * air_density) / hc) / 100
-
+  
+  ((specific_heat * air_density) / hc) / 100
+  
 }
-
 
 #' @title Humid Operative Environmental Temperature of a Salamander
 #'

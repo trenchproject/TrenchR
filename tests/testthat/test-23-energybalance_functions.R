@@ -5,16 +5,16 @@ expect_similar <- function(input, expected) {
 }
 
 test_that("Qconduction_animal function works as expected", {
-  expect_equal(Qconduction_animal(T_g= 20,T_b=30,d=10^-6,K=0.5,A=10^-3, proportion=0.2), 1000)
-  expect_error(Qconduction_animal(T_g= 20,T_b=30,d=10^-6,K=0.5,A=10^-3, proportion=-0.2), "proportion >= 0 is not TRUE")
+  expect_equal(Qconduction_animal(T_g= 293,T_b=303,d=10^-6,K=0.5,A=10^-3, proportion=0.2), 1000)
+  expect_error(Qconduction_animal(T_g= 293,T_b=303,d=10^-6,K=0.5,A=10^-3, proportion=-0.2), "proportion >= 0 is not TRUE")
 })
 
 test_that("Qconduction_substrate function works as expected", {
-  expect_equal(Qconduction_substrate(T_g= 20, T_b=30, D=0.01, K_g=0.3, A=10^-2, proportion=0.2),1.2)
+  expect_equal(Qconduction_substrate(T_g= 293, T_b=303, D=0.01, K_g=0.3, A=10^-2, proportion=0.2),1.2)
 })
 
 test_that("Qconvection function works as expected", {
-  expect_similar(Qconvection(T_a= 20, T_b= 30, H_L=10.45, A=0.0025, proportion=0.85),0.2731369)
+  expect_similar(Qconvection(T_a= 293, T_b= 303, H_L=10.45, A=0.0025, proportion=0.85),0.2731369)
 })
 
 test_that("heat_transfer_coefficient function works as expected", {
@@ -37,28 +37,28 @@ test_that("Qradiation_absorbed function works as expected", {
 })
 
 test_that("Qemitted_thermal_radiation function works as expected", {
-  expect_similar(Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=30, T_g=20, T_a=25, enclosed=FALSE),78.40861)
-  expect_similar(Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=30, T_g=20, T_a=25, enclosed=TRUE),17.76147)
+  expect_similar(Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303, T_g=293, T_a=298, enclosed=FALSE),78.35451)
+  expect_similar(Qemitted_thermal_radiation(epsilon=0.96, A=1, psa_dir=0.4, psa_ref=0.6, T_b=303, T_g=293, T_a=298, enclosed=TRUE),17.7349)
 })
 
 test_that("Qevaporation function works as expected", {
-  expect_similar(Qevaporation(A=0.1, T_b=20, taxon="amphibian", e_s=0.003, e_a=0.002, hp=0.5, H=20, r_i=50), 4.612476)
-  expect_similar(Qevaporation(A=0.1, T_b=20, taxon="amphibian_wetskin", e_s=0.003, e_a=0.002, hp=0.5, H=20, r_i=50), 8.74552)
-  expect_similar(Qevaporation(A=0.1, T_b=20, taxon="lizard"), 1.070086)
-  expect_similar(Qevaporation(A=0.1, T_b=17, taxon="lizard"), 0.1005)
-  expect_similar(Qevaporation(A=0.1, T_b=37, taxon="lizard"), 0.04759918)
+  expect_similar(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50),4.612476)
+  expect_similar(Qevaporation(A=0.1, T_b=293, taxon="amphibian_wetskin", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50),8.74552)
+  expect_similar(Qevaporation(A=0.1, T_b=293, taxon="lizard"),1.043334)
+  expect_similar(Qevaporation(A=0.1, T_b=290, taxon="lizard"),0.1005)
+  expect_similar(Qevaporation(A=0.1, T_b=310, taxon="lizard"), 0.04695595)
 })
 
 test_that("Qevaporation errors work as expected", {
-  expect_error(Qevaporation(A=-0.1, T_b=20, taxon="amphibian", e_s=0.003, e_a=0.002, hp=0.5, H=20, r_i=50))
-  expect_error(Qevaporation(A=0.1, T_b=137, taxon="amphibian", e_s=0.003, e_a=0.002, hp=0.5, H=20, r_i=50))
-  expect_error(Qevaporation(A=0.1, T_b=20, taxon="frog", e_s=0.003, e_a=0.002, hp=0.5, H=20, r_i=50))
-  expect_error(Qevaporation(A=0.1, T_b=20, taxon=c("frog","amphibian"), e_s=0.003, e_a=0.002, H=0.5, hp=20, r_i=50))
-  expect_error(Qevaporation(A=0.1, T_b=20, taxon="amphibian", e_s=-0.003, e_a=0.002, hp=0.5, H=20, r_i=50))
-  expect_error(Qevaporation(A=0.1, T_b=20, taxon="amphibian", e_s=0.003, e_a=-0.002, hp=0.5, H=20, r_i=50))   
-  expect_error(Qevaporation(A=0.1, T_b=20, taxon="amphibian", e_s=0.003, e_a=0.002, hp=50, H=20, r_i=50)) 
-  expect_error(Qevaporation(A=0.1, T_b=20, taxon="amphibian", e_s=0.003, e_a=0.002, hp=0.5, H=-20, r_i=50)) 
-  expect_error(Qevaporation(A=0.1, T_b=20, taxon="amphibian", e_s=0.003, e_a=0.002, hp=0.5, H=20, r_i=-50)) 
+  expect_error(Qevaporation(A=-0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50))
+  expect_error(Qevaporation(A=0.1, T_b=410, taxon="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50))
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="frog", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50))
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon=c("frog","amphibian"), rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=50))
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=-0.003, rho_a=0.002, h=0.5, H=20, r_i=50))
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=-0.002, h=0.5, H=20, r_i=50))   
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=0.002, h=50, H=20, r_i=50)) 
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=-20, r_i=50)) 
+  expect_error(Qevaporation(A=0.1, T_b=293, taxon="amphibian", rho_s=0.003, rho_a=0.002, h=0.5, H=20, r_i=-50)) 
 })
 
 test_that("saturation_water_vapor_pressure function works as expected", {
@@ -93,9 +93,9 @@ test_that("saturation_vapor_pressure function works as expected", {
 })
 
 test_that("expect_similar(boundary_layer_resistance function works as expected", {
-  expect_similar(boundary_layer_resistance(T_a=20, e_s=2.5, e_a=2.4, elev=500, D=0.007, u=2), 0.3647617)
-  expect_similar(boundary_layer_resistance(T_a=20, e_s=2.5, e_a=2.4, elev=500, D=0.007), 4.299191)
-  expect_error(boundary_layer_resistance(T_a=20, e_s=2.3, e_a=2.4, elev=500, D=0.007))
+  expect_similar(boundary_layer_resistance(T_a=293, e_s=2.5, e_a=2.4, elev=500, D=0.007, u=2), 0.3649484)
+  expect_similar(boundary_layer_resistance(T_a=293, e_s=2.5, e_a=2.4, elev=500, D=0.007),4.302272)
+  expect_error(boundary_layer_resistance(T_a=293, e_s=2.3, e_a=2.4, elev=500, D=0.007))
 })
 
 test_that("Tb_salamander_humid function works as expected", {

@@ -133,7 +133,7 @@ Additionally, see the microclimate tutorial for tools for estimating incoming so
 # Thermal radiation, Qemit
 
 The net rate of emission of thermal radiation from the surface of an animal, $Q_{emit} (W)$, is determined by the difference between the surface temperature of the animal $T_b (K)$ and the temperatures of the air $T_a (K)$ and of the ground $T_g (K)$. 
-$T_a$ is additionally used to estimate sky temperature $T_{sky} (C)$, the effective radiant temperature of the sky as $T_{sky}= 1.22\times (T_a-273.15)-20.4+273.15$ [@gates2012biophysical]. 
+$T_a$ is additionally used to estimate sky temperature $T_{sky} (K)$, the effective radiant temperature of the sky as $T_{sky}= 1.22\times (T_a-273.15)-20.4+273.15$ [@gates2012biophysical]. 
 The following expressions can be used to estimate $Q_{emit} (W)$ for animals in enclosed and open environments, respectively: 
 $$
 enclosed: Q_{emit}= A_r \epsilon \sigma (T_b^4 - T_a^4)\\
@@ -146,58 +146,55 @@ The function is available in R as follows:
 
 ```{r, fig.height = 4, fig.width = 6}
 
-plot(x    = 20:40, 
+plot(x    = 293:313, 
      y    = Qemitted_thermal_radiation(epsilon  = 0.96, 
                                        A        = 1, 
                                        psa_dir  = 0.4, 
                                        psa_ref  = 0.6,  
-                                       T_b      = 20:40,  
-                                       T_g      = 20,  
-                                       T_a      = 25,  
+                                       T_b      = 293:313,  
+                                       T_g      = 293,  
+                                       T_a      = 298,  
                                        enclosed = FALSE), 
      type = "l", 
-     xlab = "body surface temperature, Tb (C)", 
+     xlab = "body surface temperature, Tb (K)", 
      ylab = "emitted thermal radiation, Qemit (W)")
-
-points(x    = 20:40, 
+points(x    = 293:313, 
        y    = Qemitted_thermal_radiation(epsilon  = 0.96, 
                                          A        = 1, 
                                          psa_dir  = 0.2, 
                                          psa_ref  = 0.8, 
-                                         T_b      = 20:40, 
-                                         T_g      = 20, 
-                                         T_a      = 25, 
+                                         T_b      = 293:313, 
+                                         T_g      = 293, 
+                                         T_a      = 298, 
                                          enclosed = TRUE), 
        type = "l", 
        lty  = "dashed")
-
-points(x    = 20:40, 
+points(x    = 293:313, 
        y    = Qemitted_thermal_radiation(epsilon  = 0.96,
                                          A        = 1,
                                          psa_dir  = 0.4, 
                                          psa_ref  = 0.8, 
-                                         T_b      = 20:40, 
-                                         T_g      = 20, 
-                                         T_a      = 25, 
+                                         T_b      = 293:313, 
+                                         T_g      = 283, 
+                                         T_a      = 298, 
                                          enclosed = FALSE), 
        type = "l", 
        lty  = "dotted")
-
-points(x    = 20:40, 
+points(x    = 293:313, 
        y    = Qemitted_thermal_radiation(epsilon= 0.96, 
                                          A = 1, 
                                          psa_dir = 0.2, 
                                          psa_ref = 0.6, 
-                                         T_b      = 20:40, 
-                                         T_g      = 20, 
-                                         T_a      = 25, 
+                                         T_b      = 293:313, 
+                                         T_g      = 283, 
+                                         T_a      = 298, 
                                          enclosed = FALSE), 
        type = "l", 
        lty  = "dotdash")
 
 legend(x      = "topleft", 
        title  = "parameters", 
-       legend = c("psa_dir= 0.4, T_g = 20", "psa_dir= 0.2, T_g = 20", "psa_dir= 0.4, T_g = 10", "psa_dir= 0.2, T_g = 10"), 
+       legend = c("psa_dir= 0.4, T_g = 293", "psa_dir= 0.2, T_g = 293", "psa_dir= 0.4, T_g = 283", "psa_dir= 0.2, T_g = 283"), 
        lty    = c("solid", "dashed", "dotted", "dotdash"))
 
 ```
@@ -702,39 +699,36 @@ where $K_g$ is the thermal conductivity of substrate ($W K^{-1} m^{-1}$) and $D$
 
 ```{r, fig.height = 4, fig.width = 6}
 
-plot(x    = 20:40, 
-     y    = Qconduction_animal(T_g        = 20:40,
-                               T_b        = 30,
+plot(x    = 293:313, 
+     y    = Qconduction_animal(T_g        = 293:313,
+                               T_b        = 303,
                                d          = 10^-6,
                                K          = 0.3,
                                A          = 10^-3,
                                proportion = 0.2), 
      type = "l", 
-     xlab = "ground temperature (C)", ylab = "Q conductance (W)")
-
-points(x    = 20:40, 
-       y    = Qconduction_animal(T_g        = 20:40,
-                                 T_b        = 30,
+     xlab = "ground temperature (K)", ylab = "Q conductance (W)")
+points(x    = 293:313, 
+       y    = Qconduction_animal(T_g        = 293:313,
+                                 T_b        = 303,
                                  d          = 10^-6,
                                  K          = 0.5,
                                  A          = 10^-3,
                                  proportion = 0.2), 
        type = "l", 
        lty  = "dashed")
-
-points(x    = 20:40, 
-       y    = Qconduction_animal(T_g        = 20:40,
-                                 T_b        = 30,
+points(x    = 293:313, 
+       y    = Qconduction_animal(T_g        = 293:313,
+                                 T_b        = 303,
                                  d          = 10^-6,
                                  K          = 0.3,
                                  A          = 10^-3,
                                  proportion = 0.4), 
        type = "l", 
        lty  = "dotted")
-
-points(x    = 20:40, 
-       y    = Qconduction_animal(T_g        = 20:40,
-                                 T_b        = 30,
+points(x    = 293:313, 
+       y    = Qconduction_animal(T_g        = 293:313,
+                                 T_b        = 303,
                                  d          = 10^-6,
                                  K          = 0.5,
                                  A          = 10^-3,
@@ -751,40 +745,37 @@ legend(x      = "topright",
 
 ```{r, fig.height = 4, fig.width = 6}
 
-plot(x    = 20:40, 
-     y    = Qconduction_substrate(T_g        = 20:40,
-                                  T_b        = 30,
+plot(x    = 293:313, 
+     y    = Qconduction_substrate(T_g        = 293:313,
+                                  T_b        = 303,
                                   D          = 0.01,
                                   K_g        = 0.3,
                                   A          = 10^-2,
                                   proportion = 0.2), 
      type = "l", 
-     xlab = "ground temperature (C)", 
+     xlab = "ground temperature (K)", 
      ylab = "Q conductance (W)")
-
-points(x    = 20:40, 
-       y    = Qconduction_substrate(T_g        = 20:40,
-                                    T_b        = 30,
+points(x    = 293:313, 
+       y    = Qconduction_substrate(T_g        = 293:313,
+                                    T_b        = 303,
                                     D          = 0.01,
                                     K_g        = 0.5,
                                     A          = 10^-2,
                                     proportion = 0.2), 
        type = "l", 
        lty  = "dashed")
-
-points(x    = 20:40, 
-       y    = Qconduction_substrate(T_g        = 20:40,
-                                    T_b        = 30,
+points(x    = 293:313, 
+       y    = Qconduction_substrate(T_g        = 293:313,
+                                    T_b        = 303,
                                     D          = 0.01,
                                     K_g        = 0.3,
                                     A          = 10^-2,
                                     proportion = 0.4), 
        type = "l", 
        lty  = "dotted")
-
-points(x    = 20:40, 
-       y    = Qconduction_substrate(T_g        = 20:40,
-                                    T_b        = 30,
+points(x    = 293:313, 
+       y    = Qconduction_substrate(T_g        = 293:313,
+                                    T_b        = 303,
                                     D          = 0.01,
                                     K_g        = 0.5,
                                     A          = 10^-2,
@@ -936,7 +927,7 @@ The rate of water loss for an amphibian without fully wetted skin can be express
   e_a <-  vp * 0.032 
 
 
-temps      <- 20:40
+temps      <- 293:313
 Qevaps     <- rep(NA,21)
 Qevaps_wet <- rep(NA,21)
 
@@ -963,7 +954,7 @@ for (ind in 1:21) {
 plot(x    = temps, 
      y    = Qevaps, 
      type = "l", 
-     xlab = "body temperature (C)", 
+     xlab = "body temperature (K)", 
      ylab = "evaporative heat loss (W)", 
      lty  = "dashed", 
      ylim = c(0, 400))
@@ -2095,11 +2086,11 @@ We convert skin and boundary layer resistance for vapor to conductance by multip
 
 ```{r, fig.height = 4, fig.width = 4}
 par(mar = c(5,  5, 3, 2))
-blr.seq= lapply(20:40, FUN=boundary_layer_resistance, e_s= 2.5, e_a = 2.3, elev = 500, D = 0.007, u = 2)
-plot(x    = 20:40, 
+blr.seq= lapply(293:313, FUN=boundary_layer_resistance, e_s= 2.5, e_a = 2.3, elev = 500, D = 0.007, u = 2)
+plot(x    = 293:313, 
      y    = blr.seq, 
      type = "l", 
-     xlab = "air temperature (C)", 
+     xlab = "air temperature (K)", 
      ylab = expression("boundary layer resistance" ~ (s ~ cm^{-1})))
 ```
 
@@ -2641,9 +2632,9 @@ for (hr in 1:24) {
                                           A        = A, 
                                           psa_dir  = psa[hr], 
                                           psa_ref  = 1-psa[hr], 
-                                          T_b      = Te[hr], 
-                                          T_g      = Ts[hr], 
-                                          T_a      = Ta[hr], 
+                                          T_b      = Te[hr] + 273, 
+                                          T_g      = Ts[hr] + 273, 
+                                          T_a      = Ta[hr] + 273, 
                                           enclosed = FALSE)
 }
 
@@ -2662,8 +2653,8 @@ The function is available in R assuming that 2/3 of the lizard's surface area is
 Qconv <- rep(NA, 24)
 
 for (hr in 1:24) {
-  Qconv[hr] <- Qconvection(T_a        = Ta[hr],
-                           T_b        = Te[hr],
+  Qconv[hr] <- Qconvection(T_a        = Ta[hr] + 273.15,
+                           T_b        = Te[hr] + 273.15,
                            H          = H_L,
                            A          = A, 
                            proportion = 0.67, 
@@ -2683,8 +2674,8 @@ We conduct the estimate in R assuming that 1/3 of the lizard surface is in conta
 Qcond <- rep(NA, 24)
 
 for (hr in 1:24) {
-  Qcond[hr] <- Qconduction_animal(T_g        = Ts[hr],
-                                  T_b        = Te[hr],
+  Qcond[hr] <- Qconduction_animal(T_g        = Ts[hr] + 273,
+                                  T_b        = Te[hr] + 273,
                                   d          = svl / 3,
                                   K          = 0.5,
                                   A          = A, 
