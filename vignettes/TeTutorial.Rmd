@@ -32,7 +32,7 @@ Finally, we present functions to implement specialized energy balances for parti
 # Operative environmental temperatures
 
 The body temperatures, $T_b$, of organisms can depart dramatically from air temperatures due to energy exchange with the environment. 
-Heat is gained by absorbing solar and thermal radiation and from metabolic reactions. 
+Heat is gained by absorbing solar and thermal radiation and is generated from metabolic reactions. 
 Heat is lost through the organism's emission of radiation and the evaporation of water. 
 The organism exchanges heat with the surrounding air or water via convection and with the ground and other solid surfaces in contact via conduction. 
 The balance of these heat exchanges can be estimated and is often referred to as operative environmental temperature, $T_e$. 
@@ -56,7 +56,7 @@ Qnet_Gates(Qabs  = 500,
 ```
 
 We briefly review each component of the energy balance below. 
-Details are available in biophysical ecology texts [@gates2012biophysical; @campbell2012introduction].
+Details are available in biophysical ecology texts [@gates2012biophysical; @campbell2012introduction]. We note that we have standardized the functions to accept and return temperatures in degrees C but the heat budget calculations generally use kelvin.
 
 # Solar radiation, Qabs
 
@@ -133,7 +133,7 @@ Additionally, see the microclimate tutorial for tools for estimating incoming so
 # Thermal radiation, Qemit
 
 The net rate of emission of thermal radiation from the surface of an animal, $Q_{emit} (W)$, is determined by the difference between the surface temperature of the animal $T_b (K)$ and the temperatures of the air $T_a (K)$ and of the ground $T_g (K)$. 
-$T_a$ is additionally used to estimate sky temperature $T_{sky} (K)$, the effective radiant temperature of the sky as $T_{sky}= 1.22\times (T_a-273.15)-20.4+273.15$ [@gates2012biophysical]. 
+$T_a$ is additionally used to estimate sky temperature $T_{sky} (C)$, the effective radiant temperature of the sky as $T_{sky}= 1.22\times (T_a-273.15)-20.4+273.15$ [@gates2012biophysical]. 
 The following expressions can be used to estimate $Q_{emit} (W)$ for animals in enclosed and open environments, respectively: 
 $$
 enclosed: Q_{emit}= A_r \epsilon \sigma (T_b^4 - T_a^4)\\
@@ -156,7 +156,7 @@ plot(x    = 20:40,
                                        T_a      = 25,  
                                        enclosed = FALSE), 
      type = "l", 
-     xlab = "body surface temperature, Tb (K)", 
+     xlab = "body surface temperature, Tb (C)", 
      ylab = "emitted thermal radiation, Qemit (W)")
 
 points(x    = 20:40, 
@@ -204,8 +204,7 @@ legend(x      = "topleft",
 
 # Convection, Qconv
 
-Animals exchange heat with the air or water they are immersed in at a rate determined by the temperature difference between the temperature of the animal, $T_b (K)$, and that of the air or water, $T_a (K)$. 
-The rate is also determined by the animal's surface area exposed to the air or water, which we estimate from the input parameters of the animal's surface area, $A (m^2)$, and the proportion of the surface area in contact with the surrounding fluid.  A heat transfer coefficient, $H_L (W m^{-2} K^{-1})$, which can be estimated using the relations below, is used to quantify the rate of heat exchange. An enhancement factor multiplier, $ef$, can also be incorporated to account for increases in heat exchange resulting from air turbulence in field conditions. 
+Animals exchange heat with the air or water they are immersed in at a rate determined by the temperature difference between the temperature of the animal, $T_b (K)$, and that of the air or water, $T_a (K)$. The rate is also determined by the animal's surface area exposed to the air or water, which we estimate from the input parameters of the animal's surface area, $A (m^2)$, and the proportion of the surface area in contact with the surrounding fluid.  A heat transfer coefficient, $H_L (W m^{-2} K^{-1})$, which can be estimated using the relations below, is used to quantify the rate of heat exchange. An enhancement factor multiplier, $ef$, can also be incorporated to account for increases in heat exchange resulting from air turbulence in field conditions. 
 Conduction can be estimated as follows:
 
 $$Q_{conv}= ef\cdot H_L(A\cdot \mbox{proportion})(T_a-T_b).$$
@@ -221,7 +220,7 @@ plot(x    = 20:40,
                         A          = 0.0025, 
                         proportion = 0.6), 
      type = "l", 
-     xlab = "ground temperature (K)", 
+     xlab = "ground temperature (C)", 
      ylab = "Q convection (W)")
 
 points(x    = 293:313, 
@@ -264,7 +263,7 @@ The Nusselt number provides a dimensionless estimate of conductance and is estim
 
 The Prandtl number describes the ratio of kinematic viscosity to thermal diffusivity as $Pr= c_p \mu /K$, where $c_p$ is the specific heat at constant pressure ($J mol^{-1} K^{-1}$) and $\mu$ is dynamic viscosity ($mol \:s^{-1}m^{-1}$).
 
-The Reynolds Number indicates the amount of turbulence in air or water flows and is estimated as the ratio of internal viscous forces: $Re = VD / \nu$, where $V$ is wind speed ($m/s$), $D$ is the characteristic dimension ($m$), and $\nu$ is the kinematic viscosity ($m^2 s^{-1}$). 
+The Reynolds Number indicates the amount of turbulence in air or water flows and is estimated as the ratio of internal viscous forces: $Re = uD / \nu$, where $u$ is wind speed ($m/s$), $D$ is the characteristic dimension ($m$), and $\nu$ is the kinematic viscosity ($m^2 s^{-1}$). 
 Kinematic viscosity is the ratio of dynamic viscosity to the density of the fluid.
 
 The Grashof number describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. 
@@ -516,7 +515,7 @@ free_or_forced_convection(Gr = 100,
 
 ```
 
-We offer methods to estimate the convective heat transfer coefficient based on either empirical measurements (`heat_transfer_coefficient()`) or approximating the animal shape as a sphere (`heat_transfer_coefficient_approximation()`). Approximating the animal shape as a sphere enables simplification while also producing a reasonable approximation [@mitchell1976heat]. The functions approximate forced convective heat transfer as a function of windspeed $V (m/s)$, the characteristic dimension $D (m)$, the thermal conductivity of the air $K (W m^{-1} K^{-1})$, the kinematic viscosity of the air $\nu (m^2 s^{-1})$, and the taxa or a generic shape. An additional, simplified function (`heat_transfer_coefficient_simple()`) provides a reasonable approximation based on $V$ and $D$ for most environmental conditions.
+We offer methods to estimate the convective heat transfer coefficient based on either empirical measurements (`heat_transfer_coefficient()`) or approximating the animal shape as a sphere (`heat_transfer_coefficient_approximation()`). Approximating the animal shape as a sphere enables simplification while also producing a reasonable approximation [@mitchell1976heat]. The functions approximate forced convective heat transfer as a function of windspeed $u (m/s)$, the characteristic dimension $D (m)$, the thermal conductivity of the air $K (W m^{-1} K^{-1})$, the kinematic viscosity of the air $\nu (m^2 s^{-1})$, and the taxa or a generic shape. An additional, simplified function (`heat_transfer_coefficient_simple()`) provides a reasonable approximation based on $u$ and $D$ for most environmental conditions.
 
 ```{r, fig.height = 4, fig.width = 6}
 
@@ -532,7 +531,7 @@ plot(x    = seq(0, 3, 0.25),
                                       taxon = "sphere"), 
      type = "l", 
      xlab = "Air velocity (m/s)", 
-     ylab = expression("heat transfer coefficient," ~ H[L] ~ (W ~ m^{-2} ~ C^{-1})))
+     ylab = expression("heat transfer coefficient," ~ H[L] ~ (W ~ m^{-2} ~ K^{-1})))
 
 points(x    = seq(0, 3, 0.25), 
        y    = heat_transfer_coefficient(u     = seq(0, 3, 0.25),
@@ -711,7 +710,7 @@ plot(x    = 20:40,
                                A          = 10^-3,
                                proportion = 0.2), 
      type = "l", 
-     xlab = "ground temperature (K)", ylab = "Q conductance (W)")
+     xlab = "ground temperature (C)", ylab = "Q conductance (W)")
 
 points(x    = 20:40, 
        y    = Qconduction_animal(T_g        = 20:40,
@@ -760,7 +759,7 @@ plot(x    = 20:40,
                                   A          = 10^-2,
                                   proportion = 0.2), 
      type = "l", 
-     xlab = "ground temperature (K)", 
+     xlab = "ground temperature (C)", 
      ylab = "Q conductance (W)")
 
 points(x    = 20:40, 
@@ -876,7 +875,7 @@ plot(x    = 20:40,
                                        T_b   = 20:40,
                                        taxon = "bird"), 
      type = "l", 
-     xlab = "temperature (K)", 
+     xlab = "temperature (C)", 
      ylab = "metabolism (W)", 
      ylim = c(0,0.1))
 
@@ -910,7 +909,7 @@ legend(x      = "topleft",
 
 # Evaporation, Qevap
 
-We provide functions to estimate heat loss associated with evaporative water loss. We offer an empirically-derived relationship for a lizard [@porter1973behavioral; in @gates2012biophysical] and a function based on resistances for amphibians [@spotila1992biophysics]. The function for amphibians is based on the latent heat of vaporization of water: evaporation of water results in heat loss at a rate of $2.44 \times 10^6 J kg^{-1}$ at biological temperatures. The rate of water loss for an amphibian with fully wetted skin can be expressed as 
+We provide functions to estimate heat loss associated with evaporation. We offer an empirically-derived relationship for a lizard [@porter1973behavioral; in @gates2012biophysical] and a function based on resistances for amphibians [@spotila1992biophysics]. The function for amphibians is based on the latent heat of vaporization of water: evaporation of water results in heat loss at a rate of $2.44 \times 10^6 J kg^{-1}$ at biological temperatures. The rate of water loss for an amphibian with fully wetted skin can be expressed as 
 
 $$ E_c= A (\rho_s-h \rho_a)/r_e,$$
 
@@ -1040,8 +1039,8 @@ t.seq <- lapply(20:40,
 plot(x    = 20:40, 
      y    = t.seq, 
      type = "l", 
-     xlab = "ambient temperature, Ta (K)", 
-     ylab = "body temperature, Tb (K)", 
+     xlab = "ambient temperature, Ta (C)", 
+     ylab = "body temperature, Tb (C)", 
      xlim = c(22, 42), 
      ylim = c(22, 42))
 
@@ -1523,7 +1522,7 @@ points(x    = 20:40,
        lty  = "dotted")
 
 legend(x      = "bottomright",
-       title= expression("direct radiation," ~ H[sdif]), 
+       title= expression("direct radiation," ~ S[sdif]), 
        legend = c(100,300,500), 
        lty    = c("dashed", "solid", "dotted"))
 
@@ -1553,7 +1552,7 @@ $$Q_c= h_{hc} A_c (T_b-T_a).$$
 
 We calculate $h_{cs}$ from the convective heat transfer coefficient as $h_{cs}=h_c(-0.007z/L+1.71)$ where $z$= 0.001m is the height above the ground. We use an empirically-derived relationship for grasshoppers to estimate the heat transfer coefficient, $h_c (Wm^{-2}K^{-1})$ [@lactin1998environmental]: $h_c = Nu K_f/L$, where the thermal conductivity of fluid, $K_f(Wm^{-1}K^{-1})= 0.024+0.00007(T_a+273)$.
 
-We use an empirical relationship from Anderson et al. [-@lactin1998environmental] to estimate the Nusselt number, $Nu$, as $nu = 0.41 Re^{0.5}$ where $Re$ is the Reynolds number, $Re =u L/v$, where $u$ is wind speed ($m/s$) and $v$ is the kinematic viscosity of air ($m^2/s$) ($V = 15.68 \times 10^{-6}$ at $300K$). The rate of conduction is a function of the body area in contact with the substrate and the temperature differential between the body and the surface: $$Q_{cond}= h_{cut} A_{cond} (T_b-T_g)/T, $$ where $h_{cut}$ is the thermal conductivity of the grasshopper cuticle [approximated as $0.15 W m^{-1} K^{-1}$; value for hornets; [@galushko2005electrical]]; $A_{cond}$ is the surface area of the grasshopper in contact with the substrate; and $T$ is the cuticle thickness [approximated as $6 \times 10^{-5}m$; [@galushko2005electrical]]. We only model conductance through the cuticle as we assume that the interior of the grasshopper is well mixed.
+We use an empirical relationship from Anderson et al. [-@lactin1998environmental] to estimate the Nusselt number, $Nu$, as $nu = 0.41 Re^{0.5}$ where $Re$ is the Reynolds number, $Re =u L/v$, where $u$ is wind speed ($m/s$) and $v$ is the kinematic viscosity of air ($m^2/s$) ($v = 15.68 \times 10^{-6}$ at $300K$). The rate of conduction is a function of the body area in contact with the substrate and the temperature differential between the body and the surface: $$Q_{cond}= h_{cut} A_{cond} (T_b-T_g)/T, $$ where $h_{cut}$ is the thermal conductivity of the grasshopper cuticle [approximated as $0.15 W m^{-1} K^{-1}$; value for hornets; [@galushko2005electrical]]; $A_{cond}$ is the surface area of the grasshopper in contact with the substrate; and $T$ is the cuticle thickness [approximated as $6 \times 10^{-5}m$; [@galushko2005electrical]]. We only model conductance through the cuticle as we assume that the interior of the grasshopper is well mixed.
 
 We provide the operative temperature model for grasshoppers as follows:
 
@@ -2213,7 +2212,7 @@ abline(a    = 0,
          col  = "blue")
 
 legend(x      = "topleft",
-       title  = "", 
+       title  = NULL, 
        legend = c("base scenario", "higher skin resistance", "higher vpd"), 
        lty    = c("solid"), 
        col    = c("black", "red", "blue"))
