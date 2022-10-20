@@ -273,7 +273,7 @@ Tb_Gates <- function (A,
     }
   
   T_e <- tryCatch(expr = uniroot(f         = Qfn, 
-                                 interval  = c(273, 353), 
+                                 interval  = c(0, 80), 
                                  Qabs      = Qabs, 
                                  epsilon   = epsilon, 
                                  sigma     = sigma, 

@@ -56,7 +56,7 @@ Qnet_Gates(Qabs  = 500,
 ```
 
 We briefly review each component of the energy balance below. 
-Details are available in biophysical ecology texts [@gates2012biophysical; @campbell2012introduction]. We note that we have standardized the functions to accept and return temperatures in degrees C but the heat budget calculations generally use kelvin.
+Details are available in biophysical ecology texts [@gates2012biophysical; @campbell2012introduction]. We note that we have standardized most functions to accept and return temperatures in degrees Celsius to promote accessibility. However, the heat budget calculations generally use Kelvin since it is the natural unit, particularly for radiation and metrics such an convective coefficients standardly use kelvin.
 
 # Solar radiation, Qabs
 
@@ -704,7 +704,7 @@ plot(x    = 293:313,
                                A          = 10^-3,
                                proportion = 0.2), 
      type = "l", 
-     xlab = "ground temperature (K)", ylab = "Q conductance (W)")
+     xlab = "ground temperature (Tb, K)", ylab = "Q conductance (W)")
 points(x    = 293:313, 
        y    = Qconduction_animal(T_g        = 293:313,
                                  T_b        = 303,
@@ -750,7 +750,7 @@ plot(x    = 293:313,
                                   A          = 10^-2,
                                   proportion = 0.2), 
      type = "l", 
-     xlab = "ground temperature (K)", 
+     xlab = "ground temperature (Tb, K)", 
      ylab = "Q conductance (W)")
 points(x    = 293:313, 
        y    = Qconduction_substrate(T_g        = 293:313,
@@ -977,7 +977,7 @@ legend(x      = "right",
 
 ```
 
-We estimate external resistance to water vapor transport, $r_e$, using the Lewis rule describing the relationships among the coefficients for heat and mass transport: $r_e= 0.93 \rho c_p/H_L$, where $\rho$ is the density of air ($kg m^{-3}$), $c_p$ is the specific heat of air at constant pressure ($J kg^{-1}°C^{-1}$), and $H_L$ is the convective heat transfer coefficient ($W m^{-2} °C^{-1}$). We approximate $\rho c_p$as 1,200 $J m^{-3}°C^{-1}$ as commonly done in biological applications [@spotila1992biophysics]. We provide the relationship for $r_e$ as a function:
+We estimate external resistance to water vapor transport, $r_e$, using the Lewis rule describing the relationships among the coefficients for heat and mass transport: $r_e= 0.93 \rho c_p/H_L$, where $\rho$ is the density of air ($kg m^{-3}$), $c_p$ is the specific heat of air at constant pressure ($J kg^{-1}K^{-1}$), and $H_L$ is the convective heat transfer coefficient ($W m^{-2} K^{-1}$). We approximate $\rho c_p$as 1,200 $J m^{-3}KC^{-1}$ as commonly done in biological applications [@spotila1992biophysics]. We provide the relationship for $r_e$ as a function:
 
 ```{r, fig.height = 3, fig.width = 4}
 
@@ -986,7 +986,7 @@ par(mar = c(5, 5, 3, 2))
 plot(x    = 10:30, 
      y    = external_resistance_to_water_vapor_transfer(H = 10:30), 
      type = "l", 
-     xlab = expression("heat transfer coefficient" ~ (W ~ m^{-2} ~ "°" ~ C^{-1})), 
+     xlab = expression("heat transfer coefficient" ~ (W ~ m^{-2} ~  K^{-1})), 
      ylab = expression("external resistance, " ~ r[e] ~ (sm^{-1})))
 
 ```
@@ -1005,7 +1005,9 @@ plot(x    = 10:30,
 
 # Estimating body temperatures, Tb
 
-TrenchR primarily includes models for estimating the body temperatures (generally the operative temperatures, $T_e$) of organisms that have reached an equilibrium with their environment ("steady-state", no heat retention). The following function uses the relationships above to solve the energy balance for $Tb (C)$.
+TrenchR primarily includes models for estimating the body temperatures (generally the operative temperatures, $T_e$) of organisms that have reached an equilibrium with their environment ("steady-state", no heat retention). The functions for estimating body temperatures all require input temperatures in degrees Celsius and they output temperatures in degrees Celsius for accessibility, but our explanations below is based on Kelvin since it is largely used for heat balance calculations. We use K subscripts to specify the use of Kelvin.
+
+The following function uses the relationships above to solve the energy balance for $Tb (°C)$.
 
 ```{r, fig.height = 4, fig.width = 4}
 
@@ -1027,8 +1029,8 @@ t.seq <- lapply(20:40,
 plot(x    = 20:40, 
      y    = t.seq, 
      type = "l", 
-     xlab = "ambient temperature, Ta (C)", 
-     ylab = "body temperature, Tb (C)", 
+     xlab = "ambient temperature, Ta (°C)", 
+     ylab = "body temperature, Tb (°C)", 
      xlim = c(22, 42), 
      ylim = c(22, 42))
 
@@ -1083,7 +1085,7 @@ legend(x      = "bottomright",
 
 ```
 
-Campbell and Norman [-@campbell2012introduction] use a somewhat simplified energy balance to express $Tb$ as a function of $Ta$ plus or minus a temperature increment determined by absorbed radiation, wind speed, and animal morphology:
+Campbell and Norman [-@campbell2012introduction] use a somewhat simplified energy balance to express $Tb_k$ as a function of $Ta$ plus or minus a temperature increment determined by absorbed radiation, wind speed, and animal morphology:
 
 $$ T_b=T_a+(S_{abs}-Q_{emit})/(c_p(g_r+g_{Ha})),$$ 
 
@@ -1162,7 +1164,7 @@ In addition to providing general functions that can be used to build heat budget
 
 ## Lizards
 
-We adapted a biophysical model (`Tb_lizard()`) to estimate body temperatures, $T_b (K)$, for lizards from Buckley [-@buckley2007linking]. The function follows the modeling approach contained in Campbell and Norman [-@campbell2012introduction].
+We adapted a biophysical model (`Tb_lizard()`) to estimate body temperatures, $T_b (°C)$, for lizards from Buckley [-@buckley2007linking]. The function follows the modeling approach contained in Campbell and Norman [-@campbell2012introduction].
 
 ### Day Length and Sun Angles
 
@@ -1420,7 +1422,7 @@ legend(x      = "bottomright",
 
 ## Butterflies
 
-We adapted a biophysical model for *Colias* that was developed and field validated by Kingsolver [-@kingsolver1983thermoregulation] to predict thoracic body temperature ($T_b$) based on thermoregulatory traits (body size, basal ventral hind wing solar absorptivity, and thoracic fur thickness), behavioral posture (basking and heat-avoidance), and environmental conditions. We briefly describe the model, which was updated and detailed in Buckley and Kingsolver [-@buckley2012demographic]. Adults behaviorally thermoregulate to achieve the body temperatures needed for flight and do not use endogenous heat production to elevate body temperatures. We assume that butterflies select the body temperature closest to their thermal optima (35°C) with available body temperatures bracketed by those in full sun (lateral basking posture with wings closed and the ventral hindwing surfaces oriented perpendicular to the sun) and full shade (no direct radiation). Assuming that butterflies select body temperatures bracketed by full sun and full shade eliminates the need to attempt to model microclimate availability in detail.
+We adapted a biophysical model for *Colias* that was developed and field validated by Kingsolver [-@kingsolver1983thermoregulation] to predict thoracic body temperature ($T_b, °C$) based on thermoregulatory traits (body size, basal ventral hind wing solar absorptivity, and thoracic fur thickness), behavioral posture (basking and heat-avoidance), and environmental conditions. We briefly describe the model, which was updated and detailed in Buckley and Kingsolver [-@buckley2012demographic]. Adults behaviorally thermoregulate to achieve the body temperatures needed for flight and do not use endogenous heat production to elevate body temperatures. We assume that butterflies select the body temperature closest to their thermal optima (35°C) with available body temperatures bracketed by those in full sun (lateral basking posture with wings closed and the ventral hindwing surfaces oriented perpendicular to the sun) and full shade (no direct radiation). Assuming that butterflies select body temperatures bracketed by full sun and full shade eliminates the need to attempt to model microclimate availability in detail.
 
 We describe the steady-state energy flux balance of a butterfly at rest on vegetation as $$Q_s= Q_t + Q_c,$$ where $Q_s$ is the total solar radiative heat flux ($W$), $Q_t$ is the thermal radiative heat flux ($W$), and $Q_c$ is the convective heat flux ($W$). Conduction of heat between the body and vegetation and evaporative heat loss are considered to be negligible. The solar radiative heat flux is 
 
@@ -1430,21 +1432,21 @@ where $Q_{s,dir}$,$Q_{s,dif}$,$Q_{s,ref}$ are the direct, diffuse, and reflected
 
 Thermal radiative flux including both downward radiation and reflected solar radiation is estimated as follows:
 
-$$Q_t= 0.5A_t \epsilon \sigma (T_b^4-T_{sky}^4)+0.5A_t \epsilon \sigma (T_b^4-T_g^4),$$
+$$Q_t= 0.5A_t \epsilon \sigma ((T_b+273.15)^4-(T_{sky}+273.15)^4)+0.5A_t \epsilon \sigma ((T_b+273.15)^4-(T_g+273.15)^4),$$
 
-where $A_t$ is the thermal radiative heat transfer surface area ($m^2$), $T_b$ is the body temperature ($K$), $T_g$ is the ground surface temperature ($K$), $T_{sky}$ is the equivalent black body sky temperature ($K$), $\epsilon$ is butterfly thermal emissivity, and $\sigma$ is the Stefan-Boltzmann constant ($5.67\times10^{-8} W m^{-2} K^{-4}$).
+where $A_t$ is the thermal radiative heat transfer surface area ($m^2$), $T_b$ is the body temperature ($C$), $T_g$ is the ground surface temperature ($C$), $T_{sky}$ is the equivalent black body sky temperature ($C$), $\epsilon$ is butterfly thermal emissivity, and $\sigma$ is the Stefan-Boltzmann constant ($5.67\times10^{-8} W m^{-2} C^{-4}$).
 
 The convective heat flux is given by: 
 
 $$Q_c= h_T A_c (T_b-T_a), $$ 
 
-where $A_c$ is the convective heat transfer surface area and $T_a$ is the air temperature ($C$). We assume $A_c=A_t= A_{s,ttl}$. The total convective heat transfer coefficient, $h_T Wm^{-2}K^{-1}$, is calculated as the boundary layer conductance $h_c Wm^{-2}C^{-1}$ and the fur layer conduction in series:
+where $A_c$ is the convective heat transfer surface area and $T_a$ is the air temperature ($C$). We assume $A_c=A_t= A_{s,ttl}$. The total convective heat transfer coefficient, $h_T Wm^{-2}C^{-1}$, is calculated as the boundary layer conductance $h_c Wm^{-2}C^{-1}$ and the fur layer conduction in series:
 
 $$1/h_T= 1/h_c+\frac{(r_i+\delta)ln[(r_i+\delta)/r_i]}{k_e} ,$$ 
 
 where $\delta$ is the thoracic fur thickness ($m$) and $k_e$ is the thermal conductivity of the fur ($Wm^{-1}C^{-1}$).
   
-The boundary layer conductance, $h_c$, can be estimated using the relationship between two non-dimensional numbers. The Nusselt number, $nu =h_c D/ka$, is the ratio of convective to conductive heat transfer, where $k_a$ is the thermal conductivity of air ($Wm^{-1}K^{-1}$). We used the maximum width of the mesothorax as the characteristic dimension of the butterfly, $D (m)$. The Reynolds number, $Re =uD/v$, is the ratio of inertial forces to viscous forces, where $u$ is wind speed ($m/s$) and $v$ is kinematic viscosity ($m^2/s$). We used the Nu-Re relation for a cylinder, $nu = 0.6Re^{0.5}$, which is a reasonable approximation for *Colias*. We estimate the energy flux balance to estimate $T_b$.
+The boundary layer conductance, $h_c$, can be estimated using the relationship between two non-dimensional numbers. The Nusselt number, $nu =h_c D/ka$, is the ratio of convective to conductive heat transfer, where $k_a$ is the thermal conductivity of air ($Wm^{-1}C^{-1}$). We used the maximum width of the mesothorax as the characteristic dimension of the butterfly, $D (m)$. The Reynolds number, $Re =uD/v$, is the ratio of inertial forces to viscous forces, where $u$ is wind speed ($m/s$) and $v$ is kinematic viscosity ($m^2/s$). We used the Nu-Re relation for a cylinder, $nu = 0.6Re^{0.5}$, which is a reasonable approximation for *Colias*. We estimate the energy flux balance to estimate $T_b$.
 
 We provide the operative temperature model for butterflies as follows:
 
@@ -1530,11 +1532,11 @@ We calculate the surface area by approximating the body of a female grasshopper 
 
 $$A =  2 \pi a^2+\frac{2 \pi a c}{e \arcsin{e}}.$$ The ratio of silhouette area to surface area of a grasshopper is a linear function of zenith angle: $A_s/A = 0.19-0.00173z$. Thus, $A_{s,dir}=A_{s,ref}=(0.19-0.00173z)A$. We partitioned the observed total radiation ($H_{s,ttl}$) into diffuse ($H_{s,dif}$) and direct ($H_{s,dir}$) components using the polynomial function of a clearness index, $k_t$, developed by Erbs et al. [-@erbs1982estimation].
 
-We estimate thermal radiative flux as the sum of radiation from the sky and ground. We assume that one half of the grasshopper's body is subject to atmospheric radiation and the other half is subject to thermal radiation from the ground surface. Thermal radiation is calculated using the Stefan-Boltzmann law, which states that radiative flux is proportional to the fourth power of the absolute temperature of a body. Here $T_b$ is the absolute body temperature, $T_g$ is the absolute ground surface temperature, and $T_{sky}$ is the equivalent black body sky temperature [$T_{sky}= 0.0552(T_a+273)^{1.5}$, [@swinbank1963long]]. The Stefan-Boltzmann constant ($\sigma$) characterizes the proportionality of this relationship. The thermal emissivity ($\epsilon$) accounts for incomplete absorption or emission of thermal radiation, but in this case, we assume that both the grasshopper and ground are perfect black bodies ($\epsilon= 1$). We account for the thermal radiative heat transfer surface area ($A_t=A$). The relationship is thus:
+We estimate thermal radiative flux as the sum of radiation from the sky and ground. We assume that one half of the grasshopper's body is subject to atmospheric radiation and the other half is subject to thermal radiation from the ground surface. Thermal radiation is calculated using the Stefan-Boltzmann law, which states that radiative flux is proportional to the fourth power of the absolute temperature of a body. Here $T_b$ is the body temperature (°C), $T_g$ is the ground surface temperature (°C), and $T_{sky}$ is the black body sky temperature (C) that corresponds to the air temperature [$T_{sky}= 0.0552(T_a+273.15)^{1.5}$, [@swinbank1963long]]. The Stefan-Boltzmann constant ($\sigma$) characterizes the proportionality of this relationship. The thermal emissivity ($\epsilon$) accounts for incomplete absorption or emission of thermal radiation, but in this case, we assume that both the grasshopper and ground are perfect black bodies ($\epsilon= 1$). We account for the thermal radiative heat transfer surface area ($A_t=A$). The relationship is thus:
 
-$$Q_t= 0.5A_t \epsilon \sigma (T_b^4-T_{sky}^4)+0.5A_t \epsilon \sigma (T_b^4-T_g^4).$$
+$$Q_t= 0.5A_t \epsilon \sigma ((T_b+273.15)^4-T_{sky}^4)+0.5A_t \epsilon \sigma ((T_b+273.15)^4-(T_g+273.15)^4).$$
 
-Convective heat flux is estimated as the product of the convective heat transfer coefficient in turbulent air $h_{cs} (Wm^{-2}K^{-1})$, the grasshopper's surface area exposed to convective heat flux ($A_c=A$), and the temperature difference between the grasshopper's body temperature $T_b$ and air temperature $T_a$:
+Convective heat flux is estimated as the product of the convective heat transfer coefficient in turbulent air $h_{cs} (Wm^{-2}C^{-1})$, the grasshopper's surface area exposed to convective heat flux ($A_c=A$), and the temperature difference between the grasshopper's body temperature $T_b$ and air temperature $T_a$:
 
 $$Q_c= h_{hc} A_c (T_b-T_a).$$ 
 
