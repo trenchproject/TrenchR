@@ -90,7 +90,7 @@
       <h1 data-toc-skip>Using energy balances to estimate body temperatures</h1>
                         <h4 data-toc-skip class="author">Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington</h4>
             
-            <h4 data-toc-skip class="date">2022-10-19</h4>
+            <h4 data-toc-skip class="date">2022-10-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/trenchproject/TrenchR/blob/HEAD/vignettes/TeTutorial.Rmd" class="external-link"><code>vignettes/TeTutorial.Rmd</code></a></small>
       <div class="hidden name"><code>TeTutorial.Rmd</code></div>
@@ -102,7 +102,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load TrenchR package</span></span>
 <span></span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://trenchproject.github.io/TrenchR/">TrenchR</a></span><span class="op">)</span></span></code></pre></div>
+<span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://trenchproject.github.io/TrenchR/">TrenchR</a></span><span class="op">)</span></span></code></pre></div>
 <p>This tutorial covers how to construct energy balances for applications such as estimating the body temperature of organisms. The tutorial first reviews general functions to estimate forms of heat exchange and balance the exchanges. Finally, we present functions to implement specialized energy balances for particular organisms.</p>
 <div class="section level2">
 <h2 id="operative-environmental-temperatures">Operative environmental temperatures<a class="anchor" aria-label="anchor" href="#operative-environmental-temperatures"></a>
@@ -185,65 +185,62 @@
 <div class="section level2">
 <h2 id="thermal-radiation-qemit">Thermal radiation, Qemit<a class="anchor" aria-label="anchor" href="#thermal-radiation-qemit"></a>
 </h2>
-<p>The net rate of emission of thermal radiation from the surface of an animal, <span class="math inline">\(Q_{emit} (W)\)</span>, is determined by the difference between the surface temperature of the animal <span class="math inline">\(T_b (K)\)</span> and the temperatures of the air <span class="math inline">\(T_a (K)\)</span> and of the ground <span class="math inline">\(T_g (K)\)</span>. <span class="math inline">\(T_a\)</span> is additionally used to estimate sky temperature <span class="math inline">\(T_{sky} (C)\)</span>, the effective radiant temperature of the sky as <span class="math inline">\(T_{sky}= 1.22\times (T_a-273.15)-20.4+273.15\)</span> <span class="citation">(Gates 2012)</span>. The following expressions can be used to estimate <span class="math inline">\(Q_{emit} (W)\)</span> for animals in enclosed and open environments, respectively: <span class="math display">\[
+<p>The net rate of emission of thermal radiation from the surface of an animal, <span class="math inline">\(Q_{emit} (W)\)</span>, is determined by the difference between the surface temperature of the animal <span class="math inline">\(T_b (K)\)</span> and the temperatures of the air <span class="math inline">\(T_a (K)\)</span> and of the ground <span class="math inline">\(T_g (K)\)</span>. <span class="math inline">\(T_a\)</span> is additionally used to estimate sky temperature <span class="math inline">\(T_{sky} (K)\)</span>, the effective radiant temperature of the sky as <span class="math inline">\(T_{sky}= 1.22\times (T_a-273.15)-20.4+273.15\)</span> <span class="citation">(Gates 2012)</span>. The following expressions can be used to estimate <span class="math inline">\(Q_{emit} (W)\)</span> for animals in enclosed and open environments, respectively: <span class="math display">\[
 enclosed: Q_{emit}= A_r \epsilon \sigma (T_b^4 - T_a^4)\\
 open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 \]</span></p>
 <p>where <span class="math inline">\(A_s\)</span> and <span class="math inline">\(A_r\)</span> are the areas (<span class="math inline">\(m^2\)</span>) exposed to the sky (or enclosure) and the ground, respectively; <span class="math inline">\(\epsilon\)</span> is the longwave infrared emissivity of skin [proportion, 0.95 to 1 for most animals <span class="citation">(Gates 2012)</span>]; and <span class="math inline">\(\sigma\)</span> is the Stefan-Boltzmann constant (<span class="math inline">\(5.673\times10^{-8} W m^{-2} K^{-4}\)</span>).</p>
 <p>The function is available in R as follows:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
 <span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/Qemitted_thermal_radiation.html">Qemitted_thermal_radiation</a></span><span class="op">(</span>epsilon  <span class="op">=</span> <span class="fl">0.96</span>, </span>
 <span>                                       A        <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                                       psa_dir  <span class="op">=</span> <span class="fl">0.4</span>, </span>
 <span>                                       psa_ref  <span class="op">=</span> <span class="fl">0.6</span>,  </span>
-<span>                                       T_b      <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>,  </span>
-<span>                                       T_g      <span class="op">=</span> <span class="fl">20</span>,  </span>
-<span>                                       T_a      <span class="op">=</span> <span class="fl">25</span>,  </span>
+<span>                                       T_b      <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>,  </span>
+<span>                                       T_g      <span class="op">=</span> <span class="fl">293</span>,  </span>
+<span>                                       T_a      <span class="op">=</span> <span class="fl">298</span>,  </span>
 <span>                                       enclosed <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>, </span>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
-<span>     xlab <span class="op">=</span> <span class="st">"body surface temperature, Tb (C)"</span>, </span>
+<span>     xlab <span class="op">=</span> <span class="st">"body surface temperature, Tb (K)"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="st">"emitted thermal radiation, Qemit (W)"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
 <span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qemitted_thermal_radiation.html">Qemitted_thermal_radiation</a></span><span class="op">(</span>epsilon  <span class="op">=</span> <span class="fl">0.96</span>, </span>
 <span>                                         A        <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                                         psa_dir  <span class="op">=</span> <span class="fl">0.2</span>, </span>
 <span>                                         psa_ref  <span class="op">=</span> <span class="fl">0.8</span>, </span>
-<span>                                         T_b      <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
-<span>                                         T_g      <span class="op">=</span> <span class="fl">20</span>, </span>
-<span>                                         T_a      <span class="op">=</span> <span class="fl">25</span>, </span>
+<span>                                         T_b      <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
+<span>                                         T_g      <span class="op">=</span> <span class="fl">293</span>, </span>
+<span>                                         T_a      <span class="op">=</span> <span class="fl">298</span>, </span>
 <span>                                         enclosed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
 <span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qemitted_thermal_radiation.html">Qemitted_thermal_radiation</a></span><span class="op">(</span>epsilon  <span class="op">=</span> <span class="fl">0.96</span>,</span>
 <span>                                         A        <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>                                         psa_dir  <span class="op">=</span> <span class="fl">0.4</span>, </span>
 <span>                                         psa_ref  <span class="op">=</span> <span class="fl">0.8</span>, </span>
-<span>                                         T_b      <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
-<span>                                         T_g      <span class="op">=</span> <span class="fl">20</span>, </span>
-<span>                                         T_a      <span class="op">=</span> <span class="fl">25</span>, </span>
+<span>                                         T_b      <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
+<span>                                         T_g      <span class="op">=</span> <span class="fl">283</span>, </span>
+<span>                                         T_a      <span class="op">=</span> <span class="fl">298</span>, </span>
 <span>                                         enclosed <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
 <span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qemitted_thermal_radiation.html">Qemitted_thermal_radiation</a></span><span class="op">(</span>epsilon<span class="op">=</span> <span class="fl">0.96</span>, </span>
 <span>                                         A <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                                         psa_dir <span class="op">=</span> <span class="fl">0.2</span>, </span>
 <span>                                         psa_ref <span class="op">=</span> <span class="fl">0.6</span>, </span>
-<span>                                         T_b      <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
-<span>                                         T_g      <span class="op">=</span> <span class="fl">20</span>, </span>
-<span>                                         T_a      <span class="op">=</span> <span class="fl">25</span>, </span>
+<span>                                         T_b      <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
+<span>                                         T_g      <span class="op">=</span> <span class="fl">283</span>, </span>
+<span>                                         T_a      <span class="op">=</span> <span class="fl">298</span>, </span>
 <span>                                         enclosed <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dotdash"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span>x      <span class="op">=</span> <span class="st">"topleft"</span>, </span>
 <span>       title  <span class="op">=</span> <span class="st">"parameters"</span>, </span>
-<span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"psa_dir= 0.4, T_g = 20"</span>, <span class="st">"psa_dir= 0.2, T_g = 20"</span>, <span class="st">"psa_dir= 0.4, T_g = 10"</span>, <span class="st">"psa_dir= 0.2, T_g = 10"</span><span class="op">)</span>, </span>
+<span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"psa_dir= 0.4, T_g = 293"</span>, <span class="st">"psa_dir= 0.2, T_g = 293"</span>, <span class="st">"psa_dir= 0.4, T_g = 283"</span>, <span class="st">"psa_dir= 0.2, T_g = 283"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="TeTutorial_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
 </div>
@@ -254,37 +251,34 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <p><span class="math display">\[Q_{conv}= ef\cdot H_L(A\cdot \mbox{proportion})(T_a-T_b).\]</span></p>
 <p>The function is available in R:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
-<span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconvection.html">Qconvection</a></span><span class="op">(</span>T_a        <span class="op">=</span> <span class="fl">30</span>,</span>
-<span>                        T_b        <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>,</span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
+<span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconvection.html">Qconvection</a></span><span class="op">(</span>T_a        <span class="op">=</span> <span class="fl">303</span>,</span>
+<span>                        T_b        <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>,</span>
 <span>                        H          <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>                        A          <span class="op">=</span> <span class="fl">0.0025</span>, </span>
 <span>                        proportion <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span>, </span>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
-<span>     xlab <span class="op">=</span> <span class="st">"ground temperature (C)"</span>, </span>
+<span>     xlab <span class="op">=</span> <span class="st">"ground temperature (K)"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="st">"Q convection (W)"</span><span class="op">)</span></span>
-<span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
-<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconvection.html">Qconvection</a></span><span class="op">(</span>T_a        <span class="op">=</span> <span class="fl">30</span>,</span>
-<span>                          T_b        <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>,</span>
+<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconvection.html">Qconvection</a></span><span class="op">(</span>T_a        <span class="op">=</span> <span class="fl">303</span>,</span>
+<span>                          T_b        <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>,</span>
 <span>                          H          <span class="op">=</span> <span class="fl">15</span>,</span>
 <span>                          A          <span class="op">=</span> <span class="fl">0.0025</span>,</span>
 <span>                          proportion <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>,</span>
 <span>       lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
-<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconvection.html">Qconvection</a></span><span class="op">(</span>T_a        <span class="op">=</span> <span class="fl">30</span>,</span>
-<span>                          T_b        <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
+<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconvection.html">Qconvection</a></span><span class="op">(</span>T_a        <span class="op">=</span> <span class="fl">303</span>,</span>
+<span>                          T_b        <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>,</span>
 <span>                          H          <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>                          A          <span class="op">=</span> <span class="fl">0.0025</span>,</span>
 <span>                          proportion <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>,</span>
 <span>       lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
-<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconvection.html">Qconvection</a></span><span class="op">(</span>T_a        <span class="op">=</span> <span class="fl">30</span>,</span>
-<span>                          T_b        <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
+<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconvection.html">Qconvection</a></span><span class="op">(</span>T_a        <span class="op">=</span> <span class="fl">303</span>,</span>
+<span>                          T_b        <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>,</span>
 <span>                          H          <span class="op">=</span> <span class="fl">15</span>,</span>
 <span>                          A          <span class="op">=</span> <span class="fl">0.0025</span>,</span>
 <span>                          proportion <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span>, </span>
@@ -692,39 +686,36 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <p><span class="math display">\[Q_{cond} = A\cdot \mbox{proportion} \cdot (2K_g/D)(T_b-T_g),\]</span></p>
 <p>where <span class="math inline">\(K_g\)</span> is the thermal conductivity of substrate (<span class="math inline">\(W K^{-1} m^{-1}\)</span>) and <span class="math inline">\(D\)</span> is the characteristic dimension of the animal (<span class="math inline">\(m\)</span>). The functions are available in R:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
-<span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_animal.html">Qconduction_animal</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>,</span>
-<span>                               T_b        <span class="op">=</span> <span class="fl">30</span>,</span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
+<span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_animal.html">Qconduction_animal</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>,</span>
+<span>                               T_b        <span class="op">=</span> <span class="fl">303</span>,</span>
 <span>                               d          <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">-</span><span class="fl">6</span>,</span>
 <span>                               K          <span class="op">=</span> <span class="fl">0.3</span>,</span>
 <span>                               A          <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">-</span><span class="fl">3</span>,</span>
 <span>                               proportion <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span>, </span>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
-<span>     xlab <span class="op">=</span> <span class="st">"ground temperature (C)"</span>, ylab <span class="op">=</span> <span class="st">"Q conductance (W)"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
-<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_animal.html">Qconduction_animal</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>,</span>
-<span>                                 T_b        <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>     xlab <span class="op">=</span> <span class="st">"ground temperature (K)"</span>, ylab <span class="op">=</span> <span class="st">"Q conductance (W)"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
+<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_animal.html">Qconduction_animal</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>,</span>
+<span>                                 T_b        <span class="op">=</span> <span class="fl">303</span>,</span>
 <span>                                 d          <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">-</span><span class="fl">6</span>,</span>
 <span>                                 K          <span class="op">=</span> <span class="fl">0.5</span>,</span>
 <span>                                 A          <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">-</span><span class="fl">3</span>,</span>
 <span>                                 proportion <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
-<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_animal.html">Qconduction_animal</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>,</span>
-<span>                                 T_b        <span class="op">=</span> <span class="fl">30</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
+<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_animal.html">Qconduction_animal</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>,</span>
+<span>                                 T_b        <span class="op">=</span> <span class="fl">303</span>,</span>
 <span>                                 d          <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">-</span><span class="fl">6</span>,</span>
 <span>                                 K          <span class="op">=</span> <span class="fl">0.3</span>,</span>
 <span>                                 A          <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">-</span><span class="fl">3</span>,</span>
 <span>                                 proportion <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
-<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_animal.html">Qconduction_animal</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>,</span>
-<span>                                 T_b        <span class="op">=</span> <span class="fl">30</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
+<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_animal.html">Qconduction_animal</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>,</span>
+<span>                                 T_b        <span class="op">=</span> <span class="fl">303</span>,</span>
 <span>                                 d          <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">-</span><span class="fl">6</span>,</span>
 <span>                                 K          <span class="op">=</span> <span class="fl">0.5</span>,</span>
 <span>                                 A          <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">-</span><span class="fl">3</span>,</span>
@@ -738,40 +729,37 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="TeTutorial_files/figure-html/unnamed-chunk-16-1.png" width="576"></p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
-<span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_substrate.html">Qconduction_substrate</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>,</span>
-<span>                                  T_b        <span class="op">=</span> <span class="fl">30</span>,</span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
+<span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_substrate.html">Qconduction_substrate</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>,</span>
+<span>                                  T_b        <span class="op">=</span> <span class="fl">303</span>,</span>
 <span>                                  D          <span class="op">=</span> <span class="fl">0.01</span>,</span>
 <span>                                  K_g        <span class="op">=</span> <span class="fl">0.3</span>,</span>
 <span>                                  A          <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">-</span><span class="fl">2</span>,</span>
 <span>                                  proportion <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span>, </span>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
-<span>     xlab <span class="op">=</span> <span class="st">"ground temperature (C)"</span>, </span>
+<span>     xlab <span class="op">=</span> <span class="st">"ground temperature (K)"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="st">"Q conductance (W)"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
-<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_substrate.html">Qconduction_substrate</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>,</span>
-<span>                                    T_b        <span class="op">=</span> <span class="fl">30</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
+<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_substrate.html">Qconduction_substrate</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>,</span>
+<span>                                    T_b        <span class="op">=</span> <span class="fl">303</span>,</span>
 <span>                                    D          <span class="op">=</span> <span class="fl">0.01</span>,</span>
 <span>                                    K_g        <span class="op">=</span> <span class="fl">0.5</span>,</span>
 <span>                                    A          <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">-</span><span class="fl">2</span>,</span>
 <span>                                    proportion <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
-<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_substrate.html">Qconduction_substrate</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>,</span>
-<span>                                    T_b        <span class="op">=</span> <span class="fl">30</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
+<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_substrate.html">Qconduction_substrate</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>,</span>
+<span>                                    T_b        <span class="op">=</span> <span class="fl">303</span>,</span>
 <span>                                    D          <span class="op">=</span> <span class="fl">0.01</span>,</span>
 <span>                                    K_g        <span class="op">=</span> <span class="fl">0.3</span>,</span>
 <span>                                    A          <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">-</span><span class="fl">2</span>,</span>
 <span>                                    proportion <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
-<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_substrate.html">Qconduction_substrate</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>,</span>
-<span>                                    T_b        <span class="op">=</span> <span class="fl">30</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
+<span>       y    <span class="op">=</span> <span class="fu"><a href="../reference/Qconduction_substrate.html">Qconduction_substrate</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>,</span>
+<span>                                    T_b        <span class="op">=</span> <span class="fl">303</span>,</span>
 <span>                                    D          <span class="op">=</span> <span class="fl">0.01</span>,</span>
 <span>                                    K_g        <span class="op">=</span> <span class="fl">0.5</span>,</span>
 <span>                                    A          <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">-</span><span class="fl">2</span>,</span>
@@ -899,7 +887,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># kPa</span></span>
 <span></span>
-<span>  <span class="va">vp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/saturation_vapor_pressure.html">saturation_vapor_pressure</a></span><span class="op">(</span><span class="fl">20</span><span class="op">:</span><span class="fl">40</span><span class="op">)</span></span>
+<span>  <span class="va">vp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/saturation_vapor_pressure.html">saturation_vapor_pressure</a></span><span class="op">(</span><span class="fl">293</span><span class="op">:</span><span class="fl">313</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># convert to kg/m^3</span></span>
 <span></span>
@@ -907,14 +895,14 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span></span>
 <span><span class="co"># kPa</span></span>
 <span></span>
-<span>  <span class="va">vp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/saturation_vapor_pressure.html">saturation_vapor_pressure</a></span><span class="op">(</span><span class="fl">20</span><span class="op">:</span><span class="fl">40</span><span class="op">-</span><span class="fl">10</span><span class="op">)</span></span>
+<span>  <span class="va">vp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/saturation_vapor_pressure.html">saturation_vapor_pressure</a></span><span class="op">(</span><span class="fl">293</span><span class="op">:</span><span class="fl">313</span><span class="op">-</span><span class="fl">10</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># convert to kg/m^3</span></span>
 <span></span>
 <span>  <span class="va">e_a</span> <span class="op">&lt;-</span>  <span class="va">vp</span> <span class="op">*</span> <span class="fl">0.032</span> </span>
 <span></span>
 <span></span>
-<span><span class="va">temps</span>      <span class="op">&lt;-</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span></span>
+<span><span class="va">temps</span>      <span class="op">&lt;-</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span></span>
 <span><span class="va">Qevaps</span>     <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="fl">21</span><span class="op">)</span></span>
 <span><span class="va">Qevaps_wet</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="fl">21</span><span class="op">)</span></span>
 <span></span>
@@ -941,7 +929,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="va">temps</span>, </span>
 <span>     y    <span class="op">=</span> <span class="va">Qevaps</span>, </span>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
-<span>     xlab <span class="op">=</span> <span class="st">"body temperature (C)"</span>, </span>
+<span>     xlab <span class="op">=</span> <span class="st">"body temperature (K)"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="st">"evaporative heat loss (W)"</span>, </span>
 <span>     lty  <span class="op">=</span> <span class="st">"dashed"</span>, </span>
 <span>     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">400</span><span class="op">)</span><span class="op">)</span></span>
@@ -951,12 +939,12 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">Qevap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
+<span><span class="va">Qevap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
 <span>                       FUN  <span class="op">=</span> <span class="va">Qevaporation</span>, </span>
 <span>                       A <span class="op">=</span> <span class="fl">0.1</span>,  </span>
 <span>                       taxon <span class="op">=</span> <span class="st">"lizard"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
 <span>       y    <span class="op">=</span> <span class="va">Qevap</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span> <span class="op">)</span></span>
 <span></span>
@@ -1917,11 +1905,11 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <p>We convert skin and boundary layer resistance for vapor to conductance by multiplying the values by 100 to convert to <span class="math inline">\(s\:m^{-2}\)</span> and then dividing by 41.1 <span class="math inline">\(mol\:m^{-3}\)</span>. The boundary layer conductance for heat is calculated as <span class="math inline">\(g_{Ha}= 1.4*0.135*sqrt(u/d)\)</span>, where <span class="math inline">\(u\)</span> is the wind speed <span class="math inline">\((m/s)\)</span> and <span class="math inline">\(d\)</span> is the characteristic dimension <span class="math inline">\((m)\)</span>. We use a wind speed 0.1 m/s in our calculations of <span class="math inline">\(g_{Ha}\)</span> to mimic still air near the ground <span class="citation">(Campbell and Norman 2012)</span>, and for <span class="math inline">\(D\)</span> the cross-sectional diameter of a cylinder approximating the size of a salamander. Boundary layer resistance can be estimated as follows.</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>,  <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">blr.seq</span><span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, FUN<span class="op">=</span><span class="va">boundary_layer_resistance</span>, e_s<span class="op">=</span> <span class="fl">2.5</span>, e_a <span class="op">=</span> <span class="fl">2.3</span>, elev <span class="op">=</span> <span class="fl">500</span>, D <span class="op">=</span> <span class="fl">0.007</span>, u <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">20</span><span class="op">:</span><span class="fl">40</span>, </span>
+<span><span class="va">blr.seq</span><span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, FUN<span class="op">=</span><span class="va">boundary_layer_resistance</span>, e_s<span class="op">=</span> <span class="fl">2.5</span>, e_a <span class="op">=</span> <span class="fl">2.3</span>, elev <span class="op">=</span> <span class="fl">500</span>, D <span class="op">=</span> <span class="fl">0.007</span>, u <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">293</span><span class="op">:</span><span class="fl">313</span>, </span>
 <span>     y    <span class="op">=</span> <span class="va">blr.seq</span>, </span>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
-<span>     xlab <span class="op">=</span> <span class="st">"air temperature (C)"</span>, </span>
+<span>     xlab <span class="op">=</span> <span class="st">"air temperature (K)"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"boundary layer resistance"</span> <span class="op">~</span> <span class="op">(</span><span class="va">s</span> <span class="op">~</span> <span class="va">cm</span><span class="op">^</span><span class="op">{</span><span class="op">-</span><span class="fl">1</span><span class="op">}</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="TeTutorial_files/figure-html/unnamed-chunk-34-1.png" width="384"></p>
 <p>TrenchR includes several support functions, often adapted from Campbell and Norman <span class="citation">(2012)</span>, used for estimating humid operative temperatures. Functions estimate thermal radiation absorbed (<code>thermal_radiation_absorbed</code>) and emitted (<code>Qemitted_thermal_radiation</code>) as well as actual (<code>actual_vapor_pressure</code>) and saturation (<code>saturation_vapor_pressure</code>) vapor pressure. The functions also include a statistical approximation from Campbell and Norman <span class="citation">(2012)</span> for estimating soil temperatures at specified depths.</p>
@@ -2409,9 +2397,9 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span>                                          A        <span class="op">=</span> <span class="va">A</span>, </span>
 <span>                                          psa_dir  <span class="op">=</span> <span class="va">psa</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>, </span>
 <span>                                          psa_ref  <span class="op">=</span> <span class="fl">1</span><span class="op">-</span><span class="va">psa</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>, </span>
-<span>                                          T_b      <span class="op">=</span> <span class="va">Te</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>, </span>
-<span>                                          T_g      <span class="op">=</span> <span class="va">Ts</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>, </span>
-<span>                                          T_a      <span class="op">=</span> <span class="va">Ta</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>, </span>
+<span>                                          T_b      <span class="op">=</span> <span class="va">Te</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">+</span> <span class="fl">273</span>, </span>
+<span>                                          T_g      <span class="op">=</span> <span class="va">Ts</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">+</span> <span class="fl">273</span>, </span>
+<span>                                          T_a      <span class="op">=</span> <span class="va">Ta</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">+</span> <span class="fl">273</span>, </span>
 <span>                                          enclosed <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>We next estimate convection <span class="math inline">\(Q_{conv}\)</span> and conduction <span class="math inline">\(Q_{cond}\)</span>. We estimate convective heat exchange between the animal and surrounding air using the following relationship:</p>
@@ -2422,8 +2410,8 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <code class="sourceCode R"><span><span class="va">Qconv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">24</span><span class="op">)</span></span>
 <span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">hr</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">Qconv</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Qconvection.html">Qconvection</a></span><span class="op">(</span>T_a        <span class="op">=</span> <span class="va">Ta</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>,</span>
-<span>                           T_b        <span class="op">=</span> <span class="va">Te</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>,</span>
+<span>  <span class="va">Qconv</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Qconvection.html">Qconvection</a></span><span class="op">(</span>T_a        <span class="op">=</span> <span class="va">Ta</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">+</span> <span class="fl">273.15</span>,</span>
+<span>                           T_b        <span class="op">=</span> <span class="va">Te</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">+</span> <span class="fl">273.15</span>,</span>
 <span>                           H          <span class="op">=</span> <span class="va">H_L</span>,</span>
 <span>                           A          <span class="op">=</span> <span class="va">A</span>, </span>
 <span>                           proportion <span class="op">=</span> <span class="fl">0.67</span>, </span>
@@ -2436,8 +2424,8 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <code class="sourceCode R"><span><span class="va">Qcond</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">24</span><span class="op">)</span></span>
 <span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">hr</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">Qcond</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Qconduction_animal.html">Qconduction_animal</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="va">Ts</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>,</span>
-<span>                                  T_b        <span class="op">=</span> <span class="va">Te</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>,</span>
+<span>  <span class="va">Qcond</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Qconduction_animal.html">Qconduction_animal</a></span><span class="op">(</span>T_g        <span class="op">=</span> <span class="va">Ts</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">+</span> <span class="fl">273</span>,</span>
+<span>                                  T_b        <span class="op">=</span> <span class="va">Te</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">+</span> <span class="fl">273</span>,</span>
 <span>                                  d          <span class="op">=</span> <span class="va">svl</span> <span class="op">/</span> <span class="fl">3</span>,</span>
 <span>                                  K          <span class="op">=</span> <span class="fl">0.5</span>,</span>
 <span>                                  A          <span class="op">=</span> <span class="va">A</span>, </span>
