@@ -11,6 +11,7 @@ Qemitted_thermal_radiation(
   psa_ref,
   T_b,
   T_g,
+  T_sky = NA,
   T_a,
   enclosed = FALSE
 )
@@ -20,15 +21,17 @@ Qemitted_thermal_radiation(
 
 \item{A}{\code{numeric} surface area ((\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
-\item{psa_dir}{\code{numeric} proportion surface area exposed to sky (or enclosure) (0-1)}
+\item{psa_dir}{\code{numeric} view factor indicating the proportion of surface area exposed to sky (or enclosure) (0-1)}
 
-\item{psa_ref}{\code{numeric} proportion surface area exposed to ground (0-1).}
+\item{psa_ref}{\code{numeric} view factor indicating the proportion surface area exposed to ground (0-1).}
 
-\item{T_b}{\code{numeric} body surface temperature (C).}
+\item{T_b}{\code{numeric} body surface temperature (K).}
 
-\item{T_g}{\code{numeric} ground surface temperature (C).}
+\item{T_g}{\code{numeric} ground surface temperature (K).}
 
-\item{T_a}{\code{numeric} ambient air temperature (C), only required if the animal is in an enclosed environment.}
+\item{T_sky}{\code{numeric} Estimate effective radiant temperature of sky (K)}
+
+\item{T_a}{\code{numeric} ambient air temperature (K), only required if the animal is in an enclosed environment.}
 
 \item{enclosed}{\code{logical} whether the animal is an enclosed environment or not.}
 }
@@ -36,16 +39,16 @@ Qemitted_thermal_radiation(
 \code{numeric} emitted thermal radiation, \code{Qemit} (W).
 }
 \description{
-The function estimates thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980,Spotila1992}{TrenchR}.
+The function estimates the net thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980,Spotila1992}{TrenchR}.
 }
 \examples{
   Qemitted_thermal_radiation(epsilon  = 0.96,
                              A        = 1,
                              psa_dir  = 0.4,
-                             psa_ref  = 0.6,
-                             T_b      = 30,
-                             T_g      = 20,
-                             T_a      = 25,
+                             psa_ref  = 0.5,
+                             T_b      = 303,
+                             T_g      = 293,
+                             T_a      = 298,
                              enclosed = FALSE)
 
 }

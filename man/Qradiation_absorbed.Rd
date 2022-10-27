@@ -8,6 +8,7 @@ Qradiation_absorbed(
   a = 0.9,
   A,
   psa_dir,
+  psa_dif,
   psa_ref,
   S_dir,
   S_dif,
@@ -20,7 +21,9 @@ Qradiation_absorbed(
 
 \item{A}{\code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
-\item{psa_dir}{\code{numeric} proportion surface area exposed to solar radiation (0-1).}
+\item{psa_dir}{\code{numeric} proportion surface area exposed to direct solar radiation (0-1).}
+
+\item{psa_dif}{\code{numeric} proportion surface area exposed to diffuse solar radiation (0-1).}
 
 \item{psa_ref}{\code{numeric} proportion surface area exposed to reflected solar radiation (0-1).}
 

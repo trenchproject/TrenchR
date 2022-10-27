@@ -13,7 +13,7 @@ zenith_angle(doy, lat, lon, hour, offset = NA)
 
 \item{lon}{\code{numeric} longitude (decimal degrees).}
 
-\item{hour}{\code{numeric} hour of the day.}
+\item{hour}{\code{numeric} hour of the day (0-24).}
 
 \item{offset}{\code{numeric} the number of hours to add to UTC (Coordinated Universal Time) to get local time (improves accuracy but not always necessary). Optional. Defaults to NA.}
 }

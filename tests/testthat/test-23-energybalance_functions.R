@@ -33,7 +33,7 @@ test_that("heat_transfer_coefficient_simple function works as expected", {
 })
 
 test_that("Qradiation_absorbed function works as expected", {
-  expect_equal(Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_ref=0.4, S_dir=1000, S_dif=200, rho=0.5), 612)
+  expect_equal(Qradiation_absorbed(a=0.9, A=1, psa_dir=0.4, psa_dif=0.5, psa_ref=0.5, S_dir=1000, S_dif=200, rho=0.5), 675)
 })
 
 test_that("Qemitted_thermal_radiation function works as expected", {

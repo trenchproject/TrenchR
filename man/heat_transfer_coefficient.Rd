@@ -11,7 +11,7 @@ heat_transfer_coefficient(u, D, K, nu, taxon = "cylinder")
 
 \item{D}{\code{numeric} characteristic dimension (e.g., diameter or snout-vent length) (meters).}
 
-\item{K}{\code{numeric} thermal conductivity of air (\ifelse{html}{\out{W C<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W C^-1 m^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
+\item{K}{\code{numeric} thermal conductivity of air (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
 
 \item{nu}{\code{numeric} kinematic viscosity of air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}}), can calculate using \code{\link{DRYAIR}} or \code{\link{WETAIR}}.}
 

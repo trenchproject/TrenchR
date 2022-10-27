@@ -7,13 +7,13 @@
 Qconduction_substrate(T_g, T_b, D, K_g = 0.5, A, proportion)
 }
 \arguments{
-\item{T_g}{\code{numeric} surface temperature (C).}
+\item{T_g}{\code{numeric} surface temperature (K).}
 
-\item{T_b}{\code{numeric} body temperature (C).}
+\item{T_b}{\code{numeric} body temperature (K).}
 
 \item{D}{\code{numeric} characteristic dimension of the animal (m).}
 
-\item{K_g}{\code{numeric} thermal conductivity of substrate (\ifelse{html}{\out{W C<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W C^-1 m^-1}{ASCII}}).}
+\item{K_g}{\code{numeric} thermal conductivity of substrate (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}}).}
 
 \item{A}{\code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
@@ -26,8 +26,8 @@ Qconduction_substrate(T_g, T_b, D, K_g = 0.5, A, proportion)
 The function calculates conductance (W) of an ectothermic animal to its substrate. The method assumes the major resistance to conduction is the substrate and that the interior of the animal is equal in temperature to its surface (thermally well mixed) \insertCite{Spotila1992}{TrenchR}.
 }
 \examples{
-  Qconduction_substrate(T_g        = 20,
-                        T_b        = 30,
+  Qconduction_substrate(T_g        = 293,
+                        T_b        = 303,
                         D          = 0.01,
                         K_g        = 0.3,
                         A          = 10^-2,

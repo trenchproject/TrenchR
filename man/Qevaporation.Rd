@@ -9,7 +9,7 @@ Qevaporation(A, T_b, taxon, e_s = NA, e_a = NA, hp = NA, H = NA, r_i = NA)
 \arguments{
 \item{A}{\code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).}
 
-\item{T_b}{\code{numeric} body temperature (C).}
+\item{T_b}{\code{numeric} body temperature (K).}
 
 \item{taxon}{\code{character} organism type. Current choices: \code{"lizard"}, \code{"amphibian_wetskin"} (fully wet skin), \code{"amphibian"} (not fully wet skin).}
 
@@ -31,7 +31,7 @@ The function estimates heat loss associated with evaporative water loss for an a
 }
 \examples{
   Qevaporation(A      = 0.1,
-               T_b    = 20,
+               T_b    = 293,
                taxon = "amphibian",
                e_s = 0.003,
                e_a = 0.002,
@@ -39,7 +39,7 @@ The function estimates heat loss associated with evaporative water loss for an a
                H     = 20,
                r_i   = 50)
   Qevaporation(A     = 0.1,
-               T_b   = 20,
+               T_b   = 293,
                taxon = "lizard")
 
 }

@@ -7,7 +7,7 @@
 boundary_layer_resistance(T_a, e_s, e_a, elev, D, u = NA)
 }
 \arguments{
-\item{T_a}{\code{numeric} air temperature (C).}
+\item{T_a}{\code{numeric} air temperature (K).}
 
 \item{e_s}{\code{numeric} saturation vapor pressure (kPa).}
 
@@ -26,7 +26,7 @@ boundary_layer_resistance(T_a, e_s, e_a, elev, D, u = NA)
 The function estimates boundary layer resistance under free convection based on the function in \insertCite{Riddell2018;textual}{TrenchR}.
 }
 \examples{
-  boundary_layer_resistance(T_a  = 0,
+  boundary_layer_resistance(T_a  = 293,
                             e_s  = 2.5,
                             e_a  = 2.0,
                             elev = 500,

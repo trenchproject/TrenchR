@@ -25,9 +25,9 @@ Tb_Gates(
 
 \item{D}{\code{numeric} characteristic dimension for conduction (meters).}
 
-\item{psa_dir}{\code{numeric} proportion surface area exposed to direct radiation from the sky (or enclosure) (0-1).}
+\item{psa_dir}{\code{numeric} view factor for the proportion surface area exposed to direct radiation from the sky (or enclosure) (0-1).}
 
-\item{psa_ref}{\code{numeric} proportion surface area exposed to reflected radiation from the ground (0-1).}
+\item{psa_ref}{\code{numeric} view factor for proportion surface area exposed to reflected radiation from the ground (0-1).}
 
 \item{psa_air}{\code{numeric} proportion surface area exposed to air (0-1).}
 
@@ -54,12 +54,12 @@ Tb_Gates(
 The function predicts body temperatures (C, operative environmental temperature) of an ectotherm using the approximation in \insertCite{Gates1980;textual}{TrenchR}. The functions omits evaporative and metabolic heat loss \insertCite{Mitchell1976,Kingsolver1983}{TrenchR}.
 }
 \examples{
- Tb_Gates (A       = 1, 
-           D       = 0.001, 
+ Tb_Gates (A       = 0.1, 
+           D       = 0.025, 
            psa_dir = 0.6, 
            psa_ref = 0.4, 
-           psa_air = 0.6, 
-           psa_g   = 0.2, 
+           psa_air = 0.5, 
+           psa_g   = 0.1, 
            T_g     = 30, 
            T_a     = 37, 
            Qabs    = 2, 

@@ -500,7 +500,7 @@ T_sky <- function (T_a, formula) {
 #'   Qemitted_thermal_radiation(epsilon  = 0.96,
 #'                              A        = 1,
 #'                              psa_dir  = 0.4,
-#'                              psa_ref  = 0.6,
+#'                              psa_ref  = 0.5,
 #'                              T_b      = 303,
 #'                              T_g      = 293,
 #'                              T_a      = 298,
@@ -512,6 +512,7 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
                                         psa_ref,
                                         T_b,
                                         T_g,
+                                        T_sky = NA,
                                         T_a,
                                         enclosed = FALSE){
 
@@ -538,7 +539,7 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
   A_r <- A * psa_ref
 
   # Estimate effective radiant temperature of sky using Brunt equation if not provided
-  if(missing(Tsky)) Tsky <- (1.22 * (T_a-273.15) - 20.4) + 273.15 # K, Gates eq 7.12
+  if(is.na(T_sky)) T_sky <- (1.22 * (T_a-273.15) - 20.4) + 273.15 # K, Gates eq 7.12
 
   if(enclosed){
 
@@ -546,14 +547,13 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
 
   } else {
 
-    Qemit <- epsilon * sigma * (A_s * (T_b^4 - Tsky^4) + A_r * (T_b^4 - T_g^4))
+    Qemit <- epsilon * sigma * (A_s * (T_b^4 - T_sky^4) + A_r * (T_b^4 - T_g^4))
 
   }
 
   Qemit
 
 }
-
 
 #' @title Heat Loss Associated with Evaporative Water Loss
 #'

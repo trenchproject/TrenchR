@@ -187,12 +187,12 @@ Qnet_Gates <- function (Qabs,
 #'   \insertAllCited{}
 #' 
 #' @examples 
-#'  Tb_Gates (A       = 1, 
-#'            D       = 0.001, 
+#'  Tb_Gates (A       = 0.1, 
+#'            D       = 0.025, 
 #'            psa_dir = 0.6, 
 #'            psa_ref = 0.4, 
-#'            psa_air = 0.6, 
-#'            psa_g   = 0.2, 
+#'            psa_air = 0.5, 
+#'            psa_g   = 0.1, 
 #'            T_g     = 30, 
 #'            T_a     = 37, 
 #'            Qabs    = 2, 
@@ -273,7 +273,7 @@ Tb_Gates <- function (A,
     }
   
   T_e <- tryCatch(expr = uniroot(f         = Qfn, 
-                                 interval  = c(0, 80), 
+                                 interval  = c(273, 350), 
                                  Qabs      = Qabs, 
                                  epsilon   = epsilon, 
                                  sigma     = sigma, 

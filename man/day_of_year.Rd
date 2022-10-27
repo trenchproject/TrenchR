@@ -2,7 +2,7 @@
 % Please edit documentation in R/UtilityFunctions.R
 \name{day_of_year}
 \alias{day_of_year}
-\title{Julian Day from Date}
+\title{Calendar Day from Date}
 \usage{
 day_of_year(day, format = "\%Y-\%m-\%d")
 }
@@ -15,7 +15,7 @@ day_of_year(day, format = "\%Y-\%m-\%d")
 \code{numeric} Julian day number, 1-366 (e.g. 1 for January 1st).
 }
 \description{
-The function converts a date (day, month, year) to Julian Day (day of year).
+The function converts a date (day, month, year) to Calendar Day (day of year).
 }
 \examples{
   day_of_year(day    = "2017-04-22", 

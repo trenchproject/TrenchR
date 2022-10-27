@@ -155,9 +155,10 @@ Tb_lizard <- function (T_a,
   
   # Conductance
   
-    # characteristic dimension in meters
-
-      dim <- svl / 1000 
+    # characteristic dimension in meters based on mass in g
+    # calculate as cube root of volume as recommended by Mitchell 1976
+    # assume volume V= m/p, where p is density of body and assumed to be that of water (p=1000kg/m3)
+      dim <- ((m / 1000) / 1000) ^ (1 / 3)
 
       g_r <- 4 * epsilon_s * sigma * (T_a + 273)^3 / c_p # (12.7) radiative conductance
   

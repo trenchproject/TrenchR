@@ -77,6 +77,7 @@ plot(x    = seq(100, 1000, 100),
      y    = Qradiation_absorbed(a       = 0.9, 
                                 A       = 1, 
                                 psa_dir = 0.4, 
+                                psa_dif = 0.4,
                                 psa_ref = 0.4, 
                                 S_dir   = seq(100, 1000, 100), 
                                 S_dif   = 200, 
@@ -89,6 +90,7 @@ points(x    = seq(100, 1000, 100),
        y    = Qradiation_absorbed(a       = 0.9, 
                                   A       = 1, 
                                   psa_dir = 0.2, 
+                                  psa_dif = 0.4,
                                   psa_ref = 0.4, 
                                   S_dir   = seq(100, 1000, 100), 
                                   S_dif   = 200, 
@@ -100,6 +102,7 @@ points(x    = seq(100, 1000, 100),
        y    = Qradiation_absorbed(a       = 0.45, 
                                   A       = 1, 
                                   psa_dir = 0.4, 
+                                  psa_dif = 0.4,
                                   psa_ref = 0.4, 
                                   S_dir   = seq(100, 1000, 100), 
                                   S_dif   = 200, 
@@ -111,6 +114,7 @@ points(x    = seq(100, 1000, 100),
        y    = Qradiation_absorbed(a       = 0.9, 
                                   A = 1, 
                                   psa_dir = 0.4, 
+                                  psa_dif = 0.4,
                                   psa_ref = 0.4, 
                                   S_dir = seq(100, 1000, 100), 
                                   S_dif = 200, 
@@ -125,16 +129,18 @@ legend(x      = "topleft",
 
 ```
 
-In the functions, `psa_dir` and `psa_ref` are the proportions of surface area exposed to direct and reflected solar radiation, respectively. 
-We assume `psa_dif = psa_dir`. 
-The functions `proportion_silhouette_area()` and `proportion_silhouette_area_shapes()` provide assistance calculating the proportional of surface area exposed via estimating silhouette area.
-Additionally, see the microclimate tutorial for tools for estimating incoming solar radiation.
+In the functions, `psa_dir`,  `psa_dif`, and `psa_ref` are the proportions of surface area exposed to direct, diffuse, and reflected solar radiation, respectively. The functions `proportion_silhouette_area()` and `proportion_silhouette_area_shapes()` provide assistance calculating the proportional of surface area exposed to direct radiation via estimating silhouette area. Diffuse (or scattered) solar radiation is received by the upward facing surface and solar radiation reflected off the ground is received by the downward facing surface, minus any area in contact with the ground. Additionally, see the microclimate tutorial for tools for estimating incoming solar radiation.
 
 # Thermal radiation, Qemit
 
-The net rate of emission of thermal radiation from the surface of an animal, $Q_{emit} (W)$, is determined by the difference between the surface temperature of the animal $T_b (K)$ and the temperatures of the air $T_a (K)$ and of the ground $T_g (K)$. 
-$T_a$ is additionally used to estimate sky temperature $T_{sky} (K)$, the effective radiant temperature of the sky as $T_{sky}= 1.22\times (T_a-273.15)-20.4+273.15$ [@gates2012biophysical]. 
-The following expressions can be used to estimate $Q_{emit} (W)$ for animals in enclosed and open environments, respectively: 
+The net rate of emission of thermal radiation from the surface of an animal, $Q_{emit} (W)$, is determined by the difference between the surface temperature of the animal $T_b (K)$ and the temperatures of the air $T_a (K)$ and of the ground $T_g (K)$. Exchange is thermal radiation between the animal and the air is estimated using sky temperature $T_{sky} (K)$, the effective radiant temperature of the sky. TrenchR includes a function for estimating $T_{sky} (K)$ using two commonly approaches: the Brunt or Swinbank formulas [@gates2012biophysical]. 
+```{r}
+T_sky(T_a=293, formula="Swinbank")
+```
+
+
+$T_a$ is additionally used to estimate sky temperature 
+The following expressions can be used to estimate $Q_{emit} (W)$ for animals in enclosed and open environments, respectively. The functions uses the Brunt equation to estimate $T_{sky} if a value is not provided: $T_{sky}= 1.22\times (T_a-273.15)-20.4+273.15$ [@gates2012biophysical]. 
 $$
 enclosed: Q_{emit}= A_r \epsilon \sigma (T_b^4 - T_a^4)\\
 open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
@@ -150,7 +156,7 @@ plot(x    = 293:313,
      y    = Qemitted_thermal_radiation(epsilon  = 0.96, 
                                        A        = 1, 
                                        psa_dir  = 0.4, 
-                                       psa_ref  = 0.6,  
+                                       psa_ref  = 0.5,  
                                        T_b      = 293:313,  
                                        T_g      = 293,  
                                        T_a      = 298,  
@@ -162,7 +168,7 @@ points(x    = 293:313,
        y    = Qemitted_thermal_radiation(epsilon  = 0.96, 
                                          A        = 1, 
                                          psa_dir  = 0.2, 
-                                         psa_ref  = 0.8, 
+                                         psa_ref  = 0.5, 
                                          T_b      = 293:313, 
                                          T_g      = 293, 
                                          T_a      = 298, 
@@ -173,7 +179,7 @@ points(x    = 293:313,
        y    = Qemitted_thermal_radiation(epsilon  = 0.96,
                                          A        = 1,
                                          psa_dir  = 0.4, 
-                                         psa_ref  = 0.8, 
+                                         psa_ref  = 0.5, 
                                          T_b      = 293:313, 
                                          T_g      = 283, 
                                          T_a      = 298, 
@@ -184,7 +190,7 @@ points(x    = 293:313,
        y    = Qemitted_thermal_radiation(epsilon= 0.96, 
                                          A = 1, 
                                          psa_dir = 0.2, 
-                                         psa_ref = 0.6, 
+                                         psa_ref = 0.5, 
                                          T_b      = 293:313, 
                                          T_g      = 283, 
                                          T_a      = 298, 
@@ -253,7 +259,7 @@ legend(x      = "topleft",
 
 The convective heat transfer coefficient depends on whether the heat exchange is free or forced (due to fluid flow). The variables involved in heat transfer can be combined into dimensionless groups that are used to compare the scales of heat exchange processes and thus whether modeling free or forced convection is more appropriate. We provide the primary dimensionless numbers.
 
-The Nusselt number provides a dimensionless estimate of conductance and is estimated as $Nu = H_L \cdot D / K$, where $H_L$ is the convective heat transfer coefficient ($W m^{-2} K^{-1}$), $D$ is the characteristic dimension ($m$), and $K$ is thermal conductivity ($W K^{-1}m^{-1}$).
+The Nusselt number provides a dimensionless estimate of conductance and is estimated as $Nu = H_L \cdot D / K$, where $H_L$ is the convective heat transfer coefficient ($W m^{-2} K^{-1}$), $D$ is the characteristic dimension ($m$), and $K$ is thermal conductivity ($W K^{-1}m^{-1}$). The characteristic dimension quantifies the size of the organism relevant to convective heat exchange and it depends on orientation relevant to the fluid flow, usually wind. The most common approximation of thecharacteristic dimension is the cube root of the volume of the animal [@mitchell1976heat].
 
 The Prandtl number describes the ratio of kinematic viscosity to thermal diffusivity as $Pr= c_p \mu /K$, where $c_p$ is the specific heat at constant pressure ($J mol^{-1} K^{-1}$) and $\mu$ is dynamic viscosity ($mol \:s^{-1}m^{-1}$).
 
@@ -685,21 +691,22 @@ Both functions take as parameters the animal's surface area, $A (m^2)$, and the 
 
 $$Q_{cond}= A\cdot \mbox{proportion} \cdot K(T_b-T_g)/d, $$
 
-where $K$ is thermal conductivity ($W K^{-1} m^{-1}$), $T_g$ is ground (surface) temperature $(K)$, $T_b$ is body temperature $(K)$, and $d$ is the mean thickness of the animal skin (surface, $m$). 
-This formulation assumes the organism has a well-mixed interior rather than an interior temperature gradient.
+where $K$ is thermal conductivity ($W K^{-1} m^{-1}$), $T_g$ is ground (surface) temperature $(K)$, $T_b$ is body temperature $(K)$, and $d$ is the mean thickness of the animal skin (surface, $m$). However, the extremely thin skins of most animals will result in high levels of conduction. To estimate steady state conditions, one viable approach is to assume that heat is exchanged down to a given soil levels such that $d=0.25m$. This formulation assumes the organism has a well-mixed interior rather than an interior temperature gradient.
 
 When substrate thermal conductivity is the rate-limiting step, $Q_{cond}$ can be estimated as follows:
 
 $$Q_{cond} = A\cdot \mbox{proportion} \cdot (2K_g/D)(T_b-T_g),$$ 
 
-where $K_g$ is the thermal conductivity of substrate ($W K^{-1} m^{-1}$) and $D$ is the characteristic dimension of the animal ($m$). The functions are available in R:
+where $K_g$ is the thermal conductivity of substrate ($W K^{-1} m^{-1}$) and $D$ is the characteristic dimension of the animal ($m$).The most common approximation of the characteristic dimension is the cube root of the volume of the animal [@mitchell1976heat].
+
+The functions are available in R:
 
 ```{r, fig.height = 4, fig.width = 6}
 
 plot(x    = 293:313, 
      y    = Qconduction_animal(T_g        = 293:313,
                                T_b        = 303,
-                               d          = 10^-6, ####CHANGE to 2.5
+                               d          = 0.025,
                                K          = 0.3,
                                A          = 10^-3,
                                proportion = 0.2), 
@@ -708,7 +715,7 @@ plot(x    = 293:313,
 points(x    = 293:313, 
        y    = Qconduction_animal(T_g        = 293:313,
                                  T_b        = 303,
-                                 d          = 10^-6,
+                                 d          = 0.025,
                                  K          = 0.5,
                                  A          = 10^-3,
                                  proportion = 0.2), 
@@ -717,7 +724,7 @@ points(x    = 293:313,
 points(x    = 293:313, 
        y    = Qconduction_animal(T_g        = 293:313,
                                  T_b        = 303,
-                                 d          = 10^-6,
+                                 d          = 0.025,
                                  K          = 0.3,
                                  A          = 10^-3,
                                  proportion = 0.4), 
@@ -726,7 +733,7 @@ points(x    = 293:313,
 points(x    = 293:313, 
        y    = Qconduction_animal(T_g        = 293:313,
                                  T_b        = 303,
-                                 d          = 10^-6,
+                                 d          = 0.025,
                                  K          = 0.5,
                                  A          = 10^-3,
                                  proportion = 0.4), 
@@ -1014,7 +1021,7 @@ The following function uses the relationships above to solve the energy balance 
 t.seq <- lapply(20:40, 
                 FUN     = Tb_Gates, 
                 A       = 0.1, 
-                D       = 0.001, 
+                D       = 0.025, 
                 psa_dir = 0.6, 
                 psa_ref = 0.4, 
                 psa_air = 0.6, 
@@ -1041,7 +1048,7 @@ abline(a   = 0,
 t.seq <- lapply(20:40, 
                 FUN     = Tb_Gates, 
                 A       = 0.1, 
-                D       = 0.001, 
+                D       = 0.025, 
                 psa_dir = 0.6, 
                 psa_ref = 0.4, 
                 psa_air = 0.6, 
@@ -1061,7 +1068,7 @@ points(x    = 20:40,
 t.seq <- lapply(20:40, 
                 FUN     = Tb_Gates, 
                 A       = 0.1, 
-                D       = 0.001, 
+                D       = 0.025, 
                 psa_dir = 0.6, 
                 psa_ref = 0.4, 
                 psa_air = 0.6, 
@@ -1197,7 +1204,7 @@ The boundary conductance of air ($mol \: m^{−2} s^{−1}$) is expressed as
 
 $$g_{Ha}= 1.4 \times 0.135 \sqrt{u/d} ,$$ 
 
-where $u$ is wind velocity ($m s^{−1}$) and $d$ is the characteristic dimension ($m$). Assuming that wind is blowing parallel to the axis of a cylindrical approximation of a lizard, $d$ is the lizard's length (snout-vent length, $m$). A factor of 1.4 is introduced to account for the increased convection due to environmental turbulence [@mitchell1976heat].  
+where $u$ is wind velocity ($m s^{−1}$) and $d$ is the characteristic dimension ($m$). The function uses the cube root of volume to approximate the characteristic dimension [@mitchell1976heat]. A factor of 1.4 is introduced to account for the increased convection due to environmental turbulence [@mitchell1976heat].  
 
 We additionally consider radiative conductance, the exchange of thermal radiation between the lizard and the environment proportional to temperature differences. The radiative conductance ($mol \:m^{−2} s^{−1}$) is expressed as 
 
@@ -2343,7 +2350,7 @@ surface area exposed to radiation We model a 10g *Sceloporus* lizard with solar 
 
 ```{r}
 
-mass <- 10 
+mass <- 10 #grams
 
 # solar absorptivity
  
@@ -2396,6 +2403,10 @@ We then estimate the lizard's heat transfer coefficient, $H_L$ using an empirica
 
     svl <- 0.006 
 
+  # approxiamte characteristic dimension as cube root of volume, assuming density of water
+    
+    D= ((m / 1000) / 1000) ^ (1 / 3)
+    
   # We will use the average of K and nu across the day for simplicity and since there's not a substantial variation
 
     K  <-  mean(K)
@@ -2404,7 +2415,7 @@ We then estimate the lizard's heat transfer coefficient, $H_L$ using an empirica
   # Estimate the heat transfer coefficient using an empirical relationship for lizards
 
     H_L <- heat_transfer_coefficient(u     = u,
-                                     D     = svl,
+                                     D     = D,
                                      K     = 25.7 * 10^(-3), 
                                      nu    = 15.3 * 10^(-6), 
                                      taxon = "lizard_surface")
@@ -2412,13 +2423,13 @@ We then estimate the lizard's heat transfer coefficient, $H_L$ using an empirica
   # Also illustrate estimations using a spherical approximation and a simplified version of the approximation.
 
     heat_transfer_coefficient_approximation(u     = u,
-                                            D     = svl,
+                                            D     = D,
                                             K     =  25.7 * 10^(-3), 
                                             nu    = 15.3 * 10^(-6), 
                                             taxon = "lizard")
 
     heat_transfer_coefficient_simple(u    = 0.5,
-                                     D    = 0.05, 
+                                     D    = D, 
                                      type = "Spotila")
 
 ```
@@ -2433,9 +2444,9 @@ TeGates <- rep(NA, 24)
 
 for (hr in 1:24) {
   TeGates[hr] <- Tb_Gates(A       = A, 
-                          D       = svl / 3, 
+                          D       = D, 
                           psa_dir = psa[hr], 
-                          psa_ref = 0.5, 
+                          psa_ref = 0.5 -0.05, 
                           psa_air = 0.5, 
                           psa_g   = 0.05, 
                           T_g     = Ts[hr], 
@@ -2462,7 +2473,7 @@ for (hr in 1:24) {
                                 a_l     = 0.96, 
                                 epsilon = epsilon_s, 
                                 c_p     = 29.3, 
-                                D       = svl, 
+                                D       = D, 
                                 u       = u)
 }
 
@@ -2676,7 +2687,7 @@ Qcond <- rep(NA, 24)
 for (hr in 1:24) {
   Qcond[hr] <- Qconduction_animal(T_g        = Ts[hr] + 273,
                                   T_b        = Te[hr] + 273,
-                                  d          = svl / 3,
+                                  d          = 0.025, #assume for conductive heat exchange occurs down to 2.5cm
                                   K          = 0.5,
                                   A          = A, 
                                   proportion = 0.05)
