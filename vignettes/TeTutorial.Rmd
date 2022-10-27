@@ -2405,7 +2405,7 @@ We then estimate the lizard's heat transfer coefficient, $H_L$ using an empirica
 
   # approxiamte characteristic dimension as cube root of volume, assuming density of water
     
-    D= ((m / 1000) / 1000) ^ (1 / 3)
+    D= ((mass / 1000) / 1000) ^ (1 / 3)
     
   # We will use the average of K and nu across the day for simplicity and since there's not a substantial variation
 
@@ -2539,7 +2539,7 @@ par(mar = c(4, 4, 1, 4),
        xlab = "Hour", 
        ylab = "Temperature (°C)", 
        col = "blue", 
-       ylim = c(10,38)) 
+       ylim = c(10,50)) 
 
 # Campbell
 
