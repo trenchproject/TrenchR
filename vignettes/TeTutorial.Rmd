@@ -699,7 +699,7 @@ where $K_g$ is the thermal conductivity of substrate ($W K^{-1} m^{-1}$) and $D$
 plot(x    = 293:313, 
      y    = Qconduction_animal(T_g        = 293:313,
                                T_b        = 303,
-                               d          = 10^-6,
+                               d          = 10^-6, ####CHANGE to 2.5
                                K          = 0.3,
                                A          = 10^-3,
                                proportion = 0.2), 
@@ -2607,8 +2607,9 @@ Qabs <- rep(NA, 24)
 for (hr in 1:24) {
   Qabs[hr] <- Qradiation_absorbed(a       = a, 
                                   A       = A, 
-                                  psa_dir = psa[hr], 
-                                  psa_ref = 1-psa[hr], 
+                                  psa_dir = psa[hr],
+                                  psa_dif = 0.5,
+                                  psa_ref = 0.5, 
                                   S_dir   = Sdir[hr], 
                                   S_dif   = Sdif[hr], 
                                   rho     = rho)

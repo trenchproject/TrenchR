@@ -155,9 +155,9 @@ Qnet_Gates <- function (Qabs,
 #' 
 #' @param D \code{numeric} characteristic dimension for conduction (meters).
 #' 
-#' @param psa_dir \code{numeric} proportion surface area exposed to direct radiation from the sky (or enclosure) (0-1).
+#' @param psa_dir \code{numeric} view factor for the proportion surface area exposed to direct radiation from the sky (or enclosure) (0-1).
 #' 
-#' @param psa_ref \code{numeric} proportion surface area exposed to reflected radiation from the ground (0-1).
+#' @param psa_ref \code{numeric} view factor for proportion surface area exposed to reflected radiation from the ground (0-1).
 #' 
 #' @param psa_air \code{numeric} proportion surface area exposed to air (0-1).
 #' 

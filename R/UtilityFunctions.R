@@ -1,6 +1,6 @@
-#' @title Julian Day from Date
+#' @title Calendar Day from Date
 #' 
-#' @description The function converts a date (day, month, year) to Julian Day (day of year).
+#' @description The function converts a date (day, month, year) to Calendar Day (day of year).
 #'
 #' @param day \code{character} numerical date in standard format (e.g. \code{"2017-01-02"}, \code{"01-02"}, \code{"01/02/2017"} etc). 
 #'
@@ -137,7 +137,7 @@ solar_noon <- function (lon,
   lon[lon < 0] <- 360 + lon[lon < 0] # convert to 0 to 360
   LC <- 1 / 15 * (lon %% 15) # longitude correction, 1/15h for each degree of standard meridian
   LC[LC > 0.5] <- LC[LC > 0.5] - 1
-  t_0 <- 12 - LC - ET # solar noon
+  t_0 <- 12 - LC - ET # solar noon, p168, 11.3, Campbell &Norman 1998 
   
   # Check if offset is as expected. (Is the timezone of the location the same as that of the meridian 
   # that's within 7.5 degrees from that location?)
@@ -163,7 +163,7 @@ solar_noon <- function (lon,
 #' 
 #' @param lon \code{numeric} longitude (decimal degrees).
 #' 
-#' @param hour \code{numeric} hour of the day.
+#' @param hour \code{numeric} hour of the day (0-24).
 #' 
 #' @param offset \code{numeric} the number of hours to add to UTC (Coordinated Universal Time) to get local time (improves accuracy but not always necessary). Optional. Defaults to NA.
 #' 

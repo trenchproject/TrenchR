@@ -360,7 +360,9 @@ heat_transfer_coefficient_simple <- function(u,
 #'
 #' @param A \code{numeric} surface area (\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #'
-#' @param psa_dir \code{numeric} proportion surface area exposed to solar radiation (0-1).
+#' @param psa_dir \code{numeric} proportion surface area exposed to direct solar radiation (0-1).
+#'
+#' @param psa_dif \code{numeric} proportion surface area exposed to diffuse solar radiation (0-1).
 #'
 #' @param psa_ref \code{numeric} proportion surface area exposed to reflected solar radiation (0-1).
 #'
@@ -393,6 +395,7 @@ heat_transfer_coefficient_simple <- function(u,
 Qradiation_absorbed <- function (a = 0.9,
                                  A,
                                  psa_dir,
+                                 psa_dif,
                                  psa_ref,
                                  S_dir,
                                  S_dif,
@@ -404,6 +407,8 @@ Qradiation_absorbed <- function (a = 0.9,
             A       >  0, 
             psa_dir >= 0, 
             psa_dir <= 1, 
+            psa_dif >= 0, 
+            psa_dif <= 1, 
             psa_ref >= 0, 
             psa_ref <= 1, 
             S_dir   >  0, 
@@ -418,7 +423,7 @@ Qradiation_absorbed <- function (a = 0.9,
 
   # Areas
   A_dir <- A * psa_dir
-  A_dif <- A_dir
+  A_dif <- A * psa_dif
   A_ref <- A * psa_ref
 
   # Solar radiation
@@ -426,22 +431,57 @@ Qradiation_absorbed <- function (a = 0.9,
 
 }
 
+#' @title Effective radiant temperature of sky (K)
+#' 
+#' @description This function estimates the effective radiant temperature of the sky (K) using either the Brunt or Swinbank formulations \insertCite{Gates1980}{TrenchR}. 
+#' 
+#' @param T_a \code{numeric} ambient air temperature (K)
+#' 
+#' @param formula \code{character} Formula to use, current choices are: \code{"Brunt"}, \code{"Swinbank"}. 
+#'
+#' @return \code{numeric} T_sky (K).
+#'
+#' @family biolphysical models
+#'
+#' @export
+#'
+#' @references
+#'   \insertAllCited{}
+#'
+#' @examples
+#'   T_sky(T_a=293, formula="Swinbank")
+#'
+T_sky <- function (T_a, formula) {
+  
+  # Stefan-Boltzmann constant
+  sigma <- stefan_boltzmann_constant()
+  
+  #Gates 1980, 7.1
+  if(formula=="Swinbank") T_sky= 1.22*sigma*T_a^4-171
+  
+  #Gates 1980, 7.12
+  if(formula=="Brunt") T_sky= 1.22*(T_a-273.15)-20.4 +273.15
+  
+  T_sky
+}
 
 #' @title Emitted Thermal Radiation
 #'
-#' @description The function estimates thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980,Spotila1992}{TrenchR}.
+#' @description The function estimates the net thermal radiation (W) emitted by the surface of an animal \insertCite{Gates1980,Spotila1992}{TrenchR}.
 #'
 #' @param epsilon \code{numeric} longwave infrared emissivity of skin (proportion), 0.95 to 1 for most animals \insertCite{Gates1980}{TrenchR}.
 #'
 #' @param A \code{numeric} surface area ((\ifelse{html}{\out{m<sup>2</sup>}}{\eqn{m^2}{ASCII}}).
 #'
-#' @param psa_dir \code{numeric} proportion surface area exposed to sky (or enclosure) (0-1)
+#' @param psa_dir \code{numeric} view factor indicating the proportion of surface area exposed to sky (or enclosure) (0-1)
 #'
-#' @param psa_ref \code{numeric} proportion surface area exposed to ground (0-1).
+#' @param psa_ref \code{numeric} view factor indicating the proportion surface area exposed to ground (0-1).
 #'
 #' @param T_b \code{numeric} body surface temperature (K).
 #'
 #' @param T_g \code{numeric} ground surface temperature (K).
+#' 
+#' @param T_sky \code{numeric} Estimate effective radiant temperature of sky (K)
 #'
 #' @param T_a \code{numeric} ambient air temperature (K), only required if the animal is in an enclosed environment.
 #'
@@ -497,8 +537,8 @@ Qemitted_thermal_radiation <- function (epsilon  = 0.96,
   A_s <- A * psa_dir
   A_r <- A * psa_ref
 
-  # Estimate effective radiant temperature of sky
-  Tsky <- (1.22 * (T_a-273.15) - 20.4) + 273.15 # K
+  # Estimate effective radiant temperature of sky using Brunt equation if not provided
+  if(missing(Tsky)) Tsky <- (1.22 * (T_a-273.15) - 20.4) + 273.15 # K, Gates eq 7.12
 
   if(enclosed){
 
