@@ -86,7 +86,7 @@
 
 
 <dt>T_b</dt>
-<dd><p><code>numeric</code> body temperature (C).</p></dd>
+<dd><p><code>numeric</code> body temperature (K).</p></dd>
 
 
 <dt>taxon</dt>
@@ -175,18 +175,18 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="fu">Qevaporation</span><span class="op">(</span>A      <span class="op">=</span> <span class="fl">0.1</span>,</span></span>
-<span class="r-in"><span>               T_b    <span class="op">=</span> <span class="fl">20</span>,</span></span>
+<span class="r-in"><span>               T_b    <span class="op">=</span> <span class="fl">293</span>,</span></span>
 <span class="r-in"><span>               taxon <span class="op">=</span> <span class="st">"amphibian"</span>,</span></span>
 <span class="r-in"><span>               e_s <span class="op">=</span> <span class="fl">0.003</span>,</span></span>
 <span class="r-in"><span>               e_a <span class="op">=</span> <span class="fl">0.002</span>,</span></span>
 <span class="r-in"><span>               hp     <span class="op">=</span> <span class="fl">0.5</span>,</span></span>
 <span class="r-in"><span>               H     <span class="op">=</span> <span class="fl">20</span>,</span></span>
 <span class="r-in"><span>               r_i   <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in Qevaporation(A = 0.1, T_b = 20, taxon = "amphibian", e_s = 0.003,     e_a = 0.002, hp = 0.5, H = 20, r_i = 50):</span> T_b &gt; 200 is not TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4.612476</span>
 <span class="r-in"><span>  <span class="fu">Qevaporation</span><span class="op">(</span>A     <span class="op">=</span> <span class="fl">0.1</span>,</span></span>
-<span class="r-in"><span>               T_b   <span class="op">=</span> <span class="fl">20</span>,</span></span>
+<span class="r-in"><span>               T_b   <span class="op">=</span> <span class="fl">293</span>,</span></span>
 <span class="r-in"><span>               taxon <span class="op">=</span> <span class="st">"lizard"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in Qevaporation(A = 0.1, T_b = 20, taxon = "lizard"):</span> T_b &gt; 200 is not TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.043334</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

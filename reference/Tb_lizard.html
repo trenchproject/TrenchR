@@ -83,13 +83,13 @@
 <span>  <span class="va">svl</span>,</span>
 <span>  <span class="va">m</span>,</span>
 <span>  <span class="va">psi</span>,</span>
-<span>  <span class="va">rho_S</span>,</span>
+<span>  <span class="va">rho_s</span>,</span>
 <span>  <span class="va">elev</span>,</span>
 <span>  <span class="va">doy</span>,</span>
 <span>  sun <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  surface <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  a_S <span class="op">=</span> <span class="fl">0.9</span>,</span>
-<span>  a_L <span class="op">=</span> <span class="fl">0.965</span>,</span>
+<span>  a_s <span class="op">=</span> <span class="fl">0.9</span>,</span>
+<span>  a_l <span class="op">=</span> <span class="fl">0.965</span>,</span>
 <span>  epsilon_s <span class="op">=</span> <span class="fl">0.965</span>,</span>
 <span>  F_d <span class="op">=</span> <span class="fl">0.8</span>,</span>
 <span>  F_r <span class="op">=</span> <span class="fl">0.5</span>,</span>
@@ -124,7 +124,7 @@
 <dd><p><code>numeric</code> solar zenith angle (degrees).</p></dd>
 
 
-<dt>rho_S</dt>
+<dt>rho_s</dt>
 <dd><p><code>numeric</code> surface albedo (proportion). ~ 0.25 for grass, ~ 0.1 for dark soil, &gt; 0.75 for fresh snow (Campbell and Norman 1998)
 .</p></dd>
 
@@ -145,13 +145,13 @@
 <dd><p><code>logical</code> indicates whether lizard is on ground surface (<code>TRUE</code>) or above the surface (<code>FALSE</code>, e.g. in a tree).</p></dd>
 
 
-<dt>a_S</dt>
-<dd><p><code>numeric</code> lizard solar absorptivity (proportion), <code>a_S = 0.9</code> (Gates 1980)
+<dt>a_s</dt>
+<dd><p><code>numeric</code> lizard solar absorptivity (proportion), <code>a_s = 0.9</code> (Gates 1980)
  (Table 11.4).</p></dd>
 
 
-<dt>a_L</dt>
-<dd><p><code>numeric</code> lizard thermal absorptivity (proportion), <code>a_L = 0.965</code> (Bartlett and Gates 1967)
+<dt>a_l</dt>
+<dd><p><code>numeric</code> lizard thermal absorptivity (proportion), <code>a_l = 0.965</code> (Bartlett and Gates 1967)
 .</p></dd>
 
 
@@ -266,19 +266,19 @@ ISSN 1540-7063, <a href="https://doi.org/10.1093/icb/icr111" class="external-lin
 <span class="r-in"><span>            svl       <span class="op">=</span> <span class="fl">60</span>, </span></span>
 <span class="r-in"><span>            m         <span class="op">=</span> <span class="fl">10</span>, </span></span>
 <span class="r-in"><span>            psi       <span class="op">=</span> <span class="fl">34</span>, </span></span>
-<span class="r-in"><span>            rho_S     <span class="op">=</span> <span class="fl">0.24</span>, </span></span>
+<span class="r-in"><span>            rho_s     <span class="op">=</span> <span class="fl">0.24</span>, </span></span>
 <span class="r-in"><span>            elev      <span class="op">=</span> <span class="fl">500</span>, </span></span>
 <span class="r-in"><span>            doy       <span class="op">=</span> <span class="fl">200</span>, </span></span>
 <span class="r-in"><span>            sun       <span class="op">=</span> <span class="cn">TRUE</span>, </span></span>
 <span class="r-in"><span>            surface   <span class="op">=</span> <span class="cn">TRUE</span>, </span></span>
-<span class="r-in"><span>            a_S   <span class="op">=</span> <span class="fl">0.9</span>, </span></span>
-<span class="r-in"><span>            a_L   <span class="op">=</span> <span class="fl">0.965</span>, </span></span>
+<span class="r-in"><span>            a_s   <span class="op">=</span> <span class="fl">0.9</span>, </span></span>
+<span class="r-in"><span>            a_l   <span class="op">=</span> <span class="fl">0.965</span>, </span></span>
 <span class="r-in"><span>            epsilon_s <span class="op">=</span> <span class="fl">0.965</span>, </span></span>
 <span class="r-in"><span>            F_d       <span class="op">=</span> <span class="fl">0.8</span>, </span></span>
 <span class="r-in"><span>            F_r       <span class="op">=</span> <span class="fl">0.5</span>, </span></span>
 <span class="r-in"><span>            F_a       <span class="op">=</span> <span class="fl">0.5</span>, </span></span>
 <span class="r-in"><span>            F_g       <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in Tb_lizard(T_a = 25, T_g = 30, u = 0.1, svl = 60, m = 10, psi = 34,     rho_S = 0.24, elev = 500, doy = 200, sun = TRUE, surface = TRUE,     a_S = 0.9, a_L = 0.965, epsilon_s = 0.965, F_d = 0.8, F_r = 0.5,     F_a = 0.5, F_g = 0.5):</span> unused arguments (rho_S = 0.24, a_S = 0.9, a_L = 0.965)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 43.85589</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

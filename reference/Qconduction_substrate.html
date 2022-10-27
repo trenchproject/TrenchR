@@ -80,11 +80,11 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>T_g</dt>
-<dd><p><code>numeric</code> surface temperature (C).</p></dd>
+<dd><p><code>numeric</code> surface temperature (K).</p></dd>
 
 
 <dt>T_b</dt>
-<dd><p><code>numeric</code> body temperature (C).</p></dd>
+<dd><p><code>numeric</code> body temperature (K).</p></dd>
 
 
 <dt>D</dt>
@@ -92,7 +92,7 @@
 
 
 <dt>K_g</dt>
-<dd><p><code>numeric</code> thermal conductivity of substrate (W C<sup>-1</sup> m<sup>-1</sup>).</p></dd>
+<dd><p><code>numeric</code> thermal conductivity of substrate (W K<sup>-1</sup> m<sup>-1</sup>).</p></dd>
 
 
 <dt>A</dt>
@@ -162,13 +162,13 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="fu">Qconduction_substrate</span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">20</span>,</span></span>
-<span class="r-in"><span>                        T_b        <span class="op">=</span> <span class="fl">30</span>,</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="fu">Qconduction_substrate</span><span class="op">(</span>T_g        <span class="op">=</span> <span class="fl">293</span>,</span></span>
+<span class="r-in"><span>                        T_b        <span class="op">=</span> <span class="fl">303</span>,</span></span>
 <span class="r-in"><span>                        D          <span class="op">=</span> <span class="fl">0.01</span>,</span></span>
 <span class="r-in"><span>                        K_g        <span class="op">=</span> <span class="fl">0.3</span>,</span></span>
 <span class="r-in"><span>                        A          <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">-</span><span class="fl">2</span>,</span></span>
 <span class="r-in"><span>                        proportion <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in Qconduction_substrate(T_g = 20, T_b = 30, D = 0.01, K_g = 0.3,     A = 10^-2, proportion = 0.2):</span> T_g &gt; 200 is not TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.2</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

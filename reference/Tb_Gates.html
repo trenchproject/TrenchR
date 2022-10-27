@@ -104,11 +104,11 @@
 
 
 <dt>psa_dir</dt>
-<dd><p><code>numeric</code> proportion surface area exposed to direct radiation from the sky (or enclosure) (0-1).</p></dd>
+<dd><p><code>numeric</code> view factor for the proportion surface area exposed to direct radiation from the sky (or enclosure) (0-1).</p></dd>
 
 
 <dt>psa_ref</dt>
-<dd><p><code>numeric</code> proportion surface area exposed to reflected radiation from the ground (0-1).</p></dd>
+<dd><p><code>numeric</code> view factor for proportion surface area exposed to reflected radiation from the ground (0-1).</p></dd>
 
 
 <dt>psa_air</dt>
@@ -221,12 +221,12 @@ ISSN 0006-3495, <a href="https://doi.org/10.1016/S0006-3495%2876%2985711-6" clas
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="fu">Tb_Gates</span> <span class="op">(</span>A       <span class="op">=</span> <span class="fl">1</span>, </span></span>
-<span class="r-in"><span>           D       <span class="op">=</span> <span class="fl">0.001</span>, </span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="fu">Tb_Gates</span> <span class="op">(</span>A       <span class="op">=</span> <span class="fl">0.1</span>, </span></span>
+<span class="r-in"><span>           D       <span class="op">=</span> <span class="fl">0.025</span>, </span></span>
 <span class="r-in"><span>           psa_dir <span class="op">=</span> <span class="fl">0.6</span>, </span></span>
 <span class="r-in"><span>           psa_ref <span class="op">=</span> <span class="fl">0.4</span>, </span></span>
-<span class="r-in"><span>           psa_air <span class="op">=</span> <span class="fl">0.6</span>, </span></span>
-<span class="r-in"><span>           psa_g   <span class="op">=</span> <span class="fl">0.2</span>, </span></span>
+<span class="r-in"><span>           psa_air <span class="op">=</span> <span class="fl">0.5</span>, </span></span>
+<span class="r-in"><span>           psa_g   <span class="op">=</span> <span class="fl">0.1</span>, </span></span>
 <span class="r-in"><span>           T_g     <span class="op">=</span> <span class="fl">30</span>, </span></span>
 <span class="r-in"><span>           T_a     <span class="op">=</span> <span class="fl">37</span>, </span></span>
 <span class="r-in"><span>           Qabs    <span class="op">=</span> <span class="fl">2</span>, </span></span>
@@ -234,7 +234,7 @@ ISSN 0006-3495, <a href="https://doi.org/10.1016/S0006-3495%2876%2985711-6" clas
 <span class="r-in"><span>           H_L     <span class="op">=</span> <span class="fl">10</span>, </span></span>
 <span class="r-in"><span>           ef      <span class="op">=</span> <span class="fl">1.23</span>, </span></span>
 <span class="r-in"><span>           K       <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 30.31036</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 33.12879</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
