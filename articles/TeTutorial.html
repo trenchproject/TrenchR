@@ -90,7 +90,7 @@
       <h1 data-toc-skip>Using energy balances to estimate body temperatures</h1>
                         <h4 data-toc-skip class="author">Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington</h4>
             
-            <h4 data-toc-skip class="date">2022-10-27</h4>
+            <h4 data-toc-skip class="date">2022-10-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/trenchproject/TrenchR/blob/HEAD/vignettes/TeTutorial.Rmd" class="external-link"><code>vignettes/TeTutorial.Rmd</code></a></small>
       <div class="hidden name"><code>TeTutorial.Rmd</code></div>
@@ -120,7 +120,7 @@
 <span>           Qmet  <span class="op">=</span> <span class="fl">10</span>, </span>
 <span>           Qevap <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 275</span></span></code></pre>
-<p>We briefly review each component of the energy balance below. Details are available in biophysical ecology texts <span class="citation">(Gates 2012; Campbell and Norman 2012)</span>. We note that we have standardized most functions to accept and return temperatures in degrees Celsius to promote accessibility. However, the heat budget calculations generally use Kelvin since it is the natural unit, particularly for radiation, and metrics such as convective coefficients standardly use kelvin.</p>
+<p>We briefly review each component of the energy balance below. Details are available in biophysical ecology texts <span class="citation">(Gates 2012; Campbell and Norman 2012)</span>. We note that we have standardized most functions to accept and return temperatures in degrees Celsius to promote accessibility. However, the heat budget calculations generally use Kelvin since it is the natural unit, particularly for radiation, and metrics such as convective coefficients standardly use kelvin. TrenchR includes tables of parameters such as the absorptivity of animal surfaces to solar and thermal radiation in the <code>inst/extdata</code> folder.</p>
 </div>
 <div class="section level2">
 <h2 id="solar-radiation-qabs">Solar radiation, Qabs<a class="anchor" aria-label="anchor" href="#solar-radiation-qabs"></a>
@@ -299,7 +299,7 @@ open: Q_{emit}= \epsilon \sigma (A_s (T_b^4 - T_{sky}^4)+A_r (T_b^4 - T_g^4)),
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="TeTutorial_files/figure-html/unnamed-chunk-6-1.png" width="576"></p>
 <p>The convective heat transfer coefficient depends on whether the heat exchange is free or forced (due to fluid flow). The variables involved in heat transfer can be combined into dimensionless groups that are used to compare the scales of heat exchange processes and thus whether modeling free or forced convection is more appropriate. We provide the primary dimensionless numbers.</p>
-<p>The Nusselt number provides a dimensionless estimate of conductance and is estimated as <span class="math inline">\(Nu = H_L \cdot D / K\)</span>, where <span class="math inline">\(H_L\)</span> is the convective heat transfer coefficient (<span class="math inline">\(W m^{-2} K^{-1}\)</span>), <span class="math inline">\(D\)</span> is the characteristic dimension (<span class="math inline">\(m\)</span>), and <span class="math inline">\(K\)</span> is thermal conductivity (<span class="math inline">\(W K^{-1}m^{-1}\)</span>). The characteristic dimension quantifies the size of the organism relevant to convective heat exchange and it depends on orientation relevant to the fluid flow, usually wind. The most common approximation of thecharacteristic dimension is the cube root of the volume of the animal <span class="citation">(Mitchell 1976)</span>.</p>
+<p>The Nusselt number provides a dimensionless estimate of conductance and is estimated as <span class="math inline">\(Nu = H_L \cdot D / K\)</span>, where <span class="math inline">\(H_L\)</span> is the convective heat transfer coefficient (<span class="math inline">\(W m^{-2} K^{-1}\)</span>), <span class="math inline">\(D\)</span> is the characteristic dimension (<span class="math inline">\(m\)</span>), and <span class="math inline">\(K\)</span> is thermal conductivity (<span class="math inline">\(W K^{-1}m^{-1}\)</span>). The characteristic dimension quantifies the size of the organism relevant to convective heat exchange and it depends on orientation relevant to the fluid flow, usually wind. The most common approximation of the characteristic dimension is the cube root of the volume of the animal <span class="citation">(Mitchell 1976)</span>.</p>
 <p>The Prandtl number describes the ratio of kinematic viscosity to thermal diffusivity as <span class="math inline">\(Pr= c_p \mu /K\)</span>, where <span class="math inline">\(c_p\)</span> is the specific heat at constant pressure (<span class="math inline">\(J mol^{-1} K^{-1}\)</span>) and <span class="math inline">\(\mu\)</span> is dynamic viscosity (<span class="math inline">\(mol \:s^{-1}m^{-1}\)</span>).</p>
 <p>The Reynolds Number indicates the amount of turbulence in air or water flows and is estimated as the ratio of internal viscous forces: <span class="math inline">\(Re = uD / \nu\)</span>, where <span class="math inline">\(u\)</span> is wind speed (<span class="math inline">\(m/s\)</span>), <span class="math inline">\(D\)</span> is the characteristic dimension (<span class="math inline">\(m\)</span>), and <span class="math inline">\(\nu\)</span> is the kinematic viscosity (<span class="math inline">\(m^2 s^{-1}\)</span>). Kinematic viscosity is the ratio of dynamic viscosity to the density of the fluid.</p>
 <p>The Grashof number describes the ability of a parcel of fluid warmer or colder than the surrounding fluid to rise against or fall with the attractive force of gravity. It is estimated as the ratio of a buoyant force times an inertial force to the square of a viscous force: <span class="math inline">\(Gr = g D^3 \frac{\mid Tg-Ta \mid}{Ta {\nu}^2}\)</span>, where <span class="math inline">\(g\)</span> is gravitational acceleration (<span class="math inline">\(g= 9.8 m/s\)</span>).</p>
@@ -2086,7 +2086,7 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span>  <span class="va">ts</span> <span class="op">&lt;-</span> <span class="va">snoon</span> <span class="op">+</span> <span class="va">dayl</span> <span class="op">/</span> <span class="fl">2</span> </span></code></pre></div>
 <p>While measured solar radiation is preferable if available, we can estimate hourly solar radiation by discounting incoming solar radiation as it moved through the atmosphere as follows:</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">psi_deg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, </span>
+<code class="sourceCode R"><span><span class="va">psi_deg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">23</span>, </span>
 <span>                  FUN <span class="op">=</span> <span class="va">zenith_angle</span>, </span>
 <span>                  doy <span class="op">=</span> <span class="va">doy</span>, </span>
 <span>                  lat <span class="op">=</span> <span class="va">lat</span>, </span>
@@ -2107,19 +2107,19 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span>  <span class="va">Sdif</span> <span class="op">&lt;-</span> <span class="va">Srad</span><span class="op">[</span><span class="fl">2</span>,<span class="op">]</span></span>
 <span>  <span class="va">Sref</span> <span class="op">&lt;-</span> <span class="va">Srad</span><span class="op">[</span><span class="fl">3</span>,<span class="op">]</span></span>
 <span> </span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, </span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">23</span>, </span>
 <span>     y    <span class="op">=</span> <span class="va">Sdir</span>, </span>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="st">"hour"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="va">radiation</span> <span class="op">~</span> <span class="op">(</span><span class="va">W</span><span class="op">/</span><span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>, </span>
 <span>     ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1200</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, </span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">23</span>, </span>
 <span>       y    <span class="op">=</span> <span class="va">Sdif</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, </span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">23</span>, </span>
 <span>       y    <span class="op">=</span> <span class="va">Sref</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></span>
@@ -2131,7 +2131,7 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <p><img src="TeTutorial_files/figure-html/unnamed-chunk-39-1.png" width="576"></p>
 <p>We can then calculate hourly air and soil temperatures. We use the sine-exponential model for air temperature and the sine model for surface temperature:</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">Ta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, </span>
+<code class="sourceCode R"><span><span class="va">Ta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">23</span>, </span>
 <span>             FUN   <span class="op">=</span> <span class="va">diurnal_temp_variation_sineexp</span>, </span>
 <span>             T_max <span class="op">=</span> <span class="va">Tmax</span>,  </span>
 <span>             T_min <span class="op">=</span> <span class="va">Tmin</span>,  </span>
@@ -2141,7 +2141,7 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span>             beta  <span class="op">=</span> <span class="fl">1.55</span>,  </span>
 <span>             gamma <span class="op">=</span> <span class="fl">2.2</span><span class="op">)</span> <span class="co">#air temperature (C)</span></span>
 <span></span>
-<span><span class="va">Ts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">24</span>,  </span>
+<span><span class="va">Ts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">23</span>,  </span>
 <span>             FUN   <span class="op">=</span> <span class="va">diurnal_temp_variation_sine</span>,  </span>
 <span>             T_max <span class="op">=</span> <span class="va">Tmax_s</span>,  </span>
 <span>             T_min <span class="op">=</span> <span class="va">Tmin_s</span><span class="op">)</span> <span class="co">#soil temperature (C)</span></span></code></pre></div>
@@ -2173,9 +2173,13 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span></span>
 <span>  <span class="va">psa</span><span class="op">[</span><span class="va">psa</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span></span>
+<span><span class="co"># proportion of surface area in contact with ground, assume 0.25   </span></span>
+<span></span>
+<span>  <span class="va">psa_g</span><span class="op">=</span> <span class="fl">0.25</span>  </span>
+<span></span>
 <span><span class="co"># Total radiation </span></span>
 <span></span>
-<span>  <span class="va">Qabs</span> <span class="op">&lt;-</span> <span class="va">psa</span> <span class="op">*</span> <span class="va">Sdir</span> <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="va">Sdif</span> <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="va">Sref</span></span></code></pre></div>
+<span>  <span class="va">Qabs</span> <span class="op">&lt;-</span> <span class="va">psa</span> <span class="op">*</span> <span class="va">Sdir</span> <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="va">Sdif</span> <span class="op">+</span> <span class="op">(</span><span class="fl">0.5</span><span class="op">-</span><span class="va">psa_g</span><span class="op">)</span> <span class="op">*</span> <span class="va">Sref</span></span></code></pre></div>
 <p>We then estimate the lizard’s heat transfer coefficient, <span class="math inline">\(H_L\)</span> using an empirical relationship for lizards (<code><a href="../reference/heat_transfer_coefficient.html">heat_transfer_coefficient()</a></code>), but also illustrate a function estimating <span class="math inline">\(H_L\)</span> using a spherical approximation (<code><a href="../reference/heat_transfer_coefficient_approximation.html">heat_transfer_coefficient_approximation()</a></code>) and a simplified approximation (<code><a href="../reference/heat_transfer_coefficient_simple.html">heat_transfer_coefficient_simple()</a></code>).</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Use DRYAIR from NicheMapR to estimate the thermal conductivity of air and kinematic viscosity</span></span>
@@ -2199,9 +2203,9 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span></span>
 <span>    <span class="va">svl</span> <span class="op">&lt;-</span> <span class="fl">0.006</span> </span>
 <span></span>
-<span>  <span class="co"># approxiamte characteristic dimension as cube root of volume, assuming density of water</span></span>
+<span>  <span class="co"># approximate characteristic dimension as cube root of volume, assuming density of water as 1000kg/m^3</span></span>
 <span>    </span>
-<span>    <span class="va">D</span><span class="op">=</span> <span class="op">(</span><span class="op">(</span><span class="va">mass</span> <span class="op">/</span> <span class="fl">1000</span><span class="op">)</span> <span class="op">/</span> <span class="fl">1000</span><span class="op">)</span> <span class="op">^</span> <span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="fl">3</span><span class="op">)</span></span>
+<span>    <span class="va">D</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="op">(</span><span class="va">mass</span> <span class="op">/</span> <span class="fl">1000</span><span class="op">)</span> <span class="op">/</span> <span class="fl">1000</span><span class="op">)</span> <span class="op">^</span> <span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="fl">3</span><span class="op">)</span></span>
 <span>    </span>
 <span>  <span class="co"># We will use the average of K and nu across the day for simplicity and since there's not a substantial variation</span></span>
 <span></span>
@@ -2239,9 +2243,9 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span>  <span class="va">TeGates</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Tb_Gates.html">Tb_Gates</a></span><span class="op">(</span>A       <span class="op">=</span> <span class="va">A</span>, </span>
 <span>                          D       <span class="op">=</span> <span class="va">D</span>, </span>
 <span>                          psa_dir <span class="op">=</span> <span class="va">psa</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>, </span>
-<span>                          psa_ref <span class="op">=</span> <span class="fl">0.5</span> <span class="op">-</span><span class="fl">0.05</span>, </span>
+<span>                          psa_ref <span class="op">=</span> <span class="fl">0.5</span> <span class="op">-</span><span class="va">psa_g</span>, </span>
 <span>                          psa_air <span class="op">=</span> <span class="fl">0.5</span>, </span>
-<span>                          psa_g   <span class="op">=</span> <span class="fl">0.05</span>, </span>
+<span>                          psa_g   <span class="op">=</span> <span class="va">psa_g</span>, </span>
 <span>                          T_g     <span class="op">=</span> <span class="va">Ts</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>, </span>
 <span>                          T_a     <span class="op">=</span> <span class="va">Ta</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>, </span>
 <span>                          Qabs    <span class="op">=</span> <span class="va">Qabs</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span><span class="op">*</span><span class="va">A</span>, </span>
@@ -2394,7 +2398,7 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span>                                  A       <span class="op">=</span> <span class="va">A</span>, </span>
 <span>                                  psa_dir <span class="op">=</span> <span class="va">psa</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>,</span>
 <span>                                  psa_dif <span class="op">=</span> <span class="fl">0.5</span>,</span>
-<span>                                  psa_ref <span class="op">=</span> <span class="fl">0.5</span>, </span>
+<span>                                  psa_ref <span class="op">=</span> <span class="fl">0.5</span><span class="op">-</span><span class="va">psa_g</span>, </span>
 <span>                                  S_dir   <span class="op">=</span> <span class="va">Sdir</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>, </span>
 <span>                                  S_dif   <span class="op">=</span> <span class="va">Sdif</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>, </span>
 <span>                                  rho     <span class="op">=</span> <span class="va">rho</span><span class="op">)</span></span>
@@ -2410,8 +2414,8 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">hr</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">Qemit</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Qemitted_thermal_radiation.html">Qemitted_thermal_radiation</a></span><span class="op">(</span>epsilon  <span class="op">=</span> <span class="va">epsilon_s</span>, </span>
 <span>                                          A        <span class="op">=</span> <span class="va">A</span>, </span>
-<span>                                          psa_dir  <span class="op">=</span> <span class="va">psa</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>, </span>
-<span>                                          psa_ref  <span class="op">=</span> <span class="fl">1</span><span class="op">-</span><span class="va">psa</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span>, </span>
+<span>                                          psa_dir  <span class="op">=</span> <span class="fl">0.5</span>, </span>
+<span>                                          psa_ref  <span class="op">=</span> <span class="fl">0.5</span><span class="op">-</span><span class="va">psa_g</span>, </span>
 <span>                                          T_b      <span class="op">=</span> <span class="va">Te</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">+</span> <span class="fl">273</span>, </span>
 <span>                                          T_g      <span class="op">=</span> <span class="va">Ts</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">+</span> <span class="fl">273</span>, </span>
 <span>                                          T_a      <span class="op">=</span> <span class="va">Ta</span><span class="op">[</span><span class="va">hr</span><span class="op">]</span> <span class="op">+</span> <span class="fl">273</span>, </span>
@@ -2434,7 +2438,7 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span><span class="op">}</span></span></code></pre></div>
 <p>We estimate conductance between the lizard and surface assuming conductance through the animal tissue is the rate limiting step as follows:</p>
 <p><span class="math display">\[Q_{cond}= A\cdot \mbox{proportion}\cdot K(T_{gK}-T_{bK})/d.\]</span></p>
-<p>We conduct the estimate in R assuming that 1/3 of the lizard surface is in contact with the ground and a skin thickness of <span class="math inline">\(10^{-6}\)</span>:</p>
+<p>We conduct the estimate in R assuming that conductive heat exchange occurs down to a soil depth of 2.5cm. We use this value rather than skin thickness, which results in rapid conduction and does not readily reach steady state conditions.</p>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Qcond</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">24</span><span class="op">)</span></span>
 <span></span>
@@ -2444,9 +2448,9 @@ We calculate <span class="math inline">\(\Delta\)</span> using</p>
 <span>                                  d          <span class="op">=</span> <span class="fl">0.025</span>, <span class="co">#assume for conductive heat exchange occurs down to 2.5cm</span></span>
 <span>                                  K          <span class="op">=</span> <span class="fl">0.5</span>,</span>
 <span>                                  A          <span class="op">=</span> <span class="va">A</span>, </span>
-<span>                                  proportion <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<span>                                  proportion <span class="op">=</span> <span class="va">psa_g</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p>We assume, as in generally done for lizards, that heat exchange associated with metabolism and evaporation is negligible:</p>
+<p>We assume, as in generally done for lizards, that heat exchange associated with metabolism and evaporation is negligible, but we note that functions for estimating each heat exchange are described above.</p>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Qmet</span>  <span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span><span class="va">Qevap</span> <span class="op">&lt;-</span> <span class="fl">0</span></span></code></pre></div>
