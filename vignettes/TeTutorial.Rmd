@@ -56,7 +56,7 @@ Qnet_Gates(Qabs  = 500,
 ```
 
 We briefly review each component of the energy balance below. 
-Details are available in biophysical ecology texts [@gates2012biophysical; @campbell2012introduction]. We note that we have standardized most functions to accept and return temperatures in degrees Celsius to promote accessibility. However, the heat budget calculations generally use Kelvin since it is the natural unit, particularly for radiation, and metrics such as convective coefficients standardly use kelvin.
+Details are available in biophysical ecology texts [@gates2012biophysical; @campbell2012introduction]. We note that we have standardized most functions to accept and return temperatures in degrees Celsius to promote accessibility. However, the heat budget calculations generally use Kelvin since it is the natural unit, particularly for radiation, and metrics such as convective coefficients standardly use kelvin. TrenchR includes tables of parameters such as the absorptivity of animal surfaces to solar and thermal radiation in the `inst/extdata` folder.
 
 # Solar radiation, Qabs
 
@@ -259,7 +259,7 @@ legend(x      = "topleft",
 
 The convective heat transfer coefficient depends on whether the heat exchange is free or forced (due to fluid flow). The variables involved in heat transfer can be combined into dimensionless groups that are used to compare the scales of heat exchange processes and thus whether modeling free or forced convection is more appropriate. We provide the primary dimensionless numbers.
 
-The Nusselt number provides a dimensionless estimate of conductance and is estimated as $Nu = H_L \cdot D / K$, where $H_L$ is the convective heat transfer coefficient ($W m^{-2} K^{-1}$), $D$ is the characteristic dimension ($m$), and $K$ is thermal conductivity ($W K^{-1}m^{-1}$). The characteristic dimension quantifies the size of the organism relevant to convective heat exchange and it depends on orientation relevant to the fluid flow, usually wind. The most common approximation of thecharacteristic dimension is the cube root of the volume of the animal [@mitchell1976heat].
+The Nusselt number provides a dimensionless estimate of conductance and is estimated as $Nu = H_L \cdot D / K$, where $H_L$ is the convective heat transfer coefficient ($W m^{-2} K^{-1}$), $D$ is the characteristic dimension ($m$), and $K$ is thermal conductivity ($W K^{-1}m^{-1}$). The characteristic dimension quantifies the size of the organism relevant to convective heat exchange and it depends on orientation relevant to the fluid flow, usually wind. The most common approximation of the characteristic dimension is the cube root of the volume of the animal [@mitchell1976heat].
 
 The Prandtl number describes the ratio of kinematic viscosity to thermal diffusivity as $Pr= c_p \mu /K$, where $c_p$ is the specific heat at constant pressure ($J mol^{-1} K^{-1}$) and $\mu$ is dynamic viscosity ($mol \:s^{-1}m^{-1}$).
 
@@ -2277,7 +2277,7 @@ While measured solar radiation is preferable if available, we can estimate hourl
 
 ```{r, fig.height = 4, fig.width = 6}
 
-psi_deg <- sapply(1:24, 
+psi_deg <- sapply(0:23, 
                   FUN = zenith_angle, 
                   doy = doy, 
                   lat = lat, 
@@ -2298,19 +2298,19 @@ Srad <- sapply(psi_rad,
   Sdif <- Srad[2,]
   Sref <- Srad[3,]
  
-plot(x    = 1:24, 
+plot(x    = 0:23, 
      y    = Sdir, 
      type = "l", 
      xlab = "hour", 
      ylab = expression(radiation ~ (W/m^{2})), 
      ylim = c(0,1200))
 
-points(x    = 1:24, 
+points(x    = 0:23, 
        y    = Sdif, 
        type = "l", 
        lty  = "dotted")
 
-points(x    = 1:24, 
+points(x    = 0:23, 
        y    = Sref, 
        type = "l", 
        lty  = "dashed")
@@ -2326,7 +2326,7 @@ We can then calculate hourly air and soil temperatures. We use the sine-exponent
 
 ```{r}
 
-Ta <- sapply(1:24, 
+Ta <- sapply(0:23, 
              FUN   = diurnal_temp_variation_sineexp, 
              T_max = Tmax,  
              T_min = Tmin,  
@@ -2336,7 +2336,7 @@ Ta <- sapply(1:24,
              beta  = 1.55,  
              gamma = 2.2) #air temperature (C)
 
-Ts <- sapply(1:24,  
+Ts <- sapply(0:23,  
              FUN   = diurnal_temp_variation_sine,  
              T_max = Tmax_s,  
              T_min = Tmin_s) #soil temperature (C)
@@ -2372,9 +2372,13 @@ mass <- 10 #grams
 
   psa[psa < 0] <- 0
 
+# proportion of surface area in contact with ground, assume 0.25   
+
+  psa_g= 0.25  
+
 # Total radiation 
 
-  Qabs <- psa * Sdir + 0.5 * Sdif + 0.5 * Sref
+  Qabs <- psa * Sdir + 0.5 * Sdif + (0.5-psa_g) * Sref
  
 ```
 
@@ -2403,9 +2407,9 @@ We then estimate the lizard's heat transfer coefficient, $H_L$ using an empirica
 
     svl <- 0.006 
 
-  # approxiamte characteristic dimension as cube root of volume, assuming density of water
+  # approximate characteristic dimension as cube root of volume, assuming density of water as 1000kg/m^3
     
-    D= ((mass / 1000) / 1000) ^ (1 / 3)
+    D <- ((mass / 1000) / 1000) ^ (1 / 3)
     
   # We will use the average of K and nu across the day for simplicity and since there's not a substantial variation
 
@@ -2446,9 +2450,9 @@ for (hr in 1:24) {
   TeGates[hr] <- Tb_Gates(A       = A, 
                           D       = D, 
                           psa_dir = psa[hr], 
-                          psa_ref = 0.5 -0.05, 
+                          psa_ref = 0.5 -psa_g, 
                           psa_air = 0.5, 
-                          psa_g   = 0.05, 
+                          psa_g   = psa_g, 
                           T_g     = Ts[hr], 
                           T_a     = Ta[hr], 
                           Qabs    = Qabs[hr]*A, 
@@ -2620,7 +2624,7 @@ for (hr in 1:24) {
                                   A       = A, 
                                   psa_dir = psa[hr],
                                   psa_dif = 0.5,
-                                  psa_ref = 0.5, 
+                                  psa_ref = 0.5-psa_g, 
                                   S_dir   = Sdir[hr], 
                                   S_dif   = Sdif[hr], 
                                   rho     = rho)
@@ -2641,8 +2645,8 @@ Qemit <- rep(NA, 24)
 for (hr in 1:24) {
   Qemit[hr] <- Qemitted_thermal_radiation(epsilon  = epsilon_s, 
                                           A        = A, 
-                                          psa_dir  = psa[hr], 
-                                          psa_ref  = 1-psa[hr], 
+                                          psa_dir  = 0.5, 
+                                          psa_ref  = 0.5-psa_g, 
                                           T_b      = Te[hr] + 273, 
                                           T_g      = Ts[hr] + 273, 
                                           T_a      = Ta[hr] + 273, 
@@ -2678,7 +2682,7 @@ We estimate conductance between the lizard and surface assuming conductance thro
 
 $$Q_{cond}= A\cdot \mbox{proportion}\cdot K(T_{gK}-T_{bK})/d.$$ 
 
-We conduct the estimate in R assuming that 1/3 of the lizard surface is in contact with the ground and a skin thickness of $10^{-6}$:
+We conduct the estimate in R assuming that conductive heat exchange occurs down to a soil depth of 2.5cm. We use this value rather than skin thickness, which results in rapid conduction and does not readily reach steady state conditions.
 
 ```{r}
 
@@ -2690,12 +2694,12 @@ for (hr in 1:24) {
                                   d          = 0.025, #assume for conductive heat exchange occurs down to 2.5cm
                                   K          = 0.5,
                                   A          = A, 
-                                  proportion = 0.05)
+                                  proportion = psa_g)
 }
 
 ```
 
-We assume, as in generally done for lizards, that heat exchange associated with metabolism and evaporation is negligible:
+We assume, as in generally done for lizards, that heat exchange associated with metabolism and evaporation is negligible, but we note that functions for estimating each heat exchange are described above.
 
 ```{r}
 
