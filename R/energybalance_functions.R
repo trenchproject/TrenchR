@@ -387,7 +387,7 @@ heat_transfer_coefficient_simple <- function(u,
 #'   Qradiation_absorbed(a       = 0.9,
 #'                       A       = 1,
 #'                       psa_dir = 0.5,
-#'                       psa_dif = 0.5
+#'                       psa_dif = 0.5,
 #'                       psa_ref = 0.5,
 #'                       S_dir   = 1000,
 #'                       S_dif   = 200,
