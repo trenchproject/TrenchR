@@ -44,8 +44,9 @@ The function estimates solar and thermal radiation (W) absorbed by the surface o
 \examples{
   Qradiation_absorbed(a       = 0.9,
                       A       = 1,
-                      psa_dir = 0.4,
-                      psa_ref = 0.4,
+                      psa_dir = 0.5,
+                      psa_dif = 0.5,
+                      psa_ref = 0.5,
                       S_dir   = 1000,
                       S_dif   = 200,
                       rho     = 0.5)
