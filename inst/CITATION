@@ -1,9 +1,9 @@
 citHeader("To cite the packaage in publications, please use:")
 
 
-citEntry(entry = "Article",
+bibentry(entry = "Article",
 title        = "TrenchR: An R package for modular and accessible microclimate and biophysical ecology",
-author       = personList(as.person("LB Buckley"),
+author       = c(as.person("LB Buckley"),
                  as.person("BA Briones Ortiz"),
                  as.person("I Caruso"),
                  as.person("A John"),

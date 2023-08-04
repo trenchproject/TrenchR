@@ -24,4 +24,4 @@ This function estimates the effective radiant temperature of the sky (K) using e
 \references{
 \insertAllCited{}
 }
-\concept{biolphysical models}
+\concept{biophysical models}

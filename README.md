@@ -3,11 +3,10 @@
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/trenchproject/TrenchR/actions/workflows/r_command_check.yaml/badge.svg)](https://github.com/trenchproject/TrenchR/actions/workflows/r_command_check.yaml)
-[![Codecov test coverage](https://codecov.io/gh/trenchproject/TrenchR/branch/main/graph/badge.svg)](https://codecov.io/gh/trenchproject/TrenchR/branch/main)
-[![NSF-1349865](https://img.shields.io/badge/NSF-1349865-blue.svg)](https://nsf.gov/awardsearch/showAward?AWD_ID=1349865)
+[![Codecov test coverage](https://codecov.io/gh/trenchproject/TrenchR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/trenchproject/TrenchR/branch/main)
+[![NSF-1349865](https://img.shields.io/badge/NSF-1349865-blue.svg)](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1349865)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/trenchproject/TrenchR/main/LICENSE)
 <!-- badges: end -->
-
 
 **Author:** [TrEnCh project, Buckley Lab, Department of Biology, University of Washington](https://www.trenchproject.com/)<br>
 
@@ -66,5 +65,5 @@ If you use this package, We would appreciate a citation. You can see an up to da
 ### Developer notes
 Please see the [Contributor Notes](https://github.com/trenchproject/TrenchR/blob/main/CONTRIBUTING.md) and [Code of Conduct](https://github.com/trenchproject/TrenchR/blob/main/CODE_OF_CONDUCT.md).
 
-We use [Rdpack](https://cran.r-project.org/package=Rdpack) to facilitate package documentation with [BibTeX](http://www.bibtex.org) citations. See the [documentation workflow document](https://github.com/trenchproject/TrenchR/blob/main/documentation_workflow.md) for more details about building package manual components.
+We use [Rdpack](https://cran.r-project.org/package=Rdpack) to facilitate package documentation with [BibTeX](https://www.bibtex.org) citations. See the [documentation workflow document](https://github.com/trenchproject/TrenchR/blob/main/documentation_workflow.md) for more details about building package manual components.
 
