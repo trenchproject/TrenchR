@@ -1,15 +1,5 @@
 ## Resubmission Notes
 
-This is a resubmission after addressing NOTES found on the previous submission.
-- Updated version number
-
-- Updeted CRAN link to canonical form.
-
-- Changed reference handling to avoid a problematic DOI.
-
-- Reduce figure size in vignettes to reduce size.
-
-- Date was updated.
 
 ## Release Summary
 
@@ -31,7 +21,7 @@ This is the second release of TrenchR with minor changes.
 * R-hub builder: Windows Server 2022, x86_64-w64-mingw32 (64-bit), R-devel (2022-03-23 r81968 ucrt)
 
 ## check results
-The checks return several notes regarding references. We have worked to provide the most robust references possible.
+
 
 ## Dependencies
 
