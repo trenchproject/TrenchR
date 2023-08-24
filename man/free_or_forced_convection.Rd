@@ -44,6 +44,7 @@ Other biophysical models:
 \code{\link{Qradiation_absorbed}()},
 \code{\link{Qthermal_radiation_absorbed}()},
 \code{\link{Reynolds_number}()},
+\code{\link{T_sky}()},
 \code{\link{Tb_CampbellNorman}()},
 \code{\link{Tb_Gates2}()},
 \code{\link{Tb_Gates}()},

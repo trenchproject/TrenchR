@@ -3,7 +3,7 @@
 
 ## Release Summary
 
-This is the first major release of TrenchR with changes in response to reviewer comments.
+This is the first major release of TrenchR with changes in response to reviewer comments. We have updated package documentation to special sentinel "_PACKAGE".
 
 ## check results
 Passed checked locally, on R-hub, and win-builder. There are several notes about possible invalid URLs that we have checked.
