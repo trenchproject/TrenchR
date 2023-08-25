@@ -13,8 +13,6 @@
 #'
 #' @name TrenchR
 #'
-#' @docType package
-#'
 #' @keywords package
 #'
 NULL
