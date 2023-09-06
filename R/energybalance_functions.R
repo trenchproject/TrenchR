@@ -442,7 +442,7 @@ Qradiation_absorbed <- function (a = 0.9,
 #'
 #' @return \code{numeric} T_sky (K).
 #'
-#' @family biolphysical models
+#' @family biophysical models
 #'
 #' @export
 #'
