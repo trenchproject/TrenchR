@@ -1,0 +1,23 @@
+citHeader("To cite the packaage in publications, please use:")
+
+
+bibentry(bibtype = "Article",
+title        = "TrenchR: An R package for modular and accessible microclimate and biophysical ecology",
+author       = c(as.person("LB Buckley"),
+                 as.person("BA Briones Ortiz"),
+                 as.person("I Caruso"),
+                 as.person("A John"),
+                 as.person("O Levy"),
+                 as.person("AV Meyer"),
+                 as.person("EA Riddell"),
+                 as.person("JL Simonis")),
+journal      = "PLOS Climate",
+year         = "2023",
+url          = "https://doi.org/10.1371/journal.pclm.0000139",
+
+textVersion  =
+paste("LB Buckley et al. (2023).",
+    "TrenchR: An R package for modular and accessible microclimate and biophysical ecology.",
+    "PLOS Climate.",
+    "URL https://doi.org/10.1371/journal.pclm.0000139.")
+)
