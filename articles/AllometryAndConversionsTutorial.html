@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">TrenchR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
       </span>
     </div>
 
@@ -84,13 +84,15 @@
 
       
 
-      </header><script src="AllometryAndConversionsTutorial_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Allometries and conversions</h1>
-                        <h4 data-toc-skip class="author">Lauren Buckley and the TrEnCh project, Department of Biology, University of Washington</h4>
+                        <h4 data-toc-skip class="author">Lauren Buckley
+and the TrEnCh project, Department of Biology, University of
+Washington</h4>
             
-            <h4 data-toc-skip class="date">2022-11-16</h4>
+            <h4 data-toc-skip class="date">2023-09-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/trenchproject/TrenchR/blob/HEAD/vignettes/AllometryAndConversionsTutorial.Rmd" class="external-link"><code>vignettes/AllometryAndConversionsTutorial.Rmd</code></a></small>
       <div class="hidden name"><code>AllometryAndConversionsTutorial.Rmd</code></div>
@@ -103,15 +105,25 @@
 <code class="sourceCode R"><span><span class="co"># Load TrenchR package</span></span>
 <span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://trenchproject.github.io/TrenchR/">TrenchR</a></span><span class="op">)</span></span></code></pre></div>
-<p>This tutorial reviews tools that use allometries to estimate the dimensions of organisms needed for energy balances and other analyses. The tutorial also documents convenience functions for converting units. Finally, we present functions that describe thermal performance curves.</p>
+<p>This tutorial reviews tools that use allometries to estimate the
+dimensions of organisms needed for energy balances and other analyses.
+The tutorial also documents convenience functions for converting units.
+Finally, we present functions that describe thermal performance
+curves.</p>
 <div class="section level2">
 <h2 id="allometries">Allometries<a class="anchor" aria-label="anchor" href="#allometries"></a>
 </h2>
-<p>We provide tools for estimating additional dimensions of organisms from measured dimensions.</p>
+<p>We provide tools for estimating additional dimensions of organisms
+from measured dimensions.</p>
 <div class="section level4">
 <h4 id="mass">Mass<a class="anchor" aria-label="anchor" href="#mass"></a>
 </h4>
-<p>The function <code><a href="../reference/mass_from_length.html">mass_from_length()</a></code> encompasses empirically-derived relationships to estimate mass as a power law function of mass for six taxonomic classifications. The relationships are derived by relating length to mass for specimens of numerous species. We use the <code><a href="../reference/mass_from_length.html">mass_from_length()</a></code> function to illustrate the allometries for different taxa:</p>
+<p>The function <code><a href="../reference/mass_from_length.html">mass_from_length()</a></code> encompasses
+empirically-derived relationships to estimate mass as a power law
+function of mass for six taxonomic classifications. The relationships
+are derived by relating length to mass for specimens of numerous
+species. We use the <code><a href="../reference/mass_from_length.html">mass_from_length()</a></code> function to
+illustrate the allometries for different taxa:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">oldpar</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
@@ -168,8 +180,12 @@
 <div class="section level4">
 <h4 id="surface-area">Surface Area<a class="anchor" aria-label="anchor" href="#surface-area"></a>
 </h4>
-<p>Surface area is needed for several aspects of biophysical models but is rarely measured. We provide functions to estimate surface area (<span class="math inline">\(m^3\)</span>) from length, mass, or volume for a variety of taxa.</p>
-<p>The function <code><a href="../reference/surface_area_from_mass.html">surface_area_from_mass()</a></code> encompasses empirically-derived relationship to estimate surface area as a power law function of mass for lizards, frogs, and insects.</p>
+<p>Surface area is needed for several aspects of biophysical models but
+is rarely measured. We provide functions to estimate surface area (<span class="math inline">\(m^3\)</span>) from length, mass, or volume for a
+variety of taxa.</p>
+<p>The function <code><a href="../reference/surface_area_from_mass.html">surface_area_from_mass()</a></code> encompasses
+empirically-derived relationship to estimate surface area as a power law
+function of mass for lizards, frogs, and insects.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -210,7 +226,10 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/box.html" class="external-link">box</a></span><span class="op">(</span>bty <span class="op">=</span> <span class="st">"L"</span>,</span>
 <span>    lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-3-1.png" width="384"></p>
-<p>We also provide empirical relationships estimating surface area as power law function of volume. The functions were developed by Mitchell <span class="citation">(1976)</span> for use in approximating convective heat transfer:</p>
+<p>We also provide empirical relationships estimating surface area as
+power law function of volume. The functions were developed by Mitchell
+<span class="citation">(1976)</span> for use in approximating convective
+heat transfer:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span><span class="op">)</span>, </span>
 <span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/surface_area_from_volume.html">surface_area_from_volume</a></span><span class="op">(</span>V     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span><span class="op">)</span>, </span>
@@ -231,7 +250,11 @@
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty  <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-4-1.png" width="384"></p>
-<p>For the same study, we additionally provide a function to estimate volume from length for several taxa or by approximating the organism as a sphere. Finally, we provide a function for estimating surface area from length by approximating the animal’s body as a rotational ellipsoid. The allometric functions are available in R as follows:</p>
+<p>For the same study, we additionally provide a function to estimate
+volume from length for several taxa or by approximating the organism as
+a sphere. Finally, we provide a function for estimating surface area
+from length by approximating the animal’s body as a rotational
+ellipsoid. The allometric functions are available in R as follows:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -263,7 +286,17 @@
 <span>     xlab <span class="op">=</span> <span class="st">"length (m)"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"surface area"</span> <span class="op">~</span> <span class="op">(</span><span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="AllometryAndConversionsTutorial_files/figure-html/unnamed-chunk-6-1.png" width="384"></p>
-<p>Estimating the amount of solar radiation that an animal absorbs requires knowledge of the silhouette area, the proportion of an animal’s surface area that is projected onto a horizontal surface. Silhouette area is a function of the sun’s angle. We offer empirically-derived relationships to predict the proportional silhouette area for frogs, lizards, and grasshoppers as a polynomial function of zenith angle (<code><a href="../reference/proportion_silhouette_area.html">proportion_silhouette_area()</a></code>). We additionally offer a function (<code><a href="../reference/proportion_silhouette_area_shapes.html">proportion_silhouette_area_shapes()</a></code>) to estimate silhouette area by approximating the animal as a sphere or cylinder as a function of theta, the angle between the solar beam and the longitudinal axis. The R functions are parameterized as follows:</p>
+<p>Estimating the amount of solar radiation that an animal absorbs
+requires knowledge of the silhouette area, the proportion of an animal’s
+surface area that is projected onto a horizontal surface. Silhouette
+area is a function of the sun’s angle. We offer empirically-derived
+relationships to predict the proportional silhouette area for frogs,
+lizards, and grasshoppers as a polynomial function of zenith angle
+(<code><a href="../reference/proportion_silhouette_area.html">proportion_silhouette_area()</a></code>). We additionally offer a
+function (<code><a href="../reference/proportion_silhouette_area_shapes.html">proportion_silhouette_area_shapes()</a></code>) to estimate
+silhouette area by approximating the animal as a sphere or cylinder as a
+function of theta, the angle between the solar beam and the longitudinal
+axis. The R functions are parameterized as follows:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -408,7 +441,8 @@
 <div class="section level2">
 <h2 id="conversions">Conversions<a class="anchor" aria-label="anchor" href="#conversions"></a>
 </h2>
-<p>We offer convenience functions to convert among units for angles and temperatures:</p>
+<p>We offer convenience functions to convert among units for angles and
+temperatures:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/angle-conversions.html">degrees_to_radians</a></span><span class="op">(</span><span class="fl">47.608</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 0.8309164</span></span></code></pre>
@@ -428,7 +462,17 @@
 <div class="section level2">
 <h2 id="thermal-performance-curve-functions">Thermal Performance Curve Functions<a class="anchor" aria-label="anchor" href="#thermal-performance-curve-functions"></a>
 </h2>
-<p>Thermal performance curves (TPCs) describe the temperature dependence of organismal performance such as locomotion and digestion <span class="citation">(Huey and Kingsolver 1989)</span>. They have become an important tool to understand organismal responses to environmental conditions, particularly responses to climate change <span class="citation">(Sinclair et al. 2016)</span>. TrenchR includes two forms of TPCs. We include a function <code><a href="../reference/TPC.html">TPC()</a></code> to describe a Gaussian-quadratic TPC as a function of thermal optima and critical thermal minima and maxima <span class="citation">(Deutsch et al. 2008)</span>. The <code><a href="../reference/TPC_beta.html">TPC_beta()</a></code> function uses a beta function to define a TPC based on mode, breadth, and skew. A scale factor enables including a thermodynamic effect on mean performance <span class="citation">(Asbury and Angilletta Jr 2010)</span>. Additional TPC resources are available in the R packages rTPC and thermPref.</p>
+<p>Thermal performance curves (TPCs) describe the temperature dependence
+of organismal performance such as locomotion and digestion <span class="citation">(Huey and Kingsolver 1989)</span>. They have become an
+important tool to understand organismal responses to environmental
+conditions, particularly responses to climate change <span class="citation">(Sinclair et al. 2016)</span>. TrenchR includes two
+forms of TPCs. We include a function <code><a href="../reference/TPC.html">TPC()</a></code> to describe a
+Gaussian-quadratic TPC as a function of thermal optima and critical
+thermal minima and maxima <span class="citation">(Deutsch et al.
+2008)</span>. The <code><a href="../reference/TPC_beta.html">TPC_beta()</a></code> function uses a beta function
+to define a TPC based on mode, breadth, and skew. A scale factor enables
+including a thermodynamic effect on mean performance <span class="citation">(Asbury and Angilletta Jr 2010)</span>. Additional TPC
+resources are available in the R packages rTPC and thermPref.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">60</span>, </span>
 <span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/TPC.html">TPC</a></span><span class="op">(</span>T      <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">60</span>, </span>
@@ -454,23 +498,36 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">oldpar</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references">
-<div id="ref-asbury2010thermodynamic">
-<p>Asbury, D. A., and M. J. Angilletta Jr. 2010. “Thermodynamic Effects on the Evolution of Performance Curves.” <em>The American Naturalist</em> 176 (2): E40–E49.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-asbury2010thermodynamic" class="csl-entry">
+Asbury, D. A., and M. J. Angilletta Jr. 2010. <span>“Thermodynamic
+Effects on the Evolution of Performance Curves.”</span> <em>The American
+Naturalist</em> 176 (2): E40–49.
 </div>
-<div id="ref-deutsch2008impacts">
-<p>Deutsch, C. A., J. J. Tewksbury, R. B. Huey, K. S. Sheldon, C. K. Ghalambor, D. C. Haak, and P. R. Martin. 2008. “Impacts of Climate Warming on Terrestrial Ectotherms Across Latitude.” <em>Proceedings of the National Academy of Sciences</em> 105 (18): 6668–72.</p>
+<div id="ref-deutsch2008impacts" class="csl-entry">
+Deutsch, C. A., J. J. Tewksbury, R. B. Huey, K. S. Sheldon, C. K.
+Ghalambor, D. C. Haak, and P. R. Martin. 2008. <span>“Impacts of Climate
+Warming on Terrestrial Ectotherms Across Latitude.”</span>
+<em>Proceedings of the National Academy of Sciences</em> 105 (18):
+6668–72.
 </div>
-<div id="ref-huey1989evolution">
-<p>Huey, R. B., and J. G. Kingsolver. 1989. “Evolution of Thermal Sensitivity of Ectotherm Performance.” <em>Trends in Ecology &amp; Evolution</em> 4 (5): 131–35.</p>
+<div id="ref-huey1989evolution" class="csl-entry">
+Huey, R. B., and J. G. Kingsolver. 1989. <span>“Evolution of Thermal
+Sensitivity of Ectotherm Performance.”</span> <em>Trends in Ecology
+&amp; Evolution</em> 4 (5): 131–35.
 </div>
-<div id="ref-mitchell1976heat">
-<p>Mitchell, John W. 1976. “Heat Transfer from Spheres and Other Animal Forms.” <em>Biophysical Journal</em> 16 (6): 561–69.</p>
+<div id="ref-mitchell1976heat" class="csl-entry">
+Mitchell, John W. 1976. <span>“Heat Transfer from Spheres and Other
+Animal Forms.”</span> <em>Biophysical Journal</em> 16 (6): 561–69.
 </div>
-<div id="ref-sinclair2016can">
-<p>Sinclair, B. J., K. E. Marshall, M. A. Sewell, D. L. Levesque, C. S. Willett, S. Slotsbo, Y. Dong, et al. 2016. “Can We Predict Ectotherm Responses to Climate Change Using Thermal Performance Curves and Body Temperatures?” <em>Ecology Letters</em> 19 (11): 1372–85.</p>
+<div id="ref-sinclair2016can" class="csl-entry">
+Sinclair, B. J., K. E. Marshall, M. A. Sewell, D. L. Levesque, C. S.
+Willett, S. Slotsbo, Y. Dong, et al. 2016. <span>“Can We Predict
+Ectotherm Responses to Climate Change Using Thermal Performance Curves
+and Body Temperatures?”</span> <em>Ecology Letters</em> 19 (11):
+1372–85.
 </div>
 </div>
 </div>
@@ -493,7 +550,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
