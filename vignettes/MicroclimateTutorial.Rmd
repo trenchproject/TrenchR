@@ -1057,7 +1057,7 @@ Degree days indicate the accumulated heat available for processes such as develo
 For the frequent application of estimating development, degree days are calculated within physiological bounds known as the lower and upper developmental temperatures, LDT and UDT, respectively.
 We provide four approaches for estimating degree days that differ in the complexity with which they aggregate heat: "single.sine", "double.sine", "single.triangulation" or "double.triangulation". 
 
-We implement the methods detailed here: <http://ipm.ucanr.edu/WEATHER/ddfigindex.html>.
+We implement the methods detailed here: <https://ipm.ucanr.edu/WEATHER/ddfigindex.html>.
 The methods account for whether the temperature time series is intercepted by the LDT and / or the UDT. 
 Briefly, we present the equations for each method for the case of the temperature time series being intercepted by the lower threshold. 
 For the single-sine method, degree days $D$ can be estimated as

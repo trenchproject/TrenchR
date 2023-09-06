@@ -2,15 +2,17 @@
 
 Version numbers follow [Semantic Versioning](https://semver.org/).
 
-# [TrenchR 0.1.1](https://github.com/trenchproject/TrenchR/releases/tag/v0.1.1)
-*2022-09-20*
+# [TrenchR 1.1.1](https://github.com/trenchproject/TrenchR/releases/tag/v0.1.1)
+*2023-08-24*
 
-## First release
-* Major edits and formats throughout the package
-* No backwards compatibility is ensured 
+## First major release
+* Edited parameters and units for consistency.
+* Updated some equations in response to reviewer suggestions. 
+* No backwards compatibility is ensured.
+* Added a citation file.
 
 ## GitHub Actions
-* Builds now occur on GitHub, off of Travis
+* Builds now occur on GitHub
 * Includes package build and check across platforms, test coverage, pkgdown site build
 
 ## Website auto-build
@@ -25,14 +27,8 @@ Version numbers follow [Semantic Versioning](https://semver.org/).
 ## Package preparation
 * significant codebase edits for tidying and streamlining in advance of CRAN submission.
 
-## Edits is response to CRAN review
-* including shortening title, editing description, and updating variable names.
-* change reference handling.
-* reduce figure size in vignettes to reduce size.
-
 ## Argument edits
 * Standardizing arguments across functions
-* For example `taxon` replaces `taxa` in instances where only one value can be input at a time
 
 ## Function names
 * Articulated function names
