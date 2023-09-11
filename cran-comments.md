@@ -3,7 +3,7 @@
 
 ## Release Summary
 
-This is the first major release of TrenchR with changes in response to reviewer comments. We have updated package documentation to special sentinel "_PACKAGE". Subsequently revised to remove double aliases.
+This is the first major release of TrenchR with changes in response to reviewer comments. We have updated package documentation to special sentinel "_PACKAGE". Subsequently revised to remove double aliases. We replaced reference URLs that were causing warnings with DOIs. 
 
 ## check results
 Passed checked locally, on R-hub, and win-builder. There are several notes about possible invalid URLs that we have checked.
