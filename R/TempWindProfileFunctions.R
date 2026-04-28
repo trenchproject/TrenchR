@@ -235,76 +235,73 @@ air_temp_profile <- function (T_r,
 #'                            z   = 0.3, 
 #'                            T_s = 27)
 #'
-air_temp_profile_segment <- function (T_r, 
-                                      u_r, 
-                                      zr, 
-                                      z0, 
-                                      z, 
-                                      T_s){
+air_temp_profile_segment <- function(T_r,
+                                     u_r,
+                                     zr,
+                                     z0,
+                                     z,
+                                     T_s) {
   
-  stopifnot(u_r >= 0, 
-            zr  >= 0, 
-            z0  >= 0, 
-            z   >= 0)
+  # Input validation
+  if (!all(lengths(list(T_r, u_r, zr, z0)) == 3))
+    stop("'T_r', 'u_r', 'zr', and 'z0' must each be length 3 ",
+         "(one value per canopy segment).")
+  if (!all(u_r >= 0, na.rm = TRUE))
+    stop("All values of 'u_r' must be >= 0.")
+  if (!all(zr >= 0, na.rm = TRUE))
+    stop("All values of 'zr' must be >= 0.")
+  if (!all(z0 > 0, na.rm = TRUE))
+    stop("All values of 'z0' must be > 0 (roughness length cannot be zero).")
+  if (!all(z >= 0, na.rm = TRUE))
+    stop("'z' must be >= 0.")
+  if (!all(zr > z0, na.rm = TRUE))
+    stop("All reference heights 'zr' must be greater than roughness lengths 'z0'.")
   
-  # order roughness and segment heights 
-
+  # Order segments by decreasing reference height
   zr.ord <- order(zr, decreasing = TRUE)
   zr     <- zr[zr.ord]
   z0     <- z0[zr.ord]
   u_r    <- u_r[zr.ord]
   T_r    <- T_r[zr.ord]
   
-  # friction velocity
-
-    u_star <- 0.4 * u_r / log(zr / z0 + 1) #0.4 is von Karman constant
-
-  # sublayer Stanton number
-
-    S_ts <- 0.62 / (z0[3] * u_star[2] / 12)^0.45
-
-  # bulk Stanton number
-
-    S_tb <- 0.64 / log(zr[2] / z0[3] + 1)
+  # Friction velocity (von Karman constant = 0.4)
+  u_star <- 0.4 * u_r / log(zr / z0 + 1)
   
-  # estimate u_Zloc  
-
-
-  if (zr[1] <= z) {
-
+  # Sublayer Stanton number (surface-to-air, uses lowest segment)
+  S_ts <- 0.62 / (z0[3] * u_star[2] / 12)^0.45
+  
+  # Bulk Stanton number (air-to-air, uses mid segment)
+  S_tb <- 0.64 / log(zr[2] / z0[3] + 1)
+  
+  # Select segment containing height z
+  if (z >= zr[1]) {
     us_star <- u_star[1]
-    z0s <- z0[1]
-    T_rs <- T_r[1]
-    zrs <- zr[1]
-    
-  } else if (zr[1] > z & zr[2] <= z) {
-
+    z0s     <- z0[1]
+    T_rs    <- T_r[1]
+    zrs     <- zr[1]
+  } else if (z >= zr[2]) {
     us_star <- u_star[2]
-    z0s <- z0[2]
-    T_rs <- T_r[2]
-    zrs <- zr[2]
-    
-  } else if (zr[1] > z & zr[2] > z) {
-
+    z0s     <- z0[2]
+    T_rs    <- T_r[2]
+    zrs     <- zr[2]
+  } else if (z >= 0) {
     us_star <- u_star[3]
-    z0s <- z0[3]
-    T_rs <- T_r[3]
-    zrs <- zr[3]
-    
+    z0s     <- z0[3]
+    T_rs    <- T_r[3]
+    zrs     <- zr[3]
+  } else {
+    stop("Could not assign height 'z' to any canopy segment. ",
+         "Check that 'z' and 'zr' values are consistent.")
   }
   
-  # Estimate windspeed
-
-    u_z <- 2.5 * us_star * log(z / z0s + 1)
+  # Wind speed at height z (m/s) 
+  u_z <- 2.5 * us_star * log(z / z0s + 1)
   
-  # Temperature at roughness height, z0
-
-    T_z0 <- (T_rs * S_tb + T_s * S_ts) / (S_tb + S_ts)
+  # Temperature at roughness height z0 (blended surface/air temp)
+  T_z0 <- (T_rs * S_tb + T_s * S_ts) / (S_tb + S_ts)
   
-  # Temperature at local height
-
-    T_z0 + (T_rs - T_z0) * log(z / z0s + 1) / log(zrs / z0s + 1)
-
+  # Temperature at height z (°C)
+  T_z0 + (T_rs - T_z0) * log(z / z0s + 1) / log(zrs / z0s + 1)
 }
 
 
@@ -335,55 +332,53 @@ air_temp_profile_segment <- function (T_r,
 #'                              z0  = c(0.01, 0.15, 0.2), 
 #'                              z   = 0.3)
 #'
-wind_speed_profile_segment <- function (u_r, 
-                                        zr, 
-                                        z0, 
-                                        z) {
+wind_speed_profile_segment <- function(u_r,
+                                       zr,
+                                       z0,
+                                       z) {
   
-  stopifnot(u_r >= 0, 
-            zr  >= 0, 
-            z0  >= 0, 
-            z   >= 0,
-            length(u_r) == 3, 
-            length(zr)  == 3, 
-            length(z0)  == 3)
+  # Input validation
+  if (!all(lengths(list(u_r, zr, z0)) == 3))
+    stop("'u_r', 'zr', and 'z0' must each be length 3 ",
+         "(one value per canopy segment).")
+  if (!all(u_r >= 0, na.rm = TRUE))
+    stop("All values of 'u_r' must be >= 0.")
+  if (!all(zr >= 0, na.rm = TRUE))
+    stop("All values of 'zr' must be >= 0.")
+  if (!all(z0 > 0, na.rm = TRUE))
+    stop("All values of 'z0' must be > 0 (roughness length cannot be zero).")
+  if (!all(z >= 0, na.rm = TRUE))
+    stop("'z' must be >= 0.")
+  if (!all(zr > z0, na.rm = TRUE))
+    stop("All reference heights 'zr' must be greater than roughness lengths 'z0'.")
   
   k <- von_karman_constant()
-
-  # order roughness and segment heights so that z1 > z2 > z0 
-
+  
+  # Order segments by decreasing reference height (zr[1] > zr[2] > zr[3])
   zr.ord <- order(zr, decreasing = TRUE)
-  zr    <- zr[zr.ord]
-  z0    <- z0[zr.ord]
-  u_r   <- u_r[zr.ord]
+  zr     <- zr[zr.ord]
+  z0     <- z0[zr.ord]
+  u_r    <- u_r[zr.ord]
   
-  # friction velocity
-
-  u_star <- k * u_r / log(zr / z0 + 1) 
+  # Friction velocity per segment
+  u_star <- k * u_r / log(zr / z0 + 1)
   
-  # estimate u_z loc  
-
-  if (z <= zr[3]) {
-
-    us_star <- u_star[3]
-    z0s     <- z0[3]
-    zrs     <- zr[3]
-    
-  } else if (z > zr[3] & z < zr[2]) {
-
-    us_star <- u_star[2]
-    z0s     <- z0[2]
-    zrs     <- zr[2]
-    
-  } else if (z >= zr[2]) {
+  # Select segment containing height z (consistent with air_temp_profile_segment)
+  if (z >= zr[1]) {
     us_star <- u_star[1]
     z0s     <- z0[1]
-    zrs     <- zr[1]
-       
+  } else if (z >= zr[2]) {
+    us_star <- u_star[2]
+    z0s     <- z0[2]
+  } else if (z >= 0) {
+    us_star <- u_star[3]
+    z0s     <- z0[3]
+  } else {
+    stop("Could not assign height 'z' to any canopy segment. ",
+         "Check that 'z' and 'zr' values are consistent.")
   }
   
-  #estimate wind speed
-
-    0.5 * us_star * log(z / z0s + 1)
-
+  # Log-linear wind profile: u_z = (u_star / k) * log(z / z0 + 1)
+  # FIX: was 0.5 * us_star — should be (1/k) * us_star = 2.5 * us_star
+  (1 / k) * us_star * log(z / z0s + 1)
 }

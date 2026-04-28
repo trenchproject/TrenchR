@@ -29,9 +29,9 @@ test_that("air_temp_profile_segment function works as expected", {
 
 
 test_that("wind_speed_profile_segment function works as expected", {
-  expect_similar(wind_speed_profile_segment(u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), z=0.01), 0.007497013)
-  expect_similar(wind_speed_profile_segment(u_r=c(0.01,0.025,0.05), zr=c(0.05,0.75,0.5), z0=c(0.01,0.15,0.2), z=0.3), 0.007497013)
-  expect_similar(wind_speed_profile_segment(u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), z=1), 0.014660022)
+  expect_similar(wind_speed_profile_segment(u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), z=0.01), 0.003868528)
+  expect_similar(wind_speed_profile_segment(u_r=c(0.01,0.025,0.05), zr=c(0.05,0.75,0.5), z0=c(0.01,0.15,0.2), z=0.3), 0.01916545)
+  expect_similar(wind_speed_profile_segment(u_r=c(0.01,0.025,0.05), zr=c(0.05,0.25,0.5), z0=c(0.01,0.15,0.2), z=1), 0.07151231)
 })
 
 

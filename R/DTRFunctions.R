@@ -48,19 +48,19 @@ diurnal_temp_variation_sineexp <- function (T_max,
                                             beta  = 1.55, 
                                             gamma = 2.2) {
 
-  stopifnot(T_max >= T_min, 
-            t_s   >= 0, 
-            t_s   <= 24,
-            t_r   >= 0, 
-            t_r   <= 24,
-            t     >= 0, 
-            t     <= 24, 
-            alpha >= 0, 
-            alpha <= 24,
-            gamma >= 0, 
-            gamma <= 24,
-            beta  >= 0, 
-            beta  <= 24)
+  # Input validation (vectorized-safe)
+  if (!all(T_max >= T_min, na.rm = TRUE))
+    stop("'T_max' must be >= 'T_min'.")
+  if (!all(t_r >= 0 & t_r <= 24, na.rm = TRUE))
+    stop("'t_r' must be between 0 and 24.")
+  if (!all(t_s >= 0 & t_s <= 24, na.rm = TRUE))
+    stop("'t_s' must be between 0 and 24.")
+  if (!all(t >= 0 & t <= 24, na.rm = TRUE))
+    stop("'t' must be between 0 and 24.")
+  if (!all(alpha >= 0 & alpha <= 24, na.rm = TRUE))
+    stop("'alpha' must be between 0 and 24.")
+  if (!all(beta >= 0 & beta <= 24, na.rm = TRUE))
+    stop("'beta' must be between 0 and 24.")
    
   # daylength
 

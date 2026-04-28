@@ -47,12 +47,9 @@ Default \code{alpha}, \code{beta}, and \code{gamma} values are the average of 5 
 \examples{
   diurnal_temp_variation_sineexp(T_max = 30, 
                                  T_min = 10, 
-                                 t     = 11, 
+                                 t     = 11:15, 
                                  t_r   = 6, 
-                                 t_s   = 18, 
-                                 alpha = 2.59, 
-                                 beta  = 1.55, 
-                                 gamma = 2.2)
+                                 t_s   = 18)
 
 }
 \references{

@@ -1,25 +1,33 @@
 # Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 
 on:
   push:
     branches: [main, master]
   pull_request:
     branches: [main, master]
+  workflow_dispatch:                          # Allows manual trigger from the UI
 
 name: R-CMD-check
+
+permissions:
+  contents: read                              # Least-privilege for a check-only workflow
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true                   # Cancel superseded runs on same branch/PR
 
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
-
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
 
     strategy:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,   r: 'release'}
-          - {os: windows-latest, r: 'release'}
+          - {os: macos-latest,    r: 'release'}       # arm64 M1 — see note below
+          - {os: windows-latest,  r: 'release'}
           - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest,   r: 'release'}
           - {os: ubuntu-latest,   r: 'oldrel-1'}
@@ -29,7 +37,7 @@ jobs:
       R_KEEP_PKG_SOURCE: yes
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4             # v3 → v4
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -47,5 +55,5 @@ jobs:
       - uses: r-lib/actions/check-r-package@v2
         with:
           args: 'c("--no-manual", "--as-cran")'
-          error-on: '"error"'
+          error-on: '"warning"'              # was "error" — catches CRAN-blocking warnings too
           check-dir: '"check"'

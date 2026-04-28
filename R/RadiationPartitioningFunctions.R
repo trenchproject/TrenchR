@@ -234,30 +234,33 @@ partition_solar_radiation <- function (method,
 #'                                      p_a = 86.1, 
 #'                                      rho   = 0.25)
 #'
-proportion_diffuse_solar_radiation <- function (psi, 
-                                                p_a, 
-                                                rho) {  
+proportion_diffuse_solar_radiation <- function(psi, p_a, rho) {
   
-  stopifnot(psi >= 0, 
-            psi <= 89.5, 
-            p_a >  0, 
-            rho   >= 0, 
-            rho   <= 1)
- 
-  if (psi <= 50) {
-    
-    prop <- (5.67 * 10^-2 + 1.698 * 10^-5 * psi + 1.917 * 10^-6 * psi^2 + 1.028 * 10^-7 * psi^3) * 
-            (1 + 0.01 * (p_a - 86.1) + 0.12 * (rho - 0.25))
-    
-  }
+  # Input validation (vectorized-safe)
+  if (!all(psi >= 0 & psi <= 89.5, na.rm = TRUE))
+    stop("'psi' must be between 0 and 89.5 degrees.")
+  if (!all(p_a > 0, na.rm = TRUE))
+    stop("'p_a' must be > 0.")
+  if (!all(rho >= 0 & rho <= 1, na.rm = TRUE))
+    stop("'rho' must be between 0 and 1.")
   
-  if (psi > 50) {
-    
-    prop <- (5.83819968 - 0.390636004 * psi + 9.79200778 * 10^-3 * psi^2 - 1.0786077 * 10^-4 * psi^3 + 4.42915464 * 10^-7 * psi^4) * 
-            (1 + 0.009 * (p_a - 86.1) + (0.8 - 0.015 * psi) * (rho - 0.25))
-     
-  }
-    
-  prop
+  # Low-angle branch (psi <= 50)
+  prop_low <- (5.67e-2 +
+                 1.698e-5  * psi +
+                 1.917e-6  * psi^2 +
+                 1.028e-7  * psi^3) *
+    (1 + 0.01  * (p_a - 86.1) +
+       0.12  * (rho - 0.25))
   
+  # High-angle branch (psi > 50)
+  prop_high <- (5.83819968 -
+                  0.390636004   * psi +
+                  9.79200778e-3 * psi^2 -
+                  1.0786077e-4  * psi^3 +
+                  4.42915464e-7 * psi^4) *
+    (1 + 0.009           * (p_a - 86.1) +
+       (0.8 - 0.015 * psi) * (rho - 0.25))
+  
+  # Select branch element-wise
+  ifelse(psi <= 50, prop_low, prop_high)
 }

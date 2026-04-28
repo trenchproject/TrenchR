@@ -46,38 +46,32 @@
 #'
 #' @export
 #'
-surface_area_from_mass <- function (m, 
-                                    taxon) {
-
-  stopifnot(length(taxon) == 1, 
-            taxon %in% c("lizard", "salamander", "frog", "insect"), 
-            m > 0)
- 
-
-  if (taxon == "lizard") {
-
-    a <- 0.000314 * pi
-    b <- 2/3
+surface_area_from_mass <- function(m, taxon) {
   
-  } else if (taxon == "salamander") {
-
-    a <- 0.000842
-    b <- 0.694
-
-  } else if (taxon == "frog") {
-
-    a <- 0.00099
-    b <- 0.56
-
-  } else if (taxon == "insect" ) {
-
-    a <- 0.0013
-    b <- 0.8
-
-  } 
+  # Coefficient lookup tables
+  a_vals <- c(
+    lizard     = 0.000314 * pi,
+    salamander = 0.000842,
+    frog       = 0.00099,
+    insect     = 0.0013
+  )
+  b_vals <- c(
+    lizard     = 2/3,
+    salamander = 0.694,
+    frog       = 0.56,
+    insect     = 0.8
+  )
   
-  a * m ^ b
-
+  # Input validation (vectorized-safe)
+  unknown <- setdiff(unique(taxon), names(a_vals))
+  if (length(unknown) > 0)
+    stop("Unknown taxon: ", paste(unknown, collapse = ", "),
+         ". Must be one of: ", paste(names(a_vals), collapse = ", "))
+  if (!all(m > 0, na.rm = TRUE))
+    stop("All values of 'm' must be greater than 0.")
+  
+  # Compute surface area
+  unname(a_vals[taxon] * m ^ b_vals[taxon])
 }
 
 #' @title Organism Mass from Length 
@@ -141,47 +135,36 @@ surface_area_from_mass <- function (m,
 #'
 #' @export
 #'
-mass_from_length <- function (l, 
-                              taxon) {
+mass_from_length <- function(l, taxon) {
   
-  stopifnot(length(taxon) == 1, 
-            taxon %in% c("insect", "lizard", "salamander", "frog", "snake", "turtle"), 
-            l > 0)
-
-  if (taxon == "insect") {
-
-    a <- 806.0827
-    b <- 2.494 
+  # Coefficient lookup tables
+  a_vals <- c(
+    insect     = 806.0827,
+    lizard     = 16368.17,
+    salamander = 13654.4,
+    frog       = 181197.1,
+    snake      = 723.6756,
+    turtle     = 93554.48
+  )
+  b_vals <- c(
+    insect     = 2.494,
+    lizard     = 3.022,
+    salamander = 2.94,
+    frog       = 3.24,
+    snake      = 3.02,
+    turtle     = 2.69
+  )
   
-  } else if (taxon == "lizard") {
-
-    a <- 16368.17
-    b <- 3.022
+  # Input validation (vectorized-safe)
+  unknown <- setdiff(unique(taxon), names(a_vals))
+  if (length(unknown) > 0)
+    stop("Unknown taxon: ", paste(unknown, collapse = ", "),
+         ". Must be one of: ", paste(names(a_vals), collapse = ", "))
+  if (!all(l > 0, na.rm = TRUE))
+    stop("All values of 'l' must be greater than 0.")
   
-  } else if (taxon == "salamander"){
-
-    a <- 13654.4 
-    b <- 2.94
-
-  } else if (taxon == "frog") {    
-
-    a <- 181197.1 
-    b <- 3.24
-
-  } else if (taxon == "snake") {
-
-    a <- 723.6756
-    b <- 3.02
-
-  } else if (taxon == "turtle") {
-
-    a <- 93554.48
-    b <- 2.69
-
-  }
-
-  a * l ^ b
-
+  # Compute mass
+  unname(a_vals[taxon] * l ^ b_vals[taxon])
 }
 
 
@@ -223,29 +206,25 @@ mass_from_length <- function (l,
 #'
 #' @export
 #'
-surface_area_from_volume <- function (V,  
-                                      taxon) {
-
-  stopifnot(length(taxon) == 1, 
-            taxon %in% c("lizard", "frog", "sphere"), 
-            V > 0)
+surface_area_from_volume <- function(V, taxon) {
   
-  if (taxon == "lizard") {
-
-    Ka <- 11
+  # Coefficient lookup table
+  Ka_vals <- c(
+    lizard = 11,
+    frog   = 11,
+    sphere = 4.83
+  )
   
-  } else if (taxon == "frog") {    
-
-    Ka <- 11 
-
-  } else if (taxon == "sphere") {
-
-    Ka <- 4.83 
-
-  }
-
-  Ka * V^(2/3) 
-
+  # Input validation (vectorized-safe)
+  unknown <- setdiff(unique(taxon), names(Ka_vals))
+  if (length(unknown) > 0)
+    stop("Unknown taxon: ", paste(unknown, collapse = ", "),
+         ". Must be one of: ", paste(names(Ka_vals), collapse = ", "))
+  if (!all(V > 0, na.rm = TRUE))
+    stop("All values of 'V' must be greater than 0.")
+  
+  # Compute surface area
+  unname(Ka_vals[taxon] * V^(2/3))
 }
 
 #' @title Organism Volume from Length
@@ -281,32 +260,26 @@ surface_area_from_volume <- function (V,
 #'
 #' @export
 #'
-volume_from_length <- function (l,   
-                                taxon) {
+volume_from_length <- function(l, taxon) {
   
-  stopifnot(length(taxon) == 1, 
-            taxon %in% c("lizard", "frog", "sphere"), 
-            l > 0)
+  # Coefficient lookup table
+  Kl_vals <- c(
+    lizard = 3.3,
+    frog   = 2.27,
+    sphere = 1.24
+  )
   
-  if (taxon == "lizard") {
-
-    Kl <- 3.3
+  # Input validation (vectorized-safe)
+  unknown <- setdiff(unique(taxon), names(Kl_vals))
+  if (length(unknown) > 0)
+    stop("Unknown taxon: ", paste(unknown, collapse = ", "),
+         ". Must be one of: ", paste(names(Kl_vals), collapse = ", "))
+  if (!all(l > 0, na.rm = TRUE))
+    stop("All values of 'l' must be greater than 0.")
   
-  } else if (taxon == "frog") {    
-
-    Kl <- 2.27 
-
-  } else if (taxon == "sphere") {
-
-    Kl <- 1.24 
-
-  }
-
-  (l / Kl) ^ 3
-
+  # Compute volume
+  unname((l / Kl_vals[taxon])^3)
 }
-
-
 
 #' @title Organism Surface Area from Length
 #' 

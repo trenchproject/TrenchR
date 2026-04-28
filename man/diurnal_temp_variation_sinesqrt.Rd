@@ -22,7 +22,7 @@ diurnal_temp_variation_sinesqrt(t, t_r, t_s, T_max, T_min, T_minp)
 The function estimates temperature for a specified hour using sine and square root functions \insertCite{Cesaraccio2001}{TrenchR}.
 }
 \examples{
-  diurnal_temp_variation_sinesqrt(t      = 8, 
+  diurnal_temp_variation_sinesqrt(t      = 11:15, 
                                   t_r    = 6, 
                                   t_s    = 18, 
                                   T_max  = 30, 

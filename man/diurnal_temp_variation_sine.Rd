@@ -20,7 +20,7 @@ The function estimates temperature for a specified hour using the sine interpola
 \examples{
   diurnal_temp_variation_sine(T_max = 30, 
                               T_min = 10, 
-                              t     = 11)
+                              t     = 11:15)
 
 }
 \references{

@@ -81,8 +81,7 @@ Tb_butterfly <- function (T_a,
     T_a    <- celsius_to_kelvin(T_a)
     T_a_sh <- T_a
     T_g    <- celsius_to_kelvin(T_g)
-    T_g_sh <- celsius_to_kelvin(T_sh)
-
+   
     # wind speed m/s to cm/s
 
       u <- u *100  
@@ -184,38 +183,43 @@ Tb_butterfly <- function (T_a,
     if (shade) {
 
       # Calculate without basking by dividing areas by two
-
-        A_sttl <- A_sttl / 2
-
       # Radiative Heat Flux in Shade, mW
 
-        A_sdir <- A_sttl/2
+        A_sdir <- A_sttl / 4    # only dorsal quarter absorbs diffuse solar
         A_sref <- A_sdir
 
         # No direct radiation, only diffuse and reflected
   
           S_sdir_sh <- 0
           S_sdif_sh <- S_sdif
-          S_sttl <- S_sdif + S_sdif_sh 
+          S_sttl <- S_sdir_sh + S_sdif_sh 
 
         Q_s <- alpha * A_sdir * S_sdir_sh / cos(z * pi / 180) + alpha * A_sref * S_sdif_sh + alpha * r_g * A_sref * S_sttl 
 
       # Use shaded surface temperature
-
-        T_g < - T_sh
+      T_g <- celsius_to_kelvin(T_sh)  # shade ground temp in Kelvin
 
     }
                			
-  # Solution 
-
+    # Energy balance coefficients
     a <- A_sttl * Ep * sigma
     b <- h_T * A_sttl
     d <- h_T * A_sttl * T_a +0.5 * A_sttl * Ep * sigma * T_sky^4 + 0.5 * A_sttl * Ep * sigma * (T_g)^4 + Q_s
 
-    # in K
-
-      T_e <- 1 / 2 * sqrt((2 * b) / (a * sqrt((sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) - (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3))) - (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) + (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3)) - 1 / 2 * sqrt((sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) - (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3)) 
-
+      # Define the energy balance residual as a function of T_b (in Kelvin)
+      # f(T_b) = 0 at steady-state body temperature
+      energy_balance <- function(T_b) a * T_b^4 + b * T_b - d
+      
+      # Solve numerically using Brent's method
+      # Bounds: 200K (-73°C) to 500K (227°C) — physically safe for any ectotherm
+      T_e <- tryCatch(
+        uniroot(energy_balance, interval = c(200, 500), tol = 1e-6)$root,
+        error = function(e)
+          stop("Could not solve energy balance for T_b. ",
+               "Check that inputs produce a physically plausible temperature. ",
+               "Original error: ", conditionMessage(e))
+      )
+      
     # in C
 
       kelvin_to_celsius(T_e)
