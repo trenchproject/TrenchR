@@ -35,12 +35,9 @@
 #' @examples
 #'   diurnal_temp_variation_sineexp(T_max = 30, 
 #'                                  T_min = 10, 
-#'                                  t     = 11, 
+#'                                  t     = 11:15, 
 #'                                  t_r   = 6, 
-#'                                  t_s   = 18, 
-#'                                  alpha = 2.59, 
-#'                                  beta  = 1.55, 
-#'                                  gamma = 2.2)
+#'                                  t_s   = 18)
 #' 
 diurnal_temp_variation_sineexp <- function (T_max, 
                                             T_min, 
@@ -76,30 +73,22 @@ diurnal_temp_variation_sineexp <- function (T_max,
   
   # if night or day
 
-    if(!(t > (t_r + beta) & t < t_s)) { 
-
-      T_sn <- T_min + (T_max - T_min) * sin((pi * (t_s - t_r - beta)) / (l + 2 * (alpha - beta)))
-    
-      if (t <= (t_r + beta)) {
-      
-        t_as <- t + 24 - t_s
-      
-      }
-      
-      if (t >= t_s) {
-      
-        t_as <- t - t_s  #time after sunset
-      
-      }
-    
-      Temp <- T_min + (T_sn - T_min) * exp(-(gamma * t_as) / (24 - l + beta))
-    
-    } else {
-   
-      Temp <- T_min + (T_max - T_min) * sin((pi * (t - t_r - beta)) / (l + 2 * (alpha - beta)))
-    
-    }
+  # day
+  temp_day <- T_min + (T_max - T_min) * sin((pi * (t - t_r - beta)) / (l + 2 * (alpha - beta)))
   
+  # sunset
+  T_sn <- T_min + (T_max - T_min) * sin((pi * (t_s - t_r - beta)) / (l + 2 * (alpha - beta)))
+   
+  # after sunset
+  t_as <- ifelse(t <= (t_r + beta), t + 24 - t_s, t - t_s)
+  
+  # night
+  temp_night <- T_min + (T_sn - T_min) * exp(-(gamma * t_as) / (24 - l + beta))
+   
+  is_daytime <- (t > (t_r + beta) & t < t_s)
+   
+  Temp <- ifelse(is_daytime, temp_day, temp_night)
+   
   Temp
   
 }
@@ -125,7 +114,7 @@ diurnal_temp_variation_sineexp <- function (T_max,
 #' @examples
 #'   diurnal_temp_variation_sine(T_max = 30, 
 #'                               T_min = 10, 
-#'                               t     = 11)
+#'                               t     = 11:15)
 #' 
 diurnal_temp_variation_sine <- function (T_max, 
                                          T_min, 
@@ -165,7 +154,7 @@ diurnal_temp_variation_sine <- function (T_max,
 #'   \insertAllCited{}
 #' 
 #' @examples
-#'   diurnal_temp_variation_sinesqrt(t      = 8, 
+#'   diurnal_temp_variation_sinesqrt(t      = 11:15, 
 #'                                   t_r    = 6, 
 #'                                   t_s    = 18, 
 #'                                   T_max  = 30, 
