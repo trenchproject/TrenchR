@@ -199,9 +199,20 @@ Tb_grasshopper <- function (T_a,
     b <- hc_s * A + hcut * Acond / Thick
     d <- hc_s * A * T_a + 0.5 * A * epsilon * sigma * (T_sky^4 + T_g^4)+ hcut * Acond * T_g / Thick + Qabs
 
-    T_b <- 1 / 2 * sqrt((2 * b) / (a * sqrt((sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) - (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3))) - (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) + (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3)) - 1 / 2 * sqrt((sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3) / (2^(1 / 3) * 3^(2 / 3) * a) - (4 * (2 / 3)^(1 / 3) * d) / (sqrt(3) * sqrt(256 * a^3 * d^3 + 27 * a^2 * b^4) + 9 * a * b^2)^(1 / 3)) 
-    T_b[which(is.na(T_b))] <- NA
-
+    # Define the energy balance residual as a function of T_b (in Kelvin)
+    # f(T_b) = 0 at steady-state body temperature
+    energy_balance <- function(T_b) a * T_b^4 + b * T_b - d
+    
+    # Solve numerically using Brent's method
+    # Bounds: 200K (-73°C) to 500K (227°C) — physically safe for any ectotherm
+    T_b <- tryCatch(
+      uniroot(energy_balance, interval = c(200, 500), tol = 1e-6)$root,
+      error = function(e)
+        stop("Could not solve energy balance for T_b. ",
+             "Check that inputs produce a physically plausible temperature. ",
+             "Original error: ", conditionMessage(e))
+    )
+    
   kelvin_to_celsius(T_b)
 
 }
