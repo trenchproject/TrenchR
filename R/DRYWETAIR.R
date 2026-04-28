@@ -10,19 +10,20 @@
 #' 
 #' @param alt \code{numeric} altitude (m).
 #' 
-#' @return Named \code{list} with elements \itemize{
-#'   \item{\code{patmos}:}{ \code{numeric} standard atmospheric pressure (Pa)}
-#'   \item{\code{density}:}{ \code{numeric} density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
-#'   \item{\code{visdyn}:}{ \code{numeric} dynamic viscosity (\ifelse{html}{\out{kg m<sup>-1</sup> s<sup>-1</sup>}}{\eqn{kg m^-1 s^-1}{ASCII}})}
-#'   \item{\code{viskin}:}{ \code{numeric} kinematic viscosity (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}})}
-#'   \item{\code{difvpr}:}{ \code{numeric} diffusivity of water vapor in air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}})}
-#'   \item{\code{thcond}:}{ \code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}})}
-#'   \item{\code{htovpr}:}{ \code{numeric} latent heat of vaporization of water (\ifelse{html}{\out{J kg<sup>-1</sup>}}{\eqn{J kg^-1}{ASCII}})}
-#'   \item{\code{tcoeff}:}{ \code{numeric} temperature coefficient of volume expansion (\ifelse{html}{\out{K<sup>-1</sup>}}{\eqn{K^-1}{ASCII}})}
-#'   \item{\code{ggroup}:}{ \code{numeric} group of variables in Grashof number (\ifelse{html}{\out{m<sup>-3</sup> K<sup>-1</sup>}}{\eqn{m^-3 K^-1}{ASCII}})}
-#'   \item{\code{bbemit}:}{ \code{numeric} black body emittance (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}})}
-#'   \item{\code{emtmax}:}{ \code{numeric} wave length of maximum emittance (m)}
-#'  } 
+#' @return Named \code{list} with elements:
+#'   \describe{
+#'     \item{\code{patmos}}{\code{numeric} standard atmospheric pressure (Pa)}
+#'     \item{\code{density}}{\code{numeric} density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
+#'     \item{\code{visdyn}}{\code{numeric} dynamic viscosity (\ifelse{html}{\out{kg m<sup>-1</sup> s<sup>-1</sup>}}{\eqn{kg m^-1 s^-1}{ASCII}})}
+#'     \item{\code{viskin}}{\code{numeric} kinematic viscosity (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}})}
+#'     \item{\code{difvpr}}{\code{numeric} diffusivity of water vapor in air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}})}
+#'     \item{\code{thcond}}{\code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}})}
+#'     \item{\code{htovpr}}{\code{numeric} latent heat of vaporization of water (\ifelse{html}{\out{J kg<sup>-1</sup>}}{\eqn{J kg^-1}{ASCII}})}
+#'     \item{\code{tcoeff}}{\code{numeric} temperature coefficient of volume expansion (\ifelse{html}{\out{K<sup>-1</sup>}}{\eqn{K^-1}{ASCII}})}
+#'     \item{\code{ggroup}}{\code{numeric} group of variables in Grashof number (\ifelse{html}{\out{m<sup>-3</sup> K<sup>-1</sup>}}{\eqn{m^-3 K^-1}{ASCII}})}
+#'     \item{\code{bbemit}}{\code{numeric} black body emittance (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}})}
+#'     \item{\code{emtmax}}{\code{numeric} wave length of maximum emittance (m)}
+#'   }
 #'
 #' @export
 #' 
@@ -39,7 +40,7 @@ DRYAIR <- function(db,
                    alt = 0) {
   
   stopifnot(alt >= 0, 
-            bp  >  0)
+            bp  >=  0)
 
   tstd <- 273.15
   
@@ -115,11 +116,15 @@ VAPPRS <- function(db) {
 #'  \cr 
 #'  WETAIR must be used in conjunction with \code{\link{VAPPRS}}. Input variables are shown below. See Details. 
 #'
-#' @details The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP): 
-#'   \itemize{
-#'   \item{Psychrometric data:}{ If WB is known but not RH, then set RH = -1 and DP = 999. If RH is known but not WB then set WB = 0 and DP = 999}
-#'   \item{Hygrometric data:}{ If DP is known, set WB = 0 and RH = 0}
-#'  } 
+#' @details The user must supply known values for DB and BP (BP at one standard
+#'   atmosphere is 101,325 pascals). Values for the remaining variables are
+#'   determined by whether the user has either (1) psychrometric data (WB or RH),
+#'   or (2) hygrometric data (DP):
+#'   \describe{
+#'     \item{Psychrometric data}{If WB is known but not RH, then set RH = -1
+#'       and DP = 999. If RH is known but not WB then set WB = 0 and DP = 999.}
+#'     \item{Hygrometric data}{If DP is known, set WB = 0 and RH = 0.}
+#'   }
 #'
 #' @param db \code{numeric} dry bulb temperature (C).
 #' 
@@ -131,16 +136,17 @@ VAPPRS <- function(db) {
 #' 
 #' @param bp \code{numeric} barometric pressure (Pa).
 #' 
-#' @return Named \code{list} with elements \itemize{
-#'   \item{\code{e}:}{ \code{numeric} saturation vapor pressure (Pa)}
-#'   \item{\code{vd}:}{ \code{numeric} vapor density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
-#'   \item{\code{rw}:}{ \code{numeric} mixing ratio (\ifelse{html}{\out{kg kg<sup>-1</sup>}}{\eqn{kg kg^-1}{ASCII}})}
-#'   \item{\code{tvir}:}{ \code{numeric} virtual temperature (K)}
-#'   \item{\code{tvinc}:}{ \code{numeric} virtual temperature increment (K)}
-#'   \item{\code{denair}:}{ \code{numeric} density of the air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
-#'   \item{\code{cp}:}{ \code{numeric} specific heat of air at constant pressure (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}})}
-#'   \item{\code{wtrpot}:}{ \code{numeric} water potential (Pa)}
-#'   \item{\code{rh}:}{ \code{numeric} relative humidity (\%)}
+#' @return Named \code{list} with elements:
+#'   \describe{
+#'     \item{\code{e}}{\code{numeric} saturation vapor pressure (Pa)}
+#'     \item{\code{vd}}{\code{numeric} vapor density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
+#'     \item{\code{rw}}{\code{numeric} mixing ratio (\ifelse{html}{\out{kg kg<sup>-1</sup>}}{\eqn{kg kg^-1}{ASCII}})}
+#'     \item{\code{tvir}}{\code{numeric} virtual temperature (K)}
+#'     \item{\code{tvinc}}{\code{numeric} virtual temperature increment (K)}
+#'     \item{\code{denair}}{\code{numeric} density of the air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
+#'     \item{\code{cp}}{\code{numeric} specific heat of air at constant pressure (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}})}
+#'     \item{\code{wtrpot}}{\code{numeric} water potential (Pa)}
+#'     \item{\code{rh}}{\code{numeric} relative humidity (\%)}
 #'   }
 #' 
 #' @export
