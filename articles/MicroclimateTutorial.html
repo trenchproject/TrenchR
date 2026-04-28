@@ -6,20 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Estimating microclimates • TrenchR</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Estimating microclimates">
-<meta property="og:description" content="TrenchR">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -42,7 +41,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Vignettes
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -71,7 +70,7 @@
 <li>
   <a href="https://github.com/trenchproject/" class="external-link">
     <span class="fa fa-github"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -82,7 +81,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
@@ -92,9 +91,9 @@
 and the TrEnCh project, Department of Biology, University of
 Washington</h4>
             
-            <h4 data-toc-skip class="date">2023-09-29</h4>
+            <h4 data-toc-skip class="date">2026-04-28</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/trenchproject/TrenchR/blob/HEAD/vignettes/MicroclimateTutorial.Rmd" class="external-link"><code>vignettes/MicroclimateTutorial.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/trenchproject/TrenchR/blob/main/vignettes/MicroclimateTutorial.Rmd" class="external-link"><code>vignettes/MicroclimateTutorial.Rmd</code></a></small>
       <div class="hidden name"><code>MicroclimateTutorial.Rmd</code></div>
 
     </div>
@@ -135,8 +134,7 @@ translating a date into a calendar date.</p>
 calendar date (J) to estimate solar declination (radian), which is the
 angular distance of the sun north or south of the earth’s equator, as
 follows (<code><a href="../reference/dec_angle.html">dec_angle()</a></code>):</p>
-<p><span class="math display">\[ \delta= \arcsin[0.39795 \cos(0.21631+ 2
-\arctan (0.967 \tan [0.0086(-186+J)]))].\]</span></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>=</mo><mo>arcsin</mo><mrow><mo stretchy="true" form="prefix">[</mo><mn>0.39795</mn><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>0.21631</mn><mo>+</mo><mn>2</mn><mo>arctan</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>0.967</mn><mo>tan</mo><mrow><mo stretchy="true" form="prefix">[</mo><mn>0.0086</mn><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>186</mn><mo>+</mo><mi>J</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> \delta= \arcsin[0.39795 \cos(0.21631+ 2 \arctan (0.967 \tan [0.0086(-186+J)]))].</annotation></semantics></math></p>
 <p>The solar declination angle can be calculated in TrenchR as
 follows:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -145,15 +143,22 @@ follows:</p>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="st">"day of year"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="st">"declination angle (radian)"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-3-1.png" width="384"></p>
-<p>Zenith angle <span class="math inline">\(\psi\)</span> (°), the
-location of the sun as an angle measured from vertical, can be estimated
-as:</p>
-<p><span class="math display">\[\cos \psi = \sin( \delta) \sin( \phi) +
-\cos(\delta)\cos(\phi)\cos(\pi/12*(h-h_0)),\]</span></p>
-<p>where <span class="math inline">\(J\)</span> is calendar date, <span class="math inline">\(\phi\)</span> is latitude (radians), <span class="math inline">\(h\)</span> is hour, and <span class="math inline">\(h_0\)</span> is the time of solar noon. We
-illustrate how zenith angles (°) change over the day throughout the year
-in Seattle, WA, USA:</p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" alt="" width="384"></p>
+<p>Zenith angle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+(°), the location of the sun as an angle measured from vertical, can be
+estimated as:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>cos</mo><mi>ψ</mi><mo>=</mo><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>δ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>ϕ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>δ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>ϕ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>π</mi><mi>/</mi><mn>12</mn><mo>*</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mo>−</mo><msub><mi>h</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">\cos \psi = \sin( \delta) \sin( \phi) + \cos(\delta)\cos(\phi)\cos(\pi/12*(h-h_0)),</annotation></semantics></math></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+is calendar date,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
+is latitude (radians),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+is hour, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mn>0</mn></msub><annotation encoding="application/x-tex">h_0</annotation></semantics></math>
+is the time of solar noon. We illustrate how zenith angles (°) change
+over the day throughout the year in Seattle, WA, USA:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">zenith</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/zenith_angle.html">zenith_angle</a></span><span class="op">(</span>hour <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">24</span>, </span>
 <span>                       doy  <span class="op">=</span> <span class="fl">200</span>, </span>
@@ -197,7 +202,7 @@ in Seattle, WA, USA:</p>
 <span>       title  <span class="op">=</span> <span class="st">"day of year"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">100</span>, <span class="fl">200</span>, <span class="fl">300</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dotted"</span>, <span class="st">"dotdash"</span>, <span class="st">"solid"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" alt="" width="576"></p>
 <p>We also examine how zenith angles (°) at noon change over the course
 of the year for latitudes along the longitude of Seattle, WA USA:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -246,15 +251,23 @@ of the year for latitudes along the longitude of Seattle, WA USA:</p>
 <span>       title  <span class="op">=</span> <span class="st">"latitude (°)"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">20</span>, <span class="fl">40</span>, <span class="fl">60</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dashed"</span>, <span class="st">"dotdash"</span>, <span class="st">"dotted"</span>, <span class="st">"solid"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-5-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-5-1.png" class="r-plt" alt="" width="576"></p>
 <p>The time of solar noon (<code><a href="../reference/solar_noon.html">solar_noon()</a></code>) can be estimated
-as <span class="math inline">\(h_0= 12 - LC -ET\)</span>, where <span class="math inline">\(LC\)</span> in the longitude correction (+4
-minutes for each degree east of the standard meridian and -4 minutes for
-each degree west of the standard meridian) and <span class="math inline">\(ET\)</span> is the equation of time. The <span class="math inline">\(ET\)</span> is estimated as: <span class="math display">\[ ET= \frac{-104.7\sin (f)+596.2\sin (2f)+4.3\sin
-(3f)-12.7\sin (4f)-429.3\cos (f)-2.0\cos (2f)+19.3\cos (3f)}{3600},
-\]</span>where <span class="math inline">\(f=279.575 + 0.9856
-J\)</span>, in degrees. The time of solar noon can be estimated across
-the year for several longitudes as follows:</p>
+as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mn>0</mn></msub><mo>=</mo><mn>12</mn><mo>−</mo><mi>L</mi><mi>C</mi><mo>−</mo><mi>E</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">h_0= 12 - LC -ET</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">LC</annotation></semantics></math>
+in the longitude correction (+4 minutes for each degree east of the
+standard meridian and -4 minutes for each degree west of the standard
+meridian) and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">ET</annotation></semantics></math>
+is the equation of time. The
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">ET</annotation></semantics></math>
+is estimated as:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>T</mi><mo>=</mo><mfrac><mrow><mo>−</mo><mn>104.7</mn><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>f</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mn>596.2</mn><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mi>f</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mn>4.3</mn><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><mi>f</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mn>12.7</mn><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><mi>f</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mn>429.3</mn><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>f</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mn>2.0</mn><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mi>f</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mn>19.3</mn><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><mi>f</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mn>3600</mn></mfrac><mo>,</mo></mrow><annotation encoding="application/x-tex"> ET= \frac{-104.7\sin (f)+596.2\sin (2f)+4.3\sin (3f)-12.7\sin (4f)-429.3\cos (f)-2.0\cos (2f)+19.3\cos (3f)}{3600}, </annotation></semantics></math>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>=</mo><mn>279.575</mn><mo>+</mo><mn>0.9856</mn><mi>J</mi></mrow><annotation encoding="application/x-tex">f=279.575 + 0.9856 J</annotation></semantics></math>,
+in degrees. The time of solar noon can be estimated across the year for
+several longitudes as follows:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span>, </span>
 <span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/solar_noon.html">solar_noon</a></span><span class="op">(</span>lon <span class="op">=</span> <span class="fl">150</span>, doy <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">365</span><span class="op">)</span>, </span>
@@ -280,17 +293,24 @@ the year for several longitudes as follows:</p>
 <span>       title  <span class="op">=</span> <span class="st">"longitude (°)"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">145</span>, <span class="fl">150</span>, <span class="fl">155</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dashed"</span>, <span class="st">"solid"</span>, <span class="st">"dotted"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-6-1.png" width="384"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-6-1.png" class="r-plt" alt="" width="384"></p>
 <p>The azimuth angle is the angle (°) from which the sunlight is coming
 measured from true north or south measured in the horizontal plane. The
-azimuth angle (<span class="math inline">\(AZ\)</span>, °) is estimated
-with respect to due south, increasing in the counter-clockwise direction
-such that <span class="math inline">\(90^\circ\)</span> is east. <span class="math inline">\(AZ\)</span> can be calculated as a function of
-declination angle <span class="math inline">\(\delta\)</span> (°),
-zenith angle <span class="math inline">\(\psi\)</span> (°), and latitude
-<span class="math inline">\(\phi\)</span> (°) as follows:</p>
-<p><span class="math display">\[\cos AZ= \frac{-(\sin \delta - \cos \psi
-\sin \phi)}{\cos \phi \sin \psi}.\]</span></p>
+azimuth angle
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>Z</mi></mrow><annotation encoding="application/x-tex">AZ</annotation></semantics></math>,
+°) is estimated with respect to due south, increasing in the
+counter-clockwise direction such that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>90</mn><mo>∘</mo></msup><annotation encoding="application/x-tex">90^\circ</annotation></semantics></math>
+is east.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>Z</mi></mrow><annotation encoding="application/x-tex">AZ</annotation></semantics></math>
+can be calculated as a function of declination angle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>δ</mi><annotation encoding="application/x-tex">\delta</annotation></semantics></math>
+(°), zenith angle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+(°), and latitude
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>
+(°) as follows:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>cos</mo><mi>A</mi><mi>Z</mi><mo>=</mo><mfrac><mrow><mo>−</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>sin</mo><mi>δ</mi><mo>−</mo><mo>cos</mo><mi>ψ</mi><mo>sin</mo><mi>ϕ</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mo>cos</mo><mi>ϕ</mi><mo>sin</mo><mi>ψ</mi></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">\cos AZ= \frac{-(\sin \delta - \cos \psi \sin \phi)}{\cos \phi \sin \psi}.</annotation></semantics></math></p>
 <p>TrenchR includes a function to estimate azimuth angle as follows. We
 first examine how azimuth angle varies across the day:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -343,7 +363,7 @@ first examine how azimuth angle varies across the day:</p>
 <span>       title  <span class="op">=</span> <span class="st">"day of year"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">173</span>, <span class="fl">228</span>, <span class="fl">266</span>, <span class="fl">356</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotdash"</span>, <span class="st">"dotted"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-7-1.png" class="r-plt" alt="" width="576"></p>
 <p>We then examine how azimuth angle varies across the year:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">az</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">365</span>, </span>
@@ -384,13 +404,13 @@ first examine how azimuth angle varies across the day:</p>
 <span>       title  <span class="op">=</span> <span class="st">"hour"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">9</span>, <span class="fl">12</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dotted"</span>, <span class="st">"dashed"</span>, <span class="st">"solid"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-8-1.png" width="384"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-8-1.png" class="r-plt" alt="" width="384"></p>
 <p>These sun angles can be used to solve for day length. The equation
-for half day length <span class="math inline">\(h_s\)</span>, which is
-the time (°) from sunrise to solar noon, is used as the basis for our
-<code><a href="../reference/daylength.html">daylength()</a></code> function:</p>
-<p><span class="math display">\[ h_s= \cos^{-1}\left( \frac{\cos
-\psi-sin \phi \sin \delta}{\cos \phi \cos \delta} \right).\]</span></p>
+for half day length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mi>s</mi></msub><annotation encoding="application/x-tex">h_s</annotation></semantics></math>,
+which is the time (°) from sunrise to solar noon, is used as the basis
+for our <code><a href="../reference/daylength.html">daylength()</a></code> function:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>s</mi></msub><mo>=</mo><msup><mo>cos</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mo>cos</mo><mi>ψ</mi><mo>−</mo><mi>s</mi><mi>i</mi><mi>n</mi><mi>ϕ</mi><mo>sin</mo><mi>δ</mi></mrow><mrow><mo>cos</mo><mi>ϕ</mi><mo>cos</mo><mi>δ</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> h_s= \cos^{-1}\left( \frac{\cos \psi-sin \phi \sin \delta}{\cos \phi \cos \delta} \right).</annotation></semantics></math></p>
 <p>We examine how day length varies over the year for sites at several
 latitudes.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
@@ -415,7 +435,7 @@ latitudes.</p>
 <span>       title  <span class="op">=</span> <span class="st">"latitude (°)"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">35</span>, <span class="fl">60</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-9-1.png" width="384"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-9-1.png" class="r-plt" alt="" width="384"></p>
 </div>
 <div class="section level3">
 <h3 id="radiation-components">Radiation components<a class="anchor" aria-label="anchor" href="#radiation-components"></a>
@@ -424,41 +444,65 @@ latitudes.</p>
 discounting incoming solar radiation due to scattering as the radiation
 travels through the atmosphere. The primary function
 <code><a href="../reference/solar_radiation.html">solar_radiation()</a></code> returns estimates of the direct, diffuse,
-and reflected components of solar radiation (<span class="math inline">\(W m^{-2}\)</span>). The radiation streams are the
-direct irradiance on a surface perpendicular to the beam <span class="math inline">\(S_p\)</span>, the diffuse sky irradiance on a
-horizontal plane <span class="math inline">\(S_d\)</span> (<span class="math inline">\(W m^{-2}\)</span>), and the reflected radiation
-from the ground <span class="math inline">\(S_r\)</span>. The sum of
-these three streams represents the total irradiance of a horizontal
-surface <span class="math inline">\(S_t\)</span>.</p>
+and reflected components of solar radiation
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><msup><mi>m</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">W m^{-2}</annotation></semantics></math>).
+The radiation streams are the direct irradiance on a surface
+perpendicular to the beam
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>p</mi></msub><annotation encoding="application/x-tex">S_p</annotation></semantics></math>,
+the diffuse sky irradiance on a horizontal plane
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>d</mi></msub><annotation encoding="application/x-tex">S_d</annotation></semantics></math>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><msup><mi>m</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">W m^{-2}</annotation></semantics></math>),
+and the reflected radiation from the ground
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>r</mi></msub><annotation encoding="application/x-tex">S_r</annotation></semantics></math>.
+The sum of these three streams represents the total irradiance of a
+horizontal surface
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>t</mi></msub><annotation encoding="application/x-tex">S_t</annotation></semantics></math>.</p>
 <p>Calculation of these flux densities requires introducing several
-additional quantities. The atmospheric transmissivity, <span class="math inline">\(\tau\)</span>, ranges between 0.6 and 0.7 for
-typical clear sky conditions <span class="citation">(Gates 2012)</span>.
-The solar constant, <span class="math inline">\(S_{p0}\)</span>,
-approximates extraterrestrial flux density as <span class="math inline">\(1,360 W m^{−2}\)</span>. The optical air mass
-number, <span class="math inline">\(m_a\)</span>, is the ratio of slant
-path length through the atmosphere to zenith path length and is a
-function of atmospheric pressure: <span class="math inline">\(m_a=p_a/(101.3\cos(\psi))\)</span>, where <span class="math inline">\(p_a\)</span> is air pressure (kPa) and <span class="math inline">\(\psi\)</span> is zenith angle (°, see above). The
-function <code><a href="../reference/airpressure_from_elev.html">airpressure_from_elev()</a></code> estimates air pressure as
-<span class="math inline">\(p_a (kPa)= 101.3 e
-^{\frac{-E}{8200}}\)</span>, where <span class="math inline">\(E\)</span> is the elevation in meters above sea
-level. TrenchR provides a function to estimate air pressure from
-elevation (m).</p>
+additional quantities. The atmospheric transmissivity,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>,
+ranges between 0.6 and 0.7 for typical clear sky conditions <span class="citation">(Gates 2012)</span>. The solar constant,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mrow><mi>p</mi><mn>0</mn></mrow></msub><annotation encoding="application/x-tex">S_{p0}</annotation></semantics></math>,
+approximates extraterrestrial flux density as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>360</mn><mi>W</mi><msup><mi>m</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">1,360 W m^{−2}</annotation></semantics></math>.
+The optical air mass number,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mi>a</mi></msub><annotation encoding="application/x-tex">m_a</annotation></semantics></math>,
+is the ratio of slant path length through the atmosphere to zenith path
+length and is a function of atmospheric pressure:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mi>a</mi></msub><mo>=</mo><msub><mi>p</mi><mi>a</mi></msub><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>101.3</mn><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>ψ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">m_a=p_a/(101.3\cos(\psi))</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>a</mi></msub><annotation encoding="application/x-tex">p_a</annotation></semantics></math>
+is air pressure (kPa) and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ψ</mi><annotation encoding="application/x-tex">\psi</annotation></semantics></math>
+is zenith angle (°, see above). The function
+<code><a href="../reference/airpressure_from_elev.html">airpressure_from_elev()</a></code> estimates air pressure as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>a</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mi>P</mi><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>101.3</mn><msup><mi>e</mi><mfrac><mrow><mo>−</mo><mi>E</mi></mrow><mn>8200</mn></mfrac></msup></mrow><annotation encoding="application/x-tex">p_a (kPa)= 101.3 e ^{\frac{-E}{8200}}</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+is the elevation in meters above sea level. TrenchR provides a function
+to estimate air pressure from elevation (m).</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4000</span>, </span>
 <span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/airpressure_from_elev.html">airpressure_from_elev</a></span><span class="op">(</span>elev <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4000</span><span class="op">)</span>, </span>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="st">"elevation (m)"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="st">"air pressure (kPa)"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-10-1.png" width="384"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-10-1.png" class="r-plt" alt="" width="384"></p>
 <p>Direct irradiance is a function of the distance a solar beam travels
-through the atmosphere; the transmittance of the atmosphere, <span class="math inline">\(\tau\)</span>; and the incident flux density,
-<span class="math inline">\(S_{p0}\)</span>: <span class="math inline">\(S_p=S_{p0}\tau^{m_a}\)</span>. We approximate
-diffuse radiation using an empirical relation <span class="citation">(Liu and Jordan 1960)</span>, <span class="math inline">\(S_d=0.3(1-\tau^{m_a}) S_{p0}\cos\psi\)</span>.
-Finally, reflected radiation is the product of albedo, <span class="math inline">\(\rho_S\)</span>, and the sum of direct and diffuse
-radiation: <span class="math inline">\(S_r= \rho_S (S_p+S_d)\)</span>.
+through the atmosphere; the transmittance of the atmosphere,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math>;
+and the incident flux density,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mrow><mi>p</mi><mn>0</mn></mrow></msub><annotation encoding="application/x-tex">S_{p0}</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>p</mi></msub><mo>=</mo><msub><mi>S</mi><mrow><mi>p</mi><mn>0</mn></mrow></msub><msup><mi>τ</mi><msub><mi>m</mi><mi>a</mi></msub></msup></mrow><annotation encoding="application/x-tex">S_p=S_{p0}\tau^{m_a}</annotation></semantics></math>.
+We approximate diffuse radiation using an empirical relation <span class="citation">(Liu and Jordan 1960)</span>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>d</mi></msub><mo>=</mo><mn>0.3</mn><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>τ</mi><msub><mi>m</mi><mi>a</mi></msub></msup><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>S</mi><mrow><mi>p</mi><mn>0</mn></mrow></msub><mo>cos</mo><mi>ψ</mi></mrow><annotation encoding="application/x-tex">S_d=0.3(1-\tau^{m_a}) S_{p0}\cos\psi</annotation></semantics></math>.
+Finally, reflected radiation is the product of albedo,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>S</mi></msub><annotation encoding="application/x-tex">\rho_S</annotation></semantics></math>,
+and the sum of direct and diffuse radiation:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>r</mi></msub><mo>=</mo><msub><mi>ρ</mi><mi>S</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>S</mi><mi>p</mi></msub><mo>+</mo><msub><mi>S</mi><mi>d</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">S_r= \rho_S (S_p+S_d)</annotation></semantics></math>.
 We estimate the direct, diffuse, and reflected components of solar
-radiation (<span class="math inline">\(W m^{-2}\)</span>) as
-follows.</p>
+radiation
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><msup><mi>m</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">W m^{-2}</annotation></semantics></math>)
+as follows.</p>
 <p>We estimate how solar radiation components vary diurnally.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">oldpar</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -505,7 +549,7 @@ follows.</p>
 <span>       title  <span class="op">=</span> <span class="st">"solar radiation flux"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"direct"</span>, <span class="st">"diffuse"</span>, <span class="st">"reflected"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotted"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-11-1.png" class="r-plt" alt="" width="576"></p>
 <p>We then examine how solar radiation components vary as a function of
 zenith angle.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
@@ -547,10 +591,11 @@ zenith angle.</p>
 <span>       title  <span class="op">=</span> <span class="st">"solar radiation flux"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"direct"</span>, <span class="st">"diffuse"</span>, <span class="st">"reflected"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotted"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-12-1.png" width="384"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-12-1.png" class="r-plt" alt="" width="384"></p>
 <p>Similar but alternative algorithms for estimating hourly direct solar
-radiation (<span class="math inline">\(W m^{-2}\)</span>) were adapted
-from a comparison of the methods by Tracy et al. <span class="citation">(1983)</span>. Algorithms from earlier versions of
+radiation
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><msup><mi>m</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">W m^{-2}</annotation></semantics></math>)
+were adapted from a comparison of the methods by Tracy et al. <span class="citation">(1983)</span>. Algorithms from earlier versions of
 Campbell and Norman <span class="citation">(2012)</span> and Gates <span class="citation">(2012)</span> are implemented. Both estimate radiation
 as a function of latitude, day of year, elevation, and time.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
@@ -589,14 +634,14 @@ as a function of latitude, day of year, elevation, and time.</p>
 <span>       title  <span class="op">=</span> <span class="st">"Radiation algorithm"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Campbell 1977"</span>, <span class="st">"Gates 1962"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-13-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-13-1.png" class="r-plt" alt="" width="576"></p>
 <p>We additionally provide a function
 (<code><a href="../reference/monthly_solar_radiation.html">monthly_solar_radiation()</a></code>) implementing an algorithm to
-estimate average monthly solar radiation (<span class="math inline">\(W
-m^{-2} day^{-1}\)</span>) using basic topographic and climatic
-information as input. Cloudiness is stochastically modeled, so output
-will vary between functional calls and the relationship in the plot
-deviates from a smooth curve.</p>
+estimate average monthly solar radiation
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><msup><mi>m</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup><mi>d</mi><mi>a</mi><msup><mi>y</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">W m^{-2} day^{-1}</annotation></semantics></math>)
+using basic topographic and climatic information as input. Cloudiness is
+stochastically modeled, so output will vary between functional calls and
+the relationship in the plot deviates from a smooth curve.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -616,15 +661,17 @@ deviates from a smooth curve.</p>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="st">"day of year"</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="va">radiation</span> <span class="op">~</span> <span class="op">(</span><span class="va">W</span><span class="op">/</span><span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="fl">2</span><span class="op">}</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-14-1.png" width="384"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-14-1.png" class="r-plt" alt="" width="384"></p>
 <p>We provide a function <code><a href="../reference/partition_solar_radiation.html">partition_solar_radiation()</a></code> to
-estimate the diffuse fraction <span class="math inline">\(k_d\)</span>
+estimate the diffuse fraction
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>d</mi></msub><annotation encoding="application/x-tex">k_d</annotation></semantics></math>
 that can be used to partition measures of solar radiation into direct
 and diffuse components. The partitioning is based on empirically-derived
-relations estimated as a function of the clearness index <span class="math inline">\(k_t\)</span>, which is the ratio of the global
-solar radiation measured at the surface to the total solar radiation at
-the top of the atmosphere. The relations are compiled in Wong and Chow
-<span class="citation">(2001)</span>.</p>
+relations estimated as a function of the clearness index
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>t</mi></msub><annotation encoding="application/x-tex">k_t</annotation></semantics></math>,
+which is the ratio of the global solar radiation measured at the surface
+to the total solar radiation at the top of the atmosphere. The relations
+are compiled in Wong and Chow <span class="citation">(2001)</span>.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -711,7 +758,7 @@ the top of the atmosphere. The relations are compiled in Wong and Chow
 <span>       title  <span class="op">=</span> <span class="st">"Partitioning method"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Erbs"</span>, <span class="st">"Liu_Jordan"</span>, <span class="st">"Orgill_Hollands"</span>, <span class="st">"Olyphant"</span>, <span class="st">"Reindl-1"</span>, <span class="st">"Reindl-2"</span>, <span class="st">"Lam_Li"</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span>, <span class="st">"longdash"</span>, <span class="st">"longdash"</span>, <span class="st">"twodash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-15-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-15-1.png" class="r-plt" alt="" width="576"></p>
 <p>The functions above are fairly coarse approximations. The SOLRAD
 routine by McCullough and Porter <span class="citation">(1971)</span>
 accounts for additional determinations of the diffuse fractions such as
@@ -753,7 +800,7 @@ fraction of diffuse radiation than the algorithms above.</p>
 <span>       y    <span class="op">=</span> <span class="va">r.seq</span>, </span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>       lty <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-16-1.png" width="576"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-16-1.png" class="r-plt" alt="" width="576"></p>
 </div>
 </div>
 <div class="section level2">
@@ -766,22 +813,32 @@ roughness sets up temperature and wind speed profiles. These profiles
 can be estimated to scale temperatures and wind speeds to organism
 height. We scale across height by estimating a wind speed profile using
 the relationship:</p>
-<p><span class="math display">\[u(z)= \frac{u^*}{0.41}ln \frac{z-d}{z_m}
-\]</span></p>
-<p>where <span class="math inline">\(u(z)\)</span> is the wind speed
-(<span class="math inline">\(m s^{-1}\)</span>) at height <span class="math inline">\(z\)</span> (m), <span class="math inline">\(u^*\)</span> is the friction velocity (<span class="math inline">\(m s^{-1}\)</span>), <span class="math inline">\(d\)</span> is the zero-plane displacement (m, the
-height at which wind speed is zero), and the constant 0.41 is the von
-Karman constant.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><msup><mi>u</mi><mo>*</mo></msup><mn>0.41</mn></mfrac><mi>l</mi><mi>n</mi><mfrac><mrow><mi>z</mi><mo>−</mo><mi>d</mi></mrow><msub><mi>z</mi><mi>m</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">u(z)= \frac{u^*}{0.41}ln \frac{z-d}{z_m} </annotation></semantics></math></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">u(z)</annotation></semantics></math>
+is the wind speed
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><msup><mi>s</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">m s^{-1}</annotation></semantics></math>)
+at height
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+(m),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>u</mi><mo>*</mo></msup><annotation encoding="application/x-tex">u^*</annotation></semantics></math>
+is the friction velocity
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><msup><mi>s</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">m s^{-1}</annotation></semantics></math>),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+is the zero-plane displacement (m, the height at which wind speed is
+zero), and the constant 0.41 is the von Karman constant.</p>
 <p>We provide a function to use this relationship to estimate surface
 roughness from wind speed measurements at a vector of heights
 (<code><a href="../reference/surface_roughness.html">surface_roughness()</a></code>). First, the zero-plane displacement
 is estimated as the intercept of the relationship between the wind
-velocities and the log of measurement height. Surface roughness <span class="math inline">\(z_0\)</span> can then be estimated by repeating
-the regression accounting for the zero-plane displacement (by
-subtracting the zero-plane displacement from the measurement heights).
-<span class="math inline">\(z_0\)</span> is estimated as the exponential
-of the ratio of the intercept and slope of the regression relationship
-as follows.</p>
+velocities and the log of measurement height. Surface roughness
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>
+can then be estimated by repeating the regression accounting for the
+zero-plane displacement (by subtracting the zero-plane displacement from
+the measurement heights).
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>
+is estimated as the exponential of the ratio of the intercept and slope
+of the regression relationship as follows.</p>
 <p>We illustrate estimating surface roughness.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">u_r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.025</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span><span class="op">)</span></span>
@@ -791,18 +848,35 @@ as follows.</p>
 <span>                  zr  <span class="op">=</span> <span class="va">zr</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 0.06485225</span></span></code></pre>
 <p>We use the following relationship to estimate air temperature and
-wind speed at height <span class="math inline">\(z\)</span> under
-neutral conditions (no buoyancy associated with differential
+wind speed at height
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+under neutral conditions (no buoyancy associated with differential
 density):</p>
-<p><span class="math display">\[\frac{u_z}{u_r}=\frac{ln(z/z_0+1)}{ln(z_r/z_0+1)}=\frac{T_z-T_0}{T_r-T_0}
-\]</span></p>
-<p>where <span class="math inline">\(u_z\)</span> and <span class="math inline">\(u_r\)</span> are the wind speeds (<span class="math inline">\(m s^{-1}\)</span>) at height <span class="math inline">\(z\)</span> (m) and reference height <span class="math inline">\(r\)</span> (m), respectively. <span class="math inline">\(T_z\)</span>, <span class="math inline">\(T_r\)</span>, and <span class="math inline">\(T_0\)</span> are air and soil temperatures at
-heights <span class="math inline">\(z\)</span> and <span class="math inline">\(r\)</span> and soil surface temperature,
-respectively. We provide this relationship in the
-<code><a href="../reference/wind_speed_profile_neutral.html">wind_speed_profile_neutral()</a></code> function, which estimates wind
-speed at a specified height. We additionally provide this relationship
-in the <code><a href="../reference/air_temp_profile_neutral.html">air_temp_profile_neutral()</a></code> function, which estimates
-temperature at a specified height.</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msub><mi>u</mi><mi>z</mi></msub><msub><mi>u</mi><mi>r</mi></msub></mfrac><mo>=</mo><mfrac><mrow><mi>l</mi><mi>n</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>z</mi><mi>/</mi><msub><mi>z</mi><mn>0</mn></msub><mo>+</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mi>l</mi><mi>n</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>z</mi><mi>r</mi></msub><mi>/</mi><msub><mi>z</mi><mn>0</mn></msub><mo>+</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo>=</mo><mfrac><mrow><msub><mi>T</mi><mi>z</mi></msub><mo>−</mo><msub><mi>T</mi><mn>0</mn></msub></mrow><mrow><msub><mi>T</mi><mi>r</mi></msub><mo>−</mo><msub><mi>T</mi><mn>0</mn></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{u_z}{u_r}=\frac{ln(z/z_0+1)}{ln(z_r/z_0+1)}=\frac{T_z-T_0}{T_r-T_0} </annotation></semantics></math></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi>z</mi></msub><annotation encoding="application/x-tex">u_z</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi>r</mi></msub><annotation encoding="application/x-tex">u_r</annotation></semantics></math>
+are the wind speeds
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><msup><mi>s</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">m s^{-1}</annotation></semantics></math>)
+at height
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+(m) and reference height
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+(m), respectively.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>z</mi></msub><annotation encoding="application/x-tex">T_z</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>r</mi></msub><annotation encoding="application/x-tex">T_r</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mn>0</mn></msub><annotation encoding="application/x-tex">T_0</annotation></semantics></math>
+are air and soil temperatures at heights
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+and soil surface temperature, respectively. We provide this relationship
+in the <code><a href="../reference/wind_speed_profile_neutral.html">wind_speed_profile_neutral()</a></code> function, which
+estimates wind speed at a specified height. We additionally provide this
+relationship in the <code><a href="../reference/air_temp_profile_neutral.html">air_temp_profile_neutral()</a></code> function,
+which estimates temperature at a specified height.</p>
 <p>We examine how the wind speed profiles varies with wind speed
 (m/s).</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
@@ -839,7 +913,7 @@ temperature at a specified height.</p>
 <span>       title  <span class="op">=</span> <span class="st">"wind speed at 2m"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.25</span>, <span class="fl">5</span>, <span class="fl">1</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dotted"</span>, <span class="st">"dashed"</span>, <span class="st">"solid"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-18-1.png" width="384"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-18-1.png" class="r-plt" alt="" width="384"></p>
 <p>We next illustrate the influence of surface roughness on air
 temperature profiles.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
@@ -881,20 +955,25 @@ temperature profiles.</p>
 <span>       title  <span class="op">=</span> <span class="st">"surface roughness"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.05</span>, <span class="fl">0.08</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotted"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-19-1.png" width="384"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-19-1.png" class="r-plt" alt="" width="384"></p>
 <p>Temperature at a given height is computed by the function
 <code><a href="../reference/air_temp_profile.html">air_temp_profile()</a></code> by first estimating the temperature at
 roughness height:</p>
-<p><span class="math display">\[T_{z_0}= \frac{T_r S_{t_b}-T_0
-S_{t_s}}{S_{t_b}-S_{t_s}}. \]</span></p>
-<p>Where <span class="math inline">\(S_{t_s}\)</span> is the sublayer
-Stanton Number <span class="math inline">\(S_{t_s}=0.62/
-(\frac{z_0u^*}{12})^{0.45}\)</span> and <span class="math inline">\(S_{t_b}\)</span> is the bulk Stanton Number <span class="math inline">\(S_{t_b}=0.64/ (\frac{z}{z_0}+1)\)</span>. The
-Stanton numbers are dimensionless numbers that measures the ratio of the
-heat transferred in and the thermal capacity. The temperature at height
-<span class="math inline">\(z\)</span> can then be estimated as:</p>
-<p><span class="math display">\[T_z=
-T_{z_0}+(T_r-T_{z_0})ln(\frac{z}{z_0}+1) .\]</span></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><msub><mi>z</mi><mn>0</mn></msub></msub><mo>=</mo><mfrac><mrow><msub><mi>T</mi><mi>r</mi></msub><msub><mi>S</mi><msub><mi>t</mi><mi>b</mi></msub></msub><mo>−</mo><msub><mi>T</mi><mn>0</mn></msub><msub><mi>S</mi><msub><mi>t</mi><mi>s</mi></msub></msub></mrow><mrow><msub><mi>S</mi><msub><mi>t</mi><mi>b</mi></msub></msub><mo>−</mo><msub><mi>S</mi><msub><mi>t</mi><mi>s</mi></msub></msub></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">T_{z_0}= \frac{T_r S_{t_b}-T_0 S_{t_s}}{S_{t_b}-S_{t_s}}. </annotation></semantics></math></p>
+<p>Where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><msub><mi>t</mi><mi>s</mi></msub></msub><annotation encoding="application/x-tex">S_{t_s}</annotation></semantics></math>
+is the sublayer Stanton Number
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><msub><mi>t</mi><mi>s</mi></msub></msub><mo>=</mo><mn>0.62</mn><mi>/</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><msub><mi>z</mi><mn>0</mn></msub><msup><mi>u</mi><mo>*</mo></msup></mrow><mn>12</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>0.45</mn></msup></mrow><annotation encoding="application/x-tex">S_{t_s}=0.62/ (\frac{z_0u^*}{12})^{0.45}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><msub><mi>t</mi><mi>b</mi></msub></msub><annotation encoding="application/x-tex">S_{t_b}</annotation></semantics></math>
+is the bulk Stanton Number
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><msub><mi>t</mi><mi>b</mi></msub></msub><mo>=</mo><mn>0.64</mn><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mi>z</mi><msub><mi>z</mi><mn>0</mn></msub></mfrac><mo>+</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">S_{t_b}=0.64/ (\frac{z}{z_0}+1)</annotation></semantics></math>.
+The Stanton numbers are dimensionless numbers that measures the ratio of
+the heat transferred in and the thermal capacity. The temperature at
+height
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+can then be estimated as:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>z</mi></msub><mo>=</mo><msub><mi>T</mi><msub><mi>z</mi><mn>0</mn></msub></msub><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>T</mi><mi>r</mi></msub><mo>−</mo><msub><mi>T</mi><msub><mi>z</mi><mn>0</mn></msub></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>l</mi><mi>n</mi><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mi>z</mi><msub><mi>z</mi><mn>0</mn></msub></mfrac><mo>+</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">T_z= T_{z_0}+(T_r-T_{z_0})ln(\frac{z}{z_0}+1) .</annotation></semantics></math></p>
 <p>We estimate air temperature profiles in TrenchR as:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">z.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
@@ -940,7 +1019,7 @@ T_{z_0}+(T_r-T_{z_0})ln(\frac{z}{z_0}+1) .\]</span></p>
 <span>       title  <span class="op">=</span> <span class="st">"surface roughness"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.05</span>, <span class="fl">0.08</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotted"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-20-1.png" width="384"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-20-1.png" class="r-plt" alt="" width="384"></p>
 <p>TrenchR also adapts functions from NicheMapR <span class="citation">(Kearney and Porter 2017)</span> to refine wind speed
 and air temperature profiles by using multiple segments:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
@@ -961,7 +1040,7 @@ and air temperature profiles by using multiple segments:</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">27</span>, <span class="fl">25</span>, <span class="fl">22</span>, <span class="fl">20</span><span class="op">)</span>,</span>
 <span>       y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-21-1.png" width="384"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-21-1.png" class="r-plt" alt="" width="384"></p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">z.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
 <span><span class="va">u.seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">z.seq</span>, </span>
@@ -979,63 +1058,93 @@ and air temperature profiles by using multiple segments:</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.025</span>, <span class="fl">0.05</span><span class="op">)</span>,</span>
 <span>       y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-22-1.png" width="384"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-22-1.png" class="r-plt" alt="" width="384"></p>
 </div>
 <div class="section level2">
 <h2 id="diurnal-variation-in-temperature-and-radiation">Diurnal variation in temperature and radiation<a class="anchor" aria-label="anchor" href="#diurnal-variation-in-temperature-and-radiation"></a>
 </h2>
 <p>We provide three forms of equations to estimate diurnal temperature
 variation: a sine model, a sine exponential model, and a sine square
-root model. The models assume that maximum temperature <span class="math inline">\(T_x\)</span> will occur sometime between sunrise
-<span class="math inline">\(t_r\)</span> and sunset <span class="math inline">\(t_s\)</span> and that the minimum temperature
-<span class="math inline">\(T_n\)</span> will occur in the early
-morning.</p>
+root model. The models assume that maximum temperature
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>x</mi></msub><annotation encoding="application/x-tex">T_x</annotation></semantics></math>
+will occur sometime between sunrise
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>r</mi></msub><annotation encoding="application/x-tex">t_r</annotation></semantics></math>
+and sunset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>s</mi></msub><annotation encoding="application/x-tex">t_s</annotation></semantics></math>
+and that the minimum temperature
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>n</mi></msub><annotation encoding="application/x-tex">T_n</annotation></semantics></math>
+will occur in the early morning.</p>
 <p>The sine model (<code><a href="../reference/diurnal_temp_variation_sine.html">diurnal_temp_variation_sine()</a></code>) estimates
-temperature <span class="math inline">\(T\)</span> at hour <span class="math inline">\(h\)</span> as a function of minimum and maximum
-temperature</p>
-<p><span class="math display">\[T(h)= T_x -T_n(1-\gamma), \]</span></p>
-<p>where <span class="math inline">\(\gamma=0.44-0.46 \sin
-(0.9+WH_r)+0.11 \sin(0.9+2WH_r)\)</span> and <span class="math inline">\(W=\pi/12\)</span>.</p>
+temperature
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+at hour
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+as a function of minimum and maximum temperature</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>T</mi><mi>x</mi></msub><mo>−</mo><msub><mi>T</mi><mi>n</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>γ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">T(h)= T_x -T_n(1-\gamma), </annotation></semantics></math></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>=</mo><mn>0.44</mn><mo>−</mo><mn>0.46</mn><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>0.9</mn><mo>+</mo><mi>W</mi><msub><mi>H</mi><mi>r</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mn>0.11</mn><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>0.9</mn><mo>+</mo><mn>2</mn><mi>W</mi><msub><mi>H</mi><mi>r</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\gamma=0.44-0.46 \sin (0.9+WH_r)+0.11 \sin(0.9+2WH_r)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>=</mo><mi>π</mi><mi>/</mi><mn>12</mn></mrow><annotation encoding="application/x-tex">W=\pi/12</annotation></semantics></math>.</p>
 <p>For the sine exponential model
 (<code><a href="../reference/diurnal_temp_variation_sineexp.html">diurnal_temp_variation_sineexp()</a></code>), hourly temperatures are
 estimated as a function of three empirically determined parameters:
-<span class="math inline">\(\alpha\)</span> is the time difference
-between the hour of maximum temperature <span class="math inline">\(h_x\)</span> and midday; <span class="math inline">\(\beta\)</span> is the time difference between the
-hour of minimum temperature <span class="math inline">\(h_n\)</span> and
-sunrise; and <span class="math inline">\(\gamma\)</span> is a decay
-parameter that determines the rate of temperature change from sunset to
-<span class="math inline">\(h'_n\)</span> of the next day.</p>
-<p>The time of maximum temperature can be calculated as <span class="math inline">\(h_x=1/2(t_r+t_s)+\alpha\)</span>. The time of
-minimum temperature can be calculated as <span class="math inline">\(t_n=t_r+\beta\)</span>. The model estimates
-temperature at time <span class="math inline">\(h\)</span> as
-follows:</p>
-<p><span class="math display">\[  T(h)=\left \{
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+is the time difference between the hour of maximum temperature
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mi>x</mi></msub><annotation encoding="application/x-tex">h_x</annotation></semantics></math>
+and midday;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>
+is the time difference between the hour of minimum temperature
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mi>n</mi></msub><annotation encoding="application/x-tex">h_n</annotation></semantics></math>
+and sunrise; and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>γ</mi><annotation encoding="application/x-tex">\gamma</annotation></semantics></math>
+is a decay parameter that determines the rate of temperature change from
+sunset to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><msub><mi>′</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">h'_n</annotation></semantics></math>
+of the next day.</p>
+<p>The time of maximum temperature can be calculated as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>x</mi></msub><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>t</mi><mi>r</mi></msub><mo>+</mo><msub><mi>t</mi><mi>s</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">h_x=1/2(t_r+t_s)+\alpha</annotation></semantics></math>.
+The time of minimum temperature can be calculated as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>n</mi></msub><mo>=</mo><msub><mi>t</mi><mi>r</mi></msub><mo>+</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">t_n=t_r+\beta</annotation></semantics></math>.
+The model estimates temperature at time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+as follows:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><msub><mi>T</mi><mi>n</mi></msub><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>T</mi><mi>x</mi></msub><mo>−</mo><msub><mi>T</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>sin</mo><mfrac><mrow><mi>π</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mo>−</mo><msub><mi>h</mi><mi>r</mi></msub><mo>−</mo><mi>β</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mi>l</mi><mo>+</mo><mn>2</mn><mrow><mo stretchy="true" form="prefix">(</mo><mi>α</mi><mo>−</mo><mi>β</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo>,</mo><msub><mi>h</mi><mi>n</mi></msub><mo>≤</mo><mi>h</mi><mo>≤</mo><msub><mi>h</mi><mi>s</mi></msub></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msub><mi>T</mi><mi>n</mi></msub><mi>′</mi><mo>+</mo><mrow><mo stretchy="true" form="prefix">[</mo><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>h</mi><mi>s</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>T</mi><msub><mi>′</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">]</mo></mrow><mo>exp</mo><mfrac><mrow><mi>γ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mo>−</mo><msub><mi>h</mi><mi>s</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mn>24</mn><mo>−</mo><mi>l</mi><mo>+</mo><mi>β</mi></mrow></mfrac><mo>,</mo><msub><mi>h</mi><mi>s</mi></msub><mo>≤</mo><mi>h</mi><mo>≤</mo><mi>h</mi><msub><mi>′</mi><mi>n</mi></msub></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">  T(h)=\left \{
                 \begin{array}{ll}
-                  T_n+(T_x-T_n)\sin \frac{\pi(h-h_r-\beta)}{l
-+2(\alpha-\beta)}, h_n \leq h \leq h_s\\
-                  T_n'+[T(h_s)-T'_n]\exp
-\frac{\gamma(h-h_s)}{24-l+\beta}, h_s \leq h \leq h'_n
+                  T_n+(T_x-T_n)\sin \frac{\pi(h-h_r-\beta)}{l +2(\alpha-\beta)}, h_n \leq h \leq h_s\\
+                  T_n'+[T(h_s)-T'_n]\exp \frac{\gamma(h-h_s)}{24-l+\beta}, h_s \leq h \leq h'_n 
                 \end{array}
-              \right. \]</span></p>
-<p>where <span class="math inline">\(h'_n\)</span> is the time of
-the minimum temperature, <span class="math inline">\(T'_n\)</span>,
-for the next day. Day length <span class="math inline">\(l\)</span> is
-calculated as <span class="math inline">\(h_s-h_r\)</span>.</p>
+              \right. </annotation></semantics></math></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><msub><mi>′</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">h'_n</annotation></semantics></math>
+is the time of the minimum temperature,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><msub><mi>′</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">T'_n</annotation></semantics></math>,
+for the next day. Day length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>l</mi><annotation encoding="application/x-tex">l</annotation></semantics></math>
+is calculated as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>s</mi></msub><mo>−</mo><msub><mi>h</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">h_s-h_r</annotation></semantics></math>.</p>
 <p>The sine square root model
 (<code><a href="../reference/diurnal_temp_variation_sinesqrt.html">diurnal_temp_variation_sinesqrt()</a></code>) estimates temperature
-assuming the time of maximum temperature <span class="math inline">\(t_x\)</span> occurs 4 hours before sunset (<span class="math inline">\(t_x=t_s -4\)</span>):</p>
-<p><span class="math display">\[  T(h)=\left \{
+assuming the time of maximum temperature
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>x</mi></msub><annotation encoding="application/x-tex">t_x</annotation></semantics></math>
+occurs 4 hours before sunset
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>x</mi></msub><mo>=</mo><msub><mi>t</mi><mi>s</mi></msub><mo>−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">t_x=t_s -4</annotation></semantics></math>):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>h</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><msub><mi>T</mi><mi>n</mi></msub><mo>+</mo><mi>α</mi><mi>π</mi><mi>/</mi><mn>2</mn><mrow><mo stretchy="true" form="prefix">{</mo><mfrac><mrow><mi>h</mi><mo>−</mo><msub><mi>h</mi><mi>r</mi></msub></mrow><mrow><msub><mi>h</mi><mi>x</mi></msub><mo>−</mo><msub><mi>h</mi><mi>r</mi></msub></mrow></mfrac><mo stretchy="true" form="postfix">}</mo></mrow><mo>,</mo><msub><mi>h</mi><mi>r</mi></msub><mo>&lt;</mo><mi>h</mi><mo>≤</mo><msub><mi>h</mi><mi>x</mi></msub></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msub><mi>T</mi><mi>r</mi></msub><mo>+</mo><mi>R</mi><mo>sin</mo><mrow><mo stretchy="true" form="prefix">[</mo><mi>π</mi><mi>/</mi><mn>2</mn><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>h</mi><mo>−</mo><msub><mi>h</mi><mi>x</mi></msub></mrow><mn>4</mn></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mi>π</mi><mi>/</mi><mn>2</mn><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo><msub><mi>h</mi><mi>x</mi></msub><mo>&lt;</mo><mi>h</mi><mo>&lt;</mo><msub><mi>h</mi><mi>s</mi></msub></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><msub><mi>T</mi><mi>r</mi></msub><mo>+</mo><mi>b</mi><msqrt><mrow><mi>h</mi><mo>−</mo><msub><mi>h</mi><mi>s</mi></msub></mrow></msqrt><mo>,</mo><msub><mi>h</mi><mi>s</mi></msub><mo>&lt;</mo><mi>h</mi><mo>≤</mo><msub><mi>h</mi><mi>p</mi></msub></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">  T(h)=\left \{
                 \begin{array}{ll}
-                  T_n+\alpha \pi /2 \left \{ \frac{h-h_r}{h_x-h_r}
-\right \}, h_r &lt; h \leq h_x\\
-                  T_r+R \sin [\pi/2+(\frac{h-h_x}{4})\pi/2], h_x &lt; h
-&lt; h_s\\
+                  T_n+\alpha \pi /2 \left \{ \frac{h-h_r}{h_x-h_r} \right \}, h_r &lt; h \leq h_x\\
+                  T_r+R \sin [\pi/2+(\frac{h-h_x}{4})\pi/2], h_x &lt; h &lt; h_s\\ 
                   T_r+b \sqrt{h-h_s}, h_s &lt; h \leq h_p
                 \end{array}
-              \right. \]</span></p>
-<p>where <span class="math inline">\(\alpha=T_x-T_n\)</span>,<span class="math inline">\(R=T_x-T_s\)</span>, and <span class="math inline">\(b=\frac{T_p-T_s}{\sqrt{h_p - h_s}}\)</span>.
-Sunset temperature is estimated as <span class="math inline">\(T_s=T_x-c(T_x-T_p)\)</span> where <span class="math inline">\(c\)</span> is an empirically estimated parameter
-(<span class="math inline">\(c=0.39\)</span>).</p>
+              \right. </annotation></semantics></math></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><msub><mi>T</mi><mi>x</mi></msub><mo>−</mo><msub><mi>T</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\alpha=T_x-T_n</annotation></semantics></math>,<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><msub><mi>T</mi><mi>x</mi></msub><mo>−</mo><msub><mi>T</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">R=T_x-T_s</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mfrac><mrow><msub><mi>T</mi><mi>p</mi></msub><mo>−</mo><msub><mi>T</mi><mi>s</mi></msub></mrow><msqrt><mrow><msub><mi>h</mi><mi>p</mi></msub><mo>−</mo><msub><mi>h</mi><mi>s</mi></msub></mrow></msqrt></mfrac></mrow><annotation encoding="application/x-tex">b=\frac{T_p-T_s}{\sqrt{h_p - h_s}}</annotation></semantics></math>.
+Sunset temperature is estimated as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>s</mi></msub><mo>=</mo><msub><mi>T</mi><mi>x</mi></msub><mo>−</mo><mi>c</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>T</mi><mi>x</mi></msub><mo>−</mo><msub><mi>T</mi><mi>p</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">T_s=T_x-c(T_x-T_p)</annotation></semantics></math>
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
+is an empirically estimated parameter
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mn>0.39</mn></mrow><annotation encoding="application/x-tex">c=0.39</annotation></semantics></math>).</p>
 <p>TrenchR provides the functions as follows:</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">23</span>, </span>
@@ -1070,24 +1179,32 @@ Sunset temperature is estimated as <span class="math inline">\(T_s=T_x-c(T_x-T_p
 <span>       title  <span class="op">=</span> <span class="st">"function"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sine"</span>, <span class="st">"sine-exp"</span>, <span class="st">"sine-sqrt"</span><span class="op">)</span>,</span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotted"</span>, <span class="st">"dashed"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-23-1.png" width="576"></p>
-<p>We adapted equations from Tham et al. <span class="citation">(2010)</span> to estimate hourly solar radiation (<span class="math inline">\(W m^{-2} hr^{-1}\)</span>) as a function of daily
-global solar radiation (in <span class="math inline">\(W m^{-2}
-d^{-1}\)</span>). The function
-<code><a href="../reference/diurnal_radiation_variation.html">diurnal_radiation_variation()</a></code> partitions daily solar
-radiation <span class="math inline">\(S\)</span>. The function estimates
-the ratio of hourly to daily global irradiation,<span class="math inline">\(S_G\)</span>, as follows:</p>
-<p><span class="math display">\[S_G= \frac{\pi}{24}(a'+b'\cos
-\omega)\frac{\cos \omega - \cos \omega_s}{\sin \omega_s - \omega_s \cos
-\omega_s}, \]</span></p>
-<p>where <span class="math inline">\(a'=
-0.409+0.5016\sin(\omega_s-1.047)\)</span> and <span class="math inline">\(b'=0.6609-0.4767\sin(\omega_s-1.047)\)</span>.</p>
-<p>The function utilizes two angles in radians: <span class="math inline">\(\omega\)</span> is the hour angle of the sun and
-<span class="math inline">\(\omega_s\)</span> is the hour angle at
-sunset. The function calculates these angles as a function of calendar
-date <span class="math inline">\(J\)</span> and location (latitude and
-longitude). We depict how the diurnal trends in radiation vary across
-the year (also assuming differences in total radiation).</p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-23-1.png" class="r-plt" alt="" width="576"></p>
+<p>We adapted equations from Tham et al. <span class="citation">(2010)</span> to estimate hourly solar radiation
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><msup><mi>m</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup><mi>h</mi><msup><mi>r</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">W m^{-2} hr^{-1}</annotation></semantics></math>)
+as a function of daily global solar radiation (in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><msup><mi>m</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup><msup><mi>d</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">W m^{-2} d^{-1}</annotation></semantics></math>).
+The function <code><a href="../reference/diurnal_radiation_variation.html">diurnal_radiation_variation()</a></code> partitions daily
+solar radiation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
+The function estimates the ratio of hourly to daily global
+irradiation,<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>G</mi></msub><annotation encoding="application/x-tex">S_G</annotation></semantics></math>,
+as follows:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>G</mi></msub><mo>=</mo><mfrac><mi>π</mi><mn>24</mn></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mi>′</mi><mo>+</mo><mi>b</mi><mi>′</mi><mo>cos</mo><mi>ω</mi><mo stretchy="true" form="postfix">)</mo></mrow><mfrac><mrow><mo>cos</mo><mi>ω</mi><mo>−</mo><mo>cos</mo><msub><mi>ω</mi><mi>s</mi></msub></mrow><mrow><mo>sin</mo><msub><mi>ω</mi><mi>s</mi></msub><mo>−</mo><msub><mi>ω</mi><mi>s</mi></msub><mo>cos</mo><msub><mi>ω</mi><mi>s</mi></msub></mrow></mfrac><mo>,</mo></mrow><annotation encoding="application/x-tex">S_G= \frac{\pi}{24}(a'+b'\cos \omega)\frac{\cos \omega - \cos \omega_s}{\sin \omega_s - \omega_s \cos \omega_s}, </annotation></semantics></math></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>′</mi><mo>=</mo><mn>0.409</mn><mo>+</mo><mn>0.5016</mn><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>ω</mi><mi>s</mi></msub><mo>−</mo><mn>1.047</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">a'= 0.409+0.5016\sin(\omega_s-1.047)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>′</mi><mo>=</mo><mn>0.6609</mn><mo>−</mo><mn>0.4767</mn><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>ω</mi><mi>s</mi></msub><mo>−</mo><mn>1.047</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">b'=0.6609-0.4767\sin(\omega_s-1.047)</annotation></semantics></math>.</p>
+<p>The function utilizes two angles in radians:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ω</mi><annotation encoding="application/x-tex">\omega</annotation></semantics></math>
+is the hour angle of the sun and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ω</mi><mi>s</mi></msub><annotation encoding="application/x-tex">\omega_s</annotation></semantics></math>
+is the hour angle at sunset. The function calculates these angles as a
+function of calendar date
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+and location (latitude and longitude). We depict how the diurnal trends
+in radiation vary across the year (also assuming differences in total
+radiation).</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -1144,7 +1261,7 @@ the year (also assuming differences in total radiation).</p>
 <span>       title  <span class="op">=</span> <span class="st">"day of year"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">172</span>, <span class="fl">228</span>, <span class="fl">266</span>, <span class="fl">356</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"solid"</span>, <span class="st">"dotdash"</span>, <span class="st">"dashed"</span>, <span class="st">"dotted"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-24-1.png" width="384"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-24-1.png" class="r-plt" alt="" width="384"></p>
 </div>
 <div class="section level2">
 <h2 id="degree-days">Degree days<a class="anchor" aria-label="anchor" href="#degree-days"></a>
@@ -1164,23 +1281,29 @@ complexity with which they aggregate heat: “single.sine”, “double.sine”,
 methods account for whether the temperature time series is intercepted
 by the LDT and / or the UDT. Briefly, we present the equations for each
 method for the case of the temperature time series being intercepted by
-the lower threshold. For the single-sine method, degree days <span class="math inline">\(D\)</span> can be estimated as</p>
-<p><span class="math display">\[D= \frac{1}{\pi} \left[ \left(
+the lower threshold. For the single-sine method, degree days
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+can be estimated as</p>
+<p><span class="math display">$$D= \frac{1}{\pi} \left[ \left(
 \frac{T_x+T_n}{2}-LDT \right) +\alpha\cos(\theta_1) \right] \\
 \theta_1= \sin^{-1}\left[ 1/ \alpha \left( LDT- \frac{T_x+T_n}{2}
-\right) \right]\]</span></p>
-<p>For the double-sine method, degree days <span class="math inline">\(D\)</span> can be estimated as</p>
-<p><span class="math display">\[D= \frac{1}{2\pi} \left[ \left(
+\right) \right]$$</span></p>
+<p>For the double-sine method, degree days
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+can be estimated as</p>
+<p><span class="math display">$$D= \frac{1}{2\pi} \left[ \left(
 \frac{T_x+T_n}{2}-LDT \right)(\pi/2- \theta_1 ) +\alpha\cos(\theta_1)
 \right] \\
 \theta_1= \sin^{-1}\left[ 1/ \alpha \left( LDT- \frac{T_x+T_n}{2}
-\right) \right].\]</span></p>
-<p>For the single triangulation method, degree days <span class="math inline">\(D\)</span> can be estimated as</p>
-<p><span class="math display">\[D= \frac{(T_x-LDT)^2}{2(T_x-T_n)}
-.\]</span></p>
-<p>For the double triangulation method, degree days <span class="math inline">\(D\)</span> can be estimated as</p>
-<p><span class="math display">\[D= \frac{(T_x-LDT)^2}{4(T_x-T_n)}.
-\]</span></p>
+\right) \right].$$</span></p>
+<p>For the single triangulation method, degree days
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+can be estimated as</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><mfrac><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>T</mi><mi>x</mi></msub><mo>−</mo><mi>L</mi><mi>D</mi><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mrow><mn>2</mn><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>T</mi><mi>x</mi></msub><mo>−</mo><msub><mi>T</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">D= \frac{(T_x-LDT)^2}{2(T_x-T_n)} .</annotation></semantics></math></p>
+<p>For the double triangulation method, degree days
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
+can be estimated as</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><mfrac><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>T</mi><mi>x</mi></msub><mo>−</mo><mi>L</mi><mi>D</mi><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mrow><mn>4</mn><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>T</mi><mi>x</mi></msub><mo>−</mo><msub><mi>T</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">D= \frac{(T_x-LDT)^2}{4(T_x-T_n)}. </annotation></semantics></math></p>
 <p>The methods are available in the following R function. Note the
 function calculates degree days for a full day assuming symmetry in
 minimum temperatures.</p>
@@ -1233,72 +1356,102 @@ equation and is called by <code><a href="../reference/soil_temperature_equation.
 which represents the full equation.</p>
 <p>Below we outline the soil temperature model encapsulated by the
 functions.</p>
-<p>The change in soil temperature (<span class="math inline">\(T_s\)</span>) through time <span class="math inline">\(t\)</span> and depth <span class="math inline">\(z\)</span> can be approximated with a differential
-equation</p>
-<p><span class="math display">\[\frac{dT_s}{dt}= \frac{k_s}{\rho_s c_s}
-\frac{\delta^2T_s}{\delta z^2}\]</span></p>
-<p>where <span class="math inline">\(k_s\)</span> is the thermal
-conductivity of soil (W/m·K), <span class="math inline">\(\rho_s\)</span> is the density of soil, and <span class="math inline">\(c_s\)</span> is the specific heat of soil
-(J/kg·K). We solve the differential equation by breaking the soil
-profile into depth nodes exchanging heat. We estimate the steady-state
-temperature profile, which is independent of initial conditions. The
-choice of initial conditions only affects the rate of convergence to the
-steady-state solution. A finite difference approximation of the
-differential equation yields a transient equation for the temperature at
-depth <span class="math inline">\(i\)</span> and time <span class="math inline">\(p\)</span> where we let <span class="math inline">\(a= \frac{k_s}{\rho_s c_s}\)</span>:</p>
-<p><span class="math display">\[\frac{T_i^{p+1}-T_i^p}{dt}= a
-\frac{T_{i+dz}^p+T_{i-dz}^p-2T_i^p}{dz^2}. \]</span></p>
-<p>Solving for <span class="math inline">\(T_i^{p+1}\)</span> produces
-as expression for solving soil temperature at depth <span class="math inline">\(i\)</span> at any time:</p>
-<p><span class="math display">\[T_i^{p+1} = a
-\frac{dt}{dz^2}(T_{i+dz}^p+T_{i-dz}^p)+(1-2a
-\frac{dt}{dz^2})T_i^p\]</span></p>
+<p>The change in soil temperature
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>s</mi></msub><annotation encoding="application/x-tex">T_s</annotation></semantics></math>)
+through time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+and depth
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+can be approximated with a differential equation</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>d</mi><msub><mi>T</mi><mi>s</mi></msub></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><msub><mi>k</mi><mi>s</mi></msub><mrow><msub><mi>ρ</mi><mi>s</mi></msub><msub><mi>c</mi><mi>s</mi></msub></mrow></mfrac><mfrac><mrow><msup><mi>δ</mi><mn>2</mn></msup><msub><mi>T</mi><mi>s</mi></msub></mrow><mrow><mi>δ</mi><msup><mi>z</mi><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{dT_s}{dt}= \frac{k_s}{\rho_s c_s} \frac{\delta^2T_s}{\delta z^2}</annotation></semantics></math></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>s</mi></msub><annotation encoding="application/x-tex">k_s</annotation></semantics></math>
+is the thermal conductivity of soil (W/m·K),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>s</mi></msub><annotation encoding="application/x-tex">\rho_s</annotation></semantics></math>
+is the density of soil, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mi>s</mi></msub><annotation encoding="application/x-tex">c_s</annotation></semantics></math>
+is the specific heat of soil (J/kg·K). We solve the differential
+equation by breaking the soil profile into depth nodes exchanging heat.
+We estimate the steady-state temperature profile, which is independent
+of initial conditions. The choice of initial conditions only affects the
+rate of convergence to the steady-state solution. A finite difference
+approximation of the differential equation yields a transient equation
+for the temperature at depth
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+and time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+where we let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mfrac><msub><mi>k</mi><mi>s</mi></msub><mrow><msub><mi>ρ</mi><mi>s</mi></msub><msub><mi>c</mi><mi>s</mi></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">a= \frac{k_s}{\rho_s c_s}</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msubsup><mi>T</mi><mi>i</mi><mrow><mi>p</mi><mo>+</mo><mn>1</mn></mrow></msubsup><mo>−</mo><msubsup><mi>T</mi><mi>i</mi><mi>p</mi></msubsup></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>a</mi><mfrac><mrow><msubsup><mi>T</mi><mrow><mi>i</mi><mo>+</mo><mi>d</mi><mi>z</mi></mrow><mi>p</mi></msubsup><mo>+</mo><msubsup><mi>T</mi><mrow><mi>i</mi><mo>−</mo><mi>d</mi><mi>z</mi></mrow><mi>p</mi></msubsup><mo>−</mo><mn>2</mn><msubsup><mi>T</mi><mi>i</mi><mi>p</mi></msubsup></mrow><mrow><mi>d</mi><msup><mi>z</mi><mn>2</mn></msup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">\frac{T_i^{p+1}-T_i^p}{dt}= a \frac{T_{i+dz}^p+T_{i-dz}^p-2T_i^p}{dz^2}. </annotation></semantics></math></p>
+<p>Solving for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>T</mi><mi>i</mi><mrow><mi>p</mi><mo>+</mo><mn>1</mn></mrow></msubsup><annotation encoding="application/x-tex">T_i^{p+1}</annotation></semantics></math>
+produces as expression for solving soil temperature at depth
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+at any time:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>T</mi><mi>i</mi><mrow><mi>p</mi><mo>+</mo><mn>1</mn></mrow></msubsup><mo>=</mo><mi>a</mi><mfrac><mrow><mi>d</mi><mi>t</mi></mrow><mrow><mi>d</mi><msup><mi>z</mi><mn>2</mn></msup></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>T</mi><mrow><mi>i</mi><mo>+</mo><mi>d</mi><mi>z</mi></mrow><mi>p</mi></msubsup><mo>+</mo><msubsup><mi>T</mi><mrow><mi>i</mi><mo>−</mo><mi>d</mi><mi>z</mi></mrow><mi>p</mi></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mn>2</mn><mi>a</mi><mfrac><mrow><mi>d</mi><mi>t</mi></mrow><mrow><mi>d</mi><msup><mi>z</mi><mn>2</mn></msup></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><msubsup><mi>T</mi><mi>i</mi><mi>p</mi></msubsup></mrow><annotation encoding="application/x-tex">T_i^{p+1} = a \frac{dt}{dz^2}(T_{i+dz}^p+T_{i-dz}^p)+(1-2a \frac{dt}{dz^2})T_i^p</annotation></semantics></math></p>
 <div class="section level3">
 <h3 id="soil-boundary-conditions">Soil boundary conditions<a class="anchor" aria-label="anchor" href="#soil-boundary-conditions"></a>
 </h3>
 <p>Solving the equation requires two boundary conditions: 1) the deep
 soil temperature, and 2) the soil surface temperature. We assume that
 the soil temperature at 60cm is constant diurnally. The soil surface
-temperature at time <span class="math inline">\(p\)</span> is estimated
-using an energy balance equating the energy conducted to the soil
-surface the net heat transfer to the surface by solar radiation,
-infrared radiation, and conduction <span class="citation">(Beckman,
-Mitchell, and Porter 1973)</span>:</p>
-<p><span class="math display">\[Q_{net_s}= Q_{sol_s} + Q_{emit_s} +
-Q_{conv_s} +Q_{cond_s}\]</span></p>
+temperature at time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+is estimated using an energy balance equating the energy conducted to
+the soil surface the net heat transfer to the surface by solar
+radiation, infrared radiation, and conduction <span class="citation">(Beckman, Mitchell, and Porter 1973)</span>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>n</mi><mi>e</mi><msub><mi>t</mi><mi>s</mi></msub></mrow></msub><mo>=</mo><msub><mi>Q</mi><mrow><mi>s</mi><mi>o</mi><msub><mi>l</mi><mi>s</mi></msub></mrow></msub><mo>+</mo><msub><mi>Q</mi><mrow><mi>e</mi><mi>m</mi><mi>i</mi><msub><mi>t</mi><mi>s</mi></msub></mrow></msub><mo>+</mo><msub><mi>Q</mi><mrow><mi>c</mi><mi>o</mi><mi>n</mi><msub><mi>v</mi><mi>s</mi></msub></mrow></msub><mo>+</mo><msub><mi>Q</mi><mrow><mi>c</mi><mi>o</mi><mi>n</mi><msub><mi>d</mi><mi>s</mi></msub></mrow></msub></mrow><annotation encoding="application/x-tex">Q_{net_s}= Q_{sol_s} + Q_{emit_s} + Q_{conv_s} +Q_{cond_s}</annotation></semantics></math></p>
 <p>where the solar radiation absorbed by the soil surface is the product
-of incoming radiation <span class="math inline">\(S\)</span> and the
-proportion of radiation absorbed <span class="math inline">\(\alpha_s\)</span>, <span class="math inline">\(Q_{sol_s}= \alpha_s S\)</span>.</p>
+of incoming radiation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+and the proportion of radiation absorbed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mi>s</mi></msub><annotation encoding="application/x-tex">\alpha_s</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>s</mi><mi>o</mi><msub><mi>l</mi><mi>s</mi></msub></mrow></msub><mo>=</mo><msub><mi>α</mi><mi>s</mi></msub><mi>S</mi></mrow><annotation encoding="application/x-tex">Q_{sol_s}= \alpha_s S</annotation></semantics></math>.</p>
 <p>The net thermal radiation to the soil surface is determined by the
-balance of radiation emitted by the soil surface <span class="math inline">\(\sigma T_s^4\)</span> and sky radiation absorbed
-by the soil surface <span class="math inline">\(\sigma
-T_{sky}^4\)</span>: <span class="math inline">\(Q_{emit_s}= \epsilon_s
-\sigma [(T^p_{sky})^4-(T^p_0)^4]\)</span>, where <span class="math inline">\(\epsilon_s\)</span> is the thermal emissivity of
-the soil surface and <span class="math inline">\(T^p_{sky}=0.552
-T^{1.5}\)</span>. Convection between the soil surface and air is
-estimated as a function of the temperature difference <span class="math inline">\(Q_{conv_s}= h_s(T^p-T^p_s)\)</span>, where <span class="math inline">\(h_s\)</span> is the surface heat transfer
-coefficient. Consideration of temperature profiles and surface roughness
-yields an expression during neutral conditions <span class="citation">(Sellers 1965)</span>:</p>
-<p><span class="math display">\[h_s= \frac{\rho_s c_s k^2
-V_r}{ln(z_r/z_o+1)^2},\]</span></p>
-<p>where <span class="math inline">\(V\)</span> is the wind speed at
-reference height <span class="math inline">\(z_r\)</span> and <span class="math inline">\(z_0\)</span> is roughness length. Conduction
-within the soil profile is estimated as <span class="math inline">\(Q_{cond_s}=k_s \frac{\delta T_s}{\delta
-z}\)</span>, at <span class="math inline">\(z=0\)</span>. Approximating
-<span class="math inline">\(Q_{cond_s}\)</span> by finite difference
-yields <span class="math inline">\(Q_{cond_s}=\frac{k_s}{dz}(T^p_{dz}-T^p_s)\)</span>,
-at <span class="math inline">\(z=0\)</span>.</p>
+balance of radiation emitted by the soil surface
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><msubsup><mi>T</mi><mi>s</mi><mn>4</mn></msubsup></mrow><annotation encoding="application/x-tex">\sigma T_s^4</annotation></semantics></math>
+and sky radiation absorbed by the soil surface
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><msubsup><mi>T</mi><mrow><mi>s</mi><mi>k</mi><mi>y</mi></mrow><mn>4</mn></msubsup></mrow><annotation encoding="application/x-tex">\sigma T_{sky}^4</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>e</mi><mi>m</mi><mi>i</mi><msub><mi>t</mi><mi>s</mi></msub></mrow></msub><mo>=</mo><msub><mi>ϵ</mi><mi>s</mi></msub><mi>σ</mi><mrow><mo stretchy="true" form="prefix">[</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>T</mi><mrow><mi>s</mi><mi>k</mi><mi>y</mi></mrow><mi>p</mi></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mn>4</mn></msup><mo>−</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>T</mi><mn>0</mn><mi>p</mi></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mn>4</mn></msup><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">Q_{emit_s}= \epsilon_s \sigma [(T^p_{sky})^4-(T^p_0)^4]</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϵ</mi><mi>s</mi></msub><annotation encoding="application/x-tex">\epsilon_s</annotation></semantics></math>
+is the thermal emissivity of the soil surface and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>T</mi><mrow><mi>s</mi><mi>k</mi><mi>y</mi></mrow><mi>p</mi></msubsup><mo>=</mo><mn>0.552</mn><msup><mi>T</mi><mn>1.5</mn></msup></mrow><annotation encoding="application/x-tex">T^p_{sky}=0.552 T^{1.5}</annotation></semantics></math>.
+Convection between the soil surface and air is estimated as a function
+of the temperature difference
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>c</mi><mi>o</mi><mi>n</mi><msub><mi>v</mi><mi>s</mi></msub></mrow></msub><mo>=</mo><msub><mi>h</mi><mi>s</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>T</mi><mi>p</mi></msup><mo>−</mo><msubsup><mi>T</mi><mi>s</mi><mi>p</mi></msubsup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">Q_{conv_s}= h_s(T^p-T^p_s)</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mi>s</mi></msub><annotation encoding="application/x-tex">h_s</annotation></semantics></math>
+is the surface heat transfer coefficient. Consideration of temperature
+profiles and surface roughness yields an expression during neutral
+conditions <span class="citation">(Sellers 1965)</span>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>s</mi></msub><mo>=</mo><mfrac><mrow><msub><mi>ρ</mi><mi>s</mi></msub><msub><mi>c</mi><mi>s</mi></msub><msup><mi>k</mi><mn>2</mn></msup><msub><mi>V</mi><mi>r</mi></msub></mrow><mrow><mi>l</mi><mi>n</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>z</mi><mi>r</mi></msub><mi>/</mi><msub><mi>z</mi><mi>o</mi></msub><mo>+</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mrow></mfrac><mo>,</mo></mrow><annotation encoding="application/x-tex">h_s= \frac{\rho_s c_s k^2 V_r}{ln(z_r/z_o+1)^2},</annotation></semantics></math></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+is the wind speed at reference height
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mi>r</mi></msub><annotation encoding="application/x-tex">z_r</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>
+is roughness length. Conduction within the soil profile is estimated as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>c</mi><mi>o</mi><mi>n</mi><msub><mi>d</mi><mi>s</mi></msub></mrow></msub><mo>=</mo><msub><mi>k</mi><mi>s</mi></msub><mfrac><mrow><mi>δ</mi><msub><mi>T</mi><mi>s</mi></msub></mrow><mrow><mi>δ</mi><mi>z</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">Q_{cond_s}=k_s \frac{\delta T_s}{\delta z}</annotation></semantics></math>,
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>.
+Approximating
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mrow><mi>c</mi><mi>o</mi><mi>n</mi><msub><mi>d</mi><mi>s</mi></msub></mrow></msub><annotation encoding="application/x-tex">Q_{cond_s}</annotation></semantics></math>
+by finite difference yields
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>c</mi><mi>o</mi><mi>n</mi><msub><mi>d</mi><mi>s</mi></msub></mrow></msub><mo>=</mo><mfrac><msub><mi>k</mi><mi>s</mi></msub><mrow><mi>d</mi><mi>z</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>T</mi><mrow><mi>d</mi><mi>z</mi></mrow><mi>p</mi></msubsup><mo>−</mo><msubsup><mi>T</mi><mi>s</mi><mi>p</mi></msubsup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">Q_{cond_s}=\frac{k_s}{dz}(T^p_{dz}-T^p_s)</annotation></semantics></math>,
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z=0</annotation></semantics></math>.</p>
 <p>The net heat transfer through the profile across time is expressed
 as</p>
-<p><span class="math display">\[Q_{net_s}= \frac{\rho_s c_s dz}{2 dt}
-(T_0^{p+1}-T_0^p).\]</span></p>
-<p>Letting <span class="math inline">\(a=\frac{2dt}{\rho_s c_s
-dz}\)</span> and solving for <span class="math inline">\(T_0^{p+1}\)</span> in the soil energy budget
-yields the following boundary condition for soil surface
-temperature:</p>
-<p><span class="math display">\[T_0^{p+1}= a \alpha_s S + a \epsilon_S
-\sigma [(T^p_{sky})^4-(T^p_0)^4]+a h_s (T^p-T_0^p) +a
-\frac{k_s}{dz}(T^p_{dz}-T^p_0)+T_0^p\]</span></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mrow><mi>n</mi><mi>e</mi><msub><mi>t</mi><mi>s</mi></msub></mrow></msub><mo>=</mo><mfrac><mrow><msub><mi>ρ</mi><mi>s</mi></msub><msub><mi>c</mi><mi>s</mi></msub><mi>d</mi><mi>z</mi></mrow><mrow><mn>2</mn><mi>d</mi><mi>t</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>T</mi><mn>0</mn><mrow><mi>p</mi><mo>+</mo><mn>1</mn></mrow></msubsup><mo>−</mo><msubsup><mi>T</mi><mn>0</mn><mi>p</mi></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">Q_{net_s}= \frac{\rho_s c_s dz}{2 dt} (T_0^{p+1}-T_0^p).</annotation></semantics></math></p>
+<p>Letting
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>d</mi><mi>t</mi></mrow><mrow><msub><mi>ρ</mi><mi>s</mi></msub><msub><mi>c</mi><mi>s</mi></msub><mi>d</mi><mi>z</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">a=\frac{2dt}{\rho_s c_s dz}</annotation></semantics></math>
+and solving for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>T</mi><mn>0</mn><mrow><mi>p</mi><mo>+</mo><mn>1</mn></mrow></msubsup><annotation encoding="application/x-tex">T_0^{p+1}</annotation></semantics></math>
+in the soil energy budget yields the following boundary condition for
+soil surface temperature:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>T</mi><mn>0</mn><mrow><mi>p</mi><mo>+</mo><mn>1</mn></mrow></msubsup><mo>=</mo><mi>a</mi><msub><mi>α</mi><mi>s</mi></msub><mi>S</mi><mo>+</mo><mi>a</mi><msub><mi>ϵ</mi><mi>S</mi></msub><mi>σ</mi><mrow><mo stretchy="true" form="prefix">[</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>T</mi><mrow><mi>s</mi><mi>k</mi><mi>y</mi></mrow><mi>p</mi></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mn>4</mn></msup><mo>−</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>T</mi><mn>0</mn><mi>p</mi></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mn>4</mn></msup><mo stretchy="true" form="postfix">]</mo></mrow><mo>+</mo><mi>a</mi><msub><mi>h</mi><mi>s</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>T</mi><mi>p</mi></msup><mo>−</mo><msubsup><mi>T</mi><mn>0</mn><mi>p</mi></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>a</mi><mfrac><msub><mi>k</mi><mi>s</mi></msub><mrow><mi>d</mi><mi>z</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>T</mi><mrow><mi>d</mi><mi>z</mi></mrow><mi>p</mi></msubsup><mo>−</mo><msubsup><mi>T</mi><mn>0</mn><mi>p</mi></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msubsup><mi>T</mi><mn>0</mn><mi>p</mi></msubsup></mrow><annotation encoding="application/x-tex">T_0^{p+1}= a \alpha_s S + a \epsilon_S \sigma [(T^p_{sky})^4-(T^p_0)^4]+a h_s (T^p-T_0^p) +a \frac{k_s}{dz}(T^p_{dz}-T^p_0)+T_0^p</annotation></semantics></math></p>
 <p>Soil temperature can be estimated in TrenchR as follows. The solid
 line depicts air temperature (°C).</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
@@ -1408,22 +1561,27 @@ line depicts air temperature (°C).</p>
 <span>       title  <span class="op">=</span> <span class="st">"soil depth interval"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">6</span><span class="op">)</span>, </span>
 <span>       lty    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dashed"</span>, <span class="st">"dotted"</span>, <span class="st">"dotdash"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-26-1.png" width="384"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-26-1.png" class="r-plt" alt="" width="384"></p>
 </div>
 <div class="section level3">
 <h3 id="soil-specific-heat-and-conductivity">Soil specific heat and conductivity<a class="anchor" aria-label="anchor" href="#soil-specific-heat-and-conductivity"></a>
 </h3>
-<p>We can approximate soil specific heat, <span class="math inline">\(c_s\)</span>, as the weighted sum of the specific
-heats of soil constituents <span class="citation">(Campbell and Norman
-2012)</span>:</p>
-<p><span class="math display">\[\rho_s c_s= rho_m c_m x_m + rho_o c_o
-x_o + rho_w c_w x_w,\]</span></p>
-<p>where <span class="math inline">\(\rho_s\)</span> is the particle
-density of soil (bulk density), <span class="math inline">\(x\)</span>
-is the volume fraction, and the subscripts <span class="math inline">\(m\)</span>, <span class="math inline">\(o\)</span>,and <span class="math inline">\(w\)</span> stand for minerals, organic matter, and
-water, respectively.</p>
+<p>We can approximate soil specific heat,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mi>s</mi></msub><annotation encoding="application/x-tex">c_s</annotation></semantics></math>,
+as the weighted sum of the specific heats of soil constituents <span class="citation">(Campbell and Norman 2012)</span>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mi>s</mi></msub><msub><mi>c</mi><mi>s</mi></msub><mo>=</mo><mi>r</mi><mi>h</mi><msub><mi>o</mi><mi>m</mi></msub><msub><mi>c</mi><mi>m</mi></msub><msub><mi>x</mi><mi>m</mi></msub><mo>+</mo><mi>r</mi><mi>h</mi><msub><mi>o</mi><mi>o</mi></msub><msub><mi>c</mi><mi>o</mi></msub><msub><mi>x</mi><mi>o</mi></msub><mo>+</mo><mi>r</mi><mi>h</mi><msub><mi>o</mi><mi>w</mi></msub><msub><mi>c</mi><mi>w</mi></msub><msub><mi>x</mi><mi>w</mi></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">\rho_s c_s= rho_m c_m x_m + rho_o c_o x_o + rho_w c_w x_w,</annotation></semantics></math></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>s</mi></msub><annotation encoding="application/x-tex">\rho_s</annotation></semantics></math>
+is the particle density of soil (bulk density),
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+is the volume fraction, and the subscripts
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>o</mi><annotation encoding="application/x-tex">o</annotation></semantics></math>,and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
+stand for minerals, organic matter, and water, respectively.</p>
 <p>We provide a function to calculate soil specific heat given the
-volume fractions and <span class="math inline">\(\rho_s\)</span>:</p>
+volume fractions and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>s</mi></msub><annotation encoding="application/x-tex">\rho_s</annotation></semantics></math>:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">500</span>,<span class="fl">1700</span>,<span class="fl">100</span><span class="op">)</span>, </span>
 <span>     y    <span class="op">=</span> <span class="fu"><a href="../reference/soil_specific_heat.html">soil_specific_heat</a></span><span class="op">(</span>x_o    <span class="op">=</span> <span class="fl">0.01</span>, </span>
@@ -1433,27 +1591,43 @@ volume fractions and <span class="math inline">\(\rho_s\)</span>:</p>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"bulk density"</span> <span class="op">~</span> <span class="op">(</span><span class="va">kg</span><span class="op">/</span><span class="va">m</span><span class="op">^</span><span class="op">{</span><span class="fl">3</span><span class="op">}</span><span class="op">)</span><span class="op">)</span>, </span>
 <span>     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"soil specific heat"</span> <span class="op">~</span> <span class="op">(</span><span class="va">J</span> <span class="op">~</span> <span class="va">kg</span><span class="op">^</span><span class="op">{</span><span class="op">-</span><span class="fl">1</span><span class="op">}</span> <span class="op">~</span> <span class="va">K</span><span class="op">^</span><span class="op">{</span><span class="op">-</span><span class="fl">1</span><span class="op">}</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-27-1.png" width="384"></p>
+<p><img src="MicroclimateTutorial_files/figure-html/unnamed-chunk-27-1.png" class="r-plt" alt="" width="384"></p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">oldpar</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>Various methods of approximating soil thermal conductivity <span class="math inline">\(k_s\)</span> are reviewed in Boguslaw and Lukasz
-<span class="citation">(2004)</span>. We provide a function
-<code><a href="../reference/soil_conductivity.html">soil_conductivity()</a></code> to estimate <span class="math inline">\(k_s\)</span> using the methods of de Vries <span class="citation">(1963)</span>. The function calculates <span class="math inline">\(k_s\)</span> as the weighted average of the
-thermal conductivities <span class="math inline">\(k\)</span> of soil
-components <span class="math inline">\(i\)</span>:</p>
-<p><span class="math display">\[k_s= \frac{\sum j_i k_i x_i}{\sum j_i
-x_i},\]</span></p>
-<p>where quantity <span class="math inline">\(j_i\)</span> is the ratio
-of the average temperature gradient in the granules and the
+<p>Various methods of approximating soil thermal conductivity
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>s</mi></msub><annotation encoding="application/x-tex">k_s</annotation></semantics></math>
+are reviewed in Boguslaw and Lukasz <span class="citation">(2004)</span>. We provide a function
+<code><a href="../reference/soil_conductivity.html">soil_conductivity()</a></code> to estimate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>s</mi></msub><annotation encoding="application/x-tex">k_s</annotation></semantics></math>
+using the methods of de Vries <span class="citation">(1963)</span>. The
+function calculates
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>s</mi></msub><annotation encoding="application/x-tex">k_s</annotation></semantics></math>
+as the weighted average of the thermal conductivities
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+of soil components
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>s</mi></msub><mo>=</mo><mfrac><mrow><mo>∑</mo><msub><mi>j</mi><mi>i</mi></msub><msub><mi>k</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub></mrow><mrow><mo>∑</mo><msub><mi>j</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub></mrow></mfrac><mo>,</mo></mrow><annotation encoding="application/x-tex">k_s= \frac{\sum j_i k_i x_i}{\sum j_i x_i},</annotation></semantics></math></p>
+<p>where quantity
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>j</mi><mi>i</mi></msub><annotation encoding="application/x-tex">j_i</annotation></semantics></math>
+is the ratio of the average temperature gradient in the granules and the
 corresponding quantity in the medium (water or air):</p>
-<p><span class="math display">\[j_i= \frac{1}{3} \sum_{p=a,b,c}[1+\left(
-\frac{k_i}{k_0}-1 \right)g_{p,i}]^{-1}, \]</span></p>
-<p>where <span class="math inline">\(k_0\)</span> is the conductivity of
-the continuous medium in which soil particles are suspended (water or
-air) and <span class="math inline">\(g\)</span> is a shape factor for
-the soil particles. The soil particles are assumed to be ellipsoids with
-axes <span class="math inline">\(g_a\)</span>, <span class="math inline">\(g_b\)</span>, and <span class="math inline">\(g_c\)</span>, where <span class="math inline">\(g_a +g_b +g_c=1\)</span>. de Vries <span class="citation">(1952)</span> suggests <span class="math inline">\(g_a=g_b=0.125\)</span>. We provide the function as
-follows:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mi>i</mi></msub><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><munder><mo>∑</mo><mrow><mi>p</mi><mo>=</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi></mrow></munder><msup><mrow><mo stretchy="true" form="prefix">[</mo><mn>1</mn><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><msub><mi>k</mi><mi>i</mi></msub><msub><mi>k</mi><mn>0</mn></msub></mfrac><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>g</mi><mrow><mi>p</mi><mo>,</mo><mi>i</mi></mrow></msub><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>,</mo></mrow><annotation encoding="application/x-tex">j_i= \frac{1}{3} \sum_{p=a,b,c}[1+\left( \frac{k_i}{k_0}-1 \right)g_{p,i}]^{-1}, </annotation></semantics></math></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mn>0</mn></msub><annotation encoding="application/x-tex">k_0</annotation></semantics></math>
+is the conductivity of the continuous medium in which soil particles are
+suspended (water or air) and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+is a shape factor for the soil particles. The soil particles are assumed
+to be ellipsoids with axes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>g</mi><mi>a</mi></msub><annotation encoding="application/x-tex">g_a</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>g</mi><mi>b</mi></msub><annotation encoding="application/x-tex">g_b</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>g</mi><mi>c</mi></msub><annotation encoding="application/x-tex">g_c</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>a</mi></msub><mo>+</mo><msub><mi>g</mi><mi>b</mi></msub><mo>+</mo><msub><mi>g</mi><mi>c</mi></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">g_a +g_b +g_c=1</annotation></semantics></math>.
+de Vries <span class="citation">(1952)</span> suggests
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>a</mi></msub><mo>=</mo><msub><mi>g</mi><mi>b</mi></msub><mo>=</mo><mn>0.125</mn></mrow><annotation encoding="application/x-tex">g_a=g_b=0.125</annotation></semantics></math>.
+We provide the function as follows:</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/soil_conductivity.html">soil_conductivity</a></span><span class="op">(</span>x      <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.10</span>,<span class="fl">0.40</span>,<span class="fl">0.11</span>,<span class="fl">0.01</span>,<span class="fl">0.2</span>, <span class="fl">0.18</span><span class="op">)</span>, </span>
 <span>                  lambda <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.10</span>,<span class="fl">0.40</span>,<span class="fl">0.11</span>,<span class="fl">0.01</span>,<span class="fl">0.2</span>, <span class="fl">0.18</span><span class="op">)</span>, </span>
@@ -1464,7 +1638,7 @@ follows:</p>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-beckman1973thermal" class="csl-entry">
 Beckman, W. A., John W. Mitchell, and W. P. Porter. 1973. <span>“Thermal
 Model for Prediction of a Desert Iguana’s Daily and Seasonal
@@ -1536,9 +1710,7 @@ Wong, L. T., and W. K. Chow. 2001. <span>“Solar Radiation Model.”</span>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
@@ -1551,16 +1723,16 @@ Wong, L. T., and W. K. Chow. 2001. <span>“Solar Radiation Model.”</span>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>
 </div>
 
-  
 
 
-  
+
+
 
   </body>
 </html>
