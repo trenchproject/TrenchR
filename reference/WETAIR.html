@@ -109,21 +109,49 @@
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Named <code>list</code> with elements</p><ul><li><p><code>e</code>: <code>numeric</code> saturation vapor pressure (Pa)</p></li>
-<li><p><code>vd</code>: <code>numeric</code> vapor density (kg m<sup>-3</sup>)</p></li>
-<li><p><code>rw</code>: <code>numeric</code> mixing ratio (kg kg<sup>-1</sup>)</p></li>
-<li><p><code>tvir</code>: <code>numeric</code> virtual temperature (K)</p></li>
-<li><p><code>tvinc</code>: <code>numeric</code> virtual temperature increment (K)</p></li>
-<li><p><code>denair</code>: <code>numeric</code> density of the air (kg m<sup>-3</sup>)</p></li>
-<li><p><code>cp</code>: <code>numeric</code> specific heat of air at constant pressure (J kg<sup>-1</sup> K<sup>-1</sup>)</p></li>
-<li><p><code>wtrpot</code>: <code>numeric</code> water potential (Pa)</p></li>
-<li><p><code>rh</code>: <code>numeric</code> relative humidity (%)</p></li>
-</ul></div>
+    <p>Named <code>list</code> with elements:</p><dl><dt><code>e</code></dt>
+<dd><p><code>numeric</code> saturation vapor pressure (Pa)</p></dd>
+
+    <dt><code>vd</code></dt>
+<dd><p><code>numeric</code> vapor density (kg m<sup>-3</sup>)</p></dd>
+
+    <dt><code>rw</code></dt>
+<dd><p><code>numeric</code> mixing ratio (kg kg<sup>-1</sup>)</p></dd>
+
+    <dt><code>tvir</code></dt>
+<dd><p><code>numeric</code> virtual temperature (K)</p></dd>
+
+    <dt><code>tvinc</code></dt>
+<dd><p><code>numeric</code> virtual temperature increment (K)</p></dd>
+
+    <dt><code>denair</code></dt>
+<dd><p><code>numeric</code> density of the air (kg m<sup>-3</sup>)</p></dd>
+
+    <dt><code>cp</code></dt>
+<dd><p><code>numeric</code> specific heat of air at constant pressure (J kg<sup>-1</sup> K<sup>-1</sup>)</p></dd>
+
+    <dt><code>wtrpot</code></dt>
+<dd><p><code>numeric</code> water potential (Pa)</p></dd>
+
+    <dt><code>rh</code></dt>
+<dd><p><code>numeric</code> relative humidity (%)</p></dd>
+
+
+</dl></div>
     <div id="details">
     <h2>Details</h2>
-    <p>The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP):</p><ul><li><p>Psychrometric data: If WB is known but not RH, then set RH = -1 and DP = 999. If RH is known but not WB then set WB = 0 and DP = 999</p></li>
-<li><p>Hygrometric data: If DP is known, set WB = 0 and RH = 0</p></li>
-</ul></div>
+    <p>The user must supply known values for DB and BP (BP at one standard
+  atmosphere is 101,325 pascals). Values for the remaining variables are
+  determined by whether the user has either (1) psychrometric data (WB or RH),
+  or (2) hygrometric data (DP):</p><dl><dt>Psychrometric data</dt>
+<dd><p>If WB is known but not RH, then set RH = -1
+      and DP = 999. If RH is known but not WB then set WB = 0 and DP = 999.</p></dd>
+
+    <dt>Hygrometric data</dt>
+<dd><p>If DP is known, set WB = 0 and RH = 0.</p></dd>
+
+
+</dl></div>
     <div id="references">
     <h2>References</h2>
     <p>Kearney MR, Porter WP (2017).
