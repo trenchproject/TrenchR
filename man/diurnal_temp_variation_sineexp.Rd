@@ -35,14 +35,17 @@ diurnal_temp_variation_sineexp(
 The function estimates temperature across hours using a diurnal temperature variation function incorporating sine and exponential components \insertCite{Parton1981}{TrenchR}.
 }
 \details{
-Default \code{alpha}, \code{beta}, and \code{gamma} values are the average of 5 North Carolina sites \insertCite{Wann1985}{TrenchR}. 
- \cr \cr
- Other \code{alpha}, \code{beta}, and \code{gamma} parameterizations include values for Denver, Colorado from \insertCite{Parton1981;textual}{TrenchR}: \itemize{
-  \item{150 cm air temperature}{: \code{alpha} = 1.86, \code{beta} = 2.20, \code{gamma} = -0.17}
-  \item{10 cm air temperature}{: \code{alpha} = 1.52, \code{beta} = 2.00, \code{gamma} = -0.18}
-  \item{soil surface temperature}{: \code{alpha} = 0.50, \code{beta} = 1.81, \code{gamma} = 0.49}
-  \item{10cm soil temperature}{: \code{alpha} = 0.45, \code{beta} = 2.28, \code{gamma} = 1.83}
- }
+Default \code{alpha}, \code{beta}, and \code{gamma} values are the
+  average of 5 North Carolina sites \insertCite{Wann1985}{TrenchR}.
+  \cr \cr
+  Other \code{alpha}, \code{beta}, and \code{gamma} parameterizations include
+  values for Denver, Colorado from \insertCite{Parton1981;textual}{TrenchR}:
+  \describe{
+    \item{150 cm air temperature}{\code{alpha} = 1.86, \code{beta} = 2.20, \code{gamma} = -0.17}
+    \item{10 cm air temperature}{\code{alpha} = 1.52, \code{beta} = 2.00, \code{gamma} = -0.18}
+    \item{Soil surface temperature}{\code{alpha} = 0.50, \code{beta} = 1.81, \code{gamma} = 0.49}
+    \item{10 cm soil temperature}{\code{alpha} = 0.45, \code{beta} = 2.28, \code{gamma} = 1.83}
+  }
 }
 \examples{
   diurnal_temp_variation_sineexp(T_max = 30, 

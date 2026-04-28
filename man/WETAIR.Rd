@@ -18,16 +18,17 @@ WETAIR(db, wb = db, rh = 0, dp = 999, bp = 101325)
 \item{bp}{\code{numeric} barometric pressure (Pa).}
 }
 \value{
-Named \code{list} with elements \itemize{
-  \item{\code{e}:}{ \code{numeric} saturation vapor pressure (Pa)}
-  \item{\code{vd}:}{ \code{numeric} vapor density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
-  \item{\code{rw}:}{ \code{numeric} mixing ratio (\ifelse{html}{\out{kg kg<sup>-1</sup>}}{\eqn{kg kg^-1}{ASCII}})}
-  \item{\code{tvir}:}{ \code{numeric} virtual temperature (K)}
-  \item{\code{tvinc}:}{ \code{numeric} virtual temperature increment (K)}
-  \item{\code{denair}:}{ \code{numeric} density of the air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
-  \item{\code{cp}:}{ \code{numeric} specific heat of air at constant pressure (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}})}
-  \item{\code{wtrpot}:}{ \code{numeric} water potential (Pa)}
-  \item{\code{rh}:}{ \code{numeric} relative humidity (\%)}
+Named \code{list} with elements:
+  \describe{
+    \item{\code{e}}{\code{numeric} saturation vapor pressure (Pa)}
+    \item{\code{vd}}{\code{numeric} vapor density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
+    \item{\code{rw}}{\code{numeric} mixing ratio (\ifelse{html}{\out{kg kg<sup>-1</sup>}}{\eqn{kg kg^-1}{ASCII}})}
+    \item{\code{tvir}}{\code{numeric} virtual temperature (K)}
+    \item{\code{tvinc}}{\code{numeric} virtual temperature increment (K)}
+    \item{\code{denair}}{\code{numeric} density of the air (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
+    \item{\code{cp}}{\code{numeric} specific heat of air at constant pressure (\ifelse{html}{\out{J kg<sup>-1</sup> K<sup>-1</sup>}}{\eqn{J kg^-1 K^-1}{ASCII}})}
+    \item{\code{wtrpot}}{\code{numeric} water potential (Pa)}
+    \item{\code{rh}}{\code{numeric} relative humidity (\%)}
   }
 }
 \description{
@@ -36,11 +37,15 @@ The function calculates several properties of humid air described as output vari
  WETAIR must be used in conjunction with \code{\link{VAPPRS}}. Input variables are shown below. See Details.
 }
 \details{
-The user must supply known values for DB and BP (BP at one standard atmosphere is 101,325 pascals). Values for the remaining variables are determined by whether the user has either (1) psychrometric data (WB or RH), or (2) hygrometric data (DP): 
-  \itemize{
-  \item{Psychrometric data:}{ If WB is known but not RH, then set RH = -1 and DP = 999. If RH is known but not WB then set WB = 0 and DP = 999}
-  \item{Hygrometric data:}{ If DP is known, set WB = 0 and RH = 0}
- }
+The user must supply known values for DB and BP (BP at one standard
+  atmosphere is 101,325 pascals). Values for the remaining variables are
+  determined by whether the user has either (1) psychrometric data (WB or RH),
+  or (2) hygrometric data (DP):
+  \describe{
+    \item{Psychrometric data}{If WB is known but not RH, then set RH = -1
+      and DP = 999. If RH is known but not WB then set WB = 0 and DP = 999.}
+    \item{Hygrometric data}{If DP is known, set WB = 0 and RH = 0.}
+  }
 }
 \examples{
   WETAIR(db = 30, 

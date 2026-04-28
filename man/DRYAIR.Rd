@@ -14,19 +14,20 @@ DRYAIR(db, bp = 0, alt = 0)
 \item{alt}{\code{numeric} altitude (m).}
 }
 \value{
-Named \code{list} with elements \itemize{
-  \item{\code{patmos}:}{ \code{numeric} standard atmospheric pressure (Pa)}
-  \item{\code{density}:}{ \code{numeric} density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
-  \item{\code{visdyn}:}{ \code{numeric} dynamic viscosity (\ifelse{html}{\out{kg m<sup>-1</sup> s<sup>-1</sup>}}{\eqn{kg m^-1 s^-1}{ASCII}})}
-  \item{\code{viskin}:}{ \code{numeric} kinematic viscosity (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}})}
-  \item{\code{difvpr}:}{ \code{numeric} diffusivity of water vapor in air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}})}
-  \item{\code{thcond}:}{ \code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}})}
-  \item{\code{htovpr}:}{ \code{numeric} latent heat of vaporization of water (\ifelse{html}{\out{J kg<sup>-1</sup>}}{\eqn{J kg^-1}{ASCII}})}
-  \item{\code{tcoeff}:}{ \code{numeric} temperature coefficient of volume expansion (\ifelse{html}{\out{K<sup>-1</sup>}}{\eqn{K^-1}{ASCII}})}
-  \item{\code{ggroup}:}{ \code{numeric} group of variables in Grashof number (\ifelse{html}{\out{m<sup>-3</sup> K<sup>-1</sup>}}{\eqn{m^-3 K^-1}{ASCII}})}
-  \item{\code{bbemit}:}{ \code{numeric} black body emittance (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}})}
-  \item{\code{emtmax}:}{ \code{numeric} wave length of maximum emittance (m)}
- }
+Named \code{list} with elements:
+  \describe{
+    \item{\code{patmos}}{\code{numeric} standard atmospheric pressure (Pa)}
+    \item{\code{density}}{\code{numeric} density (\ifelse{html}{\out{kg m<sup>-3</sup>}}{\eqn{kg m^-3}{ASCII}})}
+    \item{\code{visdyn}}{\code{numeric} dynamic viscosity (\ifelse{html}{\out{kg m<sup>-1</sup> s<sup>-1</sup>}}{\eqn{kg m^-1 s^-1}{ASCII}})}
+    \item{\code{viskin}}{\code{numeric} kinematic viscosity (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}})}
+    \item{\code{difvpr}}{\code{numeric} diffusivity of water vapor in air (\ifelse{html}{\out{m<sup>2</sup> s<sup>-1</sup>}}{\eqn{m^2 s^-1}{ASCII}})}
+    \item{\code{thcond}}{\code{numeric} thermal conductivity (\ifelse{html}{\out{W K<sup>-1</sup> m<sup>-1</sup>}}{\eqn{W K^-1 m^-1}{ASCII}})}
+    \item{\code{htovpr}}{\code{numeric} latent heat of vaporization of water (\ifelse{html}{\out{J kg<sup>-1</sup>}}{\eqn{J kg^-1}{ASCII}})}
+    \item{\code{tcoeff}}{\code{numeric} temperature coefficient of volume expansion (\ifelse{html}{\out{K<sup>-1</sup>}}{\eqn{K^-1}{ASCII}})}
+    \item{\code{ggroup}}{\code{numeric} group of variables in Grashof number (\ifelse{html}{\out{m<sup>-3</sup> K<sup>-1</sup>}}{\eqn{m^-3 K^-1}{ASCII}})}
+    \item{\code{bbemit}}{\code{numeric} black body emittance (\ifelse{html}{\out{W m<sup>-2</sup>}}{\eqn{W m^-2}{ASCII}})}
+    \item{\code{emtmax}}{\code{numeric} wave length of maximum emittance (m)}
+  }
 }
 \description{
 The function calculates several properties of dry air and related characteristics shown as output variables below. The program is based on equations from \insertCite{List1971;textual}{TrenchR} and code implementation from NicheMapR \insertCite{Kearney2017,Kearney2020}{TrenchR}.
