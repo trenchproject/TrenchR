@@ -127,7 +127,10 @@ diurnal_radiation_variation <- function(doy,
   W <- pi * (hour - hour_sol) / 12  # Brock 1981
   
   # Ws: sunset hour angle (in radians)
-  Ws <- acos(-tan(lat / rd) * tan(DecAng))
+  inner<- -tan(lat / rd) * tan(DecAng)
+  #restrict between -1 and 1
+  inner<- ifelse(inner > 1, 1, ifelse(inner < -1, -1, inner))
+  Ws <- acos(inner)
   
   d <- 0.409 + 0.5016 * sin(Ws - 1.047)
   b <- 0.6609 - 0.4767 * sin(Ws - 1.047) # papers differ in whether sign before 0.4767 is negative or positive
@@ -136,12 +139,10 @@ diurnal_radiation_variation <- function(doy,
   rG <- pi / 24 * (d + b * cos(W)) * (cos(W) - cos(Ws)) / (sin(Ws) - Ws * cos(Ws))   # (Liu and Jordan, Collares-Pereira and Rable 1979)
   # rG <- pi / 24 * (d + b * cos(W) - cos(Ws)) / (sin(Ws) - Ws * cos(Ws))           # Brock 1981
   
-  if (rG < 0) {
-
-    rG <- 0
-
-  }  
-
+  #handle negative or infinite values
+  rG <- ifelse(rG < 0, 0, rG)
+  rG <- ifelse(!is.finite(rG), 0, rG)
+  
   rG * S 
   
 }
