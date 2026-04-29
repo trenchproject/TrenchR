@@ -4,7 +4,7 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/trenchproject/TrenchR/actions/workflows/r_command_check.yaml/badge.svg)](https://github.com/trenchproject/TrenchR/actions/workflows/r_command_check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/trenchproject/TrenchR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/trenchproject/TrenchR/branch/main)
-[![NSF-1349865](https://img.shields.io/badge/NSF-1349865-blue.svg)](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1349865)
+[![NSF-1349865](https://img.shields.io/badge/NSF-1349865-blue.svg)](https://www.nsf.gov/awardsearch/show-award/?AWD_ID=1349865)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/trenchproject/TrenchR/main/LICENSE)
 <!-- badges: end -->
 
